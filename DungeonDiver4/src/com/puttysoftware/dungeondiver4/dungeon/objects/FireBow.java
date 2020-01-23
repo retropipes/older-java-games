@@ -1,0 +1,36 @@
+/*  DungeonDiver4: A Dungeon-Solving Game
+Copyright (C) 2008-2010 Eric Ahnell
+
+Any questions should be directed to the author via email at: DungeonDiver4@worldwizard.net
+ */
+package com.puttysoftware.dungeondiver4.dungeon.objects;
+
+import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractBow;
+import com.puttysoftware.dungeondiver4.dungeon.utilities.ArrowTypeConstants;
+import com.puttysoftware.dungeondiver4.dungeon.utilities.ColorConstants;
+
+public class FireBow extends AbstractBow {
+    // Constants
+    private static final int BOW_USES = 30;
+
+    // Constructors
+    public FireBow() {
+        super(FireBow.BOW_USES, ArrowTypeConstants.ARROW_TYPE_FIRE,
+                ColorConstants.COLOR_LIGHT_RED);
+    }
+
+    @Override
+    public String getName() {
+        return "Fire Bow";
+    }
+
+    @Override
+    public String getPluralName() {
+        return "Fire Bows";
+    }
+
+    @Override
+    public String getDescription() {
+        return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do everything normal arrows do.";
+    }
+}

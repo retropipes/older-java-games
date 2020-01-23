@@ -1,0 +1,9 @@
+None
+Heat
+Cold
+Rock
+Gust
+Beam
+Dead
+Bolt
+Boom

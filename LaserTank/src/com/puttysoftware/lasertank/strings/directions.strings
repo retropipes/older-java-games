@@ -1,0 +1,10 @@
+0 = northwest
+1 = north
+2 = northeast
+3 = east
+4 = southeast
+5 = south
+6 = southwest
+7 = west
+8 = horizontal
+9 = vertical

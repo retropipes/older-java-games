@@ -1,0 +1,75 @@
+    <key>CFBundleDocumentTypes</key>
+    <array>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>mode</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>mode.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Mode</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>regi</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>registry.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Registry</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+    </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>maze</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>maze.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Maze</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>game</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>game.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Saved Game</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>scor</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>scores.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Scores</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>rule</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>ruleset.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MazeMode Rule Set</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    </array>

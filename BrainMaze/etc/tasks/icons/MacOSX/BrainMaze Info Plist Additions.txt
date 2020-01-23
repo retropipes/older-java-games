@@ -1,0 +1,63 @@
+    <key>CFBundleDocumentTypes</key>
+    <array>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>braingame</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>game.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>BrainMaze Game</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>brainmaze</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>maze.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>BrainMaze Maze</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+    </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>brainsave</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>save.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>BrainMaze Save</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>brainscore</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>score.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>BrainMaze Scores</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>brainrules</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>rules.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>BrainMaze Rule Set</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    </array>

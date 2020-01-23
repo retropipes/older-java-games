@@ -1,0 +1,14 @@
+armor
+closed_door
+darkness
+empty
+healer
+ice
+open_door
+regenerator
+spells
+boss_monster
+final_boss_monster
+tile
+wall
+weapons

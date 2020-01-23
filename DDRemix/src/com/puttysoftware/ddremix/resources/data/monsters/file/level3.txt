@@ -1,0 +1,5 @@
+anglebot
+boxbot
+curvebot
+diamondbot
+ellipsebot

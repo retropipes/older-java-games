@@ -1,0 +1,13 @@
+actions
+attacks
+defense
+dungeon_level
+experience
+health
+magic
+melee_attack
+money
+name
+spells
+steals
+team

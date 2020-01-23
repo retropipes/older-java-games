@@ -1,0 +1,12 @@
+swimming
+ghostly
+invincible
+missiles
+stunners
+boosts
+magnets
+bluelasers
+disruptors
+bombs
+heatbombs
+icebombs

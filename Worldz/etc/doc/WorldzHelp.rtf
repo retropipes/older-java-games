@@ -1,0 +1,543 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf290
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier-Bold;\f2\froman\fcharset0 TimesNewRomanPSMT;
+}
+{\colortbl;\red255\green255\blue255;}
+{\info
+{\author esahnell}
+{\*\company Rockwell Automation}}\margl1440\margr1440\margb1800\margt1800\vieww12240\viewh15840\viewkind1
+\deftab720
+\pard\pardeftab720\ri0\qc
+
+\f0\b\fs52 \cf0 Worldz Manual
+\b0\fs28 \
+\pard\pardeftab720\ri0\qc
+
+\fs40 \cf0 Version 1.0.0-dev2 - Last Updated April 11, 2010
+\fs36 \
+\pard\pardeftab720\ri0\qc
+
+\fs28 \cf0 \
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Game Objective
+\i0\b0\fs28 \
+\pard\pardeftab720\ri-2160\ql\qnatural
+\cf0 The overall goal of the game is to defeat monsters and gain levels until reaching the end goal. Since you can make your own worlds, the exact way this is accomplished differs from World to World.\
+\pard\pardeftab720\ri0
+\cf0 \
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Term Definitions
+\i0\b0\fs28 \
+Rows and Columns refer to the horizontal and vertical lines of squares making up the World Grid. Floors are stacks of Row/Column Grids. Levels are stacks of Floors. Finally, every World has 2 Layers - the Ground Layer (where Grass, Tile, and other types of ground belong) and the Object Layer (where everything else belongs).\
+\pard\pardeftab720\ri0
+
+\fs26 \cf0 \
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Menu Overview
+\fs36 \
+\pard\pardeftab720\ri0
+
+\i0\fs28 \cf0 File\
+\pard\pardeftab720\ri0
+
+\i\b0 \cf0 New
+\i0 : Creates a new World. You can specify its dimensions. Rows and Columns cannot be less than 2 squares or greater than 128 squares, and Floors not less than 1 or greater than 16. A new World always starts with 1 Level - more can be added later.\
+
+\i Open
+\i0 : Opens an existing World.\
+
+\i Close
+\i0 : Closes the current Mode Window (Game or Editor, not the current World).
+\i \
+Save
+\i0 : Saves the current World.\
+
+\i Save As
+\i0 : Saves the current World with a new name.\
+
+\i Exit
+\i0  (non-Mac OS X platforms only): Quits the Program.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Edit\
+\pard\pardeftab720\ri0
+
+\i\b0 \cf0 Undo
+\i0 : Undoes the most recent action. This command is available only in the Editor.\
+
+\i Redo
+\i0 : Redoes the most recent action. This command is available only in the Editor.\
+
+\i Cut Level
+\i0 : Copies the active Level to the internal clipboard, then removes the Level. Not available if the active World has only one Level in it. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.\
+
+\i Copy Level
+\i0 : Copies the active Level to the internal clipboard. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.\
+
+\i Paste Level
+\i0 : Pastes the clipboard contents into the active Level, overwriting whatever is there, and then redraws the Editor. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.\
+
+\i Insert Level From Clipboard
+\i0 : Pastes the clipboard contents into a new Level, appending it to the end of the World. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.\
+
+\i Preferences
+\i0 : Allows configuration of various Game and Editor Settings. (On Mac OS X, this command is in the Worldz Menu.)\
+
+\i Clear History
+\i0 : Clears the Undo/Redo History, prompting for confirmation first. This command is available only in the Editor.
+\i \
+\pard\pardeftab720\ri0
+
+\i0\b \cf0 Play\
+\pard\pardeftab720\ri0
+
+\i\b0 \cf0 Play
+\i0 : Allows solving the current World.\
+
+\i Edit
+\i0 : Allows modifying the current World. Note that invoking the Editor after opening a Saved Game will cause the Saved State to be lost.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Game\
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\i\b0 \cf0 Show Equipment
+\i0 : Shows everything you are wearing, along with the slot it occupies and its power. If nothing is equipped in a particular slot, this will be indicated. This command is only available while solving a World.\
+\pard\pardeftab720\ri0
+
+\i \cf0 Show Item Inventory\'85
+\i0 : Shows all combat usable Items you are carrying. This command is only available while solving a World.\
+\pard\pardeftab720\ri0\ql\qnatural
+
+\i \cf0 Show Object Inventory...
+\i0 : Shows all other Items you are carrying. This command is only available while solving a World.\
+\pard\pardeftab720\ri0
+
+\i \cf0 Use an Item...
+\i0 : Allows using anything you\'92re carrying that can be explicitly used. This command is only available while solving a World.\
+\pard\pardeftab720\ri-2160\ql\qnatural
+\cf0 Pick Leader...: Choose a new leader from the characters in your Party. The leader is who will buy and sell stuff from shops, and whose stats will be displayed in the right pane when not in battle.\
+
+\b Battle
+\b0\fs24 \
+
+\i\fs28 Cast Spell
+\i0 : Prompts for a spell to cast, then a target, then casts the selected spell on the selected target. This command is available only while engaged in battle.\
+
+\i Use an Item
+\i0 : Prompts for an item to use, then a target, then uses the selected item on the selected target. This command is available only while engaged in battle.\
+
+\i Steal Stuff
+\i0 : Attempt to steal Gold from an adjacent hostile creature. This command is available only while engaged in battle.\
+
+\i Drain MP
+\i0 : Attempt to drain MP from an adjacent hostile creature. Any MP drained is given to the drainer. This command is available only while engaged in battle.\
+
+\i End Turn
+\i0 : Ends your turn. This command is available only while engaged in battle.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Editor
+\b0 \
+\pard\pardeftab720\ri0
+
+\i \cf0 Go To\'85
+\i0 : Prompts for a location, then moves the Editor view to be centered on that location.\
+
+\i Up One Floor
+\i0 , 
+\i Down One Floor
+\i0 , 
+\i Up One Level
+\i0 , 
+\i Down One Level, Add a Level..., Remove a Level...
+\i0 : All these commands work only in the Editor, and are self-explanatory.\
+
+\i Resize Current Level
+\i0 : Changes the size of the active Level within the active World. This command is available only in the Editor.\
+
+\i Toggle Layer
+\i0 : Switches between Ground Layer and Object Layer views. This command is available only in the Editor.\
+
+\i Level Preferences...
+\i0 : Opens the Level Preferences dialog, where settings specific to the active Level of the current World can be set. This command is available only in the Editor.
+\i \
+World Preferences...
+\i0 : Opens the World Preferences dialog, where settings specific to the current World as a whole can be set. This command is available only in the Editor.\
+
+\i Set Start Point\'85
+\i0 : Prompts for a click to set the start point, then moves the Player (if it exists) to that location. This command is available only when the Editor is active, and it is editing the Object Layer. If an attempt is made to set the start point outside the bounds of the World, the message "Aim within the World" will display in the Message Area, and the action will be aborted.\
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\i \cf0 Toggle Script
+\i0 : Toggles Script Editor mode in the Editor.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Editor: Fill sub-menu\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 Note: The first four of the commands in this section are available only in the Editor, cannot be undone, and will clear the undo/redo history. The remaining two are available only in the Editor.\
+\pard\pardeftab720\ri0
+
+\i \cf0 Fill Active Floor
+\i0 : Fills the active Floor with the default fill chosen in the Preferences.\
+
+\i Fill Active Level
+\i0 : Fills the active Level with the default fill chosen in the Preferences.\
+
+\i Fill Active Floor Randomly
+\i0 : Fills the active Floor with randomly chosen Objects.\
+
+\i Fill Active Level Randomly
+\i0 : Fills the active Level with randomly chosen Objects.\
+
+\i Fill Rule Sets\'85
+\i0 : Opens the Rule Set Picker, where Rule Sets can be defined, created, destroyed, saved, and loaded. Rule Sets influence the random World generator.\
+
+\i Use Fill Rule Sets
+\i0 : This setting controls whether or not Rule Sets defined are used in random World generation. It is checked if it is active, and its value is not saved between program runs.\
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\b \cf0 Debug
+\b0 \
+
+\i Turn AI Off/On
+\i0 : Turns the AI for NPCs and monsters off or on. This command is a toggle.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Plugin
+\b0 \
+\pard\pardeftab720\ri0
+
+\i \cf0 Register Plugin
+\i0 :
+\i  
+\i0 Adds a plugin to the list of registered plugins. All registered plugins will be automatically loaded when the game starts. Additionally, a newly registered plugin will also be automatically loaded.\
+
+\i Unregister Plugin
+\i0 :
+\i  
+\i0 Removes a registered plugin from the list of registered plugins. A plugin that has been unregistered will not be unloaded until the program is restarted.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Additional Menus
+\b0 \
+\pard\pardeftab720\ri0
+
+\i \cf0 Additional Commands
+\i0 : Menu item plugins will put their menu items here, between the Plugin and Help menus.\
+\pard\pardeftab720\ri0
+
+\b \cf0 Help\
+\pard\pardeftab720\ri0
+
+\i\b0 \cf0 Check for Updates...
+\i0 : Checks to see if newer versions of the Game are available. Unlike the startup check, this check is NOT done in the background.\
+
+\i Check for Beta Updates...
+\i0 : Checks to see if newer beta versions of the Game are available. Only available in beta builds. Unlike the startup check, this check is NOT done in the background.\
+
+\i About Worldz....
+\i0 : Displays the Game\'92s About Box. (On Mac OS X, this command is in the Worldz Menu.)\
+
+\i Worldz Help
+\i0 : Displays this manual.\
+
+\i Worldz Object Help
+\i0 : Displays a window listing all the Objects and a short description of what each one does.\
+\pard\pardeftab720\ri0
+
+\fs26 \cf0 \
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Preferences Overview
+\fs36 \
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\i0\b0\fs28 \cf0 The Preferences are divided into five tabs: 
+\i Game
+\i0 , 
+\i Editor
+\i0 , 
+\i Sound
+\i0 , 
+\i Music
+\i0 , and 
+\i Misc.
+\i0  The 
+\i Game
+\i0  tab contains one setting - the overall battle speed. This only affects the delay between actions for AI-controlled characters. 
+\i Editor
+\i0  and 
+\i Sound
+\i0  are for Editor-related and sound-related settings, respectively. The 
+\i Music
+\i0  tab controls whether or not the background music plays in various parts of the game. The 
+\i Misc.
+\i0  tab has four settings: whether or not to check for updated versions when the Game is started, whether or not to check for updated beta versions at startup (if using a release version, this setting is hidden), whether or not to operate in One Move at a Time mode, and how frequently the automatic update check should be performed (once per day is the default).\
+\pard\pardeftab720\ri0
+\cf0 \
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Plugin Registration
+\fs36 \
+\pard\pardeftab720\ri0
+
+\i0\b0\fs28 \cf0 Plugins are registered by their filename, without the extension (.wze) at the end. For instance, the DDE.wze plugin in the Plugin Pack can be registered by simply typing 
+\f1\b DDE
+\f0\b0  at the Register Plugin prompt. It will then be automatically loaded. Note that unregistering a plugin will not unload that plugin until the program is restarted.
+\fs26 \
+\
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Controls in the Game\
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\i0\fs28 \cf0 Creating Your Party
+\b0 \
+When you choose Play from the Game menu, the first thing you'll do is assemble a party. A party can be created in several ways: from already registered characters, from scratch characters (see Creating Your Characters, below), or a combination of these.\
+\
+
+\b Creating Your Characters
+\b0 \
+When you choose to create a new character, or choose Play from the Game menu when no registered characters exist, you'll be presented with 5 dialogs, for selecting your Race, Caste, Faith, Gender, and Personality. Each of these attributes affects you in different ways. There are 1,000,000 possible combinations, so feel free to experiment. Newly created characters will be automatically added to the list of registered characters.\
+\pard\pardeftab720\ri0
+
+\b \cf0 \
+Moving Around and Identifying Objects\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To move, use the arrow keys - Up, Down, Left, and Right. You can also use the Numeric Keypad, or the so-called "WAXD" configuration: W moves up, A moves left, D moves right, and X moves down. Additionally, diagonal movement is supported with WAXD: Q moves up and left, E moves up and right, Z moves down and left, C moves down and right. If you wish to move diagonally, the Numeric Keypad or the WAXD layout are the only ways to do this. Shift+Click an object to identify it. Its name will be displayed in the Message Area. If, for some reason, you need to make a "pass move" - that is, a do-nothing move, pressing 5 on the Numeric Keypad or the S key achieves this.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Your Health\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 In addition to simply trying to find the end goal, managing your Health must be done as well. Should you run out for any reason, your game will end. Many things affect your Health, both good and bad. Worse still, the very air in these Worlds is poisonous. The poison will slowly weaken you as you walk around the World. Its power is displayed in the stats area at the top. If the poison power is None, then there is no poison. Otherwise, it is displayed in units of health taken away per number of steps.\
+\pard\pardeftab720\ri0
+
+\b \cf0 \
+Shooting Arrows\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To shoot, hold down Alt/Option then use the arrow keys - Up, Down, Left, and Right, use the Numeric Keypad, or the WAXD layout. If you wish to shoot diagonally, the Numeric Keypad or WAXD are the only ways to do this. Various Objects react to getting hit by arrows. You have an unlimited supply of regular arrows. Be careful - if you accidentally shoot yourself with your own arrows, you'll suffer a little damage. This damage is doubled for enchanted arrows.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Shooting Enchanted Arrows\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 First, activate the enchanted bow you wish to use by choosing 
+\i Use an Item...
+\i0  from the Game menu. The next arrow you shoot will come from the bow you just activated. After that, if you wish to shoot another enchanted arrow, you must activate the bow again. Enchanted bows only come with a limited arrow supply, unlike your regular bow.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Pushing and Pulling\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To push an Object, just move into it. It will also move, if it can. To pull an Object, hold Shift and move AWAY from it. It will follow you, if it can be pulled.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Seeing what you are carrying\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To see what Items (if any) you have in your possession, choose 
+\i Show Item Inventory... 
+\i0 or 
+\i Show Object Inventory\'85
+\i0  from the 
+\i Game
+\i0  menu. A dialog box will appear, listing everything you can carry and what quantity you have.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Using Items you are carrying\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To use something you\'92re carrying that can be explicitly used (such as a Wand), choose 
+\i Use an Item...
+\i0  from the 
+\i Game 
+\i0 Menu. This will bring up a dialog listing what usable Items you have, as well as their quantities and uses - choose which one to use and click the 
+\i OK
+\i0  button. Unless you used an enchanted bow, a prompt will appear in the Message Area at the bottom: \'93
+\i Click to set target
+\i0 \'94. Click the square in the World where you wish the Item\'92s effect to occur, and it will be activated. If you realize you didn\'92t want to use something after all, press 
+\i Escape
+\i0 , and the action will be cancelled. If you try to use an Item but fail (for example, because the requirements for the target square were not met), a message will appear in the Message Area indicating what went wrong.\
+\
+Not all Items can be explicitly used in this way. Items that show up in the Object Inventory Dialog but not in the Use Dialog are used automatically when needed.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Getting Help
+\b0 \
+To find out what all the Objects do, choose 
+\i Worldz Object Help
+\i0  from the 
+\i Help
+\i0  menu. This will bring up a window that you can leave open while playing the game, listing each object and a short description of how it works. This manual can also be invoked in the game at any time, by choosing 
+\i Worldz Help
+\i0  from the 
+\i Help
+\i0  menu.\
+\
+\pard\pardeftab720\ri0
+
+\i\b\fs40 \cf0 Controls in the Editor
+\i0 \
+\pard\pardeftab720\ri0
+
+\fs28 \cf0 Moving Around and Identifying Objects\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To move the view around, drag the scroll bars on the left. To see more Objects to place, drag the scroll bars on the right. To change Floors and/or Levels, use the 
+\i Up One Floor
+\i0 , 
+\i Up One Level
+\i0 , 
+\i Down One Floor
+\i0 , and 
+\i Down One Level
+\i0  items in the 
+\i Edit
+\i0  menu. Shift+Click an object in the World to identify it. Its name, along with any additional properties it has and the values of those properties, will be displayed in the Message Area.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Placing Objects\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To place an Object, first select one in the right pane. Then, click the location in the World where you want the Object to go. If you need to change layers in order to place Objects, this can be done via the 
+\i Toggle Layer
+\i0  option in the Edit menu.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Modifying The World Dimensions\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 Worlds can gain or lose Levels as they are edited. To add a new Level to a World, choose 
+\i Add a Level...
+\i0  from the 
+\i Edit
+\i0  menu. You will be prompted for the dimensions of the new Level. Likewise, removing Levels can be accomplished via the 
+\i Remove a Level...
+\i0  item in the Edit menu. You\'92ll be prompted for the Level number to remove. Note that if you remove the current Level, you\'92ll be sent to Level 1. The active Level can be resized, too - via the 
+\i Resize Current Level\'85
+\i0  option in the Editor menu. Note that resizing a Level affects ALL Floors of that Level.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Setting Object Properties\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To set the properties of an Object, if it has any, hold the Option (or Alt) key and click the Object in the World Pane on the left. If it has properties you can set, a dialog or a message will appear. If it has no properties, the message \'93
+\i This object has no properties
+\i0 \'94 will appear in the Message Area. Most Teleports will generate a message that says \'93
+\i Click to set destination
+\i0 \'94 - this is exactly like using an Item. Click the spot where you want the destination to be. If you\'92d like the destination to be on a Floor other than the current one, you can change Floors before clicking. Random Teleports will generate a dialog asking for the Random Row and Column radii. Pressing 
+\i Escape
+\i0  will cancel setting properties.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Setting World and Level Preferences\
+\pard\pardeftab720\ri0
+
+\b0 \cf0 To set preferences for a Level, or the entire World, select the 
+\i Level Preferences\'85 
+\i0 or 
+\i World Preferences\'85
+\i0  commands from the Editor menu, as appropriate. Levels have several settings, including wraparound, a title, messages, and poison power. Worlds also have several settings, including the Level to start at, a title, and messages.\
+\
+\pard\pardeftab720\ri0
+
+\b \cf0 Defining Rule Sets
+\b0 \
+Rule Sets influence how the random World generator generates Worlds. They are managed from the Rule Set Picker. To use the Rule Set Picker, select an Object to work with from the pick list, then click the button for the action desired. Five actions are defined: Create, Destroy, Edit, Load, and Save. Load and Save operate on the entire set, while Create, Destroy, and Edit operate on individual rules.
+\f2\fs24 \
+\
+\pard\pardeftab720\ri-2160\ql\qnatural
+
+\f0\i\b\fs40 \cf0 Controls in Battle
+\fs36 \
+
+\i0\fs28 Action Points
+\fs24 \
+
+\b0\fs28 Moving, as well as some other actions in battle, either by you or the enemies, is limited by available action points. The remaining action points are displayed in the right pane, for the active character. Action points are allowed to go negative, but if this happens your remaining action points will be displayed as 0. This means that actions requiring more than 1 action point can be performed even if you don't have sufficient action points; as long as 1 action point remains, any action requiring action points can be performed.\
+
+\b \
+Moving Around
+\fs24 \
+
+\b0\fs28 To move, use the arrow keys, the WAXD layout, or the numeric keypad. Pressing 5 or S will cause you to attack yourself; a confirmation prompt will be displayed first, in case you did it accidentally. All movement consumes 1 action point per step.
+\fs24 \
+
+\b\fs28 \
+Fighting Monsters
+\fs24 \
+
+\b0\fs28 To attack the enemy, simply move into them. To run away from battle, move off the edge of the battle arena. Attacking is limited by available attacks, rather than by action points.
+\fs24 \
+
+\b\fs28 \
+Special Actions
+\fs24 \
+
+\b0\fs28 Sometimes, when you attack (and also when the enemy attacks you), different things may occur. One of these is fumbling - if this occurs a random amount of damage will be dealt to the fumbler, based on the power of the weapon held.
+\fs24 \
+
+\b\fs28 \
+Casting Spells
+\fs24 \
+
+\b0\fs28 To cast a spell, assuming you have learned at least one, choose Cast Spell from the Battle menu. The spell selection screen will appear. Select the spell you wish to cast, and click OK (or simply press Return on the keyboard). If you don\'92t know any spells, or don\'92t have enough MP to cast the spell you\'92re trying to cast, a message will be displayed indicating this. Casting spells is limited by a separate spell counter, distinct from the action point counter.
+\fs24 \
+
+\b\fs28 \
+Stealing Money
+\fs24 \
+
+\b0\fs28 To attempt to steal from the enemy, choose Steal Stuff from the Battle menu. If the attempt succeeds, you'll be told how much money you stole. Stealing consumes 6 action points.
+\fs24 \
+
+\b\fs28 \
+Using Items\
+
+\b0 To use an item, choose Use an Item from the Battle menu. Items do various things when used in battle, from healing you to damaging or incapacitating the enemy. Using an item consumes 6 action points.
+\fs24 \
+
+\b\fs28 \
+Draining the Enemy
+\fs24 \
+
+\b0\fs28 To attempt to drain the enemy's MP, choose Drain MP from the Battle menu. If the attempt succeeds, the enemy loses some MP, and you gain that lost MP. Draining consumes 6 action points.
+\fs24 \
+
+\b\fs28 \
+Victory! / Defeat!\
+
+\b0 The battle ends when either you or the enemy has run out of HP. If both you and the enemy run out of HP at the same time, the battle is declared a draw, and you get fully healed. If you gain enough XP to level up, a message will be displayed indicating this.
+\fs24 \
+\
+
+\i\b\fs40 Controls while Shopping
+\i0\fs36 \
+
+\fs28 Buying Stuff\
+
+\b0 First select what you wish to buy, and then confirm that you want to buy it when the shopkeeper tells you how much Gold the item or service costs. If you lack the Gold to purchase whatever it was you tried to buy, you\'92ll get a message indicating this. The Weapons and Armor shops give some additional options for selecting exactly what you wish to buy (and, for one-handed weapons, where to equip the purchased item), before presenting a list of items to look through.
+\fs24 \
+
+\b\fs28 \
+Using the Bank
+\fs24 \
+
+\b0\fs28 The Bank, unlike other shops, stores money for later retrieval. It will tell you how much Gold you are carrying, as well as how much you currently have stored. The Bank storage is for all party members together, so it can also be used as a way to transfer gold between members.}

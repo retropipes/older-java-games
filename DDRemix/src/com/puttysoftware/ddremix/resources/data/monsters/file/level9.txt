@@ -1,0 +1,11 @@
+alarm
+burger
+crossbot
+fightbot
+healer
+jetbot
+power_ten
+solar
+sonicbot
+tacklebot
+twin_claw

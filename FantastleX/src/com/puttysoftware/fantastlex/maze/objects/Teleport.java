@@ -1,0 +1,47 @@
+/*  FantastleX: A Maze/RPG Hybrid Game
+Copyleft 2013 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package com.puttysoftware.fantastlex.maze.objects;
+
+import com.puttysoftware.fantastlex.FantastleX;
+import com.puttysoftware.fantastlex.editor.MazeEditorLogic;
+import com.puttysoftware.fantastlex.maze.abc.AbstractMazeObject;
+import com.puttysoftware.fantastlex.maze.abc.AbstractTeleport;
+import com.puttysoftware.fantastlex.resourcemanagers.ObjectImageConstants;
+
+public class Teleport extends AbstractTeleport {
+    // Constructors
+    public Teleport() {
+        super(0, 0, 0, true, ObjectImageConstants.OBJECT_IMAGE_TELEPORT);
+    }
+
+    public Teleport(final int destinationRow, final int destinationColumn,
+            final int destinationFloor) {
+        super(destinationRow, destinationColumn, destinationFloor, true,
+                ObjectImageConstants.OBJECT_IMAGE_TELEPORT);
+    }
+
+    @Override
+    public String getName() {
+        return "Teleport";
+    }
+
+    @Override
+    public String getPluralName() {
+        return "Teleports";
+    }
+
+    @Override
+    public AbstractMazeObject editorPropertiesHook() {
+        final MazeEditorLogic me = FantastleX.getApplication().getEditor();
+        return me
+                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_GENERIC);
+    }
+
+    @Override
+    public String getDescription() {
+        return "Teleports send you to a predetermined destination when stepped on.";
+    }
+}

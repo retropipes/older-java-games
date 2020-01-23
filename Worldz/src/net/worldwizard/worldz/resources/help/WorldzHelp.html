@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Author" content="esahnell">
+  <meta name="Company" content="Rockwell Automation">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1038.29">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 26.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 20.0px Helvetica}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 14.0px Helvetica; min-height: 17.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 20.0px Helvetica}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica; min-height: 17.0px}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px Helvetica; min-height: 16.0px}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px 'Times New Roman'; min-height: 15.0px}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {font: 14.0px Courier}
+  </style>
+</head>
+<body>
+<p class="p1"><b>Worldz Manual</b></p>
+<p class="p2">Version 1.0.0-dev2 - Last Updated April 11, 2010</p>
+<p class="p3"><br></p>
+<p class="p4"><b><i>Game Objective</i></b></p>
+<p class="p5">The overall goal of the game is to defeat monsters and gain levels until reaching the end goal. Since you can make your own worlds, the exact way this is accomplished differs from World to World.</p>
+<p class="p6"><br></p>
+<p class="p4"><b><i>Term Definitions</i></b></p>
+<p class="p5">Rows and Columns refer to the horizontal and vertical lines of squares making up the World Grid. Floors are stacks of Row/Column Grids. Levels are stacks of Floors. Finally, every World has 2 Layers - the Ground Layer (where Grass, Tile, and other types of ground belong) and the Object Layer (where everything else belongs).</p>
+<p class="p7"><br></p>
+<p class="p4"><b><i>Menu Overview</i></b></p>
+<p class="p5"><b>File</b></p>
+<p class="p5"><i>New</i>: Creates a new World. You can specify its dimensions. Rows and Columns cannot be less than 2 squares or greater than 128 squares, and Floors not less than 1 or greater than 16. A new World always starts with 1 Level - more can be added later.</p>
+<p class="p5"><i>Open</i>: Opens an existing World.</p>
+<p class="p5"><i>Close</i>: Closes the current Mode Window (Game or Editor, not the current World).</p>
+<p class="p5"><i>Save</i>: Saves the current World.</p>
+<p class="p5"><i>Save As</i>: Saves the current World with a new name.</p>
+<p class="p5"><i>Exit</i> (non-Mac OS X platforms only): Quits the Program.</p>
+<p class="p5"><b>Edit</b></p>
+<p class="p5"><i>Undo</i>: Undoes the most recent action. This command is available only in the Editor.</p>
+<p class="p5"><i>Redo</i>: Redoes the most recent action. This command is available only in the Editor.</p>
+<p class="p5"><i>Cut Level</i>: Copies the active Level to the internal clipboard, then removes the Level. Not available if the active World has only one Level in it. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.</p>
+<p class="p5"><i>Copy Level</i>: Copies the active Level to the internal clipboard. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.</p>
+<p class="p5"><i>Paste Level</i>: Pastes the clipboard contents into the active Level, overwriting whatever is there, and then redraws the Editor. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.</p>
+<p class="p5"><i>Insert Level From Clipboard</i>: Pastes the clipboard contents into a new Level, appending it to the end of the World. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside Worldz.</p>
+<p class="p5"><i>Preferences</i>: Allows configuration of various Game and Editor Settings. (On Mac OS X, this command is in the Worldz Menu.)</p>
+<p class="p5"><i>Clear History</i>: Clears the Undo/Redo History, prompting for confirmation first. This command is available only in the Editor.</p>
+<p class="p5"><b>Play</b></p>
+<p class="p5"><i>Play</i>: Allows solving the current World.</p>
+<p class="p5"><i>Edit</i>: Allows modifying the current World. Note that invoking the Editor after opening a Saved Game will cause the Saved State to be lost.</p>
+<p class="p5"><b>Game</b></p>
+<p class="p5"><i>Show Equipment</i>: Shows everything you are wearing, along with the slot it occupies and its power. If nothing is equipped in a particular slot, this will be indicated. This command is only available while solving a World.</p>
+<p class="p5"><i>Show Item Inventory…</i>: Shows all combat usable Items you are carrying. This command is only available while solving a World.</p>
+<p class="p5"><i>Show Object Inventory...</i>: Shows all other Items you are carrying. This command is only available while solving a World.</p>
+<p class="p5"><i>Use an Item...</i>: Allows using anything you’re carrying that can be explicitly used. This command is only available while solving a World.</p>
+<p class="p5">Pick Leader...: Choose a new leader from the characters in your Party. The leader is who will buy and sell stuff from shops, and whose stats will be displayed in the right pane when not in battle.</p>
+<p class="p5"><b>Battle</b></p>
+<p class="p5"><i>Cast Spell</i>: Prompts for a spell to cast, then a target, then casts the selected spell on the selected target. This command is available only while engaged in battle.</p>
+<p class="p5"><i>Use an Item</i>: Prompts for an item to use, then a target, then uses the selected item on the selected target. This command is available only while engaged in battle.</p>
+<p class="p5"><i>Steal Stuff</i>: Attempt to steal Gold from an adjacent hostile creature. This command is available only while engaged in battle.</p>
+<p class="p5"><i>Drain MP</i>: Attempt to drain MP from an adjacent hostile creature. Any MP drained is given to the drainer. This command is available only while engaged in battle.</p>
+<p class="p5"><i>End Turn</i>: Ends your turn. This command is available only while engaged in battle.</p>
+<p class="p5"><b>Editor</b></p>
+<p class="p5"><i>Go To…</i>: Prompts for a location, then moves the Editor view to be centered on that location.</p>
+<p class="p5"><i>Up One Floor</i>, <i>Down One Floor</i>, <i>Up One Level</i>, <i>Down One Level, Add a Level..., Remove a Level...</i>: All these commands work only in the Editor, and are self-explanatory.</p>
+<p class="p5"><i>Resize Current Level</i>: Changes the size of the active Level within the active World. This command is available only in the Editor.</p>
+<p class="p5"><i>Toggle Layer</i>: Switches between Ground Layer and Object Layer views. This command is available only in the Editor.</p>
+<p class="p5"><i>Level Preferences...</i>: Opens the Level Preferences dialog, where settings specific to the active Level of the current World can be set. This command is available only in the Editor.</p>
+<p class="p5"><i>World Preferences...</i>: Opens the World Preferences dialog, where settings specific to the current World as a whole can be set. This command is available only in the Editor.</p>
+<p class="p5"><i>Set Start Point…</i>: Prompts for a click to set the start point, then moves the Player (if it exists) to that location. This command is available only when the Editor is active, and it is editing the Object Layer. If an attempt is made to set the start point outside the bounds of the World, the message "Aim within the World" will display in the Message Area, and the action will be aborted.</p>
+<p class="p5"><i>Toggle Script</i>: Toggles Script Editor mode in the Editor.</p>
+<p class="p5"><b>Editor: Fill sub-menu</b></p>
+<p class="p5">Note: The first four of the commands in this section are available only in the Editor, cannot be undone, and will clear the undo/redo history. The remaining two are available only in the Editor.</p>
+<p class="p5"><i>Fill Active Floor</i>: Fills the active Floor with the default fill chosen in the Preferences.</p>
+<p class="p5"><i>Fill Active Level</i>: Fills the active Level with the default fill chosen in the Preferences.</p>
+<p class="p5"><i>Fill Active Floor Randomly</i>: Fills the active Floor with randomly chosen Objects.</p>
+<p class="p5"><i>Fill Active Level Randomly</i>: Fills the active Level with randomly chosen Objects.</p>
+<p class="p5"><i>Fill Rule Sets…</i>: Opens the Rule Set Picker, where Rule Sets can be defined, created, destroyed, saved, and loaded. Rule Sets influence the random World generator.</p>
+<p class="p5"><i>Use Fill Rule Sets</i>: This setting controls whether or not Rule Sets defined are used in random World generation. It is checked if it is active, and its value is not saved between program runs.</p>
+<p class="p5"><b>Debug</b></p>
+<p class="p5"><i>Turn AI Off/On</i>: Turns the AI for NPCs and monsters off or on. This command is a toggle.</p>
+<p class="p5"><b>Plugin</b></p>
+<p class="p5"><i>Register Plugin</i>:<i> </i>Adds a plugin to the list of registered plugins. All registered plugins will be automatically loaded when the game starts. Additionally, a newly registered plugin will also be automatically loaded.</p>
+<p class="p5"><i>Unregister Plugin</i>:<i> </i>Removes a registered plugin from the list of registered plugins. A plugin that has been unregistered will not be unloaded until the program is restarted.</p>
+<p class="p5"><b>Additional Menus</b></p>
+<p class="p5"><i>Additional Commands</i>: Menu item plugins will put their menu items here, between the Plugin and Help menus.</p>
+<p class="p5"><b>Help</b></p>
+<p class="p5"><i>Check for Updates...</i>: Checks to see if newer versions of the Game are available. Unlike the startup check, this check is NOT done in the background.</p>
+<p class="p5"><i>Check for Beta Updates...</i>: Checks to see if newer beta versions of the Game are available. Only available in beta builds. Unlike the startup check, this check is NOT done in the background.</p>
+<p class="p5"><i>About Worldz....</i>: Displays the Game’s About Box. (On Mac OS X, this command is in the Worldz Menu.)</p>
+<p class="p5"><i>Worldz Help</i>: Displays this manual.</p>
+<p class="p5"><i>Worldz Object Help</i>: Displays a window listing all the Objects and a short description of what each one does.</p>
+<p class="p7"><br></p>
+<p class="p4"><b><i>Preferences Overview</i></b></p>
+<p class="p5">The Preferences are divided into five tabs: <i>Game</i>, <i>Editor</i>, <i>Sound</i>, <i>Music</i>, and <i>Misc.</i> The <i>Game</i> tab contains one setting - the overall battle speed. This only affects the delay between actions for AI-controlled characters. <i>Editor</i> and <i>Sound</i> are for Editor-related and sound-related settings, respectively. The <i>Music</i> tab controls whether or not the background music plays in various parts of the game. The <i>Misc.</i> tab has four settings: whether or not to check for updated versions when the Game is started, whether or not to check for updated beta versions at startup (if using a release version, this setting is hidden), whether or not to operate in One Move at a Time mode, and how frequently the automatic update check should be performed (once per day is the default).</p>
+<p class="p6"><br></p>
+<p class="p4"><b><i>Plugin Registration</i></b></p>
+<p class="p5">Plugins are registered by their filename, without the extension (.wze) at the end. For instance, the DDE.wze plugin in the Plugin Pack can be registered by simply typing <span class="s1"><b>DDE</b></span> at the Register Plugin prompt. It will then be automatically loaded. Note that unregistering a plugin will not unload that plugin until the program is restarted.</p>
+<p class="p7"><br></p>
+<p class="p4"><b><i>Controls in the Game</i></b></p>
+<p class="p5"><b>Creating Your Party</b></p>
+<p class="p5">When you choose Play from the Game menu, the first thing you'll do is assemble a party. A party can be created in several ways: from already registered characters, from scratch characters (see Creating Your Characters, below), or a combination of these.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Creating Your Characters</b></p>
+<p class="p5">When you choose to create a new character, or choose Play from the Game menu when no registered characters exist, you'll be presented with 5 dialogs, for selecting your Race, Caste, Faith, Gender, and Personality. Each of these attributes affects you in different ways. There are 1,000,000 possible combinations, so feel free to experiment. Newly created characters will be automatically added to the list of registered characters.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Moving Around and Identifying Objects</b></p>
+<p class="p5">To move, use the arrow keys - Up, Down, Left, and Right. You can also use the Numeric Keypad, or the so-called "WAXD" configuration: W moves up, A moves left, D moves right, and X moves down. Additionally, diagonal movement is supported with WAXD: Q moves up and left, E moves up and right, Z moves down and left, C moves down and right. If you wish to move diagonally, the Numeric Keypad or the WAXD layout are the only ways to do this. Shift+Click an object to identify it. Its name will be displayed in the Message Area. If, for some reason, you need to make a "pass move" - that is, a do-nothing move, pressing 5 on the Numeric Keypad or the S key achieves this.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Your Health</b></p>
+<p class="p5">In addition to simply trying to find the end goal, managing your Health must be done as well. Should you run out for any reason, your game will end. Many things affect your Health, both good and bad. Worse still, the very air in these Worlds is poisonous. The poison will slowly weaken you as you walk around the World. Its power is displayed in the stats area at the top. If the poison power is None, then there is no poison. Otherwise, it is displayed in units of health taken away per number of steps.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Shooting Arrows</b></p>
+<p class="p5">To shoot, hold down Alt/Option then use the arrow keys - Up, Down, Left, and Right, use the Numeric Keypad, or the WAXD layout. If you wish to shoot diagonally, the Numeric Keypad or WAXD are the only ways to do this. Various Objects react to getting hit by arrows. You have an unlimited supply of regular arrows. Be careful - if you accidentally shoot yourself with your own arrows, you'll suffer a little damage. This damage is doubled for enchanted arrows.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Shooting Enchanted Arrows</b></p>
+<p class="p5">First, activate the enchanted bow you wish to use by choosing <i>Use an Item...</i> from the Game menu. The next arrow you shoot will come from the bow you just activated. After that, if you wish to shoot another enchanted arrow, you must activate the bow again. Enchanted bows only come with a limited arrow supply, unlike your regular bow.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Pushing and Pulling</b></p>
+<p class="p5">To push an Object, just move into it. It will also move, if it can. To pull an Object, hold Shift and move AWAY from it. It will follow you, if it can be pulled.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Seeing what you are carrying</b></p>
+<p class="p5">To see what Items (if any) you have in your possession, choose <i>Show Item Inventory... </i>or <i>Show Object Inventory…</i> from the <i>Game</i> menu. A dialog box will appear, listing everything you can carry and what quantity you have.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Using Items you are carrying</b></p>
+<p class="p5">To use something you’re carrying that can be explicitly used (such as a Wand), choose <i>Use an Item...</i> from the <i>Game </i>Menu. This will bring up a dialog listing what usable Items you have, as well as their quantities and uses - choose which one to use and click the <i>OK</i> button. Unless you used an enchanted bow, a prompt will appear in the Message Area at the bottom: “<i>Click to set target</i>”. Click the square in the World where you wish the Item’s effect to occur, and it will be activated. If you realize you didn’t want to use something after all, press <i>Escape</i>, and the action will be cancelled. If you try to use an Item but fail (for example, because the requirements for the target square were not met), a message will appear in the Message Area indicating what went wrong.</p>
+<p class="p6"><br></p>
+<p class="p5">Not all Items can be explicitly used in this way. Items that show up in the Object Inventory Dialog but not in the Use Dialog are used automatically when needed.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Getting Help</b></p>
+<p class="p5">To find out what all the Objects do, choose <i>Worldz Object Help</i> from the <i>Help</i> menu. This will bring up a window that you can leave open while playing the game, listing each object and a short description of how it works. This manual can also be invoked in the game at any time, by choosing <i>Worldz Help</i> from the <i>Help</i> menu.</p>
+<p class="p6"><br></p>
+<p class="p4"><b><i>Controls in the Editor</i></b></p>
+<p class="p5"><b>Moving Around and Identifying Objects</b></p>
+<p class="p5">To move the view around, drag the scroll bars on the left. To see more Objects to place, drag the scroll bars on the right. To change Floors and/or Levels, use the <i>Up One Floor</i>, <i>Up One Level</i>, <i>Down One Floor</i>, and <i>Down One Level</i> items in the <i>Edit</i> menu. Shift+Click an object in the World to identify it. Its name, along with any additional properties it has and the values of those properties, will be displayed in the Message Area.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Placing Objects</b></p>
+<p class="p5">To place an Object, first select one in the right pane. Then, click the location in the World where you want the Object to go. If you need to change layers in order to place Objects, this can be done via the <i>Toggle Layer</i> option in the Edit menu.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Modifying The World Dimensions</b></p>
+<p class="p5">Worlds can gain or lose Levels as they are edited. To add a new Level to a World, choose <i>Add a Level...</i> from the <i>Edit</i> menu. You will be prompted for the dimensions of the new Level. Likewise, removing Levels can be accomplished via the <i>Remove a Level...</i> item in the Edit menu. You’ll be prompted for the Level number to remove. Note that if you remove the current Level, you’ll be sent to Level 1. The active Level can be resized, too - via the <i>Resize Current Level…</i> option in the Editor menu. Note that resizing a Level affects ALL Floors of that Level.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Setting Object Properties</b></p>
+<p class="p5">To set the properties of an Object, if it has any, hold the Option (or Alt) key and click the Object in the World Pane on the left. If it has properties you can set, a dialog or a message will appear. If it has no properties, the message “<i>This object has no properties</i>” will appear in the Message Area. Most Teleports will generate a message that says “<i>Click to set destination</i>” - this is exactly like using an Item. Click the spot where you want the destination to be. If you’d like the destination to be on a Floor other than the current one, you can change Floors before clicking. Random Teleports will generate a dialog asking for the Random Row and Column radii. Pressing <i>Escape</i> will cancel setting properties.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Setting World and Level Preferences</b></p>
+<p class="p5">To set preferences for a Level, or the entire World, select the <i>Level Preferences… </i>or <i>World Preferences…</i> commands from the Editor menu, as appropriate. Levels have several settings, including wraparound, a title, messages, and poison power. Worlds also have several settings, including the Level to start at, a title, and messages.</p>
+<p class="p6"><br></p>
+<p class="p5"><b>Defining Rule Sets</b></p>
+<p class="p5">Rule Sets influence how the random World generator generates Worlds. They are managed from the Rule Set Picker. To use the Rule Set Picker, select an Object to work with from the pick list, then click the button for the action desired. Five actions are defined: Create, Destroy, Edit, Load, and Save. Load and Save operate on the entire set, while Create, Destroy, and Edit operate on individual rules.</p>
+<p class="p8"><br></p>
+<p class="p4"><b><i>Controls in Battle</i></b></p>
+<p class="p5"><b>Action Points</b></p>
+<p class="p5">Moving, as well as some other actions in battle, either by you or the enemies, is limited by available action points. The remaining action points are displayed in the right pane, for the active character. Action points are allowed to go negative, but if this happens your remaining action points will be displayed as 0. This means that actions requiring more than 1 action point can be performed even if you don't have sufficient action points; as long as 1 action point remains, any action requiring action points can be performed.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Moving Around</b></p>
+<p class="p5">To move, use the arrow keys, the WAXD layout, or the numeric keypad. Pressing 5 or S will cause you to attack yourself; a confirmation prompt will be displayed first, in case you did it accidentally. All movement consumes 1 action point per step.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Fighting Monsters</b></p>
+<p class="p5">To attack the enemy, simply move into them. To run away from battle, move off the edge of the battle arena. Attacking is limited by available attacks, rather than by action points.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Special Actions</b></p>
+<p class="p5">Sometimes, when you attack (and also when the enemy attacks you), different things may occur. One of these is fumbling - if this occurs a random amount of damage will be dealt to the fumbler, based on the power of the weapon held.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Casting Spells</b></p>
+<p class="p5">To cast a spell, assuming you have learned at least one, choose Cast Spell from the Battle menu. The spell selection screen will appear. Select the spell you wish to cast, and click OK (or simply press Return on the keyboard). If you don’t know any spells, or don’t have enough MP to cast the spell you’re trying to cast, a message will be displayed indicating this. Casting spells is limited by a separate spell counter, distinct from the action point counter.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Stealing Money</b></p>
+<p class="p5">To attempt to steal from the enemy, choose Steal Stuff from the Battle menu. If the attempt succeeds, you'll be told how much money you stole. Stealing consumes 6 action points.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Using Items</b></p>
+<p class="p5">To use an item, choose Use an Item from the Battle menu. Items do various things when used in battle, from healing you to damaging or incapacitating the enemy. Using an item consumes 6 action points.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Draining the Enemy</b></p>
+<p class="p5">To attempt to drain the enemy's MP, choose Drain MP from the Battle menu. If the attempt succeeds, the enemy loses some MP, and you gain that lost MP. Draining consumes 6 action points.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Victory! / Defeat!</b></p>
+<p class="p5">The battle ends when either you or the enemy has run out of HP. If both you and the enemy run out of HP at the same time, the battle is declared a draw, and you get fully healed. If you gain enough XP to level up, a message will be displayed indicating this.</p>
+<p class="p9"><br></p>
+<p class="p4"><b><i>Controls while Shopping</i></b></p>
+<p class="p5"><b>Buying Stuff</b></p>
+<p class="p5">First select what you wish to buy, and then confirm that you want to buy it when the shopkeeper tells you how much Gold the item or service costs. If you lack the Gold to purchase whatever it was you tried to buy, you’ll get a message indicating this. The Weapons and Armor shops give some additional options for selecting exactly what you wish to buy (and, for one-handed weapons, where to equip the purchased item), before presenting a list of items to look through.</p>
+<p class="p6"><b></b><br></p>
+<p class="p5"><b>Using the Bank</b></p>
+<p class="p5">The Bank, unlike other shops, stores money for later retrieval. It will tell you how much Gold you are carrying, as well as how much you currently have stored. The Bank storage is for all party members together, so it can also be used as a way to transfer gold between members.</p>
+</body>
+</html>

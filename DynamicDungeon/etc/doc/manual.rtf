@@ -1,0 +1,295 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf190
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\vieww14820\viewh15240\viewkind0
+\deftab720
+\pard\pardeftab720\pardirnatural
+
+\f0\b\fs24 \cf0 DynamicDungeon Manual V1.0.0
+\b0 \
+Copyright \'a9 2014, Eric Ahnell.\
+\
+This manual was last updated on April 13, 2014.\
+\
+
+\b Questions / Bug reports / Suggestions\
+
+\b0 \
+E-mail any questions, bug reports, or suggestions to us at: products@puttysoftware.com\
+\
+ALWAYS include the version of DynamicDungeon that you have.  A lot of things change, and without the version number it is pretty tough to verify the problem.  Please try to be as specific as possible.  A comment such as, "It crashes all the time," is too vague, and will not be of any real value in correcting the problem. Try to describe where you were and what you were doing, along with your system configuration, and the log file containing details of the crash, if DynamicDungeon crashed. Use System Profiler, in the Utilities folder, to generate a system report of your system configuration.\
+\
+
+\b About This Manual\
+
+\b0 \
+This manual was created with TextEdit. It was exported to HTML with the built-in Export to HTML feature.\
+\
+
+\b System Requirements\
+\pard\pardeftab720\pardirnatural
+
+\i \cf0 \
+\pard\pardeftab720\pardirnatural
+
+\i0\b0 \cf0 DynamicDungeon requires any 64-bit Intel Mac, running OS X 10.8.3 \'93Mountain Lion\'94 or later, and 500 MB of free disk space.
+\i \
+
+\i0 \
+
+\b The Menus \'96 An Overview\
+File\
+\pard\pardeftab720\pardirnatural
+
+\i\b0 \cf0 Open Game\'85
+\i0 : Opens an existing Game that has been saved with the 
+\i Save Game
+\i0  command.\
+
+\i Close
+\i0 : Closes the Game Window, returning you to the main screen. If you have unsaved changes, you will be prompted to save them.\
+
+\i Save Game
+\i0 : Saves your progress.\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 Game\
+\pard\pardeftab720\pardirnatural
+
+\i\b0 \cf0 New Game
+\i0 : Starts a new game.\
+
+\i Show Equipment
+\i0 : Shows all Equipment you are wearing.\
+
+\i Show Inventory
+\i0 : Shows all Items you are carrying.\
+
+\i Register Character
+\i0 : Adds a Character File to the list of registered files.\
+
+\i Unregister Character
+\i0 : Removes a Character File from the list of registered files.\
+
+\i Remove Character
+\i0 : Removes a Character File from the list of registered files, then deletes its corresponding disk file. Use with caution, as this operation cannot be undone. \
+
+\i Edit Note...
+\i0 : While playing a Dungeon, allows you to leave notes behind for later.\
+
+\i View Statistics...
+\i0 : Displays in-depth statistics for your character.\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 Help
+\b0 \
+\pard\pardeftab720\pardirnatural
+
+\i \cf0 DynamicDungeon Help
+\i0 : Displays this manual.
+\i \
+DynamicDungeon Object Help
+\i0 : Displays a window listing all the Objects and a short description of what each one does.\
+\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 Preferences\
+
+\b0 The Game Preferences are divided into two tabs: 
+\i View
+\i0 ,
+\i  
+\i0 and 
+\i Misc
+\i0 . The 
+\i View
+\i0  tab controls the viewing window size during game play. The 
+\i Misc.
+\i0  tab has four settings: whether or not to enable sound effects, whether or not to check for updated versions when the Game is started, whether or not to operate in One Move At A Time mode, and the game's overall difficulty.\
+\
+
+\b Starting A New Adventure\
+
+\b0 To start a new adventure, simply choose 
+\i New Game
+\i0  from the Game menu. The Dungeon will be built, after the members of your adventuring party are chosen; this process is explained below.\
+\
+
+\b How to Assemble Your Party\
+
+\b0 Upon starting a new adventure, you'll be asked to create or pick characters for your party. The Pick option will only be offered if some characters already exist. The maximum number of characters that can be in your party is 1.\
+
+\b \
+Main Screen\
+
+\b0 At the top, just below the window border, is the message area. When there is something to display, it shows up there. On the right side is the statistics display. The items shown are, from top to bottom: Health, Magic, Gold, Attack, Defense, Experience, and Tower Level. In the center is the Dungeon itself. You are located in the center at all times.\
+\
+
+\b Game Controls\
+
+\b0 To move, use the arrow keys \'96 Up, Down, Left, and Right; adding the Shift key enables diagonal movement by rotating 45 degrees clockwise. You can also use the Numeric Keypad (make sure Num Lock is enabled), or the QWE+ASD+ZXC keys (which function like the Numeric Keypad). Shift+Click an object to identify it. Its name will be displayed in the Message Area. If, for some reason, you need to make a "pass move" - that is, a do-nothing move, pressing 5 on the Numeric Keypad, the S key, or the Shift+Enter keys achieves this.\
+\
+
+\b Game Difficulty\
+
+\b0 The difficulty setting chosen in the Preferences has profound effects on many parts of game play. It influences how long effects gained from the Dungeon last, the statistics of the monsters you fight, the likelihood of scoring critical hits and piercing hits, the likelihood of fumbling, and even the damage weapons do.\
+\
+
+\b Line of Sight\
+
+\b0 Only objects that are not blocked from view by walls, or that you have seen already are visible to you. Keep this in mind when exploring Dungeons.\
+
+\b \
+Seeing what you are carrying\
+
+\b0 To see what Items (if any) you have in your possession, choose 
+\i Show Inventory
+\i0  from the 
+\i Game
+\i0  menu. A dialog box will appear, listing everything you can carry and what quantity you have.\
+\
+
+\b Your Health\
+
+\b0 In addition to simply trying to find the stairs, managing your Health must be done as well. Should you run out for any reason, you will be punished by losing all Gold and 10% of your Experience (20% if you lost a battle without hurting your foe). Many things affect your Health, both good and bad.\
+\
+
+\b Effects\
+
+\b0 Various Objects in the Dungeon give effects when stepped on. These effects, along with their durations, will be displayed in the bottom pane. If no effects are currently active, the bottom pane will be collapsed. Effects can be either beneficial or detrimental.\
+\
+
+\b Getting Help\
+
+\b0 To find out what all the Objects do, choose 
+\i DynamicDungeon Help
+\i0  from the 
+\i Help
+\i0  menu. This will bring up a window that you can leave open while playing the game, listing each object and a short description of how it works.\
+
+\b \
+Gaining Levels\
+
+\b0 Defeating monsters in battle is the primary way of earning experience towards the next level.\
+
+\b \
+Damage and Death\
+
+\b0 If you get hit in battle, or step on hostile ground outside of battle, you suffer damage. If your health is reduced to 0 by this, you die; fortunately, death will not end your game. Dying will strip you of all Gold and some Experience, as well as healing you fully.\
+\
+
+\b Healing During Battle\
+
+\b0 If you know any healing spells, you may cast them while in battle on yourself, to restore lost health. To heal while outside battle, visit a healing shop.\
+
+\b \
+Note Keeper\
+
+\b0 Notes may be created/edited while exploring the Dungeon by using the 
+\i Edit Note...
+\i0  command in the Game menu. If a note is present on a particular space of the Dungeon, it will be indicated with a little N icon in the upper-right corner. Your notes are saved along with the rest of the game's state when you save your progress. You can only read notes on the space you currently occupy.\
+\
+
+\b Learning Spells\
+
+\b0 Spells are learned from Spell Shops. Spells may be learned in any order, if you possess enough Gold to do so.\
+\pard\pardeftab720\pardirnatural
+
+\i\b \cf0 \ul \ulc0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+\cf0 Battle Engine\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\i0 \cf0 \ulnone Fighting Monsters\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 To attack the enemy, either click the 
+\i Attack
+\i0  button, or press A on the keyboard. If you wish to attempt to flee, instead of attacking, click the 
+\i Flee
+\i0  button, or press F on the keyboard. Note that if your flee attempt fails, you\'92ll automatically attack instead.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 Special Actions\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 Sometimes, when you attack (and also when the enemy attacks you), different things may occur. One of these is fumbling; if this occurs a random amount of damage will be dealt to the fumbler, based on the power of the weapon held. Attacks can hit with varying amounts of force, from pathetic to brutal. Attacks will sometimes pierce the armor of the defender too... so beware. Additionally, it is possible for you (and the enemy) to act multiple times in the same round\'85 but only for regular attacks, not any other actions.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 \
+Casting Spells\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 To cast a spell, assuming you have learned at least one, click the 
+\i Cast Spell
+\i0  button, or press C on the keyboard. The spell selection screen will appear. Select the spell you wish to cast, and click OK (or simply press Return on the keyboard). If you don\'92t know any spells, or don\'92t have enough MP to cast the spell you\'92re trying to cast, a message will be displayed indicating this.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 \
+Stealing Money\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 To attempt to steal from the enemy, click the 
+\i Steal
+\i0  button, or press S on the keyboard. If the attempt succeeds, you'll be told how much money you stole. Beware, though: regardless of whether the steal attempt succeeds or fails, the enemy gets a free chance to hit you.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 Using Items\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 To use an item, click the 
+\i Use an Item
+\i0  button, or press I on the keyboard. Items do various things when used in battle, from healing you to damaging or incapacitating the enemy.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 Draining the Enemy\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 To attempt to drain the enemy's MP, click the 
+\i Drain
+\i0  button, or press D on the keyboard. If the attempt succeeds, the enemy loses some MP, and you gain that lost MP. Beware, though: regardless of whether the drain attempt succeeds or fails, the enemy gets a free chance to hit you.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b \cf0 Victory! / Defeat!\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural
+
+\b0 \cf0 The battle ends when either you or the enemy has run out of HP. If you win, and do not lose any HP, you get a perfect fight bonus in the form of extra gold. If you lose, and fail to hurt the enemy, you get a different message compared to losing normally. If both you and the enemy run out of HP at the same time, the battle is declared a draw, and you get fully healed. If you gain enough XP to level up, a message will be displayed indicating this.\
+\pard\pardeftab720\pardirnatural
+
+\b \cf0 \
+Items\
+\pard\pardeftab720\pardirnatural
+
+\b0 \cf0 Items are purchased from shops, and automatically equipped as soon as the transaction is completed. There are 3 kinds of shops that sell items: Weapon Shops, Armor Shops, and Item Shops (which sell items usable in battle). Of the 3 types, only Item Shops sell items that are not equipment.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b \cf0 \ul The Race System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+\cf0 \ulnone The Predefined Races, by Group\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b0 \cf0 \ul Humanoid Group\ulnone : Dwarf, Elf, Gnome, Goblin, Human, Orc, Troll, Vampire\
+\ul Robotic Group\ulnone : Cyborg, Robot\
+\ul Animal Group\ulnone : Eagle, Lizard, Penguin, Turtle, Wolf\
+\ul Undead Group\ulnone : Ghost, Shade\
+\ul Organic Group\ulnone : Mush, Slime\
+\ul Unknown Group\ulnone : Demon\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b \cf0 How many races are there? (I can't count the grouped list.)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b0 \cf0 Exactly twenty (20) predefined races exist.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b \cf0 \ul \
+The Caste System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\pardirnatural
+
+\b0 \cf0 \ulnone DynamicDungeon has just four castes: Annihilator, Buffer, Curer, and Debuffer. Your caste determines what spell book you use as well as what weapons you use.}

@@ -1,0 +1,12 @@
+banana_peel
+discarded_note
+driller
+garbage
+gunk_ball
+mega_war
+paper_wad
+radio
+recycler
+super_war
+top
+trash_can

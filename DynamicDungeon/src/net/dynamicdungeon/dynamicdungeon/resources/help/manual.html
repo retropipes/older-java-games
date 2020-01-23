@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.19">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.s1 {text-decoration: underline}
+  </style>
+</head>
+<body>
+<p class="p1"><b>DynamicDungeon Manual V1.0.0</b></p>
+<p class="p1">Copyright © 2014, Eric Ahnell.</p>
+<p class="p2"><br></p>
+<p class="p1">This manual was last updated on April 13, 2014.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Questions / Bug reports / Suggestions</b></p>
+<p class="p2"><br></p>
+<p class="p1">E-mail any questions, bug reports, or suggestions to us at: products@puttysoftware.com</p>
+<p class="p2"><br></p>
+<p class="p1">ALWAYS include the version of DynamicDungeon that you have.<span class="Apple-converted-space">  </span>A lot of things change, and without the version number it is pretty tough to verify the problem.<span class="Apple-converted-space">  </span>Please try to be as specific as possible.<span class="Apple-converted-space">  </span>A comment such as, "It crashes all the time," is too vague, and will not be of any real value in correcting the problem. Try to describe where you were and what you were doing, along with your system configuration, and the log file containing details of the crash, if DynamicDungeon crashed. Use System Profiler, in the Utilities folder, to generate a system report of your system configuration.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>About This Manual</b></p>
+<p class="p2"><br></p>
+<p class="p1">This manual was created with TextEdit. It was exported to HTML with the built-in Export to HTML feature.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>System Requirements</b></p>
+<p class="p2"><b><i></i></b><br></p>
+<p class="p1">DynamicDungeon requires any 64-bit Intel Mac, running OS X 10.8.3 “Mountain Lion” or later, and 500 MB of free disk space.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>The Menus – An Overview</b></p>
+<p class="p1"><b>File</b></p>
+<p class="p1"><i>Open Game…</i>: Opens an existing Game that has been saved with the <i>Save Game</i> command.</p>
+<p class="p1"><i>Close</i>: Closes the Game Window, returning you to the main screen. If you have unsaved changes, you will be prompted to save them.</p>
+<p class="p1"><i>Save Game</i>: Saves your progress.</p>
+<p class="p1"><b>Game</b></p>
+<p class="p1"><i>New Game</i>: Starts a new game.</p>
+<p class="p1"><i>Show Equipment</i>: Shows all Equipment you are wearing.</p>
+<p class="p1"><i>Show Inventory</i>: Shows all Items you are carrying.</p>
+<p class="p1"><i>Register Character</i>: Adds a Character File to the list of registered files.</p>
+<p class="p1"><i>Unregister Character</i>: Removes a Character File from the list of registered files.</p>
+<p class="p1"><i>Remove Character</i>: Removes a Character File from the list of registered files, then deletes its corresponding disk file. Use with caution, as this operation cannot be undone.<span class="Apple-converted-space"> </span></p>
+<p class="p1"><i>Edit Note...</i>: While playing a Dungeon, allows you to leave notes behind for later.</p>
+<p class="p1"><i>View Statistics...</i>: Displays in-depth statistics for your character.</p>
+<p class="p1"><b>Help</b></p>
+<p class="p1"><i>DynamicDungeon Help</i>: Displays this manual.</p>
+<p class="p1"><i>DynamicDungeon Object Help</i>: Displays a window listing all the Objects and a short description of what each one does.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Preferences</b></p>
+<p class="p1">The Game Preferences are divided into two tabs: <i>View</i>,<i> </i>and <i>Misc</i>. The <i>View</i> tab controls the viewing window size during game play. The <i>Misc.</i> tab has four settings: whether or not to enable sound effects, whether or not to check for updated versions when the Game is started, whether or not to operate in One Move At A Time mode, and the game's overall difficulty.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Starting A New Adventure</b></p>
+<p class="p1">To start a new adventure, simply choose <i>New Game</i> from the Game menu. The Dungeon will be built, after the members of your adventuring party are chosen; this process is explained below.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>How to Assemble Your Party</b></p>
+<p class="p1">Upon starting a new adventure, you'll be asked to create or pick characters for your party. The Pick option will only be offered if some characters already exist. The maximum number of characters that can be in your party is 1.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Main Screen</b></p>
+<p class="p1">At the top, just below the window border, is the message area. When there is something to display, it shows up there. On the right side is the statistics display. The items shown are, from top to bottom: Health, Magic, Gold, Attack, Defense, Experience, and Tower Level. In the center is the Dungeon itself. You are located in the center at all times.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Game Controls</b></p>
+<p class="p1">To move, use the arrow keys – Up, Down, Left, and Right; adding the Shift key enables diagonal movement by rotating 45 degrees clockwise. You can also use the Numeric Keypad (make sure Num Lock is enabled), or the QWE+ASD+ZXC keys (which function like the Numeric Keypad). Shift+Click an object to identify it. Its name will be displayed in the Message Area. If, for some reason, you need to make a "pass move" - that is, a do-nothing move, pressing 5 on the Numeric Keypad, the S key, or the Shift+Enter keys achieves this.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Game Difficulty</b></p>
+<p class="p1">The difficulty setting chosen in the Preferences has profound effects on many parts of game play. It influences how long effects gained from the Dungeon last, the statistics of the monsters you fight, the likelihood of scoring critical hits and piercing hits, the likelihood of fumbling, and even the damage weapons do.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Line of Sight</b></p>
+<p class="p1">Only objects that are not blocked from view by walls, or that you have seen already are visible to you. Keep this in mind when exploring Dungeons.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Seeing what you are carrying</b></p>
+<p class="p1">To see what Items (if any) you have in your possession, choose <i>Show Inventory</i> from the <i>Game</i> menu. A dialog box will appear, listing everything you can carry and what quantity you have.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Your Health</b></p>
+<p class="p1">In addition to simply trying to find the stairs, managing your Health must be done as well. Should you run out for any reason, you will be punished by losing all Gold and 10% of your Experience (20% if you lost a battle without hurting your foe). Many things affect your Health, both good and bad.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Effects</b></p>
+<p class="p1">Various Objects in the Dungeon give effects when stepped on. These effects, along with their durations, will be displayed in the bottom pane. If no effects are currently active, the bottom pane will be collapsed. Effects can be either beneficial or detrimental.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Getting Help</b></p>
+<p class="p1">To find out what all the Objects do, choose <i>DynamicDungeon Help</i> from the <i>Help</i> menu. This will bring up a window that you can leave open while playing the game, listing each object and a short description of how it works.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Gaining Levels</b></p>
+<p class="p1">Defeating monsters in battle is the primary way of earning experience towards the next level.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Damage and Death</b></p>
+<p class="p1">If you get hit in battle, or step on hostile ground outside of battle, you suffer damage. If your health is reduced to 0 by this, you die; fortunately, death will not end your game. Dying will strip you of all Gold and some Experience, as well as healing you fully.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Healing During Battle</b></p>
+<p class="p1">If you know any healing spells, you may cast them while in battle on yourself, to restore lost health. To heal while outside battle, visit a healing shop.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Note Keeper</b></p>
+<p class="p1">Notes may be created/edited while exploring the Dungeon by using the <i>Edit Note...</i> command in the Game menu. If a note is present on a particular space of the Dungeon, it will be indicated with a little N icon in the upper-right corner. Your notes are saved along with the rest of the game's state when you save your progress. You can only read notes on the space you currently occupy.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Learning Spells</b></p>
+<p class="p1">Spells are learned from Spell Shops. Spells may be learned in any order, if you possess enough Gold to do so.</p>
+<p class="p2"><span class="s1"><b><i></i></b></span><br></p>
+<p class="p1"><span class="s1"><b><i>Battle Engine</i></b></span></p>
+<p class="p1"><b>Fighting Monsters</b></p>
+<p class="p1">To attack the enemy, either click the <i>Attack</i> button, or press A on the keyboard. If you wish to attempt to flee, instead of attacking, click the <i>Flee</i> button, or press F on the keyboard. Note that if your flee attempt fails, you’ll automatically attack instead.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Special Actions</b></p>
+<p class="p1">Sometimes, when you attack (and also when the enemy attacks you), different things may occur. One of these is fumbling; if this occurs a random amount of damage will be dealt to the fumbler, based on the power of the weapon held. Attacks can hit with varying amounts of force, from pathetic to brutal. Attacks will sometimes pierce the armor of the defender too... so beware. Additionally, it is possible for you (and the enemy) to act multiple times in the same round… but only for regular attacks, not any other actions.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Casting Spells</b></p>
+<p class="p1">To cast a spell, assuming you have learned at least one, click the <i>Cast Spell</i> button, or press C on the keyboard. The spell selection screen will appear. Select the spell you wish to cast, and click OK (or simply press Return on the keyboard). If you don’t know any spells, or don’t have enough MP to cast the spell you’re trying to cast, a message will be displayed indicating this.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Stealing Money</b></p>
+<p class="p1">To attempt to steal from the enemy, click the <i>Steal</i> button, or press S on the keyboard. If the attempt succeeds, you'll be told how much money you stole. Beware, though: regardless of whether the steal attempt succeeds or fails, the enemy gets a free chance to hit you.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Using Items</b></p>
+<p class="p1">To use an item, click the <i>Use an Item</i> button, or press I on the keyboard. Items do various things when used in battle, from healing you to damaging or incapacitating the enemy.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Draining the Enemy</b></p>
+<p class="p1">To attempt to drain the enemy's MP, click the <i>Drain</i> button, or press D on the keyboard. If the attempt succeeds, the enemy loses some MP, and you gain that lost MP. Beware, though: regardless of whether the drain attempt succeeds or fails, the enemy gets a free chance to hit you.</p>
+<p class="p2"><br></p>
+<p class="p1"><b>Victory! / Defeat!</b></p>
+<p class="p1">The battle ends when either you or the enemy has run out of HP. If you win, and do not lose any HP, you get a perfect fight bonus in the form of extra gold. If you lose, and fail to hurt the enemy, you get a different message compared to losing normally. If both you and the enemy run out of HP at the same time, the battle is declared a draw, and you get fully healed. If you gain enough XP to level up, a message will be displayed indicating this.</p>
+<p class="p2"><b></b><br></p>
+<p class="p1"><b>Items</b></p>
+<p class="p1">Items are purchased from shops, and automatically equipped as soon as the transaction is completed. There are 3 kinds of shops that sell items: Weapon Shops, Armor Shops, and Item Shops (which sell items usable in battle). Of the 3 types, only Item Shops sell items that are not equipment.</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="s1"><b>The Race System</b></span></p>
+<p class="p1"><b>The Predefined Races, by Group</b></p>
+<p class="p1"><span class="s1">Humanoid Group</span>: Dwarf, Elf, Gnome, Goblin, Human, Orc, Troll, Vampire</p>
+<p class="p1"><span class="s1">Robotic Group</span>: Cyborg, Robot</p>
+<p class="p1"><span class="s1">Animal Group</span>: Eagle, Lizard, Penguin, Turtle, Wolf</p>
+<p class="p1"><span class="s1">Undead Group</span>: Ghost, Shade</p>
+<p class="p1"><span class="s1">Organic Group</span>: Mush, Slime</p>
+<p class="p1"><span class="s1">Unknown Group</span>: Demon</p>
+<p class="p2"><br></p>
+<p class="p1"><b>How many races are there? (I can't count the grouped list.)</b></p>
+<p class="p1">Exactly twenty (20) predefined races exist.</p>
+<p class="p2"><span class="s1"><b></b></span><br></p>
+<p class="p1"><span class="s1"><b>The Caste System</b></span></p>
+<p class="p1">DynamicDungeon has just four castes: Annihilator, Buffer, Curer, and Debuffer. Your caste determines what spell book you use as well as what weapons you use.</p>
+</body>
+</html>

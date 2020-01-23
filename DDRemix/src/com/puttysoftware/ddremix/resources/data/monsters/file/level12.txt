@@ -1,0 +1,14 @@
+blaster_tree
+cross_vine
+demon
+double_banana
+ghost
+mush
+robot
+slime
+super_diamond
+super_jelly
+super_spike
+triple_tube
+twin_ram
+winged_missile

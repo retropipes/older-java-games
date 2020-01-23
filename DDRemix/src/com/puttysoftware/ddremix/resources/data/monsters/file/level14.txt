@@ -1,0 +1,16 @@
+boom_barrel
+caustic_barrel
+caustic_beaker
+caustic_bottle
+caustic_bowl
+caustic_can
+caustic_canned_can
+caustic_flask
+caustic_jar
+caustic_pipe
+caustic_piped_tube
+caustic_triple_tube
+caustic_tube
+caustic_vial
+inverted_recycler
+power_bomb

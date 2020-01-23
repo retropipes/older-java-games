@@ -1,0 +1,7 @@
+0 = Load Graphics File
+1 = Graphics File Loaded Successfully!
+2 = Loading the graphics file failed, probably due to illegal characters in the file name.
+3 = No Graphics File Loaded!
+4 = You opened something other than a graphics file. Select a graphics file, and try again.
+5 = Graphics Info
+6 = , by 

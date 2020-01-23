@@ -1,0 +1,11 @@
+Alarm
+Burger
+Crossbot
+Fightbot
+Healer
+Jetbot
+Power Ten
+Solar
+Sonicbot
+Tacklebot
+Twin Claw

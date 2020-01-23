@@ -1,0 +1,7 @@
+cpu
+fpu
+gpu
+motherboard
+network
+ram
+soundcard

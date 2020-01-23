@@ -1,0 +1,1366 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 TimesNewRomanPSMT;}
+{\colortbl;\red255\green255\blue255;\red255\green51\blue102;\red0\green71\blue255;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid1\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\vieww18300\viewh18840\viewkind0
+\deftab709
+\pard\pardeftab709\pardirnatural
+
+\f0\b\fs24 \cf0 DungeonDiver4 Manual V1.0.0-beta1\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Copyright \'a9 2012, Eric Ahnell.\
+\
+This manual was last updated on October 8, 2012.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Questions / Bug reports / Suggestions\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+E-mail any questions, bug reports, or suggestions to us at: products@puttysoftware.com\
+\
+ALWAYS include the version of DungeonDiver4 that you have.  A lot of things change, and without the version number it is pretty tough to verify the problem.  Please try to be as specific as possible.  A comment such as, "It crashes all the time," is too vague, and will not be of any real value in correcting the problem. Try to describe where you were and what you were doing, along with your system configuration, and the log file containing details of the crash, if DungeonDiver4 crashed. Mac OS X users can use System Profiler, in the Utilities folder, to generate a system report of their system configuration.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 About This Manual\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+This manual was created with TextEdit on OS X. It was exported to PDF with the built-in Print to PDF feature.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 System Requirements\
+\pard\pardeftab709\pardirnatural
+
+\i \cf0 \
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 OS X: 
+\i0 DungeonDiver4 requires any Intel Mac, running OS X 10.7 \'93Lion\'94 or later, and 500 MB of free disk space. Java SE 7 is also required; get this from Oracle.
+\i \
+Windows: 
+\i0 DungeonDiver4 requires any Intel or AMD CPU capable of running Windows XP or later, and 500 MB of free disk space. Java SE 7 or later is also required \'96 to get this visit the Java website, if you do not already have it. You only need the JRE, not the JDK.
+\f1 \
+
+\f0\i Linux: 
+\i0 DungeonDiver4 requires any Intel or AMD CPU capable of running Linux 2.6 kernel or later, and 500 MB of free disk space. Java SE 7 or later is also required \'96 to get this open up your favorite package manager, if you do not already have it. You only need the JRE, not the JDK.\
+
+\i Note for All Platforms:
+\i0  The latest available update to Java is strongly recommended.
+\i \
+\pard\pardeftab709\pardirnatural
+
+\i0 \cf0 \
+\pard\pardeftab709\pardirnatural
+
+\i\b \cf0 Game Objective\
+\
+\pard\pardeftab709\pardirnatural
+
+\i0\b0 \cf0 The overall goal of the game is to find either all the Sun Stones or all the Moon Stones for the particular Dungeon being solved, or to find and enter the finish for the particular Dungeon being solved. Since you can make your own Dungeons, the exact way this is accomplished differs from Dungeon to Dungeon.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 The Menus \'96 An Overview\
+File\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 New
+\i0 : Creates a new Dungeon with default dimensions (32 rows, 32 columns, 1 floor \'96 these can be changed later). A new Dungeon always starts with 1 Level - more can be added later.\
+
+\i Open\'85
+\i0 : Opens an existing Dungeon or Saved Game.\
+
+\i Open Game\'85
+\i0 : Opens an existing Game that has been saved with the 
+\i Save Game...
+\i0  command.\
+
+\i Import Game\'85
+\i0 : Opens an existing Game that has been saved with the 
+\i Export As Game...
+\i0  command.\
+
+\i Close
+\i0 : Closes the current Mode Window (Game or Editor, not the current Dungeon).\
+
+\i Save
+\i0 : Saves the current Dungeon, if in the Editor; saves a Saved Game file, if solving.\
+
+\i Save As
+\i0 : Saves the current Dungeon or Saved Game with a new name.\
+
+\i Save As Game...
+\i0 : Saves the current Dungeon as a Game. Games may not be edited.\
+
+\i Export As Game...
+\i0 : Saves the current Dungeon as a Game to a location of your choosing.\
+
+\i Preferences
+\i0 : Allows configuration of various Game Settings. (On Mac OS X, this command is in the DungeonDiver4 Menu.)\
+
+\i Exit
+\i0  (non-Mac OS X platforms only): Quits the Program. (On Mac OS X, the Quit DungeonDiver4 command in the DungeonDiver4 menu does the same thing.)\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Edit\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Undo
+\i0 : Undoes the most recent action. This command is available only in the Editor.\
+
+\i Redo
+\i0 : Redoes the most recent action. This command is available only in the Editor.\
+
+\i Cut Level
+\i0 : Copies the active Level to the internal clipboard, then removes the Level. Not available if the active Dungeon has only one Level in it. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside DungeonDiver4.\
+
+\i Copy Level
+\i0 : Copies the active Level to the internal clipboard. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside DungeonDiver4.\
+
+\i Paste Level
+\i0 : Pastes the clipboard contents into the active Level, overwriting whatever is there, and then redraws the Editor. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside DungeonDiver4.\
+
+\i Insert Level From Clipboard
+\i0 : Pastes the clipboard contents into a new Level, appending it to the end of the Dungeon. This command is available only in the Editor. Note that Levels cannot be cut, copied or pasted outside DungeonDiver4.\
+
+\i Preferences
+\i0 : Allows configuration of various Game and Editor Settings. (On Mac OS X, this command is in the DungeonDiver4 Menu.)\
+
+\i Clear History
+\i0 : Clears the Undo/Redo History, prompting for confirmation first. This command is available only in the Editor.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Play\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Play
+\i0 : Allows solving the current Dungeon.\
+
+\i Play Random
+\i0 : Allows solving a randomly generated Dungeon.\
+
+\i Edit
+\i0 : Allows modifying the current Dungeon. Note that invoking the Editor after opening a Saved Game will cause the Saved State to be lost.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Game\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Show Inventory
+\i0 : Shows all Items you are carrying. This command is only available while solving a Dungeon.\
+
+\i Reset Current Level
+\i0 : Resets the current Level of the Dungeon you\'92re solving to its unsolved state. This is handy if you get stuck. This command is only available while solving a Dungeon.\
+
+\i Show Equipment
+\i0 : Shows all Equipment you are wearing. This command is only available while playing a Dungeon.\
+
+\i Show Inventory
+\i0 : Shows all Items you are carrying. This command is only available while playing a Dungeon.\
+
+\i Use an Item...
+\i0 : Allows using anything you\'92re carrying that can be explicitly used. This command is only available while solving a Dungeon.\
+
+\i Switch Bow\'85
+\i0 : Allows changing which bow of the ones you possess arrows should be shot from. This command is only available while solving a Dungeon.\
+
+\i Show Current Score
+\i0 : Displays how many Steps you\'92ve taken so far to solve this Dungeon. This command is only available while solving a Dungeon.\
+
+\i Show Score Table
+\i0 : Displays the 10 best Scores for this Dungeon. If no Scores have been recorded yet, all the Names and Scores will have default values. This command is only available while solving a Dungeon.\
+
+\i Pick Leader...
+\i0 : Changes the Character considered to be at the head of your Party. This command is only available while playing a Dungeon.\
+
+\i Register Character
+\i0 : Adds a Character File to the list of registered files. This command is only available while NOT playing a Dungeon.\
+
+\i Unregister Character
+\i0 : Removes a Character File from the list of registered files. This command is only available while NOT playing a Dungeon.\
+
+\i Remove Character
+\i0 : Removes a Character File from the list of registered files, then deletes its corresponding disk file. Use with caution, as this operation is not undoable. This command is only available while NOT playing a Dungeon.\
+
+\i Edit Note...
+\i0 : While playing a Dungeon, allows you to leave notes behind for later.
+\i \
+View Prestige...
+\i0 : Displays the party leader's prestige score, along with all the components that comprise it. This command is only available while playing a Dungeon.
+\i \
+View Current Score...
+\i0 : Displays your overall game score. This is separate from Prestige, which is specific to each character. This command is only available while playing a Dungeon.
+\i \
+View Statistics...
+\i0 : Displays in-depth statistics for any member of your party. This command is only available while playing a Dungeon.
+\i \
+\pard\pardeftab709\pardirnatural
+
+\i0\b \cf0 Editor\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Go To Location\'85
+\i0 : Prompts for a location, then moves the Editor view to be centered on that location.\
+
+\i Go To Destination\'85
+\i0 : Prompts for a click on a Teleport, then moves the Editor view to be centered on its destination, and draws a destination object at that location, which vanishes as soon as the Editor is redrawn. This command only works on objects with fixed destinations, such as Teleports, Invisible Teleports, One-Shot Teleports, and Invisible One-Shot Teleports. Invoking it on an object with a variable destination, such as a set of stairs, any of the Random Teleports, a Pit, or a Springboard, will not work.\
+
+\i Up One Floor
+\i0 , 
+\i Down One Floor
+\i0 , 
+\i Up One Level
+\i0 , 
+\i Down One Level, Add a Level..., Remove a Level...
+\i0 : All these commands work only in the Editor, and are self-explanatory.\
+
+\i Resize Current Level
+\i0 : Changes the size of the active Level within the active Dungeon. This command is available only in the Editor.\
+
+\i Toggle Layer
+\i0 : Switches between Ground Layer and Object Layer views. This command is available only in the Editor.\
+
+\i Level Preferences...
+\i0 : Opens the Level Preferences dialog, where settings specific to the active Level of the current Dungeon can be set. This command is available only in the Editor.\
+
+\i Dungeon Preferences...
+\i0 : Opens the Dungeon Preferences dialog, where settings specific to the current Dungeon as a whole can be set. This command is available only in the Editor.\
+
+\i Set Start Point\'85
+\i0 : Prompts for a click to set the start point, then moves the Player (if it exists) to that location. This command is available only when the Editor is active, and it is editing the Object Layer. If an attempt is made to set the start point outside the bounds of the Dungeon, the message "Aim within the maze" will display in the Message Area, and the action will be aborted.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Editor: Fill sub-menu\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Note: The first four of the commands in this section are available only in the Editor, can not be undone, and will clear the undo/redo history. The remaining two are available only in the Editor.\
+\pard\pardeftab709\pardirnatural
+
+\i \cf0 Fill Active Floor
+\i0 : Fills the active Floor with the default fill chosen in the Preferences.\
+
+\i Fill Active Level
+\i0 : Fills the active Level with the default fill chosen in thePreferences.\
+
+\i Fill Active Floor Randomly
+\i0 : Fills the active Floor with randomly chosen Objects.\
+
+\i Fill Active Level Randomly
+\i0 : Fills the active Level with randomly chosen Objects.\
+
+\i Fill Active Floor and Layer
+\i0 : Fills the active Layer on the active Floor with the default fill chosen in the Preferences.\
+
+\i Fill Active Level and Layer
+\i0 : Fills the active Layer on the active Level with the default fill chosen in the Preferences.\
+
+\i Fill Active Floor and Layer Randomly
+\i0 : Fills the active Layer on the active Floor with randomly chosen Objects.\
+
+\i Fill Active Level and Layer Randomly
+\i0 : Fills the active Layer on the active Level with randomly chosen Objects.\
+
+\i Fill Rule Sets\'85
+\i0 : Opens the Rule Set Picker, where Rule Sets can be defined, created, destroyed, saved, and loaded. Rule Sets influence the random Dungeon generator.\
+Use Fill Rule Sets: This setting controls whether or not Rule Sets defined are used in random Dungeon generation. It is checked if it is active, and its value is not saved between program runs.
+\i \
+\pard\pardeftab709\pardirnatural
+
+\i0\b \cf0 Battle\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Cast Spell...
+\i0 : Brings up the Cast Spell dialog, listing all the spells you know, and prompts for which one to cast. This command is only available while in battle.\
+
+\i Use an Item...
+\i0 : Brings up the Use an Item dialog, listing all the battle-usable items you possess, and prompts for which one to use. This command is only available while in battle.\
+
+\i Steal Stuff
+\i0 : Attempt to steal Gold from a randomly chosen adjacent enemy. This command is only available while in battle.\
+
+\i Drain MP
+\i0 : Attempt to drain MP from a randomly chosen adjacent enemy. This command is only available while in battle.\
+
+\i End Turn
+\i0 : Ends your turn in battle. This command is only available while in battle.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Help\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Check for Updates...
+\i0 : Checks to see if newer versions of the Game are available. Unlike the startup check, this check is NOT done in the background.\
+
+\i About DungeonDiver4....
+\i0 : Displays the Game\'92s About Box. (On Mac OS X, this command is in the DungeonDiver4 Menu.)\
+
+\i DungeonDiver4 Help
+\i0 : Displays a window listing all the Objects and a short description of what each one does.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Preferences\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 The Game Preferences are divided into four tabs: 
+\i Game
+\i0 ,
+\i  Editor, Media, 
+\i0 and 
+\i Misc
+\i0 . 
+\i Game, Editor,
+\i0  and 
+\i Media
+\i0  are for Game-related, Editor-related, and music/sound-related settings, respectively. The 
+\i Misc.
+\i0  tab has two settings: whether or not to check for updated versions when the Game is started, and whether changes to the state of characters are permanent or temporary.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Starting A New Adventure\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+To start a new adventure, simply choose Play from the Game menu. The maze will be built, after the members of your adventuring party are chosen; this process is explained below.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 How to Assemble Your Party\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Upon starting a new adventure, you'll be asked to create or pick characters for your party. The Pick option will only be offered if some characters already exist. The maximum number of characters that can be in your party is 1.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Main Screen\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+At the top, just below the window border, is the message area. When there is something to display, it shows up there. On the right side is the statistics display. The items shown are, from top to bottom: Health, Magic, Gold, Attack, Defense, Experience, and Monster Level. In the center is the Dungeon itself. You are located in the center at all times.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Game Controls\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+To move, use the arrow keys \'96 Up, Down, Left, and Right. You can also use the Numeric Keypad (make sure Num Lock is enabled), or the so-called "WAXD" configuration: W moves up, A moves left, D moves right, and X moves down. Additionally, diagonal movement is supported with WAXD: Q moves up and left, E moves up and right, Z moves down and left, C moves down and right. If you wish to move diagonally, the Numeric Keypad or the WAXD layout are the only ways to do this. Shift+Click an object to identify it. Its name will be displayed in the Message Area. If, for some reason, you need to make a "pass move" - that is, a do-nothing move, pressing 5 on the Numeric Keypad or the S key achieves this.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Line of Sight\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Only objects that are not blocked from view by walls, or that you have seen already are visible to you, if the vision mode settings are at their defaults. Keep this in mind when exploring Dungeons.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Pushing and Pulling\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To push an Object, just move into it. It will also move, if it can. To pull an Object, hold Shift and move AWAY from it. It will follow you, if it can be pulled.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Seeing what you are carrying\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To see what Items (if any) you have in your possession, choose 
+\i Show Inventory
+\i0  from the 
+\i Game
+\i0  menu. A dialog box will appear, listing everything you can carry and what quantity you have.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Your Health\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 In addition to simply trying to find the exit, managing your Health must be done as well. Should you run out for any reason, your game will end. Many things affect your Health, both good and bad. Worse still, the very air in these Dungeons is poisonous. The poison will slowly weaken you as you walk around the maze. Its power is displayed in the stats area at the top. If the poison power is None, then there is no poison. Otherwise, it is displayed in units of health taken away per number of steps.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Time Limits\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 There may be a time limit, measured in steps, for how long you can take to solve this Level of this Dungeon. If time runs out, the Level will be automatically solved, and you'll be sent to the next one, as usual.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Shooting Arrows\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To shoot, hold down Alt/Option then use the arrow keys - Up, Down, Left, and Right, use the Numeric Keypad, or the WAXD layout. If you wish to shoot diagonally, the Numeric Keypad or WAXD are the only ways to do this. Various Objects react to getting hit by arrows. You have an unlimited supply of regular arrows. Be careful - if you accidentally shoot yourself with your own arrows, you'll suffer a little damage. This damage is doubled for enchanted arrows.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Shooting Enchanted Arrows\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 First, activate the enchanted bow you wish to use by choosing 
+\i Switch Bow\'85
+\i0  from the Game menu. Arrows you shoot will come from the bow you just activated, until you switch again or run out of arrows. Enchanted bows only come with a limited arrow supply, unlike your regular bow.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Using Items you are carrying\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To use something you\'92re carrying that can be explicitly used (such as a Wand), choose 
+\i Use an Item...
+\i0  from the 
+\i Game 
+\i0 Menu. This will bring up a dialog listing what usable Items you have, as well as their quantities and uses - choose which one to use and click the 
+\i OK
+\i0  button. A prompt will appear in the Message Area at the top: \'93
+\i Click to set target
+\i0 \'94. Click the square in the Dungeon where you wish the Item\'92s effect to occur, and it will be activated. If you realize you didn\'92t want to use something after all, press 
+\i Escape
+\i0 , and the action will be cancelled. If you try to use an Item but fail (for example, because the requirements for the target square were not met), a message will appear in the Message Area indicating what went wrong. Not all Items can be explicitly used in this way. Items that show up in the Inventory Dialog but not in the Use Dialog are used automatically when needed.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Effects\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Various Objects in the Dungeon give effects when stepped on or picked up. These effects, along with their durations, will be displayed in the bottom pane. If no effects are currently active, the bottom pane will be collapsed. Effects can be either beneficial or detrimental.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Getting Help\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To find out what all the Objects do, choose 
+\i DungeonDiver4 Help
+\i0  from the 
+\i Help
+\i0  menu. This will bring up a window that you can leave open while playing the game, listing each object and a short description of how it works.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \ul \ulc0 Controls in the Dungeon Editor\
+\
+\pard\pardeftab709\pardirnatural
+\cf0 \ulnone Moving Around and Identifying Objects\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To move the view around, drag the scroll bars on the left. To see more Objects to place, drag the scroll bars on the right. To change Floors and/or Levels, use the 
+\i Up One Floor
+\i0 , 
+\i Up One Level
+\i0 , 
+\i Down One Floor
+\i0 , and 
+\i Down One Level
+\i0  items in the 
+\i Editor
+\i0  menu. Shift+Click an object in the maze to identify it. Its name, along with any additional properties it has and the values of those properties, will be displayed in the Message Area.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Placing Objects\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To place an Object, first select one in the right pane. Then, click the location in the Dungeon where you want the Object to go. If you need to change layers in order to place Objects, this can be done via the 
+\i Toggle Layer
+\i0  option in the Editor menu. You can also drag the mouse after selecting an object to \'93paint\'94 it in the Dungeon multiple times, wherever you want it.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Modifying The Dungeon Dimensions\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Dungeons can gain or lose Levels as they are edited. To add a new Level to a Dungeon, choose 
+\i Add a Level...
+\i0  from the 
+\i Edit
+\i0  menu. You will be prompted for the dimensions of the new Level. Likewise, removing Levels can be accomplished via the 
+\i Remove a Level...
+\i0  item in the Edit menu. You\'92ll be prompted for the Level number to remove. Note that if you remove the current Level, you\'92ll be sent to Level 1. The active Level can be resized, too - via the 
+\i Resize Current Level\'85
+\i0  option in the Editor menu. Note that resizing a Level affects ALL Floors of that Level.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Setting Object Properties\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To set the properties of an Object, if it has any, hold the Option (or Alt) key and click the Object in the Dungeon Pane on the left. If it has properties you can set, a dialog or a message will appear. If it has no properties, the message \'93
+\i This object has no properties
+\i0 \'94 will appear in the Message Area. Most Teleports will generate a message that says \'93
+\i Click to set destination
+\i0 \'94 - this is exactly like using an Item. Click the spot where you want the destination to be. If you\'92d like the destination to be on a Floor other than the current one, you can change Floors before clicking. Random Teleports will generate a dialog asking for the Random Row and Column radii. Pressing 
+\i Escape
+\i0  will cancel setting properties.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Setting Dungeon and Level Preferences\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To set preferences for a Level, or the entire Dungeon, select the 
+\i Level Preferences\'85 
+\i0 or 
+\i Dungeon Preferences\'85
+\i0  commands from the Editor menu, as appropriate. Levels have several settings, including wraparound, a title, messages, and vision mode. Dungeons also have several settings, including the Level to start at, a title, and messages.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Defining Rule Sets\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Rule Sets influence how the random Dungeon generator generates mazes. They are managed from the Rule Set Picker. To use the Rule Set Picker, select an Object to work with from the pick list, then click the button for the action desired. Five actions are defined: Create, Destroy, Edit, Load, and Save. Load and Save operate on the entire set, while Create, Destroy, and Edit operate on individual rules. Rules can specify various restrictions on how many Objects should be generated of a specific type, and can also make the Object the Rule acts on required or not required.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 \ul \
+The Race System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+\cf0 \ulnone The Predefined Races, by Group\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \ul Humanoid Group\ulnone : Dwarf, Elf, Gnome, Goblin, Human, Orc, Troll, Vampire\
+\ul Robotic Group\ulnone : Cyborg, Robot\
+\ul Animal Group\ulnone : Eagle, Lizard, Penguin, Turtle, Wolf\
+\ul Undead Group\ulnone : Ghost, Shade\
+\ul Organic Group\ulnone : Mush, Slime\
+\ul Unknown Group\ulnone : Demon\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 How many races are there? (I can't count the grouped list.)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 Exactly twenty (20) predefined races exist.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 \ul \
+The Caste System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \ulnone DungeonDiver4 has just four castes: Annihilator, Buffer, Curer, and Debuffer. Your caste determines what spell book you use as well as what weapon set you use.\
+\pard\pardeftab709\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 \ul The Faith System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+\cf0 \ulnone How many faiths are there?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 There are a total of 9 faiths: None, Heat, Cold, Rock, Gust, Beam, Dead, Bolt, and Boom.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 What has a faith?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 Each character in your party has a faith.\
+NPCs that join you also have a faith.\
+Even the monsters you fight have faiths.\
+Many spells and certain items are associated with a faith as well.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 What are the effects of having a faith?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 Faith affects skill with and defense against faith-aligned attacks and spells.  Those who have the None faith have no skill or defense bonuses or penalties in any faith.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 \ul \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+\cf0 The Personality System\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+\cf0 \ulnone How many personalities are there?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 There are a total of 25 personalities.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 What are the effects of having a personality?\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 Personality affects experience in battle, level up speed, wealth, carrying capacity, and movement.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 \ul Character Genders\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+\cf0 \ulnone What are the general effects of gender?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 Character gender affects the results of equipping and using certain items. Some items can only be worn by or are only usable by one gender. Genders primarily exist to give flavor to your characters.\
+\pard\pardeftab709\pardirnatural
+\cf0 \
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Character Prestige\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+As your character performs deeds both courageous and cowardly, their prestige will change.  This is a score based on many different factors, such as the amount of enemies they have killed or how often they are hit themselves.\
+\
+Things such as getting killed, missing in battle or failing to resist spells in battle can all affect your prestige in a negative way.\
+\
+When you view Prestige Details, Scores in 
+\b \cf2 RED
+\b0 \cf0  hurt your prestige, whereas 
+\b \cf3 BLUE
+\b0 \cf0  scores help your prestige.\
+\
+\
+How prestige points are calculated:\
+\
+Positive Prestige Points are calculated:\
+\
++ (Damage Given - Damage Taken) / 10 (This could be negative)\
++ Hits Given\
++ Attacks Dodged\
++ 2 x Enemies Killed\
+\
+Negative Prestige Points are calculated:\
+\
+- Hits Taken\
+- 2 x Missed Attacks\
+- 3 x Number of Spells Cast in Battle\
+- 10 x Times You Were Killed In Battle\
+- 50 x Times You Ran Away In Battle\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Gaining Levels\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Defeating monsters in battle is the primary way of earning experience towards the next level. Any experience earned will be divided as evenly as possible between the members of your party who are still alive and conscious and have not fled from battle.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Damage and Death\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 If you get hit in battle, or step on hostile ground outside of battle, you suffer damage. If your health is reduced to 0 by this, you die.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Healing During Battle\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 If you know any healing spells, you may cast them while in battle on other party members, to restore lost health. To heal while outside battle, visit a healing shop.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Note Keeper\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Notes may be created/edited while exploring the Dungeon by using the Edit Note... command in the Game menu. If a note is present on a particular space of the Dungeon, it will be indicated with a little N icon in the upper-right corner. Your notes are saved along with the rest of the game's state when you save your progress. You can only read notes on the space your party currently occupies.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Learning Spells\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Spells are learned from Spell Shops. Spells may be learned in any order, if you possess enough Gold to do so.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Spell Power Levels\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 1, 2, 3, 4, 5, 6, 7, 8, 9, X\
+\
+The cost to cast a given spell at each power level is equal to the spell's base cost (which is never 0) multiplied by the power level requested.  The cost for a level X spell is 10 times the base cost.\
+\pard\pardeftab709\pardirnatural
+\cf0 \
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Spell Damage\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 The various types of spell damage are inextricably linked to the various faiths. Each faith-aligned attack deals its own type of damage.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\i\b \cf0 \ul Dungeon Battle Engine\
+\pard\pardeftab709\pardirnatural
+
+\i0\b0 \cf0 \ulnone \
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Battle\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Battle is fought on a separate and randomly generated Dungeon, which is much smaller than the main Dungeon. Battle in DungeonDiver4 is turn-based, which means that each creature involved in the battle gets a turn to act, until everyone has acted. Once that happens, a new round begins, and the cycle restarts anew. Battle ends once all hostile creatures are defeated, or your party is defeated.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Battle Special Actions\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Pressing and holding the Shift key, then attempting to move when it is your turn in battle, will cause you to fire an arrow instead of moving. Arrows never miss, are considerably weaker than melee weapons, and follow faith rules when determining the damage done. Arrows never critically hit, and ignore enemy defenses when computing damage.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Battle Dungeon\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+As with the Dungeon, the active character, which may not be you if one of the monsters is acting, is in the center. The message area at the top behaves in exactly the same way as the Dungeon version, as does the statistics display on the right.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Using Weapons to Attack\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 Moving is accomplished in the same way as on the Dungeon. To attack something, simply move into it.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Battle Weapon Attack Modifiers\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Different things may happen when you attack an enemy in battle with your weapon.\
+\
+Critical Hit: Occurs 20% of the time, deals double damage.\
+Piercing Hit: Occurs 10% of the time, ignores enemy defense when calculating damage.\
+Fumble: Occurs 5% of the time, damages the attacker with their own weapon.\
+\
+It is possible for the first two events to occur at the same time. Both your party and the enemies can perform these actions.\
+\pard\pardeftab709\pardirnatural
+\cf0 \
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Spell Casting Within Battle\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To cast a spell, choose Cast Spell... from the Battle menu. A dialog will appear, asking for which spell to cast. After one is picked, a second dialog asks for the power level. After that, a third dialog prompts for a target to cast the spell at (except self-only spells). Finally, the spell is cast.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Running Away\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To flee from battle, simply attempt to move off the edge of the battle Dungeon. You will be asked to confirm that you wish to embrace cowardice.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Attacking A Friendly Character\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 If you move into a friendly character, such as a member of your party, you will be asked to confirm that you wish to attack your friend. If you elect to attack anyway after this confirmation prompt, the attack will proceed as usual.\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Other Battle Actions\
+\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 To perform other actions in battle \'96 casting spells, using items, stealing Gold, draining the enemy's MP, and ending your turn once you can do no more \'96 go to the Battle Menu and choose the appropriate command. Keyboard shortcuts exist for all commands in the Battle Menu.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\i\b \cf0 \ul Window Battle Engine\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+\cf0 \ulnone \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\i0 \cf0 Fighting Monsters\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 To attack the enemy, either click the 
+\i Attack
+\i0  button, or press A on the keyboard. If you wish to attempt to flee, instead of attacking, click the 
+\i Flee
+\i0  button, or press F on the keyboard. Note that if your flee attempt fails, you\'92ll automatically attack instead.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Special Actions\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 Sometimes, when you attack (and also when the enemy attacks you), different things may occur. One of these is fumbling - if this occurs a random amount of damage will be dealt to the fumbler, based on the power of the weapon held. Attacks can hit with varying amounts of force, from pathetic to brutal. Attacks will sometimes pierce the armor of the defender too... so beware. Additionally, it is possible for you (and the enemy) to act multiple times in the same round\'85 but only for regular attacks, not any other actions.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Casting Spells\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 To cast a spell, assuming you have learned at least one, click the 
+\i Cast Spell
+\i0  button, or press C on the keyboard. The spell selection screen will appear. Select the spell you wish to cast, and click OK (or simply press Return on the keyboard). If you don\'92t know any spells, or don\'92t have enough MP to cast the spell you\'92re trying to cast, a message will be displayed indicating this.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Stealing Money\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 To attempt to steal from the enemy, click the 
+\i Steal
+\i0  button, or press S on the keyboard. If the attempt succeeds, you'll be told how much money you stole. Beware, though - regardless of whether the steal attempt succeeds or fails, the enemy gets a free chance to hit you.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Using Items\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 To use an item, click the 
+\i Use an Item
+\i0  button, or press I on the keyboard. Items do various things when used in battle, from healing you to damaging or incapacitating the enemy.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Draining the Enemy\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 To attempt to drain the enemy's MP, click the 
+\i Drain
+\i0  button, or press D on the keyboard. If the attempt succeeds, the enemy loses some MP, and you gain that lost MP. Beware, though - regardless of whether the drain attempt succeeds or fails, the enemy gets a free chance to hit you.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b \cf0 Victory! / Defeat!\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab709\pardirnatural
+
+\b0 \cf0 The battle ends when either you or the enemy has run out of HP. If you win, and do not lose any HP, you get a perfect fight bonus in the form of extra gold. If you lose, and fail to hurt the enemy, you get a different message compared to losing normally. If both you and the enemy run out of HP at the same time, the battle is declared a draw, and you get fully healed. If you gain enough XP to level up, a message will be displayed indicating this.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Items\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Items are purchased from shops, and automatically equipped as soon as the transaction is completed. There are 4 kinds of shops that sell items: Weapon Shops, Armor Shops, Item Shops (which sell items usable in battle), and Socks Shops (items that act each time you take a step). Of the 4 types, only Item Shops sell items that are not equipment.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Enchantments for Equipment\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Equipment can be improved in ways other than improving the base material from which it is made. Socks, however, cannot be enchanted. There are two kinds of enchantment available:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Blessing: 
+\b0 Getting this on your equipment increases its effectiveness. Blessed items will have a +X suffix attached to them, where X is the number of times it has been blessed. Blessings increase the power of the item they are applied to. Blessings increase in cost as more are applied, and cannot be applied more than 9 times to a single item. Blessings are referred to as "Bonus" in the various equipment formulas.\
+\
+Blessings are sold at Enhancement Shops, which can be easily distinguished from other shops by the large E on their doors.\
+\pard\pardeftab709\pardirnatural
+\cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Faith Power: 
+\b0 Getting this on your equipment increases its effectiveness also. Faith Powered items will have a prefix attached to them, where the prefix is determined by the number of times it has been powered, as well as what Faith the power came from. Faith Powers do NOT increase the power of the item they are applied to. Faith Powers increase in cost as more are applied, and cannot be applied more than 9 times to a single item. A Faith Powered weapon will deal additional damage. Faith Powered armor reduces the damage you take, above and beyond what the armor itself provides.\
+\
+Faith Powers are sold at Faith Power Shops, which can be easily distinguished from other shops by the large F on their doors.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+World Wide Web\
+\pard\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+The OFFICIAL Putty Software web site: {\field{\*\fldinst{HYPERLINK "http://www.puttysoftware.com/"}}{\fldrslt http://www.puttysoftware.com/}}\
+\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 Appendix of Formulas\
+\
+\pard\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Formula 1: Equipment Power\
+
+\i0 \
+Equipment Power = [Material (0 to 97) + Prefix (0 to 3)] x 10 + Bonus (-9 to 9)\
+Equipment Power Range: 1 to 999\
+\
+Note: 
+\b Bolded
+\b0  text in the formula represents the part to be evaluated next.\
+\
+Example 1: Bamboo Stick -9 has power 1\
+Looking up Bamboo in the material table gives 1\
+Formula: (
+\b 1 + 0
+\b0 ) 
+\b \'d7
+\b0  10 - 9\
+Simplifies to: 
+\b 1 \'d7 10
+\b0  - 9\
+Simplifies to: 
+\b 10 - 9
+\b0 \
+Final Answer: 1\
+\
+Example 2: Rare Magic Axe +9 has power 999\
+Looking up Magic in the material table gives 97\
+Looking up Rare in the prefix table gives 2\
+Formula: (
+\b 97 + 2
+\b0 ) 
+\b \'d7
+\b0  10 + 9\
+Simplifies to: 
+\b 99 \'d7 10
+\b0  + 9\
+Simplifies to: 
+\b 990 + 9
+\b0 \
+Final Answer: 999\
+\
+Weapon Base (Maximum) Damage = Power (ignoring Bonus) / 10 (integer)\
+Weapon Bonus (Minimum and Maximum) Damage = Bonus (integer)\
+Armor % Damage Reduction = Power / 10 (floating-point)\
+Minimum % DR = 0 (no armor equipped)\
+Maximum % DR = 99.9 (999 / 10)\
+\
+
+\i Note 1
+\i0 : Weapon minimum damage is 1, unless modified by a Bonus.
+\i \
+Note 2
+\i0 : Damage cannot be reduced below 1 by Damage Reduction.\
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \
+Appendix of Lists\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\pardeftab709\li720\fi-720\pardirnatural
+\ls1\ilvl0\cf0 {\listtext	1.	}\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 List 1: Numbers to Percentages Converter (Used for Resistance and Stat Growth)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 \
+15-point range, 0 to 14 (inclusive on both ends), default is 7\
+Percentage Scale (min 0, max 100, center 50) - used for magical resistance\
+0 = 0%\
+1 = 7%\
+2 = 14%\
+3 = 21%\
+4 = 29%\
+5 = 36%\
+6 = 43%\
+7 = 50%\
+8 = 57%\
+9 = 64%\
+10 = 71%\
+11 = 79%\
+12 = 86%\
+13 = 93%\
+14 = 100%\
+\
+15-point range, -7 to 7 (inclusive on both ends), default is 0\
+Percentage Scale (min 50, max 150, center 100) - used for stats\
+-7 = 50%\
+-6 = 57%\
+-5 = 64%\
+-4 = 71%\
+-3 = 79%\
+-2 = 86%\
+-1 = 93%\
+0 = 100%\
++1 = 107%\
++2 = 114%\
++3 = 121%\
++4 = 129%\
++5 = 136%\
++6 = 143%\
+\pard\pardeftab709\pardirnatural
+\cf0 +7 = 150%\
+\
+
+\i List 2: Statistics\
+
+\i0 \
+\pard\pardeftab709\pardirnatural
+
+\b \cf0 \ul Statistics Abbreviations, Descriptions, and Levels\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \ulnone \
+\ul Level Descriptions\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i \cf0 \ulnone Raw:
+\i0  A creature's basic stat.\
+
+\i Inherent:
+\i0  A basic stat for an equippable object or castable spell.\
+
+\i Factor: 
+\i0 A modifier for a computed stat.\
+
+\i Computed:
+\i0  A stat with a value dependent on at least one raw stat, zero or one inherent stats, and at least one factor.\
+
+\i Effective:
+\i0  A stat that applies at action time and is computed only at that time.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Strength (STR)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: Raw muscle of a creature.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Power (POW)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Inherent\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: The damaging ability of weapons and spells.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Strength-Attack Factor (SAF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of strength to attack.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Power-Attack Factor (PAF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of power to attack.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Attack (ATK)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: (Strength * Strength-Attack Factor) + (Power * Power-Attack Factor)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Block (BLK)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Inherent\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: The absorbing ability of armor.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Block-Defense Factor (BDF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of block to defense.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Agility (AGI)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: How fast a creature acts.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Agility-Defense Factor (ADF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of agility to defense.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Defense (DEF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: (Block * Block-Defense Factor) + (Agility * Agility-Defense Factor)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Damage (DMG)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Effective\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: Attack - Enemy Defense\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Weight (WGT)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Inherent\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: How much an object slows down the creature wearing it.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Agility-Speed Factor (ASF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of agility to speed.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Weight-Speed Factor (WSF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of weight to speed.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Speed (SPD)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: (Agility * Agility-Speed Factor) - (Weight * Weight-Speed Factor)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Initiative (INI)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Effective\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: Speed - Enemy Speed (if positive, you act first; if negative, enemy acts first; if zero, Luck difference used to break tie; if still tied, decided randomly)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Vitality (VIT)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A creature\'92s stamina.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Vitality-Health Factor (VHF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of vitality to maximum health.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Current Health (CH)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A creature\'92s overall health. If this drops below 1, the creature becomes dead. This cannot exceed the maximum health.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Maximum Health (MH)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: Vitality * Vitality-Health Factor\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Intelligence (INT)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A creature\'92s knowledge of the mystical arts.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Intelligence-Magic Factor (IMF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of intelligence to maximum magic.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Current Magic (CM)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A creature\'92s ability to use the mystical arts. If this drops below 1, the creature becomes unable to use mystical arts. This cannot exceed the maximum magic, nor can it drop below 0.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Maximum Magic (MM)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: Intelligence * Intelligence-Magic Factor\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Luck (LUC)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Raw\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A creature\'92s likelihood of situations resolving in their favor.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Luck-Hit Factor (LHF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of luck to hit chance.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Differential-Hit Factor (DHF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of the difference between your attack and the enemy\'92s defense to hit chance.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Hit Chance (HIT)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: (Attack - Enemy Defense) * Differential-Hit Factor + (Luck * Luck-Hit Factor)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Luck-Dodge Factor (LDF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of luck to dodge chance.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Differential-Dodge Factor (DDF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of the difference between the enemy\'92s attack and your defense to dodge chance.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Agility-Dodge Factor (ADF)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Factor\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: A multiplier that modifies the contribution of agility to dodge chance.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 Dodge Chance (DDG)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i\b0 \cf0 Level: Computed\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 Description: (Enemy Attack - Defense) * Differential-Dodge Factor + (Luck * Luck-Dodge Factor) + (Agility * Agility-Dodge Factor)\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i \cf0 List 3: Statistics Advancement\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\i0 \cf0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b \cf0 \ul Stat Advancement\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab709\pardirnatural
+
+\b0 \cf0 \
+Raw Statistics\
+\ulnone The six "core" raw statistics \'96 Strength, Block, Agility, Vitality, Intelligence, and Luck \'96 all change only when a level is gained.\
+\
+Current Health changes when the creature is healed or suffers damage, and is NOT subject to the advancement rules above.\
+\
+Current Magic changes when the creature regenerates, is drained, or casts a spell, and is NOT subject to the advancement rules above.\
+\
+Maximum Health changes when Vitality changes.\
+\
+Maximum Magic changes when Intelligence changes.}

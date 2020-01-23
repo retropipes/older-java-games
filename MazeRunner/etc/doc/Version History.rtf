@@ -1,0 +1,45 @@
+{\rtf1\mac\ansicpg10000\cocoartf824\cocoasubrtf420
+{\fonttbl\f0\fswiss\fcharset77 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\info
+{\author esahnell}
+{\*\company Rockwell Automation}}\margl1440\margr1440\vieww12240\viewh15840\viewkind1\viewscale100
+\deftab720
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardeftab720\ri0\ql\qnatural
+
+\f0\fs24 \cf0 Maze Runner Version History\
+\
+V2.21 (08/26/2007): Fixed a bug in the editor that caused placing objects not to work properly.\
+\
+V2.20 (08/15/2007): Added undo and redo support to the editor. Added an option for clearing the undo/redo history to the Edit menu. Added a close command to the File menu. Removed the restriction preventing replaying a maze without reloading it - this also allows going into the editor and editing a maze right after playing it, as well as playing a maze as soon as it's been created in the editor. Somehow, I managed to break two-way teleporters in the editor in V2.10 - they're fixed now. Cleaned up the version history a bit. Made some internal changes that should minimize the chances of certain types of bugs rearing their ugly heads.\
+\
+V2.10 (08/09/2007): Added menus to all screens. Removed the requirement to reload the maze after the graphics set or size is changed. Added the ability to change the graphics set and size, or any other preference, while playing or editing the maze, and made the program instantly reflect the new settings. Added a new menu - the Game menu - and two new menu items: Show Inventory and Use an Item. Added accelerator keys to all menu items except Exit. Removed the alternate key bindings introduced in V2.01 since they aren't needed anymore, and were responsible for several bugs.\
+\
+V2.01 (07/28/2007): Added alternative key bindings for Inventory, Save, and Use to the game and editor. Fixed an issue with the Mac OS X release where the menus weren't showing up in the Mac OS menu bar as they were supposed to.\
+\
+V2.00 (06/30/2007): Added 18 new objects: Pits (dump the player, a pushable block, or a pushable/pullable block down one floor when walked on or a block is pushed into it - impassable on floor 1 but can be filled by pushing a block into one), Tile (a variety of ground that permits objects to be pushed and pulled over it), Pushable Blocks, Pullable Blocks, Pushable/Pullable Blocks, Ice (a frictionless object - anything that touches ice keeps moving until it hits something that isn't ice), Finish To... (a special exit that takes the player to a level other than the next one in the maze), Sunken Blocks (created by pushing blocks into water - can be walked on and have objects pushed and pulled over them), Water (normally impassable, but can be walked on if the Water-Walking Boots are in your inventory), Water-Walking Boots (permit walking on water), Annihilation Wand (destroys anything except the Void), Finish-Making Wand, Wall-Making Wand, Energy Sphere (permits walking on force fields), Force Field (normally impassable unless an Energy Sphere is in your inventory), Teleport Wand (acts like a teleporter when used, but you can control the destination), Void (surrounds the maze now, instead of walls, and is completely indestructible - it is immune to all wand effects; additionally, appears in the game as a Sealing Wall if next to anything other than other Void squares), and Exploding Walls (explode when touched, causing other exploding walls next to it to also explode). Completely overhauled the graphics - there are two new sets now, instead of the "Default" set that older versions had, called Modern and Classic. Added multi-level support - now mazes with multiple levels can act as several distinct mazes, each with its own start and finish. If a Finish To... is used to send the player to a level they have already completed, that level will be restored to a pristine state. Made a major change to the saved game format, completely breaking backward compatibility with older saved games. Older mazes, though, still work. Fixed many, many bugs.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\ql\qnatural\pardirnatural
+\cf0 V1.40 (06/13/2007): Added 1 new object - two-way teleporter (behaves in pairs, just \
+like stairs) - and fixed several bugs. Added a status bar at the bottom for displaying in- \
+game and in-editor messages. Added color graphics (this was present in V1.30 also, \
+but never documented). Turned the "Can't go that way" message on by default again. \
+\
+V1.30 (06/09/2007): Added 6 new objects: stairs up, stairs down (stairs behave in \
+pairs), and 4 kinds of one-way wall. Fixed a bug in the editor that caused the \
+coordinates to place an object to not be computed properly. \
+\
+V1.20 (05/11/2007): Added 6 new kinds of teleporter \'d0 random, random invisible, one- \
+shot, invisible one-shot, random one-shot, and random invisible one-shot; teleporter \
+destinations are now set by clicking on the location for the teleporter to teleport to; \
+added the ability to go back to the menu after solving a maze or editing a maze; \
+changed message displayed when the player attempts to move outside the maze to \
+\'d2Can\'d5t go that way\'d3 and turned that message off by default; added a check for the \
+current maze or game needing to be saved, and a prompt for the user to save or not; \
+fixed numerous bugs. \
+\
+V1.11 (05/07/2007): Fixed a bug in the editor. \
+\
+V1.10 (05/04/2007): Improved user interface. Added preferences dialog. \
+\
+V1.00 (05/02/2007): Initial Release.}

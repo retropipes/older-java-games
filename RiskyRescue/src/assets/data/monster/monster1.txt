@@ -1,0 +1,12 @@
+Artillery
+Blaster Tree
+Bomb
+Driller
+Drop
+Ghost
+Jelly
+Missile
+Mushroom
+Rover
+Shade
+Turtle

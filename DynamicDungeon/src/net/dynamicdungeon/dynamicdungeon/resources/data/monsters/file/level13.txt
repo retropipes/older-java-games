@@ -1,0 +1,15 @@
+cyborg
+dwarf
+eagle
+elf
+gnome
+goblin
+human
+lizard
+orc
+penguin
+pixie
+shade
+side_turtle
+troll
+wolf

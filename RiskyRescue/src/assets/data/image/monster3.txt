@@ -1,0 +1,16 @@
+amped_artillery
+angler
+boom_barrel
+boxer
+burger
+cross_vine
+curve
+cyborg
+demon
+fighter
+garbage
+giant_drop
+medic
+radio
+rammer
+twin_claw

@@ -1,0 +1,84 @@
+/*  DungeonDiver4: A Dungeon-Solving Game
+Copyright (C) 2008-2012 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package com.puttysoftware.dungeondiver4;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
+import com.puttysoftware.dungeondiver4.dungeon.utilities.DungeonObjectList;
+import com.puttysoftware.dungeondiver4.resourcemanagers.ImageTransformer;
+import com.puttysoftware.help.GraphicalHelpViewer;
+import com.puttysoftware.images.BufferedImageIcon;
+
+public class ObjectHelpManager {
+    // Fields
+    private JFrame helpFrame;
+    GraphicalHelpViewer hv;
+    private boolean inited = false;
+
+    // Constructors
+    public ObjectHelpManager() {
+        // Do nothing
+    }
+
+    // Methods
+    public void showHelp() {
+        initHelp();
+        this.helpFrame.setVisible(true);
+    }
+
+    private void initHelp() {
+        if (!this.inited) {
+            ButtonHandler buttonHandler = new ButtonHandler();
+            DungeonObjectList objectList = DungeonDiver4.getApplication()
+                    .getObjects();
+            String[] objectNames = objectList.getAllDescriptions();
+            BufferedImageIcon[] objectAppearances = objectList
+                    .getAllEditorAppearances();
+            this.hv = new GraphicalHelpViewer(objectAppearances, objectNames,
+                    new Color(223, 223, 223));
+            JButton export = new JButton("Export");
+            export.addActionListener(buttonHandler);
+            this.helpFrame = new JFrame("DungeonDiver4 Object Help");
+            final Image iconlogo = DungeonDiver4.getApplication().getIconLogo();
+            this.helpFrame.setIconImage(iconlogo);
+            this.helpFrame
+                    .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+            this.helpFrame.setLayout(new BorderLayout());
+            this.helpFrame.add(this.hv.getHelp(), BorderLayout.CENTER);
+            this.helpFrame.add(export, BorderLayout.SOUTH);
+            this.hv.setHelpSize(ImageTransformer.MAX_WINDOW_SIZE,
+                    ImageTransformer.MAX_WINDOW_SIZE);
+            this.helpFrame.pack();
+            this.helpFrame.setResizable(false);
+            // Mac OS X-specific fixes
+            if (System.getProperty("os.name").startsWith("Mac OS X")) {
+                MenuManager menu = new MenuManager();
+                menu.setHelpMenus();
+                this.helpFrame.setJMenuBar(menu.getMainMenuBar());
+            }
+            this.inited = true;
+        }
+    }
+
+    private class ButtonHandler implements ActionListener {
+        ButtonHandler() {
+            // Do nothing
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ObjectHelpManager.this.hv.exportHelp();
+        }
+    }
+}

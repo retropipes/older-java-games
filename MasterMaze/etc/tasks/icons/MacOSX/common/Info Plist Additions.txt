@@ -1,0 +1,87 @@
+    <key>CFBundleDocumentTypes</key>
+    <array>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>mastergame</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>game.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Game</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>mastermaze</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>maze.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Maze</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+    </dict>
+    <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>mastersave</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>save.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Save</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>masterscor</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>scor.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Scores</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>masterrule</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>rule.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Rule Set</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>masterchar</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>char.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Character</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+   <dict>
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>masterregi</string>
+            </array>
+            <key>CFBundleTypeIconFile</key>
+            <string>regi.icns</string>
+            <key>CFBundleTypeName</key>
+            <string>MasterMaze Registry</string>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+   </dict>
+    </array>

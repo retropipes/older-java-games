@@ -1,0 +1,8 @@
+attack_power
+defense_power
+experience
+health
+level
+magic
+money
+name

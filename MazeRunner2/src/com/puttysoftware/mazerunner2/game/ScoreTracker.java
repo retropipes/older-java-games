@@ -1,0 +1,32 @@
+/*  MazeRunnerII: An RPG
+Copyright (C) 2011-2012 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package com.puttysoftware.mazerunner2.game;
+
+import com.puttysoftware.commondialogs.CommonDialogs;
+
+class ScoreTracker {
+    // Fields
+    private long score;
+
+    // Constructors
+    ScoreTracker() {
+        this.score = 0L;
+    }
+
+    // Methods
+    void commitScore() {
+        CommonDialogs.showDialog("Your final score: " + this.score + " points");
+    }
+
+    void addToScore(long value) {
+        this.score += value;
+    }
+
+    void showCurrentScore() {
+        CommonDialogs.showDialog("Your current score: " + this.score
+                + " points");
+    }
+}

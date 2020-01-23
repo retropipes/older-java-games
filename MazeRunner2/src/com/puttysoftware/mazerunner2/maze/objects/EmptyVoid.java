@@ -1,0 +1,138 @@
+/*  MazeRunnerII: A Maze-Solving Game
+Copyright (C) 2008-2012 Eric Ahnell
+
+Any questions should be directed to the author via email at: products@puttysoftware.com
+ */
+package com.puttysoftware.mazerunner2.maze.objects;
+
+import com.puttysoftware.mazerunner2.Application;
+import com.puttysoftware.mazerunner2.MazeRunnerII;
+import com.puttysoftware.mazerunner2.maze.MazeConstants;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractWall;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
+import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
+import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
+
+public class EmptyVoid extends AbstractWall {
+    // Properties
+    private String currAppearance;
+
+    // Constructors
+    public EmptyVoid() {
+        super(false, false, ColorConstants.COLOR_NONE);
+        this.currAppearance = "Void";
+    }
+
+    @Override
+    public int getBaseID() {
+        return ObjectImageConstants.OBJECT_IMAGE_VOID;
+    }
+
+    @Override
+    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+        this.determineCurrentAppearance(x, y, z);
+        if (this.currAppearance.equals(this.getName())) {
+            return this;
+        } else {
+            return new SealingWall();
+        }
+    }
+
+    @Override
+    public boolean isConditionallySolid(MazeObjectInventory inv) {
+        // Disallow passing through Void under ANY circumstances
+        return true;
+    }
+
+    @Override
+    public void determineCurrentAppearance(int x, int y, int z) {
+        Application app = MazeRunnerII.getApplication();
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        thisName = this.getName();
+        AbstractMazeObject mo1 = app.getMazeManager().getMazeObject(x - 1,
+                y - 1, z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo1Name = mo1.getName();
+        } catch (NullPointerException np) {
+            mo1Name = thisName;
+        }
+        AbstractMazeObject mo2 = app.getMazeManager().getMazeObject(x - 1, y,
+                z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo2Name = mo2.getName();
+        } catch (NullPointerException np) {
+            mo2Name = thisName;
+        }
+        AbstractMazeObject mo3 = app.getMazeManager().getMazeObject(x - 1,
+                y + 1, z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo3Name = mo3.getName();
+        } catch (NullPointerException np) {
+            mo3Name = thisName;
+        }
+        AbstractMazeObject mo4 = app.getMazeManager().getMazeObject(x, y - 1,
+                z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo4Name = mo4.getName();
+        } catch (NullPointerException np) {
+            mo4Name = thisName;
+        }
+        AbstractMazeObject mo6 = app.getMazeManager().getMazeObject(x, y + 1,
+                z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo6Name = mo6.getName();
+        } catch (NullPointerException np) {
+            mo6Name = thisName;
+        }
+        AbstractMazeObject mo7 = app.getMazeManager().getMazeObject(x + 1,
+                y - 1, z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo7Name = mo7.getName();
+        } catch (NullPointerException np) {
+            mo7Name = thisName;
+        }
+        AbstractMazeObject mo8 = app.getMazeManager().getMazeObject(x + 1, y,
+                z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo8Name = mo8.getName();
+        } catch (NullPointerException np) {
+            mo8Name = thisName;
+        }
+        AbstractMazeObject mo9 = app.getMazeManager().getMazeObject(x + 1,
+                y + 1, z, MazeConstants.LAYER_OBJECT);
+        try {
+            mo9Name = mo9.getName();
+        } catch (NullPointerException np) {
+            mo9Name = thisName;
+        }
+        if (!thisName.equals(mo1Name) || !thisName.equals(mo2Name)
+                || !thisName.equals(mo3Name) || !thisName.equals(mo4Name)
+                || !thisName.equals(mo6Name) || !thisName.equals(mo7Name)
+                || !thisName.equals(mo8Name) || !thisName.equals(mo9Name)) {
+            this.currAppearance = "Sealing Wall";
+        } else {
+            this.currAppearance = "Void";
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "Void";
+    }
+
+    @Override
+    public String getGameName() {
+        return this.currAppearance;
+    }
+
+    @Override
+    public String getPluralName() {
+        return "Voids";
+    }
+
+    @Override
+    public String getDescription() {
+        return "The Void surrounds the maze, and cannot be altered in any way.";
+    }
+}

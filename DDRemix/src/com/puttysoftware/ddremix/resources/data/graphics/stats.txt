@@ -1,0 +1,8 @@
+attack
+defense
+gold
+health
+level
+magic
+power
+xp

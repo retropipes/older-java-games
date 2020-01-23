@@ -1,0 +1,9 @@
+artillery
+bomb
+bomber
+dropper
+escort
+fighter
+mine
+missile
+tank

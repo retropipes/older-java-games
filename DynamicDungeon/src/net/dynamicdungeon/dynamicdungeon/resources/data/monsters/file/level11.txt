@@ -1,0 +1,13 @@
+bad_board
+canned_can
+giant_amoeba
+giant_drop
+goat
+horned_mushroom
+piped_tube
+rom
+rover
+spiked_bush
+turbo_cpu
+turbo_gpu
+warped_rom

@@ -1,0 +1,16 @@
+Boom Barrel
+Caustic Barrel
+Caustic Beaker
+Caustic Bottle
+Caustic Bowl
+Caustic Can
+Caustic Canned Can
+Caustic Flask
+Caustic Jar
+Caustic Pipe
+Caustic Piped Tube
+Caustic Triple Tube
+Caustic Tube
+Caustic Vial
+Inverted Recycler
+Power Bomb

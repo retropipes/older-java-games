@@ -1,0 +1,9 @@
+Artillery
+Bomb
+Bomber
+Dropper
+Escort
+Fighter
+Mine
+Missile
+Tank

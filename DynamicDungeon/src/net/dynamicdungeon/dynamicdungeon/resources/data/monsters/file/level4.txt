@@ -1,0 +1,6 @@
+grabber
+lander
+medic
+scout
+ufo
+warship
