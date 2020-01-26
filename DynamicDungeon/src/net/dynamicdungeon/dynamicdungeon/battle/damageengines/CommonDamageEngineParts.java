@@ -14,19 +14,20 @@ class CommonDamageEngineParts {
     static final int ALWAYS = 10001;
 
     private CommonDamageEngineParts() {
-	// Do nothing
+        // Do nothing
     }
 
     static boolean didSpecial(final int aSpecial) {
-	final int rSpecial = new RandomRange(0, 10000).generate();
-	return rSpecial < aSpecial;
+        final int rSpecial = new RandomRange(0, 10000).generate();
+        return rSpecial < aSpecial;
     }
 
     static int fumbleDamage(final int power) {
-	return new RandomRange(1, Math.max(1, power / 100)).generate();
+        return new RandomRange(1, Math.max(1, power / 100)).generate();
     }
 
     static int chance() {
-	return new RandomRange(MIN_CHANCE, MAX_CHANCE).generate();
+        return new RandomRange(CommonDamageEngineParts.MIN_CHANCE,
+                CommonDamageEngineParts.MAX_CHANCE).generate();
     }
 }

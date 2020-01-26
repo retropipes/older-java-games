@@ -21,13 +21,13 @@ import com.puttysoftware.xio.legacy.XLegacyDataReader;
 
 public final class MazeObjectInventory implements Cloneable {
     // Properties
-    private String[] nameList;
-    private int[][] typeList;
-    private String[] bowNameList;
-    private int[] contents;
-    private int[] uses;
-    private int[] bows;
-    private int[] bowUses;
+    private final String[] nameList;
+    private final int[][] typeList;
+    private final String[] bowNameList;
+    private final int[] contents;
+    private final int[] uses;
+    private final int[] bows;
+    private final int[] bowUses;
     private AbstractBoots boots;
     private AbstractAmulet amulet;
     private static final AbstractBoots DEFAULT_BOOTS = new RegularBoots();
@@ -35,9 +35,9 @@ public final class MazeObjectInventory implements Cloneable {
 
     // Constructors
     public MazeObjectInventory() {
-        MazeObjectList list = MazeRunnerII.getApplication().getObjects();
+        final MazeObjectList list = MazeRunnerII.getApplication().getObjects();
         this.nameList = list.getAllInventoryableNamesMinusSpecial();
-        AbstractMazeObject[] invobj = list
+        final AbstractMazeObject[] invobj = list
                 .getAllInventoryableObjectsMinusSpecial();
         this.bowNameList = list.getAllBowNames();
         this.contents = new int[this.nameList.length];
@@ -46,7 +46,7 @@ public final class MazeObjectInventory implements Cloneable {
         this.bowUses = new int[this.bowNameList.length];
         this.boots = MazeObjectInventory.DEFAULT_BOOTS;
         this.amulet = MazeObjectInventory.DEFAULT_AMULET;
-        int bowIndex = this.bowIndexOf(new Bow());
+        final int bowIndex = this.bowIndexOf(new Bow());
         this.bowUses[bowIndex] = -1;
         this.typeList = new int[this.nameList.length][];
         for (int x = 0; x < this.nameList.length; x++) {
@@ -81,7 +81,7 @@ public final class MazeObjectInventory implements Cloneable {
         }
     }
 
-    private void setUses(final AbstractMazeObject mo, int newUses) {
+    private void setUses(final AbstractMazeObject mo, final int newUses) {
         if (!MazeObjectInventory.isBoots(mo)
                 && !MazeObjectInventory.isAmulet(mo)) {
             if (!MazeObjectInventory.isBow(mo)) {
@@ -95,7 +95,7 @@ public final class MazeObjectInventory implements Cloneable {
     public void use(final AbstractMazeObject mo, final int x, final int y,
             final int z) {
         int tempUses = this.getUses(mo);
-        if (mo.isUsable() && (tempUses > 0)) {
+        if (mo.isUsable() && tempUses > 0) {
             tempUses--;
             this.setUses(mo, tempUses);
             mo.useHelper(x, y, z);
@@ -105,7 +105,7 @@ public final class MazeObjectInventory implements Cloneable {
         }
     }
 
-    public void useBow(AbstractBow bow) {
+    public void useBow(final AbstractBow bow) {
         int tempUses = this.getUses(bow);
         if (tempUses != -1) {
             if (tempUses > 0) {
@@ -131,8 +131,8 @@ public final class MazeObjectInventory implements Cloneable {
     }
 
     public boolean isItemCategoryThere(final int cat) {
-        MazeObjectList list = MazeRunnerII.getApplication().getObjects();
-        AbstractMazeObject[] objects = list
+        final MazeObjectList list = MazeRunnerII.getApplication().getObjects();
+        final AbstractMazeObject[] objects = list
                 .getAllInventoryableObjectsMinusSpecial();
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(cat) && this.contents[x] > 0) {
@@ -144,12 +144,12 @@ public final class MazeObjectInventory implements Cloneable {
 
     // Transformers
     public void fireStepActions() {
-        if (!this.boots.getName().equals(
-                MazeObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(MazeObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
-        if (!this.amulet.getName().equals(
-                MazeObjectInventory.DEFAULT_AMULET.getName())) {
+        if (!this.amulet.getName()
+                .equals(MazeObjectInventory.DEFAULT_AMULET.getName())) {
             this.amulet.stepAction();
         }
     }
@@ -183,8 +183,8 @@ public final class MazeObjectInventory implements Cloneable {
     }
 
     public String[] generateInventoryStringArray() {
-        String[] result = new String[this.contents.length + this.bows.length
-                + 2];
+        final String[] result = new String[this.contents.length
+                + this.bows.length + 2];
         StringBuilder sb;
         for (int x = 0; x < this.contents.length; x++) {
             sb = new StringBuilder();
@@ -208,7 +208,7 @@ public final class MazeObjectInventory implements Cloneable {
             sb.append(" (Qty: ");
             sb.append(this.bows[x]);
             sb.append(", Uses: ");
-            int u = this.bowUses[x];
+            final int u = this.bowUses[x];
             String ux;
             if (u == -1) {
                 ux = "Infinite";
@@ -237,13 +237,13 @@ public final class MazeObjectInventory implements Cloneable {
     }
 
     public String[] generateUseStringArray() {
-        MazeObjectList list = MazeRunnerII.getApplication().getObjects();
-        String[] names = list.getAllUsableNamesMinusSpecial();
-        int len = names.length;
+        final MazeObjectList list = MazeRunnerII.getApplication().getObjects();
+        final String[] names = list.getAllUsableNamesMinusSpecial();
+        final int len = names.length;
         StringBuilder sb;
-        String[] result = new String[len];
+        final String[] result = new String[len];
         for (int x = 0; x < len; x++) {
-            int index = this.indexByName(names[x]);
+            final int index = this.indexByName(names[x]);
             sb = new StringBuilder();
             sb.append(names[x]);
             sb.append(" (Qty: ");
@@ -257,13 +257,13 @@ public final class MazeObjectInventory implements Cloneable {
     }
 
     public String[] generateBowStringArray() {
-        MazeObjectList list = MazeRunnerII.getApplication().getObjects();
-        String[] names = list.getAllBowNames();
-        int len = names.length;
+        final MazeObjectList list = MazeRunnerII.getApplication().getObjects();
+        final String[] names = list.getAllBowNames();
+        final int len = names.length;
         StringBuilder sb;
-        String[] result = new String[len];
+        final String[] result = new String[len];
         for (int x = 0; x < len; x++) {
-            int index = this.bowIndexByName(names[x]);
+            final int index = this.bowIndexByName(names[x]);
             sb = new StringBuilder();
             sb.append(names[x]);
             sb.append(" (Qty: ");
@@ -284,7 +284,7 @@ public final class MazeObjectInventory implements Cloneable {
 
     // Helper methods
     private int getBootsCount() {
-        if ((!this.boots.equals(MazeObjectInventory.DEFAULT_BOOTS))) {
+        if (!this.boots.equals(MazeObjectInventory.DEFAULT_BOOTS)) {
             return 1;
         } else {
             return 0;
@@ -311,12 +311,12 @@ public final class MazeObjectInventory implements Cloneable {
         return this.uses[loc];
     }
 
-    private void setBowUses(final AbstractMazeObject mo, int newUses) {
+    private void setBowUses(final AbstractMazeObject mo, final int newUses) {
         final int loc = this.bowIndexOf(mo);
         this.bowUses[loc] = newUses;
     }
 
-    private void setOtherUses(final AbstractMazeObject mo, int newUses) {
+    private void setOtherUses(final AbstractMazeObject mo, final int newUses) {
         final int loc = this.indexOf(mo);
         this.uses[loc] = newUses;
     }
@@ -453,7 +453,7 @@ public final class MazeObjectInventory implements Cloneable {
 
     @Override
     public MazeObjectInventory clone() {
-        MazeObjectInventory clone = new MazeObjectInventory();
+        final MazeObjectInventory clone = new MazeObjectInventory();
         for (int x = 0; x < this.contents.length; x++) {
             clone.contents[x] = this.contents[x];
         }
@@ -472,9 +472,11 @@ public final class MazeObjectInventory implements Cloneable {
     }
 
     public static MazeObjectInventory readLegacyInventory(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
-        MazeObjectList objects = MazeRunnerII.getApplication().getObjects();
-        MazeObjectInventory i = new MazeObjectInventory();
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
+        final MazeObjectList objects = MazeRunnerII.getApplication()
+                .getObjects();
+        final MazeObjectInventory i = new MazeObjectInventory();
         i.boots = (AbstractBoots) objects.readLegacyMazeObject(reader,
                 formatVersion);
         if (i.boots == null) {
@@ -500,10 +502,11 @@ public final class MazeObjectInventory implements Cloneable {
         return i;
     }
 
-    public static MazeObjectInventory readInventory(XDataReader reader,
-            int formatVersion) throws IOException {
-        MazeObjectList objects = MazeRunnerII.getApplication().getObjects();
-        MazeObjectInventory i = new MazeObjectInventory();
+    public static MazeObjectInventory readInventory(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final MazeObjectList objects = MazeRunnerII.getApplication()
+                .getObjects();
+        final MazeObjectInventory i = new MazeObjectInventory();
         i.boots = (AbstractBoots) objects.readMazeObject(reader, formatVersion);
         if (i.boots == null) {
             i.boots = MazeObjectInventory.DEFAULT_BOOTS;
@@ -528,17 +531,17 @@ public final class MazeObjectInventory implements Cloneable {
         return i;
     }
 
-    public void writeInventory(XDataWriter writer) throws IOException {
+    public void writeInventory(final XDataWriter writer) throws IOException {
         this.boots.writeMazeObject(writer);
         this.amulet.writeMazeObject(writer);
-        for (int x = 0; x < this.contents.length; x++) {
-            writer.writeInt(this.contents[x]);
+        for (final int content : this.contents) {
+            writer.writeInt(content);
         }
         for (int x = 0; x < this.contents.length; x++) {
             writer.writeInt(this.uses[x]);
         }
-        for (int x = 0; x < this.bows.length; x++) {
-            writer.writeInt(this.bows[x]);
+        for (final int bow : this.bows) {
+            writer.writeInt(bow);
         }
         for (int x = 0; x < this.bows.length; x++) {
             writer.writeInt(this.bowUses[x]);

@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.editor.MazeEditorLogic;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
@@ -48,32 +48,32 @@ public class StairsUp extends AbstractTeleport {
 
     @Override
     public int getDestinationRow() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getMaze().getPlayerLocationX();
     }
 
     @Override
     public int getDestinationColumn() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getMaze().getPlayerLocationY();
     }
 
     @Override
     public int getDestinationFloor() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getMaze().getPlayerLocationZ() + 1;
     }
 
     @Override
     public int getDestinationLevel() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getMaze().getPlayerLocationW();
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
@@ -82,7 +82,7 @@ public class StairsUp extends AbstractTeleport {
 
     @Override
     public void editorPlaceHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.pairStairs(MazeEditorLogic.STAIRS_UP);
     }
 
@@ -102,12 +102,12 @@ public class StairsUp extends AbstractTeleport {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

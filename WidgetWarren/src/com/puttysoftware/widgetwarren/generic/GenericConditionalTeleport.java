@@ -73,8 +73,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public GenericConditionalTeleport clone() {
-        final GenericConditionalTeleport copy = (GenericConditionalTeleport) super
-                .clone();
+        final GenericConditionalTeleport copy = (GenericConditionalTeleport) super.clone();
         copy.destCol2 = this.destCol2;
         copy.destFloor2 = this.destFloor2;
         copy.destRow2 = this.destRow2;
@@ -127,8 +126,8 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         int testVal;
         if (this.sunMoon == GenericConditionalTeleport.TRIGGER_SUN) {

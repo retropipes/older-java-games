@@ -34,7 +34,7 @@ class HistoryManager {
 
     private void initHelp() {
         if (!this.inited) {
-            String ver = Support.getVersionString();
+            final String ver = Support.getVersionString();
             String title;
             if (Support.inDebugMode()) {
                 title = "What's New in DungeonDiver3 Version " + ver
@@ -42,11 +42,11 @@ class HistoryManager {
             } else {
                 title = "What's New in DungeonDiver3 Version " + ver;
             }
-            String rt = Support.getReleaseType();
-            URL histDoc = HistoryManager.class
-                    .getResource("/com/puttysoftware/dungeondiver3/resources/help/history/"
+            final String rt = Support.getReleaseType();
+            final URL histDoc = HistoryManager.class.getResource(
+                    "/com/puttysoftware/dungeondiver3/resources/help/history/"
                             + rt + "history.xhtml");
-            XHTMLHelpViewer hv = new XHTMLHelpViewer(histDoc);
+            final XHTMLHelpViewer hv = new XHTMLHelpViewer(histDoc);
             this.helpFrame = new JFrame(title);
             Platform.hookFrameIcon(this.helpFrame, Application.getIconLogo());
             this.helpFrame
@@ -59,7 +59,7 @@ class HistoryManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                MenuManager menu = new MenuManager();
+                final MenuManager menu = new MenuManager();
                 menu.setHelpMenus();
                 this.helpFrame.setJMenuBar(menu.getMainMenuBar());
             }

@@ -11,16 +11,16 @@ import javax.swing.JScrollPane;
 public final class HTMLHelpViewer {
     // Fields
     private JEditorPane helpContents;
-    private Container helpContainer;
-    private JScrollPane scrollPane;
+    private final Container helpContainer;
+    private final JScrollPane scrollPane;
 
     // Constructor
-    public HTMLHelpViewer(URL helpPage) {
+    public HTMLHelpViewer(final URL helpPage) {
         this.helpContainer = new Container();
         this.helpContainer.setLayout(new FlowLayout());
         try {
             this.helpContents = new JEditorPane(helpPage);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             this.helpContents = new JEditorPane("text/plain",
                     "An error occurred while fetching the help contents.");
         }
@@ -34,7 +34,7 @@ public final class HTMLHelpViewer {
         return this.helpContainer;
     }
 
-    public void setHelpSize(int horz, int vert) {
+    public void setHelpSize(final int horz, final int vert) {
         this.helpContents.setPreferredSize(new Dimension(horz, vert));
         this.scrollPane.setPreferredSize(new Dimension(horz, vert));
     }

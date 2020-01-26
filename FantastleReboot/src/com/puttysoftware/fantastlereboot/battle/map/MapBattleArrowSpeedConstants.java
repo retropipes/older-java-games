@@ -8,17 +8,17 @@ package com.puttysoftware.fantastlereboot.battle.map;
 import com.puttysoftware.fantastlereboot.gui.Prefs;
 
 public class MapBattleArrowSpeedConstants {
-  // Constants
-  private static int ARROW_SPEED_FACTOR = 8;
+    // Constants
+    private static int ARROW_SPEED_FACTOR = 8;
 
-  // Constructor
-  private MapBattleArrowSpeedConstants() {
-    // Do nothing
-  }
+    // Constructor
+    private MapBattleArrowSpeedConstants() {
+        // Do nothing
+    }
 
-  // Method
-  public static int getArrowSpeed() {
-    return Prefs.getBattleSpeed()
-        / MapBattleArrowSpeedConstants.ARROW_SPEED_FACTOR;
-  }
+    // Method
+    public static int getArrowSpeed() {
+        return Prefs.getBattleSpeed()
+                / MapBattleArrowSpeedConstants.ARROW_SPEED_FACTOR;
+    }
 }

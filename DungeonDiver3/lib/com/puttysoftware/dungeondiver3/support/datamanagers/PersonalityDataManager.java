@@ -12,20 +12,22 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityDataManager {
     public static double[] getPersonalityData(final int p) {
-        String name = PersonalityConstants.getPersonalityName(p).toLowerCase();
+        final String name = PersonalityConstants.getPersonalityName(p)
+                .toLowerCase();
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    PersonalityDataManager.class.getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/data/personality/"
-                            + name
-                            + Extension.getPersonalityExtensionWithPeriod()));
+                    PersonalityDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/dungeondiver3/support/resources/data/personality/"
+                                    + name + Extension
+                                            .getPersonalityExtensionWithPeriod()));
             final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTES_COUNT];
             for (int x = 0; x < rawData.length; x++) {
                 rawData[x] = rsr.readInt();
             }
             rsr.close();
             // Parse raw data
-            double[] finalData = new double[rawData.length];
+            final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {
                 if (x == PersonalityConstants.PERSONALITY_ATTRIBUTE_LEVEL_UP_SPEED) {
                     finalData[x] = PersonalityConstants

@@ -20,7 +20,7 @@ public abstract class AbstractProgrammableKey extends AbstractSingleKey {
 
     @Override
     public AbstractProgrammableKey clone() {
-        AbstractProgrammableKey copy = (AbstractProgrammableKey) super.clone();
+        final AbstractProgrammableKey copy = (AbstractProgrammableKey) super.clone();
         copy.color = this.color;
         return copy;
     }

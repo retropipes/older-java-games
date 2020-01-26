@@ -41,16 +41,16 @@ public class ImageManager {
 
     public static BufferedImageIcon getMonsterImage(final String name,
             final Element element) {
-        return ImageManager.getImage(name, name,
-                new TemplateTransform(element), false, false, false);
+        return ImageManager.getImage(name, name, new TemplateTransform(element),
+                false, false, false);
     }
 
     public static BufferedImageIcon getPlayerImage(final PartyMember base) {
         final String[] raceNames = RaceConstants.getRaceNames();
         final String name = raceNames[base.getRace().getRaceID()];
         final Element element = base.getElement();
-        return ImageManager.getImage(name, name,
-                new TemplateTransform(element), false, false, false);
+        return ImageManager.getImage(name, name, new TemplateTransform(element),
+                false, false, false);
     }
 
     public static BufferedImageIcon getStatImage(final String name) {
@@ -60,11 +60,10 @@ public class ImageManager {
     static BufferedImageIcon getUncachedImage(final String name,
             final TemplateTransform tt, final boolean horzflip,
             final boolean vertflip, final boolean helpImage) {
-        String normalName = ImageManager.normalizeName(name);
+        final String normalName = ImageManager.normalizeName(name);
         try {
-            URL url = ImageManager.LOAD_CLASS
-                    .getResource(ImageManager.INTERNAL_LOAD_PATH + normalName
-                            + ".png");
+            final URL url = ImageManager.LOAD_CLASS.getResource(
+                    ImageManager.INTERNAL_LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             BufferedImageIcon res = ImageTransformer
@@ -84,8 +83,8 @@ public class ImageManager {
         }
     }
 
-    private static String normalizeName(String name) {
-        StringBuilder sb = new StringBuilder(name);
+    private static String normalizeName(final String name) {
+        final StringBuilder sb = new StringBuilder(name);
         for (int x = 0; x < sb.length(); x++) {
             if (!Character.isLetter(sb.charAt(x))
                     && !Character.isDigit(sb.charAt(x))) {

@@ -58,20 +58,18 @@ public class CombatItemManager {
                     if (ii.getUses(i) > 0) {
                         return i;
                     } else {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "You try to use an item, but realize you've run out!",
-                                        "Select Item");
+                        CommonDialogs.showErrorDialog(
+                                "You try to use an item, but realize you've run out!",
+                                "Select Item");
                         return null;
                     }
                 } else {
                     return null;
                 }
             } else {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to use an item, but realize you don't have any!",
-                                "Select Item");
+                CommonDialogs.showErrorDialog(
+                        "You try to use an item, but realize you don't have any!",
+                        "Select Item");
                 return null;
             }
         } else {
@@ -121,16 +119,16 @@ public class CombatItemManager {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
             }

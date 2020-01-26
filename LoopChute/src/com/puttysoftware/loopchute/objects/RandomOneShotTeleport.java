@@ -28,8 +28,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = LoopChute.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -55,8 +55,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = LoopChute.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM_ONESHOT);
+        return me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM_ONESHOT);
     }
 
     @Override

@@ -38,16 +38,16 @@ public class Element {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((this.faith == null) ? 0 : this.faith.hashCode());
+                + (this.faith == null ? 0 : this.faith.hashCode());
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         long temp;
         temp = Double.doubleToLongBits(this.transformBlue);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformGreen);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformRed);
-        return prime * result + (int) (temp ^ (temp >>> 32));
+        return prime * result + (int) (temp ^ temp >>> 32);
     }
 
     @Override

@@ -37,10 +37,8 @@ public class PoisonousAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_POISONOUS,
-                        PoisonousAmulet.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_POISONOUS,
+                PoisonousAmulet.EFFECT_DURATION);
     }
 }

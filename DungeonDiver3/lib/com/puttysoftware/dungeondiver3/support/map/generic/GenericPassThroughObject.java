@@ -27,12 +27,12 @@ public abstract class GenericPassThroughObject extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

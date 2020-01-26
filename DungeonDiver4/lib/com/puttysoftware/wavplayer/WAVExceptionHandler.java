@@ -9,7 +9,7 @@ public class WAVExceptionHandler implements UncaughtExceptionHandler {
             try {
                 final WAVFactory media = (WAVFactory) thr;
                 WAVFactory.taskCompleted(media.getNumber());
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // Ignore
             }
         }

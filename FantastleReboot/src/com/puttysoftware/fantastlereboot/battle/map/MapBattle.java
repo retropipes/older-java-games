@@ -11,17 +11,17 @@ import com.puttysoftware.fantastlereboot.creatures.monsters.MonsterFactory;
 import com.puttysoftware.fantastlereboot.objects.temporary.BattleCharacter;
 
 public class MapBattle {
-  // Fields
-  private final List<BattleCharacter> monsters;
+    // Fields
+    private final List<BattleCharacter> monsters;
 
-  // Constructors
-  public MapBattle() {
-    super();
-    this.monsters = MonsterFactory.generateMapMonsters();
-  }
+    // Constructors
+    public MapBattle() {
+        super();
+        this.monsters = MonsterFactory.generateMapMonsters();
+    }
 
-  // Methods
-  public List<BattleCharacter> getBattlers() {
-    return this.monsters;
-  }
+    // Methods
+    public List<BattleCharacter> getBattlers() {
+        return this.monsters;
+    }
 }

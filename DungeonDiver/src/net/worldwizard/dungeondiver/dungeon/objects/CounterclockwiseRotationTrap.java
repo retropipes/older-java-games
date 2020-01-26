@@ -20,9 +20,7 @@ public class CounterclockwiseRotationTrap extends GenericNSRSBObject {
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver
-                .getHoldingBag()
-                .getPrefs()
+        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
                 .getPreferenceValue(
                         Preferences.COUNTERCLOCKWISE_ROTATION_TRAP_ENABLED);
         if (enabled) {
@@ -35,9 +33,7 @@ public class CounterclockwiseRotationTrap extends GenericNSRSBObject {
 
     @Override
     public ImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver
-                .getHoldingBag()
-                .getPrefs()
+        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
                 .getPreferenceValue(
                         Preferences.COUNTERCLOCKWISE_ROTATION_TRAP_ENABLED);
         if (enabled) {

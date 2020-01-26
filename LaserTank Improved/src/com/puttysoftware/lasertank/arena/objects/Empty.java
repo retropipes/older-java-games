@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class Empty extends AbstractPassThroughObject {
     // Constructors
     public Empty() {
-	super();
-	this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
+        super();
+        this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 130;
+        return 130;
     }
 }

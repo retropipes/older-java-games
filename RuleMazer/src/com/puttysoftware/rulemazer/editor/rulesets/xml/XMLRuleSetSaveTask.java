@@ -43,10 +43,8 @@ public class XMLRuleSetSaveTask extends Thread {
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Saving the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             Main.getDebug().debug(ex);
         }

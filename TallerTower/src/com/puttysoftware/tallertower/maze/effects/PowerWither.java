@@ -18,7 +18,8 @@ public class PowerWither extends MazeEffect {
 
     @Override
     public int modifyMove1(final int arg) {
-        PartyManager.getParty().getLeader().offsetCurrentMP(MP_LOST);
+        PartyManager.getParty().getLeader()
+                .offsetCurrentMP(PowerWither.MP_LOST);
         return arg;
     }
 }

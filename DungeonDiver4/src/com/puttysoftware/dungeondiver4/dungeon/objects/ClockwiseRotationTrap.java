@@ -36,17 +36,14 @@ public class ClockwiseRotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
         DungeonDiver4.getApplication()
                 .showMessage("Your controls are rotated!");
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(
-                        DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                        ClockwiseRotationTrap.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE,
+                ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

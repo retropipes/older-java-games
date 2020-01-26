@@ -29,7 +29,8 @@ public class ClockwiseRotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
         DDRemix.getApplication().showMessage("Your controls are rotated!");
         DDRemix.getApplication().getGameManager()

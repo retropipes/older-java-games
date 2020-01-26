@@ -72,12 +72,13 @@ public class AIRegistration {
             }
             if (!alreadyRegistered) {
                 // Verify that AI file exists
-                if (new File(AIRegistration.getBasePath() + File.separator
-                        + res + Extension.getAIScriptExtensionWithPeriod())
-                        .exists()) {
+                if (new File(AIRegistration.getBasePath() + File.separator + res
+                        + Extension.getAIScriptExtensionWithPeriod())
+                                .exists()) {
                     // Register it
                     if (AIRegistration.ANY_FOUND && aiList != null) {
-                        final String[] newAIList = new String[aiList.length + 1];
+                        final String[] newAIList = new String[aiList.length
+                                + 1];
                         for (int x = 0; x < newAIList.length; x++) {
                             if (x < aiList.length) {
                                 newAIList[x] = aiList[x];
@@ -125,10 +126,11 @@ public class AIRegistration {
                     // Verify that AI file exists
                     if (new File(AIRegistration.getBasePath() + File.separator
                             + res + Extension.getAIScriptExtensionWithPeriod())
-                            .exists()) {
+                                    .exists()) {
                         // Register it
                         if (AIRegistration.ANY_FOUND && aiList != null) {
-                            final String[] newAIList = new String[aiList.length + 1];
+                            final String[] newAIList = new String[aiList.length
+                                    + 1];
                             for (int x = 0; x < newAIList.length; x++) {
                                 if (x < aiList.length) {
                                     newAIList[x] = aiList[x];
@@ -145,12 +147,12 @@ public class AIRegistration {
                         final AIRoutine routine = AILoader.loadAI(res);
                         RandomAIRoutinePicker.addRoutine(routine);
                     } else {
-                        CommonDialogs
-                                .showDialog("The AI to register is not a valid AI.");
+                        CommonDialogs.showDialog(
+                                "The AI to register is not a valid AI.");
                     }
                 } else {
-                    CommonDialogs
-                            .showDialog("The AI to register has been registered already.");
+                    CommonDialogs.showDialog(
+                            "The AI to register has been registered already.");
                 }
             }
         } else {
@@ -169,9 +171,9 @@ public class AIRegistration {
                     + AIRegistration.getFileNameOnly(source));
             try {
                 DirectoryUtilities.copyFile(source, dest);
-                AIRegistration.autoregisterAI(AIRegistration
-                        .getNameWithoutExtension(AIRegistration
-                                .getFileNameOnly(dest)));
+                AIRegistration
+                        .autoregisterAI(AIRegistration.getNameWithoutExtension(
+                                AIRegistration.getFileNameOnly(dest)));
                 CommonDialogs.showTitledDialog("AI Imported Successfully.",
                         "Import AI");
             } catch (final IOException io) {
@@ -213,8 +215,8 @@ public class AIRegistration {
             return;
         }
         // Pick AI to unregister
-        final String res = CommonDialogs.showInputDialog(
-                "Unregister Which AI?", "Unregister AI", aiList, aiList[0]);
+        final String res = CommonDialogs.showInputDialog("Unregister Which AI?",
+                "Unregister AI", aiList, aiList[0]);
         if (res != null) {
             // Find AI index
             int index = -1;
@@ -253,9 +255,9 @@ public class AIRegistration {
         // Load AI registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
         ResourceStreamReader rsr = null;
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "AIRegistry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "AIRegistry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {

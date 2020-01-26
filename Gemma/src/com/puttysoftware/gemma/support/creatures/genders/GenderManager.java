@@ -29,7 +29,7 @@ public class GenderManager implements GenderConstants {
         }
     }
 
-    public static Gender getGender(int genderID) {
+    public static Gender getGender(final int genderID) {
         if (!GenderManager.CACHE_CREATED) {
             // Create cache
             GenderManager.CACHE = new Gender[GenderConstants.GENDERS_COUNT];

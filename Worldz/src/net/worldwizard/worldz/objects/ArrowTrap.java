@@ -26,15 +26,15 @@ public class ArrowTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         this.playMoveSuccessSound();
     }
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         Messager.showMessage("The arrow is stopped!");
         return false;
     }

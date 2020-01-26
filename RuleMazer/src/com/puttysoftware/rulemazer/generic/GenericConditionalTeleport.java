@@ -65,8 +65,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public GenericConditionalTeleport clone() {
-        final GenericConditionalTeleport copy = (GenericConditionalTeleport) super
-                .clone();
+        final GenericConditionalTeleport copy = (GenericConditionalTeleport) super.clone();
         copy.destCol2 = this.destCol2;
         copy.destFloor2 = this.destFloor2;
         copy.destRow2 = this.destRow2;

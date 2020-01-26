@@ -10,16 +10,16 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractTransientObject
 public class RedLaser extends AbstractTransientObject {
     // Constructors
     public RedLaser() {
-	super();
+        super();
     }
 
     @Override
     public int getForceUnitsImbued() {
-	return 1;
+        return 1;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 30;
+        return 30;
     }
 }

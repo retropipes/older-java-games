@@ -11,8 +11,8 @@ public class PrefixHandler implements PrefixIO {
 
     @Override
     public void readPrefix(final DataReader reader) throws IOException {
-        final boolean res = PrefixHandler.checkFormatVersion(PrefixHandler
-                .readFormatVersion(reader));
+        final boolean res = PrefixHandler
+                .checkFormatVersion(PrefixHandler.readFormatVersion(reader));
         if (!res) {
             throw new IOException("Unsupported world format version.");
         }
@@ -44,7 +44,8 @@ public class PrefixHandler implements PrefixIO {
         }
     }
 
-    private static void writeFormatVersion(final DataWriter writer) throws IOException {
+    private static void writeFormatVersion(final DataWriter writer)
+            throws IOException {
         writer.writeByte(PrefixHandler.FORMAT_VERSION_MAJOR);
         writer.writeByte(PrefixHandler.FORMAT_VERSION_MINOR);
     }

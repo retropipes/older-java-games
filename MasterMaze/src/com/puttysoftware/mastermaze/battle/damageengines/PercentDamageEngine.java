@@ -33,8 +33,8 @@ class PercentDamageEngine extends DamageEngine {
         final double attack = acting.getEffectedAttack();
         final double defense = enemy
                 .getEffectedStat(StatConstants.STAT_DEFENSE);
-        final double absorb = (PercentDamageEngine.ABSORB - enemy
-                .getArmorBlock()) / PercentDamageEngine.ABSORB;
+        final double absorb = (PercentDamageEngine.ABSORB
+                - enemy.getArmorBlock()) / PercentDamageEngine.ABSORB;
         final int power = acting.getItems().getTotalPower();
         this.didFumble();
         if (this.fumble) {
@@ -140,9 +140,8 @@ class PercentDamageEngine extends DamageEngine {
                             faithDR += fpl * faithDRInc;
                         }
                     }
-                    final Equipment cape = acting.getItems()
-                            .getEquipmentInSlot(
-                                    EquipmentSlotConstants.SLOT_BACK);
+                    final Equipment cape = acting.getItems().getEquipmentInSlot(
+                            EquipmentSlotConstants.SLOT_BACK);
                     if (cape != null) {
                         for (int z = 0; z < fc; z++) {
                             final int fpl = cape.getFaithPowerLevel(z);
@@ -176,18 +175,16 @@ class PercentDamageEngine extends DamageEngine {
                             faithDR += fpl * faithDRInc;
                         }
                     }
-                    final Equipment ring = acting.getItems()
-                            .getEquipmentInSlot(
-                                    EquipmentSlotConstants.SLOT_FINGERS);
+                    final Equipment ring = acting.getItems().getEquipmentInSlot(
+                            EquipmentSlotConstants.SLOT_FINGERS);
                     if (ring != null) {
                         for (int z = 0; z < fc; z++) {
                             final int fpl = ring.getFaithPowerLevel(z);
                             faithDR += fpl * faithDRInc;
                         }
                     }
-                    final Equipment belt = acting.getItems()
-                            .getEquipmentInSlot(
-                                    EquipmentSlotConstants.SLOT_LOWER_TORSO);
+                    final Equipment belt = acting.getItems().getEquipmentInSlot(
+                            EquipmentSlotConstants.SLOT_LOWER_TORSO);
                     if (belt != null) {
                         for (int z = 0; z < fc; z++) {
                             final int fpl = belt.getFaithPowerLevel(z);
@@ -213,7 +210,8 @@ class PercentDamageEngine extends DamageEngine {
                         }
                     }
                     final int unadjustedDamage = (int) (rawDamage * multiplier
-                            * faithMultiplier / PercentDamageEngine.MULTIPLIER_DIVIDE);
+                            * faithMultiplier
+                            / PercentDamageEngine.MULTIPLIER_DIVIDE);
                     return unadjustedDamage - (int) Math.ceil(faithDR);
                 }
             }

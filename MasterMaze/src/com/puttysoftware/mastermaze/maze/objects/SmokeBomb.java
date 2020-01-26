@@ -49,10 +49,7 @@ public class SmokeBomb extends GenericBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         // Paralyze any monsters nearby
-        MasterMaze
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        MasterMaze.getApplication().getMazeManager().getMaze()
                 .radialScanTimerAction(x, y, z, MazeConstants.LAYER_OBJECT,
                         GenericBomb.EFFECT_RADIUS, "Monster",
                         SmokeBomb.STUN_DURATION);

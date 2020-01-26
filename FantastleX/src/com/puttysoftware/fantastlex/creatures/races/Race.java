@@ -13,10 +13,11 @@ public class Race {
     private final String desc;
 
     Race(final int rid, final int... rdata) {
-        if (rdata == null || rdata.length != RaceConstants.RACE_ATTRIBUTE_COUNT) {
-            throw new IllegalArgumentException("Exactly "
-                    + RaceConstants.RACE_ATTRIBUTE_COUNT
-                    + " attributes must be specified!");
+        if (rdata == null
+                || rdata.length != RaceConstants.RACE_ATTRIBUTE_COUNT) {
+            throw new IllegalArgumentException(
+                    "Exactly " + RaceConstants.RACE_ATTRIBUTE_COUNT
+                            + " attributes must be specified!");
         }
         this.raceID = rid;
         this.data = rdata;

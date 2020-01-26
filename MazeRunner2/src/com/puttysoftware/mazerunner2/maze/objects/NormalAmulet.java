@@ -35,7 +35,8 @@ public class NormalAmulet extends AbstractAmulet {
     @Override
     public void postMoveActionHook() {
         // Deactivate other amulet effects
-        GameLogicManager gm = MazeRunnerII.getApplication().getGameManager();
+        final GameLogicManager gm = MazeRunnerII.getApplication()
+                .getGameManager();
         gm.deactivateEffect(MazeEffectConstants.EFFECT_COUNTER_POISONED);
         gm.deactivateEffect(MazeEffectConstants.EFFECT_FIERY);
         gm.deactivateEffect(MazeEffectConstants.EFFECT_GHOSTLY);

@@ -30,8 +30,8 @@ public abstract class MazeGenericField extends MazeGenericInfiniteLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         // Do nothing
     }
 

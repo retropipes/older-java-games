@@ -33,8 +33,8 @@ public class RemoteActionWand extends AbstractWand {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().doRemoteAction(x, y, z);
     }

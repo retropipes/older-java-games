@@ -12,42 +12,42 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.ObjectImageConstants;
 public class Player extends AbstractCharacter {
     // Constructors
     public Player() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_PLAYER;
+        return ObjectImageConstants.OBJECT_IMAGE_PLAYER;
     }
 
     @Override
     public String getName() {
-	return "Player";
+        return "Player";
     }
 
     @Override
     public String getPluralName() {
-	return "Players";
+        return "Players";
     }
 
     @Override
     public String getDescription() {
-	return "This is you - the Player.";
+        return "This is you - the Player.";
     }
 
     // Random Generation Rules
     @Override
     public boolean isRequired() {
-	return true;
+        return true;
     }
 
     @Override
     public int getMinimumRequiredQuantity(final Dungeon maze) {
-	return 1;
+        return 1;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final Dungeon maze) {
-	return 1;
+        return 1;
     }
 }

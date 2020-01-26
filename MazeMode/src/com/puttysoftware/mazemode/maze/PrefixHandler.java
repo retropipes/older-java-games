@@ -23,7 +23,8 @@ public class PrefixHandler implements PrefixIO {
         PrefixHandler.writeFormatVersion(writer);
     }
 
-    private static byte readFormatVersion(final XDataReader reader) throws IOException {
+    private static byte readFormatVersion(final XDataReader reader)
+            throws IOException {
         return reader.readByte();
     }
 

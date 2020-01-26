@@ -302,8 +302,8 @@ public class SpellBook extends Identifiable {
         longHash = longHash.add(IDGenerator.computeStringLongHash(this.name)
                 .multiply(BigInteger.valueOf(2)));
         for (int x = 0; x < this.spells.length; x++) {
-            longHash = longHash.add(this.spells[x].computeLongHash()).multiply(
-                    BigInteger.valueOf(x + 3));
+            longHash = longHash.add(this.spells[x].computeLongHash())
+                    .multiply(BigInteger.valueOf(x + 3));
         }
         return longHash;
     }
@@ -315,12 +315,10 @@ public class SpellBook extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "spellbooks"
-                + File.separator
-                + this.getID() + Extension.getSpellBookExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "spellbooks" + File.separator + this.getID()
+                        + Extension.getSpellBookExtensionWithPeriod(),
                 Extension.getSpellBookExtension());
         this.write(writer);
         writer.close();

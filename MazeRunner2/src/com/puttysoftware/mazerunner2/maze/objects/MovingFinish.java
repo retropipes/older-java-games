@@ -38,10 +38,10 @@ public class MovingFinish extends Finish {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (this.active) {
-            Application app = MazeRunnerII.getApplication();
+            final Application app = MazeRunnerII.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_FINISH);
             app.getGameManager().solvedLevel();
         } else {
@@ -61,28 +61,26 @@ public class MovingFinish extends Finish {
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        AbstractMazeObject obj = MazeRunnerII
-                .getApplication()
-                .getMazeManager()
-                .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(),
-                        this.getDestinationFloor(), MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject obj = MazeRunnerII.getApplication()
+                .getMazeManager().getMazeObject(this.getDestinationRow(),
+                        this.getDestinationColumn(), this.getDestinationFloor(),
+                        MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
-            MovingFinish mf = (MovingFinish) obj;
+            final MovingFinish mf = (MovingFinish) obj;
             SoundManager.playSound(SoundConstants.SOUND_CHANGE);
             mf.activate();
         } else {
-            Application app = MazeRunnerII.getApplication();
-            AbstractMazeObject saved = app.getGameManager()
+            final Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject saved = app.getGameManager()
                     .getSavedMazeObject();
-            int px = app.getMazeManager().getMaze().getPlayerLocationX();
-            int py = app.getMazeManager().getMaze().getPlayerLocationY();
-            int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
-            int ax = this.getDestinationRow();
-            int ay = this.getDestinationColumn();
-            int az = this.getDestinationFloor();
+            final int px = app.getMazeManager().getMaze().getPlayerLocationX();
+            final int py = app.getMazeManager().getMaze().getPlayerLocationY();
+            final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
+            final int ax = this.getDestinationRow();
+            final int ay = this.getDestinationColumn();
+            final int az = this.getDestinationFloor();
             if (saved instanceof MovingFinish && px == ax && py == ay
                     && pz == az) {
                 SoundManager.playSound(SoundConstants.SOUND_FINISH);
@@ -94,15 +92,16 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        MazeRunnerII.getApplication().showMessage(
-                this.getName() + ": Next Moving Finish ("
+        MazeRunnerII.getApplication()
+                .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
                         + (this.getDestinationFloor() + 1) + ")");
     }
 
     @Override
-    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+    public AbstractMazeObject gameRenderHook(final int x, final int y,
+            final int z) {
         if (this.active) {
             return this;
         } else {
@@ -161,9 +160,9 @@ public class MovingFinish extends Finish {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
-        final AbstractMazeObject mo = me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final AbstractMazeObject mo = me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
 
@@ -178,7 +177,7 @@ public class MovingFinish extends Finish {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.getDestinationRow();
@@ -192,7 +191,7 @@ public class MovingFinish extends Finish {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.setDestinationRow(value);

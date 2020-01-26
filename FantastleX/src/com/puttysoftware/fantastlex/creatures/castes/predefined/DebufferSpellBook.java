@@ -23,8 +23,8 @@ public class DebufferSpellBook extends SpellBook {
     @Override
     protected void defineSpells() {
         final Effect spell0Effect = new Effect("Damage Lock", 5);
-        spell0Effect.setEffect(Effect.EFFECT_ADD,
-                StatConstants.STAT_CURRENT_HP, -2);
+        spell0Effect.setEffect(Effect.EFFECT_ADD, StatConstants.STAT_CURRENT_HP,
+                -2);
         spell0Effect.setMessage(Effect.MESSAGE_INITIAL,
                 "You perpetrate some locksmithery on your enemy!");
         spell0Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
@@ -47,8 +47,8 @@ public class DebufferSpellBook extends SpellBook {
                 SoundConstants.SOUND_BIND);
         this.spells[1] = spell1;
         final Effect spell2Effect = new Effect("Power Lock", 5);
-        spell2Effect.setEffect(Effect.EFFECT_ADD,
-                StatConstants.STAT_CURRENT_HP, -10);
+        spell2Effect.setEffect(Effect.EFFECT_ADD, StatConstants.STAT_CURRENT_HP,
+                -10);
         spell2Effect.setMessage(Effect.MESSAGE_INITIAL,
                 "You lock your enemy into a damage trap!");
         spell2Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
@@ -91,8 +91,8 @@ public class DebufferSpellBook extends SpellBook {
         spell5Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
                 "The enemy is unable to defend!");
         spell5Effect.setMessage(Effect.MESSAGE_WEAR_OFF, "The binding breaks!");
-        final Spell spell5 = new Spell(spell5Effect, 11,
-                BattleTarget.ONE_ENEMY, SoundConstants.SOUND_BIND);
+        final Spell spell5 = new Spell(spell5Effect, 11, BattleTarget.ONE_ENEMY,
+                SoundConstants.SOUND_BIND);
         this.spells[5] = spell5;
         final Effect spell6Effect = new Effect("Attack Lock All", 10);
         spell6Effect.setEffect(Effect.EFFECT_MULTIPLY,
@@ -107,16 +107,15 @@ public class DebufferSpellBook extends SpellBook {
                 BattleTarget.ALL_ENEMIES, SoundConstants.SOUND_UNLOCK);
         this.spells[6] = spell6;
         final Effect spell7Effect = new Effect("Blindness", 10);
-        spell7Effect.setEffect(Effect.EFFECT_MULTIPLY,
-                StatConstants.STAT_EVADE, 0, Effect.DEFAULT_SCALE_FACTOR,
-                Effect.DEFAULT_SCALE_STAT);
+        spell7Effect.setEffect(Effect.EFFECT_MULTIPLY, StatConstants.STAT_EVADE,
+                0, Effect.DEFAULT_SCALE_FACTOR, Effect.DEFAULT_SCALE_STAT);
         spell7Effect.setMessage(Effect.MESSAGE_INITIAL, "You blind an enemy!");
         spell7Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
                 "The enemy cannot dodge attacks!");
         spell7Effect.setMessage(Effect.MESSAGE_WEAR_OFF,
                 "The enemy's vision returns to normal!");
-        final Spell spell7 = new Spell(spell7Effect, 17,
-                BattleTarget.ONE_ENEMY, SoundConstants.SOUND_UNLOCK);
+        final Spell spell7 = new Spell(spell7Effect, 17, BattleTarget.ONE_ENEMY,
+                SoundConstants.SOUND_UNLOCK);
         this.spells[7] = spell7;
     }
 

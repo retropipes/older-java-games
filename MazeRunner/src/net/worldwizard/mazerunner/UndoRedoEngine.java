@@ -90,8 +90,8 @@ public class UndoRedoEngine {
         public int coordX, coordY, coordZ, coordW;
         public Link next;
 
-        public Link(final MazeObject obj, final int x, final int y,
-                final int z, final int w) {
+        public Link(final MazeObject obj, final int x, final int y, final int z,
+                final int w) {
             this.mo = obj;
             this.coordX = x;
             this.coordY = y;

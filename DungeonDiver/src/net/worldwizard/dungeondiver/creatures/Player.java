@@ -220,12 +220,11 @@ public abstract class Player extends Creature {
         this.toNextLevel = this.getExpToNextLevel(this.level + 1, this.kills);
     }
 
-    public void loadPlayer(final int pAttack, final int pDefense,
-            final int pHP, final int pMP, final int newKills,
-            final int newLevel, final int chp, final int cmp,
-            final int newWeapon, final int newArmor, final int newGold,
-            final int newBank, final long newExperience, final int dl,
-            final int bookID) {
+    public void loadPlayer(final int pAttack, final int pDefense, final int pHP,
+            final int pMP, final int newKills, final int newLevel,
+            final int chp, final int cmp, final int newWeapon,
+            final int newArmor, final int newGold, final int newBank,
+            final long newExperience, final int dl, final int bookID) {
         this.permanentAttack = pAttack;
         this.permanentDefense = pDefense;
         this.permanentHP = pHP;
@@ -325,10 +324,10 @@ public abstract class Player extends Creature {
     }
 
     public void updateMaxHPandMP() {
-        this.maximumHP = this.level * this.hpPerLevel + this.permanentHP
-                * this.permanentHPperPoint;
-        this.maximumMP = this.level * this.mpPerLevel + this.permanentMP
-                * this.permanentMPperPoint;
+        this.maximumHP = this.level * this.hpPerLevel
+                + this.permanentHP * this.permanentHPperPoint;
+        this.maximumMP = this.level * this.mpPerLevel
+                + this.permanentMP * this.permanentMPperPoint;
     }
 
     public void healFully() {

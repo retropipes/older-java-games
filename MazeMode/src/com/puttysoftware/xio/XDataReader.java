@@ -71,8 +71,10 @@ public class XDataReader {
         final String line = this.br.readLine();
         if (line != null) {
             final String[] split = XDataReader.splitLine(line);
-            XDataReader.validateOpeningTag(split[0], XDataConstants.BOOLEAN_TAG);
-            XDataReader.validateClosingTag(split[2], XDataConstants.BOOLEAN_TAG);
+            XDataReader.validateOpeningTag(split[0],
+                    XDataConstants.BOOLEAN_TAG);
+            XDataReader.validateClosingTag(split[2],
+                    XDataConstants.BOOLEAN_TAG);
             return Boolean.parseBoolean(split[1]);
         } else {
             throw new IOException("End of file!");
@@ -91,16 +93,16 @@ public class XDataReader {
         }
     }
 
-    private static void validateOpeningTag(final String tag, final String tagType)
-            throws IOException {
+    private static void validateOpeningTag(final String tag,
+            final String tagType) throws IOException {
         if (!tag.equals("<" + tagType + ">")) {
             throw new UnexpectedTagException("Expected opening tag of <"
                     + tagType + ">, found " + tag + "!");
         }
     }
 
-    private static void validateClosingTag(final String tag, final String tagType)
-            throws IOException {
+    private static void validateClosingTag(final String tag,
+            final String tagType) throws IOException {
         if (!tag.equals("</" + tagType + ">")) {
             throw new UnexpectedTagException("Expected closing tag of </"
                     + tagType + ">, found " + tag + "!");

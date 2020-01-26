@@ -15,7 +15,7 @@ public abstract class AbstractBattle {
     // Constants
     protected static final int BASE_RUN_CHANCE = 80;
     protected static final int RUN_CHANCE_DIFF_FACTOR = 5;
-    
+
     // Constructors
     protected AbstractBattle() {
         // Do nothing

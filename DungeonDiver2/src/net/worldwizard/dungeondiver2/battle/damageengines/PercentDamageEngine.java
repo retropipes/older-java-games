@@ -19,15 +19,15 @@ public class PercentDamageEngine extends DamageEngine {
             // Fumble!
             this.missed = false;
             this.dodged = false;
-            final RandomRange fumDamage = new RandomRange(1, Math.max(
-                    acting.getUnfactoredWeaponPower(), 1));
+            final RandomRange fumDamage = new RandomRange(1,
+                    Math.max(acting.getUnfactoredWeaponPower(), 1));
             return -fumDamage.generate();
         } else {
             final double attack = acting.getEffectedUnfactoredAttack();
             final double block = enemy
                     .getEffectedStat(StatConstants.STAT_BLOCK);
-            final double absorb = (PercentDamageEngine.ABSORB - enemy
-                    .getArmorBlock()) / PercentDamageEngine.ABSORB;
+            final double absorb = (PercentDamageEngine.ABSORB
+                    - enemy.getArmorBlock()) / PercentDamageEngine.ABSORB;
             final double rawDamage = Math.max(1.0, (attack - block) * absorb);
             final int rHit = new RandomRange(0, 10000).generate();
             final int aHit = acting.getHit();
@@ -52,7 +52,8 @@ public class PercentDamageEngine extends DamageEngine {
                             PercentDamageEngine.MULTIPLIER_MIN,
                             PercentDamageEngine.MULTIPLIER_MAX);
                     final double multiplier = rDamage.generate();
-                    return (int) (rawDamage * multiplier / PercentDamageEngine.MULTIPLIER_DIVIDE);
+                    return (int) (rawDamage * multiplier
+                            / PercentDamageEngine.MULTIPLIER_DIVIDE);
                 }
             }
         }

@@ -13,21 +13,23 @@ import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
-public abstract class AbstractInvisibleBlockTeleport extends
-        AbstractBlockTeleport {
+public abstract class AbstractInvisibleBlockTeleport
+        extends AbstractBlockTeleport {
     // Constructors
     protected AbstractInvisibleBlockTeleport(final int destinationRow,
             final int destinationColumn, final int destinationFloor,
             final int attrName) {
         super(destinationRow, destinationColumn, destinationFloor, attrName);
         this.setTemplateColor(ColorConstants.COLOR_SAND);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
     }
 
     @Override
     public void pushIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),
@@ -39,8 +41,9 @@ public abstract class AbstractInvisibleBlockTeleport extends
 
     @Override
     public void pullIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),

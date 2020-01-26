@@ -99,7 +99,7 @@ public class Shop {
             this.defaultUI.showShop();
         }
         MusicManager.stopMusic();
-        int zoneID = PartyManager.getParty().getZone();
+        final int zoneID = PartyManager.getParty().getZone();
         if (zoneID == Dungeon.getMaxLevels() - 1) {
             MusicManager.playMusic(MusicConstants.MUSIC_LAIR);
         } else {

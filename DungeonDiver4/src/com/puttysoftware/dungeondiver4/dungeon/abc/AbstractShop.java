@@ -18,7 +18,7 @@ public abstract class AbstractShop extends AbstractDungeonObject {
     private final int shopType;
 
     // Constructors
-    public AbstractShop(int newShopType) {
+    public AbstractShop(final int newShopType) {
         super(false, false);
         this.setTemplateColor(ColorConstants.COLOR_ORANGE);
         this.shopType = newShopType;
@@ -31,9 +31,9 @@ public abstract class AbstractShop extends AbstractDungeonObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Shop shop = DungeonDiver4.getApplication()
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Shop shop = DungeonDiver4.getApplication()
                 .getGenericShop(this.shopType);
         if (shop != null) {
             shop.showShop();
@@ -46,12 +46,12 @@ public abstract class AbstractShop extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
@@ -61,15 +61,15 @@ public abstract class AbstractShop extends AbstractDungeonObject {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Dungeon dungeon) {
-        return (int) Math.ceil(Math.sqrt(dungeon.getRows()
-                * dungeon.getColumns() / 2));
+    public int getMinimumRequiredQuantity(final Dungeon dungeon) {
+        return (int) Math
+                .ceil(Math.sqrt(dungeon.getRows() * dungeon.getColumns() / 2));
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Dungeon dungeon) {
-        return (int) Math.floor(Math.sqrt(dungeon.getRows()
-                * dungeon.getColumns()));
+    public int getMaximumRequiredQuantity(final Dungeon dungeon) {
+        return (int) Math
+                .floor(Math.sqrt(dungeon.getRows() * dungeon.getColumns()));
     }
 
     @Override

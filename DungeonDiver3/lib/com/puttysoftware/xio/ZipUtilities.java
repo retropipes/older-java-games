@@ -16,26 +16,26 @@ public final class ZipUtilities {
         // Do nothing
     }
 
-    public static void zipDirectory(File directory, File zip)
+    public static void zipDirectory(final File directory, final File zip)
             throws IOException {
         try (ZipOutputStream zos = new ZipOutputStream(
                 new FileOutputStream(zip))) {
-            zip(directory, directory, zos);
+            ZipUtilities.zip(directory, directory, zos);
         }
     }
 
-    private static void zip(File directory, File base, ZipOutputStream zos)
-            throws IOException {
-        File[] files = directory.listFiles();
-        byte[] buffer = new byte[8192];
+    private static void zip(final File directory, final File base,
+            final ZipOutputStream zos) throws IOException {
+        final File[] files = directory.listFiles();
+        final byte[] buffer = new byte[8192];
         int read = 0;
-        for (int i = 0, n = files.length; i < n; i++) {
-            if (files[i].isDirectory()) {
-                zip(files[i], base, zos);
+        for (final File file : files) {
+            if (file.isDirectory()) {
+                ZipUtilities.zip(file, base, zos);
             } else {
-                try (FileInputStream in = new FileInputStream(files[i])) {
-                    ZipEntry entry = new ZipEntry(files[i].getPath().substring(
-                            base.getPath().length() + 1));
+                try (FileInputStream in = new FileInputStream(file)) {
+                    final ZipEntry entry = new ZipEntry(file.getPath()
+                            .substring(base.getPath().length() + 1));
                     zos.putNextEntry(entry);
                     while (-1 != (read = in.read(buffer))) {
                         zos.write(buffer, 0, read);
@@ -45,21 +45,21 @@ public final class ZipUtilities {
         }
     }
 
-    public static void unzipDirectory(File zip, File extractTo)
+    public static void unzipDirectory(final File zip, final File extractTo)
             throws IOException {
         try (ZipFile archive = new ZipFile(zip)) {
-            Enumeration<? extends ZipEntry> e = archive.entries();
+            final Enumeration<? extends ZipEntry> e = archive.entries();
             while (e.hasMoreElements()) {
-                ZipEntry entry = e.nextElement();
-                File file = new File(extractTo, entry.getName());
+                final ZipEntry entry = e.nextElement();
+                final File file = new File(extractTo, entry.getName());
                 if (entry.isDirectory() && !file.exists()) {
-                    boolean res = file.mkdirs();
+                    final boolean res = file.mkdirs();
                     if (!res) {
                         throw new IOException("Couldn't make folders!");
                     }
                 } else {
                     if (!file.getParentFile().exists()) {
-                        boolean res = file.getParentFile().mkdirs();
+                        final boolean res = file.getParentFile().mkdirs();
                         if (!res) {
                             throw new IOException("Couldn't make folders!");
                         }
@@ -67,7 +67,7 @@ public final class ZipUtilities {
                     try (InputStream in = archive.getInputStream(entry);
                             BufferedOutputStream out = new BufferedOutputStream(
                                     new FileOutputStream(file))) {
-                        byte[] buffer = new byte[8192];
+                        final byte[] buffer = new byte[8192];
                         int read;
                         while (-1 != (read = in.read(buffer))) {
                             out.write(buffer, 0, read);

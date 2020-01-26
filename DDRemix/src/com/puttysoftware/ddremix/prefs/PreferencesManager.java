@@ -60,8 +60,8 @@ public class PreferencesManager {
     }
 
     public static boolean useTimeBattleEngine() {
-        return PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.TIME_SETTING, false);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.TIME_SETTING, false);
     }
 
     static void setTimeBattleEngine(final boolean value) {
@@ -70,18 +70,18 @@ public class PreferencesManager {
     }
 
     public static boolean getSoundsEnabled() {
-        return PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.SOUNDS_SETTING, true);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.SOUNDS_SETTING, true);
     }
 
     public static void setSoundsEnabled(final boolean value) {
-        PreferencesManager.storeMgr.setBoolean(
-                PreferencesManager.SOUNDS_SETTING, value);
+        PreferencesManager.storeMgr
+                .setBoolean(PreferencesManager.SOUNDS_SETTING, value);
     }
 
     public static boolean getHighDefEnabled() {
-        return PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.HD_SETTING, false);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.HD_SETTING, false);
     }
 
     public static void setHighDefEnabled(final boolean value) {
@@ -101,23 +101,23 @@ public class PreferencesManager {
     }
 
     static void setViewingWindowSizeIndex(final int value) {
-        PreferencesManager.storeMgr.setInteger(
-                PreferencesManager.WINDOW_SETTING, value);
+        PreferencesManager.storeMgr
+                .setInteger(PreferencesManager.WINDOW_SETTING, value);
     }
 
     public static boolean shouldCheckUpdatesAtStartup() {
-        return PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.UPDATE_SETTING, true);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.UPDATE_SETTING, true);
     }
 
     static void setCheckUpdatesAtStartup(final boolean value) {
-        PreferencesManager.storeMgr.setBoolean(
-                PreferencesManager.UPDATE_SETTING, value);
+        PreferencesManager.storeMgr
+                .setBoolean(PreferencesManager.UPDATE_SETTING, value);
     }
 
     public static boolean oneMove() {
-        return PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.MOVE_SETTING, true);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.MOVE_SETTING, true);
     }
 
     static void setOneMove(final boolean value) {
@@ -132,23 +132,23 @@ public class PreferencesManager {
     }
 
     static void setGameDifficulty(final int value) {
-        PreferencesManager.storeMgr.setInteger(
-                PreferencesManager.DIFFICULTY_SETTING, value);
+        PreferencesManager.storeMgr
+                .setInteger(PreferencesManager.DIFFICULTY_SETTING, value);
     }
 
     public static boolean getMusicEnabled(final int mus) {
-        if (!PreferencesManager.storeMgr.getBoolean(
-                PreferencesManager.MUSIC_ALL_SETTING, false)) {
+        if (!PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.MUSIC_ALL_SETTING, false)) {
             return false;
         } else {
-            return PreferencesManager.storeMgr.getBoolean(
-                    PreferencesManager.MUSIC_SETTING + mus, true);
+            return PreferencesManager.storeMgr
+                    .getBoolean(PreferencesManager.MUSIC_SETTING + mus, true);
         }
     }
 
     static void setMusicEnabled(final int mus, final boolean status) {
-        PreferencesManager.storeMgr.setBoolean(PreferencesManager.MUSIC_SETTING
-                + mus, status);
+        PreferencesManager.storeMgr
+                .setBoolean(PreferencesManager.MUSIC_SETTING + mus, status);
     }
 
     public static JFrame getPrefFrame() {
@@ -230,23 +230,23 @@ public class PreferencesManager {
                     new FileInputStream(PreferencesManager.getPrefsFile())));
         } catch (final IOException io) {
             // Populate store with defaults
-            PreferencesManager.storeMgr.setBoolean(
-                    PreferencesManager.UPDATE_SETTING, true);
-            PreferencesManager.storeMgr.setBoolean(
-                    PreferencesManager.MOVE_SETTING, true);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.UPDATE_SETTING, true);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.MOVE_SETTING, true);
             for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                PreferencesManager.storeMgr.setBoolean(
-                        PreferencesManager.MUSIC_SETTING + x, true);
+                PreferencesManager.storeMgr
+                        .setBoolean(PreferencesManager.MUSIC_SETTING + x, true);
             }
             PreferencesManager.storeMgr.setInteger(
                     PreferencesManager.WINDOW_SETTING,
                     PreferencesGUIManager.DEFAULT_SIZE_INDEX);
-            PreferencesManager.storeMgr.setBoolean(
-                    PreferencesManager.SOUNDS_SETTING, true);
-            PreferencesManager.storeMgr.setBoolean(
-                    PreferencesManager.TIME_SETTING, false);
-            PreferencesManager.storeMgr.setBoolean(
-                    PreferencesManager.HD_SETTING, false);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.SOUNDS_SETTING, true);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.TIME_SETTING, false);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.HD_SETTING, false);
             PreferencesManager.storeMgr.setInteger(
                     PreferencesManager.DIFFICULTY_SETTING,
                     PreferencesManager.DEFAULT_DIFFICULTY);

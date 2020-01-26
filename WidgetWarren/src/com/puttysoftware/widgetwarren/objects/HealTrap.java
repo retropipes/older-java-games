@@ -31,8 +31,8 @@ public class HealTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         this.healing = WidgetWarren.getApplication().getMazeManager().getMaze()
                 .getMaximumHP() / 50;
         if (this.healing < 1) {

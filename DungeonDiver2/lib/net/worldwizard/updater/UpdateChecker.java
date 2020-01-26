@@ -148,10 +148,9 @@ public class UpdateChecker {
                         inputLine = in.readLine();
                         newVersionBugfix = Integer.parseInt(inputLine);
                     } catch (final NumberFormatException nf) {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "An internal error occurred while checking for updates.",
-                                        "Update Error");
+                        CommonDialogs.showErrorDialog(
+                                "An internal error occurred while checking for updates.",
+                                "Update Error");
                     }
                 }
                 String blurb = "";
@@ -203,10 +202,9 @@ public class UpdateChecker {
                 }
             } catch (final IOException ie) {
                 CommonDialogs
-                        .showErrorDialog(
-                                "Unable to contact the update site.\n"
-                                        + "Make sure you are connected to the Internet,\n"
-                                        + "then try again.", "Update Error");
+                        .showErrorDialog("Unable to contact the update site.\n"
+                                + "Make sure you are connected to the Internet,\n"
+                                + "then try again.", "Update Error");
             }
         }
     }
@@ -243,10 +241,9 @@ public class UpdateChecker {
                         inputLine = in.readLine();
                         newVersionBeta = Integer.parseInt(inputLine);
                     } catch (final NumberFormatException nf) {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "An internal error occurred while checking for updates.",
-                                        "Update Error");
+                        CommonDialogs.showErrorDialog(
+                                "An internal error occurred while checking for updates.",
+                                "Update Error");
                     }
                 }
                 String blurb = "";
@@ -317,10 +314,9 @@ public class UpdateChecker {
                 }
             } catch (final IOException ie) {
                 CommonDialogs
-                        .showErrorDialog(
-                                "Unable to contact the update site.\n"
-                                        + "Make sure you are connected to the Internet,\n"
-                                        + "then try again.", "Update Error");
+                        .showErrorDialog("Unable to contact the update site.\n"
+                                + "Make sure you are connected to the Internet,\n"
+                                + "then try again.", "Update Error");
             }
         }
     }
@@ -332,13 +328,9 @@ public class UpdateChecker {
                 + Integer.toString(this.bugfixVersion);
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix);
-        CommonDialogs
-                .showTitledDialog(
-                        "Version "
-                                + newVersionString
-                                + " is the latest, according to the update site, but you have version "
-                                + oldVersionString + ", which is newer.",
-                        "Newer Version");
+        CommonDialogs.showTitledDialog("Version " + newVersionString
+                + " is the latest, according to the update site, but you have version "
+                + oldVersionString + ", which is newer.", "Newer Version");
     }
 
     private void showUpdatesAvailableMessage(final int major, final int minor,
@@ -349,10 +341,11 @@ public class UpdateChecker {
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix);
         final String newVersionLink = this.newVersionURL.toExternalForm();
-        final int result = CommonDialogs.showConfirmDialog("Version "
-                + newVersionString + " is available.\nYou have version "
-                + oldVersionString + ".\n" + blurb
-                + "Do you want to go to the program web site now?",
+        final int result = CommonDialogs.showConfirmDialog(
+                "Version " + newVersionString
+                        + " is available.\nYou have version " + oldVersionString
+                        + ".\n" + blurb
+                        + "Do you want to go to the program web site now?",
                 "Update Available");
         if (result == JOptionPane.YES_OPTION) {
             // Launch Browser
@@ -369,13 +362,9 @@ public class UpdateChecker {
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix)
                 + "-dev" + Integer.toString(beta);
-        CommonDialogs
-                .showTitledDialog(
-                        "Version "
-                                + newVersionString
-                                + " is the latest, according to the update site, but you have version "
-                                + oldVersionString + ", which is newer.",
-                        "Newer Beta Version");
+        CommonDialogs.showTitledDialog("Version " + newVersionString
+                + " is the latest, according to the update site, but you have version "
+                + oldVersionString + ", which is newer.", "Newer Beta Version");
     }
 
     private void showUpdatesAvailableMessage(final int major, final int minor,
@@ -388,10 +377,11 @@ public class UpdateChecker {
                 + Integer.toString(minor) + "." + Integer.toString(bugfix)
                 + "-dev" + Integer.toString(beta);
         final String newVersionLink = this.newVersionURL.toExternalForm();
-        final int result = CommonDialogs.showConfirmDialog("Version "
-                + newVersionString + " is available.\nYou have version "
-                + oldVersionString + ".\n" + blurb
-                + "Do you want to go to the program web site now?",
+        final int result = CommonDialogs.showConfirmDialog(
+                "Version " + newVersionString
+                        + " is available.\nYou have version " + oldVersionString
+                        + ".\n" + blurb
+                        + "Do you want to go to the program web site now?",
                 "Beta Update Available");
         if (result == JOptionPane.YES_OPTION) {
             // Launch Browser
@@ -480,13 +470,13 @@ public class UpdateChecker {
     private void generateCache() throws IOException {
         // Cache the update DB to a file
         final File cache = this.getCacheFile();
-        final String ttl = Long.toString(System.currentTimeMillis()
-                + this.cacheTTL);
+        final String ttl = Long
+                .toString(System.currentTimeMillis() + this.cacheTTL);
         final File ttlFile = this.getCacheTTLFile();
         try (final BufferedReader in = new BufferedReader(
                 new InputStreamReader(this.updateURL.openStream()));
-                final BufferedWriter out = new BufferedWriter(new FileWriter(
-                        cache));
+                final BufferedWriter out = new BufferedWriter(
+                        new FileWriter(cache));
                 final BufferedWriter outTTL = new BufferedWriter(
                         new FileWriter(ttlFile))) {
             // Create the needed subdirectories, if they don't already exist
@@ -512,8 +502,8 @@ public class UpdateChecker {
     private void isCacheGood() {
         final long curr = System.currentTimeMillis();
         final File ttlFile = this.getCacheTTLFile();
-        try (final BufferedReader inTTL = new BufferedReader(new FileReader(
-                ttlFile))) {
+        try (final BufferedReader inTTL = new BufferedReader(
+                new FileReader(ttlFile))) {
             final String test = inTTL.readLine();
             final long stored = Long.parseLong(test);
             this.cachedDB = curr <= stored;

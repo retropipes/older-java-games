@@ -32,7 +32,7 @@ public class BasicLowLevelDataStore {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }

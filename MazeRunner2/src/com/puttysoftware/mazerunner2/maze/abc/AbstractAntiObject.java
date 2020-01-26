@@ -18,8 +18,8 @@ public abstract class AbstractAntiObject extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
@@ -34,12 +34,12 @@ public abstract class AbstractAntiObject extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

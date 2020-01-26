@@ -25,8 +25,7 @@ public class RandomLongRange {
             return Math.abs(RandomnessSource.nextLong()) + this.minimum;
         } else {
             return Math.abs(RandomnessSource.nextLong()
-                    % (this.maximum - this.minimum + 1))
-                    + this.minimum;
+                    % (this.maximum - this.minimum + 1)) + this.minimum;
         }
     }
 

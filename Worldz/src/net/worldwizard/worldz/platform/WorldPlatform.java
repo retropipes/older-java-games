@@ -13,20 +13,21 @@ public class WorldPlatform {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             // Mac OS X-specific stuff
             System.setProperty(
-                    "com.apple.mrj.application.apple.menu.about.name", "Worldz");
+                    "com.apple.mrj.application.apple.menu.about.name",
+                    "Worldz");
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             try {
                 // Tell the UIManager to use the Quaqua look and feel
-                UIManager
-                        .setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "ch.randelshofer.quaqua.QuaquaLookAndFeel");
             } catch (final Exception e) {
                 // Do nothing
             }
         } else {
             try {
                 // Tell the UIManager to use the platform native look and feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {

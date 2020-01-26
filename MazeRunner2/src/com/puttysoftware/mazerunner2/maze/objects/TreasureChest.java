@@ -21,7 +21,7 @@ public class TreasureChest extends AbstractContainer {
         this.setTemplateColor(ColorConstants.COLOR_BRIDGE);
     }
 
-    public TreasureChest(AbstractMazeObject inside) {
+    public TreasureChest(final AbstractMazeObject inside) {
         super(new TreasureKey(), inside);
     }
 

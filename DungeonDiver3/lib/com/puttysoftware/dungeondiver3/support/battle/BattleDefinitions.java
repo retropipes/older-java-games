@@ -35,32 +35,32 @@ public class BattleDefinitions {
     }
 
     public void resetBattlers() {
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTemplate().isAlive()) {
-                    this.battlers[x].activate();
-                    this.battlers[x].resetAP();
-                    this.battlers[x].resetAttacks();
-                    this.battlers[x].resetSpells();
-                    this.battlers[x].resetLocation();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTemplate().isAlive()) {
+                    battler.activate();
+                    battler.resetAP();
+                    battler.resetAttacks();
+                    battler.resetSpells();
+                    battler.resetLocation();
                 }
             }
         }
     }
 
     public void roundResetBattlers() {
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTemplate().isAlive()) {
-                    this.battlers[x].resetAP();
-                    this.battlers[x].resetAttacks();
-                    this.battlers[x].resetSpells();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTemplate().isAlive()) {
+                    battler.resetAP();
+                    battler.resetAttacks();
+                    battler.resetSpells();
                 }
             }
         }
     }
 
-    public boolean addBattler(BattleCharacter battler) {
+    public boolean addBattler(final BattleCharacter battler) {
         if (this.battlerCount < BattleDefinitions.MAX_BATTLERS) {
             this.battlers[this.battlerCount] = battler;
             this.battlerCount++;
@@ -78,7 +78,7 @@ public class BattleDefinitions {
         return this.activeCharacter;
     }
 
-    public void setActiveCharacter(BattleCharacter bc) {
+    public void setActiveCharacter(final BattleCharacter bc) {
         this.activeCharacter = bc;
     }
 
@@ -86,12 +86,12 @@ public class BattleDefinitions {
         return this.battleMap;
     }
 
-    public void setBattleMap(Map bMap) {
+    public void setBattleMap(final Map bMap) {
         this.battleMap = bMap;
     }
 
-    public Creature[] getAllFriendsOfTeam(int teamID) {
-        Creature[] tempFriends = new Creature[this.battlers.length];
+    public Creature[] getAllFriendsOfTeam(final int teamID) {
+        final Creature[] tempFriends = new Creature[this.battlers.length];
         int nnc = 0;
         for (int x = 0; x < tempFriends.length; x++) {
             if (this.battlers[x] != null) {
@@ -101,19 +101,19 @@ public class BattleDefinitions {
                 }
             }
         }
-        Creature[] friends = new Creature[nnc];
+        final Creature[] friends = new Creature[nnc];
         nnc = 0;
-        for (int x = 0; x < tempFriends.length; x++) {
-            if (tempFriends[x] != null) {
-                friends[nnc] = tempFriends[x];
+        for (final Creature tempFriend : tempFriends) {
+            if (tempFriend != null) {
+                friends[nnc] = tempFriend;
                 nnc++;
             }
         }
         return friends;
     }
 
-    public Creature[] getAllEnemiesOfTeam(int teamID) {
-        Creature[] tempEnemies = new Creature[this.battlers.length];
+    public Creature[] getAllEnemiesOfTeam(final int teamID) {
+        final Creature[] tempEnemies = new Creature[this.battlers.length];
         int nnc = 0;
         for (int x = 0; x < tempEnemies.length; x++) {
             if (this.battlers[x] != null) {
@@ -123,19 +123,19 @@ public class BattleDefinitions {
                 }
             }
         }
-        Creature[] enemies = new Creature[nnc];
+        final Creature[] enemies = new Creature[nnc];
         nnc = 0;
-        for (int x = 0; x < tempEnemies.length; x++) {
-            if (tempEnemies[x] != null) {
-                enemies[nnc] = tempEnemies[x];
+        for (final Creature tempEnemie : tempEnemies) {
+            if (tempEnemie != null) {
+                enemies[nnc] = tempEnemie;
                 nnc++;
             }
         }
         return enemies;
     }
 
-    private String[] buildNameListOfTeamFriends(int teamID) {
-        String[] tempNames = new String[this.battlers.length];
+    private String[] buildNameListOfTeamFriends(final int teamID) {
+        final String[] tempNames = new String[this.battlers.length];
         int nnc = 0;
         for (int x = 0; x < tempNames.length; x++) {
             if (this.battlers[x] != null) {
@@ -146,19 +146,19 @@ public class BattleDefinitions {
                 }
             }
         }
-        String[] names = new String[nnc];
+        final String[] names = new String[nnc];
         nnc = 0;
-        for (int x = 0; x < tempNames.length; x++) {
-            if (tempNames[x] != null) {
-                names[nnc] = tempNames[x];
+        for (final String tempName : tempNames) {
+            if (tempName != null) {
+                names[nnc] = tempName;
                 nnc++;
             }
         }
         return names;
     }
 
-    private String[] buildNameListOfTeamEnemies(int teamID) {
-        String[] tempNames = new String[this.battlers.length];
+    private String[] buildNameListOfTeamEnemies(final int teamID) {
+        final String[] tempNames = new String[this.battlers.length];
         int nnc = 0;
         for (int x = 0; x < tempNames.length; x++) {
             if (this.battlers[x] != null) {
@@ -169,33 +169,33 @@ public class BattleDefinitions {
                 }
             }
         }
-        String[] names = new String[nnc];
+        final String[] names = new String[nnc];
         nnc = 0;
-        for (int x = 0; x < tempNames.length; x++) {
-            if (tempNames[x] != null) {
-                names[nnc] = tempNames[x];
+        for (final String tempName : tempNames) {
+            if (tempName != null) {
+                names[nnc] = tempName;
                 nnc++;
             }
         }
         return names;
     }
 
-    public Creature pickOneFriendOfTeam(int teamID) {
-        String[] pickNames = this.buildNameListOfTeamFriends(teamID);
+    public Creature pickOneFriendOfTeam(final int teamID) {
+        final String[] pickNames = this.buildNameListOfTeamFriends(teamID);
         return this.pickFriendOfTeamInternal(pickNames, 1, 1);
     }
 
-    public Creature pickOneFriendOfTeamRandomly(int teamID) {
-        String[] pickNames = this.buildNameListOfTeamFriends(teamID);
+    public Creature pickOneFriendOfTeamRandomly(final int teamID) {
+        final String[] pickNames = this.buildNameListOfTeamFriends(teamID);
         if (pickNames.length == 0) {
             return null;
         }
-        RandomRange r = new RandomRange(0, pickNames.length - 1);
-        int index = r.generate();
+        final RandomRange r = new RandomRange(0, pickNames.length - 1);
+        final int index = r.generate();
         if (index < 0) {
             return null;
         }
-        int res = this.findBattler(pickNames[index]);
+        final int res = this.findBattler(pickNames[index]);
         if (res != -1) {
             return this.battlers[res].getTemplate();
         } else {
@@ -203,18 +203,19 @@ public class BattleDefinitions {
         }
     }
 
-    private Creature pickFriendOfTeamInternal(String[] pickNames, int current,
-            int number) {
+    private Creature pickFriendOfTeamInternal(final String[] pickNames,
+            final int current, final int number) {
         String text;
         if (number > 1) {
             text = "Pick " + number + " Friends";
         } else {
             text = "Pick 1 Friend";
         }
-        String response = CommonDialogs.showInputDialog(text + " - " + current
-                + " of " + number, "Battle", pickNames, pickNames[0]);
+        final String response = CommonDialogs.showInputDialog(
+                text + " - " + current + " of " + number, "Battle", pickNames,
+                pickNames[0]);
         if (response != null) {
-            int loc = this.findBattler(response);
+            final int loc = this.findBattler(response);
             if (loc != -1) {
                 return this.battlers[loc].getTemplate();
             } else {
@@ -225,22 +226,22 @@ public class BattleDefinitions {
         }
     }
 
-    public Creature pickOneEnemyOfTeam(int teamID) {
-        String[] pickNames = this.buildNameListOfTeamEnemies(teamID);
+    public Creature pickOneEnemyOfTeam(final int teamID) {
+        final String[] pickNames = this.buildNameListOfTeamEnemies(teamID);
         return this.pickEnemyOfTeamInternal(pickNames, 1, 1);
     }
 
-    public Creature pickOneEnemyOfTeamRandomly(int teamID) {
-        String[] pickNames = this.buildNameListOfTeamEnemies(teamID);
+    public Creature pickOneEnemyOfTeamRandomly(final int teamID) {
+        final String[] pickNames = this.buildNameListOfTeamEnemies(teamID);
         if (pickNames.length == 0) {
             return null;
         }
-        RandomRange r = new RandomRange(0, pickNames.length - 1);
-        int index = r.generate();
+        final RandomRange r = new RandomRange(0, pickNames.length - 1);
+        final int index = r.generate();
         if (index < 0) {
             return null;
         }
-        int res = this.findBattler(pickNames[index]);
+        final int res = this.findBattler(pickNames[index]);
         if (res != -1) {
             return this.battlers[res].getTemplate();
         } else {
@@ -248,18 +249,19 @@ public class BattleDefinitions {
         }
     }
 
-    private Creature pickEnemyOfTeamInternal(String[] pickNames, int current,
-            int number) {
+    private Creature pickEnemyOfTeamInternal(final String[] pickNames,
+            final int current, final int number) {
         String text;
         if (number > 1) {
             text = "Pick " + number + " Enemies";
         } else {
             text = "Pick 1 Enemy";
         }
-        String response = CommonDialogs.showInputDialog(text + " - " + current
-                + " of " + number, "Battle", pickNames, pickNames[0]);
+        final String response = CommonDialogs.showInputDialog(
+                text + " - " + current + " of " + number, "Battle", pickNames,
+                pickNames[0]);
         if (response != null) {
-            int loc = this.findBattler(response);
+            final int loc = this.findBattler(response);
             if (loc != -1) {
                 return this.battlers[loc].getTemplate();
             } else {
@@ -270,11 +272,12 @@ public class BattleDefinitions {
         }
     }
 
-    public int findBattler(String name) {
+    public int findBattler(final String name) {
         return this.findBattler(name, 0, this.battlers.length);
     }
 
-    private int findBattler(String name, int start, int limit) {
+    private int findBattler(final String name, final int start,
+            final int limit) {
         for (int x = start; x < limit; x++) {
             if (this.battlers[x] != null) {
                 if (this.battlers[x].getName().equals(name)) {
@@ -290,43 +293,43 @@ public class BattleDefinitions {
     }
 
     // Prestige Stuff
-    public static void dealtDamage(Creature c, int value) {
+    public static void dealtDamage(final Creature c, final int value) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_DAMAGE_GIVEN, value);
     }
 
-    public static void tookDamage(Creature c, int value) {
+    public static void tookDamage(final Creature c, final int value) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_DAMAGE_TAKEN, value);
     }
 
-    public static void hitEnemy(Creature c) {
+    public static void hitEnemy(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_HITS_GIVEN, 1);
     }
 
-    public static void hitByEnemy(Creature c) {
+    public static void hitByEnemy(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_HITS_TAKEN, 1);
     }
 
-    public static void missedEnemy(Creature c) {
+    public static void missedEnemy(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_MISSED_ATTACKS, 1);
     }
 
-    public static void killedEnemy(Creature c) {
+    public static void killedEnemy(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_MONSTERS_KILLED, 1);
     }
 
-    public static void dodgedAttack(Creature c) {
+    public static void dodgedAttack(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_ATTACKS_DODGED, 1);
     }
 
-    public static void castSpell(Creature c) {
+    public static void castSpell(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_SPELLS_CAST, 1);
     }
 
-    public static void killedInBattle(Creature c) {
+    public static void killedInBattle(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_TIMES_KILLED, 1);
     }
 
-    public static void ranAway(Creature c) {
+    public static void ranAway(final Creature c) {
         c.offsetPrestigeValue(PrestigeConstants.PRESTIGE_TIMES_RAN_AWAY, 1);
     }
 }

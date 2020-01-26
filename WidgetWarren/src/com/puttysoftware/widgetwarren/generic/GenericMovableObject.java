@@ -21,8 +21,8 @@ public abstract class GenericMovableObject extends MazeObject {
     // Constructors
     protected GenericMovableObject(final boolean pushable,
             final boolean pullable) {
-        super(true, pushable, false, false, pullable, false, false, true,
-                false, 0);
+        super(true, pushable, false, false, pullable, false, false, true, false,
+                0);
         this.setSavedObject(new Empty());
     }
 
@@ -32,8 +32,8 @@ public abstract class GenericMovableObject extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Do nothing
     }
 

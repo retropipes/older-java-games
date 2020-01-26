@@ -17,10 +17,9 @@ public class RaceDescriptionManager {
     public static String getRaceDescription(final int r) {
         final String name = RaceConstants.getRaceName(r).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                RaceDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/ddremix/resources/descriptions/race/"
-                                + name
-                                + Extension
+                RaceDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/ddremix/resources/descriptions/race/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
             final String desc = rsr.readString();

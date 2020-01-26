@@ -26,8 +26,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -37,8 +37,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
         Messager.showMessage("Invisible Teleport!");
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -61,8 +61,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     @Override
     public WorldObject editorPropertiesHook() {
         final WorldEditor me = Worldz.getApplication().getEditor();
-        final WorldObject mo = me
-                .editTeleportDestination(WorldEditor.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
+        final WorldObject mo = me.editTeleportDestination(
+                WorldEditor.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
         return mo;
     }
 

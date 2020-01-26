@@ -18,8 +18,8 @@ public abstract class MazeGenericUsableObject extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         inv.addItem(this);
         final MazeRunner app = MazeRunner.getApplication();
         app.decay();

@@ -9,7 +9,7 @@ class LowLevelADODataStore implements Cloneable {
     private final int[] interProd;
 
     // Constructor
-    public LowLevelADODataStore(int... shape) {
+    public LowLevelADODataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -21,7 +21,7 @@ class LowLevelADODataStore implements Cloneable {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -32,14 +32,15 @@ class LowLevelADODataStore implements Cloneable {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
 
     @Override
     public Object clone() {
-        LowLevelADODataStore copy = new LowLevelADODataStore(this.dataShape);
+        final LowLevelADODataStore copy = new LowLevelADODataStore(
+                this.dataShape);
         for (int x = 0; x < this.dataStore.length; x++) {
             copy.dataStore[x] = this.dataStore[x].clone();
         }
@@ -50,13 +51,13 @@ class LowLevelADODataStore implements Cloneable {
         return this.dataShape;
     }
 
-    public AbstractDungeonObject getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public AbstractDungeonObject getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(AbstractDungeonObject obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final AbstractDungeonObject obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 }

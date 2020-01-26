@@ -1,10 +1,10 @@
 package net.worldwizard.dungeondiver2.battle;
 
 interface BattleResults {
-    public static final int IN_PROGRESS = 0;
-    public static final int WON = 1;
-    public static final int LOST = 2;
-    public static final int DRAW = 3;
-    public static final int FLED = 4;
-    public static final int ENEMY_FLED = 5;
+    int IN_PROGRESS = 0;
+    int WON = 1;
+    int LOST = 2;
+    int DRAW = 3;
+    int FLED = 4;
+    int ENEMY_FLED = 5;
 }

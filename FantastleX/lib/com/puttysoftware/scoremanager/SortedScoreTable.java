@@ -132,7 +132,8 @@ public class SortedScoreTable extends ScoreTable {
         return sst;
     }
 
-    public void writeSortedScoreTable(final XDataWriter xdw) throws IOException {
+    public void writeSortedScoreTable(final XDataWriter xdw)
+            throws IOException {
         xdw.writeBoolean(this.sortOrder);
         xdw.writeInt(this.table.size());
         xdw.writeInt(this.unit.length);
@@ -143,8 +144,8 @@ public class SortedScoreTable extends ScoreTable {
                 xdw.writeString(element);
             }
         }
-        for (int x = 0; x < this.table.size(); x++) {
-            this.table.get(x).writeScore(xdw);
+        for (final Score element : this.table) {
+            element.writeScore(xdw);
         }
     }
 }

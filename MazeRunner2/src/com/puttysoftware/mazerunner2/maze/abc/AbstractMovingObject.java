@@ -7,11 +7,12 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractMovingObject extends AbstractMazeObject {
     // Constructors
-    public AbstractMovingObject(boolean solid) {
+    public AbstractMovingObject(final boolean solid) {
         super(solid, false);
     }
 
-    public AbstractMovingObject(boolean solid, int tc, int attr, int attrColor) {
+    public AbstractMovingObject(final boolean solid, final int tc,
+            final int attr, final int attrColor) {
         super(solid, true);
         this.setTemplateColor(tc);
         this.setAttributeID(attr);
@@ -25,8 +26,8 @@ public abstract class AbstractMovingObject extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         this.postMoveActionHook();
     }
 
@@ -53,12 +54,12 @@ public abstract class AbstractMovingObject extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

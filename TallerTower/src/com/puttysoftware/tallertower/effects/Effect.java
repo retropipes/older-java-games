@@ -111,13 +111,13 @@ public class Effect {
         long temp;
         result = prime * result + Arrays.hashCode(this.effectDecayRate);
         temp = Double.doubleToLongBits(this.effectScaleFactor);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         result = prime * result + this.effectScaleStat;
         result = prime * result + Arrays.hashCode(this.initialEffect);
         result = prime * result + this.initialRounds;
         result = prime * result + Arrays.hashCode(this.messages);
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         return prime * result + this.rounds;
     }
 
@@ -186,19 +186,19 @@ public class Effect {
 
     public String getCurrentMessage() {
         String msg = Effect.getNullMessage();
-        if (this.rounds == (this.initialRounds - 1)) {
-            if (!this.messages[Effect.MESSAGE_INITIAL].equals(Effect
-                    .getNullMessage())) {
+        if (this.rounds == this.initialRounds - 1) {
+            if (!this.messages[Effect.MESSAGE_INITIAL]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Effect.MESSAGE_SUBSEQUENT].equals(Effect
-                .getNullMessage())) {
+        if (!this.messages[Effect.MESSAGE_SUBSEQUENT]
+                .equals(Effect.getNullMessage())) {
             msg += this.messages[Effect.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 0) {
-            if (!this.messages[Effect.MESSAGE_WEAR_OFF].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_WEAR_OFF]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_WEAR_OFF] + "\n";
             }
         }
@@ -232,14 +232,14 @@ public class Effect {
     }
 
     private boolean areRoundsInfinite() {
-        return (this.rounds == Effect.ROUNDS_INFINITE);
+        return this.rounds == Effect.ROUNDS_INFINITE;
     }
 
     public boolean isActive() {
         if (this.areRoundsInfinite()) {
             return true;
         } else {
-            return (this.rounds > 0);
+            return this.rounds > 0;
         }
     }
 
@@ -334,7 +334,7 @@ public class Effect {
             if (scst != StatConstants.STAT_NONE) {
                 final double factor = this.effectScaleFactor;
                 final int scstVal = scaleTo.getStat(scst);
-                this.effect[type][stat] = (scstVal * base * factor);
+                this.effect[type][stat] = scstVal * base * factor;
             }
         }
     }
@@ -371,7 +371,8 @@ public class Effect {
         return this.effectDecayRate[type][stat];
     }
 
-    public void setDecayRate(final int type, final int stat, final double value) {
+    public void setDecayRate(final int type, final int stat,
+            final double value) {
         this.effectDecayRate[type][stat] = value;
     }
 

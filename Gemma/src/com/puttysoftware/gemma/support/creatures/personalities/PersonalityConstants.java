@@ -57,7 +57,7 @@ public class PersonalityConstants {
                     PersonalityDataManager.class.getResourceAsStream(
                             "/com/puttysoftware/gemma/support/resources/data/personality/catalog.txt"))) {
                 // Fetch data
-                ArrayList<String> tempNames = new ArrayList<>();
+                final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {
                     input = rsr.readString();

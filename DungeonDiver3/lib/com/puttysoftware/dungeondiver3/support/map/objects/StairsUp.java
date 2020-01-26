@@ -24,8 +24,8 @@ public class StairsUp extends GenericTeleport {
         super();
         this.setTemplateTransform(new TemplateTransform(1.0, 1.0, 1.0));
         // Create post-move script
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.MOVE);
         entry1.addActionArg(new InternalScriptEntryArgument(false));
         entry1.addActionArg(new InternalScriptEntryArgument(false));
@@ -34,7 +34,7 @@ public class StairsUp extends GenericTeleport {
         entry1.addActionArg(new InternalScriptEntryArgument(1));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
-        InternalScriptEntry entry2 = new InternalScriptEntry();
+        final InternalScriptEntry entry2 = new InternalScriptEntry();
         entry2.setActionCode(InternalScriptActionCode.SOUND);
         entry2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_STAIRS));
@@ -77,12 +77,12 @@ public class StairsUp extends GenericTeleport {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

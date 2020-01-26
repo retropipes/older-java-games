@@ -15,10 +15,10 @@ import com.puttysoftware.xio.XDataReader;
 
 public class RuleSetLoadTask extends Thread {
     // Fields
-    private String filename;
+    private final String filename;
 
     // Constructors
-    public RuleSetLoadTask(String file) {
+    public RuleSetLoadTask(final String file) {
         this.filename = file;
         this.setName("Rule Set File Reader");
     }
@@ -26,10 +26,11 @@ public class RuleSetLoadTask extends Thread {
     // Methods
     @Override
     public void run() {
-        Application app = DungeonDiver4.getApplication();
-        String sg = "Rule Set";
-        try (XDataReader ruleSetFile = new XDataReader(this.filename, "ruleset")) {
-            int magic = ruleSetFile.readInt();
+        final Application app = DungeonDiver4.getApplication();
+        final String sg = "Rule Set";
+        try (XDataReader ruleSetFile = new XDataReader(this.filename,
+                "ruleset")) {
+            final int magic = ruleSetFile.readInt();
             if (magic == RuleSetConstants.MAGIC_NUMBER_2) {
                 // Format 2 file
                 app.getObjects().readRuleSet(ruleSetFile,
@@ -38,10 +39,8 @@ public class RuleSetLoadTask extends Thread {
             CommonDialogs.showTitledDialog(sg + " file loaded.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getDungeonManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog(ie.getMessage());

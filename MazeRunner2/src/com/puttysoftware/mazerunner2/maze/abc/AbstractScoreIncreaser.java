@@ -16,7 +16,7 @@ import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
 public abstract class AbstractScoreIncreaser extends AbstractMazeObject {
     // Constructors
-    protected AbstractScoreIncreaser(int tc) {
+    protected AbstractScoreIncreaser(final int tc) {
         super(false, false);
         this.setTemplateColor(tc);
     }
@@ -27,8 +27,8 @@ public abstract class AbstractScoreIncreaser extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         MazeRunnerII.getApplication().getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);
         this.postMoveActionHook();
@@ -49,21 +49,22 @@ public abstract class AbstractScoreIncreaser extends AbstractMazeObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
-        MazeRunnerII.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
+        MazeRunnerII.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_SHATTER);
         return false;
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

@@ -17,7 +17,7 @@ class LogoCache {
     // Methods
     static BufferedImageIcon getCachedLogo(final String name) {
         if (!LogoCache.isInCache(name)) {
-            BufferedImageIcon bii = LogoManager.getUncachedLogo(name);
+            final BufferedImageIcon bii = LogoManager.getUncachedLogo(name);
             LogoCache.addToCache(name, bii);
         }
         for (int x = 0; x < LogoCache.nameCache.length; x++) {
@@ -29,9 +29,9 @@ class LogoCache {
     }
 
     private static void expandCache() {
-        BufferedImageIcon[] tempCache = new BufferedImageIcon[LogoCache.cache.length
+        final BufferedImageIcon[] tempCache = new BufferedImageIcon[LogoCache.cache.length
                 + LogoCache.CACHE_INCREMENT];
-        String[] tempNameCache = new String[LogoCache.cache.length
+        final String[] tempNameCache = new String[LogoCache.cache.length
                 + LogoCache.CACHE_INCREMENT];
         for (int x = 0; x < LogoCache.CACHE_SIZE; x++) {
             tempCache[x] = LogoCache.cache[x];

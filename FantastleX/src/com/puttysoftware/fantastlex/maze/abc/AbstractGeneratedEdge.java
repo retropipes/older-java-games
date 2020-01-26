@@ -21,8 +21,8 @@ public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     private final String dirName;
 
     // Constructors
-    protected AbstractGeneratedEdge(final String n, final int b,
-            final String p, final String s1, final String s2, final String d) {
+    protected AbstractGeneratedEdge(final String n, final int b, final String p,
+            final String s1, final String s2, final String d) {
         super(false, false);
         this.setTemplateColor(ColorConstants.COLOR_NONE);
         this.name = n;
@@ -64,8 +64,8 @@ public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     @Override
     public String getDescription() {
         return this.plural + " are transitions in the " + this.dirName
-                + " direction, between " + this.source1 + " and "
-                + this.source2 + ".";
+                + " direction, between " + this.source1 + " and " + this.source2
+                + ".";
     }
 
     @Override
@@ -95,8 +95,8 @@ public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 }

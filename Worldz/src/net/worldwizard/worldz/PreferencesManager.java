@@ -292,16 +292,16 @@ public class PreferencesManager {
     }
 
     void handleExport() {
-        final boolean result = this.eiMgr.exportPreferencesFile(this.eiMgr
-                .getExportDestination());
+        final boolean result = this.eiMgr
+                .exportPreferencesFile(this.eiMgr.getExportDestination());
         if (!result) {
             Messager.showErrorDialog("Export Failed!", "Preferences");
         }
     }
 
     void handleImport() {
-        final boolean result = this.eiMgr.importPreferencesFile(this.eiMgr
-                .getImportSource());
+        final boolean result = this.eiMgr
+                .importPreferencesFile(this.eiMgr.getImportSource());
         if (!result) {
             Messager.showErrorDialog("Import Failed!", "Preferences");
         } else {
@@ -352,8 +352,8 @@ public class PreferencesManager {
                 "Enable battle music", true);
         this.music[PreferencesManager.MUSIC_EXPLORING] = new JCheckBox(
                 "Enable exploring music", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.checkBetaUpdatesStartup = new JCheckBox(
                 "Check for Beta Updates at Startup", true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
@@ -367,26 +367,26 @@ public class PreferencesManager {
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        this.gamePane.setLayout(new GridLayout(PreferencesManager
-                .getGridLength(), 1));
+        this.gamePane.setLayout(
+                new GridLayout(PreferencesManager.getGridLength(), 1));
         this.gamePane.add(new JLabel("Battle Speed"));
         this.gamePane.add(this.battleSpeedChoices);
-        this.editorPane.setLayout(new GridLayout(PreferencesManager
-                .getGridLength(), 1));
+        this.editorPane.setLayout(
+                new GridLayout(PreferencesManager.getGridLength(), 1));
         this.editorPane.add(new JLabel("Default fill for new worlds:"));
         this.editorPane.add(this.editorFillChoices);
-        this.soundPane.setLayout(new GridLayout(PreferencesManager
-                .getGridLength(), 1));
+        this.soundPane.setLayout(
+                new GridLayout(PreferencesManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             this.soundPane.add(this.sounds[x]);
         }
-        this.musicPane.setLayout(new GridLayout(PreferencesManager
-                .getGridLength(), 1));
+        this.musicPane.setLayout(
+                new GridLayout(PreferencesManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.musicPane.add(this.music[x]);
         }
-        this.miscPane.setLayout(new GridLayout(PreferencesManager
-                .getGridLength(), 1));
+        this.miscPane.setLayout(
+                new GridLayout(PreferencesManager.getGridLength(), 1));
         this.miscPane.add(this.checkUpdatesStartup);
         if (Worldz.getApplication().isBetaModeEnabled()) {
             this.miscPane.add(this.checkBetaUpdatesStartup);
@@ -479,7 +479,8 @@ public class PreferencesManager {
             } catch (final IOException ie) {
                 return false;
             } catch (final Exception e) {
-                Messager.showDialog("An error occurred while attempting to read the preferences file. Using defaults.");
+                Messager.showDialog(
+                        "An error occurred while attempting to read the preferences file. Using defaults.");
                 return false;
             }
         }
@@ -667,8 +668,8 @@ public class PreferencesManager {
         }
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         public EventHandler() {
             // TODO Auto-generated constructor stub
         }
@@ -700,7 +701,8 @@ public class PreferencesManager {
                 final Object o = e.getItem();
                 if (o.getClass().equals(JCheckBox.class)) {
                     final JCheckBox check = (JCheckBox) o;
-                    if (check.equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
+                    if (check
+                            .equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                                 pm.sounds[x].setEnabled(true);

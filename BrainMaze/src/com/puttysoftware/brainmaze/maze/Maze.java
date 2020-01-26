@@ -357,8 +357,7 @@ public class Maze implements MazeConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        FileUtilities.moveFile(sourceLocation,
-                                targetLocation);
+                        FileUtilities.moveFile(sourceLocation, targetLocation);
                     } catch (final IOException io) {
                         // Ignore
                     }
@@ -567,8 +566,8 @@ public class Maze implements MazeConstants {
     }
 
     public void fillFloorAndLayerRandomlyCustom(final int z, final int layer) {
-        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z,
-                this.activeLevel, layer);
+        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z, this.activeLevel,
+                layer);
     }
 
     public void save() {
@@ -642,8 +641,8 @@ public class Maze implements MazeConstants {
         m.basePath = this.basePath;
         int version = 0;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             version = m.readMazeMetafile(metaReader);
         } catch (final IOException ioe) {
@@ -685,13 +684,13 @@ public class Maze implements MazeConstants {
         this.readMazeLevel(reader, FormatConstants.MAZE_FORMAT_LATEST);
     }
 
-    private void readMazeLevel(final XDataReader reader, final int formatVersion)
-            throws IOException {
+    private void readMazeLevel(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.MAZE_FORMAT_1
                 || formatVersion == FormatConstants.MAZE_FORMAT_2
                 || formatVersion == FormatConstants.MAZE_FORMAT_3) {
-            this.mazeData = LayeredTower
-                    .readLayeredTower(reader, formatVersion);
+            this.mazeData = LayeredTower.readLayeredTower(reader,
+                    formatVersion);
             this.mazeData.readSavedTowerState(reader, formatVersion);
         } else {
             throw new IOException("Unknown maze format version!");
@@ -704,8 +703,8 @@ public class Maze implements MazeConstants {
 
     public void writeMaze() throws IOException {
         // Create metafile writer
-        try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataWriter metaWriter = new XDataWriter(
+                this.basePath + File.separator + "metafile.xml", "maze")) {
             // Write metafile
             this.writeMazeMetafile(metaWriter);
         } catch (final IOException ioe) {
@@ -725,7 +724,8 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafile(final XDataWriter writer) throws IOException {
+    private void writeMazeMetafile(final XDataWriter writer)
+            throws IOException {
         if (this.xmlPrefixHandler != null) {
             this.xmlPrefixHandler.writePrefix(writer);
         }

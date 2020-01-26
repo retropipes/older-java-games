@@ -13,23 +13,23 @@ import com.puttysoftware.lasertank.utilities.TankInventory;
 public class TenHeatBombs extends AbstractInventoryModifier {
     // Constructors
     public TenHeatBombs() {
-	super();
+        super();
     }
 
     @Override
     public boolean doLasersPassThrough() {
-	return true;
+        return true;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 54;
+        return 54;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	final GameManager gm = LaserTank.getApplication().getGameManager();
-	TankInventory.addTenHeatBombs();
-	gm.morph(new Empty(), dirX, dirY, dirZ, this.getLayer());
+        final GameManager gm = LaserTank.getApplication().getGameManager();
+        TankInventory.addTenHeatBombs();
+        gm.morph(new Empty(), dirX, dirY, dirZ, this.getLayer());
     }
 }

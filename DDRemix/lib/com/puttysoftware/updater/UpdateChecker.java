@@ -80,8 +80,8 @@ public class UpdateChecker {
                 }
                 // Read entries from the cached update DB
                 String inputLine;
-                try (BufferedReader in = new BufferedReader(new FileReader(
-                        this.getCacheFile()))) {
+                try (BufferedReader in = new BufferedReader(
+                        new FileReader(this.getCacheFile()))) {
                     inputLine = in.readLine();
                     newVersionMajor = Integer.parseInt(inputLine);
                     inputLine = in.readLine();
@@ -93,10 +93,9 @@ public class UpdateChecker {
                         newVersionPrerelease = Integer.parseInt(inputLine);
                     }
                 } catch (final NumberFormatException nf) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "An internal error occurred while checking for updates.",
-                                    "Update Error");
+                    CommonDialogs.showErrorDialog(
+                            "An internal error occurred while checking for updates.",
+                            "Update Error");
                 }
                 String blurb = "";
                 // Compare current version to most recent one
@@ -189,49 +188,41 @@ public class UpdateChecker {
                 }
             } catch (final IOException ie) {
                 CommonDialogs
-                        .showErrorDialog(
-                                "Unable to contact the update site.\n"
-                                        + "Make sure you are connected to the Internet,\n"
-                                        + "then try again.", "Update Error");
+                        .showErrorDialog("Unable to contact the update site.\n"
+                                + "Make sure you are connected to the Internet,\n"
+                                + "then try again.", "Update Error");
             }
         }
     }
 
     private void showNewerVersionMessage(final int major, final int minor,
             final int bugfix) {
-        final String oldVersionString = Integer.toString(this.prod
-                .getMajorVersion())
-                + "."
-                + Integer.toString(this.prod.getMinorVersion())
-                + "."
+        final String oldVersionString = Integer
+                .toString(this.prod.getMajorVersion()) + "."
+                + Integer.toString(this.prod.getMinorVersion()) + "."
                 + Integer.toString(this.prod.getBugfixVersion());
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix);
-        CommonDialogs
-                .showTitledDialog(
-                        "Version "
-                                + newVersionString
-                                + " is the latest, according to the update site, but you have version "
-                                + oldVersionString + ", which is newer.",
-                        "Newer Version");
+        CommonDialogs.showTitledDialog("Version " + newVersionString
+                + " is the latest, according to the update site, but you have version "
+                + oldVersionString + ", which is newer.", "Newer Version");
     }
 
     private void showUpdatesAvailableMessage(final int major, final int minor,
             final int bugfix, final String blurb) {
-        final String oldVersionString = Integer.toString(this.prod
-                .getMajorVersion())
-                + "."
-                + Integer.toString(this.prod.getMinorVersion())
-                + "."
+        final String oldVersionString = Integer
+                .toString(this.prod.getMajorVersion()) + "."
+                + Integer.toString(this.prod.getMinorVersion()) + "."
                 + Integer.toString(this.prod.getBugfixVersion());
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix);
         final String newVersionLink = this.prod.getNewVersionURL()
                 .toExternalForm();
-        final int result = CommonDialogs.showConfirmDialog("Version "
-                + newVersionString + " is available.\nYou have version "
-                + oldVersionString + ".\n" + blurb
-                + "Do you want to go to the program web site now?",
+        final int result = CommonDialogs.showConfirmDialog(
+                "Version " + newVersionString
+                        + " is available.\nYou have version " + oldVersionString
+                        + ".\n" + blurb
+                        + "Do you want to go to the program web site now?",
                 "Update Available");
         if (result == JOptionPane.YES_OPTION) {
             // Launch Browser
@@ -255,28 +246,23 @@ public class UpdateChecker {
             rt2 = ".";
             crt = "";
         }
-        final String newVersionString = Integer.toString(this.prod
-                .getMajorVersion())
-                + "."
-                + Integer.toString(this.prod.getMinorVersion())
-                + "."
-                + Integer.toString(this.prod.getBugfixVersion())
-                + rt2
+        final String newVersionString = Integer
+                .toString(this.prod.getMajorVersion()) + "."
+                + Integer.toString(this.prod.getMinorVersion()) + "."
+                + Integer.toString(this.prod.getBugfixVersion()) + rt2
                 + Integer.toString(this.prod.getPrereleaseVersion());
         final String oldVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix) + rt
                 + Integer.toString(beta);
-        CommonDialogs
-                .showTitledDialog(
-                        "Version "
-                                + oldVersionString
-                                + " is the latest, according to the update site, but you have version "
-                                + newVersionString + ", which is newer.",
-                        "Newer " + crt + "Version");
+        CommonDialogs.showTitledDialog("Version " + oldVersionString
+                + " is the latest, according to the update site, but you have version "
+                + newVersionString + ", which is newer.",
+                "Newer " + crt + "Version");
     }
 
     private void showUpdatesAvailableMessage(final int major, final int minor,
-            final int bugfix, final int code, final int beta, final String blurb) {
+            final int bugfix, final int code, final int beta,
+            final String blurb) {
         String rt, crt;
         if (code == ProductData.CODE_BETA) {
             rt = "-beta";
@@ -285,24 +271,22 @@ public class UpdateChecker {
             rt = ".";
             crt = "";
         }
-        final String oldVersionString = Integer.toString(this.prod
-                .getMajorVersion())
-                + "."
-                + Integer.toString(this.prod.getMinorVersion())
-                + "."
-                + Integer.toString(this.prod.getBugfixVersion())
-                + rt
+        final String oldVersionString = Integer
+                .toString(this.prod.getMajorVersion()) + "."
+                + Integer.toString(this.prod.getMinorVersion()) + "."
+                + Integer.toString(this.prod.getBugfixVersion()) + rt
                 + Integer.toString(this.prod.getPrereleaseVersion());
         final String newVersionString = Integer.toString(major) + "."
                 + Integer.toString(minor) + "." + Integer.toString(bugfix) + rt
                 + Integer.toString(beta);
         final String newVersionLink = this.prod.getNewVersionURL()
                 .toExternalForm();
-        final int result = CommonDialogs.showConfirmDialog("Version "
-                + newVersionString + " is available.\nYou have version "
-                + oldVersionString + ".\n" + blurb
-                + "Do you want to go to the program web site now?", crt
-                + "Update Available");
+        final int result = CommonDialogs.showConfirmDialog(
+                "Version " + newVersionString
+                        + " is available.\nYou have version " + oldVersionString
+                        + ".\n" + blurb
+                        + "Do you want to go to the program web site now?",
+                crt + "Update Available");
         if (result == JOptionPane.YES_OPTION) {
             // Launch Browser
             BrowserLauncher.openURL(newVersionLink);
@@ -319,8 +303,9 @@ public class UpdateChecker {
                 rt = "";
                 crt = "";
             }
-            CommonDialogs.showTitledDialog("You have the latest " + rt
-                    + "version.", "No " + crt + "Update Available");
+            CommonDialogs.showTitledDialog(
+                    "You have the latest " + rt + "version.",
+                    "No " + crt + "Update Available");
         } else {
             CommonDialogs.showTitledDialog("You have the latest version.",
                     "No Update Available");
@@ -405,15 +390,15 @@ public class UpdateChecker {
                 return false;
             }
         }
-        final String ttl = Long.toString(System.currentTimeMillis()
-                + this.cacheTTL);
+        final String ttl = Long
+                .toString(System.currentTimeMillis() + this.cacheTTL);
         final File ttlFile = this.getCacheTTLFile();
         // Cache the update DB to a file
-        try (BufferedReader in = new BufferedReader(new InputStreamReader(
-                this.prod.getUpdateURL().openStream()));
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(this.prod.getUpdateURL().openStream()));
                 BufferedWriter out = new BufferedWriter(new FileWriter(cache));
-                BufferedWriter outTTL = new BufferedWriter(new FileWriter(
-                        ttlFile))) {
+                BufferedWriter outTTL = new BufferedWriter(
+                        new FileWriter(ttlFile))) {
             String inputLine = "";
             while (inputLine != null) {
                 inputLine = in.readLine();
@@ -435,7 +420,8 @@ public class UpdateChecker {
     private void isCacheGood() {
         final long curr = System.currentTimeMillis();
         final File ttlFile = this.getCacheTTLFile();
-        try (BufferedReader inTTL = new BufferedReader(new FileReader(ttlFile))) {
+        try (BufferedReader inTTL = new BufferedReader(
+                new FileReader(ttlFile))) {
             final String test = inTTL.readLine();
             inTTL.close();
             final long stored = Long.parseLong(test);

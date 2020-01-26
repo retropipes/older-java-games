@@ -31,7 +31,7 @@ public class IceBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Freeze objects that react to ice
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .radialScanFreezeObjects(x, y, z, AbstractBomb.EFFECT_RADIUS);

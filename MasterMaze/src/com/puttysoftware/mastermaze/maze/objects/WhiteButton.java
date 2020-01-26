@@ -10,7 +10,8 @@ import com.puttysoftware.mastermaze.maze.generic.GenericButton;
 
 public class WhiteButton extends GenericButton {
     public WhiteButton() {
-        super(new WhiteWallOff(), new WhiteWallOn(), ColorConstants.COLOR_WHITE);
+        super(new WhiteWallOff(), new WhiteWallOn(),
+                ColorConstants.COLOR_WHITE);
     }
 
     @Override

@@ -30,14 +30,14 @@ public abstract class AbstractField extends AbstractInfiniteLock {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
     @Override
     public boolean isConditionallySolid(final DungeonObjectInventory inv) {
-        return !(inv.isItemThere(this.getKey()));
+        return !inv.isItemThere(this.getKey());
     }
 
     @Override

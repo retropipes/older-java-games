@@ -36,8 +36,8 @@ class SystemMonsterSpellBook extends SpellBook {
                 SoundConstants.SOUND_SLIME);
         this.spells[0] = spell0;
         final Effect spell1Effect = new Effect("Recover", 1);
-        spell1Effect.setEffect(Effect.EFFECT_ADD,
-                StatConstants.STAT_CURRENT_HP, 15);
+        spell1Effect.setEffect(Effect.EFFECT_ADD, StatConstants.STAT_CURRENT_HP,
+                15);
         spell1Effect.setMessage(Effect.MESSAGE_INITIAL,
                 "The enemy applies a bandage to its wounds!");
         spell1Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,

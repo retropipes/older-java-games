@@ -8,7 +8,7 @@ public class MonsterNames {
             .getMonsterData();
 
     public static final String[] getAllNames() {
-        return MONSTER_NAMES;
+        return MonsterNames.MONSTER_NAMES;
     }
 
     // Private constructor

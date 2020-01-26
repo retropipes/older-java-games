@@ -33,7 +33,7 @@ public class Party {
         this.activePCs = 0;
     }
 
-    Party(PartyMember[] newMembers) {
+    Party(final PartyMember[] newMembers) {
         this.members = newMembers;
         this.battlers = null;
         this.leaderID = 0;
@@ -48,7 +48,7 @@ public class Party {
 
     // Methods
     private void generateBattleCharacters() {
-        BattleCharacter[] tempChars = new BattleCharacter[this.members.length];
+        final BattleCharacter[] tempChars = new BattleCharacter[this.members.length];
         int nnc = 0;
         for (int x = 0; x < tempChars.length; x++) {
             if (this.members[x] != null) {
@@ -56,11 +56,11 @@ public class Party {
                 nnc++;
             }
         }
-        BattleCharacter[] chars = new BattleCharacter[nnc];
+        final BattleCharacter[] chars = new BattleCharacter[nnc];
         nnc = 0;
-        for (int x = 0; x < tempChars.length; x++) {
-            if (tempChars[x] != null) {
-                chars[nnc] = tempChars[x];
+        for (final BattleCharacter tempChar : tempChars) {
+            if (tempChar != null) {
+                chars[nnc] = tempChar;
                 nnc++;
             }
         }
@@ -75,54 +75,49 @@ public class Party {
     }
 
     public void checkPartyLevelUp() {
-        for (int x = 0; x < this.battlers.length; x++) {
+        for (final BattleCharacter battler : this.battlers) {
             // Level Up Check
-            if (this.battlers[x].getTemplate().checkLevelUp()) {
-                this.battlers[x].getTemplate().levelUp();
+            if (battler.getTemplate().checkLevelUp()) {
+                battler.getTemplate().levelUp();
                 SoundManager.playSound(SoundConstants.SOUND_LEVEL_UP);
-                CommonDialogs.showTitledDialog(this.battlers[x].getTemplate()
-                        .getName()
-                        + " reached level "
-                        + this.battlers[x].getTemplate().getLevel() + "!",
+                CommonDialogs.showTitledDialog(
+                        battler.getTemplate().getName() + " reached level "
+                                + battler.getTemplate().getLevel() + "!",
                         "Level Up");
-                DungeonDiver4
-                        .getApplication()
-                        .getGameManager()
-                        .addToScore(
-                                Math.max(1, (10 * this.battlers[x]
-                                        .getTemplate().getLevel() - 1)
-                                        / this.activePCs));
+                DungeonDiver4.getApplication().getGameManager().addToScore(
+                        Math.max(1, (10 * battler.getTemplate().getLevel() - 1)
+                                / this.activePCs));
             }
         }
     }
 
     public int getPartyMeanLevel() {
         int sum = 0;
-        for (int x = 0; x < this.battlers.length; x++) {
-            sum += this.battlers[x].getTemplate().getLevel();
+        for (final BattleCharacter battler : this.battlers) {
+            sum += battler.getTemplate().getLevel();
         }
         return sum / this.battlers.length;
     }
 
     public void stripPartyEffects() {
-        for (int x = 0; x < this.members.length; x++) {
-            if (this.members[x] != null) {
+        for (final PartyMember member : this.members) {
+            if (member != null) {
                 // Strip All Effects
-                this.members[x].stripAllEffects();
+                member.stripAllEffects();
             }
         }
     }
 
-    public void distributeVictorySpoils(VictorySpoilsDescription vsd) {
-        int divMod = this.battlers.length;
-        int monLen = vsd.getMonsterCount();
+    public void distributeVictorySpoils(final VictorySpoilsDescription vsd) {
+        final int divMod = this.battlers.length;
+        final int monLen = vsd.getMonsterCount();
         for (int x = 0; x < divMod; x++) {
             // Distribute Victory Spoils
             for (int y = 0; y < monLen; y++) {
                 this.battlers[x].getTemplate();
                 this.battlers[x].getTemplate().offsetExperience(
-                        AbstractCreature.getAdjustedExperience(vsd
-                                .getExpPerMonster(y)) / divMod);
+                        AbstractCreature.getAdjustedExperience(
+                                vsd.getExpPerMonster(y)) / divMod);
             }
             this.battlers[x].getTemplate()
                     .offsetGold(vsd.getGoldWon() / divMod);
@@ -131,10 +126,10 @@ public class Party {
 
     public long getPartyMaxToNextLevel() {
         long largest = Integer.MIN_VALUE;
-        for (int x = 0; x < this.members.length; x++) {
-            if (this.members[x] != null) {
-                if (this.members[x].getToNextLevelValue() > largest) {
-                    largest = this.members[x].getToNextLevelValue();
+        for (final PartyMember member : this.members) {
+            if (member != null) {
+                if (member.getToNextLevelValue() > largest) {
+                    largest = member.getToNextLevelValue();
                 }
             }
         }
@@ -142,10 +137,10 @@ public class Party {
     }
 
     void writebackMembers() {
-        for (int x = 0; x < this.members.length; x++) {
-            if (this.members[x] != null) {
+        for (final PartyMember member : this.members) {
+            if (member != null) {
                 // Writeback Party Member
-                CharacterLoader.saveCharacter(this.members[x]);
+                CharacterLoader.saveCharacter(member);
             }
         }
     }
@@ -158,8 +153,8 @@ public class Party {
         return this.activePCs;
     }
 
-    public void setLeader(String name) {
-        int pos = this.findMember(name, 0, this.members.length);
+    public void setLeader(final String name) {
+        final int pos = this.findMember(name, 0, this.members.length);
         if (pos != -1) {
             this.leaderID = pos;
         }
@@ -167,24 +162,24 @@ public class Party {
 
     public boolean isAlive() {
         boolean result = false;
-        for (int x = 0; x < this.members.length; x++) {
-            if (this.members[x] != null) {
-                result = result || this.members[x].isAlive();
+        for (final PartyMember member : this.members) {
+            if (member != null) {
+                result = result || member.isAlive();
             }
         }
         return result;
     }
 
     public void fireStepActions() {
-        for (int x = 0; x < this.members.length; x++) {
-            if (this.members[x] != null) {
-                this.members[x].getItems().fireStepActions(this.members[x]);
+        for (final PartyMember member : this.members) {
+            if (member != null) {
+                member.getItems().fireStepActions(member);
             }
         }
     }
 
     private String[] buildNameList() {
-        String[] tempNames = new String[this.members.length];
+        final String[] tempNames = new String[this.members.length];
         int nnc = 0;
         for (int x = 0; x < tempNames.length; x++) {
             if (this.members[x] != null) {
@@ -192,11 +187,11 @@ public class Party {
                 nnc++;
             }
         }
-        String[] names = new String[nnc];
+        final String[] names = new String[nnc];
         nnc = 0;
-        for (int x = 0; x < tempNames.length; x++) {
-            if (tempNames[x] != null) {
-                names[nnc] = tempNames[x];
+        for (final String tempName : tempNames) {
+            if (tempName != null) {
+                names[nnc] = tempName;
                 nnc++;
             }
         }
@@ -204,11 +199,11 @@ public class Party {
     }
 
     PartyMember pickOnePartyMemberCreate() {
-        String[] pickNames = this.buildNameList();
-        String response = CommonDialogs.showInputDialog("Pick 1 Party Member",
-                "Create Party", pickNames, pickNames[0]);
+        final String[] pickNames = this.buildNameList();
+        final String response = CommonDialogs.showInputDialog(
+                "Pick 1 Party Member", "Create Party", pickNames, pickNames[0]);
         if (response != null) {
-            int loc = this.findMember(response, 0, this.members.length);
+            final int loc = this.findMember(response, 0, this.members.length);
             if (loc != -1) {
                 return this.members[loc];
             } else {
@@ -220,17 +215,19 @@ public class Party {
     }
 
     public PartyMember pickOnePartyMember() {
-        String[] pickNames = this.buildNameList();
+        final String[] pickNames = this.buildNameList();
         return this.pickPartyMemberInternal(pickNames, 1, 1);
     }
 
-    private PartyMember pickPartyMemberInternal(String[] pickNames,
-            int current, int number) {
-        String response = CommonDialogs.showInputDialog("Pick " + number
-                + " Party Member(s) - " + current + " of " + number,
-                "DungeonDiver4", pickNames, pickNames[0]);
+    private PartyMember pickPartyMemberInternal(final String[] pickNames,
+            final int current, final int number) {
+        final String response = CommonDialogs
+                .showInputDialog(
+                        "Pick " + number + " Party Member(s) - " + current
+                                + " of " + number,
+                        "DungeonDiver4", pickNames, pickNames[0]);
         if (response != null) {
-            int loc = this.findMember(response, 0, this.members.length);
+            final int loc = this.findMember(response, 0, this.members.length);
             if (loc != -1) {
                 return this.members[loc];
             } else {
@@ -241,8 +238,8 @@ public class Party {
         }
     }
 
-    boolean addPartyMember(PartyMember member) {
-        int pos = this.activePCs;
+    boolean addPartyMember(final PartyMember member) {
+        final int pos = this.activePCs;
         if (pos < this.members.length) {
             this.members[pos] = member;
             this.activePCs++;
@@ -252,7 +249,8 @@ public class Party {
         return false;
     }
 
-    private int findMember(String name, int start, int limit) {
+    private int findMember(final String name, final int start,
+            final int limit) {
         for (int x = start; x < limit; x++) {
             if (this.members[x] != null) {
                 if (this.members[x].getName().equals(name)) {
@@ -263,16 +261,16 @@ public class Party {
         return -1;
     }
 
-    static Party read(XDataReader worldFile) throws IOException {
-        int memCount = worldFile.readInt();
-        int lid = worldFile.readInt();
-        int apc = worldFile.readInt();
-        Party pty = new Party();
+    static Party read(final XDataReader worldFile) throws IOException {
+        final int memCount = worldFile.readInt();
+        final int lid = worldFile.readInt();
+        final int apc = worldFile.readInt();
+        final Party pty = new Party();
         pty.leaderID = lid;
         pty.activePCs = apc;
         pty.members = new PartyMember[memCount];
         for (int z = 0; z < memCount; z++) {
-            boolean present = worldFile.readBoolean();
+            final boolean present = worldFile.readBoolean();
             if (present) {
                 pty.members[z] = PartyMember.read(worldFile);
             }
@@ -280,16 +278,16 @@ public class Party {
         return pty;
     }
 
-    void write(XDataWriter worldFile) throws IOException {
+    void write(final XDataWriter worldFile) throws IOException {
         worldFile.writeInt(this.members.length);
         worldFile.writeInt(this.leaderID);
         worldFile.writeInt(this.activePCs);
-        for (int z = 0; z < this.members.length; z++) {
-            if (this.members[z] == null) {
+        for (final PartyMember member : this.members) {
+            if (member == null) {
                 worldFile.writeBoolean(false);
             } else {
                 worldFile.writeBoolean(true);
-                this.members[z].write(worldFile);
+                member.write(worldFile);
             }
         }
     }

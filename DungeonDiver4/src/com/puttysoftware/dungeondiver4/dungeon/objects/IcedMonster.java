@@ -14,7 +14,7 @@ public class IcedMonster extends AbstractMovingObject {
     private static final int ICE_LENGTH = 20;
 
     // Constructors
-    public IcedMonster(AbstractDungeonObject saved) {
+    public IcedMonster(final AbstractDungeonObject saved) {
         super(true);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
         this.setSavedObject(saved);
@@ -22,8 +22,9 @@ public class IcedMonster extends AbstractMovingObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
         // Extend iced effect, if hit by an ice arrow
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             this.extendTimer(IcedMonster.ICE_LENGTH);
@@ -34,15 +35,13 @@ public class IcedMonster extends AbstractMovingObject {
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // Transform into a normal monster
-        int pz = DungeonDiver4.getApplication().getDungeonManager()
+        final int pz = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon().getPlayerLocationZ();
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .morph(new MonsterObject(this.getSavedObject()), dirX, dirY,
-                        pz, DungeonConstants.LAYER_OBJECT);
+        DungeonDiver4.getApplication().getGameManager().morph(
+                new MonsterObject(this.getSavedObject()), dirX, dirY, pz,
+                DungeonConstants.LAYER_OBJECT);
     }
 
     @Override

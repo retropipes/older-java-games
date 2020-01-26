@@ -7,8 +7,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.editor.MazeEditorLogic;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public class Teleport extends AbstractTeleport {
@@ -35,7 +35,7 @@ public class Teleport extends AbstractTeleport {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         return me
                 .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_GENERIC);
     }

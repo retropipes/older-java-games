@@ -15,13 +15,13 @@ public class NamesManager {
     private static String[] RAW_CACHE;
     private static String[][] CACHE;
 
-    public static String getName(String section, String type) {
+    public static String getName(final String section, final String type) {
         try {
             NamesManager.createCache();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Support.getErrorLogger().logError(e);
         }
-        String key = section + ":" + type;
+        final String key = section + ":" + type;
         if (!NamesManager.containsKey(key)) {
             Support.getErrorLogger().logError(
                     new IllegalArgumentException("No such key " + key));
@@ -29,19 +29,19 @@ public class NamesManager {
         return NamesManager.getValue(key);
     }
 
-    private static boolean containsKey(String key) {
-        for (int x = 0; x < CACHE.length; x++) {
-            if (CACHE[x][0].equals(key)) {
+    private static boolean containsKey(final String key) {
+        for (final String[] element : NamesManager.CACHE) {
+            if (element[0].equals(key)) {
                 return true;
             }
         }
         return false;
     }
 
-    private static String getValue(String key) {
-        for (int x = 0; x < CACHE.length; x++) {
-            if (CACHE[x][0].equals(key)) {
-                return CACHE[x][1];
+    private static String getValue(final String key) {
+        for (final String[] element : NamesManager.CACHE) {
+            if (element[0].equals(key)) {
+                return element[1];
             }
         }
         return null;
@@ -54,22 +54,22 @@ public class NamesManager {
     public static String[][] getNamesCache() {
         try {
             NamesManager.createCache();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Support.getErrorLogger().logError(e);
         }
         return NamesManager.CACHE;
     }
 
     public static String[] convertCacheToArray() {
-        ArrayList<String> temp1 = new ArrayList<>();
-        ArrayList<String> temp2 = new ArrayList<>();
-        for (int x = 0; x < CACHE.length; x++) {
-            temp1.add(CACHE[x][0]);
-            temp2.add(CACHE[x][1]);
+        final ArrayList<String> temp1 = new ArrayList<>();
+        final ArrayList<String> temp2 = new ArrayList<>();
+        for (final String[] element : NamesManager.CACHE) {
+            temp1.add(element[0]);
+            temp2.add(element[1]);
         }
-        String[] temp3 = temp1.toArray(new String[temp1.size()]);
-        String[] temp4 = temp2.toArray(new String[temp2.size()]);
-        String[] results = new String[temp3.length];
+        final String[] temp3 = temp1.toArray(new String[temp1.size()]);
+        final String[] temp4 = temp2.toArray(new String[temp2.size()]);
+        final String[] results = new String[temp3.length];
         for (int x = 0; x < results.length; x++) {
             results[x] = temp3[x] + "=" + temp4[x];
         }
@@ -86,15 +86,15 @@ public class NamesManager {
                     if (NamesManager.RAW_CACHE[x] != null
                             && !NamesManager.RAW_CACHE[x].isEmpty()) {
                         // Entry
-                        String[] splitEntry = NamesManager.RAW_CACHE[x]
+                        final String[] splitEntry = NamesManager.RAW_CACHE[x]
                                 .split("=");
                         // Sanity check
                         if (splitEntry.length < 2) {
                             throw new IllegalArgumentException(
                                     "Invalid names file format: Entry format invalid!");
                         }
-                        String key = splitEntry[0];
-                        String value = splitEntry[1];
+                        final String key = splitEntry[0];
+                        final String value = splitEntry[1];
                         NamesManager.CACHE[x][0] = key;
                         NamesManager.CACHE[x][1] = value;
                     }

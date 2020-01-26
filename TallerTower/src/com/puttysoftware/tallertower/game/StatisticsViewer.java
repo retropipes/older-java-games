@@ -9,8 +9,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +40,7 @@ public class StatisticsViewer {
 
     // Methods
     public static void viewStatistics() {
-        setUpGUI();
+        StatisticsViewer.setUpGUI();
         final PartyMember leader = PartyManager.getParty().getLeader();
         if (leader != null) {
             for (int x = 0; x < StatConstants.MAX_DISPLAY_STATS; x++) {
@@ -50,54 +48,53 @@ public class StatisticsViewer {
                 if (x == StatConstants.STAT_HIT
                         || x == StatConstants.STAT_EVADE) {
                     final double fmtVal = value / 100.0;
-                    statisticsValues[x].setText(" "
-                            + NamesManager.getName(
-                                    NamesConstants.SECTION_STATS,
+                    StatisticsViewer.statisticsValues[x].setText(" "
+                            + NamesManager.getName(NamesConstants.SECTION_STATS,
                                     NamesConstants.SECTION_ARRAY_STATS[x])
                             + ": " + fmtVal + "%  ");
                 } else {
-                    statisticsValues[x].setText(" "
-                            + NamesManager.getName(
-                                    NamesConstants.SECTION_STATS,
+                    StatisticsViewer.statisticsValues[x].setText(" "
+                            + NamesManager.getName(NamesConstants.SECTION_STATS,
                                     NamesConstants.SECTION_ARRAY_STATS[x])
                             + ": " + value + "  ");
                 }
             }
-            statisticsFrame.pack();
-            statisticsFrame.setVisible(true);
+            StatisticsViewer.statisticsFrame.pack();
+            StatisticsViewer.statisticsFrame.setVisible(true);
         } else {
             CommonDialogs.showDialog("Nothing to display");
         }
     }
 
     private static void setUpGUI() {
-        if (!inited) {
-            statisticsFrame = new JFrame("Statistics");
+        if (!StatisticsViewer.inited) {
+            StatisticsViewer.statisticsFrame = new JFrame("Statistics");
             final Image iconlogo = LogoManager.getIconLogo();
-            statisticsFrame.setIconImage(iconlogo);
-            statisticsPane = new JPanel();
-            statisticsPane.setLayout(new BorderLayout());
-            contentPane = new JPanel();
-            contentPane.setLayout(new GridLayout(StatConstants.MAX_STATS, 1));
-            buttonPane = new JPanel();
-            buttonPane.setLayout(new FlowLayout());
-            btnOK = new JButton("OK");
-            btnOK.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(final ActionEvent e) {
-                    statisticsFrame.setVisible(false);
-                }
-            });
-            statisticsValues = new JLabel[StatConstants.MAX_DISPLAY_STATS];
+            StatisticsViewer.statisticsFrame.setIconImage(iconlogo);
+            StatisticsViewer.statisticsPane = new JPanel();
+            StatisticsViewer.statisticsPane.setLayout(new BorderLayout());
+            StatisticsViewer.contentPane = new JPanel();
+            StatisticsViewer.contentPane
+                    .setLayout(new GridLayout(StatConstants.MAX_STATS, 1));
+            StatisticsViewer.buttonPane = new JPanel();
+            StatisticsViewer.buttonPane.setLayout(new FlowLayout());
+            StatisticsViewer.btnOK = new JButton("OK");
+            StatisticsViewer.btnOK.addActionListener(
+                    e -> StatisticsViewer.statisticsFrame.setVisible(false));
+            StatisticsViewer.statisticsValues = new JLabel[StatConstants.MAX_DISPLAY_STATS];
             for (int x = 0; x < StatConstants.MAX_DISPLAY_STATS; x++) {
-                statisticsValues[x] = new JLabel();
-                contentPane.add(statisticsValues[x]);
+                StatisticsViewer.statisticsValues[x] = new JLabel();
+                StatisticsViewer.contentPane
+                        .add(StatisticsViewer.statisticsValues[x]);
             }
-            buttonPane.add(btnOK);
-            statisticsPane.add(contentPane, BorderLayout.CENTER);
-            statisticsPane.add(buttonPane, BorderLayout.SOUTH);
-            statisticsFrame.setContentPane(statisticsPane);
-            inited = true;
+            StatisticsViewer.buttonPane.add(StatisticsViewer.btnOK);
+            StatisticsViewer.statisticsPane.add(StatisticsViewer.contentPane,
+                    BorderLayout.CENTER);
+            StatisticsViewer.statisticsPane.add(StatisticsViewer.buttonPane,
+                    BorderLayout.SOUTH);
+            StatisticsViewer.statisticsFrame
+                    .setContentPane(StatisticsViewer.statisticsPane);
+            StatisticsViewer.inited = true;
         }
     }
 }

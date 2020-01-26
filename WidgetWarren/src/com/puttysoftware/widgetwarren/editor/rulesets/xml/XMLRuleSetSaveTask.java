@@ -34,16 +34,15 @@ public class XMLRuleSetSaveTask extends Thread {
         if (!hasExtension) {
             this.filename += XMLExtension.getXMLRuleSetExtensionWithPeriod();
         }
-        try (XDataWriter ruleSetFile = new XDataWriter(this.filename, "ruleset")) {
+        try (XDataWriter ruleSetFile = new XDataWriter(this.filename,
+                "ruleset")) {
             ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
             app.getObjects().writeRuleSetXML(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Saving the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             WidgetWarren.getErrorLogger().logError(ex);
         }
@@ -52,7 +51,7 @@ public class XMLRuleSetSaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

@@ -7,8 +7,8 @@ import com.puttysoftware.xio.legacy.XLegacyDataReader;
 
 public class LegacySuffixHandler implements LegacySuffixIO {
     @Override
-    public void readSuffix(XLegacyDataReader reader, int formatVersion)
-            throws IOException {
+    public void readSuffix(final XLegacyDataReader reader,
+            final int formatVersion) throws IOException {
         MazeRunnerII.getApplication().getGameManager()
                 .loadLegacyGameHook(reader, formatVersion);
     }

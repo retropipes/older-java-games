@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazerunner2.creatures.monsters;
 
-class FaithRandomScalingStaticMonster extends AbstractFaithRandomScalingMonster {
+class FaithRandomScalingStaticMonster
+        extends AbstractFaithRandomScalingMonster {
     // Constructors
     FaithRandomScalingStaticMonster() {
         super();

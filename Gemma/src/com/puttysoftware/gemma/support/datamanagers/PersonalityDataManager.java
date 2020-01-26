@@ -12,7 +12,8 @@ import com.puttysoftware.gemma.support.scenario.Extension;
 
 public class PersonalityDataManager {
     public static double[] getPersonalityData(final int p) {
-        String name = PersonalityConstants.getPersonalityName(p).toLowerCase();
+        final String name = PersonalityConstants.getPersonalityName(p)
+                .toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
                 PersonalityDataManager.class.getResourceAsStream(
                         "/com/puttysoftware/gemma/support/resources/data/personality/"
@@ -25,7 +26,7 @@ public class PersonalityDataManager {
             }
             rsr.close();
             // Parse raw data
-            double[] finalData = new double[rawData.length];
+            final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {
                 if (x == PersonalityConstants.PERSONALITY_ATTRIBUTE_LEVEL_UP_SPEED) {
                     finalData[x] = PersonalityConstants

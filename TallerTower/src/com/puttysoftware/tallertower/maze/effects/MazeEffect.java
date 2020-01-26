@@ -28,7 +28,7 @@ public class MazeEffect {
         int result = 1;
         result = prime * result + this.initialRounds;
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         return prime * result + this.rounds;
     }
 
@@ -78,14 +78,14 @@ public class MazeEffect {
     }
 
     public boolean areRoundsInfinite() {
-        return (this.rounds == MazeEffect.ROUNDS_INFINITE);
+        return this.rounds == MazeEffect.ROUNDS_INFINITE;
     }
 
     public boolean isActive() {
         if (this.areRoundsInfinite()) {
             return true;
         } else {
-            return (this.rounds > 0);
+            return this.rounds > 0;
         }
     }
 

@@ -19,11 +19,11 @@ public class Slime extends GenericField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -33,8 +33,8 @@ public class Slime extends GenericField {
             final int dirY, final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         Messager.showMessage("You'll corrode");
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveFailedSound();
         }
     }

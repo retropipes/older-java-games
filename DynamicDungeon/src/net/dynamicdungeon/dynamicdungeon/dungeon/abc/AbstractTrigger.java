@@ -11,7 +11,7 @@ import net.dynamicdungeon.dynamicdungeon.dungeon.utilities.TypeConstants;
 public abstract class AbstractTrigger extends AbstractDungeonObject {
     // Constructors
     protected AbstractTrigger() {
-	super(false, true, false);
+        super(false, true, false);
     }
 
     @Override
@@ -19,21 +19,21 @@ public abstract class AbstractTrigger extends AbstractDungeonObject {
 
     @Override
     public int getLayer() {
-	return DungeonConstants.LAYER_OBJECT;
+        return DungeonConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_TRIGGER);
+        this.type.set(TypeConstants.TYPE_TRIGGER);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

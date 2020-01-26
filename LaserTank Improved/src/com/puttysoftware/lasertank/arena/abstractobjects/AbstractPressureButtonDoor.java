@@ -10,7 +10,7 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractPressureButtonDoor extends AbstractButtonDoor {
     // Constructors
     protected AbstractPressureButtonDoor() {
-	super();
-	this.type.set(TypeConstants.TYPE_PRESSURE_BUTTON_DOOR);
+        super();
+        this.type.set(TypeConstants.TYPE_PRESSURE_BUTTON_DOOR);
     }
 }

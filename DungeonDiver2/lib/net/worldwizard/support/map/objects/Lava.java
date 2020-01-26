@@ -25,14 +25,14 @@ public class Lava extends GenericField {
         final GameScript scpt = new GameScript();
         final GameScriptEntry entry0 = new GameScriptEntry();
         entry0.setActionCode(GameActionCode.SOUND);
-        entry0.addActionArg(new GameScriptEntryArgument(
-                GameSoundConstants.SOUND_SHORT_OW));
+        entry0.addActionArg(
+                new GameScriptEntryArgument(GameSoundConstants.SOUND_SHORT_OW));
         entry0.finalizeActionArgs();
         scpt.addAction(entry0);
         final GameScriptEntry entry1 = new GameScriptEntry();
         entry1.setActionCode(GameActionCode.MESSAGE);
-        entry1.addActionArg(new GameScriptEntryArgument(
-                "Ow, the lava burned you!"));
+        entry1.addActionArg(
+                new GameScriptEntryArgument("Ow, the lava burned you!"));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
         scpt.finalizeActions();

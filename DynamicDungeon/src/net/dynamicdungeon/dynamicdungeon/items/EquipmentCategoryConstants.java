@@ -10,6 +10,6 @@ public class EquipmentCategoryConstants {
     public static final int EQUIPMENT_CATEGORY_ARMOR = 2;
 
     private EquipmentCategoryConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

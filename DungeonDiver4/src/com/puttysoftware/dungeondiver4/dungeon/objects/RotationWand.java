@@ -45,14 +45,15 @@ public class RotationWand extends AbstractWand {
     @Override
     public void useAction(final AbstractDungeonObject mo, final int x,
             final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().setRemoteAction(x, y, z);
         int r = 1;
-        String rres = CommonDialogs.showInputDialog("Rotation Radius:",
-                "DungeonDiver4", rChoices, rChoices[r - 1]);
+        final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
+                "DungeonDiver4", RotationWand.rChoices,
+                RotationWand.rChoices[r - 1]);
         try {
             r = Integer.parseInt(rres);
-        } catch (NumberFormatException nf) {
+        } catch (final NumberFormatException nf) {
             // Ignore
         }
         boolean d = RotationWand.CLOCKWISE;
@@ -62,9 +63,10 @@ public class RotationWand extends AbstractWand {
         } else {
             di = 1;
         }
-        String dres = CommonDialogs.showInputDialog("Rotation Direction:",
-                "DungeonDiver4", dChoices, dChoices[di]);
-        if (dres.equals(dChoices[0])) {
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "DungeonDiver4", RotationWand.dChoices,
+                RotationWand.dChoices[di]);
+        if (dres.equals(RotationWand.dChoices[0])) {
             d = RotationWand.CLOCKWISE;
         } else {
             d = RotationWand.COUNTERCLOCKWISE;

@@ -31,34 +31,35 @@ public class FaithConstants {
 
     // Methods
     public static int getFaithsCount() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITHS_COUNT;
     }
 
     static String[] getFaithNames() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_NAMES;
     }
 
     public static String getFaithName(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_DISPLAY_NAMES[f];
     }
 
     public static String getFaithPowerName(final int f, final int p) {
-        return NamesManager.getName(NamesConstants.SECTION_FAITH_POWERS_PREFIX
-                + FaithConstants.FAITH_NAMES[f],
+        return NamesManager.getName(
+                NamesConstants.SECTION_FAITH_POWERS_PREFIX
+                        + FaithConstants.FAITH_NAMES[f],
                 NamesConstants.SECTION_ARRAY_FAITH_POWERS[p]);
     }
 
     public static Color getFaithColor(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_COLORS[f];
@@ -78,8 +79,8 @@ public class FaithConstants {
                 // Fetch data
                 final ArrayList<String> tempNames = new ArrayList<>();
                 try (final ResourceStreamReader rsr1 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/tallertower/resources/data/faith/catalog.txt"))) {
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/tallertower/resources/data/faith/catalog.txt"))) {
                     String input1 = "";
                     while (input1 != null) {
                         input1 = rsr1.readString();
@@ -93,8 +94,8 @@ public class FaithConstants {
                 FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
                 final ArrayList<String> tempColors = new ArrayList<>();
                 try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/tallertower/resources/data/faith/colors.txt"))) {
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/tallertower/resources/data/faith/colors.txt"))) {
                     String input2 = "";
                     while (input2 != null) {
                         input2 = rsr2.readString();

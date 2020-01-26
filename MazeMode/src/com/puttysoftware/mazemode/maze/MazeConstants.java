@@ -1,7 +1,7 @@
 package com.puttysoftware.mazemode.maze;
 
 public interface MazeConstants {
-    public static final int LAYER_GROUND = 0;
-    public static final int LAYER_OBJECT = 1;
-    public static final int LAYER_COUNT = 2;
+    int LAYER_GROUND = 0;
+    int LAYER_OBJECT = 1;
+    int LAYER_COUNT = 2;
 }

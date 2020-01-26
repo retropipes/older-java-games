@@ -52,8 +52,8 @@ public class GameLoadTask extends Thread {
         sg = "Maze";
         try {
             final File mazeFile = new File(this.filename);
-            final File tempLock = new File(Maze.getMazeTempFolder()
-                    + "lock.tmp");
+            final File tempLock = new File(
+                    Maze.getMazeTempFolder() + "lock.tmp");
             Maze gameMaze = new Maze();
             // Unlock the file
             GameFileManager.load(mazeFile, tempLock);
@@ -87,10 +87,8 @@ public class GameLoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Loading the " + sg.toLowerCase()

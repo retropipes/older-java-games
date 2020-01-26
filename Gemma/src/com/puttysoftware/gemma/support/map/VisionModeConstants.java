@@ -6,7 +6,7 @@
 package com.puttysoftware.gemma.support.map;
 
 interface VisionModeConstants {
-    public static final int VISION_MODE_NONE = 0;
-    public static final int VISION_MODE_EXPLORE = 1;
-    public static final int VISION_MODE_LOS = 2;
+    int VISION_MODE_NONE = 0;
+    int VISION_MODE_EXPLORE = 1;
+    int VISION_MODE_LOS = 2;
 }

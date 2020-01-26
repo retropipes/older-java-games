@@ -45,16 +45,15 @@ public class LockedSaveTask extends Thread {
             // Set suffix handler
             app.getMazeManager().getMaze().setXMLSuffixHandler(null);
             app.getMazeManager().getMaze().writeMazeXML();
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), tempLock);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    tempLock);
             // Lock the file
             LockedWrapper.lock(tempLock, mazeFile);
             tempLock.delete();
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the locked "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the locked " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             Mazer5D.getErrorLogger().logError(ex);
@@ -66,7 +65,7 @@ public class LockedSaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

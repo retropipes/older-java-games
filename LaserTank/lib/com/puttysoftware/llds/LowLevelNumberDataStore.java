@@ -9,7 +9,7 @@ public final class LowLevelNumberDataStore implements Cloneable {
     private final int[] interProd;
 
     // Constructor
-    public LowLevelNumberDataStore(int... shape) {
+    public LowLevelNumberDataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -21,7 +21,7 @@ public final class LowLevelNumberDataStore implements Cloneable {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -32,18 +32,18 @@ public final class LowLevelNumberDataStore implements Cloneable {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
-    
-    public void fill(int val) {
-    	Arrays.fill(this.dataStore, val);
+
+    public void fill(final int val) {
+        Arrays.fill(this.dataStore, val);
     }
 
     @Override
     public Object clone() {
-        LowLevelNumberDataStore copy = new LowLevelNumberDataStore(
+        final LowLevelNumberDataStore copy = new LowLevelNumberDataStore(
                 this.dataShape);
         System.arraycopy(this.dataStore, 0, copy.dataStore, 0,
                 this.dataStore.length);
@@ -54,13 +54,13 @@ public final class LowLevelNumberDataStore implements Cloneable {
         return this.dataShape;
     }
 
-    public int getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public int getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(int obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final int obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 }

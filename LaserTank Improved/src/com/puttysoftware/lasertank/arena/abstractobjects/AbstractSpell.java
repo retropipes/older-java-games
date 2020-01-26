@@ -11,22 +11,22 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractSpell extends AbstractArenaObject {
     // Constructors
     protected AbstractSpell() {
-	super();
-	this.type.set(TypeConstants.TYPE_SPELL);
+        super();
+        this.type.set(TypeConstants.TYPE_SPELL);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_LOWER_OBJECTS;
+        return ArenaConstants.LAYER_LOWER_OBJECTS;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

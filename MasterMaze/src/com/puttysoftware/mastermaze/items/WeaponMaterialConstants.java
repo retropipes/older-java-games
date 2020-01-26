@@ -31,5 +31,6 @@ class WeaponMaterialConstants {
             "Fine Ruby", "Rare Ruby", "Pure Ruby", "Sapphire", "Fine Sapphire",
             "Rare Sapphire", "Pure Sapphire", "Topaz", "Fine Topaz",
             "Rare Topaz", "Pure Topaz", "Diamond", "Fine Diamond",
-            "Rare Diamond", "Pure Diamond", "Magic", "Fine Magic", "Rare Magic" };
+            "Rare Diamond", "Pure Diamond", "Magic", "Fine Magic",
+            "Rare Magic" };
 }

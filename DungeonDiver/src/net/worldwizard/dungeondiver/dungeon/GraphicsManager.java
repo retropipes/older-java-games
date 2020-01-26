@@ -36,8 +36,8 @@ public class GraphicsManager {
 
     private static BufferedImage getDungeonTemplate(final String name) {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/DungeonDiver/resources/graphics/dungeon/"
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/DungeonDiver/resources/graphics/dungeon/"
                             + name.toLowerCase() + ".png");
             final BufferedImage image = ImageIO.read(url);
             if (image != null) {

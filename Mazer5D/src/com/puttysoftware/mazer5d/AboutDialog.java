@@ -64,8 +64,8 @@ public class AboutDialog {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("Mazer5D Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(new JLabel(
-                "Web Site: http://www.puttysoftware.com/mazer5d/"));
+        this.textPane.add(
+                new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: products@puttysoftware.com  "));
         this.buttonPane.setLayout(new FlowLayout());

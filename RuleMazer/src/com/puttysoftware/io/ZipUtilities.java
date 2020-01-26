@@ -16,7 +16,7 @@ public final class ZipUtilities {
         // Do nothing
     }
 
-    public static final void zipDirectory(final File directory, final File zip)
+    public static void zipDirectory(final File directory, final File zip)
             throws IOException {
         try (final ZipOutputStream zos = new ZipOutputStream(
                 new FileOutputStream(zip))) {
@@ -24,7 +24,7 @@ public final class ZipUtilities {
         }
     }
 
-    private static final void zip(final File directory, final File base,
+    private static void zip(final File directory, final File base,
             final ZipOutputStream zos) throws IOException {
         final File[] files = directory.listFiles();
         final byte[] buffer = new byte[8192];
@@ -45,7 +45,7 @@ public final class ZipUtilities {
         }
     }
 
-    public static final void unzipDirectory(final File zip, final File extractTo)
+    public static void unzipDirectory(final File zip, final File extractTo)
             throws IOException {
         try (final ZipFile archive = new ZipFile(zip)) {
             final Enumeration<? extends ZipEntry> e = archive.entries();

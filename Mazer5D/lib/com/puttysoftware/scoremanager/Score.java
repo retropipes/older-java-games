@@ -85,13 +85,13 @@ public final class Score {
     public void writeScore(final XDataWriter xdw) throws IOException {
         xdw.writeString(this.name);
         xdw.writeInt(this.scores.length);
-        for (int x = 0; x < this.scores.length; x++) {
-            xdw.writeLong(this.scores[x]);
+        for (final long score : this.scores) {
+            xdw.writeLong(score);
         }
     }
 
-    public static class ScoreComparatorAsc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorAsc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423564L;
 
         @Override
@@ -120,8 +120,8 @@ public final class Score {
         }
     }
 
-    public static class ScoreComparatorDesc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorDesc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423565L;
 
         @Override

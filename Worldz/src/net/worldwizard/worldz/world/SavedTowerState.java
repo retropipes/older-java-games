@@ -27,7 +27,8 @@ class SavedTowerState implements Cloneable {
 
     @Override
     public SavedTowerState clone() {
-        final SavedTowerState copy = new SavedTowerState(this.r, this.c, this.f);
+        final SavedTowerState copy = new SavedTowerState(this.r, this.c,
+                this.f);
         int x, y, z, e;
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
@@ -47,8 +48,8 @@ class SavedTowerState implements Cloneable {
         return this.saveData[x][y][z][e];
     }
 
-    public void setDataCell(final WorldObject newData, final int x,
-            final int y, final int z, final int e) {
+    public void setDataCell(final WorldObject newData, final int x, final int y,
+            final int z, final int e) {
         this.saveData[x][y][z][e] = newData;
     }
 

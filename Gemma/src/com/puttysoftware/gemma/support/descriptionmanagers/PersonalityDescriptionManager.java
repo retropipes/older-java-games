@@ -12,14 +12,15 @@ import com.puttysoftware.gemma.support.scenario.Extension;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {
-        String name = PersonalityConstants.getPersonalityName(p).toLowerCase();
+        final String name = PersonalityConstants.getPersonalityName(p)
+                .toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
                 PersonalityDescriptionManager.class.getResourceAsStream(
                         "/com/puttysoftware/gemma/support/resources/descriptions/personality/"
                                 + name + Extension
                                         .getDescriptionExtensionWithPeriod()))) {
             // Fetch description
-            String desc = rsr.readString();
+            final String desc = rsr.readString();
             rsr.close();
             return desc;
         } catch (final Exception e) {

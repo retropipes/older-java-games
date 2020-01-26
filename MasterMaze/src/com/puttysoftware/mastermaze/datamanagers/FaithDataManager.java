@@ -16,9 +16,10 @@ public class FaithDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDataManager.class.getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/faith/"
-                            + name
-                            + Extension.getInternalDataExtensionWithPeriod()));
+                    FaithDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/mastermaze/resources/data/faith/"
+                                    + name + Extension
+                                            .getInternalDataExtensionWithPeriod()));
             final int[] rawData = new int[FaithConstants.getFaithsCount()];
             for (int x = 0; x < rawData.length; x++) {
                 rawData[x] = rsr.readInt();

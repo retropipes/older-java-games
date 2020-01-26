@@ -40,7 +40,7 @@ final class SandboxManagerWin extends SandboxManager {
     }
 
     private static String getLibraryFallbackDirectory() {
-        return System.getenv(SandboxManagerWin.FALLBACK_PREFIX)
-                + File.separator + SandboxManagerWin.LIBRARY_FALLBACK_DIR;
+        return System.getenv(SandboxManagerWin.FALLBACK_PREFIX) + File.separator
+                + SandboxManagerWin.LIBRARY_FALLBACK_DIR;
     }
 }

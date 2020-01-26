@@ -13,17 +13,18 @@ import com.puttysoftware.lasertank.resourcemanagers.SoundManager;
 public class FrostField extends AbstractField {
     // Constructors
     public FrostField() {
-	super();
+        super();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 14;
+        return 14;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	SoundManager.playSound(SoundConstants.SOUND_FROZEN);
-	LaserTank.getApplication().getGameManager().updatePositionRelativeFrozen();
+        SoundManager.playSound(SoundConstants.SOUND_FROZEN);
+        LaserTank.getApplication().getGameManager()
+                .updatePositionRelativeFrozen();
     }
 }

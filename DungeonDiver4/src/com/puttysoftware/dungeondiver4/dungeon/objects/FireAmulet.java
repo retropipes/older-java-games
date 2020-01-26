@@ -36,22 +36,20 @@ public class FireAmulet extends AbstractAmulet {
 
     @Override
     public void stepAction() {
-        int x = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationX();
-        int y = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationY();
-        int z = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationZ();
+        final int x = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationX();
+        final int y = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationY();
+        final int z = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationZ();
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .hotGround(x, y, z);
     }
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_FIERY,
-                        FireAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_FIERY,
+                FireAmulet.EFFECT_DURATION);
     }
 }

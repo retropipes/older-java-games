@@ -236,14 +236,17 @@ public class Item extends Identifiable {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                this.getClass().getName()).multiply(BigInteger.valueOf(2)));
+        longHash = longHash.add(
+                IDGenerator.computeStringLongHash(this.getClass().getName())
+                        .multiply(BigInteger.valueOf(2)));
         longHash = longHash.add(IDGenerator.computeStringLongHash(this.name)
                 .multiply(BigInteger.valueOf(3)));
-        longHash = longHash.add(IDGenerator.computeLongLongHash(
-                this.initialUses).multiply(BigInteger.valueOf(4)));
-        longHash = longHash.add(IDGenerator.computeLongLongHash(
-                this.weightPerUse).multiply(BigInteger.valueOf(5)));
+        longHash = longHash
+                .add(IDGenerator.computeLongLongHash(this.initialUses)
+                        .multiply(BigInteger.valueOf(4)));
+        longHash = longHash
+                .add(IDGenerator.computeLongLongHash(this.weightPerUse)
+                        .multiply(BigInteger.valueOf(5)));
         longHash = longHash.add(IDGenerator.computeLongLongHash(this.buyPrice)
                 .multiply(BigInteger.valueOf(6)));
         longHash = longHash.add(IDGenerator.computeLongLongHash(this.sellPrice)
@@ -252,8 +255,9 @@ public class Item extends Identifiable {
                 .multiply(BigInteger.valueOf(8)));
         longHash = longHash.add(IDGenerator.computeLongLongHash(this.potency)
                 .multiply(BigInteger.valueOf(9)));
-        longHash = longHash.add(IDGenerator.computeBooleanLongHash(
-                this.combatUsable).multiply(BigInteger.TEN));
+        longHash = longHash
+                .add(IDGenerator.computeBooleanLongHash(this.combatUsable)
+                        .multiply(BigInteger.TEN));
         return longHash;
     }
 
@@ -264,12 +268,10 @@ public class Item extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "items"
-                + File.separator
-                + this.getID() + Extension.getItemExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "items" + File.separator + this.getID()
+                        + Extension.getItemExtensionWithPeriod(),
                 Extension.getItemExtension());
         this.write(writer);
         writer.close();

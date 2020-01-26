@@ -12,16 +12,19 @@ import com.puttysoftware.lasertank.strings.StringLoader;
 
 public class CustomDialogs {
     public static int showDeadDialog() {
-	return JOptionPane.showOptionDialog(null, StringLoader.loadDialog(DialogString.DEAD_MESSAGE),
-		StringLoader.loadDialog(DialogString.DEAD_TITLE), JOptionPane.YES_NO_CANCEL_OPTION,
-		JOptionPane.INFORMATION_MESSAGE, null,
-		new String[] { StringLoader.loadDialog(DialogString.UNDO_BUTTON),
-			StringLoader.loadDialog(DialogString.RESTART_BUTTON),
-			StringLoader.loadDialog(DialogString.END_BUTTON) },
-		StringLoader.loadDialog(DialogString.UNDO_BUTTON));
+        return JOptionPane.showOptionDialog(null,
+                StringLoader.loadDialog(DialogString.DEAD_MESSAGE),
+                StringLoader.loadDialog(DialogString.DEAD_TITLE),
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null,
+                new String[] {
+                        StringLoader.loadDialog(DialogString.UNDO_BUTTON),
+                        StringLoader.loadDialog(DialogString.RESTART_BUTTON),
+                        StringLoader.loadDialog(DialogString.END_BUTTON) },
+                StringLoader.loadDialog(DialogString.UNDO_BUTTON));
     }
 
     private CustomDialogs() {
-	// Do nothing
+        // Do nothing
     }
 }

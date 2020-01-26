@@ -17,10 +17,11 @@ public final class Ghosted {
     }
 
     // Methods
-    public final void debug(final Throwable t) {
+    public void debug(final Throwable t) {
         final DebugInfoWriter diw = new DebugInfoWriter(t, this.name);
-        JOptionPane.showMessageDialog(null, this.msg
-                + "\nThe debug log is located at:\n" + diw.getFullDebugPath(),
+        JOptionPane.showMessageDialog(null,
+                this.msg + "\nThe debug log is located at:\n"
+                        + diw.getFullDebugPath(),
                 this.title, JOptionPane.ERROR_MESSAGE);
         diw.writeDebugInfo();
         System.exit(1);

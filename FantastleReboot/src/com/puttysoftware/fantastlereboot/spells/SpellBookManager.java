@@ -27,72 +27,72 @@ import com.puttysoftware.fantastlereboot.spells.books.WarlockSpellBook;
 import com.puttysoftware.fantastlereboot.spells.books.YellerSpellBook;
 
 public class SpellBookManager {
-  // Private Constructor
-  private SpellBookManager() {
-    // Do nothing
-  }
-
-  public static SpellBook getSpellBookByID(final int ID) {
-    switch (ID) {
-    case JobConstants.ASSASSIN:
-      return new AssassinSpellBook();
-    case JobConstants.BASHER:
-      return new BasherSpellBook();
-    case JobConstants.CURER:
-      return new CurerSpellBook();
-    case JobConstants.DESTROYER:
-      return new DestroyerSpellBook();
-    case JobConstants.ECLECTIC:
-      return new EclecticSpellBook();
-    case JobConstants.FOOL:
-      return new FoolSpellBook();
-    case JobConstants.GURU:
-      return new GuruSpellBook();
-    case JobConstants.HUNTER:
-      return new HunterSpellBook();
-    case JobConstants.JUMPER:
-      return new JumperSpellBook();
-    case JobConstants.KNIGHT:
-      return new KnightSpellBook();
-    case JobConstants.LOCKSMITH:
-      return new LocksmithSpellBook();
-    case JobConstants.MONK:
-      return new MonkSpellBook();
-    case JobConstants.NINJA:
-      return new NinjaSpellBook();
-    case JobConstants.OVERSEER:
-      return new OverseerSpellBook();
-    case JobConstants.PICKPOCKET:
-      return new PickpocketSpellBook();
-    case JobConstants.ROGUE:
-      return new RogueSpellBook();
-    case JobConstants.SPY:
-      return new SpySpellBook();
-    case JobConstants.TEACHER:
-      return new TeacherSpellBook();
-    case JobConstants.WARLOCK:
-      return new WarlockSpellBook();
-    case JobConstants.YELLER:
-      return new YellerSpellBook();
-    default:
-      return null;
+    // Private Constructor
+    private SpellBookManager() {
+        // Do nothing
     }
-  }
 
-  public static SpellBook getEnemySpellBookByID(final int ID) {
-    switch (ID) {
-    case 0:
-      return null;
-    case 1:
-      return new LowLevelSpellBook();
-    case 2:
-      return new MidLevelSpellBook();
-    case 3:
-      return new HighLevelSpellBook();
-    case 4:
-      return new ToughLevelSpellBook();
-    default:
-      return null;
+    public static SpellBook getSpellBookByID(final int ID) {
+        switch (ID) {
+        case JobConstants.ASSASSIN:
+            return new AssassinSpellBook();
+        case JobConstants.BASHER:
+            return new BasherSpellBook();
+        case JobConstants.CURER:
+            return new CurerSpellBook();
+        case JobConstants.DESTROYER:
+            return new DestroyerSpellBook();
+        case JobConstants.ECLECTIC:
+            return new EclecticSpellBook();
+        case JobConstants.FOOL:
+            return new FoolSpellBook();
+        case JobConstants.GURU:
+            return new GuruSpellBook();
+        case JobConstants.HUNTER:
+            return new HunterSpellBook();
+        case JobConstants.JUMPER:
+            return new JumperSpellBook();
+        case JobConstants.KNIGHT:
+            return new KnightSpellBook();
+        case JobConstants.LOCKSMITH:
+            return new LocksmithSpellBook();
+        case JobConstants.MONK:
+            return new MonkSpellBook();
+        case JobConstants.NINJA:
+            return new NinjaSpellBook();
+        case JobConstants.OVERSEER:
+            return new OverseerSpellBook();
+        case JobConstants.PICKPOCKET:
+            return new PickpocketSpellBook();
+        case JobConstants.ROGUE:
+            return new RogueSpellBook();
+        case JobConstants.SPY:
+            return new SpySpellBook();
+        case JobConstants.TEACHER:
+            return new TeacherSpellBook();
+        case JobConstants.WARLOCK:
+            return new WarlockSpellBook();
+        case JobConstants.YELLER:
+            return new YellerSpellBook();
+        default:
+            return null;
+        }
     }
-  }
+
+    public static SpellBook getEnemySpellBookByID(final int ID) {
+        switch (ID) {
+        case 0:
+            return null;
+        case 1:
+            return new LowLevelSpellBook();
+        case 2:
+            return new MidLevelSpellBook();
+        case 3:
+            return new HighLevelSpellBook();
+        case 4:
+            return new ToughLevelSpellBook();
+        default:
+            return null;
+        }
+    }
 }

@@ -32,8 +32,9 @@ public class Stump extends AbstractWall {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         return true;
     }
 

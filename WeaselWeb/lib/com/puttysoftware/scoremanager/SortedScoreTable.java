@@ -114,8 +114,8 @@ public class SortedScoreTable extends ScoreTable {
         }
     }
 
-    public static SortedScoreTable readSortedScoreTableXML(final XDataReader xdr)
-            throws IOException {
+    public static SortedScoreTable readSortedScoreTableXML(
+            final XDataReader xdr) throws IOException {
         final boolean order = xdr.readBoolean();
         final int len = xdr.readInt();
         final int unitLen = xdr.readInt();
@@ -143,8 +143,8 @@ public class SortedScoreTable extends ScoreTable {
                 xdw.writeString(element);
             }
         }
-        for (int x = 0; x < this.table.size(); x++) {
-            this.table.get(x).writeScoreXML(xdw);
+        for (final Score element : this.table) {
+            element.writeScoreXML(xdw);
         }
     }
 }

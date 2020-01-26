@@ -50,7 +50,7 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -80,7 +80,7 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
 
     @Override
     public AbstractTeleport clone() {
-        AbstractTeleport copy = (AbstractTeleport) super.clone();
+        final AbstractTeleport copy = (AbstractTeleport) super.clone();
         copy.destCol = this.destCol;
         copy.destFloor = this.destFloor;
         copy.destRow = this.destRow;
@@ -120,9 +120,9 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_TELEPORT);
@@ -144,10 +144,9 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
     @Override
     public void editorProbeHook() {
         MazeRunnerII.getApplication()
-                .showMessage(
-                        this.getName() + ": Destination (" + (this.destCol + 1)
-                                + "," + (this.destRow + 1) + ","
-                                + (this.destFloor + 1) + ")");
+                .showMessage(this.getName() + ": Destination ("
+                        + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+                        + (this.destFloor + 1) + ")");
     }
 
     @Override
@@ -156,7 +155,7 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.destRow;
@@ -170,7 +169,7 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.destRow = value;

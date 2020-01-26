@@ -56,7 +56,7 @@ public class NativeIntegration {
 
     public static void hookQuit(final QuitHandler qh) {
         if (Desktop.isDesktopSupported()) {
-            Desktop d = Desktop.getDesktop();
+            final Desktop d = Desktop.getDesktop();
             if (d.isSupported(Action.APP_QUIT_HANDLER)) {
                 d.setQuitHandler(qh);
             }
@@ -65,7 +65,7 @@ public class NativeIntegration {
 
     public static void hookPreferences(final PreferencesHandler ph) {
         if (Desktop.isDesktopSupported()) {
-            Desktop d = Desktop.getDesktop();
+            final Desktop d = Desktop.getDesktop();
             if (d.isSupported(Action.APP_PREFERENCES)) {
                 d.setPreferencesHandler(ph);
             }
@@ -74,7 +74,7 @@ public class NativeIntegration {
 
     public static void hookAbout(final AboutHandler ah) {
         if (Desktop.isDesktopSupported()) {
-            Desktop d = Desktop.getDesktop();
+            final Desktop d = Desktop.getDesktop();
             if (d.isSupported(Action.APP_ABOUT)) {
                 d.setAboutHandler(ah);
             }

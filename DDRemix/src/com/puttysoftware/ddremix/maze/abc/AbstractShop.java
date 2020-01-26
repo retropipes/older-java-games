@@ -27,7 +27,8 @@ public abstract class AbstractShop extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         final Shop shop = DDRemix.getApplication()
                 .getGenericShop(this.shopType);
         if (shop != null) {

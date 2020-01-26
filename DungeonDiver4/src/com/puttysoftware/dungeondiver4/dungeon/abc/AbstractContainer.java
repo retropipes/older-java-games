@@ -46,7 +46,7 @@ public abstract class AbstractContainer extends AbstractLock {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -70,22 +70,23 @@ public abstract class AbstractContainer extends AbstractLock {
 
     @Override
     public AbstractContainer clone() {
-        AbstractContainer copy = (AbstractContainer) super.clone();
+        final AbstractContainer copy = (AbstractContainer) super.clone();
         copy.inside = this.inside.clone();
         return copy;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                DungeonEffectConstants.EFFECT_GHOSTLY)
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
+        if (!app.getGameManager()
+                .isEffectActive(DungeonEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
             }
-            int pz = app.getDungeonManager().getDungeon().getPlayerLocationZ();
+            final int pz = app.getDungeonManager().getDungeon()
+                    .getPlayerLocationZ();
             if (this.inside != null) {
                 app.getGameManager().morph(this.inside, dirX, dirY, pz);
             } else {
@@ -106,8 +107,8 @@ public abstract class AbstractContainer extends AbstractLock {
             DungeonDiver4.getApplication().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            DungeonDiver4.getApplication().showMessage(
-                    this.getName() + ": Contains Nothing");
+            DungeonDiver4.getApplication()
+                    .showMessage(this.getName() + ": Contains Nothing");
         }
     }
 
@@ -122,16 +123,17 @@ public abstract class AbstractContainer extends AbstractLock {
     }
 
     @Override
-    protected AbstractDungeonObject readDungeonObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
-        DungeonObjectList objectList = DungeonDiver4.getApplication()
+    protected AbstractDungeonObject readDungeonObjectHook(
+            final XDataReader reader, final int formatVersion)
+            throws IOException {
+        final DungeonObjectList objectList = DungeonDiver4.getApplication()
                 .getObjects();
         this.inside = objectList.readDungeonObject(reader, formatVersion);
         return this;
     }
 
     @Override
-    protected void writeDungeonObjectHook(XDataWriter writer)
+    protected void writeDungeonObjectHook(final XDataWriter writer)
             throws IOException {
         if (this.inside == null) {
             new Empty().writeDungeonObject(writer);

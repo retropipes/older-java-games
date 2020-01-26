@@ -112,43 +112,61 @@ public class BossMonster extends AbstractCreature {
 
     private int getInitialStrength() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 
     private int getInitialBlock() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 
     private int getInitialAgility() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 
     private int getInitialVitality() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 
     private int getInitialIntelligence() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 
     private int getInitialLuck() {
         final int min = BossMonster.getMinimumStatForDifficulty();
-        final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-                * BossMonster.getStatMultiplierForDifficulty(), min));
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
         return r.generate();
     }
 

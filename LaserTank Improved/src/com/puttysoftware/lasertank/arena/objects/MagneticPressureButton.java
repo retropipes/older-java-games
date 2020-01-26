@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class MagneticPressureButton extends AbstractPressureButton {
     // Constructors
     public MagneticPressureButton() {
-	super(new MagneticPressureButtonDoor(), false);
-	this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
+        super(new MagneticPressureButtonDoor(), false);
+        this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 88;
+        return 88;
     }
 }

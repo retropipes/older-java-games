@@ -56,8 +56,8 @@ public class PersonalityConstants {
             try {
                 // Fetch data
                 final ResourceStreamReader rsr = new ResourceStreamReader(
-                        PersonalityDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/personality/catalog.txt"));
+                        PersonalityDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/mastermaze/resources/data/personality/catalog.txt"));
                 final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {

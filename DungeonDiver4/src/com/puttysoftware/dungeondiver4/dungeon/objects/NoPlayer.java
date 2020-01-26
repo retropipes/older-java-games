@@ -29,9 +29,9 @@ public class NoPlayer extends AbstractAntiObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().backUpPlayer(this);
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }

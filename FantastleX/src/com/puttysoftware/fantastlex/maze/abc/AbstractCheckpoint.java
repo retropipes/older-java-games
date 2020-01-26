@@ -85,8 +85,8 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.showMessage("You may pass.");
         SoundManager.playSound(SoundConstants.SOUND_WALK);
@@ -94,7 +94,8 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
 
     @Override
     public boolean isConditionallySolid(final MazeObjectInventory inv) {
-        return !(inv.isItemThere(this.key) && inv.getItemCount(this.key) >= this.keyCount);
+        return !(inv.isItemThere(this.key)
+                && inv.getItemCount(this.key) >= this.keyCount);
     }
 
     @Override

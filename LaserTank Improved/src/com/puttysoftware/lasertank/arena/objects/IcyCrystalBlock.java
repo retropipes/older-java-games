@@ -19,74 +19,82 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class IcyCrystalBlock extends AbstractReactionWall {
     // Constructors
     public IcyCrystalBlock() {
-	super();
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.setMaterial(MaterialConstants.MATERIAL_ICE);
+        super();
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.setMaterial(MaterialConstants.MATERIAL_ICE);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_FIRE:
-	    if (this.hasPreviousState()) {
-		return this.getPreviousState();
-	    } else {
-		return new CrystalBlock();
-	    }
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_FIRE:
+            if (this.hasPreviousState()) {
+                return this.getPreviousState();
+            } else {
+                return new CrystalBlock();
+            }
+        default:
+            return this;
+        }
     }
 
     @Override
     public final int getStringBaseID() {
-	return 127;
+        return 127;
     }
 
     @Override
-    public Direction laserEnteredActionHook(final int locX, final int locY, final int locZ, final int dirX,
-	    final int dirY, final int laserType, final int forceUnits) {
-	if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
-	    // Destroy icy crystal block
-	    SoundManager.playSound(SoundConstants.SOUND_BOOM);
-	    LaserTank.getApplication().getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	    return Direction.NONE;
-	} else if (laserType == LaserTypeConstants.LASER_TYPE_DISRUPTOR) {
-	    // Disrupt icy crystal block
-	    SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
-	    final DisruptedIcyCrystalBlock dicb = new DisruptedIcyCrystalBlock();
-	    if (this.hasPreviousState()) {
-		dicb.setPreviousState(this.getPreviousState());
-	    }
-	    LaserTank.getApplication().getGameManager().morph(dicb, locX, locY, locZ, this.getLayer());
-	    return Direction.NONE;
-	} else {
-	    // Stop laser
-	    SoundManager.playSound(SoundConstants.SOUND_LASER_DIE);
-	    return Direction.NONE;
-	}
+    public Direction laserEnteredActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
+            // Destroy icy crystal block
+            SoundManager.playSound(SoundConstants.SOUND_BOOM);
+            LaserTank.getApplication().getGameManager().morph(new Empty(), locX,
+                    locY, locZ, this.getLayer());
+            return Direction.NONE;
+        } else if (laserType == LaserTypeConstants.LASER_TYPE_DISRUPTOR) {
+            // Disrupt icy crystal block
+            SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
+            final DisruptedIcyCrystalBlock dicb = new DisruptedIcyCrystalBlock();
+            if (this.hasPreviousState()) {
+                dicb.setPreviousState(this.getPreviousState());
+            }
+            LaserTank.getApplication().getGameManager().morph(dicb, locX, locY,
+                    locZ, this.getLayer());
+            return Direction.NONE;
+        } else {
+            // Stop laser
+            SoundManager.playSound(SoundConstants.SOUND_LASER_DIE);
+            return Direction.NONE;
+        }
     }
 
     @Override
-    public boolean rangeActionHook(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int rangeType, final int forceUnits) {
-	if (RangeTypeConstants.getMaterialForRangeType(rangeType) == MaterialConstants.MATERIAL_METALLIC) {
-	    // Destroy icy crystal block
-	    LaserTank.getApplication().getGameManager().morph(new Empty(), locX + dirX, locY + dirY, locZ,
-		    this.getLayer());
-	    return true;
-	} else if (RangeTypeConstants.getMaterialForRangeType(rangeType) == MaterialConstants.MATERIAL_FIRE) {
-	    // Heat up crystal block
-	    SoundManager.playSound(SoundConstants.SOUND_MELT);
-	    LaserTank.getApplication().getGameManager().morph(this.changesToOnExposure(MaterialConstants.MATERIAL_FIRE),
-		    locX + dirX, locY + dirY, locZ, this.getLayer());
-	    return true;
-	} else if (RangeTypeConstants.getMaterialForRangeType(rangeType) == MaterialConstants.MATERIAL_ICE) {
-	    // Do nothing
-	    return true;
-	} else {
-	    // Do nothing
-	    return true;
-	}
+    public boolean rangeActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int rangeType,
+            final int forceUnits) {
+        if (RangeTypeConstants.getMaterialForRangeType(
+                rangeType) == MaterialConstants.MATERIAL_METALLIC) {
+            // Destroy icy crystal block
+            LaserTank.getApplication().getGameManager().morph(new Empty(),
+                    locX + dirX, locY + dirY, locZ, this.getLayer());
+            return true;
+        } else if (RangeTypeConstants.getMaterialForRangeType(
+                rangeType) == MaterialConstants.MATERIAL_FIRE) {
+            // Heat up crystal block
+            SoundManager.playSound(SoundConstants.SOUND_MELT);
+            LaserTank.getApplication().getGameManager().morph(
+                    this.changesToOnExposure(MaterialConstants.MATERIAL_FIRE),
+                    locX + dirX, locY + dirY, locZ, this.getLayer());
+            return true;
+        } else if (RangeTypeConstants.getMaterialForRangeType(
+                rangeType) == MaterialConstants.MATERIAL_ICE) {
+            // Do nothing
+            return true;
+        } else {
+            // Do nothing
+            return true;
+        }
     }
 }

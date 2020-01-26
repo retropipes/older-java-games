@@ -12,52 +12,54 @@ public abstract class SoundFactory extends Thread {
     private static SoundExceptionHandler meh = new SoundExceptionHandler();
 
     private static void killAllMediaPlayers() {
-	SoundFactory.MEDIA_GROUP.interrupt();
+        SoundFactory.MEDIA_GROUP.interrupt();
     }
 
     // Factories
     public static SoundFactory loadFile(final String file) {
-	return SoundFactory
-		.provisionMedia(new SoundFile(SoundFactory.MEDIA_GROUP, file, SoundFactory.ACTIVE_MEDIA_COUNT));
+        return SoundFactory
+                .provisionMedia(new SoundFile(SoundFactory.MEDIA_GROUP, file,
+                        SoundFactory.ACTIVE_MEDIA_COUNT));
     }
 
     public static SoundFactory loadResource(final URL resource) {
-	return SoundFactory
-		.provisionMedia(new SoundResource(SoundFactory.MEDIA_GROUP, resource, SoundFactory.ACTIVE_MEDIA_COUNT));
+        return SoundFactory
+                .provisionMedia(new SoundResource(SoundFactory.MEDIA_GROUP,
+                        resource, SoundFactory.ACTIVE_MEDIA_COUNT));
     }
 
     private static SoundFactory provisionMedia(final SoundFactory src) {
-	if (SoundFactory.ACTIVE_MEDIA_COUNT >= SoundFactory.MAX_MEDIA_ACTIVE) {
-	    SoundFactory.killAllMediaPlayers();
-	}
-	try {
-	    if (src != null) {
-		src.setUncaughtExceptionHandler(SoundFactory.meh);
-		SoundFactory.ACTIVE_MEDIA[SoundFactory.ACTIVE_MEDIA_COUNT] = src;
-		SoundFactory.ACTIVE_MEDIA_COUNT++;
-	    }
-	} catch (final ArrayIndexOutOfBoundsException aioob) {
-	    // Do nothing
-	}
-	return src;
+        if (SoundFactory.ACTIVE_MEDIA_COUNT >= SoundFactory.MAX_MEDIA_ACTIVE) {
+            SoundFactory.killAllMediaPlayers();
+        }
+        try {
+            if (src != null) {
+                src.setUncaughtExceptionHandler(SoundFactory.meh);
+                SoundFactory.ACTIVE_MEDIA[SoundFactory.ACTIVE_MEDIA_COUNT] = src;
+                SoundFactory.ACTIVE_MEDIA_COUNT++;
+            }
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
+            // Do nothing
+        }
+        return src;
     }
 
     static synchronized void taskCompleted(final int taskNum) {
-	SoundFactory.ACTIVE_MEDIA[taskNum] = null;
-	for (int z = taskNum + 1; z < SoundFactory.ACTIVE_MEDIA.length; z++) {
-	    if (SoundFactory.ACTIVE_MEDIA[z] != null) {
-		SoundFactory.ACTIVE_MEDIA[z - 1] = SoundFactory.ACTIVE_MEDIA[z];
-		if (SoundFactory.ACTIVE_MEDIA[z - 1].isAlive()) {
-		    SoundFactory.ACTIVE_MEDIA[z - 1].updateNumber(z - 1);
-		}
-	    }
-	}
-	SoundFactory.ACTIVE_MEDIA_COUNT--;
+        SoundFactory.ACTIVE_MEDIA[taskNum] = null;
+        for (int z = taskNum + 1; z < SoundFactory.ACTIVE_MEDIA.length; z++) {
+            if (SoundFactory.ACTIVE_MEDIA[z] != null) {
+                SoundFactory.ACTIVE_MEDIA[z - 1] = SoundFactory.ACTIVE_MEDIA[z];
+                if (SoundFactory.ACTIVE_MEDIA[z - 1].isAlive()) {
+                    SoundFactory.ACTIVE_MEDIA[z - 1].updateNumber(z - 1);
+                }
+            }
+        }
+        SoundFactory.ACTIVE_MEDIA_COUNT--;
     }
 
     // Constructor
     protected SoundFactory(final ThreadGroup group) {
-	super(group, "Media Player " + SoundFactory.ACTIVE_MEDIA_COUNT);
+        super(group, "Media Player " + SoundFactory.ACTIVE_MEDIA_COUNT);
     }
 
     abstract int getNumber();

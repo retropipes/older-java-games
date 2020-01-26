@@ -36,10 +36,7 @@ public class IceAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_ICY,
-                        IceAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
     }
 }

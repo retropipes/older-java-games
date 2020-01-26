@@ -70,8 +70,8 @@ public class AboutDialog {
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
         this.textPane
                 .add(new JLabel("Web Site: http://worldz.worldwizard.net/"));
-        this.textPane.add(new JLabel(
-                "E-mail bug reports to: worldz@worldwizard.net  "));
+        this.textPane.add(
+                new JLabel("E-mail bug reports to: worldz@worldwizard.net  "));
         this.buttonPane.setLayout(new FlowLayout());
         this.buttonPane.add(this.aboutOK);
         this.aboutPane.add(this.logoPane, BorderLayout.WEST);

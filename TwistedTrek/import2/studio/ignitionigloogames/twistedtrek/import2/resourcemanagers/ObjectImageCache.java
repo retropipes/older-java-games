@@ -15,9 +15,9 @@ public class ObjectImageCache {
 	    final BufferedImageIcon bii = ObjectImageManager.getUncachedImage(baseName);
 	    ObjectImageCache.addToCache(name, bii);
 	}
-	for (int x = 0; x < ObjectImageCache.cache.length; x++) {
-	    if (name.equals(ObjectImageCache.cache[x].getName())) {
-		return ObjectImageCache.cache[x].getImage();
+	for (final CacheEntry element : ObjectImageCache.cache) {
+	    if (name.equals(element.getName())) {
+		return element.getImage();
 	    }
 	}
 	return null;

@@ -46,7 +46,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getInteger("GeneratorRandomness", 3);
     }
 
-    static void setGeneratorRandomness(int value) {
+    static void setGeneratorRandomness(final int value) {
         PreferencesManager.storeMgr.setInteger("GeneratorRandomness", value);
         Gemma.getApplication().getScenarioManager().getMap()
                 .setGeneratorRandomness(value, Gemma.GENERATOR_RANDOMNESS_MAX);
@@ -63,7 +63,7 @@ public class PreferencesManager {
                 BattleSpeedConstants.BATTLE_SPEED_MODERATE);
     }
 
-    static void setBattleSpeed(int value) {
+    static void setBattleSpeed(final int value) {
         PreferencesManager.storeMgr.setInteger("BattleSpeed", value);
     }
 
@@ -71,7 +71,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("OneMove", true);
     }
 
-    static void setOneMove(boolean value) {
+    static void setOneMove(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("OneMove", value);
     }
 
@@ -96,7 +96,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(PreferencesManager.MAC_PREFIX);
@@ -110,7 +110,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_DIR;
@@ -128,7 +128,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFileName() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_FILE;
@@ -142,7 +142,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(PreferencesManager.getPrefsDirPrefix());
         b.append(PreferencesManager.getPrefsDirectory());
         b.append(PreferencesManager.getPrefsFileName());
@@ -154,7 +154,7 @@ public class PreferencesManager {
         try (BufferedOutputStream buf = new BufferedOutputStream(
                 new FileOutputStream(PreferencesManager.getPrefsFile()))) {
             PreferencesManager.storeMgr.saveStore(buf);
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Ignore
         }
         LocalPreferencesManager.writePrefs();
@@ -165,7 +165,7 @@ public class PreferencesManager {
                 new FileInputStream(PreferencesManager.getPrefsFile()))) {
             // Read new preferences
             PreferencesManager.storeMgr.loadStore(buf);
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Populate store with defaults
             PreferencesManager.storeMgr.setBoolean("OneMove", true);
             for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {

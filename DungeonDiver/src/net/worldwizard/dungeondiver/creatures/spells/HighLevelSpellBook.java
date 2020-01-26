@@ -36,9 +36,8 @@ public class HighLevelSpellBook extends SpellBook {
         spell2Effect.setAffectedStat(StatConstants.STAT_ATTACK);
         spell2Effect.setEffect(Buff.EFFECT_MULTIPLY, 0.6,
                 Buff.DEFAULT_SCALE_FACTOR, StatConstants.STAT_NONE);
-        spell2Effect
-                .setMessage(Buff.MESSAGE_INITIAL,
-                        "The enemy drains your weapon of a significant amount of its power!");
+        spell2Effect.setMessage(Buff.MESSAGE_INITIAL,
+                "The enemy drains your weapon of a significant amount of its power!");
         spell2Effect.setMessage(Buff.MESSAGE_SUBSEQUENT,
                 "Your attack is significantly decreased!");
         spell2Effect.setMessage(Buff.MESSAGE_WEAR_OFF,
@@ -49,9 +48,8 @@ public class HighLevelSpellBook extends SpellBook {
         spell3Effect.setAffectedStat(StatConstants.STAT_DEFENSE);
         spell3Effect.setEffect(Buff.EFFECT_MULTIPLY, 0.6,
                 Buff.DEFAULT_SCALE_FACTOR, StatConstants.STAT_NONE);
-        spell3Effect
-                .setMessage(Buff.MESSAGE_INITIAL,
-                        "The enemy drains your armor of a significant amount of its power!");
+        spell3Effect.setMessage(Buff.MESSAGE_INITIAL,
+                "The enemy drains your armor of a significant amount of its power!");
         spell3Effect.setMessage(Buff.MESSAGE_SUBSEQUENT,
                 "Your defense is significantly decreased!");
         spell3Effect.setMessage(Buff.MESSAGE_WEAR_OFF,

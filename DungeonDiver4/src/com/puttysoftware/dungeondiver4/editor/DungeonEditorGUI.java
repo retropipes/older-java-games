@@ -44,26 +44,29 @@ import com.puttysoftware.picturepicker.PicturePicker;
 
 class DungeonEditorGUI {
     // Fields
-    private JFrame outputFrame, treasureFrame;
-    private Container outputPane, borderPane, treasurePane;
+    private JFrame outputFrame;
+    private final JFrame treasureFrame;
+    private Container outputPane, borderPane;
+    private final Container treasurePane;
     private JLabel messageLabel;
     private JScrollBar vertScroll, horzScroll;
-    private EventHandler mhandler;
-    private StartEventHandler shandler;
-    private TeleportEventHandler thandler;
-    private TreasureEventHandler rhandler;
-    private MetalButtonEventHandler mbhandler;
-    private ConditionalTeleportEventHandler cthandler;
-    private LevelPreferencesManager lPrefs;
-    private DungeonPreferencesManager mPrefs;
-    private PicturePicker picker, treasurePicker;
-    private String[] groundNames;
-    private String[] objectNames;
-    private BufferedImageIcon[] groundEditorAppearances;
-    private BufferedImageIcon[] objectEditorAppearances;
-    private String[] containableNames;
-    private BufferedImageIcon[] containableEditorAppearances;
-    private EditorLocationManager elMgr;
+    private final EventHandler mhandler;
+    private final StartEventHandler shandler;
+    private final TeleportEventHandler thandler;
+    private final TreasureEventHandler rhandler;
+    private final MetalButtonEventHandler mbhandler;
+    private final ConditionalTeleportEventHandler cthandler;
+    private final LevelPreferencesManager lPrefs;
+    private final DungeonPreferencesManager mPrefs;
+    private PicturePicker picker;
+    private final PicturePicker treasurePicker;
+    private final String[] groundNames;
+    private final String[] objectNames;
+    private final BufferedImageIcon[] groundEditorAppearances;
+    private final BufferedImageIcon[] objectEditorAppearances;
+    private final String[] containableNames;
+    private final BufferedImageIcon[] containableEditorAppearances;
+    private final EditorLocationManager elMgr;
     EditorViewingWindowManager evMgr;
     private DrawGrid drawGrid;
     private EditorDraw secondaryPane;
@@ -78,7 +81,7 @@ class DungeonEditorGUI {
         this.rhandler = new TreasureEventHandler();
         this.mbhandler = new MetalButtonEventHandler();
         this.cthandler = new ConditionalTeleportEventHandler();
-        DungeonObjectList objectList = DungeonDiver4.getApplication()
+        final DungeonObjectList objectList = DungeonDiver4.getApplication()
                 .getObjects();
         this.groundNames = objectList.getAllGroundLayerNames();
         this.objectNames = objectList.getAllObjectLayerNames();
@@ -109,7 +112,7 @@ class DungeonEditorGUI {
         this.treasureFrame.pack();
     }
 
-    int[] computeGridValues(int x, int y) {
+    int[] computeGridValues(final int x, final int y) {
         int gridX, gridY;
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
@@ -130,7 +133,7 @@ class DungeonEditorGUI {
         return this.treasurePicker.getPicked();
     }
 
-    void setTreasurePicked(int index) {
+    void setTreasurePicked(final int index) {
         this.treasurePicker.selectLastPickedChoice(index);
     }
 
@@ -227,7 +230,7 @@ class DungeonEditorGUI {
     }
 
     void updateEditorPosition(final int x, final int y, final int z,
-            final int w, UndoRedoEngine engine) {
+            final int w, final UndoRedoEngine engine) {
         this.elMgr.offsetEditorLocationW(w);
         this.evMgr.offsetViewingWindowLocationX(x);
         this.evMgr.offsetViewingWindowLocationY(y);
@@ -244,8 +247,8 @@ class DungeonEditorGUI {
     }
 
     void updateEditorPositionAbsolute(final int x, final int y, final int z,
-            final int w, UndoRedoEngine engine) {
-        int oldW = this.elMgr.getEditorLocationW();
+            final int w, final UndoRedoEngine engine) {
+        final int oldW = this.elMgr.getEditorLocationW();
         this.elMgr.setEditorLocationW(w);
         this.evMgr.setViewingWindowCenterX(y);
         this.evMgr.setViewingWindowCenterY(x);
@@ -261,7 +264,7 @@ class DungeonEditorGUI {
         this.redrawEditor();
     }
 
-    void updateEditorLevelAbsolute(final int w, UndoRedoEngine engine) {
+    void updateEditorLevelAbsolute(final int w, final UndoRedoEngine engine) {
         this.elMgr.setEditorLocationW(w);
         // Level Change
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
@@ -272,10 +275,10 @@ class DungeonEditorGUI {
         this.redrawEditor();
     }
 
-    void checkMenus(UndoRedoEngine engine) {
-        Application app = DungeonDiver4.getApplication();
+    void checkMenus(final UndoRedoEngine engine) {
+        final Application app = DungeonDiver4.getApplication();
         if (app.getMode() == Application.STATUS_EDITOR) {
-            Dungeon m = app.getDungeonManager().getDungeon();
+            final Dungeon m = app.getDungeonManager().getDungeon();
             if (m.getLevels() == Dungeon.getMinLevels()) {
                 app.getMenuManager().disableRemoveLevel();
             } else {
@@ -321,14 +324,15 @@ class DungeonEditorGUI {
                 } else {
                     app.getMenuManager().enableUpOneLevel();
                 }
-            } catch (NullPointerException npe) {
+            } catch (final NullPointerException npe) {
                 app.getMenuManager().disableDownOneFloor();
                 app.getMenuManager().disableUpOneFloor();
                 app.getMenuManager().disableDownOneLevel();
                 app.getMenuManager().disableUpOneLevel();
             }
             if (this.elMgr != null) {
-                if (this.elMgr.getEditorLocationE() != DungeonConstants.LAYER_GROUND) {
+                if (this.elMgr
+                        .getEditorLocationE() != DungeonConstants.LAYER_GROUND) {
                     app.getMenuManager().enableSetStartPoint();
                 } else {
                     app.getMenuManager().disableSetStartPoint();
@@ -354,7 +358,7 @@ class DungeonEditorGUI {
         }
     }
 
-    void toggleLayer(UndoRedoEngine engine) {
+    void toggleLayer(final UndoRedoEngine engine) {
         if (this.elMgr.getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
             this.elMgr.setEditorLocationE(DungeonConstants.LAYER_OBJECT);
         } else {
@@ -375,7 +379,8 @@ class DungeonEditorGUI {
 
     void redrawEditor() {
         if (this.outputFrame.isVisible()) {
-            if (this.elMgr.getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
+            if (this.elMgr
+                    .getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
                 this.redrawGround();
             } else {
                 this.redrawGroundAndObjects();
@@ -385,7 +390,7 @@ class DungeonEditorGUI {
 
     private void redrawGround() {
         // Draw the dungeon in edit mode
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int x, y, w;
         int xFix, yFix;
         w = this.elMgr.getEditorLocationW();
@@ -396,28 +401,31 @@ class DungeonEditorGUI {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    AbstractDungeonObject obj1 = app
-                            .getDungeonManager()
+                    final AbstractDungeonObject obj1 = app.getDungeonManager()
                             .getDungeon()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     DungeonConstants.LAYER_GROUND)
                             .editorRenderHook(y, x,
                                     this.elMgr.getEditorLocationZ());
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            obj1.getName(), obj1.getBaseID(),
-                            obj1.getTemplateColor(), obj1.getAttributeID(),
-                            obj1.getAttributeTemplateColor()), xFix, yFix);
+                    this.drawGrid.setImageCell(
+                            ObjectImageManager.getImage(obj1.getName(),
+                                    obj1.getBaseID(), obj1.getTemplateColor(),
+                                    obj1.getAttributeID(),
+                                    obj1.getAttributeTemplateColor()),
+                            xFix, yFix);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            EMPTY_VOID.getName(), EMPTY_VOID.getBaseID(),
+                            DungeonEditorGUI.EMPTY_VOID.getName(),
+                            DungeonEditorGUI.EMPTY_VOID.getBaseID(),
                             ColorConstants.COLOR_NONE,
-                            EMPTY_VOID.getAttributeID(),
+                            DungeonEditorGUI.EMPTY_VOID.getAttributeID(),
                             ColorConstants.COLOR_NONE), xFix, yFix);
                 } catch (final NullPointerException np) {
                     this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            EMPTY_VOID.getName(), EMPTY_VOID.getBaseID(),
+                            DungeonEditorGUI.EMPTY_VOID.getName(),
+                            DungeonEditorGUI.EMPTY_VOID.getBaseID(),
                             ColorConstants.COLOR_NONE,
-                            EMPTY_VOID.getAttributeID(),
+                            DungeonEditorGUI.EMPTY_VOID.getAttributeID(),
                             ColorConstants.COLOR_NONE), xFix, yFix);
                 }
             }
@@ -431,12 +439,12 @@ class DungeonEditorGUI {
 
     private void redrawGroundAndObjects() {
         // Draw the dungeon in edit mode
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         int x, y, w;
         int xFix, yFix;
-        int u = m.getStartRow();
-        int v = m.getStartColumn();
+        final int u = m.getStartRow();
+        final int v = m.getStartColumn();
         w = this.elMgr.getEditorLocationW();
         for (x = this.evMgr.getViewingWindowLocationX(); x <= this.evMgr
                 .getLowerRightViewingWindowLocationX(); x++) {
@@ -445,30 +453,33 @@ class DungeonEditorGUI {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    AbstractDungeonObject obj1 = m.getCell(y, x,
-                            this.elMgr.getEditorLocationZ(),
-                            DungeonConstants.LAYER_GROUND).editorRenderHook(y,
-                            x, this.elMgr.getEditorLocationZ());
-                    AbstractDungeonObject obj2 = m.getCell(y, x,
-                            this.elMgr.getEditorLocationZ(),
-                            DungeonConstants.LAYER_OBJECT).editorRenderHook(y,
-                            x, this.elMgr.getEditorLocationZ());
-                    BufferedImageIcon img1 = ObjectImageManager.getImage(
+                    final AbstractDungeonObject obj1 = m
+                            .getCell(y, x, this.elMgr.getEditorLocationZ(),
+                                    DungeonConstants.LAYER_GROUND)
+                            .editorRenderHook(y, x,
+                                    this.elMgr.getEditorLocationZ());
+                    final AbstractDungeonObject obj2 = m
+                            .getCell(y, x, this.elMgr.getEditorLocationZ(),
+                                    DungeonConstants.LAYER_OBJECT)
+                            .editorRenderHook(y, x,
+                                    this.elMgr.getEditorLocationZ());
+                    final BufferedImageIcon img1 = ObjectImageManager.getImage(
                             obj1.getName(), obj1.getBaseID(),
                             obj1.getTemplateColor(), obj1.getAttributeID(),
                             obj1.getAttributeTemplateColor());
-                    BufferedImageIcon img2 = ObjectImageManager.getImage(
+                    final BufferedImageIcon img2 = ObjectImageManager.getImage(
                             obj2.getName(), obj2.getBaseID(),
                             obj2.getTemplateColor(), obj2.getAttributeID(),
                             obj2.getAttributeTemplateColor());
                     if (u == y && v == x) {
-                        AbstractDungeonObject obj3 = new Player()
+                        final AbstractDungeonObject obj3 = new Player()
                                 .editorRenderHook(y, x,
                                         this.elMgr.getEditorLocationZ());
-                        BufferedImageIcon img3 = ObjectImageManager.getImage(
-                                obj3.getName(), obj3.getBaseID(),
-                                obj3.getTemplateColor(), obj3.getAttributeID(),
-                                obj3.getAttributeTemplateColor());
+                        final BufferedImageIcon img3 = ObjectImageManager
+                                .getImage(obj3.getName(), obj3.getBaseID(),
+                                        obj3.getTemplateColor(),
+                                        obj3.getAttributeID(),
+                                        obj3.getAttributeTemplateColor());
                         this.drawGrid.setImageCell(ImageTransformer
                                 .getVirtualCompositeImage(img1, img2, img3),
                                 xFix, yFix);
@@ -479,15 +490,17 @@ class DungeonEditorGUI {
                     }
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            EMPTY_VOID.getName(), EMPTY_VOID.getBaseID(),
+                            DungeonEditorGUI.EMPTY_VOID.getName(),
+                            DungeonEditorGUI.EMPTY_VOID.getBaseID(),
                             ColorConstants.COLOR_NONE,
-                            EMPTY_VOID.getAttributeID(),
+                            DungeonEditorGUI.EMPTY_VOID.getAttributeID(),
                             ColorConstants.COLOR_NONE), xFix, yFix);
                 } catch (final NullPointerException np) {
                     this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            EMPTY_VOID.getName(), EMPTY_VOID.getBaseID(),
+                            DungeonEditorGUI.EMPTY_VOID.getName(),
+                            DungeonEditorGUI.EMPTY_VOID.getBaseID(),
                             ColorConstants.COLOR_NONE,
-                            EMPTY_VOID.getAttributeID(),
+                            DungeonEditorGUI.EMPTY_VOID.getAttributeID(),
                             ColorConstants.COLOR_NONE), xFix, yFix);
                 }
             }
@@ -499,39 +512,38 @@ class DungeonEditorGUI {
         this.showOutput();
     }
 
-    void redrawVirtual(int x, int y, AbstractDungeonObject obj3) {
+    void redrawVirtual(final int x, final int y,
+            final AbstractDungeonObject obj3) {
         // Draw the square
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int xFix, yFix;
         xFix = y - this.evMgr.getViewingWindowLocationX();
         yFix = x - this.evMgr.getViewingWindowLocationY();
         try {
-            AbstractDungeonObject obj1 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject obj1 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(y, x, this.elMgr.getEditorLocationZ(),
                             DungeonConstants.LAYER_GROUND)
                     .editorRenderHook(y, x, this.elMgr.getEditorLocationZ());
-            AbstractDungeonObject obj2 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject obj2 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(y, x, this.elMgr.getEditorLocationZ(),
                             DungeonConstants.LAYER_OBJECT)
                     .editorRenderHook(y, x, this.elMgr.getEditorLocationZ());
-            BufferedImageIcon img1 = ObjectImageManager.getImage(
+            final BufferedImageIcon img1 = ObjectImageManager.getImage(
                     obj1.getName(), obj1.getBaseID(), obj1.getTemplateColor(),
                     obj1.getAttributeID(), obj1.getAttributeTemplateColor());
-            BufferedImageIcon img2 = ObjectImageManager.getImage(
+            final BufferedImageIcon img2 = ObjectImageManager.getImage(
                     obj2.getName(), obj2.getBaseID(), obj2.getTemplateColor(),
                     obj2.getAttributeID(), obj2.getAttributeTemplateColor());
-            AbstractDungeonObject obj4 = obj3.editorRenderHook(y, x,
+            final AbstractDungeonObject obj4 = obj3.editorRenderHook(y, x,
                     this.elMgr.getEditorLocationZ());
-            BufferedImageIcon img3 = ObjectImageManager.getImage(
+            final BufferedImageIcon img3 = ObjectImageManager.getImage(
                     obj4.getName(), obj4.getBaseID(), obj4.getTemplateColor(),
                     obj4.getAttributeID(), obj4.getAttributeTemplateColor());
-            this.drawGrid
-                    .setImageCell(ImageTransformer.getVirtualCompositeImage(
-                            img1, img2, img3), xFix, yFix);
+            this.drawGrid.setImageCell(
+                    ImageTransformer.getVirtualCompositeImage(img1, img2, img3),
+                    xFix, yFix);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
         } catch (final NullPointerException np) {
@@ -542,7 +554,7 @@ class DungeonEditorGUI {
     }
 
     void probeObjectProperties(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -552,16 +564,15 @@ class DungeonEditorGUI {
         final int gridY = y / ImageTransformer.getGraphicSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            AbstractDungeonObject mo = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX, gridY, this.elMgr.getEditorLocationZ(),
+            final AbstractDungeonObject mo = app.getDungeonManager()
+                    .getDungeon().getCell(gridX, gridY,
+                            this.elMgr.getEditorLocationZ(),
                             this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
             mo.editorProbeHook();
-        } catch (ArrayIndexOutOfBoundsException aioob) {
-            EmptyVoid ev = new EmptyVoid();
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
+            final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(gridX, gridY,
                     this.elMgr.getEditorLocationZ());
             ev.editorProbeHook();
@@ -574,18 +585,18 @@ class DungeonEditorGUI {
 
     void fixLimits() {
         // Fix limits
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         if (app.getDungeonManager().getDungeon() != null && this.elMgr != null
                 && this.evMgr != null) {
-            this.elMgr.setLimitsFromDungeon(app.getDungeonManager()
-                    .getDungeon());
-            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromDungeon(app
-                    .getDungeonManager().getDungeon());
+            this.elMgr
+                    .setLimitsFromDungeon(app.getDungeonManager().getDungeon());
+            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromDungeon(
+                    app.getDungeonManager().getDungeon());
         }
     }
 
     void showOutput() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.outputFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         app.getMenuManager().setEditorMenus();
         this.outputFrame.setVisible(true);
@@ -602,13 +613,13 @@ class DungeonEditorGUI {
         this.outputFrame.setEnabled(false);
     }
 
-    void enableOutput(UndoRedoEngine engine) {
+    void enableOutput(final UndoRedoEngine engine) {
         this.outputFrame.setEnabled(true);
         this.checkMenus(engine);
     }
 
     JFrame getOutputFrame() {
-        if ((this.outputFrame != null) && this.outputFrame.isVisible()) {
+        if (this.outputFrame != null && this.outputFrame.isVisible()) {
             return this.outputFrame;
         } else {
             return null;
@@ -621,7 +632,7 @@ class DungeonEditorGUI {
             this.outputFrame.dispose();
         }
         this.messageLabel = new JLabel(" ");
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.outputFrame = new JFrame("Editor");
         final Image iconlogo = app.getIconLogo();
         this.outputFrame.setIconImage(iconlogo);
@@ -635,8 +646,8 @@ class DungeonEditorGUI {
         this.secondaryPane = new EditorDraw(this.drawGrid);
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
+        final GridBagLayout gridbag = new GridBagLayout();
+        final GridBagConstraints c = new GridBagConstraints();
         this.outputPane.setLayout(gridbag);
         this.outputFrame.setResizable(false);
         c.fill = GridBagConstraints.BOTH;
@@ -686,7 +697,8 @@ class DungeonEditorGUI {
         if (this.elMgr != null) {
             BufferedImageIcon[] newImages = null;
             String[] newNames = null;
-            if (this.elMgr.getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
+            if (this.elMgr
+                    .getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
                 newImages = this.groundEditorAppearances;
                 newNames = this.groundNames;
             } else {
@@ -696,8 +708,8 @@ class DungeonEditorGUI {
             if (this.picker != null) {
                 this.picker.updatePicker(newImages, newNames);
             } else {
-                this.picker = new PicturePicker(newImages, newNames, new Color(
-                        223, 223, 223));
+                this.picker = new PicturePicker(newImages, newNames,
+                        new Color(223, 223, 223));
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
             this.picker.setPickerDimensions(this.outputPane.getHeight());
@@ -706,8 +718,9 @@ class DungeonEditorGUI {
 
     void handleCloseWindow() {
         try {
-            DungeonEditorLogic mel = DungeonDiver4.getApplication().getEditor();
-            Application app = DungeonDiver4.getApplication();
+            final DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                    .getEditor();
+            final Application app = DungeonDiver4.getApplication();
             boolean success = false;
             int status = JOptionPane.DEFAULT_OPTION;
             if (app.getDungeonManager().getDirty()) {
@@ -724,7 +737,7 @@ class DungeonEditorGUI {
             } else {
                 mel.exitEditor();
             }
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             DungeonDiver4.getErrorLogger().logError(ex);
         }
     }
@@ -739,8 +752,8 @@ class DungeonEditorGUI {
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
             try {
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final Adjustable src = e.getAdjustable();
                 final int dir = src.getOrientation();
@@ -758,7 +771,7 @@ class DungeonEditorGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -777,8 +790,8 @@ class DungeonEditorGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
@@ -795,7 +808,7 @@ class DungeonEditorGUI {
                         mel.editObject(x, y, false);
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -847,26 +860,26 @@ class DungeonEditorGUI {
         }
 
         @Override
-        public void mouseDragged(MouseEvent e) {
+        public void mouseDragged(final MouseEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
                 mel.editObject(x, y, false);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void mouseMoved(MouseEvent e) {
+        public void mouseMoved(final MouseEvent e) {
             // Do nothing
         }
     }
 
-    private class StartEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class StartEventHandler
+            implements AdjustmentListener, MouseListener {
         StartEventHandler() {
             // Do nothing
         }
@@ -875,9 +888,9 @@ class DungeonEditorGUI {
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
                 final Adjustable src = e.getAdjustable();
                 final int dir = src.getOrientation();
                 final int value = src.getValue();
@@ -894,7 +907,7 @@ class DungeonEditorGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -913,12 +926,12 @@ class DungeonEditorGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
                 mel.setPlayerLocation(x, y);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -934,8 +947,8 @@ class DungeonEditorGUI {
         }
     }
 
-    private class TeleportEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class TeleportEventHandler
+            implements AdjustmentListener, MouseListener {
         TeleportEventHandler() {
             // Do nothing
         }
@@ -944,8 +957,8 @@ class DungeonEditorGUI {
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
             try {
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final Adjustable src = e.getAdjustable();
                 final int dir = src.getOrientation();
@@ -963,7 +976,7 @@ class DungeonEditorGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -982,12 +995,12 @@ class DungeonEditorGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
                 mel.setTeleportDestination(x, y);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -1003,8 +1016,8 @@ class DungeonEditorGUI {
         }
     }
 
-    private class ConditionalTeleportEventHandler implements
-            AdjustmentListener, MouseListener {
+    private class ConditionalTeleportEventHandler
+            implements AdjustmentListener, MouseListener {
         ConditionalTeleportEventHandler() {
             // Do nothing
         }
@@ -1013,8 +1026,8 @@ class DungeonEditorGUI {
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
             try {
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final Adjustable src = e.getAdjustable();
                 final int dir = src.getOrientation();
@@ -1032,7 +1045,7 @@ class DungeonEditorGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -1051,12 +1064,12 @@ class DungeonEditorGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
                 mel.setConditionalTeleportDestination(x, y);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -1090,7 +1103,8 @@ class DungeonEditorGUI {
 
         @Override
         public void windowClosing(final WindowEvent we) {
-            DungeonEditorLogic mel = DungeonDiver4.getApplication().getEditor();
+            final DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                    .getEditor();
             mel.setTreasureChestContents();
         }
 
@@ -1115,8 +1129,8 @@ class DungeonEditorGUI {
         }
     }
 
-    private class MetalButtonEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class MetalButtonEventHandler
+            implements AdjustmentListener, MouseListener {
         // handle scroll bars
         public MetalButtonEventHandler() {
             // Do nothing
@@ -1125,8 +1139,8 @@ class DungeonEditorGUI {
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
             try {
-                DungeonEditorGUI meg = DungeonEditorGUI.this;
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorGUI meg = DungeonEditorGUI.this;
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final Adjustable src = e.getAdjustable();
                 final int dir = src.getOrientation();
@@ -1144,7 +1158,7 @@ class DungeonEditorGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -1163,12 +1177,12 @@ class DungeonEditorGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                DungeonEditorLogic mel = DungeonDiver4.getApplication()
+                final DungeonEditorLogic mel = DungeonDiver4.getApplication()
                         .getEditor();
                 final int x = e.getX();
                 final int y = e.getY();
                 mel.setMetalButtonTarget(x, y);
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }

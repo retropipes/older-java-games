@@ -25,8 +25,8 @@ public class Slime extends GenericField {
         final GameScript scpt = new GameScript();
         final GameScriptEntry entry0 = new GameScriptEntry();
         entry0.setActionCode(GameActionCode.SOUND);
-        entry0.addActionArg(new GameScriptEntryArgument(
-                GameSoundConstants.SOUND_SLIMED));
+        entry0.addActionArg(
+                new GameScriptEntryArgument(GameSoundConstants.SOUND_SLIMED));
         entry0.finalizeActionArgs();
         scpt.addAction(entry0);
         final GameScriptEntry entry1 = new GameScriptEntry();

@@ -31,7 +31,7 @@ public abstract class GenericEditor implements EditorProperties {
     private JLabel messageLabel;
     private JScrollPane scrollPane;
     private boolean objectChanged;
-    private int editorID;
+    private final int editorID;
     private boolean readOnly;
 
     protected GenericEditor(final String newSource, final int newEditorID) {
@@ -56,7 +56,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     public final void edit() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         app.getGUIManager().hideGUI();
         app.setInEditor();
         app.setCurrentEditor(this.editorID);
@@ -96,7 +96,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     private void showOutput() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         this.outputFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         app.getMenuManager().setEditorMenus();
         this.outputFrame.setVisible(true);
@@ -114,7 +114,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     public final void exitEditor() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         app.notifyAllNonCurrentEditorsEnableCommands();
         // Save changes
         this.saveObject();
@@ -180,7 +180,7 @@ public abstract class GenericEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }
@@ -225,7 +225,7 @@ public abstract class GenericEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }

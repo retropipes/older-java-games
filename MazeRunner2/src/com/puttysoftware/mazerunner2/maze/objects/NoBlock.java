@@ -32,18 +32,20 @@ public class NoBlock extends AbstractAntiObject {
 
     @Override
     public void pushIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Destroy incoming block
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().morph(this, x, y, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_DESTROY);
     }
 
     @Override
     public void pullIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Destroy incoming block
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().morph(this, x, y, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_DESTROY);
     }

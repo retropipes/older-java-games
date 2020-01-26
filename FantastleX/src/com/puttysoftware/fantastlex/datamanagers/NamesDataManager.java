@@ -34,8 +34,8 @@ public class NamesDataManager {
 
     private static String[] getNamesDefaultData() {
         try (ResourceStreamReader rsr = new ResourceStreamReader(
-                NamesDataManager.class
-                        .getResourceAsStream("/com/puttysoftware/fantastlex/resources/data/names/names.txt"))) {
+                NamesDataManager.class.getResourceAsStream(
+                        "/com/puttysoftware/fantastlex/resources/data/names/names.txt"))) {
             // Load default
             final ArrayList<String> data = new ArrayList<>();
             // Ignore first line
@@ -72,9 +72,8 @@ public class NamesDataManager {
         try {
             final File overrideData = NamesDataManager.getNamesOverrideFile();
             // Version check
-            if (overrideData.exists()
-                    && !NamesDataManager
-                            .isNamesFileCorrectVersion(overrideData)) {
+            if (overrideData.exists() && !NamesDataManager
+                    .isNamesFileCorrectVersion(overrideData)) {
                 final boolean success = overrideData.delete();
                 if (!success) {
                     throw new IOException("Deleting override failed!");

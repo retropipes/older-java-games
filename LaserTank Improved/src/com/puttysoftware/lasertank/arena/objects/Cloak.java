@@ -17,40 +17,45 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class Cloak extends AbstractAttribute {
     // Constructors
     public Cloak() {
-	super();
-	this.type.set(TypeConstants.TYPE_CLOAK);
+        super();
+        this.type.set(TypeConstants.TYPE_CLOAK);
     }
 
     @Override
     public AbstractArenaObject attributeGameRenderHook() {
-	return new Empty();
+        return new Empty();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 135;
+        return 135;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
-	return Direction.NONE;
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        final Application app = LaserTank.getApplication();
+        app.getGameManager().morph(new Empty(), locX, locY, locZ,
+                this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
+        return Direction.NONE;
     }
 
     @Override
-    public void moveFailedAction(final int locX, final int locY, final int locZ) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
+    public void moveFailedAction(final int locX, final int locY,
+            final int locZ) {
+        final Application app = LaserTank.getApplication();
+        app.getGameManager().morph(new Empty(), locX, locY, locZ,
+                this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
     }
 
     @Override
     public void postMoveAction(final int locX, final int locY, final int locZ) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
+        final Application app = LaserTank.getApplication();
+        app.getGameManager().morph(new Empty(), locX, locY, locZ,
+                this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_DISCOVER);
     }
 }

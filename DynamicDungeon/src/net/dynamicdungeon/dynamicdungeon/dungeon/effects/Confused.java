@@ -39,313 +39,313 @@ public class Confused extends DungeonEffect {
 
     // Constructor
     public Confused(final int newRounds) {
-	super("Confused", newRounds);
+        super("Confused", newRounds);
     }
 
     @Override
     public int hashCode() {
-	final int prime = 31;
-	final int result = super.hashCode();
-	return prime * result + this.state;
+        final int prime = 31;
+        final int result = super.hashCode();
+        return prime * result + this.state;
     }
 
     @Override
     public boolean equals(final Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (!super.equals(obj)) {
-	    return false;
-	}
-	if (!(obj instanceof Confused)) {
-	    return false;
-	}
-	final Confused other = (Confused) obj;
-	if (this.state != other.state) {
-	    return false;
-	}
-	return true;
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (!(obj instanceof Confused)) {
+            return false;
+        }
+        final Confused other = (Confused) obj;
+        if (this.state != other.state) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public void customExtendLogic() {
-	if (this.rounds == 0) {
-	    final RandomRange r = new RandomRange(Confused.MIN_CONFUSED_STATE,
-		    Confused.MAX_CONFUSED_STATE);
-	    this.state = r.generate();
-	}
+        if (this.rounds == 0) {
+            final RandomRange r = new RandomRange(Confused.MIN_CONFUSED_STATE,
+                    Confused.MAX_CONFUSED_STATE);
+            this.state = r.generate();
+        }
     }
 
     @Override
     public int modifyMove1(final int arg) {
-	switch (arg) {
-	case DirectionConstants.DIRECTION_NORTH:
-	    switch (this.state) {
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_URLD:
-		return DirectionConstants.DIRECTION_NORTH;
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_DRLU:
-		return DirectionConstants.DIRECTION_SOUTH;
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_LRUD:
-		return DirectionConstants.DIRECTION_WEST;
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RLUD:
-	    case CONFUSED_STATE_RUDL:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_EAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_SOUTH:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_RUDL:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_NORTH;
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RDUL:
-		return DirectionConstants.DIRECTION_SOUTH;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RLUD:
-		return DirectionConstants.DIRECTION_WEST;
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_LRUD:
-		return DirectionConstants.DIRECTION_EAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_WEST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LRUD:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RLUD:
-		return DirectionConstants.DIRECTION_NORTH;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RUDL:
-		return DirectionConstants.DIRECTION_SOUTH;
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_WEST;
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LURD:
-		return DirectionConstants.DIRECTION_EAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_EAST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RLDU:
-		return DirectionConstants.DIRECTION_NORTH;
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_LRUD:
-	    case CONFUSED_STATE_RLUD:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_SOUTH;
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RUDL:
-		return DirectionConstants.DIRECTION_WEST;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LUDR:
-		return DirectionConstants.DIRECTION_EAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_NORTHWEST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_URLD:
-		return DirectionConstants.DIRECTION_NORTHWEST;
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_DRLU:
-		return DirectionConstants.DIRECTION_SOUTHEAST;
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_LRUD:
-		return DirectionConstants.DIRECTION_SOUTHWEST;
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RLUD:
-	    case CONFUSED_STATE_RUDL:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_NORTHEAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_NORTHEAST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_RUDL:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_NORTHWEST;
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RDUL:
-		return DirectionConstants.DIRECTION_SOUTHEAST;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RLUD:
-		return DirectionConstants.DIRECTION_SOUTHWEST;
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_LRUD:
-		return DirectionConstants.DIRECTION_NORTHEAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_SOUTHWEST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LRUD:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RLUD:
-		return DirectionConstants.DIRECTION_NORTHWEST;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_LUDR:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_RLDU:
-	    case CONFUSED_STATE_RUDL:
-		return DirectionConstants.DIRECTION_SOUTHEAST;
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_SOUTHWEST;
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LURD:
-		return DirectionConstants.DIRECTION_NORTHEAST;
-	    default:
-		break;
-	    }
-	    break;
-	case DirectionConstants.DIRECTION_SOUTHEAST:
-	    switch (this.state) {
-	    case CONFUSED_STATE_DLRU:
-	    case CONFUSED_STATE_DRLU:
-	    case CONFUSED_STATE_LDRU:
-	    case CONFUSED_STATE_LRDU:
-	    case CONFUSED_STATE_RDLU:
-	    case CONFUSED_STATE_RLDU:
-		return DirectionConstants.DIRECTION_NORTHWEST;
-	    case CONFUSED_STATE_ULRD:
-	    case CONFUSED_STATE_URLD:
-	    case CONFUSED_STATE_LURD:
-	    case CONFUSED_STATE_LRUD:
-	    case CONFUSED_STATE_RLUD:
-	    case CONFUSED_STATE_RULD:
-		return DirectionConstants.DIRECTION_SOUTHEAST;
-	    case CONFUSED_STATE_UDRL:
-	    case CONFUSED_STATE_URDL:
-	    case CONFUSED_STATE_DURL:
-	    case CONFUSED_STATE_DRUL:
-	    case CONFUSED_STATE_RDUL:
-	    case CONFUSED_STATE_RUDL:
-		return DirectionConstants.DIRECTION_SOUTHWEST;
-	    case CONFUSED_STATE_ULDR:
-	    case CONFUSED_STATE_DULR:
-	    case CONFUSED_STATE_DLUR:
-	    case CONFUSED_STATE_LDUR:
-	    case CONFUSED_STATE_LUDR:
-		return DirectionConstants.DIRECTION_NORTHEAST;
-	    default:
-		break;
-	    }
-	    break;
-	default:
-	    break;
-	}
-	return 0;
+        switch (arg) {
+        case DirectionConstants.DIRECTION_NORTH:
+            switch (this.state) {
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_URLD:
+                return DirectionConstants.DIRECTION_NORTH;
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_DRLU:
+                return DirectionConstants.DIRECTION_SOUTH;
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_LRUD:
+                return DirectionConstants.DIRECTION_WEST;
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RLUD:
+            case CONFUSED_STATE_RUDL:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_EAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_SOUTH:
+            switch (this.state) {
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_RUDL:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_NORTH;
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RDUL:
+                return DirectionConstants.DIRECTION_SOUTH;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RLUD:
+                return DirectionConstants.DIRECTION_WEST;
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_LRUD:
+                return DirectionConstants.DIRECTION_EAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_WEST:
+            switch (this.state) {
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LRUD:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RLUD:
+                return DirectionConstants.DIRECTION_NORTH;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RUDL:
+                return DirectionConstants.DIRECTION_SOUTH;
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_WEST;
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LURD:
+                return DirectionConstants.DIRECTION_EAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_EAST:
+            switch (this.state) {
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RLDU:
+                return DirectionConstants.DIRECTION_NORTH;
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_LRUD:
+            case CONFUSED_STATE_RLUD:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_SOUTH;
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RUDL:
+                return DirectionConstants.DIRECTION_WEST;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LUDR:
+                return DirectionConstants.DIRECTION_EAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_NORTHWEST:
+            switch (this.state) {
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_URLD:
+                return DirectionConstants.DIRECTION_NORTHWEST;
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_DRLU:
+                return DirectionConstants.DIRECTION_SOUTHEAST;
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_LRUD:
+                return DirectionConstants.DIRECTION_SOUTHWEST;
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RLUD:
+            case CONFUSED_STATE_RUDL:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_NORTHEAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_NORTHEAST:
+            switch (this.state) {
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_RUDL:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_NORTHWEST;
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RDUL:
+                return DirectionConstants.DIRECTION_SOUTHEAST;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RLUD:
+                return DirectionConstants.DIRECTION_SOUTHWEST;
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_LRUD:
+                return DirectionConstants.DIRECTION_NORTHEAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_SOUTHWEST:
+            switch (this.state) {
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LRUD:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RLUD:
+                return DirectionConstants.DIRECTION_NORTHWEST;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_LUDR:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_RLDU:
+            case CONFUSED_STATE_RUDL:
+                return DirectionConstants.DIRECTION_SOUTHEAST;
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_SOUTHWEST;
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LURD:
+                return DirectionConstants.DIRECTION_NORTHEAST;
+            default:
+                break;
+            }
+            break;
+        case DirectionConstants.DIRECTION_SOUTHEAST:
+            switch (this.state) {
+            case CONFUSED_STATE_DLRU:
+            case CONFUSED_STATE_DRLU:
+            case CONFUSED_STATE_LDRU:
+            case CONFUSED_STATE_LRDU:
+            case CONFUSED_STATE_RDLU:
+            case CONFUSED_STATE_RLDU:
+                return DirectionConstants.DIRECTION_NORTHWEST;
+            case CONFUSED_STATE_ULRD:
+            case CONFUSED_STATE_URLD:
+            case CONFUSED_STATE_LURD:
+            case CONFUSED_STATE_LRUD:
+            case CONFUSED_STATE_RLUD:
+            case CONFUSED_STATE_RULD:
+                return DirectionConstants.DIRECTION_SOUTHEAST;
+            case CONFUSED_STATE_UDRL:
+            case CONFUSED_STATE_URDL:
+            case CONFUSED_STATE_DURL:
+            case CONFUSED_STATE_DRUL:
+            case CONFUSED_STATE_RDUL:
+            case CONFUSED_STATE_RUDL:
+                return DirectionConstants.DIRECTION_SOUTHWEST;
+            case CONFUSED_STATE_ULDR:
+            case CONFUSED_STATE_DULR:
+            case CONFUSED_STATE_DLUR:
+            case CONFUSED_STATE_LDUR:
+            case CONFUSED_STATE_LUDR:
+                return DirectionConstants.DIRECTION_NORTHEAST;
+            default:
+                break;
+            }
+            break;
+        default:
+            break;
+        }
+        return 0;
     }
 }

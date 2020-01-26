@@ -17,10 +17,10 @@ public class WeaponConstants {
     }
 
     public static final int TYPE_COUNT = 6;
-    private static final int[] HIT_SOUND_LOOKUP = {
-            SoundConstants.AXE_HIT, SoundConstants.DAGGER_HIT,
-            SoundConstants.HAMMER_HIT, SoundConstants.STAFF_HIT,
-            SoundConstants.SWORD_HIT, SoundConstants.WAND_HIT };
+    private static final int[] HIT_SOUND_LOOKUP = { SoundConstants.AXE_HIT,
+            SoundConstants.DAGGER_HIT, SoundConstants.HAMMER_HIT,
+            SoundConstants.STAFF_HIT, SoundConstants.SWORD_HIT,
+            SoundConstants.WAND_HIT };
 
     public static synchronized String[] getWeaponChoices() {
         return StringManager.getAllLocalizedStrings(LocalizedFile.WEAPON_TYPES,

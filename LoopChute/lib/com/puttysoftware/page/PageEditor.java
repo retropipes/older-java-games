@@ -74,17 +74,13 @@ public final class PageEditor {
                     }
                     inputValid = false;
                     while (!inputValid) {
-                        rawInput = CommonDialogs
-                                .showTextInputDialogWithDefault(
-                                        x
-                                                + xSuffix
-                                                + PageEditor.ENTRY_PROMPT_PART_1
-                                                + y
-                                                + ySuffix
-                                                + PageEditor.ENTRY_PROMPT_PART_2,
-                                        editorString,
-                                        new Double(this.page.getCoefficient(x,
-                                                y)).toString());
+                        rawInput = CommonDialogs.showTextInputDialogWithDefault(
+                                x + xSuffix + PageEditor.ENTRY_PROMPT_PART_1 + y
+                                        + ySuffix
+                                        + PageEditor.ENTRY_PROMPT_PART_2,
+                                editorString,
+                                new Double(this.page.getCoefficient(x, y))
+                                        .toString());
                         try {
                             input = Double.parseDouble(rawInput);
                             if (input < 0.0) {
@@ -98,10 +94,9 @@ public final class PageEditor {
                             return null;
                         }
                         if (!inputValid) {
-                            CommonDialogs
-                                    .showErrorDialog(
-                                            "The input provided was invalid - please try again.",
-                                            editorString);
+                            CommonDialogs.showErrorDialog(
+                                    "The input provided was invalid - please try again.",
+                                    editorString);
                         }
                     }
                     this.page.setCoefficient(x, y, input);

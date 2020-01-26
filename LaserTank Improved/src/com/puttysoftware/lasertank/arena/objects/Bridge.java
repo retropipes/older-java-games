@@ -10,11 +10,11 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractGround;
 public class Bridge extends AbstractGround {
     // Constructors
     public Bridge() {
-	super();
+        super();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 9;
+        return 9;
     }
 }

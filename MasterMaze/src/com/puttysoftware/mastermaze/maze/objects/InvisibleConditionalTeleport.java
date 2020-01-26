@@ -8,8 +8,8 @@ package com.puttysoftware.mastermaze.maze.objects;
 import com.puttysoftware.mastermaze.maze.generic.GenericInvisibleConditionalTeleport;
 import com.puttysoftware.mastermaze.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleConditionalTeleport extends
-        GenericInvisibleConditionalTeleport {
+public class InvisibleConditionalTeleport
+        extends GenericInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_CONDITIONAL);

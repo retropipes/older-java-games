@@ -20,8 +20,8 @@ public class Slime extends GenericField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_WALK_ON_SLIME);
     }

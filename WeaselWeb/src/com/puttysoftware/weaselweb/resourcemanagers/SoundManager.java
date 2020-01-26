@@ -17,9 +17,8 @@ public class SoundManager {
 
     private static Media getSound(final String filename) {
         try {
-            final URL url = SoundManager.LOAD_CLASS
-                    .getResource(SoundManager.LOAD_PATH
-                            + filename.toLowerCase() + ".wav");
+            final URL url = SoundManager.LOAD_CLASS.getResource(
+                    SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
             final Media snd = Media.getNonLoopingResource(url);
             return snd;
         } catch (final NullPointerException np) {

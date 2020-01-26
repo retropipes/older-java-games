@@ -15,21 +15,21 @@ public class ChargeThenAttackAIRoutine extends AbstractWindowAIRoutine {
     }
 
     @Override
-    public int getNextAction(AbstractCreature c) {
+    public int getNextAction(final AbstractCreature c) {
         if (this.chargeRounds > 0) {
             this.chargeRounds--;
         }
         Spell charge = null;
-        RandomRange whichSpell = new RandomRange(1, 2);
+        final RandomRange whichSpell = new RandomRange(1, 2);
         if (whichSpell.generate() == 1) {
             charge = c.getSpellBook().getSpellByID(4);
         } else {
             charge = c.getSpellBook().getSpellByID(5);
         }
-        int cost = charge.getCost();
-        int currMP = c.getCurrentMP();
+        final int cost = charge.getCost();
+        final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.chargeRounds == 0) {
-            RandomRange chance = new RandomRange(1, 100);
+            final RandomRange chance = new RandomRange(1, 100);
             if (chance.generate() <= ChargeThenAttackAIRoutine.CHARGE_CHANCE) {
                 this.chargeRounds = charge.getEffect().getInitialRounds();
                 this.spell = charge;

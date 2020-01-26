@@ -13,19 +13,21 @@ import com.puttysoftware.lasertank.resourcemanagers.SoundManager;
 public class KillSpell extends AbstractSpell {
     // Constructors
     public KillSpell() {
-	super();
+        super();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 143;
+        return 143;
     }
 
     // Scriptability
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	SoundManager.playSound(SoundConstants.SOUND_KILL_SPELL);
-	LaserTank.getApplication().getArenaManager().getArena().fullScanKillTanks();
-	LaserTank.getApplication().getGameManager().morph(new Empty(), dirX, dirY, dirZ, this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_KILL_SPELL);
+        LaserTank.getApplication().getArenaManager().getArena()
+                .fullScanKillTanks();
+        LaserTank.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, this.getLayer());
     }
 }

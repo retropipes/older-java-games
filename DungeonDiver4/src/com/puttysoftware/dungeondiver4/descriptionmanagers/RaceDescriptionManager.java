@@ -12,15 +12,14 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class RaceDescriptionManager {
     public static String getRaceDescription(final int r) {
-        String name = RaceConstants.getRaceName(r).toLowerCase();
+        final String name = RaceConstants.getRaceName(r).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                RaceDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/descriptions/race/"
-                                + name
-                                + Extension
+                RaceDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/dungeondiver4/resources/descriptions/race/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
-            String desc = rsr.readString();
+            final String desc = rsr.readString();
             return desc;
         } catch (final Exception e) {
             return null;

@@ -28,8 +28,8 @@ public class DungeonBuffManager {
         this.savedRounds = new int[DungeonBuffManager.MAX_BUFFS];
         this.buffs = new DungeonBuff[DungeonBuffManager.MAX_BUFFS];
         this.effectsPane = new Container();
-        this.effectsPane.setLayout(new GridLayout(DungeonBuffManager.MAX_BUFFS,
-                1));
+        this.effectsPane
+                .setLayout(new GridLayout(DungeonBuffManager.MAX_BUFFS, 1));
         this.effects = new JLabel[DungeonBuffManager.MAX_BUFFS];
         int x;
         for (x = 0; x < DungeonBuffManager.MAX_BUFFS; x++) {
@@ -53,7 +53,8 @@ public class DungeonBuffManager {
                 this.buffs[DungeonBuffManager.BUFF_DIZZY].setRounds(0);
                 this.buffs[DungeonBuffManager.BUFF_DIZZY] = null;
             }
-            this.buffs[DungeonBuffManager.BUFF_CONFUSED] = new Confusion(rounds);
+            this.buffs[DungeonBuffManager.BUFF_CONFUSED] = new Confusion(
+                    rounds);
         }
     }
 

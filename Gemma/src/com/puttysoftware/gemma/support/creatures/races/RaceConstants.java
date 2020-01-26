@@ -23,7 +23,7 @@ public class RaceConstants {
     private static String[] RACE_NAMES = {};
     private static boolean INITED = false;
 
-    public static final String getRaceName(int index) {
+    public static final String getRaceName(final int index) {
         return RaceConstants.RACE_NAMES[index];
     }
 
@@ -45,7 +45,7 @@ public class RaceConstants {
                     RaceDataManager.class.getResourceAsStream(
                             "/com/puttysoftware/gemma/support/resources/data/race/catalog.txt"))) {
                 // Fetch data
-                ArrayList<String> tempNames = new ArrayList<>();
+                final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {
                     input = rsr.readString();

@@ -99,8 +99,8 @@ public class MetalButton extends GenericField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
             final Application app = Worldz.getApplication();
             final WorldObject there = app.getWorldManager().getWorldObject(
@@ -108,17 +108,16 @@ public class MetalButton extends GenericField {
                     this.getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
+                            this.getTargetColumn(), this.getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(),
                             this.getTargetRow(), this.getTargetColumn(),
                             this.getTargetFloor());
                 }
             }
-            if (app.getPrefsManager().getSoundEnabled(
-                    PreferencesManager.SOUNDS_GAME)) {
+            if (app.getPrefsManager()
+                    .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                 this.playMoveSuccessSound();
             }
         } else {

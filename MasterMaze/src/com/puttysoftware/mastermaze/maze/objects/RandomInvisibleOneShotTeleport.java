@@ -29,8 +29,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -56,8 +56,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditorLogic me = MasterMaze.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
     }
 
     @Override

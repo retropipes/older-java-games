@@ -27,17 +27,18 @@ class Statistic {
         return this.value;
     }
 
-    void setValue(int newValue) {
+    void setValue(final int newValue) {
         this.value = newValue;
     }
 
-    void offsetValue(int newValue) {
+    void offsetValue(final int newValue) {
         this.value += newValue;
     }
 
-    void offsetValueMultiply(double newValue, boolean max, int maxValue) {
+    void offsetValueMultiply(final double newValue, final boolean max,
+            final int maxValue) {
         if (max) {
-            this.value -= (int) (maxValue - (maxValue * newValue));
+            this.value -= (int) (maxValue - maxValue * newValue);
         } else {
             this.value *= newValue;
         }
@@ -47,7 +48,7 @@ class Statistic {
         return this.hasMax;
     }
 
-    void setHasMax(boolean newHasMax) {
+    void setHasMax(final boolean newHasMax) {
         this.hasMax = newHasMax;
     }
 
@@ -55,7 +56,7 @@ class Statistic {
         return this.maxID;
     }
 
-    void setMaxID(int newMaxID) {
+    void setMaxID(final int newMaxID) {
         this.maxID = newMaxID;
     }
 
@@ -67,7 +68,7 @@ class Statistic {
         return this.minVal;
     }
 
-    void setMinVal(int newMinVal) {
+    void setMinVal(final int newMinVal) {
         this.minVal = newMinVal;
     }
 
@@ -83,7 +84,7 @@ class Statistic {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -93,7 +94,7 @@ class Statistic {
         if (!(obj instanceof Statistic)) {
             return false;
         }
-        Statistic other = (Statistic) obj;
+        final Statistic other = (Statistic) obj;
         if (this.hasMax != other.hasMax) {
             return false;
         }

@@ -23,8 +23,10 @@ public abstract class AbstractMonster extends AbstractCreature {
     private String type;
     protected Element element;
     private final int perfectBonusGold;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0
+            / 2.0;
     protected static final int GOLD_TOUGHNESS_MULTIPLIER = 6;
     private static final int BATTLES_SCALE_FACTOR = 2;
     private static final int BATTLES_START = 2;
@@ -68,8 +70,8 @@ public abstract class AbstractMonster extends AbstractCreature {
 
     private int getInitialPerfectBonusGold() {
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        final int needed = Shop
-                .getEquipmentCost(playerCharacter.getLevel() + 1) * 24;
+        final int needed = Shop.getEquipmentCost(playerCharacter.getLevel() + 1)
+                * 24;
         final int factor = this.getBattlesToNextLevel();
         final int min = needed / factor / 4;
         final int max = needed / factor / 2;
@@ -155,7 +157,7 @@ public abstract class AbstractMonster extends AbstractCreature {
     }
 
     protected final int getBattlesToNextLevel() {
-        return AbstractMonster.BATTLES_START + (this.getLevel() + 1)
-                * AbstractMonster.BATTLES_SCALE_FACTOR;
+        return AbstractMonster.BATTLES_START
+                + (this.getLevel() + 1) * AbstractMonster.BATTLES_SCALE_FACTOR;
     }
 }

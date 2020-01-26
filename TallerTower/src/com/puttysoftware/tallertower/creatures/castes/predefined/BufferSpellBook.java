@@ -36,9 +36,8 @@ public class BufferSpellBook extends SpellBook {
                 SoundConstants.SOUND_CHANGE);
         this.spells[0] = spell0;
         final Effect spell1Effect = new Effect("Hide of the Rhino", 5);
-        spell1Effect.setEffect(Effect.EFFECT_MULTIPLY,
-                StatConstants.STAT_BLOCK, 2, Effect.DEFAULT_SCALE_FACTOR,
-                StatConstants.STAT_NONE);
+        spell1Effect.setEffect(Effect.EFFECT_MULTIPLY, StatConstants.STAT_BLOCK,
+                2, Effect.DEFAULT_SCALE_FACTOR, StatConstants.STAT_NONE);
         spell1Effect.setMessage(Effect.MESSAGE_INITIAL,
                 "You conjure up a potion of shielding, and drink it!");
         spell1Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
@@ -63,8 +62,8 @@ public class BufferSpellBook extends SpellBook {
         this.spells[2] = spell2;
         final Effect spell3Effect = new Effect("Wisdom of the Tortoise", 5);
         spell3Effect.setEffect(Effect.EFFECT_MULTIPLY,
-                StatConstants.STAT_INTELLIGENCE, 2,
-                Effect.DEFAULT_SCALE_FACTOR, StatConstants.STAT_NONE);
+                StatConstants.STAT_INTELLIGENCE, 2, Effect.DEFAULT_SCALE_FACTOR,
+                StatConstants.STAT_NONE);
         spell3Effect.setMessage(Effect.MESSAGE_INITIAL,
                 "You conjure up a potion of smarts, and drink it!");
         spell3Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,

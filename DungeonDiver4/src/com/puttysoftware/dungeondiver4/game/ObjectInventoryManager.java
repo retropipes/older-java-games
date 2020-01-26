@@ -58,7 +58,7 @@ class ObjectInventoryManager {
         return this.using;
     }
 
-    void setUsingAnItem(boolean isUsing) {
+    void setUsingAnItem(final boolean isUsing) {
         this.using = isUsing;
     }
 
@@ -90,11 +90,12 @@ class ObjectInventoryManager {
         return this.objectInv;
     }
 
-    void fireArrow(int x, int y) {
+    void fireArrow(final int x, final int y) {
         if (this.getObjectInventory().getUses(this.activeBow) == 0) {
             DungeonDiver4.getApplication().showMessage("You're out of arrows!");
         } else {
-            GameArrowTask at = new GameArrowTask(x, y, this.activeArrowType);
+            final GameArrowTask at = new GameArrowTask(x, y,
+                    this.activeArrowType);
             this.arrowActive = true;
             at.start();
         }
@@ -107,11 +108,12 @@ class ObjectInventoryManager {
 
     void showUseDialog() {
         int x;
-        DungeonObjectList list = DungeonDiver4.getApplication().getObjects();
+        final DungeonObjectList list = DungeonDiver4.getApplication()
+                .getObjects();
         final AbstractDungeonObject[] choices = list.getAllUsableObjects();
         final String[] userChoices = this.objectInv.generateUseStringArray();
-        final String result = CommonDialogs.showInputDialog(
-                "Use which object?", "DungeonDiver4", userChoices,
+        final String result = CommonDialogs.showInputDialog("Use which object?",
+                "DungeonDiver4", userChoices,
                 userChoices[this.lastUsedObjectIndex]);
         try {
             for (x = 0; x < choices.length; x++) {
@@ -123,21 +125,22 @@ class ObjectInventoryManager {
                                 "That item has no more uses left.");
                         this.setUsingAnItem(false);
                     } else {
-                        DungeonDiver4.getApplication().showMessage(
-                                "Click to set target");
+                        DungeonDiver4.getApplication()
+                                .showMessage("Click to set target");
                         this.setUsingAnItem(true);
                     }
                     return;
                 }
             }
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             this.setUsingAnItem(false);
         }
     }
 
     void showSwitchBowDialog() {
         int x;
-        DungeonObjectList list = DungeonDiver4.getApplication().getObjects();
+        final DungeonObjectList list = DungeonDiver4.getApplication()
+                .getObjects();
         final AbstractDungeonObject[] choices = list.getAllBows();
         final String[] userChoices = this.objectInv.generateBowStringArray();
         final String result = CommonDialogs.showInputDialog(
@@ -150,8 +153,8 @@ class ObjectInventoryManager {
                     this.activeBow = (AbstractBow) choices[x];
                     this.activeArrowType = this.activeBow.getArrowType();
                     if (this.objectInv.getUses(this.activeBow) == 0) {
-                        DungeonDiver4.getApplication().showMessage(
-                                "That bow is out of arrows!");
+                        DungeonDiver4.getApplication()
+                                .showMessage("That bow is out of arrows!");
                     } else {
                         DungeonDiver4.getApplication().showMessage(
                                 this.activeBow.getName() + " activated.");
@@ -159,53 +162,53 @@ class ObjectInventoryManager {
                     return;
                 }
             }
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             // Do nothing
         }
     }
 
     void useItemHandler(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         final int z = m.getPlayerLocationZ();
         if (this.usingAnItem() && app.getMode() == Application.STATUS_GAME) {
-            boolean visible = m.isSquareVisible(m.getPlayerLocationX(),
+            final boolean visible = m.isSquareVisible(m.getPlayerLocationX(),
                     m.getPlayerLocationY(), x, y);
             try {
-                AbstractDungeonObject target = m.getCell(x, y, z,
+                final AbstractDungeonObject target = m.getCell(x, y, z,
                         DungeonConstants.LAYER_OBJECT);
-                String name = this.objectBeingUsed.getName();
+                final String name = this.objectBeingUsed.getName();
                 if ((target.isSolid() || !visible)
                         && name.equals(new TeleportWand().getName())) {
                     this.setUsingAnItem(false);
-                    DungeonDiver4.getApplication().showMessage(
-                            "Can't teleport there");
+                    DungeonDiver4.getApplication()
+                            .showMessage("Can't teleport there");
                 }
                 if (target.getName().equals(new Player().getName())) {
                     this.setUsingAnItem(false);
-                    DungeonDiver4.getApplication().showMessage(
-                            "Don't aim at yourself!");
+                    DungeonDiver4.getApplication()
+                            .showMessage("Don't aim at yourself!");
                 }
                 if (!target.isDestroyable()
                         && name.equals(new AnnihilationWand().getName())) {
                     this.setUsingAnItem(false);
-                    DungeonDiver4.getApplication().showMessage(
-                            "Can't destroy that");
+                    DungeonDiver4.getApplication()
+                            .showMessage("Can't destroy that");
                 }
                 if (!target.isDestroyable()
-                        && (name.equals(new WallMakingWand().getName()))) {
+                        && name.equals(new WallMakingWand().getName())) {
                     this.setUsingAnItem(false);
-                    DungeonDiver4.getApplication().showMessage(
-                            "Can't create a wall there");
+                    DungeonDiver4.getApplication()
+                            .showMessage("Can't create a wall there");
                 }
-                if ((!target.isDestroyable() || !target
-                        .isOfType(TypeConstants.TYPE_WALL))
+                if ((!target.isDestroyable()
+                        || !target.isOfType(TypeConstants.TYPE_WALL))
                         && name.equals(new WallBreakingWand().getName())) {
                     this.setUsingAnItem(false);
                     DungeonDiver4.getApplication().showMessage("Aim at a wall");
                 }
-                if ((!target.isDestroyable() || !target
-                        .isOfType(TypeConstants.TYPE_TRAP))
+                if ((!target.isDestroyable()
+                        || !target.isOfType(TypeConstants.TYPE_TRAP))
                         && name.equals(new DisarmTrapWand().getName())) {
                     this.setUsingAnItem(false);
                     DungeonDiver4.getApplication().showMessage("Aim at a trap");
@@ -226,8 +229,8 @@ class ObjectInventoryManager {
                 }
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 this.setUsingAnItem(false);
-                DungeonDiver4.getApplication().showMessage(
-                        "Aim within the dungeon");
+                DungeonDiver4.getApplication()
+                        .showMessage("Aim within the dungeon");
             } catch (final NullPointerException np) {
                 this.setUsingAnItem(false);
             }
@@ -237,15 +240,16 @@ class ObjectInventoryManager {
         }
     }
 
-    void readObjectInventory(XDataReader dungeonFile, int formatVersion)
-            throws IOException {
+    void readObjectInventory(final XDataReader dungeonFile,
+            final int formatVersion) throws IOException {
         this.objectInv = DungeonObjectInventory.readInventory(dungeonFile,
                 formatVersion);
         this.savedObjectInv = DungeonObjectInventory.readInventory(dungeonFile,
                 formatVersion);
     }
 
-    void writeObjectInventory(XDataWriter dungeonFile) throws IOException {
+    void writeObjectInventory(final XDataWriter dungeonFile)
+            throws IOException {
         this.objectInv.writeInventory(dungeonFile);
         this.savedObjectInv.writeInventory(dungeonFile);
     }

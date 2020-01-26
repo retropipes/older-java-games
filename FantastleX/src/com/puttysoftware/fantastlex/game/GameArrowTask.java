@@ -76,8 +76,8 @@ public class GameArrowTask extends Thread {
                 if (!res) {
                     break;
                 }
-                app.getGameManager().redrawOneSquare(py + cumY, px + cumX,
-                        true, a);
+                app.getGameManager().redrawOneSquare(py + cumY, px + cumX, true,
+                        a);
                 app.getGameManager().redrawOneSquare(py + cumY, px + cumX,
                         false, new Empty());
                 cumX += incX;

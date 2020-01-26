@@ -69,8 +69,8 @@ public abstract class GenericMultipleLock extends GenericLock {
     @Override
     public WorldObject editorPropertiesHook() {
         try {
-            this.keyCount = Integer.parseInt(Messager
-                    .showTextInputDialogWithDefault(
+            this.keyCount = Integer
+                    .parseInt(Messager.showTextInputDialogWithDefault(
                             "Set Key Count for " + this.getName(), "Editor",
                             Integer.toString(this.keyCount)));
         } catch (final NumberFormatException nf) {

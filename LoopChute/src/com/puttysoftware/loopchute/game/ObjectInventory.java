@@ -72,7 +72,8 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void use(final MazeObject mo, final int x, final int y, final int z) {
+    public void use(final MazeObject mo, final int x, final int y,
+            final int z) {
         int tempUses = this.getUses(mo);
         if (mo.isUsable() && tempUses > 0) {
             tempUses--;
@@ -86,8 +87,8 @@ public final class ObjectInventory implements Cloneable {
 
     // Transformers
     void fireStepActions() {
-        if (!this.boots.getName().equals(
-                ObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(ObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
     }

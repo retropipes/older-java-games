@@ -8,6 +8,6 @@ package net.dynamicdungeon.dynamicdungeon.dungeon.effects;
 public class Sticky extends DungeonEffect {
     // Constructor
     public Sticky(final int newRounds) {
-	super("Sticky", newRounds);
+        super("Sticky", newRounds);
     }
 }

@@ -73,13 +73,11 @@ public class Worldz {
             } else {
                 s = args[0];
             }
-            platform.hookFileOpen(
-                    Worldz.application.getWorldManager(),
-                    Worldz.application
-                            .getWorldManager()
-                            .getClass()
+            platform.hookFileOpen(Worldz.application.getWorldManager(),
+                    Worldz.application.getWorldManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             platform.hookPreferences(Worldz.application.getPrefsManager(),
                     Worldz.application.getPrefsManager().getClass()
                             .getDeclaredMethod("showPrefs"));

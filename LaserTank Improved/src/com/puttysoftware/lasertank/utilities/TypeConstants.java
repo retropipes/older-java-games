@@ -44,6 +44,6 @@ public class TypeConstants {
     public static final int TYPES_COUNT = 35;
 
     private TypeConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -18,7 +18,7 @@ public class SpellBookLoader {
     }
 
     // Methods
-    public static SpellBook loadSpellBook(int sbid) {
+    public static SpellBook loadSpellBook(final int sbid) {
         if (sbid == CasteConstants.CASTE_ANNIHILATOR) {
             return new AnnihilatorSpellBook();
         } else if (sbid == CasteConstants.CASTE_BUFFER) {

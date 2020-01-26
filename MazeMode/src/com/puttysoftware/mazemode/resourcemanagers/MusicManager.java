@@ -20,9 +20,8 @@ public class MusicManager {
 
     private static Sound getMusic(final String filename) {
         try {
-            final URL url = MusicManager.LOAD_CLASS
-                    .getResource(MusicManager.LOAD_PATH
-                            + filename.toLowerCase() + ".wav");
+            final URL url = MusicManager.LOAD_CLASS.getResource(
+                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".wav");
             final Sound snd = new Sound(url);
             return snd;
         } catch (final NullPointerException np) {

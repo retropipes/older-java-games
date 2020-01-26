@@ -68,9 +68,8 @@ public class AboutDialog {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("MazeMode Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane
-                .add(new JLabel(
-                        "Web Site: http://www.puttysoftware.com/products/games/mazemode/"));
+        this.textPane.add(new JLabel(
+                "Web Site: http://www.puttysoftware.com/products/games/mazemode/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: products@puttysoftware.com  "));
         this.buttonPane.setLayout(new FlowLayout());

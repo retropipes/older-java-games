@@ -7,18 +7,23 @@ import java.io.ObjectOutputStream;
 
 @SuppressWarnings("serial")
 public abstract class VersionException extends RuntimeException {
-  VersionException(final String message) {
-    super(message);
-  }
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6414696022962587634L;
 
-  @SuppressWarnings("static-method")
-  private void writeObject(ObjectOutputStream out) throws IOException {
-    throw new NotSerializableException();
-  }
+    VersionException(final String message) {
+        super(message);
+    }
 
-  @SuppressWarnings("static-method")
-  private void readObject(ObjectInputStream in)
-      throws IOException, ClassNotFoundException {
-    throw new NotSerializableException();
-  }
+    @SuppressWarnings("static-method")
+    private void writeObject(final ObjectOutputStream out) throws IOException {
+        throw new NotSerializableException();
+    }
+
+    @SuppressWarnings("static-method")
+    private void readObject(final ObjectInputStream in)
+            throws IOException, ClassNotFoundException {
+        throw new NotSerializableException();
+    }
 }

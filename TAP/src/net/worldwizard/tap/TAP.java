@@ -47,16 +47,14 @@ public class TAP {
             } else {
                 s = args[0];
             }
-            platform.hookFileOpen(
-                    TAP.application.getAdventureManager(),
-                    TAP.application
-                            .getAdventureManager()
-                            .getClass()
+            platform.hookFileOpen(TAP.application.getAdventureManager(),
+                    TAP.application.getAdventureManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
-            platform.hookQuit(TAP.getApplication().getGUIManager(), TAP
-                    .getApplication().getGUIManager().getClass()
-                    .getDeclaredMethod("quitHandler"));
+                                    String.class),
+                    s);
+            platform.hookQuit(TAP.getApplication().getGUIManager(),
+                    TAP.getApplication().getGUIManager().getClass()
+                            .getDeclaredMethod("quitHandler"));
         } catch (final Throwable t) {
             TAP.getDebug().debug(t);
         }

@@ -41,7 +41,7 @@ public class GameLogic {
     private boolean savedGameFlag;
     private final ScoreTracker st;
     private boolean stateChanged;
-    private GameGUI gameGUI;
+    private final GameGUI gameGUI;
 
     // Constructors
     public GameLogic() {
@@ -54,7 +54,7 @@ public class GameLogic {
 
     // Methods
     public boolean newGame() {
-        JFrame owner = Gemma.getApplication().getOutputFrame();
+        final JFrame owner = Gemma.getApplication().getOutputFrame();
         if (this.savedGameFlag) {
             if (PartyManager.getParty() != null) {
                 return true;
@@ -70,7 +70,7 @@ public class GameLogic {
         return this.gameGUI.getViewManager();
     }
 
-    public void addToScore(long points) {
+    public void addToScore(final long points) {
         this.st.addToScore(points);
     }
 
@@ -78,7 +78,7 @@ public class GameLogic {
         this.st.showCurrentScore();
     }
 
-    private static void fireStepActions(int x, int y, int z) {
+    private static void fireStepActions(final int x, final int y, final int z) {
         Gemma.getApplication().getScenarioManager().getMap()
                 .updateVisibleSquares(x, y, z);
     }
@@ -91,7 +91,7 @@ public class GameLogic {
         this.stateChanged = true;
     }
 
-    public void setSavedGameFlag(boolean value) {
+    public void setSavedGameFlag(final boolean value) {
         this.savedGameFlag = value;
     }
 
@@ -99,13 +99,13 @@ public class GameLogic {
         this.gameGUI.setStatusMessage(msg);
     }
 
-    public void updatePositionRelative(int x, int y, int z) {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
+    public void updatePositionRelative(final int x, final int y, final int z) {
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
         boolean redrawsSuspended = false;
         int px = m.getPlayerLocationX();
         int py = m.getPlayerLocationY();
         int pz = m.getPlayerLocationZ();
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         boolean proceed = false;
         MapObject o = null;
         MapObject groundInto = new Empty();
@@ -143,7 +143,7 @@ public class GameLogic {
             } catch (final InfiniteRecursionException ir) {
                 proceed = false;
             }
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             proceed = false;
             o = new Empty();
         }
@@ -212,9 +212,10 @@ public class GameLogic {
             redrawsSuspended = false;
         }
         // Post-move actions
-        ArrayList<InternalScriptArea> areaScripts = app.getScenarioManager()
-                .getMap().getScriptAreasAtPoint(new Point(px, py), pz);
-        for (InternalScriptArea isa : areaScripts) {
+        final ArrayList<InternalScriptArea> areaScripts = app
+                .getScenarioManager().getMap()
+                .getScriptAreasAtPoint(new Point(px, py), pz);
+        for (final InternalScriptArea isa : areaScripts) {
             InternalScriptRunner.runScript(isa);
         }
         GameLogic.fireStepActions(px, py, pz);
@@ -222,13 +223,14 @@ public class GameLogic {
         this.checkGameOver();
     }
 
-    public void updatePositionRelativeNoEvents(int x, int y, int z) {
+    public void updatePositionRelativeNoEvents(final int x, final int y,
+            final int z) {
         boolean redrawsSuspended = false;
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
         int px = m.getPlayerLocationX();
         int py = m.getPlayerLocationY();
         int pz = m.getPlayerLocationZ();
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         boolean proceed = false;
         MapObject o = null;
         MapObject below = null;
@@ -265,7 +267,7 @@ public class GameLogic {
             } catch (final InfiniteRecursionException ir) {
                 proceed = false;
             }
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             proceed = false;
             o = new Empty();
         }
@@ -324,28 +326,28 @@ public class GameLogic {
     }
 
     private void saveSavedMapObject() {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
-        int px = m.getPlayerLocationX();
-        int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        GenericCharacter player = (GenericCharacter) m.getCell(px, py, pz,
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final int px = m.getPlayerLocationX();
+        final int py = m.getPlayerLocationY();
+        final int pz = m.getPlayerLocationZ();
+        final GenericCharacter player = (GenericCharacter) m.getCell(px, py, pz,
                 MapConstants.LAYER_OBJECT);
         player.setSavedObject(this.savedMapObject);
     }
 
     private void restoreSavedMapObject() {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
-        int px = m.getPlayerLocationX();
-        int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        GenericCharacter player = (GenericCharacter) m.getCell(px, py, pz,
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final int px = m.getPlayerLocationX();
+        final int py = m.getPlayerLocationY();
+        final int pz = m.getPlayerLocationZ();
+        final GenericCharacter player = (GenericCharacter) m.getCell(px, py, pz,
                 MapConstants.LAYER_OBJECT);
         this.savedMapObject = player.getSavedObject();
     }
 
     private void findPlayerAndAdjust() {
         // Find the player, adjust player location
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
         m.findStart();
         m.setPlayerLocation(m.getStartColumn(), m.getStartRow(),
                 m.getStartFloor(), m.getActiveLevelNumber());
@@ -356,22 +358,22 @@ public class GameLogic {
     private static boolean checkSolid(final int z, final MapObject inside,
             final MapObject below, final MapObject nextBelow,
             final MapObject nextAbove) {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
-        boolean insideSolid = inside.isConditionallySolid(m, z);
-        boolean belowSolid = below.isConditionallySolid(m, z);
-        boolean nextBelowSolid = nextBelow.isConditionallySolid(m, z);
-        boolean nextAboveSolid = nextAbove.isConditionallySolid(m, z);
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final boolean insideSolid = inside.isConditionallySolid(m, z);
+        final boolean belowSolid = below.isConditionallySolid(m, z);
+        final boolean nextBelowSolid = nextBelow.isConditionallySolid(m, z);
+        final boolean nextAboveSolid = nextAbove.isConditionallySolid(m, z);
         return !(insideSolid || belowSolid || nextBelowSolid || nextAboveSolid);
     }
 
     private static void fireMoveFailedActions(final int x, final int y,
             final int z, final MapObject inside, final MapObject below,
             final MapObject nextBelow, final MapObject nextAbove) {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
-        boolean insideSolid = inside.isConditionallySolid(m, z);
-        boolean belowSolid = below.isConditionallySolid(m, z);
-        boolean nextBelowSolid = nextBelow.isConditionallySolid(m, z);
-        boolean nextAboveSolid = nextAbove.isConditionallySolid(m, z);
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final boolean insideSolid = inside.isConditionallySolid(m, z);
+        final boolean belowSolid = below.isConditionallySolid(m, z);
+        final boolean nextBelowSolid = nextBelow.isConditionallySolid(m, z);
+        final boolean nextAboveSolid = nextAbove.isConditionallySolid(m, z);
         if (insideSolid) {
             InternalScriptRunner
                     .runScript(MapObject.getMoveFailedScript(false, x, y, z));
@@ -391,8 +393,8 @@ public class GameLogic {
     }
 
     public void updatePositionAbsolute(final int x, final int y, final int z) {
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         try {
             m.getCell(x, y, z, MapConstants.LAYER_OBJECT).preMoveCheck(true, x,
                     y, z, m);
@@ -404,8 +406,8 @@ public class GameLogic {
         m.savePlayerLocation();
         this.getViewManager().saveViewingWindow();
         try {
-            if (!(m.getCell(x, y, z, MapConstants.LAYER_OBJECT)
-                    .isConditionallySolid(m, z))) {
+            if (!m.getCell(x, y, z, MapConstants.LAYER_OBJECT)
+                    .isConditionallySolid(m, z)) {
                 m.setCell(this.savedMapObject, m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         MapConstants.LAYER_OBJECT);
@@ -448,13 +450,13 @@ public class GameLogic {
 
     public void updatePositionAbsoluteNoEvents(final int x, final int y,
             final int z) {
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         m.savePlayerLocation();
         this.getViewManager().saveViewingWindow();
         try {
-            if (!(m.getCell(x, y, z, MapConstants.LAYER_OBJECT)
-                    .isConditionallySolid(m, z))) {
+            if (!m.getCell(x, y, z, MapConstants.LAYER_OBJECT)
+                    .isConditionallySolid(m, z)) {
                 m.setCell(this.savedMapObject, m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         MapConstants.LAYER_OBJECT);
@@ -494,8 +496,8 @@ public class GameLogic {
     }
 
     public void goToLevelRelative(final int level) {
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         final boolean levelExists = m.doesLevelExistOffset(level);
         if (!levelExists && m.isLevelOffsetValid(level)) {
             // Create the level
@@ -540,9 +542,9 @@ public class GameLogic {
         GameLogic.resetPlayerLocation(0);
     }
 
-    private static void resetPlayerLocation(int level) {
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+    private static void resetPlayerLocation(final int level) {
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         m.switchLevel(level);
         m.setPlayerLocation(m.getStartColumn(), m.getStartRow(),
                 m.getStartFloor(), level);
@@ -559,8 +561,8 @@ public class GameLogic {
 
     public void exitGame() {
         this.stateChanged = true;
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         // Restore the map
         m.restore();
         m.resetVisibleSquares();
@@ -597,8 +599,8 @@ public class GameLogic {
     }
 
     void identifyObject(final int x, final int y) {
-        Application app = Gemma.getApplication();
-        Map m = app.getScenarioManager().getMap();
+        final Application app = Gemma.getApplication();
+        final Map m = app.getScenarioManager().getMap();
         final int xOffset = this.getViewManager().getViewingWindowLocationX()
                 - GameViewingWindowManager.getOffsetFactor();
         final int yOffset = this.getViewManager().getViewingWindowLocationY()
@@ -611,18 +613,18 @@ public class GameLogic {
                 - yOffset;
         final int destZ = m.getPlayerLocationZ();
         try {
-            MapObject target1 = m.getCell(destX, destY, destZ,
+            final MapObject target1 = m.getCell(destX, destY, destZ,
                     MapConstants.LAYER_GROUND);
-            MapObject target2 = m.getCell(destX, destY, destZ,
+            final MapObject target2 = m.getCell(destX, destY, destZ,
                     MapConstants.LAYER_OBJECT);
             target1.determineCurrentAppearance(destX, destY, destZ, m);
             target2.determineCurrentAppearance(destX, destY, destZ, m);
-            String gameName1 = target1.getGameName();
-            String gameName2 = target2.getGameName();
+            final String gameName1 = target1.getGameName();
+            final String gameName2 = target2.getGameName();
             Gemma.getApplication().showMessage(gameName2 + " on " + gameName1);
             SoundManager.playSound(GameSoundConstants.SOUND_SCAN);
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            EmptyVoid ev = new EmptyVoid();
+            final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(destX, destY, destZ, m);
             Gemma.getApplication().showMessage(ev.getGameName());
             SoundManager.playSound(GameSoundConstants.SOUND_SCAN);
@@ -630,7 +632,7 @@ public class GameLogic {
     }
 
     public void playMap() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         app.getGUIManager().hideGUI();
         app.setInGame();
         if (app.getScenarioManager().getLoaded()) {
@@ -639,7 +641,7 @@ public class GameLogic {
         if (this.stateChanged) {
             // Initialize only if the map state has changed
             boolean didMapExist = true;
-            int currRandom = PreferencesManager.getGeneratorRandomness();
+            final int currRandom = PreferencesManager.getGeneratorRandomness();
             if (app.getScenarioManager().getMap() == null) {
                 didMapExist = false;
             }
@@ -658,10 +660,10 @@ public class GameLogic {
                         currRandom, Gemma.GENERATOR_RANDOMNESS_MAX);
             }
             this.resetViewingWindowAndPlayerLocation();
-            Map m = app.getScenarioManager().getMap();
-            int px = m.getPlayerLocationX();
-            int py = m.getPlayerLocationY();
-            int pz = m.getPlayerLocationZ();
+            final Map m = app.getScenarioManager().getMap();
+            final int px = m.getPlayerLocationX();
+            final int py = m.getPlayerLocationY();
+            final int pz = m.getPlayerLocationZ();
             m.updateVisibleSquares(px, py, pz);
             this.savedMapObject = new Empty();
             this.stateChanged = false;

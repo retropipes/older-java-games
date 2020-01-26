@@ -18,30 +18,30 @@ public class RuleSetSaveTask extends Thread {
     private String filename;
 
     // Constructors
-    public RuleSetSaveTask(String file) {
+    public RuleSetSaveTask(final String file) {
         this.filename = file;
         this.setName("Rule Set File Writer");
     }
 
     @Override
     public void run() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         final String sg = "Rule Set";
         // filename check
-        boolean hasExtension = RuleSetSaveTask.hasExtension(this.filename);
+        final boolean hasExtension = RuleSetSaveTask
+                .hasExtension(this.filename);
         if (!hasExtension) {
             this.filename += Extension.getRuleSetExtensionWithPeriod();
         }
-        try (XDataWriter ruleSetFile = new XDataWriter(this.filename, "ruleset")) {
+        try (XDataWriter ruleSetFile = new XDataWriter(this.filename,
+                "ruleset")) {
             ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
             app.getObjects().writeRuleSet(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Saving the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             MazeRunnerII.getErrorLogger().logError(ex);
         }
@@ -50,7 +50,7 @@ public class RuleSetSaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

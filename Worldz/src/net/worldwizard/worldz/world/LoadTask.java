@@ -44,8 +44,8 @@ public class LoadTask extends Thread {
             final File worldFile = new File(this.filename);
             try {
                 this.gameWorld = new World();
-                DirectoryUtilities.unzipDirectory(worldFile, new File(
-                        this.gameWorld.getBasePath()));
+                DirectoryUtilities.unzipDirectory(worldFile,
+                        new File(this.gameWorld.getBasePath()));
                 // Set prefix handler
                 this.gameWorld.setPrefixHandler(new PrefixHandler());
                 // Set suffix handler
@@ -64,11 +64,10 @@ public class LoadTask extends Thread {
                 this.gameWorld.switchLevel(startW);
                 final boolean playerExists = this.gameWorld.doesPlayerExist();
                 if (playerExists) {
-                    app.getGameManager()
-                            .getPlayerManager()
-                            .setPlayerLocation(this.gameWorld.getStartColumn(),
-                                    this.gameWorld.getStartRow(),
-                                    this.gameWorld.getStartFloor(), startW);
+                    app.getGameManager().getPlayerManager().setPlayerLocation(
+                            this.gameWorld.getStartColumn(),
+                            this.gameWorld.getStartRow(),
+                            this.gameWorld.getStartFloor(), startW);
                     app.getGameManager().resetViewingWindow();
                 }
                 if (!this.isSavedGame) {
@@ -89,13 +88,12 @@ public class LoadTask extends Thread {
                 Messager.showDialog(sg + " file loaded.");
                 app.getWorldManager().handleDeferredSuccess(true);
             } catch (final FileNotFoundException fnfe) {
-                Messager.showDialog("Reading the "
-                        + sg.toLowerCase()
+                Messager.showDialog("Reading the " + sg.toLowerCase()
                         + " file failed, probably due to illegal characters in the file name.");
                 app.getWorldManager().handleDeferredSuccess(false);
             } catch (final IOException ie) {
-                throw new InvalidWorldException("Error reading "
-                        + sg.toLowerCase() + " file.");
+                throw new InvalidWorldException(
+                        "Error reading " + sg.toLowerCase() + " file.");
             }
         } catch (final InvalidWorldException ime) {
             Messager.showDialog(ime.getMessage());

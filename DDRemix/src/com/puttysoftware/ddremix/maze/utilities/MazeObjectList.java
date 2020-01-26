@@ -72,13 +72,12 @@ public class MazeObjectList {
                 new Empty(), new EmptyVoid(), new HealShop(), new HealTrap(),
                 new HurtTrap(), new Ice(), new ItemShop(), new LightGem(),
                 new Monster(), new OpenDoor(), new Regenerator(),
-                new SealingWall(), new SpellShop(), new Tile(),
-                new UTurnTrap(), new VariableHealTrap(),
-                new VariableHurtTrap(), new Wall(), new WarpTrap(),
-                new WeaponsShop(), new StairsUp(), new StairsDown(),
-                new WallOff(), new WallOn(), new Button(), new Amulet(),
-                new Stone(), new Bomb(), new Hammer(), new Exit(), new Key(),
-                new Tablet(), new Lock(), new TabletSlot() };
+                new SealingWall(), new SpellShop(), new Tile(), new UTurnTrap(),
+                new VariableHealTrap(), new VariableHurtTrap(), new Wall(),
+                new WarpTrap(), new WeaponsShop(), new StairsUp(),
+                new StairsDown(), new WallOff(), new WallOn(), new Button(),
+                new Amulet(), new Stone(), new Bomb(), new Hammer(), new Exit(),
+                new Key(), new Tablet(), new Lock(), new TabletSlot() };
         this.allObjectList = new ArrayList<>();
         // Add all predefined objects to the list
         for (final AbstractMazeObject allObject : allObjects) {

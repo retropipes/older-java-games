@@ -53,8 +53,8 @@ public class OggPlayer extends Thread {
                                     line.start();
                                     int nBytesRead = 0;
                                     while (nBytesRead != -1) {
-                                        nBytesRead = decodedStream.read(data,
-                                                0, data.length);
+                                        nBytesRead = decodedStream.read(data, 0,
+                                                data.length);
                                         if (nBytesRead != -1) {
                                             line.write(data, 0, nBytesRead);
                                         }

@@ -10,7 +10,8 @@ import com.puttysoftware.loopchute.generic.GenericButton;
 
 public class GreenButton extends GenericButton {
     public GreenButton() {
-        super(new GreenWallOff(), new GreenWallOn(), ColorConstants.COLOR_GREEN);
+        super(new GreenWallOff(), new GreenWallOn(),
+                ColorConstants.COLOR_GREEN);
     }
 
     @Override

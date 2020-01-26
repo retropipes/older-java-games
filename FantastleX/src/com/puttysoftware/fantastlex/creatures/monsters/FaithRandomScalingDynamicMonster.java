@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.fantastlex.creatures.monsters;
 
-class FaithRandomScalingDynamicMonster extends
-        AbstractFaithRandomScalingMonster {
+class FaithRandomScalingDynamicMonster
+        extends AbstractFaithRandomScalingMonster {
     // Constructors
     FaithRandomScalingDynamicMonster() {
         super();

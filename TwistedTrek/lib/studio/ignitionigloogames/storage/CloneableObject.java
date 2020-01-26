@@ -5,8 +5,8 @@ package studio.ignitionigloogames.storage;
  */
 public class CloneableObject implements Cloneable {
     /**
-     * Default constructor.
-     * Since this object has no state, all this does is initialize the superclass.
+     * Default constructor. Since this object has no state, all this does is
+     * initialize the superclass.
      */
     public CloneableObject() {
 	super();
@@ -14,6 +14,7 @@ public class CloneableObject implements Cloneable {
 
     /**
      * Create a copy of this @self.
+     * 
      * @return a copy of the current instance
      * @throws CloneNotSupportedException when copying fails
      */

@@ -85,8 +85,8 @@ public class ScoreTracker {
     }
 
     public void showCurrentScore() {
-        CommonDialogs.showDialog("Your current score: " + this.score
-                + " points");
+        CommonDialogs
+                .showDialog("Your current score: " + this.score + " points");
     }
 
     private static String getScoreDirPrefix() {

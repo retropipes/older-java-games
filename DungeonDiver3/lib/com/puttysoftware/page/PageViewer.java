@@ -19,7 +19,7 @@ public final class PageViewer {
     }
 
     // Methods
-    public static void view(Page page) {
+    public static void view(final Page page) {
         String viewerString;
         if (page.isExperience()) {
             viewerString = PageViewer.EXPERIENCE_VIEWER_STRING;
@@ -30,7 +30,7 @@ public final class PageViewer {
             PageViewer.mpValueView(page, viewerString);
         } else {
             boolean viewAsArray = true;
-            int returnCode = CommonDialogs.showConfirmDialog(
+            final int returnCode = CommonDialogs.showConfirmDialog(
                     "View as a list, or as single values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
                 viewAsArray = true;
@@ -45,9 +45,9 @@ public final class PageViewer {
         }
     }
 
-    private static void listView(Page page, String viewerString) {
-        long[] lData = page.evaluateToArray();
-        String[] sData = new String[lData.length];
+    private static void listView(final Page page, final String viewerString) {
+        final long[] lData = page.evaluateToArray();
+        final String[] sData = new String[lData.length];
         for (int x = 0; x < lData.length; x++) {
             sData[x] = new Integer(x + 1).toString() + ": "
                     + new Long(lData[x]).toString();
@@ -56,30 +56,32 @@ public final class PageViewer {
                 sData[0]);
     }
 
-    private static void mpValueView(Page page, String viewerString) {
+    private static void mpValueView(final Page page,
+            final String viewerString) {
         boolean viewMore = true;
         while (viewMore) {
-            int[] paramValues = new int[page.getParamCount()];
+            final int[] paramValues = new int[page.getParamCount()];
             for (int x = 0; x < paramValues.length; x++) {
                 boolean valid = false;
                 String rawInput;
                 int input = 0;
                 String suffix;
                 if ((x + 1) % 100 >= 10 && (x + 1) % 100 <= 19) {
-                    suffix = SUFFIX_N;
+                    suffix = PageViewer.SUFFIX_N;
                 } else if ((x + 1) % 10 == 1) {
-                    suffix = SUFFIX_1;
+                    suffix = PageViewer.SUFFIX_1;
                 } else if ((x + 1) % 10 == 2) {
-                    suffix = SUFFIX_2;
+                    suffix = PageViewer.SUFFIX_2;
                 } else if ((x + 1) % 10 == 3) {
-                    suffix = SUFFIX_3;
+                    suffix = PageViewer.SUFFIX_3;
                 } else {
-                    suffix = SUFFIX_N;
+                    suffix = PageViewer.SUFFIX_N;
                 }
                 while (!valid) {
                     rawInput = CommonDialogs.showTextInputDialog(
-                            ENTRY_PROMPT_PART_1 + (x + 1) + suffix + " "
-                                    + ENTRY_PROMPT_PART_2, viewerString);
+                            PageViewer.ENTRY_PROMPT_PART_1 + (x + 1) + suffix
+                                    + " " + PageViewer.ENTRY_PROMPT_PART_2,
+                            viewerString);
                     try {
                         input = Integer.parseInt(rawInput);
                         if (input < 0) {
@@ -87,25 +89,24 @@ public final class PageViewer {
                             throw new NumberFormatException();
                         }
                         valid = true;
-                    } catch (NumberFormatException nf) {
+                    } catch (final NumberFormatException nf) {
                         // Ignore exception
-                    } catch (NullPointerException np) {
+                    } catch (final NullPointerException np) {
                         // Ignore exception
                     }
                     if (!valid) {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "The input provided was invalid - please try again.",
-                                        viewerString);
+                        CommonDialogs.showErrorDialog(
+                                "The input provided was invalid - please try again.",
+                                viewerString);
                     }
                 }
                 paramValues[x] = input;
             }
-            long value = page.evaluate(paramValues);
+            final long value = page.evaluate(paramValues);
             CommonDialogs.showTitledDialog("Value for the given parameters: "
                     + new Long(value).toString(), viewerString);
-            int returnCode = CommonDialogs.showConfirmDialog(
-                    "View more values?", viewerString);
+            final int returnCode = CommonDialogs
+                    .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
                 viewMore = true;
             } else {
@@ -114,7 +115,8 @@ public final class PageViewer {
         }
     }
 
-    private static void spValueView(Page page, String viewerString) {
+    private static void spValueView(final Page page,
+            final String viewerString) {
         boolean viewMore = true;
         while (viewMore) {
             int paramValue = 0;
@@ -123,8 +125,10 @@ public final class PageViewer {
             int input = 0;
             while (!valid) {
                 rawInput = CommonDialogs
-                        .showTextInputDialog(ENTRY_PROMPT_PART_1
-                                + ENTRY_PROMPT_PART_2, viewerString);
+                        .showTextInputDialog(
+                                PageViewer.ENTRY_PROMPT_PART_1
+                                        + PageViewer.ENTRY_PROMPT_PART_2,
+                                viewerString);
                 try {
                     input = Integer.parseInt(rawInput);
                     if (input < 0) {
@@ -132,24 +136,23 @@ public final class PageViewer {
                         throw new NumberFormatException();
                     }
                     valid = true;
-                } catch (NumberFormatException nf) {
+                } catch (final NumberFormatException nf) {
                     // Ignore exception
-                } catch (NullPointerException np) {
+                } catch (final NullPointerException np) {
                     // Ignore exception
                 }
                 if (!valid) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The input provided was invalid - please try again.",
-                                    viewerString);
+                    CommonDialogs.showErrorDialog(
+                            "The input provided was invalid - please try again.",
+                            viewerString);
                 }
             }
             paramValue = input;
-            long value = page.evaluate(paramValue);
+            final long value = page.evaluate(paramValue);
             CommonDialogs.showTitledDialog(
                     "Value: " + new Long(value).toString(), viewerString);
-            int returnCode = CommonDialogs.showConfirmDialog(
-                    "View more values?", viewerString);
+            final int returnCode = CommonDialogs
+                    .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
                 viewMore = true;
             } else {

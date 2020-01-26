@@ -87,8 +87,8 @@ public abstract class GenericTeleport extends MazeObject {
     }
 
     public int getDestinationLevel() {
-        return WidgetWarren.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationW();
+        return WidgetWarren.getApplication().getGameManager().getPlayerManager()
+                .getPlayerLocationW();
     }
 
     // Transformer methods
@@ -106,8 +106,8 @@ public abstract class GenericTeleport extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
@@ -131,10 +131,9 @@ public abstract class GenericTeleport extends MazeObject {
     @Override
     public void editorProbeHook() {
         WidgetWarren.getApplication()
-                .showMessage(
-                        this.getName() + ": Destination (" + (this.destCol + 1)
-                                + "," + (this.destRow + 1) + ","
-                                + (this.destFloor + 1) + ")");
+                .showMessage(this.getName() + ": Destination ("
+                        + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+                        + (this.destFloor + 1) + ")");
     }
 
     @Override

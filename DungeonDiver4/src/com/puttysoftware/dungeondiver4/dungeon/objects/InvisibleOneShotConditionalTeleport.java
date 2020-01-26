@@ -9,8 +9,8 @@ import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleOneShotConditionalTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_ONE_SHOT_CONDITIONAL);

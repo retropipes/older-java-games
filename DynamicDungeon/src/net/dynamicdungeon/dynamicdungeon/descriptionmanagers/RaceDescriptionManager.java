@@ -15,19 +15,18 @@ import net.dynamicdungeon.fileutils.ResourceStreamReader;
 
 public class RaceDescriptionManager {
     public static String getRaceDescription(final int r) {
-	final String name = RaceConstants.getRaceName(r).toLowerCase();
-	try (final ResourceStreamReader rsr = new ResourceStreamReader(
-		RaceDescriptionManager.class
-			.getResourceAsStream("/net/dynamicdungeon/dynamicdungeon/resources/descriptions/race/"
-				+ name
-				+ Extension
-					.getInternalDataExtensionWithPeriod()))) {
-	    // Fetch description
-	    final String desc = rsr.readString();
-	    return desc;
-	} catch (final IOException e) {
-	    DynamicDungeon.getErrorLogger().logError(e);
-	    return null;
-	}
+        final String name = RaceConstants.getRaceName(r).toLowerCase();
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                RaceDescriptionManager.class.getResourceAsStream(
+                        "/net/dynamicdungeon/dynamicdungeon/resources/descriptions/race/"
+                                + name + Extension
+                                        .getInternalDataExtensionWithPeriod()))) {
+            // Fetch description
+            final String desc = rsr.readString();
+            return desc;
+        } catch (final IOException e) {
+            DynamicDungeon.getErrorLogger().logError(e);
+            return null;
+        }
     }
 }

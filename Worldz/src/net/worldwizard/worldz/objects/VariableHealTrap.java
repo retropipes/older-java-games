@@ -36,9 +36,10 @@ public class VariableHealTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        this.maxHealing = PartyManager.getParty().getLeader().getMaximumHP() / 10;
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
+        this.maxHealing = PartyManager.getParty().getLeader().getMaximumHP()
+                / 10;
         if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
             this.maxHealing = VariableHealTrap.MIN_HEALING;
         }

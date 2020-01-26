@@ -38,7 +38,8 @@ public class Ice extends AbstractGround {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         SoundManager.playSound(SoundConstants.SOUND_WALK_ICE);
     }
 

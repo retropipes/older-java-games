@@ -11,22 +11,22 @@ import com.puttysoftware.lasertank.prefs.PreferencesManager;
 class ReplayTask extends Thread {
     // Constructors
     public ReplayTask() {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void run() {
-	final GameManager gm = LaserTank.getApplication().getGameManager();
-	boolean result = true;
-	while (result) {
-	    result = gm.replayLastMove();
-	    // Delay, for animation purposes
-	    try {
-		Thread.sleep(PreferencesManager.getReplaySpeed());
-	    } catch (final InterruptedException ie) {
-		// Ignore
-	    }
-	}
-	gm.replayDone();
+        final GameManager gm = LaserTank.getApplication().getGameManager();
+        boolean result = true;
+        while (result) {
+            result = gm.replayLastMove();
+            // Delay, for animation purposes
+            try {
+                Thread.sleep(PreferencesManager.getReplaySpeed());
+            } catch (final InterruptedException ie) {
+                // Ignore
+            }
+        }
+        gm.replayDone();
     }
 }

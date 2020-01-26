@@ -74,24 +74,26 @@ public class Monster extends Creature {
     private int getInitialAttack() {
         final Player player = DungeonDiver.getHoldingBag().getPlayer();
         final RandomRange r1 = new RandomRange(0, player.getPermanentAttack());
-        final RandomRange r2 = new RandomRange(0, this.level
-                + player.getPower());
+        final RandomRange r2 = new RandomRange(0,
+                this.level + player.getPower());
         return (int) r1.generate() + (int) r2.generate();
     }
 
     private int getInitialDefense() {
         final Player player = DungeonDiver.getHoldingBag().getPlayer();
         final RandomRange r1 = new RandomRange(0, player.getPermanentDefense());
-        final RandomRange r2 = new RandomRange(0, this.level
-                + player.getBlock());
+        final RandomRange r2 = new RandomRange(0,
+                this.level + player.getBlock());
         return (int) r1.generate() + (int) r2.generate();
     }
 
     private long getInitialExperience() {
         final Player player = DungeonDiver.getHoldingBag().getPlayer();
         int min, max;
-        min = (int) (player.getLevel() * Monster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        max = (int) (player.getLevel() * Monster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        min = (int) (player.getLevel()
+                * Monster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        max = (int) (player.getLevel()
+                * Monster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
         final RandomRange r = new RandomRange(min, max);
         final long toNext = player.getExpToNextLevel(player.getLevel() + 1,
                 player.getKills());
@@ -99,8 +101,8 @@ public class Monster extends Creature {
                 player.getKills());
         final long needed = toNext - toCurrent;
         final long factor = Monster.getFightsPerLevel();
-        final long exp = (long) ((needed / factor + r.generate()) * this
-                .adjustForLevelDifference());
+        final long exp = (long) ((needed / factor + r.generate())
+                * this.adjustForLevelDifference());
         if (exp < 0L) {
             return 0L;
         } else {
@@ -145,8 +147,8 @@ public class Monster extends Creature {
     private int getInitialMaximumMP() {
         final Player player = DungeonDiver.getHoldingBag().getPlayer();
         final RandomRange r1 = new RandomRange(0, player.getPermanentMP());
-        final RandomRange r2 = new RandomRange(0, this.level
-                * Monster.MP_PER_LEVEL);
+        final RandomRange r2 = new RandomRange(0,
+                this.level * Monster.MP_PER_LEVEL);
         return (int) r1.generate() + (int) r2.generate();
     }
 
@@ -164,8 +166,8 @@ public class Monster extends Creature {
 
     private static int getFightsPerLevel() {
         final Player player = DungeonDiver.getHoldingBag().getPlayer();
-        return (int) (Monster.BASE_FIGHTS_PER_LEVEL + (player.getLevel() - 1)
-                * Monster.FIGHTS_PER_LEVEL_INCREMENT);
+        return (int) (Monster.BASE_FIGHTS_PER_LEVEL
+                + (player.getLevel() - 1) * Monster.FIGHTS_PER_LEVEL_INCREMENT);
     }
 
     @Override

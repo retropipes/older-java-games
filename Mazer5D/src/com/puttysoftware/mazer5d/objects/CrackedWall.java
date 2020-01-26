@@ -20,8 +20,8 @@ public class CrackedWall extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         this.moveFailedAction(true, locX, locY, inv);
         return false;
     }
@@ -32,8 +32,8 @@ public class CrackedWall extends GenericWall {
         // Crack the wall
         final int pz = Mazer5D.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        Mazer5D.getApplication().getGameManager()
-                .morph(new DamagedWall(), dirX, dirY, pz);
+        Mazer5D.getApplication().getGameManager().morph(new DamagedWall(), dirX,
+                dirY, pz);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CRACK);
     }

@@ -12,12 +12,12 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityDataManager {
     public static double[] getPersonalityData(final int p) {
-        String name = PersonalityConstants.getPersonalityName(p).toLowerCase();
+        final String name = PersonalityConstants.getPersonalityName(p)
+                .toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                PersonalityDataManager.class
-                        .getResourceAsStream("/com/puttysoftware/mazerunner2/resources/data/personality/"
-                                + name
-                                + Extension
+                PersonalityDataManager.class.getResourceAsStream(
+                        "/com/puttysoftware/mazerunner2/resources/data/personality/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTES_COUNT];
@@ -25,7 +25,7 @@ public class PersonalityDataManager {
                 rawData[x] = rsr.readInt();
             }
             // Parse raw data
-            double[] finalData = new double[rawData.length];
+            final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {
                 if (x == PersonalityConstants.PERSONALITY_ATTRIBUTE_LEVEL_UP_SPEED) {
                     finalData[x] = PersonalityConstants

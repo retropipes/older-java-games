@@ -31,8 +31,9 @@ public class PluginLoader {
                     + FileExtension.getPluginExtensionWithPeriod() + "!/") };
             try (final URLClassLoader instance = URLClassLoader
                     .newInstance(loadPath)) {
-                final Object plugin = instance.loadClass(
-                        "com.puttysoftware.weaselweb.plugins." + name)
+                final Object plugin = instance
+                        .loadClass(
+                                "com.puttysoftware.weaselweb.plugins." + name)
                         .newInstance();
                 PluginLoader.LOADED_PLUGINS.add(plugin);
                 return plugin;
@@ -50,8 +51,7 @@ public class PluginLoader {
         if (registeredNames != null) {
             // Load plugins
             registeredNames.trimToSize();
-            for (int x = 0; x < registeredNames.size(); x++) {
-                final String name = registeredNames.get(x);
+            for (final String name : registeredNames) {
                 final Object pluginWithName = PluginLoader.loadPlugin(name);
                 if (pluginWithName != null) {
                     // Add it to the vector

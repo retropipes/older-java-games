@@ -45,11 +45,11 @@ public class AdventureManager {
         app.getMenuManager().checkFlags();
     }
 
-    public void loadFromOSHandler(String infilename) {
+    public void loadFromOSHandler(final String infilename) {
         if (!this.loaded) {
             String extension;
             final File file = new File(infilename);
-            String filename = file.getAbsolutePath();
+            final String filename = file.getAbsolutePath();
             extension = AdventureManager.getExtension(file);
             if (extension.equals(Extension.getAdventureExtension())) {
                 AdventureManager.loadFile(filename);
@@ -71,7 +71,8 @@ public class AdventureManager {
             if (extension.equals(Extension.getAdventureExtension())) {
                 AdventureManager.loadFile(dirname + filename);
             } else {
-                Messager.showMessage("You opened something other than an adventure file. Select an adventure file, and try again.");
+                Messager.showMessage(
+                        "You opened something other than an adventure file. Select an adventure file, and try again.");
             }
         } else {
             // User cancelled
@@ -83,13 +84,14 @@ public class AdventureManager {
     }
 
     private static void loadFile(final String filename) {
-        if (!FilenameChecker.isFilenameOK(AdventureManager
-                .getNameWithoutExtension(AdventureManager
-                        .getFileNameOnly(filename)))) {
-            Messager.showMessage("The file you selected contains illegal characters in its"
-                    + "name. These characters are not allowed: /?<>\\:|\""
-                    + "Files named con, nul, or prn are illegal, as are files"
-                    + "named com1 through com9 and lpt1 through lpt9.");
+        if (!FilenameChecker
+                .isFilenameOK(AdventureManager.getNameWithoutExtension(
+                        AdventureManager.getFileNameOnly(filename)))) {
+            Messager.showMessage(
+                    "The file you selected contains illegal characters in its"
+                            + "name. These characters are not allowed: /?<>\\:|\""
+                            + "Files named con, nul, or prn are illegal, as are files"
+                            + "named com1 through com9 and lpt1 through lpt9.");
         } else {
             final LoadTask lt = new LoadTask(filename);
             lt.start();

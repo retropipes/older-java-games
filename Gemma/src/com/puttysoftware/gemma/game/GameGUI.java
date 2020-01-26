@@ -72,11 +72,11 @@ class GameGUI {
     public void redrawMap() {
         // Draw the map, if it is visible
         if (this.outputFrame.isVisible()) {
-            Application app = Gemma.getApplication();
+            final Application app = Gemma.getApplication();
             int x, y, u, v;
             int xFix, yFix;
             boolean visible;
-            Map m = Gemma.getApplication().getScenarioManager().getMap();
+            final Map m = Gemma.getApplication().getScenarioManager().getMap();
             u = m.getPlayerLocationX();
             v = m.getPlayerLocationY();
             for (x = this.vwMgr.getViewingWindowLocationX(); x <= this.vwMgr
@@ -101,7 +101,7 @@ class GameGUI {
                             name2 = obj2.gameRenderHook(y, x,
                                     m.getPlayerLocationZ(),
                                     app.getScenarioManager().getMap());
-                            boolean hasNote = m.hasNote(y, x,
+                            final boolean hasNote = m.hasNote(y, x,
                                     m.getPlayerLocationZ());
                             if (hasNote) {
                                 this.drawGrid.setImageCell(
@@ -151,7 +151,7 @@ class GameGUI {
     }
 
     public void resetViewingWindow() {
-        Map m = Gemma.getApplication().getScenarioManager().getMap();
+        final Map m = Gemma.getApplication().getScenarioManager().getMap();
         this.vwMgr.setViewingWindowLocationX(m.getPlayerLocationY()
                 - GameViewingWindowManager.getOffsetFactor());
         this.vwMgr.setViewingWindowLocationY(m.getPlayerLocationX()
@@ -173,7 +173,7 @@ class GameGUI {
     }
 
     public void showOutput(final int level) {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         app.getMenuManager().setGameMenus();
         if (PreferencesManager
                 .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
@@ -197,7 +197,7 @@ class GameGUI {
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
@@ -281,7 +281,7 @@ class GameGUI {
 
         public void handleMovement(final KeyEvent e) {
             try {
-                GameLogic gm = Gemma.getApplication().getGameManager();
+                final GameLogic gm = Gemma.getApplication().getGameManager();
                 final int keyCode = e.getKeyCode();
                 switch (keyCode) {
                 case KeyEvent.VK_NUMPAD4:
@@ -327,7 +327,7 @@ class GameGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }
@@ -346,7 +346,7 @@ class GameGUI {
         @Override
         public void windowClosing(final WindowEvent we) {
             try {
-                Application app = Gemma.getApplication();
+                final Application app = Gemma.getApplication();
                 boolean success = false;
                 int status = 0;
                 if (app.getScenarioManager().getDirty()) {
@@ -362,7 +362,7 @@ class GameGUI {
                 } else {
                     app.getGameManager().exitGame();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }
@@ -401,13 +401,13 @@ class GameGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                GameLogic gm = Gemma.getApplication().getGameManager();
+                final GameLogic gm = Gemma.getApplication().getGameManager();
                 if (e.isShiftDown()) {
                     final int x = e.getX();
                     final int y = e.getY();
                     gm.identifyObject(x, y);
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }

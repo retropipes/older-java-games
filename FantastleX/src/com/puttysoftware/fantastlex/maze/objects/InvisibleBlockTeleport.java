@@ -41,8 +41,8 @@ public class InvisibleBlockTeleport extends AbstractInvisibleBlockTeleport {
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         final MazeEditorLogic me = FantastleX.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_BLOCK);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_BLOCK);
     }
 
     @Override

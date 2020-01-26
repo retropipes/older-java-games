@@ -54,9 +54,8 @@ public class GraphicsManager {
         try {
             // Fetch the icon
             final String normalName = GraphicsManager.normalizeName(name);
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH + "stats/"
-                            + normalName + ".png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "stats/" + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             // Transform the icon
@@ -162,12 +161,12 @@ public class GraphicsManager {
         }
     }
 
-    public static BufferedImageIcon getVirtualCompositeImage(
-            final String name1, final String name2, final String name3) {
+    public static BufferedImageIcon getVirtualCompositeImage(final String name1,
+            final String name2, final String name3) {
         try {
             final BufferedImageIcon icon3 = ImageCache.getCachedImage(name3);
-            final BufferedImageIcon icon2 = GraphicsManager.getCompositeImage(
-                    name1, name2);
+            final BufferedImageIcon icon2 = GraphicsManager
+                    .getCompositeImage(name1, name2);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon2 != null) {
                 for (int x = 0; x < GraphicsManager.getGraphicSize(); x++) {
@@ -208,9 +207,8 @@ public class GraphicsManager {
 
     public static BufferedImageIcon getMiniatureLogo() {
         try {
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH
-                            + "logo/minilogo.png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "logo/minilogo.png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;
@@ -225,9 +223,8 @@ public class GraphicsManager {
 
     public static BufferedImageIcon getMicroLogo() {
         try {
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH
-                            + "logo/micrologo.png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "logo/micrologo.png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;
@@ -242,9 +239,8 @@ public class GraphicsManager {
 
     public static Image getIconLogo() {
         try {
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH
-                            + "logo/iconlogo.png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "logo/iconlogo.png");
             final BufferedImage image = ImageIO.read(url);
             return image;
         } catch (final IOException ie) {
@@ -295,8 +291,8 @@ public class GraphicsManager {
                 }
             }
             // Draw the monster with an offset into the templateOut
-            final int offset = (GraphicsManager.getGraphicSize() - template
-                    .getWidth()) / 2;
+            final int offset = (GraphicsManager.getGraphicSize()
+                    - template.getWidth()) / 2;
             for (int x = 0; x < template.getWidth(); x++) {
                 for (int y = 0; y < template.getHeight(); y++) {
                     templateOut.setRGB(x + offset, y + offset,

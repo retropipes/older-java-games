@@ -43,8 +43,8 @@ public class GenerateTask extends Thread {
         try {
             this.generateFrame.setVisible(true);
             final Application app = Chrystalz.getApplication();
-            int zoneID = PartyManager.getParty().getZone();
-            int dungeonSize = Chrystalz.getDungeonLevelSize(zoneID);
+            final int zoneID = PartyManager.getParty().getZone();
+            final int dungeonSize = Chrystalz.getDungeonLevelSize(zoneID);
             Dungeon gameDungeon = app.getDungeonManager().getDungeon();
             if (!this.scratch) {
                 app.getGame().disableEvents();

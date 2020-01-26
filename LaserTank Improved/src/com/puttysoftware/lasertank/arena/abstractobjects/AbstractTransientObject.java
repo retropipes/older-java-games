@@ -10,34 +10,34 @@ import com.puttysoftware.lasertank.utilities.ArenaConstants;
 public abstract class AbstractTransientObject extends AbstractArenaObject {
     // Constructors
     protected AbstractTransientObject() {
-	super(true);
+        super(true);
     }
 
     @Override
     public int getBlockHeight() {
-	return 0;
+        return 0;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     public abstract int getForceUnitsImbued();
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_VIRTUAL;
+        return ArenaConstants.LAYER_VIRTUAL;
     }
 
     // Methods
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

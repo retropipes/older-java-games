@@ -11,8 +11,8 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
-public class MazeRunnerEventHandler implements KeyListener, ActionListener,
-        WindowListener, MouseListener {
+public class MazeRunnerEventHandler
+        implements KeyListener, ActionListener, WindowListener, MouseListener {
     @Override
     public void keyPressed(final KeyEvent e) {
         final MazeRunner app = MazeRunner.getApplication();

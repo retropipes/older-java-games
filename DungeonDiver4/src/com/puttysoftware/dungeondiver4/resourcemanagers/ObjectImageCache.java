@@ -26,8 +26,8 @@ public class ObjectImageCache {
                 BufferedImageIcon bii2 = ObjectImageManager
                         .getUncachedImage(attrName);
                 bii2 = ImageTransformer.templateTransformImage(bii2, attrColor);
-                BufferedImageIcon bii3 = ImageTransformer.getCompositeImage(
-                        bii1, bii2);
+                final BufferedImageIcon bii3 = ImageTransformer
+                        .getCompositeImage(bii1, bii2);
                 ObjectImageCache.addToCache(name, bii3);
             } else {
                 BufferedImageIcon bii = ObjectImageManager
@@ -37,16 +37,16 @@ public class ObjectImageCache {
                 ObjectImageCache.addToCache(name, bii);
             }
         }
-        for (int x = 0; x < ObjectImageCache.cache.length; x++) {
-            if (name.equals(ObjectImageCache.cache[x].getName())) {
-                return ObjectImageCache.cache[x].getImage();
+        for (final CacheEntry element : ObjectImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;
     }
 
     private static void expandCache() {
-        CacheEntry[] tempCache = new CacheEntry[ObjectImageCache.cache.length
+        final CacheEntry[] tempCache = new CacheEntry[ObjectImageCache.cache.length
                 + ObjectImageCache.CACHE_INCREMENT];
         for (int x = 0; x < ObjectImageCache.CACHE_SIZE; x++) {
             tempCache[x] = ObjectImageCache.cache[x];

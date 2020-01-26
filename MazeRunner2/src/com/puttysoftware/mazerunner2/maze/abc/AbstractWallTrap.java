@@ -23,7 +23,8 @@ public abstract class AbstractWallTrap extends AbstractMazeObject {
     protected static final int NUMBER_MASTER = -1;
 
     // Constructors
-    protected AbstractWallTrap(int newNumber, AbstractTrappedWall newTrigger) {
+    protected AbstractWallTrap(final int newNumber,
+            final AbstractTrappedWall newTrigger) {
         super(false, false);
         this.number = newNumber;
         this.trigger = newTrigger;
@@ -31,7 +32,7 @@ public abstract class AbstractWallTrap extends AbstractMazeObject {
 
     @Override
     public AbstractWallTrap clone() {
-        AbstractWallTrap copy = (AbstractWallTrap) super.clone();
+        final AbstractWallTrap copy = (AbstractWallTrap) super.clone();
         copy.number = this.number;
         copy.trigger = this.trigger.clone();
         return copy;
@@ -39,8 +40,8 @@ public abstract class AbstractWallTrap extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         MazeRunnerII.getApplication().getGameManager().decay();
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .findAllMatchingObjectsAndDecay(this.masterTrigger);
@@ -124,12 +125,12 @@ public abstract class AbstractWallTrap extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

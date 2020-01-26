@@ -62,8 +62,8 @@ public class RotationWand extends GenericWand {
         }
         final String[] dChoices = new String[] { "Clockwise",
                 "Counterclockwise" };
-        final String dres = CommonDialogs.showInputDialog(
-                "Rotation Direction:", "MasterMaze", dChoices, dChoices[di]);
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "MasterMaze", dChoices, dChoices[di]);
         if (dres.equals(dChoices[0])) {
             d = RotationWand.CLOCKWISE;
         } else {

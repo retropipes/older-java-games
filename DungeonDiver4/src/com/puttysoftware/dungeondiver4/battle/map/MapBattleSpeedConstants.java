@@ -13,8 +13,11 @@ public class MapBattleSpeedConstants {
     private static final int BATTLE_SPEED_SLOW = 900;
     private static final int BATTLE_SPEED_VERY_SLOW = 1100;
     public static final int[] BATTLE_SPEED_ARRAY = new int[] {
-            BATTLE_SPEED_VERY_SLOW, BATTLE_SPEED_SLOW, BATTLE_SPEED_MODERATE,
-            BATTLE_SPEED_FAST, BATTLE_SPEED_VERY_FAST };
+            MapBattleSpeedConstants.BATTLE_SPEED_VERY_SLOW,
+            MapBattleSpeedConstants.BATTLE_SPEED_SLOW,
+            MapBattleSpeedConstants.BATTLE_SPEED_MODERATE,
+            MapBattleSpeedConstants.BATTLE_SPEED_FAST,
+            MapBattleSpeedConstants.BATTLE_SPEED_VERY_FAST };
 
     private MapBattleSpeedConstants() {
         // Do nothing

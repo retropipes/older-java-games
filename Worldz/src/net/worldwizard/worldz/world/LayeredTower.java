@@ -144,7 +144,7 @@ class LayeredTower implements Cloneable {
         return this.poisonPower;
     }
 
-    public void setPoisonPower(int fPP) {
+    public void setPoisonPower(final int fPP) {
         int pp = fPP;
         if (pp < 0) {
             pp = 0;
@@ -166,7 +166,8 @@ class LayeredTower implements Cloneable {
         return LayeredTower.MAX_POISON_POWER;
     }
 
-    public WorldObject getCell(int fR, int fC, int fF, final int extra) {
+    public WorldObject getCell(final int fR, final int fC, final int fF,
+            final int extra) {
         int row = fR;
         int col = fC;
         int floor = fF;
@@ -312,8 +313,8 @@ class LayeredTower implements Cloneable {
                 for (z = 0; z < this.getFloors(); z++) {
                     final WorldObject mo = this.towerData[x][y][z][WorldConstants.LAYER_OBJECT];
                     if (mo != null) {
-                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP)
-                                || mo.isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
+                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
+                                .isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
                             this.towerData[x][y][z][WorldConstants.LAYER_OBJECT] = decayTo;
                         }
                     }
@@ -342,7 +343,8 @@ class LayeredTower implements Cloneable {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        final WorldObject[][][] tempStorage = new WorldObject[2 * r + 1][2 * r + 1][WorldConstants.LAYER_COUNT];
+        final WorldObject[][][] tempStorage = new WorldObject[2 * r + 1][2 * r
+                + 1][WorldConstants.LAYER_COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
@@ -380,7 +382,8 @@ class LayeredTower implements Cloneable {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        final WorldObject[][][] tempStorage = new WorldObject[2 * r + 1][2 * r + 1][WorldConstants.LAYER_COUNT];
+        final WorldObject[][][] tempStorage = new WorldObject[2 * r + 1][2 * r
+                + 1][WorldConstants.LAYER_COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
@@ -464,9 +467,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToIce = this.getCell(u, v, z,
-                            WorldConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_ICE);
+                    final boolean reactsToIce = this
+                            .getCell(u, v, z, WorldConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_ICE);
                     if (reactsToIce) {
                         final WorldObject there = this.getCell(u, v, z,
                                 WorldConstants.LAYER_OBJECT);
@@ -513,16 +516,16 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToFire = this.getCell(u, v, z,
-                            WorldConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_FIRE);
+                    final boolean reactsToFire = this
+                            .getCell(u, v, z, WorldConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_FIRE);
                     if (reactsToFire) {
                         final WorldObject there = this.getCell(u, v, z,
                                 WorldConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Enrage the generator
-                            this.setCell(new EnragedBarrierGenerator(), u, v,
-                                    z, WorldConstants.LAYER_OBJECT);
+                            this.setCell(new EnragedBarrierGenerator(), u, v, z,
+                                    WorldConstants.LAYER_OBJECT);
                         } else {
                             // Assume object is already enraged, and reset its
                             // timer
@@ -562,9 +565,9 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToPoison = this.getCell(u, v, z,
-                            WorldConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_POISON);
+                    final boolean reactsToPoison = this
+                            .getCell(u, v, z, WorldConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_POISON);
                     if (reactsToPoison) {
                         final WorldObject there = this.getCell(u, v, z,
                                 WorldConstants.LAYER_OBJECT);
@@ -611,16 +614,16 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    final boolean reactsToShock = this.getCell(u, v, z,
-                            WorldConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_SHOCK);
+                    final boolean reactsToShock = this
+                            .getCell(u, v, z, WorldConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_SHOCK);
                     if (reactsToShock) {
                         final WorldObject there = this.getCell(u, v, z,
                                 WorldConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Shock the generator
-                            this.setCell(new ShockedBarrierGenerator(), u, v,
-                                    z, WorldConstants.LAYER_OBJECT);
+                            this.setCell(new ShockedBarrierGenerator(), u, v, z,
+                                    WorldConstants.LAYER_OBJECT);
                         } else {
                             // Assume object is already shocked, and reset its
                             // timer
@@ -675,7 +678,8 @@ class LayeredTower implements Cloneable {
     public void radialScanShuffleObjects(final int x, final int y, final int z,
             final int r) {
         int u, v, l, uFix, vFix;
-        final WorldObject[][][] preShuffle = new WorldObject[2 * r + 1][2 * r + 1][WorldConstants.LAYER_COUNT];
+        final WorldObject[][][] preShuffle = new WorldObject[2 * r + 1][2 * r
+                + 1][WorldConstants.LAYER_COUNT];
         // Load the preShuffle array
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
@@ -747,8 +751,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void setCell(final WorldObject mo, int fR, int fC, int fF,
-            final int extra) {
+    public void setCell(final WorldObject mo, final int fR, final int fC,
+            final int fF, final int extra) {
         int row = fR;
         int col = fC;
         int floor = fF;
@@ -863,8 +867,8 @@ class LayeredTower implements Cloneable {
                     for (y = 0; y < rows; y++) {
                         final WorldObject placeObj = objectsWithoutPrerequisites[r
                                 .generate()];
-                        final boolean okay = placeObj.shouldGenerateObject(
-                                world, x, y, z, w, e);
+                        final boolean okay = placeObj
+                                .shouldGenerateObject(world, x, y, z, w, e);
                         if (okay) {
                             this.towerData[x][y][z][e] = objects
                                     .getNewInstanceByName(placeObj.getName());
@@ -885,8 +889,8 @@ class LayeredTower implements Cloneable {
                     for (y = 0; y < rows; y++) {
                         final WorldObject placeObj = objectsWithPrerequisites[r
                                 .generate()];
-                        final boolean okay = placeObj.shouldGenerateObject(
-                                world, x, y, z, w, e);
+                        final boolean okay = placeObj
+                                .shouldGenerateObject(world, x, y, z, w, e);
                         if (okay) {
                             this.towerData[x][y][z][e] = objects
                                     .getNewInstanceByName(placeObj.getName());
@@ -978,12 +982,12 @@ class LayeredTower implements Cloneable {
                         for (y = 0; y < rows; y++) {
                             final WorldObject placeObj = objectsWithoutPrerequisites[r
                                     .generate()];
-                            final boolean okay = placeObj.shouldGenerateObject(
-                                    world, x, y, z, w, e);
+                            final boolean okay = placeObj
+                                    .shouldGenerateObject(world, x, y, z, w, e);
                             if (okay) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName());
+                                        .getNewInstanceByName(
+                                                placeObj.getName());
                                 placeObj.editorGenerateHook(x, y, z);
                             }
                         }
@@ -1001,20 +1005,20 @@ class LayeredTower implements Cloneable {
                         for (y = 0; y < rows; y++) {
                             final WorldObject placeObj = objectsWithPrerequisites[r
                                     .generate()];
-                            final boolean okay = placeObj.shouldGenerateObject(
-                                    world, x, y, z, w, e);
+                            final boolean okay = placeObj
+                                    .shouldGenerateObject(world, x, y, z, w, e);
                             if (okay) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName());
+                                        .getNewInstanceByName(
+                                                placeObj.getName());
                                 placeObj.editorGenerateHook(x, y, z);
                             }
                         }
                     }
                     N++;
                     objectsWithPrerequisites = WorldObjectList
-                            .getAllWithNthPrerequisiteSubset(withoutRuleSets,
-                                    e, N);
+                            .getAllWithNthPrerequisiteSubset(withoutRuleSets, e,
+                                    N);
                 }
             }
             // Pass N + 1
@@ -1051,7 +1055,8 @@ class LayeredTower implements Cloneable {
                             if (currObj.shouldGenerateObject(world, randomRow,
                                     randomColumn, z, w, layer)) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(currObj.getName());
+                                        .getNewInstanceByName(
+                                                currObj.getName());
                                 currObj.editorGenerateHook(x, y, z);
                             } else {
                                 while (!currObj.shouldGenerateObject(world,
@@ -1060,7 +1065,8 @@ class LayeredTower implements Cloneable {
                                     randomColumn = column.generate();
                                 }
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(currObj.getName());
+                                        .getNewInstanceByName(
+                                                currObj.getName());
                                 currObj.editorGenerateHook(x, y, z);
                             }
                         }
@@ -1085,8 +1091,8 @@ class LayeredTower implements Cloneable {
                                     .shouldGenerateObject(world, x, y, z, w, e);
                             if (okay) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName());
+                                        .getNewInstanceByName(
+                                                placeObj.getName());
                                 placeObj.editorGenerateHook(x, y, z);
                             }
                         }
@@ -1108,15 +1114,16 @@ class LayeredTower implements Cloneable {
                                     .shouldGenerateObject(world, x, y, z, w, e);
                             if (okay) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName());
+                                        .getNewInstanceByName(
+                                                placeObj.getName());
                                 placeObj.editorGenerateHook(x, y, z);
                             }
                         }
                     }
                     N++;
                     objectsWithPrerequisites = WorldObjectList
-                            .getAllWithNthPrerequisiteSubset(withRuleSets, e, N);
+                            .getAllWithNthPrerequisiteSubset(withRuleSets, e,
+                                    N);
                 }
             }
             // Pass 2N + 4
@@ -1151,11 +1158,11 @@ class LayeredTower implements Cloneable {
                         for (y = 0; y < generateHowMany; y++) {
                             randomRow = row.generate();
                             randomColumn = column.generate();
-                            if (currObj.getRuleSet()
-                                    .shouldGenerateObject(world, randomRow,
-                                            randomColumn, z, w, layer)) {
+                            if (currObj.getRuleSet().shouldGenerateObject(world,
+                                    randomRow, randomColumn, z, w, layer)) {
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(currObj.getName());
+                                        .getNewInstanceByName(
+                                                currObj.getName());
                                 currObj.editorGenerateHook(x, y, z);
                             } else {
                                 while (!currObj.getRuleSet()
@@ -1165,7 +1172,8 @@ class LayeredTower implements Cloneable {
                                     randomColumn = column.generate();
                                 }
                                 this.towerData[x][y][z][e] = objects
-                                        .getNewInstanceByName(currObj.getName());
+                                        .getNewInstanceByName(
+                                                currObj.getName());
                                 currObj.editorGenerateHook(x, y, z);
                             }
                         }
@@ -1232,10 +1240,10 @@ class LayeredTower implements Cloneable {
         final int zLoc = Worldz.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
         try {
-            final WorldObject there = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, WorldConstants.LAYER_OBJECT);
-            final WorldObject ground = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, WorldConstants.LAYER_GROUND);
+            final WorldObject there = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, WorldConstants.LAYER_OBJECT);
+            final WorldObject ground = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, WorldConstants.LAYER_GROUND);
             if (!there.isSolid() && !there.getName().equals("Player")) {
                 this.setCell(block.getSavedObject(), xLoc, yLoc, zLoc,
                         WorldConstants.LAYER_OBJECT);
@@ -1283,7 +1291,8 @@ class LayeredTower implements Cloneable {
 
     private static WorldObject[][][] shuffleObjects(
             final WorldObject[][][] preShuffle, final int r) {
-        final WorldObject[][][] postShuffle = new WorldObject[2 * r + 1][2 * r + 1][WorldConstants.LAYER_COUNT];
+        final WorldObject[][][] postShuffle = new WorldObject[2 * r + 1][2 * r
+                + 1][WorldConstants.LAYER_COUNT];
         int[][] randomLocations = new int[(2 * r + 1) * (2 * r + 1)][2];
         // Populate randomLocations array
         int counter = 0;
@@ -1341,7 +1350,7 @@ class LayeredTower implements Cloneable {
         return src;
     }
 
-    private int normalizeRow(int fR) {
+    private int normalizeRow(final int fR) {
         int row = fR;
         if (row < 0) {
             row += this.getRows();
@@ -1357,7 +1366,7 @@ class LayeredTower implements Cloneable {
         return row;
     }
 
-    private int normalizeColumn(int fC) {
+    private int normalizeColumn(final int fC) {
         int column = fC;
         if (column < 0) {
             column += this.getColumns();
@@ -1373,7 +1382,7 @@ class LayeredTower implements Cloneable {
         return column;
     }
 
-    private int normalizeFloor(int fF) {
+    private int normalizeFloor(final int fF) {
         int floor = fF;
         if (floor < 0) {
             floor += this.getFloors();
@@ -1460,10 +1469,8 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
                     for (e = 0; e < WorldConstants.LAYER_COUNT; e++) {
-                        lt.towerData[x][y][z][e] = Worldz
-                                .getApplication()
-                                .getObjects()
-                                .readWorldObject(reader,
+                        lt.towerData[x][y][z][e] = Worldz.getApplication()
+                                .getObjects().readWorldObject(reader,
                                         FormatConstants.WORLD_FORMAT_1);
                         if (lt.towerData[x][y][z][e] == null) {
                             return null;

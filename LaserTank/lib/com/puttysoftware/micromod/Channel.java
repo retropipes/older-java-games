@@ -33,9 +33,9 @@ public class Channel {
             535232, 539111, 543017, 546952, 550915, 554908, 558929, 562979 };
     private static final short[] arpTuning = { 4096, 4340, 4598, 4871, 5161,
             5468, 5793, 6137, 6502, 6889, 7298, 7732, 8192, 8679, 9195, 9742 };
-    private static final short[] sineTable = { 0, 24, 49, 74, 97, 120, 141,
-            161, 180, 197, 212, 224, 235, 244, 250, 253, 255, 253, 250, 244,
-            235, 224, 212, 197, 180, 161, 141, 120, 97, 74, 49, 24 };
+    private static final short[] sineTable = { 0, 24, 49, 74, 97, 120, 141, 161,
+            180, 197, 212, 224, 235, 244, 250, 253, 255, 253, 250, 244, 235,
+            224, 212, 197, 180, 161, 141, 120, 97, 74, 49, 24 };
     private final Module module;
     private final GlobalVol globalVol;
     private Instrument instrument;
@@ -69,8 +69,8 @@ public class Channel {
         this.sample = this.instrument.samples[0];
     }
 
-    public void resample(final int[] outBuf, final int offset,
-            final int length, final int interpolation) {
+    public void resample(final int[] outBuf, final int offset, final int length,
+            final int interpolation) {
         if (this.ampl <= 0) {
             return;
         }
@@ -95,8 +95,8 @@ public class Channel {
 
     public void updateSampleIdx(final int length) {
         this.sampleFra += this.step * length;
-        this.sampleIdx = this.sample.normaliseSampleIdx(this.sampleIdx
-                + (this.sampleFra >> Sample.FP_SHIFT));
+        this.sampleIdx = this.sample.normaliseSampleIdx(
+                this.sampleIdx + (this.sampleFra >> Sample.FP_SHIFT));
         this.sampleFra &= Sample.FP_MASK;
     }
 
@@ -488,12 +488,12 @@ public class Channel {
                     this.fadeOutVol = 0;
                 }
             }
-            this.volEnvTick = this.instrument.volumeEnvelope.nextTick(
-                    this.volEnvTick, this.keyOn);
+            this.volEnvTick = this.instrument.volumeEnvelope
+                    .nextTick(this.volEnvTick, this.keyOn);
         }
         if (this.instrument.panningEnvelope.enabled) {
-            this.panEnvTick = this.instrument.panningEnvelope.nextTick(
-                    this.panEnvTick, this.keyOn);
+            this.panEnvTick = this.instrument.panningEnvelope
+                    .nextTick(this.panEnvTick, this.keyOn);
         }
     }
 
@@ -771,7 +771,8 @@ public class Channel {
     private void trigger() {
         if (this.noteIns > 0 && this.noteIns <= this.module.numInstruments) {
             this.instrument = this.module.instruments[this.noteIns];
-            final Sample sam = this.instrument.samples[this.instrument.keyToSample[this.noteKey < 97 ? this.noteKey
+            final Sample sam = this.instrument.samples[this.instrument.keyToSample[this.noteKey < 97
+                    ? this.noteKey
                     : 0]];
             this.volume = sam.volume >= 64 ? 64 : sam.volume & 0x3F;
             if (sam.panning >= 0) {

@@ -3,8 +3,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractMovingObject;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractMovingObject;
 import com.puttysoftware.mazerunner2.maze.utilities.ArrowTypeConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
@@ -22,17 +22,18 @@ public class Monster extends AbstractMovingObject {
         this.activateTimer(1);
     }
 
-    public Monster(AbstractMazeObject saved) {
+    public Monster(final AbstractMazeObject saved) {
         super(false);
         this.setSavedObject(saved);
         this.activateTimer(1);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
-            if (MazeRunnerII.getApplication().getMode() != Application.STATUS_BATTLE) {
+            if (MazeRunnerII.getApplication()
+                    .getMode() != Application.STATUS_BATTLE) {
                 MazeRunnerII.getApplication().getBattle().doBattle();
                 MazeRunnerII.getApplication().getMazeManager().getMaze()
                         .postBattle(this, dirX, dirY, true);
@@ -43,18 +44,17 @@ public class Monster extends AbstractMovingObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
             if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
                 // Transform into iced monster, if hit by an ice arrow
-                int pz = MazeRunnerII.getApplication().getMazeManager()
+                final int pz = MazeRunnerII.getApplication().getMazeManager()
                         .getMaze().getPlayerLocationZ();
-                MazeRunnerII
-                        .getApplication()
-                        .getGameManager()
-                        .morph(new IcedMonster(this.getSavedObject()), locX,
-                                locY, pz, MazeConstants.LAYER_OBJECT);
+                MazeRunnerII.getApplication().getGameManager().morph(
+                        new IcedMonster(this.getSavedObject()), locX, locY, pz,
+                        MazeConstants.LAYER_OBJECT);
                 return false;
             } else {
                 return true;
@@ -65,11 +65,11 @@ public class Monster extends AbstractMovingObject {
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         if (PreferencesManager.getRPGEnabled()) {
             // Move the monster
-            RandomRange r = new RandomRange(0, 7);
-            int move = r.generate();
+            final RandomRange r = new RandomRange(0, 7);
+            final int move = r.generate();
             MazeRunnerII.getApplication().getMazeManager().getMaze()
                     .updateMonsterPosition(move, dirX, dirY, this);
         }
@@ -77,7 +77,8 @@ public class Monster extends AbstractMovingObject {
     }
 
     @Override
-    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+    public AbstractMazeObject gameRenderHook(final int x, final int y,
+            final int z) {
         if (PreferencesManager.getRPGEnabled()) {
             return this;
         } else {

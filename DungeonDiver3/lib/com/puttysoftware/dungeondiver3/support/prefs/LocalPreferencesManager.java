@@ -37,22 +37,22 @@ public class LocalPreferencesManager {
                 true);
     }
 
-    public static void setSoundsEnabled(boolean value) {
+    public static void setSoundsEnabled(final boolean value) {
         LocalPreferencesManager.storeMgr.setBoolean("SoundsEnabled", value);
     }
 
     public static boolean getRandomBattleEnvironment() {
-        return LocalPreferencesManager.storeMgr.getBoolean(
-                "RandomBattleEnvironment", false);
+        return LocalPreferencesManager.storeMgr
+                .getBoolean("RandomBattleEnvironment", false);
     }
 
-    public static void setRandomBattleEnvironment(boolean value) {
+    public static void setRandomBattleEnvironment(final boolean value) {
         LocalPreferencesManager.storeMgr.setBoolean("RandomBattleEnvironment",
                 value);
     }
 
     private static String getPrefsDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(LocalPreferencesManager.MAC_PREFIX);
@@ -66,7 +66,7 @@ public class LocalPreferencesManager {
     }
 
     private static String getPrefsDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return LocalPreferencesManager.MAC_DIR;
@@ -84,7 +84,7 @@ public class LocalPreferencesManager {
     }
 
     private static String getPrefsFileName() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return LocalPreferencesManager.MAC_FILE;
@@ -98,7 +98,7 @@ public class LocalPreferencesManager {
     }
 
     private static String getPrefsFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(LocalPreferencesManager.getPrefsDirPrefix());
         b.append(LocalPreferencesManager.getPrefsDirectory());
         b.append(LocalPreferencesManager.getPrefsFileName());
@@ -111,7 +111,7 @@ public class LocalPreferencesManager {
             LocalPreferencesManager.storeMgr
                     .saveStore(new BufferedOutputStream(new FileOutputStream(
                             LocalPreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Ignore
         }
     }
@@ -122,11 +122,11 @@ public class LocalPreferencesManager {
             LocalPreferencesManager.storeMgr
                     .loadStore(new BufferedInputStream(new FileInputStream(
                             LocalPreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Populate store with defaults
             LocalPreferencesManager.storeMgr.setBoolean("SoundsEnabled", true);
-            LocalPreferencesManager.storeMgr.setBoolean(
-                    "RandomBattleEnvironment", false);
+            LocalPreferencesManager.storeMgr
+                    .setBoolean("RandomBattleEnvironment", false);
         }
     }
 }

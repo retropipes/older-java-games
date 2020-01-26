@@ -33,8 +33,8 @@ public class HurtTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         this.damage = PartyManager.getParty().getLeader().getMaximumHP() / 50;
         if (this.damage < 1) {
             this.damage = 1;

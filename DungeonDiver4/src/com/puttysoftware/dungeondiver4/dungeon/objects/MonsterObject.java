@@ -19,16 +19,17 @@ public class MonsterObject extends AbstractMovingObject {
         this.activateTimer(1);
     }
 
-    public MonsterObject(AbstractDungeonObject saved) {
+    public MonsterObject(final AbstractDungeonObject saved) {
         super(false);
         this.setSavedObject(saved);
         this.activateTimer(1);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        if (DungeonDiver4.getApplication().getMode() != Application.STATUS_BATTLE) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        if (DungeonDiver4.getApplication()
+                .getMode() != Application.STATUS_BATTLE) {
             DungeonDiver4.getApplication().getBattle().doBattle();
             DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .postBattle(this, dirX, dirY, true);
@@ -36,17 +37,16 @@ public class MonsterObject extends AbstractMovingObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             // Transform into iced monster, if hit by an ice arrow
-            int pz = DungeonDiver4.getApplication().getDungeonManager()
+            final int pz = DungeonDiver4.getApplication().getDungeonManager()
                     .getDungeon().getPlayerLocationZ();
-            DungeonDiver4
-                    .getApplication()
-                    .getGameManager()
-                    .morph(new IcedMonster(this.getSavedObject()), locX, locY,
-                            pz, DungeonConstants.LAYER_OBJECT);
+            DungeonDiver4.getApplication().getGameManager().morph(
+                    new IcedMonster(this.getSavedObject()), locX, locY, pz,
+                    DungeonConstants.LAYER_OBJECT);
             return false;
         } else {
             return true;
@@ -54,10 +54,10 @@ public class MonsterObject extends AbstractMovingObject {
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // Move the monster
-        RandomRange r = new RandomRange(0, 7);
-        int move = r.generate();
+        final RandomRange r = new RandomRange(0, 7);
+        final int move = r.generate();
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .updateMonsterPosition(move, dirX, dirY, this);
         this.activateTimer(1);

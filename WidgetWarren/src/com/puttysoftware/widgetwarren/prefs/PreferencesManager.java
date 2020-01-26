@@ -71,8 +71,8 @@ public class PreferencesManager {
     }
 
     public static MazeObject getEditorDefaultFill() {
-        final String choice = PreferencesManager.storeMgr.getString(
-                "EditorDefaultFill", "Grass");
+        final String choice = PreferencesManager.storeMgr
+                .getString("EditorDefaultFill", "Grass");
         if (choice.equals("Tile")) {
             return new Tile();
         } else if (choice.equals("Grass")) {
@@ -149,10 +149,10 @@ public class PreferencesManager {
                     new FileInputStream(PreferencesManager.getPrefsFile())));
         } catch (final IOException io) {
             // Populate store with defaults
-            PreferencesManager.storeMgr.setString("LastDirOpen", SandboxManager
-                    .getSandboxManager().getDocumentsDirectory());
-            PreferencesManager.storeMgr.setString("LastDirSave", SandboxManager
-                    .getSandboxManager().getDocumentsDirectory());
+            PreferencesManager.storeMgr.setString("LastDirOpen",
+                    SandboxManager.getSandboxManager().getDocumentsDirectory());
+            PreferencesManager.storeMgr.setString("LastDirSave",
+                    SandboxManager.getSandboxManager().getDocumentsDirectory());
             PreferencesManager.storeMgr.setBoolean("OneMove", true);
             for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                 PreferencesManager.storeMgr.setBoolean("SOUND_" + x, true);

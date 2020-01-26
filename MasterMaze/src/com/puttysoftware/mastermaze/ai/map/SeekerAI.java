@@ -161,13 +161,15 @@ class SeekerAI extends MapAIRoutine {
             if (maxIndex > -1) {
                 if (ac.getCharacter().getCurrentSP() > 0) {
                     // Select a random spell to cast
-                    final RandomRange randomSpell = new RandomRange(0, maxIndex);
+                    final RandomRange randomSpell = new RandomRange(0,
+                            maxIndex);
                     final int randomSpellID = randomSpell.generate();
                     if (randomSpellID == SeekerAI.SPELL_INDEX_HEAL) {
                         // Healing spell was selected - is healing needed?
-                        if (ac.getCharacter().getTemplate().getCurrentHP() > ac
-                                .getCharacter().getTemplate().getMaximumHP()
-                                * SeekerAI.HEAL_THRESHOLD / 100) {
+                        if (ac.getCharacter().getTemplate()
+                                .getCurrentHP() > ac.getCharacter()
+                                        .getTemplate().getMaximumHP()
+                                        * SeekerAI.HEAL_THRESHOLD / 100) {
                             // Do not need healing
                             return false;
                         }

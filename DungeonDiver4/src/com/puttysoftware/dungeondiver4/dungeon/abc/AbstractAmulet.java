@@ -18,7 +18,7 @@ public abstract class AbstractAmulet extends AbstractInventoryableObject {
     private static final long SCORE_INCREASE = 25L;
 
     // Constructors
-    protected AbstractAmulet(int tc) {
+    protected AbstractAmulet(final int tc) {
         super(false, 0);
         this.setTemplateColor(tc);
     }
@@ -39,9 +39,9 @@ public abstract class AbstractAmulet extends AbstractInventoryableObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);
         DungeonDiver4.getApplication().getGameManager()

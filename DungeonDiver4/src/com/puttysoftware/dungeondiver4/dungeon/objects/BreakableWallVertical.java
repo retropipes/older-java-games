@@ -21,7 +21,8 @@ public class BreakableWallVertical extends AbstractWall {
     // Constructors
     public BreakableWallVertical() {
         super(ColorConstants.COLOR_BROWN);
-        this.setAttributeID(ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_VERTICAL);
+        this.setAttributeID(
+                ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_VERTICAL);
         this.setAttributeTemplateColor(ColorConstants.COLOR_NONE);
     }
 
@@ -43,7 +44,7 @@ public class BreakableWallVertical extends AbstractWall {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
-        int dirZ = DungeonDiver4.getApplication().getDungeonManager()
+        final int dirZ = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon().getPlayerLocationZ();
         this.chainReactionAction(dirX, dirY, dirZ);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
@@ -53,29 +54,26 @@ public class BreakableWallVertical extends AbstractWall {
     public void chainReactionAction(final int dirX, final int dirY,
             final int dirZ) {
         // Break up
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .morph(new Empty(), dirX, dirY, dirZ,
-                        DungeonConstants.LAYER_OBJECT);
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        DungeonDiver4.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, DungeonConstants.LAYER_OBJECT);
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
-        AbstractDungeonObject above = m.getCell(dirX, dirY - 1, dirZ,
+        final AbstractDungeonObject above = m.getCell(dirX, dirY - 1, dirZ,
                 DungeonConstants.LAYER_OBJECT);
         try {
             if (above.isOfType(TypeConstants.TYPE_BREAKABLE_V)) {
                 this.chainReactionAction(dirX, dirY - 1, dirZ);
             }
-        } catch (ArrayIndexOutOfBoundsException aioobe) {
+        } catch (final ArrayIndexOutOfBoundsException aioobe) {
             // Ignore
         }
         try {
-            AbstractDungeonObject below = m.getCell(dirX, dirY + 1, dirZ,
+            final AbstractDungeonObject below = m.getCell(dirX, dirY + 1, dirZ,
                     DungeonConstants.LAYER_OBJECT);
             if (below.isOfType(TypeConstants.TYPE_BREAKABLE_V)) {
                 this.chainReactionAction(dirX, dirY + 1, dirZ);
             }
-        } catch (ArrayIndexOutOfBoundsException aioobe) {
+        } catch (final ArrayIndexOutOfBoundsException aioobe) {
             // Ignore
         }
     }

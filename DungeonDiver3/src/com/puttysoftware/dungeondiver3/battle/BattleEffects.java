@@ -31,18 +31,18 @@ class BattleEffects {
         return this.effectsPane;
     }
 
-    void updateEffects(BattleCharacter bc) {
-        int count = bc.getTemplate().getActiveEffectCount();
+    void updateEffects(final BattleCharacter bc) {
+        final int count = bc.getTemplate().getActiveEffectCount();
         if (count > 0) {
             this.setUpGUI(count);
-            String[] es = bc.getTemplate().getCompleteEffectString();
+            final String[] es = bc.getTemplate().getCompleteEffectString();
             for (int x = 0; x < count; x++) {
                 this.effectLabels[x].setText(es[x]);
             }
         }
     }
 
-    private void setUpGUI(int count) {
+    private void setUpGUI(final int count) {
         this.effectsPane = this.getEffectsPane();
         this.effectsPane.removeAll();
         this.effectsPane.setLayout(new GridLayout(count, 1));

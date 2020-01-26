@@ -26,13 +26,13 @@ public class InvisiblePit extends Pit {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        FantastleX.getApplication().showMessage(
-                "Some unseen force prevents movement that way...");
+        FantastleX.getApplication()
+                .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

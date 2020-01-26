@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class UniversalAllButtonDoor extends AbstractAllButtonDoor {
     // Constructors
     public UniversalAllButtonDoor() {
-	super();
-	this.setMaterial(MaterialConstants.MATERIAL_DEFAULT);
+        super();
+        this.setMaterial(MaterialConstants.MATERIAL_DEFAULT);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 111;
+        return 111;
     }
 }

@@ -14,7 +14,7 @@ class MapBattleAITask extends Thread {
     private boolean done;
 
     // Constructors
-    MapBattleAITask(MapBattleLogic battle) {
+    MapBattleAITask(final MapBattleLogic battle) {
         this.setName("AI Runner");
         this.b = battle;
         this.done = false;
@@ -28,14 +28,15 @@ class MapBattleAITask extends Thread {
                 if (this.b.getLastAIActionResult()) {
                     // Delay, for animation purposes
                     try {
-                        int battleSpeed = PreferencesManager.getBattleSpeed();
+                        final int battleSpeed = PreferencesManager
+                                .getBattleSpeed();
                         Thread.sleep(battleSpeed);
-                    } catch (InterruptedException i) {
+                    } catch (final InterruptedException i) {
                         // Ignore
                     }
                 }
             }
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             DungeonDiver4.getErrorLogger().logError(t);
         }
     }

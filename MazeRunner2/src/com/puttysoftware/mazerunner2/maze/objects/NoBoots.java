@@ -32,8 +32,8 @@ public class NoBoots extends AbstractInventoryModifier {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         MazeRunnerII.getApplication().getGameManager().decay();
         inv.removeAllBoots();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);

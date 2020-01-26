@@ -31,7 +31,7 @@ public class FireBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Enrage objects that react to fire
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .radialScanEnrageObjects(x, y, z, AbstractBomb.EFFECT_RADIUS);

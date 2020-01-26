@@ -56,7 +56,8 @@ public final class PageViewer {
                 sData[0]);
     }
 
-    private static void mpValueView(final Page page, final String viewerString) {
+    private static void mpValueView(final Page page,
+            final String viewerString) {
         boolean viewMore = true;
         while (viewMore) {
             final int[] paramValues = new int[page.getParamCount()];
@@ -94,10 +95,9 @@ public final class PageViewer {
                         // Ignore exception
                     }
                     if (!valid) {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "The input provided was invalid - please try again.",
-                                        viewerString);
+                        CommonDialogs.showErrorDialog(
+                                "The input provided was invalid - please try again.",
+                                viewerString);
                     }
                 }
                 paramValues[x] = input;
@@ -105,8 +105,8 @@ public final class PageViewer {
             final long value = page.evaluate(paramValues);
             CommonDialogs.showTitledDialog("Value for the given parameters: "
                     + new Long(value).toString(), viewerString);
-            final int returnCode = CommonDialogs.showConfirmDialog(
-                    "View more values?", viewerString);
+            final int returnCode = CommonDialogs
+                    .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
                 viewMore = true;
             } else {
@@ -115,7 +115,8 @@ public final class PageViewer {
         }
     }
 
-    private static void spValueView(final Page page, final String viewerString) {
+    private static void spValueView(final Page page,
+            final String viewerString) {
         boolean viewMore = true;
         while (viewMore) {
             int paramValue = 0;
@@ -123,9 +124,11 @@ public final class PageViewer {
             String rawInput;
             int input = 0;
             while (!valid) {
-                rawInput = CommonDialogs.showTextInputDialog(
-                        PageViewer.ENTRY_PROMPT_PART_1
-                                + PageViewer.ENTRY_PROMPT_PART_2, viewerString);
+                rawInput = CommonDialogs
+                        .showTextInputDialog(
+                                PageViewer.ENTRY_PROMPT_PART_1
+                                        + PageViewer.ENTRY_PROMPT_PART_2,
+                                viewerString);
                 try {
                     input = Integer.parseInt(rawInput);
                     if (input < 0) {
@@ -139,18 +142,17 @@ public final class PageViewer {
                     // Ignore exception
                 }
                 if (!valid) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The input provided was invalid - please try again.",
-                                    viewerString);
+                    CommonDialogs.showErrorDialog(
+                            "The input provided was invalid - please try again.",
+                            viewerString);
                 }
             }
             paramValue = input;
             final long value = page.evaluate(paramValue);
             CommonDialogs.showTitledDialog(
                     "Value: " + new Long(value).toString(), viewerString);
-            final int returnCode = CommonDialogs.showConfirmDialog(
-                    "View more values?", viewerString);
+            final int returnCode = CommonDialogs
+                    .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
                 viewMore = true;
             } else {

@@ -26,7 +26,7 @@ class ScoreTracker {
     }
 
     void showCurrentScore() {
-        CommonDialogs.showDialog("Your current score: " + this.score
-                + " points");
+        CommonDialogs
+                .showDialog("Your current score: " + this.score + " points");
     }
 }

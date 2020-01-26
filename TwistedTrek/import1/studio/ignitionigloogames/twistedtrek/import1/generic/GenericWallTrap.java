@@ -48,8 +48,7 @@ public abstract class GenericWallTrap extends MazeObject {
 	    Import1.getApplication().getMazeManager().getMaze().masterTrapTrigger(currLevel);
 	} else {
 	    Import1.getApplication().getMazeManager().getMaze().findAllMatchingObjectsAndDecay(currLevel, this);
-	    Import1.getApplication().getMazeManager().getMaze().findAllMatchingObjectsAndDecay(currLevel,
-		    this.trigger);
+	    Import1.getApplication().getMazeManager().getMaze().findAllMatchingObjectsAndDecay(currLevel, this.trigger);
 	}
 	Import1.getApplication().getGameManager().redrawMaze();
 	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {

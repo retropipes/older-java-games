@@ -32,14 +32,12 @@ public class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         WeaselWeb.getApplication().showMessage("You are confused!");
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_CONFUSED,
-                        ConfusionTrap.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_CONFUSED,
+                ConfusionTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CONFUSED);
     }

@@ -31,8 +31,8 @@ public class ElementList {
                         final double r2 = r / 4.0;
                         final double g2 = g / 4.0;
                         final double b2 = b / 4.0;
-                        ElementList.list[counter] = new Element(r2, g2, b2,
-                                eye, ElementList.elementNames[counter]);
+                        ElementList.list[counter] = new Element(r2, g2, b2, eye,
+                                ElementList.elementNames[counter]);
                         counter++;
                     }
                 }

@@ -51,9 +51,8 @@ public class CreatureAi {
 	if (this.creature.z != wz) {
 	    return false;
 	}
-	if ((this.creature.x - wx) * (this.creature.x - wx)
-		+ (this.creature.y - wy) * (this.creature.y - wy) > this.creature.visionRadius()
-			* this.creature.visionRadius()) {
+	if ((this.creature.x - wx) * (this.creature.x - wx) + (this.creature.y - wy)
+		* (this.creature.y - wy) > this.creature.visionRadius() * this.creature.visionRadius()) {
 	    return false;
 	}
 	for (final Point p : new Line(this.creature.x, this.creature.y, wx, wy)) {

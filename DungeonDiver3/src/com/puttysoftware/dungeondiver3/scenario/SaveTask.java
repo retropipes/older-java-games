@@ -20,21 +20,21 @@ class SaveTask extends Thread {
     private String filename;
 
     // Constructors
-    SaveTask(String file) {
+    SaveTask(final String file) {
         this.filename = file;
         this.setName("Saved Game File Writer");
     }
 
     @Override
     public void run() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         final String sg = "Saved Game";
         // filename check
-        boolean hasExtension = SaveTask.hasExtension(this.filename);
+        final boolean hasExtension = SaveTask.hasExtension(this.filename);
         if (!hasExtension) {
             this.filename += Extension.getGameExtensionWithPeriod();
         }
-        File mapFile = new File(this.filename);
+        final File mapFile = new File(this.filename);
         try {
             // Set prefix handler
             app.getScenarioManager().getMap()
@@ -43,13 +43,11 @@ class SaveTask extends Thread {
             app.getScenarioManager().getMap()
                     .setXSuffixHandler(new SuffixHandler());
             app.getScenarioManager().getMap().writeMapX();
-            ZipUtilities.zipDirectory(new File(Support.getScenario()
-                    .getBasePath()), mapFile);
+            ZipUtilities.zipDirectory(
+                    new File(Support.getScenario().getBasePath()), mapFile);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             DungeonDiver3.getErrorLogger().logError(ex);
         }
@@ -60,7 +58,7 @@ class SaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

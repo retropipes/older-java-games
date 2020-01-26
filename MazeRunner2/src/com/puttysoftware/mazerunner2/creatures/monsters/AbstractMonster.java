@@ -7,8 +7,8 @@ package com.puttysoftware.mazerunner2.creatures.monsters;
 
 import com.puttysoftware.mazerunner2.ai.map.AbstractMapAIRoutine;
 import com.puttysoftware.mazerunner2.ai.map.RandomMapAIRoutinePicker;
-import com.puttysoftware.mazerunner2.ai.window.RandomWindowAIRoutinePicker;
 import com.puttysoftware.mazerunner2.ai.window.AbstractWindowAIRoutine;
+import com.puttysoftware.mazerunner2.ai.window.RandomWindowAIRoutinePicker;
 import com.puttysoftware.mazerunner2.creatures.AbstractCreature;
 import com.puttysoftware.mazerunner2.creatures.faiths.Faith;
 import com.puttysoftware.mazerunner2.creatures.faiths.FaithManager;
@@ -22,9 +22,11 @@ public abstract class AbstractMonster extends AbstractCreature {
     // Fields
     private String type;
     protected Element element;
-    private int perfectBonusGold;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
+    private final int perfectBonusGold;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0
+            / 2.0;
     protected static final int GOLD_TOUGHNESS_MULTIPLIER = 6;
     private static final int BATTLES_SCALE_FACTOR = 2;
     private static final int BATTLES_START = 2;
@@ -35,7 +37,7 @@ public abstract class AbstractMonster extends AbstractCreature {
         this.setMapAI(AbstractMonster.getInitialMapAI());
         this.setWindowAI(AbstractMonster.getInitialWindowAI());
         this.element = new Element(FaithManager.getFaith(0));
-        SpellBook spells = new SystemMonsterSpellBook();
+        final SpellBook spells = new SystemMonsterSpellBook();
         spells.learnAllSpells();
         this.setSpellBook(spells);
         this.perfectBonusGold = this.getInitialPerfectBonusGold();
@@ -67,11 +69,12 @@ public abstract class AbstractMonster extends AbstractCreature {
     }
 
     private int getInitialPerfectBonusGold() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        int needed = Shop.getEquipmentCost(playerCharacter.getLevel() + 1) * 24;
-        int factor = this.getBattlesToNextLevel();
-        int min = ((needed / factor) / 4);
-        int max = ((needed / factor) / 2);
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final int needed = Shop.getEquipmentCost(playerCharacter.getLevel() + 1)
+                * 24;
+        final int factor = this.getBattlesToNextLevel();
+        final int min = needed / factor / 4;
+        final int max = needed / factor / 2;
         final RandomRange r = new RandomRange(min, max);
         return (int) (r.generate() * this.adjustForLevelDifference());
     }
@@ -88,7 +91,7 @@ public abstract class AbstractMonster extends AbstractCreature {
         return this.element;
     }
 
-    final void setType(String newType) {
+    final void setType(final String newType) {
         this.type = newType;
     }
 
@@ -120,13 +123,12 @@ public abstract class AbstractMonster extends AbstractCreature {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.element == null) ? 0 : this.element.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.element == null ? 0 : this.element.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -136,7 +138,7 @@ public abstract class AbstractMonster extends AbstractCreature {
         if (!(obj instanceof AbstractMonster)) {
             return false;
         }
-        AbstractMonster other = (AbstractMonster) obj;
+        final AbstractMonster other = (AbstractMonster) obj;
         if (this.element == null) {
             if (other.element != null) {
                 return false;
@@ -155,7 +157,7 @@ public abstract class AbstractMonster extends AbstractCreature {
     }
 
     protected final int getBattlesToNextLevel() {
-        return AbstractMonster.BATTLES_START + (this.getLevel() + 1)
-                * AbstractMonster.BATTLES_SCALE_FACTOR;
+        return AbstractMonster.BATTLES_START
+                + (this.getLevel() + 1) * AbstractMonster.BATTLES_SCALE_FACTOR;
     }
 }

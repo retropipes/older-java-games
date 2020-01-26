@@ -42,8 +42,8 @@ public class InvisibleTeleport extends GenericInvisibleTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditorLogic me = MasterMaze.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_GENERIC);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_GENERIC);
     }
 
     @Override

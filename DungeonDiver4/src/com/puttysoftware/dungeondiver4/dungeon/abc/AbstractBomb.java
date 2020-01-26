@@ -18,7 +18,7 @@ public abstract class AbstractBomb extends AbstractUsableObject {
     protected static final int EFFECT_RADIUS = 2;
 
     // Constructors
-    protected AbstractBomb(int tc) {
+    protected AbstractBomb(final int tc) {
         super(1);
         this.setTemplateColor(tc);
     }
@@ -32,13 +32,14 @@ public abstract class AbstractBomb extends AbstractUsableObject {
     public abstract String getName();
 
     @Override
-    public final boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
+    public final boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        DungeonDiver4.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        DungeonDiver4.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         // Stop arrow
         return false;
     }
@@ -53,7 +54,7 @@ public abstract class AbstractBomb extends AbstractUsableObject {
     public abstract void useActionHook(final int x, final int y, final int z);
 
     @Override
-    public final void useHelper(int x, int y, int z) {
+    public final void useHelper(final int x, final int y, final int z) {
         this.useAction(null, x, y, z);
     }
 

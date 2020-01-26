@@ -34,8 +34,8 @@ public class Hourglass extends AbstractTimeModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         FantastleX.getApplication().getGameManager().decay();
         FantastleX.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValue();

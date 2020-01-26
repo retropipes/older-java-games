@@ -32,7 +32,8 @@ public class NoBlock extends AbstractAntiObject {
 
     @Override
     public void pushIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Destroy incoming block
         final Application app = FantastleX.getApplication();
         app.getGameManager().morph(this, x, y, z, MazeConstants.LAYER_OBJECT);
@@ -41,7 +42,8 @@ public class NoBlock extends AbstractAntiObject {
 
     @Override
     public void pullIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Destroy incoming block
         final Application app = FantastleX.getApplication();
         app.getGameManager().morph(this, x, y, z, MazeConstants.LAYER_OBJECT);

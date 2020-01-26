@@ -57,8 +57,8 @@ public final class ObjectInventory implements Cloneable {
 
     // Transformers
     void fireStepActions() {
-        if (!this.boots.getName().equals(
-                ObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(ObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
     }

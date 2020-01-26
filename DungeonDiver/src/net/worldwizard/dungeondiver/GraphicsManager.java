@@ -12,10 +12,10 @@ public class GraphicsManager {
     // Methods
     public static ImageIcon getLogo() {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/DungeonDiver/resources/graphics/logo/logo.png");
-            final Image image = Toolkit.getDefaultToolkit().createImage(
-                    (ImageProducer) url.getContent());
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/DungeonDiver/resources/graphics/logo/logo.png");
+            final Image image = Toolkit.getDefaultToolkit()
+                    .createImage((ImageProducer) url.getContent());
             final ImageIcon icon = new ImageIcon(image);
             return icon;
         } catch (final IOException ie) {

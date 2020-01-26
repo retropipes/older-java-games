@@ -33,72 +33,74 @@ import com.puttysoftware.fantastlereboot.loaders.UserInterfaceImageLoader;
 import com.puttysoftware.integration.NativeIntegration;
 
 public class FantastleReboot {
-  // Constants
-  private static BagOStuff bag;
-  static final String PROGRAM_NAME = "Fantastle Reboot";
-  private static final GameErrorHandler debug = new GameErrorHandler();
-  private static final NativeIntegration NATIVITY = new NativeIntegration();
-  private static final int BATTLE_WORLD_SIZE = 16;
-  private static MenuManager menus;
-  private static final JMenuBar mainMenuBar = new JMenuBar();
+    // Constants
+    private static BagOStuff bag;
+    static final String PROGRAM_NAME = "Fantastle Reboot";
+    private static final GameErrorHandler debug = new GameErrorHandler();
+    private static final NativeIntegration NATIVITY = new NativeIntegration();
+    private static final int BATTLE_WORLD_SIZE = 16;
+    private static MenuManager menus;
+    private static final JMenuBar mainMenuBar = new JMenuBar();
 
-  // Methods
-  public static BagOStuff getBagOStuff() {
-    return FantastleReboot.bag;
-  }
-
-  public static void exception(final Throwable t) {
-    FantastleReboot.debug.handle(t);
-  }
-
-  static void silentlyLog(final Throwable t) {
-    RuntimeException re = new RuntimeException(t);
-    FantastleReboot.debug.silentlyLog(re);
-  }
-
-  public static void exceptionWithMessage(final Throwable t,
-      final String message) {
-    FantastleReboot.debug.handleWithMessage(t, message);
-  }
-
-  public static int getBattleWorldSize() {
-    return FantastleReboot.BATTLE_WORLD_SIZE;
-  }
-
-  static MenuManager getMenuManager() {
-    return FantastleReboot.menus;
-  }
-
-  static void doLateOSIntegration() {
-    CommonDialogs.setDefaultTitle(FantastleReboot.PROGRAM_NAME);
-    CommonDialogs.setIcon(
-        UserInterfaceImageLoader.load(UserInterfaceImageIndex.MICRO_LOGO));
-    FantastleReboot.NATIVITY.setQuitStrategy(QuitStrategy.NORMAL_EXIT);
-    FantastleReboot.NATIVITY.setQuitHandler(new QuitRequestManager());
-    FantastleReboot.NATIVITY.setPreferencesHandler(new PrefsLauncher());
-    FantastleReboot.NATIVITY
-        .setAboutHandler(FantastleReboot.bag.getAboutDialog());
-  }
-
-  public static void main(final String[] args) {
-    // Install error handler
-    Diane.installErrorHandler(FantastleReboot.debug);
-    try {
-      // Early OS Integration
-      FantastleReboot.NATIVITY.configureLookAndFeel();
-      FantastleReboot.menus = new MenuManager(FantastleReboot.mainMenuBar);
-      FantastleReboot.NATIVITY.setDefaultMenuBar(FantastleReboot.mainMenuBar);
-      // Compute action cap
-      Creature.computeActionCap(FantastleReboot.BATTLE_WORLD_SIZE,
-          FantastleReboot.BATTLE_WORLD_SIZE);
-      // Set default preferences
-      Prefs.setDefaultPrefs();
-      // Create the Bag O'Stuff
-      FantastleReboot.bag = new BagOStuff();
-      // Load stuff
-      new Loader().start();
-    } catch (final Throwable t) {
-      FantastleReboot.exception(t);
+    // Methods
+    public static BagOStuff getBagOStuff() {
+        return FantastleReboot.bag;
     }
-  }
+
+    public static void exception(final Throwable t) {
+        FantastleReboot.debug.handle(t);
+    }
+
+    static void silentlyLog(final Throwable t) {
+        final RuntimeException re = new RuntimeException(t);
+        FantastleReboot.debug.silentlyLog(re);
+    }
+
+    public static void exceptionWithMessage(final Throwable t,
+            final String message) {
+        FantastleReboot.debug.handleWithMessage(t, message);
+    }
+
+    public static int getBattleWorldSize() {
+        return FantastleReboot.BATTLE_WORLD_SIZE;
+    }
+
+    static MenuManager getMenuManager() {
+        return FantastleReboot.menus;
+    }
+
+    static void doLateOSIntegration() {
+        CommonDialogs.setDefaultTitle(FantastleReboot.PROGRAM_NAME);
+        CommonDialogs.setIcon(UserInterfaceImageLoader
+                .load(UserInterfaceImageIndex.MICRO_LOGO));
+        FantastleReboot.NATIVITY.setQuitStrategy(QuitStrategy.NORMAL_EXIT);
+        FantastleReboot.NATIVITY.setQuitHandler(new QuitRequestManager());
+        FantastleReboot.NATIVITY.setPreferencesHandler(new PrefsLauncher());
+        FantastleReboot.NATIVITY
+                .setAboutHandler(FantastleReboot.bag.getAboutDialog());
+    }
+
+    public static void main(final String[] args) {
+        // Install error handler
+        Diane.installErrorHandler(FantastleReboot.debug);
+        try {
+            // Early OS Integration
+            FantastleReboot.NATIVITY.configureLookAndFeel();
+            FantastleReboot.menus = new MenuManager(
+                    FantastleReboot.mainMenuBar);
+            FantastleReboot.NATIVITY
+                    .setDefaultMenuBar(FantastleReboot.mainMenuBar);
+            // Compute action cap
+            Creature.computeActionCap(FantastleReboot.BATTLE_WORLD_SIZE,
+                    FantastleReboot.BATTLE_WORLD_SIZE);
+            // Set default preferences
+            Prefs.setDefaultPrefs();
+            // Create the Bag O'Stuff
+            FantastleReboot.bag = new BagOStuff();
+            // Load stuff
+            new Loader().start();
+        } catch (final Throwable t) {
+            FantastleReboot.exception(t);
+        }
+    }
 }

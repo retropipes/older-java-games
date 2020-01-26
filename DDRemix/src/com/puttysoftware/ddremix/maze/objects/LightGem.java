@@ -42,7 +42,8 @@ public class LightGem extends AbstractMPModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().showMessage("Your power gathers!");
         DDRemix.getApplication().getGameManager()
                 .activateEffect(MazeEffectConstants.EFFECT_POWER_GATHER);

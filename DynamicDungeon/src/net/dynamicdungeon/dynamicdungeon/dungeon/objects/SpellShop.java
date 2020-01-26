@@ -12,26 +12,26 @@ import net.dynamicdungeon.dynamicdungeon.shops.ShopTypes;
 public class SpellShop extends AbstractShop {
     // Constructors
     public SpellShop() {
-	super(ShopTypes.SHOP_TYPE_SPELLS);
+        super(ShopTypes.SHOP_TYPE_SPELLS);
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_SPELL_SHOP;
+        return ObjectImageConstants.OBJECT_IMAGE_SPELL_SHOP;
     }
 
     @Override
     public String getName() {
-	return "Spell Shop";
+        return "Spell Shop";
     }
 
     @Override
     public String getPluralName() {
-	return "Spell Shops";
+        return "Spell Shops";
     }
 
     @Override
     public String getDescription() {
-	return "Spell Shops teach spells, for a fee.";
+        return "Spell Shops teach spells, for a fee.";
     }
 }

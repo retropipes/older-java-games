@@ -15,7 +15,8 @@ public abstract class GenericTransientObject extends MapObject {
     private final String baseName;
 
     // Constructors
-    protected GenericTransientObject(String newBaseName, Color arrowColor) {
+    protected GenericTransientObject(final String newBaseName,
+            final Color arrowColor) {
         super(true);
         this.baseName = newBaseName;
         this.name = newBaseName;
@@ -38,7 +39,7 @@ public abstract class GenericTransientObject extends MapObject {
         return null;
     }
 
-    public final void setNameSuffix(String suffix) {
+    public final void setNameSuffix(final String suffix) {
         this.name = this.baseName + " " + suffix;
     }
 
@@ -53,12 +54,12 @@ public abstract class GenericTransientObject extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

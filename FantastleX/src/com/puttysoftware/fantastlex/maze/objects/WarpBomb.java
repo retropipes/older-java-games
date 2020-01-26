@@ -36,10 +36,7 @@ public class WarpBomb extends AbstractBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         SoundManager.playSound(SoundConstants.SOUND_EXPLODE);
-        FantastleX
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        FantastleX.getApplication().getMazeManager().getMaze()
                 .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
                         AbstractBomb.EFFECT_RADIUS);
     }

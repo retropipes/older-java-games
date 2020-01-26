@@ -11,15 +11,16 @@ import com.puttysoftware.loopchute.game.ObjectInventory;
 import com.puttysoftware.loopchute.resourcemanagers.SoundConstants;
 import com.puttysoftware.loopchute.resourcemanagers.SoundManager;
 
-public abstract class GenericInvisibleBlockTeleport extends
-        GenericBlockTeleport {
+public abstract class GenericInvisibleBlockTeleport
+        extends GenericBlockTeleport {
     // Constructors
     protected GenericInvisibleBlockTeleport(final int destinationRow,
             final int destinationColumn, final int destinationFloor,
             final String attrName) {
         super(destinationRow, destinationColumn, destinationFloor, attrName);
         this.setTemplateColor(ColorConstants.COLOR_SAND);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
     }
 
     @Override

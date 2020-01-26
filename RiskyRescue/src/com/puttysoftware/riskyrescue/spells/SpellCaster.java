@@ -94,8 +94,7 @@ public class SpellCaster {
                         caster, teamID, aiEnabled, battle);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
-                for (int x = 0; x < targets.length; x++) {
-                    final Creature target = targets[x];
+                for (final Creature target : targets) {
                     if (target != null) {
                         if (target.isEffectActive(eff)) {
                             target.extendEffect(eff, eff.getInitialRounds());

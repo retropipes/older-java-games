@@ -20,16 +20,15 @@ public class StatImageManager {
 
     public static BufferedImageIcon getImage(final int imageID) {
         // Get it from the cache
-        String name = StatImageConstants.STAT_IMAGE_NAMES[imageID];
+        final String name = StatImageConstants.STAT_IMAGE_NAMES[imageID];
         return StatImageCache.getCachedImage(name);
     }
 
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
-            String normalName = ImageTransformer.normalizeName(name);
-            final URL url = StatImageManager.LOAD_CLASS
-                    .getResource(StatImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final String normalName = ImageTransformer.normalizeName(name);
+            final URL url = StatImageManager.LOAD_CLASS.getResource(
+                    StatImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

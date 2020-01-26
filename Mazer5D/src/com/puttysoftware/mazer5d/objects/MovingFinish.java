@@ -36,8 +36,8 @@ public class MovingFinish extends Finish {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (this.active) {
             final Application app = Mazer5D.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -63,12 +63,10 @@ public class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObject obj = Mazer5D
-                .getApplication()
-                .getMazeManager()
+        final MazeObject obj = Mazer5D.getApplication().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(),
-                        this.getDestinationFloor(), MazeConstants.LAYER_OBJECT);
+                        this.getDestinationColumn(), this.getDestinationFloor(),
+                        MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -99,8 +97,8 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(
-                this.getName() + ": Next Moving Finish ("
+        Mazer5D.getApplication()
+                .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
                         + (this.getDestinationFloor() + 1) + ")");
@@ -138,8 +136,8 @@ public class MovingFinish extends Finish {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
 

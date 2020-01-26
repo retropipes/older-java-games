@@ -237,7 +237,8 @@ public class WorldEditor {
             app.getMenuManager().disableUpOneLevel();
         }
         if (this.elMgr != null) {
-            if (this.elMgr.getEditorLocationE() != WorldConstants.LAYER_GROUND) {
+            if (this.elMgr
+                    .getEditorLocationE() != WorldConstants.LAYER_GROUND) {
                 app.getMenuManager().enableSetStartPoint();
                 app.getMenuManager().enableToggleScript();
             } else {
@@ -319,21 +320,19 @@ public class WorldEditor {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    final String name1 = app
-                            .getWorldManager()
-                            .getWorld()
+                    final String name1 = app.getWorldManager().getWorld()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     WorldConstants.LAYER_GROUND)
                             .editorRenderHook(y, x,
                                     this.elMgr.getEditorLocationZ());
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage(name1));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage(name1));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage("Void"));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage("Void"));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage("Void"));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage("Void"));
                 }
             }
         }
@@ -356,28 +355,24 @@ public class WorldEditor {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    final String name1 = app
-                            .getWorldManager()
-                            .getWorld()
+                    final String name1 = app.getWorldManager().getWorld()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     WorldConstants.LAYER_GROUND)
                             .editorRenderHook(y, x,
                                     this.elMgr.getEditorLocationZ());
-                    final String name2 = app
-                            .getWorldManager()
-                            .getWorld()
+                    final String name2 = app.getWorldManager().getWorld()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     WorldConstants.LAYER_OBJECT)
                             .editorRenderHook(y, x,
                                     this.elMgr.getEditorLocationZ());
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getCompositeImage(name1, name2));
+                    this.drawGrid[xFix][yFix].setIcon(
+                            GraphicsManager.getCompositeImage(name1, name2));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage("Void"));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage("Void"));
                 } catch (final NullPointerException np) {
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage("Void"));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage("Void"));
                 }
             }
         }
@@ -407,11 +402,9 @@ public class WorldEditor {
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
             app.getGameManager().setSavedWorldObject(
-                    app.getWorldManager()
-                            .getWorld()
-                            .getCell(gridX, gridY,
-                                    this.elMgr.getEditorLocationZ(),
-                                    this.elMgr.getEditorLocationE()));
+                    app.getWorldManager().getWorld().getCell(gridX, gridY,
+                            this.elMgr.getEditorLocationZ(),
+                            this.elMgr.getEditorLocationE()));
         } catch (final ArrayIndexOutOfBoundsException ae) {
             return;
         }
@@ -431,20 +424,18 @@ public class WorldEditor {
                     gridX, gridY, this.elMgr.getEditorLocationZ(),
                     this.elMgr.getEditorLocationW(),
                     this.elMgr.getEditorLocationE());
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(mo, gridX, gridY, this.elMgr.getEditorLocationZ(),
-                            this.elMgr.getEditorLocationE());
+            app.getWorldManager().getWorld().setCell(mo, gridX, gridY,
+                    this.elMgr.getEditorLocationZ(),
+                    this.elMgr.getEditorLocationE());
             this.checkStairPair(this.elMgr.getEditorLocationZ());
             app.getWorldManager().setDirty(true);
             this.checkMenus();
             this.redrawEditor();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(app.getGameManager().getSavedWorldObject(), gridX,
-                            gridY, this.elMgr.getEditorLocationZ(),
-                            this.elMgr.getEditorLocationE());
+            app.getWorldManager().getWorld().setCell(
+                    app.getGameManager().getSavedWorldObject(), gridX, gridY,
+                    this.elMgr.getEditorLocationZ(),
+                    this.elMgr.getEditorLocationE());
             this.redrawEditor();
         }
     }
@@ -499,11 +490,9 @@ public class WorldEditor {
         final int gridY = y / GraphicsManager.getGraphicSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final WorldObject mo = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(gridX, gridY, this.elMgr.getEditorLocationZ(),
-                            this.elMgr.getEditorLocationE());
+            final WorldObject mo = app.getWorldManager().getWorld().getCell(
+                    gridX, gridY, this.elMgr.getEditorLocationZ(),
+                    this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
             mo.editorProbeHook();
@@ -526,11 +515,9 @@ public class WorldEditor {
         final int gridY = y / GraphicsManager.getGraphicSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final WorldObject mo = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(gridX, gridY, this.elMgr.getEditorLocationZ(),
-                            this.elMgr.getEditorLocationE());
+            final WorldObject mo = app.getWorldManager().getWorld().getCell(
+                    gridX, gridY, this.elMgr.getEditorLocationZ(),
+                    this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
             if (!mo.defersSetProperties()) {
@@ -538,18 +525,16 @@ public class WorldEditor {
                 if (mo2 == null) {
                     Messager.showMessage("This object has no properties");
                 } else {
-                    this.checkTwoWayTeleportPair(this.elMgr
-                            .getEditorLocationZ());
-                    this.updateUndoHistory(app.getGameManager()
-                            .getSavedWorldObject(), gridX, gridY, this.elMgr
-                            .getEditorLocationZ(), this.elMgr
-                            .getEditorLocationW(), this.elMgr
-                            .getEditorLocationE());
-                    app.getWorldManager()
-                            .getWorld()
-                            .setCell(mo2, gridX, gridY,
-                                    this.elMgr.getEditorLocationZ(),
-                                    this.elMgr.getEditorLocationE());
+                    this.checkTwoWayTeleportPair(
+                            this.elMgr.getEditorLocationZ());
+                    this.updateUndoHistory(
+                            app.getGameManager().getSavedWorldObject(), gridX,
+                            gridY, this.elMgr.getEditorLocationZ(),
+                            this.elMgr.getEditorLocationW(),
+                            this.elMgr.getEditorLocationE());
+                    app.getWorldManager().getWorld().setCell(mo2, gridX, gridY,
+                            this.elMgr.getEditorLocationZ(),
+                            this.elMgr.getEditorLocationE());
                     this.checkStairPair(this.elMgr.getEditorLocationZ());
                     this.checkMenus();
                     app.getWorldManager().setDirty(true);
@@ -564,32 +549,26 @@ public class WorldEditor {
 
     private void checkStairPair(final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo1 = app
-                .getWorldManager()
-                .getWorld()
-                .getCell(this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z,
-                        WorldConstants.LAYER_OBJECT);
+        final WorldObject mo1 = app.getWorldManager().getWorld().getCell(
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), z,
+                WorldConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
-            final WorldObject mo2 = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(), z + 1,
-                            WorldConstants.LAYER_OBJECT);
+            final WorldObject mo2 = app.getWorldManager().getWorld().getCell(
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), z + 1,
+                    WorldConstants.LAYER_OBJECT);
             name2 = mo2.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name2 = "";
         }
         try {
-            final WorldObject mo3 = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(), z - 1,
-                            WorldConstants.LAYER_OBJECT);
+            final WorldObject mo3 = app.getWorldManager().getWorld().getCell(
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), z - 1,
+                    WorldConstants.LAYER_OBJECT);
             name3 = mo3.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name3 = "";
@@ -607,32 +586,26 @@ public class WorldEditor {
 
     private void reverseCheckStairPair(final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo1 = app
-                .getWorldManager()
-                .getWorld()
-                .getCell(this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z,
-                        WorldConstants.LAYER_OBJECT);
+        final WorldObject mo1 = app.getWorldManager().getWorld().getCell(
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), z,
+                WorldConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
-            final WorldObject mo2 = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(), z + 1,
-                            WorldConstants.LAYER_OBJECT);
+            final WorldObject mo2 = app.getWorldManager().getWorld().getCell(
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), z + 1,
+                    WorldConstants.LAYER_OBJECT);
             name2 = mo2.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name2 = "";
         }
         try {
-            final WorldObject mo3 = app
-                    .getWorldManager()
-                    .getWorld()
-                    .getCell(this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(), z - 1,
-                            WorldConstants.LAYER_OBJECT);
+            final WorldObject mo3 = app.getWorldManager().getWorld().getCell(
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), z - 1,
+                    WorldConstants.LAYER_OBJECT);
             name3 = mo3.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name3 = "";
@@ -653,26 +626,22 @@ public class WorldEditor {
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new StairsDown(),
-                                this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(),
-                                this.elMgr.getEditorLocationZ() + 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new StairsDown(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(),
+                        this.elMgr.getEditorLocationZ() + 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new StairsUp(),
-                                this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(),
-                                this.elMgr.getEditorLocationZ() - 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new StairsUp(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(),
+                        this.elMgr.getEditorLocationZ() - 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -687,24 +656,20 @@ public class WorldEditor {
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new StairsDown(),
-                                this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(), z + 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new StairsDown(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), z + 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new StairsUp(),
-                                this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(), z - 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new StairsUp(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), z - 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -719,22 +684,20 @@ public class WorldEditor {
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new Empty(), this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(), z + 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new Empty(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), z + 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new Empty(), this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(), z - 1,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new Empty(),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), z - 1,
+                        WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -746,12 +709,10 @@ public class WorldEditor {
 
     private void checkTwoWayTeleportPair(final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo1 = app
-                .getWorldManager()
-                .getWorld()
-                .getCell(this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z,
-                        WorldConstants.LAYER_OBJECT);
+        final WorldObject mo1 = app.getWorldManager().getWorld().getCell(
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), z,
+                WorldConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2;
         int destX, destY, destZ;
@@ -771,12 +732,10 @@ public class WorldEditor {
 
     private void reverseCheckTwoWayTeleportPair(final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo1 = app
-                .getWorldManager()
-                .getWorld()
-                .getCell(this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z,
-                        WorldConstants.LAYER_OBJECT);
+        final WorldObject mo1 = app.getWorldManager().getWorld().getCell(
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), z,
+                WorldConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2;
         int destX, destY, destZ;
@@ -797,23 +756,18 @@ public class WorldEditor {
     public void pairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
         final Application app = Worldz.getApplication();
-        app.getWorldManager()
-                .getWorld()
-                .setCell(
-                        new TwoWayTeleport(this.elMgr.getEditorLocationX(),
-                                this.elMgr.getEditorLocationY(),
-                                this.elMgr.getCameFromZ(),
-                                this.elMgr.getCameFromW()), destX, destY,
-                        destZ, WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld()
+                .setCell(new TwoWayTeleport(this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(),
+                        this.elMgr.getCameFromZ(), this.elMgr.getCameFromW()),
+                        destX, destY, destZ, WorldConstants.LAYER_OBJECT);
     }
 
     private static void unpairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
         final Application app = Worldz.getApplication();
-        app.getWorldManager()
-                .getWorld()
-                .setCell(new Empty(), destX, destY, destZ,
-                        WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().setCell(new Empty(), destX, destY,
+                destZ, WorldConstants.LAYER_OBJECT);
     }
 
     public WorldObject editTeleportDestination(final int type) {
@@ -833,8 +787,8 @@ public class WorldEditor {
         case TELEPORT_TYPE_RANDOM_INVISIBLE:
         case TELEPORT_TYPE_RANDOM_ONESHOT:
         case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            input1 = Messager
-                    .showTextInputDialog("Random row range:", "Editor");
+            input1 = Messager.showTextInputDialog("Random row range:",
+                    "Editor");
             break;
         default:
             break;
@@ -856,7 +810,8 @@ public class WorldEditor {
                     destX = Integer.parseInt(input1);
                     destY = Integer.parseInt(input2);
                 } catch (final NumberFormatException nf) {
-                    Messager.showDialog("Row and column ranges must be integers.");
+                    Messager.showDialog(
+                            "Row and column ranges must be integers.");
                 }
                 switch (type) {
                 case TELEPORT_TYPE_RANDOM:
@@ -932,8 +887,8 @@ public class WorldEditor {
                     WorldConstants.LAYER_OBJECT);
             contents = tc.getInsideObject();
             for (int x = 0; x < this.containableObjects.length; x++) {
-                if (contents.getName().equals(
-                        this.containableObjects[x].getName())) {
+                if (contents.getName()
+                        .equals(this.containableObjects[x].getName())) {
                     contentsIndex = x;
                     break;
                 }
@@ -959,8 +914,8 @@ public class WorldEditor {
         final int destZ = this.elMgr.getEditorLocationZ();
         final int destW = this.elMgr.getEditorLocationW();
         try {
-            app.getWorldManager().getWorld()
-                    .getCell(destX, destY, destZ, WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().getCell(destX, destY, destZ,
+                    WorldConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             this.horzScroll.removeAdjustmentListener(this.thandler);
             this.vertScroll.removeAdjustmentListener(this.thandler);
@@ -972,50 +927,39 @@ public class WorldEditor {
         }
         switch (this.TELEPORT_TYPE) {
         case TELEPORT_TYPE_GENERIC:
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new Teleport(destX, destY, destZ, destW),
-                            this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(),
-                            this.elMgr.getCameFromZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(
+                    new Teleport(destX, destY, destZ, destW),
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                    WorldConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_GENERIC:
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new InvisibleTeleport(destX, destY, destZ, destW),
-                            this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(),
-                            this.elMgr.getCameFromZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(
+                    new InvisibleTeleport(destX, destY, destZ, destW),
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                    WorldConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_ONESHOT:
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new OneShotTeleport(destX, destY, destZ, destW),
-                            this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(),
-                            this.elMgr.getCameFromZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(
+                    new OneShotTeleport(destX, destY, destZ, destW),
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                    WorldConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(
-                            new InvisibleOneShotTeleport(destX, destY, destZ,
-                                    destW), this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(),
-                            this.elMgr.getCameFromZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(
+                    new InvisibleOneShotTeleport(destX, destY, destZ, destW),
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                    WorldConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_TWOWAY:
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new TwoWayTeleport(destX, destY, destZ, destW),
-                            this.elMgr.getEditorLocationX(),
-                            this.elMgr.getEditorLocationY(),
-                            this.elMgr.getCameFromZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(
+                    new TwoWayTeleport(destX, destY, destZ, destW),
+                    this.elMgr.getEditorLocationX(),
+                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                    WorldConstants.LAYER_OBJECT);
             this.pairTwoWayTeleport(destX, destY, destZ);
             break;
         default:
@@ -1046,8 +990,8 @@ public class WorldEditor {
         final int destZ = this.elMgr.getEditorLocationZ();
         final int destW = this.elMgr.getEditorLocationW();
         try {
-            app.getWorldManager().getWorld()
-                    .getCell(destX, destY, destZ, WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().getCell(destX, destY, destZ,
+                    WorldConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             this.horzScroll.removeAdjustmentListener(this.mbhandler);
             this.vertScroll.removeAdjustmentListener(this.mbhandler);
@@ -1057,12 +1001,11 @@ public class WorldEditor {
             this.secondaryPane.addMouseListener(this.mhandler);
             return;
         }
-        app.getWorldManager()
-                .getWorld()
-                .setCell(new MetalButton(destX, destY, destZ, destW),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(),
-                        this.elMgr.getCameFromZ(), WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().setCell(
+                new MetalButton(destX, destY, destZ, destW),
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                WorldConstants.LAYER_OBJECT);
         this.horzScroll.removeAdjustmentListener(this.mbhandler);
         this.vertScroll.removeAdjustmentListener(this.mbhandler);
         this.secondaryPane.removeMouseListener(this.mbhandler);
@@ -1080,12 +1023,10 @@ public class WorldEditor {
         final Application app = Worldz.getApplication();
         final WorldObject contents = this.containableObjects[this.treasurePicker
                 .getPicked()];
-        app.getWorldManager()
-                .getWorld()
-                .setCell(new TreasureChest(contents),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(),
-                        this.elMgr.getCameFromZ(), WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().setCell(new TreasureChest(contents),
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                WorldConstants.LAYER_OBJECT);
         this.checkMenus();
         Messager.showMessage("Contents set.");
         app.getWorldManager().setDirty(true);
@@ -1110,10 +1051,8 @@ public class WorldEditor {
         final int oldZ = app.getWorldManager().getWorld().getStartFloor();
         // Erase old player
         try {
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new Empty(), oldX, oldY, oldZ,
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(new Empty(), oldX, oldY,
+                    oldZ, WorldConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             // Ignore
         }
@@ -1121,8 +1060,8 @@ public class WorldEditor {
         app.getWorldManager().getWorld().setStartRow(y);
         app.getWorldManager().getWorld().setStartColumn(x);
         app.getWorldManager().getWorld().setStartFloor(z);
-        app.getWorldManager().getWorld()
-                .setCell(new Player(), x, y, z, WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().setCell(new Player(), x, y, z,
+                WorldConstants.LAYER_OBJECT);
     }
 
     public void setPlayerLocation() {
@@ -1132,10 +1071,8 @@ public class WorldEditor {
         final int oldZ = app.getWorldManager().getWorld().getStartFloor();
         // Erase old player
         try {
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new Empty(), oldX, oldY, oldZ,
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(new Empty(), oldX, oldY,
+                    oldZ, WorldConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             // Ignore
         }
@@ -1146,12 +1083,10 @@ public class WorldEditor {
                 .setStartColumn(this.elMgr.getEditorLocationX());
         app.getWorldManager().getWorld()
                 .setStartFloor(this.elMgr.getEditorLocationZ());
-        app.getWorldManager()
-                .getWorld()
-                .setCell(new Player(), this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(),
-                        this.elMgr.getEditorLocationZ(),
-                        WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().setCell(new Player(),
+                this.elMgr.getEditorLocationX(),
+                this.elMgr.getEditorLocationY(),
+                this.elMgr.getEditorLocationZ(), WorldConstants.LAYER_OBJECT);
     }
 
     void setPlayerLocation(final int x, final int y) {
@@ -1169,10 +1104,8 @@ public class WorldEditor {
         final int oldZ = app.getWorldManager().getWorld().getStartFloor();
         // Erase old player
         try {
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new Empty(), oldX, oldY, oldZ,
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(new Empty(), oldX, oldY,
+                    oldZ, WorldConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             // Ignore
         }
@@ -1183,19 +1116,15 @@ public class WorldEditor {
             app.getWorldManager().getWorld().setStartColumn(destX);
             app.getWorldManager().getWorld()
                     .setStartFloor(this.elMgr.getEditorLocationZ());
-            app.getWorldManager()
-                    .getWorld()
-                    .setCell(new Player(), destX, destY,
-                            this.elMgr.getEditorLocationZ(),
-                            WorldConstants.LAYER_OBJECT);
+            app.getWorldManager().getWorld().setCell(new Player(), destX, destY,
+                    this.elMgr.getEditorLocationZ(),
+                    WorldConstants.LAYER_OBJECT);
             Messager.showMessage("Start point set.");
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             app.getWorldManager().getWorld().restoreStart();
             try {
-                app.getWorldManager()
-                        .getWorld()
-                        .setCell(new Player(), oldX, oldY, oldZ,
-                                WorldConstants.LAYER_OBJECT);
+                app.getWorldManager().getWorld().setCell(new Player(), oldX,
+                        oldY, oldZ, WorldConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException aioob2) {
                 // Ignore
             }
@@ -1228,8 +1157,7 @@ public class WorldEditor {
                         .getRows();
                 final int worldSizeY = app.getWorldManager().getWorld()
                         .getColumns();
-                app.getEditor()
-                        .getViewManager()
+                app.getEditor().getViewManager()
                         .halfOffsetMaximumViewingWindowLocation(worldSizeX,
                                 worldSizeY);
                 this.worldChanged = false;
@@ -1239,8 +1167,8 @@ public class WorldEditor {
             this.elMgr.setEditorLocationW(0);
             app.getWorldManager().getWorld().switchLevel(0);
             this.elMgr.setLimitsFromWorld(app.getWorldManager().getWorld());
-            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromWorld(app
-                    .getWorldManager().getWorld());
+            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromWorld(
+                    app.getWorldManager().getWorld());
             this.setUpGUI();
             this.clearHistory();
             this.checkMenus();
@@ -1296,19 +1224,16 @@ public class WorldEditor {
         if (app.getWorldManager().getWorld() != null && this.elMgr != null
                 && this.evMgr != null) {
             this.elMgr.setLimitsFromWorld(app.getWorldManager().getWorld());
-            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromWorld(app
-                    .getWorldManager().getWorld());
+            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromWorld(
+                    app.getWorldManager().getWorld());
         }
     }
 
     private boolean confirmNonUndoable(final String task) {
-        final int confirm = Messager
-                .showConfirmDialog(
-                        "Are you sure you want to "
-                                + task
-                                + "?"
-                                + " This action is NOT undoable and will clear the undo/redo history!",
-                        "Editor");
+        final int confirm = Messager.showConfirmDialog(
+                "Are you sure you want to " + task + "?"
+                        + " This action is NOT undoable and will clear the undo/redo history!",
+                "Editor");
         if (confirm == JOptionPane.YES_OPTION) {
             this.clearHistory();
             return true;
@@ -1317,7 +1242,8 @@ public class WorldEditor {
     }
 
     public void fillLevel() {
-        if (this.confirmNonUndoable("overwrite the active level with default data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active level with default data")) {
             Worldz.getApplication().getWorldManager().getWorld()
                     .fillLevelDefault();
             Messager.showMessage("Level filled.");
@@ -1327,7 +1253,8 @@ public class WorldEditor {
     }
 
     public void fillFloor() {
-        if (this.confirmNonUndoable("overwrite the active floor within the active level with default data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active floor within the active level with default data")) {
             Worldz.getApplication().getWorldManager().getWorld()
                     .fillFloorDefault(this.elMgr.getEditorLocationZ());
             Messager.showMessage("Floor filled.");
@@ -1337,7 +1264,8 @@ public class WorldEditor {
     }
 
     public void fillLevelRandomly() {
-        if (this.confirmNonUndoable("overwrite the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active level with random data")) {
             if (Worldz.getApplication().getMenuManager().useFillRuleSets()) {
                 Worldz.getApplication().getWorldManager().getWorld()
                         .fillLevelRandomlyCustom();
@@ -1352,11 +1280,10 @@ public class WorldEditor {
     }
 
     public void fillFloorRandomly() {
-        if (this.confirmNonUndoable("overwrite the active floor within the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active floor within the active level with random data")) {
             if (Worldz.getApplication().getMenuManager().useFillRuleSets()) {
-                Worldz.getApplication()
-                        .getWorldManager()
-                        .getWorld()
+                Worldz.getApplication().getWorldManager().getWorld()
                         .fillFloorRandomlyCustom(
                                 this.elMgr.getEditorLocationZ());
             } else {
@@ -1390,14 +1317,14 @@ public class WorldEditor {
         }
         boolean success = true;
         String input1, input2, input3;
-        input1 = Messager.showTextInputDialog("Number of rows (" + minR + "-"
-                + maxR + ")?", msg);
+        input1 = Messager.showTextInputDialog(
+                "Number of rows (" + minR + "-" + maxR + ")?", msg);
         if (input1 != null) {
-            input2 = Messager.showTextInputDialog("Number of columns (" + minC
-                    + "-" + maxC + ")?", msg);
+            input2 = Messager.showTextInputDialog(
+                    "Number of columns (" + minC + "-" + maxC + ")?", msg);
             if (input2 != null) {
-                input3 = Messager.showTextInputDialog("Number of floors ("
-                        + minF + "-" + maxF + ")?", msg);
+                input3 = Messager.showTextInputDialog(
+                        "Number of floors (" + minF + "-" + maxF + ")?", msg);
                 if (input3 != null) {
                     try {
                         levelSizeX = Integer.parseInt(input1);
@@ -1409,8 +1336,8 @@ public class WorldEditor {
                         }
                         if (levelSizeX > maxR) {
                             throw new NumberFormatException(
-                                    "Rows must be less than or equal to "
-                                            + maxR + ".");
+                                    "Rows must be less than or equal to " + maxR
+                                            + ".");
                         }
                         if (levelSizeY < minC) {
                             throw new NumberFormatException(
@@ -1437,19 +1364,17 @@ public class WorldEditor {
                         if (success) {
                             this.fixLimits();
                             if (!flag) {
-                                this.evMgr
-                                        .setViewingWindowLocationX(0 - (this.evMgr
-                                                .getViewingWindowSizeX() - 1) / 2);
-                                this.evMgr
-                                        .setViewingWindowLocationY(0 - (this.evMgr
-                                                .getViewingWindowSizeY() - 1) / 2);
+                                this.evMgr.setViewingWindowLocationX(
+                                        0 - (this.evMgr.getViewingWindowSizeX()
+                                                - 1) / 2);
+                                this.evMgr.setViewingWindowLocationY(
+                                        0 - (this.evMgr.getViewingWindowSizeY()
+                                                - 1) / 2);
                             }
-                            app.getWorldManager()
-                                    .getWorld()
-                                    .fillLevel(
-                                            app.getPrefsManager()
-                                                    .getEditorDefaultFill(),
-                                            new Empty());
+                            app.getWorldManager().getWorld().fillLevel(
+                                    app.getPrefsManager()
+                                            .getEditorDefaultFill(),
+                                    new Empty());
                             // Save the entire level
                             app.getWorldManager().getWorld().saveLevel();
                             app.getWorldManager().getWorld()
@@ -1487,21 +1412,19 @@ public class WorldEditor {
         final String msg = "Resize Level";
         boolean success = true;
         String input1, input2, input3;
-        input1 = Messager.showTextInputDialogWithDefault("Number of rows ("
-                + minR + "-" + maxR + ")?", msg,
+        input1 = Messager.showTextInputDialogWithDefault(
+                "Number of rows (" + minR + "-" + maxR + ")?", msg,
                 Integer.toString(app.getWorldManager().getWorld().getRows()));
         if (input1 != null) {
             input2 = Messager.showTextInputDialogWithDefault(
-                    "Number of columns (" + minC + "-" + maxC + ")?",
-                    msg,
-                    Integer.toString(app.getWorldManager().getWorld()
-                            .getColumns()));
+                    "Number of columns (" + minC + "-" + maxC + ")?", msg,
+                    Integer.toString(
+                            app.getWorldManager().getWorld().getColumns()));
             if (input2 != null) {
                 input3 = Messager.showTextInputDialogWithDefault(
-                        "Number of floors (" + minF + "-" + maxF + ")?",
-                        msg,
-                        Integer.toString(app.getWorldManager().getWorld()
-                                .getFloors()));
+                        "Number of floors (" + minF + "-" + maxF + ")?", msg,
+                        Integer.toString(
+                                app.getWorldManager().getWorld().getFloors()));
                 if (input3 != null) {
                     try {
                         levelSizeX = Integer.parseInt(input1);
@@ -1513,8 +1436,8 @@ public class WorldEditor {
                         }
                         if (levelSizeX > maxR) {
                             throw new NumberFormatException(
-                                    "Rows must be less than or equal to "
-                                            + maxR + ".");
+                                    "Rows must be less than or equal to " + maxR
+                                            + ".");
                         }
                         if (levelSizeY < minC) {
                             throw new NumberFormatException(
@@ -1534,13 +1457,13 @@ public class WorldEditor {
                                     "Floors must be less than or equal to "
                                             + maxF + ".");
                         }
-                        app.getWorldManager().getWorld()
-                                .resize(levelSizeX, levelSizeY, levelSizeZ);
+                        app.getWorldManager().getWorld().resize(levelSizeX,
+                                levelSizeY, levelSizeZ);
                         this.fixLimits();
-                        this.evMgr.setViewingWindowLocationX(0 - (this.evMgr
-                                .getViewingWindowSizeX() - 1) / 2);
-                        this.evMgr.setViewingWindowLocationY(0 - (this.evMgr
-                                .getViewingWindowSizeY() - 1) / 2);
+                        this.evMgr.setViewingWindowLocationX(0
+                                - (this.evMgr.getViewingWindowSizeX() - 1) / 2);
+                        this.evMgr.setViewingWindowLocationY(0
+                                - (this.evMgr.getViewingWindowSizeY() - 1) / 2);
                         // Save the entire level
                         app.getWorldManager().getWorld().saveLevel();
                         this.checkMenus();
@@ -1570,18 +1493,19 @@ public class WorldEditor {
         int level;
         boolean success = true;
         String input;
-        input = Messager.showTextInputDialog("Level Number (1-"
-                + app.getWorldManager().getWorld().getLevels() + ")?",
+        input = Messager.showTextInputDialog(
+                "Level Number (1-"
+                        + app.getWorldManager().getWorld().getLevels() + ")?",
                 "Remove Level");
         if (input != null) {
             try {
                 level = Integer.parseInt(input);
-                if (level < 1
-                        || level > app.getWorldManager().getWorld().getLevels()) {
+                if (level < 1 || level > app.getWorldManager().getWorld()
+                        .getLevels()) {
                     throw new NumberFormatException(
-                            "Level number must be in the range 1 to "
-                                    + app.getWorldManager().getWorld()
-                                            .getLevels() + ".");
+                            "Level number must be in the range 1 to " + app
+                                    .getWorldManager().getWorld().getLevels()
+                                    + ".");
                 }
                 success = app.getWorldManager().getWorld().removeLevel();
                 if (success) {
@@ -1700,8 +1624,8 @@ public class WorldEditor {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.drawGrid = new JLabel[this.evMgr.getViewingWindowSizeX()][this.evMgr
-                .getViewingWindowSizeY()];
+        this.drawGrid = new JLabel[this.evMgr
+                .getViewingWindowSizeX()][this.evMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.evMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.evMgr.getViewingWindowSizeY(); y++) {
                 this.drawGrid[x][y] = new JLabel();
@@ -1720,8 +1644,9 @@ public class WorldEditor {
         this.outputPane.setLayout(this.gridbag);
         this.outputFrame.setResizable(false);
         this.c.fill = GridBagConstraints.BOTH;
-        this.secondaryPane.setLayout(new GridLayout(this.evMgr
-                .getViewingWindowSizeX(), this.evMgr.getViewingWindowSizeY()));
+        this.secondaryPane
+                .setLayout(new GridLayout(this.evMgr.getViewingWindowSizeX(),
+                        this.evMgr.getViewingWindowSizeY()));
         this.horzScroll = new JScrollBar(Adjustable.HORIZONTAL,
                 this.evMgr.getMinimumViewingWindowLocationY(),
                 this.evMgr.getViewingWindowSizeY(),
@@ -1890,8 +1815,8 @@ public class WorldEditor {
         }
     }
 
-    private class EventHandler implements AdjustmentListener, MouseListener,
-            WindowListener {
+    private class EventHandler
+            implements AdjustmentListener, MouseListener, WindowListener {
         public EventHandler() {
             // TODO Auto-generated constructor stub
         }
@@ -2050,8 +1975,8 @@ public class WorldEditor {
         }
     }
 
-    private class StartEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class StartEventHandler
+            implements AdjustmentListener, MouseListener {
         public StartEventHandler() {
             // TODO Auto-generated constructor stub
         }
@@ -2115,8 +2040,8 @@ public class WorldEditor {
         }
     }
 
-    private class TeleportEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class TeleportEventHandler
+            implements AdjustmentListener, MouseListener {
         public TeleportEventHandler() {
             // TODO Auto-generated constructor stub
         }
@@ -2180,8 +2105,8 @@ public class WorldEditor {
         }
     }
 
-    private class MetalButtonEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class MetalButtonEventHandler
+            implements AdjustmentListener, MouseListener {
         public MetalButtonEventHandler() {
             // TODO Auto-generated constructor stub
         }

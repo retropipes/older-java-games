@@ -12,17 +12,17 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class UpperObjectsEmpty extends AbstractPassThroughObject {
     // Constructors
     public UpperObjectsEmpty() {
-	super();
-	this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
+        super();
+        this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_UPPER_OBJECTS;
+        return ArenaConstants.LAYER_UPPER_OBJECTS;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 130;
+        return 130;
     }
 }

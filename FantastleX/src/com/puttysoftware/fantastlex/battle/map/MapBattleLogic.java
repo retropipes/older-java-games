@@ -155,10 +155,10 @@ public class MapBattleLogic extends AbstractBattle {
         // Clear status message
         this.clearStatusMessage();
         // Start Battle
-        this.battleGUI.getViewManager().setViewingWindowCenterX(
-                this.bd.getActiveCharacter().getY());
-        this.battleGUI.getViewManager().setViewingWindowCenterY(
-                this.bd.getActiveCharacter().getX());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterX(this.bd.getActiveCharacter().getY());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterY(this.bd.getActiveCharacter().getX());
         SoundManager.playSound(SoundConstants.SOUND_BATTLE);
         this.showBattle();
         this.updateStatsAndEffects();
@@ -178,29 +178,24 @@ public class MapBattleLogic extends AbstractBattle {
                 CommonDialogs.showTitledDialog("The party is victorious!",
                         "Victory!");
                 PartyManager.getParty().distributeVictorySpoils(this.vsd);
-                FantastleX
-                        .getApplication()
-                        .getGameManager()
-                        .addToScore(
-                                Math.max(1, (this.vsd.getTotalExp() + gold)
-                                        / (100 * PartyManager.getParty()
-                                                .getActivePCCount())));
+                FantastleX.getApplication().getGameManager().addToScore(
+                        Math.max(1, (this.vsd.getTotalExp() + gold) / (100
+                                * PartyManager.getParty().getActivePCCount())));
             } else if (this.result == BattleResults.LOST) {
                 CommonDialogs.showTitledDialog("The party has been defeated!",
                         "Defeat...");
             } else if (this.result == BattleResults.DRAW) {
-                CommonDialogs
-                        .showTitledDialog("The battle was a draw.", "Draw");
+                CommonDialogs.showTitledDialog("The battle was a draw.",
+                        "Draw");
             } else if (this.result == BattleResults.FLED) {
                 CommonDialogs.showTitledDialog("The party fled!", "Party Fled");
             } else if (this.result == BattleResults.ENEMY_FLED) {
                 CommonDialogs.showTitledDialog("The enemies fled!",
                         "Enemies Fled");
             } else if (this.result == BattleResults.IN_PROGRESS) {
-                CommonDialogs
-                        .showTitledDialog(
-                                "The battle isn't over, but somehow the game thinks it is.",
-                                "Uh-Oh!");
+                CommonDialogs.showTitledDialog(
+                        "The battle isn't over, but somehow the game thinks it is.",
+                        "Uh-Oh!");
             } else {
                 CommonDialogs.showTitledDialog(
                         "The result of the battle is unknown!", "Uh-Oh!");
@@ -251,7 +246,8 @@ public class MapBattleLogic extends AbstractBattle {
             currResult = BattleResults.WON;
         } else if (!this.isTeamAlive(AbstractCreature.TEAM_PARTY)
                 && !this.isTeamGone(AbstractCreature.TEAM_PARTY)
-                && !this.areTeamEnemiesDeadOrGone(AbstractCreature.TEAM_PARTY)) {
+                && !this.areTeamEnemiesDeadOrGone(
+                        AbstractCreature.TEAM_PARTY)) {
             currResult = BattleResults.LOST;
         } else if (this.areTeamEnemiesGone(AbstractCreature.TEAM_PARTY)) {
             currResult = BattleResults.ENEMY_FLED;
@@ -271,11 +267,9 @@ public class MapBattleLogic extends AbstractBattle {
     @Override
     public void executeNextAIAction() {
         int action;
-        action = this.bd
-                .getActiveCharacter()
-                .getTemplate()
-                .getMapAI()
-                .getNextAction(this.bd.getBattlerAIContexts()[this.activeIndex]);
+        action = this.bd.getActiveCharacter().getTemplate().getMapAI()
+                .getNextAction(
+                        this.bd.getBattlerAIContexts()[this.activeIndex]);
         switch (action) {
         case AbstractMapAIRoutine.ACTION_MOVE:
             final int x = this.bd.getActiveCharacter().getTemplate().getMapAI()
@@ -320,8 +314,8 @@ public class MapBattleLogic extends AbstractBattle {
 
     private void executeAutoAI(final BattleCharacter acting) {
         final int index = this.bd.findBattler(acting.getName());
-        final int action = this.auto.getNextAction(this.bd
-                .getBattlerAIContexts()[index]);
+        final int action = this.auto
+                .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
         case AbstractMapAIRoutine.ACTION_MOVE:
             final int x = this.auto.getMoveX();
@@ -437,17 +431,18 @@ public class MapBattleLogic extends AbstractBattle {
     }
 
     private void setCharacterLocations() {
-        final RandomRange randX = new RandomRange(0, this.bd.getBattleMaze()
-                .getRows() - 1);
-        final RandomRange randY = new RandomRange(0, this.bd.getBattleMaze()
-                .getColumns() - 1);
+        final RandomRange randX = new RandomRange(0,
+                this.bd.getBattleMaze().getRows() - 1);
+        final RandomRange randY = new RandomRange(0,
+                this.bd.getBattleMaze().getColumns() - 1);
         int rx, ry;
         // Set Character Locations
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
                 if (this.bd.getBattlers()[x].isActive()
                         && this.bd.getBattlers()[x].getTemplate().getX() == -1
-                        && this.bd.getBattlers()[x].getTemplate().getY() == -1) {
+                        && this.bd.getBattlers()[x].getTemplate()
+                                .getY() == -1) {
                     rx = randX.generate();
                     ry = randY.generate();
                     AbstractMazeObject obj = this.bd.getBattleMaze()
@@ -459,8 +454,8 @@ public class MapBattleLogic extends AbstractBattle {
                     }
                     this.bd.getBattlers()[x].setX(rx);
                     this.bd.getBattlers()[x].setY(ry);
-                    this.bd.getBattleMaze().setBattleCell(
-                            this.bd.getBattlers()[x], rx, ry);
+                    this.bd.getBattleMaze()
+                            .setBattleCell(this.bd.getBattlers()[x], rx, ry);
                 }
             }
         }
@@ -636,9 +631,9 @@ public class MapBattleLogic extends AbstractBattle {
             // Has actions left
             this.bd.getActiveCharacter().modifyAP(1);
             this.battleGUI.turnEventHandlersOff();
-            final MapBattleArrowTask at = new MapBattleArrowTask(x, y,
-                    this.bd.getActiveCharacter().getTemplate().getFaith()
-                            .getFaithID(), this.bd);
+            final MapBattleArrowTask at = new MapBattleArrowTask(x, y, this.bd
+                    .getActiveCharacter().getTemplate().getFaith().getFaithID(),
+                    this.bd);
             at.start();
         } else {
             // Deny arrow - out of actions
@@ -658,12 +653,13 @@ public class MapBattleLogic extends AbstractBattle {
                 // Update victory spoils
                 final int partySize = PartyManager.getParty()
                         .getActivePCCount();
-                this.vsd.setExpPerMonster(this.bd.findBattler(hit.getName())
-                        - partySize, hit.getTemplate().getExperience());
+                this.vsd.setExpPerMonster(
+                        this.bd.findBattler(hit.getName()) - partySize,
+                        hit.getTemplate().getExperience());
             }
             // Update Prestige
-            BattlePrestige.killedEnemy(this.bd.getActiveCharacter()
-                    .getTemplate());
+            BattlePrestige
+                    .killedEnemy(this.bd.getActiveCharacter().getTemplate());
             BattlePrestige.killedInBattle(hit.getTemplate());
             // Remove effects from dead character
             hit.getTemplate().stripAllEffects();
@@ -702,9 +698,8 @@ public class MapBattleLogic extends AbstractBattle {
         }
         if (next != null && nextGround != null && currGround != null) {
             if (!next.isSolidInBattle()) {
-                if (useAP
-                        && this.getActiveActionCounter() >= AbstractMazeObject
-                                .getBattleAPCost() || !useAP) {
+                if (useAP && this.getActiveActionCounter() >= AbstractMazeObject
+                        .getBattleAPCost() || !useAP) {
                     // Move
                     AbstractMazeObject obj1 = null;
                     AbstractMazeObject obj2 = null;
@@ -756,9 +751,10 @@ public class MapBattleLogic extends AbstractBattle {
                     }
                     // Auto-attack check
                     if (obj1 != null) {
-                        if (obj1.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == -1 && y == 0 || x == -1 && y == -1 || x == 0
-                                    && y == -1)) {
+                        if (obj1.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == -1
+                                    || x == 0 && y == -1)) {
                                 final BattleCharacter bc1 = (BattleCharacter) obj1;
                                 if (bc1.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc1);
@@ -767,7 +763,8 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj2 != null) {
-                        if (obj2.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj2.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == 1) {
                                 final BattleCharacter bc2 = (BattleCharacter) obj2;
                                 if (bc2.getTeamID() != active.getTeamID()) {
@@ -777,9 +774,10 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj3 != null) {
-                        if (obj3.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == 0 && y == -1 || x == 1 && y == -1 || x == 1
-                                    && y == 0)) {
+                        if (obj3.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == -1 || x == 1 && y == -1
+                                    || x == 1 && y == 0)) {
                                 final BattleCharacter bc3 = (BattleCharacter) obj3;
                                 if (bc3.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc3);
@@ -788,7 +786,8 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj4 != null) {
-                        if (obj4.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj4.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == 1) {
                                 final BattleCharacter bc4 = (BattleCharacter) obj4;
                                 if (bc4.getTeamID() != active.getTeamID()) {
@@ -798,7 +797,8 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj6 != null) {
-                        if (obj6.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj6.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == -1) {
                                 final BattleCharacter bc6 = (BattleCharacter) obj6;
                                 if (bc6.getTeamID() != active.getTeamID()) {
@@ -808,9 +808,10 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj7 != null) {
-                        if (obj7.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == -1 && y == 0 || x == -1 && y == 1 || x == 0
-                                    && y == 1)) {
+                        if (obj7.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == 1
+                                    || x == 0 && y == 1)) {
                                 final BattleCharacter bc7 = (BattleCharacter) obj7;
                                 if (bc7.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc7);
@@ -819,7 +820,8 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj8 != null) {
-                        if (obj8.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj8.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == -1) {
                                 final BattleCharacter bc8 = (BattleCharacter) obj8;
                                 if (bc8.getTeamID() != active.getTeamID()) {
@@ -829,9 +831,10 @@ public class MapBattleLogic extends AbstractBattle {
                         }
                     }
                     if (obj9 != null) {
-                        if (obj9.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == 0 && y == 1 || x == 1 && y == 1 || x == 1
-                                    && y == 0)) {
+                        if (obj9.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == 1 || x == 1 && y == 1
+                                    || x == 1 && y == 0)) {
                                 final BattleCharacter bc9 = (BattleCharacter) obj9;
                                 if (bc9.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc9);
@@ -850,8 +853,8 @@ public class MapBattleLogic extends AbstractBattle {
                             .offsetViewingWindowLocationY(x);
                     active.setSavedObject(m.getBattleCell(px, py));
                     m.setBattleCell(active, px, py);
-                    this.decrementActiveActionCounterBy(AbstractMazeObject
-                            .getBattleAPCost());
+                    this.decrementActiveActionCounterBy(
+                            AbstractMazeObject.getBattleAPCost());
                     SoundManager.playSound(SoundConstants.SOUND_WALK);
                     // If the random battle environment is enabled...
                     if (PreferencesManager.getRandomBattleEnvironment()) {
@@ -897,15 +900,17 @@ public class MapBattleLogic extends AbstractBattle {
                         // Do damage
                         this.computeDamage(enemy, active.getTemplate());
                         // Handle low health for party members
-                        if (enemy.isAlive()
-                                && enemy.getTeamID() == AbstractCreature.TEAM_PARTY
-                                && enemy.getCurrentHP() <= enemy.getMaximumHP() * 3 / 10) {
+                        if (enemy.isAlive() && enemy
+                                .getTeamID() == AbstractCreature.TEAM_PARTY
+                                && enemy.getCurrentHP() <= enemy.getMaximumHP()
+                                        * 3 / 10) {
                             SoundManager
                                     .playSound(SoundConstants.SOUND_LOW_HEALTH);
                         }
                         // Handle enemy death
                         if (!enemy.isAlive()) {
-                            if (enemy.getTeamID() != AbstractCreature.TEAM_PARTY) {
+                            if (enemy
+                                    .getTeamID() != AbstractCreature.TEAM_PARTY) {
                                 // Update victory spoils
                                 final int partySize = PartyManager.getParty()
                                         .getActivePCCount();
@@ -960,8 +965,8 @@ public class MapBattleLogic extends AbstractBattle {
             // Confirm Flee
             if (!active.getTemplate().hasAI() || FantastleX.inDebugMode()) {
                 SoundManager.playSound(SoundConstants.SOUND_SPECIAL);
-                final int confirm = CommonDialogs.showConfirmDialog(
-                        "Embrace Cowardice?", "Battle");
+                final int confirm = CommonDialogs
+                        .showConfirmDialog("Embrace Cowardice?", "Battle");
                 if (confirm != JOptionPane.YES_OPTION) {
                     this.battleGUI.getViewManager().restoreViewingWindow();
                     active.restoreLocation();
@@ -1026,7 +1031,8 @@ public class MapBattleLogic extends AbstractBattle {
                 }
                 if (next != null) {
                     if (next.isSolidInBattle()) {
-                        if (next.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (next.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             return (BattleCharacter) next;
                         }
                     }
@@ -1051,9 +1057,10 @@ public class MapBattleLogic extends AbstractBattle {
             if (!this.bd.getActiveCharacter().getTemplate().hasAI()
                     || FantastleX.inDebugMode()) {
                 // Active character has no AI, or AI is turned off
-                final boolean success = SpellCaster.selectAndCastSpell(this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final boolean success = SpellCaster.selectAndCastSpell(
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
                     this.decrementActiveSpellCounter();
                     // Update Prestige
@@ -1070,9 +1077,10 @@ public class MapBattleLogic extends AbstractBattle {
                 // Active character has AI, and AI is turned on
                 final Spell sp = this.bd.getActiveCharacter().getTemplate()
                         .getMapAI().getSpellToCast();
-                final boolean success = SpellCaster.castSpell(sp, this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final boolean success = SpellCaster.castSpell(sp,
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
                     this.decrementActiveSpellCounter();
                     // Update Prestige
@@ -1104,12 +1112,12 @@ public class MapBattleLogic extends AbstractBattle {
                     || FantastleX.inDebugMode()) {
                 // Active character has no AI, or AI is turned off
                 final boolean success = CombatItemChucker.selectAndUseItem(
-                        this.bd.getActiveCharacter().getTemplate(), this.bd
-                                .getActiveCharacter().getTeamID(), true,
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
                         this.bd);
                 if (success) {
-                    this.bd.getActiveCharacter().modifyAP(
-                            MapBattleLogic.ITEM_ACTION_POINTS);
+                    this.bd.getActiveCharacter()
+                            .modifyAP(MapBattleLogic.ITEM_ACTION_POINTS);
                 }
                 final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
@@ -1122,12 +1130,13 @@ public class MapBattleLogic extends AbstractBattle {
                 // Active character has AI, and AI is turned on
                 final CombatItem cui = this.bd.getActiveCharacter()
                         .getTemplate().getMapAI().getItemToUse();
-                final boolean success = CombatItemChucker.useItem(cui, this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final boolean success = CombatItemChucker.useItem(cui,
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
-                    this.bd.getActiveCharacter().modifyAP(
-                            MapBattleLogic.ITEM_ACTION_POINTS);
+                    this.bd.getActiveCharacter()
+                            .modifyAP(MapBattleLogic.ITEM_ACTION_POINTS);
                 }
                 final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
@@ -1159,8 +1168,8 @@ public class MapBattleLogic extends AbstractBattle {
             }
             int stealChance;
             int stealAmount = 0;
-            this.bd.getActiveCharacter().modifyAP(
-                    MapBattleLogic.STEAL_ACTION_POINTS);
+            this.bd.getActiveCharacter()
+                    .modifyAP(MapBattleLogic.STEAL_ACTION_POINTS);
             stealChance = StatConstants.CHANCE_STEAL;
             if (activeEnemy == null) {
                 // Failed - nobody to steal from
@@ -1179,15 +1188,13 @@ public class MapBattleLogic extends AbstractBattle {
                         activeEnemy.getGold());
                 stealAmount = stole.generate();
                 if (stealAmount == 0) {
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to steal, but no Gold is left to steal!");
                     return false;
                 } else {
                     this.bd.getActiveCharacter().getTemplate()
                             .offsetGold(stealAmount);
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to steal, and successfully steals "
                             + stealAmount + " gold!");
                     return true;
@@ -1216,8 +1223,8 @@ public class MapBattleLogic extends AbstractBattle {
                     }
                 } else {
                     // Failed
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName() + " tries to steal, but fails!");
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
+                            + " tries to steal, but fails!");
                     return false;
                 }
             }
@@ -1243,8 +1250,8 @@ public class MapBattleLogic extends AbstractBattle {
             }
             int drainChance;
             int drainAmount = 0;
-            this.bd.getActiveCharacter().modifyAP(
-                    MapBattleLogic.DRAIN_ACTION_POINTS);
+            this.bd.getActiveCharacter()
+                    .modifyAP(MapBattleLogic.DRAIN_ACTION_POINTS);
             drainChance = StatConstants.CHANCE_DRAIN;
             if (activeEnemy == null) {
                 // Failed - nobody to drain from
@@ -1263,16 +1270,14 @@ public class MapBattleLogic extends AbstractBattle {
                         activeEnemy.getCurrentMP());
                 drainAmount = drained.generate();
                 if (drainAmount == 0) {
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to drain, but no MP is left to drain!");
                     return false;
                 } else {
                     activeEnemy.offsetCurrentMP(-drainAmount);
                     this.bd.getActiveCharacter().getTemplate()
                             .offsetCurrentMP(drainAmount);
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to drain, and successfully drains "
                             + drainAmount + " MP!");
                     return true;
@@ -1302,8 +1307,8 @@ public class MapBattleLogic extends AbstractBattle {
                     }
                 } else {
                     // Failed
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName() + " tries to drain, but fails!");
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
+                            + " tries to drain, but fails!");
                     return false;
                 }
             }
@@ -1331,10 +1336,10 @@ public class MapBattleLogic extends AbstractBattle {
             }
         }
         this.updateStatsAndEffects();
-        this.battleGUI.getViewManager().setViewingWindowCenterX(
-                this.bd.getActiveCharacter().getY());
-        this.battleGUI.getViewManager().setViewingWindowCenterY(
-                this.bd.getActiveCharacter().getX());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterX(this.bd.getActiveCharacter().getY());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterY(this.bd.getActiveCharacter().getX());
         this.redrawBattle();
     }
 
@@ -1405,19 +1410,22 @@ public class MapBattleLogic extends AbstractBattle {
                 // Handle low health for party members
                 if (active.isAlive()
                         && active.getTeamID() == AbstractCreature.TEAM_PARTY
-                        && active.getCurrentHP() <= active.getMaximumHP() * 3 / 10) {
+                        && active.getCurrentHP() <= active.getMaximumHP() * 3
+                                / 10) {
                     SoundManager.playSound(SoundConstants.SOUND_LOW_HEALTH);
                 }
                 // Cull Inactive Effects
                 active.cullInactiveEffects();
                 // Handle death caused by effects
                 if (!active.isAlive()) {
-                    if (this.bd.getBattlers()[x].getTeamID() != AbstractCreature.TEAM_PARTY) {
+                    if (this.bd.getBattlers()[x]
+                            .getTeamID() != AbstractCreature.TEAM_PARTY) {
                         // Update victory spoils
                         final int partySize = PartyManager.getParty()
                                 .getActivePCCount();
-                        this.vsd.setExpPerMonster(x - partySize, this.bd
-                                .getBattlers()[x].getTemplate().getExperience());
+                        this.vsd.setExpPerMonster(x - partySize,
+                                this.bd.getBattlers()[x].getTemplate()
+                                        .getExperience());
                     }
                     // Set dead character to inactive
                     this.bd.getBattlers()[x].deactivate();
@@ -1442,8 +1450,8 @@ public class MapBattleLogic extends AbstractBattle {
             if (this.bd.getBattlers()[x] != null) {
                 // Update all AI Contexts
                 if (this.bd.getBattlerAIContexts()[x] != null) {
-                    this.bd.getBattlerAIContexts()[x].updateContext(this.bd
-                            .getBattleMaze());
+                    this.bd.getBattlerAIContexts()[x]
+                            .updateContext(this.bd.getBattleMaze());
                 }
             }
         }

@@ -15,10 +15,10 @@ public class ImageConstants {
     }
 
     public static int getImageSize() {
-        return IMAGE_SIZE;
+        return ImageConstants.IMAGE_SIZE;
     }
 
     public static int getScaledImageSize() {
-        return BufferedImageIcon.getScaledValue(IMAGE_SIZE);
+        return BufferedImageIcon.getScaledValue(ImageConstants.IMAGE_SIZE);
     }
 }

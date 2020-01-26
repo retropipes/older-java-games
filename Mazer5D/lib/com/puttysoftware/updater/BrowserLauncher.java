@@ -20,12 +20,15 @@ public class BrowserLauncher {
             try {
                 Desktop.getDesktop().browse(new URI(url));
             } catch (final IOException e) {
-                CommonDialogs.showErrorDialog(errMsg, "Updater Error");
+                CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                        "Updater Error");
             } catch (final URISyntaxException e) {
-                CommonDialogs.showErrorDialog(errMsg, "Updater Error");
+                CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                        "Updater Error");
             }
         } else {
-            CommonDialogs.showErrorDialog(errMsg, "Updater Error");
+            CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                    "Updater Error");
         }
     }
 }

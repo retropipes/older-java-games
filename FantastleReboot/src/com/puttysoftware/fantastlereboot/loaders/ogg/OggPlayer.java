@@ -19,91 +19,94 @@ import javax.sound.sampled.SourceDataLine;
 import com.puttysoftware.fantastlereboot.FantastleReboot;
 
 class OggPlayer {
-  private AudioInputStream stream;
-  private AudioInputStream decodedStream;
-  private AudioFormat format;
-  private AudioFormat decodedFormat;
-  private boolean stop;
+    private final AudioInputStream stream;
+    private AudioInputStream decodedStream;
+    private AudioFormat format;
+    private AudioFormat decodedFormat;
+    private boolean stop;
 
-  public OggPlayer(final AudioInputStream ais) {
-    this.stream = ais;
-    this.stop = false;
-  }
-
-  public void playLoop() throws IOException {
-    byte[] oggData = null;
-    final byte[] buf = new byte[4096];
-    // Get AudioInputStream from given file.
-    if (this.stream != null) {
-      this.format = this.stream.getFormat();
-      this.decodedFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
-          this.format.getSampleRate(), 16, this.format.getChannels(),
-          this.format.getChannels() * 2, this.format.getSampleRate(), false);
-      // Get AudioInputStream that will be decoded by underlying
-      // VorbisSPI
-      this.decodedStream = AudioSystem.getAudioInputStream(this.decodedFormat,
-          this.stream);
-      try (final ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
-        // Start
-        int nBytesRead = 0;
-        while (nBytesRead != -1) {
-          nBytesRead = this.decodedStream.read(buf, 0, buf.length);
-          if (nBytesRead != -1) {
-            baos.write(buf, 0, nBytesRead);
-          }
-        }
-        oggData = baos.toByteArray();
-      }
+    public OggPlayer(final AudioInputStream ais) {
+        this.stream = ais;
+        this.stop = false;
     }
-    if (oggData != null) {
-      try (SourceDataLine line = OggPlayer.getLine(this.decodedFormat)) {
-        if (line != null) {
-          // Start
-          line.start();
-          while (!this.stop) {
-            if (this.stop) {
-              break;
-            }
-            try (
-                ByteArrayInputStream bais = new ByteArrayInputStream(oggData)) {
-              int nBytesRead = 0;
-              while (nBytesRead != -1) {
-                nBytesRead = bais.read(buf, 0, buf.length);
-                if (this.stop) {
-                  break;
+
+    public void playLoop() throws IOException {
+        byte[] oggData = null;
+        final byte[] buf = new byte[4096];
+        // Get AudioInputStream from given file.
+        if (this.stream != null) {
+            this.format = this.stream.getFormat();
+            this.decodedFormat = new AudioFormat(
+                    AudioFormat.Encoding.PCM_SIGNED,
+                    this.format.getSampleRate(), 16, this.format.getChannels(),
+                    this.format.getChannels() * 2, this.format.getSampleRate(),
+                    false);
+            // Get AudioInputStream that will be decoded by underlying
+            // VorbisSPI
+            this.decodedStream = AudioSystem
+                    .getAudioInputStream(this.decodedFormat, this.stream);
+            try (final ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+                // Start
+                int nBytesRead = 0;
+                while (nBytesRead != -1) {
+                    nBytesRead = this.decodedStream.read(buf, 0, buf.length);
+                    if (nBytesRead != -1) {
+                        baos.write(buf, 0, nBytesRead);
+                    }
                 }
-                if (nBytesRead != -1) {
-                  line.write(buf, 0, nBytesRead);
-                }
-                if (this.stop) {
-                  break;
-                }
-              }
+                oggData = baos.toByteArray();
             }
-            if (this.stop) {
-              break;
-            }
-          }
-          // Stop
-          line.drain();
-          line.stop();
         }
-      } catch (LineUnavailableException lue) {
-        FantastleReboot.exception(lue);
-      }
+        if (oggData != null) {
+            try (SourceDataLine line = OggPlayer.getLine(this.decodedFormat)) {
+                if (line != null) {
+                    // Start
+                    line.start();
+                    while (!this.stop) {
+                        if (this.stop) {
+                            break;
+                        }
+                        try (ByteArrayInputStream bais = new ByteArrayInputStream(
+                                oggData)) {
+                            int nBytesRead = 0;
+                            while (nBytesRead != -1) {
+                                nBytesRead = bais.read(buf, 0, buf.length);
+                                if (this.stop) {
+                                    break;
+                                }
+                                if (nBytesRead != -1) {
+                                    line.write(buf, 0, nBytesRead);
+                                }
+                                if (this.stop) {
+                                    break;
+                                }
+                            }
+                        }
+                        if (this.stop) {
+                            break;
+                        }
+                    }
+                    // Stop
+                    line.drain();
+                    line.stop();
+                }
+            } catch (final LineUnavailableException lue) {
+                FantastleReboot.exception(lue);
+            }
+        }
     }
-  }
 
-  private static SourceDataLine getLine(AudioFormat audioFormat)
-      throws LineUnavailableException {
-    SourceDataLine res = null;
-    DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
-    res = (SourceDataLine) AudioSystem.getLine(info);
-    res.open(audioFormat);
-    return res;
-  }
+    private static SourceDataLine getLine(final AudioFormat audioFormat)
+            throws LineUnavailableException {
+        SourceDataLine res = null;
+        final DataLine.Info info = new DataLine.Info(SourceDataLine.class,
+                audioFormat);
+        res = (SourceDataLine) AudioSystem.getLine(info);
+        res.open(audioFormat);
+        return res;
+    }
 
-  public void stopLoop() {
-    this.stop = true;
-  }
+    public void stopLoop() {
+        this.stop = true;
+    }
 }

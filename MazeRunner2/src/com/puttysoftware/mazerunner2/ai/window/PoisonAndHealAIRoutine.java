@@ -17,23 +17,23 @@ public class PoisonAndHealAIRoutine extends AbstractWindowAIRoutine {
     }
 
     @Override
-    public int getNextAction(AbstractCreature c) {
+    public int getNextAction(final AbstractCreature c) {
         if (this.poisonRounds > 0) {
             this.poisonRounds--;
         }
-        RandomRange whichAction = new RandomRange(1, 2);
-        int action = whichAction.generate();
+        final RandomRange whichAction = new RandomRange(1, 2);
+        final int action = whichAction.generate();
         Spell which = null;
         if (action == 1) {
             which = c.getSpellBook().getSpellByID(0);
         } else {
             which = c.getSpellBook().getSpellByID(1);
         }
-        int cost = which.getCost();
-        int currMP = c.getCurrentMP();
+        final int cost = which.getCost();
+        final int currMP = c.getCurrentMP();
         if (action == 1) {
             if (cost <= currMP && this.poisonRounds == 0) {
-                RandomRange chance = new RandomRange(1, 100);
+                final RandomRange chance = new RandomRange(1, 100);
                 if (chance.generate() <= PoisonAndHealAIRoutine.POISON_CHANCE) {
                     this.poisonRounds = which.getEffect().getInitialRounds();
                     this.spell = which;
@@ -48,11 +48,13 @@ public class PoisonAndHealAIRoutine extends AbstractWindowAIRoutine {
             }
         } else {
             if (cost <= currMP) {
-                int currHP = c.getCurrentHP();
-                int targetHP = (int) (currHP * PoisonAndHealAIRoutine.HEAL_PERCENT);
+                final int currHP = c.getCurrentHP();
+                final int targetHP = (int) (currHP
+                        * PoisonAndHealAIRoutine.HEAL_PERCENT);
                 if (currHP <= targetHP) {
-                    RandomRange chance = new RandomRange(1, 100);
-                    if (chance.generate() <= PoisonAndHealAIRoutine.HEAL_CHANCE) {
+                    final RandomRange chance = new RandomRange(1, 100);
+                    if (chance
+                            .generate() <= PoisonAndHealAIRoutine.HEAL_CHANCE) {
                         this.spell = which;
                         return AbstractWindowAIRoutine.ACTION_CAST_SPELL;
                     } else {

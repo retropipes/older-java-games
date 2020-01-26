@@ -44,8 +44,8 @@ public class RaceConstants {
             try {
                 // Fetch data
                 final ResourceStreamReader rsr = new ResourceStreamReader(
-                        RaceDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/race/catalog.txt"));
+                        RaceDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/mastermaze/resources/data/race/catalog.txt"));
                 final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {

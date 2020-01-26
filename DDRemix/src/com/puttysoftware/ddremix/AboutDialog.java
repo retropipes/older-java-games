@@ -61,8 +61,8 @@ public class AboutDialog {
         textPane.setLayout(new GridLayout(4, 1));
         textPane.add(new JLabel("DDRemix Version: " + ver));
         textPane.add(new JLabel("Author: Eric Ahnell"));
-        textPane.add(new JLabel(
-                "Web Site: http://www.puttysoftware.com/ddremix/"));
+        textPane.add(
+                new JLabel("Web Site: http://www.puttysoftware.com/ddremix/"));
         textPane.add(new JLabel(
                 "E-mail bug reports to: products@puttysoftware.com  "));
         buttonPane.setLayout(new FlowLayout());

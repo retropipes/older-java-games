@@ -41,8 +41,8 @@ public class OneShotChainTeleport extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = LoopChute.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsoluteNoEvents(
@@ -65,8 +65,8 @@ public class OneShotChainTeleport extends GenericTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = LoopChute.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT_CHAIN);
+        return me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_ONESHOT_CHAIN);
     }
 
     @Override

@@ -17,8 +17,8 @@ public class ScriptedAI extends AIRoutine {
 
     // Constructors
     public ScriptedAI(final File scriptFile) throws IOException {
-        try (final BufferedReader reader = new BufferedReader(new FileReader(
-                scriptFile))) {
+        try (final BufferedReader reader = new BufferedReader(
+                new FileReader(scriptFile))) {
             this.rawScript = new ArrayList<>();
             String line = "";
             while (line != null) {
@@ -36,9 +36,8 @@ public class ScriptedAI extends AIRoutine {
         // Jump to main section
         this.counter = this.jumpToSection("main");
         if (this.counter == -1) {
-            Support.getNonFatalLogger().logNonFatalError(
-                    new RuntimeException(
-                            "AI script section \"main\" not found!"));
+            Support.getNonFatalLogger().logNonFatalError(new RuntimeException(
+                    "AI script section \"main\" not found!"));
             return AIRoutine.ACTION_END_TURN;
         }
         // Loop until done
@@ -49,7 +48,8 @@ public class ScriptedAI extends AIRoutine {
                 // Full command parsing
                 if (command.equals(AIScriptConstants.COMMAND_MOVE)) {
                     return AIRoutine.ACTION_MOVE;
-                } else if (command.equals(AIScriptConstants.COMMAND_CAST_SPELL)) {
+                } else if (command
+                        .equals(AIScriptConstants.COMMAND_CAST_SPELL)) {
                     return AIRoutine.ACTION_CAST_SPELL;
                 } else if (command.equals(AIScriptConstants.COMMAND_STEAL)) {
                     return AIRoutine.ACTION_STEAL;
@@ -82,36 +82,36 @@ public class ScriptedAI extends AIRoutine {
                         .equals(AIScriptConstants.META_COMMAND_TURN_RANDOMLY)) {
                     this.turnRandomly();
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_POISON)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_POISON)) {
                     this.selectSpellPoison(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_HEAL)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_HEAL)) {
                     this.selectSpellHeal(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_WEAPON_DRAIN)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_WEAPON_DRAIN)) {
                     this.selectSpellWeaponDrain(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_ARMOR_DRAIN)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_ARMOR_DRAIN)) {
                     this.selectSpellArmorDrain(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_WEAPON_CHARGE)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_WEAPON_CHARGE)) {
                     this.selectSpellWeaponCharge(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_ARMOR_CHARGE)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_ARMOR_CHARGE)) {
                     this.selectSpellArmorCharge(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_SELECT_SPELL_ATTACK_LOCK)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_SELECT_SPELL_ATTACK_LOCK)) {
                     this.selectSpellAttackLock(ac);
                     this.counter++;
-                } else if (command
-                        .equals(AIScriptConstants.META_COMMAND_RESET_LAST_RESULT)) {
+                } else if (command.equals(
+                        AIScriptConstants.META_COMMAND_RESET_LAST_RESULT)) {
                     this.setLastResult(true);
                     this.counter++;
                 } else if (command
@@ -174,13 +174,14 @@ public class ScriptedAI extends AIRoutine {
                                             + sectionName + "\" not found!"));
                             return AIRoutine.ACTION_END_TURN;
                         }
-                    } else if (testNegative
-                            .equals(AIScriptConstants.TEST_NEGATIVE_COMMAND_PREFIX)) {
-                        final String testingWhat = command
-                                .substring(AIScriptConstants.TEST_NEGATIVE_COMMAND_PREFIX
+                    } else if (testNegative.equals(
+                            AIScriptConstants.TEST_NEGATIVE_COMMAND_PREFIX)) {
+                        final String testingWhat = command.substring(
+                                AIScriptConstants.TEST_NEGATIVE_COMMAND_PREFIX
                                         .length());
                         boolean testResult = true;
-                        if (testingWhat.equals(AIScriptConstants.COMMAND_MOVE)) {
+                        if (testingWhat
+                                .equals(AIScriptConstants.COMMAND_MOVE)) {
                             testResult = !ScriptedAI.testMove(ac);
                         } else if (testingWhat
                                 .equals(AIScriptConstants.COMMAND_CAST_SPELL)) {
@@ -197,12 +198,12 @@ public class ScriptedAI extends AIRoutine {
                         } else if (testingWhat
                                 .equals(AIScriptConstants.COMMAND_END_TURN)) {
                             testResult = !ScriptedAI.testEndTurn();
-                        } else if (testingWhat
-                                .equals(AIScriptConstants.META_COMMAND_ATTACK)) {
+                        } else if (testingWhat.equals(
+                                AIScriptConstants.META_COMMAND_ATTACK)) {
                             testResult = !ScriptedAI.testAttack(ac);
                         } else {
-                            Support.getNonFatalLogger().logNonFatalError(
-                                    new RuntimeException(
+                            Support.getNonFatalLogger()
+                                    .logNonFatalError(new RuntimeException(
                                             "Unknown AI script command found: "
                                                     + command));
                             return AIRoutine.ACTION_END_TURN;
@@ -212,13 +213,14 @@ public class ScriptedAI extends AIRoutine {
                         } else {
                             this.counter += 2;
                         }
-                    } else if (testPositive
-                            .equals(AIScriptConstants.TEST_POSITIVE_COMMAND_PREFIX)) {
-                        final String testingWhat = command
-                                .substring(AIScriptConstants.TEST_POSITIVE_COMMAND_PREFIX
+                    } else if (testPositive.equals(
+                            AIScriptConstants.TEST_POSITIVE_COMMAND_PREFIX)) {
+                        final String testingWhat = command.substring(
+                                AIScriptConstants.TEST_POSITIVE_COMMAND_PREFIX
                                         .length());
                         boolean testResult = true;
-                        if (testingWhat.equals(AIScriptConstants.COMMAND_MOVE)) {
+                        if (testingWhat
+                                .equals(AIScriptConstants.COMMAND_MOVE)) {
                             testResult = ScriptedAI.testMove(ac);
                         } else if (testingWhat
                                 .equals(AIScriptConstants.COMMAND_CAST_SPELL)) {
@@ -235,12 +237,12 @@ public class ScriptedAI extends AIRoutine {
                         } else if (testingWhat
                                 .equals(AIScriptConstants.COMMAND_END_TURN)) {
                             testResult = ScriptedAI.testEndTurn();
-                        } else if (testingWhat
-                                .equals(AIScriptConstants.META_COMMAND_ATTACK)) {
+                        } else if (testingWhat.equals(
+                                AIScriptConstants.META_COMMAND_ATTACK)) {
                             testResult = ScriptedAI.testAttack(ac);
                         } else {
-                            Support.getNonFatalLogger().logNonFatalError(
-                                    new RuntimeException(
+                            Support.getNonFatalLogger()
+                                    .logNonFatalError(new RuntimeException(
                                             "Unknown AI script command found: "
                                                     + command));
                             return AIRoutine.ACTION_END_TURN;
@@ -250,10 +252,10 @@ public class ScriptedAI extends AIRoutine {
                         } else {
                             this.counter += 2;
                         }
-                    } else if (testScan
-                            .equals(AIScriptConstants.META_COMMAND_SCAN_RADIUS)) {
-                        final String scanRadiusRaw = command
-                                .substring(AIScriptConstants.META_COMMAND_SCAN_RADIUS
+                    } else if (testScan.equals(
+                            AIScriptConstants.META_COMMAND_SCAN_RADIUS)) {
+                        final String scanRadiusRaw = command.substring(
+                                AIScriptConstants.META_COMMAND_SCAN_RADIUS
                                         .length());
                         int scanRadius = 1;
                         try {
@@ -262,8 +264,8 @@ public class ScriptedAI extends AIRoutine {
                                 throw new NumberFormatException();
                             }
                         } catch (final NumberFormatException nfe) {
-                            Support.getNonFatalLogger().logNonFatalError(
-                                    new RuntimeException(
+                            Support.getNonFatalLogger()
+                                    .logNonFatalError(new RuntimeException(
                                             "Malformed scan command found: "
                                                     + command));
                             return AIRoutine.ACTION_END_TURN;
@@ -279,8 +281,8 @@ public class ScriptedAI extends AIRoutine {
                         }
                         this.counter++;
                     } else {
-                        Support.getNonFatalLogger().logNonFatalError(
-                                new RuntimeException(
+                        Support.getNonFatalLogger()
+                                .logNonFatalError(new RuntimeException(
                                         "Unknown AI script command found: "
                                                 + command));
                         return AIRoutine.ACTION_END_TURN;

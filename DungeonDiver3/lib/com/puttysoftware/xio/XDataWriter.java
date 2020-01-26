@@ -6,12 +6,13 @@ import java.io.IOException;
 
 public class XDataWriter {
     // Fields
-    private BufferedWriter bw;
-    private String docTag;
+    private final BufferedWriter bw;
+    private final String docTag;
     private static final String END_OF_LINE = "\r\n";
 
     // Constructors
-    public XDataWriter(String filename, String newDocTag) throws IOException {
+    public XDataWriter(final String filename, final String newDocTag)
+            throws IOException {
         this.bw = new BufferedWriter(new FileWriter(filename));
         this.docTag = newDocTag;
         this.writeXHeader();
@@ -24,36 +25,37 @@ public class XDataWriter {
         this.bw.close();
     }
 
-    public void writeDouble(double d) throws IOException {
-        this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">"
-                + Double.toString(d) + "</" + XDataConstants.DOUBLE_TAG + ">"
+    public void writeDouble(final double d) throws IOException {
+        this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">" + Double.toString(d)
+                + "</" + XDataConstants.DOUBLE_TAG + ">"
                 + XDataWriter.END_OF_LINE);
     }
 
-    public void writeInt(int i) throws IOException {
+    public void writeInt(final int i) throws IOException {
         this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i)
-                + "</" + XDataConstants.INT_TAG + ">" + XDataWriter.END_OF_LINE);
+                + "</" + XDataConstants.INT_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
-    public void writeLong(long l) throws IOException {
+    public void writeLong(final long l) throws IOException {
         this.bw.write("<" + XDataConstants.LONG_TAG + ">" + Long.toString(l)
                 + "</" + XDataConstants.LONG_TAG + ">"
                 + XDataWriter.END_OF_LINE);
     }
 
-    public void writeByte(byte b) throws IOException {
+    public void writeByte(final byte b) throws IOException {
         this.bw.write("<" + XDataConstants.BYTE_TAG + ">" + Byte.toString(b)
                 + "</" + XDataConstants.BYTE_TAG + ">"
                 + XDataWriter.END_OF_LINE);
     }
 
-    public void writeBoolean(boolean b) throws IOException {
+    public void writeBoolean(final boolean b) throws IOException {
         this.bw.write("<" + XDataConstants.BOOLEAN_TAG + ">"
                 + Boolean.toString(b) + "</" + XDataConstants.BOOLEAN_TAG + ">"
                 + XDataWriter.END_OF_LINE);
     }
 
-    public void writeString(String s) throws IOException {
+    public void writeString(final String s) throws IOException {
         this.bw.write("<" + XDataConstants.STRING_TAG + ">"
                 + XDataWriter.replaceSpecialCharacters(s) + "</"
                 + XDataConstants.STRING_TAG + ">" + XDataWriter.END_OF_LINE);
@@ -71,7 +73,7 @@ public class XDataWriter {
         this.bw.write("</" + this.docTag + ">");
     }
 
-    private static String replaceSpecialCharacters(String s) {
+    private static String replaceSpecialCharacters(final String s) {
         String r = s;
         r = r.replace("&", "&amp;");
         r = r.replace("<", "&lt;");

@@ -6,6 +6,6 @@
 package com.puttysoftware.gemma.support.creatures.genders;
 
 interface GenderConstants {
-    public static final int GENDERS_COUNT = 2;
-    public static final String[] GENDER_NAMES = { "Male", "Female" };
+    int GENDERS_COUNT = 2;
+    String[] GENDER_NAMES = { "Male", "Female" };
 }

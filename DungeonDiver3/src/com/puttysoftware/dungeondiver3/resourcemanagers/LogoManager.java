@@ -19,7 +19,7 @@ public class LogoManager {
     private final static String LOAD_PATH = LogoManager.DEFAULT_LOAD_PATH;
     private final static Class<?> LOAD_CLASS = LogoManager.class;
 
-    static BufferedImageIcon getUncachedLogo(String name) {
+    static BufferedImageIcon getUncachedLogo(final String name) {
         try {
             final URL url = LogoManager.LOAD_CLASS
                     .getResource(LogoManager.LOAD_PATH + name + ".png");

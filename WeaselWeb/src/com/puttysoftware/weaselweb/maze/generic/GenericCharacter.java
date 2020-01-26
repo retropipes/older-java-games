@@ -32,8 +32,8 @@ public abstract class GenericCharacter extends MazeObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Do nothing
     }
 
@@ -55,8 +55,8 @@ public abstract class GenericCharacter extends MazeObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Shot self
         WeaselWeb.getApplication().showMessage("Ouch, you shot yourself!");
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {

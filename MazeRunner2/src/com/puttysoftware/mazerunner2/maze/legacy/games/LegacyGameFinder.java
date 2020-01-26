@@ -12,7 +12,7 @@ import com.puttysoftware.mazerunner2.maze.legacy.LegacyExtension;
 
 public class LegacyGameFinder implements FilenameFilter {
     @Override
-    public boolean accept(final File f, String s) {
+    public boolean accept(final File f, final String s) {
         final String extension = LegacyGameFinder.getExtension(s);
         if (extension != null) {
             if (extension.equals(LegacyExtension.getLegacyGameExtension())) {
@@ -27,7 +27,7 @@ public class LegacyGameFinder implements FilenameFilter {
     private static String getExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;

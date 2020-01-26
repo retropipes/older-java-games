@@ -19,6 +19,6 @@ public class DirectionConstants {
     public static final int DIRECTION_WEST = 7;
 
     private DirectionConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -38,10 +38,10 @@ public class PartyManager {
     }
 
     // Methods
-    public static boolean createParty(JFrame owner) {
+    public static boolean createParty(final JFrame owner) {
         PartyManager.party = new Party(PartyManager.PARTY_SIZE);
         int mem = 0;
-        PartyMember[] pickMembers = CharacterLoader
+        final PartyMember[] pickMembers = CharacterLoader
                 .loadAllRegisteredCharacters();
         Party pickParty = null;
         if (pickMembers != null) {
@@ -57,9 +57,9 @@ public class PartyManager {
                     CharacterLoader.saveCharacter(pc);
                 }
             } else {
-                int response = CommonDialogs.showCustomDialog(
-                        "Pick, Create, or Done?", "Create Party", buttonNames,
-                        buttonNames[2]);
+                final int response = CommonDialogs.showCustomDialog(
+                        "Pick, Create, or Done?", "Create Party",
+                        PartyManager.buttonNames, PartyManager.buttonNames[2]);
                 if (response == 2) {
                     pc = pickParty.pickOnePartyMemberCreate();
                 } else if (response == 1) {
@@ -77,7 +77,7 @@ public class PartyManager {
             PartyManager.party.addPartyMember(pc);
             mem++;
             if (mem < PartyManager.PARTY_SIZE) {
-                int response = CommonDialogs.showConfirmDialog(
+                final int response = CommonDialogs.showConfirmDialog(
                         "Add another character?", "Create Party");
                 if (response != JOptionPane.YES_OPTION) {
                     break;
@@ -94,14 +94,16 @@ public class PartyManager {
         return PartyManager.party;
     }
 
-    public static void loadGameHook(XDataReader partyFile) throws IOException {
-        boolean containsPCData = partyFile.readBoolean();
+    public static void loadGameHook(final XDataReader partyFile)
+            throws IOException {
+        final boolean containsPCData = partyFile.readBoolean();
         if (containsPCData) {
             PartyManager.party = Party.read(partyFile);
         }
     }
 
-    public static void saveGameHook(XDataWriter partyFile) throws IOException {
+    public static void saveGameHook(final XDataWriter partyFile)
+            throws IOException {
         if (PartyManager.party != null) {
             partyFile.writeBoolean(true);
             PartyManager.party.write(partyFile);
@@ -116,27 +118,27 @@ public class PartyManager {
         }
     }
 
-    public static PartyMember getNewPCInstance(int r, int f, int p, int g,
-            String n) {
-        Race race = RaceManager.getRace(r);
-        Faith faith = FaithManager.getFaith(f);
-        Personality personality = PersonalityManager.getPersonality(p);
-        Gender gender = GenderManager.getGender(g);
+    public static PartyMember getNewPCInstance(final int r, final int f,
+            final int p, final int g, final String n) {
+        final Race race = RaceManager.getRace(r);
+        final Faith faith = FaithManager.getFaith(f);
+        final Personality personality = PersonalityManager.getPersonality(p);
+        final Gender gender = GenderManager.getGender(g);
         return new PartyMember(race, faith, personality, gender, n);
     }
 
-    private static PartyMember createNewPC(JFrame owner) {
-        String name = CommonDialogs.showTextInputDialog("Character Name",
+    private static PartyMember createNewPC(final JFrame owner) {
+        final String name = CommonDialogs.showTextInputDialog("Character Name",
                 "Create Character");
         if (name != null) {
-            Race race = RaceManager.selectRace(owner);
+            final Race race = RaceManager.selectRace(owner);
             if (race != null) {
-                Faith faith = FaithManager.selectFaith(owner);
+                final Faith faith = FaithManager.selectFaith(owner);
                 if (faith != null) {
-                    Personality personality = PersonalityManager
+                    final Personality personality = PersonalityManager
                             .selectPersonality(owner);
                     if (personality != null) {
-                        Gender gender = GenderManager.selectGender();
+                        final Gender gender = GenderManager.selectGender();
                         if (gender != null) {
                             return new PartyMember(race, faith, personality,
                                     gender, name);
@@ -148,8 +150,9 @@ public class PartyManager {
         return null;
     }
 
-    public static String showCreationDialog(JFrame owner, String labelText,
-            String title, String[] input, String[] descriptions) {
+    public static String showCreationDialog(final JFrame owner,
+            final String labelText, final String title, final String[] input,
+            final String[] descriptions) {
         return ListWithDescDialog.showDialog(owner, null, labelText, title,
                 input, input[0], descriptions[0], descriptions);
     }

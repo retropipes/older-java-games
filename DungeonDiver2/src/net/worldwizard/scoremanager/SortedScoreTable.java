@@ -104,8 +104,8 @@ public class SortedScoreTable extends ScoreTable {
         return true;
     }
 
-    public static SortedScoreTable readSortedScoreTableXML(final XDataReader xdr)
-            throws IOException {
+    public static SortedScoreTable readSortedScoreTableXML(
+            final XDataReader xdr) throws IOException {
         final boolean order = xdr.readBoolean();
         final int len = xdr.readInt();
         final String unit = xdr.readString();

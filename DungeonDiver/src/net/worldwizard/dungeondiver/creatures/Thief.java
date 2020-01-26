@@ -17,8 +17,8 @@ public class Thief extends Player {
         this.classBonusDefense = 2;
         this.updateMaxHPandMP();
         this.healFully();
-        this.spellsKnown = SpellBookManager.getSpellBookByID(this
-                .getPlayerClass());
+        this.spellsKnown = SpellBookManager
+                .getSpellBookByID(this.getPlayerClass());
     }
 
     public Thief(final int pAtk, final int pDef, final int pHP, final int pMP,
@@ -32,8 +32,8 @@ public class Thief extends Player {
         this.classBonusDefense = 2;
         this.updateMaxHPandMP();
         this.healFully();
-        this.spellsKnown = SpellBookManager.getSpellBookByID(this
-                .getPlayerClass());
+        this.spellsKnown = SpellBookManager
+                .getSpellBookByID(this.getPlayerClass());
     }
 
     // Methods

@@ -17,7 +17,7 @@ public class CommonDialogs {
 
     // Constructor
     private CommonDialogs() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
@@ -28,8 +28,8 @@ public class CommonDialogs {
      *            The dialog message.
      */
     public static void showDialog(final String msg) {
-	JOptionPane.showMessageDialog(null, msg, CommonDialogs.DEFAULT_TITLE,
-		JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
+        JOptionPane.showMessageDialog(null, msg, CommonDialogs.DEFAULT_TITLE,
+                JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
     }
 
     /**
@@ -41,8 +41,8 @@ public class CommonDialogs {
      *            The dialog title.
      */
     public static void showTitledDialog(final String msg, final String title) {
-	JOptionPane.showMessageDialog(null, msg, title,
-		JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
+        JOptionPane.showMessageDialog(null, msg, title,
+                JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
     }
 
     /**
@@ -54,8 +54,8 @@ public class CommonDialogs {
      *            The dialog title.
      */
     public static void showErrorDialog(final String msg, final String title) {
-	JOptionPane.showMessageDialog(null, msg, title,
-		JOptionPane.ERROR_MESSAGE, CommonDialogs.ICON);
+        JOptionPane.showMessageDialog(null, msg, title,
+                JOptionPane.ERROR_MESSAGE, CommonDialogs.ICON);
     }
 
     /**
@@ -72,11 +72,11 @@ public class CommonDialogs {
      * @return The choice picked
      */
     public static String showInputDialog(final String prompt,
-	    final String title, final Object[] choices,
-	    final String defaultChoice) {
-	return (String) JOptionPane.showInputDialog(null, prompt, title,
-		JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, choices,
-		defaultChoice);
+            final String title, final Object[] choices,
+            final String defaultChoice) {
+        return (String) JOptionPane.showInputDialog(null, prompt, title,
+                JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, choices,
+                defaultChoice);
     }
 
     /**
@@ -89,9 +89,9 @@ public class CommonDialogs {
      * @return The value the user input.
      */
     public static String showTextInputDialog(final String prompt,
-	    final String title) {
-	return (String) JOptionPane.showInputDialog(null, prompt, title,
-		JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, null, null);
+            final String title) {
+        return (String) JOptionPane.showInputDialog(null, prompt, title,
+                JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, null, null);
     }
 
     /**
@@ -104,19 +104,19 @@ public class CommonDialogs {
      * @return The value the user input.
      */
     public static char[] showPasswordInputDialog(final String prompt,
-	    final String title, final int length) {
-	final JPanel panel = new JPanel();
-	final JLabel label = new JLabel(prompt);
-	final JPasswordField pass = new JPasswordField(length);
-	panel.add(label);
-	panel.add(pass);
-	final int option = JOptionPane.showOptionDialog(null, panel, title,
-		JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-		CommonDialogs.ICON, null, null);
-	if (option == JOptionPane.OK_OPTION) {
-	    return pass.getPassword();
-	}
-	return null;
+            final String title, final int length) {
+        final JPanel panel = new JPanel();
+        final JLabel label = new JLabel(prompt);
+        final JPasswordField pass = new JPasswordField(length);
+        panel.add(label);
+        panel.add(pass);
+        final int option = JOptionPane.showOptionDialog(null, panel, title,
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
+                CommonDialogs.ICON, null, null);
+        if (option == JOptionPane.OK_OPTION) {
+            return pass.getPassword();
+        }
+        return null;
     }
 
     /**
@@ -129,10 +129,10 @@ public class CommonDialogs {
      * @return The value the user input.
      */
     public static String showTextInputDialogWithDefault(final String prompt,
-	    final String title, final String defaultValue) {
-	return (String) JOptionPane.showInputDialog(null, prompt, title,
-		JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, null,
-		defaultValue);
+            final String title, final String defaultValue) {
+        return (String) JOptionPane.showInputDialog(null, prompt, title,
+                JOptionPane.QUESTION_MESSAGE, CommonDialogs.ICON, null,
+                defaultValue);
     }
 
     /**
@@ -144,10 +144,11 @@ public class CommonDialogs {
      *            The dialog title.
      * @return A JOptionPane constant specifying what the user clicked.
      */
-    public static int showConfirmDialog(final String prompt, final String title) {
-	return JOptionPane.showConfirmDialog(null, prompt, title,
-		JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
-		CommonDialogs.ICON);
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
+        return JOptionPane.showConfirmDialog(null, prompt, title,
+                JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                CommonDialogs.ICON);
     }
 
     /**
@@ -160,18 +161,18 @@ public class CommonDialogs {
      * @return A JOptionPane constant specifying what the user clicked.
      */
     public static int showYNCConfirmDialog(final String prompt,
-	    final String title) {
-	return JOptionPane.showConfirmDialog(null, prompt, title,
-		JOptionPane.YES_NO_CANCEL_OPTION,
-		JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
+            final String title) {
+        return JOptionPane.showConfirmDialog(null, prompt, title,
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON);
     }
 
     public static int showCustomDialog(final String prompt, final String title,
-	    final String[] buttonNames, final String defaultButton) {
-	return JOptionPane.showOptionDialog(null, prompt, title,
-		JOptionPane.YES_NO_CANCEL_OPTION,
-		JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON,
-		buttonNames, defaultButton);
+            final String[] buttonNames, final String defaultButton) {
+        return JOptionPane.showOptionDialog(null, prompt, title,
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, CommonDialogs.ICON,
+                buttonNames, defaultButton);
     }
 
     /**
@@ -181,7 +182,7 @@ public class CommonDialogs {
      *            The default title
      */
     public static void setDefaultTitle(final String title) {
-	CommonDialogs.DEFAULT_TITLE = title;
+        CommonDialogs.DEFAULT_TITLE = title;
     }
 
     /**
@@ -192,6 +193,6 @@ public class CommonDialogs {
      *            library.
      */
     public static void setIcon(final BufferedImageIcon icon) {
-	CommonDialogs.ICON = icon;
+        CommonDialogs.ICON = icon;
     }
 }

@@ -69,13 +69,13 @@ public class PreferencesManager {
     }
 
     public static boolean getRandomBattleEnvironment() {
-        return PreferencesManager.storeMgr.getBoolean(
-                "RandomBattleEnvironment", false);
+        return PreferencesManager.storeMgr.getBoolean("RandomBattleEnvironment",
+                false);
     }
 
     public static void setRandomBattleEnvironment(final boolean value) {
-        PreferencesManager.storeMgr
-                .setBoolean("RandomBattleEnvironment", value);
+        PreferencesManager.storeMgr.setBoolean("RandomBattleEnvironment",
+                value);
     }
 
     public static int getBattleSpeed() {
@@ -103,8 +103,8 @@ public class PreferencesManager {
     }
 
     public static boolean areCharacterChangesPermanent() {
-        return PreferencesManager.storeMgr.getBoolean(
-                "CharacterChangesPermanent", false);
+        return PreferencesManager.storeMgr
+                .getBoolean("CharacterChangesPermanent", false);
     }
 
     static void setCharacterChangesPermanent(final boolean status) {
@@ -171,8 +171,8 @@ public class PreferencesManager {
     }
 
     public static MazeObject getEditorDefaultFill() {
-        final String choice = PreferencesManager.storeMgr.getString(
-                "EditorDefaultFill", "Grass");
+        final String choice = PreferencesManager.storeMgr
+                .getString("EditorDefaultFill", "Grass");
         if (choice.equals("Tile")) {
             return new Tile();
         } else if (choice.equals("Grass")) {
@@ -194,8 +194,8 @@ public class PreferencesManager {
         if (layer == MazeConstants.LAYER_OBJECT) {
             return new Empty();
         } else {
-            final String choice = PreferencesManager.storeMgr.getString(
-                    "EditorDefaultFill", "Grass");
+            final String choice = PreferencesManager.storeMgr
+                    .getString("EditorDefaultFill", "Grass");
             if (choice.equals("Tile")) {
                 return new Tile();
             } else if (choice.equals("Grass")) {

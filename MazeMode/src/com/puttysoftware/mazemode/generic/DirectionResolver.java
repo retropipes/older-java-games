@@ -6,9 +6,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazemode.generic;
 
 public class DirectionResolver {
-    public static final int resolveRelativeDirection(int idirX, int idirY) {
-        int dirX = (int) Math.signum(idirX);
-        int dirY = (int) Math.signum(idirY);
+    public static final int resolveRelativeDirection(final int idirX,
+            final int idirY) {
+        final int dirX = (int) Math.signum(idirX);
+        final int dirY = (int) Math.signum(idirY);
         if (dirX == 0 && dirY == 0) {
             return DirectionConstants.DIRECTION_NONE;
         } else if (dirX == 0 && dirY == -1) {

@@ -332,7 +332,8 @@ public class CurrentArena extends AbstractArena {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        DirectoryUtilities.moveFile(sourceLocation, targetLocation);
+                        DirectoryUtilities.moveFile(sourceLocation,
+                                targetLocation);
                     } catch (final IOException io) {
                         // Ignore
                     }

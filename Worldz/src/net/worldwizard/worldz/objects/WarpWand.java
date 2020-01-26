@@ -40,12 +40,10 @@ public class WarpWand extends GenericWand {
     public void useAction(final WorldObject mo, final int x, final int y,
             final int z) {
         final Application app = Worldz.getApplication();
-        app.getWorldManager()
-                .getWorld()
-                .warpObject(
-                        app.getWorldManager().getWorld()
-                                .getCell(x, y, z, WorldConstants.LAYER_OBJECT),
-                        x, y, z, WorldConstants.LAYER_OBJECT);
+        app.getWorldManager().getWorld().warpObject(
+                app.getWorldManager().getWorld().getCell(x, y, z,
+                        WorldConstants.LAYER_OBJECT),
+                x, y, z, WorldConstants.LAYER_OBJECT);
     }
 
     @Override

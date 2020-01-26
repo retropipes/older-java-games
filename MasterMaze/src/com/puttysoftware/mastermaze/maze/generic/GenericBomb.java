@@ -31,13 +31,13 @@ public abstract class GenericBomb extends GenericUsableObject {
 
     @Override
     public final boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        MasterMaze.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        MasterMaze.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         // Stop arrow
         return false;
     }

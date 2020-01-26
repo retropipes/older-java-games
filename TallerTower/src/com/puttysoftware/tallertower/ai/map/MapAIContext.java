@@ -45,7 +45,7 @@ public class MapAIContext {
                 if (obj.isSolid()) {
                     this.apCosts[x][y] = MapAIContext.CANNOT_MOVE_THERE;
                 } else {
-                    this.apCosts[x][y] = AP_COST;
+                    this.apCosts[x][y] = MapAIContext.AP_COST;
                 }
             }
         }

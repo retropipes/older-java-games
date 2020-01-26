@@ -79,7 +79,7 @@ class MapTurnBattleGUI {
     }
 
     void setStatusMessage(final String msg) {
-        if (this.messageLabel.getText().length() > MAX_TEXT) {
+        if (this.messageLabel.getText().length() > MapTurnBattleGUI.MAX_TEXT) {
             this.clearStatusMessage();
         }
         if (!msg.isEmpty() && !msg.matches("\\s+")) {
@@ -88,13 +88,14 @@ class MapTurnBattleGUI {
     }
 
     void showBattle() {
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
             MusicManager.playMusic(MusicConstants.MUSIC_BATTLE);
         }
         this.battleFrame.setVisible(true);
-        this.battleFrame.setJMenuBar(TallerTower.getApplication()
-                .getMenuManager().getMainMenuBar());
+        this.battleFrame.setJMenuBar(
+                TallerTower.getApplication().getMenuManager().getMainMenuBar());
     }
 
     void hideBattle() {
@@ -126,8 +127,8 @@ class MapTurnBattleGUI {
                         final BufferedImageIcon icon2 = bd.getBattleMaze()
                                 .getCell(y, x, 0, MazeConstants.LAYER_OBJECT)
                                 .battleRenderHook();
-                        this.drawGrid.setImageCell(ImageTransformer
-                                .getCompositeImage(icon1, icon2,
+                        this.drawGrid.setImageCell(
+                                ImageTransformer.getCompositeImage(icon1, icon2,
                                         BattleImageManager.getGraphicSize()),
                                 xFix, yFix);
                     } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -163,10 +164,10 @@ class MapTurnBattleGUI {
                         .getCell(x, y, 0, MazeConstants.LAYER_OBJECT)
                         .battleRenderHook();
                 final BufferedImageIcon icon3 = obj3.battleRenderHook();
-                this.drawGrid.setImageCell(ImageTransformer
-                        .getVirtualCompositeImage(icon1, icon2, icon3,
-                                BattleImageManager.getGraphicSize()), xFix,
-                        yFix);
+                this.drawGrid.setImageCell(
+                        ImageTransformer.getVirtualCompositeImage(icon1, icon2,
+                                icon3, BattleImageManager.getGraphicSize()),
+                        xFix, yFix);
                 this.battlePane.repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 // Do nothing
@@ -221,17 +222,17 @@ class MapTurnBattleGUI {
         this.spell.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
                 KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey), "Cast Spell");
         this.spell.getActionMap().put("Cast Spell", handler);
-        this.steal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey), "Steal");
+        this.steal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey), "Steal");
         this.steal.getActionMap().put("Steal", handler);
-        this.drain.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey), "Drain");
+        this.drain.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey), "Drain");
         this.drain.getActionMap().put("Drain", handler);
-        this.item.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_I, modKey), "Use Item");
+        this.item.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_I, modKey), "Use Item");
         this.item.getActionMap().put("Use Item", handler);
-        this.end.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey), "End Turn");
+        this.end.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey), "End Turn");
         this.end.getActionMap().put("End Turn", handler);
         Platform.hookFrameIcon(this.battleFrame, LogoManager.getIconLogo());
         this.battleFrame
@@ -243,12 +244,11 @@ class MapTurnBattleGUI {
                 .getViewingWindowSize(); x++) {
             for (int y = 0; y < MapBattleViewingWindowManager
                     .getViewingWindowSize(); y++) {
-                final AbstractMazeObject dark = new Darkness().gameRenderHook(
-                        y, x, 0);
-                this.drawGrid.setImageCell(
-                        BattleImageManager.getImage(dark.getName(),
-                                dark.getGameBaseID(),
-                                AbstractMazeObject.getTemplateColor()), x, y);
+                final AbstractMazeObject dark = new Darkness().gameRenderHook(y,
+                        x, 0);
+                this.drawGrid.setImageCell(BattleImageManager.getImage(
+                        dark.getName(), dark.getGameBaseID(),
+                        AbstractMazeObject.getTemplateColor()), x, y);
             }
         }
         this.battlePane = new MapBattleDraw(this.drawGrid);
@@ -346,7 +346,8 @@ class MapTurnBattleGUI {
 
         private void handleMovement(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }
@@ -418,7 +419,8 @@ class MapTurnBattleGUI {
 
         private void handleArrows(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }

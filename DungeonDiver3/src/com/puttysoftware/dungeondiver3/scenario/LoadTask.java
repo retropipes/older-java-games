@@ -28,12 +28,12 @@ class LoadTask extends Thread {
     private final JFrame loadFrame;
 
     // Constructors
-    LoadTask(String file) {
+    LoadTask(final String file) {
         this.filename = file;
         this.setName("File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -46,18 +46,18 @@ class LoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         int startW;
         String sg;
         app.getGameManager().setSavedGameFlag(true);
         sg = "Saved Game";
         try {
-            File scenarioFile = new File(this.filename);
+            final File scenarioFile = new File(this.filename);
             Support.createScenario();
             Map gameMap = new Map();
             gameMap.createMaps();
-            ZipUtilities.unzipDirectory(scenarioFile, new File(Support
-                    .getScenario().getBasePath()));
+            ZipUtilities.unzipDirectory(scenarioFile,
+                    new File(Support.getScenario().getBasePath()));
             // Load map data
             // Set prefix handler
             gameMap.setXPrefixHandler(new PrefixHandler());
@@ -79,14 +79,12 @@ class LoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getScenarioManager().handleDeferredSuccess();
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getScenarioManager().handleDeferredSuccess();
         } catch (final IOException ie) {
-            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
-                    + " file failed!");
+            CommonDialogs.showDialog(
+                    "Loading the " + sg.toLowerCase() + " file failed!");
             app.getScenarioManager().handleDeferredSuccess();
         } catch (final Exception ex) {
             DungeonDiver3.getErrorLogger().logError(ex);

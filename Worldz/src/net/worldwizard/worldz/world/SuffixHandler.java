@@ -9,8 +9,8 @@ import net.worldwizard.worldz.Worldz;
 public class SuffixHandler implements SuffixIO {
     @Override
     public void readSuffix(final DataReader reader) throws IOException {
-        Worldz.getApplication().getGameManager()
-                .loadGameHook(reader, FormatConstants.WORLD_FORMAT_1);
+        Worldz.getApplication().getGameManager().loadGameHook(reader,
+                FormatConstants.WORLD_FORMAT_1);
     }
 
     @Override

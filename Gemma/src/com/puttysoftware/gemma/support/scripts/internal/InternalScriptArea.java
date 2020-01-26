@@ -24,7 +24,7 @@ public class InternalScriptArea extends InternalScript {
         return this.upperLeft;
     }
 
-    public void setUpperLeft(Point newUpper) {
+    public void setUpperLeft(final Point newUpper) {
         this.upperLeft = newUpper;
     }
 
@@ -32,7 +32,7 @@ public class InternalScriptArea extends InternalScript {
         return this.lowerRight;
     }
 
-    public void setLowerRight(Point newLower) {
+    public void setLowerRight(final Point newLower) {
         this.lowerRight = newLower;
     }
 
@@ -41,13 +41,13 @@ public class InternalScriptArea extends InternalScript {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.lowerRight == null) ? 0 : this.lowerRight.hashCode());
+                + (this.lowerRight == null ? 0 : this.lowerRight.hashCode());
         return prime * result
-                + ((this.upperLeft == null) ? 0 : this.upperLeft.hashCode());
+                + (this.upperLeft == null ? 0 : this.upperLeft.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -60,7 +60,7 @@ public class InternalScriptArea extends InternalScript {
         if (!(obj instanceof InternalScriptArea)) {
             return false;
         }
-        InternalScriptArea other = (InternalScriptArea) obj;
+        final InternalScriptArea other = (InternalScriptArea) obj;
         if (this.lowerRight == null) {
             if (other.lowerRight != null) {
                 return false;

@@ -40,11 +40,12 @@ public class PoisonedBarrierGenerator extends AbstractGenerator {
     }
 
     @Override
-    protected boolean preMoveActionHook(int dirX, int dirY, int dirZ, int dirW) {
+    protected boolean preMoveActionHook(final int dirX, final int dirY,
+            final int dirZ, final int dirW) {
         this.POISON_CYCLES++;
         if (this.POISON_CYCLES == PoisonedBarrierGenerator.POISON_LIMIT) {
-            Application app = DungeonDiver4.getApplication();
-            BarrierGenerator bg = new BarrierGenerator();
+            final Application app = DungeonDiver4.getApplication();
+            final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, dirX, dirY, dirZ);
             bg.timerExpiredAction(dirX, dirY);
         }
@@ -52,9 +53,10 @@ public class PoisonedBarrierGenerator extends AbstractGenerator {
     }
 
     @Override
-    protected void arrowHitActionHook(int locX, int locY, int locZ,
-            int arrowType, DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    protected void arrowHitActionHook(final int locX, final int locY,
+            final int locZ, final int arrowType,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,
                     locZ);

@@ -83,10 +83,10 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
                 isSolidXE);
         this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST,
                 isSolidXW);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTH, isSolidIN);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH,
+                isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH,
+                isSolidIS);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST,
                 isSolidIE);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST,
@@ -260,9 +260,8 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
         result = prime * result + (this.friction ? 1231 : 1237);
         result = prime * result + this.initialTimerValue;
         result = prime * result + (this.isInventoryable ? 1231 : 1237);
-        result = prime
-                * result
-                + (this.prerequisite == null ? 0 : this.prerequisite.hashCode());
+        result = prime * result + (this.prerequisite == null ? 0
+                : this.prerequisite.hashCode());
         result = prime * result + (this.pullable ? 1231 : 1237);
         result = prime * result + (this.pullableInto ? 1231 : 1237);
         result = prime * result + (this.pullableOut ? 1231 : 1237);
@@ -377,7 +376,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -386,7 +385,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -463,7 +462,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -476,14 +475,14 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
      * @param inv
      */
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Play move success sound, if it's enabled
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
@@ -492,7 +491,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -509,7 +508,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -540,7 +539,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -638,7 +637,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -652,7 +651,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -665,7 +664,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -678,7 +677,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -697,7 +696,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -711,7 +710,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -724,7 +723,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -737,7 +736,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -756,7 +755,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -768,7 +767,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -817,7 +816,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -826,7 +825,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -837,14 +836,14 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Default do-nothing, return true
         return true;
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -855,7 +854,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -866,7 +865,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -968,12 +967,13 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -1127,7 +1127,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -1137,7 +1137,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return

@@ -32,7 +32,7 @@ public abstract class AbstractEditor implements EditorProperties {
     private JLabel messageLabel;
     private JScrollPane scrollPane;
     private boolean objectChanged;
-    private int editorID;
+    private final int editorID;
     private boolean readOnly;
 
     protected AbstractEditor(final String newSource, final int newEditorID) {
@@ -57,7 +57,7 @@ public abstract class AbstractEditor implements EditorProperties {
     }
 
     public final void edit() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGUIManager().hideGUI();
         app.setInEditor();
         app.setCurrentEditor(this.editorID);
@@ -97,7 +97,7 @@ public abstract class AbstractEditor implements EditorProperties {
     }
 
     private final void showOutput() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         this.outputFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         app.getMenuManager().setEditorMenus();
         this.outputFrame.setVisible(true);
@@ -115,7 +115,7 @@ public abstract class AbstractEditor implements EditorProperties {
     }
 
     public final void exitEditor() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.notifyAllNonCurrentEditorsEnableCommands();
         // Save changes
         this.saveObject();
@@ -181,21 +181,24 @@ public abstract class AbstractEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
                 pw = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
                 ph = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();
@@ -223,21 +226,24 @@ public abstract class AbstractEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
                 pw = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
                 ph = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();

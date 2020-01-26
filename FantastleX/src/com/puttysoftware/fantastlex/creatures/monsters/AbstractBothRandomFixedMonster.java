@@ -5,7 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.fantastlex.creatures.monsters;
 
-abstract class AbstractBothRandomFixedMonster extends AbstractBothRandomMonster {
+abstract class AbstractBothRandomFixedMonster
+        extends AbstractBothRandomMonster {
     // Constructors
     AbstractBothRandomFixedMonster() {
         super();

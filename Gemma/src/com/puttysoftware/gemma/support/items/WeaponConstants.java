@@ -20,25 +20,25 @@ class WeaponConstants {
 
     // Methods
     static String[] getWeaponChoices() {
-        return WEAPON_CHOICES;
+        return WeaponConstants.WEAPON_CHOICES;
     }
 
     static String[] getHandChoices() {
-        if (HAND_CHOICES == null) {
-            String[] temp = EquipmentSlotConstants.getSlotNames();
-            String[] temp2 = new String[2];
+        if (WeaponConstants.HAND_CHOICES == null) {
+            final String[] temp = EquipmentSlotConstants.getSlotNames();
+            final String[] temp2 = new String[2];
             temp2[0] = temp[EquipmentSlotConstants.SLOT_MAINHAND];
             temp2[1] = temp[EquipmentSlotConstants.SLOT_OFFHAND];
-            HAND_CHOICES = temp2;
+            WeaponConstants.HAND_CHOICES = temp2;
         }
-        return HAND_CHOICES;
+        return WeaponConstants.HAND_CHOICES;
     }
 
     static String get1HWeapons() {
-        return WEAPON_1H;
+        return WeaponConstants.WEAPON_1H;
     }
 
     static String get2HWeapons() {
-        return WEAPON_2H;
+        return WeaponConstants.WEAPON_2H;
     }
 }

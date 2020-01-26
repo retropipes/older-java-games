@@ -8,8 +8,8 @@ package com.puttysoftware.mazemode.objects;
 import com.puttysoftware.mazemode.MazeMode;
 import com.puttysoftware.mazemode.generic.GenericConditionalTeleport;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super();

@@ -14,8 +14,8 @@ import com.puttysoftware.widgetwarren.generic.MazeObject;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundConstants;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundManager;
 
-public class RandomInvisibleOneShotTeleport extends
-        GenericRandomInvisibleTeleport {
+public class RandomInvisibleOneShotTeleport
+        extends GenericRandomInvisibleTeleport {
     // Constructors
     public RandomInvisibleOneShotTeleport() {
         super(0, 0);
@@ -28,8 +28,8 @@ public class RandomInvisibleOneShotTeleport extends
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -61,8 +61,8 @@ public class RandomInvisibleOneShotTeleport extends
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = WidgetWarren.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
         return mo;
     }
 

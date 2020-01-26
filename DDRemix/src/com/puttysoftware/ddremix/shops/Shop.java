@@ -134,9 +134,8 @@ public class Shop {
             final PartyMember playerCharacter = PartyManager.getParty()
                     .getLeader();
             if (Shop.this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
-                Shop.this.choices = EquipmentFactory
-                        .createWeaponNames(playerCharacter.getCaste()
-                                .getCasteID());
+                Shop.this.choices = EquipmentFactory.createWeaponNames(
+                        playerCharacter.getCaste().getCasteID());
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_ARMOR) {
                 Shop.this.choices = EquipmentFactory
                         .createArmorNames(Shop.this.typeIndex);
@@ -178,9 +177,8 @@ public class Shop {
             final PartyMember playerCharacter = PartyManager.getParty()
                     .getLeader();
             // Check
-            if (Shop.this.type == ShopTypes.SHOP_TYPE_HEALER
-                    && playerCharacter.getCurrentHP() == playerCharacter
-                            .getMaximumHP()) {
+            if (Shop.this.type == ShopTypes.SHOP_TYPE_HEALER && playerCharacter
+                    .getCurrentHP() == playerCharacter.getMaximumHP()) {
                 CommonDialogs.showDialog("You don't need healing.");
                 return false;
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_REGENERATOR
@@ -189,8 +187,10 @@ public class Shop {
                 CommonDialogs.showDialog("You don't need regeneration.");
                 return false;
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_SPELLS
-                    && playerCharacter.getSpellBook().getSpellsKnownCount() == playerCharacter
-                            .getSpellBook().getMaximumSpellsKnownCount()) {
+                    && playerCharacter.getSpellBook()
+                            .getSpellsKnownCount() == playerCharacter
+                                    .getSpellBook()
+                                    .getMaximumSpellsKnownCount()) {
                 CommonDialogs.showDialog("There are no more spells to learn.");
                 return false;
             }
@@ -236,8 +236,7 @@ public class Shop {
                     }
                 }
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_HEALER) {
-                Shop.this.cost = Shop.getHealingCost(
-                        playerCharacter.getLevel(),
+                Shop.this.cost = Shop.getHealingCost(playerCharacter.getLevel(),
                         playerCharacter.getCurrentHP(),
                         playerCharacter.getMaximumHP());
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_REGENERATOR) {
@@ -270,7 +269,8 @@ public class Shop {
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_SPELLS) {
                 Shop.this.cost = Shop.getSpellCost(Shop.this.index);
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_ITEMS) {
-                Shop.this.item = Shop.this.itemList.getAllItems()[Shop.this.index];
+                Shop.this.item = Shop.this.itemList
+                        .getAllItems()[Shop.this.index];
                 Shop.this.cost = Shop.this.item.getBuyPrice();
             }
             if (Shop.this.type != ShopTypes.SHOP_TYPE_BANK) {
@@ -328,14 +328,14 @@ public class Shop {
             if (Shop.this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
                 playerCharacter.offsetGold(-Shop.this.cost);
                 final Equipment bought = EquipmentFactory.createWeapon(
-                        Shop.this.index, playerCharacter.getCaste()
-                                .getCasteID(), 0);
+                        Shop.this.index,
+                        playerCharacter.getCaste().getCasteID(), 0);
                 playerCharacter.getItems().equipWeapon(playerCharacter, bought,
                         true);
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_ARMOR) {
                 playerCharacter.offsetGold(-Shop.this.cost);
-                final Equipment bought = EquipmentFactory.createArmor(
-                        Shop.this.index, Shop.this.typeIndex, 0);
+                final Equipment bought = EquipmentFactory
+                        .createArmor(Shop.this.index, Shop.this.typeIndex, 0);
                 playerCharacter.getItems().equipArmor(playerCharacter, bought,
                         true);
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_HEALER) {
@@ -356,8 +356,8 @@ public class Shop {
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_SPELLS) {
                 playerCharacter.offsetGold(-Shop.this.cost);
                 if (Shop.this.index != -1) {
-                    playerCharacter.getSpellBook().learnSpellByID(
-                            Shop.this.index);
+                    playerCharacter.getSpellBook()
+                            .learnSpellByID(Shop.this.index);
                 }
             } else if (Shop.this.type == ShopTypes.SHOP_TYPE_ITEMS) {
                 playerCharacter.offsetGold(-Shop.this.cost);

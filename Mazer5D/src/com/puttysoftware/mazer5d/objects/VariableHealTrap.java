@@ -34,8 +34,8 @@ public class VariableHealTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         this.maxHealing = Mazer5D.getApplication().getMazeManager().getMaze()
                 .getMaximumHP() / 10;
         if (this.maxHealing < VariableHealTrap.MIN_HEALING) {

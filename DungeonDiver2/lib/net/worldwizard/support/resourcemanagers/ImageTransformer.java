@@ -22,14 +22,15 @@ public class ImageTransformer {
             } else {
                 final BufferedImageIcon result = new BufferedImageIcon(icon);
                 if (icon != null) {
-                    for (int x = 0; x < MapObjectImageManager.getGraphicSize(); x++) {
+                    for (int x = 0; x < MapObjectImageManager
+                            .getGraphicSize(); x++) {
                         for (int y = 0; y < MapObjectImageManager
                                 .getGraphicSize(); y++) {
                             final int pixel = icon.getRGB(x, y);
                             final Color c = new Color(pixel);
                             if (!c.equals(ImageTransformer.TRANSPARENT)) {
-                                result.setRGB(x, y, tt.applyTransform(c)
-                                        .getRGB());
+                                result.setRGB(x, y,
+                                        tt.applyTransform(c).getRGB());
                             }
                         }
                     }
@@ -48,12 +49,14 @@ public class ImageTransformer {
     public static BufferedImageIcon getTransformedImage(final String name,
             final String raw, final TemplateTransform tt) {
         try {
-            final BufferedImageIcon icon = MapObjectImageCache.getCachedImage(
-                    name, raw, tt);
+            final BufferedImageIcon icon = MapObjectImageCache
+                    .getCachedImage(name, raw, tt);
             if (icon != null) {
                 final BufferedImageIcon result = new BufferedImageIcon(icon);
-                for (int x = 0; x < MapObjectImageManager.getGraphicSize(); x++) {
-                    for (int y = 0; y < MapObjectImageManager.getGraphicSize(); y++) {
+                for (int x = 0; x < MapObjectImageManager
+                        .getGraphicSize(); x++) {
+                    for (int y = 0; y < MapObjectImageManager
+                            .getGraphicSize(); y++) {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {
@@ -77,14 +80,16 @@ public class ImageTransformer {
             final String raw1, final TemplateTransform tt1, final String name2,
             final String raw2, final TemplateTransform tt2) {
         try {
-            final BufferedImageIcon icon1 = MapObjectImageCache.getCachedImage(
-                    name1, raw1, tt1);
-            final BufferedImageIcon icon2 = MapObjectImageCache.getCachedImage(
-                    name2, raw2, tt2);
+            final BufferedImageIcon icon1 = MapObjectImageCache
+                    .getCachedImage(name1, raw1, tt1);
+            final BufferedImageIcon icon2 = MapObjectImageCache
+                    .getCachedImage(name2, raw2, tt2);
             final BufferedImageIcon result = new BufferedImageIcon(icon2);
             if (icon1 != null && icon2 != null) {
-                for (int x = 0; x < MapObjectImageManager.getGraphicSize(); x++) {
-                    for (int y = 0; y < MapObjectImageManager.getGraphicSize(); y++) {
+                for (int x = 0; x < MapObjectImageManager
+                        .getGraphicSize(); x++) {
+                    for (int y = 0; y < MapObjectImageManager
+                            .getGraphicSize(); y++) {
                         final int pixel = icon2.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {
@@ -108,8 +113,10 @@ public class ImageTransformer {
         try {
             final BufferedImageIcon result = new BufferedImageIcon(icon2);
             if (icon1 != null && icon2 != null) {
-                for (int x = 0; x < MapObjectImageManager.getGraphicSize(); x++) {
-                    for (int y = 0; y < MapObjectImageManager.getGraphicSize(); y++) {
+                for (int x = 0; x < MapObjectImageManager
+                        .getGraphicSize(); x++) {
+                    for (int y = 0; y < MapObjectImageManager
+                            .getGraphicSize(); y++) {
                         final int pixel = icon2.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {

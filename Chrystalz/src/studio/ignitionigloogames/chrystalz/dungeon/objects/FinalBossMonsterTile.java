@@ -31,7 +31,7 @@ public class FinalBossMonsterTile extends AbstractMovingObject {
     @Override
     public void timerExpiredAction(final int locX, final int locY) {
         // Move the monster
-        Dungeon dungeon = Chrystalz.getApplication().getDungeonManager()
+        final Dungeon dungeon = Chrystalz.getApplication().getDungeonManager()
                 .getDungeon();
         final int move = dungeon.computeFinalBossMoveDirection(locX, locY);
         dungeon.updateMonsterPosition(move, locX, locY, this);

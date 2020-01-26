@@ -26,8 +26,8 @@ public class SuperHurtPotion extends GenericPotion {
 
     @Override
     public int getEffectValue() {
-        return -(Main.getApplication().getMazeManager().getMaze()
-                .getCurrentHP() - 1);
+        return -(Main.getApplication().getMazeManager().getMaze().getCurrentHP()
+                - 1);
     }
 
     @Override

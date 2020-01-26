@@ -27,8 +27,8 @@ public abstract class AbstractLock extends AbstractMazeObject {
 
     protected AbstractLock(final AbstractKey mgk,
             final boolean doesAcceptPushInto) {
-        super(true, false, doesAcceptPushInto, false, false, false, false,
-                true, false);
+        super(true, false, doesAcceptPushInto, false, false, false, false, true,
+                false);
         this.key = mgk;
     }
 
@@ -72,8 +72,8 @@ public abstract class AbstractLock extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         if (!inv.isItemThere(new PasswallBoots())) {
             if (!this.key.isInfinite()) {

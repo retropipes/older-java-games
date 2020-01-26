@@ -11,11 +11,11 @@ import net.dynamicdungeon.dynamicdungeon.dungeon.utilities.TypeConstants;
 public abstract class AbstractGround extends AbstractDungeonObject {
     // Constructors
     protected AbstractGround() {
-	super(false, true, false);
+        super(false, true, false);
     }
 
     protected AbstractGround(final boolean hasFriction) {
-	super(false, hasFriction, false);
+        super(false, hasFriction, false);
     }
 
     @Override
@@ -23,26 +23,27 @@ public abstract class AbstractGround extends AbstractDungeonObject {
 
     @Override
     public int getLayer() {
-	return DungeonConstants.LAYER_GROUND;
+        return DungeonConstants.LAYER_GROUND;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_GROUND);
+        this.type.set(TypeConstants.TYPE_GROUND);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	// Do nothing
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        // Do nothing
     }
 }

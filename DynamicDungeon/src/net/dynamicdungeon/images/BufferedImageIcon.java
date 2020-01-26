@@ -20,7 +20,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param height
      */
     public BufferedImageIcon(final int width, final int height) {
-	super(width, height, BufferedImageIcon.DEFAULT_TYPE);
+        super(width, height, BufferedImageIcon.DEFAULT_TYPE);
     }
 
     /**
@@ -29,9 +29,9 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param bi
      */
     public BufferedImageIcon(final Image i) {
-	super(i.getWidth(null), i.getHeight(null),
-		BufferedImageIcon.DEFAULT_TYPE);
-	this.getGraphics().drawImage(i, 0, 0, null);
+        super(i.getWidth(null), i.getHeight(null),
+                BufferedImageIcon.DEFAULT_TYPE);
+        this.getGraphics().drawImage(i, 0, 0, null);
     }
 
     /**
@@ -41,12 +41,12 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      * @param color
      */
     public BufferedImageIcon(final int size, final Color color) {
-	super(size, size, BufferedImageIcon.DEFAULT_TYPE);
-	for (int x = 0; x < size; x++) {
-	    for (int y = 0; y < size; y++) {
-		this.setRGB(x, y, color.getRGB());
-	    }
-	}
+        super(size, size, BufferedImageIcon.DEFAULT_TYPE);
+        for (int x = 0; x < size; x++) {
+            for (int y = 0; y < size; y++) {
+                this.setRGB(x, y, color.getRGB());
+            }
+        }
     }
 
     /**
@@ -60,8 +60,8 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public void paintIcon(final Component c, final Graphics g, final int x,
-	    final int y) {
-	g.drawImage(this, x, y, c);
+            final int y) {
+        g.drawImage(this, x, y, c);
     }
 
     /**
@@ -69,7 +69,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public int getIconWidth() {
-	return this.getWidth();
+        return this.getWidth();
     }
 
     /**
@@ -77,6 +77,6 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     @Override
     public int getIconHeight() {
-	return this.getHeight();
+        return this.getHeight();
     }
 }

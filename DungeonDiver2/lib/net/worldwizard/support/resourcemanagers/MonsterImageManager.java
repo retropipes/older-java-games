@@ -29,9 +29,8 @@ public class MonsterImageManager {
             final Element element) {
         try {
             final String normalName = MonsterImageManager.normalizeName(name);
-            final URL url = MonsterImageManager.LOAD_CLASS
-                    .getResource(MonsterImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = MonsterImageManager.LOAD_CLASS.getResource(
+                    MonsterImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon template = new BufferedImageIcon(image);
             final BufferedImageIcon templateOut = new BufferedImageIcon(

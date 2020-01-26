@@ -25,42 +25,41 @@ public class MazeObjectList {
             new CyanCarpet(), new GreenCarpet(), new MagentaCarpet(),
             new OrangeCarpet(), new PurpleCarpet(), new RedCarpet(),
             new RoseCarpet(), new SeaweedCarpet(), new SkyCarpet(),
-            new WhiteCarpet(), new YellowCarpet(), new Player(),
-            new SunStone(), new Finish(), new FakeFinish(), new FinishTo(),
-            new MovingFinish(), new Wall(), new InvisibleWall(),
-            new FakeWall(), new BlueWallOff(), new BlueWallOn(),
-            new GreenWallOff(), new GreenWallOn(), new MagentaWallOff(),
-            new MagentaWallOn(), new OrangeWallOff(), new OrangeWallOn(),
-            new PurpleWallOff(), new PurpleWallOn(), new RedWallOff(),
-            new RedWallOn(), new RoseWallOff(), new RoseWallOn(),
-            new SeaweedWallOff(), new SeaweedWallOn(), new SkyWallOff(),
-            new SkyWallOn(), new WhiteWallOff(), new WhiteWallOn(),
-            new YellowWallOff(), new YellowWallOn(), new CyanWallOff(),
-            new CyanWallOn(), new OneWayEastWall(), new OneWayNorthWall(),
-            new OneWaySouthWall(), new OneWayWestWall(), new ExplodingWall(),
-            new BreakableWallHorizontal(), new BreakableWallVertical(),
-            new FadingWall(), new DamageableWall(), new CrackedWall(),
-            new DamagedWall(), new CrumblingWall(), new MasterTrappedWall(),
-            new TrappedWall0(), new TrappedWall1(), new TrappedWall2(),
-            new TrappedWall3(), new TrappedWall4(), new TrappedWall5(),
-            new TrappedWall6(), new TrappedWall7(), new TrappedWall8(),
-            new TrappedWall9(), new TrappedWall10(), new TrappedWall11(),
-            new TrappedWall12(), new TrappedWall13(), new TrappedWall14(),
-            new TrappedWall15(), new TrappedWall16(), new TrappedWall17(),
-            new TrappedWall18(), new TrappedWall19(), new Stump(),
-            new Crevasse(), new BrickWall(), new Hammer(), new Axe(),
-            new Tree(), new CutTree(), new Tablet(), new TabletSlot(),
-            new EnergySphere(), new APlug(), new APort(), new BPlug(),
-            new BPort(), new CPlug(), new CPort(), new DPlug(), new DPort(),
-            new EPlug(), new EPort(), new FPlug(), new FPort(), new GPlug(),
-            new GPort(), new HPlug(), new HPort(), new IPlug(), new IPort(),
-            new JPlug(), new JPort(), new KPlug(), new KPort(), new LPlug(),
-            new LPort(), new MPlug(), new MPort(), new NPlug(), new NPort(),
-            new OPlug(), new OPort(), new PPlug(), new PPort(), new QPlug(),
-            new QPort(), new RPlug(), new RPort(), new SPlug(), new SPort(),
-            new TPlug(), new TPort(), new UPlug(), new UPort(), new VPlug(),
-            new VPort(), new WPlug(), new WPort(), new XPlug(), new XPort(),
-            new YPlug(), new YPort(), new ZPlug(), new ZPort(),
+            new WhiteCarpet(), new YellowCarpet(), new Player(), new SunStone(),
+            new Finish(), new FakeFinish(), new FinishTo(), new MovingFinish(),
+            new Wall(), new InvisibleWall(), new FakeWall(), new BlueWallOff(),
+            new BlueWallOn(), new GreenWallOff(), new GreenWallOn(),
+            new MagentaWallOff(), new MagentaWallOn(), new OrangeWallOff(),
+            new OrangeWallOn(), new PurpleWallOff(), new PurpleWallOn(),
+            new RedWallOff(), new RedWallOn(), new RoseWallOff(),
+            new RoseWallOn(), new SeaweedWallOff(), new SeaweedWallOn(),
+            new SkyWallOff(), new SkyWallOn(), new WhiteWallOff(),
+            new WhiteWallOn(), new YellowWallOff(), new YellowWallOn(),
+            new CyanWallOff(), new CyanWallOn(), new OneWayEastWall(),
+            new OneWayNorthWall(), new OneWaySouthWall(), new OneWayWestWall(),
+            new ExplodingWall(), new BreakableWallHorizontal(),
+            new BreakableWallVertical(), new FadingWall(), new DamageableWall(),
+            new CrackedWall(), new DamagedWall(), new CrumblingWall(),
+            new MasterTrappedWall(), new TrappedWall0(), new TrappedWall1(),
+            new TrappedWall2(), new TrappedWall3(), new TrappedWall4(),
+            new TrappedWall5(), new TrappedWall6(), new TrappedWall7(),
+            new TrappedWall8(), new TrappedWall9(), new TrappedWall10(),
+            new TrappedWall11(), new TrappedWall12(), new TrappedWall13(),
+            new TrappedWall14(), new TrappedWall15(), new TrappedWall16(),
+            new TrappedWall17(), new TrappedWall18(), new TrappedWall19(),
+            new Stump(), new Crevasse(), new BrickWall(), new Hammer(),
+            new Axe(), new Tree(), new CutTree(), new Tablet(),
+            new TabletSlot(), new EnergySphere(), new APlug(), new APort(),
+            new BPlug(), new BPort(), new CPlug(), new CPort(), new DPlug(),
+            new DPort(), new EPlug(), new EPort(), new FPlug(), new FPort(),
+            new GPlug(), new GPort(), new HPlug(), new HPort(), new IPlug(),
+            new IPort(), new JPlug(), new JPort(), new KPlug(), new KPort(),
+            new LPlug(), new LPort(), new MPlug(), new MPort(), new NPlug(),
+            new NPort(), new OPlug(), new OPort(), new PPlug(), new PPort(),
+            new QPlug(), new QPort(), new RPlug(), new RPort(), new SPlug(),
+            new SPort(), new TPlug(), new TPort(), new UPlug(), new UPort(),
+            new VPlug(), new VPort(), new WPlug(), new WPort(), new XPlug(),
+            new XPort(), new YPlug(), new YPort(), new ZPlug(), new ZPort(),
             new GarnetSquare(), new GarnetWall(), new GoldenSquare(),
             new GoldenWall(), new RubySquare(), new RubyWall(),
             new SapphireSquare(), new SapphireWall(), new SilverSquare(),
@@ -91,28 +90,28 @@ public class MazeObjectList {
             new PushableBlockOnce(), new PushableBlockTwice(),
             new PushableBlockThrice(), new PullableBlockOnce(),
             new PullableBlockTwice(), new PullableBlockThrice(),
-            new MovingBlock(), new MetalBoots(), new NoBoots(),
-            new HealBoots(), new GlueBoots(), new AquaBoots(),
-            new BioHazardBoots(), new FireBoots(), new HotBoots(),
-            new PasswallBoots(), new SlipperyBoots(), new AnnihilationWand(),
-            new FinishMakingWand(), new WallMakingWand(), new TeleportWand(),
-            new WallBreakingWand(), new DisarmTrapWand(),
-            new RemoteActionWand(), new RotationWand(), new WarpWand(),
-            new LightWand(), new DarkWand(), new EmptyVoid(), new HealTrap(),
-            new HurtTrap(), new VariableHealTrap(), new VariableHurtTrap(),
-            new ClockwiseRotationTrap(), new CounterclockwiseRotationTrap(),
-            new UTurnTrap(), new ConfusionTrap(), new DizzinessTrap(),
-            new DrunkTrap(), new WallMakingTrap(), new RotationTrap(),
-            new WarpTrap(), new ArrowTrap(), new MasterWallTrap(),
-            new WallTrap0(), new WallTrap1(), new WallTrap2(), new WallTrap3(),
-            new WallTrap4(), new WallTrap5(), new WallTrap6(), new WallTrap7(),
-            new WallTrap8(), new WallTrap9(), new WallTrap10(),
-            new WallTrap11(), new WallTrap12(), new WallTrap13(),
-            new WallTrap14(), new WallTrap15(), new WallTrap16(),
-            new WallTrap17(), new WallTrap18(), new WallTrap19(),
-            new TreasureChest(), new DimnessGem(), new DarknessGem(),
-            new LightnessGem(), new BrightnessGem(), new DarkGem(),
-            new LightGem(), new HorizontalBarrier(), new VerticalBarrier(),
+            new MovingBlock(), new MetalBoots(), new NoBoots(), new HealBoots(),
+            new GlueBoots(), new AquaBoots(), new BioHazardBoots(),
+            new FireBoots(), new HotBoots(), new PasswallBoots(),
+            new SlipperyBoots(), new AnnihilationWand(), new FinishMakingWand(),
+            new WallMakingWand(), new TeleportWand(), new WallBreakingWand(),
+            new DisarmTrapWand(), new RemoteActionWand(), new RotationWand(),
+            new WarpWand(), new LightWand(), new DarkWand(), new EmptyVoid(),
+            new HealTrap(), new HurtTrap(), new VariableHealTrap(),
+            new VariableHurtTrap(), new ClockwiseRotationTrap(),
+            new CounterclockwiseRotationTrap(), new UTurnTrap(),
+            new ConfusionTrap(), new DizzinessTrap(), new DrunkTrap(),
+            new WallMakingTrap(), new RotationTrap(), new WarpTrap(),
+            new ArrowTrap(), new MasterWallTrap(), new WallTrap0(),
+            new WallTrap1(), new WallTrap2(), new WallTrap3(), new WallTrap4(),
+            new WallTrap5(), new WallTrap6(), new WallTrap7(), new WallTrap8(),
+            new WallTrap9(), new WallTrap10(), new WallTrap11(),
+            new WallTrap12(), new WallTrap13(), new WallTrap14(),
+            new WallTrap15(), new WallTrap16(), new WallTrap17(),
+            new WallTrap18(), new WallTrap19(), new TreasureChest(),
+            new DimnessGem(), new DarknessGem(), new LightnessGem(),
+            new BrightnessGem(), new DarkGem(), new LightGem(),
+            new HorizontalBarrier(), new VerticalBarrier(),
             new BarrierGenerator(), new EnragedBarrierGenerator(),
             new IcedBarrierGenerator(), new PoisonedBarrierGenerator(),
             new ShockedBarrierGenerator(), new WarpBomb(), new IceBomb(),
@@ -124,21 +123,19 @@ public class MazeObjectList {
             new MajorUnknownPotion(), new SuperHealPotion(),
             new SuperHurtPotion(), new SuperUnknownPotion(), new CrystalWall(),
             new BlackCrystal(), new BlueCrystal(), new CyanCrystal(),
-            new DarkBlueCrystal(), new DarkCyanCrystal(),
-            new DarkGrayCrystal(), new DarkGreenCrystal(),
-            new DarkMagentaCrystal(), new DarkRedCrystal(),
-            new DarkYellowCrystal(), new GrayCrystal(), new GreenCrystal(),
-            new LightBlueCrystal(), new LightCyanCrystal(),
+            new DarkBlueCrystal(), new DarkCyanCrystal(), new DarkGrayCrystal(),
+            new DarkGreenCrystal(), new DarkMagentaCrystal(),
+            new DarkRedCrystal(), new DarkYellowCrystal(), new GrayCrystal(),
+            new GreenCrystal(), new LightBlueCrystal(), new LightCyanCrystal(),
             new LightGrayCrystal(), new LightGreenCrystal(),
             new LightMagentaCrystal(), new LightRedCrystal(),
-            new LightYellowCrystal(), new MagentaCrystal(),
-            new OrangeCrystal(), new PlantCrystal(), new PurpleCrystal(),
-            new RedCrystal(), new RoseCrystal(), new SeaweedCrystal(),
-            new SkyCrystal(), new WhiteCrystal(), new YellowCrystal(),
-            new HalfHourglass(), new Hourglass(), new DoubleHourglass(),
-            new Amethyst(), new Ruby(), new Sapphire(), new Diamond(),
-            new NormalAmulet(), new FireAmulet(), new IceAmulet(),
-            new GhostAmulet(), new PoisonousAmulet(),
+            new LightYellowCrystal(), new MagentaCrystal(), new OrangeCrystal(),
+            new PlantCrystal(), new PurpleCrystal(), new RedCrystal(),
+            new RoseCrystal(), new SeaweedCrystal(), new SkyCrystal(),
+            new WhiteCrystal(), new YellowCrystal(), new HalfHourglass(),
+            new Hourglass(), new DoubleHourglass(), new Amethyst(), new Ruby(),
+            new Sapphire(), new Diamond(), new NormalAmulet(), new FireAmulet(),
+            new IceAmulet(), new GhostAmulet(), new PoisonousAmulet(),
             new CounterpoisonAmulet(), new TrueSightAmulet(), new BlueHouse(),
             new CyanHouse(), new GreenHouse(), new MagentaHouse(),
             new OrangeHouse(), new PurpleHouse(), new RedHouse(),
@@ -529,7 +526,8 @@ public class MazeObjectList {
             if (this.allObjects[x].isInventoryable()
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOOTS)
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)
-                    && !this.allObjects[x].isOfType(TypeConstants.TYPE_AMULET)) {
+                    && !this.allObjects[x]
+                            .isOfType(TypeConstants.TYPE_AMULET)) {
                 tempAllInventoryableObjects[x] = this.allObjects[x];
             }
         }
@@ -556,7 +554,8 @@ public class MazeObjectList {
             if (this.allObjects[x].isInventoryable()
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOOTS)
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)
-                    && !this.allObjects[x].isOfType(TypeConstants.TYPE_AMULET)) {
+                    && !this.allObjects[x]
+                            .isOfType(TypeConstants.TYPE_AMULET)) {
                 tempAllInventoryableNames[x] = this.allObjects[x].getName();
             }
         }
@@ -583,7 +582,8 @@ public class MazeObjectList {
             if (this.allObjects[x].isInventoryable()
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOOTS)
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)
-                    && !this.allObjects[x].isOfType(TypeConstants.TYPE_AMULET)) {
+                    && !this.allObjects[x]
+                            .isOfType(TypeConstants.TYPE_AMULET)) {
                 tempAllInventoryableNames[x] = this.allObjects[x]
                         .getPluralName();
             }
@@ -922,8 +922,8 @@ public class MazeObjectList {
         }
     }
 
-    public final static MazeObject[] getAllRequiredSubset(final MazeObject[] objs,
-            final int layer) {
+    public final static MazeObject[] getAllRequiredSubset(
+            final MazeObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }

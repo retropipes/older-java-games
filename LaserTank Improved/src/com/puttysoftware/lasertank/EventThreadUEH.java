@@ -2,11 +2,11 @@ package com.puttysoftware.lasertank;
 
 class EventThreadUEH implements Thread.UncaughtExceptionHandler {
     EventThreadUEH() {
-	super();
+        super();
     }
 
     @Override
-    public void uncaughtException(Thread t, Throwable e) {
-	LaserTank.logNonFatalError(e);
+    public void uncaughtException(final Thread t, final Throwable e) {
+        LaserTank.logNonFatalError(e);
     }
 }

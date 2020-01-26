@@ -14,7 +14,8 @@ public abstract class GenericTransientObject extends MazeObject {
     private int dir;
 
     // Constructors
-    protected GenericTransientObject(final String newName, final int arrowColor) {
+    protected GenericTransientObject(final String newName,
+            final int arrowColor) {
         super(true, false);
         this.name = newName;
         this.dir = DirectionConstants.DIRECTION_NONE;
@@ -23,8 +24,8 @@ public abstract class GenericTransientObject extends MazeObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Do nothing
     }
 

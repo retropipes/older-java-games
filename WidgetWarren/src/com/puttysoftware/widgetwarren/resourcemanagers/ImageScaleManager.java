@@ -21,7 +21,7 @@ public class ImageScaleManager {
 
     // Methods
     private static void computeImageScale() {
-        if (!SCALE_COMPUTED) {
+        if (!ImageScaleManager.SCALE_COMPUTED) {
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
                 try {
                     final GraphicsDevice graphicsDevice = GraphicsEnvironment
@@ -33,32 +33,35 @@ public class ImageScaleManager {
                         field.setAccessible(true);
                         final Object scale = field.get(graphicsDevice);
                         if (scale instanceof Integer) {
-                            BufferedImageIcon.setScale(((Integer) scale)
-                                    .intValue()
-                                    * BufferedImageIcon.getScaleMult());
+                            BufferedImageIcon
+                                    .setScale(((Integer) scale).intValue()
+                                            * BufferedImageIcon.getScaleMult());
                         }
                     }
                 } catch (NoSuchFieldException | IllegalAccessException e) {
                     // Ignore
                 }
             } else {
-                int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
-                BufferedImageIcon.setScale(dpi
-                        * BufferedImageIcon.getScaleMult() / NORMAL_DPI);
+                final int dpi = Toolkit.getDefaultToolkit()
+                        .getScreenResolution();
+                BufferedImageIcon
+                        .setScale(dpi * BufferedImageIcon.getScaleMult()
+                                / ImageScaleManager.NORMAL_DPI);
             }
-            SCALE_COMPUTED = true;
+            ImageScaleManager.SCALE_COMPUTED = true;
         }
     }
 
     static BufferedImageIcon getScaledImage(final BufferedImageIcon src) {
-        computeImageScale();
+        ImageScaleManager.computeImageScale();
         final double scale = BufferedImageIcon.getNormalizedScale();
         if (scale > 1.0) {
             final int owidth = src.getWidth(null);
             final int oheight = src.getHeight(null);
             final int nwidth = (int) (owidth * scale);
             final int nheight = (int) (oheight * scale);
-            BufferedImageIcon dest = new BufferedImageIcon(nwidth, nheight);
+            final BufferedImageIcon dest = new BufferedImageIcon(nwidth,
+                    nheight);
             final Graphics2D g2d = dest.createGraphics();
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
                     RenderingHints.VALUE_INTERPOLATION_BILINEAR);

@@ -64,8 +64,8 @@ public class AboutDialog {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("DungeonDiverII Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(new JLabel(
-                "Web Site: http://dungeondiver2.worldwizard.net/"));
+        this.textPane.add(
+                new JLabel("Web Site: http://dungeondiver2.worldwizard.net/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: dungeondiver2@worldwizard.net  "));
         this.buttonPane.setLayout(new FlowLayout());

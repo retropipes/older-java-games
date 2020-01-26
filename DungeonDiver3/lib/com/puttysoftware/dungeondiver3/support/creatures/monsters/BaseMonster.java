@@ -16,8 +16,10 @@ public abstract class BaseMonster extends Creature {
     // Fields
     private String type;
     protected Element element;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0
+            / 2.0;
     protected static final int GOLD_TOUGHNESS_MULTIPLIER = 6;
     private static final int BATTLES_SCALE_FACTOR = 2;
     private static final int BATTLES_START = 2;
@@ -27,7 +29,7 @@ public abstract class BaseMonster extends Creature {
         super(true);
         this.setAI(BaseMonster.getInitialAI());
         this.element = new Element(FaithManager.getFaith(0));
-        SpellBook spells = new SystemMonsterSpellBook();
+        final SpellBook spells = new SystemMonsterSpellBook();
         spells.learnAllSpells();
         this.setSpellBook(spells);
     }
@@ -61,7 +63,7 @@ public abstract class BaseMonster extends Creature {
         return this.element;
     }
 
-    final void setType(String newType) {
+    final void setType(final String newType) {
         this.type = newType;
     }
 
@@ -85,13 +87,12 @@ public abstract class BaseMonster extends Creature {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.element == null) ? 0 : this.element.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.element == null ? 0 : this.element.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -101,7 +102,7 @@ public abstract class BaseMonster extends Creature {
         if (!(obj instanceof BaseMonster)) {
             return false;
         }
-        BaseMonster other = (BaseMonster) obj;
+        final BaseMonster other = (BaseMonster) obj;
         if (this.element == null) {
             if (other.element != null) {
                 return false;
@@ -120,7 +121,7 @@ public abstract class BaseMonster extends Creature {
     }
 
     protected final int getBattlesToNextLevel() {
-        return BaseMonster.BATTLES_START + (this.getLevel() + 1)
-                * BaseMonster.BATTLES_SCALE_FACTOR;
+        return BaseMonster.BATTLES_START
+                + (this.getLevel() + 1) * BaseMonster.BATTLES_SCALE_FACTOR;
     }
 }

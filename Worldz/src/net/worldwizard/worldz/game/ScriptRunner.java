@@ -95,12 +95,12 @@ public final class ScriptRunner {
                         final WorldObject modObj = Worldz.getApplication()
                                 .getObjects().getNewInstanceByName(modObjName);
                         if (stickyScript) {
-                            final WorldObject wasThere = Worldz
-                                    .getApplication().getWorldManager()
-                                    .getWorld().getCell(modX, modY, modZ, modL);
+                            final WorldObject wasThere = Worldz.getApplication()
+                                    .getWorldManager().getWorld()
+                                    .getCell(modX, modY, modZ, modL);
                             if (wasThere.hasCustomScript()) {
-                                modObj.setCustomScript(wasThere
-                                        .getCustomScript());
+                                modObj.setCustomScript(
+                                        wasThere.getCustomScript());
                             }
                         }
                         Worldz.getApplication().getWorldManager().getWorld()

@@ -23,16 +23,16 @@ import com.puttysoftware.xio.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields
-    private String filename;
-    private JFrame loadFrame;
+    private final String filename;
+    private final JFrame loadFrame;
 
     // Constructors
-    public GameLoadTask(String file) {
+    public GameLoadTask(final String file) {
         this.filename = file;
         this.setName("Locked File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -45,21 +45,21 @@ public class GameLoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int startW;
         String sg;
         app.getGameManager().setSavedGameFlag(false);
         sg = "Dungeon";
         try {
-            File dungeonFile = new File(this.filename);
-            File tempLock = new File(Dungeon.getDungeonTempFolder()
-                    + "lock.tmp");
+            final File dungeonFile = new File(this.filename);
+            final File tempLock = new File(
+                    Dungeon.getDungeonTempFolder() + "lock.tmp");
             Dungeon gameDungeon = new Dungeon();
             // Unlock the file
             GameFileManager.load(dungeonFile, tempLock);
             ZipUtilities.unzipDirectory(tempLock,
                     new File(gameDungeon.getBasePath()));
-            boolean success = tempLock.delete();
+            final boolean success = tempLock.delete();
             if (!success) {
                 throw new IOException("Failed to delete temporary file!");
             }
@@ -87,10 +87,8 @@ public class GameLoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getDungeonManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getDungeonManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Loading the " + sg.toLowerCase()

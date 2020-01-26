@@ -33,13 +33,13 @@ public abstract class AbstractBomb extends AbstractUsableObject {
 
     @Override
     public final boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        FantastleX.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        FantastleX.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         // Stop arrow
         return false;
     }

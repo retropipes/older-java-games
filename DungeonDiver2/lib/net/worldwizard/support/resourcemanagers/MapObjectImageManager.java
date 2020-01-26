@@ -27,9 +27,8 @@ public class MapObjectImageManager {
             final TemplateTransform tt) {
         final String normalName = MapObjectImageManager.normalizeName(name);
         try {
-            final URL url = MapObjectImageManager.LOAD_CLASS
-                    .getResource(MapObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = MapObjectImageManager.LOAD_CLASS.getResource(
+                    MapObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             final BufferedImageIcon res = ImageTransformer

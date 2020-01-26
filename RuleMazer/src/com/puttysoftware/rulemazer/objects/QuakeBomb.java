@@ -38,13 +38,13 @@ public class QuakeBomb extends GenericUsableObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Main.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        Main.getApplication().getGameManager().morph(new Empty(), locX, locY,
+                locZ);
         // Stop arrow
         return false;
     }
@@ -55,8 +55,8 @@ public class QuakeBomb extends GenericUsableObject {
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_EXPLODE);
         // Earthquake
-        Main.getApplication().getMazeManager().getMaze()
-                .radialScanQuakeBomb(x, y, z, QuakeBomb.EFFECT_RADIUS);
+        Main.getApplication().getMazeManager().getMaze().radialScanQuakeBomb(x,
+                y, z, QuakeBomb.EFFECT_RADIUS);
     }
 
     @Override

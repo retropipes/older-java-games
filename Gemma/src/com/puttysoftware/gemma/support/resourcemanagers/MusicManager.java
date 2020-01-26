@@ -7,8 +7,8 @@ package com.puttysoftware.gemma.support.resourcemanagers;
 
 import java.nio.BufferUnderflowException;
 
-import com.puttysoftware.gemma.support.Support;
 import com.puttysoftware.audio.ogg.OggFactory;
+import com.puttysoftware.gemma.support.Support;
 
 public class MusicManager {
     private static final String INTERNAL_LOAD_PATH = "/com/puttysoftware/gemma/support/resources/music/";
@@ -34,11 +34,11 @@ public class MusicManager {
             // Stop the music
             try {
                 MusicManager.CURRENT_MUSIC.stopLoop();
-            } catch (BufferUnderflowException bue) {
+            } catch (final BufferUnderflowException bue) {
                 // Ignore
-            } catch (NullPointerException np) {
+            } catch (final NullPointerException np) {
                 // Ignore
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 Support.getErrorLogger().logError(t);
             }
         }

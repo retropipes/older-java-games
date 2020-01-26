@@ -29,8 +29,8 @@ public class RaceManager {
             // Create cache
             RaceManager.CACHE = new Race[RaceConstants.RACES_COUNT];
             for (int x = 0; x < RaceConstants.RACES_COUNT; x++) {
-                RaceManager.CACHE[x] = RaceLoader.loadRace(Race
-                        .raceIDtoFilename(raceID));
+                RaceManager.CACHE[x] = RaceLoader
+                        .loadRace(Race.raceIDtoFilename(raceID));
             }
             RaceManager.CACHE_CREATED = true;
         }

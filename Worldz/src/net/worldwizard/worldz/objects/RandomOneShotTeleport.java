@@ -25,8 +25,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -35,8 +35,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
             dc = this.getDestinationColumn();
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -54,8 +54,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
     @Override
     public WorldObject editorPropertiesHook() {
         final WorldEditor me = Worldz.getApplication().getEditor();
-        final WorldObject mo = me
-                .editTeleportDestination(WorldEditor.TELEPORT_TYPE_RANDOM_ONESHOT);
+        final WorldObject mo = me.editTeleportDestination(
+                WorldEditor.TELEPORT_TYPE_RANDOM_ONESHOT);
         return mo;
     }
 

@@ -10,8 +10,8 @@ public class XMLSuffixHandler implements XMLSuffixIO {
     @Override
     public void readSuffix(final XMLDataReader reader, final int formatVersion)
             throws IOException {
-        Main.getApplication().getGameManager()
-                .loadGameHookXML(reader, formatVersion);
+        Main.getApplication().getGameManager().loadGameHookXML(reader,
+                formatVersion);
     }
 
     @Override

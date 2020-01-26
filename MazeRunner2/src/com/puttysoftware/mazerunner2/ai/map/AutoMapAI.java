@@ -14,8 +14,8 @@ public class AutoMapAI extends AbstractMapAIRoutine {
     }
 
     @Override
-    public int getNextAction(MapAIContext ac) {
-        Point there = ac.isEnemyNearby();
+    public int getNextAction(final MapAIContext ac) {
+        final Point there = ac.isEnemyNearby();
         if (there != null) {
             // Something hostile is nearby, so attack it
             this.moveX = there.x;

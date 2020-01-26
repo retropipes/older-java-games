@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mastermaze.creatures.monsters;
 
-class AppearanceRandomScalingStaticMonster extends
-        AppearanceRandomScalingBaseMonster {
+class AppearanceRandomScalingStaticMonster
+        extends AppearanceRandomScalingBaseMonster {
     // Constructors
     AppearanceRandomScalingStaticMonster() {
         super();

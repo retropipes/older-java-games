@@ -35,8 +35,8 @@ public class TeleportWand extends AbstractWand {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().updatePositionAbsolute(x, y, z);
     }

@@ -54,8 +54,8 @@ public abstract class GenericTextHolder extends WorldObject {
 
     @Override
     public WorldObject editorPropertiesHook() {
-        this.text = Messager.showTextInputDialogWithDefault("Set Text for "
-                + this.getName(), "Editor", this.text);
+        this.text = Messager.showTextInputDialogWithDefault(
+                "Set Text for " + this.getName(), "Editor", this.text);
         return this;
     }
 

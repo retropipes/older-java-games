@@ -26,8 +26,8 @@ public abstract class AbstractTextHolder extends AbstractDungeonObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
@@ -51,12 +51,12 @@ public abstract class AbstractTextHolder extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
@@ -68,21 +68,22 @@ public abstract class AbstractTextHolder extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }
 
     @Override
-    protected AbstractDungeonObject readDungeonObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractDungeonObject readDungeonObjectHook(
+            final XDataReader reader, final int formatVersion)
+            throws IOException {
         this.text = reader.readString();
         return this;
     }
 
     @Override
-    protected void writeDungeonObjectHook(XDataWriter writer)
+    protected void writeDungeonObjectHook(final XDataWriter writer)
             throws IOException {
         writer.writeString(this.text);
     }

@@ -61,6 +61,6 @@ public class SoundConstants {
     }
 
     static String getSoundName(final int ID) {
-        return SOUND_NAMES[ID];
+        return SoundConstants.SOUND_NAMES[ID];
     }
 }

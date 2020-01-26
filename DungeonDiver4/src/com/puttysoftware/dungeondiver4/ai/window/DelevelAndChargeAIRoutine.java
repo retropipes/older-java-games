@@ -18,7 +18,7 @@ public class DelevelAndChargeAIRoutine extends AbstractWindowAIRoutine {
     }
 
     @Override
-    public int getNextAction(AbstractCreature c) {
+    public int getNextAction(final AbstractCreature c) {
         if (this.delevelRounds > 0) {
             this.delevelRounds--;
         }
@@ -26,9 +26,9 @@ public class DelevelAndChargeAIRoutine extends AbstractWindowAIRoutine {
             this.chargeRounds--;
         }
         Spell which = null;
-        RandomRange whichAction = new RandomRange(1, 2);
-        RandomRange whichSpell = new RandomRange(1, 2);
-        int action = whichAction.generate();
+        final RandomRange whichAction = new RandomRange(1, 2);
+        final RandomRange whichSpell = new RandomRange(1, 2);
+        final int action = whichAction.generate();
         if (action == 1) {
             if (whichSpell.generate() == 1) {
                 which = c.getSpellBook().getSpellByID(2);
@@ -42,13 +42,14 @@ public class DelevelAndChargeAIRoutine extends AbstractWindowAIRoutine {
                 which = c.getSpellBook().getSpellByID(5);
             }
         }
-        int cost = which.getCost();
-        int currMP = c.getCurrentMP();
+        final int cost = which.getCost();
+        final int currMP = c.getCurrentMP();
         if (cost <= currMP) {
-            RandomRange chance = new RandomRange(1, 100);
+            final RandomRange chance = new RandomRange(1, 100);
             if (action == 1) {
                 if (this.delevelRounds == 0) {
-                    if (chance.generate() <= DelevelAndChargeAIRoutine.DELEVEL_CHANCE) {
+                    if (chance
+                            .generate() <= DelevelAndChargeAIRoutine.DELEVEL_CHANCE) {
                         this.delevelRounds = which.getEffect()
                                 .getInitialRounds();
                         this.spell = which;
@@ -63,7 +64,8 @@ public class DelevelAndChargeAIRoutine extends AbstractWindowAIRoutine {
                 }
             } else {
                 if (this.chargeRounds == 0) {
-                    if (chance.generate() <= DelevelAndChargeAIRoutine.CHARGE_CHANCE) {
+                    if (chance
+                            .generate() <= DelevelAndChargeAIRoutine.CHARGE_CHANCE) {
                         this.chargeRounds = which.getEffect()
                                 .getInitialRounds();
                         this.spell = which;

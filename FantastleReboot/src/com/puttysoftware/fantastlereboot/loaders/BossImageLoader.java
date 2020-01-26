@@ -27,33 +27,33 @@ import com.puttysoftware.fantastlereboot.assets.BossImageIndex;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class BossImageLoader {
-  private static String[] allFilenames;
-  private static Properties fileExtensions;
+    private static String[] allFilenames;
+    private static Properties fileExtensions;
 
-  public static BufferedImageIcon load() {
-    final String imageExt = BossImageLoader.fileExtensions
-        .getProperty("images");
-    final BossImageIndex image = BossImageIndex.BOSS;
-    final String name = "/assets/images/boss/"
-        + BossImageLoader.allFilenames[image.ordinal()] + imageExt;
-    return ImageLoader.load(name, BossImageLoader.class.getResource(name));
-  }
-
-  public static void cacheAll() {
-    BossImageLoader.allFilenames = DataLoader.loadBossImageData();
-    try {
-      BossImageLoader.fileExtensions = new Properties();
-      BossImageLoader.fileExtensions
-          .load(BossImageLoader.class.getResourceAsStream(
-              "/assets/data/extensions/extensions.properties"));
-    } catch (final IOException e) {
-      FantastleReboot.exception(e);
+    public static BufferedImageIcon load() {
+        final String imageExt = BossImageLoader.fileExtensions
+                .getProperty("images");
+        final BossImageIndex image = BossImageIndex.BOSS;
+        final String name = "/assets/images/boss/"
+                + BossImageLoader.allFilenames[image.ordinal()] + imageExt;
+        return ImageLoader.load(name, BossImageLoader.class.getResource(name));
     }
-    final String imageExt = BossImageLoader.fileExtensions
-        .getProperty("images");
-    final BossImageIndex image = BossImageIndex.BOSS;
-    final String name = "/assets/images/boss/"
-        + BossImageLoader.allFilenames[image.ordinal()] + imageExt;
-    ImageLoader.load(name, BossImageLoader.class.getResource(name));
-  }
+
+    public static void cacheAll() {
+        BossImageLoader.allFilenames = DataLoader.loadBossImageData();
+        try {
+            BossImageLoader.fileExtensions = new Properties();
+            BossImageLoader.fileExtensions
+                    .load(BossImageLoader.class.getResourceAsStream(
+                            "/assets/data/extensions/extensions.properties"));
+        } catch (final IOException e) {
+            FantastleReboot.exception(e);
+        }
+        final String imageExt = BossImageLoader.fileExtensions
+                .getProperty("images");
+        final BossImageIndex image = BossImageIndex.BOSS;
+        final String name = "/assets/images/boss/"
+                + BossImageLoader.allFilenames[image.ordinal()] + imageExt;
+        ImageLoader.load(name, BossImageLoader.class.getResource(name));
+    }
 }

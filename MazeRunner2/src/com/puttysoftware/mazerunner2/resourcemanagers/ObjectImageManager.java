@@ -22,13 +22,14 @@ public class ObjectImageManager {
             final int baseID, final int transformColor, final int attrID,
             final int attrColor) {
         // Get it from the cache
-        String baseName = ObjectImageConstants.getObjectImageName(baseID);
-        String attrName = ObjectImageConstants.getObjectImageName(attrID);
+        final String baseName = ObjectImageConstants.getObjectImageName(baseID);
+        final String attrName = ObjectImageConstants.getObjectImageName(attrID);
         return ObjectImageCache.getCachedImage(name, baseName, transformColor,
                 attrName, attrColor);
     }
 
-    public static void addImageToCache(String name, BufferedImageIcon img) {
+    public static void addImageToCache(final String name,
+            final BufferedImageIcon img) {
         if (!ObjectImageCache.isInCache(name)) {
             ObjectImageCache.addToCache(name, img);
         }
@@ -36,10 +37,9 @@ public class ObjectImageManager {
 
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
-            String normalName = ImageTransformer.normalizeName(name);
-            final URL url = ObjectImageManager.LOAD_CLASS
-                    .getResource(ObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final String normalName = ImageTransformer.normalizeName(name);
+            final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                    ObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

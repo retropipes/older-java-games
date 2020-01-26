@@ -1,7 +1,7 @@
 package net.worldwizard.mazerunner;
 
-public abstract class MazeGenericInvisibleTeleporter extends
-        MazeGenericTeleporter {
+public abstract class MazeGenericInvisibleTeleporter
+        extends MazeGenericTeleporter {
     // Serialization
     private static final long serialVersionUID = 7556L;
 
@@ -28,8 +28,8 @@ public abstract class MazeGenericInvisibleTeleporter extends
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor(),

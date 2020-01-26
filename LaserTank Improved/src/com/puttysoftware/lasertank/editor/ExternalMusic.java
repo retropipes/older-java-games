@@ -12,24 +12,24 @@ public class ExternalMusic {
 
     // Constructor
     public ExternalMusic() {
-	this.name = "";
-	this.path = "";
+        this.name = "";
+        this.path = "";
     }
 
     // Methods
     public String getName() {
-	return this.name;
+        return this.name;
     }
 
     public String getPath() {
-	return this.path;
+        return this.path;
     }
 
     public void setName(final String newName) {
-	this.name = newName;
+        this.name = newName;
     }
 
     public void setPath(final String newPath) {
-	this.path = newPath;
+        this.path = newPath;
     }
 }

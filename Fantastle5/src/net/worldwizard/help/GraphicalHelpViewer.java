@@ -46,10 +46,10 @@ public final class GraphicalHelpViewer {
         this.helpContainer.setLayout(new BorderLayout());
         this.choiceContainer = new Container();
         this.scrollPane = new JScrollPane(this.choiceContainer);
-        this.scrollPane
-                .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        this.scrollPane
-                .setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        this.scrollPane.setHorizontalScrollBarPolicy(
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        this.scrollPane.setVerticalScrollBarPolicy(
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.helpContainer.add(this.scrollPane, BorderLayout.CENTER);
         this.updateHelp(pictures, descriptions);
     }

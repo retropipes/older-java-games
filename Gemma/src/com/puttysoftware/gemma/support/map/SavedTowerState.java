@@ -27,7 +27,8 @@ class SavedTowerState implements Cloneable {
 
     @Override
     public SavedTowerState clone() {
-        SavedTowerState copy = new SavedTowerState(this.r, this.c, this.f);
+        final SavedTowerState copy = new SavedTowerState(this.r, this.c,
+                this.f);
         int x, y, z, e;
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
@@ -42,15 +43,18 @@ class SavedTowerState implements Cloneable {
         return copy;
     }
 
-    public MapObject getDataCell(int x, int y, int z, int e) {
+    public MapObject getDataCell(final int x, final int y, final int z,
+            final int e) {
         return this.saveData[x][y][z][e];
     }
 
-    public void setDataCell(MapObject newData, int x, int y, int z, int e) {
+    public void setDataCell(final MapObject newData, final int x, final int y,
+            final int z, final int e) {
         this.saveData[x][y][z][e] = newData;
     }
 
-    public void writeSavedTowerStateX(XDataWriter writer) throws IOException {
+    public void writeSavedTowerStateX(final XDataWriter writer)
+            throws IOException {
         int x, y, z, e;
         writer.writeInt(this.c);
         writer.writeInt(this.r);
@@ -66,14 +70,14 @@ class SavedTowerState implements Cloneable {
         }
     }
 
-    public static SavedTowerState readSavedTowerStateX(XDataReader reader,
-            int formatVersion) throws IOException {
-        MapObjectList objects = new MapObjectList();
+    public static SavedTowerState readSavedTowerStateX(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final MapObjectList objects = new MapObjectList();
         int x, y, z, e, sizeX, sizeY, sizeZ;
         sizeX = reader.readInt();
         sizeY = reader.readInt();
         sizeZ = reader.readInt();
-        SavedTowerState sts = new SavedTowerState(sizeY, sizeX, sizeZ);
+        final SavedTowerState sts = new SavedTowerState(sizeY, sizeX, sizeZ);
         for (x = 0; x < sts.c; x++) {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {

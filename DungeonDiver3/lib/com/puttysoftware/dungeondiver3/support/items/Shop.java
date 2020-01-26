@@ -47,11 +47,11 @@ public class Shop implements ShopTypes {
 
     // Methods
     static int getEquipmentCost(final int x) {
-        return (9 * (x + 1) * (x + 2)) / 2;
+        return 9 * (x + 1) * (x + 2) / 2;
     }
 
     private String getGoldTotals() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         if (this.type == ShopTypes.SHOP_TYPE_BANK) {
             return "Gold on Hand: " + playerCharacter.getGold()
                     + "\nGold in Bank: " + PartyManager.getGoldInBank() + "\n";
@@ -61,15 +61,16 @@ public class Shop implements ShopTypes {
     }
 
     private static int getHealingCost(final int x, final int y, final int z) {
-        return (int) (Math.log10(x) * ((z - y)));
+        return (int) (Math.log10(x) * (z - y));
     }
 
-    private static int getRegenerationCost(final int x, final int y, final int z) {
-        int diff = z - y;
+    private static int getRegenerationCost(final int x, final int y,
+            final int z) {
+        final int diff = z - y;
         if (diff == 0) {
             return 0;
         } else {
-            int cost = (int) ((Math.log(x) / Math.log(2)) * diff);
+            final int cost = (int) (Math.log(x) / Math.log(2) * diff);
             if (cost < 1) {
                 return 1;
             } else {
@@ -90,8 +91,8 @@ public class Shop implements ShopTypes {
         if (i > Shop.MAX_ENHANCEMENTS) {
             return 0;
         }
-        int cost = 15 * i * i + 15 * i
-                + (int) (Math.sqrt(Shop.getEquipmentCost(x)));
+        final int cost = 15 * i * i + 15 * i
+                + (int) Math.sqrt(Shop.getEquipmentCost(x));
         if (cost < 0) {
             return 0;
         } else {
@@ -178,16 +179,15 @@ public class Shop implements ShopTypes {
 
     private boolean shopStage2() {
         // Stage 2
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             if (this.typeResult.equals(this.typeChoices[0])) {
-                this.choices = EquipmentFactory
-                        .createOneHandedWeaponNames(playerCharacter.getCaste()
-                                .getCasteID());
+                this.choices = EquipmentFactory.createOneHandedWeaponNames(
+                        playerCharacter.getCaste().getCasteID());
                 // Choose Hand
-                String[] handChoices = WeaponConstants.getHandChoices();
-                int handDefault = 0;
-                String handResult = CommonDialogs.showInputDialog(
+                final String[] handChoices = WeaponConstants.getHandChoices();
+                final int handDefault = 0;
+                final String handResult = CommonDialogs.showInputDialog(
                         this.getGoldTotals() + "Select Hand",
                         this.getShopNameFromType(), handChoices,
                         handChoices[handDefault]);
@@ -200,9 +200,8 @@ public class Shop implements ShopTypes {
                     this.handIndex = false;
                 }
             } else {
-                this.choices = EquipmentFactory
-                        .createTwoHandedWeaponNames(playerCharacter.getCaste()
-                                .getCasteID());
+                this.choices = EquipmentFactory.createTwoHandedWeaponNames(
+                        playerCharacter.getCaste().getCasteID());
             }
         } else if (this.type == ShopTypes.SHOP_TYPE_ARMOR) {
             this.choices = EquipmentFactory.createArmorNames(this.typeIndex);
@@ -264,11 +263,10 @@ public class Shop implements ShopTypes {
 
     private boolean shopStage3() {
         // Stage 3
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         // Check
-        if (this.type == ShopTypes.SHOP_TYPE_HEALER
-                && playerCharacter.getCurrentHP() == playerCharacter
-                        .getMaximumHP()) {
+        if (this.type == ShopTypes.SHOP_TYPE_HEALER && playerCharacter
+                .getCurrentHP() == playerCharacter.getMaximumHP()) {
             CommonDialogs.showDialog("You don't need healing.");
             return false;
         } else if (this.type == ShopTypes.SHOP_TYPE_REGENERATOR
@@ -276,15 +274,15 @@ public class Shop implements ShopTypes {
                         .getMaximumMP()) {
             CommonDialogs.showDialog("You don't need regeneration.");
             return false;
-        } else if (this.type == ShopTypes.SHOP_TYPE_SPELLS
-                && playerCharacter.getSpellBook().getSpellsKnownCount() == playerCharacter
+        } else if (this.type == ShopTypes.SHOP_TYPE_SPELLS && playerCharacter
+                .getSpellBook().getSpellsKnownCount() == playerCharacter
                         .getSpellBook().getMaximumSpellsKnownCount()) {
             CommonDialogs.showDialog("There are no more spells to learn.");
             return false;
         }
-        this.result = CommonDialogs.showInputDialog(this.getGoldTotals()
-                + "Select", this.getShopNameFromType(), this.choices,
-                this.choices[this.defaultChoice]);
+        this.result = CommonDialogs.showInputDialog(
+                this.getGoldTotals() + "Select", this.getShopNameFromType(),
+                this.choices, this.choices[this.defaultChoice]);
         if (this.result == null) {
             return false;
         }
@@ -299,18 +297,18 @@ public class Shop implements ShopTypes {
                 }
             }
         } else {
-            this.index = playerCharacter.getSpellBook().getSpellIDByName(
-                    this.result);
+            this.index = playerCharacter.getSpellBook()
+                    .getSpellIDByName(this.result);
         }
         return true;
     }
 
     private boolean shopStage4() {
         // Stage 4
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         this.cost = 0;
-        if ((this.type == ShopTypes.SHOP_TYPE_WEAPONS)
-                || (this.type == ShopTypes.SHOP_TYPE_ARMOR)) {
+        if (this.type == ShopTypes.SHOP_TYPE_WEAPONS
+                || this.type == ShopTypes.SHOP_TYPE_ARMOR) {
             this.cost = Shop.getEquipmentCost(this.index);
             if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
                 if (this.typeResult != null) {
@@ -359,23 +357,22 @@ public class Shop implements ShopTypes {
                     (this.index + 1) * 500 * playerCharacter.getLevel());
             this.cost = this.item.getBuyPrice();
         } else if (this.type == ShopTypes.SHOP_TYPE_ENHANCEMENTS) {
-            Equipment old = playerCharacter.getItems().getEquipmentInSlot(
-                    this.index);
+            final Equipment old = playerCharacter.getItems()
+                    .getEquipmentInSlot(this.index);
             if (old != null) {
                 if (old.isTwoHanded()) {
                     this.twoHanded = true;
                 }
-                int power = old.getPotency();
-                int bonus = (power % (Shop.MAX_ENHANCEMENTS + 1)) + 1;
-                this.item = EquipmentFactory
-                        .createEnhancedEquipment(old, bonus);
+                final int power = old.getPotency();
+                final int bonus = power % (Shop.MAX_ENHANCEMENTS + 1) + 1;
+                this.item = EquipmentFactory.createEnhancedEquipment(old,
+                        bonus);
                 this.cost = Shop.getEnhancementCost(bonus, power);
                 if (this.cost == 0) {
                     // Equipment is maxed out on enhancements
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "That equipment cannot be enhanced any further, sorry!",
-                                    this.getShopNameFromType());
+                    CommonDialogs.showErrorDialog(
+                            "That equipment cannot be enhanced any further, sorry!",
+                            this.getShopNameFromType());
                     return false;
                 }
             } else {
@@ -384,23 +381,22 @@ public class Shop implements ShopTypes {
                 return false;
             }
         } else if (this.type == ShopTypes.SHOP_TYPE_FAITH_POWERS) {
-            Equipment old = playerCharacter.getItems().getEquipmentInSlot(
-                    this.index);
+            final Equipment old = playerCharacter.getItems()
+                    .getEquipmentInSlot(this.index);
             if (old != null) {
                 if (old.isTwoHanded()) {
                     this.twoHanded = true;
                 }
-                int power = old.getPotency();
-                int bonus = old.getFaithPowerLevel(this.typeIndex);
+                final int power = old.getPotency();
+                final int bonus = old.getFaithPowerLevel(this.typeIndex);
                 this.item = EquipmentFactory.createFaithPoweredEquipment(old,
                         this.typeIndex, bonus);
                 this.cost = Shop.getEnhancementCost(bonus, power);
                 if (this.cost == 0) {
                     // Equipment is maxed out on Faith Powers
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "That equipment cannot be Faith Powered any further, sorry!",
-                                    this.getShopNameFromType());
+                    CommonDialogs.showErrorDialog(
+                            "That equipment cannot be Faith Powered any further, sorry!",
+                            this.getShopNameFromType());
                     return false;
                 }
             } else {
@@ -411,8 +407,8 @@ public class Shop implements ShopTypes {
         }
         if (this.type != ShopTypes.SHOP_TYPE_BANK) {
             // Handle inflation
-            double actualInflation = this.inflationRate / 100.0;
-            double inflatedCost = this.cost * actualInflation;
+            final double actualInflation = this.inflationRate / 100.0;
+            final double inflatedCost = this.cost * actualInflation;
             this.cost = (int) inflatedCost;
             // Confirm
             final int stage4Confirm = CommonDialogs.showConfirmDialog(
@@ -434,7 +430,7 @@ public class Shop implements ShopTypes {
 
     private boolean shopStage5() {
         // Stage 5
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         if (this.type == ShopTypes.SHOP_TYPE_BANK) {
             if (this.index == 0) {
                 if (playerCharacter.getGold() < this.cost) {
@@ -461,28 +457,28 @@ public class Shop implements ShopTypes {
 
     private void shopStage6() {
         // Stage 6
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         // Play transact sound
         SoundManager.playSound(GameSoundConstants.SOUND_TRANSACT);
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             playerCharacter.offsetGold(-this.cost);
             if (this.typeResult.equals(this.typeChoices[0])) {
-                Equipment bought = EquipmentFactory.createOneHandedWeapon(
+                final Equipment bought = EquipmentFactory.createOneHandedWeapon(
                         this.index, playerCharacter.getCaste().getCasteID(), 0);
-                playerCharacter.getItems().equipOneHandedWeapon(
-                        playerCharacter, bought, this.handIndex, true);
+                playerCharacter.getItems().equipOneHandedWeapon(playerCharacter,
+                        bought, this.handIndex, true);
             } else {
-                Equipment bought = EquipmentFactory.createTwoHandedWeapon(
+                final Equipment bought = EquipmentFactory.createTwoHandedWeapon(
                         this.index, playerCharacter.getCaste().getCasteID(), 0);
-                playerCharacter.getItems().equipTwoHandedWeapon(
-                        playerCharacter, bought, true);
+                playerCharacter.getItems().equipTwoHandedWeapon(playerCharacter,
+                        bought, true);
             }
         } else if (this.type == ShopTypes.SHOP_TYPE_ARMOR) {
             playerCharacter.offsetGold(-this.cost);
-            Equipment bought = EquipmentFactory.createArmor(this.index,
+            final Equipment bought = EquipmentFactory.createArmor(this.index,
                     this.typeIndex, 0);
-            playerCharacter.getItems()
-                    .equipArmor(playerCharacter, bought, true);
+            playerCharacter.getItems().equipArmor(playerCharacter, bought,
+                    true);
         } else if (this.type == ShopTypes.SHOP_TYPE_HEALER) {
             playerCharacter.offsetGold(-this.cost);
             playerCharacter.healPercentage((this.index + 1) * 10);

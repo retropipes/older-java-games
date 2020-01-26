@@ -37,8 +37,8 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);

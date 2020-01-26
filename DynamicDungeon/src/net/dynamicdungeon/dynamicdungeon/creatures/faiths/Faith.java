@@ -11,18 +11,18 @@ public final class Faith {
     private final int faithID;
 
     Faith(final int fid) {
-	this.faithID = fid;
+        this.faithID = fid;
     }
 
     public int getFaithID() {
-	return this.faithID;
+        return this.faithID;
     }
 
     public String getName() {
-	return FaithConstants.getFaithName(this.faithID);
+        return FaithConstants.getFaithName(this.faithID);
     }
 
     public Color getColor() {
-	return FaithConstants.getFaithColor(this.faithID);
+        return FaithConstants.getFaithColor(this.faithID);
     }
 }

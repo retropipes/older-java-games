@@ -21,16 +21,16 @@ public class PlayerImageCache {
             bii = ImageTransformer.templateTransformImage(bii, transformColor);
             PlayerImageCache.addToCache(name, bii);
         }
-        for (int x = 0; x < PlayerImageCache.cache.length; x++) {
-            if (name.equals(PlayerImageCache.cache[x].getName())) {
-                return PlayerImageCache.cache[x].getImage();
+        for (final CacheEntry element : PlayerImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;
     }
 
     private static void expandCache() {
-        CacheEntry[] tempCache = new CacheEntry[PlayerImageCache.cache.length
+        final CacheEntry[] tempCache = new CacheEntry[PlayerImageCache.cache.length
                 + PlayerImageCache.CACHE_INCREMENT];
         for (int x = 0; x < PlayerImageCache.CACHE_SIZE; x++) {
             tempCache[x] = PlayerImageCache.cache[x];

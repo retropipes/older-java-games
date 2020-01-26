@@ -22,11 +22,9 @@ public class SpellBookManager {
         if (s != null) {
             result = SpellBookManager.castSpell(s, caster);
             if (!result && !SpellBookManager.NO_SPELLS_FLAG) {
-                JOptionPane
-                        .showMessageDialog(
-                                null,
-                                "You try to cast a spell, but realize you don't have enough MP!",
-                                "Select Spell", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null,
+                        "You try to cast a spell, but realize you don't have enough MP!",
+                        "Select Spell", JOptionPane.WARNING_MESSAGE);
             }
         }
         return result;

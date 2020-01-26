@@ -53,8 +53,8 @@ public class ScoreManager {
             }
         } else {
             this.name = null;
-            this.name = CommonDialogs.showTextInputDialog(
-                    ScoreManager.NAME_PROMPT, this.title);
+            this.name = CommonDialogs
+                    .showTextInputDialog(ScoreManager.NAME_PROMPT, this.title);
             if (this.name != null) {
                 this.table.addScore(newScore, this.name);
             } else {

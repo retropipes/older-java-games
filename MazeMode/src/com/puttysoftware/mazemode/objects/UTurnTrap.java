@@ -32,14 +32,12 @@ public class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        MazeMode.getApplication().showMessage(
-                "Your controls are turned around!");
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MazeMode.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_U_TURNED,
-                        UTurnTrap.EFFECT_DURATION);
+                .showMessage("Your controls are turned around!");
+        MazeMode.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_U_TURNED, UTurnTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CHANGE);
     }

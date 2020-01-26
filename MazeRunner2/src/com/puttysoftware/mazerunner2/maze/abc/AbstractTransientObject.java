@@ -12,11 +12,12 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractTransientObject extends AbstractMazeObject {
     // Fields
-    private String name;
+    private final String name;
     private int dir;
 
     // Constructors
-    protected AbstractTransientObject(String newName, int arrowColor) {
+    protected AbstractTransientObject(final String newName,
+            final int arrowColor) {
         super(true, false);
         this.name = newName;
         this.dir = DirectionConstants.DIRECTION_NONE;
@@ -25,8 +26,8 @@ public abstract class AbstractTransientObject extends AbstractMazeObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 
@@ -69,7 +70,7 @@ public abstract class AbstractTransientObject extends AbstractMazeObject {
         return "";
     }
 
-    public final void setDirection(int newDir) {
+    public final void setDirection(final int newDir) {
         this.dir = newDir;
     }
 
@@ -84,12 +85,12 @@ public abstract class AbstractTransientObject extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

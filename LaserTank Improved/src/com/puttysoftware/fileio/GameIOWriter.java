@@ -5,7 +5,7 @@ import java.io.IOException;
 public abstract class GameIOWriter implements AutoCloseable {
     // Constructors
     protected GameIOWriter() throws IOException {
-	super();
+        super();
     }
 
     // Methods

@@ -15,7 +15,7 @@ import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
 public abstract class AbstractToggleWall extends AbstractMazeObject {
     // Constructors
-    protected AbstractToggleWall(boolean solidState, final int tc) {
+    protected AbstractToggleWall(final boolean solidState, final int tc) {
         super(solidState, false);
         this.setTemplateColor(tc);
     }
@@ -30,8 +30,8 @@ public abstract class AbstractToggleWall extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
@@ -56,12 +56,12 @@ public abstract class AbstractToggleWall extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

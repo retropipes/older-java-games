@@ -26,7 +26,7 @@ final class Socks extends Equipment {
     }
 
     // Methods
-    final void stepAction(Creature wearer) {
+    void stepAction(final Creature wearer) {
         switch (this.actionType) {
         case Socks.STEP_ACTION_HEAL:
             wearer.heal(this.actionAmount);
@@ -59,7 +59,7 @@ final class Socks extends Equipment {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -69,7 +69,7 @@ final class Socks extends Equipment {
         if (!(obj instanceof Socks)) {
             return false;
         }
-        Socks other = (Socks) obj;
+        final Socks other = (Socks) obj;
         if (this.actionAmount != other.actionAmount) {
             return false;
         }

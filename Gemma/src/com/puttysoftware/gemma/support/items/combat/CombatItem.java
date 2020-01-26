@@ -47,14 +47,14 @@ public class CombatItem extends Item {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((this.e == null) ? 0 : this.e.hashCode());
+        result = prime * result + (this.e == null ? 0 : this.e.hashCode());
         result = prime * result + this.sound;
         return prime * result
-                + ((this.target == null) ? 0 : this.target.hashCode());
+                + (this.target == null ? 0 : this.target.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -64,7 +64,7 @@ public class CombatItem extends Item {
         if (!(obj instanceof CombatItem)) {
             return false;
         }
-        CombatItem other = (CombatItem) obj;
+        final CombatItem other = (CombatItem) obj;
         if (this.e == null) {
             if (other.e != null) {
                 return false;

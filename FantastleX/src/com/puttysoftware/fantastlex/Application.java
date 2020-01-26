@@ -91,14 +91,17 @@ public class Application {
                     continue;
                 }
                 final BufferedImageIcon[] edges = EdgeGenerator
-                        .generateAllEdgedImages(ObjectImageManager.getImage(
-                                groundTypes[x].getName(),
-                                groundTypes[x].getBaseID(),
-                                groundTypes[x].getTemplateColor(),
-                                groundTypes[x].getAttributeID(),
-                                groundTypes[x].getAttributeTemplateColor()),
-                                ObjectImageManager.getImage(groundTypes[y]
-                                        .getName(), groundTypes[y].getBaseID(),
+                        .generateAllEdgedImages(
+                                ObjectImageManager.getImage(
+                                        groundTypes[x].getName(),
+                                        groundTypes[x].getBaseID(),
+                                        groundTypes[x].getTemplateColor(),
+                                        groundTypes[x].getAttributeID(),
+                                        groundTypes[x]
+                                                .getAttributeTemplateColor()),
+                                ObjectImageManager.getImage(
+                                        groundTypes[y].getName(),
+                                        groundTypes[y].getBaseID(),
                                         groundTypes[y].getTemplateColor(),
                                         groundTypes[y].getAttributeID(),
                                         groundTypes[y]
@@ -116,8 +119,7 @@ public class Application {
                                     + edgeFriendlyNameSuffixes[z],
                             ObjectImageConstants.OBJECT_IMAGE_NONE,
                             groundTypes[x].getName() + "/"
-                                    + groundTypes[y].getName()
-                                    + " Transitions "
+                                    + groundTypes[y].getName() + " Transitions "
                                     + edgeFriendlyNameSuffixes[z],
                             groundTypes[x].getName(), groundTypes[y].getName(),
                             edgeFriendlyNameSuffixes[z]);

@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class ByteStorage {
     // Fields
     /**
-     * The underlying array where data is stored. Exposed for serialization purposes for use with the protected copy constructor.
+     * The underlying array where data is stored. Exposed for serialization purposes
+     * for use with the protected copy constructor.
      */
     protected final byte[] dataStore;
     private final int[] dataShape;
@@ -17,6 +18,7 @@ public class ByteStorage {
     // Constructor
     /**
      * Main constructor.
+     * 
      * @param shape simulated dimensions for the stored data
      */
     public ByteStorage(final int... shape) {
@@ -33,6 +35,7 @@ public class ByteStorage {
     // Copy constructor
     /**
      * Main copy constructor.
+     * 
      * @param source the @self to make a copy of
      */
     public ByteStorage(final ByteStorage source) {
@@ -49,8 +52,9 @@ public class ByteStorage {
     // Protected copy constructor
     /**
      * Serialization-related protected copy constructor.
+     * 
      * @param source the underlying array where stored data came from
-     * @param shape simulated dimensions for the stored data
+     * @param shape  simulated dimensions for the stored data
      */
     protected ByteStorage(final byte[] source, final int... shape) {
 	this.dataShape = shape;
@@ -66,6 +70,7 @@ public class ByteStorage {
     // Methods
     /**
      * Check for equality.
+     * 
      * @param obj the other object to check
      * @return true if equal, false otherwise
      */
@@ -89,6 +94,7 @@ public class ByteStorage {
 
     /**
      * Fill the storage with the same data everywhere.
+     * 
      * @param obj the data to fill with
      */
     public final void fill(final byte obj) {
@@ -99,6 +105,7 @@ public class ByteStorage {
 
     /**
      * Get data at a given location in storage.
+     * 
      * @param loc the location to get data from
      * @return the data at that location
      */
@@ -108,8 +115,9 @@ public class ByteStorage {
     }
 
     /**
-     * Get data directly from the underlying array.
-     * To convert a simulated index to a raw index, use ravelLocation().
+     * Get data directly from the underlying array. To convert a simulated index to
+     * a raw index, use ravelLocation().
+     * 
      * @param rawLoc the index within the array to get data from
      * @return the data at that index
      */
@@ -119,6 +127,7 @@ public class ByteStorage {
 
     /**
      * Get the length of the underlying array.
+     * 
      * @return the underlying array length
      */
     protected final int getRawLength() {
@@ -127,6 +136,7 @@ public class ByteStorage {
 
     /**
      * Get the shape (dimensions) of the storage.
+     * 
      * @return the shape, as an array of integers
      */
     public final int[] getShape() {
@@ -145,6 +155,7 @@ public class ByteStorage {
 
     /**
      * Utility to convert simulated indexes to raw indexes.
+     * 
      * @param loc a simulated index
      * @return a raw index
      */
@@ -166,6 +177,7 @@ public class ByteStorage {
 
     /**
      * Change stored data at a given location.
+     * 
      * @param obj the new data value
      * @param loc the location to modify
      */
@@ -175,9 +187,10 @@ public class ByteStorage {
     }
 
     /**
-     * Change stored data directly in the underlying array.
-     * To convert a simulated index to a raw index, use ravelLocation().
-     * @param obj the new data value
+     * Change stored data directly in the underlying array. To convert a simulated
+     * index to a raw index, use ravelLocation().
+     * 
+     * @param obj    the new data value
      * @param rawLoc the index to modify
      */
     protected final void setRawCell(final byte obj, final int rawLoc) {

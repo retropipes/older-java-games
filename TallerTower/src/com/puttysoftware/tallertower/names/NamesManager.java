@@ -28,8 +28,8 @@ public class NamesManager {
     }
 
     private static boolean containsKey(final String key) {
-        for (int x = 0; x < CACHE.length; x++) {
-            if (CACHE[x][0].equals(key)) {
+        for (final String[] element : NamesManager.CACHE) {
+            if (element[0].equals(key)) {
                 return true;
             }
         }
@@ -37,9 +37,9 @@ public class NamesManager {
     }
 
     private static String getValue(final String key) {
-        for (int x = 0; x < CACHE.length; x++) {
-            if (CACHE[x][0].equals(key)) {
-                return CACHE[x][1];
+        for (final String[] element : NamesManager.CACHE) {
+            if (element[0].equals(key)) {
+                return element[1];
             }
         }
         return null;

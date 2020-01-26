@@ -33,7 +33,7 @@ public abstract class AbstractButton extends AbstractMazeObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -41,13 +41,12 @@ public abstract class AbstractButton extends AbstractMazeObject {
             return false;
         }
         final AbstractButton other = (AbstractButton) obj;
-        if (this.offState != other.offState
-                && (this.offState == null || !this.offState
-                        .equals(other.offState))) {
+        if (this.offState != other.offState && (this.offState == null
+                || !this.offState.equals(other.offState))) {
             return false;
         }
-        if (this.onState != other.onState
-                && (this.onState == null || !this.onState.equals(other.onState))) {
+        if (this.onState != other.onState && (this.onState == null
+                || !this.onState.equals(other.onState))) {
             return false;
         }
         return true;
@@ -63,7 +62,7 @@ public abstract class AbstractButton extends AbstractMazeObject {
 
     @Override
     public AbstractButton clone() {
-        AbstractButton copy = (AbstractButton) super.clone();
+        final AbstractButton copy = (AbstractButton) super.clone();
         copy.offState = (AbstractToggleWall) this.offState.clone();
         copy.onState = (AbstractToggleWall) this.onState.clone();
         return copy;
@@ -71,8 +70,8 @@ public abstract class AbstractButton extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .findAllObjectPairsAndSwap(this.offState, this.onState);
         MazeRunnerII.getApplication().getGameManager().redrawMaze();
@@ -93,12 +92,12 @@ public abstract class AbstractButton extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

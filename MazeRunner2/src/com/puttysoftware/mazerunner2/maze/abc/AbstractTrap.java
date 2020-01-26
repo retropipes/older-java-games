@@ -12,7 +12,8 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractTrap extends AbstractMazeObject {
     // Constructors
-    protected AbstractTrap(int tc, int attrName, int attrColor) {
+    protected AbstractTrap(final int tc, final int attrName,
+            final int attrColor) {
         super(false, false);
         this.setTemplateColor(tc);
         this.setAttributeID(attrName);
@@ -43,12 +44,12 @@ public abstract class AbstractTrap extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

@@ -2,14 +2,14 @@ package net.worldwizard.dungeondiver.creatures;
 
 public interface StatConstants {
     // Constants
-    public static final int STAT_NONE = -1;
-    public static final int STAT_ATTACK = 0;
-    public static final int STAT_DEFENSE = 1;
-    public static final int STAT_CURRENT_HP = 2;
-    public static final int STAT_MAXIMUM_HP = 3;
-    public static final int STAT_GOLD = 4;
-    public static final int STAT_CURRENT_MP = 5;
-    public static final int STAT_MAXIMUM_MP = 6;
-    public static final int STAT_LEVEL = 7;
-    public static final int MAX_STATS = 8;
+    int STAT_NONE = -1;
+    int STAT_ATTACK = 0;
+    int STAT_DEFENSE = 1;
+    int STAT_CURRENT_HP = 2;
+    int STAT_MAXIMUM_HP = 3;
+    int STAT_GOLD = 4;
+    int STAT_CURRENT_MP = 5;
+    int STAT_MAXIMUM_MP = 6;
+    int STAT_LEVEL = 7;
+    int MAX_STATS = 8;
 }

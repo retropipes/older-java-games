@@ -19,8 +19,8 @@ public abstract class GenericGem extends WorldObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Worldz.getApplication().getGameManager().decay();
         this.postMoveActionHook();
         Worldz.getApplication().getGameManager().redrawWorld();
@@ -41,10 +41,10 @@ public abstract class GenericGem extends WorldObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        Worldz.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
+        Worldz.getApplication().getGameManager().morph(new Empty(), locX, locY,
+                locZ);
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             SoundManager.playSound("shatter");

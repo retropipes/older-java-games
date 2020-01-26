@@ -14,7 +14,8 @@ public abstract class AbstractUsableObject extends AbstractInventoryableObject {
     }
 
     @Override
-    public abstract void useAction(AbstractDungeonObject mo, int x, int y, int z);
+    public abstract void useAction(AbstractDungeonObject mo, int x, int y,
+            int z);
 
     @Override
     public abstract String getName();

@@ -17,7 +17,7 @@ import studio.ignitionigloogames.common.fileio.FileIOWriter;
 
 public class ItemInventory {
     // Properties
-    private Equipment[] equipment;
+    private final Equipment[] equipment;
 
     // Constructors
     public ItemInventory() {
@@ -44,7 +44,7 @@ public class ItemInventory {
     }
 
     public int getWeaponHitSound(final AbstractCreature pc) {
-        Equipment weapon = this.equipment[EquipmentSlotConstants.SLOT_WEAPON];
+        final Equipment weapon = this.equipment[EquipmentSlotConstants.SLOT_WEAPON];
         if (weapon != null) {
             return weapon.getHitSound();
         }

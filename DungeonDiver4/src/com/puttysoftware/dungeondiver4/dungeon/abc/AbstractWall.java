@@ -48,7 +48,7 @@ public abstract class AbstractWall extends AbstractDungeonObject {
                 isSolidIE);
     }
 
-    protected AbstractWall(boolean sightBlock, final int tc) {
+    protected AbstractWall(final boolean sightBlock, final int tc) {
         super(true, sightBlock);
         this.setTemplateColor(tc);
     }
@@ -66,8 +66,8 @@ public abstract class AbstractWall extends AbstractDungeonObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
@@ -93,12 +93,12 @@ public abstract class AbstractWall extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

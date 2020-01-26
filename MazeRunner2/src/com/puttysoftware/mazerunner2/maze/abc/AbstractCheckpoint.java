@@ -35,7 +35,7 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -62,14 +62,14 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
 
     @Override
     public AbstractCheckpoint clone() {
-        AbstractCheckpoint copy = (AbstractCheckpoint) super.clone();
+        final AbstractCheckpoint copy = (AbstractCheckpoint) super.clone();
         copy.key = (AbstractCheckKey) this.key.clone();
         return copy;
     }
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.editCheckpointProperties(this);
         return this;
     }
@@ -78,23 +78,24 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.showMessage("You may NOT pass: you need " + this.keyCount + " "
                 + this.key.getPluralName() + " to continue.");
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.showMessage("You may pass.");
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
     @Override
     public boolean isConditionallySolid(final MazeObjectInventory inv) {
-        return !(inv.isItemThere(this.key) && inv.getItemCount(this.key) >= this.keyCount);
+        return !(inv.isItemThere(this.key)
+                && inv.getItemCount(this.key) >= this.keyCount);
     }
 
     @Override
@@ -117,12 +118,12 @@ public abstract class AbstractCheckpoint extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return this.keyCount;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         this.keyCount = value;
     }
 }

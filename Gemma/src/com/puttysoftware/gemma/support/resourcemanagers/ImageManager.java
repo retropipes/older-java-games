@@ -69,9 +69,9 @@ public class ImageManager {
             final String cat, final TemplateTransform tt,
             final boolean horzflip, final boolean vertflip,
             final boolean helpImage) {
-        String normalName = ImageManager.normalizeName(name);
+        final String normalName = ImageManager.normalizeName(name);
         try {
-            URL url = ImageManager.LOAD_CLASS
+            final URL url = ImageManager.LOAD_CLASS
                     .getResource(ImageManager.INTERNAL_LOAD_PATH + cat + "/"
                             + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
@@ -93,8 +93,8 @@ public class ImageManager {
         }
     }
 
-    private static String normalizeName(String name) {
-        StringBuilder sb = new StringBuilder(name);
+    private static String normalizeName(final String name) {
+        final StringBuilder sb = new StringBuilder(name);
         for (int x = 0; x < sb.length(); x++) {
             if (!Character.isLetter(sb.charAt(x))
                     && !Character.isDigit(sb.charAt(x))) {

@@ -15,33 +15,33 @@ import net.dynamicdungeon.randomrange.RandomRange;
 abstract class AbstractBothRandomMonster extends AbstractMonster {
     // Constructors
     AbstractBothRandomMonster() {
-	super();
-	this.element = AbstractBothRandomMonster.getInitialElement();
-	this.image = this.getInitialImage();
+        super();
+        this.element = AbstractBothRandomMonster.getInitialElement();
+        this.image = this.getInitialImage();
     }
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-	if (this.getLevel() == 0) {
-	    return null;
-	} else {
-	    int tl = PartyManager.getParty().getDungeonLevel();
-	    final String[] types = MonsterNames.getAllDisplayNamesForLevel(tl);
-	    final RandomRange r = new RandomRange(0, types.length - 1);
-	    int index = r.generate();
-	    this.setType(types[index]);
-	    final String[] filenames = MonsterNames.getAllFileNamesForLevel(tl);
-	    return MonsterImageManager.getImage(filenames[index], tl + 1,
-		    this.getElement());
-	}
+        if (this.getLevel() == 0) {
+            return null;
+        } else {
+            final int tl = PartyManager.getParty().getDungeonLevel();
+            final String[] types = MonsterNames.getAllDisplayNamesForLevel(tl);
+            final RandomRange r = new RandomRange(0, types.length - 1);
+            final int index = r.generate();
+            this.setType(types[index]);
+            final String[] filenames = MonsterNames.getAllFileNamesForLevel(tl);
+            return MonsterImageManager.getImage(filenames[index], tl + 1,
+                    this.getElement());
+        }
     }
 
     private static Element getInitialElement() {
-	return new Element(FaithManager.getRandomFaith());
+        return new Element(FaithManager.getRandomFaith());
     }
 
     @Override
     public void loadCreature() {
-	this.image = this.getInitialImage();
+        this.image = this.getInitialImage();
     }
 }

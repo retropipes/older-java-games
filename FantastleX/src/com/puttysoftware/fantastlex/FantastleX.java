@@ -78,13 +78,11 @@ public class FantastleX {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    FantastleX.application.getMazeManager(),
-                    FantastleX.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(FantastleX.application.getMazeManager(),
+                    FantastleX.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(FantastleX.application.getGUIManager(),

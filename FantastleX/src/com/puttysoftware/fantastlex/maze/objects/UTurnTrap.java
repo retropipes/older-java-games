@@ -36,15 +36,12 @@ public class UTurnTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        FantastleX.getApplication().showMessage(
-                "Your controls are turned around!");
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_U_TURNED,
-                        UTurnTrap.EFFECT_DURATION);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        FantastleX.getApplication()
+                .showMessage("Your controls are turned around!");
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_U_TURNED, UTurnTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
     }
 

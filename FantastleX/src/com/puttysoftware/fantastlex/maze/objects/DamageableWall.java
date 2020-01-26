@@ -43,11 +43,8 @@ public class DamageableWall extends AbstractWall {
             final int dirY, final MazeObjectInventory inv) {
         final int z = FantastleX.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .morph(new CrackedWall(), dirX, dirY, z,
-                        MazeConstants.LAYER_OBJECT);
+        FantastleX.getApplication().getGameManager().morph(new CrackedWall(),
+                dirX, dirY, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 

@@ -27,8 +27,8 @@ public class Platform {
             try {
                 // Tell the UIManager to use the platform native look and
                 // feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -38,8 +38,8 @@ public class Platform {
             // All other platforms
             try {
                 // Tell the UIManager to use the Nimbus look and feel
-                UIManager
-                        .setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {

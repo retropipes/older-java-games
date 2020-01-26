@@ -15,33 +15,33 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class IcyBox extends AbstractMovableObject {
     // Constructors
     public IcyBox() {
-	super(true);
-	this.type.set(TypeConstants.TYPE_BOX);
-	this.type.set(TypeConstants.TYPE_ICY);
-	this.setMaterial(MaterialConstants.MATERIAL_ICE);
+        super(true);
+        this.type.set(TypeConstants.TYPE_BOX);
+        this.type.set(TypeConstants.TYPE_ICY);
+        this.setMaterial(MaterialConstants.MATERIAL_ICE);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_FIRE:
-	    if (this.hasPreviousState()) {
-		return this.getPreviousState();
-	    } else {
-		return new Box();
-	    }
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_FIRE:
+            if (this.hasPreviousState()) {
+                return this.getPreviousState();
+            } else {
+                return new Box();
+            }
+        default:
+            return this;
+        }
     }
 
     @Override
     public final int getStringBaseID() {
-	return 21;
+        return 21;
     }
 
     @Override
     public void playSoundHook() {
-	SoundManager.playSound(SoundConstants.SOUND_PUSH_BOX);
+        SoundManager.playSound(SoundConstants.SOUND_PUSH_BOX);
     }
 }

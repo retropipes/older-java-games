@@ -33,13 +33,11 @@ public class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Messager.showMessage("You are confused!");
-        Worldz.getApplication()
-                .getGameManager()
-                .activateEffect(EffectConstants.EFFECT_CONFUSED,
-                        ConfusionTrap.EFFECT_DURATION);
+        Worldz.getApplication().getGameManager().activateEffect(
+                EffectConstants.EFFECT_CONFUSED, ConfusionTrap.EFFECT_DURATION);
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playConfusedSound();

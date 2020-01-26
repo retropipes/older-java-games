@@ -23,9 +23,8 @@ public class SoundManager {
 
     static Sound getUncachedSound(final String filename) {
         try {
-            final URL url = SoundManager.LOAD_CLASS
-                    .getResource(SoundManager.LOAD_PATH
-                            + filename.toLowerCase() + ".wav");
+            final URL url = SoundManager.LOAD_CLASS.getResource(
+                    SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
             final Sound snd = new Sound(url);
             return snd;
         } catch (final NullPointerException np) {

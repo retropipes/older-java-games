@@ -53,7 +53,7 @@ class PreferencesGUIManager {
 
     // Methods
     public JFrame getPrefFrame() {
-        if ((this.prefFrame != null) && this.prefFrame.isVisible()) {
+        if (this.prefFrame != null && this.prefFrame.isVisible()) {
             return this.prefFrame;
         } else {
             return null;
@@ -61,7 +61,7 @@ class PreferencesGUIManager {
     }
 
     public void showPrefs() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         if (app.getMode() == Application.STATUS_BATTLE) {
             // Don't show preferences while in a battle
             return;
@@ -72,7 +72,7 @@ class PreferencesGUIManager {
         }
         app.getMenuManager().setPrefMenus();
         this.prefFrame.setVisible(true);
-        int formerMode = app.getFormerMode();
+        final int formerMode = app.getFormerMode();
         if (formerMode == Application.STATUS_GUI) {
             app.getGUIManager().hideGUI();
         } else if (formerMode == Application.STATUS_GAME) {
@@ -81,10 +81,10 @@ class PreferencesGUIManager {
     }
 
     void hidePrefs() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         this.prefFrame.setVisible(false);
         PreferencesManager.writePrefs();
-        int formerMode = app.getFormerMode();
+        final int formerMode = app.getFormerMode();
         app.restoreFormerMode();
         if (formerMode == Application.STATUS_GUI) {
             app.getGUIManager().showGUI();
@@ -129,7 +129,7 @@ class PreferencesGUIManager {
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         if (Support.inDebugMode()) {
             this.prefFrame = new JFrame("Preferences (DEBUG)");
         } else {
@@ -149,13 +149,15 @@ class PreferencesGUIManager {
         this.prefFrame.getRootPane().setDefaultButton(prefsOK);
         prefsCancel = new JButton("Cancel");
         prefsCancel.setDefaultCapable(false);
-        this.battleSpeedChoices = new JComboBox<>(battleSpeedChoiceArray);
+        this.battleSpeedChoices = new JComboBox<>(
+                PreferencesGUIManager.battleSpeedChoiceArray);
         this.generatorRandomness = new JSlider(SwingConstants.HORIZONTAL, 0, 6,
                 3);
         this.generatorRandomness.setMajorTickSpacing(1);
         this.generatorRandomness.setPaintTicks(true);
         this.generatorRandomness.setSnapToTicks(true);
-        JLabel generatorRandomnessValue = new JLabel("Generator Randomness");
+        final JLabel generatorRandomnessValue = new JLabel(
+                "Generator Randomness");
         this.randomBattle = new JCheckBox("Randomize Battlefield", true);
         this.music[PreferencesManager.MUSIC_ALL] = new JCheckBox(
                 "Enable ALL music", true);
@@ -208,7 +210,7 @@ class PreferencesGUIManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                PreferencesGUIManager pm = PreferencesGUIManager.this;
+                final PreferencesGUIManager pm = PreferencesGUIManager.this;
                 final String cmd = e.getActionCommand();
                 switch (cmd) {
                 case "OK":
@@ -220,18 +222,18 @@ class PreferencesGUIManager {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void itemStateChanged(ItemEvent e) {
+        public void itemStateChanged(final ItemEvent e) {
             try {
-                PreferencesGUIManager pm = PreferencesGUIManager.this;
-                Object o = e.getItem();
+                final PreferencesGUIManager pm = PreferencesGUIManager.this;
+                final Object o = e.getItem();
                 if (o.getClass().equals(JCheckBox.class)) {
-                    JCheckBox check = (JCheckBox) o;
+                    final JCheckBox check = (JCheckBox) o;
                     if (check.equals(pm.music[PreferencesManager.MUSIC_ALL])) {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -244,44 +246,44 @@ class PreferencesGUIManager {
                         }
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            PreferencesGUIManager pm = PreferencesGUIManager.this;
+        public void windowClosing(final WindowEvent e) {
+            final PreferencesGUIManager pm = PreferencesGUIManager.this;
             pm.hidePrefs();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

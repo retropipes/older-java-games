@@ -42,7 +42,8 @@ public class DungeonGUI {
     private final DungeonBuffManager buffMgr;
     private final Dimension viewingWindow;
     public static final int VIEWING_WINDOW_SIZE = 11;
-    private static final int MAX_DRAW_DISTANCE = DungeonGUI.VIEWING_WINDOW_SIZE / 2 + 1;
+    private static final int MAX_DRAW_DISTANCE = DungeonGUI.VIEWING_WINDOW_SIZE
+            / 2 + 1;
     private static final int MIN_DRAW_DISTANCE = 2;
     private static final int DEFAULT_DRAW_DISTANCE = 4;
     private static final int DUNGEON_SIZE = 30;
@@ -141,8 +142,8 @@ public class DungeonGUI {
         offset.setLocation(NDimensionalMap.ROW_DIMENSION, y);
         offset.setLocation(NDimensionalMap.COLUMN_DIMENSION, x);
         try {
-            final MapObject there = this.dungeon.getCellOffset(
-                    this.playerLocation, offset);
+            final MapObject there = this.dungeon
+                    .getCellOffset(this.playerLocation, offset);
             if (!there.isSolid()) {
                 return true;
             } else {
@@ -165,22 +166,22 @@ public class DungeonGUI {
         offset.setLocation(NDimensionalMap.ROW_DIMENSION, this.moveY);
         offset.setLocation(NDimensionalMap.COLUMN_DIMENSION, this.moveX);
         try {
-            final MapObject there = this.dungeon.getCellOffset(
-                    this.playerLocation, offset);
+            final MapObject there = this.dungeon
+                    .getCellOffset(this.playerLocation, offset);
             if (!there.isSolid()) {
                 final MapObject player = this.dungeon
                         .getCell(this.playerLocation);
                 this.dungeon.setCell(this.savedMapObject, this.playerLocation);
-                this.playerLocation.setLocation(
-                        NDimensionalMap.ROW_DIMENSION,
-                        this.playerLocation
-                                .getLocation(NDimensionalMap.ROW_DIMENSION)
-                                + this.moveY);
-                this.playerLocation.setLocation(
-                        NDimensionalMap.COLUMN_DIMENSION,
-                        this.playerLocation
-                                .getLocation(NDimensionalMap.COLUMN_DIMENSION)
-                                + this.moveX);
+                this.playerLocation
+                        .setLocation(NDimensionalMap.ROW_DIMENSION,
+                                this.playerLocation.getLocation(
+                                        NDimensionalMap.ROW_DIMENSION)
+                                        + this.moveY);
+                this.playerLocation
+                        .setLocation(NDimensionalMap.COLUMN_DIMENSION,
+                                this.playerLocation.getLocation(
+                                        NDimensionalMap.COLUMN_DIMENSION)
+                                        + this.moveX);
                 this.savedMapObject = (DungeonObject) there;
                 this.dungeon.setCell(player, this.playerLocation);
                 final Point newViewingWindowOffset = new Point(this.moveY,
@@ -226,8 +227,8 @@ public class DungeonGUI {
                         if (DungeonDiver.getHoldingBag().getPrefs()
                                 .getPreferenceValue(Preferences.ICE_ENABLED)) {
                             // Yes it is - move the monster again
-                            this.updateMonsterPosition(xMove, yMove, xLoc
-                                    + xMove, yLoc + yMove, monster);
+                            this.updateMonsterPosition(xMove, yMove,
+                                    xLoc + xMove, yLoc + yMove, monster);
                         }
                     }
                 }
@@ -391,7 +392,7 @@ public class DungeonGUI {
     int computeDungeonSize() {
         final int dl = DungeonDiver.getHoldingBag().getPlayer()
                 .getDungeonLevel();
-        return DungeonGUI.DUNGEON_SIZE + (dl - 1)
-                * DungeonGUI.DUNGEON_SIZE_INCREMENT;
+        return DungeonGUI.DUNGEON_SIZE
+                + (dl - 1) * DungeonGUI.DUNGEON_SIZE_INCREMENT;
     }
 }

@@ -29,8 +29,8 @@ public class GeneralHelpManager {
     // Methods
     public void showHelp() {
         if (!this.inited) {
-            URL helpURL = GeneralHelpManager.class
-                    .getResource("/com/puttysoftware/widgetwarren/resources/help/help.html");
+            final URL helpURL = GeneralHelpManager.class.getResource(
+                    "/com/puttysoftware/widgetwarren/resources/help/help.html");
             this.hv = new HTMLHelpViewer(helpURL);
             this.helpFrame = new JFrame("WidgetWarren Help");
             this.helpFrame

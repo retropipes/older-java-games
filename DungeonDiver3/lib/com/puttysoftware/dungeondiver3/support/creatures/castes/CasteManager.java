@@ -16,7 +16,7 @@ public class CasteManager implements CasteConstants {
     private static Caste[] CACHE;
     private static String[] DESC_CACHE;
 
-    public static Caste selectCaste(JFrame owner) {
+    public static Caste selectCaste(final JFrame owner) {
         CasteManager.createCache();
         final String[] names = CasteConstants.CASTE_NAMES;
         String dialogResult = null;
@@ -35,12 +35,12 @@ public class CasteManager implements CasteConstants {
         }
     }
 
-    public static Caste getCaste(int casteID) {
+    public static Caste getCaste(final int casteID) {
         CasteManager.createCache();
         return CasteManager.CACHE[casteID];
     }
 
-    public static SpellBook getSpellBookByID(int ID) {
+    public static SpellBook getSpellBookByID(final int ID) {
         return SpellBookLoader.loadSpellBook(ID);
     }
 
@@ -50,8 +50,8 @@ public class CasteManager implements CasteConstants {
             CasteManager.CACHE = new Caste[CasteConstants.CASTES_COUNT];
             CasteManager.DESC_CACHE = new String[CasteConstants.CASTES_COUNT];
             for (int x = 0; x < CasteConstants.CASTES_COUNT; x++) {
-                CasteManager.CACHE[x] = CasteLoader.loadCaste(Caste
-                        .casteIDtoName(x));
+                CasteManager.CACHE[x] = CasteLoader
+                        .loadCaste(Caste.casteIDtoName(x));
                 CasteManager.DESC_CACHE[x] = CasteManager.CACHE[x]
                         .getDescription();
             }

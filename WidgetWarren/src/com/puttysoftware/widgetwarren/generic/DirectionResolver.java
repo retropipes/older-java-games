@@ -12,23 +12,23 @@ public class DirectionResolver {
         int fdy = dirY;
         fdx = (int) Math.signum(fdx);
         fdy = (int) Math.signum(fdy);
-        if ((fdx == 0) && (fdy == 0)) {
+        if (fdx == 0 && fdy == 0) {
             return DirectionConstants.DIRECTION_NONE;
-        } else if ((fdx == 0) && (fdy == -1)) {
+        } else if (fdx == 0 && fdy == -1) {
             return DirectionConstants.DIRECTION_NORTH;
-        } else if ((fdx == 0) && (fdy == 1)) {
+        } else if (fdx == 0 && fdy == 1) {
             return DirectionConstants.DIRECTION_SOUTH;
-        } else if ((fdx == -1) && (fdy == 0)) {
+        } else if (fdx == -1 && fdy == 0) {
             return DirectionConstants.DIRECTION_WEST;
-        } else if ((fdx == 1) && (fdy == 0)) {
+        } else if (fdx == 1 && fdy == 0) {
             return DirectionConstants.DIRECTION_EAST;
-        } else if ((fdx == 1) && (fdy == 1)) {
+        } else if (fdx == 1 && fdy == 1) {
             return DirectionConstants.DIRECTION_SOUTHEAST;
-        } else if ((fdx == -1) && (fdy == 1)) {
+        } else if (fdx == -1 && fdy == 1) {
             return DirectionConstants.DIRECTION_SOUTHWEST;
-        } else if ((fdx == -1) && (fdy == -1)) {
+        } else if (fdx == -1 && fdy == -1) {
             return DirectionConstants.DIRECTION_NORTHWEST;
-        } else if ((fdx == 1) && (fdy == -1)) {
+        } else if (fdx == 1 && fdy == -1) {
             return DirectionConstants.DIRECTION_NORTHEAST;
         } else {
             return DirectionConstants.DIRECTION_INVALID;

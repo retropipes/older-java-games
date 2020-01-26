@@ -18,9 +18,9 @@ public final class InventoryViewer {
         } else {
             title = "Equipment";
         }
-        PartyMember member = PartyManager.getParty().pickOnePartyMember();
+        final PartyMember member = PartyManager.getParty().pickOnePartyMember();
         if (member != null) {
-            String[] equipString = member.getItems()
+            final String[] equipString = member.getItems()
                     .generateEquipmentStringArray();
             CommonDialogs.showInputDialog("Equipment", title, equipString,
                     equipString[0]);
@@ -34,17 +34,18 @@ public final class InventoryViewer {
         } else {
             title = "Items";
         }
-        PartyMember member = PartyManager.getParty().pickOnePartyMember();
+        final PartyMember member = PartyManager.getParty().pickOnePartyMember();
         if (member != null) {
-            String[] invString = member.getItems()
+            final String[] invString = member.getItems()
                     .generateInventoryStringArray();
             CommonDialogs.showInputDialog("Items", title, invString,
                     invString[0]);
         }
     }
 
-    public static void showObjectInventoryDialog(DungeonObjectInventory oi) {
-        String[] invString = oi.generateInventoryStringArray();
+    public static void showObjectInventoryDialog(
+            final DungeonObjectInventory oi) {
+        final String[] invString = oi.generateInventoryStringArray();
         CommonDialogs.showInputDialog("Objects", "Objects", invString,
                 invString[0]);
     }

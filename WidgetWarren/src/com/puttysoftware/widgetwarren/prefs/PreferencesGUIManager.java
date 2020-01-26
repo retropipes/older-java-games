@@ -33,8 +33,7 @@ class PreferencesGUIManager {
     // Fields
     private JFrame prefFrame;
     private JTabbedPane prefTabPane;
-    private Container mainPrefPane, buttonPane, editorPane, miscPane,
-            soundPane;
+    private Container mainPrefPane, buttonPane, editorPane, miscPane, soundPane;
     private JButton prefsOK, prefsCancel;
     JCheckBox[] sounds;
     private JCheckBox music;
@@ -56,7 +55,7 @@ class PreferencesGUIManager {
     }
 
     public JFrame getPrefFrame() {
-        if ((this.prefFrame != null) && this.prefFrame.isVisible()) {
+        if (this.prefFrame != null && this.prefFrame.isVisible()) {
             return this.prefFrame;
         } else {
             return null;
@@ -97,8 +96,8 @@ class PreferencesGUIManager {
     }
 
     private void loadPrefs() {
-        this.editorFillChoices.setSelectedItem(PreferencesManager
-                .getEditorDefaultFill());
+        this.editorFillChoices
+                .setSelectedItem(PreferencesManager.getEditorDefaultFill());
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             this.sounds[x].setSelected(PreferencesManager.getSoundEnabled(x));
         }
@@ -107,8 +106,8 @@ class PreferencesGUIManager {
     }
 
     public void setPrefs() {
-        PreferencesManager.setEditorDefaultFill((String) this.editorFillChoices
-                .getSelectedItem());
+        PreferencesManager.setEditorDefaultFill(
+                (String) this.editorFillChoices.getSelectedItem());
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             PreferencesManager.setSoundEnabled(x, this.sounds[x].isSelected());
         }
@@ -154,18 +153,18 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        this.editorPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.editorPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.editorPane.add(new JLabel("Default fill for new mazes:"));
         this.editorPane.add(this.editorFillChoices);
-        this.soundPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.soundPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             this.soundPane.add(this.sounds[x]);
         }
         this.soundPane.add(this.music);
-        this.miscPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.miscPane.add(this.moveOneAtATime);
         this.buttonPane.setLayout(new FlowLayout());
         this.buttonPane.add(this.prefsOK);
@@ -184,8 +183,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         public EventHandler() {
             // Do nothing
         }
@@ -213,7 +212,8 @@ class PreferencesGUIManager {
                 final Object o = e.getItem();
                 if (o.getClass().equals(JCheckBox.class)) {
                     final JCheckBox check = (JCheckBox) o;
-                    if (check.equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
+                    if (check
+                            .equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                                 pm.sounds[x].setEnabled(true);

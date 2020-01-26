@@ -74,7 +74,8 @@ public class NamesConstants {
             NamesConstants.SLOT_BOOTS };
     // Equipment Armor Section Keys
     public static final String ARMOR_SHIELD = "Shield";
-    private static final String[] SECTION_ARRAY_EQUIP_ARMOR = new String[] { NamesConstants.ARMOR_SHIELD };
+    private static final String[] SECTION_ARRAY_EQUIP_ARMOR = new String[] {
+            NamesConstants.ARMOR_SHIELD };
     // Equipment Weapons 1H Section Keys
     private static final String WEAPON_1H_GLOVES = "Gloves";
     private static final String WEAPON_1H_SWORD = "Sword";

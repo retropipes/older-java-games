@@ -28,7 +28,7 @@ public class NamesFileManager {
         return this.gameNames;
     }
 
-    public void setNames(String[][] newNames) {
+    public void setNames(final String[][] newNames) {
         this.gameNames = newNames;
     }
 
@@ -38,7 +38,7 @@ public class NamesFileManager {
 
     private static void loadFile() {
         try {
-            Application app = Gemma.getApplication();
+            final Application app = Gemma.getApplication();
             app.getScenarioManager().getNamesFileManager()
                     .setNames(NamesManager.getNamesCache());
             // Final cleanup
@@ -57,23 +57,23 @@ public class NamesFileManager {
             lastUsedNamesFile = null;
         }
         if (lastUsedNamesFile != null) {
-            File parent = new File(lastUsedNamesFile).getParentFile();
+            final File parent = new File(lastUsedNamesFile).getParentFile();
             if (!parent.exists()) {
-                boolean success = parent.mkdirs();
+                final boolean success = parent.mkdirs();
                 if (!success) {
                     Gemma.getErrorLogger().logError(
                             new IOException("Creating names folder failed!"));
                 }
             }
-            String[] data = NamesManager.convertCacheToArray();
+            final String[] data = NamesManager.convertCacheToArray();
             NamesFileManager.saveFile(lastUsedNamesFile, data);
         } else {
             CommonDialogs.showErrorDialog("No Names Opened!", "Names Editor");
         }
     }
 
-    private static void saveFile(String filename, String[] data) {
-        NamesSaveTask xst = new NamesSaveTask(filename, data);
+    private static void saveFile(final String filename, final String[] data) {
+        final NamesSaveTask xst = new NamesSaveTask(filename, data);
         xst.start();
     }
 }

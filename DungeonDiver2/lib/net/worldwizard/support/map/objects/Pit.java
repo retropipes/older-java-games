@@ -38,8 +38,8 @@ public class Pit extends GenericTeleport {
         scpt.addAction(entry1);
         final GameScriptEntry entry2 = new GameScriptEntry();
         entry2.setActionCode(GameActionCode.SOUND);
-        entry2.addActionArg(new GameScriptEntryArgument(
-                GameSoundConstants.SOUND_WARP));
+        entry2.addActionArg(
+                new GameScriptEntryArgument(GameSoundConstants.SOUND_WARP));
         entry2.finalizeActionArgs();
         scpt.addAction(entry2);
         scpt.finalizeActions();

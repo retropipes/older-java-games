@@ -18,64 +18,71 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class RollingBarrelVertical extends AbstractMovableObject {
     // Constructors
     public RollingBarrelVertical() {
-	super(true);
-	this.type.set(TypeConstants.TYPE_BARREL);
-	this.type.set(TypeConstants.TYPE_ICY);
+        super(true);
+        this.type.set(TypeConstants.TYPE_BARREL);
+        this.type.set(TypeConstants.TYPE_ICY);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 141;
+        return 141;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	final Direction dir = DirectionResolver.resolveRelative(dirX, dirY);
-	if (dir == Direction.NORTH || dir == Direction.SOUTH) {
-	    // Roll
-	    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	} else {
-	    // Break up
-	    final AbstractArena a = LaserTank.getApplication().getArenaManager().getArena();
-	    // Boom!
-	    SoundManager.playSound(SoundConstants.SOUND_BARREL);
-	    // Destroy barrel
-	    LaserTank.getApplication().getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	    // Check for tank in range of explosion
-	    final boolean target = a.circularScanTank(locX, locY, locZ, 1);
-	    if (target) {
-		// Kill tank
-		LaserTank.getApplication().getGameManager().gameOver();
-	    }
-	    if (laserType == LaserTypeConstants.LASER_TYPE_POWER) {
-		// Laser keeps going
-		return DirectionResolver.resolveRelative(dirX, dirY);
-	    } else {
-		// Laser stops
-		return Direction.NONE;
-	    }
-	}
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        final Direction dir = DirectionResolver.resolveRelative(dirX, dirY);
+        if (dir == Direction.NORTH || dir == Direction.SOUTH) {
+            // Roll
+            return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                    laserType, forceUnits);
+        } else {
+            // Break up
+            final AbstractArena a = LaserTank.getApplication().getArenaManager()
+                    .getArena();
+            // Boom!
+            SoundManager.playSound(SoundConstants.SOUND_BARREL);
+            // Destroy barrel
+            LaserTank.getApplication().getGameManager().morph(new Empty(), locX,
+                    locY, locZ, this.getLayer());
+            // Check for tank in range of explosion
+            final boolean target = a.circularScanTank(locX, locY, locZ, 1);
+            if (target) {
+                // Kill tank
+                LaserTank.getApplication().getGameManager().gameOver();
+            }
+            if (laserType == LaserTypeConstants.LASER_TYPE_POWER) {
+                // Laser keeps going
+                return DirectionResolver.resolveRelative(dirX, dirY);
+            } else {
+                // Laser stops
+                return Direction.NONE;
+            }
+        }
     }
 
     @Override
     public void playSoundHook() {
-	SoundManager.playSound(SoundConstants.SOUND_BALL_ROLL);
+        SoundManager.playSound(SoundConstants.SOUND_BALL_ROLL);
     }
 
     @Override
-    public void pushCollideAction(final AbstractMovableObject pushed, final int x, final int y, final int z) {
-	// Break up
-	final AbstractArena a = LaserTank.getApplication().getArenaManager().getArena();
-	// Boom!
-	SoundManager.playSound(SoundConstants.SOUND_BARREL);
-	// Destroy barrel
-	LaserTank.getApplication().getGameManager().morph(new Empty(), x, y, z, this.getLayer());
-	// Check for tank in range of explosion
-	final boolean target = a.circularScanTank(x, y, z, 1);
-	if (target) {
-	    // Kill tank
-	    LaserTank.getApplication().getGameManager().gameOver();
-	}
+    public void pushCollideAction(final AbstractMovableObject pushed,
+            final int x, final int y, final int z) {
+        // Break up
+        final AbstractArena a = LaserTank.getApplication().getArenaManager()
+                .getArena();
+        // Boom!
+        SoundManager.playSound(SoundConstants.SOUND_BARREL);
+        // Destroy barrel
+        LaserTank.getApplication().getGameManager().morph(new Empty(), x, y, z,
+                this.getLayer());
+        // Check for tank in range of explosion
+        final boolean target = a.circularScanTank(x, y, z, 1);
+        if (target) {
+            // Kill tank
+            LaserTank.getApplication().getGameManager().gameOver();
+        }
     }
 }

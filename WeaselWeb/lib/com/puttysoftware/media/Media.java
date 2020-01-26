@@ -7,12 +7,12 @@ public abstract class Media extends Thread {
     protected static final int EXTERNAL_BUFFER_SIZE = 4096; // 4Kb
     private static int ACTIVE_MEDIA_COUNT = 0;
     private static int MAX_MEDIA_ACTIVE = 5;
-    private static Media[] ACTIVE_MEDIA = new Media[MAX_MEDIA_ACTIVE];
+    private static Media[] ACTIVE_MEDIA = new Media[Media.MAX_MEDIA_ACTIVE];
     private static ThreadGroup MEDIA_GROUP = new ThreadGroup("Media Players");
     private static MediaExceptionHandler meh = new MediaExceptionHandler();
 
     // Constructor
-    protected Media(ThreadGroup group) {
+    protected Media(final ThreadGroup group) {
         super(group, "Media Player " + Media.ACTIVE_MEDIA_COUNT);
     }
 
@@ -24,37 +24,37 @@ public abstract class Media extends Thread {
     abstract int getNumber();
 
     // Factories
-    public static Media getLoopingFile(String file) {
+    public static Media getLoopingFile(final String file) {
         return Media.provisionMedia(new MusicFile(Media.MEDIA_GROUP, file,
                 Media.ACTIVE_MEDIA_COUNT));
     }
 
-    public static Media getLoopingResource(URL resource) {
+    public static Media getLoopingResource(final URL resource) {
         return Media.provisionMedia(new MusicResource(Media.MEDIA_GROUP,
                 resource, Media.ACTIVE_MEDIA_COUNT));
     }
 
-    public static Media getNonLoopingFile(String file) {
+    public static Media getNonLoopingFile(final String file) {
         return Media.provisionMedia(new SoundFile(Media.MEDIA_GROUP, file,
                 Media.ACTIVE_MEDIA_COUNT));
     }
 
-    public static Media getNonLoopingResource(URL resource) {
+    public static Media getNonLoopingResource(final URL resource) {
         return Media.provisionMedia(new SoundResource(Media.MEDIA_GROUP,
                 resource, Media.ACTIVE_MEDIA_COUNT));
     }
 
-    private static Media provisionMedia(Media src) {
+    private static Media provisionMedia(final Media src) {
         if (Media.ACTIVE_MEDIA_COUNT >= Media.MAX_MEDIA_ACTIVE) {
             Media.killAllMediaPlayers();
         }
         try {
             if (src != null) {
-                src.setUncaughtExceptionHandler(meh);
+                src.setUncaughtExceptionHandler(Media.meh);
                 Media.ACTIVE_MEDIA[Media.ACTIVE_MEDIA_COUNT] = src;
                 Media.ACTIVE_MEDIA_COUNT++;
             }
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             // Do nothing
         }
         return src;
@@ -64,7 +64,7 @@ public abstract class Media extends Thread {
         Media.MEDIA_GROUP.interrupt();
     }
 
-    static synchronized void taskCompleted(int taskNum) {
+    static synchronized void taskCompleted(final int taskNum) {
         Media.ACTIVE_MEDIA[taskNum] = null;
         for (int z = taskNum + 1; z < Media.ACTIVE_MEDIA.length; z++) {
             if (Media.ACTIVE_MEDIA[z] != null) {

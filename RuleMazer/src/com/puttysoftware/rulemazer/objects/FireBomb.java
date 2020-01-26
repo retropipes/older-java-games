@@ -38,13 +38,13 @@ public class FireBomb extends GenericUsableObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Main.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        Main.getApplication().getGameManager().morph(new Empty(), locX, locY,
+                locZ);
         // Stop arrow
         return false;
     }
@@ -58,8 +58,8 @@ public class FireBomb extends GenericUsableObject {
         Main.getApplication().getMazeManager().getMaze()
                 .radialScanEnrageObjects(x, y, z, FireBomb.EFFECT_RADIUS);
         // Burn the ground, too
-        Main.getApplication().getMazeManager().getMaze()
-                .radialScanBurnGround(x, y, z, FireBomb.EFFECT_RADIUS);
+        Main.getApplication().getMazeManager().getMaze().radialScanBurnGround(x,
+                y, z, FireBomb.EFFECT_RADIUS);
     }
 
     @Override

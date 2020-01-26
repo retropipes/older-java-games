@@ -189,8 +189,7 @@ public class ItemInventory {
     }
 
     public void writeItemInventory(final XDataWriter dw) throws IOException {
-        for (int x = 0; x < this.equipment.length; x++) {
-            final Equipment ei = this.equipment[x];
+        for (final Equipment ei : this.equipment) {
             if (ei != null) {
                 ei.writeEquipment(dw);
             } else {

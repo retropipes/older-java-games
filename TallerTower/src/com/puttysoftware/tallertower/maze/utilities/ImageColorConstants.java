@@ -64,18 +64,37 @@ public class ImageColorConstants {
     private static final int COLOR_52 = new Color(255, 127, 255).getRGB();
     private static final int COLOR_53 = new Color(255, 191, 255).getRGB();
     private static final int COLOR_54 = new Color(255, 255, 255).getRGB();
-    private static final int[] LEVEL_COLORS = new int[] { COLOR_00, COLOR_01,
-            COLOR_02, COLOR_03, COLOR_04, COLOR_05, COLOR_06, COLOR_07,
-            COLOR_08, COLOR_09, COLOR_10, COLOR_11, COLOR_12, COLOR_13,
-            COLOR_14, COLOR_15, COLOR_16, COLOR_17, COLOR_18, COLOR_19,
-            COLOR_20, COLOR_21, COLOR_22, COLOR_23, COLOR_24, COLOR_25,
-            COLOR_26, COLOR_27, COLOR_28, COLOR_29, COLOR_30, COLOR_31,
-            COLOR_32, COLOR_33, COLOR_34, COLOR_35, COLOR_36, COLOR_37,
-            COLOR_38, COLOR_39, COLOR_40, COLOR_41, COLOR_42, COLOR_43,
-            COLOR_44, COLOR_45, COLOR_46, COLOR_47, COLOR_48, COLOR_49,
-            COLOR_50, COLOR_51, COLOR_52, COLOR_53, COLOR_54 };
+    private static final int[] LEVEL_COLORS = new int[] {
+            ImageColorConstants.COLOR_00, ImageColorConstants.COLOR_01,
+            ImageColorConstants.COLOR_02, ImageColorConstants.COLOR_03,
+            ImageColorConstants.COLOR_04, ImageColorConstants.COLOR_05,
+            ImageColorConstants.COLOR_06, ImageColorConstants.COLOR_07,
+            ImageColorConstants.COLOR_08, ImageColorConstants.COLOR_09,
+            ImageColorConstants.COLOR_10, ImageColorConstants.COLOR_11,
+            ImageColorConstants.COLOR_12, ImageColorConstants.COLOR_13,
+            ImageColorConstants.COLOR_14, ImageColorConstants.COLOR_15,
+            ImageColorConstants.COLOR_16, ImageColorConstants.COLOR_17,
+            ImageColorConstants.COLOR_18, ImageColorConstants.COLOR_19,
+            ImageColorConstants.COLOR_20, ImageColorConstants.COLOR_21,
+            ImageColorConstants.COLOR_22, ImageColorConstants.COLOR_23,
+            ImageColorConstants.COLOR_24, ImageColorConstants.COLOR_25,
+            ImageColorConstants.COLOR_26, ImageColorConstants.COLOR_27,
+            ImageColorConstants.COLOR_28, ImageColorConstants.COLOR_29,
+            ImageColorConstants.COLOR_30, ImageColorConstants.COLOR_31,
+            ImageColorConstants.COLOR_32, ImageColorConstants.COLOR_33,
+            ImageColorConstants.COLOR_34, ImageColorConstants.COLOR_35,
+            ImageColorConstants.COLOR_36, ImageColorConstants.COLOR_37,
+            ImageColorConstants.COLOR_38, ImageColorConstants.COLOR_39,
+            ImageColorConstants.COLOR_40, ImageColorConstants.COLOR_41,
+            ImageColorConstants.COLOR_42, ImageColorConstants.COLOR_43,
+            ImageColorConstants.COLOR_44, ImageColorConstants.COLOR_45,
+            ImageColorConstants.COLOR_46, ImageColorConstants.COLOR_47,
+            ImageColorConstants.COLOR_48, ImageColorConstants.COLOR_49,
+            ImageColorConstants.COLOR_50, ImageColorConstants.COLOR_51,
+            ImageColorConstants.COLOR_52, ImageColorConstants.COLOR_53,
+            ImageColorConstants.COLOR_54 };
 
     public static int getColorForLevel(final int level) {
-        return LEVEL_COLORS[level];
+        return ImageColorConstants.LEVEL_COLORS[level];
     }
 }

@@ -82,10 +82,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
                 isSolidXE);
         this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST,
                 isSolidXW);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTH, isSolidIN);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH,
+                isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH,
+                isSolidIS);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST,
                 isSolidIE);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST,
@@ -265,11 +265,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         result = prime * result + (this.pushable ? 1231 : 1237);
         result = prime * result + (this.pushableInto ? 1231 : 1237);
         result = prime * result + (this.pushableOut ? 1231 : 1237);
-        result = prime * result + ((this.sp == null) ? 0 : this.sp.hashCode());
+        result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
         result = prime * result + (this.timerActive ? 1231 : 1237);
         result = prime * result + this.timerValue;
         result = prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.type == null ? 0 : this.type.hashCode());
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + this.uses;
         return result;
@@ -459,7 +459,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -475,7 +475,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
             final int dirY, final ObjectInventory inv);
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -489,7 +489,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -508,7 +508,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -526,7 +526,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -540,7 +540,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -553,7 +553,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -566,7 +566,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -583,7 +583,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -597,7 +597,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -610,7 +610,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -623,7 +623,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -639,7 +639,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -651,7 +651,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -702,7 +702,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -711,7 +711,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -722,8 +722,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -741,7 +741,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -763,12 +763,13 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -962,7 +963,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -972,7 +973,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return

@@ -29,9 +29,9 @@ public class NoPlayer extends AbstractAntiObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().backUpPlayer(this);
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }

@@ -33,13 +33,12 @@ public abstract class GenericButton extends MazeObject {
             return false;
         }
         final GenericButton other = (GenericButton) obj;
-        if (this.offState != other.offState
-                && (this.offState == null || !this.offState
-                        .equals(other.offState))) {
+        if (this.offState != other.offState && (this.offState == null
+                || !this.offState.equals(other.offState))) {
             return false;
         }
-        if (this.onState != other.onState
-                && (this.onState == null || !this.onState.equals(other.onState))) {
+        if (this.onState != other.onState && (this.onState == null
+                || !this.onState.equals(other.onState))) {
             return false;
         }
         return true;
@@ -64,8 +63,8 @@ public abstract class GenericButton extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Main.getApplication().getMazeManager().getMaze()
                 .findAllObjectPairsAndSwap(this.offState, this.onState);
         Main.getApplication().getGameManager().redrawMazeNoRebuild();
@@ -75,8 +74,8 @@ public abstract class GenericButton extends MazeObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Behave as if the button was stepped on
         this.postMoveAction(false, dirX, dirY, inv);
         return false;

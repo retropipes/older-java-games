@@ -58,7 +58,7 @@ public class AIContext {
         return this.isEnemyNearby(1, 1);
     }
 
-    public int[] isEnemyNearby(int minR, int maxR) {
+    public int[] isEnemyNearby(final int minR, final int maxR) {
         int minRadius = minR;
         int maxRadius = maxR;
         if (maxRadius > AIContext.MAXIMUM_RADIUS) {
@@ -78,7 +78,8 @@ public class AIContext {
         int u, v;
         for (u = x - maxRadius; u <= x + maxRadius; u++) {
             for (v = y - maxRadius; v <= y + maxRadius; v++) {
-                if (Math.abs(u - x) < minRadius && Math.abs(v - y) < minRadius) {
+                if (Math.abs(u - x) < minRadius
+                        && Math.abs(v - y) < minRadius) {
                     continue;
                 }
                 try {

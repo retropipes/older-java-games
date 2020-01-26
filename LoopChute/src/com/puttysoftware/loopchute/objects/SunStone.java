@@ -35,8 +35,8 @@ public class SunStone extends GenericCheckKey {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         inv.addItem(this);
         final Application app = LoopChute.getApplication();
         app.getGameManager().decay();

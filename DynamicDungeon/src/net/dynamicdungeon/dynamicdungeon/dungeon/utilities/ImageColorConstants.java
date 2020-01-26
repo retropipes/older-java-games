@@ -24,12 +24,17 @@ public class ImageColorConstants {
     private static final int COLOR_12 = new Color(255, 225, 0).getRGB();
     private static final int COLOR_13 = new Color(255, 255, 127).getRGB();
     private static final int COLOR_14 = new Color(255, 255, 255).getRGB();
-    private static final int[] LEVEL_COLORS = new int[] { COLOR_00, COLOR_01,
-	    COLOR_02, COLOR_03, COLOR_04, COLOR_05, COLOR_06, COLOR_07,
-	    COLOR_08, COLOR_09, COLOR_10, COLOR_11, COLOR_12, COLOR_13,
-	    COLOR_14 };
+    private static final int[] LEVEL_COLORS = new int[] {
+            ImageColorConstants.COLOR_00, ImageColorConstants.COLOR_01,
+            ImageColorConstants.COLOR_02, ImageColorConstants.COLOR_03,
+            ImageColorConstants.COLOR_04, ImageColorConstants.COLOR_05,
+            ImageColorConstants.COLOR_06, ImageColorConstants.COLOR_07,
+            ImageColorConstants.COLOR_08, ImageColorConstants.COLOR_09,
+            ImageColorConstants.COLOR_10, ImageColorConstants.COLOR_11,
+            ImageColorConstants.COLOR_12, ImageColorConstants.COLOR_13,
+            ImageColorConstants.COLOR_14 };
 
     public static int getColorForLevel(final int level) {
-	return LEVEL_COLORS[level];
+        return ImageColorConstants.LEVEL_COLORS[level];
     }
 }

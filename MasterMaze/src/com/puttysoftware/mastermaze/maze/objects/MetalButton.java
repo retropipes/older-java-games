@@ -96,8 +96,8 @@ public class MetalButton extends GenericField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
             final Application app = MasterMaze.getApplication();
             final MazeObject there = app.getMazeManager().getMazeObject(
@@ -105,9 +105,8 @@ public class MetalButton extends GenericField {
                     this.getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
+                            this.getTargetColumn(), this.getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(),
                             this.getTargetRow(), this.getTargetColumn(),
@@ -159,10 +158,9 @@ public class MetalButton extends GenericField {
 
     @Override
     public void editorProbeHook() {
-        MasterMaze.getApplication().showMessage(
-                this.getName() + ": Target (" + (this.targetCol + 1) + ","
-                        + (this.targetRow + 1) + "," + (this.targetFloor + 1)
-                        + "," + (this.targetLevel + 1) + ")");
+        MasterMaze.getApplication().showMessage(this.getName() + ": Target ("
+                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
+                + (this.targetFloor + 1) + "," + (this.targetLevel + 1) + ")");
     }
 
     @Override

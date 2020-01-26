@@ -36,10 +36,8 @@ public class CounterpoisonAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED,
-                        CounterpoisonAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_COUNTER_POISONED,
+                CounterpoisonAmulet.EFFECT_DURATION);
     }
 }

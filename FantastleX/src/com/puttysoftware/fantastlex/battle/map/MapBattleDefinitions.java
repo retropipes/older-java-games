@@ -210,8 +210,9 @@ public class MapBattleDefinitions {
         } else {
             text = "Pick 1 Friend";
         }
-        final String response = CommonDialogs.showInputDialog(text + " - "
-                + current + " of " + number, "Battle", pickNames, pickNames[0]);
+        final String response = CommonDialogs.showInputDialog(
+                text + " - " + current + " of " + number, "Battle", pickNames,
+                pickNames[0]);
         if (response != null) {
             final int loc = this.findBattler(response);
             if (loc != -1) {
@@ -255,8 +256,9 @@ public class MapBattleDefinitions {
         } else {
             text = "Pick 1 Enemy";
         }
-        final String response = CommonDialogs.showInputDialog(text + " - "
-                + current + " of " + number, "Battle", pickNames, pickNames[0]);
+        final String response = CommonDialogs.showInputDialog(
+                text + " - " + current + " of " + number, "Battle", pickNames,
+                pickNames[0]);
         if (response != null) {
             final int loc = this.findBattler(response);
             if (loc != -1) {
@@ -273,7 +275,8 @@ public class MapBattleDefinitions {
         return this.findBattler(name, 0, this.battlers.length);
     }
 
-    private int findBattler(final String name, final int start, final int limit) {
+    private int findBattler(final String name, final int start,
+            final int limit) {
         for (int x = start; x < limit; x++) {
             if (this.battlers[x] != null) {
                 if (this.battlers[x].getName().equals(name)) {

@@ -136,8 +136,8 @@ public class Maze implements MazeConstants {
     public void radialScanTimerAction(final int x, final int y, final int z,
             final int l, final int r, final String targetName,
             final int timerMod) {
-        this.mazeData
-                .radialScanTimerAction(x, y, z, l, r, targetName, timerMod);
+        this.mazeData.radialScanTimerAction(x, y, z, l, r, targetName,
+                timerMod);
     }
 
     public void radialScanKillMonsters(final int x, final int y, final int z,
@@ -867,8 +867,8 @@ public class Maze implements MazeConstants {
     }
 
     public void fillFloorAndLayerRandomlyCustom(final int z, final int layer) {
-        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z,
-                this.activeLevel, layer);
+        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z, this.activeLevel,
+                layer);
     }
 
     private void fillLevelRandomlyInBattle(
@@ -949,8 +949,8 @@ public class Maze implements MazeConstants {
         m.basePath = this.basePath;
         int version = 0;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             version = m.readMazeMetafile(metaReader);
         } catch (final IOException ioe) {
@@ -1003,8 +1003,8 @@ public class Maze implements MazeConstants {
         this.readMazeLevel(reader, FormatConstants.MAZE_FORMAT_LATEST);
     }
 
-    private void readMazeLevel(final XDataReader reader, final int formatVersion)
-            throws IOException {
+    private void readMazeLevel(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
             this.mazeData = LayeredTower.readLayeredTowerV1(reader);
             this.mazeData.readSavedTowerState(reader, formatVersion);
@@ -1020,8 +1020,8 @@ public class Maze implements MazeConstants {
     public void writeMaze() throws IOException {
         try {
             // Create metafile writer
-            try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                    + File.separator + "metafile.xml", "maze")) {
+            try (XDataWriter metaWriter = new XDataWriter(
+                    this.basePath + File.separator + "metafile.xml", "maze")) {
                 // Write metafile
                 this.writeMazeMetafile(metaWriter);
             }
@@ -1040,7 +1040,8 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafile(final XDataWriter writer) throws IOException {
+    private void writeMazeMetafile(final XDataWriter writer)
+            throws IOException {
         writer.writeOpeningGroup(Maze.MAZE_PREFIX_GROUP);
         if (this.prefixHandler != null) {
             this.prefixHandler.writePrefix(writer);

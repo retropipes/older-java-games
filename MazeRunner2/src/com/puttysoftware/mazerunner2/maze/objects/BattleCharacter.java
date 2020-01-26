@@ -11,7 +11,7 @@ import com.puttysoftware.mazerunner2.maze.abc.AbstractBattleCharacter;
 
 public class BattleCharacter extends AbstractBattleCharacter {
     // Constructors
-    public BattleCharacter(AbstractCreature newTemplate) {
+    public BattleCharacter(final AbstractCreature newTemplate) {
         super(newTemplate);
     }
 }

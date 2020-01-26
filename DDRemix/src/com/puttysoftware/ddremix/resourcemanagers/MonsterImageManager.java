@@ -22,13 +22,14 @@ public class MonsterImageManager {
     private static Class<?> LOAD_CLASS = MonsterImageManager.class;
     static int MONSTER_IMAGE_SIZE = 32;
 
-    public static BufferedImageIcon getImage(final String name,
-            final int level, final Element e) {
+    public static BufferedImageIcon getImage(final String name, final int level,
+            final Element e) {
         // Get it from the cache
         return MonsterImageCache.getCachedImage(name, level, e);
     }
 
-    static BufferedImageIcon getUncachedImage(final String name, final int level) {
+    static BufferedImageIcon getUncachedImage(final String name,
+            final int level) {
         try {
             if (MonsterImageManager.LOAD_PATH == null) {
                 if (PreferencesManager.getHighDefEnabled()) {
@@ -41,8 +42,8 @@ public class MonsterImageManager {
             }
             final String normalName = ImageTransformer.normalizeName(name);
             final URL url = MonsterImageManager.LOAD_CLASS
-                    .getResource(MonsterImageManager.LOAD_PATH + "level"
-                            + level + "/" + normalName + ".png");
+                    .getResource(MonsterImageManager.LOAD_PATH + "level" + level
+                            + "/" + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

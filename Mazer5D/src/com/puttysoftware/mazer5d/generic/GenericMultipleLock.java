@@ -32,7 +32,7 @@ public abstract class GenericMultipleLock extends GenericLock {
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return (inv.getItemCount(this.getKey()) < this.keyCount);
+        return inv.getItemCount(this.getKey()) < this.keyCount;
     }
 
     @Override
@@ -43,7 +43,7 @@ public abstract class GenericMultipleLock extends GenericLock {
                 || inv.isItemThere(new GhostAmulet())) {
             return false;
         } else {
-            return (inv.getItemCount(this.getKey()) < this.keyCount);
+            return inv.getItemCount(this.getKey()) < this.keyCount;
         }
     }
 
@@ -56,9 +56,8 @@ public abstract class GenericMultipleLock extends GenericLock {
         } else {
             fill = "";
         }
-        Mazer5D.getApplication().showMessage(
-                "You need " + this.keyCount + " " + this.getKey().getName()
-                        + fill);
+        Mazer5D.getApplication().showMessage("You need " + this.keyCount + " "
+                + this.getKey().getName() + fill);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_WALK_FAILED);
     }
@@ -76,8 +75,8 @@ public abstract class GenericMultipleLock extends GenericLock {
     @Override
     public MazeObject editorPropertiesHook() {
         try {
-            this.keyCount = Integer.parseInt(CommonDialogs
-                    .showTextInputDialogWithDefault(
+            this.keyCount = Integer
+                    .parseInt(CommonDialogs.showTextInputDialogWithDefault(
                             "Set Key Count for " + this.getName(), "Editor",
                             Integer.toString(this.keyCount)));
         } catch (final NumberFormatException nf) {

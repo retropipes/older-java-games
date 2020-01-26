@@ -10,16 +10,16 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractTransientObject
 public class Stunner extends AbstractTransientObject {
     // Constructors
     public Stunner() {
-	super();
+        super();
     }
 
     @Override
     public int getForceUnitsImbued() {
-	return 0;
+        return 0;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 35;
+        return 35;
     }
 }

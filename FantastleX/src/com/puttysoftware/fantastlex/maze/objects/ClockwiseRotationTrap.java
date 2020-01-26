@@ -36,15 +36,13 @@ public class ClockwiseRotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
         FantastleX.getApplication().showMessage("Your controls are rotated!");
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                        ClockwiseRotationTrap.EFFECT_DURATION);
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
+                ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

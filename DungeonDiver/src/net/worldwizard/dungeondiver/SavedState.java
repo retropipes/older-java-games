@@ -152,7 +152,8 @@ public class SavedState {
                 filename = fd.getDirectory() + fd.getFile();
                 extension = SavedState.getExtension(filename);
                 if (extension != null) {
-                    if (!extension.equals(SavedStateIdentifier.getIdentifier())) {
+                    if (!extension
+                            .equals(SavedStateIdentifier.getIdentifier())) {
                         filename = SavedState.getNameWithoutExtension(filename)
                                 + SavedStateIdentifier
                                         .getIdentifierWithPeriod();
@@ -174,7 +175,8 @@ public class SavedState {
                 extension = SavedState.getExtension(file);
                 filename = file.getAbsolutePath();
                 if (extension != null) {
-                    if (!extension.equals(SavedStateIdentifier.getIdentifier())) {
+                    if (!extension
+                            .equals(SavedStateIdentifier.getIdentifier())) {
                         filename = SavedState.getNameWithoutExtension(file)
                                 + SavedStateIdentifier
                                         .getIdentifierWithPeriod();
@@ -234,14 +236,15 @@ public class SavedState {
         final long newExperience = p.getExperience();
         final int dl = p.getDungeonLevel();
         final int bookID = p.getSpellBook().getID();
-        final String checksum = Long.toString(dl + 2 * (newExperience + 1) + 3
-                * ((long) newBank + 1) + 4 * ((long) newGold + 1) + 5
-                * ((long) newArmor + 1) + 6 * ((long) newWeapon + 1) + 7
-                * ((long) chp + 1) + 8 * ((long) cmp + 1) + 9
-                * ((long) newLevel + 1) + 10 * ((long) newKills + 1) + 11
-                * ((long) pMP + 1) + 12 * ((long) pHP + 1) + 13
-                * ((long) pDefense + 1) + 14 * ((long) pAttack + 1) + 15
-                * ((long) bookID + 1), SavedState.CHECKSUM_RADIX_2);
+        final String checksum = Long.toString(
+                dl + 2 * (newExperience + 1) + 3 * ((long) newBank + 1)
+                        + 4 * ((long) newGold + 1) + 5 * ((long) newArmor + 1)
+                        + 6 * ((long) newWeapon + 1) + 7 * ((long) chp + 1)
+                        + 8 * ((long) cmp + 1) + 9 * ((long) newLevel + 1)
+                        + 10 * ((long) newKills + 1) + 11 * ((long) pMP + 1)
+                        + 12 * ((long) pHP + 1) + 13 * ((long) pDefense + 1)
+                        + 14 * ((long) pAttack + 1) + 15 * ((long) bookID + 1),
+                SavedState.CHECKSUM_RADIX_2);
         return checksum;
     }
 }

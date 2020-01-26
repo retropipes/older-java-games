@@ -22,8 +22,8 @@ public abstract class DungeonObject extends MapObject {
     // Methods
     public void updateAppearance() {
         if (!this.appearanceValid) {
-            this.setGameAppearance(GraphicsManager.getDungeonImage(this
-                    .getName()));
+            this.setGameAppearance(
+                    GraphicsManager.getDungeonImage(this.getName()));
             this.appearanceValid = true;
         }
     }

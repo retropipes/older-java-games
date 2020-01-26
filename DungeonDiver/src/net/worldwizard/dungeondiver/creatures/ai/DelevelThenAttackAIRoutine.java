@@ -30,7 +30,8 @@ public class DelevelThenAttackAIRoutine extends AIRoutine {
         final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.delevelRounds == 0) {
             final RandomRange chance = new RandomRange(1, 100);
-            if ((int) chance.generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
+            if ((int) chance
+                    .generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
                 this.delevelRounds = delevel.getEffect().getInitialRounds();
                 this.spell = delevel;
                 return AIRoutine.ACTION_CAST_SPELL;

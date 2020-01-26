@@ -20,7 +20,8 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class MazeObject implements TypeConstants, RandomGenerationRule {
+public abstract class MazeObject
+        implements TypeConstants, RandomGenerationRule {
     // Properties
     private boolean solid;
     private boolean pushable;
@@ -478,7 +479,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -487,7 +488,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -498,8 +499,8 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -513,7 +514,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -525,7 +526,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -536,7 +537,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -552,7 +553,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
             final int dirY, final ObjectInventory inv);
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -566,7 +567,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param dirZ
@@ -577,7 +578,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -592,7 +593,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -610,7 +611,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -624,7 +625,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -637,7 +638,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -650,7 +651,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -667,7 +668,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -681,7 +682,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -694,7 +695,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -707,7 +708,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -723,7 +724,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -734,7 +735,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -757,12 +758,13 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -892,7 +894,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -902,7 +904,7 @@ public abstract class MazeObject implements TypeConstants, RandomGenerationRule 
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return

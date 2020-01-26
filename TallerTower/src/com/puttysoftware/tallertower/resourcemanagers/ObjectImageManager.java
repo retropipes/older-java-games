@@ -19,7 +19,7 @@ public class ObjectImageManager {
     private static Class<?> LOAD_CLASS = ObjectImageManager.class;
 
     /**
-     * 
+     *
      * @param name
      * @param baseID
      * @param transformColor
@@ -38,9 +38,8 @@ public class ObjectImageManager {
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
             final String normalName = ImageTransformer.normalizeName(name);
-            final URL url = ObjectImageManager.LOAD_CLASS
-                    .getResource(ObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                    ObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

@@ -24,7 +24,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     private static final SignalCrystal SIGNAL = new SignalCrystal();
 
     protected GenericProgrammableLock() {
-        super(SIGNAL);
+        super(GenericProgrammableLock.SIGNAL);
     }
 
     // Scriptability
@@ -36,13 +36,13 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
-            if (this.getKey() != SIGNAL) {
+            if (this.getKey() != GenericProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
                     inv.removeItem(this.getKey());
                 }
@@ -63,11 +63,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            if (this.getKey() == SIGNAL) {
+            if (this.getKey() == GenericProgrammableLock.SIGNAL) {
                 Mazer5D.getApplication().showMessage("You need a Crystal");
             } else {
-                Mazer5D.getApplication().showMessage(
-                        "You need a " + this.getKey().getName());
+                Mazer5D.getApplication()
+                        .showMessage("You need a " + this.getKey().getName());
             }
         }
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -76,11 +76,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        if (this.getKey() != SIGNAL) {
-            return !(inv.isItemThere(this.getKey()));
+        if (this.getKey() != GenericProgrammableLock.SIGNAL) {
+            return !inv.isItemThere(this.getKey());
         } else {
-            return !(inv
-                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+            return !inv
+                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
         }
     }
 
@@ -92,11 +92,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
                 || inv.isItemThere(new GhostAmulet())) {
             return false;
         } else {
-            if (this.getKey() != SIGNAL) {
-                return !(inv.isItemThere(this.getKey()));
+            if (this.getKey() != GenericProgrammableLock.SIGNAL) {
+                return !inv.isItemThere(this.getKey());
             } else {
-                return !(inv
-                        .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+                return !inv.isItemCategoryThere(
+                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
             }
         }
     }
@@ -121,7 +121,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";
-        keys[tempKeys.length] = SIGNAL;
+        keys[tempKeys.length] = GenericProgrammableLock.SIGNAL;
         int oldIndex = -1;
         for (oldIndex = 0; oldIndex < keyNames.length; oldIndex++) {
             if (this.getKey().getName().equals(keyNames[oldIndex])) {
@@ -155,7 +155,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
         final MazeObject o = Mazer5D.getApplication().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
         if (o == null) {
-            this.setKey(SIGNAL);
+            this.setKey(GenericProgrammableLock.SIGNAL);
         } else {
             this.setKey((GenericKey) o);
         }

@@ -55,24 +55,19 @@ public class PartyMember extends AbstractCreature {
         this.permanentMP = 0;
         this.kills = 0;
         this.setLevel(1);
-        this.setStrength(StatConstants.GAIN_STRENGTH
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
-        this.setBlock(StatConstants.GAIN_BLOCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
-        this.setVitality(StatConstants.GAIN_VITALITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
-        this.setIntelligence(StatConstants.GAIN_INTELLIGENCE
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
-        this.setAgility(StatConstants.GAIN_AGILITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
-        this.setLuck(StatConstants.GAIN_LUCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
+        this.setStrength(StatConstants.GAIN_STRENGTH + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
+        this.setBlock(StatConstants.GAIN_BLOCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
+        this.setVitality(StatConstants.GAIN_VITALITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
+        this.setIntelligence(
+                StatConstants.GAIN_INTELLIGENCE + this.race.getAttribute(
+                        RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
+        this.setAgility(StatConstants.GAIN_AGILITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
+        this.setLuck(StatConstants.GAIN_LUCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
         this.setAttacksPerRound(1);
         this.setSpellsPerRound(1);
         this.healAndRegenerateFully();
@@ -84,7 +79,8 @@ public class PartyMember extends AbstractCreature {
         nextLevelEquation.setCoefficient(2, value);
         nextLevelEquation.setCoefficient(3, value);
         this.setToNextLevel(nextLevelEquation);
-        this.setSpellBook(CasteManager.getSpellBookByID(this.caste.getCasteID()));
+        this.setSpellBook(
+                CasteManager.getSpellBookByID(this.caste.getCasteID()));
     }
 
     // Methods
@@ -95,24 +91,19 @@ public class PartyMember extends AbstractCreature {
     // Transformers
     @Override
     protected void levelUpHook() {
-        this.offsetStrength(StatConstants.GAIN_STRENGTH
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
-        this.offsetBlock(StatConstants.GAIN_BLOCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
-        this.offsetVitality(StatConstants.GAIN_VITALITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
-        this.offsetIntelligence(StatConstants.GAIN_INTELLIGENCE
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
-        this.offsetAgility(StatConstants.GAIN_AGILITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
-        this.offsetLuck(StatConstants.GAIN_LUCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
+        this.offsetStrength(StatConstants.GAIN_STRENGTH + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
+        this.offsetBlock(StatConstants.GAIN_BLOCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
+        this.offsetVitality(StatConstants.GAIN_VITALITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
+        this.offsetIntelligence(
+                StatConstants.GAIN_INTELLIGENCE + this.race.getAttribute(
+                        RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
+        this.offsetAgility(StatConstants.GAIN_AGILITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
+        this.offsetLuck(StatConstants.GAIN_LUCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
         this.healAndRegenerateFully();
     }
 
@@ -175,24 +166,19 @@ public class PartyMember extends AbstractCreature {
         this.race = r;
         this.caste = c;
         this.setLevel(1);
-        this.setStrength(StatConstants.GAIN_STRENGTH
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
-        this.setBlock(StatConstants.GAIN_BLOCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
-        this.setVitality(StatConstants.GAIN_VITALITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
-        this.setIntelligence(StatConstants.GAIN_INTELLIGENCE
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
-        this.setAgility(StatConstants.GAIN_AGILITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
-        this.setLuck(StatConstants.GAIN_LUCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
+        this.setStrength(StatConstants.GAIN_STRENGTH + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
+        this.setBlock(StatConstants.GAIN_BLOCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
+        this.setVitality(StatConstants.GAIN_VITALITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
+        this.setIntelligence(
+                StatConstants.GAIN_INTELLIGENCE + this.race.getAttribute(
+                        RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
+        this.setAgility(StatConstants.GAIN_AGILITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
+        this.setLuck(StatConstants.GAIN_LUCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
         this.setAttacksPerRound(1);
         this.setSpellsPerRound(1);
         this.healAndRegenerateFully();
@@ -206,7 +192,8 @@ public class PartyMember extends AbstractCreature {
         nextLevelEquation.setCoefficient(2, value);
         nextLevelEquation.setCoefficient(3, value);
         this.setToNextLevel(nextLevelEquation);
-        this.setSpellBook(CasteManager.getSpellBookByID(this.caste.getCasteID()));
+        this.setSpellBook(
+                CasteManager.getSpellBookByID(this.caste.getCasteID()));
         PartyManager.getParty().resetDungeonLevel();
         new GenerateTask(true).start();
     }
@@ -277,8 +264,8 @@ public class PartyMember extends AbstractCreature {
             throws IOException {
         final int version = worldFile.readByte();
         if (version < FormatConstants.CHARACTER_FORMAT_1) {
-            throw new VersionException("Invalid character version found: "
-                    + version);
+            throw new VersionException(
+                    "Invalid character version found: " + version);
         }
         final int k = worldFile.readInt();
         final int pAtk = worldFile.readInt();
@@ -360,9 +347,9 @@ public class PartyMember extends AbstractCreature {
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-        return BattleImageManager
-                .getImage(PartyMember.ME.getName(), PartyMember.ME.getBaseID(),
-                        this.getFaith().getColor().getRGB());
+        return BattleImageManager.getImage(PartyMember.ME.getName(),
+                PartyMember.ME.getBaseID(),
+                this.getFaith().getColor().getRGB());
     }
 
     @Override

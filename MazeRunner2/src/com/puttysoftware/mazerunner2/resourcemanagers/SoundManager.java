@@ -17,27 +17,26 @@ public class SoundManager {
 
     private static WAVFactory getSound(final String filename) {
         try {
-            final URL url = SoundManager.LOAD_CLASS
-                    .getResource(SoundManager.LOAD_PATH
-                            + filename.toLowerCase() + ".wav");
+            final URL url = SoundManager.LOAD_CLASS.getResource(
+                    SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
             return WAVFactory.getNonLoopingResource(url);
         } catch (final NullPointerException np) {
             return null;
         }
     }
 
-    public static void playSound(int soundID) {
+    public static void playSound(final int soundID) {
         try {
             int offset = 0;
             if (soundID == SoundConstants.SOUND_WALK) {
-                RandomRange rSound = new RandomRange(0, 2);
+                final RandomRange rSound = new RandomRange(0, 2);
                 offset = rSound.generate();
             }
             final String soundName = SoundConstants.SOUND_NAMES[soundID
                     + offset];
             final WAVFactory snd = SoundManager.getSound(soundName);
             snd.start();
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             // Do nothing
         }
     }

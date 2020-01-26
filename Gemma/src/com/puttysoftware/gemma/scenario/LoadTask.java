@@ -13,8 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
-import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.gemma.Application;
 import com.puttysoftware.gemma.Gemma;
 import com.puttysoftware.gemma.resourcemanagers.LogoManager;
@@ -28,12 +28,12 @@ class LoadTask extends Thread {
     private final JFrame loadFrame;
 
     // Constructors
-    LoadTask(String file) {
+    LoadTask(final String file) {
         this.filename = file;
         this.setName("File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -46,13 +46,13 @@ class LoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         int startW;
         String sg;
         app.getGameManager().setSavedGameFlag(true);
         sg = "Saved Game";
         try {
-            File scenarioFile = new File(this.filename);
+            final File scenarioFile = new File(this.filename);
             Support.createScenario();
             Map gameMap = new Map();
             gameMap.createMaps();

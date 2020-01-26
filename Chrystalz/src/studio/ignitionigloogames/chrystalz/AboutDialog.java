@@ -37,7 +37,7 @@ public class AboutDialog implements AboutHandler {
     public void handleAbout(final AboutEvent ae) {
         this.showAboutDialog();
     }
-    
+
     public void showAboutDialog() {
         this.aboutFrame.setVisible(true);
     }

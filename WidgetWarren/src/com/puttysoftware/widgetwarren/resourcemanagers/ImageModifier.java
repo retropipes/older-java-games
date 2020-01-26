@@ -13,8 +13,7 @@ public class ImageModifier {
         try {
             final int scaleSize = ImageConstants.getScaledImageSize();
             final BufferedImageIcon result = new BufferedImageIcon(icon1);
-            for (int z = 0; z < otherIcons.length; z++) {
-                final BufferedImageIcon icon2 = otherIcons[z];
+            for (final BufferedImageIcon icon2 : otherIcons) {
                 if (icon2 != null) {
                     for (int x = 0; x < scaleSize; x++) {
                         for (int y = 0; y < scaleSize; y++) {

@@ -39,7 +39,7 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -49,7 +49,7 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
         if (!(obj instanceof RuleSet)) {
             return false;
         }
-        RuleSet other = (RuleSet) obj;
+        final RuleSet other = (RuleSet) obj;
         if (this.generateQuantity != other.generateQuantity) {
             return false;
         }
@@ -71,7 +71,7 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     // Methods
     @Override
     public RuleSet clone() {
-        RuleSet copy = new RuleSet();
+        final RuleSet copy = new RuleSet();
         copy.maxQuantity = this.maxQuantity;
         copy.minQuantity = this.minQuantity;
         copy.percentageFlag = this.percentageFlag;
@@ -84,10 +84,10 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
      * Methods implementing RandomGenerationRule
      */
     @Override
-    public int getMaximumRequiredQuantity(Map map) {
+    public int getMaximumRequiredQuantity(final Map map) {
         if (this.percentageFlag) {
-            int base = map.getRows() * map.getColumns();
-            double factor = this.maxQuantity / 100.0;
+            final int base = map.getRows() * map.getColumns();
+            final double factor = this.maxQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.maxQuantity;
@@ -95,10 +95,10 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Map map) {
+    public int getMinimumRequiredQuantity(final Map map) {
         if (this.percentageFlag) {
-            int base = map.getRows() * map.getColumns();
-            double factor = this.minQuantity / 100.0;
+            final int base = map.getRows() * map.getColumns();
+            final double factor = this.minQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.minQuantity;
@@ -111,17 +111,17 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public boolean shouldGenerateObject(Map map, int row, int col, int floor,
-            int level, int layer) {
-        int genval = this.rng.generate();
-        return (genval <= this.generateQuantity);
+    public boolean shouldGenerateObject(final Map map, final int row,
+            final int col, final int floor, final int level, final int layer) {
+        final int genval = this.rng.generate();
+        return genval <= this.generateQuantity;
     }
 
     @Override
-    public int getMaximumRequiredQuantityInBattle(Map map) {
+    public int getMaximumRequiredQuantityInBattle(final Map map) {
         if (this.percentageFlag) {
-            int base = map.getRows() * map.getColumns();
-            double factor = this.maxQuantity / 100.0;
+            final int base = map.getRows() * map.getColumns();
+            final double factor = this.maxQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.maxQuantity;
@@ -129,10 +129,10 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public int getMinimumRequiredQuantityInBattle(Map map) {
+    public int getMinimumRequiredQuantityInBattle(final Map map) {
         if (this.percentageFlag) {
-            int base = map.getRows() * map.getColumns();
-            double factor = this.minQuantity / 100.0;
+            final int base = map.getRows() * map.getColumns();
+            final double factor = this.minQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.minQuantity;
@@ -145,9 +145,9 @@ final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public boolean shouldGenerateObjectInBattle(Map map, int row, int col,
-            int floor, int level, int layer) {
-        int genval = this.rng.generate();
-        return (genval <= this.generateQuantity);
+    public boolean shouldGenerateObjectInBattle(final Map map, final int row,
+            final int col, final int floor, final int level, final int layer) {
+        final int genval = this.rng.generate();
+        return genval <= this.generateQuantity;
     }
 }

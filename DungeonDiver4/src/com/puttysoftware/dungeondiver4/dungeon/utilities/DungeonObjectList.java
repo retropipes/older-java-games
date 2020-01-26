@@ -27,56 +27,55 @@ public class DungeonObjectList {
 
     // Constructor
     public DungeonObjectList() {
-        AbstractDungeonObject[] allObjects = { new Amethyst(),
+        final AbstractDungeonObject[] allObjects = { new Amethyst(),
                 new AnnihilationWand(), new APlug(), new APort(),
                 new AquaBoots(), new ArmorShop(), new ArrowTrap(), new Axe(),
                 new Bank(), new BarrierGenerator(), new BioHazardBoots(),
                 new BlackCrystal(), new BlockTeleport(), new BlueButton(),
                 new BlueCarpet(), new BlueCrystal(), new BlueKey(),
-                new BlueLock(), new BlueWallOff(), new BlueWallOn(),
-                new Bolt(), new BoltWall(), new Bomb(), new BPlug(),
-                new BPort(), new Bracer(), new BracerWall(),
-                new BreakableWallHorizontal(), new BreakableWallVertical(),
-                new BrickWall(), new BridgedLavaHorizontal(),
-                new BridgedLavaVertical(), new BridgedSlimeHorizontal(),
-                new BridgedSlimeVertical(), new BridgedWaterHorizontal(),
-                new BridgedWaterVertical(), new BrightnessGem(), new Cap(),
-                new CapWall(), new ChainTeleport(),
-                new ClockwiseRotationTrap(), new ClosedDoor(),
-                new ConditionalChainTeleport(), new ConditionalTeleport(),
-                new ConfusionTrap(), new ControllableTeleport(),
-                new CounterclockwiseRotationTrap(), new CounterpoisonAmulet(),
-                new CPlug(), new CPort(), new CrackedWall(), new Crevasse(),
-                new CrumblingWall(), new CrystalWall(), new CutTree(),
-                new CyanButton(), new CyanCarpet(), new CyanCrystal(),
-                new CyanKey(), new CyanLock(), new CyanWallOff(),
-                new CyanWallOn(), new Dagger(), new DaggerWall(),
-                new DamageableWall(), new DamagedWall(), new DarkBlueCrystal(),
-                new DarkCyanCrystal(), new DarkGem(), new DarkGrayCrystal(),
-                new DarkGreenCrystal(), new DarkMagentaCrystal(),
-                new DarknessGem(), new DarkRedCrystal(), new DarkWand(),
-                new DarkYellowCrystal(), new Diamond(), new DimnessGem(),
-                new Dirt(), new DisarmTrapWand(), new DizzinessTrap(),
-                new DPlug(), new DPort(), new DrunkTrap(), new Empty(),
-                new EmptyVoid(), new EnergySphere(), new EnhancementShop(),
+                new BlueLock(), new BlueWallOff(), new BlueWallOn(), new Bolt(),
+                new BoltWall(), new Bomb(), new BPlug(), new BPort(),
+                new Bracer(), new BracerWall(), new BreakableWallHorizontal(),
+                new BreakableWallVertical(), new BrickWall(),
+                new BridgedLavaHorizontal(), new BridgedLavaVertical(),
+                new BridgedSlimeHorizontal(), new BridgedSlimeVertical(),
+                new BridgedWaterHorizontal(), new BridgedWaterVertical(),
+                new BrightnessGem(), new Cap(), new CapWall(),
+                new ChainTeleport(), new ClockwiseRotationTrap(),
+                new ClosedDoor(), new ConditionalChainTeleport(),
+                new ConditionalTeleport(), new ConfusionTrap(),
+                new ControllableTeleport(), new CounterclockwiseRotationTrap(),
+                new CounterpoisonAmulet(), new CPlug(), new CPort(),
+                new CrackedWall(), new Crevasse(), new CrumblingWall(),
+                new CrystalWall(), new CutTree(), new CyanButton(),
+                new CyanCarpet(), new CyanCrystal(), new CyanKey(),
+                new CyanLock(), new CyanWallOff(), new CyanWallOn(),
+                new Dagger(), new DaggerWall(), new DamageableWall(),
+                new DamagedWall(), new DarkBlueCrystal(), new DarkCyanCrystal(),
+                new DarkGem(), new DarkGrayCrystal(), new DarkGreenCrystal(),
+                new DarkMagentaCrystal(), new DarknessGem(),
+                new DarkRedCrystal(), new DarkWand(), new DarkYellowCrystal(),
+                new Diamond(), new DimnessGem(), new Dirt(),
+                new DisarmTrapWand(), new DizzinessTrap(), new DPlug(),
+                new DPort(), new DrunkTrap(), new Empty(), new EmptyVoid(),
+                new EnergySphere(), new EnhancementShop(),
                 new EnragedBarrierGenerator(), new EPlug(), new EPort(),
                 new ExperienceBoots(), new ExplodingWall(), new Explore(),
                 new ExploreWall(), new FadingWall(), new FaithPowerShop(),
                 new FakeWall(), new FireAmulet(), new FireBomb(),
                 new FireBoots(), new FireBow(), new ForceField(), new FPlug(),
                 new FPort(), new GarnetSquare(), new GarnetWall(),
-                new GhostAmulet(), new GhostBow(), new Glove(),
-                new GloveWall(), new GlueBoots(), new GoldenSquare(),
-                new GoldenWall(), new GPlug(), new GPort(), new Grass(),
-                new GrayCrystal(), new GreenButton(), new GreenCarpet(),
-                new GreenCrystal(), new GreenKey(), new GreenLock(),
-                new GreenWallOff(), new GreenWallOn(), new Hammer(),
-                new HealBoots(), new HealShop(), new HealTrap(),
-                new HorizontalBarrier(), new HotBoots(), new HotRock(),
-                new HPlug(), new HPort(), new HurtTrap(), new Ice(),
-                new IceAmulet(), new IceBomb(), new IceBow(),
-                new IcedBarrierGenerator(), new InvisibleBlockTeleport(),
-                new InvisibleChainTeleport(),
+                new GhostAmulet(), new GhostBow(), new Glove(), new GloveWall(),
+                new GlueBoots(), new GoldenSquare(), new GoldenWall(),
+                new GPlug(), new GPort(), new Grass(), new GrayCrystal(),
+                new GreenButton(), new GreenCarpet(), new GreenCrystal(),
+                new GreenKey(), new GreenLock(), new GreenWallOff(),
+                new GreenWallOn(), new Hammer(), new HealBoots(),
+                new HealShop(), new HealTrap(), new HorizontalBarrier(),
+                new HotBoots(), new HotRock(), new HPlug(), new HPort(),
+                new HurtTrap(), new Ice(), new IceAmulet(), new IceBomb(),
+                new IceBow(), new IcedBarrierGenerator(),
+                new InvisibleBlockTeleport(), new InvisibleChainTeleport(),
                 new InvisibleConditionalChainTeleport(),
                 new InvisibleConditionalTeleport(),
                 new InvisibleOneShotChainTeleport(),
@@ -86,9 +85,9 @@ public class DungeonObjectList {
                 new InvisibleWall(), new IPlug(), new IPort(), new ItemShop(),
                 new JPlug(), new JPort(), new Key(), new KPlug(), new KPort(),
                 new Lava(), new LightBlueCrystal(), new LightCyanCrystal(),
-                new LightGem(), new LightGrayCrystal(),
-                new LightGreenCrystal(), new LightMagentaCrystal(),
-                new LightnessGem(), new LightRedCrystal(), new LightWand(),
+                new LightGem(), new LightGrayCrystal(), new LightGreenCrystal(),
+                new LightMagentaCrystal(), new LightnessGem(),
+                new LightRedCrystal(), new LightWand(),
                 new LightYellowCrystal(), new Lock(), new LPlug(), new LPort(),
                 new MagentaButton(), new MagentaCarpet(), new MagentaCrystal(),
                 new MagentaKey(), new MagentaLock(), new MagentaWallOff(),
@@ -100,12 +99,12 @@ public class DungeonObjectList {
                 new MetalDoor(), new MetalKey(), new MinorDrainPotion(),
                 new MinorHealPotion(), new MinorHurtPotion(),
                 new MinorRandomPotion(), new MinorRegenPotion(),
-                new MinorUnknownPotion(), new MoneyBoots(),
-                new MonsterObject(), new MoonDoor(), new MoonStone(),
-                new Move(), new MoveWall(), new MovingBlock(), new MPlug(),
-                new MPort(), new Necklace(), new NecklaceWall(), new NoBlock(),
-                new NoBoots(), new NoPlayer(), new NormalAmulet(), new NPlug(),
-                new NPort(), new NWayTeleport(), new OneShotChainTeleport(),
+                new MinorUnknownPotion(), new MoneyBoots(), new MonsterObject(),
+                new MoonDoor(), new MoonStone(), new Move(), new MoveWall(),
+                new MovingBlock(), new MPlug(), new MPort(), new Necklace(),
+                new NecklaceWall(), new NoBlock(), new NoBoots(),
+                new NoPlayer(), new NormalAmulet(), new NPlug(), new NPort(),
+                new NWayTeleport(), new OneShotChainTeleport(),
                 new OneShotConditionalTeleport(),
                 new OneShotControllableTeleport(), new OneShotTeleport(),
                 new OneWayEastWall(), new OneWayNorthWall(),
@@ -127,22 +126,21 @@ public class DungeonObjectList {
                 new QuakeBomb(), new RandomInvisibleOneShotTeleport(),
                 new RandomInvisibleTeleport(), new RandomOneShotTeleport(),
                 new RandomTeleport(), new RedButton(), new RedCarpet(),
-                new RedCrystal(), new RedKey(), new RedLock(),
-                new RedWallOff(), new RedWallOn(), new RegenBoots(),
-                new Regenerator(), new RemoteActionWand(), new RoseButton(),
-                new RoseCarpet(), new RoseCrystal(), new RoseKey(),
-                new RoseLock(), new RoseWallOff(), new RoseWallOn(),
-                new RotationTrap(), new RotationWand(), new RPlug(),
-                new RPort(), new Ruby(), new RubySquare(), new RubyWall(),
-                new Sand(), new Sapphire(), new SapphireSquare(),
-                new SapphireWall(), new SealedFinish(), new SealingWall(),
-                new SeaweedButton(), new SeaweedCarpet(), new SeaweedCrystal(),
-                new SeaweedKey(), new SeaweedLock(), new SeaweedWallOff(),
-                new SeaweedWallOn(), new Shield(), new ShieldWall(),
-                new ShockBomb(), new ShockBow(), new ShockedBarrierGenerator(),
-                new ShuffleBomb(), new Sign(), new SilverSquare(),
-                new SilverWall(), new SkyButton(), new SkyCarpet(),
-                new SkyCrystal(), new SkyKey(), new SkyLock(),
+                new RedCrystal(), new RedKey(), new RedLock(), new RedWallOff(),
+                new RedWallOn(), new RegenBoots(), new Regenerator(),
+                new RemoteActionWand(), new RoseButton(), new RoseCarpet(),
+                new RoseCrystal(), new RoseKey(), new RoseLock(),
+                new RoseWallOff(), new RoseWallOn(), new RotationTrap(),
+                new RotationWand(), new RPlug(), new RPort(), new Ruby(),
+                new RubySquare(), new RubyWall(), new Sand(), new Sapphire(),
+                new SapphireSquare(), new SapphireWall(), new SealedFinish(),
+                new SealingWall(), new SeaweedButton(), new SeaweedCarpet(),
+                new SeaweedCrystal(), new SeaweedKey(), new SeaweedLock(),
+                new SeaweedWallOff(), new SeaweedWallOn(), new Shield(),
+                new ShieldWall(), new ShockBomb(), new ShockBow(),
+                new ShockedBarrierGenerator(), new ShuffleBomb(), new Sign(),
+                new SilverSquare(), new SilverWall(), new SkyButton(),
+                new SkyCarpet(), new SkyCrystal(), new SkyKey(), new SkyLock(),
                 new SkyWallOff(), new SkyWallOn(), new Slime(),
                 new SlipperyBoots(), new SmokeBomb(), new Snow(),
                 new SocksShop(), new SpellShop(), new SPlug(), new SPort(),
@@ -152,41 +150,40 @@ public class DungeonObjectList {
                 new SunStone(), new SuperDrainPotion(), new SuperHealPotion(),
                 new SuperHurtPotion(), new SuperRandomPotion(),
                 new SuperRegenPotion(), new SuperUnknownPotion(), new Sword(),
-                new SwordWall(), new Tablet(), new TabletSlot(),
-                new Teleport(), new TeleportWand(), new Tile(),
-                new TopazSquare(), new TopazWall(), new TPlug(), new TPort(),
-                new TrappedWall0(), new TrappedWall1(), new TrappedWall10(),
-                new TrappedWall11(), new TrappedWall12(), new TrappedWall13(),
-                new TrappedWall14(), new TrappedWall15(), new TrappedWall16(),
-                new TrappedWall17(), new TrappedWall18(), new TrappedWall19(),
-                new TrappedWall2(), new TrappedWall3(), new TrappedWall4(),
-                new TrappedWall5(), new TrappedWall6(), new TrappedWall7(),
-                new TrappedWall8(), new TrappedWall9(), new TreasureChest(),
-                new TreasureKey(), new Tree(), new TrueSightAmulet(),
-                new Tundra(), new TwoWayTeleport(), new UPlug(), new UPort(),
-                new UTurnTrap(), new VariableHealTrap(),
-                new VariableHurtTrap(), new VerticalBarrier(), new VPlug(),
-                new VPort(), new Wall(), new WallBreakingWand(),
-                new WallMakingTrap(), new WallMakingWand(), new WallTrap0(),
-                new WallTrap1(), new WallTrap10(), new WallTrap11(),
-                new WallTrap12(), new WallTrap13(), new WallTrap14(),
-                new WallTrap15(), new WallTrap16(), new WallTrap17(),
-                new WallTrap18(), new WallTrap19(), new WallTrap2(),
-                new WallTrap3(), new WallTrap4(), new WallTrap5(),
-                new WallTrap6(), new WallTrap7(), new WallTrap8(),
-                new WallTrap9(), new WarpBomb(), new WarpTrap(),
-                new WarpWand(), new Water(), new WeaponsShop(),
-                new WhiteButton(), new WhiteCarpet(), new WhiteCrystal(),
-                new WhiteKey(), new WhiteLock(), new WhiteWallOff(),
-                new WhiteWallOn(), new WPlug(), new WPort(), new XPlug(),
-                new XPort(), new YellowButton(), new YellowCarpet(),
-                new YellowCrystal(), new YellowKey(), new YellowLock(),
-                new YellowWallOff(), new YellowWallOn(), new YPlug(),
-                new YPort(), new ZPlug(), new ZPort() };
+                new SwordWall(), new Tablet(), new TabletSlot(), new Teleport(),
+                new TeleportWand(), new Tile(), new TopazSquare(),
+                new TopazWall(), new TPlug(), new TPort(), new TrappedWall0(),
+                new TrappedWall1(), new TrappedWall10(), new TrappedWall11(),
+                new TrappedWall12(), new TrappedWall13(), new TrappedWall14(),
+                new TrappedWall15(), new TrappedWall16(), new TrappedWall17(),
+                new TrappedWall18(), new TrappedWall19(), new TrappedWall2(),
+                new TrappedWall3(), new TrappedWall4(), new TrappedWall5(),
+                new TrappedWall6(), new TrappedWall7(), new TrappedWall8(),
+                new TrappedWall9(), new TreasureChest(), new TreasureKey(),
+                new Tree(), new TrueSightAmulet(), new Tundra(),
+                new TwoWayTeleport(), new UPlug(), new UPort(), new UTurnTrap(),
+                new VariableHealTrap(), new VariableHurtTrap(),
+                new VerticalBarrier(), new VPlug(), new VPort(), new Wall(),
+                new WallBreakingWand(), new WallMakingTrap(),
+                new WallMakingWand(), new WallTrap0(), new WallTrap1(),
+                new WallTrap10(), new WallTrap11(), new WallTrap12(),
+                new WallTrap13(), new WallTrap14(), new WallTrap15(),
+                new WallTrap16(), new WallTrap17(), new WallTrap18(),
+                new WallTrap19(), new WallTrap2(), new WallTrap3(),
+                new WallTrap4(), new WallTrap5(), new WallTrap6(),
+                new WallTrap7(), new WallTrap8(), new WallTrap9(),
+                new WarpBomb(), new WarpTrap(), new WarpWand(), new Water(),
+                new WeaponsShop(), new WhiteButton(), new WhiteCarpet(),
+                new WhiteCrystal(), new WhiteKey(), new WhiteLock(),
+                new WhiteWallOff(), new WhiteWallOn(), new WPlug(), new WPort(),
+                new XPlug(), new XPort(), new YellowButton(),
+                new YellowCarpet(), new YellowCrystal(), new YellowKey(),
+                new YellowLock(), new YellowWallOff(), new YellowWallOn(),
+                new YPlug(), new YPort(), new ZPlug(), new ZPort() };
         this.allObjectList = new ArrayList<>();
         // Add all predefined objects to the list
-        for (int z = 0; z < allObjects.length; z++) {
-            this.allObjectList.add(allObjects[z]);
+        for (final AbstractDungeonObject allObject : allObjects) {
+            this.allObjectList.add(allObject);
         }
     }
 
@@ -196,13 +193,13 @@ public class DungeonObjectList {
                 .toArray(new AbstractDungeonObject[this.allObjectList.size()]);
     }
 
-    public void addObject(AbstractDungeonObject o) {
+    public void addObject(final AbstractDungeonObject o) {
         this.allObjectList.add(o);
     }
 
     public String[] getAllNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] allNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] allNames = new String[objects.length];
         for (int x = 0; x < objects.length; x++) {
             allNames[x] = objects[x].getName();
         }
@@ -210,8 +207,8 @@ public class DungeonObjectList {
     }
 
     public String[] getAllDescriptions() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] allDescriptions = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] allDescriptions = new String[objects.length];
         for (int x = 0; x < objects.length; x++) {
             allDescriptions[x] = objects[x].getDescription();
         }
@@ -219,24 +216,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllObjectsWithRuleSets() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllObjectsWithRuleSets = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllObjectsWithRuleSets = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].hasRuleSet()) {
                 tempAllObjectsWithRuleSets[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
+        for (final AbstractDungeonObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allObjectsWithRuleSets = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allObjectsWithRuleSets = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
-                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSets[x];
+        for (final AbstractDungeonObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
+                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSet;
                 objectCount++;
             }
         }
@@ -244,24 +241,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllObjectsWithoutRuleSets() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllObjectsWithoutRuleSets = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllObjectsWithoutRuleSets = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (!objects[x].hasRuleSet()) {
                 tempAllObjectsWithoutRuleSets[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
+        for (final AbstractDungeonObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allObjectsWithoutRuleSets = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allObjectsWithoutRuleSets = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
-                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSets[x];
+        for (final AbstractDungeonObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
+                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSet;
                 objectCount++;
             }
         }
@@ -269,24 +266,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllGroundLayerObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllGroundLayerObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllGroundLayerObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_GROUND) {
                 tempAllGroundLayerObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allGroundLayerObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allGroundLayerObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
-                allGroundLayerObjects[objectCount] = tempAllGroundLayerObjects[x];
+        for (final AbstractDungeonObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
+                allGroundLayerObjects[objectCount] = tempAllGroundLayerObject;
                 objectCount++;
             }
         }
@@ -294,24 +291,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllGenerationEligibleTypedObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllGenerationEligibleTypedObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllGenerationEligibleTypedObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
                 tempAllGenerationEligibleTypedObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGenerationEligibleTypedObjects.length; x++) {
-            if (tempAllGenerationEligibleTypedObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllGenerationEligibleTypedObject : tempAllGenerationEligibleTypedObjects) {
+            if (tempAllGenerationEligibleTypedObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allGenerationEligibleTypedObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allGenerationEligibleTypedObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGenerationEligibleTypedObjects.length; x++) {
-            if (tempAllGenerationEligibleTypedObjects[x] != null) {
-                allGenerationEligibleTypedObjects[objectCount] = tempAllGenerationEligibleTypedObjects[x];
+        for (final AbstractDungeonObject tempAllGenerationEligibleTypedObject : tempAllGenerationEligibleTypedObjects) {
+            if (tempAllGenerationEligibleTypedObject != null) {
+                allGenerationEligibleTypedObjects[objectCount] = tempAllGenerationEligibleTypedObject;
                 objectCount++;
             }
         }
@@ -319,24 +316,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllGeneratedTypedObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllGeneratedTypedObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllGeneratedTypedObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
                 tempAllGeneratedTypedObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGeneratedTypedObjects.length; x++) {
-            if (tempAllGeneratedTypedObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllGeneratedTypedObject : tempAllGeneratedTypedObjects) {
+            if (tempAllGeneratedTypedObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allGeneratedTypedObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allGeneratedTypedObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGeneratedTypedObjects.length; x++) {
-            if (tempAllGeneratedTypedObjects[x] != null) {
-                allGeneratedTypedObjects[objectCount] = tempAllGeneratedTypedObjects[x];
+        for (final AbstractDungeonObject tempAllGeneratedTypedObject : tempAllGeneratedTypedObjects) {
+            if (tempAllGeneratedTypedObject != null) {
+                allGeneratedTypedObjects[objectCount] = tempAllGeneratedTypedObject;
                 objectCount++;
             }
         }
@@ -344,24 +341,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllObjectLayerObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllObjectLayerObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllObjectLayerObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_OBJECT) {
                 tempAllObjectLayerObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allObjectLayerObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allObjectLayerObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
-                allObjectLayerObjects[objectCount] = tempAllObjectLayerObjects[x];
+        for (final AbstractDungeonObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
+                allObjectLayerObjects[objectCount] = tempAllObjectLayerObject;
                 objectCount++;
             }
         }
@@ -369,24 +366,24 @@ public class DungeonObjectList {
     }
 
     public String[] getAllGroundLayerNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllGroundLayerNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllGroundLayerNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_GROUND) {
                 tempAllGroundLayerNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
                 objectCount++;
             }
         }
-        String[] allGroundLayerNames = new String[objectCount];
+        final String[] allGroundLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
-                allGroundLayerNames[objectCount] = tempAllGroundLayerNames[x];
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
+                allGroundLayerNames[objectCount] = tempAllGroundLayerName;
                 objectCount++;
             }
         }
@@ -394,24 +391,24 @@ public class DungeonObjectList {
     }
 
     public String[] getAllObjectLayerNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllObjectLayerNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllObjectLayerNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_OBJECT) {
                 tempAllObjectLayerNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
                 objectCount++;
             }
         }
-        String[] allObjectLayerNames = new String[objectCount];
+        final String[] allObjectLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
-                allObjectLayerNames[objectCount] = tempAllObjectLayerNames[x];
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
+                allObjectLayerNames[objectCount] = tempAllObjectLayerName;
                 objectCount++;
             }
         }
@@ -419,12 +416,12 @@ public class DungeonObjectList {
     }
 
     public BufferedImageIcon[] getAllEditorAppearances() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[objects.length];
         for (int x = 0; x < allEditorAppearances.length; x++) {
-            allEditorAppearances[x] = ImageTransformer
-                    .getTransformedImage(ObjectImageManager.getImage(
-                            objects[x].getName(), objects[x].getBaseID(),
+            allEditorAppearances[x] = ImageTransformer.getTransformedImage(
+                    ObjectImageManager.getImage(objects[x].getName(),
+                            objects[x].getBaseID(),
                             objects[x].getTemplateColor(),
                             objects[x].getAttributeID(),
                             objects[x].getAttributeTemplateColor()));
@@ -433,8 +430,8 @@ public class DungeonObjectList {
     }
 
     public BufferedImageIcon[] getAllGroundLayerEditorAppearances() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllGroundLayerEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllGroundLayerEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_GROUND) {
@@ -446,16 +443,16 @@ public class DungeonObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allGroundLayerEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allGroundLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
-                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
+                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -463,8 +460,8 @@ public class DungeonObjectList {
     }
 
     public BufferedImageIcon[] getAllObjectLayerEditorAppearances() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllObjectLayerEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllObjectLayerEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == DungeonConstants.LAYER_OBJECT) {
@@ -476,16 +473,16 @@ public class DungeonObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allObjectLayerEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allObjectLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
-                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
+                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -493,8 +490,8 @@ public class DungeonObjectList {
     }
 
     public BufferedImageIcon[] getAllContainableObjectEditorAppearances() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllContainableObjectEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllContainableObjectEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
@@ -506,16 +503,16 @@ public class DungeonObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allContainableObjectEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allContainableObjectEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
-                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearances[x];
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
+                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearance;
                 objectCount++;
             }
         }
@@ -523,24 +520,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllContainableObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllContainableObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllContainableObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
                 tempAllContainableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allContainableObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allContainableObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
-                allContainableObjects[objectCount] = tempAllContainableObjects[x];
+        for (final AbstractDungeonObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
+                allContainableObjects[objectCount] = tempAllContainableObject;
                 objectCount++;
             }
         }
@@ -548,24 +545,24 @@ public class DungeonObjectList {
     }
 
     public String[] getAllContainableNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllContainableNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllContainableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
                 tempAllContainableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
                 objectCount++;
             }
         }
-        String[] allContainableNames = new String[objectCount];
+        final String[] allContainableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
-                allContainableNames[objectCount] = tempAllContainableNames[x];
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
+                allContainableNames[objectCount] = tempAllContainableName;
                 objectCount++;
             }
         }
@@ -573,8 +570,8 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllInventoryableObjectsMinusSpecial() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllInventoryableObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllInventoryableObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isInventoryable()
@@ -584,16 +581,16 @@ public class DungeonObjectList {
                 tempAllInventoryableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allInventoryableObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allInventoryableObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
-                allInventoryableObjects[objectCount] = tempAllInventoryableObjects[x];
+        for (final AbstractDungeonObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
+                allInventoryableObjects[objectCount] = tempAllInventoryableObject;
                 objectCount++;
             }
         }
@@ -601,8 +598,8 @@ public class DungeonObjectList {
     }
 
     public String[] getAllInventoryableNamesMinusSpecial() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllInventoryableNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllInventoryableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isInventoryable()
@@ -612,16 +609,16 @@ public class DungeonObjectList {
                 tempAllInventoryableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
                 objectCount++;
             }
         }
-        String[] allInventoryableNames = new String[objectCount];
+        final String[] allInventoryableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
-                allInventoryableNames[objectCount] = tempAllInventoryableNames[x];
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
+                allInventoryableNames[objectCount] = tempAllInventoryableName;
                 objectCount++;
             }
         }
@@ -629,24 +626,24 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllProgrammableKeys() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllProgrammableKeys = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllProgrammableKeys = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
                 tempAllProgrammableKeys[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
+        for (final AbstractDungeonObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allProgrammableKeys = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allProgrammableKeys = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
-                allProgrammableKeys[objectCount] = tempAllProgrammableKeys[x];
+        for (final AbstractDungeonObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
+                allProgrammableKeys[objectCount] = tempAllProgrammableKey;
                 objectCount++;
             }
         }
@@ -654,24 +651,24 @@ public class DungeonObjectList {
     }
 
     public String[] getAllProgrammableKeyNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllProgrammableKeyNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllProgrammableKeyNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
                 tempAllProgrammableKeyNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
                 objectCount++;
             }
         }
-        String[] allProgrammableKeyNames = new String[objectCount];
+        final String[] allProgrammableKeyNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
-                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyNames[x];
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
+                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyName;
                 objectCount++;
             }
         }
@@ -679,8 +676,8 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllUsableObjects() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllUsableObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllUsableObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isUsable()
@@ -690,16 +687,16 @@ public class DungeonObjectList {
                 tempAllUsableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allUsableObjects = new AbstractDungeonObject[objectCount];
+        final AbstractDungeonObject[] allUsableObjects = new AbstractDungeonObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
-                allUsableObjects[objectCount] = tempAllUsableObjects[x];
+        for (final AbstractDungeonObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
+                allUsableObjects[objectCount] = tempAllUsableObject;
                 objectCount++;
             }
         }
@@ -707,8 +704,8 @@ public class DungeonObjectList {
     }
 
     public String[] getAllUsableNamesMinusSpecial() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllUsableNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllUsableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isUsable()
@@ -718,16 +715,16 @@ public class DungeonObjectList {
                 tempAllUsableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
-        String[] allUsableNames = new String[objectCount];
+        final String[] allUsableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
-                allUsableNames[objectCount] = tempAllUsableNames[x];
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
+                allUsableNames[objectCount] = tempAllUsableName;
                 objectCount++;
             }
         }
@@ -735,20 +732,21 @@ public class DungeonObjectList {
     }
 
     public AbstractDungeonObject[] getAllBows() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllUsableObjects = new AbstractDungeonObject[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllUsableObjects = new AbstractDungeonObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final AbstractDungeonObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        AbstractDungeonObject[] allUsableObjects = new AbstractDungeonObject[objectCount + 1];
+        final AbstractDungeonObject[] allUsableObjects = new AbstractDungeonObject[objectCount
+                + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableObjects.length - 1; x++) {
             if (tempAllUsableObjects[x] != null) {
@@ -761,20 +759,20 @@ public class DungeonObjectList {
     }
 
     public String[] getAllBowNames() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        String[] tempAllUsableNames = new String[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final String[] tempAllUsableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
-        String[] allUsableNames = new String[objectCount + 1];
+        final String[] allUsableNames = new String[objectCount + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableNames.length - 1; x++) {
             if (tempAllUsableNames[x] != null) {
@@ -786,13 +784,13 @@ public class DungeonObjectList {
         return allUsableNames;
     }
 
-    public final AbstractDungeonObject[] getAllRequired(int layer) {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objects.length];
+    public final AbstractDungeonObject[] getAllRequired(final int layer) {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objects.length];
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && objects[x].isRequired()) {
+            if (objects[x].getLayer() == layer && objects[x].isRequired()) {
                 tempAllRequired[count] = objects[x];
                 count++;
             }
@@ -800,7 +798,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -809,13 +807,13 @@ public class DungeonObjectList {
     }
 
     public final AbstractDungeonObject[] getAllWithoutPrerequisiteAndNotRequired(
-            int layer) {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objects.length];
+            final int layer) {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objects.length];
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && !(objects[x].isRequired())) {
+            if (objects[x].getLayer() == layer && !objects[x].isRequired()) {
                 tempAllWithoutPrereq[count] = objects[x];
                 count++;
             }
@@ -823,7 +821,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -831,13 +829,14 @@ public class DungeonObjectList {
         }
     }
 
-    public final AbstractDungeonObject[] getAllRequiredInBattle(int layer) {
-        AbstractDungeonObject[] objs = this.getAllObjects();
-        AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objs.length];
+    public final AbstractDungeonObject[] getAllRequiredInBattle(
+            final int layer) {
+        final AbstractDungeonObject[] objs = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
-            if ((objs[x].getLayer() == layer) && objs[x].isRequiredInBattle()) {
+            if (objs[x].getLayer() == layer && objs[x].isRequiredInBattle()) {
                 tempAllRequired[count] = objs[x];
                 count++;
             }
@@ -845,7 +844,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -853,14 +852,14 @@ public class DungeonObjectList {
         }
     }
 
-    public final AbstractDungeonObject[] getAllNotRequiredInBattle(int layer) {
-        AbstractDungeonObject[] objs = this.getAllObjects();
-        AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objs.length];
+    public final AbstractDungeonObject[] getAllNotRequiredInBattle(
+            final int layer) {
+        final AbstractDungeonObject[] objs = this.getAllObjects();
+        final AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
-            if ((objs[x].getLayer() == layer)
-                    && !(objs[x].isRequiredInBattle())) {
+            if (objs[x].getLayer() == layer && !objs[x].isRequiredInBattle()) {
                 tempAllWithoutPrereq[count] = objs[x];
                 count++;
             }
@@ -868,7 +867,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -877,11 +876,11 @@ public class DungeonObjectList {
     }
 
     public static final AbstractDungeonObject[] getAllRequiredSubset(
-            AbstractDungeonObject[] objs, int layer) {
+            final AbstractDungeonObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objs.length];
+        final AbstractDungeonObject[] tempAllRequired = new AbstractDungeonObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -901,7 +900,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allRequired = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -910,11 +909,11 @@ public class DungeonObjectList {
     }
 
     public static final AbstractDungeonObject[] getAllWithoutPrerequisiteAndNotRequiredSubset(
-            AbstractDungeonObject[] objs, int layer) {
+            final AbstractDungeonObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objs.length];
+        final AbstractDungeonObject[] tempAllWithoutPrereq = new AbstractDungeonObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -934,7 +933,7 @@ public class DungeonObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
+            final AbstractDungeonObject[] allWithoutPrereq = new AbstractDungeonObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -942,8 +941,8 @@ public class DungeonObjectList {
         }
     }
 
-    public final AbstractDungeonObject getNewInstanceByName(String name) {
-        AbstractDungeonObject[] objects = this.getAllObjects();
+    public final AbstractDungeonObject getNewInstanceByName(final String name) {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
         AbstractDungeonObject instance = null;
         int x;
         for (x = 0; x < objects.length; x++) {
@@ -969,74 +968,75 @@ public class DungeonObjectList {
         }
     }
 
-    public AbstractDungeonObject readDungeonObject(XDataReader reader,
-            int formatVersion) throws IOException {
-        AbstractDungeonObject[] objects = this.getAllObjects();
+    public AbstractDungeonObject readDungeonObject(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
         AbstractDungeonObject o = null;
         String UID = "";
         if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
-            reader.readOpeningGroup(OBJECT_GROUP);
-            reader.readOpeningGroup(OBJECT_ID_GROUP);
+            reader.readOpeningGroup(DungeonObjectList.OBJECT_GROUP);
+            reader.readOpeningGroup(DungeonObjectList.OBJECT_ID_GROUP);
             UID = reader.readString();
-            reader.readClosingGroup(OBJECT_ID_GROUP);
+            reader.readClosingGroup(DungeonObjectList.OBJECT_ID_GROUP);
         }
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractDungeonObject object : objects) {
             try {
                 AbstractDungeonObject instance;
-                if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                    instance = objects[x].clone();
+                if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                    instance = object.clone();
                 } else {
-                    instance = objects[x].getClass().newInstance();
+                    instance = object.getClass().newInstance();
                 }
                 if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
                     o = instance.readDungeonObjectV1(reader, UID);
                     if (o != null) {
-                        reader.readClosingGroup(OBJECT_GROUP);
+                        reader.readClosingGroup(DungeonObjectList.OBJECT_GROUP);
                         return o;
                     }
                 }
-            } catch (InstantiationException ex) {
+            } catch (final InstantiationException ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
-            } catch (IllegalAccessException ex) {
+            } catch (final IllegalAccessException ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
         return null;
     }
 
-    public AbstractDungeonObject readSavedDungeonObject(XDataReader reader,
-            String UID, int formatVersion) throws IOException {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        AbstractDungeonObject o = null;
-        for (int x = 0; x < objects.length; x++) {
-            try {
-                AbstractDungeonObject instance;
-                if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                    instance = objects[x].clone();
-                } else {
-                    instance = objects[x].getClass().newInstance();
-                }
-                if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
-                    o = instance.readDungeonObjectV1(reader, UID);
-                    if (o != null) {
-                        return o;
-                    }
-                }
-            } catch (InstantiationException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
-            } catch (IllegalAccessException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
-            }
-        }
-        return null;
-    }
-
-    public void readRuleSet(XDataReader reader, int rsFormat)
+    public AbstractDungeonObject readSavedDungeonObject(
+            final XDataReader reader, final String UID, final int formatVersion)
             throws IOException {
-        AbstractDungeonObject[] objects = this.getAllObjects();
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        AbstractDungeonObject o = null;
+        for (final AbstractDungeonObject object : objects) {
+            try {
+                AbstractDungeonObject instance;
+                if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                    instance = object.clone();
+                } else {
+                    instance = object.getClass().newInstance();
+                }
+                if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
+                    o = instance.readDungeonObjectV1(reader, UID);
+                    if (o != null) {
+                        return o;
+                    }
+                }
+            } catch (final InstantiationException ex) {
+                DungeonDiver4.getErrorLogger().logError(ex);
+            } catch (final IllegalAccessException ex) {
+                DungeonDiver4.getErrorLogger().logError(ex);
+            }
+        }
+        return null;
+    }
+
+    public void readRuleSet(final XDataReader reader, final int rsFormat)
+            throws IOException {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
         // Read map length
-        int mapLen = reader.readInt();
-        boolean[] map = new boolean[mapLen];
+        final int mapLen = reader.readInt();
+        final boolean[] map = new boolean[mapLen];
         // Read map
         for (int x = 0; x < mapLen; x++) {
             map[x] = reader.readBoolean();
@@ -1050,14 +1050,14 @@ public class DungeonObjectList {
         }
     }
 
-    public void writeRuleSet(XDataWriter writer) throws IOException {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        boolean[] map = this.generateDungeon();
+    public void writeRuleSet(final XDataWriter writer) throws IOException {
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final boolean[] map = this.generateDungeon();
         // Write map length
         writer.writeInt(map.length);
         // Write map
-        for (int x = 0; x < map.length; x++) {
-            writer.writeBoolean(map[x]);
+        for (final boolean element : map) {
+            writer.writeBoolean(element);
         }
         // Write data
         for (int x = 0; x < map.length; x++) {
@@ -1068,8 +1068,8 @@ public class DungeonObjectList {
     }
 
     private boolean[] generateDungeon() {
-        AbstractDungeonObject[] objects = this.getAllObjects();
-        boolean[] map = new boolean[objects.length];
+        final AbstractDungeonObject[] objects = this.getAllObjects();
+        final boolean[] map = new boolean[objects.length];
         for (int x = 0; x < map.length; x++) {
             if (objects[x].hasRuleSet()) {
                 map[x] = true;

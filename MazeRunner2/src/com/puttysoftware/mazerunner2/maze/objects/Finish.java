@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Maze;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.maze.utilities.RandomGenerationRule;
@@ -26,9 +26,9 @@ public class Finish extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_FINISH);
         app.getGameManager().solvedLevel();
     }
@@ -80,12 +80,12 @@ public class Finish extends AbstractTeleport {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Maze maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Maze maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 }

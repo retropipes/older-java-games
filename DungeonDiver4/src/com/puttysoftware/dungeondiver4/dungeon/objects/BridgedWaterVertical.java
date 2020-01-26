@@ -22,8 +22,8 @@ public class BridgedWaterVertical extends AbstractGround {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 

@@ -20,7 +20,7 @@ public class MapBattle {
         super();
         this.monsterArray = new AbstractMonster[MapBattle.MAX_MONSTERS];
         // Fill array with monsters
-        int numMonsters = PartyManager.getParty().getActivePCCount();
+        final int numMonsters = PartyManager.getParty().getActivePCCount();
         for (int x = 0; x < numMonsters; x++) {
             this.monsterArray[x] = MonsterFactory.getNewMonsterInstance(true,
                     true, true, false);
@@ -29,7 +29,7 @@ public class MapBattle {
 
     // Methods
     private AbstractMonster[] compactMonsterArray() {
-        AbstractMonster[] temp = new AbstractMonster[this.monsterArray.length];
+        final AbstractMonster[] temp = new AbstractMonster[this.monsterArray.length];
         System.arraycopy(this.monsterArray, 0, temp, 0,
                 this.monsterArray.length);
         for (int x = 0; x < temp.length; x++) {
@@ -43,8 +43,8 @@ public class MapBattle {
     }
 
     public BattleCharacter[] getBattlers() {
-        AbstractMonster[] compacted = this.compactMonsterArray();
-        BattleCharacter[] battlerArray = new BattleCharacter[compacted.length];
+        final AbstractMonster[] compacted = this.compactMonsterArray();
+        final BattleCharacter[] battlerArray = new BattleCharacter[compacted.length];
         for (int x = 0; x < battlerArray.length; x++) {
             if (compacted[x] != null) {
                 battlerArray[x] = new BattleCharacter(compacted[x]);

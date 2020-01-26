@@ -57,8 +57,8 @@ public abstract class GenericCharacter extends MapObject {
     @Override
     protected MapObject readMapObjectHookX(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.setSavedObject(new MapObjectList().readMapObjectX(reader,
-                formatVersion));
+        this.setSavedObject(
+                new MapObjectList().readMapObjectX(reader, formatVersion));
         return this;
     }
 

@@ -64,22 +64,25 @@ public class ArrowTask extends Thread {
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 o = new Wall();
             }
-            final GenericTransientObject a = ArrowTask.createArrowForType(this.at);
+            final GenericTransientObject a = ArrowTask
+                    .createArrowForType(this.at);
             final String suffix = DirectionResolver
                     .resolveDirectionConstantToName(DirectionResolver
                             .resolveRelativeDirection(incX, incY));
             a.setNameSuffix(suffix);
-            if (app.getPrefsManager().getSoundEnabled(
-                    PreferencesManager.SOUNDS_GAME)) {
+            if (app.getPrefsManager()
+                    .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                 SoundManager.playSound("arrow");
             }
-            while (!o.isConditionallyDirectionallySolid(true, incX, incY, inv)) {
+            while (!o.isConditionallyDirectionallySolid(true, incX, incY,
+                    inv)) {
                 res = o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY,
                         this.at, inv);
                 if (!res) {
                     break;
                 }
-                if (!o.isConditionallyDirectionallySolid(true, incX, incY, inv)) {
+                if (!o.isConditionallyDirectionallySolid(true, incX, incY,
+                        inv)) {
                     app.getGameManager().redrawOneSquare(px + cumX, py + cumY,
                             true, a.getName());
                 }
@@ -100,8 +103,8 @@ public class ArrowTask extends Thread {
                 o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY, this.at,
                         inv);
             }
-            if (app.getPrefsManager().getSoundEnabled(
-                    PreferencesManager.SOUNDS_GAME)) {
+            if (app.getPrefsManager()
+                    .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                 SoundManager.playSound("arrowdie");
             }
             app.getGameManager().arrowDone();

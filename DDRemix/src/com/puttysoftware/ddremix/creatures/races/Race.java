@@ -19,10 +19,10 @@ public class Race {
                     + " attributes must be specified; got 0 attributes!");
         }
         if (rdata.length != RaceConstants.RACE_ATTRIBUTE_COUNT) {
-            throw new IllegalArgumentException("Exactly "
-                    + RaceConstants.RACE_ATTRIBUTE_COUNT
-                    + " attributes must be specified; got " + rdata.length
-                    + " attributes!");
+            throw new IllegalArgumentException(
+                    "Exactly " + RaceConstants.RACE_ATTRIBUTE_COUNT
+                            + " attributes must be specified; got "
+                            + rdata.length + " attributes!");
         }
         this.raceID = rid;
         this.data = rdata;

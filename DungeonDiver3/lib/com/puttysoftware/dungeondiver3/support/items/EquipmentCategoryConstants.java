@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver3.support.items;
 
 interface EquipmentCategoryConstants {
-    public static final int EQUIPMENT_CATEGORY_ONE_HANDED_WEAPON = 1;
-    public static final int EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON = 2;
-    public static final int EQUIPMENT_CATEGORY_ARMOR = 3;
+    int EQUIPMENT_CATEGORY_ONE_HANDED_WEAPON = 1;
+    int EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON = 2;
+    int EQUIPMENT_CATEGORY_ARMOR = 3;
 }

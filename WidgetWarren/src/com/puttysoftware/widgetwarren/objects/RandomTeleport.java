@@ -18,14 +18,15 @@ public class RandomTeleport extends GenericRandomTeleport {
         super(0, 0);
     }
 
-    public RandomTeleport(final int newRandomRangeY, final int newRandomRangeX) {
+    public RandomTeleport(final int newRandomRangeY,
+            final int newRandomRangeX) {
         super(newRandomRangeY, newRandomRangeX);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         int dr, dc;
         do {

@@ -30,9 +30,8 @@ public class MenuManager {
     private JMenu fileMenu, gameMenu, battleMenu, aiMenu, helpMenu;
     private JMenuItem fileOpen, fileClose, fileSave, fileSaveAs, filePrint,
             filePreferences, fileExit;
-    private JMenuItem gamePlay, gameEquipment, gameItemInventory,
-            gameShowScore, gamePickLeader, gameRegisterCharacter,
-            gameUnregisterCharacter;
+    private JMenuItem gamePlay, gameEquipment, gameItemInventory, gameShowScore,
+            gamePickLeader, gameRegisterCharacter, gameUnregisterCharacter;
     private JMenuItem battleItem, battleSpell, battleSteal, battleDrain,
             battleEndTurn;
     private JMenuItem aiRegister, aiUnregister, aiImport;
@@ -174,13 +173,13 @@ public class MenuManager {
         this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.filePrintAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey);
         this.filePreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
-        this.gamePlayMapAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.gamePlayMapAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.battleItemAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I, modKey);
         this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L, modKey);
         this.battleStealAccel = KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey);

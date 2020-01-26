@@ -34,8 +34,8 @@ public class NamesDataManager {
 
     private static String[] getNamesDefaultData() {
         try (ResourceStreamReader rsr = new ResourceStreamReader(
-                NamesDataManager.class
-                        .getResourceAsStream("/com/puttysoftware/tallertower/resources/data/names/names.txt"))) {
+                NamesDataManager.class.getResourceAsStream(
+                        "/com/puttysoftware/tallertower/resources/data/names/names.txt"))) {
             // Load default
             final ArrayList<String> data = new ArrayList<>();
             // Ignore first line
@@ -55,9 +55,9 @@ public class NamesDataManager {
             }
             final String[] res = new String[count];
             count = 0;
-            for (int x = 0; x < tempres.length; x++) {
-                if (tempres[x] != null) {
-                    res[count] = tempres[x];
+            for (final String tempre : tempres) {
+                if (tempre != null) {
+                    res[count] = tempre;
                     count++;
                 }
             }
@@ -72,9 +72,8 @@ public class NamesDataManager {
         try {
             final File overrideData = NamesDataManager.getNamesOverrideFile();
             // Version check
-            if (overrideData.exists()
-                    && !NamesDataManager
-                            .isNamesFileCorrectVersion(overrideData)) {
+            if (overrideData.exists() && !NamesDataManager
+                    .isNamesFileCorrectVersion(overrideData)) {
                 final boolean success = overrideData.delete();
                 if (!success) {
                     throw new IOException("Deleting override failed!");
@@ -100,9 +99,9 @@ public class NamesDataManager {
                 }
                 final String[] res = new String[count];
                 count = 0;
-                for (int x = 0; x < tempres.length; x++) {
-                    if (tempres[x] != null) {
-                        res[count] = tempres[x];
+                for (final String tempre : tempres) {
+                    if (tempre != null) {
+                        res[count] = tempre;
                         count++;
                     }
                 }
@@ -154,7 +153,7 @@ public class NamesDataManager {
         try (FileInputStream fis = new FileInputStream(f);
                 ResourceStreamReader rsr = new ResourceStreamReader(fis)) {
             final int version = rsr.readInt();
-            return (version == NamesConstants.NAMES_VERSION);
+            return version == NamesConstants.NAMES_VERSION;
         } catch (final IOException e) {
             return false;
         }

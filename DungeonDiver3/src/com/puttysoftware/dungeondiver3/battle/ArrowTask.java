@@ -22,11 +22,12 @@ import com.puttysoftware.dungeondiver3.support.resourcemanagers.SoundManager;
 
 class ArrowTask extends Thread {
     // Fields
-    private int x, y, at;
-    private BattleDefinitions bd;
+    private final int x, y, at;
+    private final BattleDefinitions bd;
 
     // Constructors
-    ArrowTask(int newX, int newY, int newAT, BattleDefinitions defs) {
+    ArrowTask(final int newX, final int newY, final int newAT,
+            final BattleDefinitions defs) {
         this.x = newX;
         this.y = newY;
         this.at = newAT;
@@ -38,22 +39,23 @@ class ArrowTask extends Thread {
     public void run() {
         try {
             boolean res = true;
-            Application app = DungeonDiver3.getApplication();
-            Map m = this.bd.getBattleMap();
-            int px = this.bd.getActiveCharacter().getX();
-            int py = this.bd.getActiveCharacter().getY();
+            final Application app = DungeonDiver3.getApplication();
+            final Map m = this.bd.getBattleMap();
+            final int px = this.bd.getActiveCharacter().getX();
+            final int py = this.bd.getActiveCharacter().getY();
             int cumX = this.x;
             int cumY = this.y;
-            int incX = this.x;
-            int incY = this.y;
+            final int incX = this.x;
+            final int incY = this.y;
             MapObject o = null;
             try {
                 o = m.getBattleCell(px + cumX, py + cumY);
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 o = new Wall();
             }
-            GenericTransientObject a = ArrowTask.createArrowForType(this.at);
-            String suffix = DirectionResolver
+            final GenericTransientObject a = ArrowTask
+                    .createArrowForType(this.at);
+            final String suffix = DirectionResolver
                     .resolveDirectionConstantToName(DirectionResolver
                             .resolveRelativeDirection(incX, incY));
             a.setNameSuffix(suffix);
@@ -84,36 +86,39 @@ class ArrowTask extends Thread {
                 // Arrow hit a creature, hurt it
                 SoundManager.playSound(GameSoundConstants.SOUND_ARROW_HIT);
                 hit = (BattleCharacter) o;
-                Faith shooter = this.bd.getActiveCharacter().getTemplate()
+                final Faith shooter = this.bd.getActiveCharacter().getTemplate()
                         .getFaith();
-                Faith target = hit.getTemplate().getFaith();
-                int mult = (int) (shooter.getMultiplierForOtherFaith(target
-                        .getFaithID()) * 10);
-                BattleLogic bl = app.getBattle();
+                final Faith target = hit.getTemplate().getFaith();
+                final int mult = (int) (shooter
+                        .getMultiplierForOtherFaith(target.getFaithID()) * 10);
+                final BattleLogic bl = app.getBattle();
                 if (mult == 0) {
                     hit.getTemplate().doDamagePercentage(1);
-                    bl.setStatusMessage("Ow, you got shot! It didn't hurt much.");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It didn't hurt much.");
                 } else if (mult == 5) {
                     hit.getTemplate().doDamagePercentage(3);
-                    bl.setStatusMessage("Ow, you got shot! It hurt a little bit.");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It hurt a little bit.");
                 } else if (mult == 10) {
                     hit.getTemplate().doDamagePercentage(5);
                     bl.setStatusMessage("Ow, you got shot! It hurt somewhat.");
                 } else if (mult == 20) {
                     hit.getTemplate().doDamagePercentage(8);
-                    bl.setStatusMessage("Ow, you got shot! It hurt significantly!");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It hurt significantly!");
                 }
             } else {
                 // Arrow has died
                 SoundManager.playSound(GameSoundConstants.SOUND_ARROW_DIE);
             }
             app.getBattle().arrowDone(hit);
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             DungeonDiver3.getErrorLogger().logError(t);
         }
     }
 
-    private static GenericTransientObject createArrowForType(int type) {
+    private static GenericTransientObject createArrowForType(final int type) {
         return new Arrow(FaithConstants.getFaithColor(type));
     }
 }

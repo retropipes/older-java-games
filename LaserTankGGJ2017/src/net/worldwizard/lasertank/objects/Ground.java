@@ -4,7 +4,7 @@ import net.worldwizard.lasertank.assets.GameImageCache;
 
 public class Ground extends GameObject {
     public Ground() {
-	super();
-	this.setAppearance(GameImageCache.get("ground"));
+        super();
+        this.setAppearance(GameImageCache.get("ground"));
     }
 }

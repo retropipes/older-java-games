@@ -24,14 +24,14 @@ public class InternalScript {
         return this.actions.length;
     }
 
-    public final void addAction(InternalScriptEntry act) {
+    public final void addAction(final InternalScriptEntry act) {
         this.tempActions.add(act);
     }
 
     public final void finalizeActions() {
         if (!this.tempActions.isEmpty()) {
             this.tempActions.trimToSize();
-            InternalScriptEntry[] acts = this.tempActions
+            final InternalScriptEntry[] acts = this.tempActions
                     .toArray(new InternalScriptEntry[this.tempActions.size()]);
             this.actions = acts;
             this.tempActions = null;
@@ -47,13 +47,12 @@ public class InternalScript {
         final int prime = 31;
         int result = 1;
         result = prime * result + Arrays.hashCode(this.actions);
-        return prime
-                * result
-                + ((this.tempActions == null) ? 0 : this.tempActions.hashCode());
+        return prime * result
+                + (this.tempActions == null ? 0 : this.tempActions.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -63,7 +62,7 @@ public class InternalScript {
         if (!(obj instanceof InternalScript)) {
             return false;
         }
-        InternalScript other = (InternalScript) obj;
+        final InternalScript other = (InternalScript) obj;
         if (!Arrays.equals(this.actions, other.actions)) {
             return false;
         }

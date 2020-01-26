@@ -52,13 +52,11 @@ public class Mazer5D {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    Mazer5D.application.getMazeManager(),
-                    Mazer5D.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(Mazer5D.application.getMazeManager(),
+                    Mazer5D.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(Mazer5D.application.getGUIManager(),

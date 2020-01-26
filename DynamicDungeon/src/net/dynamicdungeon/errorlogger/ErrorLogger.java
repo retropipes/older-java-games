@@ -6,13 +6,13 @@ public final class ErrorLogger {
 
     // Constructor
     public ErrorLogger(final String programName) {
-	this.name = programName;
+        this.name = programName;
     }
 
     // Methods
-    public final void logError(final Throwable t) {
-	final LogWriter lw = new LogWriter(t, this.name);
-	lw.writeErrorInfo();
-	System.exit(1);
+    public void logError(final Throwable t) {
+        final LogWriter lw = new LogWriter(t, this.name);
+        lw.writeErrorInfo();
+        System.exit(1);
     }
 }

@@ -33,18 +33,16 @@ public class CounterclockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playRotatedSound();
         }
         Messager.showMessage("Your controls are rotated!");
-        Worldz.getApplication()
-                .getGameManager()
-                .activateEffect(
-                        EffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE,
-                        CounterclockwiseRotationTrap.EFFECT_DURATION);
+        Worldz.getApplication().getGameManager().activateEffect(
+                EffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE,
+                CounterclockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

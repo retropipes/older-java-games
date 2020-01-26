@@ -52,9 +52,8 @@ public class MenuManager {
             editorDownOneLevel, editorAddLevel, editorRemoveLevel,
             editorResizeLevel, editorToggleLayer, editorLevelPreferences,
             editorMazePreferences, editorSetStartPoint;
-    private JMenuItem editorFillFloor, editorFillLevel,
-            editorFillFloorRandomly, editorFillLevelRandomly,
-            editorFillFloorLayer, editorFillLevelLayer,
+    private JMenuItem editorFillFloor, editorFillLevel, editorFillFloorRandomly,
+            editorFillLevelRandomly, editorFillFloorLayer, editorFillLevelLayer,
             editorFillFloorLayerRandomly, editorFillLevelLayerRandomly,
             editorFillRuleSets, editorSetFirstMovingFinish;
     private JCheckBoxMenuItem editorFillUseRuleSets;
@@ -74,15 +73,15 @@ public class MenuManager {
             editorDownOneLevelAccel, editorToggleLayerAccel;
     private KeyStroke battleItemAccel, battleSpellAccel, battleStealAccel,
             battleDrainAccel, battleEndTurnAccel;
-    private EventHandler handler;
+    private final EventHandler handler;
     private boolean gameFlag;
 
     // Constructors
     public MenuManager() {
         this.handler = new EventHandler();
-        createAccelerators();
-        createMenus();
-        setInitialMenuState();
+        this.createAccelerators();
+        this.createMenus();
+        this.setInitialMenuState();
         this.gameFlag = false;
     }
 
@@ -111,12 +110,12 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.enableGameMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
-        checkFlags();
+        this.checkFlags();
     }
 
     public void setBattleMenus() {
@@ -138,9 +137,9 @@ public class MenuManager {
         this.editClearHistory.setEnabled(false);
         this.disableGameMenus();
         this.enableBattleMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -162,12 +161,12 @@ public class MenuManager {
         this.enableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
-        checkFlags();
+        this.checkFlags();
     }
 
     public void setPrefMenus() {
@@ -193,9 +192,9 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -223,9 +222,9 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -250,12 +249,12 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
-        checkFlags();
+        this.checkFlags();
     }
 
     private void disableEditorMenus() {
@@ -469,29 +468,29 @@ public class MenuManager {
     }
 
     public void checkFlags() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         if (app.getMazeManager().getDirty()) {
-            setMenusDirtyOn();
+            this.setMenusDirtyOn();
         } else {
-            setMenusDirtyOff();
+            this.setMenusDirtyOff();
         }
         if (app.getMazeManager().getLoaded()) {
-            setMenusLoadedOn();
+            this.setMenusLoadedOn();
         } else {
-            setMenusLoadedOff();
+            this.setMenusLoadedOff();
         }
         if (app.getMode() == Application.STATUS_EDITOR) {
             if (app.getMazeManager().getMaze().isPasteBlocked()) {
-                disablePasteLevel();
-                disableInsertLevelFromClipboard();
+                this.disablePasteLevel();
+                this.disableInsertLevelFromClipboard();
             } else {
-                enablePasteLevel();
-                enableInsertLevelFromClipboard();
+                this.enablePasteLevel();
+                this.enableInsertLevelFromClipboard();
             }
             if (app.getMazeManager().getMaze().isCutBlocked()) {
-                disableCutLevel();
+                this.disableCutLevel();
             } else {
-                enableCutLevel();
+                this.enableCutLevel();
             }
         }
     }
@@ -509,7 +508,7 @@ public class MenuManager {
     }
 
     private void setMenusLoadedOn() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         if (app.getMode() == Application.STATUS_GUI) {
             this.fileClose.setEnabled(false);
             this.fileSaveAs.setEnabled(false);
@@ -555,17 +554,17 @@ public class MenuManager {
         this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey);
-        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editCutLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X, modKey);
         this.editCopyLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey);
-        this.editPasteLevelAccel = KeyStroke
-                .getKeyStroke(KeyEvent.VK_V, modKey);
-        this.editInsertLevelFromClipboardAccel = KeyStroke.getKeyStroke(
-                KeyEvent.VK_F, modKey);
+        this.editPasteLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                modKey);
+        this.editInsertLevelFromClipboardAccel = KeyStroke
+                .getKeyStroke(KeyEvent.VK_F, modKey);
         this.editPreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
         this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
@@ -588,25 +587,25 @@ public class MenuManager {
         this.editorToggleLayerAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L,
                 modKey);
         this.battleItemAccel = KeyStroke.getKeyStroke(KeyEvent.VK_M, modKey);
-        this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.battleStealAccel = KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey);
         this.battleDrainAccel = KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey);
-        this.battleEndTurnAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.battleEndTurnAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
     }
 
     private void createMenus() {
         this.mainMenuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        JMenu fileLegacySubMenu = new JMenu("Legacy");
-        JMenu editMenu = new JMenu("Edit");
-        JMenu playMenu = new JMenu("Play");
-        JMenu gameMenu = new JMenu("Game");
-        JMenu editorMenu = new JMenu("Editor");
-        JMenu battleMenu = new JMenu("Battle");
-        JMenu helpMenu = new JMenu("Help");
-        JMenu editorFillSubMenu = new JMenu("Fill");
+        final JMenu fileMenu = new JMenu("File");
+        final JMenu fileLegacySubMenu = new JMenu("Legacy");
+        final JMenu editMenu = new JMenu("Edit");
+        final JMenu playMenu = new JMenu("Play");
+        final JMenu gameMenu = new JMenu("Game");
+        final JMenu editorMenu = new JMenu("Editor");
+        final JMenu battleMenu = new JMenu("Battle");
+        final JMenu helpMenu = new JMenu("Help");
+        final JMenu editorFillSubMenu = new JMenu("Fill");
         this.fileNew = new JMenuItem("New...");
         this.fileNew.setAccelerator(this.fileNewAccel);
         this.fileOpen = new JMenuItem("Open...");
@@ -692,7 +691,8 @@ public class MenuManager {
         this.editorFillLevelLayerRandomly = new JMenuItem(
                 "Fill Current Level and Layer Randomly");
         this.editorFillRuleSets = new JMenuItem("Fill Rule Sets...");
-        this.editorFillUseRuleSets = new JCheckBoxMenuItem("Use Fill Rule Sets");
+        this.editorFillUseRuleSets = new JCheckBoxMenuItem(
+                "Use Fill Rule Sets");
         this.editorToggleLayer = new JMenuItem("Toggle Layer");
         this.editorToggleLayer.setAccelerator(this.editorToggleLayerAccel);
         this.editorLevelPreferences = new JMenuItem("Level Preferences...");
@@ -802,7 +802,7 @@ public class MenuManager {
         fileMenu.add(this.fileSaveAs);
         fileMenu.add(this.fileSaveGame);
         fileMenu.add(this.fileExportGame);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             fileMenu.add(this.fileExit);
         }
         editMenu.add(this.editUndo);
@@ -811,7 +811,7 @@ public class MenuManager {
         editMenu.add(this.editCopyLevel);
         editMenu.add(this.editPasteLevel);
         editMenu.add(this.editInsertLevelFromClipboard);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             editMenu.add(this.editPreferences);
         }
         editMenu.add(this.editClearHistory);
@@ -831,9 +831,9 @@ public class MenuManager {
         gameMenu.add(this.gameViewStats);
         gameMenu.add(this.gameUseAnItem);
         gameMenu.add(this.gameSwitchBow);
-        ArrayList<AbstractEditor> allEditors = MazeRunnerII.getApplication()
-                .getAllEditors();
-        for (AbstractEditor ge : allEditors) {
+        final ArrayList<AbstractEditor> allEditors = MazeRunnerII
+                .getApplication().getAllEditors();
+        for (final AbstractEditor ge : allEditors) {
             editorMenu.add(ge.createEditorCommandsMenu());
         }
         editorMenu.add(this.editorGoToLocation);
@@ -856,7 +856,7 @@ public class MenuManager {
         battleMenu.add(this.battleSteal);
         battleMenu.add(this.battleDrain);
         battleMenu.add(this.battleEndTurn);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             helpMenu.add(this.helpAbout);
         }
         helpMenu.add(this.helpObjectHelp);
@@ -920,7 +920,7 @@ public class MenuManager {
             try {
                 final String cmd = e.getActionCommand();
                 final Application app = MazeRunnerII.getApplication();
-                AbstractBattle ba = app.getBattle();
+                final AbstractBattle ba = app.getBattle();
                 boolean loaded = false;
                 if (cmd.equals("New...")) {
                     loaded = app.getEditor().newMaze();
@@ -1004,7 +1004,7 @@ public class MenuManager {
                     app.getEditor().redo();
                 } else if (cmd.equals("Cut Level")) {
                     // Cut Level
-                    int level = app.getEditor().getLocationManager()
+                    final int level = app.getEditor().getLocationManager()
                             .getEditorLocationW();
                     app.getMazeManager().getMaze().cutLevel();
                     app.getEditor().fixLimits();
@@ -1026,7 +1026,7 @@ public class MenuManager {
                     PreferencesManager.showPrefs();
                 } else if (cmd.equals("Clear History")) {
                     // Clear undo/redo history, confirm first
-                    int res = CommonDialogs.showConfirmDialog(
+                    final int res = CommonDialogs.showConfirmDialog(
                             "Are you sure you want to clear the history?",
                             "Editor");
                     if (res == JOptionPane.YES_OPTION) {
@@ -1034,7 +1034,7 @@ public class MenuManager {
                     }
                 } else if (cmd.equals("Play")) {
                     // Play the current maze
-                    boolean proceed = app.getGameManager().newGame();
+                    final boolean proceed = app.getGameManager().newGame();
                     if (proceed) {
                         app.getGameManager().playMaze();
                     }
@@ -1042,13 +1042,12 @@ public class MenuManager {
                     // Edit the current maze
                     app.getEditor().editMaze();
                 } else if (cmd.equals("Show Inventory...")) {
-                    InventoryViewer.showObjectInventoryDialog(app
-                            .getGameManager().getObjectInventory());
+                    InventoryViewer.showObjectInventoryDialog(
+                            app.getGameManager().getObjectInventory());
                 } else if (cmd.equals("Reset Current Level")) {
-                    int result = CommonDialogs
-                            .showConfirmDialog(
-                                    "Are you sure you want to reset the current level?",
-                                    "MazeRunnerII");
+                    final int result = CommonDialogs.showConfirmDialog(
+                            "Are you sure you want to reset the current level?",
+                            "MazeRunnerII");
                     if (result == JOptionPane.YES_OPTION) {
                         app.getGameManager().resetCurrentLevel();
                     }
@@ -1060,7 +1059,7 @@ public class MenuManager {
                     CharacterRegistration.unregisterCharacter();
                 } else if (cmd.equals("Remove Character...")) {
                     // Confirm
-                    int confirm = CommonDialogs.showConfirmDialog(
+                    final int confirm = CommonDialogs.showConfirmDialog(
                             "WARNING: This will DELETE the character from disk,\n"
                                     + "and CANNOT be undone! Proceed anyway?",
                             "Remove Character" + this.suffix);
@@ -1073,7 +1072,7 @@ public class MenuManager {
                 } else if (cmd.equals("Show Inventory...")) {
                     InventoryViewer.showItemInventoryDialog();
                 } else if (cmd.equals("Pick Leader...")) {
-                    PartyMember pm = PartyManager.getParty()
+                    final PartyMember pm = PartyManager.getParty()
                             .pickOnePartyMember();
                     if (pm != null) {
                         PartyManager.getParty().setLeader(pm.getName());
@@ -1142,10 +1141,12 @@ public class MenuManager {
                 } else if (cmd.equals("Fill Current Level and Layer")) {
                     // Fill level and layer
                     app.getEditor().fillLevelAndLayer();
-                } else if (cmd.equals("Fill Current Floor and Layer Randomly")) {
+                } else if (cmd
+                        .equals("Fill Current Floor and Layer Randomly")) {
                     // Fill floor and layer randomly
                     app.getEditor().fillFloorAndLayerRandomly();
-                } else if (cmd.equals("Fill Current Level and Layer Randomly")) {
+                } else if (cmd
+                        .equals("Fill Current Level and Layer Randomly")) {
                     // Fill level and layer randomly
                     app.getEditor().fillLevelAndLayerRandomly();
                 } else if (cmd.equals("Fill Rule Sets...")) {
@@ -1183,7 +1184,7 @@ public class MenuManager {
                     app.getObjectHelpManager().showHelp();
                 }
                 MenuManager.this.checkFlags();
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }

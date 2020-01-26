@@ -29,8 +29,8 @@ abstract class AbstractDefiniteScalingMonster extends AbstractDefiniteMonster {
         this.setAgility(this.getInitialAgility());
         this.setLuck(this.getInitialLuck());
         this.setGold(this.getInitialGold());
-        this.setExperience((long) (this.getInitialExperience() * this
-                .adjustForLevelDifference()));
+        this.setExperience((long) (this.getInitialExperience()
+                * this.adjustForLevelDifference()));
         this.setAttacksPerRound(1);
         this.setSpellsPerRound(1);
         this.image = this.getInitialImage();
@@ -42,21 +42,23 @@ abstract class AbstractDefiniteScalingMonster extends AbstractDefiniteMonster {
     }
 
     private int getInitialStrength() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_STRENGTH, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_STRENGTH, 1));
         return r.generate();
     }
 
     private int getInitialBlock() {
-        final RandomRange r = new RandomRange(0, Math.max(this.getLevel()
-                * StatConstants.GAIN_BLOCK, 1));
+        final RandomRange r = new RandomRange(0,
+                Math.max(this.getLevel() * StatConstants.GAIN_BLOCK, 1));
         return r.generate();
     }
 
     private long getInitialExperience() {
         int minvar, maxvar;
-        minvar = (int) (this.getLevel() * AbstractMonster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        maxvar = (int) (this.getLevel() * AbstractMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        minvar = (int) (this.getLevel()
+                * AbstractMonster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        maxvar = (int) (this.getLevel()
+                * AbstractMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
         final RandomRange r = new RandomRange(minvar, maxvar);
         final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
         final long factor = this.getBattlesToNextLevel();
@@ -77,26 +79,26 @@ abstract class AbstractDefiniteScalingMonster extends AbstractDefiniteMonster {
     }
 
     private int getInitialAgility() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_AGILITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_AGILITY, 1));
         return r.generate();
     }
 
     private int getInitialVitality() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_VITALITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_VITALITY, 1));
         return r.generate();
     }
 
     private int getInitialIntelligence() {
-        final RandomRange r = new RandomRange(0, Math.max(this.getLevel()
-                * StatConstants.GAIN_INTELLIGENCE, 1));
+        final RandomRange r = new RandomRange(0,
+                Math.max(this.getLevel() * StatConstants.GAIN_INTELLIGENCE, 1));
         return r.generate();
     }
 
     private int getInitialLuck() {
-        final RandomRange r = new RandomRange(0, Math.max(this.getLevel()
-                * StatConstants.GAIN_LUCK, 1));
+        final RandomRange r = new RandomRange(0,
+                Math.max(this.getLevel() * StatConstants.GAIN_LUCK, 1));
         return r.generate();
     }
 }

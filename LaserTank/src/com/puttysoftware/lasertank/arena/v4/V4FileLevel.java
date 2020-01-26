@@ -53,7 +53,8 @@ class V4FileLevel {
     }
 
     // Methods
-    static CurrentArenaData loadAndConvert(final FileInputStream file, AbstractArena a) {
+    static CurrentArenaData loadAndConvert(final FileInputStream file,
+            final AbstractArena a) {
         try {
             V4FileLevel.objects = new byte[V4FileLevel.OBJECTS_SIZE];
             V4FileLevel.name = new byte[V4FileLevel.NAME_SIZE];

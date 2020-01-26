@@ -7,8 +7,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.editor.MazeEditorLogic;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractNWayTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractNWayTeleport;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public class NWayTeleport extends AbstractNWayTeleport {
@@ -34,7 +34,7 @@ public class NWayTeleport extends AbstractNWayTeleport {
 
     @Override
     public final AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.setNWayDestCount(this.getDestinationCount());
         me.setNWayEdited(this);
         me.editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_N_WAY);

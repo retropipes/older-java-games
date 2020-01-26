@@ -40,7 +40,8 @@ public class Stone extends AbstractItem {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().getMazeManager().getMaze().addStone();
         SoundManager.playSound(SoundConstants.SOUND_STONE);
         GameLogicManager.decay();

@@ -28,8 +28,8 @@ public class NoPlayer extends GenericAntiObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = BrainMaze.getApplication();
         app.getGameManager().backUpPlayer(this);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,

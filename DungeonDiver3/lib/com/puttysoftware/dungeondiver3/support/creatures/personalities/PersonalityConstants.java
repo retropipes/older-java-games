@@ -56,9 +56,9 @@ public class PersonalityConstants {
             try {
                 // Fetch data
                 final ResourceStreamReader rsr = new ResourceStreamReader(
-                        PersonalityDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/data/personality/catalog.txt"));
-                ArrayList<String> tempNames = new ArrayList<>();
+                        PersonalityDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/dungeondiver3/support/resources/data/personality/catalog.txt"));
+                final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {
                     input = rsr.readString();

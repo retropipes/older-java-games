@@ -7,7 +7,7 @@ public final class LowLevelStringDataStore implements Cloneable {
     private final int[] interProd;
 
     // Constructor
-    public LowLevelStringDataStore(int... shape) {
+    public LowLevelStringDataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -19,7 +19,7 @@ public final class LowLevelStringDataStore implements Cloneable {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -30,14 +30,14 @@ public final class LowLevelStringDataStore implements Cloneable {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
 
     @Override
     public Object clone() {
-        LowLevelStringDataStore copy = new LowLevelStringDataStore(
+        final LowLevelStringDataStore copy = new LowLevelStringDataStore(
                 this.dataShape);
         System.arraycopy(this.dataStore, 0, copy.dataStore, 0,
                 this.dataStore.length);
@@ -48,13 +48,13 @@ public final class LowLevelStringDataStore implements Cloneable {
         return this.dataShape;
     }
 
-    public String getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public String getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(String obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final String obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 }

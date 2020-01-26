@@ -47,9 +47,11 @@ public class SpellBookRegistration {
             int len;
             if (systemSpellBookList == null && rawSpellBookList != null) {
                 len = rawSpellBookList.length;
-            } else if (systemSpellBookList != null && rawSpellBookList == null) {
+            } else if (systemSpellBookList != null
+                    && rawSpellBookList == null) {
                 len = systemSpellBookList.length;
-            } else if (systemSpellBookList != null && rawSpellBookList != null) {
+            } else if (systemSpellBookList != null
+                    && rawSpellBookList != null) {
                 len = systemSpellBookList.length + rawSpellBookList.length;
             } else {
                 // Shouldn't ever get here
@@ -98,9 +100,11 @@ public class SpellBookRegistration {
             int len;
             if (systemSpellBookList == null && rawSpellBookList != null) {
                 len = rawSpellBookList.length;
-            } else if (systemSpellBookList != null && rawSpellBookList == null) {
+            } else if (systemSpellBookList != null
+                    && rawSpellBookList == null) {
                 len = systemSpellBookList.length;
-            } else if (systemSpellBookList != null && rawSpellBookList != null) {
+            } else if (systemSpellBookList != null
+                    && rawSpellBookList != null) {
                 len = systemSpellBookList.length + rawSpellBookList.length;
             } else {
                 // Shouldn't ever get here
@@ -160,9 +164,9 @@ public class SpellBookRegistration {
         final ArrayList<String> registeredNames = new ArrayList<>();
         ResourceStreamReader rsr = null;
         final String basePath = SpellBookRegistration.getBasePath();
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "SpellBookRegistry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "SpellBookRegistry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {

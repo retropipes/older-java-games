@@ -35,10 +35,10 @@ public class XMLDataReader {
         final String line = this.br.readLine();
         if (line != null) {
             final String[] split = XMLDataReader.splitLine(line);
-            XMLDataReader
-                    .validateOpeningTag(split[0], XMLDataConstants.INT_TAG);
-            XMLDataReader
-                    .validateClosingTag(split[2], XMLDataConstants.INT_TAG);
+            XMLDataReader.validateOpeningTag(split[0],
+                    XMLDataConstants.INT_TAG);
+            XMLDataReader.validateClosingTag(split[2],
+                    XMLDataConstants.INT_TAG);
             return Integer.parseInt(split[1]);
         } else {
             throw new IOException("End of file!");

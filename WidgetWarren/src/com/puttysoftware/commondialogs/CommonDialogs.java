@@ -26,7 +26,7 @@ public class CommonDialogs {
     // Methods
     /**
      * Displays a dialog.
-     * 
+     *
      * @param msg
      *            The dialog message.
      */
@@ -37,7 +37,7 @@ public class CommonDialogs {
 
     /**
      * Displays a dialog with a title.
-     * 
+     *
      * @param msg
      *            The dialog message.
      * @param title
@@ -50,7 +50,7 @@ public class CommonDialogs {
 
     /**
      * Displays an error dialog with a title.
-     * 
+     *
      * @param msg
      *            The dialog message.
      * @param title
@@ -63,7 +63,7 @@ public class CommonDialogs {
 
     /**
      * Displays an input dialog, allowing the user to pick from a list.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -84,7 +84,7 @@ public class CommonDialogs {
 
     /**
      * Displays a text input dialog, allowing the user to enter a value.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -99,7 +99,7 @@ public class CommonDialogs {
 
     /**
      * Displays a password input dialog, allowing the user to enter a value.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -125,7 +125,7 @@ public class CommonDialogs {
 
     /**
      * Displays a text input dialog, allowing the user to enter a value.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -141,14 +141,15 @@ public class CommonDialogs {
 
     /**
      * Displays a yes/no confirm dialog.
-     * 
+     *
      * @param prompt
      *            The confirmation prompt.
      * @param title
      *            The dialog title.
      * @return A JOptionPane constant specifying what the user clicked.
      */
-    public static int showConfirmDialog(final String prompt, final String title) {
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
         return JOptionPane.showConfirmDialog(null, prompt, title,
                 JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 CommonDialogs.ICON);
@@ -156,7 +157,7 @@ public class CommonDialogs {
 
     /**
      * Displays a yes/no/cancel confirm dialog.
-     * 
+     *
      * @param prompt
      *            The confirmation prompt.
      * @param title
@@ -180,26 +181,26 @@ public class CommonDialogs {
 
     public static File showFileOpenDialog(final File dir,
             final FilenameFilter filter, final String prompt) {
-        String[] choices = dir.list(filter);
+        final String[] choices = dir.list(filter);
         if (choices == null || choices.length == 0) {
             CommonDialogs.showErrorDialog("No Files To Open!", "Open");
         } else {
-            String ext = CommonDialogs.getExtension(choices[0]);
+            final String ext = CommonDialogs.getExtension(choices[0]);
             for (int z = 0; z < choices.length; z++) {
                 choices[z] = CommonDialogs.getNameWithoutExtension(choices[z]);
             }
-            String value = CommonDialogs.showInputDialog(prompt, "Open",
+            final String value = CommonDialogs.showInputDialog(prompt, "Open",
                     choices, choices[0]);
             if (value != null) {
-                return new File(dir.getAbsolutePath() + File.separator + value
-                        + ext);
+                return new File(
+                        dir.getAbsolutePath() + File.separator + value + ext);
             }
         }
         return null;
     }
 
     public static File showFileSaveDialog(final File dir, final String prompt) {
-        String value = CommonDialogs.showTextInputDialog(prompt, "Save");
+        final String value = CommonDialogs.showTextInputDialog(prompt, "Save");
         if (value != null) {
             return new File(dir.getAbsolutePath() + File.separator + value);
         }
@@ -208,7 +209,7 @@ public class CommonDialogs {
 
     /**
      * Sets the default title for dialogs.
-     * 
+     *
      * @param title
      *            The default title
      */
@@ -218,7 +219,7 @@ public class CommonDialogs {
 
     /**
      * Sets the image to use instead of the default icons.
-     * 
+     *
      * @param icon
      *            The image - should be a BufferedImageIcon from the Graphics
      *            library.
@@ -230,7 +231,7 @@ public class CommonDialogs {
     private static String getNameWithoutExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(0, i);
         } else {
             ext = s;
@@ -241,7 +242,7 @@ public class CommonDialogs {
     private static String getExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i).toLowerCase();
         }
         return ext;

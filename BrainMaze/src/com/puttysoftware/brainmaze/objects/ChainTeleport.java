@@ -27,8 +27,8 @@ public class ChainTeleport extends GenericTeleport {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = BrainMaze.getApplication();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),

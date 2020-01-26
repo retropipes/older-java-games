@@ -36,9 +36,10 @@ public class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        this.maxDamage = PartyManager.getParty().getLeader().getMaximumHP() / 10;
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
+        this.maxDamage = PartyManager.getParty().getLeader().getMaximumHP()
+                / 10;
         if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {
             this.maxDamage = VariableHurtTrap.MIN_DAMAGE;
         }

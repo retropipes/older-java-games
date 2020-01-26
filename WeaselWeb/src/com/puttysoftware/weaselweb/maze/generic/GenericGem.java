@@ -25,8 +25,8 @@ public abstract class GenericGem extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         WeaselWeb.getApplication().getGameManager().decay();
         WeaselWeb.getApplication().getGameManager()
                 .addToScore(GenericGem.SCORE_GRAB);
@@ -43,10 +43,10 @@ public abstract class GenericGem extends MazeObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        WeaselWeb.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
+        WeaselWeb.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_SHATTER);
         WeaselWeb.getApplication().getGameManager()

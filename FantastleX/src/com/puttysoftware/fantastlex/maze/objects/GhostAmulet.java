@@ -36,10 +36,8 @@ public class GhostAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
-                        GhostAmulet.EFFECT_DURATION);
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_GHOSTLY,
+                GhostAmulet.EFFECT_DURATION);
     }
 }

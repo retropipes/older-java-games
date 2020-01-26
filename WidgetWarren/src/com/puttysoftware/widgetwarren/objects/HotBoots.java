@@ -37,7 +37,7 @@ public class HotBoots extends GenericBoots {
                 .getPlayerManager().getPlayerLocationY();
         final int z = WidgetWarren.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        WidgetWarren.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        WidgetWarren.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 }

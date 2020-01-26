@@ -30,8 +30,8 @@ public class Platform {
             try {
                 // Tell the UIManager to use the platform native look and
                 // feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -41,8 +41,8 @@ public class Platform {
             // All other platforms
             try {
                 // Tell the UIManager to use the Nimbus look and feel
-                UIManager
-                        .setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -51,59 +51,60 @@ public class Platform {
         }
     }
 
-    public static void hookFileOpen(Object o, Method m, String s) {
+    public static void hookFileOpen(final Object o, final Method m,
+            final String s) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setFileHandler(o, m);
         } else {
             try {
                 m.invoke(o, s);
-            } catch (IllegalArgumentException e) {
+            } catch (final IllegalArgumentException e) {
                 // Ignore
-            } catch (IllegalAccessException e) {
+            } catch (final IllegalAccessException e) {
                 // Ignore
-            } catch (InvocationTargetException e) {
+            } catch (final InvocationTargetException e) {
                 // Ignore
             }
         }
     }
 
-    public static void hookQuit(Object o, Method m) {
+    public static void hookQuit(final Object o, final Method m) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setQuitHandler(o, m);
         }
     }
 
-    public static void hookPreferences(Object o, Method m) {
+    public static void hookPreferences(final Object o, final Method m) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setPreferencesHandler(o, m);
         }
     }
 
-    public static void hookAbout(Object o, Method m) {
+    public static void hookAbout(final Object o, final Method m) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setAboutHandler(o, m);
         }
     }
 
-    public static void hookFullScreen(Window w, boolean fsCapable) {
+    public static void hookFullScreen(final Window w, final boolean fsCapable) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setWindowCanFullScreen(w, fsCapable);
         }
     }
 
-    public static void hookDockIcon(Image i) {
+    public static void hookDockIcon(final Image i) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setDockIconImage(i);
         }
     }
 
-    public static void hookFrameIcon(Frame f, Image i) {
+    public static void hookFrameIcon(final Frame f, final Image i) {
         if (!System.getProperty("os.name").startsWith("Mac OS X")) {
             f.setIconImage(i);
         }
     }
 
-    public static void hookDockIconBadge(String badgeText) {
+    public static void hookDockIconBadge(final String badgeText) {
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             OSXAdapter.setDockIconBadge(badgeText);
         }

@@ -6,99 +6,95 @@ import java.io.Serializable;
 
 public interface NDimensionalMap extends Serializable {
     // Constants
-    public static final int ROW_DIMENSION = 1;
-    public static final int COLUMN_DIMENSION = 0;
-    public static final int FLOOR_DIMENSION = 2;
-    public static final int LEVEL_DIMENSION = 3;
-    public static final int EXTRA_DIMENSION = 4;
+    int ROW_DIMENSION = 1;
+    int COLUMN_DIMENSION = 0;
+    int FLOOR_DIMENSION = 2;
+    int LEVEL_DIMENSION = 3;
+    int EXTRA_DIMENSION = 4;
 
     // Methods
-    public MapObject getCell(final NDimensionalLocation loc);
+    MapObject getCell(final NDimensionalLocation loc);
 
-    public MapObject getCellOffset(final NDimensionalLocation loc,
+    MapObject getCellOffset(final NDimensionalLocation loc,
             final NDimensionalLocation offset);
 
-    public NDimensionalLocation getStart(final int dimension);
+    NDimensionalLocation getStart(final int dimension);
 
-    public NDimensionalLocation getDimensions();
+    NDimensionalLocation getDimensions();
 
-    public int getMaxDimension();
+    int getMaxDimension();
 
-    public boolean findObject(final MapObject obj);
+    boolean findObject(final MapObject obj);
 
-    public boolean findNthObject(final int N, final MapObject obj);
+    boolean findNthObject(final int N, final MapObject obj);
 
-    public boolean findObjectOnDimension(final int dimension,
+    boolean findObjectOnDimension(final int dimension, final MapObject obj);
+
+    boolean findNthObjectOnDimension(final int dimension, final int N,
             final MapObject obj);
 
-    public boolean findNthObjectOnDimension(final int dimension, final int N,
-            final MapObject obj);
+    NDimensionalLocation getFindResult();
 
-    public NDimensionalLocation getFindResult();
+    void setCell(final MapObject mo, final NDimensionalLocation loc);
 
-    public void setCell(final MapObject mo, final NDimensionalLocation loc);
+    void setStart(final int dimension, final NDimensionalLocation newStart);
 
-    public void setStart(final int dimension,
-            final NDimensionalLocation newStart);
+    void save();
 
-    public void save();
+    void saveDimension(final int dimension);
 
-    public void saveDimension(final int dimension);
+    void restore();
 
-    public void restore();
+    void restoreDimension(final int dimension);
 
-    public void restoreDimension(final int dimension);
+    void fillMap(final MapObject fillObj);
 
-    public void fillMap(final MapObject fillObj);
+    void fillMapDimension(final MapObject fillObj, final int dimension);
 
-    public void fillMapDimension(final MapObject fillObj, final int dimension);
-
-    public void fillMapRandomly(final MapObjectList objects,
+    void fillMapRandomly(final MapObjectList objects,
             final MapObject pass1Fill);
 
-    public void fillMapDimensionRandomly(final MapObjectList objects,
+    void fillMapDimensionRandomly(final MapObjectList objects,
             final MapObject pass1Fill, final int dimension);
 
-    public Container drawGame(NDimensionalLocation otherDimensions);
+    Container drawGame(NDimensionalLocation otherDimensions);
 
-    public Container drawGameWithVisibility(NDimensionalLocation otherDimensions);
+    Container drawGameWithVisibility(NDimensionalLocation otherDimensions);
 
-    public Container drawEditor(NDimensionalLocation otherDimensions);
+    Container drawEditor(NDimensionalLocation otherDimensions);
 
-    public Container drawEditorWithVisibility(
+    Container drawEditorWithVisibility(NDimensionalLocation otherDimensions);
+
+    Container drawOther(int appearanceID, NDimensionalLocation otherDimensions);
+
+    Container drawOtherWithVisibility(int appearanceID,
             NDimensionalLocation otherDimensions);
 
-    public Container drawOther(int appearanceID,
-            NDimensionalLocation otherDimensions);
+    Point alterViewingWindow(Point newViewingWindow);
 
-    public Container drawOtherWithVisibility(int appearanceID,
-            NDimensionalLocation otherDimensions);
+    Point alterViewingWindowOffset(Point newViewingWindowOffset);
 
-    public Point alterViewingWindow(Point newViewingWindow);
+    int getHorizontalDrawDistance();
 
-    public Point alterViewingWindowOffset(Point newViewingWindowOffset);
+    void setHorizontalDrawDistance(int newDrawDistance);
 
-    public int getHorizontalDrawDistance();
+    void incrementHorizontalDrawDistance();
 
-    public void setHorizontalDrawDistance(int newDrawDistance);
+    void decrementHorizontalDrawDistance();
 
-    public void incrementHorizontalDrawDistance();
+    int getVerticalDrawDistance();
 
-    public void decrementHorizontalDrawDistance();
+    void setVerticalDrawDistance(int newDrawDistance);
 
-    public int getVerticalDrawDistance();
+    void incrementVerticalDrawDistance();
 
-    public void setVerticalDrawDistance(int newDrawDistance);
+    void decrementVerticalDrawDistance();
 
-    public void incrementVerticalDrawDistance();
+    int getDrawDistance();
 
-    public void decrementVerticalDrawDistance();
+    void setDrawDistance(int newDrawDistance);
 
-    public int getDrawDistance();
+    void incrementDrawDistance();
 
-    public void setDrawDistance(int newDrawDistance);
-
-    public void incrementDrawDistance();
-
-    public void decrementDrawDistance();
+    void decrementDrawDistance();
 }

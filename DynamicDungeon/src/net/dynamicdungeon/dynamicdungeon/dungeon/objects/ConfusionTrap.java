@@ -15,29 +15,30 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class ConfusionTrap extends AbstractTrap {
     // Constructors
     public ConfusionTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_CONFUSION_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_CONFUSION_TRAP);
     }
 
     @Override
     public String getName() {
-	return "Confusion Trap";
+        return "Confusion Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Confusion Traps";
+        return "Confusion Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().showMessage("You are confused!");
-	DynamicDungeon.getApplication().getGameManager()
-		.activateEffect(DungeonEffectConstants.EFFECT_CONFUSED);
-	SoundManager.playSound(SoundConstants.SOUND_CONFUSED);
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication().showMessage("You are confused!");
+        DynamicDungeon.getApplication().getGameManager()
+                .activateEffect(DungeonEffectConstants.EFFECT_CONFUSED);
+        SoundManager.playSound(SoundConstants.SOUND_CONFUSED);
     }
 
     @Override
     public String getDescription() {
-	return "Confusion Traps randomly alter your controls for 6 steps when stepped on.";
+        return "Confusion Traps randomly alter your controls for 6 steps when stepped on.";
     }
 }

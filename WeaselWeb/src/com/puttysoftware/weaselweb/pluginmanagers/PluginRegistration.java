@@ -39,8 +39,9 @@ public class PluginRegistration {
             }
         }
         // Get list of files in plugins folder
-        final String[] pluginNames = new File(PluginRegistration.getBasePath()
-                + File.separator + "plugins").list(new PluginFilter());
+        final String[] pluginNames = new File(
+                PluginRegistration.getBasePath() + File.separator + "plugins")
+                        .list(new PluginFilter());
         if (pluginNames != null && pluginNames.length > 0) {
             // Strip extension from list entries
             for (int z = 0; z < pluginNames.length; z++) {
@@ -67,10 +68,11 @@ public class PluginRegistration {
                     if (new File(PluginRegistration.getBasePath()
                             + File.separator + "plugins" + File.separator + res
                             + FileExtension.getPluginExtensionWithPeriod())
-                            .exists()) {
+                                    .exists()) {
                         // Register it
                         if (pluginList != null && anyFound) {
-                            final String[] newpluginList = new String[pluginList.length + 1];
+                            final String[] newpluginList = new String[pluginList.length
+                                    + 1];
                             for (int x = 0; x < newpluginList.length; x++) {
                                 if (x < pluginList.length) {
                                     newpluginList[x] = pluginList[x];
@@ -86,15 +88,15 @@ public class PluginRegistration {
                         }
                         final Object plugin = PluginLoader.loadPlugin(res);
                         PluginLoader.injectNewlyRegisteredPlugin(plugin);
-                        CommonDialogs
-                                .showDialog("Plugin successfully registered and loaded.");
+                        CommonDialogs.showDialog(
+                                "Plugin successfully registered and loaded.");
                     } else {
-                        CommonDialogs
-                                .showDialog("The plugin to register is not a valid plugin.");
+                        CommonDialogs.showDialog(
+                                "The plugin to register is not a valid plugin.");
                     }
                 } else {
-                    CommonDialogs
-                            .showDialog("The plugin to register has been registered already.");
+                    CommonDialogs.showDialog(
+                            "The plugin to register has been registered already.");
                 }
             }
         } else {
@@ -142,7 +144,8 @@ public class PluginRegistration {
                 // Unregister it
                 if (pluginList.length > 1) {
                     pluginList[index] = null;
-                    final String[] newpluginList = new String[pluginList.length - 1];
+                    final String[] newpluginList = new String[pluginList.length
+                            - 1];
                     int offset = 0;
                     for (int x = 0; x < pluginList.length; x++) {
                         if (pluginList[x] != null) {
@@ -177,8 +180,8 @@ public class PluginRegistration {
                     PluginHooks.unhookMenuOverrides(p);
                 }
                 PluginLoader.unloadPlugin(p);
-                CommonDialogs
-                        .showDialog("Plugin successfully unregistered and unloaded.");
+                CommonDialogs.showDialog(
+                        "Plugin successfully unregistered and unloaded.");
             }
         }
     }
@@ -187,9 +190,9 @@ public class PluginRegistration {
         final String basePath = PluginRegistration.getBasePath();
         // Load plugin registry file
         final Vector<String> registeredNames = new Vector<>();
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "PluginRegistry"
-                + FileExtension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "PluginRegistry"
+                        + FileExtension.getRegistryExtensionWithPeriod())) {
             final ResourceStreamReader rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -217,8 +220,8 @@ public class PluginRegistration {
             }
         }
         // Save plugin registry file
-        try (final BufferedWriter bw = new BufferedWriter(new FileWriter(
-                basePath + File.separator + "PluginRegistry"
+        try (final BufferedWriter bw = new BufferedWriter(
+                new FileWriter(basePath + File.separator + "PluginRegistry"
                         + FileExtension.getRegistryExtensionWithPeriod()))) {
             if (newpluginList != null) {
                 for (int x = 0; x < newpluginList.length; x++) {

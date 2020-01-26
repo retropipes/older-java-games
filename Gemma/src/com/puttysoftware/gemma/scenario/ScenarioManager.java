@@ -26,7 +26,7 @@ public class ScenarioManager {
     private boolean isDirty;
     private boolean isLoaded;
     private String lastUsedGameFile;
-    private NamesFileManager nfMgr;
+    private final NamesFileManager nfMgr;
 
     // Constructors
     public ScenarioManager() {
@@ -41,7 +41,7 @@ public class ScenarioManager {
         return this.gameMap;
     }
 
-    public void setMap(Map newMap) {
+    public void setMap(final Map newMap) {
         this.gameMap = newMap;
     }
 
@@ -54,8 +54,8 @@ public class ScenarioManager {
 
     public static int showSaveDialog() {
         String type, source;
-        Application app = Gemma.getApplication();
-        int mode = app.getMode();
+        final Application app = Gemma.getApplication();
+        final int mode = app.getMode();
         if (mode == Application.STATUS_GAME) {
             type = "game";
             source = Gemma.getProgramName();
@@ -75,10 +75,10 @@ public class ScenarioManager {
         return this.isDirty;
     }
 
-    public void setDirty(boolean newDirty) {
-        Application app = Gemma.getApplication();
+    public void setDirty(final boolean newDirty) {
+        final Application app = Gemma.getApplication();
         this.isDirty = newDirty;
-        JFrame frame = app.getOutputFrame();
+        final JFrame frame = app.getOutputFrame();
         if (frame != null) {
             frame.getRootPane().putClientProperty("Window.documentModified",
                     Boolean.valueOf(this.isDirty));
@@ -86,10 +86,10 @@ public class ScenarioManager {
         app.getMenuManager().checkFlags();
     }
 
-    public void loadFromOSHandler(String filename) { // NO_UCD
+    public void loadFromOSHandler(final String filename) { // NO_UCD
         String extension;
         final File file = new File(filename);
-        String newFilename = file.getAbsolutePath();
+        final String newFilename = file.getAbsolutePath();
         extension = ScenarioManager.getExtension(file);
         if (extension.equals(Extension.getGameExtension())) {
             this.lastUsedGameFile = newFilename;
@@ -118,9 +118,9 @@ public class ScenarioManager {
             }
         }
         if (saved) {
-            String[] saveList = SaveRegistration.getSaveList();
+            final String[] saveList = SaveRegistration.getSaveList();
             if (saveList != null && saveList.length > 0) {
-                String save = CommonDialogs.showInputDialog(
+                final String save = CommonDialogs.showInputDialog(
                         "Open Which Saved Game?", title, saveList, saveList[0]);
                 if (save != null) {
                     final File file = new File(
@@ -137,7 +137,7 @@ public class ScenarioManager {
         }
     }
 
-    private static void loadFile(String filename) {
+    private static void loadFile(final String filename) {
         if (!FilenameChecker
                 .isFilenameOK(ScenarioManager.getNameWithoutExtension(
                         ScenarioManager.getFileNameOnly(filename)))) {
@@ -148,20 +148,20 @@ public class ScenarioManager {
                             + "named com1 through com9 and lpt1 through lpt9.",
                     "Open Saved Game");
         } else {
-            LoadTask xlt = new LoadTask(filename);
+            final LoadTask xlt = new LoadTask(filename);
             xlt.start();
         }
     }
 
     public boolean saveGame() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         if (app.getMode() == Application.STATUS_GAME) {
             if (this.lastUsedGameFile != null
                     && !this.lastUsedGameFile.equals("")) {
-                String extension = ScenarioManager
+                final String extension = ScenarioManager
                         .getExtension(this.lastUsedGameFile);
                 if (extension != null) {
-                    if (!(extension.equals(Extension.getGameExtension()))) {
+                    if (!extension.equals(Extension.getGameExtension())) {
                         this.lastUsedGameFile = ScenarioManager
                                 .getNameWithoutExtension(this.lastUsedGameFile)
                                 + Extension.getGameExtensionWithPeriod();
@@ -185,7 +185,7 @@ public class ScenarioManager {
         } else {
             title = "Save Game";
         }
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         String filename = "\\";
         String extension;
         while (!FilenameChecker.isFilenameOK(filename)) {
@@ -201,13 +201,13 @@ public class ScenarioManager {
                             title);
                 } else {
                     SaveRegistration.autoregisterSave(filename);
-                    String dir = SaveRegistration.getSaveBasePath()
+                    final String dir = SaveRegistration.getSaveBasePath()
                             + File.separator;
                     extension = ScenarioManager.getExtension(filename);
                     if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
-                            if (!(extension
-                                    .equals(Extension.getGameExtension()))) {
+                            if (!extension
+                                    .equals(Extension.getGameExtension())) {
                                 filename = ScenarioManager
                                         .getNameWithoutExtension(filename)
                                         + Extension
@@ -231,10 +231,10 @@ public class ScenarioManager {
         return this.nfMgr;
     }
 
-    private static void saveFile(String filename) {
+    private static void saveFile(final String filename) {
         final String sg = "Saved Game";
         Gemma.getApplication().showMessage("Saving " + sg + " file...");
-        SaveTask xst = new SaveTask(filename);
+        final SaveTask xst = new SaveTask(filename);
         xst.start();
     }
 
@@ -242,7 +242,7 @@ public class ScenarioManager {
         String ext = null;
         final String s = f.getName();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
@@ -251,7 +251,7 @@ public class ScenarioManager {
     private static String getExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
@@ -260,7 +260,7 @@ public class ScenarioManager {
     private static String getNameWithoutExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(0, i);
         } else {
             ext = s;
@@ -271,7 +271,7 @@ public class ScenarioManager {
     private static String getFileNameOnly(final String s) {
         String fno = null;
         final int i = s.lastIndexOf(File.separatorChar);
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             fno = s.substring(i + 1);
         } else {
             fno = s;

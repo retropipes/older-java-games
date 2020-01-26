@@ -17,36 +17,36 @@ import com.puttysoftware.fantastlereboot.files.WorldFileManager;
 import com.puttysoftware.fantastlereboot.gui.Prefs;
 
 final class QuitRequestManager implements QuitHandler {
-  // Constructors
-  QuitRequestManager() {
-    // Do nothing
-  }
+    // Constructors
+    QuitRequestManager() {
+        // Do nothing
+    }
 
-  // Methods
-  @Override
-  public void handleQuitRequestWith(final QuitEvent inE,
-      final QuitResponse inResponse) {
-    boolean saved = true;
-    int status = JOptionPane.DEFAULT_OPTION;
-    if (FileStateManager.getDirty()) {
-      status = FileStateManager.showSaveDialog();
-      if (status == JOptionPane.YES_OPTION) {
-        if (Modes.inGame()) {
-          saved = GameFileManager.suspendGame();
-        } else {
-          saved = WorldFileManager.saveWorld();
+    // Methods
+    @Override
+    public void handleQuitRequestWith(final QuitEvent inE,
+            final QuitResponse inResponse) {
+        boolean saved = true;
+        int status = JOptionPane.DEFAULT_OPTION;
+        if (FileStateManager.getDirty()) {
+            status = FileStateManager.showSaveDialog();
+            if (status == JOptionPane.YES_OPTION) {
+                if (Modes.inGame()) {
+                    saved = GameFileManager.suspendGame();
+                } else {
+                    saved = WorldFileManager.saveWorld();
+                }
+            } else if (status == JOptionPane.CANCEL_OPTION) {
+                saved = false;
+            } else {
+                FileStateManager.setDirty(false);
+            }
         }
-      } else if (status == JOptionPane.CANCEL_OPTION) {
-        saved = false;
-      } else {
-        FileStateManager.setDirty(false);
-      }
+        if (saved) {
+            Prefs.writePrefs();
+            inResponse.performQuit();
+        } else {
+            inResponse.cancelQuit();
+        }
     }
-    if (saved) {
-      Prefs.writePrefs();
-      inResponse.performQuit();
-    } else {
-      inResponse.cancelQuit();
-    }
-  }
 }

@@ -9,7 +9,7 @@ public class BasicLowLevelDataStore {
     private final int[] interProd;
 
     // Constructor
-    public BasicLowLevelDataStore(int... shape) {
+    public BasicLowLevelDataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -21,7 +21,7 @@ public class BasicLowLevelDataStore {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -32,7 +32,7 @@ public class BasicLowLevelDataStore {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
@@ -41,11 +41,11 @@ public class BasicLowLevelDataStore {
         return this.dataShape;
     }
 
-    protected Object getRawCell(int rawLoc) {
+    protected Object getRawCell(final int rawLoc) {
         return this.dataStore[rawLoc];
     }
 
-    protected void setRawCell(Object cobj, int rawLoc) {
+    protected void setRawCell(final Object cobj, final int rawLoc) {
         this.dataStore[rawLoc] = cobj;
     }
 
@@ -53,25 +53,25 @@ public class BasicLowLevelDataStore {
         return this.dataStore.length;
     }
 
-    public Object getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public Object getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(Object obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final Object obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
+        final int result = 1;
         return prime * result + Arrays.hashCode(this.dataStore);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -81,7 +81,7 @@ public class BasicLowLevelDataStore {
         if (!(obj instanceof BasicLowLevelDataStore)) {
             return false;
         }
-        BasicLowLevelDataStore other = (BasicLowLevelDataStore) obj;
+        final BasicLowLevelDataStore other = (BasicLowLevelDataStore) obj;
         if (!Arrays.equals(this.dataStore, other.dataStore)) {
             return false;
         }

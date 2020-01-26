@@ -116,7 +116,8 @@ public class CommonDialogs {
      *            The dialog title.
      * @return A JOptionPane constant specifying what the user clicked.
      */
-    public static int showConfirmDialog(final String prompt, final String title) {
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
         return JOptionPane.showConfirmDialog(null, prompt, title,
                 JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 CommonDialogs.ICON);

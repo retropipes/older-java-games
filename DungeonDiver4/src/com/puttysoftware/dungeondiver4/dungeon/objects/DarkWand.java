@@ -32,9 +32,9 @@ public class DarkWand extends AbstractWand {
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
-        AbstractDungeonObject obj = m.getCell(x, y, z,
+        final AbstractDungeonObject obj = m.getCell(x, y, z,
                 DungeonConstants.LAYER_OBJECT);
         if (obj.getName().equals("Empty")) {
             // Create a Dark Gem

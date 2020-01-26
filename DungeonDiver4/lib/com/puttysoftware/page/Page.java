@@ -11,11 +11,12 @@ public final class Page extends Polynomial {
     private boolean experience;
 
     // Constructors
-    private Page(Polynomial p) {
+    private Page(final Polynomial p) {
         super(p);
     }
 
-    public Page(int maxPower, int params, int range, boolean isExperience) {
+    public Page(final int maxPower, final int params, final int range,
+            final boolean isExperience) {
         super(maxPower, params);
         this.maxRange = range;
         this.experience = isExperience;
@@ -31,35 +32,35 @@ public final class Page extends Polynomial {
     }
 
     @Override
-    public long evaluate(int paramValue) {
+    public long evaluate(final int paramValue) {
         int x;
         long result = 0;
         for (x = 0; x < this.coefficients.length; x++) {
-            result += (long) (this.coefficients[x][Polynomial.DEFAULT_PARAM] * Math
-                    .pow(paramValue, x));
+            result += (long) (this.coefficients[x][Polynomial.DEFAULT_PARAM]
+                    * Math.pow(paramValue, x));
         }
         if (this.experience) {
             for (x = 0; x < this.coefficients.length; x++) {
-                result -= (long) (this.coefficients[x][Polynomial.DEFAULT_PARAM]);
+                result -= (long) this.coefficients[x][Polynomial.DEFAULT_PARAM];
             }
         }
         return result;
     }
 
     @Override
-    public long evaluate(int[] paramValues) {
+    public long evaluate(final int[] paramValues) {
         int x, y;
         long result = 0;
         for (x = 0; x < this.coefficients.length; x++) {
             for (y = 0; y < this.coefficients[x].length; y++) {
-                result += (long) (this.coefficients[x][y] * Math.pow(
-                        paramValues[y], x));
+                result += (long) (this.coefficients[x][y]
+                        * Math.pow(paramValues[y], x));
             }
         }
         if (this.experience) {
             for (x = 0; x < this.coefficients.length; x++) {
                 for (y = 0; y < this.coefficients[x].length; y++) {
-                    result -= (long) (this.coefficients[x][y]);
+                    result -= (long) this.coefficients[x][y];
                 }
             }
         }
@@ -67,23 +68,23 @@ public final class Page extends Polynomial {
     }
 
     public long[] evaluateToArray() {
-        long[] result = new long[this.maxRange];
+        final long[] result = new long[this.maxRange];
         for (int x = 0; x < result.length; x++) {
             result[x] = this.evaluate(x + 1);
         }
         return result;
     }
 
-    public static Page readPage(XDataReader reader) throws IOException {
-        Page p = new Page(Polynomial.readPolynomial(reader));
-        int tempMaxRange = reader.readInt();
-        boolean tempExperience = reader.readBoolean();
+    public static Page readPage(final XDataReader reader) throws IOException {
+        final Page p = new Page(Polynomial.readPolynomial(reader));
+        final int tempMaxRange = reader.readInt();
+        final boolean tempExperience = reader.readBoolean();
         p.maxRange = tempMaxRange;
         p.experience = tempExperience;
         return p;
     }
 
-    public void writePage(XDataWriter writer) throws IOException {
+    public void writePage(final XDataWriter writer) throws IOException {
         this.writePolynomial(writer);
         writer.writeInt(this.maxRange);
         writer.writeBoolean(this.experience);
@@ -98,7 +99,7 @@ public final class Page extends Polynomial {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -108,7 +109,7 @@ public final class Page extends Polynomial {
         if (!(obj instanceof Page)) {
             return false;
         }
-        Page other = (Page) obj;
+        final Page other = (Page) obj;
         if (this.experience != other.experience) {
             return false;
         }

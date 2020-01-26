@@ -68,7 +68,8 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
             final int formatVersion) throws IOException {
         final MazeObjectList objectList = WidgetWarren.getApplication()
                 .getObjects();
-        this.setSavedObject(objectList.readMazeObjectXML(reader, formatVersion));
+        this.setSavedObject(
+                objectList.readMazeObjectXML(reader, formatVersion));
         return this;
     }
 }

@@ -51,13 +51,11 @@ public class BrainMaze {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    BrainMaze.application.getMazeManager(),
-                    BrainMaze.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(BrainMaze.application.getMazeManager(),
+                    BrainMaze.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(BrainMaze.application.getGUIManager(),

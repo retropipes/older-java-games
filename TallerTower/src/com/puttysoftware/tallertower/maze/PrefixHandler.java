@@ -13,8 +13,8 @@ public class PrefixHandler implements PrefixIO {
         final byte formatVer = PrefixHandler.readFormatVersion(reader);
         final boolean res = PrefixHandler.checkFormatVersion(formatVer);
         if (!res) {
-            throw new IOException("Unsupported maze format version: "
-                    + formatVer);
+            throw new IOException(
+                    "Unsupported maze format version: " + formatVer);
         }
         return formatVer;
     }
@@ -30,7 +30,7 @@ public class PrefixHandler implements PrefixIO {
     }
 
     private static boolean checkFormatVersion(final byte version) {
-        return (version <= PrefixHandler.FORMAT_VERSION);
+        return version <= PrefixHandler.FORMAT_VERSION;
     }
 
     private static void writeFormatVersion(final XDataWriter writer)

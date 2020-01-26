@@ -23,8 +23,8 @@ public abstract class GenericInventoryableObject extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         inv.addItem(this);
         final Application app = MazeMode.getApplication();
         app.getGameManager().decay();

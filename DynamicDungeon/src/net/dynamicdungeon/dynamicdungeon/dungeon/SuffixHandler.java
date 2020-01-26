@@ -10,14 +10,14 @@ import net.dynamicdungeon.dynamicdungeon.game.FileHooks;
 public class SuffixHandler implements SuffixIO {
     @Override
     public void readSuffix(final DatabaseReader reader, final int formatVersion)
-	    throws IOException {
-	DynamicDungeon.getApplication().getGameManager();
-	FileHooks.loadGameHook(reader);
+            throws IOException {
+        DynamicDungeon.getApplication().getGameManager();
+        FileHooks.loadGameHook(reader);
     }
 
     @Override
     public void writeSuffix(final DatabaseWriter writer) throws IOException {
-	DynamicDungeon.getApplication().getGameManager();
-	FileHooks.saveGameHook(writer);
+        DynamicDungeon.getApplication().getGameManager();
+        FileHooks.saveGameHook(writer);
     }
 }

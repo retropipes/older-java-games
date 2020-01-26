@@ -90,8 +90,8 @@ public final class Score {
         }
     }
 
-    public static class ScoreComparatorAsc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorAsc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423564L;
 
         @Override
@@ -120,8 +120,8 @@ public final class Score {
         }
     }
 
-    public static class ScoreComparatorDesc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorDesc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423565L;
 
         @Override

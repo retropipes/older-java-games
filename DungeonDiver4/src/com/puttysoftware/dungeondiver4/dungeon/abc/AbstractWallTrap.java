@@ -24,7 +24,8 @@ public abstract class AbstractWallTrap extends AbstractDungeonObject {
     protected static final int NUMBER_MASTER = -1;
 
     // Constructors
-    protected AbstractWallTrap(int newNumber, AbstractTrappedWall newTrigger) {
+    protected AbstractWallTrap(final int newNumber,
+            final AbstractTrappedWall newTrigger) {
         super(false, false);
         this.number = newNumber;
         this.trigger = newTrigger;
@@ -32,7 +33,7 @@ public abstract class AbstractWallTrap extends AbstractDungeonObject {
 
     @Override
     public AbstractWallTrap clone() {
-        AbstractWallTrap copy = (AbstractWallTrap) super.clone();
+        final AbstractWallTrap copy = (AbstractWallTrap) super.clone();
         copy.number = this.number;
         copy.trigger = this.trigger.clone();
         return copy;
@@ -40,8 +41,8 @@ public abstract class AbstractWallTrap extends AbstractDungeonObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         DungeonDiver4.getApplication().getGameManager().decay();
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .findAllMatchingObjectsAndDecay(this.masterTrigger);
@@ -125,19 +126,19 @@ public abstract class AbstractWallTrap extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

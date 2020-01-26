@@ -36,10 +36,8 @@ public class TrueSightAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_TRUE_SIGHT,
-                        TrueSightAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_TRUE_SIGHT,
+                TrueSightAmulet.EFFECT_DURATION);
     }
 }

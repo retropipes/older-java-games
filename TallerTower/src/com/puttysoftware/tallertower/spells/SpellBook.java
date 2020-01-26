@@ -49,8 +49,8 @@ public class SpellBook {
 
     public final int getSpellsKnownCount() {
         int k = 0;
-        for (int x = 0; x < this.known.length; x++) {
-            if (this.known[x]) {
+        for (final boolean element : this.known) {
+            if (element) {
                 k++;
             }
         }
@@ -220,7 +220,7 @@ public class SpellBook {
         int result = 1;
         result = prime * result + Arrays.hashCode(this.known);
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         return prime * result + Arrays.hashCode(this.spells);
     }
 

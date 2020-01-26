@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.BitSet;
 
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
-import com.puttysoftware.dungeondiver4.dungeon.FormatConstants;
 import com.puttysoftware.dungeondiver4.dungeon.Dungeon;
 import com.puttysoftware.dungeondiver4.dungeon.DungeonConstants;
+import com.puttysoftware.dungeondiver4.dungeon.FormatConstants;
 import com.puttysoftware.dungeondiver4.dungeon.objects.BattleCharacter;
 import com.puttysoftware.dungeondiver4.dungeon.objects.GhostAmulet;
 import com.puttysoftware.dungeondiver4.dungeon.objects.PasswallBoots;
@@ -32,8 +32,8 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class AbstractDungeonObject extends CloneableObject implements
-        TypeConstants, RandomGenerationRule {
+public abstract class AbstractDungeonObject extends CloneableObject
+        implements TypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -66,7 +66,8 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     private static final String OBJECT_SAVED_GROUP = "saved";
 
     // Constructors
-    public AbstractDungeonObject(final boolean isSolid, boolean sightBlock) {
+    public AbstractDungeonObject(final boolean isSolid,
+            final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = false;
@@ -96,7 +97,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
             final boolean isPushable, final boolean doesAcceptPushInto,
             final boolean doesAcceptPushOut, final boolean isPullable,
             final boolean doesAcceptPullInto, final boolean doesAcceptPullOut,
-            final boolean hasFriction, boolean sightBlock) {
+            final boolean hasFriction, final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = isPushable;
@@ -127,7 +128,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
             final boolean doesAcceptPushOut, final boolean isPullable,
             final boolean doesAcceptPullInto, final boolean doesAcceptPullOut,
             final boolean hasFriction, final boolean isDestroyable,
-            final boolean doesChainReact, boolean sightBlock) {
+            final boolean doesChainReact, final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = isPushable;
@@ -154,7 +155,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     public AbstractDungeonObject(final boolean isSolid,
-            final boolean canBeInventoried, boolean sightBlock) {
+            final boolean canBeInventoried, final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = false;
@@ -238,7 +239,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     @Override
     public AbstractDungeonObject clone() {
         try {
-            AbstractDungeonObject copy = this.getClass().newInstance();
+            final AbstractDungeonObject copy = this.getClass().newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -263,10 +264,10 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (InstantiationException e) {
+        } catch (final InstantiationException e) {
             DungeonDiver4.getErrorLogger().logError(e);
             return null;
-        } catch (IllegalAccessException e) {
+        } catch (final IllegalAccessException e) {
             DungeonDiver4.getErrorLogger().logError(e);
             return null;
         }
@@ -286,7 +287,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         result = prime * result + (this.pushable ? 1231 : 1237);
         result = prime * result + (this.pushableInto ? 1231 : 1237);
         result = prime * result + (this.pushableOut ? 1231 : 1237);
-        result = prime * result + ((this.sp == null) ? 0 : this.sp.hashCode());
+        result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
         result = prime * result + this.templateColor;
         result = prime * result + this.timerValue;
         result = prime * result + this.initialTimerValue;
@@ -294,12 +295,11 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + (this.timerActive ? 1231 : 1237);
         result = prime * result + this.attributeID;
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -309,7 +309,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         if (!(obj instanceof AbstractDungeonObject)) {
             return false;
         }
-        AbstractDungeonObject other = (AbstractDungeonObject) obj;
+        final AbstractDungeonObject other = (AbstractDungeonObject) obj;
         if (this.attributeID != other.attributeID) {
             return false;
         }
@@ -385,7 +385,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         return this.saved;
     }
 
-    public void setSavedObject(AbstractDungeonObject newSaved) {
+    public void setSavedObject(final AbstractDungeonObject newSaved) {
         if (newSaved == null) {
             throw new IllegalArgumentException("New saved object == NULL!");
         }
@@ -412,7 +412,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         return this.ruleSet;
     }
 
-    public boolean isConditionallySolid(DungeonObjectInventory inv) {
+    public boolean isConditionallySolid(final DungeonObjectInventory inv) {
         // Handle passwall boots
         if (inv.isItemThere(new PasswallBoots())) {
             return false;
@@ -439,7 +439,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     public boolean isConditionallyDirectionallySolid(final boolean ie,
-            final int dirX, final int dirY, DungeonObjectInventory inv) {
+            final int dirX, final int dirY, final DungeonObjectInventory inv) {
         // Handle ghost amulet and passwall boots
         if (inv.isItemThere(new GhostAmulet())
                 || inv.isItemThere(new PasswallBoots())) {
@@ -453,7 +453,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         return this.blocksLOS;
     }
 
-    public boolean isOfType(int testType) {
+    public boolean isOfType(final int testType) {
         return this.type.get(testType);
     }
 
@@ -464,7 +464,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
                 count++;
             }
         }
-        int[] result = new int[count];
+        final int[] result = new int[count];
         count = 0;
         for (int x = 0; x < TypeConstants.TYPES_COUNT; x++) {
             if (this.isOfType(x)) {
@@ -545,25 +545,26 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         return this.attributeTemplateColor;
     }
 
-    protected void setDirectionallySolid(boolean ie, int dir, boolean value) {
+    protected void setDirectionallySolid(final boolean ie, final int dir,
+            final boolean value) {
         this.sp.setDirectionallySolid(ie, dir, value);
     }
 
-    protected void setTemplateColor(int newTC) {
+    protected void setTemplateColor(final int newTC) {
         this.templateColor = newTC;
     }
 
-    protected void setAttributeID(int newAttrID) {
+    protected void setAttributeID(final int newAttrID) {
         this.attributeID = newAttrID;
     }
 
-    protected void setAttributeTemplateColor(int attrColor) {
+    protected void setAttributeTemplateColor(final int attrColor) {
         this.attributeTemplateColor = attrColor;
     }
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -579,7 +580,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
             final int dirY, final DungeonObjectInventory inv);
 
     /**
-     * 
+     *
      * @param active
      */
     public void postMoveBattleAction(final BattleCharacter active) {
@@ -587,7 +588,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -600,7 +601,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param dirZ
@@ -611,13 +612,13 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
      */
-    public boolean hasFrictionConditionally(DungeonObjectInventory inv,
-            boolean moving) {
+    public boolean hasFrictionConditionally(final DungeonObjectInventory inv,
+            final boolean moving) {
         return this.hasFriction();
     }
 
@@ -626,12 +627,12 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void editorGenerateHook(int x, int y, int z) {
+    public void editorGenerateHook(final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -644,7 +645,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -654,8 +655,9 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
      * @param inv
      * @return
      */
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -669,7 +671,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -681,7 +683,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -691,7 +693,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -706,7 +708,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -720,7 +722,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -734,7 +736,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -750,7 +752,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -765,7 +767,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -779,7 +781,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -793,7 +795,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -812,24 +814,26 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      * @return
      */
-    public AbstractDungeonObject gameRenderHook(int x, int y, int z) {
+    public AbstractDungeonObject gameRenderHook(final int x, final int y,
+            final int z) {
         return this;
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      * @return
      */
-    public AbstractDungeonObject editorRenderHook(int x, int y, int z) {
+    public AbstractDungeonObject editorRenderHook(final int x, final int y,
+            final int z) {
         return this;
     }
 
@@ -852,12 +856,13 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(int x, int y, int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -865,13 +870,13 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         // Do nothing
     }
 
-    public final void activateTimer(int ticks) {
+    public final void activateTimer(final int ticks) {
         this.timerActive = true;
         this.timerValue = ticks;
         this.initialTimerValue = ticks;
     }
 
-    public final void extendTimer(int ticks) {
+    public final void extendTimer(final int ticks) {
         if (this.timerActive) {
             this.timerValue += ticks;
         }
@@ -889,7 +894,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         }
     }
 
-    public final void tickTimer(int dirX, int dirY) {
+    public final void tickTimer(final int dirX, final int dirY) {
         if (this.timerActive) {
             this.timerValue--;
             if (this.timerValue == 0) {
@@ -901,11 +906,11 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // Do nothing
     }
 
@@ -956,8 +961,8 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (layer == DungeonConstants.LAYER_OBJECT) {
             // Handle object layer
             if (!this.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
@@ -965,7 +970,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
                 if (this.isRequired()) {
                     return true;
                 } else {
-                    RandomRange r = new RandomRange(1, 100);
+                    final RandomRange r = new RandomRange(1, 100);
                     if (r.generate() <= 20) {
                         return true;
                     } else {
@@ -980,7 +985,7 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
             // Handle ground layer
             if (this.isOfType(TypeConstants.TYPE_FIELD)) {
                 // Limit generation of fields to 20%
-                RandomRange r = new RandomRange(1, 100);
+                final RandomRange r = new RandomRange(1, 100);
                 if (r.generate() <= 20) {
                     return true;
                 } else {
@@ -994,12 +999,12 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Dungeon dungeon) {
+    public int getMinimumRequiredQuantity(final Dungeon dungeon) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Dungeon dungeon) {
+    public int getMaximumRequiredQuantity(final Dungeon dungeon) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -1009,8 +1014,9 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     @Override
-    public boolean shouldGenerateObjectInBattle(Dungeon dungeon, int row,
-            int col, int floor, int level, int layer) {
+    public boolean shouldGenerateObjectInBattle(final Dungeon dungeon,
+            final int row, final int col, final int floor, final int level,
+            final int layer) {
         if (!this.enabledInBattle()) {
             // Don't generate disabled objects
             return false;
@@ -1021,12 +1027,12 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     @Override
-    public int getMinimumRequiredQuantityInBattle(Dungeon dungeon) {
+    public int getMinimumRequiredQuantityInBattle(final Dungeon dungeon) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantityInBattle(Dungeon dungeon) {
+    public int getMaximumRequiredQuantityInBattle(final Dungeon dungeon) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -1035,57 +1041,58 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
         return false;
     }
 
-    public final void writeDungeonObject(XDataWriter writer) throws IOException {
-        writer.writeOpeningGroup(OBJECT_GROUP);
-        writer.writeOpeningGroup(OBJECT_ID_GROUP);
+    public final void writeDungeonObject(final XDataWriter writer)
+            throws IOException {
+        writer.writeOpeningGroup(AbstractDungeonObject.OBJECT_GROUP);
+        writer.writeOpeningGroup(AbstractDungeonObject.OBJECT_ID_GROUP);
         writer.writeString(this.getIdentifier());
-        writer.writeClosingGroup(OBJECT_ID_GROUP);
-        writer.writeOpeningGroup(OBJECT_SAVED_GROUP);
+        writer.writeClosingGroup(AbstractDungeonObject.OBJECT_ID_GROUP);
+        writer.writeOpeningGroup(AbstractDungeonObject.OBJECT_SAVED_GROUP);
         if (this.saved == null) {
             writer.writeString("NULL");
         } else {
             this.saved.writeDungeonObject(writer);
         }
-        writer.writeClosingGroup(OBJECT_SAVED_GROUP);
-        writer.writeOpeningGroup(OBJECT_SETTINGS_GROUP);
-        int cc = this.getCustomFormat();
+        writer.writeClosingGroup(AbstractDungeonObject.OBJECT_SAVED_GROUP);
+        writer.writeOpeningGroup(AbstractDungeonObject.OBJECT_SETTINGS_GROUP);
+        final int cc = this.getCustomFormat();
         if (cc == AbstractDungeonObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
             this.writeDungeonObjectHook(writer);
         } else {
             for (int x = 0; x < cc; x++) {
-                int cx = this.getCustomProperty(x + 1);
+                final int cx = this.getCustomProperty(x + 1);
                 writer.writeInt(cx);
             }
         }
-        writer.writeClosingGroup(OBJECT_SETTINGS_GROUP);
-        writer.writeClosingGroup(OBJECT_GROUP);
+        writer.writeClosingGroup(AbstractDungeonObject.OBJECT_SETTINGS_GROUP);
+        writer.writeClosingGroup(AbstractDungeonObject.OBJECT_GROUP);
     }
 
-    public final AbstractDungeonObject readDungeonObjectV1(XDataReader reader,
-            String ident) throws IOException {
+    public final AbstractDungeonObject readDungeonObjectV1(
+            final XDataReader reader, final String ident) throws IOException {
         if (ident.equals(this.getIdentifier())) {
-            reader.readOpeningGroup(OBJECT_SAVED_GROUP);
-            String savedIdent = reader.readString();
-            reader.readClosingGroup(OBJECT_SAVED_GROUP);
+            reader.readOpeningGroup(AbstractDungeonObject.OBJECT_SAVED_GROUP);
+            final String savedIdent = reader.readString();
+            reader.readClosingGroup(AbstractDungeonObject.OBJECT_SAVED_GROUP);
             if (!savedIdent.equals("NULL")) {
-                this.saved = DungeonDiver4
-                        .getApplication()
-                        .getObjects()
+                this.saved = DungeonDiver4.getApplication().getObjects()
                         .readSavedDungeonObject(reader, savedIdent,
                                 FormatConstants.DUNGEON_FORMAT_1);
             }
-            reader.readOpeningGroup(OBJECT_SETTINGS_GROUP);
-            int cc = this.getCustomFormat();
+            reader.readOpeningGroup(
+                    AbstractDungeonObject.OBJECT_SETTINGS_GROUP);
+            final int cc = this.getCustomFormat();
             if (cc == AbstractDungeonObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readDungeonObjectHook(reader,
                         FormatConstants.DUNGEON_FORMAT_1);
             } else {
                 for (int x = 0; x < cc; x++) {
-                    int cx = reader.readInt();
+                    final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
             }
-            reader.readClosingGroup(OBJECT_SETTINGS_GROUP);
+            reader.readClosingGroup(
+                    AbstractDungeonObject.OBJECT_SETTINGS_GROUP);
             return this;
         } else {
             return null;
@@ -1093,24 +1100,25 @@ public abstract class AbstractDungeonObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
-    protected void writeDungeonObjectHook(XDataWriter writer)
+    protected void writeDungeonObjectHook(final XDataWriter writer)
             throws IOException {
         // Do nothing - but let subclasses override
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return
      * @throws IOException
      */
-    protected AbstractDungeonObject readDungeonObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractDungeonObject readDungeonObjectHook(
+            final XDataReader reader, final int formatVersion)
+            throws IOException {
         // Dummy implementation, subclasses can override
         return this;
     }

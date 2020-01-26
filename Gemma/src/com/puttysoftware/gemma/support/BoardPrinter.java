@@ -37,26 +37,26 @@ public class BoardPrinter {
         // Do nothing
     }
 
-    public static void printBoard(JFrame j) {
+    public static void printBoard(final JFrame j) {
         try {
-            Container c = j.getContentPane();
-            Dimension d = c.getPreferredSize();
-            BufferedImage bi = new BufferedImage(d.width, d.height,
+            final Container c = j.getContentPane();
+            final Dimension d = c.getPreferredSize();
+            final BufferedImage bi = new BufferedImage(d.width, d.height,
                     BufferedImage.TYPE_INT_ARGB);
             c.paintComponents(bi.createGraphics());
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(bi, "PNG", baos);
-            byte[] data = baos.toByteArray();
-            ByteArrayInputStream bais = new ByteArrayInputStream(data);
-            PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
-            DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
-            PrinterJob pj = PrinterJob.getPrinterJob();
-            boolean okay = pj.printDialog(pras);
+            final byte[] data = baos.toByteArray();
+            final ByteArrayInputStream bais = new ByteArrayInputStream(data);
+            final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+            final DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
+            final PrinterJob pj = PrinterJob.getPrinterJob();
+            final boolean okay = pj.printDialog(pras);
             if (okay) {
-                PrintService service = pj.getPrintService();
-                DocPrintJob job = service.createPrintJob();
-                DocAttributeSet das = new HashDocAttributeSet();
-                Doc doc = new SimpleDoc(bais, flavor, das);
+                final PrintService service = pj.getPrintService();
+                final DocPrintJob job = service.createPrintJob();
+                final DocAttributeSet das = new HashDocAttributeSet();
+                final Doc doc = new SimpleDoc(bais, flavor, das);
                 job.print(doc, pras);
             }
         } catch (IOException | PrintException | NullPointerException ioe) {

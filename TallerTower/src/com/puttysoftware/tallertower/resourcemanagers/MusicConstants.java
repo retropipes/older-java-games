@@ -20,17 +20,17 @@ public class MusicConstants {
     }
 
     public static int getMusicID(final int ID) {
-        if (ID == MUSIC_EXPLORING) {
+        if (ID == MusicConstants.MUSIC_EXPLORING) {
             final int nID = PartyManager.getParty().getTowerLevel()
-                    / DIVIDE_BASE;
-            return nID + OFFSET_EXPLORING;
-        } else if (ID == MUSIC_BATTLE) {
+                    / MusicConstants.DIVIDE_BASE;
+            return nID + MusicConstants.OFFSET_EXPLORING;
+        } else if (ID == MusicConstants.MUSIC_BATTLE) {
             final int nID = PartyManager.getParty().getTowerLevel()
-                    / DIVIDE_BASE;
+                    / MusicConstants.DIVIDE_BASE;
             if (PreferencesManager.useMapBattleEngine()) {
-                return nID + OFFSET_MAP_BATTLE;
+                return nID + MusicConstants.OFFSET_MAP_BATTLE;
             } else {
-                return nID + OFFSET_WINDOW_BATTLE;
+                return nID + MusicConstants.OFFSET_WINDOW_BATTLE;
             }
         } else {
             return ID;
@@ -38,20 +38,23 @@ public class MusicConstants {
     }
 
     static String getMusicName(final int ID) {
-        if (ID == MUSIC_EXPLORING) {
+        if (ID == MusicConstants.MUSIC_EXPLORING) {
             final int nID = PartyManager.getParty().getTowerLevel()
-                    / DIVIDE_BASE;
-            return MUSIC_NAMES[nID + OFFSET_EXPLORING];
-        } else if (ID == MUSIC_BATTLE) {
+                    / MusicConstants.DIVIDE_BASE;
+            return MusicConstants.MUSIC_NAMES[nID
+                    + MusicConstants.OFFSET_EXPLORING];
+        } else if (ID == MusicConstants.MUSIC_BATTLE) {
             final int nID = PartyManager.getParty().getTowerLevel()
-                    / DIVIDE_BASE;
+                    / MusicConstants.DIVIDE_BASE;
             if (PreferencesManager.useMapBattleEngine()) {
-                return MUSIC_NAMES[nID + OFFSET_MAP_BATTLE];
+                return MusicConstants.MUSIC_NAMES[nID
+                        + MusicConstants.OFFSET_MAP_BATTLE];
             } else {
-                return MUSIC_NAMES[nID + OFFSET_WINDOW_BATTLE];
+                return MusicConstants.MUSIC_NAMES[nID
+                        + MusicConstants.OFFSET_WINDOW_BATTLE];
             }
         } else {
-            return MUSIC_NAMES[ID];
+            return MusicConstants.MUSIC_NAMES[ID];
         }
     }
 }

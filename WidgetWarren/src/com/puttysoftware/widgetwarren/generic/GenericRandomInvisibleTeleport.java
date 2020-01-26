@@ -12,8 +12,8 @@ import com.puttysoftware.widgetwarren.game.ObjectInventory;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundConstants;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundManager;
 
-public abstract class GenericRandomInvisibleTeleport extends
-        GenericRandomTeleport {
+public abstract class GenericRandomInvisibleTeleport
+        extends GenericRandomTeleport {
     // Constructors
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {
@@ -25,8 +25,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         int dr, dc;
         do {
@@ -42,8 +42,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = WidgetWarren.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
     }
 

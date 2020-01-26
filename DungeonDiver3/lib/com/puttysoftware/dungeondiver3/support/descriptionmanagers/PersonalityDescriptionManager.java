@@ -12,14 +12,16 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {
-        String name = PersonalityConstants.getPersonalityName(p).toLowerCase();
+        final String name = PersonalityConstants.getPersonalityName(p)
+                .toLowerCase();
         try {
             // Fetch description
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    PersonalityDescriptionManager.class.getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/descriptions/personality/"
-                            + name
-                            + Extension.getDescriptionExtensionWithPeriod()));
-            String desc = rsr.readString();
+                    PersonalityDescriptionManager.class.getResourceAsStream(
+                            "/com/puttysoftware/dungeondiver3/support/resources/descriptions/personality/"
+                                    + name + Extension
+                                            .getDescriptionExtensionWithPeriod()));
+            final String desc = rsr.readString();
             rsr.close();
             return desc;
         } catch (final Exception e) {

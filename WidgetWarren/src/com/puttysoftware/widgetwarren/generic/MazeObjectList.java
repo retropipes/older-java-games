@@ -25,42 +25,42 @@ public class MazeObjectList {
             new CyanCarpet(), new GreenCarpet(), new MagentaCarpet(),
             new OrangeCarpet(), new PurpleCarpet(), new RedCarpet(),
             new RoseCarpet(), new SeaweedCarpet(), new SkyCarpet(),
-            new WhiteCarpet(), new YellowCarpet(), new Player(),
-            new SunStone(), new MoonStone(), new Finish(), new FakeFinish(),
-            new FinishTo(), new MovingFinish(), new Wall(),
-            new InvisibleWall(), new FakeWall(), new BlueWallOff(),
-            new BlueWallOn(), new GreenWallOff(), new GreenWallOn(),
-            new MagentaWallOff(), new MagentaWallOn(), new OrangeWallOff(),
-            new OrangeWallOn(), new PurpleWallOff(), new PurpleWallOn(),
-            new RedWallOff(), new RedWallOn(), new RoseWallOff(),
-            new RoseWallOn(), new SeaweedWallOff(), new SeaweedWallOn(),
-            new SkyWallOff(), new SkyWallOn(), new WhiteWallOff(),
-            new WhiteWallOn(), new YellowWallOff(), new YellowWallOn(),
-            new CyanWallOff(), new CyanWallOn(), new OneWayEastWall(),
-            new OneWayNorthWall(), new OneWaySouthWall(), new OneWayWestWall(),
-            new ExplodingWall(), new BreakableWallHorizontal(),
-            new BreakableWallVertical(), new FadingWall(),
-            new DamageableWall(), new CrackedWall(), new DamagedWall(),
-            new CrumblingWall(), new MasterTrappedWall(), new TrappedWall0(),
-            new TrappedWall1(), new TrappedWall2(), new TrappedWall3(),
-            new TrappedWall4(), new TrappedWall5(), new TrappedWall6(),
-            new TrappedWall7(), new TrappedWall8(), new TrappedWall9(),
-            new TrappedWall10(), new TrappedWall11(), new TrappedWall12(),
-            new TrappedWall13(), new TrappedWall14(), new TrappedWall15(),
-            new TrappedWall16(), new TrappedWall17(), new TrappedWall18(),
-            new TrappedWall19(), new Stump(), new Crevasse(), new BrickWall(),
-            new Hammer(), new Axe(), new Tree(), new CutTree(), new Tablet(),
-            new TabletSlot(), new EnergySphere(), new APlug(), new APort(),
-            new BPlug(), new BPort(), new CPlug(), new CPort(), new DPlug(),
-            new DPort(), new EPlug(), new EPort(), new FPlug(), new FPort(),
-            new GPlug(), new GPort(), new HPlug(), new HPort(), new IPlug(),
-            new IPort(), new JPlug(), new JPort(), new KPlug(), new KPort(),
-            new LPlug(), new LPort(), new MPlug(), new MPort(), new NPlug(),
-            new NPort(), new OPlug(), new OPort(), new PPlug(), new PPort(),
-            new QPlug(), new QPort(), new RPlug(), new RPort(), new SPlug(),
-            new SPort(), new TPlug(), new TPort(), new UPlug(), new UPort(),
-            new VPlug(), new VPort(), new WPlug(), new WPort(), new XPlug(),
-            new XPort(), new YPlug(), new YPort(), new ZPlug(), new ZPort(),
+            new WhiteCarpet(), new YellowCarpet(), new Player(), new SunStone(),
+            new MoonStone(), new Finish(), new FakeFinish(), new FinishTo(),
+            new MovingFinish(), new Wall(), new InvisibleWall(), new FakeWall(),
+            new BlueWallOff(), new BlueWallOn(), new GreenWallOff(),
+            new GreenWallOn(), new MagentaWallOff(), new MagentaWallOn(),
+            new OrangeWallOff(), new OrangeWallOn(), new PurpleWallOff(),
+            new PurpleWallOn(), new RedWallOff(), new RedWallOn(),
+            new RoseWallOff(), new RoseWallOn(), new SeaweedWallOff(),
+            new SeaweedWallOn(), new SkyWallOff(), new SkyWallOn(),
+            new WhiteWallOff(), new WhiteWallOn(), new YellowWallOff(),
+            new YellowWallOn(), new CyanWallOff(), new CyanWallOn(),
+            new OneWayEastWall(), new OneWayNorthWall(), new OneWaySouthWall(),
+            new OneWayWestWall(), new ExplodingWall(),
+            new BreakableWallHorizontal(), new BreakableWallVertical(),
+            new FadingWall(), new DamageableWall(), new CrackedWall(),
+            new DamagedWall(), new CrumblingWall(), new MasterTrappedWall(),
+            new TrappedWall0(), new TrappedWall1(), new TrappedWall2(),
+            new TrappedWall3(), new TrappedWall4(), new TrappedWall5(),
+            new TrappedWall6(), new TrappedWall7(), new TrappedWall8(),
+            new TrappedWall9(), new TrappedWall10(), new TrappedWall11(),
+            new TrappedWall12(), new TrappedWall13(), new TrappedWall14(),
+            new TrappedWall15(), new TrappedWall16(), new TrappedWall17(),
+            new TrappedWall18(), new TrappedWall19(), new Stump(),
+            new Crevasse(), new BrickWall(), new Hammer(), new Axe(),
+            new Tree(), new CutTree(), new Tablet(), new TabletSlot(),
+            new EnergySphere(), new APlug(), new APort(), new BPlug(),
+            new BPort(), new CPlug(), new CPort(), new DPlug(), new DPort(),
+            new EPlug(), new EPort(), new FPlug(), new FPort(), new GPlug(),
+            new GPort(), new HPlug(), new HPort(), new IPlug(), new IPort(),
+            new JPlug(), new JPort(), new KPlug(), new KPort(), new LPlug(),
+            new LPort(), new MPlug(), new MPort(), new NPlug(), new NPort(),
+            new OPlug(), new OPort(), new PPlug(), new PPort(), new QPlug(),
+            new QPort(), new RPlug(), new RPort(), new SPlug(), new SPort(),
+            new TPlug(), new TPort(), new UPlug(), new UPort(), new VPlug(),
+            new VPort(), new WPlug(), new WPort(), new XPlug(), new XPort(),
+            new YPlug(), new YPort(), new ZPlug(), new ZPort(),
             new GarnetSquare(), new GarnetWall(), new GoldenSquare(),
             new GoldenWall(), new RubySquare(), new RubyWall(),
             new SapphireSquare(), new SapphireWall(), new SilverSquare(),
@@ -86,8 +86,7 @@ public class MazeObjectList {
             new OneShotConditionalTeleport(),
             new InvisibleOneShotConditionalTeleport(), new ChainTeleport(),
             new InvisibleChainTeleport(), new OneShotChainTeleport(),
-            new InvisibleOneShotChainTeleport(),
-            new ConditionalChainTeleport(),
+            new InvisibleOneShotChainTeleport(), new ConditionalChainTeleport(),
             new InvisibleConditionalChainTeleport(), new StairsUp(),
             new StairsDown(), new Pit(), new InvisiblePit(), new Springboard(),
             new InvisibleSpringboard(), new PushableBlock(),
@@ -95,60 +94,59 @@ public class MazeObjectList {
             new PushableBlockOnce(), new PushableBlockTwice(),
             new PushableBlockThrice(), new PullableBlockOnce(),
             new PullableBlockTwice(), new PullableBlockThrice(),
-            new MovingBlock(), new MetalBoots(), new NoBoots(),
-            new HealBoots(), new GlueBoots(), new AquaBoots(),
-            new BioHazardBoots(), new FireBoots(), new HotBoots(),
-            new PasswallBoots(), new SlipperyBoots(), new AnnihilationWand(),
-            new FinishMakingWand(), new WallMakingWand(), new TeleportWand(),
-            new WallBreakingWand(), new DisarmTrapWand(),
-            new RemoteActionWand(), new RotationWand(), new WarpWand(),
-            new LightWand(), new DarkWand(), new EmptyVoid(), new HealTrap(),
-            new HurtTrap(), new VariableHealTrap(), new VariableHurtTrap(),
-            new ClockwiseRotationTrap(), new CounterclockwiseRotationTrap(),
-            new UTurnTrap(), new ConfusionTrap(), new DizzinessTrap(),
-            new DrunkTrap(), new WallMakingTrap(), new RotationTrap(),
-            new WarpTrap(), new ArrowTrap(), new ExploreTrap(),
-            new NoExploreTrap(), new MasterWallTrap(), new WallTrap0(),
-            new WallTrap1(), new WallTrap2(), new WallTrap3(), new WallTrap4(),
-            new WallTrap5(), new WallTrap6(), new WallTrap7(), new WallTrap8(),
-            new WallTrap9(), new WallTrap10(), new WallTrap11(),
-            new WallTrap12(), new WallTrap13(), new WallTrap14(),
-            new WallTrap15(), new WallTrap16(), new WallTrap17(),
-            new WallTrap18(), new WallTrap19(), new TreasureChest(),
-            new DimnessGem(), new DarknessGem(), new LightnessGem(),
-            new BrightnessGem(), new DarkGem(), new LightGem(),
-            new HorizontalBarrier(), new VerticalBarrier(),
-            new BarrierGenerator(), new EnragedBarrierGenerator(),
-            new IcedBarrierGenerator(), new PoisonedBarrierGenerator(),
-            new ShockedBarrierGenerator(), new WarpBomb(), new IceBomb(),
-            new FireBomb(), new PoisonBomb(), new ShockBomb(), new QuakeBomb(),
-            new ShuffleBomb(), new IceBow(), new FireBow(), new PoisonBow(),
-            new ShockBow(), new GhostBow(), new Sign(), new MinorHealPotion(),
-            new MinorHurtPotion(), new MinorUnknownPotion(),
-            new MajorHealPotion(), new MajorHurtPotion(),
-            new MajorUnknownPotion(), new SuperHealPotion(),
-            new SuperHurtPotion(), new SuperUnknownPotion(), new CrystalWall(),
-            new BlackCrystal(), new BlueCrystal(), new CyanCrystal(),
-            new DarkBlueCrystal(), new DarkCyanCrystal(),
-            new DarkGrayCrystal(), new DarkGreenCrystal(),
-            new DarkMagentaCrystal(), new DarkRedCrystal(),
-            new DarkYellowCrystal(), new GrayCrystal(), new GreenCrystal(),
-            new LightBlueCrystal(), new LightCyanCrystal(),
+            new MovingBlock(), new MetalBoots(), new NoBoots(), new HealBoots(),
+            new GlueBoots(), new AquaBoots(), new BioHazardBoots(),
+            new FireBoots(), new HotBoots(), new PasswallBoots(),
+            new SlipperyBoots(), new AnnihilationWand(), new FinishMakingWand(),
+            new WallMakingWand(), new TeleportWand(), new WallBreakingWand(),
+            new DisarmTrapWand(), new RemoteActionWand(), new RotationWand(),
+            new WarpWand(), new LightWand(), new DarkWand(), new EmptyVoid(),
+            new HealTrap(), new HurtTrap(), new VariableHealTrap(),
+            new VariableHurtTrap(), new ClockwiseRotationTrap(),
+            new CounterclockwiseRotationTrap(), new UTurnTrap(),
+            new ConfusionTrap(), new DizzinessTrap(), new DrunkTrap(),
+            new WallMakingTrap(), new RotationTrap(), new WarpTrap(),
+            new ArrowTrap(), new ExploreTrap(), new NoExploreTrap(),
+            new MasterWallTrap(), new WallTrap0(), new WallTrap1(),
+            new WallTrap2(), new WallTrap3(), new WallTrap4(), new WallTrap5(),
+            new WallTrap6(), new WallTrap7(), new WallTrap8(), new WallTrap9(),
+            new WallTrap10(), new WallTrap11(), new WallTrap12(),
+            new WallTrap13(), new WallTrap14(), new WallTrap15(),
+            new WallTrap16(), new WallTrap17(), new WallTrap18(),
+            new WallTrap19(), new TreasureChest(), new DimnessGem(),
+            new DarknessGem(), new LightnessGem(), new BrightnessGem(),
+            new DarkGem(), new LightGem(), new HorizontalBarrier(),
+            new VerticalBarrier(), new BarrierGenerator(),
+            new EnragedBarrierGenerator(), new IcedBarrierGenerator(),
+            new PoisonedBarrierGenerator(), new ShockedBarrierGenerator(),
+            new WarpBomb(), new IceBomb(), new FireBomb(), new PoisonBomb(),
+            new ShockBomb(), new QuakeBomb(), new ShuffleBomb(), new IceBow(),
+            new FireBow(), new PoisonBow(), new ShockBow(), new GhostBow(),
+            new Sign(), new MinorHealPotion(), new MinorHurtPotion(),
+            new MinorUnknownPotion(), new MajorHealPotion(),
+            new MajorHurtPotion(), new MajorUnknownPotion(),
+            new SuperHealPotion(), new SuperHurtPotion(),
+            new SuperUnknownPotion(), new CrystalWall(), new BlackCrystal(),
+            new BlueCrystal(), new CyanCrystal(), new DarkBlueCrystal(),
+            new DarkCyanCrystal(), new DarkGrayCrystal(),
+            new DarkGreenCrystal(), new DarkMagentaCrystal(),
+            new DarkRedCrystal(), new DarkYellowCrystal(), new GrayCrystal(),
+            new GreenCrystal(), new LightBlueCrystal(), new LightCyanCrystal(),
             new LightGrayCrystal(), new LightGreenCrystal(),
             new LightMagentaCrystal(), new LightRedCrystal(),
-            new LightYellowCrystal(), new MagentaCrystal(),
-            new OrangeCrystal(), new PlantCrystal(), new PurpleCrystal(),
-            new RedCrystal(), new RoseCrystal(), new SeaweedCrystal(),
-            new SkyCrystal(), new WhiteCrystal(), new YellowCrystal(),
-            new HalfHourglass(), new Hourglass(), new DoubleHourglass(),
-            new Amethyst(), new Ruby(), new Sapphire(), new Diamond(),
-            new NormalAmulet(), new FireAmulet(), new IceAmulet(),
-            new GhostAmulet(), new PoisonousAmulet(),
+            new LightYellowCrystal(), new MagentaCrystal(), new OrangeCrystal(),
+            new PlantCrystal(), new PurpleCrystal(), new RedCrystal(),
+            new RoseCrystal(), new SeaweedCrystal(), new SkyCrystal(),
+            new WhiteCrystal(), new YellowCrystal(), new HalfHourglass(),
+            new Hourglass(), new DoubleHourglass(), new Amethyst(), new Ruby(),
+            new Sapphire(), new Diamond(), new NormalAmulet(), new FireAmulet(),
+            new IceAmulet(), new GhostAmulet(), new PoisonousAmulet(),
             new CounterpoisonAmulet(), new TrueSightAmulet(), new BlueHouse(),
             new CyanHouse(), new GreenHouse(), new MagentaHouse(),
             new OrangeHouse(), new PurpleHouse(), new RedHouse(),
             new RoseHouse(), new SeaweedHouse(), new SkyHouse(),
-            new WhiteHouse(), new YellowHouse(), new Exit(), new SealingWall() };
+            new WhiteHouse(), new YellowHouse(), new Exit(),
+            new SealingWall() };
 
     public MazeObject[] getAllObjects() {
         return this.allObjects;
@@ -178,16 +176,16 @@ public class MazeObjectList {
                 tempAllObjectsWithRuleSets[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
+        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allObjectsWithRuleSets = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
-                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSets[x];
+        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
+                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSet;
                 objectCount++;
             }
         }
@@ -202,16 +200,16 @@ public class MazeObjectList {
                 tempAllObjectsWithoutRuleSets[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
+        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allObjectsWithoutRuleSets = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
-                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSets[x];
+        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
+                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSet;
                 objectCount++;
             }
         }
@@ -226,16 +224,16 @@ public class MazeObjectList {
                 tempAllGroundLayerObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
+        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allGroundLayerObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
-                allGroundLayerObjects[objectCount] = tempAllGroundLayerObjects[x];
+        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
+                allGroundLayerObjects[objectCount] = tempAllGroundLayerObject;
                 objectCount++;
             }
         }
@@ -250,16 +248,16 @@ public class MazeObjectList {
                 tempAllObjectLayerObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
+        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allObjectLayerObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
-                allObjectLayerObjects[objectCount] = tempAllObjectLayerObjects[x];
+        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
+                allObjectLayerObjects[objectCount] = tempAllObjectLayerObject;
                 objectCount++;
             }
         }
@@ -274,16 +272,16 @@ public class MazeObjectList {
                 tempAllGroundLayerNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
                 objectCount++;
             }
         }
         final String[] allGroundLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
-                allGroundLayerNames[objectCount] = tempAllGroundLayerNames[x];
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
+                allGroundLayerNames[objectCount] = tempAllGroundLayerName;
                 objectCount++;
             }
         }
@@ -298,16 +296,16 @@ public class MazeObjectList {
                 tempAllObjectLayerNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
                 objectCount++;
             }
         }
         final String[] allObjectLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
-                allObjectLayerNames[objectCount] = tempAllObjectLayerNames[x];
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
+                allObjectLayerNames[objectCount] = tempAllObjectLayerName;
                 objectCount++;
             }
         }
@@ -317,8 +315,8 @@ public class MazeObjectList {
     public BufferedImageIcon[] getAllEditorAppearances() {
         final BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[this.allObjects.length];
         for (int x = 0; x < allEditorAppearances.length; x++) {
-            allEditorAppearances[x] = ObjectImageManager.getTransformedImage(
-                    this.allObjects[x], false);
+            allEditorAppearances[x] = ObjectImageManager
+                    .getTransformedImage(this.allObjects[x], false);
         }
         return allEditorAppearances;
     }
@@ -332,16 +330,16 @@ public class MazeObjectList {
                         .getTransformedImage(this.allObjects[x], false);
             }
         }
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
         final BufferedImageIcon[] allGroundLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
-                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
+                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -357,16 +355,16 @@ public class MazeObjectList {
                         .getTransformedImage(this.allObjects[x], false);
             }
         }
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
         final BufferedImageIcon[] allObjectLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
-                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
+                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -382,16 +380,16 @@ public class MazeObjectList {
                         .getTransformedImage(this.allObjects[x], false);
             }
         }
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
                 objectCount++;
             }
         }
         final BufferedImageIcon[] allContainableObjectEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
-                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearances[x];
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
+                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearance;
                 objectCount++;
             }
         }
@@ -406,16 +404,16 @@ public class MazeObjectList {
                 tempAllContainableObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
+        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allContainableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
-                allContainableObjects[objectCount] = tempAllContainableObjects[x];
+        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
+                allContainableObjects[objectCount] = tempAllContainableObject;
                 objectCount++;
             }
         }
@@ -430,16 +428,16 @@ public class MazeObjectList {
                 tempAllContainableNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
                 objectCount++;
             }
         }
         final String[] allContainableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
-                allContainableNames[objectCount] = tempAllContainableNames[x];
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
+                allContainableNames[objectCount] = tempAllContainableName;
                 objectCount++;
             }
         }
@@ -453,20 +451,21 @@ public class MazeObjectList {
             if (this.allObjects[x].isInventoryable()
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOOTS)
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)
-                    && !this.allObjects[x].isOfType(TypeConstants.TYPE_AMULET)) {
+                    && !this.allObjects[x]
+                            .isOfType(TypeConstants.TYPE_AMULET)) {
                 tempAllInventoryableObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
+        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allInventoryableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
-                allInventoryableObjects[objectCount] = tempAllInventoryableObjects[x];
+        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
+                allInventoryableObjects[objectCount] = tempAllInventoryableObject;
                 objectCount++;
             }
         }
@@ -480,20 +479,21 @@ public class MazeObjectList {
             if (this.allObjects[x].isInventoryable()
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOOTS)
                     && !this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)
-                    && !this.allObjects[x].isOfType(TypeConstants.TYPE_AMULET)) {
+                    && !this.allObjects[x]
+                            .isOfType(TypeConstants.TYPE_AMULET)) {
                 tempAllInventoryableNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
                 objectCount++;
             }
         }
         final String[] allInventoryableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
-                allInventoryableNames[objectCount] = tempAllInventoryableNames[x];
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
+                allInventoryableNames[objectCount] = tempAllInventoryableName;
                 objectCount++;
             }
         }
@@ -509,16 +509,16 @@ public class MazeObjectList {
                 tempAllProgrammableKeys[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
+        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allProgrammableKeys = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
-                allProgrammableKeys[objectCount] = tempAllProgrammableKeys[x];
+        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
+                allProgrammableKeys[objectCount] = tempAllProgrammableKey;
                 objectCount++;
             }
         }
@@ -534,16 +534,16 @@ public class MazeObjectList {
                 tempAllProgrammableKeyNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
                 objectCount++;
             }
         }
         final String[] allProgrammableKeyNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
-                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyNames[x];
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
+                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyName;
                 objectCount++;
             }
         }
@@ -558,16 +558,16 @@ public class MazeObjectList {
                 tempAllUsableObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
         final MazeObject[] allUsableObjects = new MazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
-                allUsableObjects[objectCount] = tempAllUsableObjects[x];
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
+                allUsableObjects[objectCount] = tempAllUsableObject;
                 objectCount++;
             }
         }
@@ -583,16 +583,16 @@ public class MazeObjectList {
                 tempAllUsableNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
         final String[] allUsableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
-                allUsableNames[objectCount] = tempAllUsableNames[x];
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
+                allUsableNames[objectCount] = tempAllUsableName;
                 objectCount++;
             }
         }
@@ -607,8 +607,8 @@ public class MazeObjectList {
                 tempAllUsableObjects[x] = this.allObjects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
@@ -632,8 +632,8 @@ public class MazeObjectList {
                 tempAllUsableNames[x] = this.allObjects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
@@ -654,7 +654,7 @@ public class MazeObjectList {
         int x;
         int count = 0;
         for (x = 0; x < this.allObjects.length; x++) {
-            if ((this.allObjects[x].getLayer() == layer)
+            if (this.allObjects[x].getLayer() == layer
                     && this.allObjects[x].isRequired()) {
                 tempAllRequired[count] = this.allObjects[x];
                 count++;
@@ -677,8 +677,8 @@ public class MazeObjectList {
         int x;
         int count = 0;
         for (x = 0; x < this.allObjects.length; x++) {
-            if ((this.allObjects[x].getLayer() == layer)
-                    && !(this.allObjects[x].isRequired())) {
+            if (this.allObjects[x].getLayer() == layer
+                    && !this.allObjects[x].isRequired()) {
                 tempAllWithoutPrereq[count] = this.allObjects[x];
                 count++;
             }
@@ -797,10 +797,9 @@ public class MazeObjectList {
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
             UID = reader.readString();
         }
-        for (int x = 0; x < this.allObjects.length; x++) {
+        for (final MazeObject allObject : this.allObjects) {
             try {
-                final MazeObject instance = this.allObjects[x].getClass()
-                        .newInstance();
+                final MazeObject instance = allObject.getClass().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);
                 } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
@@ -837,8 +836,8 @@ public class MazeObjectList {
         for (int x = 0; x < mapLen; x++) {
             if (map[x]) {
                 this.allObjects[x].giveRuleSet();
-                this.allObjects[x].getRuleSet()
-                        .readRuleSetXML(reader, rsFormat);
+                this.allObjects[x].getRuleSet().readRuleSetXML(reader,
+                        rsFormat);
             }
         }
     }
@@ -848,8 +847,8 @@ public class MazeObjectList {
         // Write map length
         writer.writeInt(map.length);
         // Write map
-        for (int x = 0; x < map.length; x++) {
-            writer.writeBoolean(map[x]);
+        for (final boolean element : map) {
+            writer.writeBoolean(element);
         }
         // Write data
         for (int x = 0; x < map.length; x++) {

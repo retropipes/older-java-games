@@ -11,26 +11,26 @@ import net.dynamicdungeon.dynamicdungeon.dungeon.utilities.TypeConstants;
 public abstract class AbstractItem extends AbstractDungeonObject {
     // Constructors
     protected AbstractItem() {
-	super(false, false);
+        super(false, false);
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_ITEM);
+        this.type.set(TypeConstants.TYPE_ITEM);
     }
 
     @Override
     public int getLayer() {
-	return DungeonConstants.LAYER_OBJECT;
+        return DungeonConstants.LAYER_OBJECT;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

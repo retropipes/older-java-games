@@ -8,6 +8,6 @@ package net.dynamicdungeon.dynamicdungeon.creatures.monsters;
 class BothRandomScalingStaticMonster extends AbstractBothRandomScalingMonster {
     // Constructors
     BothRandomScalingStaticMonster() {
-	super();
+        super();
     }
 }

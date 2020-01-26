@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractWall;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractWall;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
@@ -30,7 +30,8 @@ public class EmptyVoid extends AbstractWall {
     }
 
     @Override
-    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+    public AbstractMazeObject gameRenderHook(final int x, final int y,
+            final int z) {
         this.determineCurrentAppearance(x, y, z);
         if (this.currAppearance.equals(this.getName())) {
             return this;
@@ -40,70 +41,72 @@ public class EmptyVoid extends AbstractWall {
     }
 
     @Override
-    public boolean isConditionallySolid(MazeObjectInventory inv) {
+    public boolean isConditionallySolid(final MazeObjectInventory inv) {
         // Disallow passing through Void under ANY circumstances
         return true;
     }
 
     @Override
-    public void determineCurrentAppearance(int x, int y, int z) {
-        Application app = MazeRunnerII.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
-        AbstractMazeObject mo1 = app.getMazeManager().getMazeObject(x - 1,
+        final AbstractMazeObject mo1 = app.getMazeManager().getMazeObject(x - 1,
                 y - 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo1Name = mo1.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo1Name = thisName;
         }
-        AbstractMazeObject mo2 = app.getMazeManager().getMazeObject(x - 1, y,
-                z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo2 = app.getMazeManager().getMazeObject(x - 1,
+                y, z, MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo2Name = thisName;
         }
-        AbstractMazeObject mo3 = app.getMazeManager().getMazeObject(x - 1,
+        final AbstractMazeObject mo3 = app.getMazeManager().getMazeObject(x - 1,
                 y + 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo3Name = mo3.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo3Name = thisName;
         }
-        AbstractMazeObject mo4 = app.getMazeManager().getMazeObject(x, y - 1,
-                z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo4 = app.getMazeManager().getMazeObject(x,
+                y - 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo4Name = thisName;
         }
-        AbstractMazeObject mo6 = app.getMazeManager().getMazeObject(x, y + 1,
-                z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo6 = app.getMazeManager().getMazeObject(x,
+                y + 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo6Name = thisName;
         }
-        AbstractMazeObject mo7 = app.getMazeManager().getMazeObject(x + 1,
+        final AbstractMazeObject mo7 = app.getMazeManager().getMazeObject(x + 1,
                 y - 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo7Name = mo7.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo7Name = thisName;
         }
-        AbstractMazeObject mo8 = app.getMazeManager().getMazeObject(x + 1, y,
-                z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo8 = app.getMazeManager().getMazeObject(x + 1,
+                y, z, MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo8Name = thisName;
         }
-        AbstractMazeObject mo9 = app.getMazeManager().getMazeObject(x + 1,
+        final AbstractMazeObject mo9 = app.getMazeManager().getMazeObject(x + 1,
                 y + 1, z, MazeConstants.LAYER_OBJECT);
         try {
             mo9Name = mo9.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo9Name = thisName;
         }
         if (!thisName.equals(mo1Name) || !thisName.equals(mo2Name)

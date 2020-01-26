@@ -11,27 +11,27 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractPassThroughObject extends AbstractArenaObject {
     // Constructors
     protected AbstractPassThroughObject() {
-	super(false);
-	this.type.set(TypeConstants.TYPE_PASS_THROUGH);
+        super(false);
+        this.type.set(TypeConstants.TYPE_PASS_THROUGH);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_LOWER_OBJECTS;
+        return ArenaConstants.LAYER_LOWER_OBJECTS;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

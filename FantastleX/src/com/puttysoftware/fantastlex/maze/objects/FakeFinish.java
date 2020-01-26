@@ -19,8 +19,8 @@ public class FakeFinish extends AbstractPassThroughObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
         FantastleX.getApplication().showMessage("Fake exit!");
     }

@@ -9,10 +9,10 @@ import com.puttysoftware.lasertank.strings.global.GlobalLoader;
 
 public class IndexResolver {
     public static String resolveIndexNumberToImageSuffix(final int in) {
-	return GlobalLoader.loadIndex(in);
+        return GlobalLoader.loadIndex(in);
     }
 
     private IndexResolver() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -18,7 +18,8 @@ public class HealingBuff extends Buff {
 
     public HealingBuff(final String buffName, final int HPAddition,
             final int newRounds, final double factor, final int scaleStat,
-            final double decay, final double rScaleFactor, final int rScaleStat) {
+            final double decay, final double rScaleFactor,
+            final int rScaleStat) {
         super(buffName, newRounds, rScaleFactor, rScaleStat);
         this.setAffectedStat(StatConstants.STAT_CURRENT_HP);
         this.setEffect(Buff.EFFECT_ADD, HPAddition, factor, scaleStat);

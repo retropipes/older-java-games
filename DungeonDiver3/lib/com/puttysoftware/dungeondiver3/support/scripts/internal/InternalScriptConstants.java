@@ -33,20 +33,41 @@ public class InternalScriptConstants {
     private static final Class<?>[] ARGT_SWAP_PAIRS = new Class[] {
             String.class, String.class };
     private static final Class<?>[] ARGT_REDRAW = null;
-    private static final Class<?>[] ARGT_ADD_TO_SCORE = new Class[] { int.class };
-    private static final Class<?>[] ARGT_RANDOM_CHANCE = new Class[] { int.class };
+    private static final Class<?>[] ARGT_ADD_TO_SCORE = new Class[] {
+            int.class };
+    private static final Class<?>[] ARGT_RANDOM_CHANCE = new Class[] {
+            int.class };
     private static final Class<?>[] ARGT_BATTLE = null;
-    private static final Class<?>[] ARGT_RELATIVE_LEVEL_CHANGE = new Class[] { int.class };
+    private static final Class<?>[] ARGT_RELATIVE_LEVEL_CHANGE = new Class[] {
+            int.class };
     // Argument Count Validation Array
     public static final int[] ARGUMENT_COUNT_VALIDATION = new int[] {
-            ARGC_NONE, ARGC_MESSAGE, ARGC_SOUND, ARGC_SHOP, ARGC_MOVE,
-            ARGC_DECAY, ARGC_REDRAW, ARGC_SWAP_PAIRS, ARGC_ADD_TO_SCORE,
-            ARGC_RANDOM_CHANCE, ARGC_BATTLE, ARGC_RELATIVE_LEVEL_CHANGE };
+            InternalScriptConstants.ARGC_NONE,
+            InternalScriptConstants.ARGC_MESSAGE,
+            InternalScriptConstants.ARGC_SOUND,
+            InternalScriptConstants.ARGC_SHOP,
+            InternalScriptConstants.ARGC_MOVE,
+            InternalScriptConstants.ARGC_DECAY,
+            InternalScriptConstants.ARGC_REDRAW,
+            InternalScriptConstants.ARGC_SWAP_PAIRS,
+            InternalScriptConstants.ARGC_ADD_TO_SCORE,
+            InternalScriptConstants.ARGC_RANDOM_CHANCE,
+            InternalScriptConstants.ARGC_BATTLE,
+            InternalScriptConstants.ARGC_RELATIVE_LEVEL_CHANGE };
     // Argument Type Validation Array
     public static final Class<?>[][] ARGUMENT_TYPE_VALIDATION = new Class[][] {
-            ARGT_NONE, ARGT_MESSAGE, ARGT_SOUND, ARGT_SHOP, ARGT_MOVE,
-            ARGT_DECAY, ARGT_REDRAW, ARGT_SWAP_PAIRS, ARGT_ADD_TO_SCORE,
-            ARGT_RANDOM_CHANCE, ARGT_BATTLE, ARGT_RELATIVE_LEVEL_CHANGE };
+            InternalScriptConstants.ARGT_NONE,
+            InternalScriptConstants.ARGT_MESSAGE,
+            InternalScriptConstants.ARGT_SOUND,
+            InternalScriptConstants.ARGT_SHOP,
+            InternalScriptConstants.ARGT_MOVE,
+            InternalScriptConstants.ARGT_DECAY,
+            InternalScriptConstants.ARGT_REDRAW,
+            InternalScriptConstants.ARGT_SWAP_PAIRS,
+            InternalScriptConstants.ARGT_ADD_TO_SCORE,
+            InternalScriptConstants.ARGT_RANDOM_CHANCE,
+            InternalScriptConstants.ARGT_BATTLE,
+            InternalScriptConstants.ARGT_RELATIVE_LEVEL_CHANGE };
 
     // Private Constructor
     private InternalScriptConstants() {

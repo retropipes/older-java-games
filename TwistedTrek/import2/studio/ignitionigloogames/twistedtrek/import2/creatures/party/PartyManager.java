@@ -184,9 +184,9 @@ public class PartyManager {
 	final String response = CommonDialogs.showInputDialog("Pick 1 Party Member", "Create Party", pickNames,
 		pickNames[0]);
 	if (response != null) {
-	    for (int x = 0; x < members.length; x++) {
-		if (members[x].getName().equals(response)) {
-		    return members[x];
+	    for (final PartyMember member : members) {
+		if (member.getName().equals(response)) {
+		    return member;
 		}
 	    }
 	    return null;

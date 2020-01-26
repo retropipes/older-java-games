@@ -14,20 +14,21 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public abstract class AbstractWall extends AbstractDungeonObject {
     // Constructors
     protected AbstractWall() {
-	super(true, true);
+        super(true, true);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	// Do nothing
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        // Do nothing
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
-	    final int dirY) {
-	DynamicDungeon.getApplication().showMessage("Can't go that way");
-	// Play move failed sound, if it's enabled
-	SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
+            final int dirY) {
+        DynamicDungeon.getApplication().showMessage("Can't go that way");
+        // Play move failed sound, if it's enabled
+        SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 
     @Override
@@ -35,21 +36,21 @@ public abstract class AbstractWall extends AbstractDungeonObject {
 
     @Override
     public int getLayer() {
-	return DungeonConstants.LAYER_OBJECT;
+        return DungeonConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_WALL);
+        this.type.set(TypeConstants.TYPE_WALL);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

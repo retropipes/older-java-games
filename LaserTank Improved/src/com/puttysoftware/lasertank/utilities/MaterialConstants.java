@@ -18,6 +18,6 @@ public class MaterialConstants {
     public static final int MATERIAL_SHADOW = 8;
 
     private MaterialConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

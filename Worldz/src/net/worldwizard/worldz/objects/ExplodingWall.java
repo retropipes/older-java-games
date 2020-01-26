@@ -33,8 +33,8 @@ public class ExplodingWall extends GenericWall {
         final Application app = Worldz.getApplication();
         ExplodingWall curr = null;
         try {
-            curr = (ExplodingWall) app.getWorldManager().getWorldObject(x, y,
-                    z, WorldConstants.LAYER_OBJECT);
+            curr = (ExplodingWall) app.getWorldManager().getWorldObject(x, y, z,
+                    WorldConstants.LAYER_OBJECT);
         } catch (final ClassCastException cce) {
             // We're not an exploding wall, so abort
             return;
@@ -83,8 +83,8 @@ public class ExplodingWall extends GenericWall {
         if (mo8Name.equals(currName)) {
             curr.chainReactionAction(x + 1, y, z);
         }
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             curr.playChainReactSound();
         }
     }

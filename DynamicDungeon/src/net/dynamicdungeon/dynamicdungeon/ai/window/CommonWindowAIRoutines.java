@@ -14,31 +14,31 @@ class CommonWindowAIRoutines {
 
     // Constructor
     private CommonWindowAIRoutines() {
-	// Do nothing
+        // Do nothing
     }
 
     static int getMaxCastIndex(final AbstractCreature c) {
-	final int currMP = c.getCurrentMP();
-	final int[] allCosts = c.getSpellBook().getAllSpellCosts();
-	int result = -1;
-	if (currMP > 0) {
-	    for (int x = 0; x < allCosts.length; x++) {
-		if (currMP >= allCosts[x]) {
-		    result = x;
-		}
-	    }
-	}
-	return result;
+        final int currMP = c.getCurrentMP();
+        final int[] allCosts = c.getSpellBook().getAllSpellCosts();
+        int result = -1;
+        if (currMP > 0) {
+            for (int x = 0; x < allCosts.length; x++) {
+                if (currMP >= allCosts[x]) {
+                    result = x;
+                }
+            }
+        }
+        return result;
     }
 
     static boolean check(final int effChance) {
-	final RandomRange random = new RandomRange(1, 100);
-	final int chance = random.generate();
-	if (chance <= effChance) {
-	    return true;
-	} else {
-	    // Not acting
-	    return false;
-	}
+        final RandomRange random = new RandomRange(1, 100);
+        final int chance = random.generate();
+        if (chance <= effChance) {
+            return true;
+        } else {
+            // Not acting
+            return false;
+        }
     }
 }

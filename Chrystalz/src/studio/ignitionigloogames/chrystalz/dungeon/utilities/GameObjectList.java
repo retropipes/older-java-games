@@ -60,13 +60,15 @@ public class GameObjectList {
         return allDescriptions;
     }
 
-    public final AbstractGameObject[] getAllRequired(final Dungeon dungeon, final int layer) {
+    public final AbstractGameObject[] getAllRequired(final Dungeon dungeon,
+            final int layer) {
         final AbstractGameObject[] objects = this.getAllObjects();
         final AbstractGameObject[] tempAllRequired = new AbstractGameObject[objects.length];
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if (objects[x].getLayer() == layer && objects[x].isRequired(dungeon)) {
+            if (objects[x].getLayer() == layer
+                    && objects[x].isRequired(dungeon)) {
                 tempAllRequired[count] = objects[x];
                 count++;
             }
@@ -89,7 +91,8 @@ public class GameObjectList {
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if (objects[x].getLayer() == layer && !objects[x].isRequired(dungeon)) {
+            if (objects[x].getLayer() == layer
+                    && !objects[x].isRequired(dungeon)) {
                 tempAllWithoutPrereq[count] = objects[x];
                 count++;
             }

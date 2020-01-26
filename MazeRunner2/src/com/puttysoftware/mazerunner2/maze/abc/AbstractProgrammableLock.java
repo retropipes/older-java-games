@@ -14,8 +14,8 @@ import com.puttysoftware.mazerunner2.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazerunner2.maze.objects.GhostAmulet;
 import com.puttysoftware.mazerunner2.maze.objects.PasswallBoots;
 import com.puttysoftware.mazerunner2.maze.objects.SignalCrystal;
-import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectList;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
+import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectList;
 import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
@@ -26,8 +26,8 @@ import com.puttysoftware.xio.legacy.XLegacyDataReader;
 public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     private static final SignalCrystal SIGNAL = new SignalCrystal();
 
-    protected AbstractProgrammableLock(int tc) {
-        super(SIGNAL, tc);
+    protected AbstractProgrammableLock(final int tc) {
+        super(AbstractProgrammableLock.SIGNAL, tc);
     }
 
     // Scriptability
@@ -39,13 +39,13 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
-            if (this.getKey() != SIGNAL) {
+            if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
                     inv.removeItem(this.getKey());
                 }
@@ -64,11 +64,11 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            if (this.getKey() == SIGNAL) {
+            if (this.getKey() == AbstractProgrammableLock.SIGNAL) {
                 MazeRunnerII.getApplication().showMessage("You need a Crystal");
             } else {
-                MazeRunnerII.getApplication().showMessage(
-                        "You need a " + this.getKey().getName());
+                MazeRunnerII.getApplication()
+                        .showMessage("You need a " + this.getKey().getName());
             }
         }
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
@@ -76,11 +76,11 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
 
     @Override
     public boolean isConditionallySolid(final MazeObjectInventory inv) {
-        if (this.getKey() != SIGNAL) {
-            return !(inv.isItemThere(this.getKey()));
+        if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
+            return !inv.isItemThere(this.getKey());
         } else {
-            return !(inv
-                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+            return !inv
+                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
         }
     }
 
@@ -92,36 +92,38 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
                 || inv.isItemThere(new GhostAmulet())) {
             return false;
         } else {
-            if (this.getKey() != SIGNAL) {
-                return !(inv.isItemThere(this.getKey()));
+            if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
+                return !inv.isItemThere(this.getKey());
             } else {
-                return !(inv
-                        .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+                return !inv.isItemCategoryThere(
+                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
             }
         }
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeObjectList objects = MazeRunnerII.getApplication().getObjects();
-        String[] tempKeyNames = objects.getAllProgrammableKeyNames();
-        AbstractMazeObject[] tempKeys = objects.getAllProgrammableKeys();
-        String[] keyNames = new String[tempKeyNames.length + 1];
-        AbstractMazeObject[] keys = new AbstractMazeObject[tempKeys.length + 1];
+        final MazeObjectList objects = MazeRunnerII.getApplication()
+                .getObjects();
+        final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
+        final AbstractMazeObject[] tempKeys = objects.getAllProgrammableKeys();
+        final String[] keyNames = new String[tempKeyNames.length + 1];
+        final AbstractMazeObject[] keys = new AbstractMazeObject[tempKeys.length
+                + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";
-        keys[tempKeys.length] = SIGNAL;
+        keys[tempKeys.length] = AbstractProgrammableLock.SIGNAL;
         int oldIndex = -1;
         for (oldIndex = 0; oldIndex < keyNames.length; oldIndex++) {
             if (this.getKey().getName().equals(keyNames[oldIndex])) {
@@ -132,7 +134,7 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
         if (oldIndex == -1) {
             oldIndex = 0;
         }
-        String res = CommonDialogs.showInputDialog(
+        final String res = CommonDialogs.showInputDialog(
                 "Set Key for " + this.getName(), "Editor", keyNames,
                 keyNames[oldIndex]);
         if (res != null) {
@@ -151,11 +153,12 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
 
     @Override
     protected AbstractMazeObject readLegacyMazeObjectHook(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
-        AbstractMazeObject o = MazeRunnerII.getApplication().getObjects()
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
+        final AbstractMazeObject o = MazeRunnerII.getApplication().getObjects()
                 .readLegacyMazeObject(reader, formatVersion);
         if (o == null) {
-            this.setKey(SIGNAL);
+            this.setKey(AbstractProgrammableLock.SIGNAL);
         } else {
             this.setKey((AbstractKey) o);
         }
@@ -163,12 +166,12 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    protected AbstractMazeObject readMazeObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
-        AbstractMazeObject o = MazeRunnerII.getApplication().getObjects()
+    protected AbstractMazeObject readMazeObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final AbstractMazeObject o = MazeRunnerII.getApplication().getObjects()
                 .readMazeObject(reader, formatVersion);
         if (o == null) {
-            this.setKey(SIGNAL);
+            this.setKey(AbstractProgrammableLock.SIGNAL);
         } else {
             this.setKey((AbstractKey) o);
         }
@@ -176,7 +179,8 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    protected void writeMazeObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer)
+            throws IOException {
         this.getKey().writeMazeObject(writer);
     }
 

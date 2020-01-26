@@ -31,8 +31,8 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WeaselWeb.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
@@ -55,8 +55,8 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = WeaselWeb.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
         return mo;
     }
 

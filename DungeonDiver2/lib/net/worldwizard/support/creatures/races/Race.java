@@ -17,9 +17,9 @@ public class Race extends Identifiable {
 
     public Race(final int rid, final int... rdata) {
         if (rdata.length != RaceConstants.RACE_ATTRIBUTE_COUNT) {
-            throw new IllegalArgumentException("Exactly "
-                    + RaceConstants.RACE_ATTRIBUTE_COUNT
-                    + " attributes must be specified!");
+            throw new IllegalArgumentException(
+                    "Exactly " + RaceConstants.RACE_ATTRIBUTE_COUNT
+                            + " attributes must be specified!");
         }
         this.raceID = rid;
         this.data = rdata;
@@ -41,17 +41,17 @@ public class Race extends Identifiable {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                RaceConstants.RACE_NAMES[this.raceID]).multiply(
-                BigInteger.valueOf(2)));
+        longHash = longHash.add(IDGenerator
+                .computeStringLongHash(RaceConstants.RACE_NAMES[this.raceID])
+                .multiply(BigInteger.valueOf(2)));
         return longHash;
     }
 
     public static String raceIDtoFilename(final int raceID) {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                RaceConstants.RACE_NAMES[raceID]).multiply(
-                BigInteger.valueOf(2)));
+        longHash = longHash.add(IDGenerator
+                .computeStringLongHash(RaceConstants.RACE_NAMES[raceID])
+                .multiply(BigInteger.valueOf(2)));
         return "$" + longHash.toString(36).toUpperCase();
     }
 
@@ -62,12 +62,10 @@ public class Race extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "races"
-                + File.separator
-                + this.getID() + Extension.getRaceExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "races" + File.separator + this.getID()
+                        + Extension.getRaceExtensionWithPeriod(),
                 Extension.getRaceExtension());
         this.write(writer);
         writer.close();

@@ -35,7 +35,7 @@ public class BlockTeleport extends AbstractBlockTeleport {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         return me.editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_BLOCK);
     }
 

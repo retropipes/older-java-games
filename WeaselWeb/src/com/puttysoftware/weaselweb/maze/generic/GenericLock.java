@@ -28,7 +28,8 @@ public abstract class GenericLock extends MazeObject {
         this.setType(TypeConstants.TYPE_LOCK);
     }
 
-    protected GenericLock(final GenericKey mgk, final boolean doesAcceptPushInto) {
+    protected GenericLock(final GenericKey mgk,
+            final boolean doesAcceptPushInto) {
         super();
         this.setPushableInto(doesAcceptPushInto);
         this.getSolidProperties().setSolid(true);
@@ -88,11 +89,11 @@ public abstract class GenericLock extends MazeObject {
             final int dirY, final ObjectInventory inv);
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WeaselWeb.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.key.isInfinite()) {
                 inv.removeItem(this.key);

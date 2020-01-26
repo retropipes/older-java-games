@@ -11,26 +11,26 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.ObjectImageConstants;
 public class DungeonNoteObject extends AbstractMarker {
     // Constructors
     public DungeonNoteObject() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_NOTE;
+        return ObjectImageConstants.OBJECT_IMAGE_NOTE;
     }
 
     @Override
     public String getName() {
-	return "Dungeon Note";
+        return "Dungeon Note";
     }
 
     @Override
     public String getPluralName() {
-	return "Dungeon Notes";
+        return "Dungeon Notes";
     }
 
     @Override
     public String getDescription() {
-	return "";
+        return "";
     }
 }

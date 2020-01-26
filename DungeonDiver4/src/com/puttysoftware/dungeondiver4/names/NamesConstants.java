@@ -39,12 +39,17 @@ public class NamesConstants {
     private static final String STAT_EVADE = "Evade";
     private static final String STAT_CAPACITY = "Capacity";
     public static final String[] SECTION_ARRAY_STATS = new String[] {
-            STAT_STRENGTH, STAT_BLOCK, STAT_AGILITY, STAT_VITALITY,
-            STAT_INTELLIGENCE, STAT_LUCK, STAT_CURRENT_HP, STAT_CURRENT_MP,
-            STAT_GOLD, STAT_LEVEL, STAT_ATTACKS_PER_ROUND,
-            STAT_SPELLS_PER_ROUND, STAT_LOAD, STAT_MAXIMUM_HP, STAT_MAXIMUM_MP,
-            STAT_ATTACK, STAT_DEFENSE, STAT_SPEED, STAT_HIT, STAT_EVADE,
-            STAT_CAPACITY };
+            NamesConstants.STAT_STRENGTH, NamesConstants.STAT_BLOCK,
+            NamesConstants.STAT_AGILITY, NamesConstants.STAT_VITALITY,
+            NamesConstants.STAT_INTELLIGENCE, NamesConstants.STAT_LUCK,
+            NamesConstants.STAT_CURRENT_HP, NamesConstants.STAT_CURRENT_MP,
+            NamesConstants.STAT_GOLD, NamesConstants.STAT_LEVEL,
+            NamesConstants.STAT_ATTACKS_PER_ROUND,
+            NamesConstants.STAT_SPELLS_PER_ROUND, NamesConstants.STAT_LOAD,
+            NamesConstants.STAT_MAXIMUM_HP, NamesConstants.STAT_MAXIMUM_MP,
+            NamesConstants.STAT_ATTACK, NamesConstants.STAT_DEFENSE,
+            NamesConstants.STAT_SPEED, NamesConstants.STAT_HIT,
+            NamesConstants.STAT_EVADE, NamesConstants.STAT_CAPACITY };
     // Equipment Slots Section Keys
     private static final String SLOT_HELMET = "Helmet";
     private static final String SLOT_NECKLACE = "Necklace";
@@ -60,27 +65,34 @@ public class NamesConstants {
     private static final String SLOT_PANTS = "Pants";
     private static final String SLOT_BOOTS = "Boots";
     public static final String[] SECTION_ARRAY_EQUIP_SLOTS = new String[] {
-            SLOT_HELMET, SLOT_NECKLACE, SLOT_MAIN_HAND, SLOT_OFF_HAND,
-            SLOT_ROBE, SLOT_CAPE, SLOT_SHIRT, SLOT_BRACERS, SLOT_GLOVES,
-            SLOT_RING, SLOT_BELT, SLOT_PANTS, SLOT_BOOTS };
+            NamesConstants.SLOT_HELMET, NamesConstants.SLOT_NECKLACE,
+            NamesConstants.SLOT_MAIN_HAND, NamesConstants.SLOT_OFF_HAND,
+            NamesConstants.SLOT_ROBE, NamesConstants.SLOT_CAPE,
+            NamesConstants.SLOT_SHIRT, NamesConstants.SLOT_BRACERS,
+            NamesConstants.SLOT_GLOVES, NamesConstants.SLOT_RING,
+            NamesConstants.SLOT_BELT, NamesConstants.SLOT_PANTS,
+            NamesConstants.SLOT_BOOTS };
     // Equipment Armor Section Keys
     public static final String ARMOR_SHIELD = "Shield";
-    private static final String[] SECTION_ARRAY_EQUIP_ARMOR = new String[] { ARMOR_SHIELD };
+    private static final String[] SECTION_ARRAY_EQUIP_ARMOR = new String[] {
+            NamesConstants.ARMOR_SHIELD };
     // Equipment Weapons 1H Section Keys
     private static final String WEAPON_1H_GLOVES = "Gloves";
     private static final String WEAPON_1H_SWORD = "Sword";
     private static final String WEAPON_1H_BOOMERANG = "Boomerang";
     private static final String WEAPON_1H_JAVELIN = "Javelin";
     public static final String[] SECTION_ARRAY_WEAPONS_1H = new String[] {
-            WEAPON_1H_GLOVES, WEAPON_1H_SWORD, WEAPON_1H_BOOMERANG,
-            WEAPON_1H_JAVELIN };
+            NamesConstants.WEAPON_1H_GLOVES, NamesConstants.WEAPON_1H_SWORD,
+            NamesConstants.WEAPON_1H_BOOMERANG,
+            NamesConstants.WEAPON_1H_JAVELIN };
     // Equipment Weapons 2H Section Keys
     private static final String WEAPON_2H_SPEAR = "Spear";
     private static final String WEAPON_2H_AXE = "Axe";
     private static final String WEAPON_2H_BOW = "Bow";
     private static final String WEAPON_2H_WHIP = "Whip";
     public static final String[] SECTION_ARRAY_WEAPONS_2H = new String[] {
-            WEAPON_2H_SPEAR, WEAPON_2H_AXE, WEAPON_2H_BOW, WEAPON_2H_WHIP };
+            NamesConstants.WEAPON_2H_SPEAR, NamesConstants.WEAPON_2H_AXE,
+            NamesConstants.WEAPON_2H_BOW, NamesConstants.WEAPON_2H_WHIP };
     // Faith Section Keys
     private static final String FAITH_NONE = "None";
     private static final String FAITH_HEAT = "Heat";
@@ -92,8 +104,11 @@ public class NamesConstants {
     private static final String FAITH_BOLT = "Bolt";
     private static final String FAITH_BOOM = "Boom";
     public static final String[] SECTION_ARRAY_FAITHS = new String[] {
-            FAITH_NONE, FAITH_HEAT, FAITH_COLD, FAITH_ROCK, FAITH_GUST,
-            FAITH_BEAM, FAITH_DEAD, FAITH_BOLT, FAITH_BOOM };
+            NamesConstants.FAITH_NONE, NamesConstants.FAITH_HEAT,
+            NamesConstants.FAITH_COLD, NamesConstants.FAITH_ROCK,
+            NamesConstants.FAITH_GUST, NamesConstants.FAITH_BEAM,
+            NamesConstants.FAITH_DEAD, NamesConstants.FAITH_BOLT,
+            NamesConstants.FAITH_BOOM };
     // Faith Power Section Keys
     private static final String FAITH_POWER_1 = "1";
     private static final String FAITH_POWER_2 = "2";
@@ -105,16 +120,19 @@ public class NamesConstants {
     private static final String FAITH_POWER_8 = "8";
     private static final String FAITH_POWER_9 = "9";
     public static final String[] SECTION_ARRAY_FAITH_POWERS = new String[] {
-            FAITH_POWER_1, FAITH_POWER_2, FAITH_POWER_3, FAITH_POWER_4,
-            FAITH_POWER_5, FAITH_POWER_6, FAITH_POWER_7, FAITH_POWER_8,
-            FAITH_POWER_9 };
+            NamesConstants.FAITH_POWER_1, NamesConstants.FAITH_POWER_2,
+            NamesConstants.FAITH_POWER_3, NamesConstants.FAITH_POWER_4,
+            NamesConstants.FAITH_POWER_5, NamesConstants.FAITH_POWER_6,
+            NamesConstants.FAITH_POWER_7, NamesConstants.FAITH_POWER_8,
+            NamesConstants.FAITH_POWER_9 };
     // Names Length
-    public static final int NAMES_LENGTH = SECTION_ARRAY_STATS.length
-            + SECTION_ARRAY_EQUIP_SLOTS.length
-            + SECTION_ARRAY_EQUIP_ARMOR.length
-            + SECTION_ARRAY_WEAPONS_1H.length + SECTION_ARRAY_WEAPONS_2H.length
-            + SECTION_ARRAY_FAITHS.length
-            + (SECTION_ARRAY_FAITH_POWERS.length * 9);
+    public static final int NAMES_LENGTH = NamesConstants.SECTION_ARRAY_STATS.length
+            + NamesConstants.SECTION_ARRAY_EQUIP_SLOTS.length
+            + NamesConstants.SECTION_ARRAY_EQUIP_ARMOR.length
+            + NamesConstants.SECTION_ARRAY_WEAPONS_1H.length
+            + NamesConstants.SECTION_ARRAY_WEAPONS_2H.length
+            + NamesConstants.SECTION_ARRAY_FAITHS.length
+            + NamesConstants.SECTION_ARRAY_FAITH_POWERS.length * 9;
     // Names Version
     public static final int NAMES_VERSION = 2;
     // Editor Section Names
@@ -134,102 +152,114 @@ public class NamesConstants {
     private static final String EDITOR_SECTION_FAITH_POWERS_BOLT = "Faith Power of Bolt";
     private static final String EDITOR_SECTION_FAITH_POWERS_BOOM = "Faith Power of Boom";
     // Editor Section Array
-    public static String[] EDITOR_SECTION_ARRAY = new String[NAMES_LENGTH];
-    private static String[] TEMP_SECTION_STATS = new String[SECTION_ARRAY_STATS.length];
-    private static String[] TEMP_SECTION_EQUIP_SLOTS = new String[SECTION_ARRAY_EQUIP_SLOTS.length];
-    private static String[] TEMP_SECTION_EQUIP_ARMOR = new String[SECTION_ARRAY_EQUIP_ARMOR.length];
-    private static String[] TEMP_SECTION_WEAPONS_1H = new String[SECTION_ARRAY_WEAPONS_1H.length];
-    private static String[] TEMP_SECTION_WEAPONS_2H = new String[SECTION_ARRAY_WEAPONS_2H.length];
-    private static String[] TEMP_SECTION_FAITHS = new String[SECTION_ARRAY_FAITHS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_NONE = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_HEAT = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_COLD = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_ROCK = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_GUST = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_BEAM = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_DEAD = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_BOLT = new String[SECTION_ARRAY_FAITH_POWERS.length];
-    private static String[] TEMP_SECTION_FAITH_POWERS_BOOM = new String[SECTION_ARRAY_FAITH_POWERS.length];
+    public static String[] EDITOR_SECTION_ARRAY = new String[NamesConstants.NAMES_LENGTH];
+    private static String[] TEMP_SECTION_STATS = new String[NamesConstants.SECTION_ARRAY_STATS.length];
+    private static String[] TEMP_SECTION_EQUIP_SLOTS = new String[NamesConstants.SECTION_ARRAY_EQUIP_SLOTS.length];
+    private static String[] TEMP_SECTION_EQUIP_ARMOR = new String[NamesConstants.SECTION_ARRAY_EQUIP_ARMOR.length];
+    private static String[] TEMP_SECTION_WEAPONS_1H = new String[NamesConstants.SECTION_ARRAY_WEAPONS_1H.length];
+    private static String[] TEMP_SECTION_WEAPONS_2H = new String[NamesConstants.SECTION_ARRAY_WEAPONS_2H.length];
+    private static String[] TEMP_SECTION_FAITHS = new String[NamesConstants.SECTION_ARRAY_FAITHS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_NONE = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_HEAT = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_COLD = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_ROCK = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_GUST = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_BEAM = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_DEAD = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_BOLT = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
+    private static String[] TEMP_SECTION_FAITH_POWERS_BOOM = new String[NamesConstants.SECTION_ARRAY_FAITH_POWERS.length];
     static {
-        Arrays.fill(TEMP_SECTION_STATS, EDITOR_SECTION_STATS);
-        Arrays.fill(TEMP_SECTION_EQUIP_SLOTS, EDITOR_SECTION_EQUIP_SLOT);
-        Arrays.fill(TEMP_SECTION_EQUIP_ARMOR, EDITOR_SECTION_EQUIP_ARMOR);
-        Arrays.fill(TEMP_SECTION_WEAPONS_1H, EDITOR_SECTION_WEAPONS_1H);
-        Arrays.fill(TEMP_SECTION_WEAPONS_2H, EDITOR_SECTION_WEAPONS_2H);
-        Arrays.fill(TEMP_SECTION_FAITHS, EDITOR_SECTION_FAITHS);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_NONE,
-                EDITOR_SECTION_FAITH_POWERS_NONE);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_HEAT,
-                EDITOR_SECTION_FAITH_POWERS_HEAT);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_COLD,
-                EDITOR_SECTION_FAITH_POWERS_COLD);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_ROCK,
-                EDITOR_SECTION_FAITH_POWERS_ROCK);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_GUST,
-                EDITOR_SECTION_FAITH_POWERS_GUST);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_BEAM,
-                EDITOR_SECTION_FAITH_POWERS_BEAM);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_DEAD,
-                EDITOR_SECTION_FAITH_POWERS_DEAD);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_BOLT,
-                EDITOR_SECTION_FAITH_POWERS_BOLT);
-        Arrays.fill(TEMP_SECTION_FAITH_POWERS_BOOM,
-                EDITOR_SECTION_FAITH_POWERS_BOOM);
+        Arrays.fill(NamesConstants.TEMP_SECTION_STATS,
+                NamesConstants.EDITOR_SECTION_STATS);
+        Arrays.fill(NamesConstants.TEMP_SECTION_EQUIP_SLOTS,
+                NamesConstants.EDITOR_SECTION_EQUIP_SLOT);
+        Arrays.fill(NamesConstants.TEMP_SECTION_EQUIP_ARMOR,
+                NamesConstants.EDITOR_SECTION_EQUIP_ARMOR);
+        Arrays.fill(NamesConstants.TEMP_SECTION_WEAPONS_1H,
+                NamesConstants.EDITOR_SECTION_WEAPONS_1H);
+        Arrays.fill(NamesConstants.TEMP_SECTION_WEAPONS_2H,
+                NamesConstants.EDITOR_SECTION_WEAPONS_2H);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITHS,
+                NamesConstants.EDITOR_SECTION_FAITHS);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_NONE,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_NONE);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_HEAT,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_HEAT);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_COLD,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_COLD);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_ROCK,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_ROCK);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_GUST,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_GUST);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_BEAM,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_BEAM);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_DEAD,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_DEAD);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_BOLT,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_BOLT);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITH_POWERS_BOOM,
+                NamesConstants.EDITOR_SECTION_FAITH_POWERS_BOOM);
         int counter = 0;
-        System.arraycopy(TEMP_SECTION_STATS, 0, EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_STATS.length);
-        counter += TEMP_SECTION_STATS.length;
-        System.arraycopy(TEMP_SECTION_EQUIP_SLOTS, 0, EDITOR_SECTION_ARRAY,
-                counter, TEMP_SECTION_EQUIP_SLOTS.length);
-        counter += TEMP_SECTION_EQUIP_SLOTS.length;
-        System.arraycopy(TEMP_SECTION_EQUIP_ARMOR, 0, EDITOR_SECTION_ARRAY,
-                counter, TEMP_SECTION_EQUIP_ARMOR.length);
-        counter += TEMP_SECTION_EQUIP_ARMOR.length;
-        System.arraycopy(TEMP_SECTION_WEAPONS_1H, 0, EDITOR_SECTION_ARRAY,
-                counter, TEMP_SECTION_WEAPONS_1H.length);
-        counter += TEMP_SECTION_WEAPONS_1H.length;
-        System.arraycopy(TEMP_SECTION_WEAPONS_2H, 0, EDITOR_SECTION_ARRAY,
-                counter, TEMP_SECTION_WEAPONS_2H.length);
-        counter += TEMP_SECTION_WEAPONS_2H.length;
-        System.arraycopy(TEMP_SECTION_FAITHS, 0, EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITHS.length);
-        counter += TEMP_SECTION_FAITHS.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_NONE, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_NONE.length);
-        counter += TEMP_SECTION_FAITH_POWERS_NONE.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_HEAT, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_HEAT.length);
-        counter += TEMP_SECTION_FAITH_POWERS_HEAT.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_COLD, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_COLD.length);
-        counter += TEMP_SECTION_FAITH_POWERS_COLD.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_ROCK, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_ROCK.length);
-        counter += TEMP_SECTION_FAITH_POWERS_ROCK.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_GUST, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_GUST.length);
-        counter += TEMP_SECTION_FAITH_POWERS_GUST.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_BEAM, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_BEAM.length);
-        counter += TEMP_SECTION_FAITH_POWERS_BEAM.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_DEAD, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_DEAD.length);
-        counter += TEMP_SECTION_FAITH_POWERS_DEAD.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_BOLT, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_BOLT.length);
-        counter += TEMP_SECTION_FAITH_POWERS_BOLT.length;
-        System.arraycopy(TEMP_SECTION_FAITH_POWERS_BOOM, 0,
-                EDITOR_SECTION_ARRAY, counter,
-                TEMP_SECTION_FAITH_POWERS_BOOM.length);
-        counter += TEMP_SECTION_FAITH_POWERS_BOOM.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_STATS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_STATS.length);
+        counter += NamesConstants.TEMP_SECTION_STATS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_EQUIP_SLOTS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_EQUIP_SLOTS.length);
+        counter += NamesConstants.TEMP_SECTION_EQUIP_SLOTS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_EQUIP_ARMOR, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_EQUIP_ARMOR.length);
+        counter += NamesConstants.TEMP_SECTION_EQUIP_ARMOR.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_WEAPONS_1H, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_WEAPONS_1H.length);
+        counter += NamesConstants.TEMP_SECTION_WEAPONS_1H.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_WEAPONS_2H, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_WEAPONS_2H.length);
+        counter += NamesConstants.TEMP_SECTION_WEAPONS_2H.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITHS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITHS.length);
+        counter += NamesConstants.TEMP_SECTION_FAITHS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_NONE, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_NONE.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_NONE.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_HEAT, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_HEAT.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_HEAT.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_COLD, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_COLD.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_COLD.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_ROCK, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_ROCK.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_ROCK.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_GUST, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_GUST.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_GUST.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_BEAM, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_BEAM.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_BEAM.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_DEAD, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_DEAD.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_DEAD.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_BOLT, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_BOLT.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_BOLT.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITH_POWERS_BOOM, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITH_POWERS_BOOM.length);
+        counter += NamesConstants.TEMP_SECTION_FAITH_POWERS_BOOM.length;
     }
 
     // Private constructor

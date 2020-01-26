@@ -21,7 +21,7 @@ public class TreasureChest extends AbstractContainer {
         this.setTemplateColor(ColorConstants.COLOR_BRIDGE);
     }
 
-    public TreasureChest(AbstractDungeonObject inside) {
+    public TreasureChest(final AbstractDungeonObject inside) {
         super(new TreasureKey(), inside);
     }
 
@@ -35,8 +35,8 @@ public class TreasureChest extends AbstractContainer {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            DungeonDiver4.getApplication().showMessage(
-                    "You need a treasure key");
+            DungeonDiver4.getApplication()
+                    .showMessage("You need a treasure key");
         }
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }

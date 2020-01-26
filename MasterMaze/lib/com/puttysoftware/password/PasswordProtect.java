@@ -39,8 +39,8 @@ public class PasswordProtect {
     public static void setPassword(final XDataWriter passwordFile) {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Set Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the new password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the new password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.passwordWrite = passwordFile;
@@ -51,8 +51,8 @@ public class PasswordProtect {
     public static void promptForPassword(final XDataReader passwordFile) {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Enter Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.passwordRead = passwordFile;
@@ -63,8 +63,8 @@ public class PasswordProtect {
     public static void promptForPassword() {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Enter Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.mode = PasswordProtect.MODE_GET_RAW;
@@ -154,34 +154,34 @@ public class PasswordProtect {
             PasswordProtect.buttonPanel = new JPanel();
             PasswordProtect.okButton = new JButton("OK");
             PasswordProtect.okButton.setDefaultCapable(true);
-            PasswordProtect.okButton
-                    .addActionListener(e -> {
-                        if (PasswordProtect.getMode() == PasswordProtect.MODE_GET) {
-                            PasswordProtect.checkPassword();
-                        } else if (PasswordProtect.getMode() == PasswordProtect.MODE_SET) {
-                            PasswordProtect.savePassword();
-                        } else {
-                            PasswordProtect.success();
-                        }
-                        PasswordProtect.hideForm();
-                    });
+            PasswordProtect.okButton.addActionListener(e -> {
+                if (PasswordProtect.getMode() == PasswordProtect.MODE_GET) {
+                    PasswordProtect.checkPassword();
+                } else if (PasswordProtect
+                        .getMode() == PasswordProtect.MODE_SET) {
+                    PasswordProtect.savePassword();
+                } else {
+                    PasswordProtect.success();
+                }
+                PasswordProtect.hideForm();
+            });
             PasswordProtect.cancelButton = new JButton("Cancel");
             PasswordProtect.cancelButton.setDefaultCapable(false);
             PasswordProtect.cancelButton.addActionListener(e -> {
                 PasswordProtect.failure();
                 PasswordProtect.hideForm();
             });
-            PasswordProtect.passwordFrame.getRootPane().setDefaultButton(
-                    PasswordProtect.okButton);
+            PasswordProtect.passwordFrame.getRootPane()
+                    .setDefaultButton(PasswordProtect.okButton);
             PasswordProtect.buttonPanel.setLayout(new FlowLayout());
             PasswordProtect.buttonPanel.add(PasswordProtect.cancelButton);
             PasswordProtect.buttonPanel.add(PasswordProtect.okButton);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.passwordLabel, BorderLayout.NORTH);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.passwordField, BorderLayout.CENTER);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.buttonPanel, BorderLayout.SOUTH);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.passwordLabel, BorderLayout.NORTH);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.passwordField, BorderLayout.CENTER);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.buttonPanel, BorderLayout.SOUTH);
             PasswordProtect.passwordFrame.pack();
         }
     }

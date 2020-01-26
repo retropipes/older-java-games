@@ -27,8 +27,8 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
@@ -56,8 +56,8 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
         return mo;
     }
 

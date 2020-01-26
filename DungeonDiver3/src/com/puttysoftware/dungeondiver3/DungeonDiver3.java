@@ -80,18 +80,17 @@ public class DungeonDiver3 {
             }
             Platform.hookFileOpen(
                     DungeonDiver3.application.getScenarioManager(),
-                    DungeonDiver3.application
-                            .getScenarioManager()
-                            .getClass()
+                    DungeonDiver3.application.getScenarioManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(DungeonDiver3.application.getGUIManager(),
                     DungeonDiver3.application.getGUIManager().getClass()
                             .getDeclaredMethod("quitHandler"));
             Platform.hookDockIcon(LogoManager.getLogo());
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             DungeonDiver3.getErrorLogger().logError(t);
         }
     }

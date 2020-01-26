@@ -2,8 +2,8 @@ package net.worldwizard.mazerunner;
 
 import java.util.Random;
 
-public class MazeRandomInvisibleTeleporter extends
-        MazeGenericInvisibleTeleporter {
+public class MazeRandomInvisibleTeleporter
+        extends MazeGenericInvisibleTeleporter {
     // Fields
     private final int randomRangeX;
     private final int randomRangeY;
@@ -90,8 +90,8 @@ public class MazeRandomInvisibleTeleporter extends
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.updatePosition(this.getDestinationRow(),
                 this.getDestinationColumn());
@@ -125,8 +125,8 @@ public class MazeRandomInvisibleTeleporter extends
 
     @Override
     public MazeObject editorHook() {
-        final MazeObject mo = MazeMaker
-                .editTeleporterDestination(MazeMaker.TELEPORTER_TYPE_RANDOM_INVISIBLE);
+        final MazeObject mo = MazeMaker.editTeleporterDestination(
+                MazeMaker.TELEPORTER_TYPE_RANDOM_INVISIBLE);
         return mo;
     }
 }

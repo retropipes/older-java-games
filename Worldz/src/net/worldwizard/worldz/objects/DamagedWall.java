@@ -18,8 +18,8 @@ public class DamagedWall extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         this.moveFailedAction(true, locX, locY, inv);
         return false;
     }
@@ -30,8 +30,8 @@ public class DamagedWall extends GenericWall {
         // Destroy the wall
         final int pz = Worldz.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        Worldz.getApplication().getGameManager()
-                .morph(new Empty(), dirX, dirY, pz);
+        Worldz.getApplication().getGameManager().morph(new Empty(), dirX, dirY,
+                pz);
         // Play move failed sound, if it's enabled
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {

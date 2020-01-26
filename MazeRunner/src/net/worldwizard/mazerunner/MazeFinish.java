@@ -28,8 +28,8 @@ public class MazeFinish extends MazeGenericTeleporter {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         if (app.isLevelAbove()) {
             Messager.showDialog("Level Solved!");

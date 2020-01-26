@@ -57,7 +57,8 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void use(final WorldObject mo, final int x, final int y, final int z) {
+    public void use(final WorldObject mo, final int x, final int y,
+            final int z) {
         int tempUses = this.getUses(mo);
         if (mo.isUsable() && tempUses > 0) {
             tempUses--;

@@ -17,9 +17,9 @@ public final class InventoryViewer {
         } else {
             title = "Equipment";
         }
-        PartyMember member = PartyManager.getParty().getLeader();
+        final PartyMember member = PartyManager.getParty().getLeader();
         if (member != null) {
-            String[] equipString = member.getItems()
+            final String[] equipString = member.getItems()
                     .generateEquipmentStringArray();
             CommonDialogs.showInputDialog("Equipment", title, equipString,
                     equipString[0]);
@@ -33,9 +33,9 @@ public final class InventoryViewer {
         } else {
             title = "Items";
         }
-        PartyMember member = PartyManager.getParty().getLeader();
+        final PartyMember member = PartyManager.getParty().getLeader();
         if (member != null) {
-            String[] invString = member.getItems()
+            final String[] invString = member.getItems()
                     .generateInventoryStringArray();
             CommonDialogs.showInputDialog("Items", title, invString,
                     invString[0]);

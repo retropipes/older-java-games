@@ -11,17 +11,17 @@ import com.puttysoftware.lasertank.utilities.ColorConstants;
 public class Tunnel extends AbstractTunnel {
     // Constructors
     public Tunnel() {
-	super();
-	this.setColor(ColorConstants.COLOR_GRAY);
+        super();
+        this.setColor(ColorConstants.COLOR_GRAY);
     }
 
     public Tunnel(final int color) {
-	super();
-	this.setColor(color);
+        super();
+        this.setColor(color);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 44;
+        return 44;
     }
 }

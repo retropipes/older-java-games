@@ -33,13 +33,11 @@ public class UTurnTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Messager.showMessage("Your controls are turned around!");
-        Worldz.getApplication()
-                .getGameManager()
-                .activateEffect(EffectConstants.EFFECT_U_TURNED,
-                        UTurnTrap.EFFECT_DURATION);
+        Worldz.getApplication().getGameManager().activateEffect(
+                EffectConstants.EFFECT_U_TURNED, UTurnTrap.EFFECT_DURATION);
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playRotatedSound();

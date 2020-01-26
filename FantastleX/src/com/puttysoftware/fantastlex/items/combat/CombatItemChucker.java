@@ -44,8 +44,8 @@ public class CombatItemChucker {
             final int snd = used.getSound();
             SoundManager.playSound(snd);
             e.resetEffect();
-            final AbstractCreature target = CombatItemChucker.resolveTarget(
-                    used, user.getTeamID());
+            final AbstractCreature target = CombatItemChucker
+                    .resolveTarget(used, user.getTeamID());
             used.use();
             if (target.isEffectActive(e)) {
                 target.extendEffect(e, e.getInitialRounds());
@@ -117,20 +117,18 @@ public class CombatItemChucker {
                     if (ii.getUses(i) > 0) {
                         return i;
                     } else {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "You try to use an item, but realize you've run out!",
-                                        "Select Item");
+                        CommonDialogs.showErrorDialog(
+                                "You try to use an item, but realize you've run out!",
+                                "Select Item");
                         return null;
                     }
                 } else {
                     return null;
                 }
             } else {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to use an item, but realize you don't have any!",
-                                "Select Item");
+                CommonDialogs.showErrorDialog(
+                        "You try to use an item, but realize you don't have any!",
+                        "Select Item");
                 return null;
             }
         } else {
@@ -151,8 +149,8 @@ public class CombatItemChucker {
             SoundManager.playSound(used.getSound());
             used.use();
             e.resetEffect();
-            final AbstractCreature[] targets = CombatItemChucker.resolveTarget(
-                    used, user, teamID, aiEnabled, battle);
+            final AbstractCreature[] targets = CombatItemChucker
+                    .resolveTarget(used, user, teamID, aiEnabled, battle);
             for (final AbstractCreature target : targets) {
                 if (target.isEffectActive(e)) {
                     target.extendEffect(e, e.getInitialRounds());
@@ -180,22 +178,22 @@ public class CombatItemChucker {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeam(teamID) };
             }
         case ALL_ALLIES:
             // All Allies

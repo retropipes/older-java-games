@@ -120,8 +120,8 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
@@ -144,10 +144,9 @@ public abstract class AbstractTeleport extends AbstractMazeObject {
     @Override
     public void editorProbeHook() {
         FantastleX.getApplication()
-                .showMessage(
-                        this.getName() + ": Destination (" + (this.destCol + 1)
-                                + "," + (this.destRow + 1) + ","
-                                + (this.destFloor + 1) + ")");
+                .showMessage(this.getName() + ": Destination ("
+                        + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+                        + (this.destFloor + 1) + ")");
     }
 
     @Override

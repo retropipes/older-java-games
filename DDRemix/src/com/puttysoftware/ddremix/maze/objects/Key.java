@@ -39,7 +39,8 @@ public class Key extends AbstractItem {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().getMazeManager().getMaze().addKey();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);
         GameLogicManager.decay();

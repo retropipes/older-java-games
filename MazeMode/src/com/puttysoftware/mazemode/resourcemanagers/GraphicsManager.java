@@ -58,9 +58,8 @@ public class GraphicsManager {
         try {
             // Fetch the icon
             final String normalName = GraphicsManager.normalizeName(name);
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH + "stats/"
-                            + normalName + ".png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "stats/" + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             // Transform the icon
@@ -138,12 +137,12 @@ public class GraphicsManager {
         }
     }
 
-    public static BufferedImageIcon getVirtualCompositeImage(
-            final String name1, final String name2, final String name3) {
+    public static BufferedImageIcon getVirtualCompositeImage(final String name1,
+            final String name2, final String name3) {
         try {
             final BufferedImageIcon icon3 = ImageCache.getCachedImage(name3);
-            final BufferedImageIcon icon2 = GraphicsManager.getCompositeImage(
-                    name1, name2);
+            final BufferedImageIcon icon2 = GraphicsManager
+                    .getCompositeImage(name1, name2);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon2 != null) {
                 for (int x = 0; x < GraphicsManager.getGraphicSize(); x++) {
@@ -168,9 +167,8 @@ public class GraphicsManager {
 
     static BufferedImageIcon getUncachedLogo(final String name) {
         try {
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH + "logo/" + name
-                            + ".png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + "logo/" + name + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;

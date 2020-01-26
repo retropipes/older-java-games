@@ -36,10 +36,8 @@ public class PoisonousAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_POISONOUS,
-                        PoisonousAmulet.EFFECT_DURATION);
+        MasterMaze.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_POISONOUS,
+                PoisonousAmulet.EFFECT_DURATION);
     }
 }

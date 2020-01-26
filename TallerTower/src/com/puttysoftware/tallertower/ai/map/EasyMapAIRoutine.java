@@ -40,10 +40,12 @@ class EasyMapAIRoutine extends AbstractMapAIRoutine {
         } else {
             Point there = ac.isEnemyNearby();
             if (there != null) {
-                if (CommonMapAIRoutines.check(ac, STEAL_CHANCE)) {
+                if (CommonMapAIRoutines.check(ac,
+                        EasyMapAIRoutine.STEAL_CHANCE)) {
                     // Steal
                     return AbstractMapAIRoutine.ACTION_STEAL;
-                } else if (CommonMapAIRoutines.check(ac, DRAIN_CHANCE)) {
+                } else if (CommonMapAIRoutines.check(ac,
+                        EasyMapAIRoutine.DRAIN_CHANCE)) {
                     // Drain MP
                     return AbstractMapAIRoutine.ACTION_DRAIN;
                 } else {
@@ -58,7 +60,8 @@ class EasyMapAIRoutine extends AbstractMapAIRoutine {
                     }
                 }
             } else {
-                if (CommonMapAIRoutines.check(ac, FLEE_CHANCE)) {
+                if (CommonMapAIRoutines.check(ac,
+                        EasyMapAIRoutine.FLEE_CHANCE)) {
                     // Flee
                     final Point awayDir = ac.runAway();
                     if (awayDir == null) {
@@ -77,7 +80,8 @@ class EasyMapAIRoutine extends AbstractMapAIRoutine {
                     return AbstractMapAIRoutine.ACTION_MOVE;
                 } else {
                     // Look further
-                    for (int x = CommonMapAIRoutines.MIN_VISION + 1; x <= MAX_VISION; x++) {
+                    for (int x = CommonMapAIRoutines.MIN_VISION
+                            + 1; x <= EasyMapAIRoutine.MAX_VISION; x++) {
                         there = ac.isEnemyNearby(x, x);
                         if (there != null) {
                             // Found something hostile, move towards it
@@ -96,8 +100,8 @@ class EasyMapAIRoutine extends AbstractMapAIRoutine {
                                     there = CommonMapAIRoutines.turnRight45(
                                             this.moveX, this.moveY);
                                 } else {
-                                    there = CommonMapAIRoutines.turnLeft45(
-                                            this.moveX, this.moveY);
+                                    there = CommonMapAIRoutines
+                                            .turnLeft45(this.moveX, this.moveY);
                                 }
                                 this.moveX = there.x;
                                 this.moveY = there.y;
@@ -137,13 +141,16 @@ class EasyMapAIRoutine extends AbstractMapAIRoutine {
             if (maxIndex > -1) {
                 if (ac.getCharacter().getCurrentSP() > 0) {
                     // Select a random spell to cast
-                    final RandomRange randomSpell = new RandomRange(0, maxIndex);
+                    final RandomRange randomSpell = new RandomRange(0,
+                            maxIndex);
                     final int randomSpellID = randomSpell.generate();
                     if (randomSpellID == CommonMapAIRoutines.SPELL_INDEX_HEAL) {
                         // Healing spell was selected - is healing needed?
-                        if (ac.getCharacter().getTemplate().getCurrentHP() > ac
-                                .getCharacter().getTemplate().getMaximumHP()
-                                * EasyMapAIRoutine.HEAL_THRESHOLD / 100) {
+                        if (ac.getCharacter().getTemplate()
+                                .getCurrentHP() > ac.getCharacter()
+                                        .getTemplate().getMaximumHP()
+                                        * EasyMapAIRoutine.HEAL_THRESHOLD
+                                        / 100) {
                             // Do not need healing
                             return false;
                         }

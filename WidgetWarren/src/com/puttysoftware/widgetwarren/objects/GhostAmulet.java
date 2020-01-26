@@ -35,10 +35,8 @@ public class GhostAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        WidgetWarren
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
-                        GhostAmulet.EFFECT_DURATION);
+        WidgetWarren.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_GHOSTLY,
+                GhostAmulet.EFFECT_DURATION);
     }
 }

@@ -28,8 +28,7 @@ public class CounterclockwiseRotationTrap extends AbstractTrap {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
 	SoundManager.playSound(SoundConstants.SOUND_CHANGE);
 	Import2.getApplication().showMessage("Your controls are rotated!");
-	Import2.getApplication().getGameManager()
-		.activateEffect(MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+	Import2.getApplication().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
     }
 
     @Override

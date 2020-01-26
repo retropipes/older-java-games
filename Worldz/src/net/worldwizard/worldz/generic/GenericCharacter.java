@@ -40,8 +40,8 @@ public abstract class GenericCharacter extends WorldObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Shot self
         Messager.showMessage("Ouch, you shot yourself!");
         final PartyMember leader = PartyManager.getParty().getLeader();

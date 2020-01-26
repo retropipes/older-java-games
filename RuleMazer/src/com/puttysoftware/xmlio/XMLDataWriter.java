@@ -33,8 +33,8 @@ public class XMLDataWriter {
     }
 
     public void writeInt(final int i) throws IOException {
-        this.bw.write("<" + XMLDataConstants.INT_TAG + ">"
-                + Integer.toString(i) + "</" + XMLDataConstants.INT_TAG + ">"
+        this.bw.write("<" + XMLDataConstants.INT_TAG + ">" + Integer.toString(i)
+                + "</" + XMLDataConstants.INT_TAG + ">"
                 + XMLDataWriter.END_OF_LINE);
     }
 
@@ -58,7 +58,8 @@ public class XMLDataWriter {
 
     public void writeString(final String s) throws IOException {
         this.bw.write("<" + XMLDataConstants.STRING_TAG + ">" + s + "</"
-                + XMLDataConstants.STRING_TAG + ">" + XMLDataWriter.END_OF_LINE);
+                + XMLDataConstants.STRING_TAG + ">"
+                + XMLDataWriter.END_OF_LINE);
     }
 
     private void writeXMLHeader() throws IOException {

@@ -73,10 +73,8 @@ public class Element {
         result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformRed);
         result = prime * result + (int) (temp ^ temp >>> 32);
-        result = prime
-                * result
-                + (this.transformedEye == null ? 0 : this.transformedEye
-                        .hashCode());
+        result = prime * result + (this.transformedEye == null ? 0
+                : this.transformedEye.hashCode());
         return result;
     }
 

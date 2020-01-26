@@ -12,14 +12,14 @@ import org.xhtmlrenderer.simple.XHTMLPanel;
 
 public final class XHTMLHelpViewer {
     // Fields
-    private URL helpDoc;
+    private final URL helpDoc;
     private XHTMLPanel helpContents;
     private Container helpContainer;
     private JScrollPane scrollPane;
     private Exception helpException;
 
     // Constructor
-    public XHTMLHelpViewer(URL helpPage) {
+    public XHTMLHelpViewer(final URL helpPage) {
         this.helpDoc = helpPage;
     }
 
@@ -32,9 +32,9 @@ public final class XHTMLHelpViewer {
                 this.helpContents = new XHTMLPanel();
                 this.helpContents.setDocument(this.helpDoc.toExternalForm());
                 this.scrollPane = new JScrollPane(this.helpContents);
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 this.helpException = e;
-                JEditorPane error = new JEditorPane("text/plain",
+                final JEditorPane error = new JEditorPane("text/plain",
                         "An error occurred while fetching the help contents.");
                 this.scrollPane = new JScrollPane(error);
             } finally {
@@ -44,7 +44,7 @@ public final class XHTMLHelpViewer {
         return this.helpContainer;
     }
 
-    public void setHelpSize(int horz, int vert) {
+    public void setHelpSize(final int horz, final int vert) {
         this.helpContents.setPreferredSize(new Dimension(horz, vert));
         this.scrollPane.setPreferredSize(new Dimension(horz, vert));
     }

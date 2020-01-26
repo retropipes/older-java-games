@@ -56,9 +56,8 @@ public class GraphicsManager {
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
             final String normalName = GraphicsManager.normalizeName(name);
-            final URL url = GraphicsManager.LOAD_CLASS
-                    .getResource(GraphicsManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = GraphicsManager.LOAD_CLASS.getResource(
+                    GraphicsManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {
@@ -162,8 +161,8 @@ public class GraphicsManager {
             final BufferedImageIcon icon1, final BufferedImageIcon icon2,
             final BufferedImageIcon icon3) {
         try {
-            final BufferedImageIcon icon4 = GraphicsManager.getCompositeImage(
-                    icon1, icon2);
+            final BufferedImageIcon icon4 = GraphicsManager
+                    .getCompositeImage(icon1, icon2);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon4 != null) {
                 for (int x = 0; x < GraphicsManager.getGraphicSize(); x++) {

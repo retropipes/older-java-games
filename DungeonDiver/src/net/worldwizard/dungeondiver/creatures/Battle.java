@@ -92,14 +92,14 @@ public class Battle implements BattleResults, MoveTypes {
         this.flee.addActionListener(this.handler);
         this.spell.addActionListener(this.handler);
         this.done.addActionListener(this.handler);
-        this.attack.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), "Attack");
+        this.attack.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_A, 0), "Attack");
         this.attack.getActionMap().put("Attack", this.handler);
-        this.flee.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_F, 0), "Flee");
+        this.flee.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_F, 0), "Flee");
         this.flee.getActionMap().put("Flee", this.handler);
-        this.spell.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "Cast Spell");
+        this.spell.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_S, 0), "Cast Spell");
         this.spell.getActionMap().put("Cast Spell", this.handler);
     }
 
@@ -126,7 +126,8 @@ public class Battle implements BattleResults, MoveTypes {
             final int normalizedMultiplier = (int) (multiplier * 2);
             final int addition = Battle.pierce();
             this.moveType = normalizedMultiplier + addition;
-            final int randomAttack = (int) (randomAttackGenerator.generate() * multiplier);
+            final int randomAttack = (int) (randomAttackGenerator.generate()
+                    * multiplier);
             final int randomEnemyDefense = (int) randomEnemyDefenseGenerator
                     .generate();
             if (addition == MoveTypes.PIERCING_MODIFIER) {
@@ -238,8 +239,8 @@ public class Battle implements BattleResults, MoveTypes {
                         + ", but are RIPOSTED for " + this.riposteEnemyDamage
                         + " damage!";
             } else {
-                displayPlayerDamageString = "You hit the " + enemyName
-                        + " for " + playerDamageString + " damage!";
+                displayPlayerDamageString = "You hit the " + enemyName + " for "
+                        + playerDamageString + " damage!";
             }
             if (this.moveType == MoveTypes.PIERCING_ULTIMATE_WHACK) {
                 playerWhackString = "You execute an ULTIMATE mighty blow!\n"
@@ -292,8 +293,8 @@ public class Battle implements BattleResults, MoveTypes {
                         + " tries to hit you, but you RIPOSTE for "
                         + this.riposteDamage + " damage!";
             } else {
-                displayEnemyDamageString = "The " + enemyName
-                        + " hits you for " + enemyDamageString + " damage!";
+                displayEnemyDamageString = "The " + enemyName + " hits you for "
+                        + enemyDamageString + " damage!";
             }
             if (this.enemyMoveType == MoveTypes.PIERCING_ULTIMATE_WHACK) {
                 enemyWhackString = "The " + enemyName
@@ -396,8 +397,8 @@ public class Battle implements BattleResults, MoveTypes {
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 1.5, 2,
-                2, 2, 3, 3, 4 };
+                1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1.5, 1.5, 1.5, 1.5, 2, 2,
+                2, 3, 3, 4 };
         final RandomRange ms = new RandomRange(0, multiplier.length - 1);
         return multiplier[(int) ms.generate()];
     }
@@ -459,7 +460,8 @@ public class Battle implements BattleResults, MoveTypes {
 
     public final void lastUpdateMessageAreaFleeFailed() {
         this.clearMessageArea();
-        this.appendToMessageArea("You try to run away, but don't quite make it!\n");
+        this.appendToMessageArea(
+                "You try to run away, but don't quite make it!\n");
         this.displayBattleStats();
         this.displayActiveBuffs();
         this.displayPlayerRoundResults();
@@ -496,7 +498,8 @@ public class Battle implements BattleResults, MoveTypes {
     }
 
     public final boolean doEnemyFleeFailure() {
-        this.appendToMessageArea("The enemy tries to run away, but doesn't quite make it!\n");
+        this.appendToMessageArea(
+                "The enemy tries to run away, but doesn't quite make it!\n");
         return false;
     }
 
@@ -522,7 +525,8 @@ public class Battle implements BattleResults, MoveTypes {
         this.computePlayerDamage();
         this.enemyAction = this.enemy.getAI().getNextAction(this.enemy);
         this.enemy.getAI().performAction(this.enemyAction);
-        this.appendToMessageArea("You try to run away, but don't quite make it!\n");
+        this.appendToMessageArea(
+                "You try to run away, but don't quite make it!\n");
         this.displayBattleStats();
         this.displayActiveBuffs();
         this.maintainBuffs();
@@ -550,21 +554,25 @@ public class Battle implements BattleResults, MoveTypes {
             player.addExperience(m.getExperience());
             player.addGold(m.getGold() + m.getPerfectBonusGold());
         } else if (this.result == BattleResults.LOST) {
-            this.appendToMessageArea("You lose 10% experience and all Gold, but are fully healed.");
+            this.appendToMessageArea(
+                    "You lose 10% experience and all Gold, but are fully healed.");
             player.defeat();
         } else if (this.result == BattleResults.ANNIHILATED) {
-            this.appendToMessageArea("You lose 20% experience and all Gold for losing without\n"
-                    + "hurting your foe, but are fully healed.");
+            this.appendToMessageArea(
+                    "You lose 20% experience and all Gold for losing without\n"
+                            + "hurting your foe, but are fully healed.");
             player.annihilated();
         } else if (this.result == BattleResults.DRAW) {
-            this.appendToMessageArea("The battle was a draw. You are fully healed!");
+            this.appendToMessageArea(
+                    "The battle was a draw. You are fully healed!");
             player.healPercentage(Creature.FULL_HEAL_PERCENTAGE);
             player.regeneratePercentage(Creature.FULL_HEAL_PERCENTAGE);
         } else if (this.result == BattleResults.FLED) {
             this.appendToMessageArea("You ran away successfully!");
         } else if (this.result == BattleResults.ENEMY_FLED) {
             this.appendToMessageArea("The enemy runs away!\n");
-            this.appendToMessageArea("Since the enemy ran away, you gain nothing for this battle.");
+            this.appendToMessageArea(
+                    "Since the enemy ran away, you gain nothing for this battle.");
         }
         // Cleanup
         this.attack.setVisible(false);
@@ -580,8 +588,8 @@ public class Battle implements BattleResults, MoveTypes {
         // Level Up Check
         if (player.checkLevelUp()) {
             player.levelUp();
-            this.appendToMessageAreaNewLine("You reached level "
-                    + player.getLevel() + ".");
+            this.appendToMessageAreaNewLine(
+                    "You reached level " + player.getLevel() + ".");
         }
         // Final Cleanup
         this.battleFrame.pack();

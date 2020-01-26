@@ -81,8 +81,9 @@ public class DungeonMap extends Map2D {
     }
 
     public void generateOneMonster() {
-        final RandomRange row = new RandomRange(0, this.getDimensions()
-                .getLocation(NDimensionalMap.ROW_DIMENSION) - 1);
+        final RandomRange row = new RandomRange(0,
+                this.getDimensions().getLocation(NDimensionalMap.ROW_DIMENSION)
+                        - 1);
         final RandomRange column = new RandomRange(0, this.getDimensions()
                 .getLocation(NDimensionalMap.COLUMN_DIMENSION) - 1);
         final NDimensionalLocation loc3 = new NDimensionalLocation(
@@ -100,7 +101,8 @@ public class DungeonMap extends Map2D {
                 randomRow = (int) row.generate();
                 randomColumn = (int) column.generate();
                 loc3.setLocation(NDimensionalMap.ROW_DIMENSION, randomRow);
-                loc3.setLocation(NDimensionalMap.COLUMN_DIMENSION, randomColumn);
+                loc3.setLocation(NDimensionalMap.COLUMN_DIMENSION,
+                        randomColumn);
             }
             this.setCell(currObj, loc3);
         }

@@ -93,8 +93,8 @@ public abstract class GenericCheckpoint extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = BrainMaze.getApplication();
         app.showMessage("You may pass.");
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -103,7 +103,8 @@ public abstract class GenericCheckpoint extends MazeObject {
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return !(inv.isItemThere(this.key) && inv.getItemCount(this.key) >= this.keyCount);
+        return !(inv.isItemThere(this.key)
+                && inv.getItemCount(this.key) >= this.keyCount);
     }
 
     @Override

@@ -164,8 +164,8 @@ public class UndoRedoEngine {
             this.theList = new LinkList();
         }
 
-        public void push(final AbstractMazeObject obj, final int x,
-                final int y, final int z, final int w, final int e) {
+        public void push(final AbstractMazeObject obj, final int x, final int y,
+                final int z, final int w, final int e) {
             this.theList.insertFirst(obj, x, y, z, w, e);
         }
 

@@ -73,7 +73,8 @@ public class ItemInventory {
     }
 
     public void equipOneHandedWeapon(final AbstractCreature pc,
-            final Equipment ei, final boolean useFirst, final boolean playSound) {
+            final Equipment ei, final boolean useFirst,
+            final boolean playSound) {
         // Fix character load, changing weapons
         if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null
                 && useFirst) {
@@ -135,8 +136,9 @@ public class ItemInventory {
                 if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null) {
                     if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
                             .getEquipCategory() == EquipmentCategoryConstants.EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON) {
-                        pc.offsetLoad(-this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
-                                .getEffectiveWeight());
+                        pc.offsetLoad(
+                                -this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
+                                        .getEffectiveWeight());
                     }
                 }
             }
@@ -365,8 +367,7 @@ public class ItemInventory {
             dw.writeInt(iqu.getQuantity());
             dw.writeInt(iqu.getUses());
         }
-        for (int x = 0; x < this.equipment.length; x++) {
-            final Equipment ei = this.equipment[x];
+        for (final Equipment ei : this.equipment) {
             if (ei != null) {
                 ei.writeEquipment(dw);
             } else {
@@ -382,7 +383,7 @@ public class ItemInventory {
         result = prime * result + Arrays.hashCode(this.equipment);
         result = prime * result + Arrays.hashCode(this.entries);
         return prime * result
-                + ((this.socks == null) ? 0 : this.socks.hashCode());
+                + (this.socks == null ? 0 : this.socks.hashCode());
     }
 
     @Override

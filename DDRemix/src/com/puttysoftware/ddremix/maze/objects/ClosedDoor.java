@@ -40,7 +40,8 @@ public class ClosedDoor extends AbstractTrigger {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         SoundManager.playSound(SoundConstants.SOUND_PICK_LOCK);
         final GameLogicManager glm = DDRemix.getApplication().getGameManager();
         GameLogicManager.morph(new OpenDoor());

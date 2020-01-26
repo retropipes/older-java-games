@@ -24,13 +24,13 @@ public class StairsOut extends GenericTeleport {
         super();
         this.setTemplateTransform(new TemplateTransform(1.0, 1.0, 1.0));
         // Create post-move script
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.RELATIVE_LEVEL_CHANGE);
         entry1.addActionArg(new InternalScriptEntryArgument(-1));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
-        InternalScriptEntry entry2 = new InternalScriptEntry();
+        final InternalScriptEntry entry2 = new InternalScriptEntry();
         entry2.setActionCode(InternalScriptActionCode.SOUND);
         entry2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_STAIRS));
@@ -68,8 +68,8 @@ public class StairsOut extends GenericTeleport {
     }
 
     @Override
-    public boolean shouldGenerateObject(Map map, int row, int col, int floor,
-            int level, int layer) {
+    public boolean shouldGenerateObject(final Map map, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (!map.doesLevelExistOffset(-1)) {
             return false;
         } else {

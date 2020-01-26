@@ -11,8 +11,8 @@ public class MonsterFactory {
     }
 
     public static AbstractMonster getNewMonsterInstance(
-            boolean randomAppearance, boolean randomFaith, boolean scales,
-            boolean dynamic) {
+            final boolean randomAppearance, final boolean randomFaith,
+            final boolean scales, final boolean dynamic) {
         if (randomAppearance) {
             if (randomFaith) {
                 if (scales) {

@@ -28,9 +28,11 @@ public abstract class GenericChainTeleportDown extends GenericTeleportDown {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        return this.searchNestedPits(dirX, dirY, WidgetWarren.getApplication()
-                .getGameManager().getPlayerManager().getPlayerLocationZ() - 1,
-                inv);
+        return this
+                .searchNestedPits(dirX, dirY,
+                        WidgetWarren.getApplication().getGameManager()
+                                .getPlayerManager().getPlayerLocationZ() - 1,
+                        inv);
     }
 
     private boolean searchNestedPits(final int dirX, final int dirY,
@@ -42,8 +44,8 @@ public abstract class GenericChainTeleportDown extends GenericTeleportDown {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObject obj = app.getMazeManager().getMaze()
-                    .getCell(dirX, dirY, floor, MazeConstants.LAYER_OBJECT);
+            final MazeObject obj = app.getMazeManager().getMaze().getCell(dirX,
+                    dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
@@ -63,8 +65,8 @@ public abstract class GenericChainTeleportDown extends GenericTeleportDown {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

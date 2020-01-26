@@ -59,7 +59,7 @@ public class BattleLogic {
     private boolean lastAIActionResult;
     private AITask ait;
     private VictorySpoilsDescription vsd;
-    private BattleGUI battleGUI;
+    private final BattleGUI battleGUI;
     private static final int ITEM_ACTION_POINTS = 6;
     private static final int STEAL_ACTION_POINTS = 3;
     private static final int DRAIN_ACTION_POINTS = 3;
@@ -89,18 +89,18 @@ public class BattleLogic {
         this.terminatedEarly = false;
         this.result = BattleResults.IN_PROGRESS;
         // Generate Friends
-        BattleCharacter[] friends = PartyManager.getParty()
+        final BattleCharacter[] friends = PartyManager.getParty()
                 .getBattleCharacters();
         // Generate Enemies
-        BattleCharacter[] enemies = b.getBattlers();
+        final BattleCharacter[] enemies = b.getBattlers();
         int hostileCount = 0;
-        for (int x = 0; x < enemies.length; x++) {
-            if (enemies[x] != null) {
+        for (final BattleCharacter enemie : enemies) {
+            if (enemie != null) {
                 hostileCount++;
-                enemies[x].getTemplate().setTeamID(1);
-                enemies[x].getTemplate().healAndRegenerateFully();
-                if (enemies[x].getTemplate() instanceof BaseMonster) {
-                    BaseMonster mon = (BaseMonster) enemies[x].getTemplate();
+                enemie.getTemplate().setTeamID(1);
+                enemie.getTemplate().healAndRegenerateFully();
+                if (enemie.getTemplate() instanceof BaseMonster) {
+                    final BaseMonster mon = (BaseMonster) enemie.getTemplate();
                     mon.loadMonster();
                 }
             }
@@ -132,10 +132,10 @@ public class BattleLogic {
         // Clear status message
         this.clearStatusMessage();
         // Start Battle
-        this.battleGUI.getViewManager().setViewingWindowCenterX(
-                this.bd.getActiveCharacter().getY());
-        this.battleGUI.getViewManager().setViewingWindowCenterY(
-                this.bd.getActiveCharacter().getX());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterX(this.bd.getActiveCharacter().getY());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterY(this.bd.getActiveCharacter().getX());
         SoundManager.playSound(GameSoundConstants.SOUND_BATTLE);
         this.showBattle();
         this.updateStatsAndEffects();
@@ -148,38 +148,30 @@ public class BattleLogic {
             // Handle Results
             this.resultDoneAlready = true;
             if (this.result == BattleResults.WON) {
-                int gold = this.getGold();
+                final int gold = this.getGold();
                 this.vsd.setGoldWon(gold);
                 SoundManager.playSound(GameSoundConstants.SOUND_VICTORY);
                 CommonDialogs.showTitledDialog("The party is victorious!",
                         "Victory!");
                 PartyManager.getParty().distributeVictorySpoils(this.vsd);
-                DungeonDiver3
-                        .getApplication()
-                        .getGameManager()
-                        .addToScore(
-                                Math.max(
-                                        1,
-                                        (this.vsd.getTotalExp() + gold)
-                                                / (100 * (PartyManager
-                                                        .getParty()
-                                                        .getActivePCCount()))));
+                DungeonDiver3.getApplication().getGameManager().addToScore(
+                        Math.max(1, (this.vsd.getTotalExp() + gold) / (100
+                                * PartyManager.getParty().getActivePCCount())));
             } else if (this.result == BattleResults.LOST) {
                 CommonDialogs.showTitledDialog("The party has been defeated!",
                         "Defeat...");
             } else if (this.result == BattleResults.DRAW) {
-                CommonDialogs
-                        .showTitledDialog("The battle was a draw.", "Draw");
+                CommonDialogs.showTitledDialog("The battle was a draw.",
+                        "Draw");
             } else if (this.result == BattleResults.FLED) {
                 CommonDialogs.showTitledDialog("The party fled!", "Party Fled");
             } else if (this.result == BattleResults.ENEMY_FLED) {
                 CommonDialogs.showTitledDialog("The enemies fled!",
                         "Enemies Fled");
             } else if (this.result == BattleResults.IN_PROGRESS) {
-                CommonDialogs
-                        .showTitledDialog(
-                                "The battle isn't over, but somehow the game thinks it is.",
-                                "Uh-Oh!");
+                CommonDialogs.showTitledDialog(
+                        "The battle isn't over, but somehow the game thinks it is.",
+                        "Uh-Oh!");
             } else {
                 CommonDialogs.showTitledDialog(
                         "The result of the battle is unknown!", "Uh-Oh!");
@@ -187,9 +179,9 @@ public class BattleLogic {
             // Strip Effects
             PartyManager.getParty().stripPartyEffects();
             // Level Up Check
-            ArrayList<InternalScript> levelUpScripts = PartyManager.getParty()
-                    .checkPartyLevelUp();
-            for (InternalScript is : levelUpScripts) {
+            final ArrayList<InternalScript> levelUpScripts = PartyManager
+                    .getParty().checkPartyLevelUp();
+            for (final InternalScript is : levelUpScripts) {
                 InternalScriptRunner.runScript(is);
             }
             // Leave Battle
@@ -251,17 +243,14 @@ public class BattleLogic {
     void executeNextAIAction() {
         int action;
         try {
-            action = this.bd
-                    .getActiveCharacter()
-                    .getTemplate()
-                    .getAI()
+            action = this.bd.getActiveCharacter().getTemplate().getAI()
                     .getNextAction(
                             this.bd.getBattlerAIContexts()[this.activeIndex]);
             switch (action) {
             case AIRoutine.ACTION_MOVE:
-                int x = this.bd.getActiveCharacter().getTemplate().getAI()
+                final int x = this.bd.getActiveCharacter().getTemplate().getAI()
                         .getMoveX();
-                int y = this.bd.getActiveCharacter().getTemplate().getAI()
+                final int y = this.bd.getActiveCharacter().getTemplate().getAI()
                         .getMoveY();
                 this.lastAIActionResult = this.updatePosition(x, y);
                 this.bd.getActiveCharacter().getTemplate().getAI()
@@ -288,11 +277,11 @@ public class BattleLogic {
                 this.endTurn();
                 break;
             }
-            int currResult = this.getResult();
+            final int currResult = this.getResult();
             if (currResult != BattleResults.IN_PROGRESS) {
                 this.terminatedEarly = true;
             }
-        } catch (NullPointerException npe) {
+        } catch (final NullPointerException npe) {
             // Battle has ended
             return;
         }
@@ -302,26 +291,27 @@ public class BattleLogic {
         return this.lastAIActionResult;
     }
 
-    private void executeAutoAI(BattleCharacter acting) {
-        int index = this.bd.findBattler(acting.getName());
-        int action = this.auto
+    private void executeAutoAI(final BattleCharacter acting) {
+        final int index = this.bd.findBattler(acting.getName());
+        final int action = this.auto
                 .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
         case AIRoutine.ACTION_MOVE:
-            int x = this.auto.getMoveX();
-            int y = this.auto.getMoveY();
+            final int x = this.auto.getMoveX();
+            final int y = this.auto.getMoveY();
             this.updatePositionInternal(x, y, false, acting);
             break;
         default:
             break;
         }
-        int currResult = this.getResult();
+        final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {
             this.terminatedEarly = true;
         }
     }
 
-    private void displayRoundResults(Creature enemy, Creature active) {
+    private void displayRoundResults(final Creature enemy,
+            final Creature active) {
         // Display round results
         final String activeName = active.getName();
         final String enemyName = enemy.getName();
@@ -361,10 +351,10 @@ public class BattleLogic {
         this.setStatusMessage(displayDamageString);
     }
 
-    private void computeDamage(Creature enemy, Creature acting) {
+    private void computeDamage(final Creature enemy, final Creature acting) {
         // Compute Damage
         this.damage = 0;
-        int actual = this.de.computeDamage(enemy, acting);
+        final int actual = this.de.computeDamage(enemy, acting);
         // Update Prestige
         if (actual != 0) {
             BattleDefinitions.dealtDamage(acting, actual);
@@ -407,21 +397,22 @@ public class BattleLogic {
     }
 
     private void setCharacterLocations() {
-        RandomRange randX = new RandomRange(0,
+        final RandomRange randX = new RandomRange(0,
                 this.bd.getBattleMap().getRows() - 1);
-        RandomRange randY = new RandomRange(0, this.bd.getBattleMap()
-                .getColumns() - 1);
+        final RandomRange randY = new RandomRange(0,
+                this.bd.getBattleMap().getColumns() - 1);
         int rx, ry;
         // Set Character Locations
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
                 if (this.bd.getBattlers()[x].isActive()
                         && this.bd.getBattlers()[x].getTemplate().getX() == -1
-                        && this.bd.getBattlers()[x].getTemplate().getY() == -1) {
+                        && this.bd.getBattlers()[x].getTemplate()
+                                .getY() == -1) {
                     rx = randX.generate();
                     ry = randY.generate();
-                    MapObject obj = this.bd.getBattleMap()
-                            .getBattleCell(rx, ry);
+                    MapObject obj = this.bd.getBattleMap().getBattleCell(rx,
+                            ry);
                     while (obj.isSolidInBattle()) {
                         rx = randX.generate();
                         ry = randY.generate();
@@ -429,14 +420,14 @@ public class BattleLogic {
                     }
                     this.bd.getBattlers()[x].setX(rx);
                     this.bd.getBattlers()[x].setY(ry);
-                    this.bd.getBattleMap().setBattleCell(
-                            this.bd.getBattlers()[x], rx, ry);
+                    this.bd.getBattleMap()
+                            .setBattleCell(this.bd.getBattlers()[x], rx, ry);
                 }
             }
         }
     }
 
-    private boolean setNextActive(boolean isNewRound) {
+    private boolean setNextActive(final boolean isNewRound) {
         this.terminatedEarly = false;
         int res = 0;
         if (isNewRound) {
@@ -482,7 +473,7 @@ public class BattleLogic {
         }
     }
 
-    private int findNextSmallestSpeed(int max) {
+    private int findNextSmallestSpeed(final int max) {
         int res = -1;
         int found = 0;
         for (int x = 0; x < this.speedArray.length; x++) {
@@ -511,11 +502,11 @@ public class BattleLogic {
         return res;
     }
 
-    private boolean isTeamAlive(int teamID) {
+    private boolean isTeamAlive(final int teamID) {
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
                 if (this.bd.getBattlers()[x].getTeamID() == teamID) {
-                    boolean res = this.bd.getBattlers()[x].getTemplate()
+                    final boolean res = this.bd.getBattlers()[x].getTemplate()
                             .isAlive();
                     if (res) {
                         return true;
@@ -526,11 +517,11 @@ public class BattleLogic {
         return false;
     }
 
-    private boolean areTeamEnemiesAlive(int teamID) {
+    private boolean areTeamEnemiesAlive(final int teamID) {
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
                 if (this.bd.getBattlers()[x].getTeamID() != teamID) {
-                    boolean res = this.bd.getBattlers()[x].getTemplate()
+                    final boolean res = this.bd.getBattlers()[x].getTemplate()
                             .isAlive();
                     if (res) {
                         return true;
@@ -541,12 +532,12 @@ public class BattleLogic {
         return false;
     }
 
-    private boolean areTeamEnemiesDeadOrGone(int teamID) {
+    private boolean areTeamEnemiesDeadOrGone(final int teamID) {
         int deadCount = 0;
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
                 if (this.bd.getBattlers()[x].getTeamID() != teamID) {
-                    boolean res = this.bd.getBattlers()[x].getTemplate()
+                    final boolean res = this.bd.getBattlers()[x].getTemplate()
                             .isAlive() && this.bd.getBattlers()[x].isActive();
                     if (res) {
                         return false;
@@ -557,10 +548,10 @@ public class BattleLogic {
                 }
             }
         }
-        return (deadCount > 0);
+        return deadCount > 0;
     }
 
-    private boolean areTeamEnemiesGone(int teamID) {
+    private boolean areTeamEnemiesGone(final int teamID) {
         boolean res = true;
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
@@ -577,7 +568,7 @@ public class BattleLogic {
         return true;
     }
 
-    private boolean isTeamGone(int teamID) {
+    private boolean isTeamGone(final int teamID) {
         boolean res = true;
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             if (this.bd.getBattlers()[x] != null) {
@@ -594,18 +585,19 @@ public class BattleLogic {
         return true;
     }
 
-    boolean updatePosition(int x, int y) {
+    boolean updatePosition(final int x, final int y) {
         return this.updatePositionInternal(x, y, true,
                 this.bd.getActiveCharacter());
     }
 
-    void fireArrow(int x, int y) {
+    void fireArrow(final int x, final int y) {
         if (this.bd.getActiveCharacter().getCurrentAP() > 0) {
             // Has actions left
             this.bd.getActiveCharacter().modifyAP(1);
             this.battleGUI.turnEventHandlersOff();
-            ArrowTask at = new ArrowTask(x, y, this.bd.getActiveCharacter()
-                    .getTemplate().getFaith().getFaithID(), this.bd);
+            final ArrowTask at = new ArrowTask(x, y, this.bd
+                    .getActiveCharacter().getTemplate().getFaith().getFaithID(),
+                    this.bd);
             at.start();
         } else {
             // Deny arrow - out of actions
@@ -616,19 +608,21 @@ public class BattleLogic {
         }
     }
 
-    void arrowDone(BattleCharacter hit) {
+    void arrowDone(final BattleCharacter hit) {
         this.battleGUI.turnEventHandlersOn();
         // Handle death
         if (hit != null && !hit.getTemplate().isAlive()) {
             if (hit.getTeamID() != Creature.TEAM_PARTY) {
                 // Update victory spoils
-                int partySize = PartyManager.getParty().getActivePCCount();
-                this.vsd.setExpPerMonster(this.bd.findBattler(hit.getName())
-                        - partySize, hit.getTemplate().getExperience());
+                final int partySize = PartyManager.getParty()
+                        .getActivePCCount();
+                this.vsd.setExpPerMonster(
+                        this.bd.findBattler(hit.getName()) - partySize,
+                        hit.getTemplate().getExperience());
             }
             // Update Prestige
-            BattleDefinitions.killedEnemy(this.bd.getActiveCharacter()
-                    .getTemplate());
+            BattleDefinitions
+                    .killedEnemy(this.bd.getActiveCharacter().getTemplate());
             BattleDefinitions.killedInBattle(hit.getTemplate());
             // Play death sound
             SoundManager.playSound(GameSoundConstants.SOUND_DEATH);
@@ -641,7 +635,7 @@ public class BattleLogic {
                     hit.getY());
         }
         // Check result
-        int currResult = this.getResult();
+        final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {
             // Battle Done
             this.result = currResult;
@@ -649,12 +643,12 @@ public class BattleLogic {
         }
     }
 
-    private boolean updatePositionInternal(int x, int y, boolean useAP,
-            BattleCharacter active) {
+    private boolean updatePositionInternal(final int x, final int y,
+            final boolean useAP, final BattleCharacter active) {
         this.updateAllAIContexts();
         int px = active.getX();
         int py = active.getY();
-        Map m = this.bd.getBattleMap();
+        final Map m = this.bd.getBattleMap();
         MapObject next = null;
         MapObject nextGround = null;
         MapObject currGround = null;
@@ -669,8 +663,8 @@ public class BattleLogic {
         }
         if (next != null && nextGround != null && currGround != null) {
             if (!next.isSolidInBattle()) {
-                if ((useAP && this.getActiveActionCounter() >= MapObject
-                        .getBattleAPCost()) || !useAP) {
+                if (useAP && this.getActiveActionCounter() >= MapObject
+                        .getBattleAPCost() || !useAP) {
                     // Move
                     MapObject obj1 = null;
                     MapObject obj2 = null;
@@ -722,9 +716,11 @@ public class BattleLogic {
                     }
                     // Auto-attack check
                     if (obj1 != null) {
-                        if (obj1.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!((x == -1 && y == 0) || (x == -1 && y == -1) || (x == 0 && y == -1))) {
-                                BattleCharacter bc1 = (BattleCharacter) obj1;
+                        if (obj1.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == -1
+                                    || x == 0 && y == -1)) {
+                                final BattleCharacter bc1 = (BattleCharacter) obj1;
                                 if (bc1.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc1);
                                 }
@@ -732,9 +728,10 @@ public class BattleLogic {
                         }
                     }
                     if (obj2 != null) {
-                        if (obj2.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj2.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == 1) {
-                                BattleCharacter bc2 = (BattleCharacter) obj2;
+                                final BattleCharacter bc2 = (BattleCharacter) obj2;
                                 if (bc2.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc2);
                                 }
@@ -742,9 +739,11 @@ public class BattleLogic {
                         }
                     }
                     if (obj3 != null) {
-                        if (obj3.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!((x == 0 && y == -1) || (x == 1 && y == -1) || (x == 1 && y == 0))) {
-                                BattleCharacter bc3 = (BattleCharacter) obj3;
+                        if (obj3.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == -1 || x == 1 && y == -1
+                                    || x == 1 && y == 0)) {
+                                final BattleCharacter bc3 = (BattleCharacter) obj3;
                                 if (bc3.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc3);
                                 }
@@ -752,9 +751,10 @@ public class BattleLogic {
                         }
                     }
                     if (obj4 != null) {
-                        if (obj4.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj4.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == 1) {
-                                BattleCharacter bc4 = (BattleCharacter) obj4;
+                                final BattleCharacter bc4 = (BattleCharacter) obj4;
                                 if (bc4.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc4);
                                 }
@@ -762,9 +762,10 @@ public class BattleLogic {
                         }
                     }
                     if (obj6 != null) {
-                        if (obj6.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj6.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == -1) {
-                                BattleCharacter bc6 = (BattleCharacter) obj6;
+                                final BattleCharacter bc6 = (BattleCharacter) obj6;
                                 if (bc6.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc6);
                                 }
@@ -772,9 +773,11 @@ public class BattleLogic {
                         }
                     }
                     if (obj7 != null) {
-                        if (obj7.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!((x == -1 && y == 0) || (x == -1 && y == 1) || (x == 0 && y == 1))) {
-                                BattleCharacter bc7 = (BattleCharacter) obj7;
+                        if (obj7.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == 1
+                                    || x == 0 && y == 1)) {
+                                final BattleCharacter bc7 = (BattleCharacter) obj7;
                                 if (bc7.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc7);
                                 }
@@ -782,9 +785,10 @@ public class BattleLogic {
                         }
                     }
                     if (obj8 != null) {
-                        if (obj8.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj8.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == -1) {
-                                BattleCharacter bc8 = (BattleCharacter) obj8;
+                                final BattleCharacter bc8 = (BattleCharacter) obj8;
                                 if (bc8.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc8);
                                 }
@@ -792,9 +796,11 @@ public class BattleLogic {
                         }
                     }
                     if (obj9 != null) {
-                        if (obj9.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!((x == 0 && y == 1) || (x == 1 && y == 1) || (x == 1 && y == 0))) {
-                                BattleCharacter bc9 = (BattleCharacter) obj9;
+                        if (obj9.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == 1 || x == 1 && y == 1
+                                    || x == 1 && y == 0)) {
+                                final BattleCharacter bc9 = (BattleCharacter) obj9;
                                 if (bc9.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc9);
                                 }
@@ -812,14 +818,14 @@ public class BattleLogic {
                             .offsetViewingWindowLocationY(x);
                     active.setSavedObject(m.getBattleCell(px, py));
                     m.setBattleCell(active, px, py);
-                    this.decrementActiveActionCounterBy(MapObject
-                            .getBattleAPCost());
+                    this.decrementActiveActionCounterBy(
+                            MapObject.getBattleAPCost());
                     SoundManager.playSound(MapObject.getBattleMoveSoundID());
                     // If the random battle environment is enabled...
                     if (LocalPreferencesManager.getRandomBattleEnvironment()) {
                         // Run any script attached to ground
-                        InternalScriptRunner.runScript(nextGround
-                                .getBattlePostMoveScript(active));
+                        InternalScriptRunner.runScript(
+                                nextGround.getBattlePostMoveScript(active));
                     }
                 } else {
                     // Deny move - out of actions
@@ -831,15 +837,16 @@ public class BattleLogic {
                 }
             } else {
                 if (next.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                    if ((useAP && this.getActiveAttackCounter() > 0) || !useAP) {
+                    if (useAP && this.getActiveAttackCounter() > 0 || !useAP) {
                         // Attack
-                        BattleCharacter bc = (BattleCharacter) next;
+                        final BattleCharacter bc = (BattleCharacter) next;
                         if (bc.getTeamID() == active.getTeamID()) {
                             // Attack Friend?
                             if (!active.getTemplate().hasAI()
                                     || Support.inDebugMode()) {
-                                int confirm = CommonDialogs.showConfirmDialog(
-                                        "Attack Friend?", "Battle");
+                                final int confirm = CommonDialogs
+                                        .showConfirmDialog("Attack Friend?",
+                                                "Battle");
                                 if (confirm != JOptionPane.YES_OPTION) {
                                     return false;
                                 }
@@ -847,7 +854,7 @@ public class BattleLogic {
                                 return false;
                             }
                         }
-                        Creature enemy = bc.getTemplate();
+                        final Creature enemy = bc.getTemplate();
                         if (useAP) {
                             this.decrementActiveAttackCounter();
                         }
@@ -855,23 +862,24 @@ public class BattleLogic {
                         if (LocalPreferencesManager
                                 .getRandomBattleEnvironment()) {
                             // Run any script attached to ground
-                            InternalScriptRunner.runScript(currGround
-                                    .getBattlePostMoveScript(active));
+                            InternalScriptRunner.runScript(
+                                    currGround.getBattlePostMoveScript(active));
                         }
                         // Do damage
                         this.computeDamage(enemy, active.getTemplate());
                         // Handle low health for party members
                         if (enemy.isAlive()
                                 && enemy.getTeamID() == Creature.TEAM_PARTY
-                                && enemy.getCurrentHP() <= enemy.getMaximumHP() * 3 / 10) {
-                            SoundManager
-                                    .playSound(GameSoundConstants.SOUND_LOW_HEALTH);
+                                && enemy.getCurrentHP() <= enemy.getMaximumHP()
+                                        * 3 / 10) {
+                            SoundManager.playSound(
+                                    GameSoundConstants.SOUND_LOW_HEALTH);
                         }
                         // Handle enemy death
                         if (!enemy.isAlive()) {
                             if (enemy.getTeamID() != Creature.TEAM_PARTY) {
                                 // Update victory spoils
-                                int partySize = PartyManager.getParty()
+                                final int partySize = PartyManager.getParty()
                                         .getActivePCCount();
                                 this.vsd.setExpPerMonster(
                                         this.bd.findBattler(enemy.getName())
@@ -895,8 +903,8 @@ public class BattleLogic {
                         // Handle self death
                         if (!active.getTemplate().isAlive()) {
                             // Update Prestige
-                            BattleDefinitions.killedInBattle(active
-                                    .getTemplate());
+                            BattleDefinitions
+                                    .killedInBattle(active.getTemplate());
                             // Play death sound
                             SoundManager
                                     .playSound(GameSoundConstants.SOUND_DEATH);
@@ -920,7 +928,8 @@ public class BattleLogic {
                     }
                 } else {
                     // Move Failed
-                    if (!active.getTemplate().hasAI() || Support.inDebugMode()) {
+                    if (!active.getTemplate().hasAI()
+                            || Support.inDebugMode()) {
                         this.setStatusMessage("Can't go that way");
                     }
                     return false;
@@ -930,8 +939,8 @@ public class BattleLogic {
             // Confirm Flee
             if (!active.getTemplate().hasAI() || Support.inDebugMode()) {
                 SoundManager.playSound(GameSoundConstants.SOUND_SPECIAL);
-                int confirm = CommonDialogs.showConfirmDialog(
-                        "Embrace Cowardice?", "Battle");
+                final int confirm = CommonDialogs
+                        .showConfirmDialog("Embrace Cowardice?", "Battle");
                 if (confirm != JOptionPane.YES_OPTION) {
                     this.battleGUI.getViewManager().restoreViewingWindow();
                     active.restoreLocation();
@@ -950,7 +959,7 @@ public class BattleLogic {
             // End Turn
             this.endTurn();
             this.updateStatsAndEffects();
-            int currResult = this.getResult();
+            final int currResult = this.getResult();
             if (currResult != BattleResults.IN_PROGRESS) {
                 // Battle Done
                 this.result = currResult;
@@ -962,7 +971,7 @@ public class BattleLogic {
             return true;
         }
         this.updateStatsAndEffects();
-        int currResult = this.getResult();
+        final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {
             // Battle Done
             this.result = currResult;
@@ -975,9 +984,9 @@ public class BattleLogic {
     }
 
     private BattleCharacter getEnemy() {
-        int px = this.bd.getActiveCharacter().getX();
-        int py = this.bd.getActiveCharacter().getY();
-        Map m = this.bd.getBattleMap();
+        final int px = this.bd.getActiveCharacter().getX();
+        final int py = this.bd.getActiveCharacter().getY();
+        final Map m = this.bd.getBattleMap();
         MapObject next = null;
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
@@ -991,7 +1000,8 @@ public class BattleLogic {
                 }
                 if (next != null) {
                     if (next.isSolidInBattle()) {
-                        if (next.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (next.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             return (BattleCharacter) next;
                         }
                     }
@@ -1015,15 +1025,16 @@ public class BattleLogic {
             if (!this.bd.getActiveCharacter().getTemplate().hasAI()
                     || Support.inDebugMode()) {
                 // Active character has no AI, or AI is turned off
-                boolean success = SpellCaster.selectAndCastSpell(this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final boolean success = SpellCaster.selectAndCastSpell(
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
                     this.decrementActiveSpellCounter();
                     // Update Prestige
                     BattleDefinitions.castSpell(this.bd.getSelfTarget());
                 }
-                int currResult = this.getResult();
+                final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
                     // Battle Done
                     this.result = currResult;
@@ -1032,17 +1043,18 @@ public class BattleLogic {
                 return success;
             } else {
                 // Active character has AI, and AI is turned on
-                Spell sp = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getSpellToCast();
-                boolean success = SpellCaster.castSpell(sp, this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final Spell sp = this.bd.getActiveCharacter().getTemplate()
+                        .getAI().getSpellToCast();
+                final boolean success = SpellCaster.castSpell(sp,
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
                     this.decrementActiveSpellCounter();
                     // Update Prestige
                     BattleDefinitions.castSpell(this.bd.getSelfTarget());
                 }
-                int currResult = this.getResult();
+                final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
                     // Battle Done
                     this.result = currResult;
@@ -1066,14 +1078,15 @@ public class BattleLogic {
             if (!this.bd.getActiveCharacter().getTemplate().hasAI()
                     || Support.inDebugMode()) {
                 // Active character has no AI, or AI is turned off
-                boolean success = CombatItemChucker.selectAndUseItem(this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final boolean success = CombatItemChucker.selectAndUseItem(
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
-                    this.bd.getActiveCharacter().modifyAP(
-                            BattleLogic.ITEM_ACTION_POINTS);
+                    this.bd.getActiveCharacter()
+                            .modifyAP(BattleLogic.ITEM_ACTION_POINTS);
                 }
-                int currResult = this.getResult();
+                final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
                     // Battle Done
                     this.result = currResult;
@@ -1082,16 +1095,17 @@ public class BattleLogic {
                 return success;
             } else {
                 // Active character has AI, and AI is turned on
-                CombatItem cui = this.bd.getActiveCharacter().getTemplate()
-                        .getAI().getItemToUse();
-                boolean success = CombatItemChucker.useItem(cui, this.bd
-                        .getActiveCharacter().getTemplate(), this.bd
-                        .getActiveCharacter().getTeamID(), true, this.bd);
+                final CombatItem cui = this.bd.getActiveCharacter()
+                        .getTemplate().getAI().getItemToUse();
+                final boolean success = CombatItemChucker.useItem(cui,
+                        this.bd.getActiveCharacter().getTemplate(),
+                        this.bd.getActiveCharacter().getTeamID(), true,
+                        this.bd);
                 if (success) {
-                    this.bd.getActiveCharacter().modifyAP(
-                            BattleLogic.ITEM_ACTION_POINTS);
+                    this.bd.getActiveCharacter()
+                            .modifyAP(BattleLogic.ITEM_ACTION_POINTS);
                 }
-                int currResult = this.getResult();
+                final int currResult = this.getResult();
                 if (currResult != BattleResults.IN_PROGRESS) {
                     // Battle Done
                     this.result = currResult;
@@ -1115,13 +1129,13 @@ public class BattleLogic {
             Creature activeEnemy = null;
             try {
                 activeEnemy = this.getEnemy().getTemplate();
-            } catch (NullPointerException npe) {
+            } catch (final NullPointerException npe) {
                 // Ignore
             }
             int stealChance;
             int stealAmount = 0;
-            this.bd.getActiveCharacter().modifyAP(
-                    BattleLogic.STEAL_ACTION_POINTS);
+            this.bd.getActiveCharacter()
+                    .modifyAP(BattleLogic.STEAL_ACTION_POINTS);
             stealChance = StatConstants.CHANCE_STEAL;
             if (activeEnemy == null) {
                 // Failed - nobody to steal from
@@ -1136,28 +1150,27 @@ public class BattleLogic {
                 return false;
             } else if (stealChance >= 100) {
                 // Succeeded, unless target has 0 Gold
-                RandomRange stole = new RandomRange(0, activeEnemy.getGold());
+                final RandomRange stole = new RandomRange(0,
+                        activeEnemy.getGold());
                 stealAmount = stole.generate();
                 if (stealAmount == 0) {
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to steal, but no Gold is left to steal!");
                     return false;
                 } else {
                     this.bd.getActiveCharacter().getTemplate()
                             .offsetGold(stealAmount);
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to steal, and successfully steals "
                             + stealAmount + " gold!");
                     return true;
                 }
             } else {
-                RandomRange chance = new RandomRange(0, 100);
-                int randomChance = chance.generate();
+                final RandomRange chance = new RandomRange(0, 100);
+                final int randomChance = chance.generate();
                 if (randomChance <= stealChance) {
                     // Succeeded, unless target has 0 Gold
-                    RandomRange stole = new RandomRange(0,
+                    final RandomRange stole = new RandomRange(0,
                             activeEnemy.getGold());
                     stealAmount = stole.generate();
                     if (stealAmount == 0) {
@@ -1176,8 +1189,8 @@ public class BattleLogic {
                     }
                 } else {
                     // Failed
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName() + " tries to steal, but fails!");
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
+                            + " tries to steal, but fails!");
                     return false;
                 }
             }
@@ -1197,13 +1210,13 @@ public class BattleLogic {
             Creature activeEnemy = null;
             try {
                 activeEnemy = this.getEnemy().getTemplate();
-            } catch (NullPointerException npe) {
+            } catch (final NullPointerException npe) {
                 // Ignore
             }
             int drainChance;
             int drainAmount = 0;
-            this.bd.getActiveCharacter().modifyAP(
-                    BattleLogic.DRAIN_ACTION_POINTS);
+            this.bd.getActiveCharacter()
+                    .modifyAP(BattleLogic.DRAIN_ACTION_POINTS);
             drainChance = StatConstants.CHANCE_DRAIN;
             if (activeEnemy == null) {
                 // Failed - nobody to drain from
@@ -1218,30 +1231,28 @@ public class BattleLogic {
                 return false;
             } else if (drainChance >= 100) {
                 // Succeeded, unless target has 0 MP
-                RandomRange drained = new RandomRange(0,
+                final RandomRange drained = new RandomRange(0,
                         activeEnemy.getCurrentMP());
                 drainAmount = drained.generate();
                 if (drainAmount == 0) {
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to drain, but no MP is left to drain!");
                     return false;
                 } else {
                     activeEnemy.offsetCurrentMP(-drainAmount);
                     this.bd.getActiveCharacter().getTemplate()
                             .offsetCurrentMP(drainAmount);
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName()
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
                             + " tries to drain, and successfully drains "
                             + drainAmount + " MP!");
                     return true;
                 }
             } else {
-                RandomRange chance = new RandomRange(0, 100);
-                int randomChance = chance.generate();
+                final RandomRange chance = new RandomRange(0, 100);
+                final int randomChance = chance.generate();
                 if (randomChance <= drainChance) {
                     // Succeeded
-                    RandomRange drained = new RandomRange(0,
+                    final RandomRange drained = new RandomRange(0,
                             activeEnemy.getCurrentMP());
                     drainAmount = drained.generate();
                     if (drainAmount == 0) {
@@ -1261,8 +1272,8 @@ public class BattleLogic {
                     }
                 } else {
                     // Failed
-                    this.setStatusMessage(this.bd.getActiveCharacter()
-                            .getName() + " tries to drain, but fails!");
+                    this.setStatusMessage(this.bd.getActiveCharacter().getName()
+                            + " tries to drain, but fails!");
                     return false;
                 }
             }
@@ -1289,10 +1300,10 @@ public class BattleLogic {
             }
         }
         this.updateStatsAndEffects();
-        this.battleGUI.getViewManager().setViewingWindowCenterX(
-                this.bd.getActiveCharacter().getY());
-        this.battleGUI.getViewManager().setViewingWindowCenterY(
-                this.bd.getActiveCharacter().getX());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterX(this.bd.getActiveCharacter().getY());
+        this.battleGUI.getViewManager()
+                .setViewingWindowCenterY(this.bd.getActiveCharacter().getX());
         this.redrawBattle();
     }
 
@@ -1300,7 +1311,7 @@ public class BattleLogic {
         this.battleGUI.redrawBattle(this.bd);
     }
 
-    void redrawOneBattleSquare(int x, int y, MapObject obj3) {
+    void redrawOneBattleSquare(final int x, final int y, final MapObject obj3) {
         this.battleGUI.redrawOneBattleSquare(this.bd, x, y, obj3);
     }
 
@@ -1320,7 +1331,7 @@ public class BattleLogic {
         return this.bd.getActiveCharacter().getCurrentSP();
     }
 
-    private void decrementActiveActionCounterBy(int amount) {
+    private void decrementActiveActionCounterBy(final int amount) {
         this.bd.getActiveCharacter().modifyAP(amount);
     }
 
@@ -1340,15 +1351,16 @@ public class BattleLogic {
                 // Use Effects
                 this.bd.getBattlers()[x].getTemplate().useEffects();
                 // Display all effect messages
-                String effectMessages = this.bd.getBattlers()[x].getTemplate()
-                        .getAllCurrentEffectMessages();
-                String[] individualEffectMessages = effectMessages.split("\n");
-                for (String message : individualEffectMessages) {
+                final String effectMessages = this.bd.getBattlers()[x]
+                        .getTemplate().getAllCurrentEffectMessages();
+                final String[] individualEffectMessages = effectMessages
+                        .split("\n");
+                for (final String message : individualEffectMessages) {
                     if (!message.equals(Effect.getNullMessage())) {
                         this.setStatusMessage(message);
                         try {
                             Thread.sleep(PreferencesManager.getBattleSpeed());
-                        } catch (InterruptedException ie) {
+                        } catch (final InterruptedException ie) {
                             // Ignore
                         }
                     }
@@ -1357,12 +1369,14 @@ public class BattleLogic {
                 this.bd.getBattlers()[x].getTemplate().cullInactiveEffects();
                 // Handle death caused by effects
                 if (!this.bd.getBattlers()[x].getTemplate().isAlive()) {
-                    if (this.bd.getBattlers()[x].getTeamID() != Creature.TEAM_PARTY) {
+                    if (this.bd.getBattlers()[x]
+                            .getTeamID() != Creature.TEAM_PARTY) {
                         // Update victory spoils
-                        int partySize = PartyManager.getParty()
+                        final int partySize = PartyManager.getParty()
                                 .getActivePCCount();
-                        this.vsd.setExpPerMonster(x - partySize, this.bd
-                                .getBattlers()[x].getTemplate().getExperience());
+                        this.vsd.setExpPerMonster(x - partySize,
+                                this.bd.getBattlers()[x].getTemplate()
+                                        .getExperience());
                     }
                     // Play death sound
                     SoundManager.playSound(GameSoundConstants.SOUND_DEATH);
@@ -1389,8 +1403,8 @@ public class BattleLogic {
             if (this.bd.getBattlers()[x] != null) {
                 // Update all AI Contexts
                 if (this.bd.getBattlerAIContexts()[x] != null) {
-                    this.bd.getBattlerAIContexts()[x].updateContext(this.bd
-                            .getBattleMap());
+                    this.bd.getBattlerAIContexts()[x]
+                            .updateContext(this.bd.getBattleMap());
                 }
             }
         }

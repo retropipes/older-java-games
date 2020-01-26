@@ -18,8 +18,10 @@ public abstract class AbstractMonster extends AbstractCreature {
     // Fields
     private String type;
     protected Element element;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -3.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 3.0 / 2.0;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -3.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 3.0
+            / 2.0;
     protected static final int PERFECT_GOLD_MIN = 1;
     protected static final int PERFECT_GOLD_MAX = 2;
     private static final int BATTLES_SCALE_FACTOR = 6;
@@ -145,7 +147,7 @@ public abstract class AbstractMonster extends AbstractCreature {
     }
 
     protected final int getBattlesToNextLevel() {
-        return AbstractMonster.BATTLES_START + (this.getLevel() + 1)
-                * AbstractMonster.BATTLES_SCALE_FACTOR;
+        return AbstractMonster.BATTLES_START
+                + (this.getLevel() + 1) * AbstractMonster.BATTLES_SCALE_FACTOR;
     }
 }

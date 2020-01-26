@@ -10,8 +10,8 @@ import com.puttysoftware.dungeondiver3.support.map.generic.TemplateTransform;
 
 public class SeaweedButton extends GenericButton {
     public SeaweedButton() {
-        super(new SeaweedWallOff(), new SeaweedWallOn(), new TemplateTransform(
-                0.5, 1.0, 0.5));
+        super(new SeaweedWallOff(), new SeaweedWallOn(),
+                new TemplateTransform(0.5, 1.0, 0.5));
     }
 
     @Override

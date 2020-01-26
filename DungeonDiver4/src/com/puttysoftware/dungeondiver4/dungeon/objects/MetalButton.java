@@ -8,8 +8,8 @@ package com.puttysoftware.dungeondiver4.dungeon.objects;
 import com.puttysoftware.dungeondiver4.Application;
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.dungeon.DungeonConstants;
-import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractField;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractDungeonObject;
+import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractField;
 import com.puttysoftware.dungeondiver4.dungeon.utilities.ColorConstants;
 import com.puttysoftware.dungeondiver4.dungeon.utilities.DungeonObjectInventory;
 import com.puttysoftware.dungeondiver4.dungeon.utilities.TypeConstants;
@@ -19,10 +19,10 @@ import com.puttysoftware.dungeondiver4.resourcemanagers.SoundManager;
 
 public class MetalButton extends AbstractField {
     // Fields
-    private int targetRow;
-    private int targetCol;
-    private int targetFloor;
-    private int targetLevel;
+    private final int targetRow;
+    private final int targetCol;
+    private final int targetFloor;
+    private final int targetLevel;
 
     // Constructors
     public MetalButton() {
@@ -43,7 +43,7 @@ public class MetalButton extends AbstractField {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -96,19 +96,18 @@ public class MetalButton extends AbstractField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
-            Application app = DungeonDiver4.getApplication();
-            AbstractDungeonObject there = app.getDungeonManager()
+            final Application app = DungeonDiver4.getApplication();
+            final AbstractDungeonObject there = app.getDungeonManager()
                     .getDungeonObject(this.getTargetRow(),
                             this.getTargetColumn(), this.getTargetFloor(),
                             this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
+                            this.getTargetColumn(), this.getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(),
                             this.getTargetRow(), this.getTargetColumn(),
@@ -160,10 +159,9 @@ public class MetalButton extends AbstractField {
 
     @Override
     public void editorProbeHook() {
-        DungeonDiver4.getApplication().showMessage(
-                this.getName() + ": Target (" + (this.targetCol + 1) + ","
-                        + (this.targetRow + 1) + "," + (this.targetFloor + 1)
-                        + "," + (this.targetLevel + 1) + ")");
+        DungeonDiver4.getApplication().showMessage(this.getName() + ": Target ("
+                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
+                + (this.targetFloor + 1) + "," + (this.targetLevel + 1) + ")");
     }
 
     @Override

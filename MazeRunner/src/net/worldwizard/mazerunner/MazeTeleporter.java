@@ -9,9 +9,8 @@ public class MazeTeleporter extends MazeGenericTeleporter {
         super("Teleporter", "Teleporter", 0, 0, 0, 0);
     }
 
-    public MazeTeleporter(final int destinationRow,
-            final int destinationColumn, final int destinationFloor,
-            final int destinationLevel) {
+    public MazeTeleporter(final int destinationRow, final int destinationColumn,
+            final int destinationFloor, final int destinationLevel) {
         super("Teleporter", "Teleporter", destinationRow, destinationColumn,
                 destinationFloor, destinationLevel);
     }

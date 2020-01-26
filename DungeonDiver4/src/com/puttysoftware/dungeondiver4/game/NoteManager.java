@@ -13,22 +13,22 @@ public class NoteManager {
     }
 
     public static void editNote() {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
-        int x = m.getPlayerLocationX();
-        int y = m.getPlayerLocationY();
-        int z = m.getPlayerLocationZ();
+        final int x = m.getPlayerLocationX();
+        final int y = m.getPlayerLocationY();
+        final int z = m.getPlayerLocationZ();
         String defaultText = "Empty Note";
         if (m.hasNote(x, y, z)) {
             defaultText = m.getNote(x, y, z).getContents();
         }
-        String result = CommonDialogs.showTextInputDialogWithDefault(
+        final String result = CommonDialogs.showTextInputDialogWithDefault(
                 "Note Text:", "Edit Note", defaultText);
         if (result != null) {
             if (!m.hasNote(x, y, z)) {
                 m.createNote(x, y, z);
             }
-            DungeonNote mn = m.getNote(x, y, z);
+            final DungeonNote mn = m.getNote(x, y, z);
             mn.setContents(result);
             SoundManager.playSound(SoundConstants.SOUND_SCRIBBLE);
         }

@@ -31,11 +31,11 @@ public abstract class GenericShop extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
-            final Shop shop = MasterMaze.getApplication().getGenericShop(
-                    this.shopType);
+            final Shop shop = MasterMaze.getApplication()
+                    .getGenericShop(this.shopType);
             if (shop != null) {
                 shop.showShop();
             }

@@ -15,34 +15,35 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Tablet extends AbstractItem {
     // Constructors
     public Tablet() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_TABLET;
+        return ObjectImageConstants.OBJECT_IMAGE_TABLET;
     }
 
     @Override
     public String getName() {
-	return "Tablet";
+        return "Tablet";
     }
 
     @Override
     public String getPluralName() {
-	return "Tablets";
+        return "Tablets";
     }
 
     @Override
     public String getDescription() {
-	return "Tablets open Tablet Slots.";
+        return "Tablets open Tablet Slots.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().getDungeonManager().getDungeon()
-		.addTablet();
-	SoundManager.playSound(SoundConstants.SOUND_GRAB);
-	GameLogicManager.decay();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication().getDungeonManager().getDungeon()
+                .addTablet();
+        SoundManager.playSound(SoundConstants.SOUND_GRAB);
+        GameLogicManager.decay();
     }
 }

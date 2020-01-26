@@ -16,19 +16,19 @@ public class LogoCache {
     // Methods
     static BufferedImageIcon getCachedLogo(final String name) {
         if (!LogoCache.isInCache(name)) {
-            BufferedImageIcon bii = LogoManager.getUncachedLogo(name);
+            final BufferedImageIcon bii = LogoManager.getUncachedLogo(name);
             LogoCache.addToCache(name, bii);
         }
-        for (int x = 0; x < LogoCache.cache.length; x++) {
-            if (name.equals(LogoCache.cache[x].getName())) {
-                return LogoCache.cache[x].getImage();
+        for (final CacheEntry element : LogoCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;
     }
 
     private static void expandCache() {
-        CacheEntry[] tempCache = new CacheEntry[LogoCache.cache.length
+        final CacheEntry[] tempCache = new CacheEntry[LogoCache.cache.length
                 + LogoCache.CACHE_INCREMENT];
         for (int x = 0; x < LogoCache.CACHE_SIZE; x++) {
             tempCache[x] = LogoCache.cache[x];

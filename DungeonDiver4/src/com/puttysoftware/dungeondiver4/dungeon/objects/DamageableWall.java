@@ -41,13 +41,10 @@ public class DamageableWall extends AbstractWall {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
-        int z = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationZ();
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .morph(new CrackedWall(), dirX, dirY, z,
-                        DungeonConstants.LAYER_OBJECT);
+        final int z = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationZ();
+        DungeonDiver4.getApplication().getGameManager().morph(new CrackedWall(),
+                dirX, dirY, z, DungeonConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 

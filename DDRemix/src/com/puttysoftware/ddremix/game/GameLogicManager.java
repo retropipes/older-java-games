@@ -265,10 +265,8 @@ public final class GameLogicManager {
             app.getGUIManager().hideGUI();
             if (this.stateChanged) {
                 // Initialize only if the maze state has changed
-                app.getMazeManager()
-                        .getMaze()
-                        .switchLevel(
-                                app.getMazeManager().getMaze().getStartLevel());
+                app.getMazeManager().getMaze().switchLevel(
+                        app.getMazeManager().getMaze().getStartLevel());
                 this.updateStoneCount();
                 this.stateChanged = false;
             }

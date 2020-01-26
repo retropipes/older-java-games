@@ -25,8 +25,8 @@ public abstract class AbstractBow extends AbstractUsableObject {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 

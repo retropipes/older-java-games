@@ -36,10 +36,8 @@ public class GhostAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_GHOSTLY,
-                        GhostAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_GHOSTLY,
+                GhostAmulet.EFFECT_DURATION);
     }
 }

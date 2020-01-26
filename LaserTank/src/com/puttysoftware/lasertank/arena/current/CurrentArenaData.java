@@ -185,7 +185,8 @@ public final class CurrentArenaData extends AbstractArenaData {
         int x, y, z, w;
         // Tick all ArenaObject timers
         AbstractTunnel.checkTunnels();
-        for (z = Direction.NORTH.ordinal(); z <= Direction.NORTHWEST.ordinal(); z += 2) {
+        for (z = Direction.NORTH.ordinal(); z <= Direction.NORTHWEST
+                .ordinal(); z += 2) {
             for (x = 0; x < this.getColumns(); x++) {
                 for (y = 0; y < this.getRows(); y++) {
                     for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
@@ -242,8 +243,8 @@ public final class CurrentArenaData extends AbstractArenaData {
         if (arena.isThirdDimensionWraparoundEnabled()) {
             floor = this.normalizeFloor(floor);
         }
-        final boolean scanE = this.linearScan(arena, enemyLocX, enemyLocY, floor,
-                Direction.EAST);
+        final boolean scanE = this.linearScan(arena, enemyLocX, enemyLocY,
+                floor, Direction.EAST);
         if (scanE) {
             try {
                 final AntiTank at = (AntiTank) this.getCell(arena, this.foundX,
@@ -253,8 +254,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 // Ignore
             }
         }
-        final boolean scanW = this.linearScan(arena, enemyLocX, enemyLocY, floor,
-                Direction.WEST);
+        final boolean scanW = this.linearScan(arena, enemyLocX, enemyLocY,
+                floor, Direction.WEST);
         if (scanW) {
             try {
                 final AntiTank at = (AntiTank) this.getCell(arena, this.foundX,
@@ -264,8 +265,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 // Ignore
             }
         }
-        final boolean scanS = this.linearScan(arena, enemyLocX, enemyLocY, floor,
-                Direction.SOUTH);
+        final boolean scanS = this.linearScan(arena, enemyLocX, enemyLocY,
+                floor, Direction.SOUTH);
         if (scanS) {
             try {
                 final AntiTank at = (AntiTank) this.getCell(arena, this.foundX,
@@ -275,8 +276,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 // Ignore
             }
         }
-        final boolean scanN = this.linearScan(arena, enemyLocX, enemyLocY, floor,
-                Direction.NORTH);
+        final boolean scanN = this.linearScan(arena, enemyLocX, enemyLocY,
+                floor, Direction.NORTH);
         if (scanN) {
             try {
                 final AntiTank at = (AntiTank) this.getCell(arena, this.foundX,
@@ -333,8 +334,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 for (u = yFix - 1; u >= 0; u--) {
                     for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                         try {
-                            final AbstractArenaObject obj = this.getCell(arena, xFix,
-                                    u, zFix, w);
+                            final AbstractArenaObject obj = this.getCell(arena,
+                                    xFix, u, zFix, w);
                             if (obj.isOfType(TypeConstants.TYPE_ANTI)) {
                                 final int[] unres = DirectionResolver
                                         .unresolveRelativeDirection(
@@ -367,8 +368,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 for (u = yFix + 1; u < 24; u++) {
                     for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                         try {
-                            final AbstractArenaObject obj = this.getCell(arena, xFix,
-                                    u, zFix, w);
+                            final AbstractArenaObject obj = this.getCell(arena,
+                                    xFix, u, zFix, w);
                             if (obj.isOfType(TypeConstants.TYPE_ANTI)) {
                                 final int[] unres = DirectionResolver
                                         .unresolveRelativeDirection(
@@ -401,8 +402,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 for (u = xFix - 1; u >= 0; u--) {
                     for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                         try {
-                            final AbstractArenaObject obj = this.getCell(arena, u,
-                                    yFix, zFix, w);
+                            final AbstractArenaObject obj = this.getCell(arena,
+                                    u, yFix, zFix, w);
                             if (obj.isOfType(TypeConstants.TYPE_ANTI)) {
                                 final int[] unres = DirectionResolver
                                         .unresolveRelativeDirection(
@@ -435,8 +436,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 for (u = xFix + 1; u < 24; u++) {
                     for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                         try {
-                            final AbstractArenaObject obj = this.getCell(arena, u,
-                                    yFix, zFix, w);
+                            final AbstractArenaObject obj = this.getCell(arena,
+                                    u, yFix, zFix, w);
                             if (obj.isOfType(TypeConstants.TYPE_ANTI)) {
                                 final int[] unres = DirectionResolver
                                         .unresolveRelativeDirection(
@@ -485,8 +486,8 @@ public final class CurrentArenaData extends AbstractArenaData {
             for (u = yFix - 1; u >= 0; u--) {
                 for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                     try {
-                        final AbstractArenaObject obj = this.getCell(arena, xFix, u,
-                                zFix, w);
+                        final AbstractArenaObject obj = this.getCell(arena,
+                                xFix, u, zFix, w);
                         if (obj.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
                             return yFix - u - 1;
                         }
@@ -503,8 +504,8 @@ public final class CurrentArenaData extends AbstractArenaData {
             for (u = yFix + 1; u < 24; u++) {
                 for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                     try {
-                        final AbstractArenaObject obj = this.getCell(arena, xFix, u,
-                                zFix, w);
+                        final AbstractArenaObject obj = this.getCell(arena,
+                                xFix, u, zFix, w);
                         if (obj.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
                             return u - yFix - 1;
                         }
@@ -521,8 +522,8 @@ public final class CurrentArenaData extends AbstractArenaData {
             for (u = xFix - 1; u >= 0; u--) {
                 for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                     try {
-                        final AbstractArenaObject obj = this.getCell(arena, u, yFix,
-                                zFix, w);
+                        final AbstractArenaObject obj = this.getCell(arena, u,
+                                yFix, zFix, w);
                         if (obj.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
                             return xFix - u - 1;
                         }
@@ -539,8 +540,8 @@ public final class CurrentArenaData extends AbstractArenaData {
             for (u = xFix + 1; u < 24; u++) {
                 for (w = 0; w < ArenaConstants.NUM_LAYERS; w++) {
                     try {
-                        final AbstractArenaObject obj = this.getCell(arena, u, yFix,
-                                zFix, w);
+                        final AbstractArenaObject obj = this.getCell(arena, u,
+                                yFix, zFix, w);
                         if (obj.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
                             return u - xFix - 1;
                         }
@@ -890,7 +891,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                 if (obj instanceof AbstractButtonDoor) {
                     final AbstractButtonDoor door = (AbstractButtonDoor) obj;
                     if (source.getClass().equals(door.getClass())) {
-                        this.setCell(arena, new Ground(), x, y, z, source.getLayer());
+                        this.setCell(arena, new Ground(), x, y, z,
+                                source.getLayer());
                     }
                 }
             }
@@ -1042,7 +1044,8 @@ public final class CurrentArenaData extends AbstractArenaData {
     }
 
     @Override
-    public void fill(final AbstractArena arena, final AbstractArenaObject fill) {
+    public void fill(final AbstractArena arena,
+            final AbstractArenaObject fill) {
         int y, x, z, w;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1193,7 +1196,8 @@ public final class CurrentArenaData extends AbstractArenaData {
                                 if (x >= 16 || y >= 16) {
                                     this.setCell(arena, fill2, y, x, z, w);
                                 } else {
-                                    this.setCell(arena, new Empty(), y, x, z, w);
+                                    this.setCell(arena, new Empty(), y, x, z,
+                                            w);
                                 }
                             } else {
                                 this.setCell(arena, new Empty(), y, x, z, w);
@@ -1250,33 +1254,33 @@ public final class CurrentArenaData extends AbstractArenaData {
             final XDataReader reader, final int formatVersion)
             throws IOException {
         if (FormatConstants.isFormatVersionValidGeneration1(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG1(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG1(arena,
+                    reader, formatVersion);
             return tempData;
         } else if (FormatConstants
                 .isFormatVersionValidGeneration2(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG2(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG2(arena,
+                    reader, formatVersion);
             return tempData;
         } else if (FormatConstants
                 .isFormatVersionValidGeneration3(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG3(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG3(arena,
+                    reader, formatVersion);
             return tempData;
         } else if (FormatConstants
                 .isFormatVersionValidGeneration4(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG4(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG4(arena,
+                    reader, formatVersion);
             return tempData;
         } else if (FormatConstants
                 .isFormatVersionValidGeneration5(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG5(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG5(arena,
+                    reader, formatVersion);
             return tempData;
         } else if (FormatConstants
                 .isFormatVersionValidGeneration6(formatVersion)) {
-            final CurrentArenaData tempData = CurrentArenaData
-                    .readDataG6(arena, reader, formatVersion);
+            final CurrentArenaData tempData = CurrentArenaData.readDataG6(arena,
+                    reader, formatVersion);
             return tempData;
         } else {
             throw new IOException(
@@ -1304,13 +1308,13 @@ public final class CurrentArenaData extends AbstractArenaData {
         arena.setStartColumn(0, reader.readInt());
         arena.setStartRow(0, reader.readInt());
         arena.setStartFloor(0, reader.readInt());
-        boolean horzWrap = reader.readBoolean();
+        final boolean horzWrap = reader.readBoolean();
         if (horzWrap) {
             arena.enableHorizontalWraparound();
         } else {
             arena.disableHorizontalWraparound();
         }
-        boolean vertWrap = reader.readBoolean();
+        final boolean vertWrap = reader.readBoolean();
         if (vertWrap) {
             arena.enableVerticalWraparound();
         } else {
@@ -1348,19 +1352,19 @@ public final class CurrentArenaData extends AbstractArenaData {
         arena.setStartColumn(0, reader.readInt());
         arena.setStartRow(0, reader.readInt());
         arena.setStartFloor(0, reader.readInt());
-        boolean horzWrap = reader.readBoolean();
+        final boolean horzWrap = reader.readBoolean();
         if (horzWrap) {
             arena.enableHorizontalWraparound();
         } else {
             arena.disableHorizontalWraparound();
         }
-        boolean vertWrap = reader.readBoolean();
+        final boolean vertWrap = reader.readBoolean();
         if (vertWrap) {
             arena.enableVerticalWraparound();
         } else {
             arena.disableVerticalWraparound();
         }
-        boolean thirdWrap = reader.readBoolean();
+        final boolean thirdWrap = reader.readBoolean();
         if (thirdWrap) {
             arena.enableThirdDimensionWraparound();
         } else {
@@ -1397,19 +1401,19 @@ public final class CurrentArenaData extends AbstractArenaData {
         arena.setStartColumn(0, reader.readInt());
         arena.setStartRow(0, reader.readInt());
         arena.setStartFloor(0, reader.readInt());
-        boolean horzWrap = reader.readBoolean();
+        final boolean horzWrap = reader.readBoolean();
         if (horzWrap) {
             arena.enableHorizontalWraparound();
         } else {
             arena.disableHorizontalWraparound();
         }
-        boolean vertWrap = reader.readBoolean();
+        final boolean vertWrap = reader.readBoolean();
         if (vertWrap) {
             arena.enableVerticalWraparound();
         } else {
             arena.disableVerticalWraparound();
         }
-        boolean thirdWrap = reader.readBoolean();
+        final boolean thirdWrap = reader.readBoolean();
         if (thirdWrap) {
             arena.enableThirdDimensionWraparound();
         } else {
@@ -1446,19 +1450,19 @@ public final class CurrentArenaData extends AbstractArenaData {
         arena.setStartColumn(0, reader.readInt());
         arena.setStartRow(0, reader.readInt());
         arena.setStartFloor(0, reader.readInt());
-        boolean horzWrap = reader.readBoolean();
+        final boolean horzWrap = reader.readBoolean();
         if (horzWrap) {
             arena.enableHorizontalWraparound();
         } else {
             arena.disableHorizontalWraparound();
         }
-        boolean vertWrap = reader.readBoolean();
+        final boolean vertWrap = reader.readBoolean();
         if (vertWrap) {
             arena.enableVerticalWraparound();
         } else {
             arena.disableVerticalWraparound();
         }
-        boolean thirdWrap = reader.readBoolean();
+        final boolean thirdWrap = reader.readBoolean();
         if (thirdWrap) {
             arena.enableThirdDimensionWraparound();
         } else {
@@ -1498,19 +1502,19 @@ public final class CurrentArenaData extends AbstractArenaData {
         arena.setStartColumn(0, reader.readInt());
         arena.setStartRow(0, reader.readInt());
         arena.setStartFloor(0, reader.readInt());
-        boolean horzWrap = reader.readBoolean();
+        final boolean horzWrap = reader.readBoolean();
         if (horzWrap) {
             arena.enableHorizontalWraparound();
         } else {
             arena.disableHorizontalWraparound();
         }
-        boolean vertWrap = reader.readBoolean();
+        final boolean vertWrap = reader.readBoolean();
         if (vertWrap) {
             arena.enableVerticalWraparound();
         } else {
             arena.disableVerticalWraparound();
         }
-        boolean thirdWrap = reader.readBoolean();
+        final boolean thirdWrap = reader.readBoolean();
         if (thirdWrap) {
             arena.enableThirdDimensionWraparound();
         } else {

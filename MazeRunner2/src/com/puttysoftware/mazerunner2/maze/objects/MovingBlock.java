@@ -12,18 +12,18 @@ public class MovingBlock extends AbstractMovingObject {
         super(true, ColorConstants.COLOR_GRASS,
                 ObjectImageConstants.OBJECT_IMAGE_PULLABLE,
                 ColorConstants.COLOR_WHITE);
-        RandomRange t = new RandomRange(1, 2);
+        final RandomRange t = new RandomRange(1, 2);
         this.activateTimer(t.generate());
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // Move the block
-        RandomRange r = new RandomRange(0, 7);
-        int move = r.generate();
+        final RandomRange r = new RandomRange(0, 7);
+        final int move = r.generate();
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .updateMovingBlockPosition(move, dirX, dirY, this);
-        RandomRange t = new RandomRange(1, 2);
+        final RandomRange t = new RandomRange(1, 2);
         this.activateTimer(t.generate());
     }
 

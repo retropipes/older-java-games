@@ -7,8 +7,8 @@ package com.puttysoftware.brainmaze.objects;
 
 import com.puttysoftware.brainmaze.generic.GenericInvisibleConditionalTeleport;
 
-public class InvisibleConditionalChainTeleport extends
-        GenericInvisibleConditionalTeleport {
+public class InvisibleConditionalChainTeleport
+        extends GenericInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super("conditional_chain");

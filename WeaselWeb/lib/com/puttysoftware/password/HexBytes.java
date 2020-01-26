@@ -6,7 +6,7 @@ public class HexBytes {
     /**
      * Convert a byte[] array to readable string format. This makes the "hex"
      * readable!
-     * 
+     *
      * @return result String buffer in String format
      * @param in
      *            byte[] buffer to convert to string format

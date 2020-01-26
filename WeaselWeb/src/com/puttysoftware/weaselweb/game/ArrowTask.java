@@ -80,8 +80,8 @@ public class ArrowTask extends Thread {
                 if (!res) {
                     break;
                 }
-                app.getGameManager().redrawOneSquare(px + cumX, py + cumY,
-                        true, ImageManager.getImage(a.getName()));
+                app.getGameManager().redrawOneSquare(px + cumX, py + cumY, true,
+                        ImageManager.getImage(a.getName()));
                 app.getGameManager().redrawOneSquare(px + cumX, py + cumY,
                         false, ImageManager.getImage(new Empty().getName()));
                 cumX += incX;

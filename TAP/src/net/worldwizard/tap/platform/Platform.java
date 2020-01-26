@@ -22,8 +22,8 @@ public class Platform {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             try {
                 // Tell the UIManager to use the platform native look and feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
             } catch (final Exception e) {
                 // Do nothing
             }
@@ -31,8 +31,8 @@ public class Platform {
             // All other platforms
             try {
                 // Tell the UIManager to use the platform native look and feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {

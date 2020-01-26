@@ -125,8 +125,9 @@ public class ItemInventory {
                 if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null) {
                     if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
                             .getEquipCategory() == EquipmentCategoryConstants.EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON) {
-                        pc.offsetLoad(-this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
-                                .getEffectiveWeight());
+                        pc.offsetLoad(
+                                -this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
+                                        .getEffectiveWeight());
                     }
                 }
             }

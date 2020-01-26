@@ -24,13 +24,10 @@ public class CasteLoader {
             return SystemLoader.loadCaste(file);
         } else {
             try {
-                final XDataReader casteFile = new XDataReader(Support
-                        .getVariables().getBasePath()
-                        + File.separator
-                        + "castes"
-                        + File.separator
-                        + file
-                        + Extension.getCasteExtensionWithPeriod(),
+                final XDataReader casteFile = new XDataReader(
+                        Support.getVariables().getBasePath() + File.separator
+                                + "castes" + File.separator + file
+                                + Extension.getCasteExtensionWithPeriod(),
                         Extension.getCasteExtension());
                 final Caste c = Caste.read(casteFile);
                 casteFile.close();

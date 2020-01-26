@@ -11,15 +11,18 @@ public class FileHooks {
         // Do nothing
     }
 
-    public static void loadGameHook(XDataReader mapFile) throws IOException {
+    public static void loadGameHook(final XDataReader mapFile)
+            throws IOException {
         PartyManager.loadGameHook(mapFile);
     }
 
-    public static void loadGameHookV1(XDataReader mapFile) throws IOException {
+    public static void loadGameHookV1(final XDataReader mapFile)
+            throws IOException {
         PartyManager.loadGameHookV1(mapFile);
     }
 
-    public static void saveGameHook(XDataWriter mapFile) throws IOException {
+    public static void saveGameHook(final XDataWriter mapFile)
+            throws IOException {
         PartyManager.saveGameHook(mapFile);
     }
 }

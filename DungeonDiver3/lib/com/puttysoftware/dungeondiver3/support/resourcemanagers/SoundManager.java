@@ -23,7 +23,7 @@ public class SoundManager {
         }
     }
 
-    public static void playSound(int soundID) {
+    public static void playSound(final int soundID) {
         if (LocalPreferencesManager.getSoundsEnabled()) {
             try {
                 int offset;
@@ -43,7 +43,7 @@ public class SoundManager {
                 if (snd != null) {
                     snd.start();
                 }
-            } catch (ArrayIndexOutOfBoundsException aioob) {
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
                 // Do nothing
             }
         }

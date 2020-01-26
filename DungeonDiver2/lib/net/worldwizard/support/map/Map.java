@@ -42,8 +42,8 @@ public class Map implements MapConstants {
         this.xmlPrefixHandler = null;
         this.xmlSuffixHandler = null;
         this.savedStart = new int[4];
-        this.mapBasePath = Support.getVariables().getBasePath()
-                + File.separator + "maps" + File.separator;
+        this.mapBasePath = Support.getVariables().getBasePath() + File.separator
+                + "maps" + File.separator;
         final File mapDir = new File(this.mapBasePath);
         if (!mapDir.exists()) {
             mapDir.mkdirs();
@@ -249,7 +249,8 @@ public class Map implements MapConstants {
         }
     }
 
-    public void findAllObjectPairsAndSwap(final MapObject o1, final MapObject o2) {
+    public void findAllObjectPairsAndSwap(final MapObject o1,
+            final MapObject o2) {
         this.mapData.findAllObjectPairsAndSwap(o1, o2);
     }
 
@@ -258,7 +259,8 @@ public class Map implements MapConstants {
         return this.mapData.isSquareVisible(x1, y1, x2, y2, zLoc);
     }
 
-    public void setBattleCell(final MapObject mo, final int row, final int col) {
+    public void setBattleCell(final MapObject mo, final int row,
+            final int col) {
         this.mapData.setCell(mo, row, col, 0, MapConstants.LAYER_OBJECT);
     }
 
@@ -333,8 +335,8 @@ public class Map implements MapConstants {
         m.setXPrefixHandler(this.xmlPrefixHandler);
         m.setXSuffixHandler(this.xmlSuffixHandler);
         // Create metafile reader
-        final XDataReader metaReader = new XDataReader(this.mapBasePath
-                + File.separator + "metafile.xml", "map");
+        final XDataReader metaReader = new XDataReader(
+                this.mapBasePath + File.separator + "metafile.xml", "map");
         // Read metafile
         final int version = m.readMapMetafileX(metaReader);
         metaReader.close();
@@ -370,8 +372,8 @@ public class Map implements MapConstants {
         this.readMapLevelX(reader, FormatConstants.SCENARIO_FORMAT_1);
     }
 
-    private void readMapLevelX(final XDataReader reader, final int formatVersion)
-            throws IOException {
+    private void readMapLevelX(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.SCENARIO_FORMAT_1) {
             this.mapData = LayeredTower.readXLayeredTowerV1(reader,
                     formatVersion);
@@ -383,8 +385,8 @@ public class Map implements MapConstants {
 
     public void writeMapX() throws IOException {
         // Create metafile writer
-        final XDataWriter metaWriter = new XDataWriter(this.mapBasePath
-                + File.separator + "metafile.xml", "map");
+        final XDataWriter metaWriter = new XDataWriter(
+                this.mapBasePath + File.separator + "metafile.xml", "map");
         // Write metafile
         this.writeMapMetafileX(metaWriter);
         // Close writer
@@ -402,7 +404,8 @@ public class Map implements MapConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMapMetafileX(final XDataWriter writer) throws IOException {
+    private void writeMapMetafileX(final XDataWriter writer)
+            throws IOException {
         if (this.xmlPrefixHandler != null) {
             this.xmlPrefixHandler.writePrefix(writer);
         }

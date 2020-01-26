@@ -38,8 +38,8 @@ public class MovingFinish extends Finish {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (this.active) {
             final Application app = FantastleX.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_FINISH);
@@ -63,12 +63,10 @@ public class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final AbstractMazeObject obj = FantastleX
-                .getApplication()
-                .getMazeManager()
-                .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(),
-                        this.getDestinationFloor(), MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject obj = FantastleX.getApplication()
+                .getMazeManager().getMazeObject(this.getDestinationRow(),
+                        this.getDestinationColumn(), this.getDestinationFloor(),
+                        MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             SoundManager.playSound(SoundConstants.SOUND_CHANGE);
@@ -94,8 +92,8 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        FantastleX.getApplication().showMessage(
-                this.getName() + ": Next Moving Finish ("
+        FantastleX.getApplication()
+                .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
                         + (this.getDestinationFloor() + 1) + ")");
@@ -163,8 +161,8 @@ public class MovingFinish extends Finish {
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         final MazeEditorLogic me = FantastleX.getApplication().getEditor();
-        final AbstractMazeObject mo = me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
+        final AbstractMazeObject mo = me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
 

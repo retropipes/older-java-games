@@ -31,8 +31,8 @@ public class MenuManager {
     private JMenuItem fileOpenGame, fileClose, fileSaveGame, filePreferences,
             fileExit;
     private JMenuItem gameNewGame, gameEquipment, gameInventory,
-            gameRegisterCharacter, gameUnregisterCharacter,
-            gameRemoveCharacter, gameEditNote, gameViewStats;
+            gameRegisterCharacter, gameUnregisterCharacter, gameRemoveCharacter,
+            gameEditNote, gameViewStats;
     private JMenuItem helpAbout, helpObjectHelp;
     private KeyStroke fileOpenGameAccel, fileCloseAccel, fileSaveGameAccel,
             filePreferencesAccel;
@@ -195,7 +195,7 @@ public class MenuManager {
         fileMenu.add(this.fileOpenGame);
         fileMenu.add(this.fileClose);
         fileMenu.add(this.fileSaveGame);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             fileMenu.add(this.filePreferences);
             fileMenu.add(this.fileExit);
         }
@@ -207,7 +207,7 @@ public class MenuManager {
         gameMenu.add(this.gameRemoveCharacter);
         gameMenu.add(this.gameEditNote);
         gameMenu.add(this.gameViewStats);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             helpMenu.add(this.helpAbout);
         }
         helpMenu.add(this.helpObjectHelp);

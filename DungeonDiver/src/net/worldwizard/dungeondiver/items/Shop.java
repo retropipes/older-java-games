@@ -34,14 +34,14 @@ public class Shop implements ShopTypes {
         return (int) (Math.log10(x) * (z - y + Math.log10((double) k + 1)));
     }
 
-    public static int getRegenerationCost(final int x, final int y,
-            final int z, final int k) {
+    public static int getRegenerationCost(final int x, final int y, final int z,
+            final int k) {
         final int diff = z - y;
         if (diff == 0) {
             return 0;
         } else {
-            final int cost = (int) (Math.log(x) / Math.log(2) * (z - y + Math
-                    .log((double) k + 1) / Math.log(2)));
+            final int cost = (int) (Math.log(x) / Math.log(2)
+                    * (z - y + Math.log((double) k + 1) / Math.log(2)));
             if (cost < 1) {
                 return 1;
             } else {
@@ -114,9 +114,8 @@ public class Shop implements ShopTypes {
         if (this.type == ShopTypes.WEAPONS || this.type == ShopTypes.ARMOR) {
             cost = Shop.getEquipmentCost(stage1Index + 1);
         } else if (this.type == ShopTypes.HEALER) {
-            cost = Shop.getHealingCost(player.getLevel(),
-                    player.getCurrentHP(), player.getMaximumHP(),
-                    player.getKills());
+            cost = Shop.getHealingCost(player.getLevel(), player.getCurrentHP(),
+                    player.getMaximumHP(), player.getKills());
         } else if (this.type == ShopTypes.REGENERATOR) {
             cost = Shop.getRegenerationCost(player.getLevel(),
                     player.getCurrentMP(), player.getMaximumMP(),
@@ -159,7 +158,8 @@ public class Shop implements ShopTypes {
             final int currentWeapon = player.getWeaponPower();
             if (stage1Index + 1 <= currentWeapon) {
                 final int stage2SecondConfirm = JOptionPane.showConfirmDialog(
-                        null, "This purchase will downgrade your weapon.\n"
+                        null,
+                        "This purchase will downgrade your weapon.\n"
                                 + "Are you REALLY sure you want to buy this?",
                         Shop.getShopNameFromType(this.type),
                         JOptionPane.YES_NO_OPTION);
@@ -172,7 +172,8 @@ public class Shop implements ShopTypes {
             final int currentArmor = player.getArmorBlock();
             if (stage1Index + 1 <= currentArmor) {
                 final int stage2SecondConfirm = JOptionPane.showConfirmDialog(
-                        null, "This purchase will downgrade your armor.\n"
+                        null,
+                        "This purchase will downgrade your armor.\n"
                                 + "Are you REALLY sure you want to buy this?",
                         Shop.getShopNameFromType(this.type),
                         JOptionPane.YES_NO_OPTION);

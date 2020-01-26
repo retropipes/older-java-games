@@ -8,23 +8,23 @@ package com.puttysoftware.dungeondiver3.support.map.generic;
 import com.puttysoftware.dungeondiver3.support.map.Map;
 
 public interface RandomGenerationRule {
-    public static final int NO_LIMIT = 0;
+    int NO_LIMIT = 0;
 
-    public boolean shouldGenerateObject(Map map, int row, int col, int floor,
+    boolean shouldGenerateObject(Map map, int row, int col, int floor,
             int level, int layer);
 
-    public int getMinimumRequiredQuantity(Map map);
+    int getMinimumRequiredQuantity(Map map);
 
-    public int getMaximumRequiredQuantity(Map map);
+    int getMaximumRequiredQuantity(Map map);
 
-    public boolean isRequired();
+    boolean isRequired();
 
-    public boolean shouldGenerateObjectInBattle(Map map, int row, int col,
-            int floor, int level, int layer);
+    boolean shouldGenerateObjectInBattle(Map map, int row, int col, int floor,
+            int level, int layer);
 
-    public int getMinimumRequiredQuantityInBattle(Map map);
+    int getMinimumRequiredQuantityInBattle(Map map);
 
-    public int getMaximumRequiredQuantityInBattle(Map map);
+    int getMaximumRequiredQuantityInBattle(Map map);
 
-    public boolean isRequiredInBattle();
+    boolean isRequiredInBattle();
 }

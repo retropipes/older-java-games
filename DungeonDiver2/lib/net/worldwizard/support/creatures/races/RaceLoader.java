@@ -24,13 +24,10 @@ public class RaceLoader {
             return SystemLoader.loadRace(file);
         } else {
             try {
-                final XDataReader raceFile = new XDataReader(Support
-                        .getVariables().getBasePath()
-                        + File.separator
-                        + "races"
-                        + File.separator
-                        + file
-                        + Extension.getRaceExtensionWithPeriod(),
+                final XDataReader raceFile = new XDataReader(
+                        Support.getVariables().getBasePath() + File.separator
+                                + "races" + File.separator + file
+                                + Extension.getRaceExtensionWithPeriod(),
                         Extension.getRaceExtension());
                 final Race r = Race.read(raceFile);
                 raceFile.close();

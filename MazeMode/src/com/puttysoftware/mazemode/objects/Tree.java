@@ -30,8 +30,8 @@ public class Tree extends GenericInfiniteLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (!this.getKey().isInfinite()) {
             inv.removeItem(this.getKey());
         }

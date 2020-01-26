@@ -35,9 +35,7 @@ public class IceAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        Main.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_ICY,
-                        IceAmulet.EFFECT_DURATION);
+        Main.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
     }
 }

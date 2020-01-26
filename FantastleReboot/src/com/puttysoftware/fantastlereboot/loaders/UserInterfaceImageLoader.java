@@ -27,39 +27,41 @@ import com.puttysoftware.fantastlereboot.assets.UserInterfaceImageIndex;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class UserInterfaceImageLoader {
-  private static String[] allFilenames;
-  private static Properties fileExtensions;
-  private static final int MAX_INDEX = 3;
+    private static String[] allFilenames;
+    private static Properties fileExtensions;
+    private static final int MAX_INDEX = 3;
 
-  public static void preInit() {
-    UserInterfaceImageLoader.allFilenames = DataLoader
-        .loadUserInterfaceImageData();
-    try {
-      UserInterfaceImageLoader.fileExtensions = new Properties();
-      UserInterfaceImageLoader.fileExtensions
-          .load(UserInterfaceImageLoader.class.getResourceAsStream(
-              "/assets/data/extensions/extensions.properties"));
-    } catch (final IOException e) {
-      FantastleReboot.exception(e);
+    public static void preInit() {
+        UserInterfaceImageLoader.allFilenames = DataLoader
+                .loadUserInterfaceImageData();
+        try {
+            UserInterfaceImageLoader.fileExtensions = new Properties();
+            UserInterfaceImageLoader.fileExtensions
+                    .load(UserInterfaceImageLoader.class.getResourceAsStream(
+                            "/assets/data/extensions/extensions.properties"));
+        } catch (final IOException e) {
+            FantastleReboot.exception(e);
+        }
     }
-  }
 
-  public static BufferedImageIcon load(final UserInterfaceImageIndex image) {
-    final String imageExt = UserInterfaceImageLoader.fileExtensions
-        .getProperty("images");
-    final String name = "/assets/images/ui/"
-        + UserInterfaceImageLoader.allFilenames[image.ordinal()] + imageExt;
-    return ImageLoader.load(name,
-        UserInterfaceImageLoader.class.getResource(name));
-  }
-
-  public static void cacheAll() {
-    final String imageExt = UserInterfaceImageLoader.fileExtensions
-        .getProperty("images");
-    for (int i = 1; i <= UserInterfaceImageLoader.MAX_INDEX; i++) {
-      final String name = "/assets/images/ui/"
-          + UserInterfaceImageLoader.allFilenames[i] + imageExt;
-      ImageLoader.load(name, UserInterfaceImageLoader.class.getResource(name));
+    public static BufferedImageIcon load(final UserInterfaceImageIndex image) {
+        final String imageExt = UserInterfaceImageLoader.fileExtensions
+                .getProperty("images");
+        final String name = "/assets/images/ui/"
+                + UserInterfaceImageLoader.allFilenames[image.ordinal()]
+                + imageExt;
+        return ImageLoader.load(name,
+                UserInterfaceImageLoader.class.getResource(name));
     }
-  }
+
+    public static void cacheAll() {
+        final String imageExt = UserInterfaceImageLoader.fileExtensions
+                .getProperty("images");
+        for (int i = 1; i <= UserInterfaceImageLoader.MAX_INDEX; i++) {
+            final String name = "/assets/images/ui/"
+                    + UserInterfaceImageLoader.allFilenames[i] + imageExt;
+            ImageLoader.load(name,
+                    UserInterfaceImageLoader.class.getResource(name));
+        }
+    }
 }

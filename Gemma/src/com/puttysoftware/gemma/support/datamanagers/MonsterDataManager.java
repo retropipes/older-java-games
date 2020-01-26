@@ -7,6 +7,7 @@
 package com.puttysoftware.gemma.support.datamanagers;
 
 import java.util.ArrayList;
+
 import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class MonsterDataManager {
@@ -21,8 +22,8 @@ public class MonsterDataManager {
                 raw = rsr.readString();
                 data.add(raw);
             }
-            Object[] arr = data.toArray();
-            String[] tempres = new String[arr.length];
+            final Object[] arr = data.toArray();
+            final String[] tempres = new String[arr.length];
             int count = 0;
             for (int x = 0; x < arr.length; x++) {
                 if (arr[x] != null) {
@@ -30,11 +31,11 @@ public class MonsterDataManager {
                     count++;
                 }
             }
-            String[] res = new String[count];
+            final String[] res = new String[count];
             count = 0;
-            for (int x = 0; x < tempres.length; x++) {
-                if (tempres[x] != null) {
-                    res[count] = tempres[x];
+            for (final String tempre : tempres) {
+                if (tempre != null) {
+                    res[count] = tempre;
                     count++;
                 }
             }

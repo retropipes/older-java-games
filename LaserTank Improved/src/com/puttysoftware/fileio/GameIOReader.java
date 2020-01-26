@@ -5,7 +5,7 @@ import java.io.IOException;
 public abstract class GameIOReader implements AutoCloseable {
     // Constructors
     protected GameIOReader() throws IOException {
-	super();
+        super();
     }
 
     // Methods
@@ -15,7 +15,7 @@ public abstract class GameIOReader implements AutoCloseable {
     public abstract boolean readBoolean() throws IOException;
 
     public abstract byte readByte() throws IOException;
-    
+
     public abstract byte[] readBytes(int len) throws IOException;
 
     public abstract double readDouble() throws IOException;
@@ -27,10 +27,10 @@ public abstract class GameIOReader implements AutoCloseable {
     public abstract String readString() throws IOException;
 
     public abstract int readUnsignedByte() throws IOException;
-    
+
     public abstract int readUnsignedShortByteArrayAsInt() throws IOException;
-    
+
     public abstract String readWindowsString(byte[] buf) throws IOException;
-    
+
     public abstract boolean atEOF() throws IOException;
 }

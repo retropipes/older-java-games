@@ -19,12 +19,13 @@ public class StatImageCache {
             final BufferedImageIcon bii = StatImageManager
                     .getUncachedImage(name);
             final BufferedImageIcon fixed = ImageTransformer
-                    .getTransformedImage(bii, ImageTransformer.getGraphicSize());
+                    .getTransformedImage(bii,
+                            ImageTransformer.getGraphicSize());
             StatImageCache.addToCache(name, fixed);
         }
-        for (int x = 0; x < StatImageCache.cache.length; x++) {
-            if (name.equals(StatImageCache.cache[x].getName())) {
-                return StatImageCache.cache[x].getImage();
+        for (final CacheEntry element : StatImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;

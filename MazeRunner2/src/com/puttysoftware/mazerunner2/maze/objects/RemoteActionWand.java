@@ -7,8 +7,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractWand;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractWand;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 
 public class RemoteActionWand extends AbstractWand {
@@ -33,9 +33,9 @@ public class RemoteActionWand extends AbstractWand {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().doRemoteAction(x, y, z);
     }
 

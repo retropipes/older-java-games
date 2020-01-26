@@ -23,7 +23,7 @@ public class AIContext {
     private static final int CANNOT_MOVE_THERE = -1;
 
     // Constructor
-    public AIContext(BattleCharacter context, Map arena) {
+    public AIContext(final BattleCharacter context, final Map arena) {
         this.aiContext = context;
         this.myTeam = context.getTeamID();
         this.apCosts = new int[arena.getRows()][arena.getColumns()];
@@ -31,10 +31,10 @@ public class AIContext {
     }
 
     // Methods
-    public void updateContext(Map arena) {
+    public void updateContext(final Map arena) {
         for (int x = 0; x < this.apCosts.length; x++) {
             for (int y = 0; y < this.apCosts[x].length; y++) {
-                MapObject obj = arena.getBattleCell(x, y);
+                final MapObject obj = arena.getBattleCell(x, y);
                 if (obj.isSolid()) {
                     this.apCosts[x][y] = AIContext.CANNOT_MOVE_THERE;
                 } else {
@@ -44,9 +44,9 @@ public class AIContext {
         }
         for (int x = 0; x < this.creatureLocations.length; x++) {
             for (int y = 0; y < this.creatureLocations[x].length; y++) {
-                MapObject obj = arena.getBattleCell(x, y);
+                final MapObject obj = arena.getBattleCell(x, y);
                 if (obj.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                    BattleCharacter bc = (BattleCharacter) obj;
+                    final BattleCharacter bc = (BattleCharacter) obj;
                     this.creatureLocations[x][y] = bc.getTeamID();
                 } else {
                     this.creatureLocations[x][y] = AIContext.NOTHING_THERE;
@@ -63,7 +63,7 @@ public class AIContext {
         return this.isEnemyNearby(1, 1);
     }
 
-    Point isEnemyNearby(int minRadius, int maxRadius) {
+    Point isEnemyNearby(final int minRadius, final int maxRadius) {
         int fMinR = minRadius;
         int fMaxR = maxRadius;
         if (fMaxR > AIContext.MAXIMUM_RADIUS) {
@@ -78,8 +78,8 @@ public class AIContext {
         if (fMinR < AIContext.MINIMUM_RADIUS) {
             fMinR = AIContext.MINIMUM_RADIUS;
         }
-        int x = this.aiContext.getX();
-        int y = this.aiContext.getY();
+        final int x = this.aiContext.getX();
+        final int y = this.aiContext.getY();
         int u, v;
         for (u = x - fMaxR; u <= x + fMaxR; u++) {
             for (v = y - fMaxR; v <= y + fMaxR; v++) {
@@ -91,7 +91,7 @@ public class AIContext {
                             && this.creatureLocations[u][v] != this.myTeam) {
                         return new Point(u - x, v - y);
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Ignore
                 }
             }

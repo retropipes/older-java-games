@@ -18,49 +18,51 @@ public class SavedScoreManager extends ScoreManager {
     private final String scoresFilename;
 
     // Constructors
-    public SavedScoreManager(final int length, final SortedScoreTable.SortOrder sortOrder, final String customTitle,
-	    final String scoresFile) {
-	super(length, sortOrder, customTitle);
-	this.scoresFilename = scoresFile;
-	try {
-	    this.readScoresFile();
-	} catch (final IOException io) {
-	    // Do nothing
-	}
+    public SavedScoreManager(final int length,
+            final SortedScoreTable.SortOrder sortOrder,
+            final String customTitle, final String scoresFile) {
+        super(length, sortOrder, customTitle);
+        this.scoresFilename = scoresFile;
+        try {
+            this.readScoresFile();
+        } catch (final IOException io) {
+            // Do nothing
+        }
     }
 
     // Methods
     @Override
     public boolean add(final long newMoves, final long newShots) {
-	final boolean success = super.add(newMoves, newShots);
-	try {
-	    this.writeScoresFile();
-	} catch (final IOException io) {
-	    LaserTank.logNonFatalErrorDirectly(io);
-	}
-	return success;
+        final boolean success = super.add(newMoves, newShots);
+        try {
+            this.writeScoresFile();
+        } catch (final IOException io) {
+            LaserTank.logNonFatalErrorDirectly(io);
+        }
+        return success;
     }
 
     @Override
-    public boolean add(final long newMoves, final long newShots, final String newName) {
-	final boolean success = super.add(newMoves, newShots, newName);
-	try {
-	    this.writeScoresFile();
-	} catch (final IOException io) {
-	    LaserTank.logNonFatalErrorDirectly(io);
-	}
-	return success;
+    public boolean add(final long newMoves, final long newShots,
+            final String newName) {
+        final boolean success = super.add(newMoves, newShots, newName);
+        try {
+            this.writeScoresFile();
+        } catch (final IOException io) {
+            LaserTank.logNonFatalErrorDirectly(io);
+        }
+        return success;
     }
 
     private void readScoresFile() throws IOException {
-	try (GameIOReader gio = new GameIODataReader(this.scoresFilename)) {
-	    this.table = SortedScoreTable.load(gio);
-	}
+        try (GameIOReader gio = new GameIODataReader(this.scoresFilename)) {
+            this.table = SortedScoreTable.load(gio);
+        }
     }
 
     private void writeScoresFile() throws IOException {
-	try (GameIOWriter gio = new GameIODataWriter(this.scoresFilename)) {
-	    this.table.save(gio);
-	}
+        try (GameIOWriter gio = new GameIODataWriter(this.scoresFilename)) {
+            this.table.save(gio);
+        }
     }
 }

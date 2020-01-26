@@ -15,30 +15,31 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class UTurnTrap extends AbstractTrap {
     // Constructors
     public UTurnTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_U_TURN_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_U_TURN_TRAP);
     }
 
     @Override
     public String getName() {
-	return "U Turn Trap";
+        return "U Turn Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "U Turn Traps";
+        return "U Turn Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().showMessage(
-		"Your controls are turned around!");
-	DynamicDungeon.getApplication().getGameManager()
-		.activateEffect(DungeonEffectConstants.EFFECT_U_TURNED);
-	SoundManager.playSound(SoundConstants.SOUND_CHANGE);
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication()
+                .showMessage("Your controls are turned around!");
+        DynamicDungeon.getApplication().getGameManager()
+                .activateEffect(DungeonEffectConstants.EFFECT_U_TURNED);
+        SoundManager.playSound(SoundConstants.SOUND_CHANGE);
     }
 
     @Override
     public String getDescription() {
-	return "U Turn Traps invert your controls for 6 steps when stepped on.";
+        return "U Turn Traps invert your controls for 6 steps when stepped on.";
     }
 }

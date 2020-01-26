@@ -42,8 +42,8 @@ public class InvisibleTeleport extends GenericInvisibleTeleport {
     @Override
     public WorldObject editorPropertiesHook() {
         final WorldEditor me = Worldz.getApplication().getEditor();
-        final WorldObject mo = me
-                .editTeleportDestination(WorldEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
+        final WorldObject mo = me.editTeleportDestination(
+                WorldEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
         return mo;
     }
 

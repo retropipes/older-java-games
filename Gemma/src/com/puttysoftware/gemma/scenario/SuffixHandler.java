@@ -14,13 +14,13 @@ import com.puttysoftware.xio.XDataWriter;
 
 class SuffixHandler implements SuffixIO {
     @Override
-    public void readSuffix(XDataReader reader, int formatVersion)
+    public void readSuffix(final XDataReader reader, final int formatVersion)
             throws IOException {
         FileHooks.loadGameHook(reader);
     }
 
     @Override
-    public void writeSuffix(XDataWriter writer) throws IOException {
+    public void writeSuffix(final XDataWriter writer) throws IOException {
         FileHooks.saveGameHook(writer);
     }
 }

@@ -89,7 +89,7 @@ public abstract class AbstractGameObject extends CloneableObject
             copy.timerActive = this.timerActive;
             copy.type = (BitSet) this.type.clone();
             return copy;
-        } catch (CloneNotSupportedException cnse) {
+        } catch (final CloneNotSupportedException cnse) {
             Chrystalz.getErrorLogger().logError(cnse);
             return null;
         }
@@ -221,18 +221,18 @@ public abstract class AbstractGameObject extends CloneableObject
         SoundManager.playSound(SoundConstants.FAILED);
         Chrystalz.getApplication().showMessage("Can't go that way");
     }
-    
+
     /**
-    *
-    * @param ie
-    * @param dirX
-    * @param dirY
-    * @param inv
-    */
-   public void interactAction() {
-       SoundManager.playSound(SoundConstants.FAILED);
-       Chrystalz.getApplication().showMessage("Can't interact with that");
-   }
+     *
+     * @param ie
+     * @param dirX
+     * @param dirY
+     * @param inv
+     */
+    public void interactAction() {
+        SoundManager.playSound(SoundConstants.FAILED);
+        Chrystalz.getApplication().showMessage("Can't interact with that");
+    }
 
     /**
      *

@@ -10,8 +10,9 @@ public class MonsterFactory {
         // Do nothing
     }
 
-    public static BaseMonster getNewMonsterInstance(boolean randomAppearance,
-            boolean randomFaith, boolean scales, boolean dynamic) {
+    public static BaseMonster getNewMonsterInstance(
+            final boolean randomAppearance, final boolean randomFaith,
+            final boolean scales, final boolean dynamic) {
         if (randomAppearance) {
             if (randomFaith) {
                 if (scales) {

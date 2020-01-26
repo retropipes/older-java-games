@@ -13,24 +13,26 @@ import com.puttysoftware.brainmaze.objects.SunStone;
 import com.puttysoftware.brainmaze.resourcemanagers.SoundConstants;
 import com.puttysoftware.brainmaze.resourcemanagers.SoundManager;
 
-public abstract class GenericInvisibleConditionalTeleport extends
-        GenericConditionalTeleport {
+public abstract class GenericInvisibleConditionalTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     protected GenericInvisibleConditionalTeleport(final String attrName) {
         super(attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = BrainMaze.getApplication();
         int testVal;
         if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
-        } else if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(new MoonStone());
         } else {
             testVal = 0;

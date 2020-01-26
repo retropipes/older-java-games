@@ -22,8 +22,8 @@ public abstract class GenericShop extends WorldObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Shop shop = Worldz.getApplication().getGenericShop(this.shopType);
         if (shop != null) {
             shop.showShop();

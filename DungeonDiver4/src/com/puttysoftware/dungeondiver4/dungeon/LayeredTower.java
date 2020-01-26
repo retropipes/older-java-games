@@ -45,11 +45,11 @@ class LayeredTower implements Cloneable {
     private LowLevelADODataStore data;
     private LowLevelADODataStore savedTowerState;
     private LowLevelFlagDataStore visionData;
-    private LowLevelNoteDataStore noteData;
-    private int[] playerStartData;
-    private int[] playerLocationData;
-    private int[] savedPlayerLocationData;
-    private int[] findResult;
+    private final LowLevelNoteDataStore noteData;
+    private final int[] playerStartData;
+    private final int[] playerLocationData;
+    private final int[] savedPlayerLocationData;
+    private final int[] findResult;
     private boolean horizontalWraparoundEnabled;
     private boolean verticalWraparoundEnabled;
     private boolean thirdDimensionWraparoundEnabled;
@@ -102,7 +102,7 @@ class LayeredTower implements Cloneable {
         this.levelEndMessage = "Level Solved!";
         this.visionMode = DungeonConstants.VISION_MODE_EXPLORE_AND_LOS;
         this.visionModeExploreRadius = 2;
-        this.visionRadius = MAX_VISION_RADIUS;
+        this.visionRadius = LayeredTower.MAX_VISION_RADIUS;
         this.regionSize = 8;
     }
 
@@ -134,8 +134,8 @@ class LayeredTower implements Cloneable {
     // Methods
     @Override
     public LayeredTower clone() {
-        LayeredTower copy = new LayeredTower(this.getRows(), this.getColumns(),
-                this.getFloors());
+        final LayeredTower copy = new LayeredTower(this.getRows(),
+                this.getColumns(), this.getFloors());
         copy.data = (LowLevelADODataStore) this.data.clone();
         copy.visionData = (LowLevelFlagDataStore) this.visionData.clone();
         copy.savedTowerState = (LowLevelADODataStore) this.savedTowerState
@@ -152,15 +152,16 @@ class LayeredTower implements Cloneable {
 
     public void updateMovingBlockPosition(final int move, final int xLoc,
             final int yLoc, final MovingBlock block) {
-        int[] dirMove = DirectionResolver.unresolveRelativeDirection(move);
-        int xLocP = this.getPlayerRow();
-        int yLocP = this.getPlayerColumn();
-        int zLoc = this.getPlayerFloor();
+        final int[] dirMove = DirectionResolver
+                .unresolveRelativeDirection(move);
+        final int xLocP = this.getPlayerRow();
+        final int yLocP = this.getPlayerColumn();
+        final int zLoc = this.getPlayerFloor();
         try {
-            AbstractDungeonObject there = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, DungeonConstants.LAYER_OBJECT);
-            AbstractDungeonObject ground = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, DungeonConstants.LAYER_GROUND);
+            final AbstractDungeonObject there = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, DungeonConstants.LAYER_OBJECT);
+            final AbstractDungeonObject ground = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, DungeonConstants.LAYER_GROUND);
             if (!there.isSolid() && xLoc + dirMove[0] != xLocP
                     && yLoc + dirMove[1] != yLocP) {
                 this.setCell(block.getSavedObject(), xLoc, yLoc, zLoc,
@@ -183,18 +184,20 @@ class LayeredTower implements Cloneable {
 
     public void updateMonsterPosition(final int move, final int xLoc,
             final int yLoc, final MonsterObject monster) {
-        int[] dirMove = DirectionResolver.unresolveRelativeDirection(move);
-        int pLocX = this.getPlayerRow();
-        int pLocY = this.getPlayerColumn();
-        int zLoc = this.getPlayerFloor();
+        final int[] dirMove = DirectionResolver
+                .unresolveRelativeDirection(move);
+        final int pLocX = this.getPlayerRow();
+        final int pLocY = this.getPlayerColumn();
+        final int zLoc = this.getPlayerFloor();
         try {
-            AbstractDungeonObject there = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, DungeonConstants.LAYER_OBJECT);
-            AbstractDungeonObject ground = this.getCell(xLoc + dirMove[0], yLoc
-                    + dirMove[1], zLoc, DungeonConstants.LAYER_GROUND);
+            final AbstractDungeonObject there = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, DungeonConstants.LAYER_OBJECT);
+            final AbstractDungeonObject ground = this.getCell(xLoc + dirMove[0],
+                    yLoc + dirMove[1], zLoc, DungeonConstants.LAYER_GROUND);
             if (!there.isSolid() && !there.getName().equals("Monster")) {
                 if (this.radialScan(xLoc, yLoc, 0, pLocX, pLocY)) {
-                    if (DungeonDiver4.getApplication().getMode() != Application.STATUS_BATTLE) {
+                    if (DungeonDiver4.getApplication()
+                            .getMode() != Application.STATUS_BATTLE) {
                         DungeonDiver4.getApplication().getBattle().doBattle();
                         this.postBattle(monster, xLoc, yLoc, false);
                     }
@@ -218,30 +221,31 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void postBattle(MonsterObject m, final int xLoc, final int yLoc,
-            boolean player) {
-        AbstractDungeonObject saved = m.getSavedObject();
-        int zLoc = this.getPlayerFloor();
+    public void postBattle(final MonsterObject m, final int xLoc,
+            final int yLoc, final boolean player) {
+        final AbstractDungeonObject saved = m.getSavedObject();
+        final int zLoc = this.getPlayerFloor();
         if (player) {
             DungeonDiver4.getApplication().getGameManager()
                     .setSavedDungeonObject(saved);
         } else {
-            this.setCell(saved, xLoc, yLoc, zLoc, DungeonConstants.LAYER_OBJECT);
+            this.setCell(saved, xLoc, yLoc, zLoc,
+                    DungeonConstants.LAYER_OBJECT);
         }
         this.generateOneMonster();
     }
 
     public void generateOneMonster() {
-        RandomRange row = new RandomRange(0, this.getRows() - 1);
-        RandomRange column = new RandomRange(0, this.getColumns() - 1);
-        int zLoc = this.getPlayerFloor();
+        final RandomRange row = new RandomRange(0, this.getRows() - 1);
+        final RandomRange column = new RandomRange(0, this.getColumns() - 1);
+        final int zLoc = this.getPlayerFloor();
         int randomRow, randomColumn;
         randomRow = row.generate();
         randomColumn = column.generate();
         AbstractDungeonObject currObj = this.getCell(randomRow, randomColumn,
                 zLoc, DungeonConstants.LAYER_OBJECT);
         if (!currObj.isSolid()) {
-            MonsterObject m = new MonsterObject();
+            final MonsterObject m = new MonsterObject();
             m.setSavedObject(currObj);
             this.setCell(m, randomRow, randomColumn, zLoc,
                     DungeonConstants.LAYER_OBJECT);
@@ -252,7 +256,7 @@ class LayeredTower implements Cloneable {
                 currObj = this.getCell(randomRow, randomColumn, zLoc,
                         DungeonConstants.LAYER_OBJECT);
             }
-            MonsterObject m = new MonsterObject();
+            final MonsterObject m = new MonsterObject();
             m.setSavedObject(currObj);
             this.setCell(m, randomRow, randomColumn, zLoc,
                     DungeonConstants.LAYER_OBJECT);
@@ -268,11 +272,11 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    String testName = this.getCell(u, v, z, l).getName();
+                    final String testName = this.getCell(u, v, z, l).getName();
                     if (testName.equals(targetName)) {
                         this.getCell(u, v, z, l).extendTimer(timerMod);
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -287,11 +291,11 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    String testName = this.getCell(u, v, z, l).getName();
+                    final String testName = this.getCell(u, v, z, l).getName();
                     if (testName.equals("Monster")) {
                         // Kill the monster
-                        MonsterObject m = (MonsterObject) this.getCell(u, v, z,
-                                l);
+                        final MonsterObject m = (MonsterObject) this.getCell(u,
+                                v, z, l);
                         this.setCell(m.getSavedObject(), u, v, z, l);
                         // Reward player for monster death
                         DungeonDiver4.getApplication().getBattle()
@@ -299,7 +303,7 @@ class LayeredTower implements Cloneable {
                         // Respawn it
                         this.generateOneMonster();
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -314,7 +318,7 @@ class LayeredTower implements Cloneable {
         return this.poisonPower;
     }
 
-    public void setPoisonPower(int pp) {
+    public void setPoisonPower(final int pp) {
         int fPP = pp;
         if (fPP < 0) {
             fPP = 0;
@@ -412,20 +416,20 @@ class LayeredTower implements Cloneable {
         this.levelEndMessage = msg;
     }
 
-    public boolean hasNote(int x, int y, int z) {
+    public boolean hasNote(final int x, final int y, final int z) {
         return this.noteData.getNote(y, x, z) != null;
     }
 
-    public void createNote(int x, int y, int z) {
+    public void createNote(final int x, final int y, final int z) {
         this.noteData.setNote(new DungeonNote(), y, x, z);
     }
 
-    public DungeonNote getNote(int x, int y, int z) {
+    public DungeonNote getNote(final int x, final int y, final int z) {
         return this.noteData.getNote(y, x, z);
     }
 
-    public AbstractDungeonObject getCell(int row, int col, int floor,
-            final int extra) {
+    public AbstractDungeonObject getCell(final int row, final int col,
+            final int floor, final int extra) {
         int fR = row;
         int fC = col;
         int fF = floor;
@@ -479,8 +483,8 @@ class LayeredTower implements Cloneable {
 
     public boolean doesPlayerExist() {
         boolean res = true;
-        for (int x = 0; x < this.playerStartData.length; x++) {
-            res = res && (this.playerStartData[x] != -1);
+        for (final int element : this.playerStartData) {
+            res = res && element != -1;
         }
         return res;
     }
@@ -491,7 +495,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    AbstractDungeonObject mo = this.getCell(y, x, z,
+                    final AbstractDungeonObject mo = this.getCell(y, x, z,
                             DungeonConstants.LAYER_OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o1.getName())) {
@@ -507,10 +511,10 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void resize(int x, int y, int z) {
+    public void resize(final int x, final int y, final int z) {
         // Allocate temporary storage array
-        LowLevelADODataStore tempStorage = new LowLevelADODataStore(y, x, z,
-                DungeonConstants.LAYER_COUNT);
+        final LowLevelADODataStore tempStorage = new LowLevelADODataStore(y, x,
+                z, DungeonConstants.LAYER_COUNT);
         // Copy existing dungeon into temporary array
         int u, v, w, e;
         for (u = 0; u < y; u++) {
@@ -520,7 +524,7 @@ class LayeredTower implements Cloneable {
                         try {
                             tempStorage.setCell(this.getCell(v, u, w, e), u, v,
                                     w, e);
-                        } catch (ArrayIndexOutOfBoundsException aioob) {
+                        } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
                     }
@@ -546,8 +550,9 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void updateVisibleSquares(int xp, int yp, int zp) {
-        if ((this.visionMode | DungeonConstants.VISION_MODE_EXPLORE) == this.visionMode) {
+    public void updateVisibleSquares(final int xp, final int yp, final int zp) {
+        if ((this.visionMode
+                | DungeonConstants.VISION_MODE_EXPLORE) == this.visionMode) {
             for (int x = xp - this.visionModeExploreRadius; x <= xp
                     + this.visionModeExploreRadius; x++) {
                 for (int y = yp - this.visionModeExploreRadius; y <= yp
@@ -566,22 +571,23 @@ class LayeredTower implements Cloneable {
                     boolean alreadyVisible = false;
                     try {
                         alreadyVisible = this.visionData.getCell(fx, fy, zp);
-                    } catch (ArrayIndexOutOfBoundsException aioobe) {
+                    } catch (final ArrayIndexOutOfBoundsException aioobe) {
                         // Ignore
                     }
                     if (!alreadyVisible) {
-                        if ((this.visionMode | DungeonConstants.VISION_MODE_LOS) == this.visionMode) {
+                        if ((this.visionMode
+                                | DungeonConstants.VISION_MODE_LOS) == this.visionMode) {
                             if (this.isSquareVisibleLOS(x, y, xp, yp)) {
                                 try {
                                     this.visionData.setCell(true, fx, fy, zp);
-                                } catch (ArrayIndexOutOfBoundsException aioobe) {
+                                } catch (final ArrayIndexOutOfBoundsException aioobe) {
                                     // Ignore
                                 }
                             }
                         } else {
                             try {
                                 this.visionData.setCell(true, fx, fy, zp);
-                            } catch (ArrayIndexOutOfBoundsException aioobe) {
+                            } catch (final ArrayIndexOutOfBoundsException aioobe) {
                                 // Ignore
                             }
                         }
@@ -591,15 +597,17 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public boolean isSquareVisible(int x1, int y1, int x2, int y2) {
+    public boolean isSquareVisible(final int x1, final int y1, final int x2,
+            final int y2) {
         if (this.visionMode == DungeonConstants.VISION_MODE_NONE) {
             return this.isSquareVisibleRadius(x1, y1, x2, y2);
         } else {
             boolean result = false;
-            if ((this.visionMode | DungeonConstants.VISION_MODE_EXPLORE) == this.visionMode) {
+            if ((this.visionMode
+                    | DungeonConstants.VISION_MODE_EXPLORE) == this.visionMode) {
                 result = result || this.isSquareVisibleExplore(x2, y2);
-                if (result
-                        && (this.visionMode | DungeonConstants.VISION_MODE_LOS) == this.visionMode) {
+                if (result && (this.visionMode
+                        | DungeonConstants.VISION_MODE_LOS) == this.visionMode) {
                     if (this.areCoordsInBounds(x1, y1, x2, y2)) {
                         // In bounds
                         result = result
@@ -631,7 +639,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    private boolean areCoordsInBounds(int x1, int y1, int x2, int y2) {
+    private boolean areCoordsInBounds(final int x1, final int y1, final int x2,
+            final int y2) {
         int fx1, fx2, fy1, fy2;
         if (this.isHorizontalWraparoundEnabled()) {
             fx1 = this.normalizeColumn(x1);
@@ -648,18 +657,18 @@ class LayeredTower implements Cloneable {
             fy2 = y2;
         }
         return fx1 >= 0 && fx1 <= this.getRows() && fx2 >= 0
-                && fx2 <= this.getRows() && fy1 >= 0
-                && fy1 <= this.getColumns() && fy2 >= 0
-                && fy2 <= this.getColumns();
+                && fx2 <= this.getRows() && fy1 >= 0 && fy1 <= this.getColumns()
+                && fy2 >= 0 && fy2 <= this.getColumns();
     }
 
-    private boolean isSquareVisibleRadius(int x1, int y1, int x2, int y2) {
-        LightGem lg = new LightGem();
-        DarkGem dg = new DarkGem();
+    private boolean isSquareVisibleRadius(final int x1, final int y1,
+            final int x2, final int y2) {
+        final LightGem lg = new LightGem();
+        final DarkGem dg = new DarkGem();
         boolean result = true;
-        int zLoc = this.getPlayerFloor();
-        int xDist = this.pointDistance(x1, x2, 1);
-        int yDist = this.pointDistance(y1, y2, 2);
+        final int zLoc = this.getPlayerFloor();
+        final int xDist = this.pointDistance(x1, x2, 1);
+        final int yDist = this.pointDistance(y1, y2, 2);
         if (xDist <= this.visionRadius && yDist <= this.visionRadius) {
             if (this.radialScanVision(x2, y2, zLoc,
                     DungeonConstants.LAYER_OBJECT,
@@ -680,8 +689,8 @@ class LayeredTower implements Cloneable {
         return result;
     }
 
-    private boolean isSquareVisibleExplore(int x2, int y2) {
-        int zLoc = this.getPlayerFloor();
+    private boolean isSquareVisibleExplore(final int x2, final int y2) {
+        final int zLoc = this.getPlayerFloor();
         int fx2, fy2;
         if (this.isHorizontalWraparoundEnabled()) {
             fx2 = this.normalizeColumn(x2);
@@ -695,21 +704,21 @@ class LayeredTower implements Cloneable {
         }
         try {
             return this.visionData.getCell(fx2, fy2, zLoc);
-        } catch (ArrayIndexOutOfBoundsException aioobe) {
+        } catch (final ArrayIndexOutOfBoundsException aioobe) {
             return true;
         }
     }
 
-    private boolean isSquareVisibleLOS(final int x1, final int y1,
-            final int x2, final int y2) {
+    private boolean isSquareVisibleLOS(final int x1, final int y1, final int x2,
+            final int y2) {
         int fx1, fx2, fy1, fy2;
         fx1 = x1;
         fx2 = x2;
         fy1 = y1;
         fy2 = y2;
-        int zLoc = this.getPlayerFloor();
-        int dx = Math.abs(fx2 - fx1);
-        int dy = Math.abs(fy2 - fy1);
+        final int zLoc = this.getPlayerFloor();
+        final int dx = Math.abs(fx2 - fx1);
+        final int dy = Math.abs(fy2 - fy1);
         int sx, sy;
         if (fx1 < fx2) {
             sx = 1;
@@ -729,7 +738,7 @@ class LayeredTower implements Cloneable {
             }
             // Does object block LOS?
             try {
-                AbstractDungeonObject obj = this.getCell(fx1, fy1, zLoc,
+                final AbstractDungeonObject obj = this.getCell(fx1, fy1, zLoc,
                         DungeonConstants.LAYER_OBJECT);
                 if (obj.isSightBlocking()) {
                     // This object blocks LOS
@@ -737,7 +746,7 @@ class LayeredTower implements Cloneable {
                         return false;
                     }
                 }
-            } catch (ArrayIndexOutOfBoundsException aioobe) {
+            } catch (final ArrayIndexOutOfBoundsException aioobe) {
                 // Void blocks LOS
                 return false;
             }
@@ -755,24 +764,24 @@ class LayeredTower implements Cloneable {
         return true;
     }
 
-    private int pointDistance(int u, int v, int w) {
+    private int pointDistance(final int u, final int v, final int w) {
         if (w == 1) {
             if (this.horizontalWraparoundEnabled) {
-                int max = this.getRows();
+                final int max = this.getRows();
                 return Math.min(Math.abs(u - v), max - Math.abs(u - v));
             } else {
                 return Math.abs(u - v);
             }
         } else if (w == 2) {
             if (this.verticalWraparoundEnabled) {
-                int max = this.getColumns();
+                final int max = this.getColumns();
                 return Math.min(Math.abs(u - v), max - Math.abs(u - v));
             } else {
                 return Math.abs(u - v);
             }
         } else if (w == 3) {
             if (this.thirdDimensionWraparoundEnabled) {
-                int max = this.getFloors();
+                final int max = this.getFloors();
                 return Math.min(Math.abs(u - v), max - Math.abs(u - v));
             } else {
                 return Math.abs(u - v);
@@ -782,8 +791,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void setCell(final AbstractDungeonObject mo, int row, int col,
-            int floor, final int extra) {
+    public void setCell(final AbstractDungeonObject mo, final int row,
+            final int col, final int floor, final int extra) {
         int fR = row;
         int fC = col;
         int fF = floor;
@@ -801,7 +810,8 @@ class LayeredTower implements Cloneable {
 
     public void savePlayerLocation() {
         System.arraycopy(this.playerLocationData, 0,
-                this.savedPlayerLocationData, 0, this.playerLocationData.length);
+                this.savedPlayerLocationData, 0,
+                this.playerLocationData.length);
     }
 
     public void restorePlayerLocation() {
@@ -846,7 +856,8 @@ class LayeredTower implements Cloneable {
         this.playerLocationData[0] += newPlayerColumn;
     }
 
-    public void fill(AbstractDungeonObject bottom, AbstractDungeonObject top) {
+    public void fill(final AbstractDungeonObject bottom,
+            final AbstractDungeonObject top) {
         int y, x, z, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -863,8 +874,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void fillFloor(AbstractDungeonObject bottom,
-            AbstractDungeonObject top, int z) {
+    public void fillFloor(final AbstractDungeonObject bottom,
+            final AbstractDungeonObject top, final int z) {
         int x, y, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -904,22 +915,22 @@ class LayeredTower implements Cloneable {
         // Pass 1
         this.fillFloor(pass1FillBottom, pass1FillTop, z);
         // Pass 2
-        int columns = this.getColumns();
-        int rows = this.getRows();
+        final int columns = this.getColumns();
+        final int rows = this.getRows();
         for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
-            AbstractDungeonObject[] objectsWithoutPrerequisites = objects
+            final AbstractDungeonObject[] objectsWithoutPrerequisites = objects
                     .getAllWithoutPrerequisiteAndNotRequired(e);
             if (objectsWithoutPrerequisites != null) {
                 r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
                 for (x = 0; x < columns; x++) {
                     for (y = 0; y < rows; y++) {
-                        AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                        final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                 .generate()];
-                        boolean okay = placeObj.shouldGenerateObject(dungeon,
-                                x, y, z, w, e);
+                        final boolean okay = placeObj
+                                .shouldGenerateObject(dungeon, x, y, z, w, e);
                         if (okay) {
-                            this.setCell(objects.getNewInstanceByName(placeObj
-                                    .getName()), y, x, z, e);
+                            this.setCell(objects.getNewInstanceByName(
+                                    placeObj.getName()), y, x, z, e);
                             placeObj.editorGenerateHook(y, x, z);
                         }
                     }
@@ -928,17 +939,18 @@ class LayeredTower implements Cloneable {
         }
         // Pass 3
         for (int layer = 0; layer < DungeonConstants.LAYER_COUNT; layer++) {
-            AbstractDungeonObject[] requiredObjects = objects
+            final AbstractDungeonObject[] requiredObjects = objects
                     .getAllRequired(layer);
             if (requiredObjects != null) {
-                RandomRange row = new RandomRange(0, this.getRows() - 1);
-                RandomRange column = new RandomRange(0, this.getColumns() - 1);
+                final RandomRange row = new RandomRange(0, this.getRows() - 1);
+                final RandomRange column = new RandomRange(0,
+                        this.getColumns() - 1);
                 int randomColumn, randomRow;
                 for (x = 0; x < requiredObjects.length; x++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
-                    AbstractDungeonObject currObj = requiredObjects[x];
-                    int min = currObj.getMinimumRequiredQuantity(dungeon);
+                    final AbstractDungeonObject currObj = requiredObjects[x];
+                    final int min = currObj.getMinimumRequiredQuantity(dungeon);
                     int max = currObj.getMaximumRequiredQuantity(dungeon);
                     if (max == RandomGenerationRule.NO_LIMIT) {
                         // Maximum undefined, so define it relative to this
@@ -949,16 +961,17 @@ class LayeredTower implements Cloneable {
                             max = min;
                         }
                     }
-                    RandomRange howMany = new RandomRange(min, max);
-                    int generateHowMany = howMany.generate();
+                    final RandomRange howMany = new RandomRange(min, max);
+                    final int generateHowMany = howMany.generate();
                     for (y = 0; y < generateHowMany; y++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
                         if (currObj.shouldGenerateObject(dungeon, randomRow,
                                 randomColumn, z, w, layer)) {
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         } else {
                             while (!currObj.shouldGenerateObject(dungeon,
@@ -966,9 +979,10 @@ class LayeredTower implements Cloneable {
                                 randomRow = row.generate();
                                 randomColumn = column.generate();
                             }
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         }
                     }
@@ -994,11 +1008,11 @@ class LayeredTower implements Cloneable {
         // Pass 1
         this.fillFloor(pass1FillBottom, pass1FillTop, z);
         // Pass 2
-        int columns = this.getColumns();
-        int rows = this.getRows();
+        final int columns = this.getColumns();
+        final int rows = this.getRows();
         if (withoutRuleSets != null) {
             for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
-                AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
+                final AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withoutRuleSets, e);
                 if (objectsWithoutPrerequisites != null
@@ -1007,14 +1021,15 @@ class LayeredTower implements Cloneable {
                             objectsWithoutPrerequisites.length - 1);
                     for (x = 0; x < columns; x++) {
                         for (y = 0; y < rows; y++) {
-                            AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                            final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                     .generate()];
-                            boolean okay = placeObj.shouldGenerateObject(
+                            final boolean okay = placeObj.shouldGenerateObject(
                                     dungeon, y, x, z, w, e);
                             if (okay) {
-                                this.setCell(objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName()), y, x, z, e);
+                                this.setCell(
+                                        objects.getNewInstanceByName(
+                                                placeObj.getName()),
+                                        y, x, z, e);
                                 placeObj.editorGenerateHook(y, x, z);
                             }
                         }
@@ -1023,18 +1038,20 @@ class LayeredTower implements Cloneable {
             }
             // Pass 3
             for (int layer = 0; layer < DungeonConstants.LAYER_COUNT; layer++) {
-                AbstractDungeonObject[] requiredObjects = DungeonObjectList
+                final AbstractDungeonObject[] requiredObjects = DungeonObjectList
                         .getAllRequiredSubset(withoutRuleSets, layer);
                 if (requiredObjects != null) {
-                    RandomRange row = new RandomRange(0, this.getRows() - 1);
-                    RandomRange column = new RandomRange(0,
+                    final RandomRange row = new RandomRange(0,
+                            this.getRows() - 1);
+                    final RandomRange column = new RandomRange(0,
                             this.getColumns() - 1);
                     int randomColumn, randomRow;
                     for (x = 0; x < requiredObjects.length; x++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
-                        AbstractDungeonObject currObj = requiredObjects[x];
-                        int min = currObj.getMinimumRequiredQuantity(dungeon);
+                        final AbstractDungeonObject currObj = requiredObjects[x];
+                        final int min = currObj
+                                .getMinimumRequiredQuantity(dungeon);
                         int max = currObj.getMaximumRequiredQuantity(dungeon);
                         if (max == RandomGenerationRule.NO_LIMIT) {
                             // Maximum undefined, so define it relative to this
@@ -1045,17 +1062,17 @@ class LayeredTower implements Cloneable {
                                 max = min;
                             }
                         }
-                        RandomRange howMany = new RandomRange(min, max);
-                        int generateHowMany = howMany.generate();
+                        final RandomRange howMany = new RandomRange(min, max);
+                        final int generateHowMany = howMany.generate();
                         for (y = 0; y < generateHowMany; y++) {
                             randomRow = row.generate();
                             randomColumn = column.generate();
-                            if (currObj.shouldGenerateObject(dungeon,
-                                    randomRow, randomColumn, z, w, layer)) {
+                            if (currObj.shouldGenerateObject(dungeon, randomRow,
+                                    randomColumn, z, w, layer)) {
                                 this.setCell(
-                                        objects.getNewInstanceByName(currObj
-                                                .getName()), randomColumn,
-                                        randomRow, z, layer);
+                                        objects.getNewInstanceByName(
+                                                currObj.getName()),
+                                        randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             } else {
                                 while (!currObj.shouldGenerateObject(dungeon,
@@ -1064,9 +1081,9 @@ class LayeredTower implements Cloneable {
                                     randomColumn = column.generate();
                                 }
                                 this.setCell(
-                                        objects.getNewInstanceByName(currObj
-                                                .getName()), randomColumn,
-                                        randomRow, z, layer);
+                                        objects.getNewInstanceByName(
+                                                currObj.getName()),
+                                        randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             }
                         }
@@ -1077,7 +1094,7 @@ class LayeredTower implements Cloneable {
         if (withRuleSets != null) {
             // Pass 4
             for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
-                AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
+                final AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withRuleSets, e);
                 if (objectsWithoutPrerequisites != null) {
@@ -1085,15 +1102,16 @@ class LayeredTower implements Cloneable {
                             objectsWithoutPrerequisites.length - 1);
                     for (x = 0; x < columns; x++) {
                         for (y = 0; y < rows; y++) {
-                            AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                            final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                     .generate()];
-                            boolean okay = placeObj.getRuleSet()
+                            final boolean okay = placeObj.getRuleSet()
                                     .shouldGenerateObject(dungeon, y, x, z, w,
                                             e);
                             if (okay) {
-                                this.setCell(objects
-                                        .getNewInstanceByName(placeObj
-                                                .getName()), y, x, z, e);
+                                this.setCell(
+                                        objects.getNewInstanceByName(
+                                                placeObj.getName()),
+                                        y, x, z, e);
                                 placeObj.editorGenerateHook(y, x, z);
                             }
                         }
@@ -1102,18 +1120,19 @@ class LayeredTower implements Cloneable {
             }
             // Pass 5
             for (int layer = 0; layer < DungeonConstants.LAYER_COUNT; layer++) {
-                AbstractDungeonObject[] requiredObjects = DungeonObjectList
+                final AbstractDungeonObject[] requiredObjects = DungeonObjectList
                         .getAllRequiredSubset(withRuleSets, layer);
                 if (requiredObjects != null) {
-                    RandomRange row = new RandomRange(0, this.getRows() - 1);
-                    RandomRange column = new RandomRange(0,
+                    final RandomRange row = new RandomRange(0,
+                            this.getRows() - 1);
+                    final RandomRange column = new RandomRange(0,
                             this.getColumns() - 1);
                     int randomColumn, randomRow;
                     for (x = 0; x < requiredObjects.length; x++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
-                        AbstractDungeonObject currObj = requiredObjects[x];
-                        int min = currObj.getRuleSet()
+                        final AbstractDungeonObject currObj = requiredObjects[x];
+                        final int min = currObj.getRuleSet()
                                 .getMinimumRequiredQuantity(dungeon);
                         int max = currObj.getRuleSet()
                                 .getMaximumRequiredQuantity(dungeon);
@@ -1126,8 +1145,8 @@ class LayeredTower implements Cloneable {
                                 max = min;
                             }
                         }
-                        RandomRange howMany = new RandomRange(min, max);
-                        int generateHowMany = howMany.generate();
+                        final RandomRange howMany = new RandomRange(min, max);
+                        final int generateHowMany = howMany.generate();
                         for (y = 0; y < generateHowMany; y++) {
                             randomRow = row.generate();
                             randomColumn = column.generate();
@@ -1135,9 +1154,9 @@ class LayeredTower implements Cloneable {
                                     dungeon, randomColumn, randomRow, z, w,
                                     layer)) {
                                 this.setCell(
-                                        objects.getNewInstanceByName(currObj
-                                                .getName()), randomColumn,
-                                        randomRow, z, layer);
+                                        objects.getNewInstanceByName(
+                                                currObj.getName()),
+                                        randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             } else {
                                 while (!currObj.getRuleSet()
@@ -1148,9 +1167,9 @@ class LayeredTower implements Cloneable {
                                     randomColumn = column.generate();
                                 }
                                 this.setCell(
-                                        objects.getNewInstanceByName(currObj
-                                                .getName()), randomColumn,
-                                        randomRow, z, layer);
+                                        objects.getNewInstanceByName(
+                                                currObj.getName()),
+                                        randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             }
                         }
@@ -1160,7 +1179,7 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void fillLayer(AbstractDungeonObject fillWith, int e) {
+    public void fillLayer(final AbstractDungeonObject fillWith, final int e) {
         int y, x, z;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1171,7 +1190,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void fillFloorAndLayer(AbstractDungeonObject fillWith, int z, int e) {
+    public void fillFloorAndLayer(final AbstractDungeonObject fillWith,
+            final int z, final int e) {
         int x, y;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1206,37 +1226,39 @@ class LayeredTower implements Cloneable {
         // Pass 1
         this.fillFloorAndLayer(pass1Fill, z, layer);
         // Pass 2
-        int columns = this.getColumns();
-        int rows = this.getRows();
-        AbstractDungeonObject[] objectsWithoutPrerequisites = objects
+        final int columns = this.getColumns();
+        final int rows = this.getRows();
+        final AbstractDungeonObject[] objectsWithoutPrerequisites = objects
                 .getAllWithoutPrerequisiteAndNotRequired(layer);
         if (objectsWithoutPrerequisites != null) {
             r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
             for (x = 0; x < columns; x++) {
                 for (y = 0; y < rows; y++) {
-                    AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                    final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                             .generate()];
-                    boolean okay = placeObj.shouldGenerateObject(dungeon, x, y,
-                            z, w, layer);
+                    final boolean okay = placeObj.shouldGenerateObject(dungeon,
+                            x, y, z, w, layer);
                     if (okay) {
-                        this.setCell(objects.getNewInstanceByName(placeObj
-                                .getName()), y, x, z, layer);
+                        this.setCell(objects.getNewInstanceByName(
+                                placeObj.getName()), y, x, z, layer);
                         placeObj.editorGenerateHook(y, x, z);
                     }
                 }
             }
         }
         // Pass 3
-        AbstractDungeonObject[] requiredObjects = objects.getAllRequired(layer);
+        final AbstractDungeonObject[] requiredObjects = objects
+                .getAllRequired(layer);
         if (requiredObjects != null) {
-            RandomRange row = new RandomRange(0, this.getRows() - 1);
-            RandomRange column = new RandomRange(0, this.getColumns() - 1);
+            final RandomRange row = new RandomRange(0, this.getRows() - 1);
+            final RandomRange column = new RandomRange(0,
+                    this.getColumns() - 1);
             int randomColumn, randomRow;
             for (x = 0; x < requiredObjects.length; x++) {
                 randomRow = row.generate();
                 randomColumn = column.generate();
-                AbstractDungeonObject currObj = requiredObjects[x];
-                int min = currObj.getMinimumRequiredQuantity(dungeon);
+                final AbstractDungeonObject currObj = requiredObjects[x];
+                final int min = currObj.getMinimumRequiredQuantity(dungeon);
                 int max = currObj.getMaximumRequiredQuantity(dungeon);
                 if (max == RandomGenerationRule.NO_LIMIT) {
                     // Maximum undefined, so define it relative to this dungeon
@@ -1246,8 +1268,8 @@ class LayeredTower implements Cloneable {
                         max = min;
                     }
                 }
-                RandomRange howMany = new RandomRange(min, max);
-                int generateHowMany = howMany.generate();
+                final RandomRange howMany = new RandomRange(min, max);
+                final int generateHowMany = howMany.generate();
                 for (y = 0; y < generateHowMany; y++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
@@ -1289,10 +1311,10 @@ class LayeredTower implements Cloneable {
         // Pass 1
         this.fillFloorAndLayer(pass1Fill, z, layer);
         // Pass 2
-        int columns = this.getColumns();
-        int rows = this.getRows();
+        final int columns = this.getColumns();
+        final int rows = this.getRows();
         if (withoutRuleSets != null) {
-            AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
+            final AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
                     .getAllWithoutPrerequisiteAndNotRequiredSubset(
                             withoutRuleSets, layer);
             if (objectsWithoutPrerequisites != null
@@ -1300,30 +1322,33 @@ class LayeredTower implements Cloneable {
                 r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
                 for (x = 0; x < columns; x++) {
                     for (y = 0; y < rows; y++) {
-                        AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                        final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                 .generate()];
-                        boolean okay = placeObj.shouldGenerateObject(dungeon,
-                                y, x, z, w, layer);
+                        final boolean okay = placeObj.shouldGenerateObject(
+                                dungeon, y, x, z, w, layer);
                         if (okay) {
-                            this.setCell(objects.getNewInstanceByName(placeObj
-                                    .getName()), y, x, z, layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            placeObj.getName()),
+                                    y, x, z, layer);
                             placeObj.editorGenerateHook(y, x, z);
                         }
                     }
                 }
             }
             // Pass 3
-            AbstractDungeonObject[] requiredObjects = DungeonObjectList
+            final AbstractDungeonObject[] requiredObjects = DungeonObjectList
                     .getAllRequiredSubset(withoutRuleSets, layer);
             if (requiredObjects != null) {
-                RandomRange row = new RandomRange(0, this.getRows() - 1);
-                RandomRange column = new RandomRange(0, this.getColumns() - 1);
+                final RandomRange row = new RandomRange(0, this.getRows() - 1);
+                final RandomRange column = new RandomRange(0,
+                        this.getColumns() - 1);
                 int randomColumn, randomRow;
                 for (x = 0; x < requiredObjects.length; x++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
-                    AbstractDungeonObject currObj = requiredObjects[x];
-                    int min = currObj.getMinimumRequiredQuantity(dungeon);
+                    final AbstractDungeonObject currObj = requiredObjects[x];
+                    final int min = currObj.getMinimumRequiredQuantity(dungeon);
                     int max = currObj.getMaximumRequiredQuantity(dungeon);
                     if (max == RandomGenerationRule.NO_LIMIT) {
                         // Maximum undefined, so define it relative to this
@@ -1334,16 +1359,17 @@ class LayeredTower implements Cloneable {
                             max = min;
                         }
                     }
-                    RandomRange howMany = new RandomRange(min, max);
-                    int generateHowMany = howMany.generate();
+                    final RandomRange howMany = new RandomRange(min, max);
+                    final int generateHowMany = howMany.generate();
                     for (y = 0; y < generateHowMany; y++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
                         if (currObj.shouldGenerateObject(dungeon, randomRow,
                                 randomColumn, z, w, layer)) {
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         } else {
                             while (!currObj.shouldGenerateObject(dungeon,
@@ -1351,9 +1377,10 @@ class LayeredTower implements Cloneable {
                                 randomRow = row.generate();
                                 randomColumn = column.generate();
                             }
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         }
                     }
@@ -1362,41 +1389,44 @@ class LayeredTower implements Cloneable {
         }
         if (withRuleSets != null) {
             // Pass 4
-            AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
-                    .getAllWithoutPrerequisiteAndNotRequiredSubset(
-                            withRuleSets, layer);
+            final AbstractDungeonObject[] objectsWithoutPrerequisites = DungeonObjectList
+                    .getAllWithoutPrerequisiteAndNotRequiredSubset(withRuleSets,
+                            layer);
             if (objectsWithoutPrerequisites != null) {
                 r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
                 for (x = 0; x < columns; x++) {
                     for (y = 0; y < rows; y++) {
-                        AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                        final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                 .generate()];
-                        boolean okay = placeObj.getRuleSet()
+                        final boolean okay = placeObj.getRuleSet()
                                 .shouldGenerateObject(dungeon, y, x, z, w,
                                         layer);
                         if (okay) {
-                            this.setCell(objects.getNewInstanceByName(placeObj
-                                    .getName()), y, x, z, layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            placeObj.getName()),
+                                    y, x, z, layer);
                             placeObj.editorGenerateHook(y, x, z);
                         }
                     }
                 }
             }
             // Pass 5
-            AbstractDungeonObject[] requiredObjects = DungeonObjectList
+            final AbstractDungeonObject[] requiredObjects = DungeonObjectList
                     .getAllRequiredSubset(withRuleSets, layer);
             if (requiredObjects != null) {
-                RandomRange row = new RandomRange(0, this.getRows() - 1);
-                RandomRange column = new RandomRange(0, this.getColumns() - 1);
+                final RandomRange row = new RandomRange(0, this.getRows() - 1);
+                final RandomRange column = new RandomRange(0,
+                        this.getColumns() - 1);
                 int randomColumn, randomRow;
                 for (x = 0; x < requiredObjects.length; x++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
-                    AbstractDungeonObject currObj = requiredObjects[x];
-                    int min = currObj.getRuleSet().getMinimumRequiredQuantity(
-                            dungeon);
-                    int max = currObj.getRuleSet().getMaximumRequiredQuantity(
-                            dungeon);
+                    final AbstractDungeonObject currObj = requiredObjects[x];
+                    final int min = currObj.getRuleSet()
+                            .getMinimumRequiredQuantity(dungeon);
+                    int max = currObj.getRuleSet()
+                            .getMaximumRequiredQuantity(dungeon);
                     if (max == RandomGenerationRule.NO_LIMIT) {
                         // Maximum undefined, so define it relative to this
                         // dungeon
@@ -1406,16 +1436,17 @@ class LayeredTower implements Cloneable {
                             max = min;
                         }
                     }
-                    RandomRange howMany = new RandomRange(min, max);
-                    int generateHowMany = howMany.generate();
+                    final RandomRange howMany = new RandomRange(min, max);
+                    final int generateHowMany = howMany.generate();
                     for (y = 0; y < generateHowMany; y++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
                         if (currObj.getRuleSet().shouldGenerateObject(dungeon,
                                 randomColumn, randomRow, z, w, layer)) {
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         } else {
                             while (!currObj.getRuleSet().shouldGenerateObject(
@@ -1424,9 +1455,10 @@ class LayeredTower implements Cloneable {
                                 randomRow = row.generate();
                                 randomColumn = column.generate();
                             }
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         }
                     }
@@ -1454,10 +1486,10 @@ class LayeredTower implements Cloneable {
         // Pass 1
         this.fillFloor(pass1FillBottom, pass1FillTop, z);
         // Pass 2
-        int columns = this.getColumns();
-        int rows = this.getRows();
+        final int columns = this.getColumns();
+        final int rows = this.getRows();
         for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
-            AbstractDungeonObject[] objectsWithoutPrerequisites = objects
+            final AbstractDungeonObject[] objectsWithoutPrerequisites = objects
                     .getAllNotRequiredInBattle(e);
             if (objectsWithoutPrerequisites != null) {
                 r = new RandomRange(0, objectsWithoutPrerequisites.length - 1);
@@ -1466,19 +1498,18 @@ class LayeredTower implements Cloneable {
                         if (e == DungeonConstants.LAYER_GROUND) {
                             for (x = 0; x < columns; x += this.regionSize) {
                                 for (y = 0; y < rows; y += this.regionSize) {
-                                    AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                                    final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                             .generate()];
-                                    boolean okay = placeObj
+                                    final boolean okay = placeObj
                                             .shouldGenerateObjectInBattle(map,
                                                     y, x, z, w, e);
                                     if (okay) {
                                         for (u = 0; u < this.regionSize; u++) {
                                             for (v = 0; v < this.regionSize; v++) {
-                                                this.setCell(
-                                                        objects.getNewInstanceByName(placeObj
-                                                                .getName()), v
-                                                                + x, u + y, z,
-                                                        e);
+                                                this.setCell(objects
+                                                        .getNewInstanceByName(
+                                                                placeObj.getName()),
+                                                        v + x, u + y, z, e);
                                             }
                                         }
                                     }
@@ -1487,15 +1518,16 @@ class LayeredTower implements Cloneable {
                         } else {
                             for (x = 0; x < columns; x++) {
                                 for (y = 0; y < rows; y++) {
-                                    AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
+                                    final AbstractDungeonObject placeObj = objectsWithoutPrerequisites[r
                                             .generate()];
-                                    boolean okay = placeObj
+                                    final boolean okay = placeObj
                                             .shouldGenerateObjectInBattle(map,
                                                     y, x, z, w, e);
                                     if (okay) {
-                                        this.setCell(objects
-                                                .getNewInstanceByName(placeObj
-                                                        .getName()), x, y, z, e);
+                                        this.setCell(
+                                                objects.getNewInstanceByName(
+                                                        placeObj.getName()),
+                                                x, y, z, e);
                                     }
                                 }
                             }
@@ -1506,17 +1538,19 @@ class LayeredTower implements Cloneable {
         }
         // Pass 3
         for (int layer = 0; layer < DungeonConstants.LAYER_COUNT; layer++) {
-            AbstractDungeonObject[] requiredObjects = objects
+            final AbstractDungeonObject[] requiredObjects = objects
                     .getAllRequiredInBattle(layer);
             if (requiredObjects != null) {
-                RandomRange row = new RandomRange(0, this.getRows() - 1);
-                RandomRange column = new RandomRange(0, this.getColumns() - 1);
+                final RandomRange row = new RandomRange(0, this.getRows() - 1);
+                final RandomRange column = new RandomRange(0,
+                        this.getColumns() - 1);
                 int randomColumn, randomRow;
                 for (x = 0; x < requiredObjects.length; x++) {
                     randomRow = row.generate();
                     randomColumn = column.generate();
-                    AbstractDungeonObject currObj = requiredObjects[x];
-                    int min = currObj.getMinimumRequiredQuantityInBattle(map);
+                    final AbstractDungeonObject currObj = requiredObjects[x];
+                    final int min = currObj
+                            .getMinimumRequiredQuantityInBattle(map);
                     int max = currObj.getMaximumRequiredQuantityInBattle(map);
                     if (max == RandomGenerationRule.NO_LIMIT) {
                         // Maximum undefined, so define it relative to this map
@@ -1526,25 +1560,27 @@ class LayeredTower implements Cloneable {
                             max = min;
                         }
                     }
-                    RandomRange howMany = new RandomRange(min, max);
-                    int generateHowMany = howMany.generate();
+                    final RandomRange howMany = new RandomRange(min, max);
+                    final int generateHowMany = howMany.generate();
                     for (y = 0; y < generateHowMany; y++) {
                         randomRow = row.generate();
                         randomColumn = column.generate();
                         if (currObj.shouldGenerateObject(map, randomRow,
                                 randomColumn, z, w, layer)) {
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                         } else {
                             while (!currObj.shouldGenerateObjectInBattle(map,
                                     randomColumn, randomRow, z, w, layer)) {
                                 randomRow = row.generate();
                                 randomColumn = column.generate();
                             }
-                            this.setCell(objects.getNewInstanceByName(currObj
-                                    .getName()), randomColumn, randomRow, z,
-                                    layer);
+                            this.setCell(
+                                    objects.getNewInstanceByName(
+                                            currObj.getName()),
+                                    randomColumn, randomRow, z, layer);
                         }
                     }
                 }
@@ -1553,9 +1589,9 @@ class LayeredTower implements Cloneable {
     }
 
     private void fillNulls() {
-        AbstractDungeonObject bottom = PreferencesManager
+        final AbstractDungeonObject bottom = PreferencesManager
                 .getEditorDefaultFill();
-        AbstractDungeonObject top = new Empty();
+        final AbstractDungeonObject top = new Empty();
         int y, x, z, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
@@ -1575,14 +1611,14 @@ class LayeredTower implements Cloneable {
     }
 
     public void generateStart() {
-        int z = 0;
-        RandomRange row = new RandomRange(0, this.getRows() - 1);
-        RandomRange column = new RandomRange(0, this.getColumns() - 1);
+        final int z = 0;
+        final RandomRange row = new RandomRange(0, this.getRows() - 1);
+        final RandomRange column = new RandomRange(0, this.getColumns() - 1);
         int randomColumn, randomRow;
         randomRow = row.generate();
         randomColumn = column.generate();
-        AbstractDungeonObject currObj = this.getCell(randomRow, randomColumn,
-                z, DungeonConstants.LAYER_OBJECT);
+        AbstractDungeonObject currObj = this.getCell(randomRow, randomColumn, z,
+                DungeonConstants.LAYER_OBJECT);
         randomRow = row.generate();
         randomColumn = column.generate();
         if (!currObj.isSolid()) {
@@ -1630,11 +1666,11 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void hotGround(int x, int y, int z) {
+    public void hotGround(final int x, final int y, final int z) {
         this.setCell(new HotRock(), x, y, z, DungeonConstants.LAYER_GROUND);
     }
 
-    private int normalizeRow(int row) {
+    private int normalizeRow(final int row) {
         int fR = row;
         if (fR < 0) {
             fR += this.getRows();
@@ -1650,7 +1686,7 @@ class LayeredTower implements Cloneable {
         return fR;
     }
 
-    private int normalizeColumn(int column) {
+    private int normalizeColumn(final int column) {
         int fC = column;
         if (fC < 0) {
             fC += this.getColumns();
@@ -1666,7 +1702,7 @@ class LayeredTower implements Cloneable {
         return fC;
     }
 
-    private int normalizeFloor(int floor) {
+    private int normalizeFloor(final int floor) {
         int fF = floor;
         if (fF < 0) {
             fF += this.getFloors();
@@ -1720,11 +1756,11 @@ class LayeredTower implements Cloneable {
 
     public void findAllMatchingObjectsAndDecay(final AbstractDungeonObject o) {
         int y, x, z;
-        AbstractDungeonObject decayTo = new Empty();
+        final AbstractDungeonObject decayTo = new Empty();
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    AbstractDungeonObject mo = this.getCell(y, x, z,
+                    final AbstractDungeonObject mo = this.getCell(y, x, z,
                             DungeonConstants.LAYER_OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o.getName())) {
@@ -1739,15 +1775,15 @@ class LayeredTower implements Cloneable {
 
     public void masterTrapTrigger() {
         int y, x, z;
-        AbstractDungeonObject decayTo = new Empty();
+        final AbstractDungeonObject decayTo = new Empty();
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    AbstractDungeonObject mo = this.getCell(y, x, z,
+                    final AbstractDungeonObject mo = this.getCell(y, x, z,
                             DungeonConstants.LAYER_OBJECT);
                     if (mo != null) {
-                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP)
-                                || mo.isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
+                        if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
+                                .isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
                             this.setCell(decayTo, y, x, z,
                                     DungeonConstants.LAYER_OBJECT);
                         }
@@ -1757,12 +1793,12 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void tickTimers(int floor) {
+    public void tickTimers(final int floor) {
         int x, y;
         // Tick all DungeonObject timers
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
-                AbstractDungeonObject mo = this.getCell(y, x, floor,
+                final AbstractDungeonObject mo = this.getCell(y, x, floor,
                         DungeonConstants.LAYER_OBJECT);
                 if (mo != null) {
                     mo.tickTimer(y, x);
@@ -1779,7 +1815,8 @@ class LayeredTower implements Cloneable {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        AbstractDungeonObject[][][] tempStorage = new AbstractDungeonObject[2 * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
+        final AbstractDungeonObject[][][] tempStorage = new AbstractDungeonObject[2
+                * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
@@ -1804,7 +1841,7 @@ class LayeredTower implements Cloneable {
                 }
             }
             return true;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             return false;
         }
     }
@@ -1817,7 +1854,8 @@ class LayeredTower implements Cloneable {
         uFix = vFix = uRot = vRot = uAdj = vAdj = 0;
         final int cosineTheta = 0;
         final int sineTheta = 1;
-        AbstractDungeonObject[][][] tempStorage = new AbstractDungeonObject[2 * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
+        final AbstractDungeonObject[][][] tempStorage = new AbstractDungeonObject[2
+                * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
@@ -1842,14 +1880,14 @@ class LayeredTower implements Cloneable {
                 }
             }
             return true;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             return false;
         }
     }
 
     public boolean radialScan(final int cx, final int cy, final int r,
             final int tx, final int ty) {
-        return (Math.abs(tx - cx) <= r && Math.abs(ty - cy) <= r);
+        return Math.abs(tx - cx) <= r && Math.abs(ty - cy) <= r;
     }
 
     public boolean radialScanVision(final int x, final int y, final int z,
@@ -1860,11 +1898,11 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    String testName = this.getCell(u, v, z, l).getName();
+                    final String testName = this.getCell(u, v, z, l).getName();
                     if (testName.equals(targetName)) {
                         return true;
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -1880,12 +1918,12 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    boolean reactsToIce = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_ICE);
+                    final boolean reactsToIce = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_ICE);
                     if (reactsToIce) {
-                        AbstractDungeonObject there = this.getCell(u, v, z,
-                                DungeonConstants.LAYER_OBJECT);
+                        final AbstractDungeonObject there = this.getCell(u, v,
+                                z, DungeonConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Freeze the generator
                             this.setCell(new IcedBarrierGenerator(), u, v, z,
@@ -1896,7 +1934,7 @@ class LayeredTower implements Cloneable {
                             there.extendTimerByInitialValue();
                         }
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -1914,7 +1952,7 @@ class LayeredTower implements Cloneable {
                     // Freeze the ground
                     this.setCell(new Ice(), u, v, z,
                             DungeonConstants.LAYER_GROUND);
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -1929,23 +1967,23 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    boolean reactsToFire = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_FIRE);
+                    final boolean reactsToFire = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_FIRE);
                     if (reactsToFire) {
-                        AbstractDungeonObject there = this.getCell(u, v, z,
-                                DungeonConstants.LAYER_OBJECT);
+                        final AbstractDungeonObject there = this.getCell(u, v,
+                                z, DungeonConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Enrage the generator
-                            this.setCell(new EnragedBarrierGenerator(), u, v,
-                                    z, DungeonConstants.LAYER_OBJECT);
+                            this.setCell(new EnragedBarrierGenerator(), u, v, z,
+                                    DungeonConstants.LAYER_OBJECT);
                         } else {
                             // Assume object is already enraged, and reset its
                             // timer
                             there.resetTimer();
                         }
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -1963,7 +2001,7 @@ class LayeredTower implements Cloneable {
                     // Burn the ground
                     this.setCell(new Dirt(), u, v, z,
                             DungeonConstants.LAYER_GROUND);
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -1978,12 +2016,12 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    boolean reactsToPoison = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_POISON);
+                    final boolean reactsToPoison = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_POISON);
                     if (reactsToPoison) {
-                        AbstractDungeonObject there = this.getCell(u, v, z,
-                                DungeonConstants.LAYER_OBJECT);
+                        final AbstractDungeonObject there = this.getCell(u, v,
+                                z, DungeonConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Weaken the generator
                             this.setCell(new PoisonedBarrierGenerator(), u, v,
@@ -1994,7 +2032,7 @@ class LayeredTower implements Cloneable {
                             there.resetTimer();
                         }
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -2012,7 +2050,7 @@ class LayeredTower implements Cloneable {
                     // Poison the ground
                     this.setCell(new Slime(), u, v, z,
                             DungeonConstants.LAYER_GROUND);
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -2027,23 +2065,23 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    boolean reactsToShock = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_REACTS_TO_SHOCK);
+                    final boolean reactsToShock = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_REACTS_TO_SHOCK);
                     if (reactsToShock) {
-                        AbstractDungeonObject there = this.getCell(u, v, z,
-                                DungeonConstants.LAYER_OBJECT);
+                        final AbstractDungeonObject there = this.getCell(u, v,
+                                z, DungeonConstants.LAYER_OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Shock the generator
-                            this.setCell(new ShockedBarrierGenerator(), u, v,
-                                    z, DungeonConstants.LAYER_OBJECT);
+                            this.setCell(new ShockedBarrierGenerator(), u, v, z,
+                                    DungeonConstants.LAYER_OBJECT);
                         } else {
                             // Assume object is already shocked, and reset its
                             // timer
                             there.resetTimer();
                         }
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -2061,7 +2099,7 @@ class LayeredTower implements Cloneable {
                     // Shock the ground
                     this.setCell(new ForceField(), u, v, z,
                             DungeonConstants.LAYER_GROUND);
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -2081,7 +2119,7 @@ class LayeredTower implements Cloneable {
                         // Warp the object
                         this.warpObject(this.getCell(u, v, z, l), u, v, z, l);
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
@@ -2091,11 +2129,12 @@ class LayeredTower implements Cloneable {
     public void radialScanShuffleObjects(final int x, final int y, final int z,
             final int r) {
         int u, v, l, uFix, vFix;
-        int px = this.getPlayerRow();
-        int py = this.getPlayerColumn();
-        boolean needsFix = (px >= x - r && px <= x + r && py >= y - r && py <= y
-                + r);
-        AbstractDungeonObject[][][] preShuffle = new AbstractDungeonObject[2 * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
+        final int px = this.getPlayerRow();
+        final int py = this.getPlayerColumn();
+        final boolean needsFix = px >= x - r && px <= x + r && py >= y - r
+                && py <= y + r;
+        final AbstractDungeonObject[][][] preShuffle = new AbstractDungeonObject[2
+                * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
         // Load the preShuffle array
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
@@ -2104,15 +2143,16 @@ class LayeredTower implements Cloneable {
                     vFix = v - (y - r);
                     try {
                         preShuffle[uFix][vFix][l] = this.getCell(u, v, z, l);
-                    } catch (ArrayIndexOutOfBoundsException aioob) {
+                    } catch (final ArrayIndexOutOfBoundsException aioob) {
                         preShuffle[uFix][vFix][l] = null;
                     }
                 }
             }
         }
         // Do the shuffle
-        AbstractDungeonObject[][][] postShuffle = LayeredTower.shuffleObjects(
-                preShuffle, r, px - (x - r), py - (y - r), needsFix);
+        final AbstractDungeonObject[][][] postShuffle = LayeredTower
+                .shuffleObjects(preShuffle, r, px - (x - r), py - (y - r),
+                        needsFix);
         // Load the dungeon with the postShuffle array
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
@@ -2127,8 +2167,8 @@ class LayeredTower implements Cloneable {
         }
         // Final check
         if (needsFix) {
-            this.setPlayerRow(LayeredTower.NEW_PLAYER_ROW + (x - r));
-            this.setPlayerColumn(LayeredTower.NEW_PLAYER_COL + (y - r));
+            this.setPlayerRow(LayeredTower.NEW_PLAYER_ROW + x - r);
+            this.setPlayerColumn(LayeredTower.NEW_PLAYER_COL + y - r);
         }
     }
 
@@ -2140,59 +2180,61 @@ class LayeredTower implements Cloneable {
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
                 try {
-                    boolean isEmpty = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_EMPTY_SPACE);
+                    final boolean isEmpty = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_EMPTY_SPACE);
                     if (isEmpty) {
-                        RandomRange rr = new RandomRange(1, 5);
-                        int chance = rr.generate();
+                        final RandomRange rr = new RandomRange(1, 5);
+                        final int chance = rr.generate();
                         if (chance == 1) {
                             // Grow a crevasse
                             this.setCell(new Crevasse(), u, v, z,
                                     DungeonConstants.LAYER_OBJECT);
                         }
                     }
-                    boolean isBreakable = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_BREAKABLE_WALL);
+                    final boolean isBreakable = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_BREAKABLE_WALL);
                     if (isBreakable) {
                         // Destroy the wall
                         this.setCell(new Empty(), u, v, z,
                                 DungeonConstants.LAYER_OBJECT);
                     }
-                    boolean isWall = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_PLAIN_WALL);
+                    final boolean isWall = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_PLAIN_WALL);
                     if (isWall) {
                         // Crack the wall
                         this.setCell(new CrackedWall(), u, v, z,
                                 DungeonConstants.LAYER_OBJECT);
                     }
-                    boolean isCharacter = this.getCell(u, v, z,
-                            DungeonConstants.LAYER_OBJECT).isOfType(
-                            TypeConstants.TYPE_CHARACTER);
+                    final boolean isCharacter = this
+                            .getCell(u, v, z, DungeonConstants.LAYER_OBJECT)
+                            .isOfType(TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
-                        Application app = DungeonDiver4.getApplication();
+                        final Application app = DungeonDiver4.getApplication();
                         app.getGameManager().keepNextMessage();
-                        app.showMessage("You find yourself caught in the quake, and fall over, hurting yourself a bit.");
+                        app.showMessage(
+                                "You find yourself caught in the quake, and fall over, hurting yourself a bit.");
                         PartyManager.getParty().getLeader()
                                 .doDamagePercentage(2);
                     }
-                } catch (ArrayIndexOutOfBoundsException aioob) {
+                } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
             }
         }
     }
 
-    public void warpObject(AbstractDungeonObject mo, int x, int y, int z, int l) {
-        RandomRange row = new RandomRange(0, this.getRows() - 1);
-        RandomRange column = new RandomRange(0, this.getColumns() - 1);
+    public void warpObject(final AbstractDungeonObject mo, final int x,
+            final int y, final int z, final int l) {
+        final RandomRange row = new RandomRange(0, this.getRows() - 1);
+        final RandomRange column = new RandomRange(0, this.getColumns() - 1);
         int randomColumn, randomRow;
         randomRow = row.generate();
         randomColumn = column.generate();
-        AbstractDungeonObject currObj = this.getCell(randomRow, randomColumn,
-                z, DungeonConstants.LAYER_OBJECT);
+        final AbstractDungeonObject currObj = this.getCell(randomRow,
+                randomColumn, z, DungeonConstants.LAYER_OBJECT);
         if (!currObj.isSolid()) {
             this.setCell(new Empty(), x, y, z, l);
             this.setCell(mo, randomRow, randomColumn, z,
@@ -2213,7 +2255,8 @@ class LayeredTower implements Cloneable {
     private static AbstractDungeonObject[][][] shuffleObjects(
             final AbstractDungeonObject[][][] preShuffle, final int r,
             final int opx, final int opy, final boolean needsFix) {
-        final AbstractDungeonObject[][][] postShuffle = new AbstractDungeonObject[2 * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
+        final AbstractDungeonObject[][][] postShuffle = new AbstractDungeonObject[2
+                * r + 1][2 * r + 1][DungeonConstants.LAYER_COUNT];
         int[][] randomLocations = new int[(2 * r + 1) * (2 * r + 1)][2];
         // Populate randomLocations array
         int counter = 0;
@@ -2249,23 +2292,23 @@ class LayeredTower implements Cloneable {
         return postShuffle;
     }
 
-    private static int[][] shuffleArray(int[][] src, int opx, int opy,
-            boolean needsFix) {
+    private static int[][] shuffleArray(final int[][] src, final int opx,
+            final int opy, final boolean needsFix) {
         int temp = 0;
-        int minSwaps = (int) Math.sqrt(src.length);
-        int maxSwaps = src.length - 1;
+        final int minSwaps = (int) Math.sqrt(src.length);
+        final int maxSwaps = src.length - 1;
         int oldLocX, newLocX, oldLocY, newLocY;
         int npx = opx;
         int npy = opy;
-        RandomRange rSwap = new RandomRange(minSwaps, maxSwaps);
-        RandomRange locSwapX = new RandomRange(0, src.length - 1);
-        int swaps = rSwap.generate();
+        final RandomRange rSwap = new RandomRange(minSwaps, maxSwaps);
+        final RandomRange locSwapX = new RandomRange(0, src.length - 1);
+        final int swaps = rSwap.generate();
         for (int s = 0; s < swaps; s++) {
             do {
                 oldLocX = locSwapX.generate();
                 newLocX = locSwapX.generate();
             } while (src[oldLocX][0] == -1 || src[newLocX][0] == -1);
-            RandomRange locSwapY = new RandomRange(0, src[0].length - 1);
+            final RandomRange locSwapY = new RandomRange(0, src[0].length - 1);
             do {
                 oldLocY = locSwapY.generate();
                 newLocY = locSwapY.generate();
@@ -2290,7 +2333,7 @@ class LayeredTower implements Cloneable {
         return src;
     }
 
-    public void setVisionRadius(int newVR) {
+    public void setVisionRadius(final int newVR) {
         int fVR = newVR;
         if (fVR > LayeredTower.MAX_VISION_RADIUS) {
             fVR = LayeredTower.MAX_VISION_RADIUS;
@@ -2321,15 +2364,15 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void writeLayeredTower(XDataWriter writer) throws IOException {
+    public void writeLayeredTower(final XDataWriter writer) throws IOException {
         int y, x, z, e;
-        writer.writeOpeningGroup(TOWER_GROUP);
-        writer.writeOpeningGroup(TOWER_SIZE_GROUP);
+        writer.writeOpeningGroup(LayeredTower.TOWER_GROUP);
+        writer.writeOpeningGroup(LayeredTower.TOWER_SIZE_GROUP);
         writer.writeInt(this.getColumns());
         writer.writeInt(this.getRows());
         writer.writeInt(this.getFloors());
-        writer.writeClosingGroup(TOWER_SIZE_GROUP);
-        writer.writeOpeningGroup(TOWER_OBJECTS_GROUP);
+        writer.writeClosingGroup(LayeredTower.TOWER_SIZE_GROUP);
+        writer.writeOpeningGroup(LayeredTower.TOWER_OBJECTS_GROUP);
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
@@ -2337,7 +2380,8 @@ class LayeredTower implements Cloneable {
                         this.getCell(y, x, z, e).writeDungeonObject(writer);
                     }
                     writer.writeBoolean(this.visionData.getCell(y, x, z));
-                    boolean hasNote = this.noteData.getNote(y, x, z) != null;
+                    final boolean hasNote = this.noteData.getNote(y, x,
+                            z) != null;
                     writer.writeBoolean(hasNote);
                     if (hasNote) {
                         this.noteData.getNote(y, x, z).writeNote(writer);
@@ -2345,8 +2389,8 @@ class LayeredTower implements Cloneable {
                 }
             }
         }
-        writer.writeClosingGroup(TOWER_OBJECTS_GROUP);
-        writer.writeOpeningGroup(TOWER_SETTINGS_GROUP);
+        writer.writeClosingGroup(LayeredTower.TOWER_OBJECTS_GROUP);
+        writer.writeOpeningGroup(LayeredTower.TOWER_SETTINGS_GROUP);
         for (y = 0; y < 3; y++) {
             writer.writeInt(this.playerStartData[y]);
             writer.writeInt(this.playerLocationData[y]);
@@ -2367,49 +2411,45 @@ class LayeredTower implements Cloneable {
         writer.writeInt(this.poisonPower);
         writer.writeInt(this.oldPoisonPower);
         writer.writeInt(this.regionSize);
-        writer.writeClosingGroup(TOWER_SETTINGS_GROUP);
-        writer.writeClosingGroup(TOWER_GROUP);
+        writer.writeClosingGroup(LayeredTower.TOWER_SETTINGS_GROUP);
+        writer.writeClosingGroup(LayeredTower.TOWER_GROUP);
     }
 
-    public static LayeredTower readLayeredTowerV1(XDataReader reader)
+    public static LayeredTower readLayeredTowerV1(final XDataReader reader)
             throws IOException {
         int y, x, z, e, dungeonSizeX, dungeonSizeY, dungeonSizeZ;
-        reader.readOpeningGroup(TOWER_GROUP);
-        reader.readOpeningGroup(TOWER_SIZE_GROUP);
+        reader.readOpeningGroup(LayeredTower.TOWER_GROUP);
+        reader.readOpeningGroup(LayeredTower.TOWER_SIZE_GROUP);
         dungeonSizeX = reader.readInt();
         dungeonSizeY = reader.readInt();
         dungeonSizeZ = reader.readInt();
-        reader.readClosingGroup(TOWER_SIZE_GROUP);
-        reader.readOpeningGroup(TOWER_OBJECTS_GROUP);
-        LayeredTower lt = new LayeredTower(dungeonSizeX, dungeonSizeY,
+        reader.readClosingGroup(LayeredTower.TOWER_SIZE_GROUP);
+        reader.readOpeningGroup(LayeredTower.TOWER_OBJECTS_GROUP);
+        final LayeredTower lt = new LayeredTower(dungeonSizeX, dungeonSizeY,
                 dungeonSizeZ);
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
                     for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
-                        lt.setCell(
-                                DungeonDiver4
-                                        .getApplication()
-                                        .getObjects()
-                                        .readDungeonObject(
-                                                reader,
-                                                FormatConstants.DUNGEON_FORMAT_1),
+                        lt.setCell(DungeonDiver4.getApplication().getObjects()
+                                .readDungeonObject(reader,
+                                        FormatConstants.DUNGEON_FORMAT_1),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;
                         }
                     }
                     lt.visionData.setCell(reader.readBoolean(), y, x, z);
-                    boolean hasNote = reader.readBoolean();
+                    final boolean hasNote = reader.readBoolean();
                     if (hasNote) {
-                        DungeonNote mn = DungeonNote.readNote(reader);
+                        final DungeonNote mn = DungeonNote.readNote(reader);
                         lt.noteData.setNote(mn, y, x, z);
                     }
                 }
             }
         }
-        reader.readClosingGroup(TOWER_OBJECTS_GROUP);
-        reader.readOpeningGroup(TOWER_SETTINGS_GROUP);
+        reader.readClosingGroup(LayeredTower.TOWER_OBJECTS_GROUP);
+        reader.readOpeningGroup(LayeredTower.TOWER_SETTINGS_GROUP);
         for (y = 0; y < 3; y++) {
             lt.playerStartData[y] = reader.readInt();
             lt.playerLocationData[y] = reader.readInt();
@@ -2430,12 +2470,13 @@ class LayeredTower implements Cloneable {
         lt.poisonPower = reader.readInt();
         lt.oldPoisonPower = reader.readInt();
         lt.regionSize = reader.readInt();
-        reader.readClosingGroup(TOWER_SETTINGS_GROUP);
-        reader.readClosingGroup(TOWER_GROUP);
+        reader.readClosingGroup(LayeredTower.TOWER_SETTINGS_GROUP);
+        reader.readClosingGroup(LayeredTower.TOWER_GROUP);
         return lt;
     }
 
-    public void writeSavedTowerState(XDataWriter writer) throws IOException {
+    public void writeSavedTowerState(final XDataWriter writer)
+            throws IOException {
         int x, y, z, e;
         writer.writeInt(this.getColumns());
         writer.writeInt(this.getRows());
@@ -2452,8 +2493,8 @@ class LayeredTower implements Cloneable {
         }
     }
 
-    public void readSavedTowerState(XDataReader reader, int formatVersion)
-            throws IOException {
+    public void readSavedTowerState(final XDataReader reader,
+            final int formatVersion) throws IOException {
         int x, y, z, e, sizeX, sizeY, sizeZ;
         sizeX = reader.readInt();
         sizeY = reader.readInt();
@@ -2466,8 +2507,8 @@ class LayeredTower implements Cloneable {
                     for (e = 0; e < DungeonConstants.LAYER_COUNT; e++) {
                         this.savedTowerState.setCell(DungeonDiver4
                                 .getApplication().getObjects()
-                                .readDungeonObject(reader, formatVersion), y,
-                                x, z, e);
+                                .readDungeonObject(reader, formatVersion), y, x,
+                                z, e);
                     }
                 }
             }

@@ -274,18 +274,18 @@ public class Effect extends Identifiable implements StatConstants {
     public String getCurrentMessage() {
         String msg = Effect.getNullMessage();
         if (this.rounds == this.initialRounds) {
-            if (!this.messages[Effect.MESSAGE_INITIAL].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_INITIAL]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Effect.MESSAGE_SUBSEQUENT].equals(Effect
-                .getNullMessage())) {
+        if (!this.messages[Effect.MESSAGE_SUBSEQUENT]
+                .equals(Effect.getNullMessage())) {
             msg += this.messages[Effect.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 1) {
-            if (!this.messages[Effect.MESSAGE_WEAR_OFF].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_WEAR_OFF]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_WEAR_OFF] + "\n";
             }
         }
@@ -430,8 +430,8 @@ public class Effect extends Identifiable implements StatConstants {
         }
     }
 
-    public void modifyEffect(final int type, final int stat,
-            final double value, final double factor, final int scaleStat) {
+    public void modifyEffect(final int type, final int stat, final double value,
+            final double factor, final int scaleStat) {
         this.effect[type][stat] = value;
         this.effectScaleFactor = factor;
         this.effectScaleStat = scaleStat;
@@ -506,21 +506,27 @@ public class Effect extends Identifiable implements StatConstants {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                this.getClass().getName()).multiply(BigInteger.valueOf(2)));
+        longHash = longHash.add(
+                IDGenerator.computeStringLongHash(this.getClass().getName())
+                        .multiply(BigInteger.valueOf(2)));
         longHash = longHash.add(IDGenerator.computeStringLongHash(this.name)
                 .multiply(BigInteger.valueOf(3)));
-        longHash = longHash.add(IDGenerator.computeDoubleLongHash(
-                this.effectScaleFactor).multiply(BigInteger.valueOf(4)));
-        longHash = longHash.add(IDGenerator.computeLongLongHash(
-                this.effectScaleStat).multiply(BigInteger.valueOf(5)));
-        longHash = longHash.add(IDGenerator.computeDoubleLongHash(
-                this.roundsScaleFactor).multiply(BigInteger.valueOf(6)));
-        longHash = longHash.add(IDGenerator.computeLongLongHash(
-                this.roundsScaleStat).multiply(BigInteger.valueOf(7)));
+        longHash = longHash
+                .add(IDGenerator.computeDoubleLongHash(this.effectScaleFactor)
+                        .multiply(BigInteger.valueOf(4)));
+        longHash = longHash
+                .add(IDGenerator.computeLongLongHash(this.effectScaleStat)
+                        .multiply(BigInteger.valueOf(5)));
+        longHash = longHash
+                .add(IDGenerator.computeDoubleLongHash(this.roundsScaleFactor)
+                        .multiply(BigInteger.valueOf(6)));
+        longHash = longHash
+                .add(IDGenerator.computeLongLongHash(this.roundsScaleStat)
+                        .multiply(BigInteger.valueOf(7)));
         for (int x = 0; x < Effect.MAX_MESSAGES; x++) {
-            longHash = longHash.add(IDGenerator.computeStringLongHash(
-                    this.messages[x]).multiply(BigInteger.valueOf(x + 8)));
+            longHash = longHash
+                    .add(IDGenerator.computeStringLongHash(this.messages[x])
+                            .multiply(BigInteger.valueOf(x + 8)));
         }
         return longHash;
     }
@@ -532,12 +538,10 @@ public class Effect extends Identifiable implements StatConstants {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "effects"
-                + File.separator
-                + this.getID() + Extension.getEffectExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "effects" + File.separator + this.getID()
+                        + Extension.getEffectExtensionWithPeriod(),
                 Extension.getEffectExtension());
         this.write(writer);
         writer.close();

@@ -8,9 +8,9 @@ public final class RandomWindowAIRoutinePicker {
 
     // Methods
     public static AbstractWindowAIRoutine getNextRoutine() {
-        RandomRange r = new RandomRange(1,
+        final RandomRange r = new RandomRange(1,
                 RandomWindowAIRoutinePicker.ROUTINE_COUNT);
-        int routine = r.generate();
+        final int routine = r.generate();
         switch (routine) {
         case 1:
             return new AttackAIRoutine();

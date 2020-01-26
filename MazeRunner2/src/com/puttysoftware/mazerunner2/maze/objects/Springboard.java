@@ -9,8 +9,8 @@ import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.game.InfiniteRecursionException;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
@@ -36,21 +36,22 @@ public class Springboard extends StairsUp {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        return this.searchNestedSprings(dirX, dirY, MazeRunnerII
-                .getApplication().getMazeManager().getMaze()
-                .getPlayerLocationZ() + 1, inv);
+        return this.searchNestedSprings(dirX, dirY,
+                MazeRunnerII.getApplication().getMazeManager().getMaze()
+                        .getPlayerLocationZ() + 1,
+                inv);
     }
 
     private boolean searchNestedSprings(final int dirX, final int dirY,
             final int floor, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         // Stop infinite recursion
-        int ucl = app.getMazeManager().getMaze().getFloors() * 2;
+        final int ucl = app.getMazeManager().getMaze().getFloors() * 2;
         if (floor >= ucl) {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            AbstractMazeObject obj = app.getMazeManager().getMaze()
+            final AbstractMazeObject obj = app.getMazeManager().getMaze()
                     .getCell(dirX, dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
@@ -71,9 +72,9 @@ public class Springboard extends StairsUp {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_SPRINGBOARD);
@@ -83,7 +84,7 @@ public class Springboard extends StairsUp {
     public void pushIntoAction(final MazeObjectInventory inv,
             final AbstractMazeObject pushed, final int x, final int y,
             final int z) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         try {
             this.searchNestedSprings(x, y, z + 1, inv);
             if (pushed.isPushable()) {
@@ -92,7 +93,7 @@ public class Springboard extends StairsUp {
                         z - 1, x, y, z, pushedInto, this);
                 SoundManager.playSound(SoundConstants.SOUND_SPRINGBOARD);
             }
-        } catch (InfiniteRecursionException ir) {
+        } catch (final InfiniteRecursionException ir) {
             SoundManager.playSound(SoundConstants.SOUND_SPRINGBOARD);
             MazeRunnerII.getApplication().getMazeManager().getMaze()
                     .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
@@ -101,7 +102,7 @@ public class Springboard extends StairsUp {
 
     @Override
     public boolean isConditionallySolid(final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         if (!app.getGameManager().isFloorAbove()) {
             return true;
         } else {

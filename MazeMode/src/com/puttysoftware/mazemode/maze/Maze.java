@@ -143,7 +143,7 @@ public class Maze implements MazeConstants {
         }
     }
 
-    public void doDamagePercentage(int fP) {
+    public void doDamagePercentage(final int fP) {
         int percent = fP;
         if (percent > GenericCharacter.FULL_HEAL_PERCENTAGE) {
             percent = GenericCharacter.FULL_HEAL_PERCENTAGE;
@@ -180,7 +180,7 @@ public class Maze implements MazeConstants {
         this.currHP = this.maxHP;
     }
 
-    public void healPercentage(int fP) {
+    public void healPercentage(final int fP) {
         int percent = fP;
         if (percent > GenericCharacter.FULL_HEAL_PERCENTAGE) {
             percent = GenericCharacter.FULL_HEAL_PERCENTAGE;
@@ -870,8 +870,8 @@ public class Maze implements MazeConstants {
         // Make base paths the same
         m.basePath = this.basePath;
         // Create metafile reader
-        final XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze");
+        final XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze");
         // Read metafile
         final int version = m.readMazeMetafileX(metaReader);
         metaReader.close();
@@ -929,8 +929,8 @@ public class Maze implements MazeConstants {
 
     public void writeMazeX() throws IOException {
         // Create metafile writer
-        final XDataWriter metaWriter = new XDataWriter(this.basePath
-                + File.separator + "metafile.xml", "maze");
+        final XDataWriter metaWriter = new XDataWriter(
+                this.basePath + File.separator + "metafile.xml", "maze");
         // Write metafile
         this.writeMazeMetafileX(metaWriter);
         // Close writer

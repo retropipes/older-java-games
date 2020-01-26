@@ -9,8 +9,8 @@ import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.game.InfiniteRecursionException;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
@@ -46,14 +46,14 @@ public class Pit extends StairsDown {
 
     private boolean searchNestedPits(final int dirX, final int dirY,
             final int floor, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         // Stop infinite recursion
-        int lcl = -app.getMazeManager().getMaze().getFloors();
+        final int lcl = -app.getMazeManager().getMaze().getFloors();
         if (floor <= lcl) {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            AbstractMazeObject obj = app.getMazeManager().getMaze()
+            final AbstractMazeObject obj = app.getMazeManager().getMaze()
                     .getCell(dirX, dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
@@ -74,9 +74,9 @@ public class Pit extends StairsDown {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_FALLING);
@@ -86,7 +86,7 @@ public class Pit extends StairsDown {
     public void pushIntoAction(final MazeObjectInventory inv,
             final AbstractMazeObject pushed, final int x, final int y,
             final int z) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         try {
             this.searchNestedPits(x, y, z - 1, inv);
             if (pushed.isPushable()) {
@@ -95,7 +95,7 @@ public class Pit extends StairsDown {
                         z - 1, x, y, z, pushedInto, this);
                 SoundManager.playSound(SoundConstants.SOUND_INTO_PIT);
             }
-        } catch (InfiniteRecursionException ir) {
+        } catch (final InfiniteRecursionException ir) {
             SoundManager.playSound(SoundConstants.SOUND_INTO_PIT);
             MazeRunnerII.getApplication().getMazeManager().getMaze()
                     .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
@@ -104,7 +104,7 @@ public class Pit extends StairsDown {
 
     @Override
     public boolean isConditionallySolid(final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         if (!app.getGameManager().isFloorBelow()) {
             return true;
         } else {

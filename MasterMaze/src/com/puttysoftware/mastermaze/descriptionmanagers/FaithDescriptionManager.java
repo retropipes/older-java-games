@@ -16,9 +16,10 @@ public class FaithDescriptionManager {
         try {
             // Fetch description
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDescriptionManager.class.getResourceAsStream("/com/puttysoftware/mastermaze/resources/descriptions/faith/"
-                            + name
-                            + Extension.getInternalDataExtensionWithPeriod()));
+                    FaithDescriptionManager.class.getResourceAsStream(
+                            "/com/puttysoftware/mastermaze/resources/descriptions/faith/"
+                                    + name + Extension
+                                            .getInternalDataExtensionWithPeriod()));
             final String desc = rsr.readString();
             rsr.close();
             return desc;

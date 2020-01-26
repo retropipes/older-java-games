@@ -21,9 +21,8 @@ public class LogoManager {
 
     static BufferedImageIcon getUncachedLogo(final String name) {
         try {
-            final URL url = LogoManager.LOAD_CLASS
-                    .getResource(LogoManager.LOAD_PATH + "logo/" + name
-                            + ".png");
+            final URL url = LogoManager.LOAD_CLASS.getResource(
+                    LogoManager.LOAD_PATH + "logo/" + name + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;

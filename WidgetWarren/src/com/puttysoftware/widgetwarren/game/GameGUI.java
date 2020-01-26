@@ -117,12 +117,10 @@ class GameGUI {
 
     void updateAlternateAutoFinishProgress(final int msCount) {
         this.alternateAutoFinishProgress.setValue(msCount);
-        this.alternateAutoFinishProgress
-                .setString((int) ((double) this.alternateAutoFinishProgress
-                        .getValue()
-                        / (double) this.alternateAutoFinishProgress
-                                .getMaximum() * 100.0)
-                        + "%");
+        this.alternateAutoFinishProgress.setString(
+                (int) ((double) this.alternateAutoFinishProgress.getValue()
+                        / (double) this.alternateAutoFinishProgress.getMaximum()
+                        * 100.0) + "%");
     }
 
     void updateImages() {
@@ -168,55 +166,47 @@ class GameGUI {
                         .getLowerRightViewingWindowLocationY(); y++) {
                     xFix = x - this.vwMgr.getViewingWindowLocationX();
                     yFix = y - this.vwMgr.getViewingWindowLocationY();
-                    visible = app.getMazeManager().getMaze()
-                            .isSquareVisible(u, v, y, x);
+                    visible = app.getMazeManager().getMaze().isSquareVisible(u,
+                            v, y, x);
                     try {
                         if (visible) {
                             MazeObject obj1, obj2;
-                            obj1 = app
-                                    .getMazeManager()
-                                    .getMaze()
-                                    .getCell(y, x, z,
-                                            MazeConstants.LAYER_GROUND);
-                            BufferedImageIcon icon1 = ObjectImageManager
+                            obj1 = app.getMazeManager().getMaze().getCell(y, x,
+                                    z, MazeConstants.LAYER_GROUND);
+                            final BufferedImageIcon icon1 = ObjectImageManager
                                     .getObjectImage(obj1, !this.trueSightFlag);
-                            obj2 = app
-                                    .getMazeManager()
-                                    .getMaze()
-                                    .getCell(y, x, z,
-                                            MazeConstants.LAYER_OBJECT);
+                            obj2 = app.getMazeManager().getMaze().getCell(y, x,
+                                    z, MazeConstants.LAYER_OBJECT);
                             if (obj2.getSavedObject() != null) {
-                                BufferedImageIcon icon2 = ObjectImageManager
+                                final BufferedImageIcon icon2 = ObjectImageManager
                                         .getObjectImage(obj2.getSavedObject(),
                                                 !this.trueSightFlag);
-                                BufferedImageIcon icon3 = ObjectImageManager
+                                final BufferedImageIcon icon3 = ObjectImageManager
                                         .getObjectImage(obj2,
                                                 !this.trueSightFlag);
-                                this.drawGrid[xFix][yFix]
-                                        .setIcon(ImageModifier
-                                                .getCompositeImage(icon1,
-                                                        icon2, icon3));
+                                this.drawGrid[xFix][yFix].setIcon(
+                                        ImageModifier.getCompositeImage(icon1,
+                                                icon2, icon3));
                             } else {
-                                BufferedImageIcon icon2 = ObjectImageManager
+                                final BufferedImageIcon icon2 = ObjectImageManager
                                         .getObjectImage(obj2,
                                                 !this.trueSightFlag);
                                 this.drawGrid[xFix][yFix].setIcon(ImageModifier
                                         .getCompositeImage(icon1, icon2));
                             }
                         } else {
-                            this.drawGrid[xFix][yFix]
-                                    .setIcon(ObjectImageManager
-                                            .getObjectImage(new Darkness(),
-                                                    !this.trueSightFlag));
+                            this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
+                                    .getObjectImage(new Darkness(),
+                                            !this.trueSightFlag));
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                .getObjectImage(new EmptyVoid(),
-                                        !this.trueSightFlag));
+                        this.drawGrid[xFix][yFix]
+                                .setIcon(ObjectImageManager.getObjectImage(
+                                        new EmptyVoid(), !this.trueSightFlag));
                     } catch (final NullPointerException np) {
-                        this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                .getObjectImage(new EmptyVoid(),
-                                        !this.trueSightFlag));
+                        this.drawGrid[xFix][yFix]
+                                .setIcon(ObjectImageManager.getObjectImage(
+                                        new EmptyVoid(), !this.trueSightFlag));
                     }
                 }
             }
@@ -238,27 +228,27 @@ class GameGUI {
             boolean visible;
             xFix = y - this.vwMgr.getViewingWindowLocationX();
             yFix = x - this.vwMgr.getViewingWindowLocationY();
-            visible = app.getMazeManager().getMaze()
-                    .isSquareVisible(u, v, x, y);
+            visible = app.getMazeManager().getMaze().isSquareVisible(u, v, x,
+                    y);
             try {
                 if (visible) {
                     MazeObject obj1, obj2;
-                    obj1 = app.getMazeManager().getMaze()
-                            .getCell(x, y, z, MazeConstants.LAYER_GROUND);
-                    BufferedImageIcon icon1 = ObjectImageManager
+                    obj1 = app.getMazeManager().getMaze().getCell(x, y, z,
+                            MazeConstants.LAYER_GROUND);
+                    final BufferedImageIcon icon1 = ObjectImageManager
                             .getObjectImage(obj1, !this.trueSightFlag);
-                    obj2 = app.getMazeManager().getMaze()
-                            .getCell(x, y, z, MazeConstants.LAYER_OBJECT);
-                    BufferedImageIcon icon2 = ObjectImageManager
+                    obj2 = app.getMazeManager().getMaze().getCell(x, y, z,
+                            MazeConstants.LAYER_OBJECT);
+                    final BufferedImageIcon icon2 = ObjectImageManager
                             .getObjectImage(obj2, !this.trueSightFlag);
-                    BufferedImageIcon icon3 = ObjectImageManager
+                    final BufferedImageIcon icon3 = ObjectImageManager
                             .getObjectImage(obj3, !this.trueSightFlag);
                     this.drawGrid[xFix][yFix].setIcon(ImageModifier
                             .getCompositeImage(icon1, icon2, icon3));
                 } else {
-                    this.drawGrid[xFix][yFix]
-                            .setIcon(ObjectImageManager.getObjectImage(
-                                    new Darkness(), !this.trueSightFlag));
+                    this.drawGrid[xFix][yFix].setIcon(
+                            ObjectImageManager.getObjectImage(new Darkness(),
+                                    !this.trueSightFlag));
                 }
                 this.drawGrid[xFix][yFix].repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -296,8 +286,8 @@ class GameGUI {
         this.borderPane.removeAll();
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
         this.borderPane.add(this.progressPane, BorderLayout.WEST);
         this.borderPane.add(em.getEffectMessageContainer(), BorderLayout.SOUTH);
     }
@@ -320,8 +310,8 @@ class GameGUI {
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.progressPane = new Container();
-        this.progressPane.setLayout(new BoxLayout(this.progressPane,
-                BoxLayout.Y_AXIS));
+        this.progressPane
+                .setLayout(new BoxLayout(this.progressPane, BoxLayout.Y_AXIS));
         this.autoFinishProgress = new JProgressBar(SwingConstants.VERTICAL);
         this.autoFinishProgress.setStringPainted(true);
         this.alternateAutoFinishProgress = new JProgressBar(
@@ -338,14 +328,15 @@ class GameGUI {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(this.handler);
         this.outputFrame.addWindowListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
-        this.drawGrid = new JLabel[this.vwMgr.getViewingWindowSizeX()][this.vwMgr
-                .getViewingWindowSizeY()];
+        this.drawGrid = new JLabel[this.vwMgr
+                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
                 this.drawGrid[x][y] = new JLabel();
@@ -360,12 +351,12 @@ class GameGUI {
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.borderPane.add(this.progressPane, BorderLayout.WEST);
         this.borderPane.add(em.getEffectMessageContainer(), BorderLayout.SOUTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         public EventHandler() {
             // Do nothing
         }

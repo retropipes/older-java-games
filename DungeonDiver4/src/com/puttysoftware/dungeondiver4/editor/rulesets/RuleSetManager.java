@@ -23,7 +23,7 @@ public class RuleSetManager {
 
     // Methods
     public static void importRuleSet() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         String filename, extension;
         final JFileChooser fc = new JFileChooser();
         final RuleSetFilter xrsf = new RuleSetFilter();
@@ -38,31 +38,30 @@ public class RuleSetManager {
             if (extension.equals(Extension.getRuleSetExtension())) {
                 RuleSetManager.importFile(filename);
             } else {
-                CommonDialogs
-                        .showDialog("You opened something other than a rule set file. Select a rule set file, and try again.");
+                CommonDialogs.showDialog(
+                        "You opened something other than a rule set file. Select a rule set file, and try again.");
             }
         }
     }
 
-    private static void importFile(String filename) {
-        if (!FilenameChecker.isFilenameOK(RuleSetManager
-                .getNameWithoutExtension(RuleSetManager
-                        .getFileNameOnly(filename)))) {
-            CommonDialogs
-                    .showErrorDialog(
-                            "The file you selected contains illegal characters in its\n"
-                                    + "name. These characters are not allowed: /?<>\\:|\"\n"
-                                    + "Files named con, nul, or prn are illegal, as are files\n"
-                                    + "named com1 through com9 and lpt1 through lpt9.",
-                            "Load");
+    private static void importFile(final String filename) {
+        if (!FilenameChecker
+                .isFilenameOK(RuleSetManager.getNameWithoutExtension(
+                        RuleSetManager.getFileNameOnly(filename)))) {
+            CommonDialogs.showErrorDialog(
+                    "The file you selected contains illegal characters in its\n"
+                            + "name. These characters are not allowed: /?<>\\:|\"\n"
+                            + "Files named con, nul, or prn are illegal, as are files\n"
+                            + "named com1 through com9 and lpt1 through lpt9.",
+                    "Load");
         } else {
-            RuleSetLoadTask xrslt = new RuleSetLoadTask(filename);
+            final RuleSetLoadTask xrslt = new RuleSetLoadTask(filename);
             xrslt.start();
         }
     }
 
     public static boolean exportRuleSet() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -76,19 +75,20 @@ public class RuleSetManager {
                 final File file = fc.getSelectedFile();
                 extension = RuleSetManager.getExtension(file);
                 filename = file.getAbsolutePath();
-                String dirOnly = fc.getCurrentDirectory().getAbsolutePath();
+                final String dirOnly = fc.getCurrentDirectory()
+                        .getAbsolutePath();
                 fileOnly = filename.substring(dirOnly.length() + 1);
                 if (!FilenameChecker.isFilenameOK(fileOnly)) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The file name you entered contains illegal characters.\n"
-                                            + "These characters are not allowed: /?<>\\:|\"\n"
-                                            + "Files named con, nul, or prn are illegal, as are files\n"
-                                            + "named com1 through com9 and lpt1 through lpt9.",
-                                    "Save");
+                    CommonDialogs.showErrorDialog(
+                            "The file name you entered contains illegal characters.\n"
+                                    + "These characters are not allowed: /?<>\\:|\"\n"
+                                    + "Files named con, nul, or prn are illegal, as are files\n"
+                                    + "named com1 through com9 and lpt1 through lpt9.",
+                            "Save");
                 } else {
                     if (extension != null) {
-                        if (!(extension.equals(Extension.getRuleSetExtension()))) {
+                        if (!extension
+                                .equals(Extension.getRuleSetExtension())) {
                             filename = RuleSetManager
                                     .getNameWithoutExtension(file)
                                     + Extension.getRuleSetExtensionWithPeriod();
@@ -105,8 +105,8 @@ public class RuleSetManager {
         return false;
     }
 
-    private static void exportFile(String filename) {
-        RuleSetSaveTask xrsst = new RuleSetSaveTask(filename);
+    private static void exportFile(final String filename) {
+        final RuleSetSaveTask xrsst = new RuleSetSaveTask(filename);
         xrsst.start();
     }
 
@@ -114,7 +114,7 @@ public class RuleSetManager {
         String ext = null;
         final String s = f.getName();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
@@ -124,7 +124,7 @@ public class RuleSetManager {
         String ext = null;
         final String s = f.getAbsolutePath();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(0, i);
         } else {
             ext = s;
@@ -135,7 +135,7 @@ public class RuleSetManager {
     private static String getNameWithoutExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(0, i);
         } else {
             ext = s;
@@ -146,7 +146,7 @@ public class RuleSetManager {
     private static String getFileNameOnly(final String s) {
         String fno = null;
         final int i = s.lastIndexOf(File.separatorChar);
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             fno = s.substring(i + 1);
         } else {
             fno = s;

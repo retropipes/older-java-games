@@ -63,8 +63,8 @@ public class MazeStairsDown extends MazeGenericTeleporter {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.updatePositionAbsoluteNoEvents(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor(),

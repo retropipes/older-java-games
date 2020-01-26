@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazerunner2.maze.objects;
 
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public class Destination extends AbstractTeleport {

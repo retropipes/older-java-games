@@ -13,16 +13,16 @@ import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
 
 public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     // Fields
-    private String name;
-    private int baseName;
-    private String plural;
-    private String source1;
-    private String source2;
-    private String dirName;
+    private final String name;
+    private final int baseName;
+    private final String plural;
+    private final String source1;
+    private final String source2;
+    private final String dirName;
 
     // Constructors
-    protected AbstractGeneratedEdge(final String n, final int b,
-            final String p, final String s1, final String s2, final String d) {
+    protected AbstractGeneratedEdge(final String n, final int b, final String p,
+            final String s1, final String s2, final String d) {
         super(false, false);
         this.setTemplateColor(ColorConstants.COLOR_NONE);
         this.name = n;
@@ -64,8 +64,8 @@ public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     @Override
     public String getDescription() {
         return this.plural + " are transitions in the " + this.dirName
-                + " direction, between " + this.source1 + " and "
-                + this.source2 + ".";
+                + " direction, between " + this.source1 + " and " + this.source2
+                + ".";
     }
 
     @Override
@@ -85,18 +85,18 @@ public abstract class AbstractGeneratedEdge extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 }

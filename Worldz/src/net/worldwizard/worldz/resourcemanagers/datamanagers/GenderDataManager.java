@@ -15,8 +15,8 @@ public class GenderDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    GenderDataManager.class
-                            .getResourceAsStream("/net/worldwizard/worldz/resources/data/gender/"
+                    GenderDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/worldz/resources/data/gender/"
                                     + name + ".dat"));
             final int[] rawData = new int[GenderConstants.GENDERS_ATTRIBUTE_COUNT];
             for (int x = 0; x < rawData.length; x++) {

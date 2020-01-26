@@ -20,16 +20,15 @@ public class MusicManager {
 
     private static OggPlayer getMusic(final String filename) {
         try {
-            final URL url = MusicManager.LOAD_CLASS
-                    .getResource(MusicManager.LOAD_PATH
-                            + filename.toLowerCase() + ".ogg");
+            final URL url = MusicManager.LOAD_CLASS.getResource(
+                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
             return new OggPlayer(url);
         } catch (final NullPointerException np) {
             return null;
         }
     }
 
-    private static void playMusic(String musicName) {
+    private static void playMusic(final String musicName) {
         MusicManager.CURRENT_MUSIC = MusicManager.getMusic(musicName);
         if (MusicManager.CURRENT_MUSIC != null) {
             // Play the music
@@ -48,11 +47,11 @@ public class MusicManager {
             // Stop the music
             try {
                 MusicManager.CURRENT_MUSIC.stopLoop();
-            } catch (BufferUnderflowException bue) {
+            } catch (final BufferUnderflowException bue) {
                 // Ignore
-            } catch (NullPointerException np) {
+            } catch (final NullPointerException np) {
                 // Ignore
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 WidgetWarren.getErrorLogger().logError(t);
             }
         }

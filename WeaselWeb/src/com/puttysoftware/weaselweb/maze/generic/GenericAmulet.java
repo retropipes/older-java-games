@@ -21,16 +21,16 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
     protected GenericAmulet(final Color amuletColor) {
         super(false, 0);
         this.setType(TypeConstants.TYPE_AMULET);
-        this.getAttributeGroup().getBase()
-                .setTemplateTransform(this, new TemplateTransform(amuletColor));
+        this.getAttributeGroup().getBase().setTemplateTransform(this,
+                new TemplateTransform(amuletColor));
     }
 
     @Override
     public abstract String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WeaselWeb.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,

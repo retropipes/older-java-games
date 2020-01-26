@@ -29,10 +29,9 @@ public class SpellCaster {
                 result = SpellCaster.castSpellWithPower(s, power, caster,
                         teamID, aiEnabled, battle);
                 if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "You try to cast a spell, but realize you don't have enough MP!",
-                                    "Select Spell");
+                    CommonDialogs.showErrorDialog(
+                            "You try to cast a spell, but realize you don't have enough MP!",
+                            "Select Spell");
                 }
             }
         }
@@ -65,10 +64,9 @@ public class SpellCaster {
                 }
             } else {
                 SpellCaster.NO_SPELLS_FLAG = true;
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't know any!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't know any!",
+                        "Select Spell");
                 return null;
             }
         } else {
@@ -84,9 +82,9 @@ public class SpellCaster {
         final String[] powers = new String[] { "1", "2", "3", "4", "5", "6",
                 "7", "8", "9", "X" };
         String dialogResult = null;
-        dialogResult = CommonDialogs
-                .showInputDialog("Select a Spell Power Level", "Select Power",
-                        powers, powers[0]);
+        dialogResult = CommonDialogs.showInputDialog(
+                "Select a Spell Power Level", "Select Power", powers,
+                powers[0]);
         if (dialogResult != null) {
             int index;
             for (index = 0; index < powers.length; index++) {
@@ -182,16 +180,16 @@ public class SpellCaster {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
             }

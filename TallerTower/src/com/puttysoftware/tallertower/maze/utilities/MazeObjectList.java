@@ -68,15 +68,15 @@ public class MazeObjectList {
                 new FaithPowerShop(), new HealShop(), new HealTrap(),
                 new HurtTrap(), new Ice(), new ItemShop(), new LightGem(),
                 new Monster(), new OpenDoor(), new Regenerator(),
-                new SealingWall(), new SocksShop(), new SpellShop(),
-                new Tile(), new UTurnTrap(), new VariableHealTrap(),
-                new VariableHurtTrap(), new Wall(), new WarpTrap(),
-                new WeaponsShop(), new StairsUp(), new StairsDown(),
-                new WallOff(), new WallOn(), new Button(), new Amulet() };
+                new SealingWall(), new SocksShop(), new SpellShop(), new Tile(),
+                new UTurnTrap(), new VariableHealTrap(), new VariableHurtTrap(),
+                new Wall(), new WarpTrap(), new WeaponsShop(), new StairsUp(),
+                new StairsDown(), new WallOff(), new WallOn(), new Button(),
+                new Amulet() };
         this.allObjectList = new ArrayList<>();
         // Add all predefined objects to the list
-        for (int z = 0; z < allObjects.length; z++) {
-            this.allObjectList.add(allObjects[z]);
+        for (final AbstractMazeObject allObject : allObjects) {
+            this.allObjectList.add(allObject);
         }
     }
 
@@ -114,7 +114,7 @@ public class MazeObjectList {
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && objects[x].isRequired()) {
+            if (objects[x].getLayer() == layer && objects[x].isRequired()) {
                 tempAllRequired[count] = objects[x];
                 count++;
             }
@@ -137,7 +137,7 @@ public class MazeObjectList {
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && !(objects[x].isRequired())) {
+            if (objects[x].getLayer() == layer && !objects[x].isRequired()) {
                 tempAllWithoutPrereq[count] = objects[x];
                 count++;
             }
@@ -184,10 +184,10 @@ public class MazeObjectList {
         if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
             UID = reader.readString();
         }
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                instance = objects[x].getClass().newInstance();
+                instance = object.getClass().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readMazeObjectV1(reader, UID);
                     if (o != null) {
@@ -205,10 +205,10 @@ public class MazeObjectList {
             final String UID, final int formatVersion) throws IOException {
         final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject o = null;
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                instance = objects[x].getClass().newInstance();
+                instance = object.getClass().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readMazeObjectV1(reader, UID);
                     if (o != null) {

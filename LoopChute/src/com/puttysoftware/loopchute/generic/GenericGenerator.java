@@ -44,7 +44,8 @@ public abstract class GenericGenerator extends GenericWall {
         final Application app = LoopChute.getApplication();
         final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
         final int pw = app.getMazeManager().getMaze().getPlayerLocationW();
-        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName, vertName;
+        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
+                vertName;
         invalidName = new EmptyVoid().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
@@ -88,8 +89,8 @@ public abstract class GenericGenerator extends GenericWall {
             scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY,
-                        pz, this.SCAN_LIMIT, false);
+                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY, pz,
+                        this.SCAN_LIMIT, false);
                 flag = true;
             }
         }
@@ -115,8 +116,8 @@ public abstract class GenericGenerator extends GenericWall {
             scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY,
-                        pz, this.SCAN_LIMIT, false);
+                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY, pz,
+                        this.SCAN_LIMIT, false);
                 flag = true;
             }
         }
@@ -142,7 +143,8 @@ public abstract class GenericGenerator extends GenericWall {
         boolean flag = false;
         final Application app = LoopChute.getApplication();
         final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
-        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName, vertName;
+        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
+                vertName;
         invalidName = new EmptyVoid().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
@@ -186,8 +188,8 @@ public abstract class GenericGenerator extends GenericWall {
             scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY,
-                        pz, this.SCAN_LIMIT, true);
+                this.generate(DirectionConstants.DIRECTION_WEST, dirX, dirY, pz,
+                        this.SCAN_LIMIT, true);
                 flag = true;
             }
         }
@@ -213,8 +215,8 @@ public abstract class GenericGenerator extends GenericWall {
             scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
-                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY,
-                        pz, this.SCAN_LIMIT, true);
+                this.generate(DirectionConstants.DIRECTION_EAST, dirX, dirY, pz,
+                        this.SCAN_LIMIT, true);
                 flag = true;
             }
         }
@@ -227,8 +229,8 @@ public abstract class GenericGenerator extends GenericWall {
         this.activateTimer(this.TIMER_DELAY);
     }
 
-    protected boolean scan(final int dir, final int x, final int y,
-            final int z, final int limit, final boolean o) {
+    protected boolean scan(final int dir, final int x, final int y, final int z,
+            final int limit, final boolean o) {
         final Application app = LoopChute.getApplication();
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
@@ -393,10 +395,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new HorizontalBarrier(), x + l, y,
-                                            z, MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(
+                                    new HorizontalBarrier(), x + l, y, z,
+                                    MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -413,10 +414,8 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new Empty(), x + l, y, z,
-                                            MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(new Empty(),
+                                    x + l, y, z, MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -445,10 +444,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new VerticalBarrier(), x, y - l,
-                                            z, MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(
+                                    new VerticalBarrier(), x, y - l, z,
+                                    MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -465,10 +463,8 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new Empty(), x, y - l, z,
-                                            MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(new Empty(),
+                                    x, y - l, z, MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -497,10 +493,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new VerticalBarrier(), x, y + l,
-                                            z, MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(
+                                    new VerticalBarrier(), x, y + l, z,
+                                    MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -517,10 +512,8 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new Empty(), x, y + l, z,
-                                            MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(new Empty(),
+                                    x, y + l, z, MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -545,10 +538,9 @@ public abstract class GenericGenerator extends GenericWall {
                             break;
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new HorizontalBarrier(), x - l, y,
-                                            z, MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(
+                                    new HorizontalBarrier(), x - l, y, z,
+                                    MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -565,10 +557,8 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager()
-                                    .getMaze()
-                                    .setCell(new Empty(), x - l, y, z,
-                                            MazeConstants.LAYER_OBJECT);
+                            app.getMazeManager().getMaze().setCell(new Empty(),
+                                    x - l, y, z, MazeConstants.LAYER_OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -580,8 +570,8 @@ public abstract class GenericGenerator extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Behave as if the generator was walked into, unless the arrow was an
         // ice arrow
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {

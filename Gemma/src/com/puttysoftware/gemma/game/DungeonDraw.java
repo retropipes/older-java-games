@@ -19,17 +19,17 @@ class DungeonDraw extends JPanel {
 
     public DungeonDraw() {
         super();
-        int vSize = GameViewingWindowManager.getViewingWindowSize();
-        int gSize = ImageManager.getGraphicSize();
+        final int vSize = GameViewingWindowManager.getViewingWindowSize();
+        final int gSize = ImageManager.getGraphicSize();
         this.setPreferredSize(new Dimension(vSize * gSize, vSize * gSize));
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         if (this.drawGrid != null) {
-            int gSize = ImageManager.getGraphicSize();
-            int vSize = GameViewingWindowManager.getViewingWindowSize();
+            final int gSize = ImageManager.getGraphicSize();
+            final int vSize = GameViewingWindowManager.getViewingWindowSize();
             for (int x = 0; x < vSize; x++) {
                 for (int y = 0; y < vSize; y++) {
                     g.drawImage(this.drawGrid.getImageCell(y, x), x * gSize,
@@ -39,7 +39,7 @@ class DungeonDraw extends JPanel {
         }
     }
 
-    public void updateGrid(DrawGrid newGrid) {
+    public void updateGrid(final DrawGrid newGrid) {
         this.drawGrid = newGrid;
     }
 }

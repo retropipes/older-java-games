@@ -8,8 +8,8 @@ package com.puttysoftware.widgetwarren.objects;
 import com.puttysoftware.widgetwarren.WidgetWarren;
 import com.puttysoftware.widgetwarren.generic.GenericConditionalTeleport;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super();

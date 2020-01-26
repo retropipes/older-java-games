@@ -23,7 +23,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
     private boolean isActive;
 
     // Constructors
-    protected AbstractBattleCharacter(AbstractCreature newTemplate) {
+    protected AbstractBattleCharacter(final AbstractCreature newTemplate) {
         super(true, false);
         this.template = newTemplate;
         this.actionCounter = newTemplate.getMapBattleActionsPerRound();
@@ -34,8 +34,8 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 
@@ -47,19 +47,19 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         return this.template.getY();
     }
 
-    public final void setX(int newX) {
+    public final void setX(final int newX) {
         this.template.setX(newX);
     }
 
-    public final void setY(int newY) {
+    public final void setY(final int newY) {
         this.template.setY(newY);
     }
 
-    public final void offsetX(int newX) {
+    public final void offsetX(final int newX) {
         this.template.offsetX(newX);
     }
 
-    public final void offsetY(int newY) {
+    public final void offsetY(final int newY) {
         this.template.offsetY(newY);
     }
 
@@ -108,7 +108,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         this.actionCounter = this.template.getMapBattleActionsPerRound();
     }
 
-    public final void modifyAP(int mod) {
+    public final void modifyAP(final int mod) {
         this.actionCounter -= mod;
     }
 
@@ -120,7 +120,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         this.attackCounter = this.template.getEffectedAttacksPerRound();
     }
 
-    public final void modifyAttacks(int mod) {
+    public final void modifyAttacks(final int mod) {
         this.attackCounter -= mod;
     }
 
@@ -132,7 +132,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         this.spellCounter = this.template.getEffectedSpellsPerRound();
     }
 
-    public final void modifySpells(int mod) {
+    public final void modifySpells(final int mod) {
         this.spellCounter -= mod;
     }
 
@@ -181,7 +181,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 0:
             return this.getX();
@@ -193,7 +193,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 0:
             this.setX(value);
@@ -232,11 +232,11 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         result = prime * result + (this.isActive ? 1231 : 1237);
         result = prime * result + this.spellCounter;
         return prime * result
-                + ((this.template == null) ? 0 : this.template.hashCode());
+                + (this.template == null ? 0 : this.template.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -246,7 +246,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         if (!(obj instanceof AbstractBattleCharacter)) {
             return false;
         }
-        AbstractBattleCharacter other = (AbstractBattleCharacter) obj;
+        final AbstractBattleCharacter other = (AbstractBattleCharacter) obj;
         if (this.actionCounter != other.actionCounter) {
             return false;
         }

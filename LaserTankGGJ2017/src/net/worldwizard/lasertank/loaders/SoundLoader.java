@@ -7,11 +7,13 @@ import net.worldwizard.lasertank.assets.GameSound;
 public class SoundLoader {
     // Private constructor
     private SoundLoader() {
-	// Do nothing
+        // Do nothing
     }
 
     public static GameSound loadSound(final String soundName) {
-	final URL u = SoundLoader.class.getResource("/net/worldwizard/lasertank/assets/sounds/" + soundName + ".wav");
-	return new GameSound(u);
+        final URL u = SoundLoader.class
+                .getResource("/net/worldwizard/lasertank/assets/sounds/"
+                        + soundName + ".wav");
+        return new GameSound(u);
     }
 }

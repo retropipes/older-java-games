@@ -28,7 +28,7 @@ public class InvisibleWall extends AbstractWall {
     }
 
     @Override
-    public boolean isConditionallySolid(MazeObjectInventory inv) {
+    public boolean isConditionallySolid(final MazeObjectInventory inv) {
         // Disallow passing through Invisible Walls under ANY circumstances
         return true;
     }

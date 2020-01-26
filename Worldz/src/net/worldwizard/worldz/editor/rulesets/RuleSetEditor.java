@@ -74,10 +74,10 @@ class RuleSetEditor {
 
     private void loadRuleSetEditor() {
         this.percentage.setSelected(this.generator.getPercentageFlag());
-        this.minQuantity.setText(Integer.toString(this.generator
-                .getMinimumRequiredQuantity()));
-        this.maxQuantity.setText(Integer.toString(this.generator
-                .getMaximumRequiredQuantity()));
+        this.minQuantity.setText(
+                Integer.toString(this.generator.getMinimumRequiredQuantity()));
+        this.maxQuantity.setText(
+                Integer.toString(this.generator.getMaximumRequiredQuantity()));
     }
 
     private void setUpGUI() {

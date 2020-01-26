@@ -49,40 +49,39 @@ public class MicroMod {
     public synchronized void playModule() {
         if (this.ibxm != null) {
             this.playing = true;
-            this.playThread = new Thread(
-                    () -> {
-                        final int[] mixBuf = new int[MicroMod.this.ibxm
-                                .getMixBufferLength()];
-                        final byte[] outBuf = new byte[mixBuf.length * 4];
-                        AudioFormat audioFormat = null;
-                        audioFormat = new AudioFormat(MicroMod.SAMPLE_RATE, 16,
-                                2, true, true);
-                        try (SourceDataLine audioLine = AudioSystem
-                                .getSourceDataLine(audioFormat)) {
-                            audioLine.open();
-                            audioLine.start();
-                            while (MicroMod.this.playing) {
-                                final int count = MicroMod.this
-                                        .getAudio(mixBuf);
-                                int outIdx = 0;
-                                for (int mixIdx = 0, mixEnd = count * 2; mixIdx < mixEnd; mixIdx++) {
-                                    int ampl = mixBuf[mixIdx];
-                                    if (ampl > 32767) {
-                                        ampl = 32767;
-                                    }
-                                    if (ampl < -32768) {
-                                        ampl = -32768;
-                                    }
-                                    outBuf[outIdx++] = (byte) (ampl >> 8);
-                                    outBuf[outIdx++] = (byte) ampl;
-                                }
-                                audioLine.write(outBuf, 0, outIdx);
+            this.playThread = new Thread(() -> {
+                final int[] mixBuf = new int[MicroMod.this.ibxm
+                        .getMixBufferLength()];
+                final byte[] outBuf = new byte[mixBuf.length * 4];
+                AudioFormat audioFormat = null;
+                audioFormat = new AudioFormat(MicroMod.SAMPLE_RATE, 16, 2, true,
+                        true);
+                try (SourceDataLine audioLine = AudioSystem
+                        .getSourceDataLine(audioFormat)) {
+                    audioLine.open();
+                    audioLine.start();
+                    while (MicroMod.this.playing) {
+                        final int count = MicroMod.this.getAudio(mixBuf);
+                        int outIdx = 0;
+                        for (int mixIdx = 0, mixEnd = count
+                                * 2; mixIdx < mixEnd; mixIdx++) {
+                            int ampl = mixBuf[mixIdx];
+                            if (ampl > 32767) {
+                                ampl = 32767;
                             }
-                            audioLine.drain();
-                        } catch (final Exception e) {
-                            // Ignore
+                            if (ampl < -32768) {
+                                ampl = -32768;
+                            }
+                            outBuf[outIdx++] = (byte) (ampl >> 8);
+                            outBuf[outIdx++] = (byte) ampl;
                         }
-                    });
+                        audioLine.write(outBuf, 0, outIdx);
+                    }
+                    audioLine.drain();
+                } catch (final Exception e) {
+                    // Ignore
+                }
+            });
             this.playThread.start();
         }
     }

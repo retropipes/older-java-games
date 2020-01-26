@@ -24,43 +24,43 @@ public class WeaponConstants {
 
     // Methods
     public static String[] getWeaponChoices() {
-        return WEAPON_CHOICES;
+        return WeaponConstants.WEAPON_CHOICES;
     }
 
     public static synchronized String[] getHandChoices() {
-        if (HAND_CHOICES == null) {
+        if (WeaponConstants.HAND_CHOICES == null) {
             final String[] temp = EquipmentSlotConstants.getSlotNames();
             final String[] temp2 = new String[2];
             temp2[0] = temp[EquipmentSlotConstants.SLOT_MAINHAND];
             temp2[1] = temp[EquipmentSlotConstants.SLOT_OFFHAND];
-            HAND_CHOICES = temp2;
+            WeaponConstants.HAND_CHOICES = temp2;
         }
-        return HAND_CHOICES;
+        return WeaponConstants.HAND_CHOICES;
     }
 
     public static synchronized String[] get1HWeapons() {
-        if (WEAPON_1H == null) {
+        if (WeaponConstants.WEAPON_1H == null) {
             final String[] temp = new String[CasteConstants.CASTES_COUNT];
             for (int x = 0; x < temp.length; x++) {
                 temp[x] = NamesManager.getName(
                         NamesConstants.SECTION_EQUIP_WEAPONS_1H,
                         NamesConstants.SECTION_ARRAY_WEAPONS_1H[x]);
             }
-            WEAPON_1H = temp;
+            WeaponConstants.WEAPON_1H = temp;
         }
-        return WEAPON_1H;
+        return WeaponConstants.WEAPON_1H;
     }
 
     public static synchronized String[] get2HWeapons() {
-        if (WEAPON_2H == null) {
+        if (WeaponConstants.WEAPON_2H == null) {
             final String[] temp = new String[CasteConstants.CASTES_COUNT];
             for (int x = 0; x < temp.length; x++) {
                 temp[x] = NamesManager.getName(
                         NamesConstants.SECTION_EQUIP_WEAPONS_2H,
                         NamesConstants.SECTION_ARRAY_WEAPONS_2H[x]);
             }
-            WEAPON_2H = temp;
+            WeaponConstants.WEAPON_2H = temp;
         }
-        return WEAPON_2H;
+        return WeaponConstants.WEAPON_2H;
     }
 }

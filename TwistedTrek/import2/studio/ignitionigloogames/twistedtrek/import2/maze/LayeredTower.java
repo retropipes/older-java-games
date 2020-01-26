@@ -746,8 +746,8 @@ final class LayeredTower implements Cloneable {
 		for (z = 0; z < sizeZ; z++) {
 		    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
 			this.savedTowerState.setCell(
-				Import2.getApplication().getObjects().readMazeObject(reader, formatVersion), y, x,
-				z, e);
+				Import2.getApplication().getObjects().readMazeObject(reader, formatVersion), y, x, z,
+				e);
 		    }
 		}
 	    }

@@ -10,7 +10,8 @@ import com.puttysoftware.fantastlex.maze.utilities.ColorConstants;
 
 public class WhiteButton extends AbstractButton {
     public WhiteButton() {
-        super(new WhiteWallOff(), new WhiteWallOn(), ColorConstants.COLOR_WHITE);
+        super(new WhiteWallOff(), new WhiteWallOn(),
+                ColorConstants.COLOR_WHITE);
     }
 
     @Override

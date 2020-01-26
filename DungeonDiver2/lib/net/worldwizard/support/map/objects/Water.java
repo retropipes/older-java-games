@@ -32,8 +32,8 @@ public class Water extends GenericField {
         scpt.addAction(entry0);
         final GameScriptEntry entry1 = new GameScriptEntry();
         entry1.setActionCode(GameActionCode.MESSAGE);
-        entry1.addActionArg(new GameScriptEntryArgument(
-                "Brrr, that water's COLD!"));
+        entry1.addActionArg(
+                new GameScriptEntryArgument("Brrr, that water's COLD!"));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
         scpt.finalizeActions();

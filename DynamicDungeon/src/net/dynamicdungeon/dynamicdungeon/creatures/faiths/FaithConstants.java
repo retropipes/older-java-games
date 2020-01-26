@@ -24,92 +24,92 @@ public class FaithConstants {
 
     // Private constructor
     private FaithConstants() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
     public static int getFaithsCount() {
-	if (!INITED) {
-	    FaithConstants.initFaiths();
-	}
-	return FaithConstants.FAITHS_COUNT;
+        if (!FaithConstants.INITED) {
+            FaithConstants.initFaiths();
+        }
+        return FaithConstants.FAITHS_COUNT;
     }
 
     public static String getFaithName(final int f) {
-	if (!INITED) {
-	    FaithConstants.initFaiths();
-	}
-	return FaithConstants.FAITH_DISPLAY_NAMES[f];
+        if (!FaithConstants.INITED) {
+            FaithConstants.initFaiths();
+        }
+        return FaithConstants.FAITH_DISPLAY_NAMES[f];
     }
 
     public static Color getFaithColor(final int f) {
-	if (!INITED) {
-	    FaithConstants.initFaiths();
-	}
-	return FaithConstants.FAITH_COLORS[f];
+        if (!FaithConstants.INITED) {
+            FaithConstants.initFaiths();
+        }
+        return FaithConstants.FAITH_COLORS[f];
     }
 
     static boolean faithsReady() {
-	return FaithConstants.INITED;
+        return FaithConstants.INITED;
     }
 
     static synchronized void initFaiths() {
-	if (!FaithConstants.INITED) {
-	    try {
-		// Fetch data
-		final ArrayList<String> tempNames = new ArrayList<>();
-		try (final ResourceStreamReader rsr1 = new ResourceStreamReader(
-			FaithConstants.class
-				.getResourceAsStream("/net/dynamicdungeon/dynamicdungeon/resources/data/faith/catalog.txt"))) {
-		    String input1 = "";
-		    while (input1 != null) {
-			input1 = rsr1.readString();
-			if (input1 != null) {
-			    tempNames.add(input1);
-			}
-		    }
-		}
-		FaithConstants.FAITH_NAMES = tempNames
-			.toArray(new String[tempNames.size()]);
-		FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
-		final ArrayList<String> tempColors = new ArrayList<>();
-		try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
-			FaithConstants.class
-				.getResourceAsStream("/net/dynamicdungeon/dynamicdungeon/resources/data/faith/colors.txt"))) {
-		    String input2 = "";
-		    while (input2 != null) {
-			input2 = rsr2.readString();
-			if (input2 != null) {
-			    tempColors.add(input2);
-			}
-		    }
-		}
-		final String[] tempColors2 = tempColors
-			.toArray(new String[tempColors.size()]);
-		FaithConstants.FAITH_COLORS = new Color[tempColors2.length];
-		final int[][] tempColors3 = new int[tempColors2.length][3];
-		for (int x = 0; x < tempColors2.length; x++) {
-		    final String[] tempColorSplit = tempColors2[x].split(",");
-		    for (int y = 0; y < 3; y++) {
-			tempColors3[x][y] = Integer.parseInt(tempColorSplit[y]);
-		    }
-		    FaithConstants.FAITH_COLORS[x] = new Color(
-			    tempColors3[x][0], tempColors3[x][1],
-			    tempColors3[x][2]);
-		}
-		if (FaithConstants.FAITH_DISPLAY_NAMES == null) {
-		    final String[] temp = new String[FaithConstants.FAITHS_COUNT];
-		    for (int x = 0; x < temp.length; x++) {
-			temp[x] = NamesManager.getName(
-				NamesConstants.SECTION_FAITHS,
-				NamesConstants.SECTION_ARRAY_FAITHS[x]);
-		    }
-		    FaithConstants.FAITH_DISPLAY_NAMES = temp;
-		}
-		FaithConstants.INITED = true;
-	    } catch (final IOException ioe) {
-		DynamicDungeon.getErrorLogger().logError(ioe);
-	    }
-	}
+        if (!FaithConstants.INITED) {
+            try {
+                // Fetch data
+                final ArrayList<String> tempNames = new ArrayList<>();
+                try (final ResourceStreamReader rsr1 = new ResourceStreamReader(
+                        FaithConstants.class.getResourceAsStream(
+                                "/net/dynamicdungeon/dynamicdungeon/resources/data/faith/catalog.txt"))) {
+                    String input1 = "";
+                    while (input1 != null) {
+                        input1 = rsr1.readString();
+                        if (input1 != null) {
+                            tempNames.add(input1);
+                        }
+                    }
+                }
+                FaithConstants.FAITH_NAMES = tempNames
+                        .toArray(new String[tempNames.size()]);
+                FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
+                final ArrayList<String> tempColors = new ArrayList<>();
+                try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
+                        FaithConstants.class.getResourceAsStream(
+                                "/net/dynamicdungeon/dynamicdungeon/resources/data/faith/colors.txt"))) {
+                    String input2 = "";
+                    while (input2 != null) {
+                        input2 = rsr2.readString();
+                        if (input2 != null) {
+                            tempColors.add(input2);
+                        }
+                    }
+                }
+                final String[] tempColors2 = tempColors
+                        .toArray(new String[tempColors.size()]);
+                FaithConstants.FAITH_COLORS = new Color[tempColors2.length];
+                final int[][] tempColors3 = new int[tempColors2.length][3];
+                for (int x = 0; x < tempColors2.length; x++) {
+                    final String[] tempColorSplit = tempColors2[x].split(",");
+                    for (int y = 0; y < 3; y++) {
+                        tempColors3[x][y] = Integer.parseInt(tempColorSplit[y]);
+                    }
+                    FaithConstants.FAITH_COLORS[x] = new Color(
+                            tempColors3[x][0], tempColors3[x][1],
+                            tempColors3[x][2]);
+                }
+                if (FaithConstants.FAITH_DISPLAY_NAMES == null) {
+                    final String[] temp = new String[FaithConstants.FAITHS_COUNT];
+                    for (int x = 0; x < temp.length; x++) {
+                        temp[x] = NamesManager.getName(
+                                NamesConstants.SECTION_FAITHS,
+                                NamesConstants.SECTION_ARRAY_FAITHS[x]);
+                    }
+                    FaithConstants.FAITH_DISPLAY_NAMES = temp;
+                }
+                FaithConstants.INITED = true;
+            } catch (final IOException ioe) {
+                DynamicDungeon.getErrorLogger().logError(ioe);
+            }
+        }
     }
 }

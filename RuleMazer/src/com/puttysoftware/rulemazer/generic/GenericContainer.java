@@ -78,11 +78,11 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Main.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
@@ -111,8 +111,8 @@ public abstract class GenericContainer extends GenericLock {
             Main.getApplication().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            Main.getApplication().showMessage(
-                    this.getName() + ": Contains Nothing");
+            Main.getApplication()
+                    .showMessage(this.getName() + ": Contains Nothing");
         }
     }
 

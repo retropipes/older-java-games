@@ -94,10 +94,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
                 isSolidXE);
         this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST,
                 isSolidXW);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTH, isSolidIN);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH,
+                isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH,
+                isSolidIS);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST,
                 isSolidIE);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST,
@@ -148,10 +148,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
                 isSolidXE);
         this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST,
                 isSolidXW);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_NORTH, isSolidIN);
-        this.sp.setDirectionallySolid(false,
-                DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH,
+                isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH,
+                isSolidIS);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST,
                 isSolidIE);
         this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST,
@@ -366,7 +366,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -375,7 +375,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -412,7 +412,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     protected abstract void setTypes();
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -421,7 +421,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -433,7 +433,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -442,7 +442,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -454,7 +454,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -463,7 +463,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -472,7 +472,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -484,7 +484,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -496,7 +496,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -505,7 +505,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @return
      */
@@ -514,7 +514,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -526,7 +526,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param inv
@@ -589,7 +589,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.mp.setPushable(value);
     }
 
-    protected void setDirectionallyPushable(final int dir, final boolean value) {
+    protected void setDirectionallyPushable(final int dir,
+            final boolean value) {
         this.mp.setDirectionallyPushable(dir, value);
     }
 
@@ -597,7 +598,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.mp.setPullable(value);
     }
 
-    protected void setDirectionallyPullable(final int dir, final boolean value) {
+    protected void setDirectionallyPullable(final int dir,
+            final boolean value) {
         this.mp.setDirectionallyPullable(dir, value);
     }
 
@@ -663,7 +665,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
 
     // Scriptability
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -676,14 +678,14 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
      * @param inv
      */
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Play move success sound, if it's enabled
         if (Fantastle5.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
@@ -692,7 +694,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -709,7 +711,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -741,28 +743,28 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     public final void playMoveSuccessSound() {
-        MazeObject.playGenericSoundAsynchronously(this
-                .getMoveSuccessSoundName());
+        MazeObject
+                .playGenericSoundAsynchronously(this.getMoveSuccessSoundName());
     }
 
     public final static void playPushSuccessSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getPushSuccessSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getPushSuccessSoundName());
     }
 
     public final static void playPushFailedSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getPushFailedSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getPushFailedSoundName());
     }
 
     public final static void playPullFailedSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getPullFailedSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getPullFailedSoundName());
     }
 
     public final static void playPullSuccessSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getPullSuccessSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getPullSuccessSoundName());
     }
 
     public final void playUseSound() {
@@ -774,13 +776,13 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     public final static void playIdentifySound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getIdentifySoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getIdentifySoundName());
     }
 
     public final static void playRotatedSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getRotatedSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getRotatedSoundName());
     }
 
     public final static void playFallSound() {
@@ -789,48 +791,48 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     public final static void playButtonSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getButtonSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getButtonSoundName());
     }
 
     public final static void playConfusedSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getConfusedSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getConfusedSoundName());
     }
 
     public final static void playDarknessSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getDarknessSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getDarknessSoundName());
     }
 
     public final static void playDizzySound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getDizzySoundName());
+        MazeObject
+                .playGenericSoundAsynchronously(MazeObject.getDizzySoundName());
     }
 
     public final static void playDrunkSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getDrunkSoundName());
+        MazeObject
+                .playGenericSoundAsynchronously(MazeObject.getDrunkSoundName());
     }
 
     public final static void playFinishSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getFinishSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getFinishSoundName());
     }
 
     public final static void playLightSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getLightSoundName());
+        MazeObject
+                .playGenericSoundAsynchronously(MazeObject.getLightSoundName());
     }
 
     public final static void playSinkBlockSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getSinkBlockSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getSinkBlockSoundName());
     }
 
     public final static void playWallTrapSound() {
-        MazeObject.playGenericSoundAsynchronously(MazeObject
-                .getWallTrapSoundName());
+        MazeObject.playGenericSoundAsynchronously(
+                MazeObject.getWallTrapSoundName());
     }
 
     private static void playGenericSoundAsynchronously(final String soundName) {
@@ -842,7 +844,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -856,7 +858,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -871,7 +873,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -886,7 +888,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -905,7 +907,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -919,7 +921,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -934,7 +936,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -949,7 +951,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -968,7 +970,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -981,7 +983,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -1025,7 +1027,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -1034,7 +1036,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -1053,7 +1055,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -1066,7 +1068,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -1079,7 +1081,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -1187,7 +1189,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -1284,7 +1286,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -1294,7 +1296,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return
@@ -1325,9 +1327,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public static final int resolveRelativeDirection(int idirX, int idirY) {
-        int dirX = (int) Math.signum(idirX);
-        int dirY = (int) Math.signum(idirY);
+    public static final int resolveRelativeDirection(final int idirX,
+            final int idirY) {
+        final int dirX = (int) Math.signum(idirX);
+        final int dirY = (int) Math.signum(idirY);
         if (dirX == 0 && dirY == 0) {
             return DirectionConstants.DIRECTION_NONE;
         } else if (dirX == 0 && dirY == -1) {

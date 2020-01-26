@@ -21,16 +21,16 @@ public class MonsterImageCache {
             bii = ImageTransformer.templateTransformImage(bii, transformColor);
             MonsterImageCache.addToCache(name, bii);
         }
-        for (int x = 0; x < MonsterImageCache.cache.length; x++) {
-            if (name.equals(MonsterImageCache.cache[x].getName())) {
-                return MonsterImageCache.cache[x].getImage();
+        for (final CacheEntry element : MonsterImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;
     }
 
     private static void expandCache() {
-        CacheEntry[] tempCache = new CacheEntry[MonsterImageCache.cache.length
+        final CacheEntry[] tempCache = new CacheEntry[MonsterImageCache.cache.length
                 + MonsterImageCache.CACHE_INCREMENT];
         for (int x = 0; x < MonsterImageCache.CACHE_SIZE; x++) {
             tempCache[x] = MonsterImageCache.cache[x];

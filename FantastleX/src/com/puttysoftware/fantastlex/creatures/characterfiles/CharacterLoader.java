@@ -72,8 +72,8 @@ public class CharacterLoader {
                 CommonDialogs.showDialog("Character removal failed!");
             }
         } else {
-            CommonDialogs
-                    .showDialog("The character to be removed does not have a corresponding file.");
+            CommonDialogs.showDialog(
+                    "The character to be removed does not have a corresponding file.");
         }
     }
 }

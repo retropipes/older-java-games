@@ -155,9 +155,9 @@ public abstract class Creature {
                 .getPrestigeValue(PrestigeConstants.PRESTIGE_TIMES_KILLED);
         final long timesRanAway = this
                 .getPrestigeValue(PrestigeConstants.PRESTIGE_TIMES_RAN_AWAY);
-        return (damageGiven - damageTaken) / 10 + hitsGiven + attacksDodged + 2
-                * monstersKilled - hitsTaken - 2 * missedAttacks - 3
-                * spellsCast - 10 * timesKilled - 50 * timesRanAway;
+        return (damageGiven - damageTaken) / 10 + hitsGiven + attacksDodged
+                + 2 * monstersKilled - hitsTaken - 2 * missedAttacks
+                - 3 * spellsCast - 10 * timesKilled - 50 * timesRanAway;
     }
 
     public final int getActiveEffectCount() {
@@ -273,9 +273,9 @@ public abstract class Creature {
     }
 
     public int getMapBattleActionsPerRound() {
-        final int value = (int) Math.sqrt(Math.ceil(this
-                .getEffectedStat(StatConstants.STAT_AGILITY)
-                * StatConstants.FACTOR_AGILITY_MAP_ACTIONS_PER_ROUND));
+        final int value = (int) Math
+                .sqrt(Math.ceil(this.getEffectedStat(StatConstants.STAT_AGILITY)
+                        * StatConstants.FACTOR_AGILITY_MAP_ACTIONS_PER_ROUND));
         if (value > Creature.ACTION_CAP) {
             return Creature.ACTION_CAP;
         } else {
@@ -339,12 +339,14 @@ public abstract class Creature {
     }
 
     public final int getArmorBlock() {
-        return (int) (this.getItems().getTotalAbsorb() * StatConstants.FACTOR_ABSORB_DEFENSE);
+        return (int) (this.getItems().getTotalAbsorb()
+                * StatConstants.FACTOR_ABSORB_DEFENSE);
     }
 
     public int getAttack() {
-        return (int) (this.getStrength() * StatConstants.FACTOR_STRENGTH_ATTACK + this
-                .getItems().getTotalPower() * StatConstants.FACTOR_POWER_ATTACK);
+        return (int) (this.getStrength() * StatConstants.FACTOR_STRENGTH_ATTACK
+                + this.getItems().getTotalPower()
+                        * StatConstants.FACTOR_POWER_ATTACK);
     }
 
     public final String getAttackString() {
@@ -362,8 +364,8 @@ public abstract class Creature {
 
     public int getCapacity() {
         return Math.max(StatConstants.MIN_CAPACITY, (int) (this.getStrength()
-                * StatConstants.FACTOR_STRENGTH_CAPACITY + this.getAgility()
-                * StatConstants.FACTOR_AGILITY_CAPACITY));
+                * StatConstants.FACTOR_STRENGTH_CAPACITY
+                + this.getAgility() * StatConstants.FACTOR_AGILITY_CAPACITY));
     }
 
     public final String[] getCompleteEffectStringArray() {
@@ -408,9 +410,9 @@ public abstract class Creature {
     }
 
     public int getDefense() {
-        return (int) (this.getBlock() * StatConstants.FACTOR_BLOCK_DEFENSE + this
-                .getItems().getTotalAbsorb()
-                * StatConstants.FACTOR_ABSORB_DEFENSE);
+        return (int) (this.getBlock() * StatConstants.FACTOR_BLOCK_DEFENSE
+                + this.getItems().getTotalAbsorb()
+                        * StatConstants.FACTOR_ABSORB_DEFENSE);
     }
 
     public final String getDefenseString() {
@@ -511,11 +513,13 @@ public abstract class Creature {
     }
 
     public int getMaximumHP() {
-        return (int) (this.getVitality() * StatConstants.FACTOR_VITALITY_HEALTH);
+        return (int) (this.getVitality()
+                * StatConstants.FACTOR_VITALITY_HEALTH);
     }
 
     public int getMaximumMP() {
-        return (int) (this.getIntelligence() * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
+        return (int) (this.getIntelligence()
+                * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
     }
 
     static int getMaximumLevel() {
@@ -581,17 +585,17 @@ public abstract class Creature {
 
     public final int getEffectedSpeed() {
         return (int) (this.getEffectedStat(StatConstants.STAT_AGILITY)
-                * StatConstants.FACTOR_AGILITY_SPEED - (this.items
-                .getTotalEquipmentWeight() + this.items
-                .getTotalInventoryWeight())
-                * StatConstants.FACTOR_LOAD_SPEED);
+                * StatConstants.FACTOR_AGILITY_SPEED
+                - (this.items.getTotalEquipmentWeight()
+                        + this.items.getTotalInventoryWeight())
+                        * StatConstants.FACTOR_LOAD_SPEED);
     }
 
     public final int getSpeed() {
-        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED - (this.items
-                .getTotalEquipmentWeight() + this.items
-                .getTotalInventoryWeight())
-                * StatConstants.FACTOR_LOAD_SPEED);
+        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED
+                - (this.items.getTotalEquipmentWeight()
+                        + this.items.getTotalInventoryWeight())
+                        * StatConstants.FACTOR_LOAD_SPEED);
     }
 
     public final SpellBook getSpellBook() {
@@ -858,7 +862,8 @@ public abstract class Creature {
         this.fixStatValue(StatConstants.STAT_CURRENT_MP);
     }
 
-    public final void regenerateMultiply(final double amount, final boolean max) {
+    public final void regenerateMultiply(final double amount,
+            final boolean max) {
         this.offsetCurrentMPMultiply(amount, max);
         this.fixStatValue(StatConstants.STAT_CURRENT_MP);
     }

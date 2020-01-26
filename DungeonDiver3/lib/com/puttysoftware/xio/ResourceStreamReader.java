@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 
 public class ResourceStreamReader {
     // Fields
-    private BufferedReader br;
+    private final BufferedReader br;
 
     // Constructors
-    public ResourceStreamReader(InputStream is) {
+    public ResourceStreamReader(final InputStream is) {
         this.br = new BufferedReader(new InputStreamReader(is));
     }
 
@@ -24,7 +24,7 @@ public class ResourceStreamReader {
     }
 
     public int readInt() throws IOException {
-        String line = this.br.readLine();
+        final String line = this.br.readLine();
         if (line == null) {
             throw new IOException("Input == null!");
         } else {

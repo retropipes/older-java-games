@@ -37,12 +37,12 @@ public class Tree extends AbstractInfiniteLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         if (!this.getKey().isInfinite()) {
             inv.removeItem(this.getKey());
         }
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decayTo(new CutTree());
         SoundManager.playSound(SoundConstants.SOUND_UNLOCK);
     }

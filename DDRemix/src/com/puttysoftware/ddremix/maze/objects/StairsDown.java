@@ -56,7 +56,8 @@ public class StairsDown extends AbstractTeleport {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         final Application app = DDRemix.getApplication();
         app.getGameManager().goToLevelOffset(1);
         SoundManager.playSound(SoundConstants.SOUND_DOWN);

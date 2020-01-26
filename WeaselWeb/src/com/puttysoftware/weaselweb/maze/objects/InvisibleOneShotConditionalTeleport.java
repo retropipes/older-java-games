@@ -8,8 +8,8 @@ package com.puttysoftware.weaselweb.maze.objects;
 import com.puttysoftware.weaselweb.WeaselWeb;
 import com.puttysoftware.weaselweb.maze.generic.GenericConditionalTeleport;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super();

@@ -8,7 +8,7 @@ public class UnexpectedTagException extends IOException {
     /**
      * Constructs an instance of <code>UnexpectedTagException</code> with the
      * specified detail message.
-     * 
+     *
      * @param msg
      *            the detail message.
      */

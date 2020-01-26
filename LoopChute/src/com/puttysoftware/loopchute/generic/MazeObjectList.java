@@ -50,16 +50,16 @@ public class MazeObjectList {
                 new OrangeLock(), new PurpleKey(), new PurpleLock(),
                 new RedKey(), new RedLock(), new RoseKey(), new RoseLock(),
                 new SeaweedKey(), new SeaweedLock(), new SkyKey(),
-                new SkyLock(), new WhiteKey(), new WhiteLock(),
-                new YellowKey(), new YellowLock(), new CyanKey(),
-                new CyanLock(), new BlueCrystal(), new BlueCrystalWall(),
-                new GreenCrystal(), new GreenCrystalWall(),
-                new MagentaCrystal(), new MagentaCrystalWall(),
-                new OrangeCrystal(), new OrangeCrystalWall(),
-                new PurpleCrystal(), new PurpleCrystalWall(), new RedCrystal(),
-                new RedCrystalWall(), new RoseCrystal(), new RoseCrystalWall(),
-                new SeaweedCrystal(), new SeaweedCrystalWall(),
-                new SkyCrystal(), new SkyCrystalWall(), new WhiteCrystal(),
+                new SkyLock(), new WhiteKey(), new WhiteLock(), new YellowKey(),
+                new YellowLock(), new CyanKey(), new CyanLock(),
+                new BlueCrystal(), new BlueCrystalWall(), new GreenCrystal(),
+                new GreenCrystalWall(), new MagentaCrystal(),
+                new MagentaCrystalWall(), new OrangeCrystal(),
+                new OrangeCrystalWall(), new PurpleCrystal(),
+                new PurpleCrystalWall(), new RedCrystal(), new RedCrystalWall(),
+                new RoseCrystal(), new RoseCrystalWall(), new SeaweedCrystal(),
+                new SeaweedCrystalWall(), new SkyCrystal(),
+                new SkyCrystalWall(), new WhiteCrystal(),
                 new WhiteCrystalWall(), new YellowCrystal(),
                 new YellowCrystalWall(), new CyanCrystal(),
                 new CyanCrystalWall(), new Door(), new SunDoor(),
@@ -83,12 +83,11 @@ public class MazeObjectList {
                 new InvisibleBlockTeleport(), new StairsUp(), new StairsDown(),
                 new Pit(), new InvisiblePit(), new Springboard(),
                 new InvisibleSpringboard(), new PushableBlock(),
-                new PullableBlock(), new PushablePullableBlock(),
-                new NoBoots(), new GlueBoots(), new AquaBoots(),
-                new BioHazardBoots(), new FireBoots(), new HotBoots(),
-                new PasswallBoots(), new SlipperyBoots(), new EmptyVoid(),
-                new Sign(), new NoBlock(), new NoPlayer(),
-                new HorizontalBarrier(), new VerticalBarrier(),
+                new PullableBlock(), new PushablePullableBlock(), new NoBoots(),
+                new GlueBoots(), new AquaBoots(), new BioHazardBoots(),
+                new FireBoots(), new HotBoots(), new PasswallBoots(),
+                new SlipperyBoots(), new EmptyVoid(), new Sign(), new NoBlock(),
+                new NoPlayer(), new HorizontalBarrier(), new VerticalBarrier(),
                 new BarrierGenerator(), new EnragedBarrierGenerator(),
                 new IcedBarrierGenerator(), new PoisonedBarrierGenerator(),
                 new ShockedBarrierGenerator(), new Bow(), new IceBow(),
@@ -108,8 +107,8 @@ public class MazeObjectList {
 
     // Methods
     public MazeObject[] getAllObjects() {
-        return this.allObjectList.toArray(new MazeObject[this.allObjectList
-                .size()]);
+        return this.allObjectList
+                .toArray(new MazeObject[this.allObjectList.size()]);
     }
 
     public void addObject(final MazeObject o) {

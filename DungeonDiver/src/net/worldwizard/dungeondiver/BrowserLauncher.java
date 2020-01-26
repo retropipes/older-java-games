@@ -17,13 +17,14 @@ public class BrowserLauncher {
                         new Class[] { String.class });
                 openURL.invoke(null, new Object[] { url });
             } else if (osName.startsWith("Windows")) {
-                Runtime.getRuntime().exec(
-                        "rundll32 url.dll,FileProtocolHandler " + url);
+                Runtime.getRuntime()
+                        .exec("rundll32 url.dll,FileProtocolHandler " + url);
             } else { // assume Unix or Linux
                 final String[] browsers = { "firefox", "opera", "konqueror",
                         "epiphany", "mozilla", "netscape" };
                 String browser = null;
-                for (int count = 0; count < browsers.length && browser == null; count++) {
+                for (int count = 0; count < browsers.length
+                        && browser == null; count++) {
                     if (Runtime.getRuntime()
                             .exec(new String[] { "which", browsers[count] })
                             .waitFor() == 0) {
@@ -37,8 +38,8 @@ public class BrowserLauncher {
                 }
             }
         } catch (final Exception e) {
-            JOptionPane.showMessageDialog(null, BrowserLauncher.errMsg + ":\n"
-                    + e.getLocalizedMessage());
+            JOptionPane.showMessageDialog(null,
+                    BrowserLauncher.errMsg + ":\n" + e.getLocalizedMessage());
         }
     }
 }

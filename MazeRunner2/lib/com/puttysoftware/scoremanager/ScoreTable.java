@@ -26,7 +26,8 @@ public class ScoreTable {
         this.unit[0] = ScoreTable.DEFAULT_UNIT;
     }
 
-    public ScoreTable(int mv, int length, String[] customUnit) {
+    public ScoreTable(final int mv, final int length,
+            final String[] customUnit) {
         this.scoreCount = mv;
         this.table = new ArrayList<>(length);
         int x;
@@ -44,11 +45,11 @@ public class ScoreTable {
     }
 
     // Methods
-    public long getEntryScore(int which, int pos) {
+    public long getEntryScore(final int which, final int pos) {
         return this.table.get(pos).getScore(which);
     }
 
-    public String getEntryName(int pos) {
+    public String getEntryName(final int pos) {
         return this.table.get(pos).getName();
     }
 
@@ -68,11 +69,11 @@ public class ScoreTable {
         return this.scoreCount;
     }
 
-    public void setEntryScore(int pos, long newScore) {
+    public void setEntryScore(final int pos, final long newScore) {
         this.table.get(pos).setScore(newScore);
     }
 
-    public void setEntryName(int pos, String newName) {
+    public void setEntryName(final int pos, final String newName) {
         this.table.get(pos).setName(newName);
     }
 }

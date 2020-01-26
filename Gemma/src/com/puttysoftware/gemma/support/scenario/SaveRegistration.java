@@ -24,7 +24,8 @@ public class SaveRegistration {
     private static boolean ANY_SAVES_FOUND = false;
 
     public static String[] getSaveList() {
-        ArrayList<String> registeredNames = SaveRegistration.readSaveRegistry();
+        final ArrayList<String> registeredNames = SaveRegistration
+                .readSaveRegistry();
         SaveRegistration.ANY_SAVES_FOUND = false;
         if (registeredNames != null) {
             if (registeredNames.size() > 0) {
@@ -37,22 +38,22 @@ public class SaveRegistration {
             registeredNames.trimToSize();
             saveList = new String[registeredNames.size()];
             for (int x = 0; x < registeredNames.size(); x++) {
-                String name = registeredNames.get(x);
+                final String name = registeredNames.get(x);
                 saveList[x] = name;
             }
         }
         return saveList;
     }
 
-    public static void autoregisterSave(String res) {
+    public static void autoregisterSave(final String res) {
         // Load save list
-        String[] saveList = SaveRegistration.getSaveList();
+        final String[] saveList = SaveRegistration.getSaveList();
         if (res != null) {
             // Verify that save is not already registered
             boolean alreadyRegistered = false;
             if (saveList != null) {
-                for (int x = 0; x < saveList.length; x++) {
-                    if (saveList[x].equalsIgnoreCase(res)) {
+                for (final String element : saveList) {
+                    if (element.equalsIgnoreCase(res)) {
                         alreadyRegistered = true;
                         break;
                     }
@@ -61,7 +62,8 @@ public class SaveRegistration {
             if (!alreadyRegistered) {
                 // Register it
                 if (saveList != null) {
-                    String[] newSaveList = new String[saveList.length + 1];
+                    final String[] newSaveList = new String[saveList.length
+                            + 1];
                     for (int x = 0; x < newSaveList.length; x++) {
                         if (x < saveList.length) {
                             newSaveList[x] = saveList[x];
@@ -78,9 +80,9 @@ public class SaveRegistration {
     }
 
     private static ArrayList<String> readSaveRegistry() {
-        String basePath = SaveRegistration.getSaveBasePath();
+        final String basePath = SaveRegistration.getSaveBasePath();
         // Load save registry file
-        ArrayList<String> registeredNames = new ArrayList<>();
+        final ArrayList<String> registeredNames = new ArrayList<>();
         try (FileInputStream fis = new FileInputStream(basePath + File.separator
                 + "SaveRegistry" + Extension.getRegistryExtensionWithPeriod());
                 ResourceStreamReader rsr = new ResourceStreamReader(fis)) {
@@ -91,23 +93,23 @@ public class SaveRegistration {
                     registeredNames.add(input);
                 }
             }
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Abort
             return null;
         }
         return registeredNames;
     }
 
-    private static void writeSaveRegistry(String[] newSaveList) {
-        String basePath = SaveRegistration.getSaveBasePath();
+    private static void writeSaveRegistry(final String[] newSaveList) {
+        final String basePath = SaveRegistration.getSaveBasePath();
         // Check if registry is writable
-        File regFile = new File(basePath + File.separator + "SaveRegistry"
+        final File regFile = new File(basePath + File.separator + "SaveRegistry"
                 + Extension.getRegistryExtensionWithPeriod());
         if (!regFile.exists()) {
             // Not writable, probably because needed folders don't exist
-            File regParent = regFile.getParentFile();
+            final File regParent = regFile.getParentFile();
             if (!regParent.exists()) {
-                boolean res = regParent.mkdirs();
+                final boolean res = regParent.mkdirs();
                 if (!res) {
                     // Creating the needed folders failed, so abort
                     return;
@@ -125,14 +127,14 @@ public class SaveRegistration {
                     }
                 }
             }
-        } catch (IOException io) {
+        } catch (final IOException io) {
             io.printStackTrace();
             // Abort
         }
     }
 
     private static String getDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(SaveRegistration.MAC_PREFIX);
@@ -146,7 +148,7 @@ public class SaveRegistration {
     }
 
     private static String getSaveDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return SaveRegistration.MAC_SAVE_DIR;
@@ -160,7 +162,7 @@ public class SaveRegistration {
     }
 
     public static String getSaveBasePath() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(SaveRegistration.getDirPrefix());
         b.append(SaveRegistration.getSaveDirectory());
         return b.toString();

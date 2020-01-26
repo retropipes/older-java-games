@@ -43,16 +43,13 @@ public class FireAmulet extends GenericAmulet {
                 .getPlayerManager().getPlayerLocationY();
         final int z = WeaselWeb.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        WeaselWeb.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        WeaselWeb.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 
     @Override
     public void postMoveActionHook() {
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_FIERY,
-                        FireAmulet.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
     }
 }

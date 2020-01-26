@@ -35,14 +35,14 @@ public class GUIManager {
 
     // Constructors
     public GUIManager() {
-        CloseHandler cHandler = new CloseHandler();
+        final CloseHandler cHandler = new CloseHandler();
         if (Support.inDebugMode()) {
-            this.guiFrame = new JFrame(DungeonDiver3.getProgramName()
-                    + " (DEBUG)");
+            this.guiFrame = new JFrame(
+                    DungeonDiver3.getProgramName() + " (DEBUG)");
         } else {
             this.guiFrame = new JFrame(DungeonDiver3.getProgramName());
         }
-        Container guiPane = this.guiFrame.getContentPane();
+        final Container guiPane = this.guiFrame.getContentPane();
         this.guiFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.guiFrame.setLayout(new GridLayout(1, 1));
@@ -64,7 +64,7 @@ public class GUIManager {
     }
 
     public void showGUI() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         app.setInGUI();
         this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         this.guiFrame.setVisible(true);
@@ -89,7 +89,7 @@ public class GUIManager {
         if (PreferencesManager.areCharacterChangesPermanent()) {
             PartyManager.writebackCharacters();
         }
-        ScenarioManager mm = DungeonDiver3.getApplication()
+        final ScenarioManager mm = DungeonDiver3.getApplication()
                 .getScenarioManager();
         boolean saved = true;
         int status = JOptionPane.DEFAULT_OPTION;
@@ -107,11 +107,11 @@ public class GUIManager {
             PreferencesManager.writePrefs();
             // Run cleanup task
             try {
-                File dirToDelete = new File(
+                final File dirToDelete = new File(
                         System.getProperty("java.io.tmpdir") + File.separator
                                 + "DungeonDiver3");
                 DirectoryUtilities.removeDirectory(dirToDelete);
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 // Ignore
             }
         }
@@ -124,39 +124,39 @@ public class GUIManager {
         }
 
         @Override
-        public void windowActivated(WindowEvent arg0) {
+        public void windowActivated(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowClosed(WindowEvent arg0) {
+        public void windowClosed(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent arg0) {
+        public void windowClosing(final WindowEvent arg0) {
             if (GUIManager.this.quitHandler()) {
                 System.exit(0);
             }
         }
 
         @Override
-        public void windowDeactivated(WindowEvent arg0) {
+        public void windowDeactivated(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent arg0) {
+        public void windowDeiconified(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent arg0) {
+        public void windowIconified(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowOpened(WindowEvent arg0) {
+        public void windowOpened(final WindowEvent arg0) {
             // Do nothing
         }
     }

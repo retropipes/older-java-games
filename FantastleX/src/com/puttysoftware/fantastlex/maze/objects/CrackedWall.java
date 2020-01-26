@@ -43,11 +43,8 @@ public class CrackedWall extends AbstractWall {
             final int dirY, final MazeObjectInventory inv) {
         final int z = FantastleX.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .morph(new DamagedWall(), dirX, dirY, z,
-                        MazeConstants.LAYER_OBJECT);
+        FantastleX.getApplication().getGameManager().morph(new DamagedWall(),
+                dirX, dirY, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 

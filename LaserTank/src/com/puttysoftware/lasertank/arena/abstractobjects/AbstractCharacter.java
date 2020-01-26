@@ -18,7 +18,7 @@ import com.puttysoftware.xio.XDataWriter;
 public abstract class AbstractCharacter extends AbstractArenaObject {
     // Fields
     private final int characterNumber;
-    
+
     // Constructors
     protected AbstractCharacter(final int number) {
         super(true);
@@ -32,7 +32,7 @@ public abstract class AbstractCharacter extends AbstractArenaObject {
     public int getNumber() {
         return this.characterNumber;
     }
-    
+
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
         // Do nothing
@@ -76,7 +76,9 @@ public abstract class AbstractCharacter extends AbstractArenaObject {
         return Color.white;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -87,11 +89,13 @@ public abstract class AbstractCharacter extends AbstractArenaObject {
         return result;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -101,7 +105,7 @@ public abstract class AbstractCharacter extends AbstractArenaObject {
         if (!(obj instanceof AbstractCharacter)) {
             return false;
         }
-        AbstractCharacter other = (AbstractCharacter) obj;
+        final AbstractCharacter other = (AbstractCharacter) obj;
         if (this.characterNumber != other.characterNumber) {
             return false;
         }

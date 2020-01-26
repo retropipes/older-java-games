@@ -29,7 +29,8 @@ public class RuleSetSaveTask extends Thread {
         final Application app = Worldz.getApplication();
         final String sg = "Rule Set";
         // filename check
-        final boolean hasExtension = RuleSetSaveTask.hasExtension(this.filename);
+        final boolean hasExtension = RuleSetSaveTask
+                .hasExtension(this.filename);
         if (!hasExtension) {
             this.filename += Extension.getRuleSetExtensionWithPeriod();
         }
@@ -40,8 +41,7 @@ public class RuleSetSaveTask extends Thread {
             worldFile.close();
             Messager.showTitledDialog(sg + " file saved.", "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            Messager.showDialog("Writing the "
-                    + sg.toLowerCase()
+            Messager.showDialog("Writing the " + sg.toLowerCase()
                     + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             Worldz.getDebug().debug(ex);

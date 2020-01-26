@@ -69,17 +69,17 @@ public abstract class AbstractMonster extends AbstractCreature {
 	final int difficulty = PreferencesManager.getGameDifficulty();
 	final int base = this.getBaseSpeed();
 	if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
-	    return (int) (base * SPEED_ADJUST_SLOWEST);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_SLOWEST);
 	} else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
-	    return (int) (base * SPEED_ADJUST_SLOW);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_SLOW);
 	} else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
-	    return (int) (base * SPEED_ADJUST_NORMAL);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
 	} else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
-	    return (int) (base * SPEED_ADJUST_FAST);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_FAST);
 	} else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
-	    return (int) (base * SPEED_ADJUST_FASTEST);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_FASTEST);
 	} else {
-	    return (int) (base * SPEED_ADJUST_NORMAL);
+	    return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
 	}
     }
 

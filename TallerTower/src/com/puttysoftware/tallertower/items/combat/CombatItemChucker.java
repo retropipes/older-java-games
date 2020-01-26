@@ -41,8 +41,8 @@ public class CombatItemChucker {
             final int snd = used.getSound();
             SoundManager.playSound(snd);
             e.resetEffect();
-            final AbstractCreature target = CombatItemChucker.resolveTarget(
-                    used, user.getTeamID());
+            final AbstractCreature target = CombatItemChucker
+                    .resolveTarget(used, user.getTeamID());
             used.use();
             if (target.isEffectActive(e)) {
                 target.extendEffect(e, e.getInitialRounds());
@@ -102,20 +102,18 @@ public class CombatItemChucker {
                     if (ii.getUses(i) > 0) {
                         return i;
                     } else {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "You try to use an item, but realize you've run out!",
-                                        "Select Item");
+                        CommonDialogs.showErrorDialog(
+                                "You try to use an item, but realize you've run out!",
+                                "Select Item");
                         return null;
                     }
                 } else {
                     return null;
                 }
             } else {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to use an item, but realize you don't have any!",
-                                "Select Item");
+                CommonDialogs.showErrorDialog(
+                        "You try to use an item, but realize you don't have any!",
+                        "Select Item");
                 return null;
             }
         } else {

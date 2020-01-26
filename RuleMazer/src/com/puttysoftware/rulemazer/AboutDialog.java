@@ -64,8 +64,8 @@ public class AboutDialog {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("RuleMazer Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(new JLabel(
-                "Web Site: http://rulemazer.worldwizard.net/"));
+        this.textPane
+                .add(new JLabel("Web Site: http://rulemazer.worldwizard.net/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: rulemazer@puttysoftware.com  "));
         this.buttonPane.setLayout(new FlowLayout());

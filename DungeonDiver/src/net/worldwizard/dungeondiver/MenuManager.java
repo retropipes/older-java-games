@@ -58,12 +58,12 @@ public class MenuManager implements ShopTypes {
         this.fileLoadStateAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
         this.fileSaveStateAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
         this.gameNewGameAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N, modKey);
-        this.gameEndGameAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey
-                + InputEvent.SHIFT_DOWN_MASK);
+        this.gameEndGameAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
+                modKey + InputEvent.SHIFT_DOWN_MASK);
         this.gameExploreDungeonAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
                 modKey);
-        this.gameNewDungeonAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N, modKey
-                + InputEvent.SHIFT_DOWN_MASK);
+        this.gameNewDungeonAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N,
+                modKey + InputEvent.SHIFT_DOWN_MASK);
         this.gamePreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
     }

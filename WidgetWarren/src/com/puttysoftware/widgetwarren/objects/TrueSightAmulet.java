@@ -35,10 +35,8 @@ public class TrueSightAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        WidgetWarren
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_TRUE_SIGHT,
-                        TrueSightAmulet.EFFECT_DURATION);
+        WidgetWarren.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_TRUE_SIGHT,
+                TrueSightAmulet.EFFECT_DURATION);
     }
 }

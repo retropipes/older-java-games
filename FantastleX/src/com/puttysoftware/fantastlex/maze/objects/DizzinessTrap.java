@@ -36,14 +36,12 @@ public class DizzinessTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         FantastleX.getApplication().showMessage("You feel dizzy!");
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_DIZZY,
-                        DizzinessTrap.EFFECT_DURATION);
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_DIZZY,
+                DizzinessTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_DIZZY);
     }
 

@@ -38,8 +38,8 @@ public class FighterSpellBook extends SpellBook {
         spell2Effect.setAffectedStat(StatConstants.STAT_ATTACK);
         spell2Effect.setEffect(Buff.EFFECT_MULTIPLY, 3,
                 Buff.DEFAULT_SCALE_FACTOR, StatConstants.STAT_NONE);
-        spell2Effect
-                .setMessage(Buff.MESSAGE_INITIAL, "You charge your weapon!");
+        spell2Effect.setMessage(Buff.MESSAGE_INITIAL,
+                "You charge your weapon!");
         spell2Effect.setMessage(Buff.MESSAGE_SUBSEQUENT,
                 "Your attack is increased!");
         spell2Effect.setMessage(Buff.MESSAGE_WEAR_OFF,

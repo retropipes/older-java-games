@@ -27,44 +27,44 @@ import com.puttysoftware.fantastlereboot.FantastleReboot;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class AvatarImageLoader {
-  private static Properties fileExtensions;
-  private static final int MAX_FAMILY_INDEX = 7;
+    private static Properties fileExtensions;
+    private static final int MAX_FAMILY_INDEX = 7;
 
-  public static BufferedImageIcon load(final int familyID,
-      final ColorReplaceRules rules) {
-    if (AvatarImageLoader.fileExtensions == null) {
-      try {
-        AvatarImageLoader.fileExtensions = new Properties();
-        AvatarImageLoader.fileExtensions
-            .load(AvatarImageLoader.class.getResourceAsStream(
-                "/assets/data/extensions/extensions.properties"));
-      } catch (final IOException e) {
-        FantastleReboot.exception(e);
-      }
+    public static BufferedImageIcon load(final int familyID,
+            final ColorReplaceRules rules) {
+        if (AvatarImageLoader.fileExtensions == null) {
+            try {
+                AvatarImageLoader.fileExtensions = new Properties();
+                AvatarImageLoader.fileExtensions
+                        .load(AvatarImageLoader.class.getResourceAsStream(
+                                "/assets/data/extensions/extensions.properties"));
+            } catch (final IOException e) {
+                FantastleReboot.exception(e);
+            }
+        }
+        final String imageExt = AvatarImageLoader.fileExtensions
+                .getProperty("images");
+        final String name = "/assets/images/avatars/"
+                + Integer.toString(familyID) + imageExt;
+        return rules.applyAll(ImageLoader.load(name,
+                AvatarImageLoader.class.getResource(name)));
     }
-    final String imageExt = AvatarImageLoader.fileExtensions
-        .getProperty("images");
-    final String name = "/assets/images/avatars/" + Integer.toString(familyID)
-        + imageExt;
-    return rules.applyAll(
-        ImageLoader.load(name, AvatarImageLoader.class.getResource(name)));
-  }
 
-  public static void cacheAll() {
-    try {
-      AvatarImageLoader.fileExtensions = new Properties();
-      AvatarImageLoader.fileExtensions
-          .load(AvatarImageLoader.class.getResourceAsStream(
-              "/assets/data/extensions/extensions.properties"));
-    } catch (final IOException e) {
-      FantastleReboot.exception(e);
+    public static void cacheAll() {
+        try {
+            AvatarImageLoader.fileExtensions = new Properties();
+            AvatarImageLoader.fileExtensions
+                    .load(AvatarImageLoader.class.getResourceAsStream(
+                            "/assets/data/extensions/extensions.properties"));
+        } catch (final IOException e) {
+            FantastleReboot.exception(e);
+        }
+        final String imageExt = AvatarImageLoader.fileExtensions
+                .getProperty("images");
+        for (int familyID = 0; familyID <= AvatarImageLoader.MAX_FAMILY_INDEX; familyID++) {
+            final String name = "/assets/images/avatars/"
+                    + Integer.toString(familyID) + imageExt;
+            ImageLoader.load(name, AvatarImageLoader.class.getResource(name));
+        }
     }
-    final String imageExt = AvatarImageLoader.fileExtensions
-        .getProperty("images");
-    for (int familyID = 0; familyID <= AvatarImageLoader.MAX_FAMILY_INDEX; familyID++) {
-      final String name = "/assets/images/avatars/" + Integer.toString(familyID)
-          + imageExt;
-      ImageLoader.load(name, AvatarImageLoader.class.getResource(name));
-    }
-  }
 }

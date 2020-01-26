@@ -15,8 +15,8 @@ public class MonsterDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    MonsterDataManager.class
-                            .getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/data/monster/monsternames.txt"));
+                    MonsterDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/dungeondiver3/support/resources/data/monster/monsternames.txt"));
             final ArrayList<String> data = new ArrayList<>();
             String raw = "0";
             while (raw != null) {
@@ -24,8 +24,8 @@ public class MonsterDataManager {
                 data.add(raw);
             }
             rsr.close();
-            Object[] arr = data.toArray();
-            String[] tempres = new String[arr.length];
+            final Object[] arr = data.toArray();
+            final String[] tempres = new String[arr.length];
             int count = 0;
             for (int x = 0; x < arr.length; x++) {
                 if (arr[x] != null) {
@@ -33,11 +33,11 @@ public class MonsterDataManager {
                     count++;
                 }
             }
-            String[] res = new String[count];
+            final String[] res = new String[count];
             count = 0;
-            for (int x = 0; x < tempres.length; x++) {
-                if (tempres[x] != null) {
-                    res[count] = tempres[x];
+            for (final String tempre : tempres) {
+                if (tempre != null) {
+                    res[count] = tempre;
                     count++;
                 }
             }

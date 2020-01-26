@@ -29,7 +29,7 @@ public class CombatItemChucker {
 
     public static boolean selectAndUseItem(final AbstractCreature user) {
         boolean result = false;
-        CombatItem i = CombatItemChucker.selectItem(user);
+        final CombatItem i = CombatItemChucker.selectItem(user);
         if (i != null) {
             result = CombatItemChucker.useItem(i, user);
         }
@@ -39,13 +39,13 @@ public class CombatItemChucker {
     public static boolean useItem(final CombatItem used,
             final AbstractCreature user) {
         if (used != null) {
-            Effect e = used.getEffect();
+            final Effect e = used.getEffect();
             // Play item's associated sound effect, if it has one
-            int snd = used.getSound();
+            final int snd = used.getSound();
             SoundManager.playSound(snd);
             e.resetEffect();
-            AbstractCreature target = CombatItemChucker.resolveTarget(used,
-                    user.getTeamID());
+            final AbstractCreature target = CombatItemChucker
+                    .resolveTarget(used, user.getTeamID());
             used.use();
             if (target.isEffectActive(e)) {
                 target.extendEffect(e, e.getInitialRounds());
@@ -61,7 +61,7 @@ public class CombatItemChucker {
 
     private static AbstractCreature resolveTarget(final CombatItem cast,
             final int teamID) {
-        BattleTarget target = cast.getTarget();
+        final BattleTarget target = cast.getTarget();
         switch (target) {
         case ONE_ALLY:
             if (teamID == AbstractCreature.TEAM_PARTY) {
@@ -81,9 +81,10 @@ public class CombatItemChucker {
     }
 
     public static boolean selectAndUseItem(final AbstractCreature user,
-            int teamID, boolean aiEnabled, MapBattleDefinitions battle) {
+            final int teamID, final boolean aiEnabled,
+            final MapBattleDefinitions battle) {
         boolean result = false;
-        CombatItem i = CombatItemChucker.selectItem(user);
+        final CombatItem i = CombatItemChucker.selectItem(user);
         if (i != null) {
             result = CombatItemChucker.useItem(i, user, teamID, aiEnabled,
                     battle);
@@ -111,25 +112,23 @@ public class CombatItemChucker {
                             break;
                         }
                     }
-                    CombatItem i = CombatItemChucker.COMBAT_ITEMS
+                    final CombatItem i = CombatItemChucker.COMBAT_ITEMS
                             .getItemByName(names[index]);
                     if (ii.getUses(i) > 0) {
                         return i;
                     } else {
-                        CommonDialogs
-                                .showErrorDialog(
-                                        "You try to use an item, but realize you've run out!",
-                                        "Select Item");
+                        CommonDialogs.showErrorDialog(
+                                "You try to use an item, but realize you've run out!",
+                                "Select Item");
                         return null;
                     }
                 } else {
                     return null;
                 }
             } else {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to use an item, but realize you don't have any!",
-                                "Select Item");
+                CommonDialogs.showErrorDialog(
+                        "You try to use an item, but realize you don't have any!",
+                        "Select Item");
                 return null;
             }
         } else {
@@ -141,19 +140,18 @@ public class CombatItemChucker {
     }
 
     public static boolean useItem(final CombatItem used,
-            final AbstractCreature user, int teamID, boolean aiEnabled,
-            MapBattleDefinitions battle) {
+            final AbstractCreature user, final int teamID,
+            final boolean aiEnabled, final MapBattleDefinitions battle) {
         if (used != null) {
-            Effect e = used.getEffect();
+            final Effect e = used.getEffect();
             e.setSource(CombatItemChucker.SOURCE);
             // Play item's associated sound effect, if it has one
             SoundManager.playSound(used.getSound());
             used.use();
             e.resetEffect();
-            AbstractCreature[] targets = CombatItemChucker.resolveTarget(used,
-                    user, teamID, aiEnabled, battle);
-            for (int x = 0; x < targets.length; x++) {
-                AbstractCreature target = targets[x];
+            final AbstractCreature[] targets = CombatItemChucker
+                    .resolveTarget(used, user, teamID, aiEnabled, battle);
+            for (final AbstractCreature target : targets) {
                 if (target.isEffectActive(e)) {
                     target.extendEffect(e, e.getInitialRounds());
                 } else {
@@ -168,11 +166,11 @@ public class CombatItemChucker {
     }
 
     private static AbstractCreature[] resolveTarget(final CombatItem used,
-            final AbstractCreature user, int teamID, boolean aiEnabled,
-            MapBattleDefinitions battle) {
-        BattleTarget target = used.getTarget();
-        boolean hasAI = user.hasAI();
-        boolean useAI = hasAI && aiEnabled;
+            final AbstractCreature user, final int teamID,
+            final boolean aiEnabled, final MapBattleDefinitions battle) {
+        final BattleTarget target = used.getTarget();
+        final boolean hasAI = user.hasAI();
+        final boolean useAI = hasAI && aiEnabled;
         switch (target) {
         case SELF:
             // Self
@@ -180,22 +178,22 @@ public class CombatItemChucker {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeam(teamID) };
             }
         case ALL_ALLIES:
             // All Allies

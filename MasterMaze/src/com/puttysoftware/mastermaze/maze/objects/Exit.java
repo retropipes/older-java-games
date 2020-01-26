@@ -27,8 +27,8 @@ public class Exit extends GenericTeleportTo {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_DOWN);
         app.getGameManager().goToLevel(this.getDestinationLevel());

@@ -8,14 +8,14 @@ package studio.ignitionigloogames.chrystalz.dungeon.utilities;
 import studio.ignitionigloogames.chrystalz.dungeon.Dungeon;
 
 public interface RandomGenerationRule {
-    public static final int NO_LIMIT = 0;
+    int NO_LIMIT = 0;
 
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int level, int layer);
+    boolean shouldGenerateObject(Dungeon dungeon, int row, int col, int level,
+            int layer);
 
-    public int getMinimumRequiredQuantity(Dungeon dungeon);
+    int getMinimumRequiredQuantity(Dungeon dungeon);
 
-    public int getMaximumRequiredQuantity(Dungeon dungeon);
+    int getMaximumRequiredQuantity(Dungeon dungeon);
 
-    public boolean isRequired(Dungeon dungeon);
+    boolean isRequired(Dungeon dungeon);
 }

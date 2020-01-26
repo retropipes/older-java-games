@@ -42,8 +42,8 @@ class StatGUI {
     }
 
     void updateStats() {
-        PartyMember pc = PartyManager.getParty().getLeader();
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final PartyMember pc = PartyManager.getParty().getLeader();
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
         this.hpLabel.setText(pc.getHPString());
         this.mpLabel.setText(pc.getMPString());
         this.goldLabel.setText(Integer.toString(pc.getGold()));
@@ -76,28 +76,28 @@ class StatGUI {
     }
 
     void updateImages() {
-        BufferedImageIcon hpImage = StatImageManager
+        final BufferedImageIcon hpImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_HEALTH);
         this.hpLabel.setIcon(hpImage);
-        BufferedImageIcon mpImage = StatImageManager
+        final BufferedImageIcon mpImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_MAGIC);
         this.mpLabel.setIcon(mpImage);
-        BufferedImageIcon goldImage = StatImageManager
+        final BufferedImageIcon goldImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_GOLD);
         this.goldLabel.setIcon(goldImage);
-        BufferedImageIcon attackImage = StatImageManager
+        final BufferedImageIcon attackImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_ATTACK);
         this.attackLabel.setIcon(attackImage);
-        BufferedImageIcon defenseImage = StatImageManager
+        final BufferedImageIcon defenseImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_DEFENSE);
         this.defenseLabel.setIcon(defenseImage);
-        BufferedImageIcon xpImage = StatImageManager
+        final BufferedImageIcon xpImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_XP);
         this.xpLabel.setIcon(xpImage);
-        BufferedImageIcon poisonImage = StatImageManager
+        final BufferedImageIcon poisonImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_POISON);
         this.poisonLabel.setIcon(poisonImage);
-        BufferedImageIcon timeImage = StatImageManager
+        final BufferedImageIcon timeImage = StatImageManager
                 .getImage(StatImageConstants.STAT_IMAGE_TIME);
         this.timeLabel.setIcon(timeImage);
     }

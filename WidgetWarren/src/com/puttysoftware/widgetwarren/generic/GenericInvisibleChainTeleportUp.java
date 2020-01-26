@@ -11,8 +11,8 @@ import com.puttysoftware.widgetwarren.game.ObjectInventory;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundConstants;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundManager;
 
-public abstract class GenericInvisibleChainTeleportUp extends
-        GenericChainTeleportUp {
+public abstract class GenericInvisibleChainTeleportUp
+        extends GenericChainTeleportUp {
     // Constructors
     protected GenericInvisibleChainTeleportUp() {
         super();
@@ -22,13 +22,13 @@ public abstract class GenericInvisibleChainTeleportUp extends
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        WidgetWarren.getApplication().showMessage(
-                "Some unseen force prevents movement that way...");
+        WidgetWarren.getApplication()
+                .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

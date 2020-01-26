@@ -37,9 +37,9 @@ public class RollingBarrelVertical extends AbstractMovableObject {
     public Direction laserEnteredAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int laserType,
             final int forceUnits) {
-        final Direction dir = DirectionResolver.resolveRelativeDirection(dirX, dirY);
-        if (dir == Direction.NORTH
-                || dir == Direction.SOUTH) {
+        final Direction dir = DirectionResolver.resolveRelativeDirection(dirX,
+                dirY);
+        if (dir == Direction.NORTH || dir == Direction.SOUTH) {
             // Roll
             return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
                     laserType, forceUnits);

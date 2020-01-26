@@ -15,34 +15,35 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Key extends AbstractItem {
     // Constructors
     public Key() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_KEY;
+        return ObjectImageConstants.OBJECT_IMAGE_KEY;
     }
 
     @Override
     public String getName() {
-	return "Key";
+        return "Key";
     }
 
     @Override
     public String getPluralName() {
-	return "Keys";
+        return "Keys";
     }
 
     @Override
     public String getDescription() {
-	return "Keys open Locks.";
+        return "Keys open Locks.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().getDungeonManager().getDungeon()
-		.addKey();
-	SoundManager.playSound(SoundConstants.SOUND_GRAB);
-	GameLogicManager.decay();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication().getDungeonManager().getDungeon()
+                .addKey();
+        SoundManager.playSound(SoundConstants.SOUND_GRAB);
+        GameLogicManager.decay();
     }
 }

@@ -35,7 +35,8 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         // Do nothing
     }
 
@@ -240,7 +241,7 @@ public abstract class AbstractBattleCharacter extends AbstractMazeObject {
         result = prime * result + (this.isActive ? 1231 : 1237);
         result = prime * result + this.spellCounter;
         return prime * result
-                + ((this.template == null) ? 0 : this.template.hashCode());
+                + (this.template == null ? 0 : this.template.hashCode());
     }
 
     @Override

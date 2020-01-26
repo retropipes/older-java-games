@@ -34,38 +34,43 @@ import com.puttysoftware.lasertank.strings.global.UntranslatedString;
 
 public class BoardPrinter {
     public static void printBoard(final Container c) {
-	try {
-	    final Dimension d = c.getPreferredSize();
-	    final BufferedImage bi = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_ARGB);
-	    c.paintComponents(bi.createGraphics());
-	    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	    ImageIO.write(bi, GlobalLoader.loadUntranslated(UntranslatedString.IMAGE_FORMAT_PNG), baos);
-	    final byte[] data = baos.toByteArray();
-	    final ByteArrayInputStream bais = new ByteArrayInputStream(data);
-	    final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
-	    final DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
-	    final PrinterJob pj = PrinterJob.getPrinterJob();
-	    final boolean okay = pj.printDialog(pras);
-	    if (okay) {
-		final PrintService service = pj.getPrintService();
-		final DocPrintJob job = service.createPrintJob();
-		final DocAttributeSet das = new HashDocAttributeSet();
-		final Doc doc = new SimpleDoc(bais, flavor, das);
-		job.print(doc, pras);
-	    }
-	} catch (final IOException ioe) {
-	    CommonDialogs.showErrorDialog(StringLoader.loadError(ErrorString.PRINTING_FAILURE),
-		    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
-	} catch (final PrintException pe) {
-	    CommonDialogs.showErrorDialog(StringLoader.loadError(ErrorString.PRINTING_FAILURE),
-		    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
-	} catch (final NullPointerException npe) {
-	    CommonDialogs.showErrorDialog(StringLoader.loadError(ErrorString.PRINTING_FAILURE),
-		    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
-	}
+        try {
+            final Dimension d = c.getPreferredSize();
+            final BufferedImage bi = new BufferedImage(d.width, d.height,
+                    BufferedImage.TYPE_INT_ARGB);
+            c.paintComponents(bi.createGraphics());
+            final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(bi, GlobalLoader.loadUntranslated(
+                    UntranslatedString.IMAGE_FORMAT_PNG), baos);
+            final byte[] data = baos.toByteArray();
+            final ByteArrayInputStream bais = new ByteArrayInputStream(data);
+            final PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
+            final DocFlavor flavor = DocFlavor.INPUT_STREAM.PNG;
+            final PrinterJob pj = PrinterJob.getPrinterJob();
+            final boolean okay = pj.printDialog(pras);
+            if (okay) {
+                final PrintService service = pj.getPrintService();
+                final DocPrintJob job = service.createPrintJob();
+                final DocAttributeSet das = new HashDocAttributeSet();
+                final Doc doc = new SimpleDoc(bais, flavor, das);
+                job.print(doc, pras);
+            }
+        } catch (final IOException ioe) {
+            CommonDialogs.showErrorDialog(
+                    StringLoader.loadError(ErrorString.PRINTING_FAILURE),
+                    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
+        } catch (final PrintException pe) {
+            CommonDialogs.showErrorDialog(
+                    StringLoader.loadError(ErrorString.PRINTING_FAILURE),
+                    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
+        } catch (final NullPointerException npe) {
+            CommonDialogs.showErrorDialog(
+                    StringLoader.loadError(ErrorString.PRINTING_FAILURE),
+                    StringLoader.loadMenu(MenuString.ITEM_PRINT_GAMEBOARD));
+        }
     }
 
     private BoardPrinter() {
-	// Do nothing
+        // Do nothing
     }
 }

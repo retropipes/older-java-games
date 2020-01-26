@@ -35,9 +35,9 @@ public class NoBlock extends AbstractAntiObject {
             final AbstractDungeonObject mo, final int x, final int y,
             final int z) {
         // Destroy incoming block
-        Application app = DungeonDiver4.getApplication();
-        app.getGameManager()
-                .morph(this, x, y, z, DungeonConstants.LAYER_OBJECT);
+        final Application app = DungeonDiver4.getApplication();
+        app.getGameManager().morph(this, x, y, z,
+                DungeonConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_DESTROY);
     }
 
@@ -46,9 +46,9 @@ public class NoBlock extends AbstractAntiObject {
             final AbstractDungeonObject mo, final int x, final int y,
             final int z) {
         // Destroy incoming block
-        Application app = DungeonDiver4.getApplication();
-        app.getGameManager()
-                .morph(this, x, y, z, DungeonConstants.LAYER_OBJECT);
+        final Application app = DungeonDiver4.getApplication();
+        app.getGameManager().morph(this, x, y, z,
+                DungeonConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_DESTROY);
     }
 

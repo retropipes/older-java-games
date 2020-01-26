@@ -12,7 +12,7 @@ import javax.sound.sampled.SourceDataLine;
 
 class MusicResource extends Media {
     // Fields
-    private URL url;
+    private final URL url;
     private AudioInputStream stream;
     private AudioInputStream decodedStream;
     private AudioFormat decodedFormat;
@@ -35,7 +35,7 @@ class MusicResource extends Media {
                 this.stream = AudioSystem.getAudioInputStream(this.url);
                 this.decodedStream = null;
                 if (this.stream != null) {
-                    AudioFormat format = this.stream.getFormat();
+                    final AudioFormat format = this.stream.getFormat();
                     this.decodedFormat = new AudioFormat(
                             AudioFormat.Encoding.PCM_SIGNED,
                             format.getSampleRate(), 16, format.getChannels(),
@@ -46,14 +46,14 @@ class MusicResource extends Media {
                     this.decodedStream = AudioSystem.getAudioInputStream(
                             this.decodedFormat, this.stream);
                 }
-            } catch (Exception e) {
+            } catch (final Exception e) {
                 // Do nothing
             }
             try (SourceDataLine line = MusicResource
                     .getLine(this.decodedFormat)) {
                 if (line != null) {
                     try {
-                        byte[] data = new byte[Media.EXTERNAL_BUFFER_SIZE];
+                        final byte[] data = new byte[Media.EXTERNAL_BUFFER_SIZE];
                         // Start
                         line.start();
                         int nBytesRead = this.decodedStream.read(data, 0,
@@ -78,21 +78,21 @@ class MusicResource extends Media {
                         line.close();
                         this.decodedStream.close();
                         this.stream.close();
-                    } catch (IOException io) {
+                    } catch (final IOException io) {
                         // Do nothing
                     }
                 }
-            } catch (LineUnavailableException lue) {
+            } catch (final LineUnavailableException lue) {
                 // Do nothing
             }
         }
         Media.taskCompleted(this.number);
     }
 
-    private static SourceDataLine getLine(AudioFormat audioFormat)
+    private static SourceDataLine getLine(final AudioFormat audioFormat)
             throws LineUnavailableException {
         SourceDataLine res = null;
-        DataLine.Info info = new DataLine.Info(SourceDataLine.class,
+        final DataLine.Info info = new DataLine.Info(SourceDataLine.class,
                 audioFormat);
         res = (SourceDataLine) AudioSystem.getLine(info);
         res.open(audioFormat);
@@ -110,7 +110,7 @@ class MusicResource extends Media {
     }
 
     @Override
-    protected void updateNumber(int newNumber) {
+    protected void updateNumber(final int newNumber) {
         this.number = newNumber;
     }
 }

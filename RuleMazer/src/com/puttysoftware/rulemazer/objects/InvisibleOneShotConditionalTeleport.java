@@ -8,8 +8,8 @@ package com.puttysoftware.rulemazer.objects;
 import com.puttysoftware.rulemazer.Main;
 import com.puttysoftware.rulemazer.generic.GenericConditionalTeleport;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super();

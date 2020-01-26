@@ -9,8 +9,8 @@ import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTransientObject;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTransientObject;
 import com.puttysoftware.mazerunner2.maze.objects.Empty;
 import com.puttysoftware.mazerunner2.maze.objects.FireArrow;
 import com.puttysoftware.mazerunner2.maze.objects.GhostArrow;
@@ -27,10 +27,11 @@ import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
 public class GameArrowTask extends Thread {
     // Fields
-    private int x, y, at;
+    private int x, y;
+    private final int at;
 
     // Constructors
-    public GameArrowTask(int newX, int newY, int newAT) {
+    public GameArrowTask(final int newX, final int newY, final int newAT) {
         this.x = newX;
         this.y = newY;
         this.at = newAT;
@@ -41,19 +42,20 @@ public class GameArrowTask extends Thread {
     public void run() {
         try {
             boolean res = true;
-            Application app = MazeRunnerII.getApplication();
-            Maze m = app.getMazeManager().getMaze();
-            MazeObjectInventory inv = app.getGameManager().getObjectInventory();
-            int px = m.getPlayerLocationX();
-            int py = m.getPlayerLocationY();
-            int pz = m.getPlayerLocationZ();
-            int[] mod = app.getGameManager().doEffects(this.x, this.y);
+            final Application app = MazeRunnerII.getApplication();
+            final Maze m = app.getMazeManager().getMaze();
+            final MazeObjectInventory inv = app.getGameManager()
+                    .getObjectInventory();
+            final int px = m.getPlayerLocationX();
+            final int py = m.getPlayerLocationY();
+            final int pz = m.getPlayerLocationZ();
+            final int[] mod = app.getGameManager().doEffects(this.x, this.y);
             this.x = mod[0];
             this.y = mod[1];
             int cumX = this.x;
             int cumY = this.y;
-            int incX = this.x;
-            int incY = this.y;
+            final int incX = this.x;
+            final int incY = this.y;
             m.tickTimers(pz);
             AbstractMazeObject o = null;
             try {
@@ -62,9 +64,10 @@ public class GameArrowTask extends Thread {
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 o = new Wall();
             }
-            AbstractTransientObject a = GameArrowTask
+            final AbstractTransientObject a = GameArrowTask
                     .createArrowForType(this.at);
-            int newDir = DirectionResolver.resolveRelativeDirection(incX, incY);
+            final int newDir = DirectionResolver.resolveRelativeDirection(incX,
+                    incY);
             a.setDirection(newDir);
             SoundManager.playSound(SoundConstants.SOUND_ARROW);
             while (res) {
@@ -73,8 +76,8 @@ public class GameArrowTask extends Thread {
                 if (!res) {
                     break;
                 }
-                app.getGameManager().redrawOneSquare(py + cumY, px + cumX,
-                        true, a);
+                app.getGameManager().redrawOneSquare(py + cumY, px + cumX, true,
+                        a);
                 app.getGameManager().redrawOneSquare(py + cumY, px + cumX,
                         false, new Empty());
                 cumX += incX;
@@ -94,12 +97,12 @@ public class GameArrowTask extends Thread {
             }
             SoundManager.playSound(SoundConstants.SOUND_ARROW_DIE);
             app.getGameManager().arrowDone();
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             MazeRunnerII.getErrorLogger().logError(t);
         }
     }
 
-    private static AbstractTransientObject createArrowForType(int type) {
+    private static AbstractTransientObject createArrowForType(final int type) {
         switch (type) {
         case ArrowTypeConstants.ARROW_TYPE_PLAIN:
             return new PlainArrow();

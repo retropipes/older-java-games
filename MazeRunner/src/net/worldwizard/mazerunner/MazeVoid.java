@@ -16,7 +16,8 @@ public class MazeVoid extends MazeGenericWall {
     public ImageIcon gameRenderHook(final int x, final int y, final int z,
             final int w) {
         final MazeRunner app = MazeRunner.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final MazeObject mo1 = app.getMazeObject(x - 1, y - 1, z, w);
         try {

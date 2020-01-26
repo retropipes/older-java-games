@@ -8,11 +8,11 @@ public class UnexpectedTagException extends IOException {
     /**
      * Constructs an instance of <code>UnexpectedTagException</code> with the
      * specified detail message.
-     * 
+     *
      * @param msg
      *            the detail message.
      */
-    public UnexpectedTagException(String msg) {
+    public UnexpectedTagException(final String msg) {
         super(msg);
     }
 }

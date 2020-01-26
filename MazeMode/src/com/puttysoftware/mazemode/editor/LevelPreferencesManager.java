@@ -105,8 +105,8 @@ public class LevelPreferencesManager {
             m.deactivateTimer();
         }
         m.setAutoFinishThresholdEnabled(this.autoFinishEnabled.isSelected());
-        m.setAutoFinishThreshold(Integer.parseInt(this.autoFinishThreshold
-                .getText()));
+        m.setAutoFinishThreshold(
+                Integer.parseInt(this.autoFinishThreshold.getText()));
         m.setUseOffset(this.useOffset.isSelected());
         if (this.useOffset.isSelected()) {
             m.setNextLevelOffset(Integer.parseInt(this.nextLevel.getText()));
@@ -139,8 +139,8 @@ public class LevelPreferencesManager {
         final Maze m = MazeMode.getApplication().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
@@ -151,8 +151,8 @@ public class LevelPreferencesManager {
             this.timeLimit.setText("0");
         }
         this.autoFinishEnabled.setSelected(m.getAutoFinishThresholdEnabled());
-        this.autoFinishThreshold.setText(Integer.toString(m
-                .getAutoFinishThreshold()));
+        this.autoFinishThreshold
+                .setText(Integer.toString(m.getAutoFinishThreshold()));
         this.useOffset.setSelected(m.useOffset());
         if (m.useOffset()) {
             this.nextLevel.setText(Integer.toString(m.getNextLevel()));
@@ -227,8 +227,8 @@ public class LevelPreferencesManager {
         this.contentPane.add(new JLabel("Time Limit (0 to disable)"));
         this.contentPane.add(this.timeLimit);
         this.contentPane.add(this.autoFinishEnabled);
-        this.contentPane.add(new JLabel(
-                "Sun Stones Needed To Trigger Auto-Finish"));
+        this.contentPane
+                .add(new JLabel("Sun Stones Needed To Trigger Auto-Finish"));
         this.contentPane.add(this.autoFinishThreshold);
         this.contentPane.add(this.useOffset);
         this.contentPane.add(new JLabel("Next Level Number"));

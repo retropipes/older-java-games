@@ -25,25 +25,26 @@ public class IcedBarrierGenerator extends AbstractWall {
     }
 
     @Override
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // De-ice
-        Application app = MazeRunnerII.getApplication();
-        int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
-        BarrierGenerator bg = new BarrierGenerator();
+        final Application app = MazeRunnerII.getApplication();
+        final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
+        final BarrierGenerator bg = new BarrierGenerator();
         app.getGameManager().morph(bg, dirX, dirY, pz);
         bg.timerExpiredAction(dirX, dirY);
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             // Extend iced effect, if arrow was an ice arrow
             this.extendTimer(IcedBarrierGenerator.TIMER_DELAY);
         } else {
             // Else, de-ice
-            Application app = MazeRunnerII.getApplication();
-            BarrierGenerator bg = new BarrierGenerator();
+            final Application app = MazeRunnerII.getApplication();
+            final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, locX, locY, locZ);
             bg.timerExpiredAction(locX, locY);
         }

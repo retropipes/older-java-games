@@ -79,13 +79,11 @@ public class WeaselWeb {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    WeaselWeb.application.getMazeManager(),
-                    WeaselWeb.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(WeaselWeb.application.getMazeManager(),
+                    WeaselWeb.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(WeaselWeb.application.getGUIManager(),

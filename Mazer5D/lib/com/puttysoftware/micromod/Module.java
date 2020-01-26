@@ -129,7 +129,8 @@ public class Module {
             final Sample sample = instrument.samples[0];
             instrument.name = Module.isoLatin1(moduleData, instIdx * 30 - 10,
                     22);
-            int sampleLength = Module.ushortbe(moduleData, instIdx * 30 + 12) * 2;
+            int sampleLength = Module.ushortbe(moduleData, instIdx * 30 + 12)
+                    * 2;
             final int fineTune = (moduleData[instIdx * 30 + 14] & 0xF) << 4;
             sample.fineTune = fineTune < 128 ? fineTune : fineTune - 256;
             final int volume = moduleData[instIdx * 30 + 15] & 0x7F;
@@ -192,7 +193,8 @@ public class Module {
         for (int instIdx = 1; instIdx <= this.numInstruments; instIdx++) {
             final Instrument instrument = this.instruments[instIdx] = new Instrument();
             final Sample sample = instrument.samples[0];
-            final int instOffset = Module.ushortle(moduleData, moduleDataIdx) << 4;
+            final int instOffset = Module.ushortle(moduleData,
+                    moduleDataIdx) << 4;
             moduleDataIdx += 2;
             instrument.name = Module.codePage850(moduleData, instOffset + 48,
                     28);
@@ -219,7 +221,8 @@ public class Module {
                 loopStart = sampleLength;
                 loopLength = 0;
             }
-            final boolean sixteenBit = (moduleData[instOffset + 31] & 0x4) == 0x4;
+            final boolean sixteenBit = (moduleData[instOffset + 31]
+                    & 0x4) == 0x4;
             if (packed) {
                 throw new IllegalArgumentException(
                         "Packed samples not supported!");
@@ -229,7 +232,8 @@ public class Module {
             if (sixteenBit) {
                 if (signedSamples) {
                     for (int idx = 0, end = sampleData.length; idx < end; idx++) {
-                        sampleData[idx] = (short) (moduleData[sampleOffset] & 0xFF | moduleData[sampleOffset + 1] << 8);
+                        sampleData[idx] = (short) (moduleData[sampleOffset]
+                                & 0xFF | moduleData[sampleOffset + 1] << 8);
                         sampleOffset += 2;
                     }
                 } else {
@@ -247,7 +251,8 @@ public class Module {
                     }
                 } else {
                     for (int idx = 0, end = sampleData.length; idx < end; idx++) {
-                        sampleData[idx] = (short) ((moduleData[sampleOffset++] & 0xFF) - 128 << 8);
+                        sampleData[idx] = (short) ((moduleData[sampleOffset++]
+                                & 0xFF) - 128 << 8);
                     }
                 }
             }
@@ -257,7 +262,8 @@ public class Module {
         for (int patIdx = 0; patIdx < this.numPatterns; patIdx++) {
             final Pattern pattern = this.patterns[patIdx] = new Pattern(
                     this.numChannels, 64);
-            int inOffset = (Module.ushortle(moduleData, moduleDataIdx) << 4) + 2;
+            int inOffset = (Module.ushortle(moduleData, moduleDataIdx) << 4)
+                    + 2;
             int rowIdx = 0;
             while (rowIdx < 64) {
                 final int token = moduleData[inOffset++] & 0xFF;
@@ -298,7 +304,8 @@ public class Module {
                 }
                 final int chanIdx = channelMap[token & 0x1F];
                 if (chanIdx >= 0) {
-                    final int noteOffset = (rowIdx * this.numChannels + chanIdx) * 5;
+                    final int noteOffset = (rowIdx * this.numChannels + chanIdx)
+                            * 5;
                     pattern.data[noteOffset] = (byte) noteKey;
                     pattern.data[noteOffset + 1] = (byte) noteIns;
                     pattern.data[noteOffset + 2] = (byte) noteVol;
@@ -382,13 +389,16 @@ public class Module {
                     } else {
                         dataOffset++;
                     }
-                    final byte key = (flags & 0x01) > 0 ? moduleData[dataOffset++]
+                    final byte key = (flags & 0x01) > 0
+                            ? moduleData[dataOffset++]
                             : 0;
                     pattern.data[patternDataOffset++] = key;
-                    final byte ins = (flags & 0x02) > 0 ? moduleData[dataOffset++]
+                    final byte ins = (flags & 0x02) > 0
+                            ? moduleData[dataOffset++]
                             : 0;
                     pattern.data[patternDataOffset++] = ins;
-                    final byte vol = (flags & 0x04) > 0 ? moduleData[dataOffset++]
+                    final byte vol = (flags & 0x04) > 0
+                            ? moduleData[dataOffset++]
                             : 0;
                     pattern.data[patternDataOffset++] = vol;
                     byte fxc = (flags & 0x08) > 0 ? moduleData[dataOffset++]
@@ -408,15 +418,15 @@ public class Module {
         this.instruments[0] = new Instrument();
         for (int insIdx = 1; insIdx <= this.numInstruments; insIdx++) {
             final Instrument instrument = this.instruments[insIdx] = new Instrument();
-            instrument.name = Module
-                    .codePage850(moduleData, dataOffset + 4, 22);
-            final int numSamples = instrument.numSamples = Module.ushortle(
-                    moduleData, dataOffset + 27);
+            instrument.name = Module.codePage850(moduleData, dataOffset + 4,
+                    22);
+            final int numSamples = instrument.numSamples = Module
+                    .ushortle(moduleData, dataOffset + 27);
             if (numSamples > 0) {
                 instrument.samples = new Sample[numSamples];
                 for (int keyIdx = 0; keyIdx < 96; keyIdx++) {
-                    instrument.keyToSample[keyIdx + 1] = moduleData[dataOffset
-                            + 33 + keyIdx] & 0xFF;
+                    instrument.keyToSample[keyIdx
+                            + 1] = moduleData[dataOffset + 33 + keyIdx] & 0xFF;
                 }
                 final Envelope volEnv = instrument.volumeEnvelope = new Envelope();
                 volEnv.pointsTick = new int[12];
@@ -450,12 +460,18 @@ public class Module {
                 if (panEnv.numPoints > 12) {
                     panEnv.numPoints = 0;
                 }
-                volEnv.sustainTick = volEnv.pointsTick[moduleData[dataOffset + 227]];
-                volEnv.loopStartTick = volEnv.pointsTick[moduleData[dataOffset + 228]];
-                volEnv.loopEndTick = volEnv.pointsTick[moduleData[dataOffset + 229]];
-                panEnv.sustainTick = panEnv.pointsTick[moduleData[dataOffset + 230]];
-                panEnv.loopStartTick = panEnv.pointsTick[moduleData[dataOffset + 231]];
-                panEnv.loopEndTick = panEnv.pointsTick[moduleData[dataOffset + 232]];
+                volEnv.sustainTick = volEnv.pointsTick[moduleData[dataOffset
+                        + 227]];
+                volEnv.loopStartTick = volEnv.pointsTick[moduleData[dataOffset
+                        + 228]];
+                volEnv.loopEndTick = volEnv.pointsTick[moduleData[dataOffset
+                        + 229]];
+                panEnv.sustainTick = panEnv.pointsTick[moduleData[dataOffset
+                        + 230]];
+                panEnv.loopStartTick = panEnv.pointsTick[moduleData[dataOffset
+                        + 231]];
+                panEnv.loopEndTick = panEnv.pointsTick[moduleData[dataOffset
+                        + 232]];
                 volEnv.enabled = volEnv.numPoints > 0
                         && (moduleData[dataOffset + 233] & 0x1) > 0;
                 volEnv.sustain = (moduleData[dataOffset + 233] & 0x2) > 0;
@@ -485,9 +501,12 @@ public class Module {
                 sample.volume = moduleData[sampleHeaderOffset + 12];
                 sample.fineTune = moduleData[sampleHeaderOffset + 13];
                 sample.c2Rate = Sample.C2_NTSC;
-                final boolean looped = (moduleData[sampleHeaderOffset + 14] & 0x3) > 0;
-                final boolean pingPong = (moduleData[sampleHeaderOffset + 14] & 0x2) > 0;
-                final boolean sixteenBit = (moduleData[sampleHeaderOffset + 14] & 0x10) > 0;
+                final boolean looped = (moduleData[sampleHeaderOffset + 14]
+                        & 0x3) > 0;
+                final boolean pingPong = (moduleData[sampleHeaderOffset + 14]
+                        & 0x2) > 0;
+                final boolean sixteenBit = (moduleData[sampleHeaderOffset + 14]
+                        & 0x10) > 0;
                 sample.panning = moduleData[sampleHeaderOffset + 15] & 0xFF;
                 sample.relNote = moduleData[sampleHeaderOffset + 16];
                 sample.name = Module.codePage850(moduleData,
@@ -499,8 +518,8 @@ public class Module {
                     sampleLoopStart /= 2;
                     sampleLoopLength /= 2;
                 }
-                if (!looped
-                        || sampleLoopStart + sampleLoopLength > sampleDataLength) {
+                if (!looped || sampleLoopStart
+                        + sampleLoopLength > sampleDataLength) {
                     sampleLoopStart = sampleDataLength;
                     sampleLoopLength = 0;
                 }
@@ -572,11 +591,10 @@ public class Module {
                 + this.numChannels + '\n' + "Num Instruments: "
                 + this.numInstruments + '\n' + "Num Patterns: "
                 + this.numPatterns + '\n' + "Sequence Length: "
-                + this.sequenceLength + '\n' + "Restart Pos: "
-                + this.restartPos + '\n' + "Default Speed: "
-                + this.defaultSpeed + '\n' + "Default Tempo: "
-                + this.defaultTempo + '\n' + "Linear Periods: "
-                + this.linearPeriods + '\n');
+                + this.sequenceLength + '\n' + "Restart Pos: " + this.restartPos
+                + '\n' + "Default Speed: " + this.defaultSpeed + '\n'
+                + "Default Tempo: " + this.defaultTempo + '\n'
+                + "Linear Periods: " + this.linearPeriods + '\n');
         out.append("Sequence: ");
         for (final int element : this.sequence) {
             out.append(element + ", ");

@@ -29,8 +29,8 @@ public class MajorRandomPotion extends AbstractPotion {
 
     // Constructors
     public MajorRandomPotion() {
-        super(StatConstants.STAT_CURRENT_MP, true,
-                MajorRandomPotion.MIN_EFFECT, MajorRandomPotion.MAX_EFFECT);
+        super(StatConstants.STAT_CURRENT_MP, true, MajorRandomPotion.MIN_EFFECT,
+                MajorRandomPotion.MAX_EFFECT);
     }
 
     @Override

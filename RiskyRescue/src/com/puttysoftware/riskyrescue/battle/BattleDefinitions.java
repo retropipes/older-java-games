@@ -35,28 +35,28 @@ public class BattleDefinitions {
     }
 
     public void resetBattlers() {
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTemplate().isAlive()) {
-                    this.battlers[x].activate();
-                    this.battlers[x].resetAP();
-                    this.battlers[x].resetAttacks();
-                    this.battlers[x].resetSpells();
-                    this.battlers[x].resetSteals();
-                    this.battlers[x].resetLocation();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTemplate().isAlive()) {
+                    battler.activate();
+                    battler.resetAP();
+                    battler.resetAttacks();
+                    battler.resetSpells();
+                    battler.resetSteals();
+                    battler.resetLocation();
                 }
             }
         }
     }
 
     public void roundResetBattlers() {
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTemplate().isAlive()) {
-                    this.battlers[x].resetAP();
-                    this.battlers[x].resetAttacks();
-                    this.battlers[x].resetSpells();
-                    this.battlers[x].resetSteals();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTemplate().isAlive()) {
+                    battler.resetAP();
+                    battler.resetAttacks();
+                    battler.resetSpells();
+                    battler.resetSteals();
                 }
             }
         }

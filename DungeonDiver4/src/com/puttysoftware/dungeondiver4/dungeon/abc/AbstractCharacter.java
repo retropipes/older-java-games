@@ -27,8 +27,8 @@ public abstract class AbstractCharacter extends AbstractDungeonObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
@@ -51,24 +51,25 @@ public abstract class AbstractCharacter extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
     @Override
-    protected void writeDungeonObjectHook(XDataWriter writer)
+    protected void writeDungeonObjectHook(final XDataWriter writer)
             throws IOException {
         this.savedObject.writeDungeonObject(writer);
     }
 
     @Override
-    protected AbstractDungeonObject readDungeonObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractDungeonObject readDungeonObjectHook(
+            final XDataReader reader, final int formatVersion)
+            throws IOException {
         this.savedObject = DungeonDiver4.getApplication().getObjects()
                 .readDungeonObject(reader, formatVersion);
         return this;

@@ -8,8 +8,6 @@ package com.puttysoftware.mazerunner2.game;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,55 +37,56 @@ public class PrestigeViewer {
 
     // Methods
     public static void viewPrestige() {
-        setUpGUI();
-        PartyMember leader = PartyManager.getParty().pickOnePartyMember();
+        PrestigeViewer.setUpGUI();
+        final PartyMember leader = PartyManager.getParty().pickOnePartyMember();
         if (leader != null) {
-            long prestigeScore = leader.computePrestige();
+            final long prestigeScore = leader.computePrestige();
             for (int x = 0; x < PrestigeConstants.MAX_PRESTIGE; x++) {
-                long value = leader.getPrestigeValue(x);
-                prestigeValues[x].setForeground(AbstractCreature
-                        .getPrestigeColor(x));
-                prestigeValues[x].setText(PrestigeConstants.PRESTIGE_NAMES[x]
-                        + ": " + value);
+                final long value = leader.getPrestigeValue(x);
+                PrestigeViewer.prestigeValues[x]
+                        .setForeground(AbstractCreature.getPrestigeColor(x));
+                PrestigeViewer.prestigeValues[x].setText(
+                        PrestigeConstants.PRESTIGE_NAMES[x] + ": " + value);
             }
-            prestigeValues[PrestigeConstants.MAX_PRESTIGE]
+            PrestigeViewer.prestigeValues[PrestigeConstants.MAX_PRESTIGE]
                     .setText("Overall Prestige: " + prestigeScore);
-            prestigeFrame.pack();
-            prestigeFrame.setVisible(true);
+            PrestigeViewer.prestigeFrame.pack();
+            PrestigeViewer.prestigeFrame.setVisible(true);
         }
     }
 
     private static void setUpGUI() {
-        if (!inited) {
+        if (!PrestigeViewer.inited) {
             if (MazeRunnerII.inDebugMode()) {
-                prestigeFrame = new JFrame("Prestige (DEBUG)");
+                PrestigeViewer.prestigeFrame = new JFrame("Prestige (DEBUG)");
             } else {
-                prestigeFrame = new JFrame("Prestige");
+                PrestigeViewer.prestigeFrame = new JFrame("Prestige");
             }
-            prestigePane = new JPanel();
-            prestigePane.setLayout(new BorderLayout());
-            contentPane = new JPanel();
-            contentPane.setLayout(new GridLayout(
-                    PrestigeConstants.MAX_PRESTIGE + 1, 1));
-            buttonPane = new JPanel();
-            buttonPane.setLayout(new FlowLayout());
-            btnOK = new JButton("OK");
-            btnOK.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    prestigeFrame.setVisible(false);
-                }
-            });
-            prestigeValues = new JLabel[PrestigeConstants.MAX_PRESTIGE + 1];
+            PrestigeViewer.prestigePane = new JPanel();
+            PrestigeViewer.prestigePane.setLayout(new BorderLayout());
+            PrestigeViewer.contentPane = new JPanel();
+            PrestigeViewer.contentPane.setLayout(
+                    new GridLayout(PrestigeConstants.MAX_PRESTIGE + 1, 1));
+            PrestigeViewer.buttonPane = new JPanel();
+            PrestigeViewer.buttonPane.setLayout(new FlowLayout());
+            PrestigeViewer.btnOK = new JButton("OK");
+            PrestigeViewer.btnOK.addActionListener(
+                    e -> PrestigeViewer.prestigeFrame.setVisible(false));
+            PrestigeViewer.prestigeValues = new JLabel[PrestigeConstants.MAX_PRESTIGE
+                    + 1];
             for (int x = 0; x < PrestigeConstants.MAX_PRESTIGE + 1; x++) {
-                prestigeValues[x] = new JLabel();
-                contentPane.add(prestigeValues[x]);
+                PrestigeViewer.prestigeValues[x] = new JLabel();
+                PrestigeViewer.contentPane
+                        .add(PrestigeViewer.prestigeValues[x]);
             }
-            buttonPane.add(btnOK);
-            prestigePane.add(contentPane, BorderLayout.CENTER);
-            prestigePane.add(buttonPane, BorderLayout.SOUTH);
-            prestigeFrame.setContentPane(prestigePane);
-            inited = true;
+            PrestigeViewer.buttonPane.add(PrestigeViewer.btnOK);
+            PrestigeViewer.prestigePane.add(PrestigeViewer.contentPane,
+                    BorderLayout.CENTER);
+            PrestigeViewer.prestigePane.add(PrestigeViewer.buttonPane,
+                    BorderLayout.SOUTH);
+            PrestigeViewer.prestigeFrame
+                    .setContentPane(PrestigeViewer.prestigePane);
+            PrestigeViewer.inited = true;
         }
     }
 }

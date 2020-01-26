@@ -15,9 +15,8 @@ public class ThiefSpellBook extends SpellBook {
     protected void defineSpells() {
         final DrainBuff spell0Effect = new DrainBuff("Mana Drain", 4, 1, 0.5,
                 StatConstants.STAT_LEVEL, Buff.DEFAULT_DECAY_RATE);
-        spell0Effect
-                .setMessage(Buff.MESSAGE_INITIAL,
-                        "You spin your weapon, forming a vortex that engulfs the enemy!");
+        spell0Effect.setMessage(Buff.MESSAGE_INITIAL,
+                "You spin your weapon, forming a vortex that engulfs the enemy!");
         spell0Effect.setMessage(Buff.MESSAGE_SUBSEQUENT,
                 "The enemy loses some mana!");
         final Spell spell0 = new Spell(spell0Effect, 1, 'E');
@@ -71,12 +70,10 @@ public class ThiefSpellBook extends SpellBook {
         this.spells[4] = spell4;
         final DamageBuff spell5Effect = new DamageBuff("Weakness Strike", 1, 1,
                 0.8, StatConstants.STAT_CURRENT_HP, Buff.DEFAULT_DECAY_RATE);
-        spell5Effect
-                .setMessage(Buff.MESSAGE_INITIAL,
-                        "You wait for the right moment, then suddenly attack the enemy's weak point!");
-        spell5Effect
-                .setMessage(Buff.MESSAGE_SUBSEQUENT,
-                        "The enemy, caught off-guard by the attack, loses a LOT of health!");
+        spell5Effect.setMessage(Buff.MESSAGE_INITIAL,
+                "You wait for the right moment, then suddenly attack the enemy's weak point!");
+        spell5Effect.setMessage(Buff.MESSAGE_SUBSEQUENT,
+                "The enemy, caught off-guard by the attack, loses a LOT of health!");
         final Spell spell5 = new Spell(spell5Effect, 20, 'E');
         this.spells[5] = spell5;
     }

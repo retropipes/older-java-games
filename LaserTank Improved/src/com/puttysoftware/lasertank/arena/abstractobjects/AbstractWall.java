@@ -12,33 +12,33 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractWall extends AbstractArenaObject {
     // Constructors
     protected AbstractWall() {
-	super(true);
-	this.type.set(TypeConstants.TYPE_WALL);
-	this.setMaterial(MaterialConstants.MATERIAL_STONE);
+        super(true);
+        this.type.set(TypeConstants.TYPE_WALL);
+        this.setMaterial(MaterialConstants.MATERIAL_STONE);
     }
 
     @Override
     public boolean doLasersPassThrough() {
-	return false;
+        return false;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_LOWER_OBJECTS;
+        return ArenaConstants.LAYER_LOWER_OBJECTS;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

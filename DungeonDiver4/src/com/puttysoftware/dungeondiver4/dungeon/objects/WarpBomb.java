@@ -34,12 +34,9 @@ public class WarpBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         SoundManager.playSound(SoundConstants.SOUND_EXPLODE);
-        DungeonDiver4
-                .getApplication()
-                .getDungeonManager()
-                .getDungeon()
+        DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .radialScanWarpObjects(x, y, z, DungeonConstants.LAYER_OBJECT,
                         AbstractBomb.EFFECT_RADIUS);
     }

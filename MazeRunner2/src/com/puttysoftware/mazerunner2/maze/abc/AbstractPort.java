@@ -22,7 +22,7 @@ public abstract class AbstractPort extends AbstractInfiniteLock {
 
     @Override
     public AbstractPort clone() {
-        AbstractPort copy = (AbstractPort) super.clone();
+        final AbstractPort copy = (AbstractPort) super.clone();
         copy.letter = this.letter;
         return copy;
     }
@@ -37,8 +37,8 @@ public abstract class AbstractPort extends AbstractInfiniteLock {
         } else {
             fill = "a";
         }
-        MazeRunnerII.getApplication().showMessage(
-                "You need " + fill + " " + this.letter + " plug");
+        MazeRunnerII.getApplication()
+                .showMessage("You need " + fill + " " + this.letter + " plug");
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 

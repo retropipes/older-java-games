@@ -9,7 +9,7 @@ import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractTransientObject;
 
 public class Arrow extends AbstractTransientObject {
     // Constructors
-    public Arrow(int c) {
+    public Arrow(final int c) {
         super("Arrow", c);
     }
 }

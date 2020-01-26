@@ -18,7 +18,7 @@ class ItemUseQuantity {
         this.uses = 0;
     }
 
-    ItemUseQuantity(Item i, int q, int u) {
+    ItemUseQuantity(final Item i, final int q, final int u) {
         this.item = i;
         this.quantity = q;
         this.uses = u;
@@ -33,7 +33,7 @@ class ItemUseQuantity {
         return this.quantity;
     }
 
-    void setQuantity(int newQ) {
+    void setQuantity(final int newQ) {
         this.quantity = newQ;
     }
 
@@ -47,7 +47,7 @@ class ItemUseQuantity {
         return this.uses;
     }
 
-    void setUses(int newU) {
+    void setUses(final int newU) {
         this.uses = newU;
     }
 
@@ -66,13 +66,13 @@ class ItemUseQuantity {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((this.item == null) ? 0 : this.item.hashCode());
+                + (this.item == null ? 0 : this.item.hashCode());
         result = prime * result + this.quantity;
         return prime * result + this.uses;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -82,7 +82,7 @@ class ItemUseQuantity {
         if (!(obj instanceof ItemUseQuantity)) {
             return false;
         }
-        ItemUseQuantity other = (ItemUseQuantity) obj;
+        final ItemUseQuantity other = (ItemUseQuantity) obj;
         if (this.item == null) {
             if (other.item != null) {
                 return false;

@@ -13,28 +13,29 @@ class GameDraw extends JPanel {
     private final DrawGrid drawGrid;
 
     public GameDraw() {
-	super();
-	final int vSize = GameViewingWindowManager.getViewingWindowSize();
-	final int gSize = ImageManager.getGraphicSize();
-	this.setPreferredSize(new Dimension(vSize * gSize, vSize * gSize));
-	this.drawGrid = new DrawGrid(vSize);
+        super();
+        final int vSize = GameViewingWindowManager.getViewingWindowSize();
+        final int gSize = ImageManager.getGraphicSize();
+        this.setPreferredSize(new Dimension(vSize * gSize, vSize * gSize));
+        this.drawGrid = new DrawGrid(vSize);
     }
 
     public DrawGrid getGrid() {
-	return this.drawGrid;
+        return this.drawGrid;
     }
 
     @Override
     public void paintComponent(final Graphics g) {
-	super.paintComponent(g);
-	if (this.drawGrid != null) {
-	    final int gSize = ImageManager.getGraphicSize();
-	    final int vSize = GameViewingWindowManager.getViewingWindowSize();
-	    for (int x = 0; x < vSize; x++) {
-		for (int y = 0; y < vSize; y++) {
-		    g.drawImage(this.drawGrid.getImageCell(y, x), x * gSize, y * gSize, gSize, gSize, null);
-		}
-	    }
-	}
+        super.paintComponent(g);
+        if (this.drawGrid != null) {
+            final int gSize = ImageManager.getGraphicSize();
+            final int vSize = GameViewingWindowManager.getViewingWindowSize();
+            for (int x = 0; x < vSize; x++) {
+                for (int y = 0; y < vSize; y++) {
+                    g.drawImage(this.drawGrid.getImageCell(y, x), x * gSize,
+                            y * gSize, gSize, gSize, null);
+                }
+            }
+        }
     }
 }

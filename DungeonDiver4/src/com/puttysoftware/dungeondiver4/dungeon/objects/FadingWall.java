@@ -26,12 +26,15 @@ public class FadingWall extends AbstractWall {
     public void timerExpiredAction(final int dirX, final int dirY) {
         // Disappear if the player is close to us
         boolean scanResult = false;
-        Application app = DungeonDiver4.getApplication();
-        int tx = app.getDungeonManager().getDungeon().getPlayerLocationX();
-        int ty = app.getDungeonManager().getDungeon().getPlayerLocationY();
-        int pz = app.getDungeonManager().getDungeon().getPlayerLocationZ();
-        scanResult = app.getDungeonManager().getDungeon()
-                .radialScan(dirX, dirY, FadingWall.SCAN_LIMIT, tx, ty);
+        final Application app = DungeonDiver4.getApplication();
+        final int tx = app.getDungeonManager().getDungeon()
+                .getPlayerLocationX();
+        final int ty = app.getDungeonManager().getDungeon()
+                .getPlayerLocationY();
+        final int pz = app.getDungeonManager().getDungeon()
+                .getPlayerLocationZ();
+        scanResult = app.getDungeonManager().getDungeon().radialScan(dirX, dirY,
+                FadingWall.SCAN_LIMIT, tx, ty);
         if (scanResult) {
             app.getGameManager().morph(new Empty(), dirX, dirY, pz);
         }
@@ -64,8 +67,8 @@ public class FadingWall extends AbstractWall {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }

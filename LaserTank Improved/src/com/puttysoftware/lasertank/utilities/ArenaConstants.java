@@ -27,25 +27,28 @@ public class ArenaConstants {
     public static final int NUM_PLAYERS = 9;
 
     public static void activeLanguageChanged() {
-	ArenaConstants.LAYER_LIST = new String[] { StringLoader.loadEditor(EditorString.LOWER_GROUND_LAYER),
-		StringLoader.loadEditor(EditorString.UPPER_GROUND_LAYER),
-		StringLoader.loadEditor(EditorString.LOWER_OBJECTS_LAYER),
-		StringLoader.loadEditor(EditorString.UPPER_OBJECTS_LAYER) };
-	ArenaConstants.ERA_LIST = new String[] { StringLoader.loadTime(ArenaConstants.ERA_DISTANT_PAST),
-		StringLoader.loadTime(ArenaConstants.ERA_PAST), StringLoader.loadTime(ArenaConstants.ERA_PRESENT),
-		StringLoader.loadTime(ArenaConstants.ERA_FUTURE),
-		StringLoader.loadTime(ArenaConstants.ERA_DISTANT_FUTURE) };
+        ArenaConstants.LAYER_LIST = new String[] {
+                StringLoader.loadEditor(EditorString.LOWER_GROUND_LAYER),
+                StringLoader.loadEditor(EditorString.UPPER_GROUND_LAYER),
+                StringLoader.loadEditor(EditorString.LOWER_OBJECTS_LAYER),
+                StringLoader.loadEditor(EditorString.UPPER_OBJECTS_LAYER) };
+        ArenaConstants.ERA_LIST = new String[] {
+                StringLoader.loadTime(ArenaConstants.ERA_DISTANT_PAST),
+                StringLoader.loadTime(ArenaConstants.ERA_PAST),
+                StringLoader.loadTime(ArenaConstants.ERA_PRESENT),
+                StringLoader.loadTime(ArenaConstants.ERA_FUTURE),
+                StringLoader.loadTime(ArenaConstants.ERA_DISTANT_FUTURE) };
     }
 
     public static String[] getEraList() {
-	return ArenaConstants.ERA_LIST;
+        return ArenaConstants.ERA_LIST;
     }
 
     public static String[] getLayerList() {
-	return ArenaConstants.LAYER_LIST;
+        return ArenaConstants.LAYER_LIST;
     }
 
     private ArenaConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

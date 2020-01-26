@@ -12,7 +12,7 @@ import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractLightModifier extends AbstractDungeonObject {
     // Constructors
-    protected AbstractLightModifier(int tc) {
+    protected AbstractLightModifier(final int tc) {
         super(true, false);
         this.setTemplateColor(tc);
     }
@@ -23,8 +23,8 @@ public abstract class AbstractLightModifier extends AbstractDungeonObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
@@ -39,12 +39,12 @@ public abstract class AbstractLightModifier extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 

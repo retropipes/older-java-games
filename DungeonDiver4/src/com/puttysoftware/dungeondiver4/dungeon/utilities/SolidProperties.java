@@ -9,8 +9,8 @@ import java.util.Arrays;
 
 public class SolidProperties implements Cloneable, DirectionConstants {
     // Properties
-    private boolean[] solidX;
-    private boolean[] solidI;
+    private final boolean[] solidX;
+    private final boolean[] solidI;
 
     // Constructors
     public SolidProperties() {
@@ -20,7 +20,7 @@ public class SolidProperties implements Cloneable, DirectionConstants {
 
     // Methods
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -47,7 +47,7 @@ public class SolidProperties implements Cloneable, DirectionConstants {
 
     @Override
     public SolidProperties clone() {
-        SolidProperties copy = new SolidProperties();
+        final SolidProperties copy = new SolidProperties();
         System.arraycopy(this.solidX, 0, copy.solidX, 0, this.solidX.length);
         System.arraycopy(this.solidI, 0, copy.solidI, 0, this.solidI.length);
         return copy;
@@ -64,7 +64,7 @@ public class SolidProperties implements Cloneable, DirectionConstants {
 
     public boolean isDirectionallySolid(final boolean ie, final int dirX,
             final int dirY) {
-        int dir = DirectionResolver.resolveRelativeDirection(dirX, dirY);
+        final int dir = DirectionResolver.resolveRelativeDirection(dirX, dirY);
         if (ie) {
             try {
                 if (dir != DirectionConstants.DIRECTION_NONE) {
@@ -72,7 +72,7 @@ public class SolidProperties implements Cloneable, DirectionConstants {
                 } else {
                     return false;
                 }
-            } catch (ArrayIndexOutOfBoundsException aioob) {
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
                 return true;
             }
         } else {
@@ -82,13 +82,13 @@ public class SolidProperties implements Cloneable, DirectionConstants {
                 } else {
                     return false;
                 }
-            } catch (ArrayIndexOutOfBoundsException aioob) {
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
                 return true;
             }
         }
     }
 
-    public void setSolid(boolean value) {
+    public void setSolid(final boolean value) {
         for (int x = 0; x < DirectionConstants.DIRECTION_COUNT; x++) {
             this.solidX[x] = value;
             this.solidI[x] = value;
@@ -96,17 +96,17 @@ public class SolidProperties implements Cloneable, DirectionConstants {
     }
 
     public void setDirectionallySolid(final boolean ie, final int dir,
-            boolean value) {
+            final boolean value) {
         if (ie) {
             try {
                 this.solidX[dir] = value;
-            } catch (ArrayIndexOutOfBoundsException aioob) {
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
                 // Do nothing
             }
         } else {
             try {
                 this.solidI[dir] = value;
-            } catch (ArrayIndexOutOfBoundsException aioob) {
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
                 // Do nothing
             }
         }

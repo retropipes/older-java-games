@@ -14,10 +14,9 @@ public class FaithDataManager {
     public static double[] getFaithData(final int f) {
         final String name = FaithConstants.getFaithName(f).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                FaithDataManager.class
-                        .getResourceAsStream("/com/puttysoftware/fantastlex/resources/data/faith/"
-                                + name
-                                + Extension
+                FaithDataManager.class.getResourceAsStream(
+                        "/com/puttysoftware/fantastlex/resources/data/faith/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final int[] rawData = new int[FaithConstants.getFaithsCount()];

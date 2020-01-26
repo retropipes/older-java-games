@@ -26,7 +26,7 @@ public class Monster extends AbstractCreature {
     // Fields
     private String type;
     private Element element;
-    private int perfectBonusGold;
+    private final int perfectBonusGold;
     private static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
     private static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
     private static final int GOLD_TOUGHNESS_MULTIPLIER = 6;
@@ -39,7 +39,7 @@ public class Monster extends AbstractCreature {
         this.setMapAI(Monster.getInitialMapAI());
         this.setWindowAI(Monster.getInitialWindowAI());
         this.element = new Element(FaithManager.getFaith(0));
-        SpellBook spells = new MonsterSpellBook();
+        final SpellBook spells = new MonsterSpellBook();
         spells.learnAllSpells();
         this.setSpellBook(spells);
         this.perfectBonusGold = this.getInitialPerfectBonusGold();
@@ -73,11 +73,12 @@ public class Monster extends AbstractCreature {
     }
 
     private int getInitialPerfectBonusGold() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        int needed = Shop.getEquipmentCost(playerCharacter.getLevel() + 1) * 24;
-        int factor = this.getBattlesToNextLevel();
-        int min = ((needed / factor) / 4);
-        int max = ((needed / factor) / 2);
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final int needed = Shop.getEquipmentCost(playerCharacter.getLevel() + 1)
+                * 24;
+        final int factor = this.getBattlesToNextLevel();
+        final int min = needed / factor / 4;
+        final int max = needed / factor / 2;
         final RandomRange r = new RandomRange(min, max);
         return (int) (r.generate() * this.adjustForLevelDifference());
     }
@@ -94,7 +95,7 @@ public class Monster extends AbstractCreature {
         return this.element;
     }
 
-    final void setType(String newType) {
+    final void setType(final String newType) {
         this.type = newType;
     }
 
@@ -121,7 +122,7 @@ public class Monster extends AbstractCreature {
 
     public void loadMonster() {
         this.image = this.getInitialImage();
-        int newLevel = PartyManager.getParty().getPartyMeanLevel();
+        final int newLevel = PartyManager.getParty().getPartyMeanLevel();
         this.setLevel(newLevel);
         this.setVitality(this.getInitialVitality());
         this.setCurrentHP(this.getMaximumHP());
@@ -132,8 +133,8 @@ public class Monster extends AbstractCreature {
         this.setAgility(this.getInitialAgility());
         this.setLuck(this.getInitialLuck());
         this.setGold(this.getInitialGold());
-        this.setExperience((long) (this.getInitialExperience() * this
-                .adjustForLevelDifference()));
+        this.setExperience((long) (this.getInitialExperience()
+                * this.adjustForLevelDifference()));
         this.setAttacksPerRound(1);
         this.setSpellsPerRound(1);
         this.image = this.getInitialImage();
@@ -141,25 +142,27 @@ public class Monster extends AbstractCreature {
 
     // Helper Methods
     private int getInitialStrength() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_STRENGTH, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_STRENGTH, 1));
         return r.generate();
     }
 
     private int getInitialBlock() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_BLOCK);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_BLOCK);
         return r.generate();
     }
 
     private long getInitialExperience() {
         int minvar, maxvar;
-        minvar = (int) (this.getLevel() * Monster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        maxvar = (int) (this.getLevel() * Monster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        minvar = (int) (this.getLevel()
+                * Monster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        maxvar = (int) (this.getLevel()
+                * Monster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
         final RandomRange r = new RandomRange(minvar, maxvar);
-        long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
-        long factor = this.getBattlesToNextLevel();
-        return (expbase / factor) + r.generateLong();
+        final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
+        final long factor = this.getBattlesToNextLevel();
+        return expbase / factor + r.generateLong();
     }
 
     private int getToughness() {
@@ -168,33 +171,33 @@ public class Monster extends AbstractCreature {
     }
 
     private int getInitialGold() {
-        int min = 0;
-        int max = this.getToughness() * Monster.GOLD_TOUGHNESS_MULTIPLIER;
-        RandomRange r = new RandomRange(min, max);
+        final int min = 0;
+        final int max = this.getToughness() * Monster.GOLD_TOUGHNESS_MULTIPLIER;
+        final RandomRange r = new RandomRange(min, max);
         return r.generate();
     }
 
     private int getInitialAgility() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_AGILITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_AGILITY, 1));
         return r.generate();
     }
 
     private int getInitialVitality() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_VITALITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_VITALITY, 1));
         return r.generate();
     }
 
     private int getInitialIntelligence() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_INTELLIGENCE);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_INTELLIGENCE);
         return r.generate();
     }
 
     private int getInitialLuck() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_LUCK);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_LUCK);
         return r.generate();
     }
 
@@ -211,13 +214,12 @@ public class Monster extends AbstractCreature {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.element == null) ? 0 : this.element.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.element == null ? 0 : this.element.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -227,7 +229,7 @@ public class Monster extends AbstractCreature {
         if (!(obj instanceof Monster)) {
             return false;
         }
-        Monster other = (Monster) obj;
+        final Monster other = (Monster) obj;
         if (this.element == null) {
             if (other.element != null) {
                 return false;
@@ -246,7 +248,7 @@ public class Monster extends AbstractCreature {
     }
 
     private final int getBattlesToNextLevel() {
-        return Monster.BATTLES_START + (this.getLevel() + 1)
-                * Monster.BATTLES_SCALE_FACTOR;
+        return Monster.BATTLES_START
+                + (this.getLevel() + 1) * Monster.BATTLES_SCALE_FACTOR;
     }
 }

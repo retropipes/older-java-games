@@ -15,10 +15,9 @@ public class PersonalityDataManager {
         final String name = PersonalityConstants.getPersonalityName(p)
                 .toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                PersonalityDataManager.class
-                        .getResourceAsStream("/com/puttysoftware/fantastlex/resources/data/personality/"
-                                + name
-                                + Extension
+                PersonalityDataManager.class.getResourceAsStream(
+                        "/com/puttysoftware/fantastlex/resources/data/personality/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTES_COUNT];

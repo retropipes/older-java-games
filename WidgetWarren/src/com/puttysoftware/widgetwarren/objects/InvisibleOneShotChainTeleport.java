@@ -27,8 +27,8 @@ public class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WidgetWarren.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsoluteNoEvents(
@@ -57,8 +57,8 @@ public class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = WidgetWarren.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
         return mo;
     }
 

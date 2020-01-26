@@ -14,30 +14,30 @@ import com.puttysoftware.lasertank.utilities.Direction;
 
 public class PowerfulTank extends AbstractCharacter {
     public PowerfulTank(final Direction dir, final int number) {
-	super(number);
-	this.setDirection(dir);
-	this.activateTimer(50);
+        super(number);
+        this.setDirection(dir);
+        this.activateTimer(50);
     }
 
     // Constructors
     public PowerfulTank(final int number) {
-	super(number);
-	this.activateTimer(50);
+        super(number);
+        this.activateTimer(50);
     }
 
     @Override
     public boolean acceptTick(final int actionType) {
-	return actionType == ActionConstants.ACTION_MOVE;
+        return actionType == ActionConstants.ACTION_MOVE;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 138;
+        return 138;
     }
 
     @Override
     public void timerExpiredAction(final int x, final int y) {
-	SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
-	LaserTank.getApplication().getGameManager().setNormalTank();
+        SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
+        LaserTank.getApplication().getGameManager().setNormalTank();
     }
 }

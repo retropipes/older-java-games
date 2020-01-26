@@ -15,22 +15,23 @@ public class DelevelThenAttackAIRoutine extends AbstractWindowAIRoutine {
     }
 
     @Override
-    public int getNextAction(AbstractCreature c) {
+    public int getNextAction(final AbstractCreature c) {
         if (this.delevelRounds > 0) {
             this.delevelRounds--;
         }
         Spell delevel = null;
-        RandomRange whichSpell = new RandomRange(1, 2);
+        final RandomRange whichSpell = new RandomRange(1, 2);
         if (whichSpell.generate() == 1) {
             delevel = c.getSpellBook().getSpellByID(2);
         } else {
             delevel = c.getSpellBook().getSpellByID(3);
         }
-        int cost = delevel.getCost();
-        int currMP = c.getCurrentMP();
+        final int cost = delevel.getCost();
+        final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.delevelRounds == 0) {
-            RandomRange chance = new RandomRange(1, 100);
-            if (chance.generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
+            final RandomRange chance = new RandomRange(1, 100);
+            if (chance
+                    .generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
                 this.delevelRounds = delevel.getEffect().getInitialRounds();
                 this.spell = delevel;
                 return AbstractWindowAIRoutine.ACTION_CAST_SPELL;

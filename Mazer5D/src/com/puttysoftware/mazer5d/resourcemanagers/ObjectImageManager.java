@@ -29,8 +29,10 @@ public class ObjectImageManager {
                     .getCachedObjectImage(obj, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon);
             if (icon != null) {
-                for (int x = 0; x < ObjectImageManager.getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager.getObjectImageSize(); y++) {
+                for (int x = 0; x < ObjectImageManager
+                        .getObjectImageSize(); x++) {
+                    for (int y = 0; y < ObjectImageManager
+                            .getObjectImageSize(); y++) {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -59,8 +61,10 @@ public class ObjectImageManager {
                     .getCachedObjectImage(obj2, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon2);
             if (icon1 != null && icon2 != null) {
-                for (int x = 0; x < ObjectImageManager.getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager.getObjectImageSize(); y++) {
+                for (int x = 0; x < ObjectImageManager
+                        .getObjectImageSize(); x++) {
+                    for (int y = 0; y < ObjectImageManager
+                            .getObjectImageSize(); y++) {
                         final int pixel = icon2.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -80,8 +84,8 @@ public class ObjectImageManager {
     }
 
     public static BufferedImageIcon getVirtualCompositeImage(
-            final MazeObject obj1, final MazeObject obj2,
-            final MazeObject obj3, final boolean game) {
+            final MazeObject obj1, final MazeObject obj2, final MazeObject obj3,
+            final boolean game) {
         try {
             final BufferedImageIcon icon3 = ObjectImageCache
                     .getCachedObjectImage(obj3, game);
@@ -89,8 +93,10 @@ public class ObjectImageManager {
                     .getCompositeImage(obj1, obj2, game);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon2 != null) {
-                for (int x = 0; x < ObjectImageManager.getObjectImageSize(); x++) {
-                    for (int y = 0; y < ObjectImageManager.getObjectImageSize(); y++) {
+                for (int x = 0; x < ObjectImageManager
+                        .getObjectImageSize(); x++) {
+                    for (int y = 0; y < ObjectImageManager
+                            .getObjectImageSize(); y++) {
                         final int pixel = icon3.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -125,9 +131,8 @@ public class ObjectImageManager {
                 name = obj.getName();
             }
             final String normalName = ObjectImageManager.normalizeName(name);
-            final URL url = ObjectImageManager.LOAD_CLASS
-                    .getResource(ObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                    ObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;

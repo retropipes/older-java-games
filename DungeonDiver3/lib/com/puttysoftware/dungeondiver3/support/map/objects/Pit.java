@@ -25,8 +25,8 @@ public class Pit extends StairsDown {
         super();
         this.setTemplateTransform(new TemplateTransform(1.0, 1.0, 1.0));
         // Create post-move script
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.MOVE);
         entry1.addActionArg(new InternalScriptEntryArgument(false));
         entry1.addActionArg(new InternalScriptEntryArgument(false));
@@ -35,7 +35,7 @@ public class Pit extends StairsDown {
         entry1.addActionArg(new InternalScriptEntryArgument(-1));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
-        InternalScriptEntry entry2 = new InternalScriptEntry();
+        final InternalScriptEntry entry2 = new InternalScriptEntry();
         entry2.setActionCode(InternalScriptActionCode.SOUND);
         entry2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_FALLING));
@@ -64,12 +64,12 @@ public class Pit extends StairsDown {
     private boolean searchNestedPits(final int dirX, final int dirY,
             final int floor, final Map map) {
         // Stop infinite recursion
-        int lcl = -map.getFloors();
+        final int lcl = -map.getFloors();
         if (floor <= lcl) {
             throw new InfiniteRecursionException();
         }
         if (map.doesFloorExist(floor)) {
-            MapObject obj = map.getCell(dirX, dirY, floor,
+            final MapObject obj = map.getCell(dirX, dirY, floor,
                     MapConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(map, floor)) {
                 return false;
@@ -96,7 +96,7 @@ public class Pit extends StairsDown {
     }
 
     @Override
-    public boolean isConditionallySolid(Map map, final int z) {
+    public boolean isConditionallySolid(final Map map, final int z) {
         if (!Map.isFloorBelow(z)) {
             return true;
         } else {

@@ -11,27 +11,27 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.ObjectImageConstants;
 public class OpenDoor extends AbstractPassThroughObject {
     // Constructors
     public OpenDoor() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_OPEN_DOOR;
+        return ObjectImageConstants.OBJECT_IMAGE_OPEN_DOOR;
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Open Door";
+        return "Open Door";
     }
 
     @Override
     public String getPluralName() {
-	return "Open Doors";
+        return "Open Doors";
     }
 
     @Override
     public String getDescription() {
-	return "Open Doors are purely decorative.";
+        return "Open Doors are purely decorative.";
     }
 }

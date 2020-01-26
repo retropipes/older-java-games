@@ -19,27 +19,29 @@ public class DisruptedMagneticWall extends AbstractDisruptedObject {
 
     // Constructors
     public DisruptedMagneticWall() {
-	super();
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.disruptionLeft = DisruptedMagneticWall.DISRUPTION_START;
-	this.activateTimer(1);
-	this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
+        super();
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.disruptionLeft = DisruptedMagneticWall.DISRUPTION_START;
+        this.activateTimer(1);
+        this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 50;
+        return 50;
     }
 
     @Override
     public void timerExpiredAction(final int locX, final int locY) {
-	this.disruptionLeft--;
-	if (this.disruptionLeft == 0) {
-	    SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
-	    final int z = LaserTank.getApplication().getGameManager().getPlayerManager().getPlayerLocationZ();
-	    LaserTank.getApplication().getGameManager().morph(new MagneticWall(), locX, locY, z, this.getLayer());
-	} else {
-	    this.activateTimer(1);
-	}
+        this.disruptionLeft--;
+        if (this.disruptionLeft == 0) {
+            SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
+            final int z = LaserTank.getApplication().getGameManager()
+                    .getPlayerManager().getPlayerLocationZ();
+            LaserTank.getApplication().getGameManager()
+                    .morph(new MagneticWall(), locX, locY, z, this.getLayer());
+        } else {
+            this.activateTimer(1);
+        }
     }
 }

@@ -40,297 +40,298 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.xio.XDataReader;
 
 public final class GameObjects {
-  // Fields
-  private static ArrayList<FantastleObjectModel> allObjectList;
-  private static FantastleObjectActions[] allActionList;
-  private static int[] allSelfReplacementActionList;
-  private static int[] allShopActionList;
+    // Fields
+    private static ArrayList<FantastleObjectModel> allObjectList;
+    private static FantastleObjectActions[] allActionList;
+    private static int[] allSelfReplacementActionList;
+    private static int[] allShopActionList;
 
-  // Constructor
-  private GameObjects() {
-  }
-
-  // Methods
-  public static void initializeObjects() {
-    GameObjects.allObjectList = new ArrayList<>();
-    final FantastleObjectModel[] allObjects = { new ArmorShop(), new BankShop(),
-        new OpenSpace(), new Nothing(), new BonusShop(), new ElementalShop(),
-        new HealShop(), new Ice(), new ItemShop(), new RegenerateShop(),
-        new SealingWall(), new NecklaceShop(), new SpellShop(), new Tile(),
-        new Wall(), new WeaponShop(), new Wall(), new StairsUp(),
-        new StairsDown(), new Pit(), new Spring(), new SuperPit(),
-        new SuperSpring(), new ClosedDoor(), new OpenDoor() };
-    GameObjects.allObjectList.clear();
-    // Populate lists
-    for (final FantastleObjectModel allObject : allObjects) {
-      GameObjects.allObjectList.add(allObject);
+    // Constructor
+    private GameObjects() {
     }
-    GameObjects.allActionList = DataLoader.loadObjectActionData();
-    GameObjects.allShopActionList = DataLoader
-        .loadObjectActionAddonData(FantastleObjectActions.SHOP);
-    GameObjects.allSelfReplacementActionList = DataLoader
-        .loadObjectActionAddonData(FantastleObjectActions.REPLACE_SELF);
-  }
 
-  public static boolean replacesSelf(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.REPLACE_SELF);
-  }
-
-  public static FantastleObjectModel replacesSelfWith(
-      final FantastleObjectModel obj) {
-    return GameObjects.getNewInstanceByUniqueID(
-        GameObjects.allSelfReplacementActionList[obj.getUniqueID()]);
-  }
-
-  public static boolean sendsDown(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.DOWN_1_FLOOR);
-  }
-
-  public static boolean sendsUp(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.UP_1_FLOOR);
-  }
-
-  public static boolean sendsDown2(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.DOWN_2_FLOORS);
-  }
-
-  public static boolean sendsUp2(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.UP_2_FLOORS);
-  }
-
-  public static boolean sendsNext(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.NEXT_LEVEL);
-  }
-
-  public static boolean sendsPrevious(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.PREVIOUS_LEVEL);
-  }
-
-  public static boolean sendsToShop(final FantastleObjectModel obj) {
-    return GameObjects.allActionList[obj.getUniqueID()]
-        .get(FantastleObjectActions.SHOP);
-  }
-
-  public static int sendsToWhichShop(final FantastleObjectModel obj) {
-    return GameObjects.allShopActionList[obj.getUniqueID()];
-  }
-
-  public static FantastleObjectModel[] getAllObjects() {
-    return GameObjects.allObjectList
-        .toArray(new FantastleObjectModel[GameObjects.allObjectList.size()]);
-  }
-
-  public static FantastleObjectModel[] getAllGroundLayerObjects() {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final FantastleObjectModel[] tempAll = new FantastleObjectModel[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == Layers.GROUND) {
-        tempAll[count] = objects[x];
-        count++;
-      }
+    // Methods
+    public static void initializeObjects() {
+        GameObjects.allObjectList = new ArrayList<>();
+        final FantastleObjectModel[] allObjects = { new ArmorShop(),
+                new BankShop(), new OpenSpace(), new Nothing(), new BonusShop(),
+                new ElementalShop(), new HealShop(), new Ice(), new ItemShop(),
+                new RegenerateShop(), new SealingWall(), new NecklaceShop(),
+                new SpellShop(), new Tile(), new Wall(), new WeaponShop(),
+                new Wall(), new StairsUp(), new StairsDown(), new Pit(),
+                new Spring(), new SuperPit(), new SuperSpring(),
+                new ClosedDoor(), new OpenDoor() };
+        GameObjects.allObjectList.clear();
+        // Populate lists
+        for (final FantastleObjectModel allObject : allObjects) {
+            GameObjects.allObjectList.add(allObject);
+        }
+        GameObjects.allActionList = DataLoader.loadObjectActionData();
+        GameObjects.allShopActionList = DataLoader
+                .loadObjectActionAddonData(FantastleObjectActions.SHOP);
+        GameObjects.allSelfReplacementActionList = DataLoader
+                .loadObjectActionAddonData(FantastleObjectActions.REPLACE_SELF);
     }
-    if (count == 0) {
-      return new FantastleObjectModel[0];
-    } else {
-      final FantastleObjectModel[] all = new FantastleObjectModel[count];
-      for (x = 0; x < count; x++) {
-        all[x] = tempAll[x];
-      }
-      return all;
-    }
-  }
 
-  public static BufferedImageIcon[] getAllGroundLayerEditorAppearances() {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final BufferedImageIcon[] tempAll = new BufferedImageIcon[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == Layers.GROUND) {
-        tempAll[count] = objects[x].getEditorImage();
-        count++;
-      }
+    public static boolean replacesSelf(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.REPLACE_SELF);
     }
-    if (count == 0) {
-      return new BufferedImageIcon[0];
-    } else {
-      final BufferedImageIcon[] all = new BufferedImageIcon[count];
-      for (x = 0; x < count; x++) {
-        all[x] = tempAll[x];
-      }
-      return all;
-    }
-  }
 
-  public static FantastleObjectModel[] getAllObjectLayerObjects() {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final FantastleObjectModel[] tempAll = new FantastleObjectModel[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == Layers.OBJECT) {
-        tempAll[count] = objects[x];
-        count++;
-      }
+    public static FantastleObjectModel replacesSelfWith(
+            final FantastleObjectModel obj) {
+        return GameObjects.getNewInstanceByUniqueID(
+                GameObjects.allSelfReplacementActionList[obj.getUniqueID()]);
     }
-    if (count == 0) {
-      return new FantastleObjectModel[0];
-    } else {
-      final FantastleObjectModel[] all = new FantastleObjectModel[count];
-      for (x = 0; x < count; x++) {
-        all[x] = tempAll[x];
-      }
-      return all;
-    }
-  }
 
-  public static BufferedImageIcon[] getAllObjectLayerEditorAppearances() {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final BufferedImageIcon[] tempAll = new BufferedImageIcon[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == Layers.OBJECT) {
-        tempAll[count] = objects[x].getEditorImage();
-        count++;
-      }
+    public static boolean sendsDown(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.DOWN_1_FLOOR);
     }
-    if (count == 0) {
-      return new BufferedImageIcon[0];
-    } else {
-      final BufferedImageIcon[] all = new BufferedImageIcon[count];
-      for (x = 0; x < count; x++) {
-        all[x] = tempAll[x];
-      }
-      return all;
-    }
-  }
 
-  public static FantastleObjectModel[] getAllRequired(final int layer) {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final FantastleObjectModel[] tempAllRequired = new FantastleObjectModel[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == layer && objects[x].isRequired()) {
-        tempAllRequired[count] = objects[x];
-        count++;
-      }
+    public static boolean sendsUp(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.UP_1_FLOOR);
     }
-    if (count == 0) {
-      return new FantastleObjectModel[0];
-    } else {
-      final FantastleObjectModel[] allRequired = new FantastleObjectModel[count];
-      for (x = 0; x < count; x++) {
-        allRequired[x] = tempAllRequired[x];
-      }
-      return allRequired;
-    }
-  }
 
-  public static FantastleObjectModel[] getAllWithoutPrerequisiteAndNotRequired(
-      final int layer) {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    final FantastleObjectModel[] tempAllWithoutPrereq = new FantastleObjectModel[objects.length];
-    int x;
-    int count = 0;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getLayer() == layer && !objects[x].isRequired()) {
-        tempAllWithoutPrereq[count] = objects[x];
-        count++;
-      }
+    public static boolean sendsDown2(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.DOWN_2_FLOORS);
     }
-    if (count == 0) {
-      return new FantastleObjectModel[0];
-    } else {
-      final FantastleObjectModel[] allWithoutPrereq = new FantastleObjectModel[count];
-      for (x = 0; x < count; x++) {
-        allWithoutPrereq[x] = tempAllWithoutPrereq[x];
-      }
-      return allWithoutPrereq;
-    }
-  }
 
-  public static FantastleObjectModel getNewInstanceByUniqueID(final int uid) {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    FantastleObjectModel instance = null;
-    int x;
-    for (x = 0; x < objects.length; x++) {
-      if (objects[x].getUniqueID() == uid) {
-        instance = objects[x];
-        break;
-      }
+    public static boolean sendsUp2(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.UP_2_FLOORS);
     }
-    if (instance == null) {
-      return null;
-    } else {
-      try {
-        return instance.getClass().getConstructor().newInstance();
-      } catch (final NoSuchMethodException | InstantiationException
-          | IllegalAccessException | IllegalArgumentException
-          | InvocationTargetException | SecurityException ex) {
-        FantastleReboot.exception(ex);
+
+    public static boolean sendsNext(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.NEXT_LEVEL);
+    }
+
+    public static boolean sendsPrevious(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.PREVIOUS_LEVEL);
+    }
+
+    public static boolean sendsToShop(final FantastleObjectModel obj) {
+        return GameObjects.allActionList[obj.getUniqueID()]
+                .get(FantastleObjectActions.SHOP);
+    }
+
+    public static int sendsToWhichShop(final FantastleObjectModel obj) {
+        return GameObjects.allShopActionList[obj.getUniqueID()];
+    }
+
+    public static FantastleObjectModel[] getAllObjects() {
+        return GameObjects.allObjectList.toArray(
+                new FantastleObjectModel[GameObjects.allObjectList.size()]);
+    }
+
+    public static FantastleObjectModel[] getAllGroundLayerObjects() {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final FantastleObjectModel[] tempAll = new FantastleObjectModel[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == Layers.GROUND) {
+                tempAll[count] = objects[x];
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new FantastleObjectModel[0];
+        } else {
+            final FantastleObjectModel[] all = new FantastleObjectModel[count];
+            for (x = 0; x < count; x++) {
+                all[x] = tempAll[x];
+            }
+            return all;
+        }
+    }
+
+    public static BufferedImageIcon[] getAllGroundLayerEditorAppearances() {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final BufferedImageIcon[] tempAll = new BufferedImageIcon[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == Layers.GROUND) {
+                tempAll[count] = objects[x].getEditorImage();
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new BufferedImageIcon[0];
+        } else {
+            final BufferedImageIcon[] all = new BufferedImageIcon[count];
+            for (x = 0; x < count; x++) {
+                all[x] = tempAll[x];
+            }
+            return all;
+        }
+    }
+
+    public static FantastleObjectModel[] getAllObjectLayerObjects() {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final FantastleObjectModel[] tempAll = new FantastleObjectModel[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == Layers.OBJECT) {
+                tempAll[count] = objects[x];
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new FantastleObjectModel[0];
+        } else {
+            final FantastleObjectModel[] all = new FantastleObjectModel[count];
+            for (x = 0; x < count; x++) {
+                all[x] = tempAll[x];
+            }
+            return all;
+        }
+    }
+
+    public static BufferedImageIcon[] getAllObjectLayerEditorAppearances() {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final BufferedImageIcon[] tempAll = new BufferedImageIcon[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == Layers.OBJECT) {
+                tempAll[count] = objects[x].getEditorImage();
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new BufferedImageIcon[0];
+        } else {
+            final BufferedImageIcon[] all = new BufferedImageIcon[count];
+            for (x = 0; x < count; x++) {
+                all[x] = tempAll[x];
+            }
+            return all;
+        }
+    }
+
+    public static FantastleObjectModel[] getAllRequired(final int layer) {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final FantastleObjectModel[] tempAllRequired = new FantastleObjectModel[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == layer && objects[x].isRequired()) {
+                tempAllRequired[count] = objects[x];
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new FantastleObjectModel[0];
+        } else {
+            final FantastleObjectModel[] allRequired = new FantastleObjectModel[count];
+            for (x = 0; x < count; x++) {
+                allRequired[x] = tempAllRequired[x];
+            }
+            return allRequired;
+        }
+    }
+
+    public static FantastleObjectModel[] getAllWithoutPrerequisiteAndNotRequired(
+            final int layer) {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        final FantastleObjectModel[] tempAllWithoutPrereq = new FantastleObjectModel[objects.length];
+        int x;
+        int count = 0;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getLayer() == layer && !objects[x].isRequired()) {
+                tempAllWithoutPrereq[count] = objects[x];
+                count++;
+            }
+        }
+        if (count == 0) {
+            return new FantastleObjectModel[0];
+        } else {
+            final FantastleObjectModel[] allWithoutPrereq = new FantastleObjectModel[count];
+            for (x = 0; x < count; x++) {
+                allWithoutPrereq[x] = tempAllWithoutPrereq[x];
+            }
+            return allWithoutPrereq;
+        }
+    }
+
+    public static FantastleObjectModel getNewInstanceByUniqueID(final int uid) {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        FantastleObjectModel instance = null;
+        int x;
+        for (x = 0; x < objects.length; x++) {
+            if (objects[x].getUniqueID() == uid) {
+                instance = objects[x];
+                break;
+            }
+        }
+        if (instance == null) {
+            return null;
+        } else {
+            try {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final NoSuchMethodException | InstantiationException
+                    | IllegalAccessException | IllegalArgumentException
+                    | InvocationTargetException | SecurityException ex) {
+                FantastleReboot.exception(ex);
+                return null;
+            }
+        }
+    }
+
+    public static FantastleObjectModel readObject(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        FantastleObjectModel o = null;
+        int UID = -1;
+        if (formatVersion == WorldVersions.LATEST) {
+            UID = reader.readInt();
+        }
+        for (final FantastleObjectModel object : objects) {
+            try {
+                FantastleObjectModel instance;
+                instance = object.getClass().getConstructor().newInstance();
+                if (formatVersion == WorldVersions.LATEST) {
+                    o = instance.readObject(reader, UID);
+                    if (o != null) {
+                        return o;
+                    }
+                }
+            } catch (InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException ex) {
+                FantastleReboot.exception(ex);
+            }
+        }
         return null;
-      }
     }
-  }
 
-  public static FantastleObjectModel readObject(final XDataReader reader,
-      final int formatVersion) throws IOException {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    FantastleObjectModel o = null;
-    int UID = -1;
-    if (formatVersion == WorldVersions.LATEST) {
-      UID = reader.readInt();
-    }
-    for (final FantastleObjectModel object : objects) {
-      try {
-        FantastleObjectModel instance;
-        instance = object.getClass().getConstructor().newInstance();
-        if (formatVersion == WorldVersions.LATEST) {
-          o = instance.readObject(reader, UID);
-          if (o != null) {
-            return o;
-          }
+    public static FantastleObjectModel readSavedObject(final XDataReader reader,
+            final int UID, final int formatVersion) throws IOException {
+        final FantastleObjectModel[] objects = GameObjects.getAllObjects();
+        FantastleObjectModel o = null;
+        for (final FantastleObjectModel object : objects) {
+            try {
+                FantastleObjectModel instance;
+                instance = object.getClass().getConstructor().newInstance();
+                if (formatVersion == WorldVersions.LATEST) {
+                    o = instance.readObject(reader, UID);
+                    if (o != null) {
+                        return o;
+                    }
+                }
+            } catch (InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException ex) {
+                FantastleReboot.exception(ex);
+            }
         }
-      } catch (InstantiationException | IllegalAccessException
-          | IllegalArgumentException | InvocationTargetException
-          | NoSuchMethodException | SecurityException ex) {
-        FantastleReboot.exception(ex);
-      }
+        return null;
     }
-    return null;
-  }
-
-  public static FantastleObjectModel readSavedObject(final XDataReader reader,
-      final int UID, final int formatVersion) throws IOException {
-    final FantastleObjectModel[] objects = GameObjects.getAllObjects();
-    FantastleObjectModel o = null;
-    for (final FantastleObjectModel object : objects) {
-      try {
-        FantastleObjectModel instance;
-        instance = object.getClass().getConstructor().newInstance();
-        if (formatVersion == WorldVersions.LATEST) {
-          o = instance.readObject(reader, UID);
-          if (o != null) {
-            return o;
-          }
-        }
-      } catch (InstantiationException | IllegalAccessException
-          | IllegalArgumentException | InvocationTargetException
-          | NoSuchMethodException | SecurityException ex) {
-        FantastleReboot.exception(ex);
-      }
-    }
-    return null;
-  }
 }

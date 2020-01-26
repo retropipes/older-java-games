@@ -71,7 +71,8 @@ class MapBattleGUI {
 
     void showBattle() {
         MazeRunnerII.getApplication().getMenuManager().setBattleMenus();
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
             MusicManager.playMusic("battle");
         }
@@ -89,32 +90,32 @@ class MapBattleGUI {
         }
     }
 
-    void redrawBattle(MapBattleDefinitions bd) {
+    void redrawBattle(final MapBattleDefinitions bd) {
         // Draw the battle, if it is visible
         if (this.battleFrame.isVisible()) {
             int x, y;
             int xFix, yFix;
-            int xView = this.vwMgr.getViewingWindowLocationX();
-            int yView = this.vwMgr.getViewingWindowLocationY();
-            int xlView = this.vwMgr.getLowerRightViewingWindowLocationX();
-            int ylView = this.vwMgr.getLowerRightViewingWindowLocationY();
+            final int xView = this.vwMgr.getViewingWindowLocationX();
+            final int yView = this.vwMgr.getViewingWindowLocationY();
+            final int xlView = this.vwMgr.getLowerRightViewingWindowLocationX();
+            final int ylView = this.vwMgr.getLowerRightViewingWindowLocationY();
             for (x = xView; x <= xlView; x++) {
                 for (y = yView; y <= ylView; y++) {
                     xFix = x - xView;
                     yFix = y - yView;
                     try {
-                        BufferedImageIcon icon1 = bd.getBattleMaze()
+                        final BufferedImageIcon icon1 = bd.getBattleMaze()
                                 .getBattleGround(y, x).battleRenderHook();
-                        BufferedImageIcon icon2 = bd.getBattleMaze()
+                        final BufferedImageIcon icon2 = bd.getBattleMaze()
                                 .getBattleCell(y, x).battleRenderHook();
                         this.drawGrid.setImageCell(ImageTransformer
                                 .getCompositeImage(icon1, icon2), xFix, yFix);
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        EmptyVoid ev = new EmptyVoid();
+                        final EmptyVoid ev = new EmptyVoid();
                         this.drawGrid.setImageCell(ev.battleRenderHook(), xFix,
                                 yFix);
                     } catch (final NullPointerException np) {
-                        EmptyVoid ev = new EmptyVoid();
+                        final EmptyVoid ev = new EmptyVoid();
                         this.drawGrid.setImageCell(ev.battleRenderHook(), xFix,
                                 yFix);
                     }
@@ -125,21 +126,21 @@ class MapBattleGUI {
         }
     }
 
-    void redrawOneBattleSquare(MapBattleDefinitions bd, int x, int y,
-            AbstractMazeObject obj3) {
+    void redrawOneBattleSquare(final MapBattleDefinitions bd, final int x,
+            final int y, final AbstractMazeObject obj3) {
         // Draw the battle, if it is visible
         if (this.battleFrame.isVisible()) {
             try {
                 int xFix, yFix;
-                int xView = this.vwMgr.getViewingWindowLocationX();
-                int yView = this.vwMgr.getViewingWindowLocationY();
+                final int xView = this.vwMgr.getViewingWindowLocationX();
+                final int yView = this.vwMgr.getViewingWindowLocationY();
                 xFix = y - xView;
                 yFix = x - yView;
-                BufferedImageIcon icon1 = bd.getBattleMaze()
+                final BufferedImageIcon icon1 = bd.getBattleMaze()
                         .getBattleGround(x, y).battleRenderHook();
-                BufferedImageIcon icon2 = bd.getBattleMaze()
+                final BufferedImageIcon icon2 = bd.getBattleMaze()
                         .getBattleCell(x, y).battleRenderHook();
-                BufferedImageIcon icon3 = obj3.battleRenderHook();
+                final BufferedImageIcon icon3 = obj3.battleRenderHook();
                 this.drawGrid.setImageCell(ImageTransformer
                         .getVirtualCompositeImage(icon1, icon2, icon3), xFix,
                         yFix);
@@ -153,14 +154,14 @@ class MapBattleGUI {
         }
     }
 
-    void updateStatsAndEffects(MapBattleDefinitions bd) {
+    void updateStatsAndEffects(final MapBattleDefinitions bd) {
         this.bs.updateStats(bd.getActiveCharacter());
         this.be.updateEffects(bd.getActiveCharacter());
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
-        Container borderPane = new Container();
+        final EventHandler handler = new EventHandler();
+        final Container borderPane = new Container();
         borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
         this.messageLabel.setOpaque(true);
@@ -180,14 +181,12 @@ class MapBattleGUI {
                 .getViewingWindowSize(); x++) {
             for (int y = 0; y < MapBattleViewingWindowManager
                     .getViewingWindowSize(); y++) {
-                AbstractMazeObject dark = new Darkness()
-                        .gameRenderHook(y, x, 0);
-                this.drawGrid.setImageCell(
-                        ObjectImageManager.getImage(dark.getName(),
-                                dark.getGameBaseID(),
-                                dark.getGameTemplateColor(),
-                                dark.getGameAttributeID(),
-                                dark.getGameAttributeTemplateColor()), x, y);
+                final AbstractMazeObject dark = new Darkness().gameRenderHook(y,
+                        x, 0);
+                this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                        dark.getName(), dark.getGameBaseID(),
+                        dark.getGameTemplateColor(), dark.getGameAttributeID(),
+                        dark.getGameAttributeTemplateColor()), x, y);
             }
         }
         this.battlePane = new MapBattleDraw(this.drawGrid);
@@ -244,7 +243,8 @@ class MapBattleGUI {
 
         private void handleMovement(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }
@@ -253,8 +253,9 @@ class MapBattleGUI {
                         return;
                     }
                 }
-                AbstractBattle bl = MazeRunnerII.getApplication().getBattle();
-                MapBattleGUI bg = MapBattleGUI.this;
+                final AbstractBattle bl = MazeRunnerII.getApplication()
+                        .getBattle();
+                final MapBattleGUI bg = MapBattleGUI.this;
                 if (bg.eventHandlersOn) {
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
@@ -297,7 +298,7 @@ class MapBattleGUI {
                     case KeyEvent.VK_NUMPAD5:
                     case KeyEvent.VK_S:
                         // Confirm before attacking self
-                        int res = CommonDialogs.showConfirmDialog(
+                        final int res = CommonDialogs.showConfirmDialog(
                                 "Are you sure you want to attack yourself?",
                                 "Battle");
                         if (res == JOptionPane.YES_OPTION) {
@@ -308,14 +309,15 @@ class MapBattleGUI {
                         break;
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         private void handleArrows(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }
@@ -324,8 +326,9 @@ class MapBattleGUI {
                         return;
                     }
                 }
-                AbstractBattle bl = MazeRunnerII.getApplication().getBattle();
-                MapBattleGUI bg = MapBattleGUI.this;
+                final AbstractBattle bl = MazeRunnerII.getApplication()
+                        .getBattle();
+                final MapBattleGUI bg = MapBattleGUI.this;
                 if (bg.eventHandlersOn) {
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
@@ -368,7 +371,7 @@ class MapBattleGUI {
                     case KeyEvent.VK_NUMPAD5:
                     case KeyEvent.VK_S:
                         // Confirm before attacking self
-                        int res = CommonDialogs.showConfirmDialog(
+                        final int res = CommonDialogs.showConfirmDialog(
                                 "Are you sure you want to attack yourself?",
                                 "Battle");
                         if (res == JOptionPane.YES_OPTION) {
@@ -379,7 +382,7 @@ class MapBattleGUI {
                         break;
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }

@@ -143,12 +143,12 @@ public final class MazeObjectInventory implements Cloneable {
 
     // Transformers
     public void fireStepActions() {
-        if (!this.boots.getName().equals(
-                MazeObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(MazeObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
-        if (!this.amulet.getName().equals(
-                MazeObjectInventory.DEFAULT_AMULET.getName())) {
+        if (!this.amulet.getName()
+                .equals(MazeObjectInventory.DEFAULT_AMULET.getName())) {
             this.amulet.stepAction();
         }
     }

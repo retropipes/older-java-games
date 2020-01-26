@@ -16,18 +16,18 @@ public abstract class AbstractTrap extends AbstractDungeonObject {
 
     // Constructors
     protected AbstractTrap(final int baseName) {
-	super(false, false);
-	this.base = baseName;
+        super(false, false);
+        this.base = baseName;
     }
 
     // Scriptability
     @Override
     public abstract void postMoveAction(final boolean ie, final int dirX,
-	    final int dirY);
+            final int dirY);
 
     @Override
     public int getBaseID() {
-	return this.base;
+        return this.base;
     }
 
     @Override
@@ -35,29 +35,29 @@ public abstract class AbstractTrap extends AbstractDungeonObject {
 
     @Override
     public int getLayer() {
-	return DungeonConstants.LAYER_OBJECT;
+        return DungeonConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_TRAP);
+        this.type.set(TypeConstants.TYPE_TRAP);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public boolean shouldGenerateObject(final Dungeon maze, final int row,
-	    final int col, final int floor, final int level, final int layer) {
-	// Generate all traps at 25% rate
-	final RandomRange reject = new RandomRange(1, 100);
-	return reject.generate() < 25;
+            final int col, final int floor, final int level, final int layer) {
+        // Generate all traps at 25% rate
+        final RandomRange reject = new RandomRange(1, 100);
+        return reject.generate() < 25;
     }
 }

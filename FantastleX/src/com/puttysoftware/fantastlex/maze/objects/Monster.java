@@ -26,9 +26,10 @@ public class Monster extends AbstractMovingObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        if (FantastleX.getApplication().getMode() != Application.STATUS_BATTLE) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        if (FantastleX.getApplication()
+                .getMode() != Application.STATUS_BATTLE) {
             FantastleX.getApplication().getBattle().doBattle();
             FantastleX.getApplication().getMazeManager().getMaze()
                     .postBattle(this, dirX, dirY, true);
@@ -37,17 +38,15 @@ public class Monster extends AbstractMovingObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             // Transform into iced monster, if hit by an ice arrow
             final int pz = FantastleX.getApplication().getMazeManager()
                     .getMaze().getPlayerLocationZ();
-            FantastleX
-                    .getApplication()
-                    .getGameManager()
-                    .morph(new IcedMonster(this.getSavedObject()), locX, locY,
-                            pz, MazeConstants.LAYER_OBJECT);
+            FantastleX.getApplication().getGameManager().morph(
+                    new IcedMonster(this.getSavedObject()), locX, locY, pz,
+                    MazeConstants.LAYER_OBJECT);
             return false;
         } else {
             return true;

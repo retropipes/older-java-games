@@ -15,15 +15,15 @@ public class PoisonThenAttackAIRoutine extends AbstractWindowAIRoutine {
     }
 
     @Override
-    public int getNextAction(AbstractCreature c) {
+    public int getNextAction(final AbstractCreature c) {
         if (this.poisonRounds > 0) {
             this.poisonRounds--;
         }
-        Spell poison = c.getSpellBook().getSpellByID(0);
-        int cost = poison.getCost();
-        int currMP = c.getCurrentMP();
+        final Spell poison = c.getSpellBook().getSpellByID(0);
+        final int cost = poison.getCost();
+        final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.poisonRounds == 0) {
-            RandomRange chance = new RandomRange(1, 100);
+            final RandomRange chance = new RandomRange(1, 100);
             if (chance.generate() <= PoisonThenAttackAIRoutine.POISON_CHANCE) {
                 this.poisonRounds = poison.getEffect().getInitialRounds();
                 this.spell = poison;

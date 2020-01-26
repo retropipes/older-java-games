@@ -14,8 +14,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import com.puttysoftware.dungeondiver4.battle.map.MapBattleSpeedConstants;
-import com.puttysoftware.dungeondiver4.dungeon.Extension;
 import com.puttysoftware.dungeondiver4.dungeon.DungeonConstants;
+import com.puttysoftware.dungeondiver4.dungeon.Extension;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractDungeonObject;
 import com.puttysoftware.dungeondiver4.dungeon.objects.Dirt;
 import com.puttysoftware.dungeondiver4.dungeon.objects.Empty;
@@ -56,18 +56,18 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("SoundsEnabled", true);
     }
 
-    public static void setSoundsEnabled(boolean value) {
+    public static void setSoundsEnabled(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("SoundsEnabled", value);
     }
 
     public static boolean getRandomBattleEnvironment() {
-        return PreferencesManager.storeMgr.getBoolean(
-                "RandomBattleEnvironment", false);
+        return PreferencesManager.storeMgr.getBoolean("RandomBattleEnvironment",
+                false);
     }
 
-    public static void setRandomBattleEnvironment(boolean value) {
-        PreferencesManager.storeMgr
-                .setBoolean("RandomBattleEnvironment", value);
+    public static void setRandomBattleEnvironment(final boolean value) {
+        PreferencesManager.storeMgr.setBoolean("RandomBattleEnvironment",
+                value);
     }
 
     public static int getBattleSpeed() {
@@ -81,7 +81,7 @@ public class PreferencesManager {
                 MapBattleSpeedConstants.BATTLE_SPEED_MODERATE);
     }
 
-    static void setBattleSpeed(int value) {
+    static void setBattleSpeed(final int value) {
         PreferencesManager.storeMgr.setInteger("BattleSpeed", value);
     }
 
@@ -90,13 +90,13 @@ public class PreferencesManager {
                 PreferencesManager.BATTLE_STYLE_MAP);
     }
 
-    static void setBattleStyle(boolean value) {
+    static void setBattleStyle(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("BattleStyle", value);
     }
 
     public static boolean areCharacterChangesPermanent() {
-        return PreferencesManager.storeMgr.getBoolean(
-                "CharacterChangesPermanent", false);
+        return PreferencesManager.storeMgr
+                .getBoolean("CharacterChangesPermanent", false);
     }
 
     static void setCharacterChangesPermanent(final boolean status) {
@@ -109,7 +109,7 @@ public class PreferencesManager {
                 PreferencesGUIManager.DEFAULT_VIEWING_WINDOW_SIZE);
     }
 
-    static void setViewingWindowSize(int value) {
+    static void setViewingWindowSize(final int value) {
         PreferencesManager.storeMgr.setInteger("ViewingWindowSize", value);
     }
 
@@ -117,7 +117,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getString("LastDirOpen", "");
     }
 
-    public static void setLastDirOpen(String value) {
+    public static void setLastDirOpen(final String value) {
         PreferencesManager.storeMgr.setString("LastDirOpen", value);
     }
 
@@ -125,7 +125,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getString("LastDirSave", "");
     }
 
-    public static void setLastDirSave(String value) {
+    public static void setLastDirSave(final String value) {
         PreferencesManager.storeMgr.setString("LastDirSave", value);
     }
 
@@ -134,7 +134,7 @@ public class PreferencesManager {
                 PreferencesManager.FILTER_DUNGEON);
     }
 
-    public static void setLastFilterUsedOpen(int value) {
+    public static void setLastFilterUsedOpen(final int value) {
         PreferencesManager.storeMgr.setInteger("LastFilterUsed", value);
     }
 
@@ -142,7 +142,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("UpdatesStartup", true);
     }
 
-    static void setCheckUpdatesAtStartup(boolean value) {
+    static void setCheckUpdatesAtStartup(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("UpdatesStartup", value);
     }
 
@@ -150,7 +150,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("OneMove", true);
     }
 
-    static void setOneMove(boolean value) {
+    static void setOneMove(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("OneMove", value);
     }
 
@@ -163,8 +163,8 @@ public class PreferencesManager {
     }
 
     public static AbstractDungeonObject getEditorDefaultFill() {
-        String choice = PreferencesManager.storeMgr.getString(
-                "EditorDefaultFill", "Grass");
+        final String choice = PreferencesManager.storeMgr
+                .getString("EditorDefaultFill", "Grass");
         if (choice.equals("Tile")) {
             return new Tile();
         } else if (choice.equals("Grass")) {
@@ -182,12 +182,12 @@ public class PreferencesManager {
         }
     }
 
-    public static AbstractDungeonObject getEditorDefaultFill(int layer) {
+    public static AbstractDungeonObject getEditorDefaultFill(final int layer) {
         if (layer == DungeonConstants.LAYER_OBJECT) {
             return new Empty();
         } else {
-            String choice = PreferencesManager.storeMgr.getString(
-                    "EditorDefaultFill", "Grass");
+            final String choice = PreferencesManager.storeMgr
+                    .getString("EditorDefaultFill", "Grass");
             if (choice.equals("Tile")) {
                 return new Tile();
             } else if (choice.equals("Grass")) {
@@ -206,7 +206,7 @@ public class PreferencesManager {
         }
     }
 
-    static void setEditorDefaultFill(String value) {
+    static void setEditorDefaultFill(final String value) {
         PreferencesManager.storeMgr.setString("EditorDefaultFill", value);
     }
 
@@ -214,7 +214,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("EditorAutoEdge", false);
     }
 
-    static void setEditorAutoEdge(boolean value) {
+    static void setEditorAutoEdge(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("EditorAutoEdge", value);
     }
 
@@ -231,7 +231,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(PreferencesManager.MAC_PREFIX);
@@ -245,7 +245,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_DIR;
@@ -263,7 +263,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFileName() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_FILE;
@@ -277,7 +277,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(PreferencesManager.getPrefsDirPrefix());
         b.append(PreferencesManager.getPrefsDirectory());
         b.append(PreferencesManager.getPrefsFileName());
@@ -289,7 +289,7 @@ public class PreferencesManager {
         try {
             PreferencesManager.storeMgr.saveStore(new BufferedOutputStream(
                     new FileOutputStream(PreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Ignore
         }
     }
@@ -299,7 +299,7 @@ public class PreferencesManager {
             // Read new preferences
             PreferencesManager.storeMgr.loadStore(new BufferedInputStream(
                     new FileInputStream(PreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Populate store with defaults
             PreferencesManager.storeMgr.setString("LastDirOpen", "");
             PreferencesManager.storeMgr.setString("LastDirSave", "");

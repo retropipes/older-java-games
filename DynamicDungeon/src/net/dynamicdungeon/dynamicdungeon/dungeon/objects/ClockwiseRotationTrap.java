@@ -15,32 +15,31 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class ClockwiseRotationTrap extends AbstractTrap {
     // Constructors
     public ClockwiseRotationTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_CW_ROTATION_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_CW_ROTATION_TRAP);
     }
 
     @Override
     public String getName() {
-	return "Clockwise Rotation Trap";
+        return "Clockwise Rotation Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Clockwise Rotation Traps";
+        return "Clockwise Rotation Traps";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	SoundManager.playSound(SoundConstants.SOUND_CHANGE);
-	DynamicDungeon.getApplication().showMessage(
-		"Your controls are rotated!");
-	DynamicDungeon
-		.getApplication()
-		.getGameManager()
-		.activateEffect(DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        SoundManager.playSound(SoundConstants.SOUND_CHANGE);
+        DynamicDungeon.getApplication()
+                .showMessage("Your controls are rotated!");
+        DynamicDungeon.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
     }
 
     @Override
     public String getDescription() {
-	return "Clockwise Rotation Traps rotate your controls clockwise for 6 steps when stepped on.";
+        return "Clockwise Rotation Traps rotate your controls clockwise for 6 steps when stepped on.";
     }
 }

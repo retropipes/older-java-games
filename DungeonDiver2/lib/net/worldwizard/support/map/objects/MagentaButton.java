@@ -10,8 +10,8 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 
 public class MagentaButton extends GenericButton {
     public MagentaButton() {
-        super(new MagentaWallOff(), new MagentaWallOn(), new TemplateTransform(
-                1.0, 0.0, 1.0, ""));
+        super(new MagentaWallOff(), new MagentaWallOn(),
+                new TemplateTransform(1.0, 0.0, 1.0, ""));
     }
 
     @Override

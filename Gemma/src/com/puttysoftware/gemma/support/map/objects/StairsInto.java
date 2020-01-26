@@ -24,13 +24,13 @@ public class StairsInto extends GenericTeleport {
         super();
         this.setTemplateTransform(new TemplateTransform(1.0, 1.0, 1.0));
         // Create post-move script
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.RELATIVE_LEVEL_CHANGE);
         entry1.addActionArg(new InternalScriptEntryArgument(1));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
-        InternalScriptEntry entry2 = new InternalScriptEntry();
+        final InternalScriptEntry entry2 = new InternalScriptEntry();
         entry2.setActionCode(InternalScriptActionCode.SOUND);
         entry2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_STAIRS));
@@ -73,12 +73,12 @@ public class StairsInto extends GenericTeleport {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Map map) {
+    public int getMinimumRequiredQuantity(final Map map) {
         return map.getRows() * 2;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Map map) {
+    public int getMaximumRequiredQuantity(final Map map) {
         return map.getRows() * 4;
     }
 }

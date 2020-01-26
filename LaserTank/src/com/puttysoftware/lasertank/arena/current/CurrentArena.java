@@ -45,7 +45,7 @@ public class CurrentArena extends AbstractArena {
     private AbstractSuffixIO suffixHandler;
     private String musicFilename;
     private boolean moveShootAllowed;
-    private ArrayList<LevelInfo> levelInfoData;
+    private final ArrayList<LevelInfo> levelInfoData;
     private ArrayList<String> levelInfoList;
 
     // Constructors
@@ -264,7 +264,7 @@ public class CurrentArena extends AbstractArena {
     }
 
     @Override
-    protected void switchInternal(final int level, int era) {
+    protected void switchInternal(final int level, final int era) {
         if (this.activeLevel != level || this.activeEra != era
                 || this.arenaData == null) {
             if (this.arenaData != null) {
@@ -360,7 +360,7 @@ public class CurrentArena extends AbstractArena {
                 }
             }
             // Add all eras for the new level
-            int saveEra = this.activeEra;
+            final int saveEra = this.activeEra;
             this.arenaData = new CurrentArenaData();
             for (int e = 0; e < AbstractArena.ERA_COUNT; e++) {
                 this.switchEra(e);
@@ -496,27 +496,30 @@ public class CurrentArena extends AbstractArena {
     @Override
     public int checkForMagnetic(final int floor, final int centerX,
             final int centerY, final Direction dir) {
-        return this.arenaData.checkForMagnetic(this, floor, centerX, centerY, dir);
+        return this.arenaData.checkForMagnetic(this, floor, centerX, centerY,
+                dir);
     }
 
     @Override
     public int[] circularScan(final int x, final int y, final int z,
             final int maxR, final String targetName, final boolean moved) {
-        return this.arenaData.circularScan(this, x, y, z, maxR, targetName, moved);
+        return this.arenaData.circularScan(this, x, y, z, maxR, targetName,
+                moved);
     }
 
     @Override
     public int[] circularScanTunnel(final int x, final int y, final int z,
             final int maxR, final int tx, final int ty,
             final AbstractTunnel target, final boolean moved) {
-        return this.arenaData.circularScanTunnel(this, x, y, z, maxR, tx, ty, target,
-                moved);
+        return this.arenaData.circularScanTunnel(this, x, y, z, maxR, tx, ty,
+                target, moved);
     }
 
     @Override
     public void circularScanRange(final int x, final int y, final int z,
             final int maxR, final int rangeType, final int forceUnits) {
-        this.arenaData.circularScanRange(this, x, y, z, maxR, rangeType, forceUnits);
+        this.arenaData.circularScanRange(this, x, y, z, maxR, rangeType,
+                forceUnits);
     }
 
     @Override
@@ -609,12 +612,14 @@ public class CurrentArena extends AbstractArena {
 
     @Override
     public void setStartColumn(final int pi, final int newStartColumn) {
-        this.levelInfoData.get(this.activeLevel).setStartColumn(pi, newStartColumn);
+        this.levelInfoData.get(this.activeLevel).setStartColumn(pi,
+                newStartColumn);
     }
 
     @Override
     public void setStartFloor(final int pi, final int newStartFloor) {
-        this.levelInfoData.get(this.activeLevel).setStartFloor(pi, newStartFloor);
+        this.levelInfoData.get(this.activeLevel).setStartFloor(pi,
+                newStartFloor);
     }
 
     @Override

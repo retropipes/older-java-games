@@ -39,25 +39,26 @@ public abstract class GenericCharacter extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
     @Override
-    protected void writeMapObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMapObjectHook(final XDataWriter writer)
+            throws IOException {
         this.getSavedObject().writeMapObject(writer);
     }
 
     @Override
-    protected MapObject readMapObjectHook(XDataReader reader, int formatVersion)
-            throws IOException {
-        this.setSavedObject(new MapObjectList().readMapObjectX(reader,
-                formatVersion));
+    protected MapObject readMapObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        this.setSavedObject(
+                new MapObjectList().readMapObjectX(reader, formatVersion));
         return this;
     }
 

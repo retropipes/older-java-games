@@ -34,8 +34,8 @@ public class Hourglass extends AbstractTimeModifier {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         MazeRunnerII.getApplication().getGameManager().decay();
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValue();

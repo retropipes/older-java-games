@@ -12,8 +12,7 @@ public final class DirectoryUtilities {
         // Do nothing
     }
 
-    public static final void removeDirectory(final File location)
-            throws IOException {
+    public static void removeDirectory(final File location) throws IOException {
         boolean success;
         if (location.isDirectory()) {
             final String[] children = location.list();
@@ -32,7 +31,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static final boolean moveFile(final File sourceLocation,
+    public static boolean moveFile(final File sourceLocation,
             final File targetLocation) throws IOException {
         try (final InputStream in = new FileInputStream(sourceLocation);
                 final OutputStream out = new FileOutputStream(targetLocation)) {

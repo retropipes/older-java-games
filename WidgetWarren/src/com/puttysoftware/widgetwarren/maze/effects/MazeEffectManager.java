@@ -31,7 +31,8 @@ public class MazeEffectManager {
                 0);
         this.activeEffects[MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE] = new RotatedCCW(
                 0);
-        this.activeEffects[MazeEffectConstants.EFFECT_U_TURNED] = new UTurned(0);
+        this.activeEffects[MazeEffectConstants.EFFECT_U_TURNED] = new UTurned(
+                0);
         this.activeEffects[MazeEffectConstants.EFFECT_CONFUSED] = new Confused(
                 0);
         this.activeEffects[MazeEffectConstants.EFFECT_DIZZY] = new Dizzy(0);
@@ -48,8 +49,8 @@ public class MazeEffectManager {
         // Create GUI
         this.activeEffectMessageContainer = new Container();
         this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessageContainer.setLayout(new GridLayout(
-                MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
+        this.activeEffectMessageContainer.setLayout(
+                new GridLayout(MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
             this.activeEffectMessageContainer.add(this.activeEffectMessages[z]);
@@ -78,8 +79,8 @@ public class MazeEffectManager {
                 // Update effect grid
                 this.updateGridEntry(x);
                 if (!this.activeEffects[x].isActive()) {
-                    WidgetWarren.getApplication().showMessage(
-                            "You feel normal again.");
+                    WidgetWarren.getApplication()
+                            .showMessage("You feel normal again.");
                     // Clear effect grid
                     this.clearGridEntry(x);
                     // Pack
@@ -122,14 +123,16 @@ public class MazeEffectManager {
 
     private void handleMutualExclusiveEffects(final int effectID) {
         if (effectID == MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE) {
-            this.deactivateEffect(MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+            this.deactivateEffect(
+                    MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
             this.deactivateEffect(MazeEffectConstants.EFFECT_U_TURNED);
         } else if (effectID == MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE) {
             this.deactivateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE);
             this.deactivateEffect(MazeEffectConstants.EFFECT_U_TURNED);
         } else if (effectID == MazeEffectConstants.EFFECT_U_TURNED) {
             this.deactivateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE);
-            this.deactivateEffect(MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+            this.deactivateEffect(
+                    MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
         } else if (effectID == MazeEffectConstants.EFFECT_CONFUSED) {
             this.deactivateEffect(MazeEffectConstants.EFFECT_DIZZY);
             this.deactivateEffect(MazeEffectConstants.EFFECT_DRUNK);
@@ -215,7 +218,8 @@ public class MazeEffectManager {
         if (index != -1) {
             this.clearGridEntryText(index);
             // Compact grid
-            for (int z = index; z < MazeEffectManager.MAX_ACTIVE_EFFECTS - 1; z++) {
+            for (int z = index; z < MazeEffectManager.MAX_ACTIVE_EFFECTS
+                    - 1; z++) {
                 this.activeEffectMessages[z]
                         .setText(this.activeEffectMessages[z + 1].getText());
                 this.activeEffectIndices[z] = this.activeEffectIndices[z + 1];

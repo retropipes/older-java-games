@@ -87,15 +87,16 @@ public class Party {
             if (battler.getTemplate().checkLevelUp()) {
                 battler.getTemplate().levelUp();
                 SoundManager.playSound(GameSoundConstants.SOUND_LEVEL_UP);
-                CommonDialogs.showTitledDialog(battler.getTemplate().getName()
-                        + " reached level " + battler.getTemplate().getLevel()
-                        + "!", "Level Up");
+                CommonDialogs.showTitledDialog(
+                        battler.getTemplate().getName() + " reached level "
+                                + battler.getTemplate().getLevel() + "!",
+                        "Level Up");
                 // Build level up script
                 final GameScript levelUpScript = new GameScript();
                 final GameScriptEntry act0 = new GameScriptEntry();
                 act0.setActionCode(GameActionCode.ADD_TO_SCORE);
-                act0.addActionArg(new GameScriptEntryArgument(Math.max(1,
-                        (10 * battler.getTemplate().getLevel() - 1)
+                act0.addActionArg(new GameScriptEntryArgument(
+                        Math.max(1, (10 * battler.getTemplate().getLevel() - 1)
                                 / (this.activeNPCs + this.activePCs))));
                 act0.finalizeActionArgs();
                 levelUpScript.addAction(act0);
@@ -238,9 +239,11 @@ public class Party {
 
     private PartyMember pickPartyMemberInternal(final String[] pickNames,
             final int current, final int number) {
-        final String response = CommonDialogs.showInputDialog("Pick " + number
-                + " Party Member(s) - " + current + " of " + number,
-                "DungeonDiverII", pickNames, pickNames[0]);
+        final String response = CommonDialogs
+                .showInputDialog(
+                        "Pick " + number + " Party Member(s) - " + current
+                                + " of " + number,
+                        "DungeonDiverII", pickNames, pickNames[0]);
         if (response != null) {
             final int loc = this.findMember(response, 0, this.playerLimit);
             if (loc != -1) {
@@ -276,7 +279,8 @@ public class Party {
         }
     }
 
-    private int findMember(final String name, final int start, final int limit) {
+    private int findMember(final String name, final int start,
+            final int limit) {
         for (int x = start; x < limit; x++) {
             if (this.members[x] != null) {
                 if (this.members[x].getName().equals(name)) {

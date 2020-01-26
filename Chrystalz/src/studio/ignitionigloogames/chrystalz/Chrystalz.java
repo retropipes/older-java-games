@@ -32,7 +32,7 @@ public class Chrystalz {
 
     public static int getDungeonLevelSize(final int zoneID) {
         return Chrystalz.DUNGEON_BASE_SIZE
-                + (zoneID * Chrystalz.DUNGEON_SIZE_INCREMENT);
+                + zoneID * Chrystalz.DUNGEON_SIZE_INCREMENT;
     }
 
     public static int getBattleDungeonSize() {

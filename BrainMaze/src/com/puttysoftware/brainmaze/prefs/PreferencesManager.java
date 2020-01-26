@@ -113,8 +113,8 @@ public class PreferencesManager {
     }
 
     public static MazeObject getEditorDefaultFill() {
-        final String choice = PreferencesManager.storeMgr.getString(
-                "EditorDefaultFill", "Grass");
+        final String choice = PreferencesManager.storeMgr
+                .getString("EditorDefaultFill", "Grass");
         if (choice.equals("Tile")) {
             return new Tile();
         } else if (choice.equals("Grass")) {
@@ -136,8 +136,8 @@ public class PreferencesManager {
         if (layer == MazeConstants.LAYER_OBJECT) {
             return new Empty();
         } else {
-            final String choice = PreferencesManager.storeMgr.getString(
-                    "EditorDefaultFill", "Grass");
+            final String choice = PreferencesManager.storeMgr
+                    .getString("EditorDefaultFill", "Grass");
             if (choice.equals("Tile")) {
                 return new Tile();
             } else if (choice.equals("Grass")) {

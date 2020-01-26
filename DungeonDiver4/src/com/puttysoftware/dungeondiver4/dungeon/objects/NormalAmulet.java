@@ -35,7 +35,8 @@ public class NormalAmulet extends AbstractAmulet {
     @Override
     public void postMoveActionHook() {
         // Deactivate other amulet effects
-        GameLogicManager gm = DungeonDiver4.getApplication().getGameManager();
+        final GameLogicManager gm = DungeonDiver4.getApplication()
+                .getGameManager();
         gm.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
         gm.deactivateEffect(DungeonEffectConstants.EFFECT_FIERY);
         gm.deactivateEffect(DungeonEffectConstants.EFFECT_GHOSTLY);

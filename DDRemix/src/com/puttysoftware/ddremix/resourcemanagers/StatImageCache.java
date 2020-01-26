@@ -19,7 +19,8 @@ public class StatImageCache {
             final BufferedImageIcon bii = StatImageManager
                     .getUncachedImage(name);
             final BufferedImageIcon fixed = ImageTransformer
-                    .getTransformedImage(bii, ImageTransformer.getGraphicSize());
+                    .getTransformedImage(bii,
+                            ImageTransformer.getGraphicSize());
             StatImageCache.addToCache(name, fixed);
         }
         for (final CacheEntry element : StatImageCache.cache) {

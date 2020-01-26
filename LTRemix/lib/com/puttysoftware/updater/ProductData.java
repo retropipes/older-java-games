@@ -35,21 +35,21 @@ public class ProductData {
         } else {
             rt = "stable_";
         }
-        String updatetxt = "version.txt";
-        String blurbtxt = "blurb.txt";
+        final String updatetxt = "version.txt";
+        final String blurbtxt = "blurb.txt";
         try {
             this.updateURL = new URL(update + rt + updatetxt);
-        } catch (MalformedURLException mu1) {
+        } catch (final MalformedURLException mu1) {
             // Ignore
         }
         try {
             this.blurbURL = new URL(blurb + rt + blurbtxt);
-        } catch (MalformedURLException mu1) {
+        } catch (final MalformedURLException mu1) {
             // Ignore
         }
         try {
             this.newVersionURL = new URL(newVersion);
-        } catch (MalformedURLException mu1) {
+        } catch (final MalformedURLException mu1) {
             // Ignore
         }
         this.rDNSCompanyName = companyMac;
@@ -74,7 +74,7 @@ public class ProductData {
      * @param newUpdateURL
      *            the updateURL to set
      */
-    public void setUpdateURL(URL newUpdateURL) {
+    public void setUpdateURL(final URL newUpdateURL) {
         this.updateURL = newUpdateURL;
     }
 
@@ -89,7 +89,7 @@ public class ProductData {
      * @param newBlurbURL
      *            the blurbURL to set
      */
-    public void setBlurbURL(URL newBlurbURL) {
+    public void setBlurbURL(final URL newBlurbURL) {
         this.blurbURL = newBlurbURL;
     }
 
@@ -104,7 +104,7 @@ public class ProductData {
      * @param newNewVersionURL
      *            the newVersionURL to set
      */
-    public void setNewVersionURL(URL newNewVersionURL) {
+    public void setNewVersionURL(final URL newNewVersionURL) {
         this.newVersionURL = newNewVersionURL;
     }
 
@@ -119,7 +119,7 @@ public class ProductData {
      * @param newRDNSCompanyName
      *            the rDNSCompanyName to set
      */
-    public void setrDNSCompanyName(String newRDNSCompanyName) {
+    public void setrDNSCompanyName(final String newRDNSCompanyName) {
         this.rDNSCompanyName = newRDNSCompanyName;
     }
 
@@ -134,7 +134,7 @@ public class ProductData {
      * @param newCompanyName
      *            the companyName to set
      */
-    public void setCompanyName(String newCompanyName) {
+    public void setCompanyName(final String newCompanyName) {
         this.companyName = newCompanyName;
     }
 
@@ -149,7 +149,7 @@ public class ProductData {
      * @param newProductName
      *            the productName to set
      */
-    public void setProductName(String newProductName) {
+    public void setProductName(final String newProductName) {
         this.productName = newProductName;
     }
 
@@ -164,7 +164,7 @@ public class ProductData {
      * @param newMajorVersion
      *            the majorVersion to set
      */
-    public void setMajorVersion(int newMajorVersion) {
+    public void setMajorVersion(final int newMajorVersion) {
         this.majorVersion = newMajorVersion;
     }
 
@@ -179,7 +179,7 @@ public class ProductData {
      * @param newMinorVersion
      *            the minorVersion to set
      */
-    public void setMinorVersion(int newMinorVersion) {
+    public void setMinorVersion(final int newMinorVersion) {
         this.minorVersion = newMinorVersion;
     }
 
@@ -194,7 +194,7 @@ public class ProductData {
      * @param newBugfixVersion
      *            the bugfixVersion to set
      */
-    public void setBugfixVersion(int newBugfixVersion) {
+    public void setBugfixVersion(final int newBugfixVersion) {
         this.bugfixVersion = newBugfixVersion;
     }
 
@@ -209,7 +209,7 @@ public class ProductData {
      * @param newCodeVersion
      *            the codeVersion to set
      */
-    public void setCodeVersion(int newCodeVersion) {
+    public void setCodeVersion(final int newCodeVersion) {
         this.codeVersion = newCodeVersion;
     }
 
@@ -224,7 +224,7 @@ public class ProductData {
      * @param newPrereleaseVersion
      *            the prereleaseVersion to set
      */
-    public void setPrereleaseVersion(int newPrereleaseVersion) {
+    public void setPrereleaseVersion(final int newPrereleaseVersion) {
         this.prereleaseVersion = newPrereleaseVersion;
     }
 }

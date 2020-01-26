@@ -28,7 +28,7 @@ import com.puttysoftware.dungeondiver3.support.names.NamesManager;
 
 public class NameEditor extends GenericObjectEditor {
     // Declarations
-    private EventHandler handler;
+    private final EventHandler handler;
     private String[][] cachedNames;
     private JMenu nameCommandsMenu;
 
@@ -39,12 +39,12 @@ public class NameEditor extends GenericObjectEditor {
     }
 
     @Override
-    protected void handleButtonClick(String cmd, int num) {
+    protected void handleButtonClick(final String cmd, final int num) {
         // Do nothing
     }
 
     @Override
-    protected void guiNameLabelProperties(JLabel nameLbl, int num) {
+    protected void guiNameLabelProperties(final JLabel nameLbl, final int num) {
         if (nameLbl != null) {
             nameLbl.setAlignmentX(SwingConstants.RIGHT);
             nameLbl.setText(" New " + NamesConstants.EDITOR_SECTION_ARRAY[num]
@@ -53,46 +53,52 @@ public class NameEditor extends GenericObjectEditor {
     }
 
     @Override
-    protected boolean guiEntryType(int num) {
+    protected boolean guiEntryType(final int num) {
         return GenericObjectEditor.ENTRY_TYPE_TEXT;
     }
 
     @Override
-    protected void guiEntryFieldProperties(JTextField entry, int num) {
+    protected void guiEntryFieldProperties(final JTextField entry,
+            final int num) {
         if (entry != null) {
             entry.setText(this.cachedNames[num][1]);
         }
     }
 
     @Override
-    protected String[] guiEntryListItems(int num) {
+    protected String[] guiEntryListItems(final int num) {
         return null;
     }
 
     @Override
-    protected void guiEntryListProperties(JComboBox<String> list, int num) {
+    protected void guiEntryListProperties(final JComboBox<String> list,
+            final int num) {
         // Do nothing
     }
 
     @Override
-    protected void guiActionButtonProperties(JButton actBtn, int row, int col) {
+    protected void guiActionButtonProperties(final JButton actBtn,
+            final int row, final int col) {
         // Do nothing
     }
 
     @Override
-    protected String guiActionButtonActionCommand(int row, int col) {
+    protected String guiActionButtonActionCommand(final int row,
+            final int col) {
         return null;
     }
 
     @Override
-    protected void autoStoreEntryFieldValue(JTextField entry, int num) {
+    protected void autoStoreEntryFieldValue(final JTextField entry,
+            final int num) {
         if (entry != null) {
             this.cachedNames[num][1] = entry.getText();
         }
     }
 
     @Override
-    protected void autoStoreEntryListValue(JComboBox<String> list, int num) {
+    protected void autoStoreEntryListValue(final JComboBox<String> list,
+            final int num) {
         // Do nothing
     }
 
@@ -100,8 +106,8 @@ public class NameEditor extends GenericObjectEditor {
     public JMenu createEditorCommandsMenu() {
         this.nameCommandsMenu = new JMenu("Names Editor");
         // Create menu commands
-        JMenuItem nameEdit = new JMenuItem("Edit Names");
-        JMenuItem nameReset = new JMenuItem("Reset Names");
+        final JMenuItem nameEdit = new JMenuItem("Edit Names");
+        final JMenuItem nameReset = new JMenuItem("Reset Names");
         // Add event handlers
         nameEdit.addActionListener(this.handler);
         nameReset.addActionListener(this.handler);
@@ -113,7 +119,7 @@ public class NameEditor extends GenericObjectEditor {
 
     @Override
     public void disableEditorCommands() {
-        int count = this.nameCommandsMenu.getItemCount();
+        final int count = this.nameCommandsMenu.getItemCount();
         for (int x = 0; x < count; x++) {
             this.nameCommandsMenu.getItem(x).setEnabled(false);
         }
@@ -121,7 +127,7 @@ public class NameEditor extends GenericObjectEditor {
 
     @Override
     public void enableEditorCommands() {
-        int count = this.nameCommandsMenu.getItemCount();
+        final int count = this.nameCommandsMenu.getItemCount();
         for (int x = 0; x < count; x++) {
             this.nameCommandsMenu.getItem(x).setEnabled(true);
         }
@@ -129,13 +135,13 @@ public class NameEditor extends GenericObjectEditor {
 
     @Override
     protected boolean doesObjectExist() {
-        return (this.cachedNames != null);
+        return this.cachedNames != null;
     }
 
     @Override
     protected boolean newObjectOptions() {
         this.cachedNames = NamesManager.getNamesCache();
-        return (this.cachedNames != null);
+        return this.cachedNames != null;
     }
 
     @Override
@@ -171,8 +177,8 @@ public class NameEditor extends GenericObjectEditor {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                String cmd = e.getActionCommand();
-                NameEditor me = NameEditor.this;
+                final String cmd = e.getActionCommand();
+                final NameEditor me = NameEditor.this;
                 if (cmd.equals("Edit Names")) {
                     if (me.didObjectChange()) {
                         me.loadObject();
@@ -191,43 +197,43 @@ public class NameEditor extends GenericObjectEditor {
                     NamesManager.invalidateNamesCache();
                     CommonDialogs.showDialog("Names Reset.");
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver3.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void windowActivated(WindowEvent we) {
+        public void windowActivated(final WindowEvent we) {
             // Do nothing
         }
 
         @Override
-        public void windowClosed(WindowEvent we) {
+        public void windowClosed(final WindowEvent we) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent we) {
+        public void windowClosing(final WindowEvent we) {
             NameEditor.this.handleCloseWindow();
         }
 
         @Override
-        public void windowDeactivated(WindowEvent we) {
+        public void windowDeactivated(final WindowEvent we) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent we) {
+        public void windowDeiconified(final WindowEvent we) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent we) {
+        public void windowIconified(final WindowEvent we) {
             // Do nothing
         }
 
         @Override
-        public void windowOpened(WindowEvent we) {
+        public void windowOpened(final WindowEvent we) {
             // Do nothing
         }
     }

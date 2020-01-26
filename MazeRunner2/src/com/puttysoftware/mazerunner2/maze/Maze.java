@@ -42,7 +42,7 @@ public class Maze implements MazeConstants {
     private LegacySuffixIO legacySuffixHandler;
     private PrefixIO prefixHandler;
     private SuffixIO suffixHandler;
-    private int[] savedStart;
+    private final int[] savedStart;
     private static final int MIN_LEVELS = 1;
     private static final int MAX_LEVELS = Integer.MAX_VALUE;
     private static final String MAZE_PREFIX_GROUP = "prefix";
@@ -64,12 +64,12 @@ public class Maze implements MazeConstants {
         this.mazeStartMessage = "Let's Solve The Maze!";
         this.mazeEndMessage = "Maze Solved!";
         this.savedStart = new int[4];
-        long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
-        String randomID = Long.toHexString(random);
+        final long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
+        final String randomID = Long.toHexString(random);
         this.basePath = System.getProperty("java.io.tmpdir") + File.separator
                 + "MazeRunnerII" + File.separator + randomID + ".maze";
-        File base = new File(this.basePath);
-        boolean success = base.mkdirs();
+        final File base = new File(this.basePath);
+        final boolean success = base.mkdirs();
         if (!success) {
             CommonDialogs.showErrorDialog(
                     "Maze temporary folder creation failed!", "MazeRunnerII");
@@ -116,13 +116,13 @@ public class Maze implements MazeConstants {
 
     // Methods
     public static Maze getTemporaryBattleCopy() {
-        Maze temp = new Maze();
+        final Maze temp = new Maze();
         temp.addLevel(MazeRunnerII.getBattleMazeSize(),
                 MazeRunnerII.getBattleMazeSize(), 1);
-        MazeObjectList list = new MazeObjectList();
-        AbstractMazeObject[] glo = list.getAllGroundLayerObjects();
-        RandomRange gen = new RandomRange(0, glo.length - 1);
-        AbstractMazeObject rand = glo[gen.generate()];
+        final MazeObjectList list = new MazeObjectList();
+        final AbstractMazeObject[] glo = list.getAllGroundLayerObjects();
+        final RandomRange gen = new RandomRange(0, glo.length - 1);
+        final AbstractMazeObject rand = glo[gen.generate()];
         if (PreferencesManager.getRandomBattleEnvironment()) {
             temp.fillLevelRandomlyInBattle(rand, new Empty());
         } else {
@@ -136,16 +136,16 @@ public class Maze implements MazeConstants {
         this.mazeData.updateMonsterPosition(move, xLoc, yLoc, monster);
     }
 
-    public void postBattle(Monster m, final int xLoc, final int yLoc,
-            boolean player) {
+    public void postBattle(final Monster m, final int xLoc, final int yLoc,
+            final boolean player) {
         this.mazeData.postBattle(m, xLoc, yLoc, player);
     }
 
     public void radialScanTimerAction(final int x, final int y, final int z,
             final int l, final int r, final String targetName,
             final int timerMod) {
-        this.mazeData
-                .radialScanTimerAction(x, y, z, l, r, targetName, timerMod);
+        this.mazeData.radialScanTimerAction(x, y, z, l, r, targetName,
+                timerMod);
     }
 
     public void radialScanKillMonsters(final int x, final int y, final int z,
@@ -157,19 +157,19 @@ public class Maze implements MazeConstants {
         return this.basePath;
     }
 
-    public void setLegacyPrefixHandler(LegacyPrefixIO xph) {
+    public void setLegacyPrefixHandler(final LegacyPrefixIO xph) {
         this.legacyPrefixHandler = xph;
     }
 
-    public void setLegacySuffixHandler(LegacySuffixIO xsh) {
+    public void setLegacySuffixHandler(final LegacySuffixIO xsh) {
         this.legacySuffixHandler = xsh;
     }
 
-    public void setPrefixHandler(PrefixIO xph) {
+    public void setPrefixHandler(final PrefixIO xph) {
         this.prefixHandler = xph;
     }
 
-    public void setSuffixHandler(SuffixIO xsh) {
+    public void setSuffixHandler(final SuffixIO xsh) {
         this.suffixHandler = xsh;
     }
 
@@ -177,7 +177,7 @@ public class Maze implements MazeConstants {
         return this.mazeTitle;
     }
 
-    public void setMazeTitle(String title) {
+    public void setMazeTitle(final String title) {
         if (title == null) {
             throw new IllegalArgumentException("Title cannot be null!");
         }
@@ -188,7 +188,7 @@ public class Maze implements MazeConstants {
         return this.mazeStartMessage;
     }
 
-    public void setMazeStartMessage(String msg) {
+    public void setMazeStartMessage(final String msg) {
         if (msg == null) {
             throw new IllegalArgumentException("Message cannot be null!");
         }
@@ -199,7 +199,7 @@ public class Maze implements MazeConstants {
         return this.mazeEndMessage;
     }
 
-    public void setMazeEndMessage(String msg) {
+    public void setMazeEndMessage(final String msg) {
         if (msg == null) {
             throw new IllegalArgumentException("Message cannot be null!");
         }
@@ -210,7 +210,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getLevelTitle();
     }
 
-    public void setLevelTitle(String title) {
+    public void setLevelTitle(final String title) {
         this.mazeData.setLevelTitle(title);
     }
 
@@ -218,7 +218,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getLevelStartMessage();
     }
 
-    public void setLevelStartMessage(String msg) {
+    public void setLevelStartMessage(final String msg) {
         this.mazeData.setLevelStartMessage(msg);
     }
 
@@ -226,7 +226,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getLevelEndMessage();
     }
 
-    public void setLevelEndMessage(String msg) {
+    public void setLevelEndMessage(final String msg) {
         this.mazeData.setLevelEndMessage(msg);
     }
 
@@ -234,19 +234,19 @@ public class Maze implements MazeConstants {
         return this.mazeData.getFinishMoveSpeed();
     }
 
-    public void setFinishMoveSpeed(int value) {
+    public void setFinishMoveSpeed(final int value) {
         this.mazeData.setFinishMoveSpeed(value);
     }
 
-    public void setFirstMovingFinishX(int value) {
+    public void setFirstMovingFinishX(final int value) {
         this.mazeData.setFirstMovingFinishX(value);
     }
 
-    public void setFirstMovingFinishY(int value) {
+    public void setFirstMovingFinishY(final int value) {
         this.mazeData.setFirstMovingFinishY(value);
     }
 
-    public void setFirstMovingFinishZ(int value) {
+    public void setFirstMovingFinishZ(final int value) {
         this.mazeData.setFirstMovingFinishZ(value);
     }
 
@@ -254,7 +254,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getPoisonPower();
     }
 
-    public void setPoisonPower(int pp) {
+    public void setPoisonPower(final int pp) {
         this.mazeData.setPoisonPower(pp);
     }
 
@@ -282,11 +282,11 @@ public class Maze implements MazeConstants {
         return this.mazeData.getAutoFinishEnabled();
     }
 
-    public void setAutoFinishEnabled(boolean afte) {
+    public void setAutoFinishEnabled(final boolean afte) {
         this.mazeData.setAutoFinishEnabled(afte);
     }
 
-    public void setAutoFinishThreshold(int aft) {
+    public void setAutoFinishThreshold(final int aft) {
         this.mazeData.setAutoFinishThreshold(aft);
     }
 
@@ -294,11 +294,11 @@ public class Maze implements MazeConstants {
         return this.mazeData.getAlternateAutoFinishEnabled();
     }
 
-    public void setAlternateAutoFinishEnabled(boolean aafte) {
+    public void setAlternateAutoFinishEnabled(final boolean aafte) {
         this.mazeData.setAlternateAutoFinishEnabled(aafte);
     }
 
-    public void setAlternateAutoFinishThreshold(int aaft) {
+    public void setAlternateAutoFinishThreshold(final int aaft) {
         this.mazeData.setAlternateAutoFinishThreshold(aaft);
     }
 
@@ -306,7 +306,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getVisionRadius();
     }
 
-    public void setVisionRadius(int vr) {
+    public void setVisionRadius(final int vr) {
         this.mazeData.setVisionRadius(vr);
     }
 
@@ -421,7 +421,8 @@ public class Maze implements MazeConstants {
         this.mazeData.updateMovingBlockPosition(move, xLoc, yLoc, block);
     }
 
-    public void warpObject(AbstractMazeObject mo, int x, int y, int z, int l) {
+    public void warpObject(final AbstractMazeObject mo, final int x,
+            final int y, final int z, final int l) {
         this.mazeData.warpObject(mo, x, y, z, l);
     }
 
@@ -433,7 +434,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.isTimerActive();
     }
 
-    public final void activateTimer(int ticks) {
+    public final void activateTimer(final int ticks) {
         this.mazeData.activateTimer(ticks);
     }
 
@@ -465,7 +466,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getExploreRadius();
     }
 
-    public void setExploreRadius(int newER) {
+    public void setExploreRadius(final int newER) {
         this.mazeData.setExploreRadius(newER);
     }
 
@@ -473,7 +474,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.getVisionMode();
     }
 
-    public void setVisionMode(int newVM) {
+    public void setVisionMode(final int newVM) {
         this.mazeData.setVisionMode(newVM);
     }
 
@@ -481,7 +482,7 @@ public class Maze implements MazeConstants {
         this.mazeData.resetVisibleSquares();
     }
 
-    public void updateVisibleSquares(int xp, int yp, int zp) {
+    public void updateVisibleSquares(final int xp, final int yp, final int zp) {
         this.mazeData.updateVisibleSquares(xp, yp, zp);
     }
 
@@ -501,15 +502,15 @@ public class Maze implements MazeConstants {
         return this.mazeData.useOffset();
     }
 
-    public void setUseOffset(boolean uo) {
+    public void setUseOffset(final boolean uo) {
         this.mazeData.setUseOffset(uo);
     }
 
-    public void setNextLevel(int nl) {
+    public void setNextLevel(final int nl) {
         this.mazeData.setNextLevel(nl);
     }
 
-    public void setNextLevelOffset(int nlo) {
+    public void setNextLevelOffset(final int nlo) {
         this.mazeData.setNextLevelOffset(nlo);
     }
 
@@ -521,15 +522,15 @@ public class Maze implements MazeConstants {
         return this.mazeData.useAlternateOffset();
     }
 
-    public void setUseAlternateOffset(boolean uao) {
+    public void setUseAlternateOffset(final boolean uao) {
         this.mazeData.setUseAlternateOffset(uao);
     }
 
-    public void setAlternateNextLevel(int anl) {
+    public void setAlternateNextLevel(final int anl) {
         this.mazeData.setAlternateNextLevel(anl);
     }
 
-    public void setAlternateNextLevelOffset(int anlo) {
+    public void setAlternateNextLevelOffset(final int anlo) {
         this.mazeData.setAlternateNextLevelOffset(anlo);
     }
 
@@ -537,21 +538,21 @@ public class Maze implements MazeConstants {
         return this.activeLevel;
     }
 
-    public void switchLevel(int level) {
+    public void switchLevel(final int level) {
         this.switchLevelInternal(level);
     }
 
-    public void switchLevelOffset(int level) {
+    public void switchLevelOffset(final int level) {
         this.switchLevelInternal(this.activeLevel + level);
     }
 
-    private void switchLevelInternal(int level) {
+    private void switchLevelInternal(final int level) {
         if (this.activeLevel != level) {
             if (this.mazeData != null) {
                 try (XDataWriter writer = this.getLevelWriter()) {
                     // Save old level
                     this.writeMazeLevel(writer);
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
@@ -559,19 +560,19 @@ public class Maze implements MazeConstants {
             try (XDataReader reader = this.getLevelReader()) {
                 // Load new level
                 this.readMazeLevel(reader);
-            } catch (IOException io) {
+            } catch (final IOException io) {
                 // Ignore
             }
         }
     }
 
-    public boolean doesLevelExist(int level) {
-        return (level < this.levelCount && level >= 0);
+    public boolean doesLevelExist(final int level) {
+        return level < this.levelCount && level >= 0;
     }
 
-    public boolean doesLevelExistOffset(int level) {
-        return (this.activeLevel + level < this.levelCount && this.activeLevel
-                + level >= 0);
+    public boolean doesLevelExistOffset(final int level) {
+        return this.activeLevel + level < this.levelCount
+                && this.activeLevel + level >= 0;
     }
 
     public void cutLevel() {
@@ -616,7 +617,7 @@ public class Maze implements MazeConstants {
                 try (XDataWriter writer = this.getLevelWriter()) {
                     // Save old level
                     this.writeMazeLevel(writer);
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
@@ -634,19 +635,19 @@ public class Maze implements MazeConstants {
             if (this.activeLevel >= 1 && this.activeLevel <= this.levelCount) {
                 this.mazeData = null;
                 // Delete file corresponding to current level
-                boolean delSuccess = this.getLevelFile(this.activeLevel)
+                final boolean delSuccess = this.getLevelFile(this.activeLevel)
                         .delete();
                 if (!delSuccess) {
                     return false;
                 }
                 // Shift all higher-numbered levels down
                 for (int x = this.activeLevel; x < this.levelCount - 1; x++) {
-                    File sourceLocation = this.getLevelFile(x + 1);
-                    File targetLocation = this.getLevelFile(x);
+                    final File sourceLocation = this.getLevelFile(x + 1);
+                    final File targetLocation = this.getLevelFile(x);
                     try {
                         DirectoryUtilities.moveFile(sourceLocation,
                                 targetLocation);
-                    } catch (IOException io) {
+                    } catch (final IOException io) {
                         // Ignore
                     }
                 }
@@ -662,15 +663,15 @@ public class Maze implements MazeConstants {
         }
     }
 
-    public boolean hasNote(int x, int y, int z) {
+    public boolean hasNote(final int x, final int y, final int z) {
         return this.mazeData.hasNote(x, y, z);
     }
 
-    public void createNote(int x, int y, int z) {
+    public void createNote(final int x, final int y, final int z) {
         this.mazeData.createNote(x, y, z);
     }
 
-    public MazeNote getNote(int x, int y, int z) {
+    public MazeNote getNote(final int x, final int y, final int z) {
         return this.mazeData.getNote(x, y, z);
     }
 
@@ -748,7 +749,8 @@ public class Maze implements MazeConstants {
         this.mazeData.resize(x, y, z);
     }
 
-    public boolean isSquareVisible(int x1, int y1, int x2, int y2) {
+    public boolean isSquareVisible(final int x1, final int y1, final int x2,
+            final int y2) {
         return this.mazeData.isSquareVisible(x1, y1, x2, y2);
     }
 
@@ -821,18 +823,21 @@ public class Maze implements MazeConstants {
     }
 
     public void fill() {
-        AbstractMazeObject bottom = PreferencesManager.getEditorDefaultFill();
-        AbstractMazeObject top = new Empty();
+        final AbstractMazeObject bottom = PreferencesManager
+                .getEditorDefaultFill();
+        final AbstractMazeObject top = new Empty();
         this.mazeData.fill(bottom, top);
     }
 
-    public void fillFloor(int floor) {
-        AbstractMazeObject bottom = PreferencesManager.getEditorDefaultFill();
-        AbstractMazeObject top = new Empty();
+    public void fillFloor(final int floor) {
+        final AbstractMazeObject bottom = PreferencesManager
+                .getEditorDefaultFill();
+        final AbstractMazeObject top = new Empty();
         this.mazeData.fillFloor(bottom, top, floor);
     }
 
-    public void fillLevel(AbstractMazeObject bottom, AbstractMazeObject top) {
+    public void fillLevel(final AbstractMazeObject bottom,
+            final AbstractMazeObject top) {
         this.mazeData.fill(bottom, top);
     }
 
@@ -840,7 +845,7 @@ public class Maze implements MazeConstants {
         this.mazeData.fillRandomly(this, this.activeLevel);
     }
 
-    public void fillFloorRandomly(int z) {
+    public void fillFloorRandomly(final int z) {
         this.mazeData.fillFloorRandomly(this, z, this.activeLevel);
     }
 
@@ -848,38 +853,38 @@ public class Maze implements MazeConstants {
         this.mazeData.fillRandomlyCustom(this, this.activeLevel);
     }
 
-    public void fillFloorRandomlyCustom(int z) {
+    public void fillFloorRandomlyCustom(final int z) {
         this.mazeData.fillFloorRandomlyCustom(this, z, this.activeLevel);
     }
 
-    public void fillLayer(int layer) {
-        AbstractMazeObject fillWith = PreferencesManager
+    public void fillLayer(final int layer) {
+        final AbstractMazeObject fillWith = PreferencesManager
                 .getEditorDefaultFill(layer);
         this.mazeData.fillLayer(fillWith, layer);
     }
 
-    public void fillFloorAndLayer(int floor, int layer) {
-        AbstractMazeObject fillWith = PreferencesManager
+    public void fillFloorAndLayer(final int floor, final int layer) {
+        final AbstractMazeObject fillWith = PreferencesManager
                 .getEditorDefaultFill(layer);
         this.mazeData.fillFloorAndLayer(fillWith, floor, layer);
     }
 
-    public void fillLevelAndLayerRandomly(int layer) {
+    public void fillLevelAndLayerRandomly(final int layer) {
         this.mazeData.fillLayerRandomly(this, this.activeLevel, layer);
     }
 
-    public void fillFloorAndLayerRandomly(int z, int layer) {
+    public void fillFloorAndLayerRandomly(final int z, final int layer) {
         this.mazeData.fillFloorAndLayerRandomly(this, z, this.activeLevel,
                 layer);
     }
 
-    public void fillLevelAndLayerRandomlyCustom(int layer) {
+    public void fillLevelAndLayerRandomlyCustom(final int layer) {
         this.mazeData.fillLayerRandomlyCustom(this, this.activeLevel, layer);
     }
 
-    public void fillFloorAndLayerRandomlyCustom(int z, int layer) {
-        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z,
-                this.activeLevel, layer);
+    public void fillFloorAndLayerRandomlyCustom(final int z, final int layer) {
+        this.mazeData.fillFloorAndLayerRandomlyCustom(this, z, this.activeLevel,
+                layer);
     }
 
     private void fillLevelRandomlyInBattle(
@@ -911,7 +916,7 @@ public class Maze implements MazeConstants {
         this.mazeData.setStartFloor(this.savedStart[3]);
     }
 
-    public void hotGround(int x, int y, int z) {
+    public void hotGround(final int x, final int y, final int z) {
         this.mazeData.hotGround(x, y, z);
     }
 
@@ -952,7 +957,7 @@ public class Maze implements MazeConstants {
     }
 
     public Maze readMaze() throws IOException {
-        Maze m = new Maze();
+        final Maze m = new Maze();
         // Attach handlers
         m.setPrefixHandler(this.prefixHandler);
         m.setSuffixHandler(this.suffixHandler);
@@ -960,11 +965,11 @@ public class Maze implements MazeConstants {
         m.basePath = this.basePath;
         int version = 0;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             version = m.readMazeMetafile(metaReader);
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
         // Create data reader
@@ -972,7 +977,7 @@ public class Maze implements MazeConstants {
             // Read data
             m.readMazeLevel(dataReader, version);
             return m;
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
     }
@@ -982,14 +987,14 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private int readMazeMetafile(XDataReader reader) throws IOException {
+    private int readMazeMetafile(final XDataReader reader) throws IOException {
         int ver = FormatConstants.MAZE_FORMAT_1;
-        reader.readOpeningGroup(MAZE_PREFIX_GROUP);
+        reader.readOpeningGroup(Maze.MAZE_PREFIX_GROUP);
         if (this.prefixHandler != null) {
             ver = this.prefixHandler.readPrefix(reader);
         }
-        reader.readClosingGroup(MAZE_PREFIX_GROUP);
-        reader.readOpeningGroup(MAZE_SETTINGS_GROUP);
+        reader.readClosingGroup(Maze.MAZE_PREFIX_GROUP);
+        reader.readOpeningGroup(Maze.MAZE_SETTINGS_GROUP);
         this.levelCount = reader.readInt();
         this.startW = reader.readInt();
         this.mazeTitle = reader.readString();
@@ -1001,21 +1006,21 @@ public class Maze implements MazeConstants {
         for (int y = 0; y < 4; y++) {
             this.savedStart[y] = reader.readInt();
         }
-        reader.readClosingGroup(MAZE_SETTINGS_GROUP);
-        reader.readOpeningGroup(MAZE_SUFFIX_GROUP);
+        reader.readClosingGroup(Maze.MAZE_SETTINGS_GROUP);
+        reader.readOpeningGroup(Maze.MAZE_SUFFIX_GROUP);
         if (this.suffixHandler != null) {
             this.suffixHandler.readSuffix(reader, ver);
         }
-        reader.readClosingGroup(MAZE_SUFFIX_GROUP);
+        reader.readClosingGroup(Maze.MAZE_SUFFIX_GROUP);
         return ver;
     }
 
-    private void readMazeLevel(XDataReader reader) throws IOException {
+    private void readMazeLevel(final XDataReader reader) throws IOException {
         this.readMazeLevel(reader, FormatConstants.MAZE_FORMAT_LATEST);
     }
 
-    private void readMazeLevel(XDataReader reader, int formatVersion)
-            throws IOException {
+    private void readMazeLevel(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
             this.mazeData = LayeredTower.readLayeredTowerV1(reader);
             this.mazeData.readSavedTowerState(reader, formatVersion);
@@ -1025,7 +1030,7 @@ public class Maze implements MazeConstants {
     }
 
     public Maze readLegacyMaze() throws IOException {
-        Maze m = new Maze();
+        final Maze m = new Maze();
         // Attach handlers
         m.setLegacyPrefixHandler(this.legacyPrefixHandler);
         m.setLegacySuffixHandler(this.legacySuffixHandler);
@@ -1033,8 +1038,8 @@ public class Maze implements MazeConstants {
         m.basePath = this.basePath;
         int version = 0;
         // Create metafile reader
-        try (XLegacyDataReader metaReader = new XLegacyDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XLegacyDataReader metaReader = new XLegacyDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             version = m.readMazeLegacyMetafile(metaReader);
             // Create data reader
@@ -1043,7 +1048,7 @@ public class Maze implements MazeConstants {
                 m.readLegacyMazeLevel(dataReader, version);
                 return m;
             }
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
     }
@@ -1053,13 +1058,13 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private int readMazeLegacyMetafile(XLegacyDataReader reader)
+    private int readMazeLegacyMetafile(final XLegacyDataReader reader)
             throws IOException {
         int ver = LegacyFormatConstants.LEGACY_MAZE_FORMAT_1;
         if (this.legacyPrefixHandler != null) {
             ver = this.legacyPrefixHandler.readPrefix(reader);
         }
-        int levels = reader.readInt();
+        final int levels = reader.readInt();
         this.levelCount = levels;
         this.startW = reader.readInt();
         this.mazeTitle = reader.readString();
@@ -1071,8 +1076,8 @@ public class Maze implements MazeConstants {
         return ver;
     }
 
-    private void readLegacyMazeLevel(XLegacyDataReader reader, int formatVersion)
-            throws IOException {
+    private void readLegacyMazeLevel(final XLegacyDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1) {
             this.mazeData = LayeredTower.readLegacyLayeredTowerV1(reader);
             this.mazeData.readLegacySavedTowerState(reader, formatVersion);
@@ -1084,15 +1089,15 @@ public class Maze implements MazeConstants {
         }
     }
 
-    private File getLevelFile(int level) {
+    private File getLevelFile(final int level) {
         return new File(this.basePath + File.separator + level + ".level");
     }
 
     public void writeMaze() throws IOException {
         try {
             // Create metafile writer
-            try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                    + File.separator + "metafile.xml", "maze")) {
+            try (XDataWriter metaWriter = new XDataWriter(
+                    this.basePath + File.separator + "metafile.xml", "maze")) {
                 // Write metafile
                 this.writeMazeMetafile(metaWriter);
             }
@@ -1101,7 +1106,7 @@ public class Maze implements MazeConstants {
                 // Write data
                 this.writeMazeLevel(dataWriter);
             }
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
     }
@@ -1111,13 +1116,14 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafile(XDataWriter writer) throws IOException {
-        writer.writeOpeningGroup(MAZE_PREFIX_GROUP);
+    private void writeMazeMetafile(final XDataWriter writer)
+            throws IOException {
+        writer.writeOpeningGroup(Maze.MAZE_PREFIX_GROUP);
         if (this.prefixHandler != null) {
             this.prefixHandler.writePrefix(writer);
         }
-        writer.writeClosingGroup(MAZE_PREFIX_GROUP);
-        writer.writeOpeningGroup(MAZE_SETTINGS_GROUP);
+        writer.writeClosingGroup(Maze.MAZE_PREFIX_GROUP);
+        writer.writeOpeningGroup(Maze.MAZE_SETTINGS_GROUP);
         writer.writeInt(this.levelCount);
         writer.writeInt(this.startW);
         writer.writeString(this.mazeTitle);
@@ -1129,15 +1135,15 @@ public class Maze implements MazeConstants {
         for (int y = 0; y < 4; y++) {
             writer.writeInt(this.savedStart[y]);
         }
-        writer.writeClosingGroup(MAZE_SETTINGS_GROUP);
-        writer.writeOpeningGroup(MAZE_SUFFIX_GROUP);
+        writer.writeClosingGroup(Maze.MAZE_SETTINGS_GROUP);
+        writer.writeOpeningGroup(Maze.MAZE_SUFFIX_GROUP);
         if (this.suffixHandler != null) {
             this.suffixHandler.writeSuffix(writer);
         }
-        writer.writeClosingGroup(MAZE_SUFFIX_GROUP);
+        writer.writeClosingGroup(Maze.MAZE_SUFFIX_GROUP);
     }
 
-    private void writeMazeLevel(XDataWriter writer) throws IOException {
+    private void writeMazeLevel(final XDataWriter writer) throws IOException {
         // Write the level
         this.mazeData.writeLayeredTower(writer);
         this.mazeData.writeSavedTowerState(writer);

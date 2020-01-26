@@ -15,42 +15,42 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class ReverseJumpBox extends AbstractJumpObject {
     // Constructors
     public ReverseJumpBox() {
-	super();
-	this.type.set(TypeConstants.TYPE_BOX);
-	this.setMaterial(MaterialConstants.MATERIAL_STONE);
+        super();
+        this.type.set(TypeConstants.TYPE_BOX);
+        this.setMaterial(MaterialConstants.MATERIAL_STONE);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_ICE:
-	    final IcyBox ib = new IcyBox();
-	    ib.setPreviousState(this);
-	    return ib;
-	case MaterialConstants.MATERIAL_FIRE:
-	    return new HotBox();
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_ICE:
+            final IcyBox ib = new IcyBox();
+            ib.setPreviousState(this);
+            return ib;
+        case MaterialConstants.MATERIAL_FIRE:
+            return new HotBox();
+        default:
+            return this;
+        }
     }
 
     @Override
     public int getActualJumpCols() {
-	return -super.getActualJumpCols();
+        return -super.getActualJumpCols();
     }
 
     @Override
     public int getActualJumpRows() {
-	return -super.getActualJumpRows();
+        return -super.getActualJumpRows();
     }
 
     @Override
     public final Color getCustomTextColor() {
-	return Color.black;
+        return Color.black;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 124;
+        return 124;
     }
 }

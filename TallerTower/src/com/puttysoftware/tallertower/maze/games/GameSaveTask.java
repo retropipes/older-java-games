@@ -41,8 +41,8 @@ public class GameSaveTask extends Thread {
                 this.filename += Extension.getGameExtensionWithPeriod();
             }
             final File mazeFile = new File(this.filename);
-            final File tempLock = new File(Maze.getMazeTempFolder()
-                    + "lock.tmp");
+            final File tempLock = new File(
+                    Maze.getMazeTempFolder() + "lock.tmp");
             // Set prefix handler
             app.getMazeManager().getMaze()
                     .setPrefixHandler(new PrefixHandler());
@@ -50,8 +50,9 @@ public class GameSaveTask extends Thread {
             app.getMazeManager().getMaze()
                     .setSuffixHandler(new SuffixHandler());
             app.getMazeManager().getMaze().writeMaze();
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), tempLock);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    tempLock);
             // Lock the file
             GameFileManager.save(tempLock, mazeFile);
             final boolean delSuccess = tempLock.delete();
@@ -60,10 +61,8 @@ public class GameSaveTask extends Thread {
             }
             app.showMessage(sg + " saved.");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the "
-                            + sg.toLowerCase()
-                            + " failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
+                    + " failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             TallerTower.getErrorLogger().logError(ex);
@@ -75,7 +74,7 @@ public class GameSaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

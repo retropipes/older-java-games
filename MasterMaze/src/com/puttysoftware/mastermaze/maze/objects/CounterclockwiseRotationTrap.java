@@ -36,16 +36,13 @@ public class CounterclockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
         MasterMaze.getApplication().showMessage("Your controls are rotated!");
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .activateEffect(
-                        MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE,
-                        CounterclockwiseRotationTrap.EFFECT_DURATION);
+        MasterMaze.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE,
+                CounterclockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

@@ -5,14 +5,14 @@ import com.puttysoftware.storage.NumberStorage;
 public final class PlayField extends NumberStorage {
     // Constants
     private static final int SIZE = 24;
-    
+
     // Constructor
     public PlayField() {
-        super(SIZE, SIZE);
+        super(PlayField.SIZE, PlayField.SIZE);
     }
 
     // Copy constructor
-    public PlayField(PlayField inSource) {
+    public PlayField(final PlayField inSource) {
         super(inSource);
     }
 }

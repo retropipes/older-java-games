@@ -32,13 +32,13 @@ public class RuleSetPicker {
     // Declarations
     private JFrame outputFrame;
     private PicturePicker picker;
-    private String[] names;
-    private AbstractDungeonObject[] objects;
-    private BufferedImageIcon[] editorAppearances;
-    private RuleSetEditor rsEditor;
+    private final String[] names;
+    private final AbstractDungeonObject[] objects;
+    private final BufferedImageIcon[] editorAppearances;
+    private final RuleSetEditor rsEditor;
 
     public RuleSetPicker() {
-        DungeonObjectList objectList = DungeonDiver4.getApplication()
+        final DungeonObjectList objectList = DungeonDiver4.getApplication()
                 .getObjects();
         this.names = objectList.getAllNames();
         this.objects = objectList.getAllObjects();
@@ -48,23 +48,23 @@ public class RuleSetPicker {
     }
 
     void createObjectRuleSet() {
-        int index = this.picker.getPicked();
-        AbstractDungeonObject object = this.objects[index];
+        final int index = this.picker.getPicked();
+        final AbstractDungeonObject object = this.objects[index];
         object.giveRuleSet();
         CommonDialogs.showTitledDialog("Rule Set Created.", "Rule Set Picker");
     }
 
     void destroyObjectRuleSet() {
-        int index = this.picker.getPicked();
-        AbstractDungeonObject object = this.objects[index];
+        final int index = this.picker.getPicked();
+        final AbstractDungeonObject object = this.objects[index];
         object.takeRuleSet();
-        CommonDialogs
-                .showTitledDialog("Rule Set Destroyed.", "Rule Set Picker");
+        CommonDialogs.showTitledDialog("Rule Set Destroyed.",
+                "Rule Set Picker");
     }
 
     void editObjectRuleSet() {
-        int index = this.picker.getPicked();
-        AbstractDungeonObject object = this.objects[index];
+        final int index = this.picker.getPicked();
+        final AbstractDungeonObject object = this.objects[index];
         if (object.hasRuleSet()) {
             this.rsEditor.setRuleSet(object.getRuleSet());
             this.rsEditor.showRuleSetEditor();
@@ -76,7 +76,7 @@ public class RuleSetPicker {
     }
 
     public void editRuleSets() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getEditor().hideOutput();
         this.showOutput();
     }
@@ -92,24 +92,24 @@ public class RuleSetPicker {
     }
 
     void exitRuleSetEditor() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.hideOutput();
         app.getEditor().showOutput();
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
-        Application app = DungeonDiver4.getApplication();
+        final EventHandler handler = new EventHandler();
+        final Application app = DungeonDiver4.getApplication();
         this.outputFrame = new JFrame("Rule Set Picker");
         final Image iconlogo = app.getIconLogo();
         this.outputFrame.setIconImage(iconlogo);
-        Container outputPane = new Container();
-        Container borderPane = new Container();
-        JButton create = new JButton("Create");
-        JButton destroy = new JButton("Destroy");
-        JButton edit = new JButton("Edit");
-        JButton load = new JButton("Load");
-        JButton save = new JButton("Save");
+        final Container outputPane = new Container();
+        final Container borderPane = new Container();
+        final JButton create = new JButton("Create");
+        final JButton destroy = new JButton("Destroy");
+        final JButton edit = new JButton("Edit");
+        final JButton load = new JButton("Load");
+        final JButton save = new JButton("Save");
         borderPane.setLayout(new BorderLayout());
         this.outputFrame.setContentPane(borderPane);
         this.outputFrame
@@ -144,8 +144,8 @@ public class RuleSetPicker {
         // handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            String cmd = e.getActionCommand();
-            RuleSetPicker ge = RuleSetPicker.this;
+            final String cmd = e.getActionCommand();
+            final RuleSetPicker ge = RuleSetPicker.this;
             if (cmd.equals("Create")) {
                 ge.createObjectRuleSet();
             } else if (cmd.equals("Destroy")) {

@@ -18,22 +18,23 @@ public final class DifficultyConstants {
     private static String[] DIFFICULTY_NAMES = null;
 
     public static String[] getDifficultyNames() {
-	if (DifficultyConstants.DIFFICULTY_NAMES == null) {
-	    DifficultyConstants.reloadDifficultyNames();
-	}
-	return DifficultyConstants.DIFFICULTY_NAMES;
+        if (DifficultyConstants.DIFFICULTY_NAMES == null) {
+            DifficultyConstants.reloadDifficultyNames();
+        }
+        return DifficultyConstants.DIFFICULTY_NAMES;
     }
 
     public static void reloadDifficultyNames() {
-	DifficultyConstants.DIFFICULTY_NAMES = new String[] { StringLoader.loadDifficulty(DifficultyString.KIDS),
-		StringLoader.loadDifficulty(DifficultyString.EASY),
-		StringLoader.loadDifficulty(DifficultyString.MEDIUM),
-		StringLoader.loadDifficulty(DifficultyString.HARD),
-		StringLoader.loadDifficulty(DifficultyString.DEADLY) };
+        DifficultyConstants.DIFFICULTY_NAMES = new String[] {
+                StringLoader.loadDifficulty(DifficultyString.KIDS),
+                StringLoader.loadDifficulty(DifficultyString.EASY),
+                StringLoader.loadDifficulty(DifficultyString.MEDIUM),
+                StringLoader.loadDifficulty(DifficultyString.HARD),
+                StringLoader.loadDifficulty(DifficultyString.DEADLY) };
     }
 
     // Private Constructor
     private DifficultyConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -10,8 +10,8 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 
 public class SkyButton extends GenericButton {
     public SkyButton() {
-        super(new SkyWallOff(), new SkyWallOn(), new TemplateTransform(0.5,
-                0.5, 1.0, ""));
+        super(new SkyWallOff(), new SkyWallOn(),
+                new TemplateTransform(0.5, 0.5, 1.0, ""));
     }
 
     @Override

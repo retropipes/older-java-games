@@ -10,7 +10,7 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractMultipleKey extends AbstractKey {
     // Constructors
-    protected AbstractMultipleKey(int tc) {
+    protected AbstractMultipleKey(final int tc) {
         super(true);
         this.setTemplateColor(tc);
     }

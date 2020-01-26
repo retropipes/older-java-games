@@ -14,5 +14,5 @@ public class ShopTypes {
     public static final int SHOP_TYPE_SPELLS = 6;
     public static final int SHOP_TYPE_ITEMS = 7;
     static final String[] SHOP_NAMES = { "Weapons", "Armor", "Healer", "Bank",
-	    "Regenerator", "Spells", "Items" };
+            "Regenerator", "Spells", "Items" };
 }

@@ -55,14 +55,14 @@ public class SoundConstants {
     public static final int SOUND_MOON_STONE = 47;
     // Package-Protected Constants
     static final String[] NAMES = { "logo", "gameover", "highscore",
-            "actionfailed", "arrow", "arrowdead", "barrier", "button",
-            "change", "confused", "crack", "create", "darkness", "destroy",
-            "dizzy", "down", "drunk", "explode", "finish", "forcefield",
-            "generate", "grab", "heal", "hurt", "identify", "intopit", "lava",
-            "light", "pushpull", "pushpull", "shatter", "sinkblock", "slime",
-            "spring", "sunstone", "teleport", "unlock", "up", "walk",
-            "walkfailed", "walkice", "walklava", "walkslime", "walkwater",
-            "walltrap", "water", "wingame", "moonstone" };
+            "actionfailed", "arrow", "arrowdead", "barrier", "button", "change",
+            "confused", "crack", "create", "darkness", "destroy", "dizzy",
+            "down", "drunk", "explode", "finish", "forcefield", "generate",
+            "grab", "heal", "hurt", "identify", "intopit", "lava", "light",
+            "pushpull", "pushpull", "shatter", "sinkblock", "slime", "spring",
+            "sunstone", "teleport", "unlock", "up", "walk", "walkfailed",
+            "walkice", "walklava", "walkslime", "walkwater", "walltrap",
+            "water", "wingame", "moonstone" };
 
     // Private constructor
     private SoundConstants() {

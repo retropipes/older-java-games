@@ -24,8 +24,8 @@ public abstract class AbstractBlockTeleport extends AbstractTeleport {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
@@ -33,7 +33,7 @@ public abstract class AbstractBlockTeleport extends AbstractTeleport {
     public void pushIntoAction(final DungeonObjectInventory inv,
             final AbstractDungeonObject mo, final int x, final int y,
             final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),
@@ -45,7 +45,7 @@ public abstract class AbstractBlockTeleport extends AbstractTeleport {
     public void pullIntoAction(final DungeonObjectInventory inv,
             final AbstractDungeonObject mo, final int x, final int y,
             final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),

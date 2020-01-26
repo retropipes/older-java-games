@@ -17,7 +17,8 @@ public class LegacySavedGameFilter extends FileFilter {
         }
         final String extension = LegacySavedGameFilter.getExtension(f);
         if (extension != null) {
-            if (extension.equals(LegacyExtension.getLegacySavedGameExtension())) {
+            if (extension
+                    .equals(LegacyExtension.getLegacySavedGameExtension())) {
                 return true;
             } else {
                 return false;
@@ -36,7 +37,7 @@ public class LegacySavedGameFilter extends FileFilter {
         String ext = null;
         final String s = f.getName();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;

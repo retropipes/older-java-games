@@ -37,10 +37,8 @@ public class GhostAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
-                        GhostAmulet.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_GHOSTLY,
+                GhostAmulet.EFFECT_DURATION);
     }
 }

@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import apple.dts.samplecode.osxadapter.OSXAdapter;
-
 import com.puttysoftware.mazemode.MazeMode;
+
+import apple.dts.samplecode.osxadapter.OSXAdapter;
 
 public class Platform {
     public void hookLAF() {
@@ -23,8 +23,8 @@ public class Platform {
             try {
                 // Tell the UIManager to use the platform native look and
                 // feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {

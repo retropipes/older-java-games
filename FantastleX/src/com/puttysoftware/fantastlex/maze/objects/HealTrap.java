@@ -35,8 +35,8 @@ public class HealTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         this.healing = PartyManager.getParty().getLeader().getMaximumHP() / 50;
         if (this.healing < 1) {
             this.healing = 1;

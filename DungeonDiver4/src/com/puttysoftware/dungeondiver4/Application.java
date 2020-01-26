@@ -48,7 +48,7 @@ public class Application {
     private DungeonEditorLogic editor;
     private RuleSetPicker rsPicker;
     private GUIManager guiMgr;
-    private DungeonObjectList objects;
+    private final DungeonObjectList objects;
     private Shop weapons, armor, healer, bank, regenerator, spells, items,
             socks, enhancements, faiths;
     private MapBattleLogic mapBattle;
@@ -81,24 +81,27 @@ public class Application {
     // Methods
     void postConstruct() {
         // Create Edge Images and Objects
-        AbstractDungeonObject[] groundTypes = this.objects
+        final AbstractDungeonObject[] groundTypes = this.objects
                 .getAllGenerationEligibleTypedObjects();
-        String[] edgeFriendlyNameSuffixes = EdgeGenerator
+        final String[] edgeFriendlyNameSuffixes = EdgeGenerator
                 .generateAllEdgedImageFriendlyNameSuffixes();
         for (int x = 0; x < groundTypes.length - 1; x++) {
             for (int y = x + 1; y < groundTypes.length; y++) {
                 if (groundTypes[x].equals(groundTypes[y])) {
                     continue;
                 }
-                BufferedImageIcon[] edges = EdgeGenerator
-                        .generateAllEdgedImages(ObjectImageManager.getImage(
-                                groundTypes[x].getName(),
-                                groundTypes[x].getBaseID(),
-                                groundTypes[x].getTemplateColor(),
-                                groundTypes[x].getAttributeID(),
-                                groundTypes[x].getAttributeTemplateColor()),
-                                ObjectImageManager.getImage(groundTypes[y]
-                                        .getName(), groundTypes[y].getBaseID(),
+                final BufferedImageIcon[] edges = EdgeGenerator
+                        .generateAllEdgedImages(
+                                ObjectImageManager.getImage(
+                                        groundTypes[x].getName(),
+                                        groundTypes[x].getBaseID(),
+                                        groundTypes[x].getTemplateColor(),
+                                        groundTypes[x].getAttributeID(),
+                                        groundTypes[x]
+                                                .getAttributeTemplateColor()),
+                                ObjectImageManager.getImage(
+                                        groundTypes[y].getName(),
+                                        groundTypes[y].getBaseID(),
                                         groundTypes[y].getTemplateColor(),
                                         groundTypes[y].getAttributeID(),
                                         groundTypes[y]
@@ -110,14 +113,13 @@ public class Application {
                     ObjectImageManager.addImageToCache(groundTypes[x].getName()
                             + "/" + groundTypes[y].getName() + " Transition "
                             + edgeFriendlyNameSuffixes[z], edges[z]);
-                    GeneratedEdge ge = new GeneratedEdge(
+                    final GeneratedEdge ge = new GeneratedEdge(
                             groundTypes[x].getName() + "/"
                                     + groundTypes[y].getName() + " Transition "
                                     + edgeFriendlyNameSuffixes[z],
                             ObjectImageConstants.OBJECT_IMAGE_NONE,
                             groundTypes[x].getName() + "/"
-                                    + groundTypes[y].getName()
-                                    + " Transitions "
+                                    + groundTypes[y].getName() + " Transitions "
                                     + edgeFriendlyNameSuffixes[z],
                             groundTypes[x].getName(), groundTypes[y].getName(),
                             edgeFriendlyNameSuffixes[z]);
@@ -178,7 +180,7 @@ public class Application {
         return this.formerMode;
     }
 
-    public void showMessage(String msg) {
+    public void showMessage(final String msg) {
         if (this.currentMode == Application.STATUS_GAME) {
             this.getGameManager().setStatusMessage(msg);
         } else if (this.currentMode == Application.STATUS_BATTLE) {
@@ -244,7 +246,7 @@ public class Application {
     public void notifyAllNonCurrentEditorsDisableCommands() {
         for (int x = 0; x < this.allEditors.size(); x++) {
             if (x != this.currentEditor) {
-                AbstractEditor ge = this.allEditors.get(x);
+                final AbstractEditor ge = this.allEditors.get(x);
                 ge.disableEditorCommands();
             }
         }
@@ -253,13 +255,13 @@ public class Application {
     public void notifyAllNonCurrentEditorsEnableCommands() {
         for (int x = 0; x < this.allEditors.size(); x++) {
             if (x != this.currentEditor) {
-                AbstractEditor ge = this.allEditors.get(x);
+                final AbstractEditor ge = this.allEditors.get(x);
                 ge.enableEditorCommands();
             }
         }
     }
 
-    public void setCurrentEditor(int ce) {
+    public void setCurrentEditor(final int ce) {
         this.currentEditor = ce;
     }
 
@@ -284,7 +286,7 @@ public class Application {
     }
 
     private static String getVersionString() {
-        int code = Application.VERSION_CODE;
+        final int code = Application.VERSION_CODE;
         String rt;
         if (code == ProductData.CODE_BETA) {
             rt = "-beta";
@@ -318,7 +320,7 @@ public class Application {
             } else {
                 return null;
             }
-        } catch (NullPointerException npe) {
+        } catch (final NullPointerException npe) {
             return null;
         }
     }
@@ -327,7 +329,7 @@ public class Application {
         return this.objects;
     }
 
-    public Shop getGenericShop(int shopType) {
+    public Shop getGenericShop(final int shopType) {
         switch (shopType) {
         case ShopTypes.SHOP_TYPE_ARMOR:
             return this.armor;

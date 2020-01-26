@@ -22,14 +22,15 @@ public class SortedScoreTable extends ScoreTable {
         this.sortOrder = true;
     }
 
-    private SortedScoreTable(int mv, int length, boolean ascending,
-            String[] customUnit) {
+    private SortedScoreTable(final int mv, final int length,
+            final boolean ascending, final String[] customUnit) {
         super(mv, length, customUnit);
         this.sortOrder = ascending;
     }
 
-    public SortedScoreTable(int mv, int length, boolean ascending,
-            long startingScore, String[] customUnit) {
+    public SortedScoreTable(final int mv, final int length,
+            final boolean ascending, final long startingScore,
+            final String[] customUnit) {
         super(mv, length, customUnit);
         this.sortOrder = ascending;
         int x, y;
@@ -41,17 +42,17 @@ public class SortedScoreTable extends ScoreTable {
     }
 
     @Override
-    public void setEntryScore(int pos, long newScore) {
+    public void setEntryScore(final int pos, final long newScore) {
         // Do nothing
     }
 
     @Override
-    public void setEntryName(int pos, String newName) {
+    public void setEntryName(final int pos, final String newName) {
         // Do nothing
     }
 
-    public void addScore(long newScore, String newName) {
-        Score newEntry = new Score(newScore, newName);
+    public void addScore(final long newScore, final String newName) {
+        final Score newEntry = new Score(newScore, newName);
         if (this.sortOrder) {
             // Append the new score to the end
             this.table.add(newEntry);
@@ -69,8 +70,8 @@ public class SortedScoreTable extends ScoreTable {
         }
     }
 
-    public void addScore(long[] newScore, String newName) {
-        Score newEntry = new Score(this.scoreCount, newScore, newName);
+    public void addScore(final long[] newScore, final String newName) {
+        final Score newEntry = new Score(this.scoreCount, newScore, newName);
         if (this.sortOrder) {
             // Append the new score to the end
             this.table.add(newEntry);
@@ -88,9 +89,9 @@ public class SortedScoreTable extends ScoreTable {
         }
     }
 
-    public boolean checkScore(long[] newScore) {
-        Score newEntry = new Score(this.scoreCount, newScore, "");
-        ArrayList<Score> temp = new ArrayList<>(this.table);
+    public boolean checkScore(final long[] newScore) {
+        final Score newEntry = new Score(this.scoreCount, newScore, "");
+        final ArrayList<Score> temp = new ArrayList<>(this.table);
         if (this.sortOrder) {
             // Copy the current table to the temporary table
             Collections.copy(temp, this.table);
@@ -114,16 +115,16 @@ public class SortedScoreTable extends ScoreTable {
         }
     }
 
-    public static SortedScoreTable readSortedScoreTable(XDataReader xdr)
+    public static SortedScoreTable readSortedScoreTable(final XDataReader xdr)
             throws IOException {
-        boolean order = xdr.readBoolean();
-        int len = xdr.readInt();
-        int unitLen = xdr.readInt();
-        String[] unitArr = new String[unitLen];
+        final boolean order = xdr.readBoolean();
+        final int len = xdr.readInt();
+        final int unitLen = xdr.readInt();
+        final String[] unitArr = new String[unitLen];
         for (int z = 0; z < unitLen; z++) {
             unitArr[z] = xdr.readString();
         }
-        SortedScoreTable sst = new SortedScoreTable(unitLen, len, order,
+        final SortedScoreTable sst = new SortedScoreTable(unitLen, len, order,
                 unitArr);
         for (int x = 0; x < len; x++) {
             sst.table.set(x, Score.readScore(xdr));
@@ -131,19 +132,20 @@ public class SortedScoreTable extends ScoreTable {
         return sst;
     }
 
-    public void writeSortedScoreTable(XDataWriter xdw) throws IOException {
+    public void writeSortedScoreTable(final XDataWriter xdw)
+            throws IOException {
         xdw.writeBoolean(this.sortOrder);
         xdw.writeInt(this.table.size());
         xdw.writeInt(this.unit.length);
-        for (int z = 0; z < this.unit.length; z++) {
-            if (this.unit[z].length() > 1) {
-                xdw.writeString(this.unit[z].substring(1));
+        for (final String element : this.unit) {
+            if (element.length() > 1) {
+                xdw.writeString(element.substring(1));
             } else {
-                xdw.writeString(this.unit[z]);
+                xdw.writeString(element);
             }
         }
-        for (int x = 0; x < this.table.size(); x++) {
-            this.table.get(x).writeScore(xdw);
+        for (final Score element : this.table) {
+            element.writeScore(xdw);
         }
     }
 }

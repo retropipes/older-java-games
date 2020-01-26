@@ -49,10 +49,7 @@ public class SmokeBomb extends AbstractBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         // Paralyze any monsters nearby
-        FantastleX
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        FantastleX.getApplication().getMazeManager().getMaze()
                 .radialScanTimerAction(x, y, z, MazeConstants.LAYER_OBJECT,
                         AbstractBomb.EFFECT_RADIUS, "Monster",
                         SmokeBomb.STUN_DURATION);

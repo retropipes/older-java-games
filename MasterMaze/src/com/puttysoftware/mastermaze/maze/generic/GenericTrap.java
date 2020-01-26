@@ -10,7 +10,8 @@ import com.puttysoftware.mastermaze.resourcemanagers.ObjectImageConstants;
 
 public abstract class GenericTrap extends MazeObject {
     // Constructors
-    protected GenericTrap(final int tc, final int attrName, final int attrColor) {
+    protected GenericTrap(final int tc, final int attrName,
+            final int attrColor) {
         super(false, false);
         this.setTemplateColor(tc);
         this.setAttributeID(attrName);

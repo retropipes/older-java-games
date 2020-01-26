@@ -64,8 +64,8 @@ class InputParser {
         final boolean synonymCommand = this
                 .findRoomCommand(InputParser.MAIN_COMMAND_SYNONYM_TABLE);
         if (synonymCommand) {
-            final String syncmd = this.advData.get(this.counter
-                    + this.subCounter);
+            final String syncmd = this.advData
+                    .get(this.counter + this.subCounter);
             final String synArg = syncmd.substring(7);
             final boolean initialJump2 = this.warpToRoom(synArg);
             if (!initialJump2) {
@@ -130,7 +130,8 @@ class InputParser {
             preParsedCommand = this.substituteSynonyms(preParsedCommand);
             if (InputParser.isOmniCommand(preParsedCommand)) {
                 // Found omni command
-                final int cmdLen = InputParser.omniCommandLength(preParsedCommand);
+                final int cmdLen = InputParser
+                        .omniCommandLength(preParsedCommand);
                 this.parseOmniCommand(preParsedCommand, cmdLen);
             } else {
                 if (this.findRoomCommand(preParsedCommand)) {
@@ -168,8 +169,8 @@ class InputParser {
 
     private static boolean isOmniCommand(final String cmdName) {
         if (cmdName.length() >= 4) {
-            if (cmdName.substring(0, 4).equalsIgnoreCase(
-                    InputParser.OMNI_COMMAND_SHOW)) {
+            if (cmdName.substring(0, 4)
+                    .equalsIgnoreCase(InputParser.OMNI_COMMAND_SHOW)) {
                 return true;
             } else {
                 return false;
@@ -180,8 +181,8 @@ class InputParser {
     }
 
     private static int omniCommandLength(final String cmdName) {
-        if (cmdName.substring(0, 4).equalsIgnoreCase(
-                InputParser.OMNI_COMMAND_SHOW)) {
+        if (cmdName.substring(0, 4)
+                .equalsIgnoreCase(InputParser.OMNI_COMMAND_SHOW)) {
             return 4;
         } else {
             return 0;
@@ -224,15 +225,16 @@ class InputParser {
                 if (specialCmd.length() >= 8) {
                     specialCmdTest8 = specialCmd.substring(0, 8);
                 }
-                if (objStateTest
-                        .equalsIgnoreCase(InputParser.SPECIAL_COMMAND_ALTER_STATE)) {
+                if (objStateTest.equalsIgnoreCase(
+                        InputParser.SPECIAL_COMMAND_ALTER_STATE)) {
                     // Process alter state command
                     String alterArg = "";
                     if (specialCmd.length() >= 6) {
                         alterArg = specialCmd.substring(6);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] alterArgs = alterArg.split(" ");
@@ -244,17 +246,19 @@ class InputParser {
                         }
                     } else {
                         // Invalid alter arguments found
-                        Messager.showMessage("Invalid alter state arguments found!");
+                        Messager.showMessage(
+                                "Invalid alter state arguments found!");
                     }
-                } else if (objStateTest
-                        .equalsIgnoreCase(InputParser.SPECIAL_COMMAND_CHECK_STATE)) {
+                } else if (objStateTest.equalsIgnoreCase(
+                        InputParser.SPECIAL_COMMAND_CHECK_STATE)) {
                     // Process check state command
                     String checkArg = "";
                     if (specialCmd.length() >= 6) {
                         checkArg = specialCmd.substring(6);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] checkArgs = checkArg.split(" ");
@@ -269,7 +273,8 @@ class InputParser {
                             final String delim = this.getCommandAtOffset(2)
                                     .substring(0, 1);
                             if (!delim.equals(InputParser.RESULT_DELIMITER)) {
-                                Messager.showMessage("Missing = before failure result for check command!");
+                                Messager.showMessage(
+                                        "Missing = before failure result for check command!");
                                 return;
                             }
                             this.parseCommandResultInner(checkFail);
@@ -279,14 +284,16 @@ class InputParser {
                             final String delim = this.getCommandAtOffset(1)
                                     .substring(0, 1);
                             if (!delim.equals(InputParser.RESULT_DELIMITER)) {
-                                Messager.showMessage("Missing = before success result for check command!");
+                                Messager.showMessage(
+                                        "Missing = before success result for check command!");
                                 return;
                             }
                             this.parseCommandResultInner(checkSuccess);
                         }
                     } else {
                         // Invalid check arguments found
-                        Messager.showMessage("Invalid check state arguments found!");
+                        Messager.showMessage(
+                                "Invalid check state arguments found!");
                     }
                 } else if (warpKillTest
                         .equalsIgnoreCase(InputParser.SPECIAL_COMMAND_KILL)) {
@@ -296,7 +303,8 @@ class InputParser {
                         killArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     Messager.showMessage(killArg);
@@ -309,33 +317,35 @@ class InputParser {
                         warpArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     if (!this.warpToRoom(warpArg)) {
-                        Messager.showMessage("Warp attempted to nonexistent room: "
-                                + warpArg);
+                        Messager.showMessage(
+                                "Warp attempted to nonexistent room: "
+                                        + warpArg);
                     }
-                } else if (specialCmdTest8
-                        .equalsIgnoreCase(InputParser.SPECIAL_COMMAND_ONCE_GRAB)) {
+                } else if (specialCmdTest8.equalsIgnoreCase(
+                        InputParser.SPECIAL_COMMAND_ONCE_GRAB)) {
                     String onceGrabArg = "";
                     if (specialCmd.length() >= 9) {
                         onceGrabArg = specialCmd.substring(9);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] onceGrabArgSplit = onceGrabArg
                             .split(InputParser.HAVE_MULTIPLE);
                     boolean onceGrabbedAny = false;
-                    for (int x = 0; x < onceGrabArgSplit.length; x++) {
-                        if (!this.inventory.contains(onceGrabArgSplit[x])
-                                && !this.grabbedAlready
-                                        .contains(onceGrabArgSplit[x])) {
+                    for (final String element : onceGrabArgSplit) {
+                        if (!this.inventory.contains(element)
+                                && !this.grabbedAlready.contains(element)) {
                             onceGrabbedAny = true;
-                            this.inventory.add(onceGrabArgSplit[x]);
-                            this.grabbedAlready.add(onceGrabArgSplit[x]);
+                            this.inventory.add(element);
+                            this.grabbedAlready.add(element);
                         }
                     }
                     if (onceGrabbedAny) {
@@ -346,24 +356,24 @@ class InputParser {
                         final String onceGrabFail = this.getCommandAtOffset(2);
                         Messager.showMessage(onceGrabFail);
                     }
-                } else if (specialCmdTest8
-                        .equalsIgnoreCase(InputParser.SPECIAL_COMMAND_ONCE_GAIN)) {
+                } else if (specialCmdTest8.equalsIgnoreCase(
+                        InputParser.SPECIAL_COMMAND_ONCE_GAIN)) {
                     String onceGainArg = "";
                     if (specialCmd.length() >= 9) {
                         onceGainArg = specialCmd.substring(9);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] onceGainArgSplit = onceGainArg
                             .split(InputParser.HAVE_MULTIPLE);
-                    for (int x = 0; x < onceGainArgSplit.length; x++) {
-                        if (!this.inventory.contains(onceGainArgSplit[x])
-                                && !this.grabbedAlready
-                                        .contains(onceGainArgSplit[x])) {
-                            this.inventory.add(onceGainArgSplit[x]);
-                            this.grabbedAlready.add(onceGainArgSplit[x]);
+                    for (final String element : onceGainArgSplit) {
+                        if (!this.inventory.contains(element)
+                                && !this.grabbedAlready.contains(element)) {
+                            this.inventory.add(element);
+                            this.grabbedAlready.add(element);
                         }
                     }
                 } else if (warpKillTest
@@ -373,16 +383,17 @@ class InputParser {
                         gainArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] gainArgSplit = gainArg
                             .split(InputParser.HAVE_MULTIPLE);
-                    for (int x = 0; x < gainArgSplit.length; x++) {
-                        if (!this.inventory.contains(gainArgSplit[x])) {
-                            this.inventory.add(gainArgSplit[x]);
-                            if (!this.grabbedAlready.contains(gainArgSplit[x])) {
-                                this.grabbedAlready.add(gainArgSplit[x]);
+                    for (final String element : gainArgSplit) {
+                        if (!this.inventory.contains(element)) {
+                            this.inventory.add(element);
+                            if (!this.grabbedAlready.contains(element)) {
+                                this.grabbedAlready.add(element);
                             }
                         }
                     }
@@ -393,18 +404,19 @@ class InputParser {
                         grabArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] grabArgSplit = grabArg
                             .split(InputParser.HAVE_MULTIPLE);
                     boolean grabbedAny = false;
-                    for (int x = 0; x < grabArgSplit.length; x++) {
-                        if (!this.inventory.contains(grabArgSplit[x])) {
+                    for (final String element : grabArgSplit) {
+                        if (!this.inventory.contains(element)) {
                             grabbedAny = true;
-                            this.inventory.add(grabArgSplit[x]);
-                            if (!this.grabbedAlready.contains(grabArgSplit[x])) {
-                                this.grabbedAlready.add(grabArgSplit[x]);
+                            this.inventory.add(element);
+                            if (!this.grabbedAlready.contains(element)) {
+                                this.grabbedAlready.add(element);
                             }
                         }
                     }
@@ -422,7 +434,8 @@ class InputParser {
                         haveArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] haveArgSplit = haveArg
@@ -437,7 +450,8 @@ class InputParser {
                         final String delim = this.getCommandAtOffset(2)
                                 .substring(0, 1);
                         if (!delim.equals(InputParser.RESULT_DELIMITER)) {
-                            Messager.showMessage("Missing = before failure result for have command!");
+                            Messager.showMessage(
+                                    "Missing = before failure result for have command!");
                             return;
                         }
                         this.parseCommandResultInner(haveFail);
@@ -447,7 +461,8 @@ class InputParser {
                         final String delim = this.getCommandAtOffset(1)
                                 .substring(0, 1);
                         if (!delim.equals(InputParser.RESULT_DELIMITER)) {
-                            Messager.showMessage("Missing = before success result for have command!");
+                            Messager.showMessage(
+                                    "Missing = before success result for have command!");
                             return;
                         }
                         this.parseCommandResultInner(haveSuccess);
@@ -459,7 +474,8 @@ class InputParser {
                         dropArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] dropArgSplit = dropArg
@@ -487,7 +503,8 @@ class InputParser {
                         loseArg = specialCmd.substring(5);
                     } else {
                         // No arguments specified
-                        InputParser.displayNoArgsForSpecialCommandMessage(specialCmd);
+                        InputParser.displayNoArgsForSpecialCommandMessage(
+                                specialCmd);
                         return;
                     }
                     final String[] loseArgSplit = loseArg
@@ -505,8 +522,8 @@ class InputParser {
                     }
                 } else {
                     // Found unknown special command
-                    Messager.showMessage("Unknown special command found: "
-                            + specialCmd);
+                    Messager.showMessage(
+                            "Unknown special command found: " + specialCmd);
                 }
             } else {
                 // Text to output
@@ -534,8 +551,9 @@ class InputParser {
                     }
                 } else {
                     // Found unknown argument for show omni-command
-                    Messager.showMessage("Unknown argument for show command found: "
-                            + cmdArg);
+                    Messager.showMessage(
+                            "Unknown argument for show command found: "
+                                    + cmdArg);
                 }
             }
         } catch (final RuntimeException re) {
@@ -573,10 +591,10 @@ class InputParser {
             final String inFix = in.toLowerCase();
             final String[] inSplit = inFix.split(" ");
             for (int z = 0; z < inSplit.length; z++) {
-                for (int x = 0; x < this.synonymList.size(); x++) {
-                    final String key = this.synonymList.get(x).get(0);
-                    for (int y = 0; y < this.synonymList.get(x).size(); y++) {
-                        if (inSplit[z].equals(this.synonymList.get(x).get(y))) {
+                for (final ArrayList<String> element : this.synonymList) {
+                    final String key = element.get(0);
+                    for (final String element2 : element) {
+                        if (inSplit[z].equals(element2)) {
                             inSplit[z] = key;
                         }
                     }
@@ -599,17 +617,19 @@ class InputParser {
         Messager.showMessage("Huh? I don't understand " + cmd + ".");
     }
 
-    private static void displayMalformedSpecialCommandMessage(final String cmd) {
+    private static void displayMalformedSpecialCommandMessage(
+            final String cmd) {
         Messager.showMessage("Malformed special command found: " + cmd + ".");
     }
 
-    private static void displayNoArgsForSpecialCommandMessage(final String cmd) {
+    private static void displayNoArgsForSpecialCommandMessage(
+            final String cmd) {
         Messager.showMessage("No arguments were specified for special command: "
                 + cmd + ", and arguments are required!");
     }
 
     private static void displayParsingErrorMessage(final String cmd) {
-        Messager.showMessage("A parsing error occurred while trying to parse "
-                + cmd + ".");
+        Messager.showMessage(
+                "A parsing error occurred while trying to parse " + cmd + ".");
     }
 }

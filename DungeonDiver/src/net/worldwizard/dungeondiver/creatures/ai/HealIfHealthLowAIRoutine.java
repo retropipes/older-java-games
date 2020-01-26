@@ -16,10 +16,12 @@ public class HealIfHealthLowAIRoutine extends AIRoutine {
         final int currMP = c.getCurrentMP();
         if (cost <= currMP) {
             final int currHP = c.getCurrentHP();
-            final int targetHP = (int) (currHP * HealIfHealthLowAIRoutine.HEAL_PERCENT);
+            final int targetHP = (int) (currHP
+                    * HealIfHealthLowAIRoutine.HEAL_PERCENT);
             if (currHP <= targetHP) {
                 final RandomRange chance = new RandomRange(1, 100);
-                if ((int) chance.generate() <= HealIfHealthLowAIRoutine.HEAL_CHANCE) {
+                if ((int) chance
+                        .generate() <= HealIfHealthLowAIRoutine.HEAL_CHANCE) {
                     this.spell = heal;
                     return AIRoutine.ACTION_CAST_SPELL;
                 } else {

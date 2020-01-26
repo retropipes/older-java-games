@@ -42,8 +42,8 @@ public class OneShotTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),

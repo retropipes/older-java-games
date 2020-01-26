@@ -46,10 +46,7 @@ public class Bomb extends AbstractBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         // Kill any monsters nearby
-        FantastleX
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        FantastleX.getApplication().getMazeManager().getMaze()
                 .radialScanKillMonsters(x, y, z, MazeConstants.LAYER_OBJECT,
                         AbstractBomb.EFFECT_RADIUS);
     }

@@ -31,7 +31,7 @@ public class ShockBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Shock objects that react to shock
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .radialScanShockObjects(x, y, z, AbstractBomb.EFFECT_RADIUS);

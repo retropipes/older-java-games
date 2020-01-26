@@ -36,10 +36,8 @@ public class TrueSightAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        MazeRunnerII
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_TRUE_SIGHT,
-                        TrueSightAmulet.EFFECT_DURATION);
+        MazeRunnerII.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_TRUE_SIGHT,
+                TrueSightAmulet.EFFECT_DURATION);
     }
 }

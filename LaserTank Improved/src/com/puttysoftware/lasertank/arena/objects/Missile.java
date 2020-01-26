@@ -10,16 +10,16 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractTransientObject
 public class Missile extends AbstractTransientObject {
     // Constructors
     public Missile() {
-	super();
+        super();
     }
 
     @Override
     public int getForceUnitsImbued() {
-	return 2;
+        return 2;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 27;
+        return 27;
     }
 }

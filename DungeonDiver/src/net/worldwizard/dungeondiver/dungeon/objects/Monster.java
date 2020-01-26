@@ -23,8 +23,8 @@ public class Monster extends GenericNSRSBObject {
         DungeonDiver.getHoldingBag().getBattle().doBattle();
         final NDimensionalLocation playerLoc = DungeonDiver.getHoldingBag()
                 .getDungeonGUI().getPlayerLocation();
-        DungeonDiver.getHoldingBag().getDungeonGUI()
-                .postBattle(playerLoc, this, true);
+        DungeonDiver.getHoldingBag().getDungeonGUI().postBattle(playerLoc, this,
+                true);
     }
 
     @Override

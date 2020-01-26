@@ -9,7 +9,8 @@ public final class TemplateTransform {
             1.0, 1.0);
 
     // Constructor
-    public TemplateTransform(final double rm, final double gm, final double bm) {
+    public TemplateTransform(final double rm, final double gm,
+            final double bm) {
         if (rm < 0.0 || rm > 1.0) {
             throw new IllegalArgumentException("Red must be 0.0 to 1.0!");
         }
@@ -45,19 +46,19 @@ public final class TemplateTransform {
         }
     }
 
-    public final double getRed() {
+    public double getRed() {
         return this.mRed;
     }
 
-    public final double getGreen() {
+    public double getGreen() {
         return this.mGreen;
     }
 
-    public final double getBlue() {
+    public double getBlue() {
         return this.mBlue;
     }
 
-    public final Color applyTransform(final Color input) {
+    public Color applyTransform(final Color input) {
         final int r = input.getRed();
         final int g = input.getGreen();
         final int b = input.getBlue();

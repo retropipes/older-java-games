@@ -42,9 +42,8 @@ public class CombatItemManager {
                     SoundManager.playSound("spell");
                 }
                 String dialogResult = null;
-                dialogResult = Messager.showInputDialog(
-                        "Select an Item to Use", "Select Item", displayNames,
-                        displayNames[0]);
+                dialogResult = Messager.showInputDialog("Select an Item to Use",
+                        "Select Item", displayNames, displayNames[0]);
                 if (dialogResult != null) {
                     int index;
                     for (index = 0; index < displayNames.length; index++) {
@@ -119,11 +118,11 @@ public class CombatItemManager {
         case 'P':
             // One Friend
             if (useAI) {
-                return new Creature[] { PartyManager.getParty()
-                        .pickOnePartyMemberRandomly() };
+                return new Creature[] {
+                        PartyManager.getParty().pickOnePartyMemberRandomly() };
             } else {
-                return new Creature[] { PartyManager.getParty()
-                        .pickOnePartyMember() };
+                return new Creature[] {
+                        PartyManager.getParty().pickOnePartyMember() };
             }
         case 'E':
             // One Enemy
@@ -131,8 +130,8 @@ public class CombatItemManager {
                 return new Creature[] { Worldz.getApplication().getBattle()
                         .pickOneEnemyRandomly() };
             } else {
-                return new Creature[] { Worldz.getApplication().getBattle()
-                        .pickOneEnemy() };
+                return new Creature[] {
+                        Worldz.getApplication().getBattle().pickOneEnemy() };
             }
         case 'F':
             // All Friends

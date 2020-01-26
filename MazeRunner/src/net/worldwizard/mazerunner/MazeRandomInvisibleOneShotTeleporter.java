@@ -1,7 +1,7 @@
 package net.worldwizard.mazerunner;
 
-public class MazeRandomInvisibleOneShotTeleporter extends
-        MazeRandomInvisibleTeleporter {
+public class MazeRandomInvisibleOneShotTeleporter
+        extends MazeRandomInvisibleTeleporter {
     // Serialization
     private static final long serialVersionUID = 108L;
 
@@ -29,8 +29,8 @@ public class MazeRandomInvisibleOneShotTeleporter extends
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.decay();
         app.updatePosition(this.getDestinationRow(),
@@ -53,8 +53,8 @@ public class MazeRandomInvisibleOneShotTeleporter extends
 
     @Override
     public MazeObject editorHook() {
-        final MazeObject mo = MazeMaker
-                .editTeleporterDestination(MazeMaker.TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT);
+        final MazeObject mo = MazeMaker.editTeleporterDestination(
+                MazeMaker.TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT);
         return mo;
     }
 }

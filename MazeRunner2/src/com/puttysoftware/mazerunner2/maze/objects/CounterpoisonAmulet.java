@@ -36,10 +36,8 @@ public class CounterpoisonAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        MazeRunnerII
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_COUNTER_POISONED,
-                        CounterpoisonAmulet.EFFECT_DURATION);
+        MazeRunnerII.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_COUNTER_POISONED,
+                CounterpoisonAmulet.EFFECT_DURATION);
     }
 }

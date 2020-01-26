@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver3.support.scenario;
 
 public interface FormatConstants {
-    public static final int SCENARIO_FORMAT_1 = 1;
-    public static final int SCENARIO_FORMAT_2 = 2;
-    public static final int LATEST_SCENARIO_FORMAT = 2;
+    int SCENARIO_FORMAT_1 = 1;
+    int SCENARIO_FORMAT_2 = 2;
+    int LATEST_SCENARIO_FORMAT = 2;
 }

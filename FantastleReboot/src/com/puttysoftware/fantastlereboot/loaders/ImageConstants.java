@@ -19,9 +19,9 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package com.puttysoftware.fantastlereboot.loaders;
 
 public class ImageConstants {
-  public static final int SIZE = 64;
+    public static final int SIZE = 64;
 
-  private ImageConstants() {
-    // Do nothing
-  }
+    private ImageConstants() {
+        // Do nothing
+    }
 }

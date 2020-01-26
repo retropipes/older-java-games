@@ -98,10 +98,8 @@ public class LoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Error loading " + sg.toLowerCase()

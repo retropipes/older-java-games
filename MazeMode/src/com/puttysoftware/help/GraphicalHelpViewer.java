@@ -44,10 +44,10 @@ public final class GraphicalHelpViewer {
         this.helpContainer.setLayout(new BorderLayout());
         this.choiceContainer = new Container();
         this.scrollPane = new JScrollPane(this.choiceContainer);
-        this.scrollPane
-                .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        this.scrollPane
-                .setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        this.scrollPane.setHorizontalScrollBarPolicy(
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        this.scrollPane.setVerticalScrollBarPolicy(
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.helpContainer.add(this.scrollPane, BorderLayout.CENTER);
         this.fill = fillColor;
         this.helpContainer.setBackground(fillColor);
@@ -93,18 +93,17 @@ public final class GraphicalHelpViewer {
                 final String dirOnly = fc.getDirectory();
                 fileOnly = filename.substring(dirOnly.length() + 1);
                 if (!FilenameChecker.isFilenameOK(fileOnly)) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The file name you entered contains illegal characters.\n"
-                                            + "These characters are not allowed: /?<>\\:|\"\n"
-                                            + "Files named con, nul, or prn are illegal, as are files\n"
-                                            + "named com1 through com9 and lpt1 through lpt9.",
-                                    "Save");
+                    CommonDialogs.showErrorDialog(
+                            "The file name you entered contains illegal characters.\n"
+                                    + "These characters are not allowed: /?<>\\:|\"\n"
+                                    + "Files named con, nul, or prn are illegal, as are files\n"
+                                    + "named com1 through com9 and lpt1 through lpt9.",
+                            "Save");
                 } else {
                     if (extension != null) {
                         if (!extension.equals("png")) {
-                            filename = GraphicalHelpViewer.getNameWithoutExtension(file)
-                                    + ".png";
+                            filename = GraphicalHelpViewer
+                                    .getNameWithoutExtension(file) + ".png";
                         }
                     } else {
                         filename += ".png";

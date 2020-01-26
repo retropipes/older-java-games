@@ -330,7 +330,8 @@ class MazeEditorGUI {
                 app.getMenuManager().disableUpOneLevel();
             }
             if (this.elMgr != null) {
-                if (this.elMgr.getEditorLocationE() != MazeConstants.LAYER_GROUND) {
+                if (this.elMgr
+                        .getEditorLocationE() != MazeConstants.LAYER_GROUND) {
                     app.getMenuManager().enableSetStartPoint();
                 } else {
                     app.getMenuManager().disableSetStartPoint();
@@ -398,31 +399,42 @@ class MazeEditorGUI {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    final AbstractMazeObject obj1 = app
-                            .getMazeManager()
+                    final AbstractMazeObject obj1 = app.getMazeManager()
                             .getMaze()
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     MazeConstants.LAYER_GROUND)
                             .editorRenderHook(y, x,
                                     this.elMgr.getEditorLocationZ());
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            obj1.getName(), obj1.getBaseID(),
-                            obj1.getTemplateColor(), obj1.getAttributeID(),
-                            obj1.getAttributeTemplateColor()), xFix, yFix);
+                    this.drawGrid.setImageCell(
+                            ObjectImageManager.getImage(obj1.getName(),
+                                    obj1.getBaseID(), obj1.getTemplateColor(),
+                                    obj1.getAttributeID(),
+                                    obj1.getAttributeTemplateColor()),
+                            xFix, yFix);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            MazeEditorGUI.EMPTY_VOID.getName(),
-                            MazeEditorGUI.EMPTY_VOID.getBaseID(),
-                            ColorConstants.COLOR_NONE,
-                            MazeEditorGUI.EMPTY_VOID.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            MazeEditorGUI.EMPTY_VOID.getName(),
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 } catch (final NullPointerException np) {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            MazeEditorGUI.EMPTY_VOID.getName(),
-                            MazeEditorGUI.EMPTY_VOID.getBaseID(),
-                            ColorConstants.COLOR_NONE,
-                            MazeEditorGUI.EMPTY_VOID.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            MazeEditorGUI.EMPTY_VOID.getName(),
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 }
             }
         }
@@ -449,14 +461,16 @@ class MazeEditorGUI {
                 xFix = x - this.evMgr.getViewingWindowLocationX();
                 yFix = y - this.evMgr.getViewingWindowLocationY();
                 try {
-                    final AbstractMazeObject obj1 = m.getCell(y, x,
-                            this.elMgr.getEditorLocationZ(),
-                            MazeConstants.LAYER_GROUND).editorRenderHook(y, x,
-                            this.elMgr.getEditorLocationZ());
-                    final AbstractMazeObject obj2 = m.getCell(y, x,
-                            this.elMgr.getEditorLocationZ(),
-                            MazeConstants.LAYER_OBJECT).editorRenderHook(y, x,
-                            this.elMgr.getEditorLocationZ());
+                    final AbstractMazeObject obj1 = m
+                            .getCell(y, x, this.elMgr.getEditorLocationZ(),
+                                    MazeConstants.LAYER_GROUND)
+                            .editorRenderHook(y, x,
+                                    this.elMgr.getEditorLocationZ());
+                    final AbstractMazeObject obj2 = m
+                            .getCell(y, x, this.elMgr.getEditorLocationZ(),
+                                    MazeConstants.LAYER_OBJECT)
+                            .editorRenderHook(y, x,
+                                    this.elMgr.getEditorLocationZ());
                     final BufferedImageIcon img1 = ObjectImageManager.getImage(
                             obj1.getName(), obj1.getBaseID(),
                             obj1.getTemplateColor(), obj1.getAttributeID(),
@@ -483,19 +497,29 @@ class MazeEditorGUI {
                                 xFix, yFix);
                     }
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            MazeEditorGUI.EMPTY_VOID.getName(),
-                            MazeEditorGUI.EMPTY_VOID.getBaseID(),
-                            ColorConstants.COLOR_NONE,
-                            MazeEditorGUI.EMPTY_VOID.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            MazeEditorGUI.EMPTY_VOID.getName(),
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 } catch (final NullPointerException np) {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            MazeEditorGUI.EMPTY_VOID.getName(),
-                            MazeEditorGUI.EMPTY_VOID.getBaseID(),
-                            ColorConstants.COLOR_NONE,
-                            MazeEditorGUI.EMPTY_VOID.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            MazeEditorGUI.EMPTY_VOID.getName(),
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            MazeEditorGUI.EMPTY_VOID
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 }
             }
         }
@@ -506,22 +530,19 @@ class MazeEditorGUI {
         this.showOutput();
     }
 
-    void redrawVirtual(final int x, final int y, final AbstractMazeObject obj3) {
+    void redrawVirtual(final int x, final int y,
+            final AbstractMazeObject obj3) {
         // Draw the square
         final Application app = FantastleX.getApplication();
         int xFix, yFix;
         xFix = y - this.evMgr.getViewingWindowLocationX();
         yFix = x - this.evMgr.getViewingWindowLocationY();
         try {
-            final AbstractMazeObject obj1 = app
-                    .getMazeManager()
-                    .getMaze()
+            final AbstractMazeObject obj1 = app.getMazeManager().getMaze()
                     .getCell(y, x, this.elMgr.getEditorLocationZ(),
                             MazeConstants.LAYER_GROUND)
                     .editorRenderHook(y, x, this.elMgr.getEditorLocationZ());
-            final AbstractMazeObject obj2 = app
-                    .getMazeManager()
-                    .getMaze()
+            final AbstractMazeObject obj2 = app.getMazeManager().getMaze()
                     .getCell(y, x, this.elMgr.getEditorLocationZ(),
                             MazeConstants.LAYER_OBJECT)
                     .editorRenderHook(y, x, this.elMgr.getEditorLocationZ());
@@ -536,9 +557,9 @@ class MazeEditorGUI {
             final BufferedImageIcon img3 = ObjectImageManager.getImage(
                     obj4.getName(), obj4.getBaseID(), obj4.getTemplateColor(),
                     obj4.getAttributeID(), obj4.getAttributeTemplateColor());
-            this.drawGrid
-                    .setImageCell(ImageTransformer.getVirtualCompositeImage(
-                            img1, img2, img3), xFix, yFix);
+            this.drawGrid.setImageCell(
+                    ImageTransformer.getVirtualCompositeImage(img1, img2, img3),
+                    xFix, yFix);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
         } catch (final NullPointerException np) {
@@ -559,9 +580,7 @@ class MazeEditorGUI {
         final int gridY = y / ImageTransformer.getGraphicSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final AbstractMazeObject mo = app
-                    .getMazeManager()
-                    .getMaze()
+            final AbstractMazeObject mo = app.getMazeManager().getMaze()
                     .getCell(gridX, gridY, this.elMgr.getEditorLocationZ(),
                             this.elMgr.getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
@@ -585,8 +604,8 @@ class MazeEditorGUI {
         if (app.getMazeManager().getMaze() != null && this.elMgr != null
                 && this.evMgr != null) {
             this.elMgr.setLimitsFromMaze(app.getMazeManager().getMaze());
-            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromMaze(app
-                    .getMazeManager().getMaze());
+            this.evMgr.halfOffsetMaximumViewingWindowLocationsFromMaze(
+                    app.getMazeManager().getMaze());
         }
     }
 
@@ -702,8 +721,8 @@ class MazeEditorGUI {
             if (this.picker != null) {
                 this.picker.updatePicker(newImages, newNames);
             } else {
-                this.picker = new PicturePicker(newImages, newNames, new Color(
-                        223, 223, 223));
+                this.picker = new PicturePicker(newImages, newNames,
+                        new Color(223, 223, 223));
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
             this.picker.setPickerDimensions(this.outputPane.getHeight());
@@ -871,8 +890,8 @@ class MazeEditorGUI {
         }
     }
 
-    private class StartEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class StartEventHandler
+            implements AdjustmentListener, MouseListener {
         StartEventHandler() {
             // Do nothing
         }
@@ -940,8 +959,8 @@ class MazeEditorGUI {
         }
     }
 
-    private class TeleportEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class TeleportEventHandler
+            implements AdjustmentListener, MouseListener {
         TeleportEventHandler() {
             // Do nothing
         }
@@ -1009,8 +1028,8 @@ class MazeEditorGUI {
         }
     }
 
-    private class ConditionalTeleportEventHandler implements
-            AdjustmentListener, MouseListener {
+    private class ConditionalTeleportEventHandler
+            implements AdjustmentListener, MouseListener {
         ConditionalTeleportEventHandler() {
             // Do nothing
         }
@@ -1121,8 +1140,8 @@ class MazeEditorGUI {
         }
     }
 
-    private class MetalButtonEventHandler implements AdjustmentListener,
-            MouseListener {
+    private class MetalButtonEventHandler
+            implements AdjustmentListener, MouseListener {
         // handle scroll bars
         public MetalButtonEventHandler() {
             // Do nothing

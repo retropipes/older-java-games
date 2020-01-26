@@ -28,8 +28,8 @@ public class PersonalityDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    PersonalityDataManager.class
-                            .getResourceAsStream("/net/worldwizard/fantastle5/resources/data/personality/"
+                    PersonalityDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/fantastle5/resources/data/personality/"
                                     + name + ".dat"));
             final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTE_COUNT];
             for (int x = 0; x < rawData.length; x++) {

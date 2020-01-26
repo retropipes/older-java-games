@@ -59,8 +59,8 @@ public class FaithConstants {
                 // Fetch data
                 final ArrayList<String> tempNames = new ArrayList<>();
                 try (final ResourceStreamReader rsr1 = new ResourceStreamReader(
-                        FaithConstants.class
-                                .getResourceAsStream("/com/puttysoftware/ddremix/resources/data/faith/catalog.txt"))) {
+                        FaithConstants.class.getResourceAsStream(
+                                "/com/puttysoftware/ddremix/resources/data/faith/catalog.txt"))) {
                     String input1 = "";
                     while (input1 != null) {
                         input1 = rsr1.readString();
@@ -74,8 +74,8 @@ public class FaithConstants {
                 FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
                 final ArrayList<String> tempColors = new ArrayList<>();
                 try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
-                        FaithConstants.class
-                                .getResourceAsStream("/com/puttysoftware/ddremix/resources/data/faith/colors.txt"))) {
+                        FaithConstants.class.getResourceAsStream(
+                                "/com/puttysoftware/ddremix/resources/data/faith/colors.txt"))) {
                     String input2 = "";
                     while (input2 != null) {
                         input2 = rsr2.readString();

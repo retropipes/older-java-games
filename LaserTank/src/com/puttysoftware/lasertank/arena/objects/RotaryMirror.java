@@ -48,8 +48,9 @@ public class RotaryMirror extends AbstractReactionWall {
     }
 
     @Override
-    public Direction laserExitedAction(final int locX, final int locY, final int locZ,
-            final int dirX, final int dirY, final int laserType) {
+    public Direction laserExitedAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY,
+            final int laserType) {
         // Finish reflecting laser
         SoundManager.playSound(SoundConstants.SOUND_REFLECT);
         final Direction oldlaser = DirectionResolver

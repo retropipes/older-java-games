@@ -29,8 +29,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().decay();
         int dr, dc;
@@ -55,8 +55,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         final MazeEditorLogic me = FantastleX.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_RANDOM_ONESHOT);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_RANDOM_ONESHOT);
     }
 
     @Override

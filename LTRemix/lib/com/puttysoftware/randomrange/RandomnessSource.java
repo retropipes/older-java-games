@@ -13,21 +13,21 @@ class RandomnessSource {
 
     // Methods
     private static Random getSource() {
-        if (SOURCE == null) {
-            SOURCE = new Random();
+        if (RandomnessSource.SOURCE == null) {
+            RandomnessSource.SOURCE = new Random();
         }
-        return SOURCE;
+        return RandomnessSource.SOURCE;
     }
 
     static int nextInt() {
-        return getSource().nextInt();
+        return RandomnessSource.getSource().nextInt();
     }
 
     static long nextLong() {
-        return getSource().nextLong();
+        return RandomnessSource.getSource().nextLong();
     }
 
     static double nextDouble() {
-        return getSource().nextDouble();
+        return RandomnessSource.getSource().nextDouble();
     }
 }

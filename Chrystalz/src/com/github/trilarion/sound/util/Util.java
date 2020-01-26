@@ -27,7 +27,7 @@ public class Util {
      * @param v
      * @return
      */
-    public static int ilog(int v1) {
+    public static int ilog(final int v1) {
         int v = v1;
         int ret = 0;
         while (v != 0) {
@@ -42,7 +42,7 @@ public class Util {
      * @param v
      * @return
      */
-    public static int ilog2(int v1) {
+    public static int ilog2(final int v1) {
         int v = v1;
         int ret = 0;
         while (v > 1) {
@@ -57,7 +57,7 @@ public class Util {
      * @param v
      * @return
      */
-    public static int icount(int v1) {
+    public static int icount(final int v1) {
         int v = v1;
         int ret = 0;
         while (v != 0) {

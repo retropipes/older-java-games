@@ -36,10 +36,7 @@ public class WarpBomb extends GenericBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         SoundManager.playSound(SoundConstants.SOUND_EXPLODE);
-        MasterMaze
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        MasterMaze.getApplication().getMazeManager().getMaze()
                 .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
                         GenericBomb.EFFECT_RADIUS);
     }

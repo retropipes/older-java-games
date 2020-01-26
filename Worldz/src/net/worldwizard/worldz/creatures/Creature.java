@@ -83,7 +83,7 @@ public abstract class Creature implements StatConstants {
         this.fixStatValue(StatConstants.STAT_CURRENT_HP);
     }
 
-    public void doDamagePercentage(int fP) {
+    public void doDamagePercentage(final int fP) {
         int percent = fP;
         if (percent > Creature.FULL_HEAL_PERCENTAGE) {
             percent = Creature.FULL_HEAL_PERCENTAGE;
@@ -106,7 +106,7 @@ public abstract class Creature implements StatConstants {
         this.fixStatValue(StatConstants.STAT_CURRENT_MP);
     }
 
-    public void drainPercentage(int fP) {
+    public void drainPercentage(final int fP) {
         int percent = fP;
         if (percent > Creature.FULL_HEAL_PERCENTAGE) {
             percent = Creature.FULL_HEAL_PERCENTAGE;
@@ -206,11 +206,13 @@ public abstract class Creature implements StatConstants {
     }
 
     public int getArmorBlock() {
-        return (int) (this.getItems().getTotalAbsorb() * StatConstants.FACTOR_ABSORB_DEFENSE);
+        return (int) (this.getItems().getTotalAbsorb()
+                * StatConstants.FACTOR_ABSORB_DEFENSE);
     }
 
     public int getAttack() {
-        return (int) (this.getStrength() * StatConstants.FACTOR_STRENGTH_ATTACK);
+        return (int) (this.getStrength()
+                * StatConstants.FACTOR_STRENGTH_ATTACK);
     }
 
     public int getAttacksPerRound() {
@@ -396,11 +398,13 @@ public abstract class Creature implements StatConstants {
     }
 
     public int getMaximumHP() {
-        return (int) (this.getVitality() * StatConstants.FACTOR_VITALITY_HEALTH);
+        return (int) (this.getVitality()
+                * StatConstants.FACTOR_VITALITY_HEALTH);
     }
 
     public int getMaximumMP() {
-        return (int) (this.getIntelligence() * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
+        return (int) (this.getIntelligence()
+                * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
     }
 
     public int getEffectedMaximumHP() {
@@ -431,13 +435,15 @@ public abstract class Creature implements StatConstants {
 
     public int getEffectedSpeed() {
         return (int) (this.getEffectedStat(StatConstants.STAT_AGILITY)
-                * StatConstants.FACTOR_AGILITY_SPEED - this.items
-                .getTotalEquipmentWeight() * StatConstants.FACTOR_WEIGHT_SPEED);
+                * StatConstants.FACTOR_AGILITY_SPEED
+                - this.items.getTotalEquipmentWeight()
+                        * StatConstants.FACTOR_WEIGHT_SPEED);
     }
 
     public int getSpeed() {
-        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED - this.items
-                .getTotalEquipmentWeight() * StatConstants.FACTOR_WEIGHT_SPEED);
+        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED
+                - this.items.getTotalEquipmentWeight()
+                        * StatConstants.FACTOR_WEIGHT_SPEED);
     }
 
     public SpellBook getSpellBook() {
@@ -495,7 +501,8 @@ public abstract class Creature implements StatConstants {
     }
 
     public int getWeaponPower() {
-        return (int) (this.getItems().getTotalPower() * StatConstants.FACTOR_POWER_ATTACK);
+        return (int) (this.getItems().getTotalPower()
+                * StatConstants.FACTOR_POWER_ATTACK);
     }
 
     public void heal(final int amount) {
@@ -512,7 +519,7 @@ public abstract class Creature implements StatConstants {
         this.setCurrentHP(this.getEffectedMaximumHP());
     }
 
-    public void healPercentage(int fP) {
+    public void healPercentage(final int fP) {
         int percent = fP;
         if (percent > Creature.FULL_HEAL_PERCENTAGE) {
             percent = Creature.FULL_HEAL_PERCENTAGE;
@@ -639,7 +646,7 @@ public abstract class Creature implements StatConstants {
         this.setCurrentMP(this.getMaximumMP());
     }
 
-    public void regeneratePercentage(int fP) {
+    public void regeneratePercentage(final int fP) {
         int percent = fP;
         if (percent > Creature.FULL_HEAL_PERCENTAGE) {
             percent = Creature.FULL_HEAL_PERCENTAGE;

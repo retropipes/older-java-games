@@ -32,14 +32,15 @@ public class ArrowTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
         DungeonDiver4.getApplication().showMessage("The arrow is stopped!");
         return false;
     }

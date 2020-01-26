@@ -28,13 +28,14 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
     private static final long SCORE_CONSUME = 50L;
 
     // Constructors
-    protected AbstractPotion(int stat, boolean usePercent) {
+    protected AbstractPotion(final int stat, final boolean usePercent) {
         super(false, false);
         this.statAffected = stat;
         this.effectValueIsPercentage = usePercent;
     }
 
-    protected AbstractPotion(int stat, boolean usePercent, int min, int max) {
+    protected AbstractPotion(final int stat, final boolean usePercent,
+            final int min, final int max) {
         super(false, false);
         this.statAffected = stat;
         this.effectValueIsPercentage = usePercent;
@@ -43,7 +44,7 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
 
     @Override
     public AbstractPotion clone() {
-        AbstractPotion copy = (AbstractPotion) super.clone();
+        final AbstractPotion copy = (AbstractPotion) super.clone();
         copy.statAffected = this.statAffected;
         copy.effectValue = this.effectValue;
         copy.effectValueIsPercentage = this.effectValueIsPercentage;
@@ -66,9 +67,9 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
     }
 
     @Override
-    public final void postMoveAction(boolean ie, int dirX, int dirY,
-            DungeonObjectInventory inv) {
-        PartyMember m = PartyManager.getParty().getLeader();
+    public final void postMoveAction(final boolean ie, final int dirX,
+            final int dirY, final DungeonObjectInventory inv) {
+        final PartyMember m = PartyManager.getParty().getLeader();
         if (this.effect != null) {
             this.effectValue = this.effect.generate();
         } else {
@@ -114,10 +115,11 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, DungeonObjectInventory inv) {
-        DungeonDiver4.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final DungeonObjectInventory inv) {
+        DungeonDiver4.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_SHATTER);
         DungeonDiver4.getApplication().getGameManager()
                 .addToScore(AbstractPotion.SCORE_SMASH);
@@ -125,8 +127,8 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }
@@ -140,12 +142,12 @@ public abstract class AbstractPotion extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

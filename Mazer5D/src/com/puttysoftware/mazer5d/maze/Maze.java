@@ -128,7 +128,7 @@ public class Maze implements MazeConstants {
     }
 
     public boolean isAlive() {
-        return (this.currHP > 0);
+        return this.currHP > 0;
     }
 
     public void doPoisonDamage() {
@@ -442,12 +442,12 @@ public class Maze implements MazeConstants {
     }
 
     public boolean doesLevelExist(final int level) {
-        return (level < this.levelCount && level >= 0);
+        return level < this.levelCount && level >= 0;
     }
 
     public boolean doesLevelExistOffset(final int level) {
-        return (this.activeLevel + level < this.levelCount && this.activeLevel
-                + level >= 0);
+        return this.activeLevel + level < this.levelCount
+                && this.activeLevel + level >= 0;
     }
 
     public void cutLevel() {
@@ -901,8 +901,8 @@ public class Maze implements MazeConstants {
         // Make base paths the same
         m.basePath = this.basePath;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze")) {
             // Read metafile
             final int version = m.readMazeMetafileXML(metaReader);
             // Set XML compatibility flags
@@ -1013,8 +1013,8 @@ public class Maze implements MazeConstants {
         // Clear XML 4 compatibility flag
         Mazer5D.getApplication().getMazeManager().setMazeXML4Compatible(false);
         // Create metafile writer
-        try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                + File.separator + "metafile.xml", "maze")) {
+        try (XDataWriter metaWriter = new XDataWriter(
+                this.basePath + File.separator + "metafile.xml", "maze")) {
             // Write metafile
             this.writeMazeMetafileXML(metaWriter);
             // Create data writer
@@ -1047,7 +1047,8 @@ public class Maze implements MazeConstants {
         }
     }
 
-    private void writeMazeLevelXML(final XDataWriter writer) throws IOException {
+    private void writeMazeLevelXML(final XDataWriter writer)
+            throws IOException {
         // Clear XML compatibility flag
         Mazer5D.getApplication().getMazeManager().setMazeXML1Compatible(false);
         // Clear XML 2 compatibility flag

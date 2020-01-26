@@ -77,13 +77,12 @@ public class XMLSaveTask extends Thread {
                 // Restore start location
                 app.getMazeManager().getMaze().restoreStart();
             }
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), mazeFile);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    mazeFile);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the XML "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the XML " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             Main.getDebug().debug(ex);

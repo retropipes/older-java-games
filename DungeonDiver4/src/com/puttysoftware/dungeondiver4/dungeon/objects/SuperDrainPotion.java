@@ -46,7 +46,7 @@ public class SuperDrainPotion extends AbstractPotion {
 
     @Override
     public int getEffectValue() {
-        return -(PartyManager.getParty().getLeader().getCurrentMP());
+        return -PartyManager.getParty().getLeader().getCurrentMP();
     }
 
     @Override

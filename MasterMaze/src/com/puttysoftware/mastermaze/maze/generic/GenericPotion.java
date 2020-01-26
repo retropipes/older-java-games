@@ -113,10 +113,10 @@ public abstract class GenericPotion extends MazeObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
-        MasterMaze.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
+        MasterMaze.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_SHATTER);
         MasterMaze.getApplication().getGameManager()
                 .addToScore(GenericPotion.SCORE_SMASH);

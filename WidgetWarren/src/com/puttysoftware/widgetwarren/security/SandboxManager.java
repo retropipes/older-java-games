@@ -5,9 +5,9 @@ import java.io.File;
 public abstract class SandboxManager {
     // Constructor
     protected SandboxManager() {
-        new File(getDocumentsDirectory()).mkdirs();
-        new File(getCachesDirectory()).mkdirs();
-        new File(getSupportDirectory()).mkdirs();
+        new File(this.getDocumentsDirectory()).mkdirs();
+        new File(this.getCachesDirectory()).mkdirs();
+        new File(this.getSupportDirectory()).mkdirs();
     }
 
     // Static methods

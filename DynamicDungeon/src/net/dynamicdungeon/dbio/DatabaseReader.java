@@ -14,45 +14,45 @@ public class DatabaseReader implements AutoCloseable {
 
     // Constructors
     public DatabaseReader(final String filename) throws IOException {
-	this.dbrf = new FileInputStream(filename);
-	this.dbrb = new BufferedInputStream(this.dbrf,
-		DatabaseReader.BUFFER_SIZE);
-	this.dbr = new DataInputStream(this.dbrb);
+        this.dbrf = new FileInputStream(filename);
+        this.dbrb = new BufferedInputStream(this.dbrf,
+                DatabaseReader.BUFFER_SIZE);
+        this.dbr = new DataInputStream(this.dbrb);
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-	this.dbr.close();
-	this.dbrb.close();
-	this.dbrf.close();
+        this.dbr.close();
+        this.dbrb.close();
+        this.dbrf.close();
     }
 
     public double readDouble() throws IOException {
-	return this.dbr.readDouble();
+        return this.dbr.readDouble();
     }
 
     public long readLong() throws IOException {
-	return this.dbr.readLong();
+        return this.dbr.readLong();
     }
 
     public int readInt() throws IOException {
-	return this.dbr.readInt();
+        return this.dbr.readInt();
     }
 
     public int readShort() throws IOException {
-	return this.dbr.readShort();
+        return this.dbr.readShort();
     }
 
     public int readByte() throws IOException {
-	return this.dbr.readByte();
+        return this.dbr.readByte();
     }
 
     public boolean readBoolean() throws IOException {
-	return this.dbr.readBoolean();
+        return this.dbr.readBoolean();
     }
 
     public String readString() throws IOException {
-	return this.dbr.readUTF();
+        return this.dbr.readUTF();
     }
 }

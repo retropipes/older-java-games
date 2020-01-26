@@ -46,9 +46,7 @@ public class FireAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        Main.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_FIERY,
-                        FireAmulet.EFFECT_DURATION);
+        Main.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
     }
 }

@@ -36,11 +36,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MazeMode.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (this.getKey() != GenericProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
@@ -66,8 +66,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             if (this.getKey() == GenericProgrammableLock.SIGNAL) {
                 MazeMode.getApplication().showMessage("You need a Crystal");
             } else {
-                MazeMode.getApplication().showMessage(
-                        "You need a " + this.getKey().getName());
+                MazeMode.getApplication()
+                        .showMessage("You need a " + this.getKey().getName());
             }
         }
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -95,8 +95,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             if (this.getKey() != GenericProgrammableLock.SIGNAL) {
                 return !inv.isItemThere(this.getKey());
             } else {
-                return !inv
-                        .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
+                return !inv.isItemCategoryThere(
+                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
             }
         }
     }

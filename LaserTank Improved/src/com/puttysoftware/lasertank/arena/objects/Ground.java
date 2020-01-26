@@ -12,26 +12,26 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class Ground extends AbstractGround {
     // Constructors
     public Ground() {
-	super();
-	this.setMaterial(MaterialConstants.MATERIAL_METALLIC);
+        super();
+        this.setMaterial(MaterialConstants.MATERIAL_METALLIC);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_ICE:
-	    final Ice i = new Ice();
-	    i.setPreviousState(this);
-	    return i;
-	case MaterialConstants.MATERIAL_FIRE:
-	    return new Lava();
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_ICE:
+            final Ice i = new Ice();
+            i.setPreviousState(this);
+            return i;
+        case MaterialConstants.MATERIAL_FIRE:
+            return new Lava();
+        default:
+            return this;
+        }
     }
 
     @Override
     public final int getStringBaseID() {
-	return 19;
+        return 19;
     }
 }

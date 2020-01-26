@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazerunner2.creatures.monsters;
 
-class AppearanceRandomFixedDynamicMonster extends
-        AbstractAppearanceRandomFixedMonster {
+class AppearanceRandomFixedDynamicMonster
+        extends AbstractAppearanceRandomFixedMonster {
     // Constructors
     AppearanceRandomFixedDynamicMonster() {
         super();

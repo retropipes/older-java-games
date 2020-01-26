@@ -29,8 +29,8 @@ class GameDraw extends JPanel {
             final int vSize = PreferencesManager.getViewingWindowSize();
             for (int x = 0; x < vSize; x++) {
                 for (int y = 0; y < vSize; y++) {
-                    g.drawImage(this.drawGrid.getImageCell(y, x), x * gSize, y
-                            * gSize, gSize, gSize, null);
+                    g.drawImage(this.drawGrid.getImageCell(y, x), x * gSize,
+                            y * gSize, gSize, gSize, null);
                 }
             }
         }

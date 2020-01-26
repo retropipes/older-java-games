@@ -44,8 +44,8 @@ public class ExplodingWall extends AbstractWall {
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, currName;
         invalidName = new EmptyVoid().getName();
         currName = curr.getName();
-        final AbstractMazeObject mo2 = app.getMazeManager().getMazeObject(
-                x - 1, y, z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo2 = app.getMazeManager().getMazeObject(x - 1,
+                y, z, MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
         } catch (final NullPointerException np) {
@@ -65,8 +65,8 @@ public class ExplodingWall extends AbstractWall {
         } catch (final NullPointerException np) {
             mo6Name = invalidName;
         }
-        final AbstractMazeObject mo8 = app.getMazeManager().getMazeObject(
-                x + 1, y, z, MazeConstants.LAYER_OBJECT);
+        final AbstractMazeObject mo8 = app.getMazeManager().getMazeObject(x + 1,
+                y, z, MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
         } catch (final NullPointerException np) {

@@ -17,7 +17,7 @@ public class ImageTransformer {
     private static final Color REPLACE = UIManager.getColor("control");
 
     public static Color getReplacementColor() {
-        return REPLACE;
+        return ImageTransformer.REPLACE;
     }
 
     public static BufferedImageIcon getTemplateTransformedImage(
@@ -26,15 +26,15 @@ public class ImageTransformer {
             if (tt == null) {
                 return icon;
             } else {
-                BufferedImageIcon result = new BufferedImageIcon(icon);
+                final BufferedImageIcon result = new BufferedImageIcon(icon);
                 if (icon != null) {
                     for (int x = 0; x < icon.getWidth(); x++) {
                         for (int y = 0; y < icon.getHeight(); y++) {
-                            int pixel = icon.getRGB(x, y);
-                            Color c = new Color(pixel);
+                            final int pixel = icon.getRGB(x, y);
+                            final Color c = new Color(pixel);
                             if (!c.equals(ImageTransformer.TRANSPARENT)) {
-                                result.setRGB(x, y, tt.applyTransform(c)
-                                        .getRGB());
+                                result.setRGB(x, y,
+                                        tt.applyTransform(c).getRGB());
                             }
                         }
                     }
@@ -53,12 +53,12 @@ public class ImageTransformer {
     public static BufferedImageIcon getTransformedImage(
             final BufferedImageIcon icon) {
         try {
-            BufferedImageIcon result = new BufferedImageIcon(icon);
+            final BufferedImageIcon result = new BufferedImageIcon(icon);
             if (icon != null) {
                 for (int x = 0; x < icon.getWidth(); x++) {
                     for (int y = 0; y < icon.getHeight(); y++) {
-                        int pixel = icon.getRGB(x, y);
-                        Color c = new Color(pixel);
+                        final int pixel = icon.getRGB(x, y);
+                        final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {
                             result.setRGB(x, y,
                                     ImageTransformer.REPLACE.getRGB());
@@ -79,10 +79,10 @@ public class ImageTransformer {
     public static BufferedImageIcon getHorizontallyFlippedImage(
             final BufferedImageIcon icon) {
         try {
-            BufferedImageIcon result = new BufferedImageIcon(icon);
+            final BufferedImageIcon result = new BufferedImageIcon(icon);
             for (int x = 0; x < icon.getWidth(); x++) {
                 for (int y = 0; y < icon.getHeight(); y++) {
-                    int pixel = icon.getRGB(x, y);
+                    final int pixel = icon.getRGB(x, y);
                     result.setRGB(icon.getWidth() - x, y, pixel);
                 }
             }
@@ -97,10 +97,10 @@ public class ImageTransformer {
     public static BufferedImageIcon getVerticallyFlippedImage(
             final BufferedImageIcon icon) {
         try {
-            BufferedImageIcon result = new BufferedImageIcon(icon);
+            final BufferedImageIcon result = new BufferedImageIcon(icon);
             for (int x = 0; x < icon.getWidth(); x++) {
                 for (int y = 0; y < icon.getHeight(); y++) {
-                    int pixel = icon.getRGB(x, y);
+                    final int pixel = icon.getRGB(x, y);
                     result.setRGB(x, icon.getHeight() - y, pixel);
                 }
             }
@@ -116,16 +116,16 @@ public class ImageTransformer {
             final BufferedImageIcon... icons) {
         try {
             if (icons.length == 2) {
-                BufferedImageIcon icon1 = icons[0];
-                BufferedImageIcon icon2 = icons[1];
-                BufferedImageIcon result = new BufferedImageIcon(icon2);
+                final BufferedImageIcon icon1 = icons[0];
+                final BufferedImageIcon icon2 = icons[1];
+                final BufferedImageIcon result = new BufferedImageIcon(icon2);
                 if (icon1 != null && icon2 != null) {
                     if (icon1.getWidth() == icon2.getWidth()
                             && icon1.getHeight() == icon2.getHeight()) {
                         for (int x = 0; x < icon1.getWidth(); x++) {
                             for (int y = 0; y < icon1.getHeight(); y++) {
-                                int pixel = icon2.getRGB(x, y);
-                                Color c = new Color(pixel);
+                                final int pixel = icon2.getRGB(x, y);
+                                final Color c = new Color(pixel);
                                 if (c.equals(ImageTransformer.TRANSPARENT)) {
                                     result.setRGB(x, y, icon1.getRGB(x, y));
                                 }
@@ -139,8 +139,8 @@ public class ImageTransformer {
                     return null;
                 }
             } else {
-                BufferedImageIcon result = ImageTransformer.getCompositeImage(
-                        icons[0], icons[1]);
+                BufferedImageIcon result = ImageTransformer
+                        .getCompositeImage(icons[0], icons[1]);
                 if (result != null) {
                     for (int x = 2; x < icons.length; x++) {
                         result = ImageTransformer.getCompositeImage(result,

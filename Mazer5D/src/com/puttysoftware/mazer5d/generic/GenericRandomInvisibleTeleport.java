@@ -12,8 +12,8 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 
-public abstract class GenericRandomInvisibleTeleport extends
-        GenericRandomTeleport {
+public abstract class GenericRandomInvisibleTeleport
+        extends GenericRandomTeleport {
     // Constructors
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {
@@ -25,8 +25,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         int dr, dc;
         do {
@@ -42,8 +42,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
     }
 

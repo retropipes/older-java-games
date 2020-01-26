@@ -32,15 +32,14 @@ public class ClockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CHANGE);
         Mazer5D.getApplication().showMessage("Your controls are rotated!");
-        Mazer5D.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                        ClockwiseRotationTrap.EFFECT_DURATION);
+        Mazer5D.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
+                ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

@@ -38,14 +38,11 @@ public class WarpWand extends AbstractWand {
     @Override
     public void useAction(final AbstractDungeonObject mo, final int x,
             final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
-        app.getDungeonManager()
-                .getDungeon()
-                .warpObject(
-                        app.getDungeonManager()
-                                .getDungeon()
-                                .getCell(x, y, z, DungeonConstants.LAYER_OBJECT),
-                        x, y, z, DungeonConstants.LAYER_OBJECT);
+        final Application app = DungeonDiver4.getApplication();
+        app.getDungeonManager().getDungeon().warpObject(
+                app.getDungeonManager().getDungeon().getCell(x, y, z,
+                        DungeonConstants.LAYER_OBJECT),
+                x, y, z, DungeonConstants.LAYER_OBJECT);
     }
 
     @Override

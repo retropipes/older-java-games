@@ -29,9 +29,9 @@ public class InvisibleOneShotChainTeleport extends AbstractInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
@@ -57,9 +57,9 @@ public class InvisibleOneShotChainTeleport extends AbstractInvisibleTeleport {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN);
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN);
     }
 
     @Override

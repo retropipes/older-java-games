@@ -10,8 +10,8 @@ public class SuffixHandler implements SuffixIO {
     @Override
     public void readSuffix(final XDataReader reader, final int formatVersion)
             throws IOException {
-        MazeMode.getApplication().getGameManager()
-                .loadGameHookX(reader, formatVersion);
+        MazeMode.getApplication().getGameManager().loadGameHookX(reader,
+                formatVersion);
     }
 
     @Override

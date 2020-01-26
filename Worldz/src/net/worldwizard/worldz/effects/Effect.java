@@ -101,7 +101,7 @@ public class Effect implements StatConstants {
     }
 
     /**
-     * 
+     *
      * @param source
      * @param target
      */
@@ -215,18 +215,18 @@ public class Effect implements StatConstants {
     public String getCurrentMessage() {
         String msg = Effect.getNullMessage();
         if (this.rounds == this.initialRounds) {
-            if (!this.messages[Effect.MESSAGE_INITIAL].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_INITIAL]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Effect.MESSAGE_SUBSEQUENT].equals(Effect
-                .getNullMessage())) {
+        if (!this.messages[Effect.MESSAGE_SUBSEQUENT]
+                .equals(Effect.getNullMessage())) {
             msg += this.messages[Effect.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 1) {
-            if (!this.messages[Effect.MESSAGE_WEAR_OFF].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_WEAR_OFF]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_WEAR_OFF] + "\n";
             }
         }

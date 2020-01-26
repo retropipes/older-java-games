@@ -18,7 +18,7 @@ public class OggPlayer {
     AudioFormat format;
     AudioFormat decodedFormat;
     boolean stop;
-    private Thread player;
+    private final Thread player;
 
     public OggPlayer(final URL loc) {
         this.url = loc;

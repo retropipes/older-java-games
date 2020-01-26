@@ -46,10 +46,7 @@ public class Bomb extends GenericBomb {
     @Override
     public void useActionHook(final int x, final int y, final int z) {
         // Kill any monsters nearby
-        MasterMaze
-                .getApplication()
-                .getMazeManager()
-                .getMaze()
+        MasterMaze.getApplication().getMazeManager().getMaze()
                 .radialScanKillMonsters(x, y, z, MazeConstants.LAYER_OBJECT,
                         GenericBomb.EFFECT_RADIUS);
     }

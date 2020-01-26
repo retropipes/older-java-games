@@ -9,72 +9,72 @@ public class GameIODataReader extends GameIOReader {
 
     // Constructors
     public GameIODataReader(final String filename) throws IOException {
-	this.raf = new RandomAccessFile(filename, "r");
+        this.raf = new RandomAccessFile(filename, "r");
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-	this.raf.close();
+        this.raf.close();
     }
 
     @Override
     public boolean readBoolean() throws IOException {
-	return this.raf.readBoolean();
+        return this.raf.readBoolean();
     }
 
     @Override
     public byte readByte() throws IOException {
-	return this.raf.readByte();
+        return this.raf.readByte();
     }
 
     @Override
     public byte[] readBytes(final int len) throws IOException {
-	final byte[] buf = new byte[len];
-	this.raf.read(buf);
-	return buf;
+        final byte[] buf = new byte[len];
+        this.raf.read(buf);
+        return buf;
     }
 
     @Override
     public double readDouble() throws IOException {
-	return this.raf.readDouble();
+        return this.raf.readDouble();
     }
 
     @Override
     public int readInt() throws IOException {
-	return this.raf.readInt();
+        return this.raf.readInt();
     }
 
     @Override
     public long readLong() throws IOException {
-	return this.raf.readLong();
+        return this.raf.readLong();
     }
 
     @Override
     public String readString() throws IOException {
-	return this.raf.readUTF();
+        return this.raf.readUTF();
     }
 
     @Override
     public int readUnsignedByte() throws IOException {
-	return this.raf.readUnsignedByte();
+        return this.raf.readUnsignedByte();
     }
 
     @Override
     public int readUnsignedShortByteArrayAsInt() throws IOException {
-	final byte[] buf = new byte[Short.BYTES];
-	this.raf.read(buf);
-	return GameIOUtilities.unsignedShortByteArrayToInt(buf);
+        final byte[] buf = new byte[Short.BYTES];
+        this.raf.read(buf);
+        return GameIOUtilities.unsignedShortByteArrayToInt(buf);
     }
 
     @Override
     public String readWindowsString(final byte[] buf) throws IOException {
-	this.raf.read(buf);
-	return GameIOUtilities.decodeWindowsStringData(buf);
+        this.raf.read(buf);
+        return GameIOUtilities.decodeWindowsStringData(buf);
     }
 
     @Override
     public boolean atEOF() throws IOException {
-	return this.raf.getFilePointer() == this.raf.length();
+        return this.raf.getFilePointer() == this.raf.length();
     }
 }

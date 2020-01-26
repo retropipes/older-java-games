@@ -25,7 +25,7 @@ public class PreferencesManager {
     public static final int DIFFICULTY_NORMAL = 2;
     public static final int DIFFICULTY_HARD = 3;
     public static final int DIFFICULTY_VERY_HARD = 4;
-    private static final int DEFAULT_DIFFICULTY = DIFFICULTY_NORMAL;
+    private static final int DEFAULT_DIFFICULTY = PreferencesManager.DIFFICULTY_NORMAL;
     private static final String PREFS_FILE = "com.puttysoftware.ddremix";
     private static final String SOUNDS_SETTING = "SoundsEnabled";
     private static final String WINDOW_SETTING = "ViewingWindowSize";
@@ -37,120 +37,135 @@ public class PreferencesManager {
 
     // Private constructor
     private PreferencesManager() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
     public static int getBattleSpeed() {
-	return PreferencesManager.BATTLE_SPEED;
+        return PreferencesManager.BATTLE_SPEED;
     }
 
     public static boolean useTimeBattleEngine() {
-	return PreferencesManager.storeMgr.getBoolean(TIME_SETTING, false);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.TIME_SETTING, false);
     }
 
     static void setTimeBattleEngine(final boolean value) {
-	PreferencesManager.storeMgr.setBoolean(TIME_SETTING, value);
+        PreferencesManager.storeMgr.setBoolean(PreferencesManager.TIME_SETTING,
+                value);
     }
 
     public static boolean getSoundsEnabled() {
-	return PreferencesManager.storeMgr.getBoolean(SOUNDS_SETTING, true);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.SOUNDS_SETTING, true);
     }
 
     public static void setSoundsEnabled(final boolean value) {
-	PreferencesManager.storeMgr.setBoolean(SOUNDS_SETTING, value);
+        PreferencesManager.storeMgr
+                .setBoolean(PreferencesManager.SOUNDS_SETTING, value);
     }
 
     public static boolean getHighDefEnabled() {
-	return PreferencesManager.HIGH_DEF;
+        return PreferencesManager.HIGH_DEF;
     }
 
     public static void setHighDefEnabled(final boolean value) {
-	PreferencesManager.HIGH_DEF = value;
+        PreferencesManager.HIGH_DEF = value;
     }
 
     public static int getViewingWindowSize() {
-	return PreferencesGUIManager.VIEWING_WINDOW_SIZES[PreferencesManager
-		.getViewingWindowSizeIndex()];
+        return PreferencesGUIManager.VIEWING_WINDOW_SIZES[PreferencesManager
+                .getViewingWindowSizeIndex()];
     }
 
     static int getViewingWindowSizeIndex() {
-	return PreferencesManager.storeMgr.getInteger(WINDOW_SETTING,
-		PreferencesGUIManager.DEFAULT_SIZE_INDEX);
+        return PreferencesManager.storeMgr.getInteger(
+                PreferencesManager.WINDOW_SETTING,
+                PreferencesGUIManager.DEFAULT_SIZE_INDEX);
     }
 
     static void setViewingWindowSizeIndex(final int value) {
-	PreferencesManager.storeMgr.setInteger(WINDOW_SETTING, value);
+        PreferencesManager.storeMgr
+                .setInteger(PreferencesManager.WINDOW_SETTING, value);
     }
 
     public static boolean oneMove() {
-	return PreferencesManager.storeMgr.getBoolean(MOVE_SETTING, true);
+        return PreferencesManager.storeMgr
+                .getBoolean(PreferencesManager.MOVE_SETTING, true);
     }
 
     static void setOneMove(final boolean value) {
-	PreferencesManager.storeMgr.setBoolean(MOVE_SETTING, value);
+        PreferencesManager.storeMgr.setBoolean(PreferencesManager.MOVE_SETTING,
+                value);
     }
 
     public static int getGameDifficulty() {
-	return PreferencesManager.storeMgr.getInteger(DIFFICULTY_SETTING,
-		DEFAULT_DIFFICULTY);
+        return PreferencesManager.storeMgr.getInteger(
+                PreferencesManager.DIFFICULTY_SETTING,
+                PreferencesManager.DEFAULT_DIFFICULTY);
     }
 
     static void setGameDifficulty(final int value) {
-	PreferencesManager.storeMgr.setInteger(DIFFICULTY_SETTING, value);
+        PreferencesManager.storeMgr
+                .setInteger(PreferencesManager.DIFFICULTY_SETTING, value);
     }
 
     public static JFrame getPrefFrame() {
-	return PreferencesManager.guiMgr.getPrefFrame();
+        return PreferencesManager.guiMgr.getPrefFrame();
     }
 
     public static void showPrefs() {
-	PreferencesManager.guiMgr.showPrefs();
+        PreferencesManager.guiMgr.showPrefs();
     }
 
     private static String getPrefsDirectory() {
-	return DynamicProperties.getApplicationSupportDirectory();
+        return DynamicProperties.getApplicationSupportDirectory();
     }
 
     private static String getPrefsFileExtension() {
-	return "." + Extension.getPreferencesExtension();
+        return "." + Extension.getPreferencesExtension();
     }
 
     private static String getPrefsFileName() {
-	return PreferencesManager.PREFS_FILE;
+        return PreferencesManager.PREFS_FILE;
     }
 
     private static String getPrefsFile() {
-	final StringBuilder b = new StringBuilder();
-	b.append(PreferencesManager.getPrefsDirectory());
-	b.append(PreferencesManager.getPrefsFileName());
-	b.append(PreferencesManager.getPrefsFileExtension());
-	return b.toString();
+        final StringBuilder b = new StringBuilder();
+        b.append(PreferencesManager.getPrefsDirectory());
+        b.append(PreferencesManager.getPrefsFileName());
+        b.append(PreferencesManager.getPrefsFileExtension());
+        return b.toString();
     }
 
     public static void writePrefs() {
-	try {
-	    PreferencesManager.storeMgr.saveStore(new BufferedOutputStream(
-		    new FileOutputStream(PreferencesManager.getPrefsFile())));
-	} catch (final IOException io) {
-	    // Ignore
-	}
+        try {
+            PreferencesManager.storeMgr.saveStore(new BufferedOutputStream(
+                    new FileOutputStream(PreferencesManager.getPrefsFile())));
+        } catch (final IOException io) {
+            // Ignore
+        }
     }
 
     static void readPrefs() {
-	try {
-	    // Read new preferences
-	    PreferencesManager.storeMgr.loadStore(new BufferedInputStream(
-		    new FileInputStream(PreferencesManager.getPrefsFile())));
-	} catch (final IOException io) {
-	    // Populate store with defaults
-	    PreferencesManager.storeMgr.setBoolean(MOVE_SETTING, true);
-	    PreferencesManager.storeMgr.setInteger(WINDOW_SETTING,
-		    PreferencesGUIManager.DEFAULT_SIZE_INDEX);
-	    PreferencesManager.storeMgr.setBoolean(SOUNDS_SETTING, true);
-	    PreferencesManager.storeMgr.setBoolean(TIME_SETTING, false);
-	    PreferencesManager.storeMgr.setInteger(DIFFICULTY_SETTING,
-		    DEFAULT_DIFFICULTY);
-	}
+        try {
+            // Read new preferences
+            PreferencesManager.storeMgr.loadStore(new BufferedInputStream(
+                    new FileInputStream(PreferencesManager.getPrefsFile())));
+        } catch (final IOException io) {
+            // Populate store with defaults
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.MOVE_SETTING, true);
+            PreferencesManager.storeMgr.setInteger(
+                    PreferencesManager.WINDOW_SETTING,
+                    PreferencesGUIManager.DEFAULT_SIZE_INDEX);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.SOUNDS_SETTING, true);
+            PreferencesManager.storeMgr
+                    .setBoolean(PreferencesManager.TIME_SETTING, false);
+            PreferencesManager.storeMgr.setInteger(
+                    PreferencesManager.DIFFICULTY_SETTING,
+                    PreferencesManager.DEFAULT_DIFFICULTY);
+        }
     }
 }

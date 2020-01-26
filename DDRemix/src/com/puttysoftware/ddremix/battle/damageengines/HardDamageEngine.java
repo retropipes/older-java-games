@@ -81,7 +81,8 @@ class HardDamageEngine extends AbstractDamageEngine {
                                 HardDamageEngine.MULTIPLIER_MAX);
                     }
                     final int multiplier = rDamage.generate();
-                    return (int) (rawDamage * multiplier / CommonDamageEngineParts.MULTIPLIER_DIVIDE);
+                    return (int) (rawDamage * multiplier
+                            / CommonDamageEngineParts.MULTIPLIER_DIVIDE);
                 }
             }
         }

@@ -67,18 +67,21 @@ public class Application {
                     continue;
                 }
                 final BufferedImageIcon[] edges = EdgeGenerator
-                        .generateAllEdgedImages(GraphicsManager.getImage(
-                                groundTypes[x].getName(),
-                                groundTypes[x].getBaseName(),
-                                groundTypes[x].getTemplateColor(),
-                                groundTypes[x].getAttributeName(),
-                                groundTypes[x].getAttributeTemplateColor()),
-                                GraphicsManager.getImage(groundTypes[y]
-                                        .getName(), groundTypes[y]
-                                        .getBaseName(), groundTypes[y]
-                                        .getTemplateColor(), groundTypes[y]
-                                        .getAttributeName(), groundTypes[y]
-                                        .getAttributeTemplateColor()),
+                        .generateAllEdgedImages(
+                                GraphicsManager.getImage(
+                                        groundTypes[x].getName(),
+                                        groundTypes[x].getBaseName(),
+                                        groundTypes[x].getTemplateColor(),
+                                        groundTypes[x].getAttributeName(),
+                                        groundTypes[x]
+                                                .getAttributeTemplateColor()),
+                                GraphicsManager.getImage(
+                                        groundTypes[y].getName(),
+                                        groundTypes[y].getBaseName(),
+                                        groundTypes[y].getTemplateColor(),
+                                        groundTypes[y].getAttributeName(),
+                                        groundTypes[y]
+                                                .getAttributeTemplateColor()),
                                 GraphicsManager.generateEdgeColor(
                                         groundTypes[x].getTemplateColor(),
                                         groundTypes[y].getTemplateColor()));
@@ -94,8 +97,7 @@ public class Application {
                                     + groundTypes[y].getBaseName()
                                     + edgeNameSuffixes[z],
                             groundTypes[x].getName() + "/"
-                                    + groundTypes[y].getName()
-                                    + " Transitions "
+                                    + groundTypes[y].getName() + " Transitions "
                                     + edgeFriendlyNameSuffixes[z],
                             groundTypes[x].getName(), groundTypes[y].getName(),
                             edgeFriendlyNameSuffixes[z]);

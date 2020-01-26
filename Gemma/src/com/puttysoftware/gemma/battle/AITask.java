@@ -14,7 +14,7 @@ class AITask extends Thread {
     private boolean done;
 
     // Constructors
-    AITask(BattleLogic battle) {
+    AITask(final BattleLogic battle) {
         this.setName("AI Runner");
         this.b = battle;
         this.done = false;
@@ -28,9 +28,10 @@ class AITask extends Thread {
                 if (this.b.getLastAIActionResult()) {
                     // Delay, for animation purposes
                     try {
-                        int battleSpeed = PreferencesManager.getBattleSpeed();
+                        final int battleSpeed = PreferencesManager
+                                .getBattleSpeed();
                         Thread.sleep(battleSpeed);
-                    } catch (InterruptedException i) {
+                    } catch (final InterruptedException i) {
                         // Ignore
                     }
                     if (this.b.getTerminatedEarly()) {
@@ -39,7 +40,7 @@ class AITask extends Thread {
                     }
                 }
             }
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             Gemma.getErrorLogger().logError(t);
         }
     }

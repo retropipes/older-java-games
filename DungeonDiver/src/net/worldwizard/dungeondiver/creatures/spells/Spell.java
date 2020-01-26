@@ -9,7 +9,8 @@ public class Spell {
     private final char target;
 
     // Constructors
-    public Spell(final Buff newEffect, final int newCost, final char newTarget) {
+    public Spell(final Buff newEffect, final int newCost,
+            final char newTarget) {
         this.effect = newEffect;
         this.cost = newCost;
         this.target = newTarget;

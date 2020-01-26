@@ -36,8 +36,8 @@ public class IcedBarrierGenerator extends AbstractWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             // Extend iced effect, if arrow was an ice arrow
             this.extendTimer(IcedBarrierGenerator.TIMER_DELAY);

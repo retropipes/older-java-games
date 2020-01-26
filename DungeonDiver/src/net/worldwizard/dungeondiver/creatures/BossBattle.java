@@ -53,7 +53,8 @@ public class BossBattle extends Battle {
             this.battleDone();
             DungeonDiver.getHoldingBag().getDungeonGUI().newDungeonAndScheme();
         } else if (this.result == BattleResults.PERFECT) {
-            this.appendToMessageArea("You beat the Boss, and didn't suffer any damage!");
+            this.appendToMessageArea(
+                    "You beat the Boss, and didn't suffer any damage!");
             this.rewards.doRewards();
             this.battleDone();
             DungeonDiver.getHoldingBag().getDungeonGUI().newDungeonAndScheme();
@@ -61,7 +62,8 @@ public class BossBattle extends Battle {
             this.appendToMessageArea("The Boss beat you...");
             player.healPercentage(Creature.FULL_HEAL_PERCENTAGE);
         } else if (this.result == BattleResults.ANNIHILATED) {
-            this.appendToMessageArea("The Boss beat you... and you didn't even hurt him!");
+            this.appendToMessageArea(
+                    "The Boss beat you... and you didn't even hurt him!");
             player.healPercentage(Creature.FULL_HEAL_PERCENTAGE);
         } else if (this.result == BattleResults.DRAW) {
             this.appendToMessageArea("The battle was a draw!");

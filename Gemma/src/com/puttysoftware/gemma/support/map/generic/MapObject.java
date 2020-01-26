@@ -57,12 +57,12 @@ public abstract class MapObject extends CloneableObject
     @Override
     public MapObject clone() {
         try {
-            MapObject copy = (MapObject) super.clone();
+            final MapObject copy = (MapObject) super.clone();
             copy.solid = this.solid;
             copy.type = (BitSet) this.type.clone();
             copy.blocksLOS = this.blocksLOS;
             return copy;
-        } catch (CloneNotSupportedException e) {
+        } catch (final CloneNotSupportedException e) {
             Support.getErrorLogger().logError(e);
             return null;
         }
@@ -74,15 +74,14 @@ public abstract class MapObject extends CloneableObject
         int result = 1;
         result = prime * result + (this.blocksLOS ? 1231 : 1237);
         result = prime * result
-                + ((this.saved == null) ? 0 : this.saved.hashCode());
+                + (this.saved == null ? 0 : this.saved.hashCode());
         result = prime * result + (this.solid ? 1231 : 1237);
-        result = prime * result + ((this.tt == null) ? 0 : this.tt.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+        result = prime * result + (this.tt == null ? 0 : this.tt.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -92,7 +91,7 @@ public abstract class MapObject extends CloneableObject
         if (!(obj instanceof MapObject)) {
             return false;
         }
-        MapObject other = (MapObject) obj;
+        final MapObject other = (MapObject) obj;
         if (this.blocksLOS != other.blocksLOS) {
             return false;
         }
@@ -127,7 +126,7 @@ public abstract class MapObject extends CloneableObject
         return this.saved;
     }
 
-    public final void setSavedObject(MapObject newSaved) {
+    public final void setSavedObject(final MapObject newSaved) {
         this.saved = newSaved;
     }
 
@@ -139,7 +138,7 @@ public abstract class MapObject extends CloneableObject
         return this.tt;
     }
 
-    protected final void setTemplateTransform(TemplateTransform newTT) {
+    protected final void setTemplateTransform(final TemplateTransform newTT) {
         this.tt = newTT;
     }
 
@@ -149,7 +148,7 @@ public abstract class MapObject extends CloneableObject
      * @param z
      * @return
      */
-    public boolean isConditionallySolid(Map map, int z) {
+    public boolean isConditionallySolid(final Map map, final int z) {
         return this.solid;
     }
 
@@ -161,7 +160,7 @@ public abstract class MapObject extends CloneableObject
         return this.blocksLOS;
     }
 
-    protected final void setSightBlocking(boolean sb) {
+    protected final void setSightBlocking(final boolean sb) {
         this.blocksLOS = sb;
     }
 
@@ -174,7 +173,7 @@ public abstract class MapObject extends CloneableObject
         }
     }
 
-    public final boolean isOfType(int testType) {
+    public final boolean isOfType(final int testType) {
         return this.type.get(testType);
     }
 
@@ -209,8 +208,8 @@ public abstract class MapObject extends CloneableObject
      */
     public InternalScript getPostMoveScript(final boolean ie, final int dirX,
             final int dirY, final int dirZ) {
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry act0 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry act0 = new InternalScriptEntry();
         act0.setActionCode(InternalScriptActionCode.SOUND);
         act0.addActionArg(
                 new InternalScriptEntryArgument(GameSoundConstants.SOUND_STEP));
@@ -240,14 +239,14 @@ public abstract class MapObject extends CloneableObject
      */
     public static InternalScript getMoveFailedScript(final boolean ie,
             final int dirX, final int dirY, final int dirZ) {
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry act0 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry act0 = new InternalScriptEntry();
         act0.setActionCode(InternalScriptActionCode.SOUND);
         act0.addActionArg(
                 new InternalScriptEntryArgument(GameSoundConstants.SOUND_OOF));
         act0.finalizeActionArgs();
         scpt.addAction(act0);
-        InternalScriptEntry act1 = new InternalScriptEntry();
+        final InternalScriptEntry act1 = new InternalScriptEntry();
         act1.setActionCode(InternalScriptActionCode.MESSAGE);
         act1.addActionArg(new InternalScriptEntryArgument("Can't go that way"));
         act1.finalizeActionArgs();
@@ -264,7 +263,8 @@ public abstract class MapObject extends CloneableObject
      * @param map
      * @return
      */
-    public String gameRenderHook(int x, int y, int z, Map map) {
+    public String gameRenderHook(final int x, final int y, final int z,
+            final Map map) {
         return this.getGameCacheName();
     }
 
@@ -308,7 +308,8 @@ public abstract class MapObject extends CloneableObject
      * @param z
      * @param map
      */
-    public void determineCurrentAppearance(int x, int y, int z, Map map) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z, final Map map) {
         // Do nothing
     }
 
@@ -365,8 +366,8 @@ public abstract class MapObject extends CloneableObject
     }
 
     @Override
-    public boolean shouldGenerateObject(Map map, int row, int col, int floor,
-            int level, int layer) {
+    public boolean shouldGenerateObject(final Map map, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (layer == MapConstants.LAYER_OBJECT) {
             // Handle object layer
             if (!this.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
@@ -374,7 +375,7 @@ public abstract class MapObject extends CloneableObject
                 if (this.isRequired()) {
                     return true;
                 } else {
-                    RandomRange r = new RandomRange(1, 100);
+                    final RandomRange r = new RandomRange(1, 100);
                     if (r.generate() <= 20) {
                         return true;
                     } else {
@@ -389,7 +390,7 @@ public abstract class MapObject extends CloneableObject
             // Handle ground layer
             if (this.isOfType(TypeConstants.TYPE_FIELD)) {
                 // Limit generation of fields to 20%
-                RandomRange r = new RandomRange(1, 100);
+                final RandomRange r = new RandomRange(1, 100);
                 if (r.generate() <= 20) {
                     return true;
                 } else {
@@ -403,12 +404,12 @@ public abstract class MapObject extends CloneableObject
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Map map) {
+    public int getMinimumRequiredQuantity(final Map map) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Map map) {
+    public int getMaximumRequiredQuantity(final Map map) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -418,8 +419,8 @@ public abstract class MapObject extends CloneableObject
     }
 
     @Override
-    public boolean shouldGenerateObjectInBattle(Map map, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObjectInBattle(final Map map, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (!this.enabledInBattle()) {
             // Don't generate disabled objects
             return false;
@@ -430,12 +431,12 @@ public abstract class MapObject extends CloneableObject
     }
 
     @Override
-    public int getMinimumRequiredQuantityInBattle(Map map) {
+    public int getMinimumRequiredQuantityInBattle(final Map map) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantityInBattle(Map map) {
+    public int getMaximumRequiredQuantityInBattle(final Map map) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -444,28 +445,29 @@ public abstract class MapObject extends CloneableObject
         return false;
     }
 
-    public final void writeMapObject(XDataWriter writer) throws IOException {
+    public final void writeMapObject(final XDataWriter writer)
+            throws IOException {
         writer.writeString(this.getIdentifier());
-        int cc = this.getCustomFormat();
+        final int cc = this.getCustomFormat();
         if (cc == MapObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
             this.writeMapObjectHook(writer);
         } else {
             for (int x = 0; x < cc; x++) {
-                int cx = this.getCustomProperty(x + 1);
+                final int cx = this.getCustomProperty(x + 1);
                 writer.writeInt(cx);
             }
         }
     }
 
-    final MapObject readMapObject(XDataReader reader, String ident, int ver)
-            throws IOException {
+    final MapObject readMapObject(final XDataReader reader, final String ident,
+            final int ver) throws IOException {
         if (ident.equals(this.getIdentifier())) {
-            int cc = this.getCustomFormat();
+            final int cc = this.getCustomFormat();
             if (cc == MapObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMapObjectHook(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
-                    int cx = reader.readInt();
+                    final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
             }
@@ -480,7 +482,8 @@ public abstract class MapObject extends CloneableObject
      * @param writer
      * @throws IOException
      */
-    protected void writeMapObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMapObjectHook(final XDataWriter writer)
+            throws IOException {
         // Do nothing - but let subclasses override
     }
 
@@ -491,8 +494,8 @@ public abstract class MapObject extends CloneableObject
      * @return
      * @throws IOException
      */
-    protected MapObject readMapObjectHook(XDataReader reader, int formatVersion)
-            throws IOException {
+    protected MapObject readMapObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
         // Dummy implementation, subclasses can override
         return this;
     }

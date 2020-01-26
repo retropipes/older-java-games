@@ -26,9 +26,9 @@ public class ScoreManager {
         this.viewerTitle = ScoreManager.DIALOG_TITLE;
     }
 
-    public ScoreManager(final int mv, final int length,
-            final boolean sortOrder, final long startingScore,
-            final String customTitle, final String[] customUnit) {
+    public ScoreManager(final int mv, final int length, final boolean sortOrder,
+            final long startingScore, final String customTitle,
+            final String[] customUnit) {
         this.table = new SortedScoreTable(mv, length, sortOrder, startingScore,
                 customUnit);
         this.name = "";

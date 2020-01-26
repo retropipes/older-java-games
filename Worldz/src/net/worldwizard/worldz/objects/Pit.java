@@ -33,9 +33,11 @@ public class Pit extends StairsDown {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        return this.searchNestedPits(dirX, dirY, Worldz.getApplication()
-                .getGameManager().getPlayerManager().getPlayerLocationZ() - 1,
-                inv);
+        return this
+                .searchNestedPits(dirX, dirY,
+                        Worldz.getApplication().getGameManager()
+                                .getPlayerManager().getPlayerLocationZ() - 1,
+                        inv);
     }
 
     private boolean searchNestedPits(final int dirX, final int dirY,
@@ -65,13 +67,13 @@ public class Pit extends StairsDown {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playFallSound();
         }
     }
@@ -86,14 +88,14 @@ public class Pit extends StairsDown {
                 final GenericMovableObject pushedInto = (GenericMovableObject) pushed;
                 app.getGameManager().updatePushedIntoPositionAbsolute(x, y,
                         z - 1, x, y, z, pushedInto, this);
-                if (app.getPrefsManager().getSoundEnabled(
-                        PreferencesManager.SOUNDS_GAME)) {
+                if (app.getPrefsManager()
+                        .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                     WorldObject.playFallSound();
                 }
             }
         } catch (final InfiniteRecursionException ir) {
-            if (app.getPrefsManager().getSoundEnabled(
-                    PreferencesManager.SOUNDS_GAME)) {
+            if (app.getPrefsManager()
+                    .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                 WorldObject.playFallSound();
             }
             Worldz.getApplication().getWorldManager().getWorld()

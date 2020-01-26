@@ -9,8 +9,8 @@ import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.maze.generic.GenericInvisibleConditionalTeleport;
 import com.puttysoftware.mastermaze.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericInvisibleConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericInvisibleConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_ONE_SHOT_CONDITIONAL);

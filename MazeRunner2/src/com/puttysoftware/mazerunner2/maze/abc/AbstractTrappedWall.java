@@ -15,14 +15,14 @@ public abstract class AbstractTrappedWall extends AbstractWall {
     protected static final int NUMBER_MASTER = -1;
 
     // Constructors
-    protected AbstractTrappedWall(int newNumber) {
+    protected AbstractTrappedWall(final int newNumber) {
         super(ColorConstants.COLOR_BROWN);
         this.number = newNumber;
     }
 
     @Override
     public AbstractTrappedWall clone() {
-        AbstractTrappedWall copy = (AbstractTrappedWall) super.clone();
+        final AbstractTrappedWall copy = (AbstractTrappedWall) super.clone();
         copy.number = this.number;
         return copy;
     }

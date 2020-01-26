@@ -24,7 +24,8 @@ public class Spell {
         this.soundEffect = -1;
     }
 
-    public Spell(Effect newEffect, int newCost, BattleTarget newTarget, int sfx) {
+    public Spell(final Effect newEffect, final int newCost,
+            final BattleTarget newTarget, final int sfx) {
         super();
         this.effect = newEffect;
         this.cost = newCost;
@@ -40,7 +41,7 @@ public class Spell {
         return this.cost;
     }
 
-    int getCostForPower(int power) {
+    int getCostForPower(final int power) {
         return this.cost * power;
     }
 
@@ -58,14 +59,14 @@ public class Spell {
         int result = 1;
         result = prime * result + this.cost;
         result = prime * result
-                + ((this.effect == null) ? 0 : this.effect.hashCode());
+                + (this.effect == null ? 0 : this.effect.hashCode());
         result = prime * result + this.soundEffect;
         return prime * result
-                + ((this.target == null) ? 0 : this.target.hashCode());
+                + (this.target == null ? 0 : this.target.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -75,7 +76,7 @@ public class Spell {
         if (!(obj instanceof Spell)) {
             return false;
         }
-        Spell other = (Spell) obj;
+        final Spell other = (Spell) obj;
         if (this.cost != other.cost) {
             return false;
         }

@@ -35,8 +35,8 @@ public class HurtTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         this.damage = PartyManager.getParty().getLeader().getMaximumHP() / 50;
         if (this.damage < 1) {
             this.damage = 1;

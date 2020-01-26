@@ -77,11 +77,11 @@ public class SaveTask extends Thread {
                 // Restore start location
                 app.getWorldManager().getWorld().restoreStart();
             }
-            DirectoryUtilities.zipDirectory(new File(app.getWorldManager()
-                    .getWorld().getBasePath()), worldFile);
+            DirectoryUtilities.zipDirectory(
+                    new File(app.getWorldManager().getWorld().getBasePath()),
+                    worldFile);
         } catch (final FileNotFoundException fnfe) {
-            Messager.showDialog("Writing the "
-                    + sg.toLowerCase()
+            Messager.showDialog("Writing the " + sg.toLowerCase()
                     + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {

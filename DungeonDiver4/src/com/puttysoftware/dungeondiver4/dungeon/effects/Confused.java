@@ -51,7 +51,7 @@ public class Confused extends DungeonEffect {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -61,7 +61,7 @@ public class Confused extends DungeonEffect {
         if (!(obj instanceof Confused)) {
             return false;
         }
-        Confused other = (Confused) obj;
+        final Confused other = (Confused) obj;
         if (this.state != other.state) {
             return false;
         }
@@ -71,7 +71,7 @@ public class Confused extends DungeonEffect {
     @Override
     public void customExtendLogic() {
         if (this.rounds == 0) {
-            RandomRange r = new RandomRange(Confused.MIN_CONFUSED_STATE,
+            final RandomRange r = new RandomRange(Confused.MIN_CONFUSED_STATE,
                     Confused.MAX_CONFUSED_STATE);
             this.state = r.generate();
         }

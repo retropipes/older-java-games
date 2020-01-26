@@ -22,7 +22,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
     // Fields
     private int randomRangeX;
     private int randomRangeY;
-    private Random generator;
+    private final Random generator;
 
     // Constructors
     public AbstractRandomTeleport(final int newRandomRangeY,
@@ -42,7 +42,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -68,7 +68,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     @Override
     public AbstractRandomTeleport clone() {
-        AbstractRandomTeleport copy = (AbstractRandomTeleport) super.clone();
+        final AbstractRandomTeleport copy = (AbstractRandomTeleport) super.clone();
         copy.randomRangeX = this.randomRangeX;
         copy.randomRangeY = this.randomRangeY;
         return copy;
@@ -108,9 +108,9 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();
@@ -129,7 +129,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         return me.editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_RANDOM);
     }
 
@@ -139,7 +139,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.randomRangeX;
@@ -151,7 +151,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.randomRangeX = value;

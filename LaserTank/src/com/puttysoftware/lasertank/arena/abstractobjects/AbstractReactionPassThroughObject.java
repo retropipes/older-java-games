@@ -40,8 +40,8 @@ public abstract class AbstractReactionPassThroughObject
         }
     }
 
-    public abstract Direction laserEnteredActionHook(int locX, int locY, int locZ,
-            int dirX, int dirY, int laserType, int forceUnits);
+    public abstract Direction laserEnteredActionHook(int locX, int locY,
+            int locZ, int dirX, int dirY, int laserType, int forceUnits);
 
     public abstract boolean rangeActionHook(int locX, int locY, int locZ,
             int dirX, int dirY, int laserType, int forceUnits);

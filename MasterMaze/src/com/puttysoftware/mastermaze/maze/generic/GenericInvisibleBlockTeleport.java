@@ -10,15 +10,16 @@ import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.resourcemanagers.SoundConstants;
 import com.puttysoftware.mastermaze.resourcemanagers.SoundManager;
 
-public abstract class GenericInvisibleBlockTeleport extends
-        GenericBlockTeleport {
+public abstract class GenericInvisibleBlockTeleport
+        extends GenericBlockTeleport {
     // Constructors
     protected GenericInvisibleBlockTeleport(final int destinationRow,
             final int destinationColumn, final int destinationFloor,
             final int attrName) {
         super(destinationRow, destinationColumn, destinationFloor, attrName);
         this.setTemplateColor(ColorConstants.COLOR_SAND);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_BLOCK_TELEPORT_ATTRIBUTE);
     }
 
     @Override

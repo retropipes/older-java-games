@@ -16,12 +16,12 @@ public abstract class GenericShop extends MapObject {
     private final InternalScript postMove;
 
     // Constructors
-    public GenericShop(int newShopType) {
+    public GenericShop(final int newShopType) {
         super(false);
         this.setTemplateTransform(new TemplateTransform(1.0, 0.75, 0.5));
         // Create post-move script
         this.postMove = new InternalScript();
-        InternalScriptEntry act0post = new InternalScriptEntry();
+        final InternalScriptEntry act0post = new InternalScriptEntry();
         act0post.setActionCode(InternalScriptActionCode.SHOP);
         act0post.addActionArg(new InternalScriptEntryArgument(newShopType));
         act0post.finalizeActionArgs();
@@ -47,12 +47,12 @@ public abstract class GenericShop extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 

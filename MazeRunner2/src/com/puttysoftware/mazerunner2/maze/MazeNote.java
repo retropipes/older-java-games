@@ -26,30 +26,31 @@ public class MazeNote extends CloneableObject {
         return this.contents;
     }
 
-    public void setContents(String newContents) {
+    public void setContents(final String newContents) {
         this.contents = newContents;
     }
 
     @Override
     public Object clone() {
-        MazeNote copy = new MazeNote();
+        final MazeNote copy = new MazeNote();
         copy.contents = this.contents;
         return copy;
     }
 
-    static MazeNote readLegacyNote(XLegacyDataReader reader) throws IOException {
-        MazeNote mn = new MazeNote();
+    static MazeNote readLegacyNote(final XLegacyDataReader reader)
+            throws IOException {
+        final MazeNote mn = new MazeNote();
         mn.contents = reader.readString();
         return mn;
     }
 
-    static MazeNote readNote(XDataReader reader) throws IOException {
-        MazeNote mn = new MazeNote();
+    static MazeNote readNote(final XDataReader reader) throws IOException {
+        final MazeNote mn = new MazeNote();
         mn.contents = reader.readString();
         return mn;
     }
 
-    void writeNote(XDataWriter writer) throws IOException {
+    void writeNote(final XDataWriter writer) throws IOException {
         writer.writeString(this.contents);
     }
 }

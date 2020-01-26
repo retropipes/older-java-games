@@ -15,7 +15,7 @@ public abstract class AbstractWand extends AbstractUsableObject {
     private static final long SCORE_USE = 5L;
 
     // Constructors
-    protected AbstractWand(int tc) {
+    protected AbstractWand(final int tc) {
         super(1);
         this.setTemplateColor(tc);
     }
@@ -31,7 +31,7 @@ public abstract class AbstractWand extends AbstractUsableObject {
     @Override
     public void useAction(final AbstractDungeonObject mo, final int x,
             final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().morph(mo, x, y, z);
         DungeonDiver4.getApplication().getGameManager()
                 .addToScore(AbstractWand.SCORE_USE);

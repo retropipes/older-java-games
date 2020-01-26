@@ -28,6 +28,6 @@ public class MusicConstants {
                 offsetStr = "0" + offsetStr;
             }
         }
-        return MUSIC_NAMES[musicID] + offsetStr + ".ogg";
+        return MusicConstants.MUSIC_NAMES[musicID] + offsetStr + ".ogg";
     }
 }

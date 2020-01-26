@@ -53,11 +53,8 @@ public class BreakableWallVertical extends GenericWall {
     public void chainReactionAction(final int dirX, final int dirY,
             final int dirZ) {
         // Break up
-        LoopChute
-                .getApplication()
-                .getGameManager()
-                .morph(new Empty(), dirX, dirY, dirZ,
-                        MazeConstants.LAYER_OBJECT);
+        LoopChute.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, MazeConstants.LAYER_OBJECT);
         final Maze m = LoopChute.getApplication().getMazeManager().getMaze();
         final MazeObject above = m.getCell(dirX, dirY - 1, dirZ,
                 MazeConstants.LAYER_OBJECT);

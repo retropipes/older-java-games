@@ -65,8 +65,7 @@ public abstract class GenericRandomTeleport extends MazeObject {
 
     @Override
     public GenericRandomTeleport clone() {
-        final GenericRandomTeleport copy = (GenericRandomTeleport) super
-                .clone();
+        final GenericRandomTeleport copy = (GenericRandomTeleport) super.clone();
         copy.randomRangeX = this.randomRangeX;
         copy.randomRangeY = this.randomRangeY;
         return copy;
@@ -106,8 +105,8 @@ public abstract class GenericRandomTeleport extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         int dr, dc;
         do {
@@ -120,9 +119,8 @@ public abstract class GenericRandomTeleport extends MazeObject {
 
     @Override
     public void editorProbeHook() {
-        MasterMaze.getApplication().showMessage(
-                this.getName() + ": Row Radius " + this.randomRangeY
-                        + ", Column Radius " + this.randomRangeX);
+        MasterMaze.getApplication().showMessage(this.getName() + ": Row Radius "
+                + this.randomRangeY + ", Column Radius " + this.randomRangeX);
     }
 
     @Override

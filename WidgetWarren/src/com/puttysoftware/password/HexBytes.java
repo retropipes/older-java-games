@@ -6,7 +6,7 @@ public class HexBytes {
     /**
      * Convert a byte[] array to readable string format. This makes the "hex"
      * readable!
-     * 
+     *
      * @return result String buffer in String format
      * @param in
      *            byte[] buffer to convert to string format
@@ -25,9 +25,11 @@ public class HexBytes {
             ch = (byte) (in[i] & 0xF0); // Strip off high nibble
             ch = (byte) (ch >>> 4); // shift the bits down
             ch = (byte) (ch & 0x0F); // must do this is high order bit is on!
-            out.append(pseudo[ch]); // convert the nibble to a String Character
+            out.append(HexBytes.pseudo[ch]); // convert the nibble to a String
+                                             // Character
             ch = (byte) (in[i] & 0x0F); // Strip off low nibble
-            out.append(pseudo[ch]); // convert the nibble to a String Character
+            out.append(HexBytes.pseudo[ch]); // convert the nibble to a String
+                                             // Character
             i++;
         }
         return out.toString();
@@ -45,14 +47,14 @@ public class HexBytes {
         final byte[] out = new byte[fIn.length() / 2];
         while (i < fIn.length()) {
             ch = fIn.charAt(i);
-            for (int z = 0; z < pseudo.length; z++) {
-                if (ch == pseudo[z].charAt(0)) {
+            for (int z = 0; z < HexBytes.pseudo.length; z++) {
+                if (ch == HexBytes.pseudo[z].charAt(0)) {
                     low = (byte) z;
                 }
             }
             ch = fIn.charAt(i + 1);
-            for (int z = 0; z < pseudo.length; z++) {
-                if (ch == pseudo[z].charAt(0)) {
+            for (int z = 0; z < HexBytes.pseudo.length; z++) {
+                if (ch == HexBytes.pseudo[z].charAt(0)) {
                     high = (byte) z;
                 }
             }

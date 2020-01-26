@@ -187,7 +187,7 @@ public final class LevelInfo {
 
     public static LevelInfo readLevelInfo(final XDataReader reader)
             throws IOException {
-        LevelInfo li = new LevelInfo();
+        final LevelInfo li = new LevelInfo();
         int x, y;
         for (y = 0; y < 3; y++) {
             for (x = 0; x < ArenaConstants.NUM_PLAYERS; x++) {

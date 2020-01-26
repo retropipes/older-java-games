@@ -21,79 +21,81 @@ public class EmptyVoid extends GenericWall {
     }
 
     @Override
-    public String gameRenderHook(int x, int y, int z, Map map) {
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+    public String gameRenderHook(final int x, final int y, final int z,
+            final Map map) {
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         MapObject mo1 = null;
         try {
             mo1 = map.getCell(x - 1, y - 1, z, MapConstants.LAYER_OBJECT);
             mo1Name = mo1.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo1Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo1Name = thisName;
         }
         MapObject mo2 = null;
         try {
             mo2 = map.getCell(x - 1, y, z, MapConstants.LAYER_OBJECT);
             mo2Name = mo2.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo2Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo2Name = thisName;
         }
         MapObject mo3 = null;
         try {
             mo3 = map.getCell(x - 1, y + 1, z, MapConstants.LAYER_OBJECT);
             mo3Name = mo3.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo3Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo3Name = thisName;
         }
         MapObject mo4 = null;
         try {
             mo4 = map.getCell(x, y - 1, z, MapConstants.LAYER_OBJECT);
             mo4Name = mo4.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo4Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo4Name = thisName;
         }
         MapObject mo6 = null;
         try {
             mo6 = map.getCell(x, y + 1, z, MapConstants.LAYER_OBJECT);
             mo6Name = mo6.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo6Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo6Name = thisName;
         }
         MapObject mo7 = null;
         try {
             mo7 = map.getCell(x + 1, y - 1, z, MapConstants.LAYER_OBJECT);
             mo7Name = mo7.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo7Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo7Name = thisName;
         }
         MapObject mo8 = null;
         try {
             mo8 = map.getCell(x + 1, y, z, MapConstants.LAYER_OBJECT);
             mo8Name = mo8.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo8Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo8Name = thisName;
         }
         MapObject mo9 = null;
         try {
             mo9 = map.getCell(x + 1, y + 1, z, MapConstants.LAYER_OBJECT);
             mo9Name = mo9.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo9Name = thisName;
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo9Name = thisName;
         }
         if (!thisName.equals(mo1Name) || !thisName.equals(mo2Name)
@@ -115,55 +117,65 @@ public class EmptyVoid extends GenericWall {
     }
 
     @Override
-    public void determineCurrentAppearance(int x, int y, int z, Map map) {
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z, final Map map) {
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
-        MapObject mo1 = map.getCell(x - 1, y - 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo1 = map.getCell(x - 1, y - 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo1Name = mo1.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo1Name = thisName;
         }
-        MapObject mo2 = map.getCell(x - 1, y, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo2 = map.getCell(x - 1, y, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo2Name = thisName;
         }
-        MapObject mo3 = map.getCell(x - 1, y + 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo3 = map.getCell(x - 1, y + 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo3Name = mo3.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo3Name = thisName;
         }
-        MapObject mo4 = map.getCell(x, y - 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo4 = map.getCell(x, y - 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo4Name = thisName;
         }
-        MapObject mo6 = map.getCell(x, y + 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo6 = map.getCell(x, y + 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo6Name = thisName;
         }
-        MapObject mo7 = map.getCell(x + 1, y - 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo7 = map.getCell(x + 1, y - 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo7Name = mo7.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo7Name = thisName;
         }
-        MapObject mo8 = map.getCell(x + 1, y, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo8 = map.getCell(x + 1, y, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo8Name = thisName;
         }
-        MapObject mo9 = map.getCell(x + 1, y + 1, z, MapConstants.LAYER_OBJECT);
+        final MapObject mo9 = map.getCell(x + 1, y + 1, z,
+                MapConstants.LAYER_OBJECT);
         try {
             mo9Name = mo9.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo9Name = thisName;
         }
         if (!thisName.equals(mo1Name) || !thisName.equals(mo2Name)

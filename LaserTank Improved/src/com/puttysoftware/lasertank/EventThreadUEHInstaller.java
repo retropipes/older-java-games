@@ -1,15 +1,15 @@
 package com.puttysoftware.lasertank;
 
 class EventThreadUEHInstaller implements Runnable {
-    private EventThreadUEH handler;
+    private final EventThreadUEH handler;
 
     EventThreadUEHInstaller(final EventThreadUEH etueh) {
-	super();
-	this.handler = etueh;
+        super();
+        this.handler = etueh;
     }
 
     @Override
     public void run() {
-	Thread.currentThread().setUncaughtExceptionHandler(this.handler);
+        Thread.currentThread().setUncaughtExceptionHandler(this.handler);
     }
 }

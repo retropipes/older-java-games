@@ -17,34 +17,38 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class MetallicBricks extends AbstractReactionWall {
     // Constructors
     public MetallicBricks() {
-	super();
-	this.setMaterial(MaterialConstants.MATERIAL_METALLIC);
+        super();
+        this.setMaterial(MaterialConstants.MATERIAL_METALLIC);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 64;
+        return 64;
     }
 
     @Override
-    public Direction laserEnteredActionHook(final int locX, final int locY, final int locZ, final int dirX,
-	    final int dirY, final int laserType, final int forceUnits) {
-	SoundManager.playSound(SoundConstants.SOUND_BREAK_BRICKS);
-	LaserTank.getApplication().getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	if (laserType == LaserTypeConstants.LASER_TYPE_POWER) {
-	    // Laser keeps going
-	    return DirectionResolver.resolveRelative(dirX, dirY);
-	} else {
-	    // Laser stops
-	    return Direction.NONE;
-	}
+    public Direction laserEnteredActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        SoundManager.playSound(SoundConstants.SOUND_BREAK_BRICKS);
+        LaserTank.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ, this.getLayer());
+        if (laserType == LaserTypeConstants.LASER_TYPE_POWER) {
+            // Laser keeps going
+            return DirectionResolver.resolveRelative(dirX, dirY);
+        } else {
+            // Laser stops
+            return Direction.NONE;
+        }
     }
 
     @Override
-    public boolean rangeActionHook(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int rangeType, final int forceUnits) {
-	SoundManager.playSound(SoundConstants.SOUND_BREAK_BRICKS);
-	LaserTank.getApplication().getGameManager().morph(new Empty(), locX + dirX, locY + dirY, locZ, this.getLayer());
-	return true;
+    public boolean rangeActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int rangeType,
+            final int forceUnits) {
+        SoundManager.playSound(SoundConstants.SOUND_BREAK_BRICKS);
+        LaserTank.getApplication().getGameManager().morph(new Empty(),
+                locX + dirX, locY + dirY, locZ, this.getLayer());
+        return true;
     }
 }

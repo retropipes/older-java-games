@@ -36,10 +36,8 @@ public class PoisonousAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        DungeonDiver4
-                .getApplication()
-                .getGameManager()
-                .activateEffect(DungeonEffectConstants.EFFECT_POISONOUS,
-                        PoisonousAmulet.EFFECT_DURATION);
+        DungeonDiver4.getApplication().getGameManager().activateEffect(
+                DungeonEffectConstants.EFFECT_POISONOUS,
+                PoisonousAmulet.EFFECT_DURATION);
     }
 }

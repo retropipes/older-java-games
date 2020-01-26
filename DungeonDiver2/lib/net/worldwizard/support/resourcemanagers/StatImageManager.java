@@ -31,9 +31,8 @@ public class StatImageManager {
         try {
             // Fetch the icon
             final String normalName = StatImageManager.normalizeName(name);
-            final URL url = StatImageManager.LOAD_CLASS
-                    .getResource(StatImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = StatImageManager.LOAD_CLASS.getResource(
+                    StatImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             // Transform the icon

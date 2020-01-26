@@ -128,9 +128,11 @@ public class ScoreTracker {
 
     public void showCurrentScore() {
         if (this.scoreValid) {
-            Messager.showDialog("Your current score: " + this.score + " points");
+            Messager.showDialog(
+                    "Your current score: " + this.score + " points");
         } else {
-            Messager.showDialog("The current score is not available at this time.");
+            Messager.showDialog(
+                    "The current score is not available at this time.");
         }
     }
 

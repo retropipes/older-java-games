@@ -112,18 +112,18 @@ public class Effect {
         long temp;
         result = prime * result + Arrays.hashCode(this.effectDecayRate);
         temp = Double.doubleToLongBits(this.effectScaleFactor);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         result = prime * result + this.effectScaleStat;
         result = prime * result + Arrays.hashCode(this.initialEffect);
         result = prime * result + this.initialRounds;
         result = prime * result + Arrays.hashCode(this.messages);
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         return prime * result + this.rounds;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -133,7 +133,7 @@ public class Effect {
         if (!(obj instanceof Effect)) {
             return false;
         }
-        Effect other = (Effect) obj;
+        final Effect other = (Effect) obj;
         if (!Arrays.equals(this.effect, other.effect)) {
             return false;
         }
@@ -187,19 +187,19 @@ public class Effect {
 
     public String getCurrentMessage() {
         String msg = Effect.getNullMessage();
-        if (this.rounds == (this.initialRounds - 1)) {
-            if (!this.messages[Effect.MESSAGE_INITIAL].equals(Effect
-                    .getNullMessage())) {
+        if (this.rounds == this.initialRounds - 1) {
+            if (!this.messages[Effect.MESSAGE_INITIAL]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Effect.MESSAGE_SUBSEQUENT].equals(Effect
-                .getNullMessage())) {
+        if (!this.messages[Effect.MESSAGE_SUBSEQUENT]
+                .equals(Effect.getNullMessage())) {
             msg += this.messages[Effect.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 0) {
-            if (!this.messages[Effect.MESSAGE_WEAR_OFF].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_WEAR_OFF]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_WEAR_OFF] + "\n";
             }
         }
@@ -210,11 +210,11 @@ public class Effect {
         return msg;
     }
 
-    public void setMessage(int which, String newMessage) {
+    public void setMessage(final int which, final String newMessage) {
         this.messages[which] = newMessage;
     }
 
-    public void setSource(AbstractCreature newSource) {
+    public void setSource(final AbstractCreature newSource) {
         this.sourceCreature = newSource;
     }
 
@@ -237,14 +237,14 @@ public class Effect {
     }
 
     private boolean areRoundsInfinite() {
-        return (this.rounds == Effect.ROUNDS_INFINITE);
+        return this.rounds == Effect.ROUNDS_INFINITE;
     }
 
     public boolean isActive() {
         if (this.areRoundsInfinite()) {
             return true;
         } else {
-            return (this.rounds > 0);
+            return this.rounds > 0;
         }
     }
 
@@ -256,20 +256,20 @@ public class Effect {
     }
 
     public void useEffect(final AbstractCreature target) {
-        double hpAddEffect = this.getEffect(Effect.EFFECT_ADD,
+        final double hpAddEffect = this.getEffect(Effect.EFFECT_ADD,
                 StatConstants.STAT_CURRENT_HP);
-        double mpAddEffect = this.getEffect(Effect.EFFECT_ADD,
+        final double mpAddEffect = this.getEffect(Effect.EFFECT_ADD,
                 StatConstants.STAT_CURRENT_MP);
-        double hpMultEffect = this.getEffect(Effect.EFFECT_MULTIPLY,
+        final double hpMultEffect = this.getEffect(Effect.EFFECT_MULTIPLY,
                 StatConstants.STAT_CURRENT_HP);
-        double mpMultEffect = this.getEffect(Effect.EFFECT_MULTIPLY,
+        final double mpMultEffect = this.getEffect(Effect.EFFECT_MULTIPLY,
                 StatConstants.STAT_CURRENT_MP);
         if (hpAddEffect < 0) {
             if (target.isAlive()) {
-                int srcfid = this.sourceCreature.getFaith().getFaithID();
-                double dmgmult = target.getFaith().getMultiplierForOtherFaith(
-                        srcfid);
-                double damage = hpAddEffect * dmgmult;
+                final int srcfid = this.sourceCreature.getFaith().getFaithID();
+                final double dmgmult = target.getFaith()
+                        .getMultiplierForOtherFaith(srcfid);
+                final double damage = hpAddEffect * dmgmult;
                 target.doDamage((int) -damage);
             }
         } else if (hpAddEffect > 0) {
@@ -284,10 +284,10 @@ public class Effect {
         }
         if (hpMultEffect < 1) {
             if (target.isAlive()) {
-                int srcfid = this.sourceCreature.getFaith().getFaithID();
-                double dmgmult = target.getFaith().getMultiplierForOtherFaith(
-                        srcfid);
-                double damage = hpMultEffect * dmgmult;
+                final int srcfid = this.sourceCreature.getFaith().getFaithID();
+                final double dmgmult = target.getFaith()
+                        .getMultiplierForOtherFaith(srcfid);
+                final double damage = hpMultEffect * dmgmult;
                 boolean max;
                 if (this.effectScaleStat == StatConstants.STAT_MAXIMUM_HP) {
                     max = true;
@@ -333,44 +333,44 @@ public class Effect {
         this.decayEffect();
     }
 
-    public double getEffect(int type, int stat) {
+    public double getEffect(final int type, final int stat) {
         return this.effect[type][stat];
     }
 
-    public void scaleEffect(int type, AbstractCreature scaleTo) {
+    public void scaleEffect(final int type, final AbstractCreature scaleTo) {
         for (int stat = 0; stat < StatConstants.MAX_STATS; stat++) {
-            double base = this.effect[type][stat];
-            int scst = this.effectScaleStat;
+            final double base = this.effect[type][stat];
+            final int scst = this.effectScaleStat;
             if (scst != StatConstants.STAT_NONE) {
-                double factor = this.effectScaleFactor;
-                int scstVal = scaleTo.getStat(scst);
-                this.effect[type][stat] = (scstVal * base * factor);
+                final double factor = this.effectScaleFactor;
+                final int scstVal = scaleTo.getStat(scst);
+                this.effect[type][stat] = scstVal * base * factor;
             }
         }
     }
 
-    public void setEffect(int type, int stat, double value) {
+    public void setEffect(final int type, final int stat, final double value) {
         this.effect[type][stat] = value;
         this.initialEffect[type][stat] = value;
     }
 
-    public void setScaleFactor(double factor) {
+    public void setScaleFactor(final double factor) {
         this.effectScaleFactor = factor;
     }
 
-    public void setScaleStat(int scaleStat) {
+    public void setScaleStat(final int scaleStat) {
         this.effectScaleStat = scaleStat;
     }
 
-    public void setEffect(int type, int stat, double value, double factor,
-            int scaleStat) {
+    public void setEffect(final int type, final int stat, final double value,
+            final double factor, final int scaleStat) {
         this.effect[type][stat] = value;
         this.initialEffect[type][stat] = value;
         this.effectScaleFactor = factor;
         this.effectScaleStat = scaleStat;
     }
 
-    public void modifyEffectForPower(double value) {
+    public void modifyEffectForPower(final double value) {
         for (int type = 0; type < Effect.MAX_EFFECT_TYPES; type++) {
             for (int stat = 0; stat < StatConstants.MAX_STATS; stat++) {
                 this.effect[type][stat] *= value;
@@ -378,18 +378,19 @@ public class Effect {
         }
     }
 
-    private void modifyEffect(int type, int stat, double value, double factor,
-            int scaleStat) {
+    private void modifyEffect(final int type, final int stat,
+            final double value, final double factor, final int scaleStat) {
         this.effect[type][stat] = value;
         this.effectScaleFactor = factor;
         this.effectScaleStat = scaleStat;
     }
 
-    private double getDecayRate(int type, int stat) {
+    private double getDecayRate(final int type, final int stat) {
         return this.effectDecayRate[type][stat];
     }
 
-    public void setDecayRate(int type, int stat, double value) {
+    public void setDecayRate(final int type, final int stat,
+            final double value) {
         this.effectDecayRate[type][stat] = value;
     }
 
@@ -402,14 +403,14 @@ public class Effect {
             }
             for (int type = 0; type < Effect.MAX_EFFECT_TYPES; type++) {
                 boolean keepGoing = true;
-                double currDecay = this.getDecayRate(type, stat);
+                final double currDecay = this.getDecayRate(type, stat);
                 if (currDecay <= 0.0) {
                     keepGoing = false;
                 }
-                double modVal = currVal - currDecay;
+                final double modVal = currVal - currDecay;
                 if (keepGoing) {
-                    int scst = this.effectScaleStat;
-                    double factor = this.effectScaleFactor;
+                    final int scst = this.effectScaleStat;
+                    final double factor = this.effectScaleFactor;
                     this.modifyEffect(type, stat, modVal, factor, scst);
                 }
             }

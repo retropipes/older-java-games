@@ -26,8 +26,8 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class MazeObject extends CloneableObject implements
-        TypeConstants, RandomGenerationRule {
+public abstract class MazeObject extends CloneableObject
+        implements TypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -553,7 +553,7 @@ public abstract class MazeObject extends CloneableObject implements
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -569,7 +569,7 @@ public abstract class MazeObject extends CloneableObject implements
             final int dirY, final ObjectInventory inv);
 
     /**
-     * 
+     *
      * @param active
      */
     public void postMoveBattleAction(final BattleCharacter active) {
@@ -577,7 +577,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -590,7 +590,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param dirZ
@@ -601,7 +601,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -620,7 +620,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -638,7 +638,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -649,8 +649,8 @@ public abstract class MazeObject extends CloneableObject implements
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -664,7 +664,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -676,7 +676,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -686,7 +686,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -700,7 +700,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -713,7 +713,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -726,7 +726,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -742,7 +742,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -756,7 +756,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -769,7 +769,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -782,7 +782,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -801,7 +801,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -812,7 +812,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -841,12 +841,13 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -896,7 +897,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -1054,9 +1055,7 @@ public abstract class MazeObject extends CloneableObject implements
         if (ident.equals(this.getIdentifierV1())) {
             final String savedIdent = reader.readString();
             if (!savedIdent.equals("NULL")) {
-                this.saved = MasterMaze
-                        .getApplication()
-                        .getObjects()
+                this.saved = MasterMaze.getApplication().getObjects()
                         .readSavedMazeObject(reader, savedIdent,
                                 FormatConstants.MAZE_FORMAT_1);
             }
@@ -1081,9 +1080,7 @@ public abstract class MazeObject extends CloneableObject implements
         if (ident.equals(this.getIdentifier())) {
             final String savedIdent = reader.readString();
             if (!savedIdent.equals("NULL")) {
-                this.saved = MasterMaze
-                        .getApplication()
-                        .getObjects()
+                this.saved = MasterMaze.getApplication().getObjects()
                         .readSavedMazeObject(reader, savedIdent,
                                 FormatConstants.MAZE_FORMAT_2);
             }
@@ -1104,7 +1101,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -1114,7 +1111,7 @@ public abstract class MazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return

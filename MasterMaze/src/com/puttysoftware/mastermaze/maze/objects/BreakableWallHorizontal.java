@@ -21,7 +21,8 @@ public class BreakableWallHorizontal extends GenericWall {
     // Constructors
     public BreakableWallHorizontal() {
         super(ColorConstants.COLOR_BROWN);
-        this.setAttributeID(ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_HORIZONTAL);
+        this.setAttributeID(
+                ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_HORIZONTAL);
         this.setAttributeTemplateColor(ColorConstants.COLOR_NONE);
     }
 
@@ -53,11 +54,8 @@ public class BreakableWallHorizontal extends GenericWall {
     public void chainReactionAction(final int dirX, final int dirY,
             final int dirZ) {
         // Break up
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .morph(new Empty(), dirX, dirY, dirZ,
-                        MazeConstants.LAYER_OBJECT);
+        MasterMaze.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, MazeConstants.LAYER_OBJECT);
         final Maze m = MasterMaze.getApplication().getMazeManager().getMaze();
         try {
             final MazeObject left = m.getCell(dirX - 1, dirY, dirZ,

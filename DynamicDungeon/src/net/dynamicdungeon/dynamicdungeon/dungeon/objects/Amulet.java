@@ -16,32 +16,33 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Amulet extends AbstractTrap {
     // Constructors
     public Amulet() {
-	super(ObjectImageConstants.OBJECT_IMAGE_AMULET);
+        super(ObjectImageConstants.OBJECT_IMAGE_AMULET);
     }
 
     @Override
     public String getName() {
-	return "Amulet";
+        return "Amulet";
     }
 
     @Override
     public String getPluralName() {
-	return "Amulets";
+        return "Amulets";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().showMessage(
-		"You no longer slide on ice!");
-	final GameLogicManager glm = DynamicDungeon.getApplication()
-		.getGameManager();
-	glm.activateEffect(DungeonEffectConstants.EFFECT_STICKY);
-	SoundManager.playSound(SoundConstants.SOUND_GRAB);
-	GameLogicManager.decay();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication()
+                .showMessage("You no longer slide on ice!");
+        final GameLogicManager glm = DynamicDungeon.getApplication()
+                .getGameManager();
+        glm.activateEffect(DungeonEffectConstants.EFFECT_STICKY);
+        SoundManager.playSound(SoundConstants.SOUND_GRAB);
+        GameLogicManager.decay();
     }
 
     @Override
     public String getDescription() {
-	return "Amulets make you not slide on ice for 15 steps when stepped on.";
+        return "Amulets make you not slide on ice for 15 steps when stepped on.";
     }
 }

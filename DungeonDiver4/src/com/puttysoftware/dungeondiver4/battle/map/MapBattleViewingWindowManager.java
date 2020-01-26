@@ -38,21 +38,19 @@ class MapBattleViewingWindowManager {
                 - 1;
     }
 
-    void setViewingWindowCenterX(int val) {
-        this.locX = val
-                - (MapBattleViewingWindowManager.VIEWING_WINDOW_SIZE / 2);
+    void setViewingWindowCenterX(final int val) {
+        this.locX = val - MapBattleViewingWindowManager.VIEWING_WINDOW_SIZE / 2;
     }
 
-    void setViewingWindowCenterY(int val) {
-        this.locY = val
-                - (MapBattleViewingWindowManager.VIEWING_WINDOW_SIZE / 2);
+    void setViewingWindowCenterY(final int val) {
+        this.locY = val - MapBattleViewingWindowManager.VIEWING_WINDOW_SIZE / 2;
     }
 
-    void offsetViewingWindowLocationX(int val) {
+    void offsetViewingWindowLocationX(final int val) {
         this.locX += val;
     }
 
-    void offsetViewingWindowLocationY(int val) {
+    void offsetViewingWindowLocationY(final int val) {
         this.locY += val;
     }
 

@@ -33,16 +33,15 @@ public class RuleSetSaveTask extends Thread {
         if (!hasExtension) {
             this.filename += Extension.getRuleSetExtensionWithPeriod();
         }
-        try (XDataWriter ruleSetFile = new XDataWriter(this.filename, "ruleset")) {
+        try (XDataWriter ruleSetFile = new XDataWriter(this.filename,
+                "ruleset")) {
             ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
             app.getObjects().writeRuleSet(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Saving the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             FantastleX.getErrorLogger().logError(ex);
         }

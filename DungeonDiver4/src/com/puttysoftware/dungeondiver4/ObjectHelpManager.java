@@ -33,21 +33,21 @@ public class ObjectHelpManager {
 
     // Methods
     public void showHelp() {
-        initHelp();
+        this.initHelp();
         this.helpFrame.setVisible(true);
     }
 
     private void initHelp() {
         if (!this.inited) {
-            ButtonHandler buttonHandler = new ButtonHandler();
-            DungeonObjectList objectList = DungeonDiver4.getApplication()
+            final ButtonHandler buttonHandler = new ButtonHandler();
+            final DungeonObjectList objectList = DungeonDiver4.getApplication()
                     .getObjects();
-            String[] objectNames = objectList.getAllDescriptions();
-            BufferedImageIcon[] objectAppearances = objectList
+            final String[] objectNames = objectList.getAllDescriptions();
+            final BufferedImageIcon[] objectAppearances = objectList
                     .getAllEditorAppearances();
             this.hv = new GraphicalHelpViewer(objectAppearances, objectNames,
                     new Color(223, 223, 223));
-            JButton export = new JButton("Export");
+            final JButton export = new JButton("Export");
             export.addActionListener(buttonHandler);
             this.helpFrame = new JFrame("DungeonDiver4 Object Help");
             final Image iconlogo = DungeonDiver4.getApplication().getIconLogo();
@@ -63,7 +63,7 @@ public class ObjectHelpManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                MenuManager menu = new MenuManager();
+                final MenuManager menu = new MenuManager();
                 menu.setHelpMenus();
                 this.helpFrame.setJMenuBar(menu.getMainMenuBar());
             }
@@ -77,7 +77,7 @@ public class ObjectHelpManager {
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(final ActionEvent e) {
             ObjectHelpManager.this.hv.exportHelp();
         }
     }

@@ -47,11 +47,11 @@ public abstract class GenericObjectEditor extends GenericEditor {
     }
 
     // Methods
-    protected JTextField getEntryField(int num) {
+    protected JTextField getEntryField(final int num) {
         return this.entryFields[num];
     }
 
-    protected JComboBox<String> getEntryList(int num) {
+    protected JComboBox<String> getEntryList(final int num) {
         return this.entryLists.get(num);
     }
 
@@ -83,7 +83,7 @@ public abstract class GenericObjectEditor extends GenericEditor {
     }
 
     @Override
-    protected void setUpGUIHook(Container outputPane) {
+    protected void setUpGUIHook(final Container outputPane) {
         this.handler = new EventHandler();
         outputPane.setLayout(new GridLayout(this.abCols, this.abRows));
         this.nameLabels = new JLabel[this.abCols];
@@ -98,7 +98,7 @@ public abstract class GenericObjectEditor extends GenericEditor {
             // Create controls
             this.nameLabels[x] = new JLabel();
             this.guiNameLabelProperties(this.nameLabels[x], x);
-            boolean entryType = this.guiEntryType(x);
+            final boolean entryType = this.guiEntryType(x);
             if (entryType == GenericObjectEditor.ENTRY_TYPE_LIST) {
                 this.entryLists.set(x,
                         new JComboBox<>(this.guiEntryListItems(x)));
@@ -148,7 +148,7 @@ public abstract class GenericObjectEditor extends GenericEditor {
     }
 
     @Override
-    protected void reSetUpGUIHook(Container outputPane) {
+    protected void reSetUpGUIHook(final Container outputPane) {
         this.handler = new EventHandler();
         outputPane.setLayout(new GridLayout(this.guiGridRows(), this.abRows));
         this.nameLabels = new JLabel[this.abCols];
@@ -163,7 +163,7 @@ public abstract class GenericObjectEditor extends GenericEditor {
             // Create controls
             this.nameLabels[x] = new JLabel();
             this.guiNameLabelProperties(this.nameLabels[x], x);
-            boolean entryType = this.guiEntryType(x);
+            final boolean entryType = this.guiEntryType(x);
             if (entryType == GenericObjectEditor.ENTRY_TYPE_LIST) {
                 this.entryLists.set(x,
                         new JComboBox<>(this.guiEntryListItems(x)));
@@ -240,56 +240,57 @@ public abstract class GenericObjectEditor extends GenericEditor {
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            GenericObjectEditor ge = GenericObjectEditor.this;
+        public void actionPerformed(final ActionEvent e) {
+            final GenericObjectEditor ge = GenericObjectEditor.this;
             try {
-                String cmd = e.getActionCommand().substring(0, ge.actionCmdLen);
-                int num = Integer.parseInt(
+                final String cmd = e.getActionCommand().substring(0,
+                        ge.actionCmdLen);
+                final int num = Integer.parseInt(
                         e.getActionCommand().substring(ge.actionCmdLen));
                 ge.handleButtonClick(cmd, num);
                 if (ge.autoStore) {
                     if (ge.guiEntryType(
                             num) == GenericObjectEditor.ENTRY_TYPE_LIST) {
-                        JComboBox<String> list = ge.getEntryList(num);
+                        final JComboBox<String> list = ge.getEntryList(num);
                         ge.autoStoreEntryListValue(list, num);
                     } else if (ge.guiEntryType(
                             num) == GenericObjectEditor.ENTRY_TYPE_TEXT) {
-                        JTextField entry = ge.getEntryField(num);
+                        final JTextField entry = ge.getEntryField(num);
                         ge.autoStoreEntryFieldValue(entry, num);
                     }
                 }
-            } catch (NumberFormatException nfe) {
+            } catch (final NumberFormatException nfe) {
                 CommonDialogs.showErrorDialog("An invalid value was entered.",
                         ge.getEditorSource());
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Support.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void focusGained(FocusEvent fe) {
+        public void focusGained(final FocusEvent fe) {
             // Do nothing
         }
 
         @Override
-        public void focusLost(FocusEvent fe) {
-            GenericObjectEditor ge = GenericObjectEditor.this;
+        public void focusLost(final FocusEvent fe) {
+            final GenericObjectEditor ge = GenericObjectEditor.this;
             try {
-                Component comp = fe.getComponent();
+                final Component comp = fe.getComponent();
                 if (comp.getClass().equals(JTextField.class)) {
-                    JTextField entry = (JTextField) comp;
-                    int num = Integer.parseInt(entry.getName());
+                    final JTextField entry = (JTextField) comp;
+                    final int num = Integer.parseInt(entry.getName());
                     ge.autoStoreEntryFieldValue(entry, num);
                 } else if (comp.getClass().equals(JComboBox.class)) {
                     @SuppressWarnings("unchecked")
-                    JComboBox<String> list = (JComboBox<String>) comp;
-                    int num = Integer.parseInt(list.getName());
+                    final JComboBox<String> list = (JComboBox<String>) comp;
+                    final int num = Integer.parseInt(list.getName());
                     ge.autoStoreEntryListValue(list, num);
                 }
-            } catch (NumberFormatException nfe) {
+            } catch (final NumberFormatException nfe) {
                 CommonDialogs.showErrorDialog("An invalid value was entered.",
                         ge.getEditorSource());
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Support.getErrorLogger().logError(ex);
             }
         }

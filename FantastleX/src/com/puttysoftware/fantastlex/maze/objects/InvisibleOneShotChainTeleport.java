@@ -29,8 +29,8 @@ public class InvisibleOneShotChainTeleport extends AbstractInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsoluteNoEvents(
@@ -58,8 +58,8 @@ public class InvisibleOneShotChainTeleport extends AbstractInvisibleTeleport {
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         final MazeEditorLogic me = FantastleX.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN);
     }
 
     @Override

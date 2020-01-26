@@ -31,15 +31,19 @@ public class GameScriptConstants {
     public static final Class<?>[] ARGT_MODIFY = new Class[] { boolean.class,
             int.class, int.class, int.class, int.class, String.class };
     public static final Class<?>[] ARGT_DELETE_SCRIPT = null;
-    public static final Class<?>[] ARGT_RANDOM_CHANCE = new Class[] { int.class };
+    public static final Class<?>[] ARGT_RANDOM_CHANCE = new Class[] {
+            int.class };
     public static final Class<?>[] ARGT_BATTLE = null;
     public static final Class<?>[] ARGT_DECAY = null;
-    public static final Class<?>[] ARGT_SWAP_PAIRS = new Class[] {
-            String.class, String.class };
+    public static final Class<?>[] ARGT_SWAP_PAIRS = new Class[] { String.class,
+            String.class };
     public static final Class<?>[] ARGT_REDRAW = null;
-    public static final Class<?>[] ARGT_LEVEL_CHANGE = new Class[] { int.class };
-    public static final Class<?>[] ARGT_ADD_TO_SCORE = new Class[] { int.class };
-    public static final Class<?>[] ARGT_RELATIVE_LEVEL_CHANGE = new Class[] { int.class };
+    public static final Class<?>[] ARGT_LEVEL_CHANGE = new Class[] {
+            int.class };
+    public static final Class<?>[] ARGT_ADD_TO_SCORE = new Class[] {
+            int.class };
+    public static final Class<?>[] ARGT_RELATIVE_LEVEL_CHANGE = new Class[] {
+            int.class };
     // Argument Count Validation Array
     public static final int[] ARGUMENT_COUNT_VALIDATION = new int[] {
             GameScriptConstants.ARGC_NONE, GameScriptConstants.ARGC_MESSAGE,

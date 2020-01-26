@@ -7,8 +7,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTeleport;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
@@ -22,9 +22,9 @@ public class ControllableTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_WALK);
         app.getGameManager().controllableTeleport();
     }

@@ -51,13 +51,11 @@ public class LoopChute {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    LoopChute.application.getMazeManager(),
-                    LoopChute.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(LoopChute.application.getMazeManager(),
+                    LoopChute.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(LoopChute.application.getGUIManager(),

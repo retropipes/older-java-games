@@ -27,7 +27,7 @@ public class MusicManager {
         }
     }
 
-    public static void playMusic(int musicID) {
+    public static void playMusic(final int musicID) {
         MusicManager.CURRENT_MUSIC = MusicManager
                 .getMusic(MusicConstants.MUSIC_NAMES[musicID]);
         if (MusicManager.CURRENT_MUSIC != null) {
@@ -41,11 +41,11 @@ public class MusicManager {
             // Stop the music
             try {
                 MusicManager.CURRENT_MUSIC.stopLoop();
-            } catch (BufferUnderflowException bue) {
+            } catch (final BufferUnderflowException bue) {
                 // Ignore
-            } catch (NullPointerException np) {
+            } catch (final NullPointerException np) {
                 // Ignore
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 Support.getErrorLogger().logError(t);
             }
         }

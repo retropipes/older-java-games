@@ -229,7 +229,7 @@ public abstract class AbstractCreature {
         final StringBuilder sb = new StringBuilder(Effect.getNullMessage());
         for (x = 0; x < this.effectList.length; x++) {
             try {
-                Effect e = this.get(x);
+                final Effect e = this.get(x);
                 if (e != null) {
                     sb.append(e.getCurrentMessage());
                     sb.append("\n");
@@ -271,7 +271,7 @@ public abstract class AbstractCreature {
         String s = "";
         for (x = 0; x < this.effectList.length; x++) {
             try {
-                Effect e = this.get(x);
+                final Effect e = this.get(x);
                 if (e != null) {
                     s += e.getEffectString() + "\n";
                 }
@@ -916,7 +916,7 @@ public abstract class AbstractCreature {
         int x;
         for (x = 0; x < this.effectList.length; x++) {
             try {
-                Effect e = this.get(x);
+                final Effect e = this.get(x);
                 if (e != null) {
                     e.useEffect(this);
                 }

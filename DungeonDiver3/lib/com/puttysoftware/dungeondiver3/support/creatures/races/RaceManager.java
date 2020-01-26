@@ -15,7 +15,7 @@ public class RaceManager {
     private static Race[] CACHE;
     private static String[] DESC_CACHE;
 
-    public static Race selectRace(JFrame owner) {
+    public static Race selectRace(final JFrame owner) {
         RaceManager.createCache();
         final String[] names = RaceConstants.getRaceNames();
         String dialogResult = null;
@@ -34,7 +34,7 @@ public class RaceManager {
         }
     }
 
-    public static Race getRace(int raceID) {
+    public static Race getRace(final int raceID) {
         RaceManager.createCache();
         return RaceManager.CACHE[raceID];
     }
@@ -51,7 +51,7 @@ public class RaceManager {
             RaceManager.CACHE = new Race[RaceConstants.getRacesCount()];
             RaceManager.DESC_CACHE = new String[RaceConstants.getRacesCount()];
             for (int x = 0; x < RaceConstants.getRacesCount(); x++) {
-                int[] rdata = RaceDataManager.getRaceData(x);
+                final int[] rdata = RaceDataManager.getRaceData(x);
                 RaceManager.CACHE[x] = new Race(x, rdata);
                 RaceManager.DESC_CACHE[x] = RaceManager.CACHE[x]
                         .getDescription();

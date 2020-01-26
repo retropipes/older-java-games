@@ -15,13 +15,13 @@ import com.puttysoftware.dungeondiver4.dungeon.utilities.DirectionResolver;
 
 public class DungeonEffectManager {
     // Fields
-    private DungeonEffect[] activeEffects;
+    private final DungeonEffect[] activeEffects;
     private static final int NUM_EFFECTS = 12;
     private static final int MAX_ACTIVE_EFFECTS = 3;
-    private Container activeEffectMessageContainer;
-    private JLabel[] activeEffectMessages;
+    private final Container activeEffectMessageContainer;
+    private final JLabel[] activeEffectMessages;
     private int newEffectIndex;
-    private int[] activeEffectIndices;
+    private final int[] activeEffectIndices;
 
     // Constructors
     public DungeonEffectManager() {
@@ -50,8 +50,8 @@ public class DungeonEffectManager {
         // Create GUI
         this.activeEffectMessageContainer = new Container();
         this.activeEffectMessages = new JLabel[DungeonEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessageContainer.setLayout(new GridLayout(
-                DungeonEffectManager.MAX_ACTIVE_EFFECTS, 1));
+        this.activeEffectMessageContainer.setLayout(
+                new GridLayout(DungeonEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < DungeonEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
             this.activeEffectMessageContainer.add(this.activeEffectMessages[z]);
@@ -65,7 +65,7 @@ public class DungeonEffectManager {
     }
 
     // Methods
-    public boolean isEffectActive(int effectID) {
+    public boolean isEffectActive(final int effectID) {
         return this.activeEffects[effectID].isActive();
     }
 
@@ -80,8 +80,8 @@ public class DungeonEffectManager {
                 // Update effect grid
                 this.updateGridEntry(x);
                 if (!this.activeEffects[x].isActive()) {
-                    DungeonDiver4.getApplication().showMessage(
-                            "You feel normal again.");
+                    DungeonDiver4.getApplication()
+                            .showMessage("You feel normal again.");
                     // Clear effect grid
                     this.clearGridEntry(x);
                     // Pack
@@ -92,9 +92,9 @@ public class DungeonEffectManager {
         }
     }
 
-    public void activateEffect(int effectID, int duration) {
+    public void activateEffect(final int effectID, final int duration) {
         this.handleMutualExclusiveEffects(effectID);
-        boolean active = this.activeEffects[effectID].isActive();
+        final boolean active = this.activeEffects[effectID].isActive();
         this.activeEffects[effectID].extendEffect(duration);
         // Update effect grid
         if (active) {
@@ -106,23 +106,27 @@ public class DungeonEffectManager {
         DungeonDiver4.getApplication().getGameManager().keepNextMessage();
     }
 
-    public void deactivateEffect(int effectID) {
+    public void deactivateEffect(final int effectID) {
         if (this.activeEffects[effectID].isActive()) {
             this.activeEffects[effectID].deactivateEffect();
             this.clearGridEntry(effectID);
         }
     }
 
-    private void handleMutualExclusiveEffects(int effectID) {
+    private void handleMutualExclusiveEffects(final int effectID) {
         if (effectID == DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE) {
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_U_TURNED);
         } else if (effectID == DungeonEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE) {
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_U_TURNED);
         } else if (effectID == DungeonEffectConstants.EFFECT_U_TURNED) {
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_ROTATED_CLOCKWISE);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
         } else if (effectID == DungeonEffectConstants.EFFECT_CONFUSED) {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_DIZZY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_DRUNK);
@@ -136,25 +140,29 @@ public class DungeonEffectManager {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_ICY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_GHOSTLY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_POISONOUS);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_COUNTER_POISONED);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_TRUE_SIGHT);
         } else if (effectID == DungeonEffectConstants.EFFECT_ICY) {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_FIERY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_GHOSTLY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_POISONOUS);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_COUNTER_POISONED);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_TRUE_SIGHT);
         } else if (effectID == DungeonEffectConstants.EFFECT_GHOSTLY) {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_FIERY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_ICY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_POISONOUS);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_COUNTER_POISONED);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_TRUE_SIGHT);
         } else if (effectID == DungeonEffectConstants.EFFECT_POISONOUS) {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_FIERY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_ICY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_GHOSTLY);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_COUNTER_POISONED);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_TRUE_SIGHT);
         } else if (effectID == DungeonEffectConstants.EFFECT_COUNTER_POISONED) {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_FIERY);
@@ -167,11 +175,12 @@ public class DungeonEffectManager {
             this.deactivateEffect(DungeonEffectConstants.EFFECT_ICY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_GHOSTLY);
             this.deactivateEffect(DungeonEffectConstants.EFFECT_POISONOUS);
-            this.deactivateEffect(DungeonEffectConstants.EFFECT_COUNTER_POISONED);
+            this.deactivateEffect(
+                    DungeonEffectConstants.EFFECT_COUNTER_POISONED);
         }
     }
 
-    public int[] doEffects(int x, int y) {
+    public int[] doEffects(final int x, final int y) {
         int[] res = new int[] { x, y };
         int dir = DirectionResolver.resolveRelativeDirection(x, y);
         for (int z = 0; z < DungeonEffectManager.NUM_EFFECTS; z++) {
@@ -184,48 +193,50 @@ public class DungeonEffectManager {
         return res;
     }
 
-    private void addGridEntry(int effectID) {
+    private void addGridEntry(final int effectID) {
         if (this.newEffectIndex < DungeonEffectManager.MAX_ACTIVE_EFFECTS - 1) {
             this.newEffectIndex++;
             this.activeEffectIndices[this.newEffectIndex] = effectID;
-            String effectString = this.activeEffects[effectID]
+            final String effectString = this.activeEffects[effectID]
                     .getEffectString();
             this.activeEffectMessages[this.newEffectIndex]
                     .setText(effectString);
         }
     }
 
-    private void clearGridEntry(int effectID) {
-        int index = this.lookupEffect(effectID);
+    private void clearGridEntry(final int effectID) {
+        final int index = this.lookupEffect(effectID);
         if (index != -1) {
             this.clearGridEntryText(index);
             // Compact grid
-            for (int z = index; z < DungeonEffectManager.MAX_ACTIVE_EFFECTS - 1; z++) {
+            for (int z = index; z < DungeonEffectManager.MAX_ACTIVE_EFFECTS
+                    - 1; z++) {
                 this.activeEffectMessages[z]
                         .setText(this.activeEffectMessages[z + 1].getText());
                 this.activeEffectIndices[z] = this.activeEffectIndices[z + 1];
             }
             // Clear last entry
-            this.clearGridEntryText(DungeonEffectManager.MAX_ACTIVE_EFFECTS - 1);
+            this.clearGridEntryText(
+                    DungeonEffectManager.MAX_ACTIVE_EFFECTS - 1);
             this.newEffectIndex--;
         }
     }
 
-    private void clearGridEntryText(int index) {
+    private void clearGridEntryText(final int index) {
         this.activeEffectIndices[index] = -1;
         this.activeEffectMessages[index].setText("");
     }
 
-    private void updateGridEntry(int effectID) {
-        int index = this.lookupEffect(effectID);
+    private void updateGridEntry(final int effectID) {
+        final int index = this.lookupEffect(effectID);
         if (index != -1) {
-            String effectString = this.activeEffects[effectID]
+            final String effectString = this.activeEffects[effectID]
                     .getEffectString();
             this.activeEffectMessages[index].setText(effectString);
         }
     }
 
-    private int lookupEffect(int effectID) {
+    private int lookupEffect(final int effectID) {
         for (int z = 0; z < DungeonEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             if (this.activeEffectIndices[z] == effectID) {
                 return z;

@@ -13,19 +13,19 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
     // Constructors
     /**
      * Creates a BufferedImageIcon of a given size.
-     * 
+     *
      * @param bi
      */
-    public BufferedImageIcon(int width, int height) {
+    public BufferedImageIcon(final int width, final int height) {
         super(width, height, BufferedImageIcon.DEFAULT_TYPE);
     }
 
     /**
      * Creates a BufferedImageIcon based on a BufferedImage object.
-     * 
+     *
      * @param bi
      */
-    public BufferedImageIcon(BufferedImage bi) {
+    public BufferedImageIcon(final BufferedImage bi) {
         super(bi.getWidth(), bi.getHeight(), BufferedImageIcon.DEFAULT_TYPE);
         for (int x = 0; x < bi.getWidth(); x++) {
             for (int y = 0; y < bi.getHeight(); y++) {
@@ -37,14 +37,15 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
     /**
      * Paints the BufferedImageIcon, using the given Graphics, on the given
      * Component at the given x, y location.
-     * 
+     *
      * @param c
      * @param g
      * @param x
      * @param y
      */
     @Override
-    public void paintIcon(Component c, Graphics g, int x, int y) {
+    public void paintIcon(final Component c, final Graphics g, final int x,
+            final int y) {
         g.drawImage(this, x, y, c);
     }
 

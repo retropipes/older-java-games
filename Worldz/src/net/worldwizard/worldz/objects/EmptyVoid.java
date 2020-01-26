@@ -24,7 +24,8 @@ public class EmptyVoid extends GenericWall {
     @Override
     public String gameRenderHook(final int x, final int y, final int z) {
         final Application app = Worldz.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final WorldObject mo1 = app.getWorldManager().getWorldObject(x - 1,
                 y - 1, z, WorldConstants.LAYER_OBJECT);
@@ -95,9 +96,11 @@ public class EmptyVoid extends GenericWall {
     }
 
     @Override
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         final Application app = Worldz.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final WorldObject mo1 = app.getWorldManager().getWorldObject(x - 1,
                 y - 1, z, WorldConstants.LAYER_OBJECT);

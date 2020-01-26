@@ -14,14 +14,15 @@ import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
-public abstract class AbstractRandomInvisibleTeleport extends
-        AbstractRandomTeleport {
+public abstract class AbstractRandomInvisibleTeleport
+        extends AbstractRandomTeleport {
     // Constructors
     public AbstractRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX, final int attrName) {
         super(newRandomRangeY, newRandomRangeX, attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
@@ -29,9 +30,9 @@ public abstract class AbstractRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();
@@ -44,9 +45,9 @@ public abstract class AbstractRandomInvisibleTeleport extends
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
     }
 
     @Override

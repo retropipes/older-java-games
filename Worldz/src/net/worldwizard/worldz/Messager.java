@@ -36,27 +36,28 @@ public class Messager {
             final String defaultChoice) {
         final Application app = Worldz.getApplication();
         return (String) JOptionPane.showInputDialog(app.getOutputFrame(),
-                prompt, title, JOptionPane.QUESTION_MESSAGE,
-                app.getMicroLogo(), choices, defaultChoice);
+                prompt, title, JOptionPane.QUESTION_MESSAGE, app.getMicroLogo(),
+                choices, defaultChoice);
     }
 
     public static String showTextInputDialog(final String prompt,
             final String title) {
         final Application app = Worldz.getApplication();
         return (String) JOptionPane.showInputDialog(app.getOutputFrame(),
-                prompt, title, JOptionPane.QUESTION_MESSAGE,
-                app.getMicroLogo(), null, null);
+                prompt, title, JOptionPane.QUESTION_MESSAGE, app.getMicroLogo(),
+                null, null);
     }
 
     public static String showTextInputDialogWithDefault(final String prompt,
             final String title, final String defaultValue) {
         final Application app = Worldz.getApplication();
         return (String) JOptionPane.showInputDialog(app.getOutputFrame(),
-                prompt, title, JOptionPane.QUESTION_MESSAGE,
-                app.getMicroLogo(), null, defaultValue);
+                prompt, title, JOptionPane.QUESTION_MESSAGE, app.getMicroLogo(),
+                null, defaultValue);
     }
 
-    public static int showConfirmDialog(final String prompt, final String title) {
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
         final Application app = Worldz.getApplication();
         return JOptionPane.showConfirmDialog(app.getOutputFrame(), prompt,
                 title, JOptionPane.YES_NO_OPTION,
@@ -74,8 +75,8 @@ public class Messager {
     public static int showCustomDialog(final String prompt, final String title,
             final String[] buttonNames, final String defaultButton) {
         final Application app = Worldz.getApplication();
-        return JOptionPane.showOptionDialog(app.getOutputFrame(), prompt,
-                title, JOptionPane.YES_NO_CANCEL_OPTION,
+        return JOptionPane.showOptionDialog(app.getOutputFrame(), prompt, title,
+                JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE, app.getMicroLogo(),
                 buttonNames, defaultButton);
     }

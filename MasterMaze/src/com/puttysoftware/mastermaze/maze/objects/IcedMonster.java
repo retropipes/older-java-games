@@ -23,8 +23,8 @@ public class IcedMonster extends GenericMovingObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Extend iced effect, if hit by an ice arrow
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             this.extendTimer(IcedMonster.ICE_LENGTH);
@@ -39,11 +39,9 @@ public class IcedMonster extends GenericMovingObject {
         // Transform into a normal monster
         final int pz = MasterMaze.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .morph(new Monster(this.getSavedObject()), dirX, dirY, pz,
-                        MazeConstants.LAYER_OBJECT);
+        MasterMaze.getApplication().getGameManager().morph(
+                new Monster(this.getSavedObject()), dirX, dirY, pz,
+                MazeConstants.LAYER_OBJECT);
     }
 
     @Override

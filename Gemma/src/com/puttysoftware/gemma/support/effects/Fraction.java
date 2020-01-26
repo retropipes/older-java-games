@@ -21,7 +21,7 @@ public class Fraction {
         return this.numerator;
     }
 
-    public void setNumerator(int newNumerator) {
+    public void setNumerator(final int newNumerator) {
         this.numerator = newNumerator;
     }
 
@@ -29,7 +29,7 @@ public class Fraction {
         return this.denominator;
     }
 
-    public void setDenominator(int newDenominator) {
+    public void setDenominator(final int newDenominator) {
         this.denominator = newDenominator;
     }
 
@@ -38,15 +38,15 @@ public class Fraction {
         int newNum = this.numerator + other.numerator;
         if (this.denominator != other.denominator) {
             newDenom = this.denominator * other.denominator;
-            newNum = (this.numerator * other.denominator)
-                    + (other.numerator * other.denominator);
+            newNum = this.numerator * other.denominator
+                    + other.numerator * other.denominator;
         }
         return new Fraction(newNum, newDenom);
     }
 
     public Fraction multiply(final Fraction other) {
-        int newDenom = this.denominator * other.denominator;
-        int newNum = this.numerator * other.numerator;
+        final int newDenom = this.denominator * other.denominator;
+        final int newNum = this.numerator * other.numerator;
         return new Fraction(newNum, newDenom);
     }
 
@@ -63,11 +63,11 @@ public class Fraction {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (this.getClass() != obj.getClass()) {
             return false;
         }
         final Fraction other = (Fraction) obj;

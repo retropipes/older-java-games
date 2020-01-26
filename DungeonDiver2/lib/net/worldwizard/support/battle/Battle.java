@@ -103,12 +103,10 @@ public class Battle extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "battles"
-                + File.separator
-                + this.getID() + Extension.getBattleExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "battles" + File.separator + this.getID()
+                        + Extension.getBattleExtensionWithPeriod(),
                 Extension.getBattleExtension());
         this.write(writer);
         writer.close();

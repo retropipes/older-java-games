@@ -10,16 +10,16 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractTransientObject
 public class PowerLaser extends AbstractTransientObject {
     // Constructors
     public PowerLaser() {
-	super();
+        super();
     }
 
     @Override
     public int getForceUnitsImbued() {
-	return 5;
+        return 5;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 137;
+        return 137;
     }
 }

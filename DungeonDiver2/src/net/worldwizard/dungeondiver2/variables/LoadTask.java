@@ -64,8 +64,8 @@ public class LoadTask extends Thread {
             final File variablesFile = new File(this.filename);
             try {
                 Support.createVariables();
-                ZipUtilities.unzipDirectory(variablesFile, new File(Support
-                        .getVariables().getBasePath()));
+                ZipUtilities.unzipDirectory(variablesFile,
+                        new File(Support.getVariables().getBasePath()));
                 // Load variables data
                 Support.getVariables().read();
                 // Load map data
@@ -89,8 +89,7 @@ public class LoadTask extends Thread {
                     this.gameMap.switchLevel(startW);
                     final boolean playerExists = this.gameMap.doesPlayerExist();
                     if (playerExists) {
-                        app.getGameManager()
-                                .getPlayerManager()
+                        app.getGameManager().getPlayerManager()
                                 .setPlayerLocation(
                                         this.gameMap.getStartColumn(),
                                         this.gameMap.getStartRow(),
@@ -115,14 +114,12 @@ public class LoadTask extends Thread {
                 CommonDialogs.showDialog(sg + " file loaded.");
                 app.getVariablesManager().handleDeferredSuccess();
             } catch (final FileNotFoundException fnfe) {
-                CommonDialogs
-                        .showDialog("Loading the "
-                                + sg.toLowerCase()
-                                + " file failed, probably due to illegal characters in the file name.");
+                CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                        + " file failed, probably due to illegal characters in the file name.");
                 app.getVariablesManager().handleDeferredSuccess();
             } catch (final IOException ie) {
-                throw new InvalidMapException("Error loading "
-                        + sg.toLowerCase() + " file.");
+                throw new InvalidMapException(
+                        "Error loading " + sg.toLowerCase() + " file.");
             }
         } catch (final InvalidMapException ime) {
             CommonDialogs.showDialog(ime.getMessage());

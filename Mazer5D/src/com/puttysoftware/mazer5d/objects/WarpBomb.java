@@ -39,11 +39,11 @@ public class WarpBomb extends GenericUsableObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Destroy bomb
-        Mazer5D.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+                locZ);
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Stop arrow
@@ -56,9 +56,7 @@ public class WarpBomb extends GenericUsableObject {
         // Warp objects
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_EXPLODE);
-        Mazer5D.getApplication()
-                .getMazeManager()
-                .getMaze()
+        Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
                         WarpBomb.EFFECT_RADIUS);
         // Player might have moved

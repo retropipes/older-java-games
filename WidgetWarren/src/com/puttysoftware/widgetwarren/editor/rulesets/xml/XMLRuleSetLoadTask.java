@@ -29,7 +29,8 @@ public class XMLRuleSetLoadTask extends Thread {
     public void run() {
         final Application app = WidgetWarren.getApplication();
         final String sg = "Rule Set";
-        try (XDataReader ruleSetFile = new XDataReader(this.filename, "ruleset")) {
+        try (XDataReader ruleSetFile = new XDataReader(this.filename,
+                "ruleset")) {
             final int magic = ruleSetFile.readInt();
             if (magic == RuleSetConstants.MAGIC_NUMBER_2) {
                 // Format 2 file
@@ -40,10 +41,8 @@ public class XMLRuleSetLoadTask extends Thread {
             CommonDialogs.showTitledDialog(sg + " file loaded.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog(ie.getMessage());

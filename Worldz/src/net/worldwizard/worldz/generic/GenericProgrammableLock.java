@@ -32,8 +32,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (this.getKey() != GenericProgrammableLock.SIGNAL) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());

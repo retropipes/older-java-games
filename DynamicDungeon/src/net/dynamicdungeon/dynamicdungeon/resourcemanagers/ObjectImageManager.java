@@ -21,45 +21,44 @@ public class ObjectImageManager {
     private static Class<?> LOAD_CLASS = ObjectImageManager.class;
 
     /**
-     * 
+     *
      * @param name
      * @param baseID
      * @param transformColor
      * @return
      */
     public static BufferedImageIcon getImage(final String name,
-	    final int baseID, final int transformColor) {
-	// Get it from the cache
-	final String baseName = ObjectImageConstants.getObjectImageName(baseID);
-	final BufferedImageIcon bii = ObjectImageCache.getCachedImage(name,
-		baseName);
-	return ImageTransformer.templateTransformImage(bii, transformColor,
-		ImageTransformer.getGraphicSize());
+            final int baseID, final int transformColor) {
+        // Get it from the cache
+        final String baseName = ObjectImageConstants.getObjectImageName(baseID);
+        final BufferedImageIcon bii = ObjectImageCache.getCachedImage(name,
+                baseName);
+        return ImageTransformer.templateTransformImage(bii, transformColor,
+                ImageTransformer.getGraphicSize());
     }
 
     static BufferedImageIcon getUncachedImage(final String name) {
-	try {
-	    if (PreferencesManager.getHighDefEnabled()) {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = ObjectImageManager.LOAD_CLASS
-			.getResource(ObjectImageManager.LOAD_PATH + normalName
-				+ HI_DEF_SUFFIX + ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedRetinaImageIcon(image);
-	    } else {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = ObjectImageManager.LOAD_CLASS
-			.getResource(ObjectImageManager.LOAD_PATH + normalName
-				+ ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedImageIcon(image);
-	    }
-	} catch (final IOException ie) {
-	    return null;
-	} catch (final NullPointerException np) {
-	    return null;
-	} catch (final IllegalArgumentException ia) {
-	    return null;
-	}
+        try {
+            if (PreferencesManager.getHighDefEnabled()) {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = ObjectImageManager.LOAD_CLASS
+                        .getResource(ObjectImageManager.LOAD_PATH + normalName
+                                + ObjectImageManager.HI_DEF_SUFFIX + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedRetinaImageIcon(image);
+            } else {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                        ObjectImageManager.LOAD_PATH + normalName + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedImageIcon(image);
+            }
+        } catch (final IOException ie) {
+            return null;
+        } catch (final NullPointerException np) {
+            return null;
+        } catch (final IllegalArgumentException ia) {
+            return null;
+        }
     }
 }

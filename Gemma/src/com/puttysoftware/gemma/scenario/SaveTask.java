@@ -20,21 +20,21 @@ class SaveTask extends Thread {
     private String filename;
 
     // Constructors
-    SaveTask(String file) {
+    SaveTask(final String file) {
         this.filename = file;
         this.setName("Saved Game File Writer");
     }
 
     @Override
     public void run() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         final String sg = "Saved Game";
         // filename check
-        boolean hasExtension = SaveTask.hasExtension(this.filename);
+        final boolean hasExtension = SaveTask.hasExtension(this.filename);
         if (!hasExtension) {
             this.filename += Extension.getGameExtensionWithPeriod();
         }
-        File mapFile = new File(this.filename);
+        final File mapFile = new File(this.filename);
         try {
             // Set prefix handler
             app.getScenarioManager().getMap()
@@ -58,7 +58,7 @@ class SaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

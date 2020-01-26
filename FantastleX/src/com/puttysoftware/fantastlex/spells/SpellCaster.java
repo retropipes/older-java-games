@@ -33,10 +33,9 @@ public class SpellCaster {
         if (s != null) {
             result = SpellCaster.castSpell(s, caster);
             if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't have enough MP!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't have enough MP!",
+                        "Select Spell");
             }
         }
         return result;
@@ -85,10 +84,9 @@ public class SpellCaster {
                 result = SpellCaster.castSpellWithPower(s, power, caster,
                         teamID, aiEnabled, battle);
                 if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "You try to cast a spell, but realize you don't have enough MP!",
-                                    "Select Spell");
+                    CommonDialogs.showErrorDialog(
+                            "You try to cast a spell, but realize you don't have enough MP!",
+                            "Select Spell");
                 }
             }
         }
@@ -120,10 +118,9 @@ public class SpellCaster {
                 }
             } else {
                 SpellCaster.NO_SPELLS_FLAG = true;
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't know any!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't know any!",
+                        "Select Spell");
                 return null;
             }
         } else {
@@ -167,8 +164,8 @@ public class SpellCaster {
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
-                final AbstractCreature[] targets = SpellCaster.resolveTarget(
-                        cast, caster, teamID, aiEnabled, battle);
+                final AbstractCreature[] targets = SpellCaster
+                        .resolveTarget(cast, caster, teamID, aiEnabled, battle);
                 for (final AbstractCreature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
@@ -187,8 +184,8 @@ public class SpellCaster {
         }
     }
 
-    private static boolean castSpellWithPower(final Spell cast,
-            final int power, final AbstractCreature caster, final int teamID,
+    private static boolean castSpellWithPower(final Spell cast, final int power,
+            final AbstractCreature caster, final int teamID,
             final boolean aiEnabled, final MapBattleDefinitions battle) {
         if (cast != null) {
             final int casterMP = caster.getCurrentMP();
@@ -202,8 +199,8 @@ public class SpellCaster {
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
                 eff.modifyEffectForPower(power);
-                final AbstractCreature[] targets = SpellCaster.resolveTarget(
-                        cast, caster, teamID, aiEnabled, battle);
+                final AbstractCreature[] targets = SpellCaster
+                        .resolveTarget(cast, caster, teamID, aiEnabled, battle);
                 for (final AbstractCreature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
@@ -259,22 +256,22 @@ public class SpellCaster {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeam(teamID) };
             }
         case ALL_ALLIES:
             // All Allies

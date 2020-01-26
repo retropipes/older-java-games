@@ -4,9 +4,9 @@ import java.lang.Thread.UncaughtExceptionHandler;
 
 public class MediaExceptionHandler implements UncaughtExceptionHandler {
     @Override
-    public void uncaughtException(Thread thr, Throwable exc) {
+    public void uncaughtException(final Thread thr, final Throwable exc) {
         if (thr instanceof Media) {
-            Media media = (Media) thr;
+            final Media media = (Media) thr;
             Media.taskCompleted(media.getNumber());
         }
     }

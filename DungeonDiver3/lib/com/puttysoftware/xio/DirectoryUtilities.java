@@ -12,22 +12,23 @@ public final class DirectoryUtilities {
         // Do nothing
     }
 
-    public static void copyDirectory(File sourceLocation, File targetLocation)
-            throws IOException {
+    public static void copyDirectory(final File sourceLocation,
+            final File targetLocation) throws IOException {
         if (sourceLocation.isDirectory()) {
             if (!targetLocation.exists()) {
                 targetLocation.mkdir();
             }
-            String[] children = sourceLocation.list();
-            for (int i = 0; i < children.length; i++) {
-                copyDirectory(new File(sourceLocation, children[i]), new File(
-                        targetLocation, children[i]));
+            final String[] children = sourceLocation.list();
+            for (final String element : children) {
+                DirectoryUtilities.copyDirectory(
+                        new File(sourceLocation, element),
+                        new File(targetLocation, element));
             }
         } else {
             try (InputStream in = new FileInputStream(sourceLocation);
                     OutputStream out = new FileOutputStream(targetLocation)) {
                 // Copy the bits from instream to outstream
-                byte[] buf = new byte[1024];
+                final byte[] buf = new byte[1024];
                 int len;
                 while ((len = in.read(buf)) > 0) {
                     out.write(buf, 0, len);
@@ -36,12 +37,12 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static void removeDirectory(File location) throws IOException {
+    public static void removeDirectory(final File location) throws IOException {
         boolean success;
         if (location.isDirectory()) {
-            String[] children = location.list();
-            for (int i = 0; i < children.length; i++) {
-                removeDirectory(new File(location, children[i]));
+            final String[] children = location.list();
+            for (final String element : children) {
+                DirectoryUtilities.removeDirectory(new File(location, element));
             }
             success = location.delete();
             if (!success) {
@@ -55,12 +56,12 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static void copyFile(File sourceLocation, File targetLocation)
-            throws IOException {
+    public static void copyFile(final File sourceLocation,
+            final File targetLocation) throws IOException {
         try (InputStream in = new FileInputStream(sourceLocation);
                 OutputStream out = new FileOutputStream(targetLocation)) {
             // Copy the bits from instream to outstream
-            byte[] buf = new byte[1024];
+            final byte[] buf = new byte[1024];
             int len;
             while ((len = in.read(buf)) > 0) {
                 out.write(buf, 0, len);
@@ -68,12 +69,12 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static boolean moveFile(File sourceLocation, File targetLocation)
-            throws IOException {
+    public static boolean moveFile(final File sourceLocation,
+            final File targetLocation) throws IOException {
         try (InputStream in = new FileInputStream(sourceLocation);
                 OutputStream out = new FileOutputStream(targetLocation)) {
             // Copy the bits from instream to outstream
-            byte[] buf = new byte[1024];
+            final byte[] buf = new byte[1024];
             int len;
             while ((len = in.read(buf)) > 0) {
                 out.write(buf, 0, len);
@@ -82,11 +83,11 @@ public final class DirectoryUtilities {
         return sourceLocation.delete();
     }
 
-    public static void copyRAMFile(InputStream in, File targetLocation)
-            throws IOException {
+    public static void copyRAMFile(final InputStream in,
+            final File targetLocation) throws IOException {
         try (OutputStream out = new FileOutputStream(targetLocation)) {
             // Copy the bits from instream to outstream
-            byte[] buf = new byte[1024];
+            final byte[] buf = new byte[1024];
             int len;
             while ((len = in.read(buf)) > 0) {
                 out.write(buf, 0, len);

@@ -15,8 +15,9 @@ public class PluginLoader {
                     + Extension.getPluginExtensionWithPeriod() + "!/") };
             try (final URLClassLoader instance = URLClassLoader
                     .newInstance(loadPath)) {
-                return instance.loadClass(
-                        "net.worldwizard.worldz.plugins." + name).newInstance();
+                return instance
+                        .loadClass("net.worldwizard.worldz.plugins." + name)
+                        .newInstance();
             }
         } catch (final Exception e) {
             // Ignore
@@ -31,8 +32,7 @@ public class PluginLoader {
         if (registeredNames != null) {
             // Load plugins
             registeredNames.trimToSize();
-            for (int x = 0; x < registeredNames.size(); x++) {
-                final String name = registeredNames.get(x);
+            for (final String name : registeredNames) {
                 final Object pluginWithName = PluginLoader.loadPlugin(name);
                 if (pluginWithName != null) {
                     // Add it to the vector

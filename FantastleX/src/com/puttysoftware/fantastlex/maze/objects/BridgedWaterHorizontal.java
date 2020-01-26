@@ -16,14 +16,15 @@ public class BridgedWaterHorizontal extends AbstractGround {
     // Constructors
     public BridgedWaterHorizontal() {
         super(ColorConstants.COLOR_WATER);
-        this.setAttributeID(ObjectImageConstants.OBJECT_IMAGE_BRIDGE_HORIZONTAL);
+        this.setAttributeID(
+                ObjectImageConstants.OBJECT_IMAGE_BRIDGE_HORIZONTAL);
         this.setAttributeTemplateColor(ColorConstants.COLOR_BRIDGE);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 

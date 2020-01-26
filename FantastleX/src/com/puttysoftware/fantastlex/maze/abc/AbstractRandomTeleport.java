@@ -68,8 +68,7 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     @Override
     public AbstractRandomTeleport clone() {
-        final AbstractRandomTeleport copy = (AbstractRandomTeleport) super
-                .clone();
+        final AbstractRandomTeleport copy = (AbstractRandomTeleport) super.clone();
         copy.randomRangeX = this.randomRangeX;
         copy.randomRangeY = this.randomRangeY;
         return copy;
@@ -109,8 +108,8 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         int dr, dc;
         do {
@@ -123,9 +122,8 @@ public abstract class AbstractRandomTeleport extends AbstractMazeObject {
 
     @Override
     public void editorProbeHook() {
-        FantastleX.getApplication().showMessage(
-                this.getName() + ": Row Radius " + this.randomRangeY
-                        + ", Column Radius " + this.randomRangeX);
+        FantastleX.getApplication().showMessage(this.getName() + ": Row Radius "
+                + this.randomRangeY + ", Column Radius " + this.randomRangeX);
     }
 
     @Override

@@ -39,9 +39,8 @@ public class MenuManager {
             editorResizeLevel, editorToggleLayer, editorLevelPreferences,
             editorMazePreferences, editorSetStartPoint,
             editorSetFirstMovingFinish;
-    private JMenuItem editorFillFloor, editorFillLevel,
-            editorFillFloorRandomly, editorFillLevelRandomly,
-            editorFillRuleSets;
+    private JMenuItem editorFillFloor, editorFillLevel, editorFillFloorRandomly,
+            editorFillLevelRandomly, editorFillRuleSets;
     private JCheckBoxMenuItem editorFillUseRuleSets;
     private JMenuItem helpAbout, helpObjectHelp;
     private KeyStroke fileNewAccel, fileOpenAccel, fileOpenRecentAccel,
@@ -456,30 +455,30 @@ public class MenuManager {
         }
         this.fileNewAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N, modKey);
         this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
-        this.fileOpenRecentAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileOpenRecentAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.filePrintAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey);
         this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey);
-        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editCutLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X, modKey);
         this.editCopyLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey);
-        this.editPasteLevelAccel = KeyStroke
-                .getKeyStroke(KeyEvent.VK_V, modKey);
-        this.editInsertLevelFromClipboardAccel = KeyStroke.getKeyStroke(
-                KeyEvent.VK_F, modKey);
+        this.editPasteLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                modKey);
+        this.editInsertLevelFromClipboardAccel = KeyStroke
+                .getKeyStroke(KeyEvent.VK_F, modKey);
         this.editPreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
         this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                 modKey);
         this.editorGoToLocationAccel = KeyStroke.getKeyStroke(KeyEvent.VK_G,
                 modKey | InputEvent.SHIFT_DOWN_MASK);
-        this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.playEditMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey);
         this.gameObjectInventoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I,
                 modKey);
@@ -579,7 +578,8 @@ public class MenuManager {
         this.editorFillLevelRandomly = new JMenuItem(
                 "Fill Current Level Randomly");
         this.editorFillRuleSets = new JMenuItem("Fill Rule Sets...");
-        this.editorFillUseRuleSets = new JCheckBoxMenuItem("Use Fill Rule Sets");
+        this.editorFillUseRuleSets = new JCheckBoxMenuItem(
+                "Use Fill Rule Sets");
         this.editorToggleLayer = new JMenuItem("Toggle Layer");
         this.editorToggleLayer.setAccelerator(this.editorToggleLayerAccel);
         this.editorLevelPreferences = new JMenuItem("Level Preferences...");
@@ -923,10 +923,9 @@ public class MenuManager {
                     }
                 } else if (cmd.equals("Reset Current Level")) {
                     if (!app.getGameManager().usingAnItem()) {
-                        final int result = CommonDialogs
-                                .showConfirmDialog(
-                                        "Are you sure you want to reset the current level?",
-                                        MazeMode.getProgramName());
+                        final int result = CommonDialogs.showConfirmDialog(
+                                "Are you sure you want to reset the current level?",
+                                MazeMode.getProgramName());
                         if (result == JOptionPane.YES_OPTION) {
                             app.getGameManager().resetCurrentLevel();
                         }

@@ -14,33 +14,38 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 
 public abstract class AbstractTriggerButton extends AbstractButton {
     // Constructors
-    protected AbstractTriggerButton(final AbstractTriggerButtonDoor tbd, final boolean isUniversal) {
-	super(tbd, isUniversal);
-	this.type.set(TypeConstants.TYPE_TRIGGER_BUTTON);
+    protected AbstractTriggerButton(final AbstractTriggerButtonDoor tbd,
+            final boolean isUniversal) {
+        super(tbd, isUniversal);
+        this.type.set(TypeConstants.TYPE_TRIGGER_BUTTON);
     }
 
     @Override
-    public boolean pushIntoAction(final AbstractMovableObject pushed, final int x, final int y, final int z) {
-	final Application app = LaserTank.getApplication();
-	if (this.isUniversal() || pushed.getMaterial() == this.getMaterial()) {
-	    SoundManager.playSound(SoundConstants.SOUND_BUTTON);
-	    if (this.isTriggered()) {
-		// Close door at location
-		app.getGameManager().morph(this.getButtonDoor(), this.getDoorX(), this.getDoorY(), z, this.getLayer());
-		SoundManager.playSound(SoundConstants.SOUND_DOOR_CLOSES);
-		this.setTriggered(false);
-	    } else {
-		// Open door at location
-		app.getGameManager().morph(new Empty(), this.getDoorX(), this.getDoorY(), z, this.getLayer());
-		SoundManager.playSound(SoundConstants.SOUND_DOOR_OPENS);
-		this.setTriggered(true);
-	    }
-	}
-	return true;
+    public boolean pushIntoAction(final AbstractMovableObject pushed,
+            final int x, final int y, final int z) {
+        final Application app = LaserTank.getApplication();
+        if (this.isUniversal() || pushed.getMaterial() == this.getMaterial()) {
+            SoundManager.playSound(SoundConstants.SOUND_BUTTON);
+            if (this.isTriggered()) {
+                // Close door at location
+                app.getGameManager().morph(this.getButtonDoor(),
+                        this.getDoorX(), this.getDoorY(), z, this.getLayer());
+                SoundManager.playSound(SoundConstants.SOUND_DOOR_CLOSES);
+                this.setTriggered(false);
+            } else {
+                // Open door at location
+                app.getGameManager().morph(new Empty(), this.getDoorX(),
+                        this.getDoorY(), z, this.getLayer());
+                SoundManager.playSound(SoundConstants.SOUND_DOOR_OPENS);
+                this.setTriggered(true);
+            }
+        }
+        return true;
     }
 
     @Override
-    public void pushOutAction(final AbstractMovableObject pushed, final int x, final int y, final int z) {
-	// Do nothing
+    public void pushOutAction(final AbstractMovableObject pushed, final int x,
+            final int y, final int z) {
+        // Do nothing
     }
 }

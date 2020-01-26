@@ -42,33 +42,47 @@ public final class Application {
     private static final int STATUS_NULL = 3;
 
     public static String getLogoVersionString() {
-	if (Application.isBetaModeEnabled()) {
-	    return StringLoader.loadCommon(CommonString.LOGO_VERSION_PREFIX) + Application.VERSION_MAJOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_MINOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_BUGFIX
-		    + StringLoader.loadCommon(CommonString.BETA_SHORT) + Application.VERSION_BETA;
-	} else {
-	    return StringLoader.loadCommon(CommonString.LOGO_VERSION_PREFIX) + Application.VERSION_MAJOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_MINOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_BUGFIX;
-	}
+        if (Application.isBetaModeEnabled()) {
+            return StringLoader.loadCommon(CommonString.LOGO_VERSION_PREFIX)
+                    + Application.VERSION_MAJOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_MINOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_BUGFIX
+                    + StringLoader.loadCommon(CommonString.BETA_SHORT)
+                    + Application.VERSION_BETA;
+        } else {
+            return StringLoader.loadCommon(CommonString.LOGO_VERSION_PREFIX)
+                    + Application.VERSION_MAJOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_MINOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_BUGFIX;
+        }
     }
 
     private static String getVersionString() {
-	if (Application.isBetaModeEnabled()) {
-	    return StringLoader.loadCommon(CommonString.EMPTY) + Application.VERSION_MAJOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_MINOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_BUGFIX
-		    + StringLoader.loadMessage(MessageString.BETA) + Application.VERSION_BETA;
-	} else {
-	    return StringLoader.loadCommon(CommonString.EMPTY) + Application.VERSION_MAJOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_MINOR
-		    + StringLoader.loadCommon(CommonString.NOTL_PERIOD) + Application.VERSION_BUGFIX;
-	}
+        if (Application.isBetaModeEnabled()) {
+            return StringLoader.loadCommon(CommonString.EMPTY)
+                    + Application.VERSION_MAJOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_MINOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_BUGFIX
+                    + StringLoader.loadMessage(MessageString.BETA)
+                    + Application.VERSION_BETA;
+        } else {
+            return StringLoader.loadCommon(CommonString.EMPTY)
+                    + Application.VERSION_MAJOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_MINOR
+                    + StringLoader.loadCommon(CommonString.NOTL_PERIOD)
+                    + Application.VERSION_BUGFIX;
+        }
     }
 
     private static boolean isBetaModeEnabled() {
-	return Application.VERSION_BETA > 0;
+        return Application.VERSION_BETA > 0;
     }
 
     // Fields
@@ -81,226 +95,221 @@ public final class Application {
     private GUIManager guiMgr;
     private int mode, formerMode;
     private final ArenaObjectList objects;
-    private NativeIntegration ni;
+    private final NativeIntegration ni;
 
     // Constructors
     public Application(final NativeIntegration newNI) {
-	this.ni = newNI;
-	this.masterFrame = new JFrame();
-	this.masterFrame.setResizable(false);
-	this.objects = new ArenaObjectList();
-	this.mode = Application.STATUS_NULL;
-	this.formerMode = Application.STATUS_NULL;
+        this.ni = newNI;
+        this.masterFrame = new JFrame();
+        this.masterFrame.setResizable(false);
+        this.objects = new ArenaObjectList();
+        this.mode = Application.STATUS_NULL;
+        this.formerMode = Application.STATUS_NULL;
     }
 
     void init() {
-	// Create Managers
-	this.menuMgr = new MenuManager();
-	this.about = new AboutDialog(Application.getVersionString());
-	this.guiMgr = new GUIManager();
-	this.gameMgr = new GameManager();
-	this.editor = new ArenaEditor();
-	// Cache Logo
-	this.guiMgr.updateLogo();
+        // Create Managers
+        this.menuMgr = new MenuManager();
+        this.about = new AboutDialog(Application.getVersionString());
+        this.guiMgr = new GUIManager();
+        this.gameMgr = new GameManager();
+        this.editor = new ArenaEditor();
+        // Cache Logo
+        this.guiMgr.updateLogo();
     }
 
     void bootGUI() {
-	// Set up default error handling
-	UncaughtExceptionHandler eh = new UncaughtExceptionHandler() {
-	    @Override
-	    public void uncaughtException(Thread t, Throwable e) {
-		LaserTank.logNonFatalError(e);
-	    }
-	};
-	Runnable doRun = new Runnable() {
-	    @Override
-	    public void run() {
-		Thread.currentThread().setUncaughtExceptionHandler(eh);
-	    }
-	};
-	try {
-	    SwingUtilities.invokeAndWait(doRun);
-	} catch (InvocationTargetException | InterruptedException e) {
-	    LaserTank.logError(e);
-	}
-	// Boot GUI
-	this.guiMgr.showGUI();
+        // Set up default error handling
+        final UncaughtExceptionHandler eh = (t, e) -> LaserTank
+                .logNonFatalError(e);
+        final Runnable doRun = () -> Thread.currentThread()
+                .setUncaughtExceptionHandler(eh);
+        try {
+            SwingUtilities.invokeAndWait(doRun);
+        } catch (InvocationTargetException | InterruptedException e) {
+            LaserTank.logError(e);
+        }
+        // Boot GUI
+        this.guiMgr.showGUI();
     }
 
     // Methods
     public void activeLanguageChanged() {
-	// Rebuild menus
-	this.menuMgr.populateMenuBar();
-	this.ni.setDefaultMenuBar(this.menuMgr.getMenuBar(), this.masterFrame);
-	// Fire hooks
-	this.getGameManager().activeLanguageChanged();
-	this.getEditor().activeLanguageChanged();
+        // Rebuild menus
+        this.menuMgr.populateMenuBar();
+        this.ni.setDefaultMenuBar(this.menuMgr.getMenuBar(), this.masterFrame);
+        // Fire hooks
+        this.getGameManager().activeLanguageChanged();
+        this.getEditor().activeLanguageChanged();
     }
 
     void exitCurrentMode() {
-	if (this.mode == Application.STATUS_GUI) {
-	    this.guiMgr.tearDown();
-	} else if (this.mode == Application.STATUS_GAME) {
-	    this.gameMgr.tearDown();
-	} else if (this.mode == Application.STATUS_EDITOR) {
-	    this.editor.tearDown();
-	}
+        if (this.mode == Application.STATUS_GUI) {
+            this.guiMgr.tearDown();
+        } else if (this.mode == Application.STATUS_GAME) {
+            this.gameMgr.tearDown();
+        } else if (this.mode == Application.STATUS_EDITOR) {
+            this.editor.tearDown();
+        }
     }
 
     AboutDialog getAboutDialog() {
-	return this.about;
+        return this.about;
     }
 
     public ArenaManager getArenaManager() {
-	if (this.arenaMgr == null) {
-	    this.arenaMgr = new ArenaManager();
-	}
-	return this.arenaMgr;
+        if (this.arenaMgr == null) {
+            this.arenaMgr = new ArenaManager();
+        }
+        return this.arenaMgr;
     }
 
     public ArenaEditor getEditor() {
-	return this.editor;
+        return this.editor;
     }
 
     public int getFormerMode() {
-	return this.formerMode;
+        return this.formerMode;
     }
 
     public GameManager getGameManager() {
-	return this.gameMgr;
+        return this.gameMgr;
     }
 
     public GUIManager getGUIManager() {
-	return this.guiMgr;
+        return this.guiMgr;
     }
 
     public String[] getLevelInfoList() {
-	return this.arenaMgr.getArena().getLevelInfoList();
+        return this.arenaMgr.getArena().getLevelInfoList();
     }
 
     public MenuManager getMenuManager() {
-	return this.menuMgr;
+        return this.menuMgr;
     }
 
     public boolean isInGameMode() {
-	return this.mode == Application.STATUS_GAME;
+        return this.mode == Application.STATUS_GAME;
     }
 
     public boolean isInEditorMode() {
-	return this.mode == Application.STATUS_EDITOR;
+        return this.mode == Application.STATUS_EDITOR;
     }
 
     public boolean isInGUIMode() {
-	return this.mode == Application.STATUS_GUI;
+        return this.mode == Application.STATUS_GUI;
     }
 
     public ArenaObjectList getObjects() {
-	return this.objects;
+        return this.objects;
     }
 
     public void setInEditor(final Container masterContent) {
-	this.formerMode = this.mode;
-	this.mode = Application.STATUS_EDITOR;
-	this.tearDownFormerMode();
-	this.editor.setUp();
-	this.menuMgr.activateEditorCommands();
-	this.masterFrame.setContentPane(masterContent);
+        this.formerMode = this.mode;
+        this.mode = Application.STATUS_EDITOR;
+        this.tearDownFormerMode();
+        this.editor.setUp();
+        this.menuMgr.activateEditorCommands();
+        this.masterFrame.setContentPane(masterContent);
     }
 
     public void setInGame(final Container masterContent) {
-	this.formerMode = this.mode;
-	this.mode = Application.STATUS_GAME;
-	this.tearDownFormerMode();
-	this.gameMgr.setUp();
-	this.menuMgr.activateGameCommands();
-	this.masterFrame.setContentPane(masterContent);
+        this.formerMode = this.mode;
+        this.mode = Application.STATUS_GAME;
+        this.tearDownFormerMode();
+        this.gameMgr.setUp();
+        this.menuMgr.activateGameCommands();
+        this.masterFrame.setContentPane(masterContent);
     }
 
     void setInGUI(final Container masterContent) {
-	this.formerMode = this.mode;
-	this.mode = Application.STATUS_GUI;
-	this.tearDownFormerMode();
-	this.guiMgr.setUp();
-	this.menuMgr.activateGUICommands();
-	this.masterFrame.setContentPane(masterContent);
-	if (!this.masterFrame.isVisible()) {
-	    this.masterFrame.setVisible(true);
-	    this.masterFrame.pack();
-	}
+        this.formerMode = this.mode;
+        this.mode = Application.STATUS_GUI;
+        this.tearDownFormerMode();
+        this.guiMgr.setUp();
+        this.menuMgr.activateGUICommands();
+        this.masterFrame.setContentPane(masterContent);
+        if (!this.masterFrame.isVisible()) {
+            this.masterFrame.setVisible(true);
+            this.masterFrame.pack();
+        }
     }
 
     public Container getMasterContent() {
-	return this.masterFrame.getContentPane();
+        return this.masterFrame.getContentPane();
     }
 
     public void setTitle(final String title) {
-	this.masterFrame.setTitle(title);
+        this.masterFrame.setTitle(title);
     }
 
     public void updateDirtyWindow(final boolean appDirty) {
-	this.masterFrame.getRootPane().putClientProperty(
-		GlobalLoader.loadUntranslated(UntranslatedString.WINDOW_MODIFIED), Boolean.valueOf(appDirty));
+        this.masterFrame.getRootPane().putClientProperty(
+                GlobalLoader
+                        .loadUntranslated(UntranslatedString.WINDOW_MODIFIED),
+                Boolean.valueOf(appDirty));
     }
 
     public void pack() {
-	this.masterFrame.pack();
+        this.masterFrame.pack();
     }
 
     public void addWindowListener(final WindowListener l) {
-	this.masterFrame.addWindowListener(l);
+        this.masterFrame.addWindowListener(l);
     }
 
     public void addWindowFocusListener(final WindowFocusListener l) {
-	this.masterFrame.addWindowFocusListener(l);
+        this.masterFrame.addWindowFocusListener(l);
     }
 
     public void addKeyListener(final KeyListener l) {
-	this.masterFrame.addKeyListener(l);
+        this.masterFrame.addKeyListener(l);
     }
 
     public void removeWindowListener(final WindowListener l) {
-	this.masterFrame.removeWindowListener(l);
+        this.masterFrame.removeWindowListener(l);
     }
 
     public void removeWindowFocusListener(final WindowFocusListener l) {
-	this.masterFrame.removeWindowFocusListener(l);
+        this.masterFrame.removeWindowFocusListener(l);
     }
 
     public void removeKeyListener(final KeyListener l) {
-	this.masterFrame.removeKeyListener(l);
+        this.masterFrame.removeKeyListener(l);
     }
 
     public void showMessage(final String msg) {
-	if (this.mode == Application.STATUS_EDITOR) {
-	    this.getEditor().setStatusMessage(msg);
-	} else {
-	    CommonDialogs.showDialog(msg);
-	}
+        if (this.mode == Application.STATUS_EDITOR) {
+            this.getEditor().setStatusMessage(msg);
+        } else {
+            CommonDialogs.showDialog(msg);
+        }
     }
 
     private void tearDownFormerMode() {
-	if (this.formerMode == Application.STATUS_GUI) {
-	    this.getGUIManager().tearDown();
-	} else if (this.formerMode == Application.STATUS_GAME) {
-	    this.getGameManager().tearDown();
-	} else if (this.formerMode == Application.STATUS_EDITOR) {
-	    this.getEditor().tearDown();
-	}
+        if (this.formerMode == Application.STATUS_GUI) {
+            this.getGUIManager().tearDown();
+        } else if (this.formerMode == Application.STATUS_GAME) {
+            this.getGameManager().tearDown();
+        } else if (this.formerMode == Application.STATUS_EDITOR) {
+            this.getEditor().tearDown();
+        }
     }
 
     public void updateLevelInfoList() {
-	JFrame loadFrame;
-	JProgressBar loadBar;
-	loadFrame = new JFrame(StringLoader.loadDialog(DialogString.UPDATING_LEVEL_INFO));
-	loadBar = new JProgressBar();
-	loadBar.setIndeterminate(true);
-	loadBar.setPreferredSize(new Dimension(600, 20));
-	loadFrame.getContentPane().add(loadBar);
-	loadFrame.setResizable(false);
-	loadFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-	loadFrame.pack();
-	loadFrame.setVisible(true);
-	this.arenaMgr.getArena().generateLevelInfoList();
-	loadFrame.setVisible(false);
+        JFrame loadFrame;
+        JProgressBar loadBar;
+        loadFrame = new JFrame(
+                StringLoader.loadDialog(DialogString.UPDATING_LEVEL_INFO));
+        loadBar = new JProgressBar();
+        loadBar.setIndeterminate(true);
+        loadBar.setPreferredSize(new Dimension(600, 20));
+        loadFrame.getContentPane().add(loadBar);
+        loadFrame.setResizable(false);
+        loadFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        loadFrame.pack();
+        loadFrame.setVisible(true);
+        this.arenaMgr.getArena().generateLevelInfoList();
+        loadFrame.setVisible(false);
     }
 }

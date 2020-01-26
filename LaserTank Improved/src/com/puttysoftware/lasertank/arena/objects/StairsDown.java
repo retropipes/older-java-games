@@ -14,24 +14,25 @@ import com.puttysoftware.lasertank.resourcemanagers.SoundManager;
 public class StairsDown extends AbstractTeleport {
     // Constructors
     public StairsDown() {
-	super();
+        super();
     }
 
     @Override
     public int getDestinationFloor() {
-	final Application app = LaserTank.getApplication();
-	return app.getGameManager().getPlayerManager().getPlayerLocationZ() - 1;
+        final Application app = LaserTank.getApplication();
+        return app.getGameManager().getPlayerManager().getPlayerLocationZ() - 1;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 32;
+        return 32;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().updatePositionAbsoluteNoEvents(this.getDestinationFloor());
-	SoundManager.playSound(SoundConstants.SOUND_DOWN);
+        final Application app = LaserTank.getApplication();
+        app.getGameManager()
+                .updatePositionAbsoluteNoEvents(this.getDestinationFloor());
+        SoundManager.playSound(SoundConstants.SOUND_DOWN);
     }
 }

@@ -18,46 +18,51 @@ class AnimationTask extends Thread {
 
     // Constructors
     public AnimationTask() {
-	this.setName(GlobalLoader.loadUntranslated(UntranslatedString.ANIMATOR_NAME));
-	this.setPriority(Thread.MIN_PRIORITY);
+        this.setName(GlobalLoader
+                .loadUntranslated(UntranslatedString.ANIMATOR_NAME));
+        this.setPriority(Thread.MIN_PRIORITY);
     }
 
     @Override
     public void run() {
-	try {
-	    final AbstractArena a = LaserTank.getApplication().getArenaManager().getArena();
-	    while (!this.stop) {
-		final int pz = LaserTank.getApplication().getGameManager().getPlayerManager().getPlayerLocationZ();
-		final int maxX = a.getRows();
-		final int maxY = a.getColumns();
-		final int maxW = ArenaConstants.NUM_LAYERS;
-		for (int x = 0; x < maxX; x++) {
-		    for (int y = 0; y < maxY; y++) {
-			for (int w = 0; w < maxW; w++) {
-			    synchronized (CurrentArenaData.LOCK_OBJECT) {
-				final int oldFN = a.getCell(x, y, pz, w).getFrameNumber();
-				a.getCell(x, y, pz, w).toggleFrameNumber();
-				final int newFN = a.getCell(x, y, pz, w).getFrameNumber();
-				if (oldFN != newFN) {
-				    a.markAsDirty(x, y, pz);
-				}
-			    }
-			}
-		    }
-		}
-		LaserTank.getApplication().getGameManager().redrawArena();
-		try {
-		    Thread.sleep(200);
-		} catch (final InterruptedException ie) {
-		    // Ignore
-		}
-	    }
-	} catch (final Throwable t) {
-	    LaserTank.logError(t);
-	}
+        try {
+            final AbstractArena a = LaserTank.getApplication().getArenaManager()
+                    .getArena();
+            while (!this.stop) {
+                final int pz = LaserTank.getApplication().getGameManager()
+                        .getPlayerManager().getPlayerLocationZ();
+                final int maxX = a.getRows();
+                final int maxY = a.getColumns();
+                final int maxW = ArenaConstants.NUM_LAYERS;
+                for (int x = 0; x < maxX; x++) {
+                    for (int y = 0; y < maxY; y++) {
+                        for (int w = 0; w < maxW; w++) {
+                            synchronized (CurrentArenaData.LOCK_OBJECT) {
+                                final int oldFN = a.getCell(x, y, pz, w)
+                                        .getFrameNumber();
+                                a.getCell(x, y, pz, w).toggleFrameNumber();
+                                final int newFN = a.getCell(x, y, pz, w)
+                                        .getFrameNumber();
+                                if (oldFN != newFN) {
+                                    a.markAsDirty(x, y, pz);
+                                }
+                            }
+                        }
+                    }
+                }
+                LaserTank.getApplication().getGameManager().redrawArena();
+                try {
+                    Thread.sleep(200);
+                } catch (final InterruptedException ie) {
+                    // Ignore
+                }
+            }
+        } catch (final Throwable t) {
+            LaserTank.logError(t);
+        }
     }
 
     void stopAnimator() {
-	this.stop = true;
+        this.stop = true;
     }
 }

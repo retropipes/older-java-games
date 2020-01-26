@@ -17,6 +17,6 @@ public class ColorConstants {
     public static final int COLOR_COUNT = 8;
 
     private ColorConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

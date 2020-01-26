@@ -25,24 +25,24 @@ public class DungeonNote extends CloneableObject {
         return this.contents;
     }
 
-    public void setContents(String newContents) {
+    public void setContents(final String newContents) {
         this.contents = newContents;
     }
 
     @Override
     public Object clone() {
-        DungeonNote copy = new DungeonNote();
+        final DungeonNote copy = new DungeonNote();
         copy.contents = this.contents;
         return copy;
     }
 
-    static DungeonNote readNote(XDataReader reader) throws IOException {
-        DungeonNote mn = new DungeonNote();
+    static DungeonNote readNote(final XDataReader reader) throws IOException {
+        final DungeonNote mn = new DungeonNote();
         mn.contents = reader.readString();
         return mn;
     }
 
-    void writeNote(XDataWriter writer) throws IOException {
+    void writeNote(final XDataWriter writer) throws IOException {
         writer.writeString(this.contents);
     }
 }

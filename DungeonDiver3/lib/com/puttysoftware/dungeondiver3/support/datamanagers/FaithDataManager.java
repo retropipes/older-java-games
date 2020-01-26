@@ -12,12 +12,12 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithDataManager {
     public static double[] getFaithData(final int f) {
-        String name = FaithConstants.getFaithName(f).toLowerCase();
+        final String name = FaithConstants.getFaithName(f).toLowerCase();
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDataManager.class
-                            .getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/data/faith/"
+                    FaithDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/dungeondiver3/support/resources/data/faith/"
                                     + name
                                     + Extension.getFaithExtensionWithPeriod()));
             final int[] rawData = new int[FaithConstants.getFaithsCount()];
@@ -26,7 +26,7 @@ public class FaithDataManager {
             }
             rsr.close();
             // Parse raw data
-            double[] finalData = new double[rawData.length];
+            final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {
                 finalData[x] = FaithConstants.getLookupTableEntry(rawData[x]);
             }

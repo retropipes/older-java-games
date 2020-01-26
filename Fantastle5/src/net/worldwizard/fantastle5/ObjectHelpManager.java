@@ -47,7 +47,8 @@ public class ObjectHelpManager {
         this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.helpFrame.setLayout(new FlowLayout());
         this.helpFrame.add(this.hv.getHelp());
-        if (Fantastle5.getApplication().getPrefsManager().isMobileModeEnabled()) {
+        if (Fantastle5.getApplication().getPrefsManager()
+                .isMobileModeEnabled()) {
             this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE,
                     GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
         } else {
@@ -64,7 +65,8 @@ public class ObjectHelpManager {
     }
 
     public void updateHelpSize() {
-        if (Fantastle5.getApplication().getPrefsManager().isMobileModeEnabled()) {
+        if (Fantastle5.getApplication().getPrefsManager()
+                .isMobileModeEnabled()) {
             this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE,
                     GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
         } else {

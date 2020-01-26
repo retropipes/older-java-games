@@ -81,15 +81,15 @@ public class SavedScoreManager extends ScoreManager {
     }
 
     private void readScoresFile() throws IOException {
-        try (final BufferedReader br = new BufferedReader(new FileReader(
-                this.scoresFilename))) {
+        try (final BufferedReader br = new BufferedReader(
+                new FileReader(this.scoresFilename))) {
             this.table = SortedScoreTable.readSortedScoreTable(br);
         }
     }
 
     private void writeScoresFile() throws IOException {
-        try (final BufferedWriter bw = new BufferedWriter(new FileWriter(
-                this.scoresFilename))) {
+        try (final BufferedWriter bw = new BufferedWriter(
+                new FileWriter(this.scoresFilename))) {
             this.table.writeSortedScoreTable(bw);
         }
     }

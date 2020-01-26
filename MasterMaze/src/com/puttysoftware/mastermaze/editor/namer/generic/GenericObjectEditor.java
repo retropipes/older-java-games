@@ -126,8 +126,8 @@ public abstract class GenericObjectEditor extends GenericEditor {
             for (int y = 0; y < this.abRows - 2; y++) {
                 this.actionButtons[y][x] = new JButton();
                 this.guiActionButtonProperties(this.actionButtons[y][x], x, y);
-                this.actionButtons[y][x].setActionCommand(this
-                        .guiActionButtonActionCommand(x, y));
+                this.actionButtons[y][x].setActionCommand(
+                        this.guiActionButtonActionCommand(x, y));
                 // Add action listener for button
                 this.actionButtons[y][x].addActionListener(this.handler);
                 if (this.isReadOnly()) {
@@ -191,8 +191,8 @@ public abstract class GenericObjectEditor extends GenericEditor {
             for (int y = 0; y < this.abRows - 2; y++) {
                 this.actionButtons[y][x] = new JButton();
                 this.guiActionButtonProperties(this.actionButtons[y][x], x, y);
-                this.actionButtons[y][x].setActionCommand(this
-                        .guiActionButtonActionCommand(x, y));
+                this.actionButtons[y][x].setActionCommand(
+                        this.guiActionButtonActionCommand(x, y));
                 // Add action listener for button
                 this.actionButtons[y][x].addActionListener(this.handler);
             }
@@ -245,14 +245,16 @@ public abstract class GenericObjectEditor extends GenericEditor {
             try {
                 final String cmd = e.getActionCommand().substring(0,
                         ge.actionCmdLen);
-                final int num = Integer.parseInt(e.getActionCommand()
-                        .substring(ge.actionCmdLen));
+                final int num = Integer.parseInt(
+                        e.getActionCommand().substring(ge.actionCmdLen));
                 ge.handleButtonClick(cmd, num);
                 if (ge.autoStore) {
-                    if (ge.guiEntryType(num) == GenericObjectEditor.ENTRY_TYPE_LIST) {
+                    if (ge.guiEntryType(
+                            num) == GenericObjectEditor.ENTRY_TYPE_LIST) {
                         final JComboBox<String> list = ge.getEntryList(num);
                         ge.autoStoreEntryListValue(list, num);
-                    } else if (ge.guiEntryType(num) == GenericObjectEditor.ENTRY_TYPE_TEXT) {
+                    } else if (ge.guiEntryType(
+                            num) == GenericObjectEditor.ENTRY_TYPE_TEXT) {
                         final JTextField entry = ge.getEntryField(num);
                         ge.autoStoreEntryFieldValue(entry, num);
                     }

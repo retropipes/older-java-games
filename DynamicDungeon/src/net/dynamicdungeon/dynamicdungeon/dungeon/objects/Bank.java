@@ -12,26 +12,26 @@ import net.dynamicdungeon.dynamicdungeon.shops.ShopTypes;
 public class Bank extends AbstractShop {
     // Constructors
     public Bank() {
-	super(ShopTypes.SHOP_TYPE_BANK);
+        super(ShopTypes.SHOP_TYPE_BANK);
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_BANK;
+        return ObjectImageConstants.OBJECT_IMAGE_BANK;
     }
 
     @Override
     public String getName() {
-	return "Bank";
+        return "Bank";
     }
 
     @Override
     public String getPluralName() {
-	return "Banks";
+        return "Banks";
     }
 
     @Override
     public String getDescription() {
-	return "Banks store money for safe keeping.";
+        return "Banks store money for safe keeping.";
     }
 }

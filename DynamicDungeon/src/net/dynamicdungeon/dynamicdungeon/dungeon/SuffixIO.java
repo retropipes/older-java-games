@@ -9,5 +9,5 @@ public interface SuffixIO {
     void writeSuffix(DatabaseWriter writer) throws IOException;
 
     void readSuffix(DatabaseReader reader, int formatVersion)
-	    throws IOException;
+            throws IOException;
 }

@@ -8,8 +8,8 @@ package com.puttysoftware.fantastlex.maze.objects;
 import com.puttysoftware.fantastlex.maze.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.fantastlex.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleConditionalChainTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleConditionalChainTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_CONDITIONAL_CHAIN);

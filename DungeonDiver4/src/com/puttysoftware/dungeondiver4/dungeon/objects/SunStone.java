@@ -36,10 +36,10 @@ public class SunStone extends AbstractCheckKey {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         inv.addItem(this);
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_SUN_STONE);
     }

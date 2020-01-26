@@ -20,8 +20,10 @@ public abstract class AbstractMonster extends AbstractCreature {
     // Fields
     private String type;
     protected Element element;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0
+            / 2.0;
     protected static final int PERFECT_GOLD_MIN = 1;
     protected static final int PERFECT_GOLD_MAX = 3;
     private static final int BATTLES_SCALE_FACTOR = 2;
@@ -73,17 +75,17 @@ public abstract class AbstractMonster extends AbstractCreature {
         final int difficulty = PreferencesManager.getGameDifficulty();
         final int base = this.getBaseSpeed();
         if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
-            return (int) (base * SPEED_ADJUST_SLOWEST);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_SLOWEST);
         } else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
-            return (int) (base * SPEED_ADJUST_SLOW);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_SLOW);
         } else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
-            return (int) (base * SPEED_ADJUST_NORMAL);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
         } else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
-            return (int) (base * SPEED_ADJUST_FAST);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_FAST);
         } else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
-            return (int) (base * SPEED_ADJUST_FASTEST);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_FASTEST);
         } else {
-            return (int) (base * SPEED_ADJUST_NORMAL);
+            return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
         }
     }
 
@@ -122,9 +124,8 @@ public abstract class AbstractMonster extends AbstractCreature {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.element == null) ? 0 : this.element.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.element == null ? 0 : this.element.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
@@ -157,7 +158,7 @@ public abstract class AbstractMonster extends AbstractCreature {
     }
 
     protected final int getBattlesToNextLevel() {
-        return AbstractMonster.BATTLES_START + (this.getLevel() + 1)
-                * AbstractMonster.BATTLES_SCALE_FACTOR;
+        return AbstractMonster.BATTLES_START
+                + (this.getLevel() + 1) * AbstractMonster.BATTLES_SCALE_FACTOR;
     }
 }

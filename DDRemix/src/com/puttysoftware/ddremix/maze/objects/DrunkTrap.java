@@ -29,7 +29,8 @@ public class DrunkTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().showMessage("You stumble around drunkenly!");
         DDRemix.getApplication().getGameManager()
                 .activateEffect(MazeEffectConstants.EFFECT_DRUNK);

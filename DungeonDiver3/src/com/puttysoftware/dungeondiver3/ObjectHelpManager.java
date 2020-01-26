@@ -46,15 +46,15 @@ class ObjectHelpManager {
             } else {
                 title = "DungeonDiver3 Help";
             }
-            ButtonHandler buttonHandler = new ButtonHandler();
-            MapObjectList objectList = DungeonDiver3.getApplication()
+            final ButtonHandler buttonHandler = new ButtonHandler();
+            final MapObjectList objectList = DungeonDiver3.getApplication()
                     .getObjects();
-            String[] objectNames = objectList.getAllDescriptions();
-            BufferedImageIcon[] objectAppearances = objectList
+            final String[] objectNames = objectList.getAllDescriptions();
+            final BufferedImageIcon[] objectAppearances = objectList
                     .getAllObjectHelpImages();
             this.hv = new GraphicalHelpViewer(objectAppearances, objectNames,
                     ImageTransformer.getReplacementColor());
-            JButton export = new JButton("Export");
+            final JButton export = new JButton("Export");
             export.addActionListener(buttonHandler);
             this.helpFrame = new JFrame(title);
             Platform.hookFrameIcon(this.helpFrame, Application.getIconLogo());
@@ -69,7 +69,7 @@ class ObjectHelpManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                MenuManager menu = new MenuManager();
+                final MenuManager menu = new MenuManager();
                 menu.setHelpMenus();
                 this.helpFrame.setJMenuBar(menu.getMainMenuBar());
             }
@@ -83,7 +83,7 @@ class ObjectHelpManager {
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(final ActionEvent e) {
             ObjectHelpManager.this.hv.exportHelp();
         }
     }

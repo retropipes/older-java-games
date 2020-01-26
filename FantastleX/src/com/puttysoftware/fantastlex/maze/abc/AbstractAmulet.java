@@ -39,8 +39,8 @@ public abstract class AbstractAmulet extends AbstractInventoryableObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);

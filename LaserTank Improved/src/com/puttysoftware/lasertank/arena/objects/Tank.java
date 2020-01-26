@@ -12,24 +12,24 @@ import com.puttysoftware.lasertank.utilities.Direction;
 
 public class Tank extends AbstractCharacter {
     public Tank(final Direction dir, final int number) {
-	super(number);
-	this.setDirection(dir);
+        super(number);
+        this.setDirection(dir);
     }
 
     // Constructors
     public Tank(final int number) {
-	super(number);
-	this.setDirection(Direction.NORTH);
+        super(number);
+        this.setDirection(Direction.NORTH);
     }
 
     @Override
     public void editorPlaceHook(final int x, final int y, final int z) {
-	final ArenaEditor me = LaserTank.getApplication().getEditor();
-	me.setPlayerLocation();
+        final ArenaEditor me = LaserTank.getApplication().getEditor();
+        me.setPlayerLocation();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 36;
+        return 36;
     }
 }

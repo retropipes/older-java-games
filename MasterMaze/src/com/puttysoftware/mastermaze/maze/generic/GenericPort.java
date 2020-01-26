@@ -35,8 +35,8 @@ public abstract class GenericPort extends GenericInfiniteLock {
         } else {
             fill = "a";
         }
-        MasterMaze.getApplication().showMessage(
-                "You need " + fill + " " + this.letter + " plug");
+        MasterMaze.getApplication()
+                .showMessage("You need " + fill + " " + this.letter + " plug");
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 

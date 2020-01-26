@@ -33,13 +33,13 @@ public class GUIManager {
 
     // Constructors
     public GUIManager() {
-        CloseHandler cHandler = new CloseHandler();
+        final CloseHandler cHandler = new CloseHandler();
         if (Support.inDebugMode()) {
             this.guiFrame = new JFrame(Gemma.getProgramName() + " (DEBUG)");
         } else {
             this.guiFrame = new JFrame(Gemma.getProgramName());
         }
-        Container guiPane = this.guiFrame.getContentPane();
+        final Container guiPane = this.guiFrame.getContentPane();
         this.guiFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.guiFrame.setLayout(new GridLayout(1, 1));
@@ -60,7 +60,7 @@ public class GUIManager {
     }
 
     public void showGUI() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         app.setInGUI();
         this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         this.guiFrame.setVisible(true);
@@ -81,7 +81,7 @@ public class GUIManager {
     }
 
     public boolean quitHandler() {
-        ScenarioManager mm = Gemma.getApplication().getScenarioManager();
+        final ScenarioManager mm = Gemma.getApplication().getScenarioManager();
         boolean saved = true;
         int status;
         if (mm.getDirty()) {
@@ -98,10 +98,11 @@ public class GUIManager {
             PreferencesManager.writePrefs();
             // Run cleanup task
             try {
-                File dirToDelete = new File(System.getProperty("java.io.tmpdir")
-                        + File.separator + "Gemma");
+                final File dirToDelete = new File(
+                        System.getProperty("java.io.tmpdir") + File.separator
+                                + "Gemma");
                 DirectoryUtilities.removeDirectory(dirToDelete);
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 // Ignore
             }
         }
@@ -114,39 +115,39 @@ public class GUIManager {
         }
 
         @Override
-        public void windowActivated(WindowEvent arg0) {
+        public void windowActivated(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowClosed(WindowEvent arg0) {
+        public void windowClosed(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent arg0) {
+        public void windowClosing(final WindowEvent arg0) {
             if (GUIManager.this.quitHandler()) {
                 System.exit(0);
             }
         }
 
         @Override
-        public void windowDeactivated(WindowEvent arg0) {
+        public void windowDeactivated(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent arg0) {
+        public void windowDeiconified(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent arg0) {
+        public void windowIconified(final WindowEvent arg0) {
             // Do nothing
         }
 
         @Override
-        public void windowOpened(WindowEvent arg0) {
+        public void windowOpened(final WindowEvent arg0) {
             // Do nothing
         }
     }

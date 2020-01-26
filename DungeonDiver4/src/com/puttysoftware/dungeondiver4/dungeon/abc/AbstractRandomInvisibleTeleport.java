@@ -14,14 +14,15 @@ import com.puttysoftware.dungeondiver4.editor.DungeonEditorLogic;
 import com.puttysoftware.dungeondiver4.resourcemanagers.SoundConstants;
 import com.puttysoftware.dungeondiver4.resourcemanagers.SoundManager;
 
-public abstract class AbstractRandomInvisibleTeleport extends
-        AbstractRandomTeleport {
+public abstract class AbstractRandomInvisibleTeleport
+        extends AbstractRandomTeleport {
     // Constructors
     public AbstractRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX, final int attrName) {
         super(newRandomRangeY, newRandomRangeX, attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
@@ -29,9 +30,9 @@ public abstract class AbstractRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();
@@ -44,9 +45,10 @@ public abstract class AbstractRandomInvisibleTeleport extends
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
-        return me
-                .editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
+        return me.editTeleportDestination(
+                DungeonEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
     }
 
     @Override

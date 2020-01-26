@@ -96,18 +96,17 @@ public class MetalButton extends AbstractField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
             final Application app = FantastleX.getApplication();
-            final AbstractMazeObject there = app.getMazeManager()
-                    .getMazeObject(this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor(), this.getLayer());
+            final AbstractMazeObject there = app.getMazeManager().getMazeObject(
+                    this.getTargetRow(), this.getTargetColumn(),
+                    this.getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
+                            this.getTargetColumn(), this.getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(),
                             this.getTargetRow(), this.getTargetColumn(),
@@ -159,10 +158,9 @@ public class MetalButton extends AbstractField {
 
     @Override
     public void editorProbeHook() {
-        FantastleX.getApplication().showMessage(
-                this.getName() + ": Target (" + (this.targetCol + 1) + ","
-                        + (this.targetRow + 1) + "," + (this.targetFloor + 1)
-                        + "," + (this.targetLevel + 1) + ")");
+        FantastleX.getApplication().showMessage(this.getName() + ": Target ("
+                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
+                + (this.targetFloor + 1) + "," + (this.targetLevel + 1) + ")");
     }
 
     @Override

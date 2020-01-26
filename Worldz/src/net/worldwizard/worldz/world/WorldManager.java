@@ -101,8 +101,8 @@ public class WorldManager {
             return JOptionPane.NO_OPTION;
         }
         int status = JOptionPane.DEFAULT_OPTION;
-        status = Messager.showYNCConfirmDialog("Do you want to save your "
-                + type + "?", source);
+        status = Messager.showYNCConfirmDialog(
+                "Do you want to save your " + type + "?", source);
         return status;
     }
 
@@ -218,7 +218,8 @@ public class WorldManager {
                     WorldManager.loadFile(filename, true,
                             FormatConstants.WORLD_FORMAT_1);
                 } else {
-                    Messager.showDialog("You opened something other than a world file. Select a world file, and try again.");
+                    Messager.showDialog(
+                            "You opened something other than a world file. Select a world file, and try again.");
                 }
             } else {
                 // User cancelled
@@ -230,40 +231,47 @@ public class WorldManager {
         return false;
     }
 
-    public void loadFromOSHandler(String infilename) {
+    public void loadFromOSHandler(final String infilename) {
         final Application app = Worldz.getApplication();
         if (!this.loaded) {
             String extension;
             final File file = new File(infilename);
-            String filename = file.getAbsolutePath();
+            final String filename = file.getAbsolutePath();
             extension = WorldManager.getExtension(file);
             app.getGameManager().resetObjectInventory();
             if (extension.equals(Extension.getGameExtension())) {
                 this.lastUsedGameFile = filename;
-                WorldManager.loadFile(filename, true, FormatConstants.WORLD_FORMAT_1);
+                WorldManager.loadFile(filename, true,
+                        FormatConstants.WORLD_FORMAT_1);
             } else if (extension.equals(Extension.getWorldExtension())) {
                 this.lastUsedWorldFile = filename;
-                WorldManager.loadFile(filename, false, FormatConstants.WORLD_FORMAT_1);
+                WorldManager.loadFile(filename, false,
+                        FormatConstants.WORLD_FORMAT_1);
             } else if (extension.equals(Extension.getWorldExtension())) {
                 this.lastUsedWorldFile = filename;
-                WorldManager.loadFile(filename, false, FormatConstants.WORLD_FORMAT_1);
+                WorldManager.loadFile(filename, false,
+                        FormatConstants.WORLD_FORMAT_1);
             } else if (extension.equals(Extension.getGameExtension())) {
                 this.lastUsedGameFile = filename;
-                WorldManager.loadFile(filename, true, FormatConstants.WORLD_FORMAT_1);
+                WorldManager.loadFile(filename, true,
+                        FormatConstants.WORLD_FORMAT_1);
             } else if (extension.equals(Extension.getPreferencesExtension())) {
-                Messager.showDialog("You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
+                Messager.showDialog(
+                        "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
             } else if (extension.equals(Extension.getPluginExtension())) {
-                Messager.showDialog("You double-clicked a plugin file. These are automatically loaded when needed, and need not be double-clicked.");
+                Messager.showDialog(
+                        "You double-clicked a plugin file. These are automatically loaded when needed, and need not be double-clicked.");
             } else if (extension.equals(Extension.getMusicExtension())) {
-                Messager.showDialog("You double-clicked a music file. These are automatically loaded when needed, and need not be double-clicked.");
+                Messager.showDialog(
+                        "You double-clicked a music file. These are automatically loaded when needed, and need not be double-clicked.");
             }
         }
     }
 
-    private static void loadFile(final String filename, final boolean isSavedGame,
-            final int formatVersion) {
-        if (!FilenameChecker.isFilenameOK(WorldManager.getNameWithoutExtension(WorldManager
-                .getFileNameOnly(filename)))) {
+    private static void loadFile(final String filename,
+            final boolean isSavedGame, final int formatVersion) {
+        if (!FilenameChecker.isFilenameOK(WorldManager.getNameWithoutExtension(
+                WorldManager.getFileNameOnly(filename)))) {
             Messager.showErrorDialog(
                     "The file you selected contains illegal characters in its\n"
                             + "name. These characters are not allowed: /?<>\\:|\"\n"
@@ -364,8 +372,10 @@ public class WorldManager {
                             fc.getCurrentDirectory().getAbsolutePath());
                     if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
-                            if (!extension.equals(Extension.getGameExtension())) {
-                                filename = WorldManager.getNameWithoutExtension(file)
+                            if (!extension
+                                    .equals(Extension.getGameExtension())) {
+                                filename = WorldManager
+                                        .getNameWithoutExtension(file)
                                         + Extension
                                                 .getGameExtensionWithPeriod();
                             }
@@ -378,7 +388,8 @@ public class WorldManager {
                         if (extension != null) {
                             if (!extension
                                     .equals(Extension.getWorldExtension())) {
-                                filename = WorldManager.getNameWithoutExtension(file)
+                                filename = WorldManager
+                                        .getNameWithoutExtension(file)
                                         + Extension
                                                 .getWorldExtensionWithPeriod();
                             }
@@ -396,7 +407,8 @@ public class WorldManager {
         return false;
     }
 
-    private static void saveFile(final String filename, final boolean isSavedGame) {
+    private static void saveFile(final String filename,
+            final boolean isSavedGame) {
         final String sg;
         if (isSavedGame) {
             sg = "Saved Game";

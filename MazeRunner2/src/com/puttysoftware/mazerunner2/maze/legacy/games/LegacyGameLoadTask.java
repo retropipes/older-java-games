@@ -23,16 +23,16 @@ import com.puttysoftware.xio.ZipUtilities;
 
 public class LegacyGameLoadTask extends Thread {
     // Fields
-    private String filename;
-    private JFrame loadFrame;
+    private final String filename;
+    private final JFrame loadFrame;
 
     // Constructors
-    public LegacyGameLoadTask(String file) {
+    public LegacyGameLoadTask(final String file) {
         this.filename = file;
         this.setName("Locked File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -45,20 +45,21 @@ public class LegacyGameLoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int startW;
         String sg;
         app.getGameManager().setSavedGameFlag(false);
         sg = "Maze";
         try {
-            File mazeFile = new File(this.filename);
-            File tempLock = new File(Maze.getMazeTempFolder() + "lock.tmp");
+            final File mazeFile = new File(this.filename);
+            final File tempLock = new File(
+                    Maze.getMazeTempFolder() + "lock.tmp");
             Maze gameMaze = new Maze();
             // Unlock the file
             LegacyGameFileManager.load(mazeFile, tempLock);
             ZipUtilities.unzipDirectory(tempLock,
                     new File(gameMaze.getBasePath()));
-            boolean success = tempLock.delete();
+            final boolean success = tempLock.delete();
             if (!success) {
                 throw new IOException("Failed to delete temporary file!");
             }
@@ -86,10 +87,8 @@ public class LegacyGameLoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Loading the " + sg.toLowerCase()

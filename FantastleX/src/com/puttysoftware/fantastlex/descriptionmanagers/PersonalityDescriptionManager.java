@@ -15,10 +15,9 @@ public class PersonalityDescriptionManager {
         final String name = PersonalityConstants.getPersonalityName(p)
                 .toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                PersonalityDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/fantastlex/resources/descriptions/personality/"
-                                + name
-                                + Extension
+                PersonalityDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/fantastlex/resources/descriptions/personality/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
             final String desc = rsr.readString();

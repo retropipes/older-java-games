@@ -21,7 +21,7 @@ public final class Socks extends Equipment {
     }
 
     // Methods
-    public final void stepAction(final Creature wearer) {
+    public void stepAction(final Creature wearer) {
         switch (this.actionType) {
         case Socks.STEP_ACTION_HEAL:
             wearer.heal(this.actionAmount);

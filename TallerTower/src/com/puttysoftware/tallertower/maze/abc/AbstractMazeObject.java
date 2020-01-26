@@ -25,8 +25,8 @@ import com.puttysoftware.tallertower.resourcemanagers.SoundManager;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class AbstractMazeObject extends CloneableObject implements
-        RandomGenerationRule {
+public abstract class AbstractMazeObject extends CloneableObject
+        implements RandomGenerationRule {
     // Properties
     private boolean solid;
     private boolean friction;
@@ -103,8 +103,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         result = prime * result + this.timerValue;
         result = prime * result + this.initialTimerValue;
         result = prime * result + (this.timerActive ? 1231 : 1237);
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
@@ -185,16 +184,16 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     public static int getTemplateColor() {
-        return templateColor;
+        return AbstractMazeObject.templateColor;
     }
 
     public static void setTemplateColor(final int newTC) {
-        templateColor = newTC;
+        AbstractMazeObject.templateColor = newTC;
     }
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -210,7 +209,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
             final int dirY);
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -223,7 +222,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -237,7 +236,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -266,12 +265,13 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -293,7 +293,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -416,9 +416,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         if (ident.equals(this.getIdentifier())) {
             final String savedIdent = reader.readString();
             if (!savedIdent.equals("NULL")) {
-                this.saved = TallerTower
-                        .getApplication()
-                        .getObjects()
+                this.saved = TallerTower.getApplication().getObjects()
                         .readSavedMazeObject(reader, savedIdent,
                                 FormatConstants.MAZE_FORMAT_LATEST);
             }
@@ -439,7 +437,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -449,7 +447,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return

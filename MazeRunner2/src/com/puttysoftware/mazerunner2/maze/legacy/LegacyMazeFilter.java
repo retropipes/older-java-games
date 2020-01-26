@@ -36,7 +36,7 @@ public class LegacyMazeFilter extends FileFilter {
         String ext = null;
         final String s = f.getName();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;

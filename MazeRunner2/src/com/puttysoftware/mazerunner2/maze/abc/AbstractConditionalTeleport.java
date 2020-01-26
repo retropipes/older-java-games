@@ -32,7 +32,7 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -73,8 +73,7 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
 
     @Override
     public AbstractConditionalTeleport clone() {
-        AbstractConditionalTeleport copy = (AbstractConditionalTeleport) super
-                .clone();
+        final AbstractConditionalTeleport copy = (AbstractConditionalTeleport) super.clone();
         copy.destCol2 = this.destCol2;
         copy.destFloor2 = this.destFloor2;
         copy.destRow2 = this.destRow2;
@@ -117,19 +116,19 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
         this.destFloor2 = destinationFloor;
     }
 
-    public void setTriggerValue(int t) {
+    public void setTriggerValue(final int t) {
         this.triggerVal = t;
     }
 
-    public void setSunMoon(int sm) {
+    public void setSunMoon(final int sm) {
         this.sunMoon = sm;
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         int testVal;
         if (this.sunMoon == AbstractConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
@@ -171,13 +170,13 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
 
     @Override
     public final AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.editConditionalTeleportDestination(this);
         return this;
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.getDestinationRow();
@@ -201,7 +200,7 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.setDestinationRow(value);

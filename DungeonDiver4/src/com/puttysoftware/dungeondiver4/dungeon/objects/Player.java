@@ -42,12 +42,12 @@ public class Player extends AbstractCharacter {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Dungeon dungeon) {
+    public int getMinimumRequiredQuantity(final Dungeon dungeon) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Dungeon dungeon) {
+    public int getMaximumRequiredQuantity(final Dungeon dungeon) {
         return 1;
     }
 }

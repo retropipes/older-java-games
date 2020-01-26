@@ -35,9 +35,8 @@ public class GhostAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_GHOSTLY,
-                        GhostAmulet.EFFECT_DURATION);
+        Mazer5D.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_GHOSTLY,
+                GhostAmulet.EFFECT_DURATION);
     }
 }

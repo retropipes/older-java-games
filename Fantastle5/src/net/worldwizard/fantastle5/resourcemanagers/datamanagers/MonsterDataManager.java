@@ -27,8 +27,8 @@ public class MonsterDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    MonsterDataManager.class
-                            .getResourceAsStream("/net/worldwizard/fantastle5/resources/data/monster/monsternames.dat"));
+                    MonsterDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/fantastle5/resources/data/monster/monsternames.dat"));
             final Vector<String> data = new Vector<>(10, 10);
             String raw = "0";
             while (raw != null) {

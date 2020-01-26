@@ -9,16 +9,16 @@ import com.puttysoftware.llds.LowLevelObjectDataStore;
 
 class LowLevelNoteDataStore extends LowLevelObjectDataStore {
     // Constructor
-    LowLevelNoteDataStore(int... shape) {
+    LowLevelNoteDataStore(final int... shape) {
         super(shape);
     }
 
     // Methods
-    public DungeonNote getNote(int... loc) {
+    public DungeonNote getNote(final int... loc) {
         return (DungeonNote) this.getCell(loc);
     }
 
-    public void setNote(DungeonNote obj, int... loc) {
+    public void setNote(final DungeonNote obj, final int... loc) {
         this.setCell(obj, loc);
     }
 }

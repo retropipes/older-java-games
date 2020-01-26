@@ -57,8 +57,8 @@ class ListWithDescDialog extends JDialog implements ActionListener {
 
     private static void setValue(final String newValue) {
         ListWithDescDialog.value = newValue;
-        ListWithDescDialog.list
-                .setSelectedValue(ListWithDescDialog.value, true);
+        ListWithDescDialog.list.setSelectedValue(ListWithDescDialog.value,
+                true);
     }
 
     private ListWithDescDialog(final Frame frame, final Component locationComp,
@@ -139,8 +139,8 @@ class ListWithDescDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         if ("OK".equals(e.getActionCommand())) {
-            ListWithDescDialog.setValue(ListWithDescDialog.list
-                    .getSelectedValue());
+            ListWithDescDialog
+                    .setValue(ListWithDescDialog.list.getSelectedValue());
         } else if ("Cancel".equals(e.getActionCommand())) {
             ListWithDescDialog.setValue(null);
         }

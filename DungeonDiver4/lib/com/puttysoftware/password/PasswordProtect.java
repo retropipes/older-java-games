@@ -2,8 +2,6 @@ package com.puttysoftware.password;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -38,11 +36,11 @@ public class PasswordProtect {
     }
 
     // Methods
-    public static void setPassword(XDataWriter passwordFile) {
+    public static void setPassword(final XDataWriter passwordFile) {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Set Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the new password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the new password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.passwordWrite = passwordFile;
@@ -50,11 +48,11 @@ public class PasswordProtect {
         PasswordProtect.passwordFrame.setVisible(true);
     }
 
-    public static void promptForPassword(XDataReader passwordFile) {
+    public static void promptForPassword(final XDataReader passwordFile) {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Enter Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.passwordRead = passwordFile;
@@ -65,8 +63,8 @@ public class PasswordProtect {
     public static void promptForPassword() {
         PasswordProtect.createComponents();
         PasswordProtect.passwordFrame.setTitle("Enter Password");
-        PasswordProtect.passwordLabel
-                .setText("Type the password below (it will be hidden as you type):");
+        PasswordProtect.passwordLabel.setText(
+                "Type the password below (it will be hidden as you type):");
         PasswordProtect.passwordField.setText(null);
         PasswordProtect.passwordFrame.pack();
         PasswordProtect.mode = PasswordProtect.MODE_GET_RAW;
@@ -106,11 +104,11 @@ public class PasswordProtect {
     }
 
     protected static void savePassword() {
-        String hashedPW = PasswordProtect.hashPassword();
+        final String hashedPW = PasswordProtect.hashPassword();
         try {
             PasswordProtect.passwordWrite.writeString(hashedPW);
             PasswordProtect.success = true;
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             PasswordProtect.success = false;
         }
     }
@@ -120,11 +118,11 @@ public class PasswordProtect {
     }
 
     protected static void checkPassword() {
-        String hashedInput = PasswordProtect.hashPassword();
+        final String hashedInput = PasswordProtect.hashPassword();
         String check;
         try {
             check = PasswordProtect.passwordRead.readString();
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             check = "";
         }
         PasswordProtect.success = hashedInput.equals(check);
@@ -132,9 +130,9 @@ public class PasswordProtect {
 
     private static String hashPassword() {
         try {
-            char[] pw = PasswordProtect.passwordField.getPassword();
-            byte[] bytes = Arrays.toString(pw).getBytes("UTF-8");
-            byte[] hashed = Hash.hash(bytes);
+            final char[] pw = PasswordProtect.passwordField.getPassword();
+            final byte[] bytes = Arrays.toString(pw).getBytes("UTF-8");
+            final byte[] hashed = Hash.hash(bytes);
             for (int x = 0; x < pw.length; x++) {
                 pw[x] = '\0';
             }
@@ -142,7 +140,7 @@ public class PasswordProtect {
                 bytes[x] = 0;
             }
             return HexBytes.hexBytes(hashed);
-        } catch (UnsupportedEncodingException uee) {
+        } catch (final UnsupportedEncodingException uee) {
             return "";
         }
     }
@@ -156,40 +154,34 @@ public class PasswordProtect {
             PasswordProtect.buttonPanel = new JPanel();
             PasswordProtect.okButton = new JButton("OK");
             PasswordProtect.okButton.setDefaultCapable(true);
-            PasswordProtect.okButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (PasswordProtect.getMode() == PasswordProtect.MODE_GET) {
-                        PasswordProtect.checkPassword();
-                    } else if (PasswordProtect.getMode() == PasswordProtect.MODE_SET) {
-                        PasswordProtect.savePassword();
-                    } else {
-                        PasswordProtect.success();
-                    }
-                    PasswordProtect.hideForm();
+            PasswordProtect.okButton.addActionListener(e -> {
+                if (PasswordProtect.getMode() == PasswordProtect.MODE_GET) {
+                    PasswordProtect.checkPassword();
+                } else if (PasswordProtect
+                        .getMode() == PasswordProtect.MODE_SET) {
+                    PasswordProtect.savePassword();
+                } else {
+                    PasswordProtect.success();
                 }
+                PasswordProtect.hideForm();
             });
             PasswordProtect.cancelButton = new JButton("Cancel");
             PasswordProtect.cancelButton.setDefaultCapable(false);
-            PasswordProtect.cancelButton
-                    .addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            PasswordProtect.failure();
-                            PasswordProtect.hideForm();
-                        }
-                    });
-            PasswordProtect.passwordFrame.getRootPane().setDefaultButton(
-                    PasswordProtect.okButton);
+            PasswordProtect.cancelButton.addActionListener(e -> {
+                PasswordProtect.failure();
+                PasswordProtect.hideForm();
+            });
+            PasswordProtect.passwordFrame.getRootPane()
+                    .setDefaultButton(PasswordProtect.okButton);
             PasswordProtect.buttonPanel.setLayout(new FlowLayout());
             PasswordProtect.buttonPanel.add(PasswordProtect.cancelButton);
             PasswordProtect.buttonPanel.add(PasswordProtect.okButton);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.passwordLabel, BorderLayout.NORTH);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.passwordField, BorderLayout.CENTER);
-            PasswordProtect.passwordFrame.getContentPane().add(
-                    PasswordProtect.buttonPanel, BorderLayout.SOUTH);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.passwordLabel, BorderLayout.NORTH);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.passwordField, BorderLayout.CENTER);
+            PasswordProtect.passwordFrame.getContentPane()
+                    .add(PasswordProtect.buttonPanel, BorderLayout.SOUTH);
             PasswordProtect.passwordFrame.pack();
         }
     }

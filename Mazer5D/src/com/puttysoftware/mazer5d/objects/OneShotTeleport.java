@@ -13,7 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
+
     Any questions should be directed to the author via email at: products@puttysoftware.com
  */
 package com.puttysoftware.mazer5d.objects;
@@ -40,8 +40,8 @@ public class OneShotTeleport extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),

@@ -65,8 +65,8 @@ class AboutDialog {
         this.textPane.add(new JLabel("TAP Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
         this.textPane.add(new JLabel("Web Site: http://tap.worldwizard.net/"));
-        this.textPane.add(new JLabel(
-                "E-mail bug reports to: tap@worldwizard.net  "));
+        this.textPane.add(
+                new JLabel("E-mail bug reports to: tap@worldwizard.net  "));
         this.buttonPane.setLayout(new FlowLayout());
         this.buttonPane.add(this.aboutOK);
         this.aboutPane.add(this.logoPane, BorderLayout.WEST);

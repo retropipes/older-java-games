@@ -70,9 +70,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -86,9 +86,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.enableBattleMenus();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -100,9 +100,9 @@ public class MenuManager {
         this.enableGameMenus();
         this.disableBattleMenus();
         this.checkFlags();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -116,9 +116,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.disableBattleMenus();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -132,9 +132,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.disableBattleMenus();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -146,9 +146,9 @@ public class MenuManager {
         this.disableGameMenus();
         this.disableBattleMenus();
         this.checkFlags();
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
     }
@@ -188,7 +188,7 @@ public class MenuManager {
     }
 
     public void checkFlags() {
-        Application app = Gemma.getApplication();
+        final Application app = Gemma.getApplication();
         if (app.getScenarioManager().getDirty()) {
             this.setMenusDirtyOn();
         } else {
@@ -248,11 +248,11 @@ public class MenuManager {
 
     private void createMenus() {
         this.mainMenuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        JMenu gameMenu = new JMenu("Game");
-        JMenu battleMenu = new JMenu("Battle");
-        JMenu editorMenu = new JMenu("Editor");
-        JMenu helpMenu = new JMenu("Help");
+        final JMenu fileMenu = new JMenu("File");
+        final JMenu gameMenu = new JMenu("Game");
+        final JMenu battleMenu = new JMenu("Battle");
+        final JMenu editorMenu = new JMenu("Editor");
+        final JMenu helpMenu = new JMenu("Help");
         this.fileOpenSavedGame = new JMenuItem("Open Saved Game...");
         this.fileOpenSavedGame.setAccelerator(this.fileOpenSavedGameAccel);
         this.fileClose = new JMenuItem("Close");
@@ -321,7 +321,7 @@ public class MenuManager {
         fileMenu.add(this.fileSave);
         fileMenu.add(this.fileSaveAs);
         fileMenu.add(this.filePrint);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             fileMenu.add(this.filePreferences);
             fileMenu.add(this.fileExit);
         }
@@ -340,12 +340,12 @@ public class MenuManager {
         battleMenu.add(this.battleSteal);
         battleMenu.add(this.battleDrain);
         battleMenu.add(this.battleEndTurn);
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             editorMenu.add(ge.createEditorCommandsMenu());
         }
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             helpMenu.add(this.helpAbout);
         }
         helpMenu.add(this.helpObjectHelp);
@@ -373,9 +373,9 @@ public class MenuManager {
         this.disableBattleMenus();
         this.helpAbout.setEnabled(true);
         this.helpObjectHelp.setEnabled(true);
-        ArrayList<GenericEditor> allEditors = Gemma.getApplication()
+        final ArrayList<GenericEditor> allEditors = Gemma.getApplication()
                 .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        for (final GenericEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
     }
@@ -396,7 +396,7 @@ public class MenuManager {
         public void actionPerformed(final ActionEvent e) {
             try {
                 final Application app = Gemma.getApplication();
-                BattleLogic ba = app.getBattle();
+                final BattleLogic ba = app.getBattle();
                 final String cmd = e.getActionCommand();
                 switch (cmd) {
                 case "Open Saved Game...":
@@ -445,7 +445,7 @@ public class MenuManager {
                     break;
                 case "Play":
                     // Play the current scenario
-                    boolean proceed = app.getGameManager().newGame();
+                    final boolean proceed = app.getGameManager().newGame();
                     if (proceed) {
                         app.getGameManager().playMap();
                     }
@@ -460,7 +460,7 @@ public class MenuManager {
                     break;
                 case "Remove Character...":
                     // Confirm
-                    int confirm = CommonDialogs.showConfirmDialog(
+                    final int confirm = CommonDialogs.showConfirmDialog(
                             "WARNING: This will DELETE the character from disk,\n"
                                     + "and CANNOT be undone! Proceed anyway?",
                             "Remove Character" + this.suffix);
@@ -516,7 +516,7 @@ public class MenuManager {
                     break;
                 }
                 MenuManager.this.checkFlags();
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);
             }
         }

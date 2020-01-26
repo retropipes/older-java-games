@@ -12,18 +12,18 @@ public class RandomDungeonGenerator extends Thread {
     @Override
     public void run() {
         try {
-            Application app = DungeonDiver4.getApplication();
-            JFrame generateFrame = new JFrame("Generating...");
+            final Application app = DungeonDiver4.getApplication();
+            final JFrame generateFrame = new JFrame("Generating...");
             generateFrame.setIconImage(LogoManager.getIconLogo());
-            JProgressBar generateBar = new JProgressBar();
+            final JProgressBar generateBar = new JProgressBar();
             generateBar.setIndeterminate(true);
             generateFrame.getContentPane().add(generateBar);
             generateFrame.setResizable(false);
-            generateFrame
-                    .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            generateFrame.setDefaultCloseOperation(
+                    WindowConstants.DO_NOTHING_ON_CLOSE);
             generateFrame.pack();
             generateFrame.setVisible(true);
-            Dungeon d = new Dungeon();
+            final Dungeon d = new Dungeon();
             d.addLevel(Dungeon.getMaxRows(), Dungeon.getMaxColumns(),
                     Dungeon.getMaxFloors());
             d.fillLevelRandomly();
@@ -35,11 +35,11 @@ public class RandomDungeonGenerator extends Thread {
             app.getGameManager().stateChanged();
             app.getGameManager().resetGameState();
             app.getGameManager().resetViewingWindowAndPlayerLocation();
-            boolean proceed = app.getGameManager().newGame();
+            final boolean proceed = app.getGameManager().newGame();
             if (proceed) {
                 app.getGameManager().playDungeon();
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             DungeonDiver4.getErrorLogger().logError(e);
         }
     }

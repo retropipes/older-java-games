@@ -32,8 +32,8 @@ public class MazeInvisibleTeleporter extends MazeGenericInvisibleTeleporter {
 
     @Override
     public MazeObject editorHook() {
-        final MazeObject mo = MazeMaker
-                .editTeleporterDestination(MazeMaker.TELEPORTER_TYPE_INVISIBLE_GENERIC);
+        final MazeObject mo = MazeMaker.editTeleporterDestination(
+                MazeMaker.TELEPORTER_TYPE_INVISIBLE_GENERIC);
         return mo;
     }
 }

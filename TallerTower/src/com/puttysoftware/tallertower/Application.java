@@ -177,15 +177,15 @@ public final class Application {
     }
 
     private static String getVersionString() {
-        final int code = pd.getCodeVersion();
+        final int code = Application.pd.getCodeVersion();
         String rt;
         if (code < ProductData.CODE_STABLE) {
             rt = "-beta" + Application.VERSION_PRERELEASE;
         } else {
             rt = "";
         }
-        return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR
-                + "." + Application.VERSION_BUGFIX + rt;
+        return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR + "."
+                + Application.VERSION_BUGFIX + rt;
     }
 
     public JFrame getOutputFrame() {

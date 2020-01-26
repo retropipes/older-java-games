@@ -10,8 +10,8 @@ public class XMLSuffixHandler implements XMLSuffixIO {
     @Override
     public void readSuffix(final XDataReader reader, final int formatVersion)
             throws IOException {
-        Mazer5D.getApplication().getGameManager()
-                .loadGameHookXML(reader, formatVersion);
+        Mazer5D.getApplication().getGameManager().loadGameHookXML(reader,
+                formatVersion);
     }
 
     @Override

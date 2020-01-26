@@ -29,14 +29,13 @@ public class SpellCaster {
     public static boolean selectAndCastSpell(final AbstractCreature caster) {
         boolean result = false;
         SpellCaster.NO_SPELLS_FLAG = false;
-        Spell s = SpellCaster.selectSpell(caster);
+        final Spell s = SpellCaster.selectSpell(caster);
         if (s != null) {
             result = SpellCaster.castSpell(s, caster);
             if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't have enough MP!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't have enough MP!",
+                        "Select Spell");
             }
         }
         return result;
@@ -45,17 +44,17 @@ public class SpellCaster {
     public static boolean castSpell(final Spell cast,
             final AbstractCreature caster) {
         if (cast != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCost();
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCost();
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect b = cast.getEffect();
+                final Effect b = cast.getEffect();
                 // Play spell's associated sound effect, if it has one
-                int snd = cast.getSound();
+                final int snd = cast.getSound();
                 SoundManager.playSound(snd);
                 b.resetEffect();
-                AbstractCreature target = SpellCaster.resolveTarget(cast,
+                final AbstractCreature target = SpellCaster.resolveTarget(cast,
                         caster.getTeamID());
                 if (target.isEffectActive(b)) {
                     target.extendEffect(b, b.getInitialRounds());
@@ -78,17 +77,16 @@ public class SpellCaster {
             final MapBattleDefinitions battle) {
         boolean result = false;
         SpellCaster.NO_SPELLS_FLAG = false;
-        Spell s = SpellCaster.selectSpell(caster);
+        final Spell s = SpellCaster.selectSpell(caster);
         if (s != null) {
-            int power = SpellCaster.selectSpellPower();
+            final int power = SpellCaster.selectSpellPower();
             if (power != -1) {
                 result = SpellCaster.castSpellWithPower(s, power, caster,
                         teamID, aiEnabled, battle);
                 if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "You try to cast a spell, but realize you don't have enough MP!",
-                                    "Select Spell");
+                    CommonDialogs.showErrorDialog(
+                            "You try to cast a spell, but realize you don't have enough MP!",
+                            "Select Spell");
                 }
             }
         }
@@ -120,10 +118,9 @@ public class SpellCaster {
                 }
             } else {
                 SpellCaster.NO_SPELLS_FLAG = true;
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't know any!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't know any!",
+                        "Select Spell");
                 return null;
             }
         } else {
@@ -137,13 +134,13 @@ public class SpellCaster {
 
     private static int selectSpellPower() {
         String dialogResult = null;
-        dialogResult = CommonDialogs
-                .showInputDialog("Select a Spell Power Level", "Select Power",
-                        powers, powers[0]);
+        dialogResult = CommonDialogs.showInputDialog(
+                "Select a Spell Power Level", "Select Power",
+                SpellCaster.powers, SpellCaster.powers[0]);
         if (dialogResult != null) {
             int index;
-            for (index = 0; index < powers.length; index++) {
-                if (dialogResult.equals(powers[index])) {
+            for (index = 0; index < SpellCaster.powers.length; index++) {
+                if (dialogResult.equals(SpellCaster.powers[index])) {
                     break;
                 }
             }
@@ -157,20 +154,19 @@ public class SpellCaster {
             final AbstractCreature caster, final int teamID,
             final boolean aiEnabled, final MapBattleDefinitions battle) {
         if (cast != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCost();
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCost();
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect eff = cast.getEffect();
+                final Effect eff = cast.getEffect();
                 eff.setSource(caster);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
-                AbstractCreature[] targets = SpellCaster.resolveTarget(cast,
-                        caster, teamID, aiEnabled, battle);
-                for (int x = 0; x < targets.length; x++) {
-                    AbstractCreature target = targets[x];
+                final AbstractCreature[] targets = SpellCaster
+                        .resolveTarget(cast, caster, teamID, aiEnabled, battle);
+                for (final AbstractCreature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
                     } else {
@@ -188,25 +184,24 @@ public class SpellCaster {
         }
     }
 
-    private static boolean castSpellWithPower(final Spell cast,
-            final int power, final AbstractCreature caster, final int teamID,
+    private static boolean castSpellWithPower(final Spell cast, final int power,
+            final AbstractCreature caster, final int teamID,
             final boolean aiEnabled, final MapBattleDefinitions battle) {
         if (cast != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCostForPower(power);
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCostForPower(power);
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect eff = cast.getEffect();
+                final Effect eff = cast.getEffect();
                 eff.setSource(caster);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
                 eff.modifyEffectForPower(power);
-                AbstractCreature[] targets = SpellCaster.resolveTarget(cast,
-                        caster, teamID, aiEnabled, battle);
-                for (int x = 0; x < targets.length; x++) {
-                    AbstractCreature target = targets[x];
+                final AbstractCreature[] targets = SpellCaster
+                        .resolveTarget(cast, caster, teamID, aiEnabled, battle);
+                for (final AbstractCreature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
                     } else {
@@ -226,7 +221,7 @@ public class SpellCaster {
 
     private static AbstractCreature resolveTarget(final Spell cast,
             final int teamID) {
-        BattleTarget target = cast.getTarget();
+        final BattleTarget target = cast.getTarget();
         switch (target) {
         case ONE_ALLY:
         case ALL_ALLIES:
@@ -249,11 +244,11 @@ public class SpellCaster {
     }
 
     private static AbstractCreature[] resolveTarget(final Spell cast,
-            final AbstractCreature caster, final int teamID, boolean aiEnabled,
-            MapBattleDefinitions battle) {
-        BattleTarget target = cast.getTarget();
-        boolean hasAI = caster.hasAI();
-        boolean useAI = hasAI && aiEnabled;
+            final AbstractCreature caster, final int teamID,
+            final boolean aiEnabled, final MapBattleDefinitions battle) {
+        final BattleTarget target = cast.getTarget();
+        final boolean hasAI = caster.hasAI();
+        final boolean useAI = hasAI && aiEnabled;
         switch (target) {
         case SELF:
             // Self
@@ -261,22 +256,22 @@ public class SpellCaster {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneFriendOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneFriendOfTeam(teamID) };
             }
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new AbstractCreature[] { battle
-                        .pickOneEnemyOfTeam(teamID) };
+                return new AbstractCreature[] {
+                        battle.pickOneEnemyOfTeam(teamID) };
             }
         case ALL_ALLIES:
             // All Allies

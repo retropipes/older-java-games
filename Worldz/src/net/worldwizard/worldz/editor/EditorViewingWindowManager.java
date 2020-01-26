@@ -12,8 +12,10 @@ public class EditorViewingWindowManager {
     private int locX, locY;
     private static final int VIEWING_WINDOW_SIZE_X = 13;
     private static final int VIEWING_WINDOW_SIZE_Y = 13;
-    private static final int MIN_VIEWING_WINDOW_X = -(EditorViewingWindowManager.VIEWING_WINDOW_SIZE_X / 2);
-    private static final int MIN_VIEWING_WINDOW_Y = -(EditorViewingWindowManager.VIEWING_WINDOW_SIZE_Y / 2);
+    private static final int MIN_VIEWING_WINDOW_X = -(EditorViewingWindowManager.VIEWING_WINDOW_SIZE_X
+            / 2);
+    private static final int MIN_VIEWING_WINDOW_Y = -(EditorViewingWindowManager.VIEWING_WINDOW_SIZE_Y
+            / 2);
     private int MAX_VIEWING_WINDOW_X;
     private int MAX_VIEWING_WINDOW_Y;
 
@@ -104,7 +106,8 @@ public class EditorViewingWindowManager {
         this.checkViewingWindow();
     }
 
-    public void halfOffsetMaximumViewingWindowLocationsFromWorld(final World m) {
+    public void halfOffsetMaximumViewingWindowLocationsFromWorld(
+            final World m) {
         this.MAX_VIEWING_WINDOW_X = m.getRows() + this.getOffsetFactorX();
         this.MAX_VIEWING_WINDOW_Y = m.getColumns() + this.getOffsetFactorY();
     }

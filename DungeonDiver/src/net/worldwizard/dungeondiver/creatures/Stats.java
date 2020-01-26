@@ -20,12 +20,10 @@ public class Stats {
         statString[0] = "Level: " + player.getLevel();
         statString[1] = "HP: " + player.getHPString();
         statString[2] = "MP: " + player.getMPString();
-        statString[3] = "Weapon: "
-                + ItemNames.getItemName(ShopTypes.WEAPONS,
-                        player.getWeaponPower(), player.getPlayerClass());
-        statString[4] = "Armor: "
-                + ItemNames.getItemName(ShopTypes.ARMOR,
-                        player.getArmorBlock(), player.getPlayerClass());
+        statString[3] = "Weapon: " + ItemNames.getItemName(ShopTypes.WEAPONS,
+                player.getWeaponPower(), player.getPlayerClass());
+        statString[4] = "Armor: " + ItemNames.getItemName(ShopTypes.ARMOR,
+                player.getArmorBlock(), player.getPlayerClass());
         statString[5] = "Attack: " + player.getAttack();
         statString[6] = "Defense: " + player.getDefense();
         statString[7] = "Gold: " + player.getGold();

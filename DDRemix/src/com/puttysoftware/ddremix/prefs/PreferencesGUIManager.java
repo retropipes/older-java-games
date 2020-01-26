@@ -49,8 +49,8 @@ class PreferencesGUIManager {
     static final int DEFAULT_VIEWING_WINDOW_SIZE = PreferencesGUIManager.VIEWING_WINDOW_SIZES[PreferencesGUIManager.DEFAULT_SIZE_INDEX];
     private static final String[] VIEWING_WINDOW_SIZE_NAMES = new String[] {
             "Tiny", "Small", "Medium", "Large", "Huge" };
-    private static final String[] DIFFICULTY_NAMES = new String[] {
-            "Very Easy", "Easy", "Normal", "Hard", "Very Hard" };
+    private static final String[] DIFFICULTY_NAMES = new String[] { "Very Easy",
+            "Easy", "Normal", "Hard", "Very Hard" };
     private static final int GRID_LENGTH = 7;
     private static final int HIDPI = 240;
 
@@ -80,8 +80,8 @@ class PreferencesGUIManager {
         } else {
             app.setMode(Application.STATUS_PREFS);
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                this.prefFrame.setJMenuBar(app.getMenuManager()
-                        .getMainMenuBar());
+                this.prefFrame
+                        .setJMenuBar(app.getMenuManager().getMainMenuBar());
             }
             app.getMenuManager().setPrefMenus();
             this.prefFrame.setVisible(true);
@@ -111,24 +111,24 @@ class PreferencesGUIManager {
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
         }
-        this.checkUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckUpdatesAtStartup());
+        this.checkUpdatesStartup
+                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
         this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
         final int index = PreferencesManager.getViewingWindowSizeIndex();
         this.viewingWindowChoices[index].setSelected(true);
         this.sound.setSelected(PreferencesManager.getSoundsEnabled());
-        this.useTimeBattleEngine.setSelected(PreferencesManager
-                .useTimeBattleEngine());
-        this.difficultyPicker.setSelectedIndex(PreferencesManager
-                .getGameDifficulty());
+        this.useTimeBattleEngine
+                .setSelected(PreferencesManager.useTimeBattleEngine());
+        this.difficultyPicker
+                .setSelectedIndex(PreferencesManager.getGameDifficulty());
     }
 
     public void setPrefs() {
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
         }
-        PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup
-                .isSelected());
+        PreferencesManager.setCheckUpdatesAtStartup(
+                this.checkUpdatesStartup.isSelected());
         PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
         final int vwSize = PreferencesManager.getViewingWindowSizeIndex();
         final int newSize = this.viewingWindowGroup.getSelection()
@@ -140,10 +140,10 @@ class PreferencesGUIManager {
             DDRemix.getApplication().resetBattleGUI();
         }
         PreferencesManager.setSoundsEnabled(this.sound.isSelected());
-        PreferencesManager.setTimeBattleEngine(this.useTimeBattleEngine
-                .isSelected());
-        PreferencesManager.setGameDifficulty(this.difficultyPicker
-                .getSelectedIndex());
+        PreferencesManager
+                .setTimeBattleEngine(this.useTimeBattleEngine.isSelected());
+        PreferencesManager
+                .setGameDifficulty(this.difficultyPicker.getSelectedIndex());
         this.hidePrefs();
     }
 
@@ -151,8 +151,8 @@ class PreferencesGUIManager {
         PreferencesManager.readPrefs();
         this.loadPrefs();
         // HiDPI detection
-        final Object o = Toolkit.getDefaultToolkit().getDesktopProperty(
-                "apple.awt.contentScaleFactor");
+        final Object o = Toolkit.getDefaultToolkit()
+                .getDesktopProperty("apple.awt.contentScaleFactor");
         if (o != null) {
             // OS X
             if (Double.parseDouble(o.toString()) >= 2.0) {
@@ -203,8 +203,8 @@ class PreferencesGUIManager {
         this.music[PreferencesManager.MUSIC_BATTLE] = new JCheckBox(
                 "Enable battle music", true);
         this.sound = new JCheckBox("Enable sounds", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
         this.useTimeBattleEngine = new JCheckBox("Use Time Battle Engine",
                 false);
@@ -216,19 +216,21 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(handler);
         mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        mediaPane
-                .setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        mediaPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             mediaPane.add(this.music[x]);
         }
         mediaPane.add(this.sound);
-        miscPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         miscPane.add(this.checkUpdatesStartup);
         miscPane.add(this.moveOneAtATime);
         miscPane.add(this.useTimeBattleEngine);
         miscPane.add(new JLabel("Game Difficulty"));
         miscPane.add(this.difficultyPicker);
-        viewPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        viewPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         viewPane.add(new JLabel("Viewing Window Size"));
         for (int z = 0; z < PreferencesGUIManager.VIEWING_WINDOW_SIZE_NAMES.length; z++) {
             viewPane.add(this.viewingWindowChoices[z]);
@@ -247,8 +249,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         EventHandler() {
             // Do nothing
         }

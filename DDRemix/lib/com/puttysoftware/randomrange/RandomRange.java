@@ -25,8 +25,7 @@ public class RandomRange {
             return Math.abs(RandomnessSource.nextInt()) + this.minimum;
         } else {
             return Math.abs(RandomnessSource.nextInt()
-                    % (this.maximum - this.minimum + 1))
-                    + this.minimum;
+                    % (this.maximum - this.minimum + 1)) + this.minimum;
         }
     }
 

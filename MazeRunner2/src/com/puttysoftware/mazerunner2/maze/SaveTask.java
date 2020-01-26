@@ -16,11 +16,11 @@ import com.puttysoftware.xio.ZipUtilities;
 public class SaveTask extends Thread {
     // Fields
     private String filename;
-    private boolean isSavedGame;
+    private final boolean isSavedGame;
     private int savedLevel;
 
     // Constructors
-    public SaveTask(String file, boolean saved) {
+    public SaveTask(final String file, final boolean saved) {
         this.filename = file;
         this.isSavedGame = saved;
         this.setName("File Writer");
@@ -28,7 +28,7 @@ public class SaveTask extends Thread {
 
     @Override
     public void run() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         boolean success = true;
         final String sg;
         if (this.isSavedGame) {
@@ -37,7 +37,7 @@ public class SaveTask extends Thread {
             sg = "Maze";
         }
         // filename check
-        boolean hasExtension = SaveTask.hasExtension(this.filename);
+        final boolean hasExtension = SaveTask.hasExtension(this.filename);
         if (!hasExtension) {
             if (this.isSavedGame) {
                 this.filename += Extension.getSavedGameExtensionWithPeriod();
@@ -45,7 +45,7 @@ public class SaveTask extends Thread {
                 this.filename += Extension.getMazeExtensionWithPeriod();
             }
         }
-        File mazeFile = new File(this.filename);
+        final File mazeFile = new File(this.filename);
         try {
             // Set prefix handler
             app.getMazeManager().getMaze()
@@ -64,7 +64,8 @@ public class SaveTask extends Thread {
                 this.savedLevel = app.getMazeManager().getMaze()
                         .getActiveLevelNumber();
                 // Update start location
-                int currW = app.getMazeManager().getMaze().getPlayerLocationW();
+                final int currW = app.getMazeManager().getMaze()
+                        .getPlayerLocationW();
                 app.getMazeManager().getMaze().setStartLevel(currW);
                 app.getMazeManager().getMaze().switchLevel(currW);
             }
@@ -75,13 +76,12 @@ public class SaveTask extends Thread {
                 // Restore start location
                 app.getMazeManager().getMaze().restoreStart();
             }
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), mazeFile);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    mazeFile);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             MazeRunnerII.getErrorLogger().logError(ex);
@@ -93,7 +93,7 @@ public class SaveTask extends Thread {
     private static boolean hasExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         if (ext == null) {

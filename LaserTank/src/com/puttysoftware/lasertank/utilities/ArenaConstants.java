@@ -91,7 +91,7 @@ public class ArenaConstants {
             return Direction.INVALID;
         }
     }
-    
+
     public static Direction previousDirOrtho(final Direction input) {
         switch (input) {
         case INVALID:
@@ -122,7 +122,7 @@ public class ArenaConstants {
             return Direction.INVALID;
         }
     }
-    
+
     public static Direction nextDir(final Direction input) {
         switch (input) {
         case INVALID:
@@ -153,7 +153,7 @@ public class ArenaConstants {
             return Direction.INVALID;
         }
     }
-    
+
     public static Direction previousDir(final Direction input) {
         switch (input) {
         case INVALID:

@@ -63,8 +63,8 @@ public abstract class SimpleFormatConversionProvider
      * @param targetFormats
      */
     protected SimpleFormatConversionProvider(
-            Collection<AudioFormat> sourceFormats1,
-            Collection<AudioFormat> targetFormats1) {
+            final Collection<AudioFormat> sourceFormats1,
+            final Collection<AudioFormat> targetFormats1) {
         Collection<AudioFormat> sourceFormats = sourceFormats1;
         Collection<AudioFormat> targetFormats = targetFormats1;
         this.m_sourceEncodings = new ArrayList<>();

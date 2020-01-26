@@ -27,7 +27,8 @@ class SavedTowerState implements Cloneable {
 
     @Override
     public SavedTowerState clone() {
-        final SavedTowerState copy = new SavedTowerState(this.r, this.c, this.f);
+        final SavedTowerState copy = new SavedTowerState(this.r, this.c,
+                this.f);
         int x, y, z, e;
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
@@ -81,8 +82,8 @@ class SavedTowerState implements Cloneable {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        sts.saveData[x][y][z][e] = WidgetWarren
-                                .getApplication().getObjects()
+                        sts.saveData[x][y][z][e] = WidgetWarren.getApplication()
+                                .getObjects()
                                 .readMazeObjectXML(reader, formatVersion);
                     }
                 }

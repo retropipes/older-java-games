@@ -27,8 +27,8 @@ public abstract class AbstractScoreIncreaser extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         FantastleX.getApplication().getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);
         this.postMoveActionHook();
@@ -50,10 +50,10 @@ public abstract class AbstractScoreIncreaser extends AbstractMazeObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final MazeObjectInventory inv) {
-        FantastleX.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
+        FantastleX.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_SHATTER);
         return false;
     }

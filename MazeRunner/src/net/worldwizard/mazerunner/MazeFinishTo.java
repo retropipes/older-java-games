@@ -27,8 +27,8 @@ public class MazeFinishTo extends MazeFinish {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         if (app.doesLevelExist(this.getDestinationLevel())) {
             Messager.showDialog("Level Solved!");

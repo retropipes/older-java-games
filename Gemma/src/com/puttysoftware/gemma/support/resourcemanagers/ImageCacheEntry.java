@@ -13,7 +13,7 @@ class ImageCacheEntry {
     private final String name;
 
     // Constructor
-    ImageCacheEntry(BufferedImageIcon image, String n) {
+    ImageCacheEntry(final BufferedImageIcon image, final String n) {
         this.entry = image;
         this.name = n;
     }
@@ -30,11 +30,11 @@ class ImageCacheEntry {
     @Override
     public int hashCode() {
         final int prime = 31;
-        return prime + ((this.name == null) ? 0 : this.name.hashCode());
+        return prime + (this.name == null ? 0 : this.name.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -44,7 +44,7 @@ class ImageCacheEntry {
         if (!(obj instanceof ImageCacheEntry)) {
             return false;
         }
-        ImageCacheEntry other = (ImageCacheEntry) obj;
+        final ImageCacheEntry other = (ImageCacheEntry) obj;
         if (this.name == null) {
             if (other.name != null) {
                 return false;

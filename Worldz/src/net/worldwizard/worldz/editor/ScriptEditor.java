@@ -35,8 +35,8 @@ public class ScriptEditor {
         try {
             final String[] choices = ScriptEditor.ACTION_CODES;
             String defaultChoice = choices[0];
-            final WorldObject mo = app.getWorldManager().getWorld()
-                    .getCell(x, y, z, WorldConstants.LAYER_OBJECT);
+            final WorldObject mo = app.getWorldManager().getWorld().getCell(x,
+                    y, z, WorldConstants.LAYER_OBJECT);
             if (mo.hasCustomScript()) {
                 defaultChoice = choices[mo.getCustomScript().getAction(0)
                         .getActionCode().ordinal()];
@@ -61,8 +61,9 @@ public class ScriptEditor {
                     String arg = "";
                     int counter = 1;
                     while (arg != null) {
-                        arg = Messager.showTextInputDialog("Argument "
-                                + counter + " for action (ESC when done)",
+                        arg = Messager.showTextInputDialog(
+                                "Argument " + counter
+                                        + " for action (ESC when done)",
                                 "Script Editor");
                         counter++;
                         if (arg != null) {
@@ -77,19 +78,19 @@ public class ScriptEditor {
                                 try {
                                     // Try double
                                     dVal = Double.parseDouble(arg);
-                                    se.addActionArg(new ScriptEntryArgument(
-                                            dVal));
+                                    se.addActionArg(
+                                            new ScriptEntryArgument(dVal));
                                 } catch (final Exception e2) {
                                     if (arg.equalsIgnoreCase("true")
                                             || arg.equalsIgnoreCase("false")) {
                                         // Boolean
                                         bVal = Boolean.parseBoolean(arg);
-                                        se.addActionArg(new ScriptEntryArgument(
-                                                bVal));
+                                        se.addActionArg(
+                                                new ScriptEntryArgument(bVal));
                                     } else {
                                         // String
-                                        se.addActionArg(new ScriptEntryArgument(
-                                                arg));
+                                        se.addActionArg(
+                                                new ScriptEntryArgument(arg));
                                     }
                                 }
                             }
@@ -120,24 +121,24 @@ public class ScriptEditor {
 
     public static void probeScript(final int x, final int y, final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo = app.getWorldManager().getWorld()
-                .getCell(x, y, z, WorldConstants.LAYER_OBJECT);
+        final WorldObject mo = app.getWorldManager().getWorld().getCell(x, y, z,
+                WorldConstants.LAYER_OBJECT);
         if (mo.hasCustomScript()) {
             final Script scpt = mo.getCustomScript();
             final int actionCount = scpt.getActionCount();
-            Messager.showMessage(mo.getName()
-                    + " has a script attached to it, with " + actionCount
-                    + " action(s) in it.");
+            Messager.showMessage(
+                    mo.getName() + " has a script attached to it, with "
+                            + actionCount + " action(s) in it.");
         } else {
-            Messager.showMessage(mo.getName()
-                    + " does NOT have a script attached to it.");
+            Messager.showMessage(
+                    mo.getName() + " does NOT have a script attached to it.");
         }
     }
 
     public static void deleteScript(final int x, final int y, final int z) {
         final Application app = Worldz.getApplication();
-        final WorldObject mo = app.getWorldManager().getWorld()
-                .getCell(x, y, z, WorldConstants.LAYER_OBJECT);
+        final WorldObject mo = app.getWorldManager().getWorld().getCell(x, y, z,
+                WorldConstants.LAYER_OBJECT);
         if (mo.hasCustomScript()) {
             mo.setCustomScript(null);
         }

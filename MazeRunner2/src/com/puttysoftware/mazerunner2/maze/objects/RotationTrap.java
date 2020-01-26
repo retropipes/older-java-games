@@ -9,8 +9,8 @@ import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractTrap;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractTrap;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
@@ -39,7 +39,7 @@ public class RotationTrap extends AbstractTrap {
         this.direction = RotationTrap.CLOCKWISE;
     }
 
-    public RotationTrap(int newRadius, boolean newDirection) {
+    public RotationTrap(final int newRadius, final boolean newDirection) {
         super(ColorConstants.COLOR_LIGHT_PURPLE,
                 ObjectImageConstants.OBJECT_IMAGE_SMALL_ROTATION,
                 ColorConstants.COLOR_PURPLE);
@@ -49,7 +49,7 @@ public class RotationTrap extends AbstractTrap {
 
     @Override
     public RotationTrap clone() {
-        RotationTrap copy = (RotationTrap) super.clone();
+        final RotationTrap copy = (RotationTrap) super.clone();
         copy.radius = this.radius;
         copy.direction = this.direction;
         return copy;
@@ -63,19 +63,18 @@ public class RotationTrap extends AbstractTrap {
         } else {
             dir = "Counterclockwise";
         }
-        MazeRunnerII.getApplication().showMessage(
-                this.getName() + " (Radius " + this.radius + ", Direction "
-                        + dir + ")");
+        MazeRunnerII.getApplication().showMessage(this.getName() + " (Radius "
+                + this.radius + ", Direction " + dir + ")");
     }
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         int r = this.radius;
-        String rres = CommonDialogs.showInputDialog("Rotation Radius:",
-                "Editor", rChoices, rChoices[r - 1]);
+        final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
+                "Editor", RotationTrap.rChoices, RotationTrap.rChoices[r - 1]);
         try {
             r = Integer.parseInt(rres);
-        } catch (NumberFormatException nf) {
+        } catch (final NumberFormatException nf) {
             // Ignore
         }
         boolean d = this.direction;
@@ -85,9 +84,9 @@ public class RotationTrap extends AbstractTrap {
         } else {
             di = 1;
         }
-        String dres = CommonDialogs.showInputDialog("Rotation Direction:",
-                "Editor", dChoices, dChoices[di]);
-        if (dres.equals(dChoices[0])) {
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "Editor", RotationTrap.dChoices, RotationTrap.dChoices[di]);
+        if (dres.equals(RotationTrap.dChoices[0])) {
             d = RotationTrap.CLOCKWISE;
         } else {
             d = RotationTrap.COUNTERCLOCKWISE;
@@ -107,22 +106,24 @@ public class RotationTrap extends AbstractTrap {
 
     @Override
     protected AbstractMazeObject readLegacyMazeObjectHook(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
         this.radius = reader.readInt();
         this.direction = reader.readBoolean();
         return this;
     }
 
     @Override
-    protected AbstractMazeObject readMazeObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractMazeObject readMazeObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
         this.radius = reader.readInt();
         this.direction = reader.readBoolean();
         return this;
     }
 
     @Override
-    protected void writeMazeObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer)
+            throws IOException {
         writer.writeInt(this.radius);
         writer.writeBoolean(this.direction);
     }
@@ -133,8 +134,8 @@ public class RotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (this.direction) {
             MazeRunnerII.getApplication().getGameManager()
                     .doClockwiseRotate(this.radius);

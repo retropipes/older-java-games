@@ -29,8 +29,8 @@ public class NewDungeonTask implements Runnable {
             final Darkness dark = (Darkness) DungeonObjectList
                     .getSpecificObject("Darkness");
             final int size = gui.computeDungeonSize();
-            final DungeonMap dungeon = new DungeonMap(size, size,
-                    viewingWindow, dark, dark);
+            final DungeonMap dungeon = new DungeonMap(size, size, viewingWindow,
+                    dark, dark);
             final JFrame generatorFrame = gui.getGenerator();
             gui.hideDungeon();
             final Tile tile = (Tile) DungeonObjectList
@@ -45,7 +45,8 @@ public class NewDungeonTask implements Runnable {
                 gui.setPlayerLocation(dungeon.getFindResult());
                 playerLocation = gui.getPlayerLocation();
                 final Point newViewingWindow = new Point(
-                        playerLocation.getLocation(NDimensionalMap.ROW_DIMENSION)
+                        playerLocation
+                                .getLocation(NDimensionalMap.ROW_DIMENSION)
                                 - DungeonGUI.VIEWING_WINDOW_SIZE / 2,
                         playerLocation
                                 .getLocation(NDimensionalMap.COLUMN_DIMENSION)
@@ -59,10 +60,11 @@ public class NewDungeonTask implements Runnable {
                         gui.setPlayerLocation(dungeon.getFindResult());
                         playerLocation = gui.getPlayerLocation();
                         final Point newViewingWindow = new Point(
-                                playerLocation.getLocation(NDimensionalMap.ROW_DIMENSION)
+                                playerLocation.getLocation(
+                                        NDimensionalMap.ROW_DIMENSION)
                                         - DungeonGUI.VIEWING_WINDOW_SIZE / 2,
-                                playerLocation
-                                        .getLocation(NDimensionalMap.COLUMN_DIMENSION)
+                                playerLocation.getLocation(
+                                        NDimensionalMap.COLUMN_DIMENSION)
                                         - DungeonGUI.VIEWING_WINDOW_SIZE / 2);
                         dungeon.alterViewingWindow(newViewingWindow);
                     }

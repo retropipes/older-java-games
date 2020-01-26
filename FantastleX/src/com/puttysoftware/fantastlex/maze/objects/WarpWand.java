@@ -36,15 +36,13 @@ public class WarpWand extends AbstractWand {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         final Application app = FantastleX.getApplication();
-        app.getMazeManager()
-                .getMaze()
-                .warpObject(
-                        app.getMazeManager().getMaze()
-                                .getCell(x, y, z, MazeConstants.LAYER_OBJECT),
-                        x, y, z, MazeConstants.LAYER_OBJECT);
+        app.getMazeManager().getMaze().warpObject(
+                app.getMazeManager().getMaze().getCell(x, y, z,
+                        MazeConstants.LAYER_OBJECT),
+                x, y, z, MazeConstants.LAYER_OBJECT);
     }
 
     @Override

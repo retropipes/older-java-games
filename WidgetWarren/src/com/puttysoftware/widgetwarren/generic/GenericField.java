@@ -25,20 +25,20 @@ public abstract class GenericField extends GenericInfiniteLock {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Do nothing
     }
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return !(inv.isItemThere(this.getKey()));
+        return !inv.isItemThere(this.getKey());
     }
 
     @Override
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
-        return !(inv.isItemThere(this.getKey()));
+        return !inv.isItemThere(this.getKey());
     }
 
     @Override

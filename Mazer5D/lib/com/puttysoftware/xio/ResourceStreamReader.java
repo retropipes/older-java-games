@@ -16,8 +16,8 @@ public class ResourceStreamReader implements AutoCloseable {
     }
 
     public ResourceStreamReader(final InputStream is, final String encoding) {
-        this.br = new BufferedReader(new InputStreamReader(is,
-                Charset.forName(encoding)));
+        this.br = new BufferedReader(
+                new InputStreamReader(is, Charset.forName(encoding)));
     }
 
     // Methods

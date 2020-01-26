@@ -6,17 +6,17 @@ public class RandomRange {
     private int maximum;
 
     // Constructor
-    public RandomRange(int min, int max) {
+    public RandomRange(final int min, final int max) {
         this.minimum = min;
         this.maximum = max;
     }
 
     // Methods
-    public void setMinimum(int newMin) {
+    public void setMinimum(final int newMin) {
         this.minimum = newMin;
     }
 
-    public void setMaximum(int newMax) {
+    public void setMaximum(final int newMax) {
         this.maximum = newMax;
     }
 
@@ -24,9 +24,8 @@ public class RandomRange {
         if (this.maximum - this.minimum + 1 == 0) {
             return Math.abs(RandomnessSource.nextInt()) + this.minimum;
         } else {
-            return Math.abs((RandomnessSource.nextInt())
-                    % (this.maximum - this.minimum + 1))
-                    + this.minimum;
+            return Math.abs(RandomnessSource.nextInt()
+                    % (this.maximum - this.minimum + 1)) + this.minimum;
         }
     }
 

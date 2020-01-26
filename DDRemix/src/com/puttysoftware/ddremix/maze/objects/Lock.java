@@ -58,7 +58,8 @@ public class Lock extends AbstractWall {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         final Maze m = DDRemix.getApplication().getMazeManager().getMaze();
         if (m.getKeys() == 0) {
             super.postMoveAction(ie, dirX, dirY);

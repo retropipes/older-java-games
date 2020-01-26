@@ -11,30 +11,30 @@ import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
 class WorldNote {
-  // Fields
-  private String contents;
+    // Fields
+    private String contents;
 
-  // Constructor
-  public WorldNote() {
-    this.contents = "Empty Note";
-  }
+    // Constructor
+    public WorldNote() {
+        this.contents = "Empty Note";
+    }
 
-  // Methods
-  public String getContents() {
-    return this.contents;
-  }
+    // Methods
+    public String getContents() {
+        return this.contents;
+    }
 
-  public void setContents(final String newContents) {
-    this.contents = newContents;
-  }
+    public void setContents(final String newContents) {
+        this.contents = newContents;
+    }
 
-  static WorldNote readNote(final XDataReader reader) throws IOException {
-    final WorldNote mn = new WorldNote();
-    mn.contents = reader.readString();
-    return mn;
-  }
+    static WorldNote readNote(final XDataReader reader) throws IOException {
+        final WorldNote mn = new WorldNote();
+        mn.contents = reader.readString();
+        return mn;
+    }
 
-  void writeNote(final XDataWriter writer) throws IOException {
-    writer.writeString(this.contents);
-  }
+    void writeNote(final XDataWriter writer) throws IOException {
+        writer.writeString(this.contents);
+    }
 }

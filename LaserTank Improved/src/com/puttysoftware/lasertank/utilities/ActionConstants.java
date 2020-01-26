@@ -12,6 +12,6 @@ public final class ActionConstants {
 
     // Private Constructor
     private ActionConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

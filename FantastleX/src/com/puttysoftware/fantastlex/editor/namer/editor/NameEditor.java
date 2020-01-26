@@ -58,7 +58,8 @@ public class NameEditor extends AbstractObjectEditor {
     }
 
     @Override
-    protected void guiEntryFieldProperties(final JTextField entry, final int num) {
+    protected void guiEntryFieldProperties(final JTextField entry,
+            final int num) {
         if (entry != null) {
             entry.setText(this.cachedNames[num][1]);
         }
@@ -82,7 +83,8 @@ public class NameEditor extends AbstractObjectEditor {
     }
 
     @Override
-    protected String guiActionButtonActionCommand(final int row, final int col) {
+    protected String guiActionButtonActionCommand(final int row,
+            final int col) {
         return null;
     }
 

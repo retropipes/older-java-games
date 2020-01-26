@@ -381,7 +381,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -397,7 +397,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
             final int dirY, final ObjectInventory inv);
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -411,7 +411,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
@@ -430,7 +430,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -448,7 +448,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -462,7 +462,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -475,7 +475,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -488,7 +488,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -505,7 +505,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -519,7 +519,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -532,7 +532,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -545,7 +545,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -561,7 +561,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
@@ -573,7 +573,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -628,7 +628,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
@@ -637,7 +637,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -648,8 +648,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -663,7 +663,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -671,8 +671,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      */
     public BufferedImageIcon gameRenderHook(final int x, final int y,
             final int z) {
-        final BufferedImageIcon icon1 = ImageManager.getImage(this
-                .getAttributeGroup().getGameBase().getImageName());
+        final BufferedImageIcon icon1 = ImageManager.getImage(
+                this.getAttributeGroup().getGameBase().getImageName());
         final TemplateTransform tt1 = this.getAttributeGroup().getGameBase()
                 .getTemplateTransform();
         final BufferedImageIcon baseImage = ImageManager
@@ -695,7 +695,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -703,8 +703,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      */
     public BufferedImageIcon editorRenderHook(final int x, final int y,
             final int z) {
-        final BufferedImageIcon icon1 = ImageManager.getImage(this
-                .getAttributeGroup().getBase().getImageName());
+        final BufferedImageIcon icon1 = ImageManager
+                .getImage(this.getAttributeGroup().getBase().getImageName());
         final TemplateTransform tt1 = this.getAttributeGroup().getBase()
                 .getTemplateTransform();
         final BufferedImageIcon baseImage = ImageManager
@@ -727,7 +727,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -862,7 +862,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
@@ -872,7 +872,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return
@@ -900,41 +900,41 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
 
         // Methods
-        public final void addAttribute(final Attribute attr) {
+        public void addAttribute(final Attribute attr) {
             this.attributeGroup.add(attr);
         }
 
-        public final Attribute[] getAllAttributes() {
+        public Attribute[] getAllAttributes() {
             return this.attributeGroup
                     .toArray(new Attribute[this.attributeGroup.size()]);
         }
 
-        public final Attribute getBase() {
+        public Attribute getBase() {
             return this.base;
         }
 
-        public final void setBase(final Attribute newBase) {
+        public void setBase(final Attribute newBase) {
             this.base = newBase;
         }
 
-        public final void addGameAttribute(final Attribute attr) {
+        public void addGameAttribute(final Attribute attr) {
             this.gameAttributeGroup.add(attr);
         }
 
-        public final Attribute[] getAllGameAttributes() {
+        public Attribute[] getAllGameAttributes() {
             return this.gameAttributeGroup
                     .toArray(new Attribute[this.gameAttributeGroup.size()]);
         }
 
-        public final Attribute getGameBase() {
+        public Attribute getGameBase() {
             return this.gameBase;
         }
 
-        public final void setGameBase(final Attribute newBase) {
+        public void setGameBase(final Attribute newBase) {
             this.gameBase = newBase;
         }
 
-        public final void unlinkGame() {
+        public void unlinkGame() {
             this.gameAttributeGroup = new ArrayList<>();
             this.gameBase = new Attribute();
         }
@@ -952,15 +952,15 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
 
         // Methods
-        public final String getImageName() {
+        public String getImageName() {
             return this.imageName;
         }
 
-        public final TemplateTransform getTemplateTransform() {
+        public TemplateTransform getTemplateTransform() {
             return this.tt;
         }
 
-        public final void setImageName(final Object caller,
+        public void setImageName(final Object caller,
                 final String newImageName) {
             if (caller instanceof MazeObject) {
                 this.imageName = newImageName;
@@ -969,7 +969,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
             }
         }
 
-        public final void setTemplateTransform(final Object caller,
+        public void setTemplateTransform(final Object caller,
                 final TemplateTransform newTT) {
             if (caller instanceof MazeObject) {
                 this.tt = newTT;

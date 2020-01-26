@@ -169,7 +169,8 @@ public abstract class MazeObject implements Scriptable, Serializable {
             final boolean pushable, final boolean doesAcceptPushInto,
             final boolean doesAcceptPushOut, final boolean pullable,
             final boolean doesAcceptPullInto, final boolean doesAcceptPullOut,
-            final boolean hasFriction, final boolean isUsable, final int newUses) {
+            final boolean hasFriction, final boolean isUsable,
+            final int newUses) {
         this.solidXN = isSolidXN;
         this.solidXS = isSolidXS;
         this.solidXE = isSolidXE;
@@ -406,8 +407,8 @@ public abstract class MazeObject implements Scriptable, Serializable {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         // Do nothing
     }
 
@@ -472,18 +473,19 @@ public abstract class MazeObject implements Scriptable, Serializable {
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      * @param w
      */
-    protected void useHelper(final int x, final int y, final int z, final int w) {
+    protected void useHelper(final int x, final int y, final int z,
+            final int w) {
         // Do nothing
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -508,7 +510,7 @@ public abstract class MazeObject implements Scriptable, Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -533,14 +535,10 @@ public abstract class MazeObject implements Scriptable, Serializable {
         result = prime * result + (this.solidXN ? 1231 : 1237);
         result = prime * result + (this.solidXS ? 1231 : 1237);
         result = prime * result + (this.solidXW ? 1231 : 1237);
-        result = prime
-                * result
-                + ((this.storedEditorAppearance == null) ? 0
-                        : this.storedEditorAppearance.hashCode());
-        result = prime
-                * result
-                + ((this.storedGameAppearance == null) ? 0
-                        : this.storedGameAppearance.hashCode());
+        result = prime * result + (this.storedEditorAppearance == null ? 0
+                : this.storedEditorAppearance.hashCode());
+        result = prime * result + (this.storedGameAppearance == null ? 0
+                : this.storedGameAppearance.hashCode());
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + this.uses;
         return result;
@@ -548,11 +546,11 @@ public abstract class MazeObject implements Scriptable, Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -562,7 +560,7 @@ public abstract class MazeObject implements Scriptable, Serializable {
         if (!(obj instanceof MazeObject)) {
             return false;
         }
-        MazeObject other = (MazeObject) obj;
+        final MazeObject other = (MazeObject) obj;
         if (this.acceptsPullInto != other.acceptsPullInto) {
             return false;
         }

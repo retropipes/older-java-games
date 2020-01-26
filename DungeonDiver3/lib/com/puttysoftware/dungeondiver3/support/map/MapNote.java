@@ -25,24 +25,24 @@ public class MapNote extends CloneableObject {
         return this.contents;
     }
 
-    public void setContents(String newContents) {
+    public void setContents(final String newContents) {
         this.contents = newContents;
     }
 
     @Override
     public Object clone() {
-        MapNote copy = new MapNote();
+        final MapNote copy = new MapNote();
         copy.contents = this.contents;
         return copy;
     }
 
-    static MapNote readNote(XDataReader reader) throws IOException {
-        MapNote mn = new MapNote();
+    static MapNote readNote(final XDataReader reader) throws IOException {
+        final MapNote mn = new MapNote();
         mn.contents = reader.readString();
         return mn;
     }
 
-    void writeNote(XDataWriter writer) throws IOException {
+    void writeNote(final XDataWriter writer) throws IOException {
         writer.writeString(this.contents);
     }
 }

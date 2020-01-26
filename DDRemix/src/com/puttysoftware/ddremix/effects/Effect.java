@@ -187,18 +187,18 @@ public class Effect {
     public String getCurrentMessage() {
         String msg = Effect.getNullMessage();
         if (this.rounds == this.initialRounds - 1) {
-            if (!this.messages[Effect.MESSAGE_INITIAL].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_INITIAL]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Effect.MESSAGE_SUBSEQUENT].equals(Effect
-                .getNullMessage())) {
+        if (!this.messages[Effect.MESSAGE_SUBSEQUENT]
+                .equals(Effect.getNullMessage())) {
             msg += this.messages[Effect.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 0) {
-            if (!this.messages[Effect.MESSAGE_WEAR_OFF].equals(Effect
-                    .getNullMessage())) {
+            if (!this.messages[Effect.MESSAGE_WEAR_OFF]
+                    .equals(Effect.getNullMessage())) {
                 msg += this.messages[Effect.MESSAGE_WEAR_OFF] + "\n";
             }
         }
@@ -371,7 +371,8 @@ public class Effect {
         return this.effectDecayRate[type][stat];
     }
 
-    public void setDecayRate(final int type, final int stat, final double value) {
+    public void setDecayRate(final int type, final int stat,
+            final double value) {
         this.effectDecayRate[type][stat] = value;
     }
 

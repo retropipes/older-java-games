@@ -58,8 +58,8 @@ public class RuleSetPicker {
         final int index = this.picker.getPicked();
         final MazeObject object = this.objects[index];
         object.takeRuleSet();
-        CommonDialogs
-                .showTitledDialog("Rule Set Destroyed.", "Rule Set Picker");
+        CommonDialogs.showTitledDialog("Rule Set Destroyed.",
+                "Rule Set Picker");
     }
 
     void editObjectRuleSet() {

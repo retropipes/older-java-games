@@ -84,7 +84,7 @@ public class ArenaEditor implements MenuSection {
     private EditorLocationManager elMgr;
     private boolean arenaChanged;
     private final ExternalMusicEditor eme;
-    private int activePlayer;
+    private final int activePlayer;
     private JMenu editorTimeTravelSubMenu;
     JCheckBoxMenuItem editorEraDistantPast, editorEraPast, editorEraPresent,
             editorEraFuture, editorEraDistantFuture;
@@ -612,9 +612,12 @@ public class ArenaEditor implements MenuSection {
     public void setPlayerLocation() {
         final Tank template = new Tank(this.activePlayer + 1);
         final Application app = LaserTank.getApplication();
-        final int oldX = app.getArenaManager().getArena().getStartColumn(this.activePlayer);
-        final int oldY = app.getArenaManager().getArena().getStartRow(this.activePlayer);
-        final int oldZ = app.getArenaManager().getArena().getStartFloor(this.activePlayer);
+        final int oldX = app.getArenaManager().getArena()
+                .getStartColumn(this.activePlayer);
+        final int oldY = app.getArenaManager().getArena()
+                .getStartRow(this.activePlayer);
+        final int oldZ = app.getArenaManager().getArena()
+                .getStartFloor(this.activePlayer);
         // Erase old player
         try {
             app.getArenaManager().getArena().setCell(new Ground(), oldX, oldY,
@@ -623,12 +626,12 @@ public class ArenaEditor implements MenuSection {
             // Ignore
         }
         // Set new player
-        app.getArenaManager().getArena()
-                .setStartRow(this.activePlayer, this.elMgr.getEditorLocationY());
-        app.getArenaManager().getArena()
-                .setStartColumn(this.activePlayer, this.elMgr.getEditorLocationX());
-        app.getArenaManager().getArena()
-                .setStartFloor(this.activePlayer, this.elMgr.getEditorLocationZ());
+        app.getArenaManager().getArena().setStartRow(this.activePlayer,
+                this.elMgr.getEditorLocationY());
+        app.getArenaManager().getArena().setStartColumn(this.activePlayer,
+                this.elMgr.getEditorLocationX());
+        app.getArenaManager().getArena().setStartFloor(this.activePlayer,
+                this.elMgr.getEditorLocationZ());
         app.getArenaManager().getArena().setCell(template,
                 this.elMgr.getEditorLocationX(),
                 this.elMgr.getEditorLocationY(),
@@ -648,9 +651,12 @@ public class ArenaEditor implements MenuSection {
         final int destY = y / ImageManager.getGraphicSize()
                 + EditorViewingWindowManager.getViewingWindowLocationY()
                 + xOffset - yOffset;
-        final int oldX = app.getArenaManager().getArena().getStartColumn(this.activePlayer);
-        final int oldY = app.getArenaManager().getArena().getStartRow(this.activePlayer);
-        final int oldZ = app.getArenaManager().getArena().getStartFloor(this.activePlayer);
+        final int oldX = app.getArenaManager().getArena()
+                .getStartColumn(this.activePlayer);
+        final int oldY = app.getArenaManager().getArena()
+                .getStartRow(this.activePlayer);
+        final int oldZ = app.getArenaManager().getArena()
+                .getStartFloor(this.activePlayer);
         // Erase old player
         try {
             app.getArenaManager().getArena().setCell(new Ground(), oldX, oldY,
@@ -660,10 +666,12 @@ public class ArenaEditor implements MenuSection {
         }
         // Set new player
         try {
-            app.getArenaManager().getArena().setStartRow(this.activePlayer, destY);
-            app.getArenaManager().getArena().setStartColumn(this.activePlayer, destX);
-            app.getArenaManager().getArena()
-                    .setStartFloor(this.activePlayer, this.elMgr.getEditorLocationZ());
+            app.getArenaManager().getArena().setStartRow(this.activePlayer,
+                    destY);
+            app.getArenaManager().getArena().setStartColumn(this.activePlayer,
+                    destX);
+            app.getArenaManager().getArena().setStartFloor(this.activePlayer,
+                    this.elMgr.getEditorLocationZ());
             app.getArenaManager().getArena().setCell(template, destX, destY,
                     this.elMgr.getEditorLocationZ(), template.getLayer());
             LaserTank.getApplication()
@@ -672,8 +680,10 @@ public class ArenaEditor implements MenuSection {
                             StringConstants.EDITOR_STRING_START_POINT_SET));
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             try {
-                app.getArenaManager().getArena().setStartRow(this.activePlayer, oldY);
-                app.getArenaManager().getArena().setStartColumn(this.activePlayer, oldX);
+                app.getArenaManager().getArena().setStartRow(this.activePlayer,
+                        oldY);
+                app.getArenaManager().getArena()
+                        .setStartColumn(this.activePlayer, oldX);
                 app.getArenaManager().getArena().setCell(template, oldX, oldY,
                         oldZ, template.getLayer());
             } catch (final ArrayIndexOutOfBoundsException aioob2) {

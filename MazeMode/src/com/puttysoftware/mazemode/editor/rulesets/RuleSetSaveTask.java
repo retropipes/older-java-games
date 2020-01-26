@@ -28,7 +28,8 @@ public class RuleSetSaveTask extends Thread {
         final Application app = MazeMode.getApplication();
         final String sg = "Rule Set";
         // filename check
-        final boolean hasExtension = RuleSetSaveTask.hasExtension(this.filename);
+        final boolean hasExtension = RuleSetSaveTask
+                .hasExtension(this.filename);
         if (!hasExtension) {
             this.filename += Extension.getRuleSetExtensionWithPeriod();
         }
@@ -41,10 +42,8 @@ public class RuleSetSaveTask extends Thread {
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Saving the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             MazeMode.getErrorLogger().logError(ex);
         }

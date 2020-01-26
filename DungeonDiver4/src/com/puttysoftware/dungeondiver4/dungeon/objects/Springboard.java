@@ -36,21 +36,23 @@ public class Springboard extends StairsUp {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
-        return this.searchNestedSprings(dirX, dirY, DungeonDiver4
-                .getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationZ() + 1, inv);
+        return this.searchNestedSprings(dirX, dirY,
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
+                        .getPlayerLocationZ() + 1,
+                inv);
     }
 
     private boolean searchNestedSprings(final int dirX, final int dirY,
             final int floor, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         // Stop infinite recursion
-        int ucl = app.getDungeonManager().getDungeon().getFloors() * 2;
+        final int ucl = app.getDungeonManager().getDungeon().getFloors() * 2;
         if (floor >= ucl) {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            AbstractDungeonObject obj = app.getDungeonManager().getDungeon()
+            final AbstractDungeonObject obj = app.getDungeonManager()
+                    .getDungeon()
                     .getCell(dirX, dirY, floor, DungeonConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
@@ -71,9 +73,9 @@ public class Springboard extends StairsUp {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_SPRING);
@@ -83,7 +85,7 @@ public class Springboard extends StairsUp {
     public void pushIntoAction(final DungeonObjectInventory inv,
             final AbstractDungeonObject pushed, final int x, final int y,
             final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         try {
             this.searchNestedSprings(x, y, z + 1, inv);
             if (pushed.isPushable()) {
@@ -92,12 +94,9 @@ public class Springboard extends StairsUp {
                         z - 1, x, y, z, pushedInto, this);
                 SoundManager.playSound(SoundConstants.SOUND_SPRING);
             }
-        } catch (InfiniteRecursionException ir) {
+        } catch (final InfiniteRecursionException ir) {
             SoundManager.playSound(SoundConstants.SOUND_SPRING);
-            DungeonDiver4
-                    .getApplication()
-                    .getDungeonManager()
-                    .getDungeon()
+            DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .setCell(new Empty(), x, y, z,
                             DungeonConstants.LAYER_OBJECT);
         }
@@ -105,7 +104,7 @@ public class Springboard extends StairsUp {
 
     @Override
     public boolean isConditionallySolid(final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         if (!app.getGameManager().isFloorAbove()) {
             return true;
         } else {

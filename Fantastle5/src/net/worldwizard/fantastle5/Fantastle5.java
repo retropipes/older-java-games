@@ -29,12 +29,12 @@ import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
+import apple.dts.samplecode.osxadapter.OSXAdapter;
 import net.worldwizard.fantastle5.resourcemanagers.GraphicsManager;
 import net.worldwizard.fantastle5.resourcemanagers.ImageCache;
 import net.worldwizard.fantastle5.resourcemanagers.MonsterImageCache;
 import net.worldwizard.fantastle5.resourcemanagers.SoundCache;
 import net.worldwizard.ghosted.Ghosted;
-import apple.dts.samplecode.osxadapter.OSXAdapter;
 
 public class Fantastle5 {
     // Constants
@@ -76,8 +76,8 @@ public class Fantastle5 {
         } else {
             try {
                 // Tell the UIManager to use the platform native look and feel
-                UIManager.setLookAndFeel(UIManager
-                        .getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(
+                        UIManager.getSystemLookAndFeelClassName());
             } catch (final Exception e) {
                 // Do nothing
             }
@@ -95,15 +95,14 @@ public class Fantastle5 {
                 // Register event handlers
                 OSXAdapter.setFileHandler(
                         Fantastle5.application.getMazeManager(),
-                        Fantastle5.application
-                                .getMazeManager()
-                                .getClass()
+                        Fantastle5.application.getMazeManager().getClass()
                                 .getDeclaredMethod("loadFromOSHandler",
                                         String.class));
-                OSXAdapter.setQuitHandler(
-                        Fantastle5.application.getMazeManager(),
-                        Fantastle5.application.getMazeManager().getClass()
-                                .getDeclaredMethod("quitHandler"));
+                OSXAdapter
+                        .setQuitHandler(Fantastle5.application.getMazeManager(),
+                                Fantastle5.application.getMazeManager()
+                                        .getClass()
+                                        .getDeclaredMethod("quitHandler"));
                 OSXAdapter.setPreferencesHandler(
                         Fantastle5.application.getPrefsManager(),
                         Fantastle5.application.getPrefsManager().getClass()
@@ -131,8 +130,8 @@ public class Fantastle5 {
         final JFrame waitFrame = new JFrame("Loading...");
         final Container logoContainer = new Container();
         final Container textContainer = new Container();
-        final JLabel waitLogo = new JLabel("",
-                GraphicsManager.getLoadingLogo(), SwingConstants.CENTER);
+        final JLabel waitLogo = new JLabel("", GraphicsManager.getLoadingLogo(),
+                SwingConstants.CENTER);
         final JLabel waitLabel = new JLabel("Creating Caches...");
         final JProgressBar waitProgress = new JProgressBar();
         waitProgress.setMinimum(0);

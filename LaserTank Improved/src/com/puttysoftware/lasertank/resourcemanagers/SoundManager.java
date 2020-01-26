@@ -18,23 +18,25 @@ public class SoundManager {
     private static Class<?> LOAD_CLASS = SoundManager.class;
 
     private static SoundFactory getSound(final int soundID) {
-	try {
-	    final String filename = SoundConstants.SOUND_NAMES[soundID];
-	    final URL url = SoundManager.LOAD_CLASS.getResource(SoundManager.LOAD_PATH + filename.toLowerCase()
-		    + GlobalLoader.loadUntranslated(UntranslatedString.SOUND_EXTENSION));
-	    return SoundFactory.loadResource(url);
-	} catch (final NullPointerException np) {
-	    return null;
-	}
+        try {
+            final String filename = SoundConstants.SOUND_NAMES[soundID];
+            final URL url = SoundManager.LOAD_CLASS
+                    .getResource(SoundManager.LOAD_PATH + filename.toLowerCase()
+                            + GlobalLoader.loadUntranslated(
+                                    UntranslatedString.SOUND_EXTENSION));
+            return SoundFactory.loadResource(url);
+        } catch (final NullPointerException np) {
+            return null;
+        }
     }
 
     public static void playSound(final int soundID) {
-	if (PreferencesManager.getSoundsEnabled()) {
-	    SoundManager.getSound(soundID).start();
-	}
+        if (PreferencesManager.getSoundsEnabled()) {
+            SoundManager.getSound(soundID).start();
+        }
     }
 
     private SoundManager() {
-	// Do nothing
+        // Do nothing
     }
 }

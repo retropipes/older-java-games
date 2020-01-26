@@ -17,9 +17,10 @@ public class PersonalityDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    PersonalityDataManager.class.getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/personality/"
-                            + name
-                            + Extension.getInternalDataExtensionWithPeriod()));
+                    PersonalityDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/mastermaze/resources/data/personality/"
+                                    + name + Extension
+                                            .getInternalDataExtensionWithPeriod()));
             final int[] rawData = new int[PersonalityConstants.PERSONALITY_ATTRIBUTES_COUNT];
             for (int x = 0; x < rawData.length; x++) {
                 rawData[x] = rsr.readInt();

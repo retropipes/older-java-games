@@ -8,19 +8,19 @@ class RandomnessSource {
 
     // Constructor
     private RandomnessSource() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
     private static Random getSource() {
-	return RandomnessSource.SOURCE;
+        return RandomnessSource.SOURCE;
     }
 
     static int nextInt() {
-	return RandomnessSource.getSource().nextInt();
+        return RandomnessSource.getSource().nextInt();
     }
 
     static long nextLong() {
-	return RandomnessSource.getSource().nextLong();
+        return RandomnessSource.getSource().nextLong();
     }
 }

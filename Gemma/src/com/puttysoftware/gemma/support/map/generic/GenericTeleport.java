@@ -25,14 +25,15 @@ public abstract class GenericTeleport extends MapObject {
     protected GenericTeleport() {
         super(false);
         this.setTemplateTransform(new TemplateTransform(0.25, 0.5, 1.0));
-        RandomRange r = new RandomRange(0, Support.getGameMapSize() - 1);
-        RandomRange rf = new RandomRange(0, Support.getGameMapFloorSize() - 1);
+        final RandomRange r = new RandomRange(0, Support.getGameMapSize() - 1);
+        final RandomRange rf = new RandomRange(0,
+                Support.getGameMapFloorSize() - 1);
         this.destRow = r.generate();
         this.destCol = r.generate();
         this.destFloor = rf.generate();
         // Create post-move script
         this.postMove = new InternalScript();
-        InternalScriptEntry act0 = new InternalScriptEntry();
+        final InternalScriptEntry act0 = new InternalScriptEntry();
         act0.setActionCode(InternalScriptActionCode.MOVE);
         act0.addActionArg(new InternalScriptEntryArgument(true));
         act0.addActionArg(new InternalScriptEntryArgument(false));
@@ -41,7 +42,7 @@ public abstract class GenericTeleport extends MapObject {
         act0.addActionArg(new InternalScriptEntryArgument(this.destFloor));
         act0.finalizeActionArgs();
         this.postMove.addAction(act0);
-        InternalScriptEntry act1 = new InternalScriptEntry();
+        final InternalScriptEntry act1 = new InternalScriptEntry();
         act1.setActionCode(InternalScriptActionCode.SOUND);
         act1.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_TELEPORT));
@@ -51,7 +52,7 @@ public abstract class GenericTeleport extends MapObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -81,7 +82,7 @@ public abstract class GenericTeleport extends MapObject {
 
     @Override
     public GenericTeleport clone() {
-        GenericTeleport copy = (GenericTeleport) super.clone();
+        final GenericTeleport copy = (GenericTeleport) super.clone();
         copy.destCol = this.destCol;
         copy.destFloor = this.destFloor;
         copy.destRow = this.destRow;
@@ -114,7 +115,7 @@ public abstract class GenericTeleport extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.destRow;
@@ -128,7 +129,7 @@ public abstract class GenericTeleport extends MapObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.destRow = value;

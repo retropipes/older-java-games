@@ -29,9 +29,9 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decay();
         int dr, dc;
         do {
@@ -55,9 +55,10 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
-        return me
-                .editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
+        return me.editTeleportDestination(
+                DungeonEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
     }
 
     @Override

@@ -25,13 +25,10 @@ public class SystemLoader {
     // Methods
     public static Caste loadCaste(final String file) {
         try {
-            final XDataReader casteFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "castes"
-                    + File.separator
-                    + file
-                    + Extension.getCasteExtensionWithPeriod(),
+            final XDataReader casteFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "castes" + File.separator + file
+                            + Extension.getCasteExtensionWithPeriod(),
                     Extension.getCasteExtension());
             final Caste c = Caste.read(casteFile);
             c.setSystemObject(true);
@@ -45,13 +42,10 @@ public class SystemLoader {
 
     public static Effect loadEffect(final String file) {
         try {
-            final XDataReader effectFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "effects"
-                    + File.separator
-                    + file
-                    + Extension.getEffectExtensionWithPeriod(),
+            final XDataReader effectFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "effects" + File.separator + file
+                            + Extension.getEffectExtensionWithPeriod(),
                     Extension.getEffectExtension());
             final Effect e = Effect.read(effectFile);
             e.setSystemObject(true);
@@ -65,13 +59,10 @@ public class SystemLoader {
 
     public static CombatUsableItem loadCombatItem(final String file) {
         try {
-            final XDataReader itemFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "items"
-                    + File.separator
-                    + file
-                    + Extension.getItemExtensionWithPeriod(),
+            final XDataReader itemFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "items" + File.separator + file
+                            + Extension.getItemExtensionWithPeriod(),
                     Extension.getItemExtension());
             final CombatUsableItem i = CombatUsableItem.read(itemFile);
             i.setSystemObject(true);
@@ -84,8 +75,9 @@ public class SystemLoader {
     }
 
     public static CombatUsableItem[] loadAllItems() {
-        final File itemsFolder = new File(Support.getSystemVariables()
-                .getBasePath() + File.separator + "items");
+        final File itemsFolder = new File(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "items");
         final String[] fileList = itemsFolder.list(new ItemFilter());
         if (fileList != null && fileList.length > 0) {
             // Strip extension
@@ -104,13 +96,10 @@ public class SystemLoader {
 
     public static Race loadRace(final String file) {
         try {
-            final XDataReader raceFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "races"
-                    + File.separator
-                    + file
-                    + Extension.getRaceExtensionWithPeriod(),
+            final XDataReader raceFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "races" + File.separator + file
+                            + Extension.getRaceExtensionWithPeriod(),
                     Extension.getRaceExtension());
             final Race r = Race.read(raceFile);
             r.setSystemObject(true);
@@ -124,13 +113,10 @@ public class SystemLoader {
 
     public static Spell loadSpell(final String file) {
         try {
-            final XDataReader spellFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "spells"
-                    + File.separator
-                    + file
-                    + Extension.getSpellExtensionWithPeriod(),
+            final XDataReader spellFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "spells" + File.separator + file
+                            + Extension.getSpellExtensionWithPeriod(),
                     Extension.getSpellExtension());
             final Spell s = Spell.read(spellFile);
             s.setSystemObject(true);
@@ -144,13 +130,10 @@ public class SystemLoader {
 
     public static SpellBook loadSpellBook(final String file) {
         try {
-            final XDataReader spellBookFile = new XDataReader(Support
-                    .getSystemVariables().getBasePath()
-                    + File.separator
-                    + "spellbooks"
-                    + File.separator
-                    + file
-                    + Extension.getSpellBookExtensionWithPeriod(),
+            final XDataReader spellBookFile = new XDataReader(
+                    Support.getSystemVariables().getBasePath() + File.separator
+                            + "spellbooks" + File.separator + file
+                            + Extension.getSpellBookExtensionWithPeriod(),
                     Extension.getSpellBookExtension());
             final SpellBook sb = SpellBook.read(spellBookFile);
             sb.setSystemObject(true);

@@ -32,8 +32,8 @@ public class WarpTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         int maxRow, maxCol, maxFloor, rRow, rCol, rFloor;
         maxRow = app.getWorldManager().getWorld().getRows() - 1;

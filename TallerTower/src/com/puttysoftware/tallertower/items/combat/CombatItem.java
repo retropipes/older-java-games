@@ -47,10 +47,10 @@ public class CombatItem extends Item {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((this.e == null) ? 0 : this.e.hashCode());
+        result = prime * result + (this.e == null ? 0 : this.e.hashCode());
         result = prime * result + this.sound;
         return prime * result
-                + ((this.target == null) ? 0 : this.target.hashCode());
+                + (this.target == null ? 0 : this.target.hashCode());
     }
 
     @Override

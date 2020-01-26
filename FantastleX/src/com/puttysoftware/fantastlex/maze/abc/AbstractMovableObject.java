@@ -19,7 +19,8 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     // Constructors
     protected AbstractMovableObject(final boolean pushable,
             final boolean pullable, final int attrID) {
-        super(true, pushable, false, false, pullable, false, false, true, false);
+        super(true, pushable, false, false, pullable, false, false, true,
+                false);
         this.setSavedObject(new Empty());
         this.setAttributeID(attrID);
     }
@@ -35,8 +36,8 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 

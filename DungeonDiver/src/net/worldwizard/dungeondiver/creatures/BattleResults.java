@@ -1,12 +1,12 @@
 package net.worldwizard.dungeondiver.creatures;
 
 public interface BattleResults {
-    public static final int WON = 1;
-    public static final int LOST = 2;
-    public static final int FLED = 3;
-    public static final int DRAW = 4;
-    public static final int PERFECT = 5;
-    public static final int ANNIHILATED = 6;
-    public static final int IN_PROGRESS = 7;
-    public static final int ENEMY_FLED = 8;
+    int WON = 1;
+    int LOST = 2;
+    int FLED = 3;
+    int DRAW = 4;
+    int PERFECT = 5;
+    int ANNIHILATED = 6;
+    int IN_PROGRESS = 7;
+    int ENEMY_FLED = 8;
 }

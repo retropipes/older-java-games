@@ -107,8 +107,8 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final void executeNextAIAction() {
-        final int actionToPerform = this.enemy.getWindowAI().getNextAction(
-                this.enemy);
+        final int actionToPerform = this.enemy.getWindowAI()
+                .getNextAction(this.enemy);
         if (actionToPerform == AbstractWindowAIRoutine.ACTION_ATTACK) {
             final int actions = this.enemy.getWindowBattleActionsPerRound();
             for (int x = 0; x < actions; x++) {
@@ -186,13 +186,13 @@ public class WindowBattleLogic extends AbstractBattle {
     final int computeRunChance() {
         return WindowBattleLogic.BASE_RUN_CHANCE
                 - this.enemy.getLevelDifference()
-                * WindowBattleLogic.RUN_CHANCE_DIFF_FACTOR;
+                        * WindowBattleLogic.RUN_CHANCE_DIFF_FACTOR;
     }
 
     final int computeEnemyRunChance() {
         return WindowBattleLogic.ENEMY_BASE_RUN_CHANCE
                 + this.enemy.getLevelDifference()
-                * WindowBattleLogic.ENEMY_RUN_CHANCE_DIFF_FACTOR;
+                        * WindowBattleLogic.ENEMY_RUN_CHANCE_DIFF_FACTOR;
     }
 
     @Override
@@ -310,7 +310,8 @@ public class WindowBattleLogic extends AbstractBattle {
     @Override
     public void doBattle() {
         FantastleX.getApplication().getGameManager().hideOutput();
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.playMusic("battle");
         }
         SoundManager.playSound(SoundConstants.SOUND_BATTLE);
@@ -467,7 +468,8 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     final void updateMessageAreaEnemyFleeFailed() {
-        this.setStatusMessage("The enemy tries to run away, but doesn't quite make it!");
+        this.setStatusMessage(
+                "The enemy tries to run away, but doesn't quite make it!");
     }
 
     final void updateMessageAreaPostSteal() {
@@ -523,16 +525,19 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     final void updateMessageAreaStealFailed() {
-        this.setStatusMessage("You try to steal money from the enemy, but the attempt fails!");
+        this.setStatusMessage(
+                "You try to steal money from the enemy, but the attempt fails!");
     }
 
     final void updateMessageAreaDrainFailed() {
-        this.setStatusMessage("You try to drain the enemy's MP, but the attempt fails!");
+        this.setStatusMessage(
+                "You try to drain the enemy's MP, but the attempt fails!");
     }
 
     @Override
     public void doResult() {
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
         }
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
@@ -553,27 +558,26 @@ public class WindowBattleLogic extends AbstractBattle {
             playerCharacter.offsetExperience(m.getExperience());
             playerCharacter.offsetGold(m.getGold() + m.getPerfectBonusGold());
             SoundManager.playSound(SoundConstants.SOUND_VICTORY);
-            FantastleX
-                    .getApplication()
-                    .getGameManager()
-                    .addToScore(
-                            m.getExperience() + m.getGold()
-                                    + m.getPerfectBonusGold());
+            FantastleX.getApplication().getGameManager().addToScore(
+                    m.getExperience() + m.getGold() + m.getPerfectBonusGold());
         } else if (this.result == BattleResults.LOST) {
             this.setStatusMessage("You lost...");
         } else if (this.result == BattleResults.ANNIHILATED) {
-            this.setStatusMessage("You lost without hurting your foe... you were annihilated!");
+            this.setStatusMessage(
+                    "You lost without hurting your foe... you were annihilated!");
         } else if (this.result == BattleResults.DRAW) {
-            this.setStatusMessage("The battle was a draw. You are fully healed!");
+            this.setStatusMessage(
+                    "The battle was a draw. You are fully healed!");
             playerCharacter
                     .healPercentage(AbstractCreature.FULL_HEAL_PERCENTAGE);
-            playerCharacter
-                    .regeneratePercentage(AbstractCreature.FULL_HEAL_PERCENTAGE);
+            playerCharacter.regeneratePercentage(
+                    AbstractCreature.FULL_HEAL_PERCENTAGE);
         } else if (this.result == BattleResults.FLED) {
             this.setStatusMessage("You ran away successfully!");
         } else if (this.result == BattleResults.ENEMY_FLED) {
             this.setStatusMessage("The enemy runs away!");
-            this.setStatusMessage("Since the enemy ran away, you gain nothing for this battle.");
+            this.setStatusMessage(
+                    "Since the enemy ran away, you gain nothing for this battle.");
         }
         // Cleanup
         this.gui.doResultCleanup();
@@ -585,8 +589,8 @@ public class WindowBattleLogic extends AbstractBattle {
             if (PreferencesManager.getSoundsEnabled()) {
                 SoundManager.playSound(SoundConstants.SOUND_LEVEL_UP);
             }
-            this.setStatusMessage("You reached level "
-                    + playerCharacter.getLevel() + ".");
+            this.setStatusMessage(
+                    "You reached level " + playerCharacter.getLevel() + ".");
         }
         // Final Cleanup
         this.gui.doResultFinalCleanup();

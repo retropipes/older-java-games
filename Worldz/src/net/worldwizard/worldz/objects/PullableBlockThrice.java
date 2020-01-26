@@ -34,8 +34,8 @@ public class PullableBlockThrice extends GenericMovableObject {
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Worldz.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playPullSuccessSound();
         }
         app.getGameManager().morphOther(new PullableBlockTwice(), pushX, pushY,

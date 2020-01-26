@@ -29,15 +29,15 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         Messager.showMessage("Invisible Teleport!");
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -60,8 +60,8 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     @Override
     public WorldObject editorPropertiesHook() {
         final WorldEditor me = Worldz.getApplication().getEditor();
-        final WorldObject mo = me
-                .editTeleportDestination(WorldEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
+        final WorldObject mo = me.editTeleportDestination(
+                WorldEditor.TELEPORT_TYPE_INVISIBLE_ONESHOT);
         return mo;
     }
 

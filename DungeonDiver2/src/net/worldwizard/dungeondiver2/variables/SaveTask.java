@@ -61,13 +61,11 @@ public class SaveTask extends Thread {
             app.getVariablesManager().getMap().switchLevel(this.savedLevel);
             // Restore start location
             app.getVariablesManager().getMap().restoreStart();
-            ZipUtilities.zipDirectory(new File(Support.getVariables()
-                    .getBasePath()), mapFile);
+            ZipUtilities.zipDirectory(
+                    new File(Support.getVariables().getBasePath()), mapFile);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
             DungeonDiverII.getErrorLogger().logError(ex);
         }

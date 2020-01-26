@@ -33,9 +33,8 @@ public class PlayerImageManager {
             final Element element) {
         try {
             final String normalName = PlayerImageManager.normalizeName(name);
-            final URL url = PlayerImageManager.LOAD_CLASS
-                    .getResource(PlayerImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = PlayerImageManager.LOAD_CLASS.getResource(
+                    PlayerImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon template = new BufferedImageIcon(image);
             final BufferedImageIcon templateOut = new BufferedImageIcon(

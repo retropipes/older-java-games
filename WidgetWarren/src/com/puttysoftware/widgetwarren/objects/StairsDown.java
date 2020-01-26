@@ -27,6 +27,4 @@ public class StairsDown extends GenericTeleportDown {
     public String getDescription() {
         return "Stairs Down lead to the floor below.";
     }
-
-   
 }

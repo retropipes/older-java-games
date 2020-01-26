@@ -37,8 +37,8 @@ public class Tree extends AbstractInfiniteLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (!this.getKey().isInfinite()) {
             inv.removeItem(this.getKey());
         }

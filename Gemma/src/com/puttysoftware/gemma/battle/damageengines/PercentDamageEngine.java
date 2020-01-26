@@ -27,12 +27,13 @@ class PercentDamageEngine extends DamageEngine {
     private boolean pierce = false;
 
     @Override
-    public int computeDamage(Creature enemy, Creature acting) {
+    public int computeDamage(final Creature enemy, final Creature acting) {
         // Compute Damage
-        double attack = acting.getEffectedAttack();
-        double defense = enemy.getEffectedStat(StatConstants.STAT_DEFENSE);
-        double absorb = (PercentDamageEngine.ABSORB - enemy.getArmorBlock())
-                / PercentDamageEngine.ABSORB;
+        final double attack = acting.getEffectedAttack();
+        final double defense = enemy
+                .getEffectedStat(StatConstants.STAT_DEFENSE);
+        final double absorb = (PercentDamageEngine.ABSORB
+                - enemy.getArmorBlock()) / PercentDamageEngine.ABSORB;
         this.didPierce();
         double rawDamage;
         if (this.pierce) {
@@ -40,8 +41,8 @@ class PercentDamageEngine extends DamageEngine {
         } else {
             rawDamage = Math.max(1.0, (attack - defense) * absorb);
         }
-        int rHit = new RandomRange(0, 10000).generate();
-        int aHit = acting.getHit();
+        final int rHit = new RandomRange(0, 10000).generate();
+        final int aHit = acting.getHit();
         if (rHit > aHit) {
             // Weapon missed
             this.missed = true;
@@ -49,8 +50,8 @@ class PercentDamageEngine extends DamageEngine {
             this.crit = false;
             return 0;
         } else {
-            int rEvade = new RandomRange(0, 10000).generate();
-            int aEvade = enemy.getEvade();
+            final int rEvade = new RandomRange(0, 10000).generate();
+            final int aEvade = enemy.getEvade();
             if (rEvade < aEvade) {
                 // Enemy dodged
                 this.missed = false;
@@ -72,51 +73,50 @@ class PercentDamageEngine extends DamageEngine {
                             PercentDamageEngine.MULTIPLIER_MIN,
                             PercentDamageEngine.MULTIPLIER_MAX);
                 }
-                int multiplier = rDamage.generate();
+                final int multiplier = rDamage.generate();
                 // Weapon Faith Power Boost
                 double faithMultiplier = 1.0;
-                double faithIncrement = 0.01;
-                double faithIncrement2H = 0.03;
-                int fc = FaithConstants.getFaithsCount();
-                Equipment mainHand = acting.getItems().getEquipmentInSlot(
+                final double faithIncrement = 0.01;
+                final double faithIncrement2H = 0.03;
+                final int fc = FaithConstants.getFaithsCount();
+                final Equipment mainHand = acting.getItems().getEquipmentInSlot(
                         EquipmentSlotConstants.SLOT_MAINHAND);
-                Equipment offHand = acting.getItems().getEquipmentInSlot(
+                final Equipment offHand = acting.getItems().getEquipmentInSlot(
                         EquipmentSlotConstants.SLOT_OFFHAND);
                 if (mainHand != null && mainHand.equals(offHand)) {
                     for (int z = 0; z < fc; z++) {
-                        int fpl = mainHand.getFaithPowerLevel(z);
+                        final int fpl = mainHand.getFaithPowerLevel(z);
                         faithMultiplier += faithIncrement2H * fpl;
                     }
                 } else {
                     if (mainHand != null) {
                         for (int z = 0; z < fc; z++) {
-                            int fpl = mainHand.getFaithPowerLevel(z);
+                            final int fpl = mainHand.getFaithPowerLevel(z);
                             faithMultiplier += faithIncrement * fpl;
                         }
                     }
                     if (offHand != null && offHand
                             .getEquipCategory() != EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR) {
                         for (int z = 0; z < fc; z++) {
-                            int fpl = offHand.getFaithPowerLevel(z);
+                            final int fpl = offHand.getFaithPowerLevel(z);
                             faithMultiplier += faithIncrement * fpl;
                         }
                     }
                 }
                 // Armor Faith Power Boost
                 double faithDR = 0;
-                double faithDRInc = 1.0;
+                final double faithDRInc = 1.0;
                 if (offHand != null && offHand
                         .getEquipCategory() == EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR) {
                     for (int z = 0; z < fc; z++) {
-                        int fpl = offHand.getFaithPowerLevel(z);
+                        final int fpl = offHand.getFaithPowerLevel(z);
                         faithDR += faithDRInc * fpl;
                     }
                 }
-                int unadjustedDamage = (int) ((rawDamage * multiplier
-                        * faithMultiplier)
+                final int unadjustedDamage = (int) (rawDamage * multiplier
+                        * faithMultiplier
                         / PercentDamageEngine.MULTIPLIER_DIVIDE);
-                return Math.max(1,
-                        unadjustedDamage - ((int) Math.ceil(faithDR)));
+                return Math.max(1, unadjustedDamage - (int) Math.ceil(faithDR));
             }
         }
     }
@@ -142,8 +142,8 @@ class PercentDamageEngine extends DamageEngine {
     }
 
     private void didPierce() {
-        int rPierce = new RandomRange(0, 10000).generate();
-        int aPierce = PIERCE_CHANCE;
+        final int rPierce = new RandomRange(0, 10000).generate();
+        final int aPierce = PercentDamageEngine.PIERCE_CHANCE;
         if (rPierce < aPierce) {
             this.pierce = true;
         } else {
@@ -152,8 +152,8 @@ class PercentDamageEngine extends DamageEngine {
     }
 
     private void didCrit() {
-        int rCrit = new RandomRange(0, 10000).generate();
-        int aCrit = CRIT_CHANCE;
+        final int rCrit = new RandomRange(0, 10000).generate();
+        final int aCrit = PercentDamageEngine.CRIT_CHANCE;
         if (rCrit < aCrit) {
             this.crit = true;
         } else {

@@ -49,13 +49,11 @@ public class Main {
             } else {
                 s = args[0];
             }
-            platform.hookFileOpen(
-                    Main.application.getMazeManager(),
-                    Main.application
-                            .getMazeManager()
-                            .getClass()
+            platform.hookFileOpen(Main.application.getMazeManager(),
+                    Main.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             platform.hookQuit(Main.application.getGUIManager(),

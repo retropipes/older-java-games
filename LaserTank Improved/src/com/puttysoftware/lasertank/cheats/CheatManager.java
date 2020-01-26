@@ -29,69 +29,76 @@ public final class CheatManager {
 
     // Constructor
     public CheatManager() {
-	this.cheatCache = new CheatList();
-	this.loadCheatCache();
+        this.cheatCache = new CheatList();
+        this.loadCheatCache();
     }
 
     public String enterCheat() {
-	final String userInput = CommonDialogs.showTextInputDialog(StringLoader.loadGame(GameString.CHEAT_PROMPT),
-		StringLoader.loadDialog(DialogString.CHEATS));
-	if (userInput != null) {
-	    final int index = this.cheatCache.indexOf(userInput.toLowerCase());
-	    if (index != -1) {
-		final int value = CommonDialogs.showConfirmDialog(StringLoader.loadGame(GameString.CHEAT_ACTION),
-			StringLoader.loadDialog(DialogString.CHEATS));
-		if (value == JOptionPane.YES_OPTION) {
-		    return StringLoader.loadGame(GameString.ENABLE_CHEAT) + StringLoader.loadCommon(CommonString.SPACE)
-			    + userInput.toLowerCase();
-		} else {
-		    return StringLoader.loadGame(GameString.DISABLE_CHEAT) + StringLoader.loadCommon(CommonString.SPACE)
-			    + userInput.toLowerCase();
-		}
-	    } else {
-		CommonDialogs.showErrorDialog(StringLoader.loadError(ErrorString.INVALID_CHEAT),
-			StringLoader.loadDialog(DialogString.CHEATS));
-		return null;
-	    }
-	} else {
-	    return null;
-	}
+        final String userInput = CommonDialogs.showTextInputDialog(
+                StringLoader.loadGame(GameString.CHEAT_PROMPT),
+                StringLoader.loadDialog(DialogString.CHEATS));
+        if (userInput != null) {
+            final int index = this.cheatCache.indexOf(userInput.toLowerCase());
+            if (index != -1) {
+                final int value = CommonDialogs.showConfirmDialog(
+                        StringLoader.loadGame(GameString.CHEAT_ACTION),
+                        StringLoader.loadDialog(DialogString.CHEATS));
+                if (value == JOptionPane.YES_OPTION) {
+                    return StringLoader.loadGame(GameString.ENABLE_CHEAT)
+                            + StringLoader.loadCommon(CommonString.SPACE)
+                            + userInput.toLowerCase();
+                } else {
+                    return StringLoader.loadGame(GameString.DISABLE_CHEAT)
+                            + StringLoader.loadCommon(CommonString.SPACE)
+                            + userInput.toLowerCase();
+                }
+            } else {
+                CommonDialogs.showErrorDialog(
+                        StringLoader.loadError(ErrorString.INVALID_CHEAT),
+                        StringLoader.loadDialog(DialogString.CHEATS));
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 
     public int getCheatCount() {
-	return this.cheatCount;
+        return this.cheatCount;
     }
 
     // Methods
     private void loadCheatCache() {
-	Properties instant = new Properties();
-	try (InputStream is = CheatManager.class
-		.getResourceAsStream(GlobalLoader.loadUntranslated(UntranslatedString.INSTANT_CHEATS_PATH))) {
-	    instant.load(is);
-	} catch (final IOException ioe) {
-	    throw new InvalidArenaException(ioe);
-	}
-	Properties toggle = new Properties();
-	try (InputStream is = CheatManager.class
-		.getResourceAsStream(GlobalLoader.loadUntranslated(UntranslatedString.TOGGLE_CHEATS_PATH))) {
-	    toggle.load(is);
-	} catch (final IOException ioe) {
-	    throw new InvalidArenaException(ioe);
-	}
-	int iLimit = Cheat.instantCount();
-	for (int i = 0; i < iLimit; i++) {
-	    String code = instant.getProperty(Integer.toString(i));
-	    this.cheatCache.add(new InstantCheat(code, Effect.values()[i]));
-	}
-	int tLimit = Cheat.count();
-	for (int t = iLimit; t < tLimit; t++) {
-	    String code = toggle.getProperty(Integer.toString(t));
-	    this.cheatCache.add(new ToggleCheat(code, Effect.values()[t]));
-	}
-	this.cheatCount = tLimit;
+        final Properties instant = new Properties();
+        try (InputStream is = CheatManager.class
+                .getResourceAsStream(GlobalLoader.loadUntranslated(
+                        UntranslatedString.INSTANT_CHEATS_PATH))) {
+            instant.load(is);
+        } catch (final IOException ioe) {
+            throw new InvalidArenaException(ioe);
+        }
+        final Properties toggle = new Properties();
+        try (InputStream is = CheatManager.class
+                .getResourceAsStream(GlobalLoader.loadUntranslated(
+                        UntranslatedString.TOGGLE_CHEATS_PATH))) {
+            toggle.load(is);
+        } catch (final IOException ioe) {
+            throw new InvalidArenaException(ioe);
+        }
+        final int iLimit = Cheat.instantCount();
+        for (int i = 0; i < iLimit; i++) {
+            final String code = instant.getProperty(Integer.toString(i));
+            this.cheatCache.add(new InstantCheat(code, Effect.values()[i]));
+        }
+        final int tLimit = Cheat.count();
+        for (int t = iLimit; t < tLimit; t++) {
+            final String code = toggle.getProperty(Integer.toString(t));
+            this.cheatCache.add(new ToggleCheat(code, Effect.values()[t]));
+        }
+        this.cheatCount = tLimit;
     }
 
     public int queryCheatCache(final String query) {
-	return this.cheatCache.indexOf(query);
+        return this.cheatCache.indexOf(query);
     }
 }

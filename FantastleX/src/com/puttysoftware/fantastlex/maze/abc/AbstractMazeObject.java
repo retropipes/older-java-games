@@ -32,8 +32,8 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class AbstractMazeObject extends CloneableObject implements
-        TypeConstants, RandomGenerationRule {
+public abstract class AbstractMazeObject extends CloneableObject
+        implements TypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -659,8 +659,8 @@ public abstract class AbstractMazeObject extends CloneableObject implements
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -680,8 +680,8 @@ public abstract class AbstractMazeObject extends CloneableObject implements
      * @param y
      * @param z
      */
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -864,7 +864,8 @@ public abstract class AbstractMazeObject extends CloneableObject implements
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -1085,9 +1086,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
                 reader.readOpeningGroup(AbstractMazeObject.OBJECT_ID_GROUP);
                 savedIdent = reader.readString();
                 reader.readClosingGroup(AbstractMazeObject.OBJECT_ID_GROUP);
-                this.saved = FantastleX
-                        .getApplication()
-                        .getObjects()
+                this.saved = FantastleX.getApplication().getObjects()
                         .readSavedMazeObject(reader, savedIdent,
                                 FormatConstants.MAZE_FORMAT_1);
                 reader.readClosingGroup(AbstractMazeObject.OBJECT_GROUP);

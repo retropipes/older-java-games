@@ -27,7 +27,8 @@ class SavedTowerState implements Cloneable {
 
     @Override
     public SavedTowerState clone() {
-        final SavedTowerState copy = new SavedTowerState(this.r, this.c, this.f);
+        final SavedTowerState copy = new SavedTowerState(this.r, this.c,
+                this.f);
         int x, y, z, e;
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
@@ -71,9 +72,8 @@ class SavedTowerState implements Cloneable {
         }
     }
 
-    public static SavedTowerState readSavedTowerStateX(
-            final XDataReader reader, final int formatVersion)
-            throws IOException {
+    public static SavedTowerState readSavedTowerStateX(final XDataReader reader,
+            final int formatVersion) throws IOException {
         final MapObjectList objects = new MapObjectList();
         int x, y, z, e, sizeX, sizeY, sizeZ;
         sizeX = reader.readInt();
@@ -84,8 +84,8 @@ class SavedTowerState implements Cloneable {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < MapConstants.LAYER_COUNT; e++) {
-                        sts.saveData[x][y][z][e] = objects.readMapObjectX(
-                                reader, formatVersion);
+                        sts.saveData[x][y][z][e] = objects
+                                .readMapObjectX(reader, formatVersion);
                     }
                 }
             }

@@ -11,9 +11,9 @@ public class EdgeGenerator {
             "_north", "_west", "_southeast_inverted", "_northeast_inverted",
             "_southwest_inverted", "_northwest_inverted", };
     private static final String[] FRIENDLY_NAME_SUFFIXES = new String[] {
-            "South", "East", "Southeast", "Northeast", "Southwest",
-            "Northwest", "North", "West", "Southeast Inverted",
-            "Northeast Inverted", "Southwest Inverted", "Northwest Inverted", };
+            "South", "East", "Southeast", "Northeast", "Southwest", "Northwest",
+            "North", "West", "Southeast Inverted", "Northeast Inverted",
+            "Southwest Inverted", "Northwest Inverted", };
 
     // Constructor
     private EdgeGenerator() {
@@ -24,7 +24,8 @@ public class EdgeGenerator {
             final BufferedImageIcon img1, final BufferedImageIcon img2,
             final EdgePattern pattern) {
         if (img1 == null || img2 == null) {
-            throw new IllegalArgumentException("Input images must not be null!");
+            throw new IllegalArgumentException(
+                    "Input images must not be null!");
         }
         if (img1.getWidth() != img2.getWidth()
                 || img1.getHeight() != img2.getHeight()
@@ -35,11 +36,11 @@ public class EdgeGenerator {
         }
         final BufferedImageIcon result = new BufferedImageIcon(img1);
         final int dist = img1.getHeight();
-        final int transWidth = (1 - (dist % 2)) + 1;
+        final int transWidth = 1 - dist % 2 + 1;
         final int transPoint1 = (int) (dist * pattern.getPosition().getOffset())
                 - transWidth;
-        final int invTransPoint1 = (int) (dist * pattern.getPosition()
-                .getOffset()) + transWidth;
+        final int invTransPoint1 = (int) (dist
+                * pattern.getPosition().getOffset()) + transWidth;
         final EdgeType type = pattern.getType();
         final EdgeDirection direction = pattern.getDirection();
         for (int x = 0; x < dist; x++) {
@@ -53,8 +54,8 @@ public class EdgeGenerator {
                                 if (y <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -62,8 +63,8 @@ public class EdgeGenerator {
                                 if (y >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -74,8 +75,8 @@ public class EdgeGenerator {
                                 if (x <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -83,8 +84,8 @@ public class EdgeGenerator {
                                 if (x >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -103,8 +104,8 @@ public class EdgeGenerator {
                                         || y <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -113,8 +114,8 @@ public class EdgeGenerator {
                                         && y >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -126,8 +127,8 @@ public class EdgeGenerator {
                                         || y >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -136,8 +137,8 @@ public class EdgeGenerator {
                                         && y <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -149,8 +150,8 @@ public class EdgeGenerator {
                                         || y <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -159,8 +160,8 @@ public class EdgeGenerator {
                                         && y >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -172,8 +173,8 @@ public class EdgeGenerator {
                                         || y >= transPoint1 + transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         } else {
@@ -182,8 +183,8 @@ public class EdgeGenerator {
                                         && y <= invTransPoint1 - transWidth) {
                                     result.setRGB(x, y, img2.getRGB(x, y));
                                 } else {
-                                    result.setRGB(x, y, pattern.getColor()
-                                            .getRGB());
+                                    result.setRGB(x, y,
+                                            pattern.getColor().getRGB());
                                 }
                             }
                         }
@@ -239,10 +240,10 @@ public class EdgeGenerator {
     }
 
     public static String[] generateAllEdgedImageNameSuffixes() {
-        return NAME_SUFFIXES;
+        return EdgeGenerator.NAME_SUFFIXES;
     }
 
     public static String[] generateAllEdgedImageFriendlyNameSuffixes() {
-        return FRIENDLY_NAME_SUFFIXES;
+        return EdgeGenerator.FRIENDLY_NAME_SUFFIXES;
     }
 }

@@ -63,8 +63,9 @@ public class DisruptedMirrorCrystalBlock
     }
 
     @Override
-    public Direction laserExitedAction(final int locX, final int locY, final int locZ,
-            final int dirX, final int dirY, final int laserType) {
+    public Direction laserExitedAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY,
+            final int laserType) {
         return DirectionResolver.resolveRelativeDirection(dirX, dirY);
     }
 

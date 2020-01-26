@@ -19,10 +19,9 @@ public class ClockwiseRotationTrap extends GenericNSRSBObject {
 
     @Override
     public void moveOntoHook() {
-        final boolean enabled = DungeonDiver
-                .getHoldingBag()
-                .getPrefs()
-                .getPreferenceValue(Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
+        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+                .getPreferenceValue(
+                        Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
         if (enabled) {
             final DungeonGUI gui = DungeonDiver.getHoldingBag().getDungeonGUI();
             gui.getBuffManager().setRotated(
@@ -33,10 +32,9 @@ public class ClockwiseRotationTrap extends GenericNSRSBObject {
 
     @Override
     public ImageIcon getGameAppearance() {
-        final boolean enabled = DungeonDiver
-                .getHoldingBag()
-                .getPrefs()
-                .getPreferenceValue(Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
+        final boolean enabled = DungeonDiver.getHoldingBag().getPrefs()
+                .getPreferenceValue(
+                        Preferences.CLOCKWISE_ROTATION_TRAP_ENABLED);
         if (enabled) {
             return super.getGameAppearance();
         } else {

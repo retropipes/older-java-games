@@ -38,11 +38,11 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
@@ -66,8 +66,8 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
             if (this.getKey() == AbstractProgrammableLock.SIGNAL) {
                 FantastleX.getApplication().showMessage("You need a Crystal");
             } else {
-                FantastleX.getApplication().showMessage(
-                        "You need a " + this.getKey().getName());
+                FantastleX.getApplication()
+                        .showMessage("You need a " + this.getKey().getName());
             }
         }
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
@@ -94,8 +94,8 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
             if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
                 return !inv.isItemThere(this.getKey());
             } else {
-                return !inv
-                        .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
+                return !inv.isItemCategoryThere(
+                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
             }
         }
     }
@@ -116,7 +116,8 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
         final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
         final AbstractMazeObject[] tempKeys = objects.getAllProgrammableKeys();
         final String[] keyNames = new String[tempKeyNames.length + 1];
-        final AbstractMazeObject[] keys = new AbstractMazeObject[tempKeys.length + 1];
+        final AbstractMazeObject[] keys = new AbstractMazeObject[tempKeys.length
+                + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";

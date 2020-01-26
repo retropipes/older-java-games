@@ -27,8 +27,8 @@ public class NoBoots extends GenericInventoryModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Worldz.getApplication().getGameManager().decay();
         inv.removeAllBoots();
         if (Worldz.getApplication().getPrefsManager()

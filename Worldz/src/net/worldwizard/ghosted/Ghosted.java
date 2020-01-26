@@ -24,7 +24,7 @@ public final class Ghosted {
     }
 
     // Methods
-    public final void debug(final Throwable t) {
+    public void debug(final Throwable t) {
         final DebugInfoWriter diw = new DebugInfoWriter(t, this.name);
         Messager.showErrorDialog(this.msg + "\nThe debug log is located at:\n"
                 + diw.getFullDebugPath(), this.title);
@@ -32,7 +32,7 @@ public final class Ghosted {
         System.exit(1);
     }
 
-    public final void logError(final Throwable t) {
+    public void logError(final Throwable t) {
         final NonFatalLogger nfl = new NonFatalLogger(t, this.name);
         Messager.showErrorDialog(this.nonFatalMsg
                 + "\nThe debug log is located at:\n" + nfl.getFullLogPath(),

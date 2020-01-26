@@ -36,10 +36,10 @@ public class SunStone extends AbstractCheckKey {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         inv.addItem(this);
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_SUN_STONE);
     }

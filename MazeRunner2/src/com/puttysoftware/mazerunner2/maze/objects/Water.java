@@ -24,8 +24,8 @@ public class Water extends AbstractField {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK_WATER);
     }
 
@@ -40,7 +40,7 @@ public class Water extends AbstractField {
     public void pushIntoAction(final MazeObjectInventory inv,
             final AbstractMazeObject pushed, final int x, final int y,
             final int z) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,
                     MazeConstants.LAYER_GROUND);

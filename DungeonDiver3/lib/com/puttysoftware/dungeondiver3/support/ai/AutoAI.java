@@ -14,8 +14,8 @@ public class AutoAI extends AIRoutine {
     }
 
     @Override
-    public int getNextAction(AIContext ac) {
-        Point there = ac.isEnemyNearby();
+    public int getNextAction(final AIContext ac) {
+        final Point there = ac.isEnemyNearby();
         if (there != null) {
             // Something hostile is nearby, so attack it
             this.moveX = there.x;

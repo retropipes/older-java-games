@@ -21,18 +21,18 @@ import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields
-    private String filename;
-    private boolean isSavedGame;
-    private JFrame loadFrame;
+    private final String filename;
+    private final boolean isSavedGame;
+    private final JFrame loadFrame;
 
     // Constructors
-    public LoadTask(String file, boolean saved) {
+    public LoadTask(final String file, final boolean saved) {
         this.filename = file;
         this.isSavedGame = saved;
         this.setName("File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -45,7 +45,7 @@ public class LoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int startW;
         String sg;
         if (this.isSavedGame) {
@@ -56,7 +56,7 @@ public class LoadTask extends Thread {
             sg = "Dungeon";
         }
         try {
-            File dungeonFile = new File(this.filename);
+            final File dungeonFile = new File(this.filename);
             Dungeon gameDungeon = new Dungeon();
             ZipUtilities.unzipDirectory(dungeonFile,
                     new File(gameDungeon.getBasePath()));
@@ -84,8 +84,8 @@ public class LoadTask extends Thread {
                 gameDungeon.save();
             }
             // Final cleanup
-            String lum = app.getDungeonManager().getLastUsedDungeon();
-            String lug = app.getDungeonManager().getLastUsedGame();
+            final String lum = app.getDungeonManager().getLastUsedDungeon();
+            final String lug = app.getDungeonManager().getLastUsedGame();
             app.getDungeonManager().clearLastUsedFilenames();
             if (this.isSavedGame) {
                 app.getDungeonManager().setLastUsedGame(lug);
@@ -98,10 +98,8 @@ public class LoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getDungeonManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getDungeonManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Error loading " + sg.toLowerCase()

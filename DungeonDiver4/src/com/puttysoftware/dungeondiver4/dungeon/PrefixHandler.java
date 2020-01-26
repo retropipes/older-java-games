@@ -9,9 +9,9 @@ public class PrefixHandler implements PrefixIO {
     private static final byte FORMAT_VERSION = (byte) FormatConstants.DUNGEON_FORMAT_LATEST;
 
     @Override
-    public int readPrefix(XDataReader reader) throws IOException {
-        byte formatVer = PrefixHandler.readFormatVersion(reader);
-        boolean res = PrefixHandler.checkFormatVersion(formatVer);
+    public int readPrefix(final XDataReader reader) throws IOException {
+        final byte formatVer = PrefixHandler.readFormatVersion(reader);
+        final boolean res = PrefixHandler.checkFormatVersion(formatVer);
         if (!res) {
             throw new IOException("Unsupported dungeon format version.");
         }
@@ -19,20 +19,20 @@ public class PrefixHandler implements PrefixIO {
     }
 
     @Override
-    public void writePrefix(XDataWriter writer) throws IOException {
+    public void writePrefix(final XDataWriter writer) throws IOException {
         PrefixHandler.writeFormatVersion(writer);
     }
 
-    private static byte readFormatVersion(XDataReader reader)
+    private static byte readFormatVersion(final XDataReader reader)
             throws IOException {
         return reader.readByte();
     }
 
-    private static boolean checkFormatVersion(byte version) {
-        return (version <= PrefixHandler.FORMAT_VERSION);
+    private static boolean checkFormatVersion(final byte version) {
+        return version <= PrefixHandler.FORMAT_VERSION;
     }
 
-    private static void writeFormatVersion(XDataWriter writer)
+    private static void writeFormatVersion(final XDataWriter writer)
             throws IOException {
         writer.writeByte(PrefixHandler.FORMAT_VERSION);
     }

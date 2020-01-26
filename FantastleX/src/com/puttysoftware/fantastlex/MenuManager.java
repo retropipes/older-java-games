@@ -51,9 +51,8 @@ public class MenuManager {
             editorDownOneLevel, editorAddLevel, editorRemoveLevel,
             editorResizeLevel, editorToggleLayer, editorLevelPreferences,
             editorMazePreferences, editorSetStartPoint;
-    private JMenuItem editorFillFloor, editorFillLevel,
-            editorFillFloorRandomly, editorFillLevelRandomly,
-            editorFillFloorLayer, editorFillLevelLayer,
+    private JMenuItem editorFillFloor, editorFillLevel, editorFillFloorRandomly,
+            editorFillLevelRandomly, editorFillFloorLayer, editorFillLevelLayer,
             editorFillFloorLayerRandomly, editorFillLevelLayerRandomly,
             editorFillRuleSets, editorSetFirstMovingFinish;
     private JCheckBoxMenuItem editorFillUseRuleSets;
@@ -107,8 +106,8 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.enableGameMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
@@ -131,8 +130,8 @@ public class MenuManager {
         this.editClearHistory.setEnabled(false);
         this.disableGameMenus();
         this.enableBattleMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
@@ -152,8 +151,8 @@ public class MenuManager {
         this.enableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
@@ -180,8 +179,8 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
@@ -207,8 +206,8 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
@@ -231,8 +230,8 @@ public class MenuManager {
         this.disableEditorMenus();
         this.disableBattleMenus();
         this.disableGameMenus();
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
@@ -536,17 +535,17 @@ public class MenuManager {
         this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey);
-        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editCutLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X, modKey);
         this.editCopyLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey);
-        this.editPasteLevelAccel = KeyStroke
-                .getKeyStroke(KeyEvent.VK_V, modKey);
-        this.editInsertLevelFromClipboardAccel = KeyStroke.getKeyStroke(
-                KeyEvent.VK_F, modKey);
+        this.editPasteLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                modKey);
+        this.editInsertLevelFromClipboardAccel = KeyStroke
+                .getKeyStroke(KeyEvent.VK_F, modKey);
         this.editPreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
         this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
@@ -569,12 +568,12 @@ public class MenuManager {
         this.editorToggleLayerAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L,
                 modKey);
         this.battleItemAccel = KeyStroke.getKeyStroke(KeyEvent.VK_M, modKey);
-        this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.battleStealAccel = KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey);
         this.battleDrainAccel = KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey);
-        this.battleEndTurnAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.battleEndTurnAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
     }
 
     private void createMenus() {
@@ -669,7 +668,8 @@ public class MenuManager {
         this.editorFillLevelLayerRandomly = new JMenuItem(
                 "Fill Current Level and Layer Randomly");
         this.editorFillRuleSets = new JMenuItem("Fill Rule Sets...");
-        this.editorFillUseRuleSets = new JCheckBoxMenuItem("Use Fill Rule Sets");
+        this.editorFillUseRuleSets = new JCheckBoxMenuItem(
+                "Use Fill Rule Sets");
         this.editorToggleLayer = new JMenuItem("Toggle Layer");
         this.editorToggleLayer.setAccelerator(this.editorToggleLayerAccel);
         this.editorLevelPreferences = new JMenuItem("Level Preferences...");
@@ -801,8 +801,8 @@ public class MenuManager {
         gameMenu.add(this.gameViewStats);
         gameMenu.add(this.gameUseAnItem);
         gameMenu.add(this.gameSwitchBow);
-        final ArrayList<AbstractEditor> allEditors = FantastleX
-                .getApplication().getAllEditors();
+        final ArrayList<AbstractEditor> allEditors = FantastleX.getApplication()
+                .getAllEditors();
         for (final AbstractEditor ge : allEditors) {
             editorMenu.add(ge.createEditorCommandsMenu());
         }
@@ -1000,13 +1000,12 @@ public class MenuManager {
                     // Edit the current maze
                     app.getEditor().editMaze();
                 } else if (cmd.equals("Show Inventory...")) {
-                    InventoryViewer.showObjectInventoryDialog(app
-                            .getGameManager().getObjectInventory());
+                    InventoryViewer.showObjectInventoryDialog(
+                            app.getGameManager().getObjectInventory());
                 } else if (cmd.equals("Reset Current Level")) {
-                    final int result = CommonDialogs
-                            .showConfirmDialog(
-                                    "Are you sure you want to reset the current level?",
-                                    "FantastleX");
+                    final int result = CommonDialogs.showConfirmDialog(
+                            "Are you sure you want to reset the current level?",
+                            "FantastleX");
                     if (result == JOptionPane.YES_OPTION) {
                         app.getGameManager().resetCurrentLevel();
                     }
@@ -1100,10 +1099,12 @@ public class MenuManager {
                 } else if (cmd.equals("Fill Current Level and Layer")) {
                     // Fill level and layer
                     app.getEditor().fillLevelAndLayer();
-                } else if (cmd.equals("Fill Current Floor and Layer Randomly")) {
+                } else if (cmd
+                        .equals("Fill Current Floor and Layer Randomly")) {
                     // Fill floor and layer randomly
                     app.getEditor().fillFloorAndLayerRandomly();
-                } else if (cmd.equals("Fill Current Level and Layer Randomly")) {
+                } else if (cmd
+                        .equals("Fill Current Level and Layer Randomly")) {
                     // Fill level and layer randomly
                     app.getEditor().fillLevelAndLayerRandomly();
                 } else if (cmd.equals("Fill Rule Sets...")) {

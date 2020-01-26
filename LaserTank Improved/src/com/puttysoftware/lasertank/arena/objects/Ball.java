@@ -13,18 +13,18 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class Ball extends AbstractMovableObject {
     // Constructors
     public Ball() {
-	super(true);
-	this.type.set(TypeConstants.TYPE_BALL);
-	this.type.set(TypeConstants.TYPE_ICY);
+        super(true);
+        this.type.set(TypeConstants.TYPE_BALL);
+        this.type.set(TypeConstants.TYPE_ICY);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 2;
+        return 2;
     }
 
     @Override
     public void playSoundHook() {
-	SoundManager.playSound(SoundConstants.SOUND_BALL_ROLL);
+        SoundManager.playSound(SoundConstants.SOUND_BALL_ROLL);
     }
 }

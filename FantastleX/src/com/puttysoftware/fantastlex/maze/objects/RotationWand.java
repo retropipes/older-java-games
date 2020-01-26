@@ -43,8 +43,8 @@ public class RotationWand extends AbstractWand {
     }
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         final Application app = FantastleX.getApplication();
         app.getGameManager().setRemoteAction(x, y, z);
         int r = 1;
@@ -63,9 +63,8 @@ public class RotationWand extends AbstractWand {
         } else {
             di = 1;
         }
-        final String dres = CommonDialogs.showInputDialog(
-                "Rotation Direction:", "FantastleX", RotationWand.dChoices,
-                RotationWand.dChoices[di]);
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "FantastleX", RotationWand.dChoices, RotationWand.dChoices[di]);
         if (dres.equals(RotationWand.dChoices[0])) {
             d = RotationWand.CLOCKWISE;
         } else {

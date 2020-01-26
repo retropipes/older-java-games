@@ -22,14 +22,14 @@ public class Slime extends GenericField {
 
     @Override
     protected InternalScript playSoundHook() {
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry0 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry0 = new InternalScriptEntry();
         entry0.setActionCode(InternalScriptActionCode.SOUND);
         entry0.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_SLIME_HIT));
         entry0.finalizeActionArgs();
         scpt.addAction(entry0);
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.MESSAGE);
         entry1.addActionArg(new InternalScriptEntryArgument(
                 "Ow, the slime ate into your flesh!"));

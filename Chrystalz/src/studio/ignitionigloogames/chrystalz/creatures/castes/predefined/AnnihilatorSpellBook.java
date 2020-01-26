@@ -70,8 +70,7 @@ public class AnnihilatorSpellBook extends SpellBook {
         spell4Effect.setEffect(Effect.EFFECT_ADD, StatConstants.STAT_CURRENT_HP,
                 -2);
         spell4Effect.setScaleStat(StatConstants.STAT_LEVEL);
-        spell4Effect.setMessage(Effect.MESSAGE_INITIAL,
-                "You ignite the air!");
+        spell4Effect.setMessage(Effect.MESSAGE_INITIAL, "You ignite the air!");
         spell4Effect.setMessage(Effect.MESSAGE_SUBSEQUENT,
                 "The enemy is engulfed!");
         final Spell spell4 = new Spell(spell4Effect, 7, BattleTarget.ENEMY,

@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver3.game.scripts;
 class InternalScriptException extends RuntimeException {
     private static final long serialVersionUID = 14535L;
 
-    InternalScriptException(String message, Throwable cause) {
+    InternalScriptException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }

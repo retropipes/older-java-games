@@ -43,8 +43,8 @@ public class RaceConstants {
     static void initRaces() {
         if (!RaceConstants.INITED) {
             try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                    RaceDataManager.class
-                            .getResourceAsStream("/com/puttysoftware/tallertower/resources/data/race/catalog.txt"))) {
+                    RaceDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/tallertower/resources/data/race/catalog.txt"))) {
                 // Fetch data
                 final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";

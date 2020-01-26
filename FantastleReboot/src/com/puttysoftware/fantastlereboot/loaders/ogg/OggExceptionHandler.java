@@ -8,15 +8,15 @@ package com.puttysoftware.fantastlereboot.loaders.ogg;
 import java.lang.Thread.UncaughtExceptionHandler;
 
 public class OggExceptionHandler implements UncaughtExceptionHandler {
-  @Override
-  public void uncaughtException(final Thread thr, final Throwable exc) {
-    try {
-      if (thr instanceof OggLoader) {
-        final OggLoader media = (OggLoader) thr;
-        OggLoader.taskCompleted(media.getNumber());
-      }
-    } catch (Throwable t) {
-      // Ignore
+    @Override
+    public void uncaughtException(final Thread thr, final Throwable exc) {
+        try {
+            if (thr instanceof OggLoader) {
+                final OggLoader media = (OggLoader) thr;
+                OggLoader.taskCompleted(media.getNumber());
+            }
+        } catch (final Throwable t) {
+            // Ignore
+        }
     }
-  }
 }

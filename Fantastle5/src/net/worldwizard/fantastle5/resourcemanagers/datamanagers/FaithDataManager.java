@@ -27,8 +27,8 @@ public class FaithDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDataManager.class
-                            .getResourceAsStream("/net/worldwizard/fantastle5/resources/data/faith/"
+                    FaithDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/fantastle5/resources/data/faith/"
                                     + name + ".dat"));
             final int[] rawData = new int[FaithConstants.FAITHS_COUNT];
             for (int x = 0; x < rawData.length; x++) {

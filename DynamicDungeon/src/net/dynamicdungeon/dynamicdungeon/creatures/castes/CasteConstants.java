@@ -12,9 +12,9 @@ public class CasteConstants {
     public static final int CASTE_DEBUFFER = 3;
     public static final int CASTES_COUNT = 4;
     public static final String[] CASTE_NAMES = { "Annihilator", "Buffer",
-	    "Curer", "Debuffer" };
+            "Curer", "Debuffer" };
 
     private CasteConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

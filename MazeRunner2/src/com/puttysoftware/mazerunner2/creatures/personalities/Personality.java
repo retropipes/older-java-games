@@ -15,14 +15,14 @@ public final class Personality {
     private final double[] data;
     private final String desc;
 
-    Personality(int pid) {
+    Personality(final int pid) {
         this.data = PersonalityDataManager.getPersonalityData(pid);
         this.desc = PersonalityDescriptionManager
                 .getPersonalityDescription(pid);
         this.personalityID = pid;
     }
 
-    public double getAttribute(int aid) {
+    public double getAttribute(final int aid) {
         return this.data[aid];
     }
 
@@ -43,7 +43,7 @@ public final class Personality {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -53,7 +53,7 @@ public final class Personality {
         if (!(obj instanceof Personality)) {
             return false;
         }
-        Personality other = (Personality) obj;
+        final Personality other = (Personality) obj;
         if (this.personalityID != other.personalityID) {
             return false;
         }

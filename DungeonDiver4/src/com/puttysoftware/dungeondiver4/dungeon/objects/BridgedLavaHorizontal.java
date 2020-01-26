@@ -16,14 +16,15 @@ public class BridgedLavaHorizontal extends AbstractGround {
     // Constructors
     public BridgedLavaHorizontal() {
         super(ColorConstants.COLOR_ORANGE);
-        this.setAttributeID(ObjectImageConstants.OBJECT_IMAGE_BRIDGE_HORIZONTAL);
+        this.setAttributeID(
+                ObjectImageConstants.OBJECT_IMAGE_BRIDGE_HORIZONTAL);
         this.setAttributeTemplateColor(ColorConstants.COLOR_BRIDGE);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 

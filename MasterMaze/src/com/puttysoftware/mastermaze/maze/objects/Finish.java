@@ -26,8 +26,8 @@ public class Finish extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_FINISH);
         app.getGameManager().solvedLevel();

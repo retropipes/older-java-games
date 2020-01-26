@@ -37,10 +37,8 @@ public class TrueSightAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_TRUE_SIGHT,
-                        TrueSightAmulet.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_TRUE_SIGHT,
+                TrueSightAmulet.EFFECT_DURATION);
     }
 }

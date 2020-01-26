@@ -32,161 +32,179 @@ public class BossMonster extends AbstractCreature {
 
     // Constructors
     BossMonster() {
-	super(true, 1);
-	this.setWindowAI(BossMonster.getInitialWindowAI());
-	final SpellBook spells = new SystemMonsterSpellBook();
-	spells.learnAllSpells();
-	this.setSpellBook(spells);
-	this.loadCreature();
+        super(true, 1);
+        this.setWindowAI(BossMonster.getInitialWindowAI());
+        final SpellBook spells = new SystemMonsterSpellBook();
+        spells.learnAllSpells();
+        this.setSpellBook(spells);
+        this.loadCreature();
     }
 
     // Methods
     @Override
     public String getFightingWhatString() {
-	return "You're fighting The Boss";
+        return "You're fighting The Boss";
     }
 
     @Override
     public String getName() {
-	return "The Boss";
+        return "The Boss";
     }
 
     @Override
     public Faith getFaith() {
-	return FaithManager.getFaith(0);
+        return FaithManager.getFaith(0);
     }
 
     @Override
     public boolean checkLevelUp() {
-	return false;
+        return false;
     }
 
     @Override
     protected void levelUpHook() {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-	return BossImageManager.getBossImage();
+        return BossImageManager.getBossImage();
     }
 
     @Override
     public int getSpeed() {
-	final int difficulty = PreferencesManager.getGameDifficulty();
-	final int base = this.getBaseSpeed();
-	if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
-	    return (int) (base * SPEED_ADJUST_SLOWEST);
-	} else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
-	    return (int) (base * SPEED_ADJUST_SLOW);
-	} else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
-	    return (int) (base * SPEED_ADJUST_NORMAL);
-	} else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
-	    return (int) (base * SPEED_ADJUST_FAST);
-	} else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
-	    return (int) (base * SPEED_ADJUST_FASTEST);
-	} else {
-	    return (int) (base * SPEED_ADJUST_NORMAL);
-	}
+        final int difficulty = PreferencesManager.getGameDifficulty();
+        final int base = this.getBaseSpeed();
+        if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_SLOWEST);
+        } else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_SLOW);
+        } else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
+        } else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_FAST);
+        } else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_FASTEST);
+        } else {
+            return (int) (base * AbstractCreature.SPEED_ADJUST_NORMAL);
+        }
     }
 
     // Helper Methods
     @Override
     public void loadCreature() {
-	final int newLevel = PartyManager.getParty().getDungeonLevel() + 6;
-	this.setLevel(newLevel);
-	this.setVitality(this.getInitialVitality());
-	this.setCurrentHP(this.getMaximumHP());
-	this.setIntelligence(this.getInitialIntelligence());
-	this.setCurrentMP(this.getMaximumMP());
-	this.setStrength(this.getInitialStrength());
-	this.setBlock(this.getInitialBlock());
-	this.setAgility(this.getInitialAgility());
-	this.setLuck(this.getInitialLuck());
-	this.setGold(0);
-	this.setExperience(0);
-	this.setAttacksPerRound(1);
-	this.setSpellsPerRound(1);
-	this.image = this.getInitialImage();
+        final int newLevel = PartyManager.getParty().getDungeonLevel() + 6;
+        this.setLevel(newLevel);
+        this.setVitality(this.getInitialVitality());
+        this.setCurrentHP(this.getMaximumHP());
+        this.setIntelligence(this.getInitialIntelligence());
+        this.setCurrentMP(this.getMaximumMP());
+        this.setStrength(this.getInitialStrength());
+        this.setBlock(this.getInitialBlock());
+        this.setAgility(this.getInitialAgility());
+        this.setLuck(this.getInitialLuck());
+        this.setGold(0);
+        this.setExperience(0);
+        this.setAttacksPerRound(1);
+        this.setSpellsPerRound(1);
+        this.image = this.getInitialImage();
     }
 
     private int getInitialStrength() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private int getInitialBlock() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private int getInitialAgility() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private int getInitialVitality() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private int getInitialIntelligence() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private int getInitialLuck() {
-	final int min = getMinimumStatForDifficulty();
-	final RandomRange r = new RandomRange(min, Math.max(this.getLevel()
-		* getStatMultiplierForDifficulty(), min));
-	return r.generate();
+        final int min = BossMonster.getMinimumStatForDifficulty();
+        final RandomRange r = new RandomRange(min,
+                Math.max(
+                        this.getLevel()
+                                * BossMonster.getStatMultiplierForDifficulty(),
+                        min));
+        return r.generate();
     }
 
     private static AbstractWindowAIRoutine getInitialWindowAI() {
-	return new VeryHardWindowAIRoutine();
+        return new VeryHardWindowAIRoutine();
     }
 
     private static int getStatMultiplierForDifficulty() {
-	final int difficulty = PreferencesManager.getGameDifficulty();
-	if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
-	    return STAT_MULT_VERY_EASY;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
-	    return STAT_MULT_EASY;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
-	    return STAT_MULT_NORMAL;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
-	    return STAT_MULT_HARD;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
-	    return STAT_MULT_VERY_HARD;
-	} else {
-	    return STAT_MULT_NORMAL;
-	}
+        final int difficulty = PreferencesManager.getGameDifficulty();
+        if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
+            return BossMonster.STAT_MULT_VERY_EASY;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
+            return BossMonster.STAT_MULT_EASY;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
+            return BossMonster.STAT_MULT_NORMAL;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
+            return BossMonster.STAT_MULT_HARD;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
+            return BossMonster.STAT_MULT_VERY_HARD;
+        } else {
+            return BossMonster.STAT_MULT_NORMAL;
+        }
     }
 
     private static int getMinimumStatForDifficulty() {
-	final int difficulty = PreferencesManager.getGameDifficulty();
-	if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
-	    return MINIMUM_STAT_VALUE_VERY_EASY;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
-	    return MINIMUM_STAT_VALUE_EASY;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
-	    return MINIMUM_STAT_VALUE_NORMAL;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
-	    return MINIMUM_STAT_VALUE_HARD;
-	} else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
-	    return MINIMUM_STAT_VALUE_VERY_HARD;
-	} else {
-	    return MINIMUM_STAT_VALUE_NORMAL;
-	}
+        final int difficulty = PreferencesManager.getGameDifficulty();
+        if (difficulty == PreferencesManager.DIFFICULTY_VERY_EASY) {
+            return BossMonster.MINIMUM_STAT_VALUE_VERY_EASY;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_EASY) {
+            return BossMonster.MINIMUM_STAT_VALUE_EASY;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_NORMAL) {
+            return BossMonster.MINIMUM_STAT_VALUE_NORMAL;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_HARD) {
+            return BossMonster.MINIMUM_STAT_VALUE_HARD;
+        } else if (difficulty == PreferencesManager.DIFFICULTY_VERY_HARD) {
+            return BossMonster.MINIMUM_STAT_VALUE_VERY_HARD;
+        } else {
+            return BossMonster.MINIMUM_STAT_VALUE_NORMAL;
+        }
     }
 }

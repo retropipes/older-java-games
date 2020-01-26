@@ -15,8 +15,8 @@ public class MonsterDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    MonsterDataManager.class
-                            .getResourceAsStream("/net/worldwizard/support/resources/data/monster/monsternames.dat"));
+                    MonsterDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/support/resources/data/monster/monsternames.dat"));
             final ArrayList<String> data = new ArrayList<>();
             String raw = "0";
             while (raw != null) {

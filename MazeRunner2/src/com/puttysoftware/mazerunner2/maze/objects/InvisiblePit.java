@@ -26,14 +26,14 @@ public class InvisiblePit extends Pit {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        MazeRunnerII.getApplication().showMessage(
-                "Some unseen force prevents movement that way...");
+        MazeRunnerII.getApplication()
+                .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_FALLING);

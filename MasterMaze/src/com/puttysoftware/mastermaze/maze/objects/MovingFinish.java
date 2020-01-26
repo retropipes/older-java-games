@@ -38,8 +38,8 @@ public class MovingFinish extends Finish {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (this.active) {
             final Application app = MasterMaze.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_FINISH);
@@ -63,12 +63,10 @@ public class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObject obj = MasterMaze
-                .getApplication()
-                .getMazeManager()
+        final MazeObject obj = MasterMaze.getApplication().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(),
-                        this.getDestinationFloor(), MazeConstants.LAYER_OBJECT);
+                        this.getDestinationColumn(), this.getDestinationFloor(),
+                        MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             SoundManager.playSound(SoundConstants.SOUND_CHANGE);
@@ -93,8 +91,8 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        MasterMaze.getApplication().showMessage(
-                this.getName() + ": Next Moving Finish ("
+        MasterMaze.getApplication()
+                .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
                         + (this.getDestinationFloor() + 1) + ")");
@@ -161,8 +159,8 @@ public class MovingFinish extends Finish {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditorLogic me = MasterMaze.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
 

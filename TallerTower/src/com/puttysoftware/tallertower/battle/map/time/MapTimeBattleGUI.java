@@ -119,7 +119,7 @@ class MapTimeBattleGUI {
     }
 
     void setStatusMessage(final String msg) {
-        if (this.messageLabel.getText().length() > MAX_TEXT) {
+        if (this.messageLabel.getText().length() > MapTimeBattleGUI.MAX_TEXT) {
             this.clearStatusMessage();
         }
         if (!msg.isEmpty() && !msg.matches("\\s+")) {
@@ -128,13 +128,14 @@ class MapTimeBattleGUI {
     }
 
     void showBattle() {
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
             MusicManager.playMusic(MusicConstants.MUSIC_BATTLE);
         }
         this.battleFrame.setVisible(true);
-        this.battleFrame.setJMenuBar(TallerTower.getApplication()
-                .getMenuManager().getMainMenuBar());
+        this.battleFrame.setJMenuBar(
+                TallerTower.getApplication().getMenuManager().getMainMenuBar());
     }
 
     void hideBattle() {
@@ -160,14 +161,14 @@ class MapTimeBattleGUI {
                     xFix = x - xView;
                     yFix = y - yView;
                     try {
-                        final BufferedImageIcon icon1 = battleMaze.getCell(y,
-                                x, 0, MazeConstants.LAYER_GROUND)
+                        final BufferedImageIcon icon1 = battleMaze
+                                .getCell(y, x, 0, MazeConstants.LAYER_GROUND)
                                 .battleRenderHook();
-                        final BufferedImageIcon icon2 = battleMaze.getCell(y,
-                                x, 0, MazeConstants.LAYER_OBJECT)
+                        final BufferedImageIcon icon2 = battleMaze
+                                .getCell(y, x, 0, MazeConstants.LAYER_OBJECT)
                                 .battleRenderHook();
-                        this.drawGrid.setImageCell(ImageTransformer
-                                .getCompositeImage(icon1, icon2,
+                        this.drawGrid.setImageCell(
+                                ImageTransformer.getCompositeImage(icon1, icon2,
                                         BattleImageManager.getGraphicSize()),
                                 xFix, yFix);
                     } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -196,15 +197,17 @@ class MapTimeBattleGUI {
                 final int yView = this.vwMgr.getViewingWindowLocationY();
                 xFix = y - xView;
                 yFix = x - yView;
-                final BufferedImageIcon icon1 = battleMaze.getCell(x, y, 0,
-                        MazeConstants.LAYER_GROUND).battleRenderHook();
-                final BufferedImageIcon icon2 = battleMaze.getCell(x, y, 0,
-                        MazeConstants.LAYER_OBJECT).battleRenderHook();
+                final BufferedImageIcon icon1 = battleMaze
+                        .getCell(x, y, 0, MazeConstants.LAYER_GROUND)
+                        .battleRenderHook();
+                final BufferedImageIcon icon2 = battleMaze
+                        .getCell(x, y, 0, MazeConstants.LAYER_OBJECT)
+                        .battleRenderHook();
                 final BufferedImageIcon icon3 = obj3.battleRenderHook();
-                this.drawGrid.setImageCell(ImageTransformer
-                        .getVirtualCompositeImage(icon1, icon2, icon3,
-                                BattleImageManager.getGraphicSize()), xFix,
-                        yFix);
+                this.drawGrid.setImageCell(
+                        ImageTransformer.getVirtualCompositeImage(icon1, icon2,
+                                icon3, BattleImageManager.getGraphicSize()),
+                        xFix, yFix);
                 this.battlePane.repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 // Do nothing
@@ -265,14 +268,14 @@ class MapTimeBattleGUI {
         this.spell.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
                 KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey), "Cast Spell");
         this.spell.getActionMap().put("Cast Spell", handler);
-        this.steal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey), "Steal");
+        this.steal.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey), "Steal");
         this.steal.getActionMap().put("Steal", handler);
-        this.drain.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey), "Drain");
+        this.drain.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_D, modKey), "Drain");
         this.drain.getActionMap().put("Drain", handler);
-        this.item.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-                KeyStroke.getKeyStroke(KeyEvent.VK_I, modKey), "Use Item");
+        this.item.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(KeyStroke.getKeyStroke(KeyEvent.VK_I, modKey), "Use Item");
         this.item.getActionMap().put("Use Item", handler);
         Platform.hookFrameIcon(this.battleFrame, LogoManager.getIconLogo());
         this.battleFrame
@@ -284,12 +287,11 @@ class MapTimeBattleGUI {
                 .getViewingWindowSize(); x++) {
             for (int y = 0; y < MapBattleViewingWindowManager
                     .getViewingWindowSize(); y++) {
-                final AbstractMazeObject dark = new Darkness().gameRenderHook(
-                        y, x, 0);
-                this.drawGrid.setImageCell(
-                        BattleImageManager.getImage(dark.getName(),
-                                dark.getGameBaseID(),
-                                AbstractMazeObject.getTemplateColor()), x, y);
+                final AbstractMazeObject dark = new Darkness().gameRenderHook(y,
+                        x, 0);
+                this.drawGrid.setImageCell(BattleImageManager.getImage(
+                        dark.getName(), dark.getGameBaseID(),
+                        AbstractMazeObject.getTemplateColor()), x, y);
             }
         }
         this.battlePane = new MapBattleDraw(this.drawGrid);
@@ -382,7 +384,8 @@ class MapTimeBattleGUI {
 
         private void handleMovement(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }
@@ -455,7 +458,8 @@ class MapTimeBattleGUI {
 
         private void handleArrows(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }

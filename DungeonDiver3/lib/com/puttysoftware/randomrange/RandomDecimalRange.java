@@ -11,22 +11,22 @@ public class RandomDecimalRange {
     }
 
     // Methods
-    public static void setMinimum(double newMin) {
-        minimum = newMin;
+    public static void setMinimum(final double newMin) {
+        RandomDecimalRange.minimum = newMin;
     }
 
-    public static void setMaximum(double newMax) {
-        maximum = newMax;
+    public static void setMaximum(final double newMax) {
+        RandomDecimalRange.maximum = newMax;
     }
 
     public static float generateFloat() {
-        return (float) generateDouble();
+        return (float) RandomDecimalRange.generateDouble();
     }
 
     public static double generateDouble() {
-        return Math.abs((RandomnessSource.nextDouble())
-                % (maximum - minimum + 1))
-                + minimum;
+        return Math.abs(RandomnessSource.nextDouble()
+                % (RandomDecimalRange.maximum - RandomDecimalRange.minimum + 1))
+                + RandomDecimalRange.minimum;
     }
 
     public static double generateRawDouble() {

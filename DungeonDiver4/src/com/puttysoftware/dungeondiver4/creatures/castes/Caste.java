@@ -24,7 +24,7 @@ public class Caste {
         return this.casteID;
     }
 
-    static String casteIDtoName(int casteID) {
+    static String casteIDtoName(final int casteID) {
         return CasteConstants.CASTE_NAMES[casteID];
     }
 }

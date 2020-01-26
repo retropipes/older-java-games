@@ -89,8 +89,8 @@ public class LevelPreferencesManager {
         final World m = Worldz.getApplication().getWorldManager().getWorld();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.poisonPowerChoices.setSelectedIndex(m.getPoisonPower());
     }
 

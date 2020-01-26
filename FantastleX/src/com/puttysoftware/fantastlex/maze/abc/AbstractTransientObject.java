@@ -16,7 +16,8 @@ public abstract class AbstractTransientObject extends AbstractMazeObject {
     private int dir;
 
     // Constructors
-    protected AbstractTransientObject(final String newName, final int arrowColor) {
+    protected AbstractTransientObject(final String newName,
+            final int arrowColor) {
         super(true, false);
         this.name = newName;
         this.dir = DirectionConstants.DIRECTION_NONE;
@@ -25,8 +26,8 @@ public abstract class AbstractTransientObject extends AbstractMazeObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 

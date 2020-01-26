@@ -35,11 +35,11 @@ public final class PlayerLocationManager {
     public int getActivePlayerNumber() {
         return this.playerInstance;
     }
-    
+
     public void setActivePlayerNumber(final int value) {
         this.playerInstance = value;
     }
-    
+
     public int getPlayerLocationX() {
         return this.playerData.getCell(1, this.playerInstance);
     }

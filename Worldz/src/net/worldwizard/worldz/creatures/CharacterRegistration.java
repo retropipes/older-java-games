@@ -65,11 +65,13 @@ public class CharacterRegistration {
                 // Verify that character file exists
                 if (new File(CharacterRegistration.getBasePath()
                         + File.separator + "Characters" + File.separator + res
-                        + Extension.getCharacterExtensionWithPeriod()).exists()) {
+                        + Extension.getCharacterExtensionWithPeriod())
+                                .exists()) {
                     // Register it
                     if (CharacterRegistration.ANY_FOUND
                             && characterList != null) {
-                        final String[] newCharacterList = new String[characterList.length + 1];
+                        final String[] newCharacterList = new String[characterList.length
+                                + 1];
                         for (int x = 0; x < newCharacterList.length; x++) {
                             if (x < characterList.length) {
                                 newCharacterList[x] = characterList[x];
@@ -84,10 +86,12 @@ public class CharacterRegistration {
                                 .writeCharacterRegistry(new String[] { res });
                     }
                 } else {
-                    Messager.showDialog("The character to register is not a valid character.");
+                    Messager.showDialog(
+                            "The character to register is not a valid character.");
                 }
             } else {
-                Messager.showDialog("The character to register has been registered already.");
+                Messager.showDialog(
+                        "The character to register has been registered already.");
             }
         }
     }
@@ -109,7 +113,8 @@ public class CharacterRegistration {
             if (!alreadyRegistered) {
                 // Register it
                 if (CharacterRegistration.ANY_FOUND && characterList != null) {
-                    final String[] newCharacterList = new String[characterList.length + 1];
+                    final String[] newCharacterList = new String[characterList.length
+                            + 1];
                     for (int x = 0; x < newCharacterList.length; x++) {
                         if (x < characterList.length) {
                             newCharacterList[x] = characterList[x];
@@ -152,7 +157,8 @@ public class CharacterRegistration {
                 // Unregister it
                 if (characterList.length > 1) {
                     characterList[index] = null;
-                    final String[] newCharacterList = new String[characterList.length - 1];
+                    final String[] newCharacterList = new String[characterList.length
+                            - 1];
                     int offset = 0;
                     for (int x = 0; x < newCharacterList.length; x++) {
                         if (characterList[x + offset] != null) {
@@ -175,10 +181,10 @@ public class CharacterRegistration {
         // Load character registry file
         final Vector<String> registeredNames = new Vector<>();
         ResourceStreamReader rsr = null;
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "Characters" + File.separator
-                + "CharacterRegistry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "Characters" + File.separator
+                        + "CharacterRegistry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -202,7 +208,8 @@ public class CharacterRegistration {
         return registeredNames;
     }
 
-    private static void writeCharacterRegistry(final String[] newCharacterList) {
+    private static void writeCharacterRegistry(
+            final String[] newCharacterList) {
         final String basePath = CharacterRegistration.getBasePath();
         // Check if registry is writable
         final File regFile = new File(basePath + File.separator + "Characters"

@@ -55,7 +55,7 @@ public class MazePreferencesManager {
     }
 
     void setPrefs() {
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
         m.setStartLevel(this.startLevelChoices.getSelectedIndex());
         m.setMazeTitle(this.mazeTitle.getText());
         m.setMazeStartMessage(this.mazeStartMessage.getText());
@@ -63,12 +63,12 @@ public class MazePreferencesManager {
     }
 
     private void loadPrefs() {
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
-        String[] startLevelChoiceArray = new String[m.getLevels()];
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final String[] startLevelChoiceArray = new String[m.getLevels()];
         for (int x = 0; x < m.getLevels(); x++) {
             startLevelChoiceArray[x] = Integer.toString(x + 1);
         }
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
+        final DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
                 startLevelChoiceArray);
         this.startLevelChoices.setModel(model);
         this.startLevelChoices.setSelectedIndex(m.getStartLevel());
@@ -78,17 +78,17 @@ public class MazePreferencesManager {
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.prefFrame = new JFrame("Maze Preferences");
         final Image iconlogo = MazeRunnerII.getApplication().getIconLogo();
         this.prefFrame.setIconImage(iconlogo);
-        Container mainPrefPane = new Container();
-        Container contentPane = new Container();
-        Container buttonPane = new Container();
-        JButton prefsOK = new JButton("OK");
+        final Container mainPrefPane = new Container();
+        final Container contentPane = new Container();
+        final Container buttonPane = new Container();
+        final JButton prefsOK = new JButton("OK");
         prefsOK.setDefaultCapable(true);
         this.prefFrame.getRootPane().setDefaultButton(prefsOK);
-        JButton prefsCancel = new JButton("Cancel");
+        final JButton prefsCancel = new JButton("Cancel");
         prefsCancel.setDefaultCapable(false);
         this.startLevelChoices = new JComboBox<>();
         this.mazeTitle = new JTextField("");
@@ -128,7 +128,7 @@ public class MazePreferencesManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                MazePreferencesManager mpm = MazePreferencesManager.this;
+                final MazePreferencesManager mpm = MazePreferencesManager.this;
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("OK")) {
                     mpm.setPrefs();
@@ -136,45 +136,45 @@ public class MazePreferencesManager {
                 } else if (cmd.equals("Cancel")) {
                     mpm.hidePrefs();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         // handle window
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            MazePreferencesManager pm = MazePreferencesManager.this;
+        public void windowClosing(final WindowEvent e) {
+            final MazePreferencesManager pm = MazePreferencesManager.this;
             pm.hidePrefs();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

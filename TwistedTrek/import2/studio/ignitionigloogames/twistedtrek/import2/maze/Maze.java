@@ -41,8 +41,8 @@ public class Maze {
 	this.savedStart = new int[4];
 	final long random = new RandomLongRange(0, Long.MAX_VALUE).generate();
 	final String randomID = Long.toHexString(random);
-	this.basePath = System.getProperty("java.io.tmpdir") + File.separator + "Import2" + File.separator
-		+ randomID + ".maze";
+	this.basePath = System.getProperty("java.io.tmpdir") + File.separator + "Import2" + File.separator + randomID
+		+ ".maze";
 	final File base = new File(this.basePath);
 	final boolean success = base.mkdirs();
 	if (!success) {

@@ -31,7 +31,7 @@ public class PoisonBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Poison objects that react to poison
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .radialScanPoisonObjects(x, y, z, AbstractBomb.EFFECT_RADIUS);

@@ -37,8 +37,8 @@ public abstract class AbstractPort extends AbstractInfiniteLock {
         } else {
             fill = "a";
         }
-        FantastleX.getApplication().showMessage(
-                "You need " + fill + " " + this.letter + " plug");
+        FantastleX.getApplication()
+                .showMessage("You need " + fill + " " + this.letter + " plug");
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 

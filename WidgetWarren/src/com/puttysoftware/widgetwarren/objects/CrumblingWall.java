@@ -20,8 +20,8 @@ public class CrumblingWall extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         this.moveFailedAction(true, locX, locY, inv);
         return false;
     }
@@ -32,8 +32,8 @@ public class CrumblingWall extends GenericWall {
         // Destroy the wall
         final int pz = WidgetWarren.getApplication().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        WidgetWarren.getApplication().getGameManager()
-                .morph(new Empty(), dirX, dirY, pz);
+        WidgetWarren.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, pz);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CRACK);
     }

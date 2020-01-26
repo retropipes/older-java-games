@@ -47,9 +47,8 @@ public class ObjectImageManager {
                 }
             }
             final String normalName = ImageTransformer.normalizeName(name);
-            final URL url = ObjectImageManager.LOAD_CLASS
-                    .getResource(ObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                    ObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

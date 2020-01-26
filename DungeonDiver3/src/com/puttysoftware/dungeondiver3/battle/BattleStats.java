@@ -40,7 +40,7 @@ class BattleStats {
         return this.statsPane;
     }
 
-    public void updateStats(BattleCharacter bc) {
+    public void updateStats(final BattleCharacter bc) {
         this.nameLabel.setText(bc.getName());
         this.teamLabel.setText(bc.getTeamString());
         this.hpLabel.setText(bc.getTemplate().getHPString());
@@ -76,22 +76,22 @@ class BattleStats {
     }
 
     private void updateIcons() {
-        BufferedImageIcon nameImage = ImageManager.getStatImage("name");
+        final BufferedImageIcon nameImage = ImageManager.getStatImage("name");
         this.nameLabel.setIcon(nameImage);
-        BufferedImageIcon teamImage = ImageManager.getStatImage("team");
+        final BufferedImageIcon teamImage = ImageManager.getStatImage("team");
         this.teamLabel.setIcon(teamImage);
-        BufferedImageIcon hpImage = ImageManager.getStatImage("health");
+        final BufferedImageIcon hpImage = ImageManager.getStatImage("health");
         this.hpLabel.setIcon(hpImage);
-        BufferedImageIcon mpImage = ImageManager.getStatImage("magic");
+        final BufferedImageIcon mpImage = ImageManager.getStatImage("magic");
         this.mpLabel.setIcon(mpImage);
-        BufferedImageIcon attImage = ImageManager.getStatImage("attack");
+        final BufferedImageIcon attImage = ImageManager.getStatImage("attack");
         this.attLabel.setIcon(attImage);
-        BufferedImageIcon defImage = ImageManager.getStatImage("defense");
+        final BufferedImageIcon defImage = ImageManager.getStatImage("defense");
         this.defLabel.setIcon(defImage);
-        BufferedImageIcon apImage = ImageManager.getStatImage("actions");
+        final BufferedImageIcon apImage = ImageManager.getStatImage("actions");
         this.apLabel.setIcon(apImage);
         this.attLeftLabel.setIcon(attImage);
-        BufferedImageIcon spImage = ImageManager.getStatImage("spells");
+        final BufferedImageIcon spImage = ImageManager.getStatImage("spells");
         this.splLabel.setIcon(spImage);
     }
 }

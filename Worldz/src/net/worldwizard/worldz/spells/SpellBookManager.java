@@ -88,7 +88,8 @@ public class SpellBookManager {
                 final String snd = cast.getSound();
                 if (snd != null) {
                     if (Worldz.getApplication().getPrefsManager()
-                            .getSoundEnabled(PreferencesManager.SOUNDS_BATTLE)) {
+                            .getSoundEnabled(
+                                    PreferencesManager.SOUNDS_BATTLE)) {
                         SoundManager.playSound(snd);
                     }
                 }
@@ -123,11 +124,11 @@ public class SpellBookManager {
         case 'P':
             // One Friend
             if (useAI) {
-                return new Creature[] { PartyManager.getParty()
-                        .pickOnePartyMemberRandomly() };
+                return new Creature[] {
+                        PartyManager.getParty().pickOnePartyMemberRandomly() };
             } else {
-                return new Creature[] { PartyManager.getParty()
-                        .pickOnePartyMember() };
+                return new Creature[] {
+                        PartyManager.getParty().pickOnePartyMember() };
             }
         case 'E':
             // One Enemy
@@ -135,8 +136,8 @@ public class SpellBookManager {
                 return new Creature[] { Worldz.getApplication().getBattle()
                         .pickOneEnemyRandomly() };
             } else {
-                return new Creature[] { Worldz.getApplication().getBattle()
-                        .pickOneEnemy() };
+                return new Creature[] {
+                        Worldz.getApplication().getBattle().pickOneEnemy() };
             }
         case 'F':
             // All Friends

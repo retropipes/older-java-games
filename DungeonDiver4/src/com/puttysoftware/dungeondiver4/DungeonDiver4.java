@@ -78,13 +78,11 @@ public class DungeonDiver4 {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    DungeonDiver4.application.getDungeonManager(),
-                    DungeonDiver4.application
-                            .getDungeonManager()
-                            .getClass()
+            Platform.hookFileOpen(DungeonDiver4.application.getDungeonManager(),
+                    DungeonDiver4.application.getDungeonManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(DungeonDiver4.application.getGUIManager(),
@@ -94,7 +92,7 @@ public class DungeonDiver4 {
             CommonDialogs.setDefaultTitle(DungeonDiver4.PROGRAM_NAME);
             CommonDialogs.setIcon(DungeonDiver4.application.getMicroLogo());
             Platform.hookDockIcon(LogoManager.getLogo());
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             DungeonDiver4.getErrorLogger().logError(t);
         }
     }

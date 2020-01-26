@@ -184,7 +184,7 @@ public class VorbisAudioFileReader extends TAudioFileReader {
      * @throws java.io.IOException
      */
     protected AudioFileFormat getAudioFileFormat(final InputStream bitStream,
-            final int mediaLength, int totalms1)
+            final int mediaLength, final int totalms1)
             throws UnsupportedAudioFileException, IOException {
         int totalms = totalms1;
         final Map<String, Object> aff_properties = new HashMap<>();

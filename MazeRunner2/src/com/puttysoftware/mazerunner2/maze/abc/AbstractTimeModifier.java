@@ -12,7 +12,7 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractTimeModifier extends AbstractMazeObject {
     // Constructors
-    protected AbstractTimeModifier(int attr, int attrColor) {
+    protected AbstractTimeModifier(final int attr, final int attrColor) {
         super(false, false);
         this.setAttributeID(attr);
         this.setAttributeTemplateColor(attrColor);
@@ -38,12 +38,12 @@ public abstract class AbstractTimeModifier extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

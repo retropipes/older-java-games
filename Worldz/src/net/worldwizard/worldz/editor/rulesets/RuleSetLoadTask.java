@@ -38,13 +38,12 @@ public class RuleSetLoadTask extends Thread {
                 Messager.showTitledDialog(sg + " file loaded.",
                         "Rule Set Picker");
             } catch (final FileNotFoundException fnfe) {
-                Messager.showDialog("Reading the "
-                        + sg.toLowerCase()
+                Messager.showDialog("Reading the " + sg.toLowerCase()
                         + " file failed, probably due to illegal characters in the file name.");
                 app.getWorldManager().handleDeferredSuccess(false);
             } catch (final IOException ie) {
-                throw new InvalidRuleSetException("Error reading "
-                        + sg.toLowerCase() + " file.");
+                throw new InvalidRuleSetException(
+                        "Error reading " + sg.toLowerCase() + " file.");
             }
         } catch (final InvalidRuleSetException irse) {
             Messager.showDialog(irse.getMessage());

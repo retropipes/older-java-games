@@ -31,62 +31,62 @@ import com.puttysoftware.lasertank.utilities.CleanupTask;
 
 public class GUIManager implements QuitHandler {
     private class CloseHandler implements WindowListener {
-	public CloseHandler() {
-	    // Do nothing
-	}
+        public CloseHandler() {
+            // Do nothing
+        }
 
-	@Override
-	public void windowActivated(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowActivated(final WindowEvent arg0) {
+            // Do nothing
+        }
 
-	@Override
-	public void windowClosed(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowClosed(final WindowEvent arg0) {
+            // Do nothing
+        }
 
-	@Override
-	public void windowClosing(final WindowEvent arg0) {
-	    if (GUIManager.this.quitHandler()) {
-		System.exit(0);
-	    }
-	}
+        @Override
+        public void windowClosing(final WindowEvent arg0) {
+            if (GUIManager.this.quitHandler()) {
+                System.exit(0);
+            }
+        }
 
-	@Override
-	public void windowDeactivated(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowDeactivated(final WindowEvent arg0) {
+            // Do nothing
+        }
 
-	@Override
-	public void windowDeiconified(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowDeiconified(final WindowEvent arg0) {
+            // Do nothing
+        }
 
-	@Override
-	public void windowIconified(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowIconified(final WindowEvent arg0) {
+            // Do nothing
+        }
 
-	@Override
-	public void windowOpened(final WindowEvent arg0) {
-	    // Do nothing
-	}
+        @Override
+        public void windowOpened(final WindowEvent arg0) {
+            // Do nothing
+        }
     }
 
     private class FocusHandler implements WindowFocusListener {
-	public FocusHandler() {
-	    // Do nothing
-	}
+        public FocusHandler() {
+            // Do nothing
+        }
 
-	@Override
-	public void windowGainedFocus(final WindowEvent e) {
-	    LaserTank.getApplication().getMenuManager().updateMenuItemState();
-	}
+        @Override
+        public void windowGainedFocus(final WindowEvent e) {
+            LaserTank.getApplication().getMenuManager().updateMenuItemState();
+        }
 
-	@Override
-	public void windowLostFocus(final WindowEvent e) {
-	    // Do nothing
-	}
+        @Override
+        public void windowLostFocus(final WindowEvent e) {
+            // Do nothing
+        }
     }
 
     // Fields
@@ -97,74 +97,77 @@ public class GUIManager implements QuitHandler {
 
     // Constructors
     public GUIManager() {
-	this.setUpGUI();
+        this.setUpGUI();
     }
 
     // Methods
     public boolean quitHandler() {
-	final ArenaManager mm = LaserTank.getApplication().getArenaManager();
-	boolean saved = true;
-	int status = JOptionPane.DEFAULT_OPTION;
-	if (mm.getDirty()) {
-	    status = ArenaManager.showSaveDialog();
-	    if (status == JOptionPane.YES_OPTION) {
-		saved = mm.saveArena(mm.isArenaProtected());
-	    } else if (status == JOptionPane.CANCEL_OPTION) {
-		saved = false;
-	    } else {
-		mm.setDirty(false);
-	    }
-	}
-	if (saved) {
-	    PreferencesManager.writePrefs();
-	    // Run cleanup task
-	    CleanupTask.cleanUp();
-	}
-	return saved;
+        final ArenaManager mm = LaserTank.getApplication().getArenaManager();
+        boolean saved = true;
+        int status = JOptionPane.DEFAULT_OPTION;
+        if (mm.getDirty()) {
+            status = ArenaManager.showSaveDialog();
+            if (status == JOptionPane.YES_OPTION) {
+                saved = mm.saveArena(mm.isArenaProtected());
+            } else if (status == JOptionPane.CANCEL_OPTION) {
+                saved = false;
+            } else {
+                mm.setDirty(false);
+            }
+        }
+        if (saved) {
+            PreferencesManager.writePrefs();
+            // Run cleanup task
+            CleanupTask.cleanUp();
+        }
+        return saved;
     }
 
     private void setUpGUI() {
-	this.guiPane.setLayout(new GridLayout(1, 1));
-	this.logoLabel = new JLabel(StringLoader.loadCommon(CommonString.EMPTY), null, SwingConstants.CENTER);
-	this.logoLabel.setLabelFor(null);
-	this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
-	final BufferedImageIcon logo = LogoManager.getOpening();
-	this.logoLabel.setIcon(logo);
-	this.guiPane.add(this.logoLabel);
+        this.guiPane.setLayout(new GridLayout(1, 1));
+        this.logoLabel = new JLabel(StringLoader.loadCommon(CommonString.EMPTY),
+                null, SwingConstants.CENTER);
+        this.logoLabel.setLabelFor(null);
+        this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
+        final BufferedImageIcon logo = LogoManager.getOpening();
+        this.logoLabel.setIcon(logo);
+        this.guiPane.add(this.logoLabel);
     }
 
     public void showGUI() {
-	final Application app = LaserTank.getApplication();
-	app.setInGUI(this.guiPane);
+        final Application app = LaserTank.getApplication();
+        app.setInGUI(this.guiPane);
     }
 
     void updateLogo() {
-	final Application app = LaserTank.getApplication();
-	final BufferedImageIcon logo = LogoManager.getOpening();
-	this.logoLabel.setIcon(logo);
-	app.pack();
+        final Application app = LaserTank.getApplication();
+        final BufferedImageIcon logo = LogoManager.getOpening();
+        this.logoLabel.setIcon(logo);
+        app.pack();
     }
 
     @Override
-    public void handleQuitRequestWith(QuitEvent e, QuitResponse response) {
-	boolean okToQuit = this.quitHandler();
-	if (okToQuit) {
-	    response.performQuit();
-	} else {
-	    response.cancelQuit();
-	}
+    public void handleQuitRequestWith(final QuitEvent e,
+            final QuitResponse response) {
+        final boolean okToQuit = this.quitHandler();
+        if (okToQuit) {
+            response.performQuit();
+        } else {
+            response.cancelQuit();
+        }
     }
 
     public void setUp() {
-	final Application app = LaserTank.getApplication();
-	app.setTitle(GlobalLoader.loadUntranslated(UntranslatedString.PROGRAM_NAME));
-	app.addWindowListener(this.cHandler);
-	app.addWindowFocusListener(this.fHandler);
+        final Application app = LaserTank.getApplication();
+        app.setTitle(
+                GlobalLoader.loadUntranslated(UntranslatedString.PROGRAM_NAME));
+        app.addWindowListener(this.cHandler);
+        app.addWindowFocusListener(this.fHandler);
     }
 
     public void tearDown() {
-	final Application app = LaserTank.getApplication();
-	app.removeWindowListener(this.cHandler);
-	app.removeWindowFocusListener(this.fHandler);
+        final Application app = LaserTank.getApplication();
+        app.removeWindowListener(this.cHandler);
+        app.removeWindowFocusListener(this.fHandler);
     }
 }

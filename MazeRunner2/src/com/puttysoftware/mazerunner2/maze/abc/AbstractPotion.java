@@ -27,13 +27,14 @@ public abstract class AbstractPotion extends AbstractMazeObject {
     private static final long SCORE_CONSUME = 50L;
 
     // Constructors
-    protected AbstractPotion(int stat, boolean usePercent) {
+    protected AbstractPotion(final int stat, final boolean usePercent) {
         super(false, false);
         this.statAffected = stat;
         this.effectValueIsPercentage = usePercent;
     }
 
-    protected AbstractPotion(int stat, boolean usePercent, int min, int max) {
+    protected AbstractPotion(final int stat, final boolean usePercent,
+            final int min, final int max) {
         super(false, false);
         this.statAffected = stat;
         this.effectValueIsPercentage = usePercent;
@@ -42,7 +43,7 @@ public abstract class AbstractPotion extends AbstractMazeObject {
 
     @Override
     public AbstractPotion clone() {
-        AbstractPotion copy = (AbstractPotion) super.clone();
+        final AbstractPotion copy = (AbstractPotion) super.clone();
         copy.statAffected = this.statAffected;
         copy.effectValue = this.effectValue;
         copy.effectValueIsPercentage = this.effectValueIsPercentage;
@@ -65,9 +66,9 @@ public abstract class AbstractPotion extends AbstractMazeObject {
     }
 
     @Override
-    public final void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
-        PartyMember m = PartyManager.getParty().getLeader();
+    public final void postMoveAction(final boolean ie, final int dirX,
+            final int dirY, final MazeObjectInventory inv) {
+        final PartyMember m = PartyManager.getParty().getLeader();
         if (this.effect != null) {
             this.effectValue = this.effect.generate();
         } else {
@@ -113,10 +114,11 @@ public abstract class AbstractPotion extends AbstractMazeObject {
     }
 
     @Override
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
-        MazeRunnerII.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ);
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
+        MazeRunnerII.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ);
         SoundManager.playSound(SoundConstants.SOUND_SHATTER);
         MazeRunnerII.getApplication().getGameManager()
                 .addToScore(AbstractPotion.SCORE_SMASH);
@@ -132,12 +134,12 @@ public abstract class AbstractPotion extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

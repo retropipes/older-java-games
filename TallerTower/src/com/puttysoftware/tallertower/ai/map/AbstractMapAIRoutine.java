@@ -63,12 +63,12 @@ public abstract class AbstractMapAIRoutine {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((this.item == null) ? 0 : this.item.hashCode());
+                + (this.item == null ? 0 : this.item.hashCode());
         result = prime * result + (this.lastResult ? 1231 : 1237);
         result = prime * result + this.moveX;
         result = prime * result + this.moveY;
         return prime * result
-                + ((this.spell == null) ? 0 : this.spell.hashCode());
+                + (this.spell == null ? 0 : this.spell.hashCode());
     }
 
     @Override

@@ -17,7 +17,7 @@ public final class DirectoryUtilities {
         // Do nothing
     }
 
-    public static final void zipDirectory(final File directory, final File zip)
+    public static void zipDirectory(final File directory, final File zip)
             throws IOException {
         try (final ZipOutputStream zos = new ZipOutputStream(
                 new FileOutputStream(zip))) {
@@ -25,7 +25,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    private static final void zip(final File directory, final File base,
+    private static void zip(final File directory, final File base,
             final ZipOutputStream zos) throws IOException {
         final File[] files = directory.listFiles();
         final byte[] buffer = new byte[8192];
@@ -46,7 +46,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static final void unzipDirectory(final File zip, final File extractTo)
+    public static void unzipDirectory(final File zip, final File extractTo)
             throws IOException {
         try (final ZipFile archive = new ZipFile(zip)) {
             final Enumeration<? extends ZipEntry> e = archive.entries();
@@ -73,8 +73,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static final void removeDirectory(final File location)
-            throws IOException {
+    public static void removeDirectory(final File location) throws IOException {
         boolean success;
         if (location.isDirectory()) {
             final String[] children = location.list();
@@ -93,7 +92,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static final void copyDirectory(final File sourceLocation,
+    public static void copyDirectory(final File sourceLocation,
             final File targetLocation) throws IOException {
         if (sourceLocation.isDirectory()) {
             if (!targetLocation.exists()) {
@@ -104,8 +103,9 @@ public final class DirectoryUtilities {
             }
             final String[] children = sourceLocation.list();
             for (final String element : children) {
-                DirectoryUtilities.copyDirectory(new File(sourceLocation,
-                        element), new File(targetLocation, element));
+                DirectoryUtilities.copyDirectory(
+                        new File(sourceLocation, element),
+                        new File(targetLocation, element));
             }
         } else {
             try (final InputStream in = new FileInputStream(sourceLocation);
@@ -121,7 +121,7 @@ public final class DirectoryUtilities {
         }
     }
 
-    public static final void moveFile(final File sourceLocation,
+    public static void moveFile(final File sourceLocation,
             final File targetLocation) throws IOException {
         try (final InputStream in = new FileInputStream(sourceLocation);
                 final OutputStream out = new FileOutputStream(targetLocation)) {

@@ -36,14 +36,12 @@ public class ConfusionTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MasterMaze.getApplication().showMessage("You are confused!");
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_CONFUSED,
-                        ConfusionTrap.EFFECT_DURATION);
+        MasterMaze.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_CONFUSED,
+                ConfusionTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_CONFUSED);
     }
 

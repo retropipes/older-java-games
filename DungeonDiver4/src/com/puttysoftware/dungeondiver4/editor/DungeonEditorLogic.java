@@ -49,11 +49,11 @@ import com.puttysoftware.dungeondiver4.prefs.PreferencesManager;
 
 public class DungeonEditorLogic {
     // Fields
-    private DungeonEditorGUI meg;
+    private final DungeonEditorGUI meg;
     private AbstractDungeonObject savedDungeonObject;
-    private AbstractDungeonObject[] groundObjects;
-    private AbstractDungeonObject[] objectObjects;
-    private AbstractDungeonObject[] containableObjects;
+    private final AbstractDungeonObject[] groundObjects;
+    private final AbstractDungeonObject[] objectObjects;
+    private final AbstractDungeonObject[] containableObjects;
     private int TELEPORT_TYPE;
     private AbstractConditionalTeleport instanceBeingEdited;
     private int conditionalEditFlag;
@@ -94,7 +94,7 @@ public class DungeonEditorLogic {
         this.meg = new DungeonEditorGUI();
         this.savedDungeonObject = new Empty();
         this.engine = new UndoRedoEngine();
-        DungeonObjectList objectList = DungeonDiver4.getApplication()
+        final DungeonObjectList objectList = DungeonDiver4.getApplication()
                 .getObjects();
         this.groundObjects = objectList.getAllGroundLayerObjects();
         this.objectObjects = objectList.getAllObjectLayerObjects();
@@ -105,11 +105,11 @@ public class DungeonEditorLogic {
         this.nWayDestID = 0;
     }
 
-    public void setNWayDestCount(int value) {
+    public void setNWayDestCount(final int value) {
         this.nWayDestCount = value;
     }
 
-    public void setNWayEdited(NWayTeleport nwt) {
+    public void setNWayEdited(final NWayTeleport nwt) {
         this.nWayEdited = nwt;
     }
 
@@ -168,18 +168,16 @@ public class DungeonEditorLogic {
     }
 
     public void editObject(final int x, final int y, final boolean nested) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int gridX, gridY;
         AbstractDungeonObject mo;
         if (!nested) {
             this.currentObjectIndex = this.meg.getObjectPicked();
-            int[] grid = this.meg.computeGridValues(x, y);
+            final int[] grid = this.meg.computeGridValues(x, y);
             gridX = grid[0];
             gridY = grid[1];
             try {
-                this.savedDungeonObject = app
-                        .getDungeonManager()
-                        .getDungeon()
+                this.savedDungeonObject = app.getDungeonManager().getDungeon()
                         .getCell(gridX, gridY,
                                 this.getLocationManager().getEditorLocationZ(),
                                 this.getLocationManager().getEditorLocationE());
@@ -187,7 +185,8 @@ public class DungeonEditorLogic {
                 return;
             }
             AbstractDungeonObject[] objectChoices = null;
-            if (this.getLocationManager().getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
+            if (this.getLocationManager()
+                    .getEditorLocationE() == DungeonConstants.LAYER_GROUND) {
                 objectChoices = this.groundObjects;
             } else {
                 objectChoices = this.objectObjects;
@@ -198,28 +197,26 @@ public class DungeonEditorLogic {
             gridY = y;
             mo = app.getObjects().getAllObjects()[this.currentObjectIndex];
         }
-        AbstractDungeonObject instance = app.getObjects().getNewInstanceByName(
-                mo.getName());
+        final AbstractDungeonObject instance = app.getObjects()
+                .getNewInstanceByName(mo.getName());
         this.getLocationManager().setEditorLocationX(gridX);
         this.getLocationManager().setEditorLocationY(gridY);
         mo.editorPlaceHook();
         // Special handling for N-Way Teleports
         if (instance instanceof NWayTeleport) {
-            NWayTeleport nwt = (NWayTeleport) instance;
+            final NWayTeleport nwt = (NWayTeleport) instance;
             nwt.setDestinationCount(this.nWayDestCount);
         }
         try {
-            this.checkTwoWayTeleportPair(this.getLocationManager()
-                    .getEditorLocationZ());
-            this.updateUndoHistory(this.savedDungeonObject, gridX, gridY, this
-                    .getLocationManager().getEditorLocationZ(), this
-                    .getLocationManager().getEditorLocationW(), this
-                    .getLocationManager().getEditorLocationE());
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(instance, gridX, gridY,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
+            this.checkTwoWayTeleportPair(
+                    this.getLocationManager().getEditorLocationZ());
+            this.updateUndoHistory(this.savedDungeonObject, gridX, gridY,
+                    this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationW(),
+                    this.getLocationManager().getEditorLocationE());
+            app.getDungeonManager().getDungeon().setCell(instance, gridX, gridY,
+                    this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
             this.checkStairPair(this.getLocationManager().getEditorLocationZ());
             if (PreferencesManager.getEditorAutoEdge() && !nested) {
                 this.autoGenerateTransitions(instance, gridX, gridY);
@@ -228,11 +225,10 @@ public class DungeonEditorLogic {
             this.checkMenus();
             this.redrawEditor();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(this.savedDungeonObject, gridX, gridY,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
+            app.getDungeonManager().getDungeon().setCell(
+                    this.savedDungeonObject, gridX, gridY,
+                    this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
             this.redrawEditor();
         }
     }
@@ -259,36 +255,34 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj1;
         try {
-            obj1 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX - 1, gridY - 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj1 = app.getDungeonManager().getDungeon().getCell(gridX - 1,
+                    gridY - 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj1 = new EmptyVoid();
         }
         if (!obj1.equals(instance)) {
             for (int z = 0; z < generatedObjects.length; z++) {
                 if (generatedObjects[z] instanceof GeneratedEdge) {
-                    GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                    if ((ge.getSource1().equals(instance.getName()) && ge
-                            .getSource2().equals(obj1.getName()))) {
+                    final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                    if (ge.getSource1().equals(instance.getName())
+                            && ge.getSource2().equals(obj1.getName())) {
                         // Inverted
-                        if (ge.getDirectionName().equals("Southeast Inverted")) {
+                        if (ge.getDirectionName()
+                                .equals("Southeast Inverted")) {
                             this.currentObjectIndex = generatedOffset + z;
                             this.editObject(gridX - 1, gridY - 1, true);
                             break;
                         }
-                    } else if ((ge.getSource1().equals(obj1.getName()) && ge
-                            .getSource2().equals(instance.getName()))) {
+                    } else if (ge.getSource1().equals(obj1.getName())
+                            && ge.getSource2().equals(instance.getName())) {
                         // Normal
                         if (ge.getDirectionName().equals("Southeast")) {
                             this.currentObjectIndex = generatedOffset + z;
@@ -307,38 +301,35 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj2;
         try {
-            obj2 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX, gridY - 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj2 = app.getDungeonManager().getDungeon().getCell(gridX,
+                    gridY - 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj2 = new EmptyVoid();
         }
         if (!obj2.equals(instance)) {
             if (obj2 instanceof GeneratedEdge) {
-                GeneratedEdge ge2 = (GeneratedEdge) obj2;
+                final GeneratedEdge ge2 = (GeneratedEdge) obj2;
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(ge2.getSource2()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(ge2.getSource2())) {
                             // Inverted
                             if (ge.getDirectionName().equals("North")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX, gridY - 1, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(ge2.getSource1()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(ge2.getSource1())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("South")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -351,17 +342,17 @@ public class DungeonEditorLogic {
             } else {
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(obj2.getName()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(obj2.getName())) {
                             // Inverted
                             if (ge.getDirectionName().equals("North")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX, gridY - 1, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(obj2.getName()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(obj2.getName())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("South")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -381,36 +372,34 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj3;
         try {
-            obj3 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX + 1, gridY - 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj3 = app.getDungeonManager().getDungeon().getCell(gridX + 1,
+                    gridY - 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj3 = new EmptyVoid();
         }
         if (!obj3.equals(instance)) {
             for (int z = 0; z < generatedObjects.length; z++) {
                 if (generatedObjects[z] instanceof GeneratedEdge) {
-                    GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                    if ((ge.getSource1().equals(instance.getName()) && ge
-                            .getSource2().equals(obj3.getName()))) {
+                    final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                    if (ge.getSource1().equals(instance.getName())
+                            && ge.getSource2().equals(obj3.getName())) {
                         // Inverted
-                        if (ge.getDirectionName().equals("Southwest Inverted")) {
+                        if (ge.getDirectionName()
+                                .equals("Southwest Inverted")) {
                             this.currentObjectIndex = generatedOffset + z;
                             this.editObject(gridX + 1, gridY - 1, true);
                             break;
                         }
-                    } else if ((ge.getSource1().equals(obj3.getName()) && ge
-                            .getSource2().equals(instance.getName()))) {
+                    } else if (ge.getSource1().equals(obj3.getName())
+                            && ge.getSource2().equals(instance.getName())) {
                         // Normal
                         if (ge.getDirectionName().equals("Southwest")) {
                             this.currentObjectIndex = generatedOffset + z;
@@ -429,38 +418,35 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj4;
         try {
-            obj4 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX - 1, gridY,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj4 = app.getDungeonManager().getDungeon().getCell(gridX - 1,
+                    gridY, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj4 = new EmptyVoid();
         }
         if (!obj4.equals(instance)) {
             if (obj4 instanceof GeneratedEdge) {
-                GeneratedEdge ge4 = (GeneratedEdge) obj4;
+                final GeneratedEdge ge4 = (GeneratedEdge) obj4;
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(ge4.getSource2()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(ge4.getSource2())) {
                             // Inverted
                             if (ge.getDirectionName().equals("West")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX - 1, gridY, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(ge4.getSource1()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(ge4.getSource1())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("East")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -473,17 +459,17 @@ public class DungeonEditorLogic {
             } else {
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(obj4.getName()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(obj4.getName())) {
                             // Inverted
                             if (ge.getDirectionName().equals("West")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX - 1, gridY, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(obj4.getName()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(obj4.getName())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("East")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -503,38 +489,35 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj6;
         try {
-            obj6 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX + 1, gridY,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj6 = app.getDungeonManager().getDungeon().getCell(gridX + 1,
+                    gridY, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj6 = new EmptyVoid();
         }
         if (!obj6.equals(instance)) {
             if (obj6 instanceof GeneratedEdge) {
-                GeneratedEdge ge6 = (GeneratedEdge) obj6;
+                final GeneratedEdge ge6 = (GeneratedEdge) obj6;
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(ge6.getSource2()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(ge6.getSource2())) {
                             // Inverted
                             if (ge.getDirectionName().equals("East")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX + 1, gridY, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(ge6.getSource1()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(ge6.getSource1())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("West")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -547,17 +530,17 @@ public class DungeonEditorLogic {
             } else {
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(obj6.getName()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(obj6.getName())) {
                             // Inverted
                             if (ge.getDirectionName().equals("East")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX + 1, gridY, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(obj6.getName()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(obj6.getName())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("West")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -577,36 +560,34 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj7;
         try {
-            obj7 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX - 1, gridY + 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj7 = app.getDungeonManager().getDungeon().getCell(gridX - 1,
+                    gridY + 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj7 = new EmptyVoid();
         }
         if (!obj7.equals(instance)) {
             for (int z = 0; z < generatedObjects.length; z++) {
                 if (generatedObjects[z] instanceof GeneratedEdge) {
-                    GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                    if ((ge.getSource1().equals(instance.getName()) && ge
-                            .getSource2().equals(obj7.getName()))) {
+                    final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                    if (ge.getSource1().equals(instance.getName())
+                            && ge.getSource2().equals(obj7.getName())) {
                         // Inverted
-                        if (ge.getDirectionName().equals("Northeast Inverted")) {
+                        if (ge.getDirectionName()
+                                .equals("Northeast Inverted")) {
                             this.currentObjectIndex = generatedOffset + z;
                             this.editObject(gridX - 1, gridY + 1, true);
                             break;
                         }
-                    } else if ((ge.getSource1().equals(obj7.getName()) && ge
-                            .getSource2().equals(instance.getName()))) {
+                    } else if (ge.getSource1().equals(obj7.getName())
+                            && ge.getSource2().equals(instance.getName())) {
                         // Normal
                         if (ge.getDirectionName().equals("Northeast")) {
                             this.currentObjectIndex = generatedOffset + z;
@@ -625,38 +606,35 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj8;
         try {
-            obj8 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX, gridY + 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj8 = app.getDungeonManager().getDungeon().getCell(gridX,
+                    gridY + 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj8 = new EmptyVoid();
         }
         if (!obj8.equals(instance)) {
             if (obj8 instanceof GeneratedEdge) {
-                GeneratedEdge ge8 = (GeneratedEdge) obj8;
+                final GeneratedEdge ge8 = (GeneratedEdge) obj8;
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(ge8.getSource2()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(ge8.getSource2())) {
                             // Inverted
                             if (ge.getDirectionName().equals("South")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX, gridY + 1, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(ge8.getSource1()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(ge8.getSource1())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("North")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -669,17 +647,17 @@ public class DungeonEditorLogic {
             } else {
                 for (int z = 0; z < generatedObjects.length; z++) {
                     if (generatedObjects[z] instanceof GeneratedEdge) {
-                        GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                        if ((ge.getSource1().equals(instance.getName()) && ge
-                                .getSource2().equals(obj8.getName()))) {
+                        final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                        if (ge.getSource1().equals(instance.getName())
+                                && ge.getSource2().equals(obj8.getName())) {
                             // Inverted
                             if (ge.getDirectionName().equals("South")) {
                                 this.currentObjectIndex = generatedOffset + z;
                                 this.editObject(gridX, gridY + 1, true);
                                 break;
                             }
-                        } else if ((ge.getSource1().equals(obj8.getName()) && ge
-                                .getSource2().equals(instance.getName()))) {
+                        } else if (ge.getSource1().equals(obj8.getName())
+                                && ge.getSource2().equals(instance.getName())) {
                             // Normal
                             if (ge.getDirectionName().equals("North")) {
                                 this.currentObjectIndex = generatedOffset + z;
@@ -699,36 +677,34 @@ public class DungeonEditorLogic {
         if (!instance.isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
             return;
         }
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject[] generatedObjects = app.getObjects()
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject[] generatedObjects = app.getObjects()
                 .getAllGeneratedTypedObjects();
-        int generatedOffset = app.getObjects().getAllObjects().length
+        final int generatedOffset = app.getObjects().getAllObjects().length
                 - generatedObjects.length;
         AbstractDungeonObject obj9;
         try {
-            obj9 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX + 1, gridY + 1,
-                            this.getLocationManager().getEditorLocationZ(),
-                            this.getLocationManager().getEditorLocationE());
-        } catch (ArrayIndexOutOfBoundsException aioob2) {
+            obj9 = app.getDungeonManager().getDungeon().getCell(gridX + 1,
+                    gridY + 1, this.getLocationManager().getEditorLocationZ(),
+                    this.getLocationManager().getEditorLocationE());
+        } catch (final ArrayIndexOutOfBoundsException aioob2) {
             obj9 = new EmptyVoid();
         }
         if (!obj9.equals(instance)) {
             for (int z = 0; z < generatedObjects.length; z++) {
                 if (generatedObjects[z] instanceof GeneratedEdge) {
-                    GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
-                    if ((ge.getSource1().equals(instance.getName()) && ge
-                            .getSource2().equals(obj9.getName()))) {
+                    final GeneratedEdge ge = (GeneratedEdge) generatedObjects[z];
+                    if (ge.getSource1().equals(instance.getName())
+                            && ge.getSource2().equals(obj9.getName())) {
                         // Inverted
-                        if (ge.getDirectionName().equals("Northwest Inverted")) {
+                        if (ge.getDirectionName()
+                                .equals("Northwest Inverted")) {
                             this.currentObjectIndex = generatedOffset + z;
                             this.editObject(gridX + 1, gridY + 1, true);
                             break;
                         }
-                    } else if ((ge.getSource1().equals(obj9.getName()) && ge
-                            .getSource2().equals(instance.getName()))) {
+                    } else if (ge.getSource1().equals(obj9.getName())
+                            && ge.getSource2().equals(instance.getName())) {
                         // Normal
                         if (ge.getDirectionName().equals("Northwest")) {
                             this.currentObjectIndex = generatedOffset + z;
@@ -742,44 +718,36 @@ public class DungeonEditorLogic {
     }
 
     public void editObjectProperties(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        int[] grid = this.meg.computeGridValues(x, y);
-        int gridX = grid[0];
-        int gridY = grid[1];
+        final Application app = DungeonDiver4.getApplication();
+        final int[] grid = this.meg.computeGridValues(x, y);
+        final int gridX = grid[0];
+        final int gridY = grid[1];
         try {
-            AbstractDungeonObject mo = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(gridX, gridY,
+            final AbstractDungeonObject mo = app.getDungeonManager()
+                    .getDungeon().getCell(gridX, gridY,
                             this.getLocationManager().getEditorLocationZ(),
                             this.getLocationManager().getEditorLocationE());
             this.getLocationManager().setEditorLocationX(gridX);
             this.getLocationManager().setEditorLocationY(gridY);
             if (!mo.defersSetProperties()) {
-                AbstractDungeonObject mo2 = mo.editorPropertiesHook();
+                final AbstractDungeonObject mo2 = mo.editorPropertiesHook();
                 if (mo2 == null) {
-                    DungeonDiver4.getApplication().showMessage(
-                            "This object has no properties");
+                    DungeonDiver4.getApplication()
+                            .showMessage("This object has no properties");
                 } else {
-                    this.checkTwoWayTeleportPair(this.getLocationManager()
-                            .getEditorLocationZ());
+                    this.checkTwoWayTeleportPair(
+                            this.getLocationManager().getEditorLocationZ());
                     this.updateUndoHistory(this.savedDungeonObject, gridX,
-                            gridY, this.getLocationManager()
-                                    .getEditorLocationZ(), this
-                                    .getLocationManager().getEditorLocationW(),
+                            gridY,
+                            this.getLocationManager().getEditorLocationZ(),
+                            this.getLocationManager().getEditorLocationW(),
                             this.getLocationManager().getEditorLocationE());
-                    app.getDungeonManager()
-                            .getDungeon()
-                            .setCell(
-                                    mo2,
-                                    gridX,
-                                    gridY,
-                                    this.getLocationManager()
-                                            .getEditorLocationZ(),
-                                    this.getLocationManager()
-                                            .getEditorLocationE());
-                    this.checkStairPair(this.getLocationManager()
-                            .getEditorLocationZ());
+                    app.getDungeonManager().getDungeon().setCell(mo2, gridX,
+                            gridY,
+                            this.getLocationManager().getEditorLocationZ(),
+                            this.getLocationManager().getEditorLocationE());
+                    this.checkStairPair(
+                            this.getLocationManager().getEditorLocationZ());
                     this.checkMenus();
                     app.getDungeonManager().setDirty(true);
                 }
@@ -795,19 +763,16 @@ public class DungeonEditorLogic {
         this.meg.setStatusMessage(msg);
     }
 
-    private void checkStairPair(int z) {
-        Application app = DungeonDiver4.getApplication();
-        final AbstractDungeonObject mo1 = app
-                .getDungeonManager()
-                .getDungeon()
+    private void checkStairPair(final int z) {
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject mo1 = app.getDungeonManager().getDungeon()
                 .getCell(this.getLocationManager().getEditorLocationX(),
                         this.getLocationManager().getEditorLocationY(), z,
                         DungeonConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
-            final AbstractDungeonObject mo2 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject mo2 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(this.getLocationManager().getEditorLocationX(),
                             this.getLocationManager().getEditorLocationY(),
@@ -817,8 +782,7 @@ public class DungeonEditorLogic {
             name2 = "";
         }
         try {
-            final AbstractDungeonObject mo3 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject mo3 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(this.getLocationManager().getEditorLocationX(),
                             this.getLocationManager().getEditorLocationY(),
@@ -838,19 +802,16 @@ public class DungeonEditorLogic {
         }
     }
 
-    private void reverseCheckStairPair(int z) {
-        Application app = DungeonDiver4.getApplication();
-        final AbstractDungeonObject mo1 = app
-                .getDungeonManager()
-                .getDungeon()
+    private void reverseCheckStairPair(final int z) {
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject mo1 = app.getDungeonManager().getDungeon()
                 .getCell(this.getLocationManager().getEditorLocationX(),
                         this.getLocationManager().getEditorLocationY(), z,
                         DungeonConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
-            final AbstractDungeonObject mo2 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject mo2 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(this.getLocationManager().getEditorLocationX(),
                             this.getLocationManager().getEditorLocationY(),
@@ -860,8 +821,7 @@ public class DungeonEditorLogic {
             name2 = "";
         }
         try {
-            final AbstractDungeonObject mo3 = app
-                    .getDungeonManager()
+            final AbstractDungeonObject mo3 = app.getDungeonManager()
                     .getDungeon()
                     .getCell(this.getLocationManager().getEditorLocationX(),
                             this.getLocationManager().getEditorLocationY(),
@@ -882,32 +842,26 @@ public class DungeonEditorLogic {
     }
 
     public void pairStairs(final int type) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(
-                                new StairsDown(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                this.getLocationManager().getEditorLocationZ() + 1,
-                                DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new StairsDown(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getEditorLocationZ() + 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(
-                                new StairsUp(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                this.getLocationManager().getEditorLocationZ() - 1,
-                                DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new StairsUp(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getEditorLocationZ() - 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -917,29 +871,25 @@ public class DungeonEditorLogic {
         }
     }
 
-    private void pairStairs(final int type, int z) {
-        Application app = DungeonDiver4.getApplication();
+    private void pairStairs(final int type, final int z) {
+        final Application app = DungeonDiver4.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(new StairsDown(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                z + 1, DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new StairsDown(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(), z + 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(new StairsUp(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                z - 1, DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new StairsUp(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(), z - 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -949,29 +899,25 @@ public class DungeonEditorLogic {
         }
     }
 
-    private void unpairStairs(final int type, int z) {
-        Application app = DungeonDiver4.getApplication();
+    private void unpairStairs(final int type, final int z) {
+        final Application app = DungeonDiver4.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(new Empty(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                z + 1, DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new Empty(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(), z + 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
             break;
         case STAIRS_DOWN:
             try {
-                app.getDungeonManager()
-                        .getDungeon()
-                        .setCell(new Empty(),
-                                this.getLocationManager().getEditorLocationX(),
-                                this.getLocationManager().getEditorLocationY(),
-                                z - 1, DungeonConstants.LAYER_OBJECT);
+                app.getDungeonManager().getDungeon().setCell(new Empty(),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(), z - 1,
+                        DungeonConstants.LAYER_OBJECT);
             } catch (final ArrayIndexOutOfBoundsException e) {
                 // Do nothing
             }
@@ -981,11 +927,9 @@ public class DungeonEditorLogic {
         }
     }
 
-    private void checkTwoWayTeleportPair(int z) {
-        Application app = DungeonDiver4.getApplication();
-        final AbstractDungeonObject mo1 = app
-                .getDungeonManager()
-                .getDungeon()
+    private void checkTwoWayTeleportPair(final int z) {
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject mo1 = app.getDungeonManager().getDungeon()
                 .getCell(this.getLocationManager().getEditorLocationX(),
                         this.getLocationManager().getEditorLocationY(), z,
                         DungeonConstants.LAYER_OBJECT);
@@ -997,10 +941,9 @@ public class DungeonEditorLogic {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final AbstractDungeonObject mo2 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
+            final AbstractDungeonObject mo2 = app.getDungeonManager()
+                    .getDungeon().getCell(destX, destY, destZ,
+                            DungeonConstants.LAYER_OBJECT);
             name2 = mo2.getName();
             if (name2.equals("Two-Way Teleport")) {
                 DungeonEditorLogic.unpairTwoWayTeleport(destX, destY, destZ);
@@ -1008,11 +951,9 @@ public class DungeonEditorLogic {
         }
     }
 
-    private void reverseCheckTwoWayTeleportPair(int z) {
-        Application app = DungeonDiver4.getApplication();
-        final AbstractDungeonObject mo1 = app
-                .getDungeonManager()
-                .getDungeon()
+    private void reverseCheckTwoWayTeleportPair(final int z) {
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject mo1 = app.getDungeonManager().getDungeon()
                 .getCell(this.getLocationManager().getEditorLocationX(),
                         this.getLocationManager().getEditorLocationY(), z,
                         DungeonConstants.LAYER_OBJECT);
@@ -1024,10 +965,9 @@ public class DungeonEditorLogic {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final AbstractDungeonObject mo2 = app
-                    .getDungeonManager()
-                    .getDungeon()
-                    .getCell(destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
+            final AbstractDungeonObject mo2 = app.getDungeonManager()
+                    .getDungeon().getCell(destX, destY, destZ,
+                            DungeonConstants.LAYER_OBJECT);
             name2 = mo2.getName();
             if (!name2.equals("Two-Way Teleport")) {
                 this.pairTwoWayTeleport(destX, destY, destZ);
@@ -1037,29 +977,25 @@ public class DungeonEditorLogic {
 
     public void pairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
-        Application app = DungeonDiver4.getApplication();
-        app.getDungeonManager()
-                .getDungeon()
-                .setCell(
-                        new TwoWayTeleport(this.getLocationManager()
-                                .getEditorLocationX(), this
-                                .getLocationManager().getEditorLocationY(),
-                                this.getLocationManager().getCameFromZ()),
-                        destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
+        final Application app = DungeonDiver4.getApplication();
+        app.getDungeonManager().getDungeon().setCell(
+                new TwoWayTeleport(
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ()),
+                destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
     }
 
     private static void unpairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
-        Application app = DungeonDiver4.getApplication();
-        app.getDungeonManager()
-                .getDungeon()
-                .setCell(new Empty(), destX, destY, destZ,
-                        DungeonConstants.LAYER_OBJECT);
+        final Application app = DungeonDiver4.getApplication();
+        app.getDungeonManager().getDungeon().setCell(new Empty(), destX, destY,
+                destZ, DungeonConstants.LAYER_OBJECT);
     }
 
     public void editCheckpointProperties(final AbstractCheckpoint checkpoint) {
-        String def = Integer.toString(checkpoint.getKeyCount());
-        String resp = CommonDialogs.showTextInputDialogWithDefault(
+        final String def = Integer.toString(checkpoint.getKeyCount());
+        final String resp = CommonDialogs.showTextInputDialogWithDefault(
                 "Key Count (Number of Sun/Moon Stones needed)", "Editor", def);
         int respVal = -1;
         try {
@@ -1067,7 +1003,7 @@ public class DungeonEditorLogic {
             if (respVal < 0) {
                 throw new NumberFormatException(resp);
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             CommonDialogs
                     .showDialog("The value must be a non-negative integer.");
             return;
@@ -1077,22 +1013,24 @@ public class DungeonEditorLogic {
 
     public void editConditionalTeleportDestination(
             final AbstractConditionalTeleport instance) {
-        Application app = DungeonDiver4.getApplication();
-        String choice = CommonDialogs.showInputDialog("Edit What?", "Editor",
-                conditionalChoices, conditionalChoices[0]);
+        final Application app = DungeonDiver4.getApplication();
+        final String choice = CommonDialogs.showInputDialog("Edit What?",
+                "Editor", DungeonEditorLogic.conditionalChoices,
+                DungeonEditorLogic.conditionalChoices[0]);
         if (choice != null) {
             this.instanceBeingEdited = instance;
             this.conditionalEditFlag = 0;
-            for (int x = 0; x < conditionalChoices.length; x++) {
-                if (conditionalChoices[x].equals(choice)) {
+            for (int x = 0; x < DungeonEditorLogic.conditionalChoices.length; x++) {
+                if (DungeonEditorLogic.conditionalChoices[x].equals(choice)) {
                     this.conditionalEditFlag = x + 1;
                     break;
                 }
             }
             if (this.conditionalEditFlag != 0) {
                 if (this.conditionalEditFlag == DungeonEditorLogic.CEF_CONDITION) {
-                    String def = Integer.toString(instance.getTriggerValue());
-                    String resp = CommonDialogs
+                    final String def = Integer
+                            .toString(instance.getTriggerValue());
+                    final String resp = CommonDialogs
                             .showTextInputDialogWithDefault(
                                     "Condition Trigger Value (Number of Sun/Moon Stones needed)",
                                     "Editor", def);
@@ -1102,23 +1040,23 @@ public class DungeonEditorLogic {
                         if (respVal < 0) {
                             throw new NumberFormatException(resp);
                         }
-                    } catch (NumberFormatException nfe) {
-                        CommonDialogs
-                                .showDialog("The value must be a non-negative integer.");
+                    } catch (final NumberFormatException nfe) {
+                        CommonDialogs.showDialog(
+                                "The value must be a non-negative integer.");
                         this.instanceBeingEdited = null;
                         return;
                     }
                     instance.setTriggerValue(respVal);
                 } else if (this.conditionalEditFlag == DungeonEditorLogic.CEF_TRIGGER_TYPE) {
-                    int respIndex = instance.getSunMoon();
-                    String[] ttChoices = new String[] { "Sun Stones",
+                    final int respIndex = instance.getSunMoon();
+                    final String[] ttChoices = new String[] { "Sun Stones",
                             "Moon Stones" };
-                    String ttChoice = CommonDialogs.showInputDialog(
+                    final String ttChoice = CommonDialogs.showInputDialog(
                             "Condition Trigger Type?", "Editor", ttChoices,
                             ttChoices[respIndex - 1]);
                     if (ttChoice != null) {
                         int newResp = -1;
-                        for (int x = 0; x < conditionalChoices.length; x++) {
+                        for (int x = 0; x < DungeonEditorLogic.conditionalChoices.length; x++) {
                             if (ttChoices[x].equals(ttChoice)) {
                                 newResp = x + 1;
                                 break;
@@ -1142,18 +1080,18 @@ public class DungeonEditorLogic {
     }
 
     public AbstractDungeonObject editTeleportDestination(final int type) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.TELEPORT_TYPE = type;
         switch (type) {
         case TELEPORT_TYPE_N_WAY:
-            String[] dests = new String[this.nWayDestCount];
+            final String[] dests = new String[this.nWayDestCount];
             for (int d = 0; d < this.nWayDestCount; d++) {
                 dests[d] = "Destination " + (d + 1);
             }
             if (this.nWayDestID == -1) {
                 this.nWayDestID = 0;
             }
-            String resp = CommonDialogs.showInputDialog(
+            final String resp = CommonDialogs.showInputDialog(
                     "Edit Which Destination?", "Editor", dests,
                     dests[this.nWayDestID]);
             if (resp == null) {
@@ -1169,8 +1107,8 @@ public class DungeonEditorLogic {
             if (this.nWayDestID == -1) {
                 return null;
             }
-            DungeonDiver4.getApplication().showMessage(
-                    "Click to set teleport destination #"
+            DungeonDiver4.getApplication()
+                    .showMessage("Click to set teleport destination #"
                             + (this.nWayDestID + 1));
             break;
         case TELEPORT_TYPE_GENERIC:
@@ -1184,8 +1122,8 @@ public class DungeonEditorLogic {
         case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
         case TELEPORT_TYPE_BLOCK:
         case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            DungeonDiver4.getApplication().showMessage(
-                    "Click to set teleport destination");
+            DungeonDiver4.getApplication()
+                    .showMessage("Click to set teleport destination");
             break;
         case TELEPORT_TYPE_RANDOM:
         case TELEPORT_TYPE_RANDOM_INVISIBLE:
@@ -1196,14 +1134,15 @@ public class DungeonEditorLogic {
             break;
         }
         this.meg.swapToTeleportHandler();
-        this.getLocationManager().setCameFromZ(
-                this.getLocationManager().getEditorLocationZ());
+        this.getLocationManager()
+                .setCameFromZ(this.getLocationManager().getEditorLocationZ());
         app.getMenuManager().disableDownOneLevel();
         app.getMenuManager().disableUpOneLevel();
         return null;
     }
 
-    private AbstractDungeonObject editRandomTeleportDestination(final int type) {
+    private AbstractDungeonObject editRandomTeleportDestination(
+            final int type) {
         String input1 = null, input2 = null;
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
@@ -1215,15 +1154,15 @@ public class DungeonEditorLogic {
             input1 = CommonDialogs.showTextInputDialog("Random row range:",
                     "Editor");
             if (input1 != null) {
-                input2 = CommonDialogs.showTextInputDialog(
-                        "Random column range:", "Editor");
+                input2 = CommonDialogs
+                        .showTextInputDialog("Random column range:", "Editor");
                 if (input2 != null) {
                     try {
                         destX = Integer.parseInt(input1);
                         destY = Integer.parseInt(input2);
                     } catch (final NumberFormatException nf) {
-                        CommonDialogs
-                                .showDialog("Row and column ranges must be integers.");
+                        CommonDialogs.showDialog(
+                                "Row and column ranges must be integers.");
                     }
                     switch (type) {
                     case TELEPORT_TYPE_RANDOM:
@@ -1247,20 +1186,20 @@ public class DungeonEditorLogic {
     }
 
     public AbstractDungeonObject editMetalButtonTarget() {
-        DungeonDiver4.getApplication().showMessage(
-                "Click to set metal button target");
-        Application app = DungeonDiver4.getApplication();
+        DungeonDiver4.getApplication()
+                .showMessage("Click to set metal button target");
+        final Application app = DungeonDiver4.getApplication();
         this.meg.swapToMetalButtonHandler();
-        this.getLocationManager().setCameFromZ(
-                this.getLocationManager().getEditorLocationZ());
+        this.getLocationManager()
+                .setCameFromZ(this.getLocationManager().getEditorLocationZ());
         app.getMenuManager().disableDownOneLevel();
         app.getMenuManager().disableUpOneLevel();
         return null;
     }
 
     public AbstractDungeonObject editTreasureChestContents() {
-        DungeonDiver4.getApplication().showMessage(
-                "Pick treasure chest contents");
+        DungeonDiver4.getApplication()
+                .showMessage("Pick treasure chest contents");
         this.setDefaultContents();
         this.disableOutput();
         this.meg.showTreasurePicker();
@@ -1271,7 +1210,7 @@ public class DungeonEditorLogic {
         TreasureChest tc = null;
         AbstractDungeonObject contents = null;
         int contentsIndex = 0;
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         try {
             tc = (TreasureChest) app.getDungeonManager().getDungeonObject(
                     this.getLocationManager().getEditorLocationX(),
@@ -1280,30 +1219,29 @@ public class DungeonEditorLogic {
                     DungeonConstants.LAYER_OBJECT);
             contents = tc.getInsideObject();
             for (int x = 0; x < this.containableObjects.length; x++) {
-                if (contents.getName().equals(
-                        this.containableObjects[x].getName())) {
+                if (contents.getName()
+                        .equals(this.containableObjects[x].getName())) {
                     contentsIndex = x;
                     break;
                 }
             }
-        } catch (ClassCastException cce) {
+        } catch (final ClassCastException cce) {
             // Do nothing
-        } catch (NullPointerException npe) {
+        } catch (final NullPointerException npe) {
             // Do nothing
         }
         this.meg.setTreasurePicked(contentsIndex);
     }
 
     public void setTeleportDestination(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        int[] grid = this.meg.computeGridValues(x, y);
-        int destX = grid[0];
-        int destY = grid[1];
+        final Application app = DungeonDiver4.getApplication();
+        final int[] grid = this.meg.computeGridValues(x, y);
+        final int destX = grid[0];
+        final int destY = grid[1];
         final int destZ = this.getLocationManager().getEditorLocationZ();
         try {
-            app.getDungeonManager()
-                    .getDungeon()
-                    .getCell(destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().getCell(destX, destY, destZ,
+                    DungeonConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             this.meg.swapFromTeleportHandler();
             return;
@@ -1319,115 +1257,100 @@ public class DungeonEditorLogic {
                 this.nWayEdited.setDestinationColumnN(this.nWayDestID, destY);
                 this.nWayEdited.setDestinationFloorN(this.nWayDestID, destZ);
             }
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(this.nWayEdited,
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(this.nWayEdited,
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_GENERIC:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new Teleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new Teleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_GENERIC:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new InvisibleTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new InvisibleTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_ONESHOT:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new OneShotTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new OneShotTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new InvisibleOneShotTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new InvisibleOneShotTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_TWOWAY:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new TwoWayTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new TwoWayTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             this.pairTwoWayTeleport(destX, destY, destZ);
             break;
         case TELEPORT_TYPE_CHAIN:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new ChainTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new ChainTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_CHAIN:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new InvisibleChainTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new InvisibleChainTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_ONESHOT_CHAIN:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new OneShotChainTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new OneShotChainTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(
-                            new InvisibleOneShotChainTeleport(destX, destY,
-                                    destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new InvisibleOneShotChainTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_BLOCK:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new BlockTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new BlockTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setCell(new InvisibleBlockTeleport(destX, destY, destZ),
-                            this.getLocationManager().getEditorLocationX(),
-                            this.getLocationManager().getEditorLocationY(),
-                            this.getLocationManager().getCameFromZ(),
-                            DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().setCell(
+                    new InvisibleBlockTeleport(destX, destY, destZ),
+                    this.getLocationManager().getEditorLocationX(),
+                    this.getLocationManager().getEditorLocationY(),
+                    this.getLocationManager().getCameFromZ(),
+                    DungeonConstants.LAYER_OBJECT);
             break;
         default:
             break;
@@ -1440,10 +1363,10 @@ public class DungeonEditorLogic {
     }
 
     void setConditionalTeleportDestination(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        int[] grid = this.meg.computeGridValues(x, y);
-        int destX = grid[0];
-        int destY = grid[1];
+        final Application app = DungeonDiver4.getApplication();
+        final int[] grid = this.meg.computeGridValues(x, y);
+        final int destX = grid[0];
+        final int destY = grid[1];
         final int destZ = this.getLocationManager().getEditorLocationZ();
         if (this.instanceBeingEdited != null) {
             if (this.conditionalEditFlag == DungeonEditorLogic.CEF_DEST1) {
@@ -1465,27 +1388,25 @@ public class DungeonEditorLogic {
     }
 
     public void setMetalButtonTarget(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        int[] grid = this.meg.computeGridValues(x, y);
-        int destX = grid[0];
-        int destY = grid[1];
+        final Application app = DungeonDiver4.getApplication();
+        final int[] grid = this.meg.computeGridValues(x, y);
+        final int destX = grid[0];
+        final int destY = grid[1];
         final int destZ = this.getLocationManager().getEditorLocationZ();
         final int destW = this.getLocationManager().getEditorLocationW();
         try {
-            app.getDungeonManager()
-                    .getDungeon()
-                    .getCell(destX, destY, destZ, DungeonConstants.LAYER_OBJECT);
+            app.getDungeonManager().getDungeon().getCell(destX, destY, destZ,
+                    DungeonConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             this.meg.swapFromMetalButtonHandler();
             return;
         }
-        app.getDungeonManager()
-                .getDungeon()
-                .setCell(new MetalButton(destX, destY, destZ, destW),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getCameFromZ(),
-                        DungeonConstants.LAYER_OBJECT);
+        app.getDungeonManager().getDungeon().setCell(
+                new MetalButton(destX, destY, destZ, destW),
+                this.getLocationManager().getEditorLocationX(),
+                this.getLocationManager().getEditorLocationY(),
+                this.getLocationManager().getCameFromZ(),
+                DungeonConstants.LAYER_OBJECT);
         this.meg.swapFromMetalButtonHandler();
         this.checkMenus();
         DungeonDiver4.getApplication().showMessage("Target set.");
@@ -1495,16 +1416,15 @@ public class DungeonEditorLogic {
 
     public void setTreasureChestContents() {
         this.enableOutput();
-        Application app = DungeonDiver4.getApplication();
-        AbstractDungeonObject contents = this.containableObjects[this.meg
+        final Application app = DungeonDiver4.getApplication();
+        final AbstractDungeonObject contents = this.containableObjects[this.meg
                 .getTreasurePicked()];
-        app.getDungeonManager()
-                .getDungeon()
-                .setCell(new TreasureChest(contents),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getCameFromZ(),
-                        DungeonConstants.LAYER_OBJECT);
+        app.getDungeonManager().getDungeon().setCell(
+                new TreasureChest(contents),
+                this.getLocationManager().getEditorLocationX(),
+                this.getLocationManager().getEditorLocationY(),
+                this.getLocationManager().getCameFromZ(),
+                DungeonConstants.LAYER_OBJECT);
         this.checkMenus();
         DungeonDiver4.getApplication().showMessage("Contents set.");
         app.getDungeonManager().setDirty(true);
@@ -1518,21 +1438,19 @@ public class DungeonEditorLogic {
     }
 
     void setPlayerLocation(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        int[] grid = this.meg.computeGridValues(x, y);
-        int destX = grid[0];
-        int destY = grid[1];
+        final Application app = DungeonDiver4.getApplication();
+        final int[] grid = this.meg.computeGridValues(x, y);
+        final int destX = grid[0];
+        final int destY = grid[1];
         // Set new player
         try {
             app.getDungeonManager().getDungeon().saveStart();
             app.getDungeonManager().getDungeon().setStartRow(destX);
             app.getDungeonManager().getDungeon().setStartColumn(destY);
-            app.getDungeonManager()
-                    .getDungeon()
-                    .setStartFloor(
-                            this.getLocationManager().getEditorLocationZ());
+            app.getDungeonManager().getDungeon().setStartFloor(
+                    this.getLocationManager().getEditorLocationZ());
             DungeonDiver4.getApplication().showMessage("Start point set.");
-        } catch (ArrayIndexOutOfBoundsException aioob) {
+        } catch (final ArrayIndexOutOfBoundsException aioob) {
             app.getDungeonManager().getDungeon().restoreStart();
             DungeonDiver4.getApplication()
                     .showMessage("Aim within the dungeon");
@@ -1545,7 +1463,7 @@ public class DungeonEditorLogic {
     }
 
     public void editDungeon() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         if (app.getDungeonManager().getLoaded()) {
             app.getGUIManager().hideGUI();
             app.setInEditor();
@@ -1569,7 +1487,7 @@ public class DungeonEditorLogic {
     }
 
     public boolean newDungeon() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         boolean success = true;
         boolean saved = true;
         int status = 0;
@@ -1589,10 +1507,8 @@ public class DungeonEditorLogic {
             success = app.getDungeonManager().getDungeon().addLevel(32, 32, 1);
             if (success) {
                 this.fixLimits();
-                app.getDungeonManager()
-                        .getDungeon()
-                        .fillLevel(PreferencesManager.getEditorDefaultFill(),
-                                new Empty());
+                app.getDungeonManager().getDungeon().fillLevel(
+                        PreferencesManager.getEditorDefaultFill(), new Empty());
                 // Save the entire level
                 app.getDungeonManager().getDungeon().save();
                 this.checkMenus();
@@ -1616,14 +1532,11 @@ public class DungeonEditorLogic {
         this.meg.fixLimits();
     }
 
-    private boolean confirmNonUndoable(String task) {
-        int confirm = CommonDialogs
-                .showConfirmDialog(
-                        "Are you sure you want to "
-                                + task
-                                + "?"
-                                + " This action is NOT undoable and will clear the undo/redo history!",
-                        "Editor");
+    private boolean confirmNonUndoable(final String task) {
+        final int confirm = CommonDialogs.showConfirmDialog(
+                "Are you sure you want to " + task + "?"
+                        + " This action is NOT undoable and will clear the undo/redo history!",
+                "Editor");
         if (confirm == JOptionPane.YES_OPTION) {
             this.clearHistory();
             return true;
@@ -1632,7 +1545,8 @@ public class DungeonEditorLogic {
     }
 
     public void fillLevel() {
-        if (this.confirmNonUndoable("overwrite the active level with default data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active level with default data")) {
             DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .fill();
             DungeonDiver4.getApplication().showMessage("Level filled.");
@@ -1642,7 +1556,8 @@ public class DungeonEditorLogic {
     }
 
     public void fillFloor() {
-        if (this.confirmNonUndoable("overwrite the active floor within the active level with default data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active floor within the active level with default data")) {
             DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .fillFloor(this.getLocationManager().getEditorLocationZ());
             DungeonDiver4.getApplication().showMessage("Floor filled.");
@@ -1652,7 +1567,8 @@ public class DungeonEditorLogic {
     }
 
     public void fillLevelRandomly() {
-        if (this.confirmNonUndoable("overwrite the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active level with random data")) {
             if (DungeonDiver4.getApplication().getMenuManager()
                     .useFillRuleSets()) {
                 DungeonDiver4.getApplication().getDungeonManager().getDungeon()
@@ -1669,20 +1585,15 @@ public class DungeonEditorLogic {
     }
 
     public void fillFloorRandomly() {
-        if (this.confirmNonUndoable("overwrite the active floor within the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active floor within the active level with random data")) {
             if (DungeonDiver4.getApplication().getMenuManager()
                     .useFillRuleSets()) {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillFloorRandomlyCustom(
                                 this.getLocationManager().getEditorLocationZ());
             } else {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillFloorRandomly(
                                 this.getLocationManager().getEditorLocationZ());
             }
@@ -1694,86 +1605,75 @@ public class DungeonEditorLogic {
     }
 
     public void fillLevelAndLayer() {
-        if (this.confirmNonUndoable("overwrite the active layer on the active level with default data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active layer on the active level with default data")) {
             DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .fillLayer(this.getLocationManager().getEditorLocationE());
-            DungeonDiver4.getApplication().showMessage(
-                    "Level and layer filled.");
+            DungeonDiver4.getApplication()
+                    .showMessage("Level and layer filled.");
             DungeonDiver4.getApplication().getDungeonManager().setDirty(true);
             this.redrawEditor();
         }
     }
 
     public void fillFloorAndLayer() {
-        if (this.confirmNonUndoable("overwrite the active layer on the active floor within the active level with default data")) {
-            DungeonDiver4
-                    .getApplication()
-                    .getDungeonManager()
-                    .getDungeon()
+        if (this.confirmNonUndoable(
+                "overwrite the active layer on the active floor within the active level with default data")) {
+            DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .fillFloorAndLayer(
                             this.getLocationManager().getEditorLocationZ(),
                             this.getLocationManager().getEditorLocationE());
-            DungeonDiver4.getApplication().showMessage(
-                    "Floor and layer filled.");
+            DungeonDiver4.getApplication()
+                    .showMessage("Floor and layer filled.");
             DungeonDiver4.getApplication().getDungeonManager().setDirty(true);
             this.redrawEditor();
         }
     }
 
     public void fillLevelAndLayerRandomly() {
-        if (this.confirmNonUndoable("overwrite the active layer on the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active layer on the active level with random data")) {
             if (DungeonDiver4.getApplication().getMenuManager()
                     .useFillRuleSets()) {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillLevelAndLayerRandomlyCustom(
                                 this.getLocationManager().getEditorLocationE());
             } else {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillLevelAndLayerRandomly(
                                 this.getLocationManager().getEditorLocationE());
             }
-            DungeonDiver4.getApplication().showMessage(
-                    "Level and layer randomly filled.");
+            DungeonDiver4.getApplication()
+                    .showMessage("Level and layer randomly filled.");
             DungeonDiver4.getApplication().getDungeonManager().setDirty(true);
             this.redrawEditor();
         }
     }
 
     public void fillFloorAndLayerRandomly() {
-        if (this.confirmNonUndoable("overwrite the active layer on the active floor within the active level with random data")) {
+        if (this.confirmNonUndoable(
+                "overwrite the active layer on the active floor within the active level with random data")) {
             if (DungeonDiver4.getApplication().getMenuManager()
                     .useFillRuleSets()) {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillFloorAndLayerRandomlyCustom(
                                 this.getLocationManager().getEditorLocationZ(),
                                 this.getLocationManager().getEditorLocationE());
             } else {
-                DungeonDiver4
-                        .getApplication()
-                        .getDungeonManager()
-                        .getDungeon()
+                DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                         .fillFloorAndLayerRandomly(
                                 this.getLocationManager().getEditorLocationZ(),
                                 this.getLocationManager().getEditorLocationE());
             }
-            DungeonDiver4.getApplication().showMessage(
-                    "Floor and layer randomly filled.");
+            DungeonDiver4.getApplication()
+                    .showMessage("Floor and layer randomly filled.");
             DungeonDiver4.getApplication().getDungeonManager().setDirty(true);
             this.redrawEditor();
         }
     }
 
     public boolean addLevel() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int levelSizeX, levelSizeY, levelSizeZ;
         final int maxR = Dungeon.getMaxRows();
         final int minR = Dungeon.getMinRows();
@@ -1781,17 +1681,17 @@ public class DungeonEditorLogic {
         final int minC = Dungeon.getMinColumns();
         final int maxF = Dungeon.getMaxFloors();
         final int minF = Dungeon.getMinFloors();
-        String msg = "New Level";
+        final String msg = "New Level";
         boolean success = true;
         String input1, input2, input3;
-        input1 = CommonDialogs.showTextInputDialog("Number of rows (" + minR
-                + "-" + maxR + ")?", msg);
+        input1 = CommonDialogs.showTextInputDialog(
+                "Number of rows (" + minR + "-" + maxR + ")?", msg);
         if (input1 != null) {
-            input2 = CommonDialogs.showTextInputDialog("Number of columns ("
-                    + minC + "-" + maxC + ")?", msg);
+            input2 = CommonDialogs.showTextInputDialog(
+                    "Number of columns (" + minC + "-" + maxC + ")?", msg);
             if (input2 != null) {
-                input3 = CommonDialogs.showTextInputDialog("Number of floors ("
-                        + minF + "-" + maxF + ")?", msg);
+                input3 = CommonDialogs.showTextInputDialog(
+                        "Number of floors (" + minF + "-" + maxF + ")?", msg);
                 if (input3 != null) {
                     try {
                         levelSizeX = Integer.parseInt(input1);
@@ -1803,8 +1703,8 @@ public class DungeonEditorLogic {
                         }
                         if (levelSizeX > maxR) {
                             throw new NumberFormatException(
-                                    "Rows must be less than or equal to "
-                                            + maxR + ".");
+                                    "Rows must be less than or equal to " + maxR
+                                            + ".");
                         }
                         if (levelSizeY < minC) {
                             throw new NumberFormatException(
@@ -1824,8 +1724,8 @@ public class DungeonEditorLogic {
                                     "Floors must be less than or equal to "
                                             + maxF + ".");
                         }
-                        int saveLevel = app.getDungeonManager().getDungeon()
-                                .getActiveLevelNumber();
+                        final int saveLevel = app.getDungeonManager()
+                                .getDungeon().getActiveLevelNumber();
                         success = app.getDungeonManager().getDungeon()
                                 .addLevel(levelSizeX, levelSizeY, levelSizeZ);
                         if (success) {
@@ -1836,12 +1736,9 @@ public class DungeonEditorLogic {
                             this.getViewManager().setViewingWindowLocationY(
                                     0 - (this.getViewManager()
                                             .getViewingWindowSizeY() - 1) / 2);
-                            app.getDungeonManager()
-                                    .getDungeon()
-                                    .fillLevel(
-                                            PreferencesManager
-                                                    .getEditorDefaultFill(),
-                                            new Empty());
+                            app.getDungeonManager().getDungeon().fillLevel(
+                                    PreferencesManager.getEditorDefaultFill(),
+                                    new Empty());
                             // Save the entire level
                             app.getDungeonManager().getDungeon().save();
                             app.getDungeonManager().getDungeon()
@@ -1868,7 +1765,7 @@ public class DungeonEditorLogic {
     }
 
     public boolean resizeLevel() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int levelSizeX, levelSizeY, levelSizeZ;
         final int maxR = Dungeon.getMaxRows();
         final int minR = Dungeon.getMinRows();
@@ -1876,23 +1773,21 @@ public class DungeonEditorLogic {
         final int minC = Dungeon.getMinColumns();
         final int maxF = Dungeon.getMaxFloors();
         final int minF = Dungeon.getMinFloors();
-        String msg = "Resize Level";
+        final String msg = "Resize Level";
         boolean success = true;
         String input1, input2, input3;
         input1 = CommonDialogs.showTextInputDialogWithDefault(
-                "Number of rows (" + minR + "-" + maxR + ")?", msg, Integer
-                        .toString(app.getDungeonManager().getDungeon()
-                                .getRows()));
+                "Number of rows (" + minR + "-" + maxR + ")?", msg,
+                Integer.toString(
+                        app.getDungeonManager().getDungeon().getRows()));
         if (input1 != null) {
             input2 = CommonDialogs.showTextInputDialogWithDefault(
-                    "Number of columns (" + minC + "-" + maxC + ")?",
-                    msg,
-                    Integer.toString(app.getDungeonManager().getDungeon()
-                            .getColumns()));
+                    "Number of columns (" + minC + "-" + maxC + ")?", msg,
+                    Integer.toString(
+                            app.getDungeonManager().getDungeon().getColumns()));
             if (input2 != null) {
                 input3 = CommonDialogs.showTextInputDialogWithDefault(
-                        "Number of floors (" + minF + "-" + maxF + ")?",
-                        msg,
+                        "Number of floors (" + minF + "-" + maxF + ")?", msg,
                         Integer.toString(app.getDungeonManager().getDungeon()
                                 .getFloors()));
                 if (input3 != null) {
@@ -1906,8 +1801,8 @@ public class DungeonEditorLogic {
                         }
                         if (levelSizeX > maxR) {
                             throw new NumberFormatException(
-                                    "Rows must be less than or equal to "
-                                            + maxR + ".");
+                                    "Rows must be less than or equal to " + maxR
+                                            + ".");
                         }
                         if (levelSizeY < minC) {
                             throw new NumberFormatException(
@@ -1927,15 +1822,15 @@ public class DungeonEditorLogic {
                                     "Floors must be less than or equal to "
                                             + maxF + ".");
                         }
-                        app.getDungeonManager().getDungeon()
-                                .resize(levelSizeX, levelSizeY, levelSizeZ);
+                        app.getDungeonManager().getDungeon().resize(levelSizeX,
+                                levelSizeY, levelSizeZ);
                         this.fixLimits();
-                        this.getViewManager().setViewingWindowLocationX(
-                                0 - (this.getViewManager()
-                                        .getViewingWindowSizeX() - 1) / 2);
-                        this.getViewManager().setViewingWindowLocationY(
-                                0 - (this.getViewManager()
-                                        .getViewingWindowSizeY() - 1) / 2);
+                        this.getViewManager().setViewingWindowLocationX(0
+                                - (this.getViewManager().getViewingWindowSizeX()
+                                        - 1) / 2);
+                        this.getViewManager().setViewingWindowLocationY(0
+                                - (this.getViewManager().getViewingWindowSizeY()
+                                        - 1) / 2);
                         // Save the entire level
                         app.getDungeonManager().getDungeon().save();
                         this.checkMenus();
@@ -1961,7 +1856,7 @@ public class DungeonEditorLogic {
     }
 
     public boolean removeLevel() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         int level;
         boolean success = true;
         String input;
@@ -1971,18 +1866,19 @@ public class DungeonEditorLogic {
         if (input != null) {
             try {
                 level = Integer.parseInt(input);
-                if (level < 1
-                        || level > app.getDungeonManager().getDungeon()
-                                .getLevels()) {
+                if (level < 1 || level > app.getDungeonManager().getDungeon()
+                        .getLevels()) {
                     throw new NumberFormatException(
                             "Level number must be in the range 1 to "
                                     + app.getDungeonManager().getDungeon()
-                                            .getLevels() + ".");
+                                            .getLevels()
+                                    + ".");
                 }
                 success = app.getDungeonManager().getDungeon().removeLevel();
                 if (success) {
                     this.fixLimits();
-                    if (level == this.getLocationManager().getEditorLocationW() + 1) {
+                    if (level == this.getLocationManager().getEditorLocationW()
+                            + 1) {
                         // Deleted current level - go to level 1
                         this.updateEditorLevelAbsolute(0);
                     }
@@ -2001,7 +1897,7 @@ public class DungeonEditorLogic {
 
     public void goToLocationHandler() {
         int locX, locY, locZ, locW;
-        String msg = "Go To Location...";
+        final String msg = "Go To Location...";
         String input1, input2, input3, input4;
         input1 = CommonDialogs.showTextInputDialog("Row?", msg);
         if (input1 != null) {
@@ -2030,22 +1926,20 @@ public class DungeonEditorLogic {
     public void goToDestinationHandler() {
         if (!this.goToDestMode) {
             this.goToDestMode = true;
-            DungeonDiver4.getApplication().showMessage(
-                    "Click a teleport to go to its destination");
+            DungeonDiver4.getApplication()
+                    .showMessage("Click a teleport to go to its destination");
         }
     }
 
-    void goToDestination(int x, int y) {
+    void goToDestination(final int x, final int y) {
         if (this.goToDestMode) {
             this.goToDestMode = false;
-            int[] grid = this.meg.computeGridValues(x, y);
-            int locX = grid[0];
-            int locY = grid[1];
+            final int[] grid = this.meg.computeGridValues(x, y);
+            final int locX = grid[0];
+            final int locY = grid[1];
             final int locZ = this.getLocationManager().getEditorLocationZ();
-            final AbstractDungeonObject there = DungeonDiver4
-                    .getApplication()
-                    .getDungeonManager()
-                    .getDungeonObject(locX, locY, locZ,
+            final AbstractDungeonObject there = DungeonDiver4.getApplication()
+                    .getDungeonManager().getDungeonObject(locX, locY, locZ,
                             DungeonConstants.LAYER_OBJECT);
             if (there instanceof AbstractTeleport) {
                 final AbstractTeleport gt = (AbstractTeleport) there;
@@ -2085,11 +1979,11 @@ public class DungeonEditorLogic {
     }
 
     public void exitEditor() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         // Hide the editor
         this.hideOutput();
-        DungeonManager mm = app.getDungeonManager();
-        GameLogicManager gm = app.getGameManager();
+        final DungeonManager mm = app.getDungeonManager();
+        final GameLogicManager gm = app.getGameManager();
         // Save the entire level
         mm.getDungeon().save();
         // Reset the viewing window
@@ -2099,31 +1993,31 @@ public class DungeonEditorLogic {
     }
 
     public void undo() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.engine.undo();
-        AbstractDungeonObject obj = this.engine.getObject();
-        int x = this.engine.getX();
-        int y = this.engine.getY();
-        int z = this.engine.getZ();
-        int w = this.engine.getW();
-        int e = this.engine.getE();
+        final AbstractDungeonObject obj = this.engine.getObject();
+        final int x = this.engine.getX();
+        final int y = this.engine.getY();
+        final int z = this.engine.getZ();
+        final int w = this.engine.getW();
+        final int e = this.engine.getE();
         this.getLocationManager().setEditorLocationX(x);
         this.getLocationManager().setEditorLocationY(y);
         this.getLocationManager().setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            AbstractDungeonObject oldObj = app.getDungeonManager()
+            final AbstractDungeonObject oldObj = app.getDungeonManager()
                     .getDungeonObject(x, y, z, e);
-            if (!(obj.getName().equals(new StairsUp().getName()))
-                    && !(obj.getName().equals(new StairsDown().getName()))) {
-                if ((obj.getName().equals(new TwoWayTeleport().getName()))) {
-                    app.getDungeonManager().getDungeon()
-                            .setCell(obj, x, y, z, e);
+            if (!obj.getName().equals(new StairsUp().getName())
+                    && !obj.getName().equals(new StairsDown().getName())) {
+                if (obj.getName().equals(new TwoWayTeleport().getName())) {
+                    app.getDungeonManager().getDungeon().setCell(obj, x, y, z,
+                            e);
                     this.reverseCheckTwoWayTeleportPair(z);
                     this.checkStairPair(z);
                 } else {
                     this.checkTwoWayTeleportPair(z);
-                    app.getDungeonManager().getDungeon()
-                            .setCell(obj, x, y, z, e);
+                    app.getDungeonManager().getDungeon().setCell(obj, x, y, z,
+                            e);
                     this.checkStairPair(z);
                 }
             } else {
@@ -2139,31 +2033,31 @@ public class DungeonEditorLogic {
     }
 
     public void redo() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         this.engine.redo();
-        AbstractDungeonObject obj = this.engine.getObject();
-        int x = this.engine.getX();
-        int y = this.engine.getY();
-        int z = this.engine.getZ();
-        int w = this.engine.getW();
-        int e = this.engine.getE();
+        final AbstractDungeonObject obj = this.engine.getObject();
+        final int x = this.engine.getX();
+        final int y = this.engine.getY();
+        final int z = this.engine.getZ();
+        final int w = this.engine.getW();
+        final int e = this.engine.getE();
         this.getLocationManager().setEditorLocationX(x);
         this.getLocationManager().setEditorLocationY(y);
         this.getLocationManager().setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            AbstractDungeonObject oldObj = app.getDungeonManager()
+            final AbstractDungeonObject oldObj = app.getDungeonManager()
                     .getDungeonObject(x, y, z, e);
-            if (!(obj.getName().equals(new StairsUp().getName()))
-                    && !(obj.getName().equals(new StairsDown().getName()))) {
-                if ((obj.getName().equals(new TwoWayTeleport().getName()))) {
-                    app.getDungeonManager().getDungeon()
-                            .setCell(obj, x, y, z, e);
+            if (!obj.getName().equals(new StairsUp().getName())
+                    && !obj.getName().equals(new StairsDown().getName())) {
+                if (obj.getName().equals(new TwoWayTeleport().getName())) {
+                    app.getDungeonManager().getDungeon().setCell(obj, x, y, z,
+                            e);
                     this.reverseCheckTwoWayTeleportPair(z);
                     this.checkStairPair(z);
                 } else {
                     this.checkTwoWayTeleportPair(z);
-                    app.getDungeonManager().getDungeon()
-                            .setCell(obj, x, y, z, e);
+                    app.getDungeonManager().getDungeon().setCell(obj, x, y, z,
+                            e);
                     this.checkStairPair(z);
                 }
             } else {
@@ -2183,19 +2077,19 @@ public class DungeonEditorLogic {
         this.checkMenus();
     }
 
-    private void updateUndoHistory(AbstractDungeonObject obj, int x, int y,
-            int z, int w, int e) {
+    private void updateUndoHistory(final AbstractDungeonObject obj, final int x,
+            final int y, final int z, final int w, final int e) {
         this.engine.updateUndoHistory(obj, x, y, z, w, e);
     }
 
-    private void updateRedoHistory(AbstractDungeonObject obj, int x, int y,
-            int z, int w, int e) {
+    private void updateRedoHistory(final AbstractDungeonObject obj, final int x,
+            final int y, final int z, final int w, final int e) {
         this.engine.updateRedoHistory(obj, x, y, z, w, e);
     }
 
     public void handleCloseWindow() {
         try {
-            Application app = DungeonDiver4.getApplication();
+            final Application app = DungeonDiver4.getApplication();
             boolean success = false;
             int status = JOptionPane.DEFAULT_OPTION;
             if (app.getDungeonManager().getDirty()) {
@@ -2212,7 +2106,7 @@ public class DungeonEditorLogic {
             } else {
                 this.exitEditor();
             }
-        } catch (Exception ex) {
+        } catch (final Exception ex) {
             DungeonDiver4.getErrorLogger().logError(ex);
         }
     }

@@ -34,8 +34,8 @@ import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 import com.puttysoftware.xio.legacy.XLegacyDataReader;
 
-public abstract class AbstractMazeObject extends CloneableObject implements
-        TypeConstants, RandomGenerationRule {
+public abstract class AbstractMazeObject extends CloneableObject
+        implements TypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -68,7 +68,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     private static final String OBJECT_SAVED_GROUP = "saved";
 
     // Constructors
-    public AbstractMazeObject(final boolean isSolid, boolean sightBlock) {
+    public AbstractMazeObject(final boolean isSolid, final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = false;
@@ -98,7 +98,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
             final boolean doesAcceptPushInto, final boolean doesAcceptPushOut,
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
-            boolean sightBlock) {
+            final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = isPushable;
@@ -129,7 +129,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
             final boolean isDestroyable, final boolean doesChainReact,
-            boolean sightBlock) {
+            final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = isPushable;
@@ -156,7 +156,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     public AbstractMazeObject(final boolean isSolid,
-            final boolean canBeInventoried, boolean sightBlock) {
+            final boolean canBeInventoried, final boolean sightBlock) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = false;
@@ -240,7 +240,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     @Override
     public AbstractMazeObject clone() {
         try {
-            AbstractMazeObject copy = this.getClass().newInstance();
+            final AbstractMazeObject copy = this.getClass().newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -265,10 +265,10 @@ public abstract class AbstractMazeObject extends CloneableObject implements
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (InstantiationException e) {
+        } catch (final InstantiationException e) {
             MazeRunnerII.getErrorLogger().logError(e);
             return null;
-        } catch (IllegalAccessException e) {
+        } catch (final IllegalAccessException e) {
             MazeRunnerII.getErrorLogger().logError(e);
             return null;
         }
@@ -288,7 +288,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         result = prime * result + (this.pushable ? 1231 : 1237);
         result = prime * result + (this.pushableInto ? 1231 : 1237);
         result = prime * result + (this.pushableOut ? 1231 : 1237);
-        result = prime * result + ((this.sp == null) ? 0 : this.sp.hashCode());
+        result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
         result = prime * result + this.templateColor;
         result = prime * result + this.timerValue;
         result = prime * result + this.initialTimerValue;
@@ -296,12 +296,11 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + (this.timerActive ? 1231 : 1237);
         result = prime * result + this.attributeID;
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -311,7 +310,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         if (!(obj instanceof AbstractMazeObject)) {
             return false;
         }
-        AbstractMazeObject other = (AbstractMazeObject) obj;
+        final AbstractMazeObject other = (AbstractMazeObject) obj;
         if (this.attributeID != other.attributeID) {
             return false;
         }
@@ -387,7 +386,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         return this.saved;
     }
 
-    public void setSavedObject(AbstractMazeObject newSaved) {
+    public void setSavedObject(final AbstractMazeObject newSaved) {
         if (newSaved == null) {
             throw new IllegalArgumentException("New saved object == NULL!");
         }
@@ -414,7 +413,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         return this.ruleSet;
     }
 
-    public boolean isConditionallySolid(MazeObjectInventory inv) {
+    public boolean isConditionallySolid(final MazeObjectInventory inv) {
         // Handle passwall boots
         if (inv.isItemThere(new PasswallBoots())) {
             return false;
@@ -441,7 +440,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     public boolean isConditionallyDirectionallySolid(final boolean ie,
-            final int dirX, final int dirY, MazeObjectInventory inv) {
+            final int dirX, final int dirY, final MazeObjectInventory inv) {
         // Handle ghost amulet and passwall boots
         if (inv.isItemThere(new GhostAmulet())
                 || inv.isItemThere(new PasswallBoots())) {
@@ -455,7 +454,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         return this.blocksLOS;
     }
 
-    public boolean isOfType(int testType) {
+    public boolean isOfType(final int testType) {
         return this.type.get(testType);
     }
 
@@ -466,7 +465,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
                 count++;
             }
         }
-        int[] result = new int[count];
+        final int[] result = new int[count];
         count = 0;
         for (int x = 0; x < TypeConstants.TYPES_COUNT; x++) {
             if (this.isOfType(x)) {
@@ -547,25 +546,26 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         return this.attributeTemplateColor;
     }
 
-    protected void setDirectionallySolid(boolean ie, int dir, boolean value) {
+    protected void setDirectionallySolid(final boolean ie, final int dir,
+            final boolean value) {
         this.sp.setDirectionallySolid(ie, dir, value);
     }
 
-    protected void setTemplateColor(int newTC) {
+    protected void setTemplateColor(final int newTC) {
         this.templateColor = newTC;
     }
 
-    protected void setAttributeID(int newAttrID) {
+    protected void setAttributeID(final int newAttrID) {
         this.attributeID = newAttrID;
     }
 
-    protected void setAttributeTemplateColor(int attrColor) {
+    protected void setAttributeTemplateColor(final int attrColor) {
         this.attributeTemplateColor = attrColor;
     }
 
     // Scripting
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -581,7 +581,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
             final int dirY, final MazeObjectInventory inv);
 
     /**
-     * 
+     *
      * @param active
      */
     public void postMoveBattleAction(final BattleCharacter active) {
@@ -589,7 +589,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param ie
      * @param dirX
      * @param dirY
@@ -602,7 +602,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      * @param dirZ
@@ -613,13 +613,13 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param moving
      * @return
      */
-    public boolean hasFrictionConditionally(MazeObjectInventory inv,
-            boolean moving) {
+    public boolean hasFrictionConditionally(final MazeObjectInventory inv,
+            final boolean moving) {
         return this.hasFriction();
     }
 
@@ -632,12 +632,12 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void editorGenerateHook(int x, int y, int z) {
+    public void editorGenerateHook(final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -650,7 +650,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param locX
      * @param locY
      * @param locZ
@@ -660,8 +660,9 @@ public abstract class AbstractMazeObject extends CloneableObject implements
      * @param inv
      * @return
      */
-    public boolean arrowHitAction(int locX, int locY, int locZ, int dirX,
-            int dirY, int arrowType, MazeObjectInventory inv) {
+    public boolean arrowHitAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final MazeObjectInventory inv) {
         // Stop non-ghost arrows passing through solid objects
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_GHOST) {
             return true;
@@ -675,19 +676,19 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param mo
      * @param x
      * @param y
      * @param z
      */
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
@@ -697,7 +698,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -712,7 +713,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -726,7 +727,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pushed
      * @param x
@@ -740,7 +741,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -756,7 +757,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param mo
      * @param x
@@ -771,7 +772,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -785,7 +786,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param pulled
      * @param x
@@ -799,7 +800,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param inv
      * @param x
      * @param y
@@ -818,24 +819,26 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      * @return
      */
-    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+    public AbstractMazeObject gameRenderHook(final int x, final int y,
+            final int z) {
         return this;
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      * @return
      */
-    public AbstractMazeObject editorRenderHook(int x, int y, int z) {
+    public AbstractMazeObject editorRenderHook(final int x, final int y,
+            final int z) {
         return this;
     }
 
@@ -858,12 +861,13 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param x
      * @param y
      * @param z
      */
-    public void determineCurrentAppearance(int x, int y, int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -871,7 +875,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         // Do nothing
     }
 
-    public final void activateTimer(int ticks) {
+    public final void activateTimer(final int ticks) {
         this.timerActive = true;
         this.timerValue = ticks;
         this.initialTimerValue = ticks;
@@ -883,7 +887,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         this.initialTimerValue = 0;
     }
 
-    public final void extendTimer(int ticks) {
+    public final void extendTimer(final int ticks) {
         if (this.timerActive) {
             this.timerValue += ticks;
         }
@@ -901,7 +905,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         }
     }
 
-    public final void tickTimer(int dirX, int dirY) {
+    public final void tickTimer(final int dirX, final int dirY) {
         if (this.timerActive) {
             this.timerValue--;
             if (this.timerValue == 0) {
@@ -913,11 +917,11 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param dirX
      * @param dirY
      */
-    public void timerExpiredAction(int dirX, int dirY) {
+    public void timerExpiredAction(final int dirX, final int dirY) {
         // Do nothing
     }
 
@@ -968,8 +972,8 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     @Override
-    public boolean shouldGenerateObject(Maze maze, int row, int col, int floor,
-            int level, int layer) {
+    public boolean shouldGenerateObject(final Maze maze, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (layer == MazeConstants.LAYER_OBJECT) {
             // Handle object layer
             if (!this.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
@@ -977,7 +981,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
                 if (this.isRequired()) {
                     return true;
                 } else {
-                    RandomRange r = new RandomRange(1, 100);
+                    final RandomRange r = new RandomRange(1, 100);
                     if (r.generate() <= 20) {
                         return true;
                     } else {
@@ -992,7 +996,7 @@ public abstract class AbstractMazeObject extends CloneableObject implements
             // Handle ground layer
             if (this.isOfType(TypeConstants.TYPE_FIELD)) {
                 // Limit generation of fields to 20%
-                RandomRange r = new RandomRange(1, 100);
+                final RandomRange r = new RandomRange(1, 100);
                 if (r.generate() <= 20) {
                     return true;
                 } else {
@@ -1006,12 +1010,12 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Maze maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Maze maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -1021,8 +1025,8 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     @Override
-    public boolean shouldGenerateObjectInBattle(Maze maze, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObjectInBattle(final Maze maze, final int row,
+            final int col, final int floor, final int level, final int layer) {
         if (!this.enabledInBattle()) {
             // Don't generate disabled objects
             return false;
@@ -1033,12 +1037,12 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     @Override
-    public int getMinimumRequiredQuantityInBattle(Maze maze) {
+    public int getMinimumRequiredQuantityInBattle(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantityInBattle(Maze maze) {
+    public int getMaximumRequiredQuantityInBattle(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -1047,50 +1051,50 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         return false;
     }
 
-    public final void writeMazeObject(XDataWriter writer) throws IOException {
-        writer.writeOpeningGroup(OBJECT_GROUP);
-        writer.writeOpeningGroup(OBJECT_ID_GROUP);
+    public final void writeMazeObject(final XDataWriter writer)
+            throws IOException {
+        writer.writeOpeningGroup(AbstractMazeObject.OBJECT_GROUP);
+        writer.writeOpeningGroup(AbstractMazeObject.OBJECT_ID_GROUP);
         writer.writeString(this.getIdentifier());
-        writer.writeClosingGroup(OBJECT_ID_GROUP);
-        writer.writeOpeningGroup(OBJECT_SAVED_GROUP);
+        writer.writeClosingGroup(AbstractMazeObject.OBJECT_ID_GROUP);
+        writer.writeOpeningGroup(AbstractMazeObject.OBJECT_SAVED_GROUP);
         if (this.saved == null) {
             writer.writeString("NULL");
         } else {
             this.saved.writeMazeObject(writer);
         }
-        writer.writeClosingGroup(OBJECT_SAVED_GROUP);
-        writer.writeOpeningGroup(OBJECT_SETTINGS_GROUP);
-        int cc = this.getCustomFormat();
+        writer.writeClosingGroup(AbstractMazeObject.OBJECT_SAVED_GROUP);
+        writer.writeOpeningGroup(AbstractMazeObject.OBJECT_SETTINGS_GROUP);
+        final int cc = this.getCustomFormat();
         if (cc == AbstractMazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
             this.writeMazeObjectHook(writer);
         } else {
             for (int x = 0; x < cc; x++) {
-                int cx = this.getCustomProperty(x + 1);
+                final int cx = this.getCustomProperty(x + 1);
                 writer.writeInt(cx);
             }
         }
-        writer.writeClosingGroup(OBJECT_SETTINGS_GROUP);
-        writer.writeClosingGroup(OBJECT_GROUP);
+        writer.writeClosingGroup(AbstractMazeObject.OBJECT_SETTINGS_GROUP);
+        writer.writeClosingGroup(AbstractMazeObject.OBJECT_GROUP);
     }
 
     public final AbstractMazeObject readLegacyMazeObjectV1(
-            XLegacyDataReader reader, String ident) throws IOException {
+            final XLegacyDataReader reader, final String ident)
+            throws IOException {
         if (ident.equals(this.getIdentifierV1())) {
-            String savedIdent = reader.readString();
+            final String savedIdent = reader.readString();
             if (!savedIdent.equals("NULL")) {
-                this.saved = MazeRunnerII
-                        .getApplication()
-                        .getObjects()
+                this.saved = MazeRunnerII.getApplication().getObjects()
                         .readLegacySavedMazeObject(reader, savedIdent,
                                 LegacyFormatConstants.LEGACY_MAZE_FORMAT_1);
             }
-            int cc = this.getCustomFormat();
+            final int cc = this.getCustomFormat();
             if (cc == AbstractMazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readLegacyMazeObjectHook(reader,
                         LegacyFormatConstants.LEGACY_MAZE_FORMAT_1);
             } else {
                 for (int x = 0; x < cc; x++) {
-                    int cx = reader.readInt();
+                    final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
             }
@@ -1101,23 +1105,22 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     public final AbstractMazeObject readLegacyMazeObjectV2(
-            XLegacyDataReader reader, String ident) throws IOException {
+            final XLegacyDataReader reader, final String ident)
+            throws IOException {
         if (ident.equals(this.getIdentifier())) {
-            String savedIdent = reader.readString();
+            final String savedIdent = reader.readString();
             if (!savedIdent.equals("NULL")) {
-                this.saved = MazeRunnerII
-                        .getApplication()
-                        .getObjects()
+                this.saved = MazeRunnerII.getApplication().getObjects()
                         .readLegacySavedMazeObject(reader, savedIdent,
                                 LegacyFormatConstants.LEGACY_MAZE_FORMAT_2);
             }
-            int cc = this.getCustomFormat();
+            final int cc = this.getCustomFormat();
             if (cc == AbstractMazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readLegacyMazeObjectHook(reader,
                         LegacyFormatConstants.LEGACY_MAZE_FORMAT_2);
             } else {
                 for (int x = 0; x < cc; x++) {
-                    int cx = reader.readInt();
+                    final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
             }
@@ -1127,31 +1130,29 @@ public abstract class AbstractMazeObject extends CloneableObject implements
         }
     }
 
-    public final AbstractMazeObject readMazeObjectV1(XDataReader reader,
-            String ident) throws IOException {
+    public final AbstractMazeObject readMazeObjectV1(final XDataReader reader,
+            final String ident) throws IOException {
         if (ident.equals(this.getIdentifier())) {
-            reader.readOpeningGroup(OBJECT_SAVED_GROUP);
-            String savedIdent = reader.readString();
-            reader.readClosingGroup(OBJECT_SAVED_GROUP);
+            reader.readOpeningGroup(AbstractMazeObject.OBJECT_SAVED_GROUP);
+            final String savedIdent = reader.readString();
+            reader.readClosingGroup(AbstractMazeObject.OBJECT_SAVED_GROUP);
             if (!savedIdent.equals("NULL")) {
-                this.saved = MazeRunnerII
-                        .getApplication()
-                        .getObjects()
+                this.saved = MazeRunnerII.getApplication().getObjects()
                         .readSavedMazeObject(reader, savedIdent,
                                 FormatConstants.MAZE_FORMAT_1);
             }
-            reader.readOpeningGroup(OBJECT_SETTINGS_GROUP);
-            int cc = this.getCustomFormat();
+            reader.readOpeningGroup(AbstractMazeObject.OBJECT_SETTINGS_GROUP);
+            final int cc = this.getCustomFormat();
             if (cc == AbstractMazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHook(reader,
                         FormatConstants.MAZE_FORMAT_1);
             } else {
                 for (int x = 0; x < cc; x++) {
-                    int cx = reader.readInt();
+                    final int cx = reader.readInt();
                     this.setCustomProperty(x + 1, cx);
                 }
             }
-            reader.readClosingGroup(OBJECT_SETTINGS_GROUP);
+            reader.readClosingGroup(AbstractMazeObject.OBJECT_SETTINGS_GROUP);
             return this;
         } else {
             return null;
@@ -1159,36 +1160,38 @@ public abstract class AbstractMazeObject extends CloneableObject implements
     }
 
     /**
-     * 
+     *
      * @param writer
      * @throws IOException
      */
-    protected void writeMazeObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer)
+            throws IOException {
         // Do nothing - but let subclasses override
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return
      * @throws IOException
      */
     protected AbstractMazeObject readLegacyMazeObjectHook(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
         // Dummy implementation, subclasses can override
         return this;
     }
 
     /**
-     * 
+     *
      * @param reader
      * @param formatVersion
      * @return
      * @throws IOException
      */
-    protected AbstractMazeObject readMazeObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractMazeObject readMazeObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
         // Dummy implementation, subclasses can override
         return this;
     }

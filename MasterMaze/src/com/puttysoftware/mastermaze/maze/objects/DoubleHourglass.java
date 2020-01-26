@@ -34,8 +34,8 @@ public class DoubleHourglass extends GenericTimeModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MasterMaze.getApplication().getGameManager().decay();
         MasterMaze.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValueDoubled();

@@ -10,22 +10,23 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractBow extends AbstractUsableObject {
     // Fields
-    private int AT;
+    private final int AT;
 
     // Constructors
-    protected AbstractBow(int uses, int arrowType, int tc) {
+    protected AbstractBow(final int uses, final int arrowType, final int tc) {
         super(uses);
         this.AT = arrowType;
         this.setTemplateColor(tc);
     }
 
     @Override
-    public void useHelper(int x, int y, int z) {
+    public void useHelper(final int x, final int y, final int z) {
         // Do nothing
     }
 
     @Override
-    public void useAction(AbstractMazeObject mo, int x, int y, int z) {
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -42,12 +43,12 @@ public abstract class AbstractBow extends AbstractUsableObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 

@@ -40,11 +40,12 @@ public class EnragedBarrierGenerator extends AbstractGenerator {
     }
 
     @Override
-    protected boolean preMoveActionHook(int dirX, int dirY, int dirZ, int dirW) {
+    protected boolean preMoveActionHook(final int dirX, final int dirY,
+            final int dirZ, final int dirW) {
         this.RAGE_CYCLES++;
         if (this.RAGE_CYCLES == EnragedBarrierGenerator.RAGE_LIMIT) {
-            Application app = MazeRunnerII.getApplication();
-            BarrierGenerator bg = new BarrierGenerator();
+            final Application app = MazeRunnerII.getApplication();
+            final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, dirX, dirY, dirZ);
             bg.timerExpiredAction(dirX, dirY);
         }
@@ -52,9 +53,10 @@ public class EnragedBarrierGenerator extends AbstractGenerator {
     }
 
     @Override
-    protected void arrowHitActionHook(int locX, int locY, int locZ,
-            int arrowType, MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    protected void arrowHitActionHook(final int locX, final int locY,
+            final int locZ, final int arrowType,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,
                     locZ);

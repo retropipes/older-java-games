@@ -39,8 +39,8 @@ public class GameLogicManager {
             previousSavedDungeonObject;
     private boolean pullInProgress;
     private boolean savedGameFlag;
-    private GameViewingWindowManager vwMgr;
-    private ObjectInventoryManager oiMgr;
+    private final GameViewingWindowManager vwMgr;
+    private final ObjectInventoryManager oiMgr;
     private boolean teleporting;
     private boolean stateChanged;
     private int poisonCounter;
@@ -48,9 +48,9 @@ public class GameLogicManager {
     private boolean actingRemotely;
     private boolean delayedDecayActive;
     private AbstractDungeonObject delayedDecayObject;
-    private GameGUIManager gui;
+    private final GameGUIManager gui;
     private final ScoreTracker st;
-    private DungeonEffectManager em;
+    private final DungeonEffectManager em;
 
     // Constructors
     public GameLogicManager() {
@@ -68,7 +68,7 @@ public class GameLogicManager {
 
     // Methods
     public boolean newGame() {
-        JFrame owner = DungeonDiver4.getApplication().getOutputFrame();
+        final JFrame owner = DungeonDiver4.getApplication().getOutputFrame();
         if (this.savedGameFlag) {
             if (PartyManager.getParty() != null) {
                 return true;
@@ -89,7 +89,7 @@ public class GameLogicManager {
     }
 
     public void doClockwiseRotate(final int r) {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
         boolean b = false;
         if (this.actingRemotely) {
@@ -106,7 +106,7 @@ public class GameLogicManager {
     }
 
     public void doCounterclockwiseRotate(final int r) {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
         boolean b = false;
         if (this.actingRemotely) {
@@ -122,7 +122,7 @@ public class GameLogicManager {
         }
     }
 
-    public void fireArrow(int x, int y) {
+    public void fireArrow(final int x, final int y) {
         this.oiMgr.fireArrow(x, y);
     }
 
@@ -132,14 +132,14 @@ public class GameLogicManager {
         this.checkGameOver();
     }
 
-    public void setRemoteAction(int x, int y, int z) {
+    public void setRemoteAction(final int x, final int y, final int z) {
         this.remoteCoords = new int[] { x, y, z };
         this.actingRemotely = true;
     }
 
-    public void doRemoteAction(int x, int y, int z) {
+    public void doRemoteAction(final int x, final int y, final int z) {
         this.setRemoteAction(x, y, z);
-        AbstractDungeonObject acted = DungeonDiver4.getApplication()
+        final AbstractDungeonObject acted = DungeonDiver4.getApplication()
                 .getDungeonManager()
                 .getDungeonObject(x, y, z, DungeonConstants.LAYER_OBJECT);
         acted.preMoveAction(false, x, y, this.getObjectInventory());
@@ -157,7 +157,7 @@ public class GameLogicManager {
         this.gui.disableTrueSight();
     }
 
-    public void addToScore(long points) {
+    public void addToScore(final long points) {
         this.st.addToScore(points);
     }
 
@@ -178,8 +178,8 @@ public class GameLogicManager {
     }
 
     public boolean isFloorBelow() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.getCell(m.getPlayerLocationX(), m.getPlayerLocationY(),
                     m.getPlayerLocationZ() - 1, DungeonConstants.LAYER_OBJECT);
@@ -192,8 +192,8 @@ public class GameLogicManager {
     }
 
     public boolean isFloorAbove() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.getCell(m.getPlayerLocationX(), m.getPlayerLocationY(),
                     m.getPlayerLocationZ() + 1, DungeonConstants.LAYER_OBJECT);
@@ -206,8 +206,8 @@ public class GameLogicManager {
     }
 
     public boolean doesFloorExist(final int floor) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.getCell(m.getPlayerLocationX(), m.getPlayerLocationY(), floor,
                     DungeonConstants.LAYER_OBJECT);
@@ -219,7 +219,7 @@ public class GameLogicManager {
         }
     }
 
-    public void setSavedGameFlag(boolean value) {
+    public void setSavedGameFlag(final boolean value) {
         this.savedGameFlag = value;
     }
 
@@ -227,7 +227,7 @@ public class GameLogicManager {
         this.oiMgr.resetObjectInventory();
     }
 
-    public boolean isEffectActive(int effectID) {
+    public boolean isEffectActive(final int effectID) {
         return this.em.isEffectActive(effectID);
     }
 
@@ -235,15 +235,15 @@ public class GameLogicManager {
         this.em.decayEffects();
     }
 
-    public void activateEffect(int effectID, int duration) {
+    public void activateEffect(final int effectID, final int duration) {
         this.em.activateEffect(effectID, duration);
     }
 
-    public void deactivateEffect(int effectID) {
+    public void deactivateEffect(final int effectID) {
         this.em.deactivateEffect(effectID);
     }
 
-    int[] doEffects(int x, int y) {
+    int[] doEffects(final int x, final int y) {
         return this.em.doEffects(x, y);
     }
 
@@ -251,7 +251,7 @@ public class GameLogicManager {
         return this.teleporting;
     }
 
-    void setTeleporting(boolean tele) {
+    void setTeleporting(final boolean tele) {
         this.teleporting = tele;
     }
 
@@ -268,12 +268,12 @@ public class GameLogicManager {
     }
 
     private void fireStepActions() {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
         this.oiMgr.fireStepActions();
-        int px = m.getPlayerLocationX();
-        int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
+        final int px = m.getPlayerLocationX();
+        final int py = m.getPlayerLocationY();
+        final int pz = m.getPlayerLocationZ();
         m.updateVisibleSquares(px, py, pz);
         m.tickTimers(pz);
         PartyManager.getParty().fireStepActions();
@@ -291,9 +291,10 @@ public class GameLogicManager {
         this.gui.updateStats();
     }
 
-    public void updatePositionRelative(final int dirX, final int dirY, int dirZ) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+    public void updatePositionRelative(final int dirX, final int dirY,
+            final int dirZ) {
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         this.previousSavedDungeonObject = this.savedDungeonObject;
         boolean redrawsSuspended = false;
         int px = m.getPlayerLocationX();
@@ -301,8 +302,8 @@ public class GameLogicManager {
         int pz = m.getPlayerLocationZ();
         int fX = dirX;
         int fY = dirY;
-        int fZ = dirZ;
-        int[] mod = this.doEffects(dirX, dirY);
+        final int fZ = dirZ;
+        final int[] mod = this.doEffects(dirX, dirY);
         fX = mod[0];
         fY = mod[1];
         boolean proceed = false;
@@ -312,8 +313,8 @@ public class GameLogicManager {
         do {
             try {
                 try {
-                    below = m
-                            .getCell(px, py, pz, DungeonConstants.LAYER_GROUND);
+                    below = m.getCell(px, py, pz,
+                            DungeonConstants.LAYER_GROUND);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     below = new Empty();
                 }
@@ -337,7 +338,7 @@ public class GameLogicManager {
                 } catch (final InfiniteRecursionException ir) {
                     proceed = false;
                 }
-            } catch (NullPointerException np) {
+            } catch (final NullPointerException np) {
                 proceed = false;
                 this.decayEffects();
                 nextAbove = new Empty();
@@ -364,8 +365,8 @@ public class GameLogicManager {
                     nextAbove.moveFailedAction(false, px, py,
                             this.getObjectInventory());
                     this.fireStepActions();
-                    DungeonDiver4.getApplication().showMessage(
-                            "Can't go that way");
+                    DungeonDiver4.getApplication()
+                            .showMessage("Can't go that way");
                     nextAbove = new Empty();
                     this.decayEffects();
                     proceed = false;
@@ -378,9 +379,8 @@ public class GameLogicManager {
                 this.decayEffects();
                 proceed = false;
             }
-            if (redrawsSuspended
-                    && !this.checkLoopCondition(proceed, below, nextBelow,
-                            nextAbove)) {
+            if (redrawsSuspended && !this.checkLoopCondition(proceed, below,
+                    nextBelow, nextAbove)) {
                 // Redraw post-suspend
                 this.redrawDungeon();
                 redrawsSuspended = false;
@@ -392,14 +392,14 @@ public class GameLogicManager {
     }
 
     private boolean updatePositionRelativePush(final int dirX, final int dirY) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         boolean redrawsSuspended = false;
         int px = m.getPlayerLocationX();
         int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        int fX = dirX;
-        int fY = dirY;
+        final int pz = m.getPlayerLocationZ();
+        final int fX = dirX;
+        final int fY = dirY;
         AbstractDungeonObject acted = new Empty();
         AbstractDungeonObject groundInto = new Empty();
         AbstractDungeonObject below = null;
@@ -407,8 +407,8 @@ public class GameLogicManager {
         AbstractDungeonObject nextAbove = null;
         AbstractDungeonObject nextNextBelow = null;
         AbstractDungeonObject nextNextAbove = null;
-        final boolean isXNonZero = (fX != 0);
-        final boolean isYNonZero = (fY != 0);
+        final boolean isXNonZero = fX != 0;
+        final boolean isYNonZero = fY != 0;
         int pushX = 0, pushY = 0;
         if (isXNonZero) {
             final int signX = (int) Math.signum(fX);
@@ -466,14 +466,16 @@ public class GameLogicManager {
                         DungeonConstants.LAYER_OBJECT);
                 app.getDungeonManager().setDirty(true);
                 this.fireStepActions();
-                if (this.getObjectInventory().isItemThere(new PasswallBoots())) {
+                if (this.getObjectInventory()
+                        .isItemThere(new PasswallBoots())) {
                     redrawsSuspended = true;
                 } else {
                     this.redrawDungeon();
                 }
                 groundInto = m.getCell(px, py, pz,
                         DungeonConstants.LAYER_GROUND);
-                m.setCell(groundInto, px, py, pz, DungeonConstants.LAYER_GROUND);
+                m.setCell(groundInto, px, py, pz,
+                        DungeonConstants.LAYER_GROUND);
                 if (groundInto.overridesDefaultPostMove()) {
                     groundInto.postMoveAction(false, px, py,
                             this.getObjectInventory());
@@ -489,8 +491,8 @@ public class GameLogicManager {
                 this.decayEffects();
             } else {
                 // Push failed - object can't move that way
-                acted.pushFailedAction(this.getObjectInventory(), fX, fY,
-                        pushX, pushY);
+                acted.pushFailedAction(this.getObjectInventory(), fX, fY, pushX,
+                        pushY);
                 this.fireStepActions();
                 this.decayEffects();
             }
@@ -507,20 +509,20 @@ public class GameLogicManager {
     }
 
     private boolean updatePositionRelativePull(final int dirX, final int dirY) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         boolean redrawsSuspended = false;
         int px = m.getPlayerLocationX();
         int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        int fX = dirX;
-        int fY = dirY;
+        final int pz = m.getPlayerLocationZ();
+        final int fX = dirX;
+        final int fY = dirY;
         AbstractDungeonObject acted = new Empty();
         AbstractDungeonObject groundInto = new Empty();
         AbstractDungeonObject below = null;
         AbstractDungeonObject previousBelow = null;
-        final boolean isXNonZero = (fX != 0);
-        final boolean isYNonZero = (fY != 0);
+        final boolean isXNonZero = fX != 0;
+        final boolean isYNonZero = fY != 0;
         int pullX = 0, pullY = 0;
         if (isXNonZero) {
             final int signX = (int) Math.signum(fX);
@@ -554,8 +556,8 @@ public class GameLogicManager {
             if (!this.checkPull(fX, fY, pullX, pullY, acted, previousBelow,
                     below, this.savedDungeonObject)) {
                 // Pull failed - object can't move that way
-                acted.pullFailedAction(this.getObjectInventory(), fX, fY,
-                        pullX, pullY);
+                acted.pullFailedAction(this.getObjectInventory(), fX, fY, pullX,
+                        pullY);
                 this.decayEffects();
             }
         } else if (!acted.isPullable() && this.isPullInProgress()) {
@@ -596,9 +598,9 @@ public class GameLogicManager {
         return redrawsSuspended;
     }
 
-    public void backUpPlayer(AbstractDungeonObject backUpObject) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+    public void backUpPlayer(final AbstractDungeonObject backUpObject) {
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         m.setCell(backUpObject, m.getPlayerLocationX(), m.getPlayerLocationY(),
                 m.getPlayerLocationZ(), DungeonConstants.LAYER_OBJECT);
         this.vwMgr.restoreViewingWindow();
@@ -607,14 +609,14 @@ public class GameLogicManager {
         this.redrawDungeon();
     }
 
-    private boolean checkLoopCondition(boolean proceed,
-            AbstractDungeonObject below, AbstractDungeonObject nextBelow,
-            AbstractDungeonObject nextAbove) {
+    private boolean checkLoopCondition(final boolean proceed,
+            final AbstractDungeonObject below,
+            final AbstractDungeonObject nextBelow,
+            final AbstractDungeonObject nextAbove) {
         // Handle slippery boots and ice amulet
         if (this.getObjectInventory().isItemThere(new SlipperyBoots())) {
-            return proceed
-                    && this.checkSolid(this.savedDungeonObject, below,
-                            nextBelow, nextAbove);
+            return proceed && this.checkSolid(this.savedDungeonObject, below,
+                    nextBelow, nextAbove);
         } else {
             return proceed
                     && !nextBelow.hasFrictionConditionally(
@@ -628,19 +630,19 @@ public class GameLogicManager {
             final AbstractDungeonObject below,
             final AbstractDungeonObject nextBelow,
             final AbstractDungeonObject nextAbove) {
-        boolean insideSolid = inside.isConditionallySolid(this
-                .getObjectInventory());
-        boolean belowSolid = below.isConditionallySolid(this
-                .getObjectInventory());
-        boolean nextBelowSolid = nextBelow.isConditionallySolid(this
-                .getObjectInventory());
+        final boolean insideSolid = inside
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean belowSolid = below
+                .isConditionallySolid(this.getObjectInventory());
+        boolean nextBelowSolid = nextBelow
+                .isConditionallySolid(this.getObjectInventory());
         // Handle hot boots and slippery boots
         if (this.getObjectInventory().isItemThere(new HotBoots())
                 || this.getObjectInventory().isItemThere(new SlipperyBoots())) {
             nextBelowSolid = false;
         }
-        boolean nextAboveSolid = nextAbove.isConditionallySolid(this
-                .getObjectInventory());
+        final boolean nextAboveSolid = nextAbove
+                .isConditionallySolid(this.getObjectInventory());
         if (insideSolid || belowSolid || nextBelowSolid || nextAboveSolid) {
             return false;
         } else {
@@ -653,14 +655,14 @@ public class GameLogicManager {
             final AbstractDungeonObject below,
             final AbstractDungeonObject nextBelow,
             final AbstractDungeonObject nextAbove) {
-        boolean insideSolid = inside.isConditionallySolid(this
-                .getObjectInventory());
-        boolean belowSolid = below.isConditionallySolid(this
-                .getObjectInventory());
-        boolean nextBelowSolid = nextBelow.isConditionallySolid(this
-                .getObjectInventory());
-        boolean nextAboveSolid = nextAbove.isConditionallySolid(this
-                .getObjectInventory());
+        final boolean insideSolid = inside
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean belowSolid = below
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean nextBelowSolid = nextBelow
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean nextAboveSolid = nextAbove
+                .isConditionallySolid(this.getObjectInventory());
         if (insideSolid) {
             inside.moveFailedAction(false, x, y, this.getObjectInventory());
         }
@@ -680,23 +682,23 @@ public class GameLogicManager {
             final AbstractDungeonObject nextBelow,
             final AbstractDungeonObject nextNextBelow,
             final AbstractDungeonObject nextNextAbove) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
-        int px = m.getPlayerLocationX();
-        int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        boolean nextBelowAccept = nextBelow.isPushableOut();
-        boolean nextNextBelowAccept = nextNextBelow.isPushableInto();
-        boolean nextNextAboveAccept = nextNextAbove.isPushableInto();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
+        final int px = m.getPlayerLocationX();
+        final int py = m.getPlayerLocationY();
+        final int pz = m.getPlayerLocationZ();
+        final boolean nextBelowAccept = nextBelow.isPushableOut();
+        final boolean nextNextBelowAccept = nextNextBelow.isPushableInto();
+        final boolean nextNextAboveAccept = nextNextAbove.isPushableInto();
         if (nextBelowAccept && nextNextBelowAccept && nextNextAboveAccept) {
-            nextBelow.pushOutAction(this.getObjectInventory(), acted, px
-                    + pushX, py + pushY, pz);
+            nextBelow.pushOutAction(this.getObjectInventory(), acted,
+                    px + pushX, py + pushY, pz);
             acted.pushAction(this.getObjectInventory(), nextNextAbove, x, y,
                     pushX, pushY);
-            nextNextAbove.pushIntoAction(this.getObjectInventory(), acted, px
-                    + pushX, py + pushY, pz);
-            nextNextBelow.pushIntoAction(this.getObjectInventory(), acted, px
-                    + pushX, py + pushY, pz);
+            nextNextAbove.pushIntoAction(this.getObjectInventory(), acted,
+                    px + pushX, py + pushY, pz);
+            nextNextBelow.pushIntoAction(this.getObjectInventory(), acted,
+                    px + pushX, py + pushY, pz);
             return true;
         } else {
             return false;
@@ -706,18 +708,19 @@ public class GameLogicManager {
     private boolean checkPull(final int x, final int y, final int pullX,
             final int pullY, final AbstractDungeonObject acted,
             final AbstractDungeonObject previousBelow,
-            final AbstractDungeonObject below, final AbstractDungeonObject above) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
-        int px = m.getPlayerLocationX();
-        int py = m.getPlayerLocationY();
-        int pz = m.getPlayerLocationZ();
-        boolean previousBelowAccept = previousBelow.isPullableOut();
-        boolean belowAccept = below.isPullableInto();
-        boolean aboveAccept = above.isPullableInto();
+            final AbstractDungeonObject below,
+            final AbstractDungeonObject above) {
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
+        final int px = m.getPlayerLocationX();
+        final int py = m.getPlayerLocationY();
+        final int pz = m.getPlayerLocationZ();
+        final boolean previousBelowAccept = previousBelow.isPullableOut();
+        final boolean belowAccept = below.isPullableInto();
+        final boolean aboveAccept = above.isPullableInto();
         if (previousBelowAccept && belowAccept && aboveAccept) {
-            previousBelow.pullOutAction(this.getObjectInventory(), acted, px
-                    - pullX, py - pullY, pz);
+            previousBelow.pullOutAction(this.getObjectInventory(), acted,
+                    px - pullX, py - pullY, pz);
             acted.pullAction(this.getObjectInventory(), above, x, y, pullX,
                     pullY);
             above.pullIntoAction(this.getObjectInventory(), acted, px - pullX,
@@ -732,18 +735,18 @@ public class GameLogicManager {
 
     public void updatePushedPosition(final int x, final int y, final int pushX,
             final int pushY, final AbstractMovableObject o) {
-        int xInc = (int) Math.signum(x), yInc = (int) Math.signum(y);
+        final int xInc = (int) Math.signum(x), yInc = (int) Math.signum(y);
         int cumPushX = pushX, cumPushY = pushY, cumX = x, cumY = y;
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
-        DungeonManager mm = app.getDungeonManager();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
+        final DungeonManager mm = app.getDungeonManager();
         AbstractDungeonObject there = mm.getDungeonObject(
                 m.getPlayerLocationX() + cumX, m.getPlayerLocationY() + cumY,
                 m.getPlayerLocationZ(), DungeonConstants.LAYER_GROUND);
         if (there != null) {
             do {
-                this.movePushedObjectPosition(cumX, cumY, cumPushX, cumPushY,
-                        o, there);
+                this.movePushedObjectPosition(cumX, cumY, cumPushX, cumPushY, o,
+                        there);
                 cumX += xInc;
                 cumY += yInc;
                 cumPushX += xInc;
@@ -762,14 +765,14 @@ public class GameLogicManager {
     private void movePushedObjectPosition(final int x, final int y,
             final int pushX, final int pushY, final AbstractMovableObject o,
             final AbstractDungeonObject g) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(o.getSavedObject(), m.getPlayerLocationX() + x,
                     m.getPlayerLocationY() + y, m.getPlayerLocationZ(),
                     DungeonConstants.LAYER_OBJECT);
-            m.setCell(o, m.getPlayerLocationX() + pushX, m.getPlayerLocationY()
-                    + pushY, m.getPlayerLocationZ(),
+            m.setCell(o, m.getPlayerLocationX() + pushX,
+                    m.getPlayerLocationY() + pushY, m.getPlayerLocationZ(),
                     DungeonConstants.LAYER_OBJECT);
             if (g.overridesDefaultPostMove()) {
                 g.postMoveAction(false, m.getPlayerLocationX(),
@@ -782,14 +785,14 @@ public class GameLogicManager {
 
     public void updatePulledPosition(final int x, final int y, final int pullX,
             final int pullY, final AbstractMovableObject o) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(o.getSavedObject(), m.getPlayerLocationX() - x,
                     m.getPlayerLocationY() - y, m.getPlayerLocationZ(),
                     DungeonConstants.LAYER_OBJECT);
-            m.setCell(o, m.getPlayerLocationX() - pullX, m.getPlayerLocationY()
-                    - pullY, m.getPlayerLocationZ(),
+            m.setCell(o, m.getPlayerLocationX() - pullX,
+                    m.getPlayerLocationY() - pullY, m.getPlayerLocationZ(),
                     DungeonConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
@@ -800,12 +803,12 @@ public class GameLogicManager {
             final int z, final int x2, final int y2, final int z2,
             final AbstractMovableObject pushedInto,
             final AbstractDungeonObject source) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
-            if (!(m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
-                    .isConditionallySolid(this.getObjectInventory()))) {
-                AbstractDungeonObject saved = m.getCell(x, y, z,
+            if (!m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
+                    .isConditionallySolid(this.getObjectInventory())) {
+                final AbstractDungeonObject saved = m.getCell(x, y, z,
                         DungeonConstants.LAYER_OBJECT);
                 m.setCell(pushedInto, x, y, z, DungeonConstants.LAYER_OBJECT);
                 pushedInto.setSavedObject(saved);
@@ -822,17 +825,17 @@ public class GameLogicManager {
 
     public boolean tryUpdatePositionRelative(final int x, final int y) {
         try {
-            Application app = DungeonDiver4.getApplication();
-            Dungeon m = app.getDungeonManager().getDungeon();
-            AbstractDungeonObject below = m.getCell(m.getPlayerLocationX(),
-                    m.getPlayerLocationY(), m.getPlayerLocationZ(),
-                    DungeonConstants.LAYER_GROUND);
-            AbstractDungeonObject nextBelow = m.getCell(m.getPlayerLocationX()
-                    + x, m.getPlayerLocationY() + y, m.getPlayerLocationZ(),
-                    DungeonConstants.LAYER_GROUND);
-            AbstractDungeonObject nextAbove = m.getCell(m.getPlayerLocationX()
-                    + x, m.getPlayerLocationY() + y, m.getPlayerLocationZ(),
-                    DungeonConstants.LAYER_OBJECT);
+            final Application app = DungeonDiver4.getApplication();
+            final Dungeon m = app.getDungeonManager().getDungeon();
+            final AbstractDungeonObject below = m.getCell(
+                    m.getPlayerLocationX(), m.getPlayerLocationY(),
+                    m.getPlayerLocationZ(), DungeonConstants.LAYER_GROUND);
+            final AbstractDungeonObject nextBelow = m.getCell(
+                    m.getPlayerLocationX() + x, m.getPlayerLocationY() + y,
+                    m.getPlayerLocationZ(), DungeonConstants.LAYER_GROUND);
+            final AbstractDungeonObject nextAbove = m.getCell(
+                    m.getPlayerLocationX() + x, m.getPlayerLocationY() + y,
+                    m.getPlayerLocationZ(), DungeonConstants.LAYER_OBJECT);
             return this.checkSolid(this.savedDungeonObject, below, nextBelow,
                     nextAbove);
         } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -843,14 +846,14 @@ public class GameLogicManager {
     public boolean tryUpdatePositionAbsolute(final int x, final int y,
             final int z) {
         try {
-            Application app = DungeonDiver4.getApplication();
-            Dungeon m = app.getDungeonManager().getDungeon();
-            AbstractDungeonObject below = m.getCell(m.getPlayerLocationX(),
-                    m.getPlayerLocationY(), m.getPlayerLocationZ(),
+            final Application app = DungeonDiver4.getApplication();
+            final Dungeon m = app.getDungeonManager().getDungeon();
+            final AbstractDungeonObject below = m.getCell(
+                    m.getPlayerLocationX(), m.getPlayerLocationY(),
+                    m.getPlayerLocationZ(), DungeonConstants.LAYER_GROUND);
+            final AbstractDungeonObject nextBelow = m.getCell(x, y, z,
                     DungeonConstants.LAYER_GROUND);
-            AbstractDungeonObject nextBelow = m.getCell(x, y, z,
-                    DungeonConstants.LAYER_GROUND);
-            AbstractDungeonObject nextAbove = m.getCell(x, y, z,
+            final AbstractDungeonObject nextAbove = m.getCell(x, y, z,
                     DungeonConstants.LAYER_OBJECT);
             return this.checkSolidAbsolute(this.savedDungeonObject, below,
                     nextBelow, nextAbove);
@@ -863,14 +866,14 @@ public class GameLogicManager {
             final AbstractDungeonObject below,
             final AbstractDungeonObject nextBelow,
             final AbstractDungeonObject nextAbove) {
-        boolean insideSolid = inside.isConditionallySolid(this
-                .getObjectInventory());
-        boolean belowSolid = below.isConditionallySolid(this
-                .getObjectInventory());
-        boolean nextBelowSolid = nextBelow.isConditionallySolid(this
-                .getObjectInventory());
-        boolean nextAboveSolid = nextAbove.isConditionallySolid(this
-                .getObjectInventory());
+        final boolean insideSolid = inside
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean belowSolid = below
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean nextBelowSolid = nextBelow
+                .isConditionallySolid(this.getObjectInventory());
+        final boolean nextAboveSolid = nextAbove
+                .isConditionallySolid(this.getObjectInventory());
         if (insideSolid || belowSolid || nextBelowSolid || nextAboveSolid) {
             return false;
         } else {
@@ -879,11 +882,11 @@ public class GameLogicManager {
     }
 
     public void updatePositionAbsolute(final int x, final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
-            m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT).preMoveAction(
-                    true, x, y, this.getObjectInventory());
+            m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
+                    .preMoveAction(true, x, y, this.getObjectInventory());
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
         } catch (final NullPointerException np) {
@@ -892,52 +895,52 @@ public class GameLogicManager {
         m.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
         try {
-            if (!(m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
-                    .isConditionallySolid(this.getObjectInventory()))) {
+            if (!m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
+                    .isConditionallySolid(this.getObjectInventory())) {
                 m.setCell(this.savedDungeonObject, m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         DungeonConstants.LAYER_OBJECT);
                 m.setPlayerLocationX(x);
                 m.setPlayerLocationY(y);
                 m.setPlayerLocationZ(z);
-                this.vwMgr.setViewingWindowLocationX(m.getPlayerLocationY()
-                        - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(m.getPlayerLocationX()
-                        - this.vwMgr.getOffsetFactorY());
+                this.vwMgr.setViewingWindowLocationX(
+                        m.getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        m.getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
                 this.savedDungeonObject = m.getCell(m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         DungeonConstants.LAYER_OBJECT);
                 app.getDungeonManager().setDirty(true);
                 this.savedDungeonObject.postMoveAction(false, x, y,
                         this.getObjectInventory());
-                int px = m.getPlayerLocationX();
-                int py = m.getPlayerLocationY();
-                int pz = m.getPlayerLocationZ();
+                final int px = m.getPlayerLocationX();
+                final int py = m.getPlayerLocationY();
+                final int pz = m.getPlayerLocationZ();
                 m.updateVisibleSquares(px, py, pz);
                 this.redrawDungeon();
             }
         } catch (final ArrayIndexOutOfBoundsException ae) {
             m.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
-            DungeonDiver4.getApplication().showMessage(
-                    "Can't go outside the dungeon");
+            DungeonDiver4.getApplication()
+                    .showMessage("Can't go outside the dungeon");
         } catch (final NullPointerException np) {
             m.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
-            DungeonDiver4.getApplication().showMessage(
-                    "Can't go outside the dungeon");
+            DungeonDiver4.getApplication()
+                    .showMessage("Can't go outside the dungeon");
         }
     }
 
     public void updatePositionAbsoluteNoEvents(final int x, final int y,
             final int z, final int w) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         m.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
         try {
-            if (!(m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
-                    .isConditionallySolid(this.getObjectInventory()))) {
+            if (!m.getCell(x, y, z, DungeonConstants.LAYER_OBJECT)
+                    .isConditionallySolid(this.getObjectInventory())) {
                 m.setCell(this.savedDungeonObject, m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         DungeonConstants.LAYER_OBJECT);
@@ -945,30 +948,30 @@ public class GameLogicManager {
                 m.setPlayerLocationY(y);
                 m.setPlayerLocationZ(z);
                 m.setPlayerLocationW(w);
-                this.vwMgr.setViewingWindowLocationX(m.getPlayerLocationY()
-                        - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(m.getPlayerLocationX()
-                        - this.vwMgr.getOffsetFactorY());
+                this.vwMgr.setViewingWindowLocationX(
+                        m.getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        m.getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
                 this.savedDungeonObject = m.getCell(m.getPlayerLocationX(),
                         m.getPlayerLocationY(), m.getPlayerLocationZ(),
                         DungeonConstants.LAYER_OBJECT);
                 app.getDungeonManager().setDirty(true);
-                int px = m.getPlayerLocationX();
-                int py = m.getPlayerLocationY();
-                int pz = m.getPlayerLocationZ();
+                final int px = m.getPlayerLocationX();
+                final int py = m.getPlayerLocationY();
+                final int pz = m.getPlayerLocationZ();
                 m.updateVisibleSquares(px, py, pz);
                 this.redrawDungeon();
             }
         } catch (final ArrayIndexOutOfBoundsException ae) {
             m.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
-            DungeonDiver4.getApplication().showMessage(
-                    "Can't go outside the dungeon");
+            DungeonDiver4.getApplication()
+                    .showMessage("Can't go outside the dungeon");
         } catch (final NullPointerException np) {
             m.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
-            DungeonDiver4.getApplication().showMessage(
-                    "Can't go outside the dungeon");
+            DungeonDiver4.getApplication()
+                    .showMessage("Can't go outside the dungeon");
         }
     }
 
@@ -989,8 +992,8 @@ public class GameLogicManager {
         this.gui.redrawDungeon();
     }
 
-    void redrawOneSquare(int x, int y, boolean useDelay,
-            AbstractDungeonObject obj4) {
+    void redrawOneSquare(final int x, final int y, final boolean useDelay,
+            final AbstractDungeonObject obj4) {
         this.gui.redrawOneSquare(x, y, useDelay, obj4);
     }
 
@@ -1000,21 +1003,21 @@ public class GameLogicManager {
     }
 
     public void resetViewingWindow() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
-        this.vwMgr.setViewingWindowLocationX(m.getPlayerLocationY()
-                - this.vwMgr.getOffsetFactorX());
-        this.vwMgr.setViewingWindowLocationY(m.getPlayerLocationX()
-                - this.vwMgr.getOffsetFactorY());
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
+        this.vwMgr.setViewingWindowLocationX(
+                m.getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
+        this.vwMgr.setViewingWindowLocationY(
+                m.getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
     }
 
     public void resetPlayerLocation() {
         this.resetPlayerLocation(0);
     }
 
-    public void resetPlayerLocation(int level) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+    public void resetPlayerLocation(final int level) {
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         if (m != null) {
             m.switchLevel(level);
             m.setPlayerToStart();
@@ -1022,14 +1025,14 @@ public class GameLogicManager {
     }
 
     public void resetCurrentLevel() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         this.resetLevel(m.getPlayerLocationW());
     }
 
     public void resetGameState() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         app.getDungeonManager().setDirty(false);
         m.restore();
         m.resetVisibleSquares();
@@ -1037,7 +1040,7 @@ public class GameLogicManager {
         this.decay();
         this.oiMgr.resetObjectInventory();
         this.oiMgr.saveObjectInventory();
-        int startW = m.getStartLevel();
+        final int startW = m.getStartLevel();
         final boolean playerExists = m.doesPlayerExist();
         if (playerExists) {
             m.switchLevel(startW);
@@ -1046,9 +1049,9 @@ public class GameLogicManager {
         }
     }
 
-    public void resetLevel(int level) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+    public void resetLevel(final int level) {
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         app.getDungeonManager().setDirty(true);
         m.restore();
         m.resetVisibleSquares();
@@ -1064,8 +1067,8 @@ public class GameLogicManager {
 
     public void exitGame() {
         this.stateChanged = true;
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         // Restore the dungeon
         m.restore();
         m.resetVisibleSquares();
@@ -1093,14 +1096,12 @@ public class GameLogicManager {
         this.savedDungeonObject = new Empty();
     }
 
-    public void decayTo(AbstractDungeonObject decay) {
+    public void decayTo(final AbstractDungeonObject decay) {
         if (this.actingRemotely) {
-            DungeonDiver4
-                    .getApplication()
-                    .getDungeonManager()
-                    .getDungeon()
+            DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .setCell(decay, this.remoteCoords[0], this.remoteCoords[1],
-                            this.remoteCoords[2], DungeonConstants.LAYER_OBJECT);
+                            this.remoteCoords[2],
+                            DungeonConstants.LAYER_OBJECT);
         } else {
             this.savedDungeonObject = decay;
         }
@@ -1108,10 +1109,7 @@ public class GameLogicManager {
 
     private void doDelayedDecay() {
         if (this.actingRemotely) {
-            DungeonDiver4
-                    .getApplication()
-                    .getDungeonManager()
-                    .getDungeon()
+            DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                     .setCell(this.delayedDecayObject, this.remoteCoords[0],
                             this.remoteCoords[1], this.remoteCoords[2],
                             DungeonConstants.LAYER_OBJECT);
@@ -1121,15 +1119,15 @@ public class GameLogicManager {
         this.delayedDecayActive = false;
     }
 
-    public void delayedDecayTo(AbstractDungeonObject obj) {
+    public void delayedDecayTo(final AbstractDungeonObject obj) {
         this.delayedDecayActive = true;
         this.delayedDecayObject = obj;
     }
 
     public void morph(final AbstractDungeonObject morphInto, final int x,
             final int y, final int z, final int e) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(morphInto, x, y, z, e);
             this.redrawDungeon();
@@ -1143,8 +1141,8 @@ public class GameLogicManager {
 
     public void morph(final AbstractDungeonObject morphInto, final int x,
             final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(morphInto, x, y, z, morphInto.getLayer());
             this.redrawDungeon();
@@ -1158,8 +1156,8 @@ public class GameLogicManager {
 
     public void morph(final AbstractDungeonObject morphInto, final int x,
             final int y, final int z, final String msg) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(morphInto, x, y, z, morphInto.getLayer());
             DungeonDiver4.getApplication().showMessage(msg);
@@ -1175,8 +1173,8 @@ public class GameLogicManager {
 
     public void morphOther(final AbstractDungeonObject morphInto, final int x,
             final int y, final int e) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         try {
             m.setCell(morphInto, m.getPlayerLocationX() + x,
                     m.getPlayerLocationY() + y, m.getPlayerLocationZ(), e);
@@ -1207,8 +1205,8 @@ public class GameLogicManager {
     }
 
     void controllableTeleportHandler(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         if (this.teleporting) {
             final int xOffset = this.vwMgr.getViewingWindowLocationX()
                     - this.vwMgr.getOffsetFactorX();
@@ -1228,8 +1226,8 @@ public class GameLogicManager {
     }
 
     public void identifyObject(final int x, final int y) {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         final int xOffset = this.vwMgr.getViewingWindowLocationX()
                 - this.vwMgr.getOffsetFactorX();
         final int yOffset = this.vwMgr.getViewingWindowLocationY()
@@ -1240,19 +1238,19 @@ public class GameLogicManager {
                 + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = m.getPlayerLocationZ();
         try {
-            AbstractDungeonObject target1 = m.getCell(destX, destY, destZ,
+            final AbstractDungeonObject target1 = m.getCell(destX, destY, destZ,
                     DungeonConstants.LAYER_GROUND);
-            AbstractDungeonObject target2 = m.getCell(destX, destY, destZ,
+            final AbstractDungeonObject target2 = m.getCell(destX, destY, destZ,
                     DungeonConstants.LAYER_OBJECT);
             target1.determineCurrentAppearance(destX, destY, destZ);
             target2.determineCurrentAppearance(destX, destY, destZ);
-            String gameName1 = target1.getGameName();
-            String gameName2 = target2.getGameName();
-            DungeonDiver4.getApplication().showMessage(
-                    gameName2 + " on " + gameName1);
+            final String gameName1 = target1.getGameName();
+            final String gameName2 = target2.getGameName();
+            DungeonDiver4.getApplication()
+                    .showMessage(gameName2 + " on " + gameName1);
             SoundManager.playSound(SoundConstants.SOUND_IDENTIFY);
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            EmptyVoid ev = new EmptyVoid();
+            final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(destX, destY, destZ);
             DungeonDiver4.getApplication().showMessage(ev.getGameName());
             SoundManager.playSound(SoundConstants.SOUND_IDENTIFY);
@@ -1276,35 +1274,32 @@ public class GameLogicManager {
         return this.oiMgr.getObjectInventory();
     }
 
-    public void loadGameHook(XDataReader dungeonFile, int formatVersion)
-            throws IOException {
-        Application app = DungeonDiver4.getApplication();
+    public void loadGameHook(final XDataReader dungeonFile,
+            final int formatVersion) throws IOException {
+        final Application app = DungeonDiver4.getApplication();
         this.oiMgr.readObjectInventory(dungeonFile, formatVersion);
         app.getDungeonManager().setScoresFileName(dungeonFile.readString());
         FileHooks.loadGameHook(dungeonFile);
     }
 
-    public void saveGameHook(XDataWriter dungeonFile) throws IOException {
-        Application app = DungeonDiver4.getApplication();
+    public void saveGameHook(final XDataWriter dungeonFile) throws IOException {
+        final Application app = DungeonDiver4.getApplication();
         this.oiMgr.writeObjectInventory(dungeonFile);
         dungeonFile.writeString(app.getDungeonManager().getScoresFileName());
         FileHooks.saveGameHook(dungeonFile);
     }
 
     public void playDungeon() {
-        Application app = DungeonDiver4.getApplication();
-        Dungeon m = app.getDungeonManager().getDungeon();
+        final Application app = DungeonDiver4.getApplication();
+        final Dungeon m = app.getDungeonManager().getDungeon();
         if (app.getDungeonManager().getLoaded()) {
             this.gui.initViewManager();
             app.getGUIManager().hideGUI();
             app.setInGame();
             if (this.stateChanged) {
                 // Initialize only if the dungeon state has changed
-                app.getDungeonManager()
-                        .getDungeon()
-                        .switchLevel(
-                                app.getDungeonManager().getDungeon()
-                                        .getStartLevel());
+                app.getDungeonManager().getDungeon().switchLevel(
+                        app.getDungeonManager().getDungeon().getStartLevel());
                 this.savedDungeonObject = new Empty();
                 if (!this.savedGameFlag) {
                     this.oiMgr.saveObjectInventory();
@@ -1314,9 +1309,9 @@ public class GameLogicManager {
             // Make sure message area is attached to the border pane
             this.gui.updateGameGUI(this.em);
             // Make sure initial area player is in is visible
-            int px = m.getPlayerLocationX();
-            int py = m.getPlayerLocationY();
-            int pz = m.getPlayerLocationZ();
+            final int px = m.getPlayerLocationX();
+            final int py = m.getPlayerLocationY();
+            final int pz = m.getPlayerLocationZ();
             m.updateVisibleSquares(px, py, pz);
             CommonDialogs.showTitledDialog(m.getDungeonStartMessage(),
                     m.getDungeonTitle());
@@ -1337,7 +1332,7 @@ public class GameLogicManager {
         this.gui.hideOutput();
     }
 
-    public void setSavedDungeonObject(AbstractDungeonObject saved) {
+    public void setSavedDungeonObject(final AbstractDungeonObject saved) {
         this.savedDungeonObject = saved;
     }
 }

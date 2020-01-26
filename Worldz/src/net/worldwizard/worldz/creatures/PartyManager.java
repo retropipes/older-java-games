@@ -66,8 +66,8 @@ public class PartyManager {
                 } else if (response == 1) {
                     pc = PartyManager.createNewPC();
                     if (pc != null) {
-                        CharacterRegistration.autoregisterCharacter(pc
-                                .getName());
+                        CharacterRegistration
+                                .autoregisterCharacter(pc.getName());
                         CharacterLoader.saveCharacter(pc);
                     }
                 }

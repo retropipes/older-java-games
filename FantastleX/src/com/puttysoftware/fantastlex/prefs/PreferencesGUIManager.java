@@ -107,37 +107,37 @@ class PreferencesGUIManager {
     }
 
     private void loadPrefs() {
-        this.editorFillChoices.setSelectedItem(PreferencesManager
-                .getEditorDefaultFill());
+        this.editorFillChoices
+                .setSelectedItem(PreferencesManager.getEditorDefaultFill());
         this.editorAutoEdge.setSelected(PreferencesManager.getEditorAutoEdge());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
         }
-        this.checkUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckUpdatesAtStartup());
+        this.checkUpdatesStartup
+                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
         this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
-        this.viewingWindowChoices.setSelectedIndex(PreferencesGUIManager
-                .viewingWindowSizeToIndex(PreferencesManager
-                        .getViewingWindowSize()));
-        this.battleSpeedChoices.setSelectedIndex(PreferencesManager
-                .getBattleSpeedValue());
+        this.viewingWindowChoices.setSelectedIndex(
+                PreferencesGUIManager.viewingWindowSizeToIndex(
+                        PreferencesManager.getViewingWindowSize()));
+        this.battleSpeedChoices
+                .setSelectedIndex(PreferencesManager.getBattleSpeedValue());
         this.sound.setSelected(PreferencesManager.getSoundsEnabled());
-        this.characterChangesPermanent.setSelected(PreferencesManager
-                .areCharacterChangesPermanent());
-        this.randomBattle.setSelected(PreferencesManager
-                .getRandomBattleEnvironment());
+        this.characterChangesPermanent
+                .setSelected(PreferencesManager.areCharacterChangesPermanent());
+        this.randomBattle
+                .setSelected(PreferencesManager.getRandomBattleEnvironment());
         this.battleStyle.setSelected(PreferencesManager.getBattleStyle());
     }
 
     public void setPrefs() {
-        PreferencesManager.setEditorDefaultFill((String) this.editorFillChoices
-                .getSelectedItem());
+        PreferencesManager.setEditorDefaultFill(
+                (String) this.editorFillChoices.getSelectedItem());
         PreferencesManager.setEditorAutoEdge(this.editorAutoEdge.isSelected());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
         }
-        PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup
-                .isSelected());
+        PreferencesManager.setCheckUpdatesAtStartup(
+                this.checkUpdatesStartup.isSelected());
         PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
         final int vwSize = PreferencesManager.getViewingWindowSize();
         final int newSize = PreferencesGUIManager.VIEWING_WINDOW_SIZES[this.viewingWindowChoices
@@ -148,14 +148,13 @@ class PreferencesGUIManager {
                     .viewingWindowSizeChanged();
             FantastleX.getApplication().getEditor().viewingWindowSizeChanged();
         }
-        PreferencesManager.setBattleSpeed(this.battleSpeedChoices
-                .getSelectedIndex());
         PreferencesManager
-                .setCharacterChangesPermanent(this.characterChangesPermanent
-                        .isSelected());
+                .setBattleSpeed(this.battleSpeedChoices.getSelectedIndex());
+        PreferencesManager.setCharacterChangesPermanent(
+                this.characterChangesPermanent.isSelected());
         PreferencesManager.setSoundsEnabled(this.sound.isSelected());
-        PreferencesManager.setRandomBattleEnvironment(this.randomBattle
-                .isSelected());
+        PreferencesManager
+                .setRandomBattleEnvironment(this.randomBattle.isSelected());
         PreferencesManager.setBattleStyle(this.battleStyle.isSelected());
         this.hidePrefs();
     }
@@ -194,8 +193,8 @@ class PreferencesGUIManager {
         this.music[PreferencesManager.MUSIC_BATTLE] = new JCheckBox(
                 "Enable battle music", true);
         this.sound = new JCheckBox("Enable sounds", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
         this.battleSpeedChoices = new JComboBox<>(
                 PreferencesGUIManager.battleSpeedChoiceArray);
@@ -209,24 +208,26 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(handler);
         mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        gamePane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        gamePane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         gamePane.add(new JLabel("Battle Speed"));
         gamePane.add(this.battleSpeedChoices);
         gamePane.add(this.moveOneAtATime);
         gamePane.add(this.randomBattle);
         gamePane.add(this.battleStyle);
-        editorPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH,
-                1));
+        editorPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         editorPane.add(new JLabel("Default fill for new mazes:"));
         editorPane.add(this.editorFillChoices);
         editorPane.add(this.editorAutoEdge);
-        mediaPane
-                .setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        mediaPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             mediaPane.add(this.music[x]);
         }
         mediaPane.add(this.sound);
-        miscPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         miscPane.add(this.checkUpdatesStartup);
         miscPane.add(new JLabel("Viewing Window Size"));
         miscPane.add(this.viewingWindowChoices);
@@ -248,8 +249,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         EventHandler() {
             // Do nothing
         }

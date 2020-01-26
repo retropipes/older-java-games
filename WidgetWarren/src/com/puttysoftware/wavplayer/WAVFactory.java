@@ -30,9 +30,8 @@ public abstract class WAVFactory extends Thread {
     }
 
     public static WAVFactory getNonLoopingResource(final URL resource) {
-        return WAVFactory
-                .provisionMedia(new WAVResource(WAVFactory.MEDIA_GROUP,
-                        resource, WAVFactory.ACTIVE_MEDIA_COUNT));
+        return WAVFactory.provisionMedia(new WAVResource(WAVFactory.MEDIA_GROUP,
+                resource, WAVFactory.ACTIVE_MEDIA_COUNT));
     }
 
     private static WAVFactory provisionMedia(final WAVFactory src) {

@@ -16,54 +16,55 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Stone extends AbstractItem {
     // Constructors
     public Stone() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_STONE;
+        return ObjectImageConstants.OBJECT_IMAGE_STONE;
     }
 
     @Override
     public String getName() {
-	return "Stone";
+        return "Stone";
     }
 
     @Override
     public String getPluralName() {
-	return "Stones";
+        return "Stones";
     }
 
     @Override
     public String getDescription() {
-	return "Stones exist to be collected.";
+        return "Stones exist to be collected.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().getDungeonManager().getDungeon()
-		.addStone();
-	SoundManager.playSound(SoundConstants.SOUND_STONE);
-	GameLogicManager.decay();
-	DynamicDungeon.getApplication().getGameManager().checkStoneCount();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication().getDungeonManager().getDungeon()
+                .addStone();
+        SoundManager.playSound(SoundConstants.SOUND_STONE);
+        GameLogicManager.decay();
+        DynamicDungeon.getApplication().getGameManager().checkStoneCount();
     }
 
     @Override
     public int getMinimumRequiredQuantity(final Dungeon maze) {
-	int base = maze.getRows();
-	int flux = base / 8;
-	return base - flux;
+        final int base = maze.getRows();
+        final int flux = base / 8;
+        return base - flux;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final Dungeon maze) {
-	int base = maze.getRows();
-	int flux = base / 8;
-	return base + flux;
+        final int base = maze.getRows();
+        final int flux = base / 8;
+        return base + flux;
     }
 
     @Override
     public boolean isRequired() {
-	return true;
+        return true;
     }
 }

@@ -19,7 +19,8 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     // Constructors
     protected AbstractMovableObject(final boolean pushable,
             final boolean pullable, final int attrID) {
-        super(true, pushable, false, false, pullable, false, false, true, false);
+        super(true, pushable, false, false, pullable, false, false, true,
+                false);
         this.setSavedObject(new Empty());
         this.setAttributeID(attrID);
     }
@@ -35,8 +36,8 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 
@@ -44,7 +45,7 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     public void pushAction(final MazeObjectInventory inv,
             final AbstractMazeObject mo, final int x, final int y,
             final int pushX, final int pushY) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         this.setSavedObject(mo);
         SoundManager.playSound(SoundConstants.SOUND_PUSH_PULL);
@@ -54,7 +55,7 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     public void pullAction(final MazeObjectInventory inv,
             final AbstractMazeObject mo, final int x, final int y,
             final int pullX, final int pullY) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
         this.setSavedObject(mo);
         SoundManager.playSound(SoundConstants.SOUND_PUSH_PULL);
@@ -74,12 +75,12 @@ public abstract class AbstractMovableObject extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

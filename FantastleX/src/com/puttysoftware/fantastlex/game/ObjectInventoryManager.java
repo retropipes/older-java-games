@@ -112,8 +112,8 @@ class ObjectInventoryManager {
         final MazeObjectList list = FantastleX.getApplication().getObjects();
         final AbstractMazeObject[] choices = list.getAllUsableObjects();
         final String[] userChoices = this.objectInv.generateUseStringArray();
-        final String result = CommonDialogs.showInputDialog(
-                "Use which object?", "FantastleX", userChoices,
+        final String result = CommonDialogs.showInputDialog("Use which object?",
+                "FantastleX", userChoices,
                 userChoices[this.lastUsedObjectIndex]);
         try {
             for (x = 0; x < choices.length; x++) {
@@ -125,8 +125,8 @@ class ObjectInventoryManager {
                                 "That item has no more uses left.");
                         this.setUsingAnItem(false);
                     } else {
-                        FantastleX.getApplication().showMessage(
-                                "Click to set target");
+                        FantastleX.getApplication()
+                                .showMessage("Click to set target");
                         this.setUsingAnItem(true);
                     }
                     return;
@@ -152,8 +152,8 @@ class ObjectInventoryManager {
                     this.activeBow = (AbstractBow) choices[x];
                     this.activeArrowType = this.activeBow.getArrowType();
                     if (this.objectInv.getUses(this.activeBow) == 0) {
-                        FantastleX.getApplication().showMessage(
-                                "That bow is out of arrows!");
+                        FantastleX.getApplication()
+                                .showMessage("That bow is out of arrows!");
                     } else {
                         FantastleX.getApplication().showMessage(
                                 this.activeBow.getName() + " activated.");
@@ -180,40 +180,40 @@ class ObjectInventoryManager {
                 if ((target.isSolid() || !visible)
                         && name.equals(new TeleportWand().getName())) {
                     this.setUsingAnItem(false);
-                    FantastleX.getApplication().showMessage(
-                            "Can't teleport there");
+                    FantastleX.getApplication()
+                            .showMessage("Can't teleport there");
                 }
                 if (target.getName().equals(new Player().getName())) {
                     this.setUsingAnItem(false);
-                    FantastleX.getApplication().showMessage(
-                            "Don't aim at yourself!");
+                    FantastleX.getApplication()
+                            .showMessage("Don't aim at yourself!");
                 }
                 if (!target.isDestroyable()
                         && name.equals(new AnnihilationWand().getName())) {
                     this.setUsingAnItem(false);
-                    FantastleX.getApplication().showMessage(
-                            "Can't destroy that");
+                    FantastleX.getApplication()
+                            .showMessage("Can't destroy that");
                 }
                 if (!target.isDestroyable()
                         && name.equals(new WallMakingWand().getName())) {
                     this.setUsingAnItem(false);
-                    FantastleX.getApplication().showMessage(
-                            "Can't create a wall there");
+                    FantastleX.getApplication()
+                            .showMessage("Can't create a wall there");
                 }
                 if (!target.isDestroyable()
                         && name.equals(new FinishMakingWand().getName())) {
                     this.setUsingAnItem(false);
-                    FantastleX.getApplication().showMessage(
-                            "Can't create a finish there");
+                    FantastleX.getApplication()
+                            .showMessage("Can't create a finish there");
                 }
-                if ((!target.isDestroyable() || !target
-                        .isOfType(TypeConstants.TYPE_WALL))
+                if ((!target.isDestroyable()
+                        || !target.isOfType(TypeConstants.TYPE_WALL))
                         && name.equals(new WallBreakingWand().getName())) {
                     this.setUsingAnItem(false);
                     FantastleX.getApplication().showMessage("Aim at a wall");
                 }
-                if ((!target.isDestroyable() || !target
-                        .isOfType(TypeConstants.TYPE_TRAP))
+                if ((!target.isDestroyable()
+                        || !target.isOfType(TypeConstants.TYPE_TRAP))
                         && name.equals(new DisarmTrapWand().getName())) {
                     this.setUsingAnItem(false);
                     FantastleX.getApplication().showMessage("Aim at a trap");
@@ -244,8 +244,8 @@ class ObjectInventoryManager {
         }
     }
 
-    void readObjectInventory(final XDataReader mazeFile, final int formatVersion)
-            throws IOException {
+    void readObjectInventory(final XDataReader mazeFile,
+            final int formatVersion) throws IOException {
         this.objectInv = MazeObjectInventory.readInventory(mazeFile,
                 formatVersion);
         this.savedObjectInv = MazeObjectInventory.readInventory(mazeFile,

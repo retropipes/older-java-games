@@ -34,9 +34,11 @@ public class Springboard extends StairsUp {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        return this.searchNestedSprings(dirX, dirY, Mazer5D.getApplication()
-                .getGameManager().getPlayerManager().getPlayerLocationZ() + 1,
-                inv);
+        return this
+                .searchNestedSprings(dirX, dirY,
+                        Mazer5D.getApplication().getGameManager()
+                                .getPlayerManager().getPlayerLocationZ() + 1,
+                        inv);
     }
 
     private boolean searchNestedSprings(final int dirX, final int dirY,
@@ -48,8 +50,8 @@ public class Springboard extends StairsUp {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObject obj = app.getMazeManager().getMaze()
-                    .getCell(dirX, dirY, floor, MazeConstants.LAYER_OBJECT);
+            final MazeObject obj = app.getMazeManager().getMaze().getCell(dirX,
+                    dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
@@ -69,8 +71,8 @@ public class Springboard extends StairsUp {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

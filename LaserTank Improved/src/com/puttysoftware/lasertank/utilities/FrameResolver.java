@@ -9,10 +9,10 @@ import com.puttysoftware.lasertank.strings.global.GlobalLoader;
 
 public class FrameResolver {
     public static String resolveFrameNumberToImageSuffix(final int fn) {
-	return GlobalLoader.loadFrame(fn);
+        return GlobalLoader.loadFrame(fn);
     }
 
     private FrameResolver() {
-	// Do nothing
+        // Do nothing
     }
 }

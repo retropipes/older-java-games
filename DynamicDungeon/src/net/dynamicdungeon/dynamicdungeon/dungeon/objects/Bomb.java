@@ -15,34 +15,35 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Bomb extends AbstractItem {
     // Constructors
     public Bomb() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_BOMB;
+        return ObjectImageConstants.OBJECT_IMAGE_BOMB;
     }
 
     @Override
     public String getName() {
-	return "Bomb";
+        return "Bomb";
     }
 
     @Override
     public String getPluralName() {
-	return "Bombs";
+        return "Bombs";
     }
 
     @Override
     public String getDescription() {
-	return "Bombs let you avoid combat.";
+        return "Bombs let you avoid combat.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	DynamicDungeon.getApplication().getDungeonManager().getDungeon()
-		.addBomb();
-	SoundManager.playSound(SoundConstants.SOUND_GRAB);
-	GameLogicManager.decay();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        DynamicDungeon.getApplication().getDungeonManager().getDungeon()
+                .addBomb();
+        SoundManager.playSound(SoundConstants.SOUND_GRAB);
+        GameLogicManager.decay();
     }
 }

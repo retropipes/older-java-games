@@ -12,8 +12,8 @@ import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazerunner2.maze.objects.Empty;
 import com.puttysoftware.mazerunner2.maze.objects.PasswallBoots;
-import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectList;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
+import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectList;
 import com.puttysoftware.mazerunner2.maze.utilities.TypeConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
@@ -47,7 +47,7 @@ public abstract class AbstractContainer extends AbstractLock {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -71,22 +71,22 @@ public abstract class AbstractContainer extends AbstractLock {
 
     @Override
     public AbstractContainer clone() {
-        AbstractContainer copy = (AbstractContainer) super.clone();
+        final AbstractContainer copy = (AbstractContainer) super.clone();
         copy.inside = this.inside.clone();
         return copy;
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
             }
-            int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
+            final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
             if (this.inside != null) {
                 app.getGameManager().morph(this.inside, dirX, dirY, pz);
             } else {
@@ -107,8 +107,8 @@ public abstract class AbstractContainer extends AbstractLock {
             MazeRunnerII.getApplication().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            MazeRunnerII.getApplication().showMessage(
-                    this.getName() + ": Contains Nothing");
+            MazeRunnerII.getApplication()
+                    .showMessage(this.getName() + ": Contains Nothing");
         }
     }
 
@@ -124,22 +124,26 @@ public abstract class AbstractContainer extends AbstractLock {
 
     @Override
     protected AbstractMazeObject readLegacyMazeObjectHook(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
-        MazeObjectList objectList = MazeRunnerII.getApplication().getObjects();
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
+        final MazeObjectList objectList = MazeRunnerII.getApplication()
+                .getObjects();
         this.inside = objectList.readLegacyMazeObject(reader, formatVersion);
         return this;
     }
 
     @Override
-    protected AbstractMazeObject readMazeObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
-        MazeObjectList objectList = MazeRunnerII.getApplication().getObjects();
+    protected AbstractMazeObject readMazeObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final MazeObjectList objectList = MazeRunnerII.getApplication()
+                .getObjects();
         this.inside = objectList.readMazeObject(reader, formatVersion);
         return this;
     }
 
     @Override
-    protected void writeMazeObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer)
+            throws IOException {
         if (this.inside == null) {
             new Empty().writeMazeObject(writer);
         } else {

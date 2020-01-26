@@ -77,7 +77,7 @@ public class Item {
         result = prime * result + (this.combatUsable ? 1231 : 1237);
         result = prime * result + this.initialUses;
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         result = prime * result + this.potency;
         result = prime * result + this.sellPrice;
         result = prime * result + this.weight;
@@ -85,7 +85,7 @@ public class Item {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -95,7 +95,7 @@ public class Item {
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        Item other = (Item) obj;
+        final Item other = (Item) obj;
         if (this.buyPrice != other.buyPrice) {
             return false;
         }
@@ -127,23 +127,23 @@ public class Item {
         return true;
     }
 
-    final void setName(String newName) {
+    final void setName(final String newName) {
         this.name = newName;
     }
 
-    final void setPotency(int newPotency) {
+    final void setPotency(final int newPotency) {
         this.potency = newPotency;
     }
 
-    public final void setBuyPrice(int newBuyPrice) {
+    public final void setBuyPrice(final int newBuyPrice) {
         this.buyPrice = newBuyPrice;
     }
 
-    final void setSellPrice(int newSellPrice) {
+    final void setSellPrice(final int newSellPrice) {
         this.sellPrice = newSellPrice;
     }
 
-    public final void setCombatUsable(boolean isCombatUsable) {
+    public final void setCombatUsable(final boolean isCombatUsable) {
         this.combatUsable = isCombatUsable;
     }
 
@@ -196,15 +196,15 @@ public class Item {
         return this.isUsable() && this.combatUsable;
     }
 
-    protected static Item readItem(XDataReader dr) throws IOException {
-        String itemName = dr.readString();
+    protected static Item readItem(final XDataReader dr) throws IOException {
+        final String itemName = dr.readString();
         if (itemName.equals("null")) {
             // Abort
             return null;
         }
-        int itemInitialUses = dr.readInt();
-        int itemWeightPerUse = dr.readInt();
-        Item i = new Item(itemName, itemInitialUses, itemWeightPerUse);
+        final int itemInitialUses = dr.readInt();
+        final int itemWeightPerUse = dr.readInt();
+        final Item i = new Item(itemName, itemInitialUses, itemWeightPerUse);
         i.uses = dr.readInt();
         i.buyPrice = dr.readInt();
         i.sellPrice = dr.readInt();
@@ -214,7 +214,7 @@ public class Item {
         return i;
     }
 
-    final void writeItem(XDataWriter dw) throws IOException {
+    final void writeItem(final XDataWriter dw) throws IOException {
         dw.writeString(this.name);
         dw.writeInt(this.initialUses);
         dw.writeInt(this.weightPerUse);

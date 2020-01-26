@@ -10,8 +10,8 @@ import com.puttysoftware.dungeondiver3.support.map.generic.TemplateTransform;
 
 public class WhiteButton extends GenericButton {
     public WhiteButton() {
-        super(new WhiteWallOff(), new WhiteWallOn(), new TemplateTransform(1.0,
-                1.0, 1.0));
+        super(new WhiteWallOff(), new WhiteWallOn(),
+                new TemplateTransform(1.0, 1.0, 1.0));
     }
 
     @Override

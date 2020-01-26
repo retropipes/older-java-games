@@ -15,20 +15,20 @@ public class WeaponConstants {
 
     // Private Constructor
     private WeaponConstants() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
     public static synchronized String[] getWeapons() {
-	if (WEAPON_NAMES == null) {
-	    final String[] temp = new String[CasteConstants.CASTES_COUNT];
-	    for (int x = 0; x < temp.length; x++) {
-		temp[x] = NamesManager.getName(
-			NamesConstants.SECTION_EQUIP_WEAPONS,
-			NamesConstants.SECTION_ARRAY_WEAPONS[x]);
-	    }
-	    WEAPON_NAMES = temp;
-	}
-	return WEAPON_NAMES;
+        if (WeaponConstants.WEAPON_NAMES == null) {
+            final String[] temp = new String[CasteConstants.CASTES_COUNT];
+            for (int x = 0; x < temp.length; x++) {
+                temp[x] = NamesManager.getName(
+                        NamesConstants.SECTION_EQUIP_WEAPONS,
+                        NamesConstants.SECTION_ARRAY_WEAPONS[x]);
+            }
+            WeaponConstants.WEAPON_NAMES = temp;
+        }
+        return WeaponConstants.WEAPON_NAMES;
     }
 }

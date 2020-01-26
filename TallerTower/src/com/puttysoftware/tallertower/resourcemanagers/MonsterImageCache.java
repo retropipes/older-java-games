@@ -22,9 +22,9 @@ public class MonsterImageCache {
                     MonsterImageManager.MONSTER_IMAGE_SIZE);
             MonsterImageCache.addToCache(name, bii);
         }
-        for (int x = 0; x < MonsterImageCache.cache.length; x++) {
-            if (name.equals(MonsterImageCache.cache[x].getName())) {
-                return MonsterImageCache.cache[x].getImage();
+        for (final CacheEntry element : MonsterImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;

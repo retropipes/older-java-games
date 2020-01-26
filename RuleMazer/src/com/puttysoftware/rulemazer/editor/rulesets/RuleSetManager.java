@@ -41,23 +41,22 @@ public class RuleSetManager {
             if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
                 RuleSetManager.importFile(filename);
             } else {
-                CommonDialogs
-                        .showDialog("You opened something other than a rule set file. Select a rule set file, and try again.");
+                CommonDialogs.showDialog(
+                        "You opened something other than a rule set file. Select a rule set file, and try again.");
             }
         }
     }
 
     private static void importFile(final String filename) {
-        if (!FilenameChecker.isFilenameOK(RuleSetManager
-                .getNameWithoutExtension(RuleSetManager
-                        .getFileNameOnly(filename)))) {
-            CommonDialogs
-                    .showErrorDialog(
-                            "The file you selected contains illegal characters in its\n"
-                                    + "name. These characters are not allowed: /?<>\\:|\"\n"
-                                    + "Files named con, nul, or prn are illegal, as are files\n"
-                                    + "named com1 through com9 and lpt1 through lpt9.",
-                            "Load");
+        if (!FilenameChecker
+                .isFilenameOK(RuleSetManager.getNameWithoutExtension(
+                        RuleSetManager.getFileNameOnly(filename)))) {
+            CommonDialogs.showErrorDialog(
+                    "The file you selected contains illegal characters in its\n"
+                            + "name. These characters are not allowed: /?<>\\:|\"\n"
+                            + "Files named con, nul, or prn are illegal, as are files\n"
+                            + "named com1 through com9 and lpt1 through lpt9.",
+                    "Load");
         } else {
             final XMLRuleSetLoadTask xrslt = new XMLRuleSetLoadTask(filename);
             xrslt.start();
@@ -83,17 +82,16 @@ public class RuleSetManager {
                         .getAbsolutePath();
                 fileOnly = filename.substring(dirOnly.length() + 1);
                 if (!FilenameChecker.isFilenameOK(fileOnly)) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The file name you entered contains illegal characters.\n"
-                                            + "These characters are not allowed: /?<>\\:|\"\n"
-                                            + "Files named con, nul, or prn are illegal, as are files\n"
-                                            + "named com1 through com9 and lpt1 through lpt9.",
-                                    "Save");
+                    CommonDialogs.showErrorDialog(
+                            "The file name you entered contains illegal characters.\n"
+                                    + "These characters are not allowed: /?<>\\:|\"\n"
+                                    + "Files named con, nul, or prn are illegal, as are files\n"
+                                    + "named com1 through com9 and lpt1 through lpt9.",
+                            "Save");
                 } else {
                     if (extension != null) {
-                        if (!extension.equals(XMLExtension
-                                .getXMLRuleSetExtension())) {
+                        if (!extension.equals(
+                                XMLExtension.getXMLRuleSetExtension())) {
                             filename = RuleSetManager
                                     .getNameWithoutExtension(file)
                                     + XMLExtension

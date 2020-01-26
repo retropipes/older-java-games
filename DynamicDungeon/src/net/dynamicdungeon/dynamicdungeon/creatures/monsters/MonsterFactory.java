@@ -11,14 +11,15 @@ import net.dynamicdungeon.dynamicdungeon.dungeon.Dungeon;
 
 public class MonsterFactory {
     private MonsterFactory() {
-	// Do nothing
+        // Do nothing
     }
 
     public static AbstractCreature getNewMonsterInstance() {
-	if (PartyManager.getParty().getDungeonLevel() == Dungeon.getMaxLevels() - 1) {
-	    return new BossMonster();
-	} else {
-	    return new BothRandomScalingStaticMonster();
-	}
+        if (PartyManager.getParty().getDungeonLevel() == Dungeon.getMaxLevels()
+                - 1) {
+            return new BossMonster();
+        } else {
+            return new BothRandomScalingStaticMonster();
+        }
     }
 }

@@ -25,7 +25,8 @@ public class Messager {
                 JOptionPane.ERROR_MESSAGE, app.getMicroLogo());
     }
 
-    public static int showConfirmDialog(final String prompt, final String title) {
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
         final Application app = TAP.getApplication();
         return JOptionPane.showConfirmDialog(app.getOutputFrame(), prompt,
                 title, JOptionPane.YES_NO_OPTION,

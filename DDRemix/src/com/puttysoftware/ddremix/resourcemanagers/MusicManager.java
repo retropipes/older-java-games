@@ -52,8 +52,8 @@ public class MusicManager {
     }
 
     public static void playMusic(final int musicID) {
-        MusicManager.CURRENT_MUSIC = MusicManager.getMusic(MusicConstants
-                .getMusicName(musicID));
+        MusicManager.CURRENT_MUSIC = MusicManager
+                .getMusic(MusicConstants.getMusicName(musicID));
         if (MusicManager.CURRENT_MUSIC != null) {
             // Play the music
             MusicManager.CURRENT_MUSIC.playModule();

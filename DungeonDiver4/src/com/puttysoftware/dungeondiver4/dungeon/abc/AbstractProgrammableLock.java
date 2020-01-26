@@ -25,8 +25,8 @@ import com.puttysoftware.xio.XDataWriter;
 public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     private static final SignalCrystal SIGNAL = new SignalCrystal();
 
-    protected AbstractProgrammableLock(int tc) {
-        super(SIGNAL, tc);
+    protected AbstractProgrammableLock(final int tc) {
+        super(AbstractProgrammableLock.SIGNAL, tc);
     }
 
     // Scriptability
@@ -38,13 +38,13 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                DungeonEffectConstants.EFFECT_GHOSTLY)
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
+        if (!app.getGameManager()
+                .isEffectActive(DungeonEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
-            if (this.getKey() != SIGNAL) {
+            if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
                     inv.removeItem(this.getKey());
                 }
@@ -63,12 +63,12 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            if (this.getKey() == SIGNAL) {
+            if (this.getKey() == AbstractProgrammableLock.SIGNAL) {
                 DungeonDiver4.getApplication()
                         .showMessage("You need a Crystal");
             } else {
-                DungeonDiver4.getApplication().showMessage(
-                        "You need a " + this.getKey().getName());
+                DungeonDiver4.getApplication()
+                        .showMessage("You need a " + this.getKey().getName());
             }
         }
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
@@ -76,11 +76,11 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
 
     @Override
     public boolean isConditionallySolid(final DungeonObjectInventory inv) {
-        if (this.getKey() != SIGNAL) {
-            return !(inv.isItemThere(this.getKey()));
+        if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
+            return !inv.isItemThere(this.getKey());
         } else {
-            return !(inv
-                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+            return !inv
+                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
         }
     }
 
@@ -92,36 +92,39 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
                 || inv.isItemThere(new GhostAmulet())) {
             return false;
         } else {
-            if (this.getKey() != SIGNAL) {
-                return !(inv.isItemThere(this.getKey()));
+            if (this.getKey() != AbstractProgrammableLock.SIGNAL) {
+                return !inv.isItemThere(this.getKey());
             } else {
-                return !(inv
-                        .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY));
+                return !inv.isItemCategoryThere(
+                        TypeConstants.TYPE_PROGRAMMABLE_KEY);
             }
         }
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonObjectList objects = DungeonDiver4.getApplication().getObjects();
-        String[] tempKeyNames = objects.getAllProgrammableKeyNames();
-        AbstractDungeonObject[] tempKeys = objects.getAllProgrammableKeys();
-        String[] keyNames = new String[tempKeyNames.length + 1];
-        AbstractDungeonObject[] keys = new AbstractDungeonObject[tempKeys.length + 1];
+        final DungeonObjectList objects = DungeonDiver4.getApplication()
+                .getObjects();
+        final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
+        final AbstractDungeonObject[] tempKeys = objects
+                .getAllProgrammableKeys();
+        final String[] keyNames = new String[tempKeyNames.length + 1];
+        final AbstractDungeonObject[] keys = new AbstractDungeonObject[tempKeys.length
+                + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";
-        keys[tempKeys.length] = SIGNAL;
+        keys[tempKeys.length] = AbstractProgrammableLock.SIGNAL;
         int oldIndex = -1;
         for (oldIndex = 0; oldIndex < keyNames.length; oldIndex++) {
             if (this.getKey().getName().equals(keyNames[oldIndex])) {
@@ -132,7 +135,7 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
         if (oldIndex == -1) {
             oldIndex = 0;
         }
-        String res = CommonDialogs.showInputDialog(
+        final String res = CommonDialogs.showInputDialog(
                 "Set Key for " + this.getName(), "Editor", keyNames,
                 keyNames[oldIndex]);
         if (res != null) {
@@ -150,12 +153,13 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    protected AbstractDungeonObject readDungeonObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
-        AbstractDungeonObject o = DungeonDiver4.getApplication().getObjects()
-                .readDungeonObject(reader, formatVersion);
+    protected AbstractDungeonObject readDungeonObjectHook(
+            final XDataReader reader, final int formatVersion)
+            throws IOException {
+        final AbstractDungeonObject o = DungeonDiver4.getApplication()
+                .getObjects().readDungeonObject(reader, formatVersion);
         if (o == null) {
-            this.setKey(SIGNAL);
+            this.setKey(AbstractProgrammableLock.SIGNAL);
         } else {
             this.setKey((AbstractKey) o);
         }
@@ -163,7 +167,7 @@ public abstract class AbstractProgrammableLock extends AbstractSingleLock {
     }
 
     @Override
-    protected void writeDungeonObjectHook(XDataWriter writer)
+    protected void writeDungeonObjectHook(final XDataWriter writer)
             throws IOException {
         this.getKey().writeDungeonObject(writer);
     }

@@ -17,75 +17,75 @@ public abstract class GameObject {
 
     // Constructor
     protected GameObject() {
-	super();
-	this.appearances = new ArrayList<>();
-	this.currentFrame = 0;
-	this.totalFrames = 1;
-	this.hasAnimation = false;
-	this.solid = false;
-	this.kills = false;
-	this.goal = false;
-	this.laserMoves = false;
+        super();
+        this.appearances = new ArrayList<>();
+        this.currentFrame = 0;
+        this.totalFrames = 1;
+        this.hasAnimation = false;
+        this.solid = false;
+        this.kills = false;
+        this.goal = false;
+        this.laserMoves = false;
     }
 
     // Methods
     public GameImage getAppearance() {
-	return this.appearances.get(this.currentFrame);
+        return this.appearances.get(this.currentFrame);
     }
 
     public void animate() {
-	if (this.hasAnimation) {
-	    this.currentFrame++;
-	    if (this.currentFrame >= this.totalFrames) {
-		this.currentFrame = 0;
-	    }
-	}
+        if (this.hasAnimation) {
+            this.currentFrame++;
+            if (this.currentFrame >= this.totalFrames) {
+                this.currentFrame = 0;
+            }
+        }
     }
 
     public boolean isSolid() {
-	return this.solid;
+        return this.solid;
     }
 
     public boolean killsPlayer() {
-	return this.kills;
+        return this.kills;
     }
 
     public boolean isGoal() {
-	return this.goal;
+        return this.goal;
     }
 
     public boolean laserMoves() {
-	return this.laserMoves;
+        return this.laserMoves;
     }
 
     protected void setFrames(final int newFrames) {
-	this.hasAnimation = newFrames > 1;
-	this.totalFrames = newFrames;
+        this.hasAnimation = newFrames > 1;
+        this.totalFrames = newFrames;
     }
 
     protected void setAppearance(final GameImage image) {
-	this.appearances.clear();
-	this.appearances.add(image);
+        this.appearances.clear();
+        this.appearances.add(image);
     }
 
     protected void setFrameAppearances(final ArrayList<GameImage> frameApps) {
-	this.appearances.clear();
-	this.appearances.addAll(frameApps);
+        this.appearances.clear();
+        this.appearances.addAll(frameApps);
     }
 
     protected void setSolid() {
-	this.solid = true;
+        this.solid = true;
     }
 
     protected void setKills() {
-	this.kills = true;
+        this.kills = true;
     }
 
     protected void setGoal() {
-	this.goal = true;
+        this.goal = true;
     }
 
     protected void setLaserMoves() {
-	this.laserMoves = true;
+        this.laserMoves = true;
     }
 }

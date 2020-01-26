@@ -17,28 +17,31 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class MagneticWall extends AbstractWall {
     // Constructors
     public MagneticWall() {
-	super();
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
+        super();
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.setMaterial(MaterialConstants.MATERIAL_MAGNETIC);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 24;
+        return 24;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	if (laserType == LaserTypeConstants.LASER_TYPE_DISRUPTOR) {
-	    // Disrupt magnetic wall
-	    SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
-	    LaserTank.getApplication().getGameManager().morph(new DisruptedMagneticWall(), locX, locY, locZ,
-		    this.getLayer());
-	    return Direction.NONE;
-	} else {
-	    // Stop laser
-	    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	}
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        if (laserType == LaserTypeConstants.LASER_TYPE_DISRUPTOR) {
+            // Disrupt magnetic wall
+            SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
+            LaserTank.getApplication().getGameManager().morph(
+                    new DisruptedMagneticWall(), locX, locY, locZ,
+                    this.getLayer());
+            return Direction.NONE;
+        } else {
+            // Stop laser
+            return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                    laserType, forceUnits);
+        }
     }
 }

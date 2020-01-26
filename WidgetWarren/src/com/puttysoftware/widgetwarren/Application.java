@@ -62,18 +62,19 @@ public class Application {
         this.gHelpMgr = new GeneralHelpManager();
         this.oHelpMgr = new ObjectHelpManager();
         // Process mazes
-        String mazesDirStr = SandboxManager.getSandboxManager()
+        final String mazesDirStr = SandboxManager.getSandboxManager()
                 .getDocumentsDirectory();
-        File mazeDir = new File(mazesDirStr);
-        File mazesZipFile = new File(mazesDirStr + File.separator + "mazes.zip");
-        String[] mazes = mazeDir.list(new XMLMazeFilter());
+        final File mazeDir = new File(mazesDirStr);
+        final File mazesZipFile = new File(
+                mazesDirStr + File.separator + "mazes.zip");
+        final String[] mazes = mazeDir.list(new XMLMazeFilter());
         if (mazes == null || mazes.length == 0) {
-            try (InputStream in = Application.class
-                    .getResourceAsStream("/com/puttysoftware/widgetwarren/resources/mazes/mazes.zip")) {
+            try (InputStream in = Application.class.getResourceAsStream(
+                    "/com/puttysoftware/widgetwarren/resources/mazes/mazes.zip")) {
                 FileUtilities.copyRAMFile(in, mazesZipFile);
                 ZipUtilities.unzipDirectory(mazesZipFile, mazeDir);
                 mazesZipFile.delete();
-            } catch (IOException ioe) {
+            } catch (final IOException ioe) {
                 // Ignore
             }
         }

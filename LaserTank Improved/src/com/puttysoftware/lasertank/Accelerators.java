@@ -8,15 +8,18 @@ package com.puttysoftware.lasertank;
 import javax.swing.KeyStroke;
 
 public abstract class Accelerators {
-    public KeyStroke fileNewAccel, fileOpenAccel, fileCloseAccel, fileSaveAccel, fileSaveAsAccel, filePreferencesAccel,
-	    filePrintAccel, fileExitAccel;
+    public KeyStroke fileNewAccel, fileOpenAccel, fileCloseAccel, fileSaveAccel,
+            fileSaveAsAccel, filePreferencesAccel, filePrintAccel,
+            fileExitAccel;
     public KeyStroke playPlayArenaAccel, playEditArenaAccel;
     public KeyStroke gameResetAccel, gameShowTableAccel;
-    public KeyStroke editorUndoAccel, editorRedoAccel, editorCutLevelAccel, editorCopyLevelAccel, editorPasteLevelAccel,
-	    editorInsertLevelFromClipboardAccel, editorClearHistoryAccel, editorGoToLocationAccel,
-	    editorUpOneLevelAccel, editorDownOneLevelAccel;
+    public KeyStroke editorUndoAccel, editorRedoAccel, editorCutLevelAccel,
+            editorCopyLevelAccel, editorPasteLevelAccel,
+            editorInsertLevelFromClipboardAccel, editorClearHistoryAccel,
+            editorGoToLocationAccel, editorUpOneLevelAccel,
+            editorDownOneLevelAccel;
 
     Accelerators() {
-	// Do nothing
+        // Do nothing
     }
 }

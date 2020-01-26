@@ -482,7 +482,8 @@ public class World implements WorldConstants {
         return this.worldData.isSquareVisible(x1, y1, x2, y2);
     }
 
-    public void setBattleCell(final WorldObject mo, final int row, final int col) {
+    public void setBattleCell(final WorldObject mo, final int row,
+            final int col) {
         this.worldData.setCell(mo, row, col, 0, WorldConstants.LAYER_OBJECT);
     }
 
@@ -641,8 +642,8 @@ public class World implements WorldConstants {
         // Make base paths the same
         m.basePath = this.basePath;
         // Create metafile reader
-        final DataReader metaReader = new DataReader(m.basePath
-                + File.separator + "world.metafile",
+        final DataReader metaReader = new DataReader(
+                m.basePath + File.separator + "world.metafile",
                 DataConstants.DATA_MODE_BINARY);
         // Read metafile
         m.readWorldMetafile(metaReader);
@@ -656,8 +657,9 @@ public class World implements WorldConstants {
     }
 
     private DataReader getLevelReader() throws IOException {
-        return new DataReader(this.basePath + File.separator + this.activeLevel
-                + ".level", DataConstants.DATA_MODE_BINARY);
+        return new DataReader(
+                this.basePath + File.separator + this.activeLevel + ".level",
+                DataConstants.DATA_MODE_BINARY);
     }
 
     private void readWorldMetafile(final DataReader reader) throws IOException {
@@ -683,8 +685,8 @@ public class World implements WorldConstants {
 
     public void writeWorld() throws IOException {
         // Create metafile writer
-        final DataWriter metaWriter = new DataWriter(this.basePath
-                + File.separator + "world.metafile",
+        final DataWriter metaWriter = new DataWriter(
+                this.basePath + File.separator + "world.metafile",
                 DataConstants.DATA_MODE_BINARY);
         // Write metafile
         this.writeWorldMetafile(metaWriter);
@@ -701,11 +703,13 @@ public class World implements WorldConstants {
     }
 
     private DataWriter getLevelWriter() throws IOException {
-        return new DataWriter(this.basePath + File.separator + this.activeLevel
-                + ".level", DataConstants.DATA_MODE_BINARY);
+        return new DataWriter(
+                this.basePath + File.separator + this.activeLevel + ".level",
+                DataConstants.DATA_MODE_BINARY);
     }
 
-    private void writeWorldMetafile(final DataWriter writer) throws IOException {
+    private void writeWorldMetafile(final DataWriter writer)
+            throws IOException {
         if (this.prefixHandler != null) {
             this.prefixHandler.writePrefix(writer);
         }

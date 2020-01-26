@@ -20,7 +20,7 @@ public abstract class GenericBattleCharacter extends MapObject {
     private boolean isActive;
 
     // Constructors
-    protected GenericBattleCharacter(Creature newTemplate) {
+    protected GenericBattleCharacter(final Creature newTemplate) {
         super(true);
         this.template = newTemplate;
         this.actionCounter = newTemplate.getActionsPerRound();
@@ -38,19 +38,19 @@ public abstract class GenericBattleCharacter extends MapObject {
         return this.template.getY();
     }
 
-    public final void setX(int newX) {
+    public final void setX(final int newX) {
         this.template.setX(newX);
     }
 
-    public final void setY(int newY) {
+    public final void setY(final int newY) {
         this.template.setY(newY);
     }
 
-    public final void offsetX(int newX) {
+    public final void offsetX(final int newX) {
         this.template.offsetX(newX);
     }
 
-    public final void offsetY(int newY) {
+    public final void offsetY(final int newY) {
         this.template.offsetY(newY);
     }
 
@@ -99,7 +99,7 @@ public abstract class GenericBattleCharacter extends MapObject {
         this.actionCounter = this.template.getActionsPerRound();
     }
 
-    public final void modifyAP(int mod) {
+    public final void modifyAP(final int mod) {
         this.actionCounter -= mod;
     }
 
@@ -111,7 +111,7 @@ public abstract class GenericBattleCharacter extends MapObject {
         this.attackCounter = this.template.getEffectedAttacksPerRound();
     }
 
-    public final void modifyAttacks(int mod) {
+    public final void modifyAttacks(final int mod) {
         this.attackCounter -= mod;
     }
 
@@ -123,7 +123,7 @@ public abstract class GenericBattleCharacter extends MapObject {
         this.spellCounter = this.template.getEffectedSpellsPerRound();
     }
 
-    public final void modifySpells(int mod) {
+    public final void modifySpells(final int mod) {
         this.spellCounter -= mod;
     }
 
@@ -167,7 +167,7 @@ public abstract class GenericBattleCharacter extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 0:
             return this.getX();
@@ -179,7 +179,7 @@ public abstract class GenericBattleCharacter extends MapObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 0:
             this.setX(value);
@@ -218,11 +218,11 @@ public abstract class GenericBattleCharacter extends MapObject {
         result = prime * result + (this.isActive ? 1231 : 1237);
         result = prime * result + this.spellCounter;
         return prime * result
-                + ((this.template == null) ? 0 : this.template.hashCode());
+                + (this.template == null ? 0 : this.template.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -232,7 +232,7 @@ public abstract class GenericBattleCharacter extends MapObject {
         if (!(obj instanceof GenericBattleCharacter)) {
             return false;
         }
-        GenericBattleCharacter other = (GenericBattleCharacter) obj;
+        final GenericBattleCharacter other = (GenericBattleCharacter) obj;
         if (this.actionCounter != other.actionCounter) {
             return false;
         }

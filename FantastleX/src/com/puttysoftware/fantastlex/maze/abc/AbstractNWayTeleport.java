@@ -114,7 +114,8 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
         this.destRowN[n - 1] = destinationRow;
     }
 
-    public void setDestinationColumnN(final int n, final int destinationColumn) {
+    public void setDestinationColumnN(final int n,
+            final int destinationColumn) {
         this.destColN[n - 1] = destinationColumn;
     }
 
@@ -132,8 +133,8 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         String input = null;
         int n = -1;

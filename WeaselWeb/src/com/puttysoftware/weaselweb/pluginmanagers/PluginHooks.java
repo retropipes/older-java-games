@@ -154,8 +154,8 @@ public class PluginHooks {
 
     public static boolean areStatImagesHookedBy(final Object plugin) {
         if (PluginHooks.STAT_IMAGE_HOOKER != null && plugin != null) {
-            return plugin.getClass().equals(
-                    PluginHooks.STAT_IMAGE_HOOKER.getClass());
+            return plugin.getClass()
+                    .equals(PluginHooks.STAT_IMAGE_HOOKER.getClass());
         } else {
             return false;
         }

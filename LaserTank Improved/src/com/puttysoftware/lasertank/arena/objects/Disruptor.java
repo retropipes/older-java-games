@@ -10,16 +10,16 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractTransientObject
 public class Disruptor extends AbstractTransientObject {
     // Constructors
     public Disruptor() {
-	super();
+        super();
     }
 
     @Override
     public int getForceUnitsImbued() {
-	return 0;
+        return 0;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 47;
+        return 47;
     }
 }

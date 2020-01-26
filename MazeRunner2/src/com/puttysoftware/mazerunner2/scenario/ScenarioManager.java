@@ -7,7 +7,7 @@ package com.puttysoftware.mazerunner2.scenario;
 
 public class ScenarioManager {
     // Fields
-    private NamesFileManager nfMgr;
+    private final NamesFileManager nfMgr;
 
     // Constructors
     public ScenarioManager() {

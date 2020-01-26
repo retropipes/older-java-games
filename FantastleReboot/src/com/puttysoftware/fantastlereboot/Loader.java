@@ -38,75 +38,75 @@ import com.puttysoftware.fantastlereboot.loaders.UserInterfaceImageLoader;
 import com.puttysoftware.fantastlereboot.objectmodel.GameObjects;
 
 class Loader extends Thread {
-  private final MainWindow waitFrame;
-  private final JLabel waitLabel;
-  private final JProgressBar waitProgress;
+    private final MainWindow waitFrame;
+    private final JLabel waitLabel;
+    private final JProgressBar waitProgress;
 
-  // Constructors
-  public Loader() {
-    // Set up wait frame
-    this.waitFrame = MainWindow.getOutputFrame();
-    this.waitFrame.setTitle("Loading...");
-    this.waitLabel = new JLabel();
-    this.waitProgress = new JProgressBar();
-    this.waitProgress.setMinimum(0);
-    this.waitProgress.setMaximum(100);
-    this.waitProgress.setValue(0);
-    final JPanel content = new JPanel();
-    content.setLayout(new GridBagLayout());
-    final GridBagConstraints c = new GridBagConstraints();
-    c.gridx = 0;
-    c.gridy = 0;
-    content.add(this.waitLabel, c);
-    c.gridy = 1;
-    content.add(this.waitProgress, c);
-    this.waitFrame.attachContent(content);
-  }
-
-  @Override
-  public void run() {
-    try {
-      // Enter Wait Mode
-      this.enterWaitMode();
-      // Get music going
-      MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
-      // Cache UI images
-      UserInterfaceImageLoader.cacheAll();
-      this.updateWaitProgress(17);
-      // Cache Boss images
-      BossImageLoader.cacheAll();
-      this.updateWaitProgress(33);
-      // Cache Effect images
-      EffectImageLoader.cacheAll();
-      this.updateWaitProgress(50);
-      // Cache Avatar images
-      AvatarImageLoader.cacheAll();
-      this.updateWaitProgress(67);
-      // Cache Object images
-      ObjectImageLoader.cacheAll();
-      this.updateWaitProgress(83);
-      // Final tasks
-      final BagOStuff bag = FantastleReboot.getBagOStuff();
-      GameObjects.initializeObjects();
-      bag.postConstruct();
-      FantastleReboot.doLateOSIntegration();
-      this.updateWaitProgress(100);
-      // Exit Wait Mode
-      bag.playLogoSound();
-      bag.getGUIManager().showGUI();
-    } catch (final Throwable t) {
-      FantastleReboot.exception(t);
+    // Constructors
+    public Loader() {
+        // Set up wait frame
+        this.waitFrame = MainWindow.getOutputFrame();
+        this.waitFrame.setTitle("Loading...");
+        this.waitLabel = new JLabel();
+        this.waitProgress = new JProgressBar();
+        this.waitProgress.setMinimum(0);
+        this.waitProgress.setMaximum(100);
+        this.waitProgress.setValue(0);
+        final JPanel content = new JPanel();
+        content.setLayout(new GridBagLayout());
+        final GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        content.add(this.waitLabel, c);
+        c.gridy = 1;
+        content.add(this.waitProgress, c);
+        this.waitFrame.attachContent(content);
     }
-  }
 
-  private void enterWaitMode() {
-    UserInterfaceImageLoader.preInit();
-    this.waitLabel.setIcon(
-        UserInterfaceImageLoader.load(UserInterfaceImageIndex.LOADING));
-    this.waitFrame.pack();
-  }
+    @Override
+    public void run() {
+        try {
+            // Enter Wait Mode
+            this.enterWaitMode();
+            // Get music going
+            MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
+            // Cache UI images
+            UserInterfaceImageLoader.cacheAll();
+            this.updateWaitProgress(17);
+            // Cache Boss images
+            BossImageLoader.cacheAll();
+            this.updateWaitProgress(33);
+            // Cache Effect images
+            EffectImageLoader.cacheAll();
+            this.updateWaitProgress(50);
+            // Cache Avatar images
+            AvatarImageLoader.cacheAll();
+            this.updateWaitProgress(67);
+            // Cache Object images
+            ObjectImageLoader.cacheAll();
+            this.updateWaitProgress(83);
+            // Final tasks
+            final BagOStuff bag = FantastleReboot.getBagOStuff();
+            GameObjects.initializeObjects();
+            bag.postConstruct();
+            FantastleReboot.doLateOSIntegration();
+            this.updateWaitProgress(100);
+            // Exit Wait Mode
+            bag.playLogoSound();
+            bag.getGUIManager().showGUI();
+        } catch (final Throwable t) {
+            FantastleReboot.exception(t);
+        }
+    }
 
-  private void updateWaitProgress(final int value) {
-    this.waitProgress.setValue(value);
-  }
+    private void enterWaitMode() {
+        UserInterfaceImageLoader.preInit();
+        this.waitLabel.setIcon(
+                UserInterfaceImageLoader.load(UserInterfaceImageIndex.LOADING));
+        this.waitFrame.pack();
+    }
+
+    private void updateWaitProgress(final int value) {
+        this.waitProgress.setValue(value);
+    }
 }

@@ -15,7 +15,7 @@ public abstract class AbstractWand extends AbstractUsableObject {
     private static final long SCORE_USE = 5L;
 
     // Constructors
-    protected AbstractWand(int tc) {
+    protected AbstractWand(final int tc) {
         super(1);
         this.setTemplateColor(tc);
     }
@@ -29,9 +29,9 @@ public abstract class AbstractWand extends AbstractUsableObject {
     public abstract String getName();
 
     @Override
-    public void useAction(final AbstractMazeObject mo, final int x,
-            final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+    public void useAction(final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().morph(mo, x, y, z);
         MazeRunnerII.getApplication().getGameManager()
                 .addToScore(AbstractWand.SCORE_USE);

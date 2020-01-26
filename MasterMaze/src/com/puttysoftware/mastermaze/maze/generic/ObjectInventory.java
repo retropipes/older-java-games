@@ -86,7 +86,8 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void use(final MazeObject mo, final int x, final int y, final int z) {
+    public void use(final MazeObject mo, final int x, final int y,
+            final int z) {
         int tempUses = this.getUses(mo);
         if (mo.isUsable() && tempUses > 0) {
             tempUses--;
@@ -137,12 +138,12 @@ public final class ObjectInventory implements Cloneable {
 
     // Transformers
     public void fireStepActions() {
-        if (!this.boots.getName().equals(
-                ObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(ObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
-        if (!this.amulet.getName().equals(
-                ObjectInventory.DEFAULT_AMULET.getName())) {
+        if (!this.amulet.getName()
+                .equals(ObjectInventory.DEFAULT_AMULET.getName())) {
             this.amulet.stepAction();
         }
     }
@@ -472,8 +473,8 @@ public final class ObjectInventory implements Cloneable {
         if (i.boots == null) {
             i.boots = ObjectInventory.DEFAULT_BOOTS;
         }
-        i.amulet = (GenericAmulet) objects
-                .readMazeObject(reader, formatVersion);
+        i.amulet = (GenericAmulet) objects.readMazeObject(reader,
+                formatVersion);
         if (i.amulet == null) {
             i.amulet = ObjectInventory.DEFAULT_AMULET;
         }

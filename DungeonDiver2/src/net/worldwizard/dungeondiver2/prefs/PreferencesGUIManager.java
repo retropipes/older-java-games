@@ -97,33 +97,32 @@ class PreferencesGUIManager {
     }
 
     private void loadPrefs() {
-        this.generatorRandomness.setValue(PreferencesManager
-                .getGeneratorRandomness());
-        this.battleSpeedChoices.setSelectedIndex(PreferencesManager
-                .getBattleSpeedValue());
+        this.generatorRandomness
+                .setValue(PreferencesManager.getGeneratorRandomness());
+        this.battleSpeedChoices
+                .setSelectedIndex(PreferencesManager.getBattleSpeedValue());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
         }
-        this.checkUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckUpdatesAtStartup());
-        this.checkBetaUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckBetaUpdatesAtStartup());
+        this.checkUpdatesStartup
+                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
+        this.checkBetaUpdatesStartup.setSelected(
+                PreferencesManager.shouldCheckBetaUpdatesAtStartup());
         this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
     }
 
     public void setPrefs() {
-        PreferencesManager.setGeneratorRandomness(this.generatorRandomness
-                .getValue());
-        PreferencesManager.setBattleSpeed(this.battleSpeedChoices
-                .getSelectedIndex());
+        PreferencesManager
+                .setGeneratorRandomness(this.generatorRandomness.getValue());
+        PreferencesManager
+                .setBattleSpeed(this.battleSpeedChoices.getSelectedIndex());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
         }
-        PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup
-                .isSelected());
-        PreferencesManager
-                .setCheckBetaUpdatesAtStartup(this.checkBetaUpdatesStartup
-                        .isSelected());
+        PreferencesManager.setCheckUpdatesAtStartup(
+                this.checkUpdatesStartup.isSelected());
+        PreferencesManager.setCheckBetaUpdatesAtStartup(
+                this.checkBetaUpdatesStartup.isSelected());
         PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
         this.hidePrefs();
     }
@@ -165,8 +164,8 @@ class PreferencesGUIManager {
                 "Enable battle music", true);
         this.music[PreferencesManager.MUSIC_BOSS] = new JCheckBox(
                 "Enable boss music", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.checkBetaUpdatesStartup = new JCheckBox(
                 "Check for Beta Updates at Startup", true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
@@ -176,20 +175,20 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        this.gamePane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.gamePane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.gamePane.add(new JLabel("Battle Speed"));
         this.gamePane.add(this.battleSpeedChoices);
         this.gamePane.add(this.moveOneAtATime);
         this.gamePane.add(this.generatorRandomnessValue);
         this.gamePane.add(this.generatorRandomness);
-        this.musicPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.musicPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.musicPane.add(this.music[x]);
         }
-        this.miscPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.miscPane.add(this.checkUpdatesStartup);
         if (Support.isBetaModeEnabled()) {
             this.miscPane.add(this.checkBetaUpdatesStartup);
@@ -210,8 +209,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         public EventHandler() {
             // TODO Auto-generated constructor stub
         }

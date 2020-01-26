@@ -30,41 +30,42 @@ public class FaithConstants {
 
     // Methods
     public static int getFaithsCount() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITHS_COUNT;
     }
 
     static String[] getFaithNames() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_NAMES;
     }
 
     public static String getFaithName(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_DISPLAY_NAMES[f];
     }
 
     public static String[] getFaithDisplayNames() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_DISPLAY_NAMES;
     }
 
     public static String getFaithPowerName(final int f, final int p) {
-        return NamesManager.getName(NamesConstants.SECTION_FAITH_POWERS_PREFIX
-                + FaithConstants.FAITH_NAMES[f],
+        return NamesManager.getName(
+                NamesConstants.SECTION_FAITH_POWERS_PREFIX
+                        + FaithConstants.FAITH_NAMES[f],
                 NamesConstants.SECTION_ARRAY_FAITH_POWERS[p]);
     }
 
     public static Color getFaithColor(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_COLORS[f];
@@ -82,10 +83,10 @@ public class FaithConstants {
         if (!FaithConstants.INITED) {
             try {
                 // Fetch data
-                ArrayList<String> tempNames = new ArrayList<>();
+                final ArrayList<String> tempNames = new ArrayList<>();
                 try (final ResourceStreamReader rsr1 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/data/faith/catalog.txt"))) {
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/dungeondiver4/resources/data/faith/catalog.txt"))) {
                     String input1 = "";
                     while (input1 != null) {
                         input1 = rsr1.readString();
@@ -97,10 +98,10 @@ public class FaithConstants {
                 FaithConstants.FAITH_NAMES = tempNames
                         .toArray(new String[tempNames.size()]);
                 FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
-                ArrayList<String> tempColors = new ArrayList<>();
+                final ArrayList<String> tempColors = new ArrayList<>();
                 try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/data/faith/colors.txt"))) {
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/dungeondiver4/resources/data/faith/colors.txt"))) {
                     String input2 = "";
                     while (input2 != null) {
                         input2 = rsr2.readString();
@@ -109,12 +110,12 @@ public class FaithConstants {
                         }
                     }
                 }
-                String[] tempColors2 = tempColors.toArray(new String[tempColors
-                        .size()]);
+                final String[] tempColors2 = tempColors
+                        .toArray(new String[tempColors.size()]);
                 FaithConstants.FAITH_COLORS = new Color[tempColors2.length];
-                int[][] tempColors3 = new int[tempColors2.length][3];
+                final int[][] tempColors3 = new int[tempColors2.length][3];
                 for (int x = 0; x < tempColors2.length; x++) {
-                    String[] tempColorSplit = tempColors2[x].split(",");
+                    final String[] tempColorSplit = tempColors2[x].split(",");
                     for (int y = 0; y < 3; y++) {
                         tempColors3[x][y] = Integer.parseInt(tempColorSplit[y]);
                     }
@@ -123,7 +124,7 @@ public class FaithConstants {
                             tempColors3[x][2]);
                 }
                 if (FaithConstants.FAITH_DISPLAY_NAMES == null) {
-                    String[] temp = new String[FaithConstants.FAITHS_COUNT];
+                    final String[] temp = new String[FaithConstants.FAITHS_COUNT];
                     for (int x = 0; x < temp.length; x++) {
                         temp[x] = NamesManager.getName(
                                 NamesConstants.SECTION_FAITHS,

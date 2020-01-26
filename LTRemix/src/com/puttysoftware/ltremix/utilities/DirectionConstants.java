@@ -6,17 +6,17 @@
 package com.puttysoftware.ltremix.utilities;
 
 public interface DirectionConstants {
-    public static final int INVALID = -2;
-    public static final int NONE = -1;
-    public static final int NORTHWEST = 0;
-    public static final int NORTH = 1;
-    public static final int NORTHEAST = 2;
-    public static final int EAST = 3;
-    public static final int SOUTHEAST = 4;
-    public static final int SOUTH = 5;
-    public static final int SOUTHWEST = 6;
-    public static final int WEST = 7;
-    public static final int COUNT = 8;
-    public static final int HORIZONTAL = 8;
-    public static final int VERTICAL = 9;
+    int INVALID = -2;
+    int NONE = -1;
+    int NORTHWEST = 0;
+    int NORTH = 1;
+    int NORTHEAST = 2;
+    int EAST = 3;
+    int SOUTHEAST = 4;
+    int SOUTH = 5;
+    int SOUTHWEST = 6;
+    int WEST = 7;
+    int COUNT = 8;
+    int HORIZONTAL = 8;
+    int VERTICAL = 9;
 }

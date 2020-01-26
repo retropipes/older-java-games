@@ -22,13 +22,13 @@ public class InvisibleSpringboard extends Springboard {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        LoopChute.getApplication().showMessage(
-                "Some unseen force prevents movement that way...");
+        LoopChute.getApplication()
+                .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = LoopChute.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

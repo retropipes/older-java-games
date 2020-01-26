@@ -12,15 +12,14 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {
-        String name = CasteConstants.CASTE_NAMES[c].toLowerCase();
+        final String name = CasteConstants.CASTE_NAMES[c].toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                CasteDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/descriptions/caste/"
-                                + name
-                                + Extension
+                CasteDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/dungeondiver4/resources/descriptions/caste/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
-            String desc = rsr.readString();
+            final String desc = rsr.readString();
             return desc;
         } catch (final Exception e) {
             return null;

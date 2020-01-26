@@ -94,7 +94,7 @@ class GameGUI {
         if (MusicManager.isMusicPlaying()) {
             MusicManager.stopMusic();
         }
-        int zoneID = PartyManager.getParty().getZone();
+        final int zoneID = PartyManager.getParty().getZone();
         if (zoneID == Dungeon.getMaxLevels() - 1) {
             MusicManager.playMusic(MusicConstants.MUSIC_LAIR);
         } else {
@@ -307,8 +307,8 @@ class GameGUI {
                 case KeyEvent.VK_SPACE:
                     final Application app = Chrystalz.getApplication();
                     final Dungeon m = app.getDungeonManager().getDungeon();
-                    int px = m.getPlayerLocationX();
-                    int py = m.getPlayerLocationY();
+                    final int px = m.getPlayerLocationX();
+                    final int py = m.getPlayerLocationY();
                     AbstractGameObject there = new Empty();
                     try {
                         there = m.getCell(px, py,

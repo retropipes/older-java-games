@@ -8,7 +8,8 @@ import java.util.Arrays;
 public class NumberStorage {
     // Fields
     /**
-     * The underlying array where data is stored. Exposed for serialization purposes for use with the protected copy constructor.
+     * The underlying array where data is stored. Exposed for serialization purposes
+     * for use with the protected copy constructor.
      */
     protected final int[] dataStore;
     private final int[] dataShape;
@@ -17,6 +18,7 @@ public class NumberStorage {
     // Constructor
     /**
      * Main constructor.
+     * 
      * @param shape simulated dimensions for the stored data
      */
     public NumberStorage(final int... shape) {
@@ -33,6 +35,7 @@ public class NumberStorage {
     // Copy constructor
     /**
      * Main copy constructor.
+     * 
      * @param source the @self to make a copy of
      */
     public NumberStorage(final NumberStorage source) {
@@ -49,8 +52,9 @@ public class NumberStorage {
     // Protected copy constructor
     /**
      * Serialization-related protected copy constructor.
+     * 
      * @param source the underlying array where stored data came from
-     * @param shape simulated dimensions for the stored data
+     * @param shape  simulated dimensions for the stored data
      */
     protected NumberStorage(final int[] source, final int... shape) {
 	this.dataShape = shape;
@@ -66,6 +70,7 @@ public class NumberStorage {
     // Methods
     /**
      * Check for equality.
+     * 
      * @param obj the other object to check
      * @return true if equal, false otherwise
      */
@@ -89,6 +94,7 @@ public class NumberStorage {
 
     /**
      * Fill the storage with the same data everywhere.
+     * 
      * @param obj the data to fill with
      */
     public final void fill(final int obj) {
@@ -99,6 +105,7 @@ public class NumberStorage {
 
     /**
      * Get data at a given location in storage.
+     * 
      * @param loc the location to get data from
      * @return the data at that location
      */
@@ -108,8 +115,9 @@ public class NumberStorage {
     }
 
     /**
-     * Get data directly from the underlying array.
-     * To convert a simulated index to a raw index, use ravelLocation().
+     * Get data directly from the underlying array. To convert a simulated index to
+     * a raw index, use ravelLocation().
+     * 
      * @param rawLoc the index within the array to get data from
      * @return the data at that index
      */
@@ -119,6 +127,7 @@ public class NumberStorage {
 
     /**
      * Get the length of the underlying array.
+     * 
      * @return the underlying array length
      */
     protected final int getRawLength() {
@@ -127,6 +136,7 @@ public class NumberStorage {
 
     /**
      * Get the shape (dimensions) of the storage.
+     * 
      * @return the shape, as an array of integers
      */
     public final int[] getShape() {
@@ -145,6 +155,7 @@ public class NumberStorage {
 
     /**
      * Utility to convert simulated indexes to raw indexes.
+     * 
      * @param loc a simulated index
      * @return a raw index
      */
@@ -166,6 +177,7 @@ public class NumberStorage {
 
     /**
      * Change stored data at a given location.
+     * 
      * @param obj the new data value
      * @param loc the location to modify
      */
@@ -175,9 +187,10 @@ public class NumberStorage {
     }
 
     /**
-     * Change stored data directly in the underlying array.
-     * To convert a simulated index to a raw index, use ravelLocation().
-     * @param obj the new data value
+     * Change stored data directly in the underlying array. To convert a simulated
+     * index to a raw index, use ravelLocation().
+     * 
+     * @param obj    the new data value
      * @param rawLoc the index to modify
      */
     protected final void setRawCell(final int obj, final int rawLoc) {

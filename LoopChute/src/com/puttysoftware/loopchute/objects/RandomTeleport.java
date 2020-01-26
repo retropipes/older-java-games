@@ -18,14 +18,15 @@ public class RandomTeleport extends GenericRandomTeleport {
         super(0, 0, "random");
     }
 
-    public RandomTeleport(final int newRandomRangeY, final int newRandomRangeX) {
+    public RandomTeleport(final int newRandomRangeY,
+            final int newRandomRangeX) {
         super(newRandomRangeY, newRandomRangeX, "random");
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = LoopChute.getApplication();
         int dr, dc;
         do {

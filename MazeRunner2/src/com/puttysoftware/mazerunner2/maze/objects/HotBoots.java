@@ -32,13 +32,13 @@ public class HotBoots extends AbstractBoots {
 
     @Override
     public void stepAction() {
-        int x = MazeRunnerII.getApplication().getMazeManager().getMaze()
+        final int x = MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationX();
-        int y = MazeRunnerII.getApplication().getMazeManager().getMaze()
+        final int y = MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationY();
-        int z = MazeRunnerII.getApplication().getMazeManager().getMaze()
+        final int z = MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MazeRunnerII.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        MazeRunnerII.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 }

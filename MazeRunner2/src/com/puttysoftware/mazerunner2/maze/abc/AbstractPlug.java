@@ -18,7 +18,7 @@ public abstract class AbstractPlug extends AbstractInfiniteKey {
 
     @Override
     public AbstractPlug clone() {
-        AbstractPlug copy = (AbstractPlug) super.clone();
+        final AbstractPlug copy = (AbstractPlug) super.clone();
         copy.letter = this.letter;
         return copy;
     }

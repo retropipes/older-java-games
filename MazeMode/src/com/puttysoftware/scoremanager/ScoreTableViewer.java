@@ -30,7 +30,8 @@ public final class ScoreTableViewer {
         }
         int x;
         int y;
-        for (x = 0; x < table.getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
+        for (x = 0; x < table
+                .getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
             msg = "";
             for (y = 1; y <= ScoreTableViewer.ENTRIES_PER_PAGE; y++) {
                 try {

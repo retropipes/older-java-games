@@ -15,11 +15,12 @@ public class Monster extends AbstractMovingObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         if (DDRemix.getApplication().getMode() != Application.STATUS_BATTLE) {
             DDRemix.getApplication().getBattle().doBattle();
-            DDRemix.getApplication().getMazeManager().getMaze()
-                    .postBattle(this, dirX, dirY, true);
+            DDRemix.getApplication().getMazeManager().getMaze().postBattle(this,
+                    dirX, dirY, true);
         }
     }
 

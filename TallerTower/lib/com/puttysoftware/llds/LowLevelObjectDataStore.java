@@ -9,7 +9,7 @@ public class LowLevelObjectDataStore implements Cloneable {
     private final int[] interProd;
 
     // Constructor
-    public LowLevelObjectDataStore(int... shape) {
+    public LowLevelObjectDataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -21,7 +21,7 @@ public class LowLevelObjectDataStore implements Cloneable {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -32,14 +32,14 @@ public class LowLevelObjectDataStore implements Cloneable {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        LowLevelObjectDataStore copy = new LowLevelObjectDataStore(
+        final LowLevelObjectDataStore copy = new LowLevelObjectDataStore(
                 this.dataShape);
         for (int x = 0; x < copy.dataStore.length; x++) {
             if (this.dataStore[x] != null) {
@@ -53,11 +53,11 @@ public class LowLevelObjectDataStore implements Cloneable {
         return this.dataShape;
     }
 
-    protected CloneableObject getRawCell(int rawLoc) {
+    protected CloneableObject getRawCell(final int rawLoc) {
         return this.dataStore[rawLoc];
     }
 
-    protected void setRawCell(CloneableObject cobj, int rawLoc) {
+    protected void setRawCell(final CloneableObject cobj, final int rawLoc) {
         this.dataStore[rawLoc] = cobj;
     }
 
@@ -65,25 +65,25 @@ public class LowLevelObjectDataStore implements Cloneable {
         return this.dataStore.length;
     }
 
-    public CloneableObject getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public CloneableObject getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(CloneableObject obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final CloneableObject obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result = 1;
+        final int result = 1;
         return prime * result + Arrays.hashCode(this.dataStore);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -93,7 +93,7 @@ public class LowLevelObjectDataStore implements Cloneable {
         if (!(obj instanceof LowLevelObjectDataStore)) {
             return false;
         }
-        LowLevelObjectDataStore other = (LowLevelObjectDataStore) obj;
+        final LowLevelObjectDataStore other = (LowLevelObjectDataStore) obj;
         if (!Arrays.equals(this.dataStore, other.dataStore)) {
             return false;
         }

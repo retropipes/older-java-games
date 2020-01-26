@@ -13,12 +13,13 @@ public class PowerWither extends DungeonEffect {
 
     // Constructor
     public PowerWither(final int newRounds) {
-	super("Power Wither", newRounds);
+        super("Power Wither", newRounds);
     }
 
     @Override
     public int modifyMove1(final int arg) {
-	PartyManager.getParty().getLeader().offsetCurrentMP(MP_LOST);
-	return arg;
+        PartyManager.getParty().getLeader()
+                .offsetCurrentMP(PowerWither.MP_LOST);
+        return arg;
     }
 }

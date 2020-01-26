@@ -50,173 +50,173 @@ public final class Application {
 
     // Constructors
     public Application() {
-	this.objects = new DungeonObjectList();
-	this.currentMode = Application.STATUS_NULL;
-	this.formerMode = Application.STATUS_NULL;
+        this.objects = new DungeonObjectList();
+        this.currentMode = Application.STATUS_NULL;
+        this.formerMode = Application.STATUS_NULL;
     }
 
     // Methods
     void postConstruct() {
-	// Create Managers
-	this.about = new AboutDialog(Application.getVersionString());
-	this.guiMgr = new GUIManager();
-	this.menuMgr = new MenuManager();
-	this.gHelpMgr = new GeneralHelpManager();
-	this.oHelpMgr = new ObjectHelpManager();
-	this.windowTurnBattle = new WindowTurnBattleLogic();
-	this.windowTimeBattle = new WindowTimeBattleLogic();
-	this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
-	this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
-	this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
-	this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
-	this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
-	this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
-	this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
-	// Cache Logo
-	this.guiMgr.updateLogo();
+        // Create Managers
+        this.about = new AboutDialog(Application.getVersionString());
+        this.guiMgr = new GUIManager();
+        this.menuMgr = new MenuManager();
+        this.gHelpMgr = new GeneralHelpManager();
+        this.oHelpMgr = new ObjectHelpManager();
+        this.windowTurnBattle = new WindowTurnBattleLogic();
+        this.windowTimeBattle = new WindowTimeBattleLogic();
+        this.weapons = new Shop(ShopTypes.SHOP_TYPE_WEAPONS);
+        this.armor = new Shop(ShopTypes.SHOP_TYPE_ARMOR);
+        this.healer = new Shop(ShopTypes.SHOP_TYPE_HEALER);
+        this.bank = new Shop(ShopTypes.SHOP_TYPE_BANK);
+        this.regenerator = new Shop(ShopTypes.SHOP_TYPE_REGENERATOR);
+        this.spells = new Shop(ShopTypes.SHOP_TYPE_SPELLS);
+        this.items = new Shop(ShopTypes.SHOP_TYPE_ITEMS);
+        // Cache Logo
+        this.guiMgr.updateLogo();
     }
 
     public void setMode(final int newMode) {
-	this.formerMode = this.currentMode;
-	this.currentMode = newMode;
+        this.formerMode = this.currentMode;
+        this.currentMode = newMode;
     }
 
     public int getMode() {
-	return this.currentMode;
+        return this.currentMode;
     }
 
     public int getFormerMode() {
-	return this.formerMode;
+        return this.formerMode;
     }
 
     public boolean modeChanged() {
-	return this.formerMode != this.currentMode;
+        return this.formerMode != this.currentMode;
     }
 
     public void saveFormerMode() {
-	this.formerMode = this.currentMode;
+        this.formerMode = this.currentMode;
     }
 
     public void restoreFormerMode() {
-	this.currentMode = this.formerMode;
+        this.currentMode = this.formerMode;
     }
 
     public void showMessage(final String msg) {
-	if (this.currentMode == Application.STATUS_GAME) {
-	    this.getGameManager().setStatusMessage(msg);
-	} else if (this.currentMode == Application.STATUS_BATTLE) {
-	    this.getBattle().setStatusMessage(msg);
-	} else {
-	    CommonDialogs.showDialog(msg);
-	}
+        if (this.currentMode == Application.STATUS_GAME) {
+            this.getGameManager().setStatusMessage(msg);
+        } else if (this.currentMode == Application.STATUS_BATTLE) {
+            this.getBattle().setStatusMessage(msg);
+        } else {
+            CommonDialogs.showDialog(msg);
+        }
     }
 
     public MenuManager getMenuManager() {
-	return this.menuMgr;
+        return this.menuMgr;
     }
 
     public GUIManager getGUIManager() {
-	return this.guiMgr;
+        return this.guiMgr;
     }
 
     public GameLogicManager getGameManager() {
-	if (this.gameMgr == null) {
-	    this.gameMgr = new GameLogicManager();
-	}
-	return this.gameMgr;
+        if (this.gameMgr == null) {
+            this.gameMgr = new GameLogicManager();
+        }
+        return this.gameMgr;
     }
 
     public DungeonManager getDungeonManager() {
-	if (this.mazeMgr == null) {
-	    this.mazeMgr = new DungeonManager();
-	}
-	return this.mazeMgr;
+        if (this.mazeMgr == null) {
+            this.mazeMgr = new DungeonManager();
+        }
+        return this.mazeMgr;
     }
 
     public GeneralHelpManager getGeneralHelpManager() {
-	return this.gHelpMgr;
+        return this.gHelpMgr;
     }
 
     public ObjectHelpManager getObjectHelpManager() {
-	return this.oHelpMgr;
+        return this.oHelpMgr;
     }
 
     public AboutDialog getAboutDialog() {
-	return this.about;
+        return this.about;
     }
 
     public static BufferedImageIcon getMicroLogo() {
-	return LogoManager.getMicroLogo();
+        return LogoManager.getMicroLogo();
     }
 
     public static Image getIconLogo() {
-	return LogoManager.getIconLogo();
+        return LogoManager.getIconLogo();
     }
 
     public static void playLogoSound() {
-	SoundManager.playSound(SoundConstants.SOUND_LOGO);
+        SoundManager.playSound(SoundConstants.SOUND_LOGO);
     }
 
     private static String getVersionString() {
-	return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR
-		+ "." + Application.VERSION_BUGFIX;
+        return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR + "."
+                + Application.VERSION_BUGFIX;
     }
 
     public JFrame getOutputFrame() {
-	try {
-	    if (this.getMode() == Application.STATUS_PREFS) {
-		return PreferencesManager.getPrefFrame();
-	    } else if (this.getMode() == Application.STATUS_GUI) {
-		return this.getGUIManager().getGUIFrame();
-	    } else if (this.getMode() == Application.STATUS_GAME) {
-		return this.getGameManager().getOutputFrame();
-	    } else if (this.getMode() == Application.STATUS_BATTLE) {
-		return this.getBattle().getOutputFrame();
-	    } else {
-		return null;
-	    }
-	} catch (final NullPointerException npe) {
-	    return null;
-	}
+        try {
+            if (this.getMode() == Application.STATUS_PREFS) {
+                return PreferencesManager.getPrefFrame();
+            } else if (this.getMode() == Application.STATUS_GUI) {
+                return this.getGUIManager().getGUIFrame();
+            } else if (this.getMode() == Application.STATUS_GAME) {
+                return this.getGameManager().getOutputFrame();
+            } else if (this.getMode() == Application.STATUS_BATTLE) {
+                return this.getBattle().getOutputFrame();
+            } else {
+                return null;
+            }
+        } catch (final NullPointerException npe) {
+            return null;
+        }
     }
 
     public DungeonObjectList getObjects() {
-	return this.objects;
+        return this.objects;
     }
 
     public Shop getGenericShop(final int shopType) {
-	this.getGameManager().stopMovement();
-	switch (shopType) {
-	case ShopTypes.SHOP_TYPE_ARMOR:
-	    return this.armor;
-	case ShopTypes.SHOP_TYPE_BANK:
-	    return this.bank;
-	case ShopTypes.SHOP_TYPE_HEALER:
-	    return this.healer;
-	case ShopTypes.SHOP_TYPE_ITEMS:
-	    return this.items;
-	case ShopTypes.SHOP_TYPE_REGENERATOR:
-	    return this.regenerator;
-	case ShopTypes.SHOP_TYPE_SPELLS:
-	    return this.spells;
-	case ShopTypes.SHOP_TYPE_WEAPONS:
-	    return this.weapons;
-	default:
-	    // Invalid shop type
-	    return null;
-	}
+        this.getGameManager().stopMovement();
+        switch (shopType) {
+        case ShopTypes.SHOP_TYPE_ARMOR:
+            return this.armor;
+        case ShopTypes.SHOP_TYPE_BANK:
+            return this.bank;
+        case ShopTypes.SHOP_TYPE_HEALER:
+            return this.healer;
+        case ShopTypes.SHOP_TYPE_ITEMS:
+            return this.items;
+        case ShopTypes.SHOP_TYPE_REGENERATOR:
+            return this.regenerator;
+        case ShopTypes.SHOP_TYPE_SPELLS:
+            return this.spells;
+        case ShopTypes.SHOP_TYPE_WEAPONS:
+            return this.weapons;
+        default:
+            // Invalid shop type
+            return null;
+        }
     }
 
     public AbstractBattle getBattle() {
-	if (PreferencesManager.useTimeBattleEngine()) {
-	    return this.windowTimeBattle;
-	} else {
-	    return this.windowTurnBattle;
-	}
+        if (PreferencesManager.useTimeBattleEngine()) {
+            return this.windowTimeBattle;
+        } else {
+            return this.windowTurnBattle;
+        }
     }
 
     public void resetBattleGUI() {
-	this.windowTimeBattle.resetGUI();
-	this.windowTurnBattle.resetGUI();
+        this.windowTimeBattle.resetGUI();
+        this.windowTurnBattle.resetGUI();
     }
 }

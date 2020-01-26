@@ -12,14 +12,14 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class BoxMover extends AbstractMover {
     // Constructors
     public BoxMover() {
-	super(true);
-	this.setDirection(Direction.NORTH);
-	this.setFrameNumber(1);
-	this.type.set(TypeConstants.TYPE_BOX_MOVER);
+        super(true);
+        this.setDirection(Direction.NORTH);
+        this.setFrameNumber(1);
+        this.type.set(TypeConstants.TYPE_BOX_MOVER);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 122;
+        return 122;
     }
 }

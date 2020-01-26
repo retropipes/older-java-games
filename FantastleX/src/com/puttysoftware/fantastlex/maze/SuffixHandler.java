@@ -10,8 +10,8 @@ public class SuffixHandler implements SuffixIO {
     @Override
     public void readSuffix(final XDataReader reader, final int formatVersion)
             throws IOException {
-        FantastleX.getApplication().getGameManager()
-                .loadGameHook(reader, formatVersion);
+        FantastleX.getApplication().getGameManager().loadGameHook(reader,
+                formatVersion);
     }
 
     @Override

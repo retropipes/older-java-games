@@ -17,7 +17,7 @@ abstract class BothRandomScalingBaseMonster extends BothRandomBaseMonster {
 
     @Override
     public void loadMonster() {
-        int newLevel = PartyManager.getParty().getDungeonLevel();
+        final int newLevel = PartyManager.getParty().getDungeonLevel();
         this.setLevel(newLevel);
         this.setVitality(this.getInitialVitality());
         this.setCurrentHP(this.getMaximumHP());
@@ -56,9 +56,9 @@ abstract class BothRandomScalingBaseMonster extends BothRandomBaseMonster {
         maxvar = (int) (this.getLevel()
                 * BaseMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
         final RandomRange r = new RandomRange(minvar, maxvar);
-        long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
-        long factor = BaseMonster.getBattlesToNextLevel();
-        return (expbase / factor) + r.generate();
+        final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
+        final long factor = BaseMonster.getBattlesToNextLevel();
+        return expbase / factor + r.generate();
     }
 
     private int getToughness() {
@@ -67,9 +67,10 @@ abstract class BothRandomScalingBaseMonster extends BothRandomBaseMonster {
     }
 
     private int getInitialGold() {
-        int min = 0;
-        int max = this.getToughness() * BaseMonster.GOLD_TOUGHNESS_MULTIPLIER;
-        RandomRange r = new RandomRange(min, max);
+        final int min = 0;
+        final int max = this.getToughness()
+                * BaseMonster.GOLD_TOUGHNESS_MULTIPLIER;
+        final RandomRange r = new RandomRange(min, max);
         return r.generate();
     }
 

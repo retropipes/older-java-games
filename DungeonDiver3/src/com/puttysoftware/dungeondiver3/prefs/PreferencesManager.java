@@ -47,12 +47,9 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getInteger("GeneratorRandomness", 3);
     }
 
-    static void setGeneratorRandomness(int value) {
+    static void setGeneratorRandomness(final int value) {
         PreferencesManager.storeMgr.setInteger("GeneratorRandomness", value);
-        DungeonDiver3
-                .getApplication()
-                .getScenarioManager()
-                .getMap()
+        DungeonDiver3.getApplication().getScenarioManager().getMap()
                 .setGeneratorRandomness(value,
                         DungeonDiver3.GENERATOR_RANDOMNESS_MAX);
     }
@@ -68,7 +65,7 @@ public class PreferencesManager {
                 BattleSpeedConstants.BATTLE_SPEED_MODERATE);
     }
 
-    static void setBattleSpeed(int value) {
+    static void setBattleSpeed(final int value) {
         PreferencesManager.storeMgr.setInteger("BattleSpeed", value);
     }
 
@@ -85,11 +82,11 @@ public class PreferencesManager {
         }
     }
 
-    static void setCheckUpdatesAtStartup(boolean value) {
+    static void setCheckUpdatesAtStartup(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("UpdatesStartup", value);
     }
 
-    static void setCheckBetaUpdatesAtStartup(boolean value) {
+    static void setCheckBetaUpdatesAtStartup(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", value);
     }
 
@@ -97,7 +94,7 @@ public class PreferencesManager {
         return PreferencesManager.storeMgr.getBoolean("OneMove", true);
     }
 
-    static void setOneMove(boolean value) {
+    static void setOneMove(final boolean value) {
         PreferencesManager.storeMgr.setBoolean("OneMove", value);
     }
 
@@ -114,8 +111,8 @@ public class PreferencesManager {
     }
 
     public static boolean areCharacterChangesPermanent() {
-        return PreferencesManager.storeMgr.getBoolean(
-                "CharacterChangesPermanent", false);
+        return PreferencesManager.storeMgr
+                .getBoolean("CharacterChangesPermanent", false);
     }
 
     static void setCharacterChangesPermanent(final boolean status) {
@@ -132,7 +129,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(PreferencesManager.MAC_PREFIX);
@@ -146,7 +143,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_DIR;
@@ -164,7 +161,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFileName() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return PreferencesManager.MAC_FILE;
@@ -178,7 +175,7 @@ public class PreferencesManager {
     }
 
     private static String getPrefsFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(PreferencesManager.getPrefsDirPrefix());
         b.append(PreferencesManager.getPrefsDirectory());
         b.append(PreferencesManager.getPrefsFileName());
@@ -190,7 +187,7 @@ public class PreferencesManager {
         try {
             PreferencesManager.storeMgr.saveStore(new BufferedOutputStream(
                     new FileOutputStream(PreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Ignore
         }
         LocalPreferencesManager.writePrefs();
@@ -201,7 +198,7 @@ public class PreferencesManager {
             // Read new preferences
             PreferencesManager.storeMgr.loadStore(new BufferedInputStream(
                     new FileInputStream(PreferencesManager.getPrefsFile())));
-        } catch (IOException io) {
+        } catch (final IOException io) {
             // Populate store with defaults
             PreferencesManager.storeMgr.setBoolean("UpdatesStartup", true);
             PreferencesManager.storeMgr.setBoolean("BetaUpdatesStartup", true);

@@ -10,7 +10,7 @@ public class RandomRange {
 
     // Constructor
     /**
-     * 
+     *
      * @param min
      * @param max
      */
@@ -22,7 +22,7 @@ public class RandomRange {
 
     // Methods
     /**
-     * 
+     *
      * @return the random number generated
      */
     public int generate() {
@@ -31,7 +31,7 @@ public class RandomRange {
     }
 
     /**
-     * 
+     *
      * @return the random number generated
      */
     public long generateLong() {

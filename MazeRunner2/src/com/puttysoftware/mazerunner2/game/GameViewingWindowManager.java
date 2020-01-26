@@ -36,19 +36,19 @@ public class GameViewingWindowManager {
         return this.locY + PreferencesManager.getViewingWindowSize() - 1;
     }
 
-    public void setViewingWindowLocationX(int val) {
+    public void setViewingWindowLocationX(final int val) {
         this.locX = val;
     }
 
-    public void setViewingWindowLocationY(int val) {
+    public void setViewingWindowLocationY(final int val) {
         this.locY = val;
     }
 
-    public void offsetViewingWindowLocationX(int val) {
+    public void offsetViewingWindowLocationX(final int val) {
         this.locX += val;
     }
 
-    public void offsetViewingWindowLocationY(int val) {
+    public void offsetViewingWindowLocationY(final int val) {
         this.locY += val;
     }
 

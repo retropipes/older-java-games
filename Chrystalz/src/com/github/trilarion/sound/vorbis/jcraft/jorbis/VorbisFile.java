@@ -131,7 +131,7 @@ public class VorbisFile {
         this.oy.reset();
     }
 
-    private int get_next_page(final Page page, long boundary1) {
+    private int get_next_page(final Page page, final long boundary1) {
         long boundary = boundary1;
         if (boundary > 0) {
             boundary += this.offset;
@@ -199,8 +199,8 @@ public class VorbisFile {
         return offst;
     }
 
-    int bisect_forward_serialno(final long begin, long searched1, final long end1,
-            final int currentno, final int m) {
+    int bisect_forward_serialno(final long begin, final long searched1,
+            final long end1, final int currentno, final int m) {
         long searched = searched1;
         long endsearched = end1;
         long next = end1;
@@ -250,7 +250,7 @@ public class VorbisFile {
     // uses the local ogg_stream storage in vf; this is important for
     // non-streaming input sources
     int fetch_headers(final Info vi1, final Comment vc1, final int[] serialno,
-            Page og_ptr1) {
+            final Page og_ptr1) {
         Page og_ptr = og_ptr1;
         final Page og = new Page();
         final Packet op = new Packet();

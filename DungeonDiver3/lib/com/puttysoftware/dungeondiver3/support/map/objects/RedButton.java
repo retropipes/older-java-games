@@ -10,8 +10,8 @@ import com.puttysoftware.dungeondiver3.support.map.generic.TemplateTransform;
 
 public class RedButton extends GenericButton {
     public RedButton() {
-        super(new RedWallOff(), new RedWallOn(), new TemplateTransform(1.0,
-                0.0, 0.0));
+        super(new RedWallOff(), new RedWallOn(),
+                new TemplateTransform(1.0, 0.0, 0.0));
     }
 
     @Override

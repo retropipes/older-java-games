@@ -41,13 +41,12 @@ public abstract class AbstractButton extends AbstractMazeObject {
             return false;
         }
         final AbstractButton other = (AbstractButton) obj;
-        if (this.offState != other.offState
-                && (this.offState == null || !this.offState
-                        .equals(other.offState))) {
+        if (this.offState != other.offState && (this.offState == null
+                || !this.offState.equals(other.offState))) {
             return false;
         }
-        if (this.onState != other.onState
-                && (this.onState == null || !this.onState.equals(other.onState))) {
+        if (this.onState != other.onState && (this.onState == null
+                || !this.onState.equals(other.onState))) {
             return false;
         }
         return true;
@@ -71,8 +70,8 @@ public abstract class AbstractButton extends AbstractMazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         FantastleX.getApplication().getMazeManager().getMaze()
                 .findAllObjectPairsAndSwap(this.offState, this.onState);
         FantastleX.getApplication().getGameManager().redrawMaze();

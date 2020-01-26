@@ -63,7 +63,8 @@ public class ImageTransformer {
     }
 
     static BufferedImageIcon templateTransformMonsterImage(
-            final BufferedImageIcon input, final Element e, final int imageSize) {
+            final BufferedImageIcon input, final Element e,
+            final int imageSize) {
         if (input != null && e != null) {
             final Color[] tcs = e.getTransformColors();
             final BufferedImageIcon result = new BufferedImageIcon(input);
@@ -144,8 +145,8 @@ public class ImageTransformer {
             final BufferedImageIcon icon1, final BufferedImageIcon icon2,
             final BufferedImageIcon icon3, final int imageSize) {
         try {
-            final BufferedImageIcon icon4 = ImageTransformer.getCompositeImage(
-                    icon1, icon2, imageSize);
+            final BufferedImageIcon icon4 = ImageTransformer
+                    .getCompositeImage(icon1, icon2, imageSize);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon4 != null) {
                 for (int x = 0; x < imageSize; x++) {

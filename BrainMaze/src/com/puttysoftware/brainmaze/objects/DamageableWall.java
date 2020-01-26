@@ -42,11 +42,8 @@ public class DamageableWall extends GenericWall {
             final int dirY, final ObjectInventory inv) {
         final int z = BrainMaze.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        BrainMaze
-                .getApplication()
-                .getGameManager()
-                .morph(new CrackedWall(), dirX, dirY, z,
-                        MazeConstants.LAYER_OBJECT);
+        BrainMaze.getApplication().getGameManager().morph(new CrackedWall(),
+                dirX, dirY, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CRACK);
     }

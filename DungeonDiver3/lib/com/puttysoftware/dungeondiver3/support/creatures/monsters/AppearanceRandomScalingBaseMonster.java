@@ -9,8 +9,8 @@ import com.puttysoftware.dungeondiver3.support.creatures.PartyManager;
 import com.puttysoftware.dungeondiver3.support.creatures.StatConstants;
 import com.puttysoftware.randomrange.RandomRange;
 
-abstract class AppearanceRandomScalingBaseMonster extends
-        AppearanceRandomBaseMonster {
+abstract class AppearanceRandomScalingBaseMonster
+        extends AppearanceRandomBaseMonster {
     // Constructors
     AppearanceRandomScalingBaseMonster() {
         super();
@@ -19,7 +19,7 @@ abstract class AppearanceRandomScalingBaseMonster extends
     @Override
     public void loadMonster() {
         super.loadMonster();
-        int newLevel = PartyManager.getParty().getDungeonLevel();
+        final int newLevel = PartyManager.getParty().getDungeonLevel();
         this.setLevel(newLevel);
         this.setVitality(this.getInitialVitality());
         this.setCurrentHP(this.getMaximumHP());
@@ -42,25 +42,27 @@ abstract class AppearanceRandomScalingBaseMonster extends
     }
 
     private int getInitialStrength() {
-        final RandomRange r = new RandomRange(1, this.getLevel()
-                * StatConstants.GAIN_STRENGTH);
+        final RandomRange r = new RandomRange(1,
+                this.getLevel() * StatConstants.GAIN_STRENGTH);
         return r.generate();
     }
 
     private int getInitialBlock() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_BLOCK);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_BLOCK);
         return r.generate();
     }
 
     private long getInitialExperience() {
         int minvar, maxvar;
-        minvar = (int) (this.getLevel() * BaseMonster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        maxvar = (int) (this.getLevel() * BaseMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        minvar = (int) (this.getLevel()
+                * BaseMonster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
+        maxvar = (int) (this.getLevel()
+                * BaseMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
         final RandomRange r = new RandomRange(minvar, maxvar);
-        long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
-        long factor = this.getBattlesToNextLevel();
-        return (expbase / factor) + r.generateLong();
+        final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
+        final long factor = this.getBattlesToNextLevel();
+        return expbase / factor + r.generateLong();
     }
 
     private int getToughness() {
@@ -69,33 +71,34 @@ abstract class AppearanceRandomScalingBaseMonster extends
     }
 
     private int getInitialGold() {
-        int min = 0;
-        int max = this.getToughness() * BaseMonster.GOLD_TOUGHNESS_MULTIPLIER;
-        RandomRange r = new RandomRange(min, max);
+        final int min = 0;
+        final int max = this.getToughness()
+                * BaseMonster.GOLD_TOUGHNESS_MULTIPLIER;
+        final RandomRange r = new RandomRange(min, max);
         return r.generate();
     }
 
     private int getInitialAgility() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_AGILITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_AGILITY, 1));
         return r.generate();
     }
 
     private int getInitialVitality() {
-        final RandomRange r = new RandomRange(1, Math.max(this.getLevel()
-                * StatConstants.GAIN_VITALITY, 1));
+        final RandomRange r = new RandomRange(1,
+                Math.max(this.getLevel() * StatConstants.GAIN_VITALITY, 1));
         return r.generate();
     }
 
     private int getInitialIntelligence() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_INTELLIGENCE);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_INTELLIGENCE);
         return r.generate();
     }
 
     private int getInitialLuck() {
-        final RandomRange r = new RandomRange(0, this.getLevel()
-                * StatConstants.GAIN_LUCK);
+        final RandomRange r = new RandomRange(0,
+                this.getLevel() * StatConstants.GAIN_LUCK);
         return r.generate();
     }
 }

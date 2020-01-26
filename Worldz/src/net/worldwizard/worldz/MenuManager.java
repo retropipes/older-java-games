@@ -41,12 +41,10 @@ public class MenuManager {
     private JMenuItem editorGoTo, editorUpOneFloor, editorDownOneFloor,
             editorUpOneLevel, editorDownOneLevel, editorAddLevel,
             editorRemoveLevel, editorResizeLevel, editorToggleLayer,
-            editorLevelPreferences, editorWorldPreferences,
-            editorSetStartPoint;
+            editorLevelPreferences, editorWorldPreferences, editorSetStartPoint;
     private JCheckBoxMenuItem editorToggleScript;
-    private JMenuItem editorFillFloor, editorFillLevel,
-            editorFillFloorRandomly, editorFillLevelRandomly,
-            editorFillRuleSets;
+    private JMenuItem editorFillFloor, editorFillLevel, editorFillFloorRandomly,
+            editorFillLevelRandomly, editorFillRuleSets;
     private JCheckBoxMenuItem editorFillUseRuleSets;
     JMenuItem debugToggleAI;
     private JMenuItem pluginRegister, pluginUnregister;
@@ -431,8 +429,8 @@ public class MenuManager {
     }
 
     public void toggleToggleScript() {
-        this.editorToggleScript.setSelected(!this.editorToggleScript
-                .isSelected());
+        this.editorToggleScript
+                .setSelected(!this.editorToggleScript.isSelected());
     }
 
     public void checkFlags() {
@@ -512,23 +510,23 @@ public class MenuManager {
         this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O, modKey);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey);
-        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.editCutLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X, modKey);
         this.editCopyLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C, modKey);
-        this.editPasteLevelAccel = KeyStroke
-                .getKeyStroke(KeyEvent.VK_V, modKey);
-        this.editInsertLevelFromClipboardAccel = KeyStroke.getKeyStroke(
-                KeyEvent.VK_F, modKey);
+        this.editPasteLevelAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
+                modKey);
+        this.editInsertLevelFromClipboardAccel = KeyStroke
+                .getKeyStroke(KeyEvent.VK_F, modKey);
         this.editPreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
         this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                 modKey);
-        this.editorGoToAccel = KeyStroke.getKeyStroke(KeyEvent.VK_G, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.editorGoToAccel = KeyStroke.getKeyStroke(KeyEvent.VK_G,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.playPlayWorldAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey);
         this.playEditWorldAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E, modKey);
         this.gameObjectInventoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I,
@@ -625,7 +623,8 @@ public class MenuManager {
         this.editorFillLevelRandomly = new JMenuItem(
                 "Fill Current Level Randomly");
         this.editorFillRuleSets = new JMenuItem("Fill Rule Sets...");
-        this.editorFillUseRuleSets = new JCheckBoxMenuItem("Use Fill Rule Sets");
+        this.editorFillUseRuleSets = new JCheckBoxMenuItem(
+                "Use Fill Rule Sets");
         this.editorToggleLayer = new JMenuItem("Toggle Layer");
         this.editorToggleScript = new JCheckBoxMenuItem("Toggle Script");
         this.editorToggleLayer.setAccelerator(this.editorToggleLayerAccel);
@@ -1052,9 +1051,8 @@ public class MenuManager {
                     }
                 } else if (cmd.equals("Pick Leader...")) {
                     if (!app.getGameManager().usingAnItem()) {
-                        PartyManager.getParty().setLeader(
-                                PartyManager.getParty().pickOnePartyMember()
-                                        .getName());
+                        PartyManager.getParty().setLeader(PartyManager
+                                .getParty().pickOnePartyMember().getName());
                         Worldz.getApplication().getGameManager().updateStats();
                     }
                 } else if (cmd.equals("Cast Spell")) {

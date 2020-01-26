@@ -12,9 +12,9 @@ public class StatImageConstants {
     public static final int STAT_IMAGE_POWER = 6;
     public static final int STAT_IMAGE_XP = 7;
     private static final String[] STAT_IMAGE_NAMES = GraphicsDataManager
-	    .getStatGraphicsData();
+            .getStatGraphicsData();
 
     static String getStatImageName(final int ID) {
-	return STAT_IMAGE_NAMES[ID];
+        return StatImageConstants.STAT_IMAGE_NAMES[ID];
     }
 }

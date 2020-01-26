@@ -34,7 +34,8 @@ public class NWayTeleport extends AbstractNWayTeleport {
 
     @Override
     public final AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
         me.setNWayDestCount(this.getDestinationCount());
         me.setNWayEdited(this);
         me.editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_N_WAY);

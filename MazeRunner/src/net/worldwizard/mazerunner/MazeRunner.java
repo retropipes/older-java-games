@@ -51,9 +51,8 @@ public class MazeRunner {
     private JMenuItem gameInventory, gameUse;
     private KeyStroke fileNewAccel, fileOpenAccel, fileCloseAccel,
             fileSaveAccel, fileSaveAsAccel;
-    private KeyStroke editUndoAccel, editRedoAccel, editCutAccel,
-            editCopyAccel, editPasteAccel, editPreferencesAccel,
-            editClearHistoryAccel;
+    private KeyStroke editUndoAccel, editRedoAccel, editCutAccel, editCopyAccel,
+            editPasteAccel, editPreferencesAccel, editClearHistoryAccel;
     private KeyStroke playPlayMazeAccel, playEditMazeAccel;
     private KeyStroke gameInventoryAccel, gameUseAccel;
     private JLabel messageLabel;
@@ -91,8 +90,10 @@ public class MazeRunner {
     public static final int MESSAGE_INVISIBLE_TELEPORTER = 6;
     public static final int VIEWING_WINDOW_SIZE_X = 9;
     public static final int VIEWING_WINDOW_SIZE_Y = 9;
-    public static final int MIN_VIEWING_WINDOW_X = -(MazeRunner.VIEWING_WINDOW_SIZE_X / 2);
-    public static final int MIN_VIEWING_WINDOW_Y = -(MazeRunner.VIEWING_WINDOW_SIZE_Y / 2);
+    public static final int MIN_VIEWING_WINDOW_X = -(MazeRunner.VIEWING_WINDOW_SIZE_X
+            / 2);
+    public static final int MIN_VIEWING_WINDOW_Y = -(MazeRunner.VIEWING_WINDOW_SIZE_Y
+            / 2);
 
     // Constructors
     public MazeRunner() {
@@ -340,11 +341,12 @@ public class MazeRunner {
             this.oldLowerRightViewingWindowY = this.lowerRightViewingWindowY;
             try {
                 if (!this.savedMazeObject.isConditionallyDirectionallySolid(
-                        false, this.playerLocationX + x, this.playerLocationY
-                                + y, this.inv)) {
-                    if (!this.gameMaze.getCell(this.playerLocationX + x,
-                            this.playerLocationY + y, this.playerLocationZ,
-                            this.playerLocationW)
+                        false, this.playerLocationX + x,
+                        this.playerLocationY + y, this.inv)) {
+                    if (!this.gameMaze
+                            .getCell(this.playerLocationX + x,
+                                    this.playerLocationY + y,
+                                    this.playerLocationZ, this.playerLocationW)
                             .isConditionallyDirectionallySolid(true,
                                     this.playerLocationX + x,
                                     this.playerLocationY + y, this.inv)) {
@@ -353,8 +355,9 @@ public class MazeRunner {
                                 this.playerLocationZ, this.playerLocationW);
                         acted = new MazeGround();
                         try {
-                            acted = this.gameMaze.getCell(this.playerLocationX
-                                    - x, this.playerLocationY - y,
+                            acted = this.gameMaze.getCell(
+                                    this.playerLocationX - x,
+                                    this.playerLocationY - y,
                                     this.playerLocationZ, this.playerLocationW);
                         } catch (final ArrayIndexOutOfBoundsException ae) {
                             // Do nothing
@@ -363,11 +366,10 @@ public class MazeRunner {
                             final MazeGenericMovableObject pullable = (MazeGenericMovableObject) acted;
                             final MazeObject savedObject = pullable
                                     .getSavedObject();
-                            final MazeObject pulledInto = this.gameMaze
-                                    .getCell(this.playerLocationX + pullX,
-                                            this.playerLocationY + pullY,
-                                            this.playerLocationZ,
-                                            this.playerLocationW);
+                            final MazeObject pulledInto = this.gameMaze.getCell(
+                                    this.playerLocationX + pullX,
+                                    this.playerLocationY + pullY,
+                                    this.playerLocationZ, this.playerLocationW);
                             if (savedObject.doesAcceptPullOut()
                                     && pulledInto.doesAcceptPullInto()) {
                                 savedObject.pullOutAction(this.inv);
@@ -462,14 +464,14 @@ public class MazeRunner {
                 this.gameMaze.setCell(new MazePlayer(), this.playerLocationX,
                         this.playerLocationY, this.playerLocationZ,
                         this.playerLocationW);
-                if (this.getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
+                if (this.getMessageEnabled(
+                        MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
                     Messager.showMessage("Can't go outside the maze");
                 }
                 o = new MazeGround();
             }
-        } while (!o.hasFriction() && !this.pushInProgress
-                || this.pushInProgress && !o.hasFriction()
-                && !pushedInto.hasFriction());
+        } while (!o.hasFriction() && !this.pushInProgress || this.pushInProgress
+                && !o.hasFriction() && !pushedInto.hasFriction());
         this.pushInProgress = false;
     }
 
@@ -506,13 +508,13 @@ public class MazeRunner {
             final int w2, final MazeGenericMovableObject pushedInto,
             final MazeObject source) {
         try {
-            if (!this.gameMaze.getCell(x, y, z, w).isConditionallySolid(
-                    this.inv)) {
+            if (!this.gameMaze.getCell(x, y, z, w)
+                    .isConditionallySolid(this.inv)) {
                 pushedInto.setSavedObject(this.gameMaze.getCell(x, y, z, w));
                 this.gameMaze.setCell(pushedInto, x, y, z, w);
                 this.gameMaze.setCell(source, x2, y2, z2, w2);
-                pushedInto.getSavedObject().pushIntoAction(this.inv,
-                        pushedInto, x2, y2, z2 - 1, w2);
+                pushedInto.getSavedObject().pushIntoAction(this.inv, pushedInto,
+                        x2, y2, z2 - 1, w2);
                 this.redrawMaze();
                 this.isDirty = true;
             }
@@ -539,8 +541,8 @@ public class MazeRunner {
         this.oldLowerRightViewingWindowX = this.lowerRightViewingWindowX;
         this.oldLowerRightViewingWindowY = this.lowerRightViewingWindowY;
         try {
-            if (!this.gameMaze.getCell(x, y, z, w).isConditionallySolid(
-                    this.inv)) {
+            if (!this.gameMaze.getCell(x, y, z, w)
+                    .isConditionallySolid(this.inv)) {
                 this.gameMaze.setCell(this.savedMazeObject,
                         this.playerLocationX, this.playerLocationY,
                         this.playerLocationZ, this.playerLocationW);
@@ -578,7 +580,8 @@ public class MazeRunner {
             this.gameMaze.setCell(new MazePlayer(), this.playerLocationX,
                     this.playerLocationY, this.playerLocationZ,
                     this.playerLocationW);
-            if (this.getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
+            if (this.getMessageEnabled(
+                    MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
                 Messager.showMessage("Can't go outside the maze");
             }
         }
@@ -587,8 +590,10 @@ public class MazeRunner {
     public void updatePositionAbsoluteNoEvents(final int x, final int y,
             final int z, final int w) {
         try {
-            this.gameMaze.getCell(this.playerLocationX, this.playerLocationY,
-                    this.playerLocationZ, this.playerLocationW).playSound();
+            this.gameMaze
+                    .getCell(this.playerLocationX, this.playerLocationY,
+                            this.playerLocationZ, this.playerLocationW)
+                    .playSound();
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
         }
@@ -601,8 +606,8 @@ public class MazeRunner {
         this.oldLowerRightViewingWindowX = this.lowerRightViewingWindowX;
         this.oldLowerRightViewingWindowY = this.lowerRightViewingWindowY;
         try {
-            if (!this.gameMaze.getCell(x, y, z, w).isConditionallySolid(
-                    this.inv)) {
+            if (!this.gameMaze.getCell(x, y, z, w)
+                    .isConditionallySolid(this.inv)) {
                 this.gameMaze.setCell(this.savedMazeObject,
                         this.playerLocationX, this.playerLocationY,
                         this.playerLocationZ, this.playerLocationW);
@@ -639,7 +644,8 @@ public class MazeRunner {
             this.gameMaze.setCell(new MazePlayer(), this.playerLocationX,
                     this.playerLocationY, this.playerLocationZ,
                     this.playerLocationW);
-            if (this.getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
+            if (this.getMessageEnabled(
+                    MazeRunner.MESSAGE_CANNOT_GO_OUTSIDE_MAZE)) {
                 Messager.showMessage("Can't go outside the maze");
             }
         }
@@ -654,15 +660,18 @@ public class MazeRunner {
             for (x = this.upperLeftViewingWindowX; x <= this.lowerRightViewingWindowX; x++) {
                 for (y = this.upperLeftViewingWindowY; y <= this.lowerRightViewingWindowY; y++) {
                     try {
-                        this.outputPane.add(new JLabel("", this.gameMaze
-                                .getCell(y, x, this.playerLocationZ,
-                                        this.playerLocationW).gameRenderHook(y,
-                                        x, this.playerLocationZ,
-                                        this.playerLocationW),
+                        this.outputPane.add(new JLabel("",
+                                this.gameMaze
+                                        .getCell(y, x, this.playerLocationZ,
+                                                this.playerLocationW)
+                                        .gameRenderHook(y, x,
+                                                this.playerLocationZ,
+                                                this.playerLocationW),
                                 SwingConstants.CENTER));
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        this.outputPane.add(new JLabel("", new MazeVoid()
-                                .gameRenderHook(y, x, this.playerLocationZ,
+                        this.outputPane.add(new JLabel("",
+                                new MazeVoid().gameRenderHook(y, x,
+                                        this.playerLocationZ,
                                         this.playerLocationW),
                                 SwingConstants.CENTER));
                     }
@@ -982,9 +991,8 @@ public class MazeRunner {
                 + "\nBombs: " + bombCount + "\nLetters: " + hasLetters
                 + "\nWater-Walking Boots: " + hasBoots + "\nEnergy Sphere: "
                 + hasSphere + "\nAnnihilation Wands: " + AWCount
-                + "\nFinish-Making Wands: " + FMWCount
-                + "\nWall-Making Wands: " + WMWCount + "\nTeleport Wands: "
-                + TWCount);
+                + "\nFinish-Making Wands: " + FMWCount + "\nWall-Making Wands: "
+                + WMWCount + "\nTeleport Wands: " + TWCount);
     }
 
     public void showUseDialog() {
@@ -1016,7 +1024,8 @@ public class MazeRunner {
                 if (objectName.equals(choices[x].getName())) {
                     this.objectBeingUsed = choices[x];
                     if (this.inv.getUses(this.objectBeingUsed) == 0) {
-                        Messager.showMessage("That item has no more uses left.");
+                        Messager.showMessage(
+                                "That item has no more uses left.");
                         this.setUsingAnItem(false);
                     } else {
                         Messager.showMessage("Click to set target");
@@ -1078,7 +1087,8 @@ public class MazeRunner {
         }
     }
 
-    public void setViewingWindowLocation(final boolean flag, final int newCoord) {
+    public void setViewingWindowLocation(final boolean flag,
+            final int newCoord) {
         if (flag) {
             this.upperLeftViewingWindowY = newCoord;
         } else {
@@ -1210,8 +1220,8 @@ public class MazeRunner {
         int x = 0, y = 0, z = 0, w = 0;
         boolean success = true;
         try {
-            try (BufferedReader mazeFile = new BufferedReader(new FileReader(
-                    filename))) {
+            try (BufferedReader mazeFile = new BufferedReader(
+                    new FileReader(filename))) {
                 try {
                     String inputLine = mazeFile.readLine();
                     this.mazeSizeX = Integer.parseInt(inputLine);
@@ -1236,8 +1246,7 @@ public class MazeRunner {
                             }
                         }
                     }
-                    if (this.playerLocationX == -1
-                            || this.playerLocationY == -1
+                    if (this.playerLocationX == -1 || this.playerLocationY == -1
                             || this.playerLocationZ == -1
                             || this.playerLocationW == -1) {
                         throw new InvalidMazeException("No player found.");
@@ -1277,10 +1286,11 @@ public class MazeRunner {
                     if (w != this.mazeSizeW) {
                         throw new InvalidMazeException("Maze file too small.");
                     }
-                    MazeMaker.setMaxViewingWindow(this.mazeSizeX
-                            + MazeRunner.VIEWING_WINDOW_SIZE_X / 2,
-                            this.mazeSizeY + MazeRunner.VIEWING_WINDOW_SIZE_Y
-                                    / 2);
+                    MazeMaker.setMaxViewingWindow(
+                            this.mazeSizeX
+                                    + MazeRunner.VIEWING_WINDOW_SIZE_X / 2,
+                            this.mazeSizeY
+                                    + MazeRunner.VIEWING_WINDOW_SIZE_Y / 2);
                 } catch (final IOException ie) {
                     throw new InvalidMazeException("Error reading maze file.");
                 }
@@ -1288,7 +1298,8 @@ public class MazeRunner {
                 throw new InvalidMazeException("Maze file couldn't be opened.");
             }
         } catch (final InvalidMazeException ime) {
-            if (this.getMessageEnabled(MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
+            if (this.getMessageEnabled(
+                    MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
                 Messager.showDialog(ime.getMessage());
             } else {
                 Messager.showDialog("Invalid Maze File");
@@ -1305,8 +1316,8 @@ public class MazeRunner {
         int x = 0, y = 0, z = 0, w = 0, u = 0, startW;
         boolean success = true;
         try {
-            try (BufferedReader mazeFile = new BufferedReader(new FileReader(
-                    filename))) {
+            try (BufferedReader mazeFile = new BufferedReader(
+                    new FileReader(filename))) {
                 try {
                     String inputLine = mazeFile.readLine();
                     startW = Integer.parseInt(inputLine);
@@ -1333,8 +1344,7 @@ public class MazeRunner {
                             }
                         }
                     }
-                    if (this.playerLocationX == -1
-                            || this.playerLocationY == -1
+                    if (this.playerLocationX == -1 || this.playerLocationY == -1
                             || this.playerLocationZ == -1
                             || this.playerLocationW == -1) {
                         throw new InvalidMazeException("No player found.");
@@ -1371,7 +1381,8 @@ public class MazeRunner {
                         } else {
                             for (x = 0; x < this.MAX_INVENTORY; x++) {
                                 y = Integer.parseInt(mazeFile.readLine());
-                                for (z = 0; z < this.inv.getMaximumQuantity(); z++) {
+                                for (z = 0; z < this.inv
+                                        .getMaximumQuantity(); z++) {
                                     u = Integer.parseInt(mazeFile.readLine());
                                     this.inv.reconstruct(x, y, z, u);
                                 }
@@ -1388,10 +1399,11 @@ public class MazeRunner {
                         throw new InvalidMazeException(
                                 "Saved game file too small.");
                     }
-                    MazeMaker.setMaxViewingWindow(this.mazeSizeX
-                            + MazeRunner.VIEWING_WINDOW_SIZE_X / 2,
-                            this.mazeSizeY + MazeRunner.VIEWING_WINDOW_SIZE_Y
-                                    / 2);
+                    MazeMaker.setMaxViewingWindow(
+                            this.mazeSizeX
+                                    + MazeRunner.VIEWING_WINDOW_SIZE_X / 2,
+                            this.mazeSizeY
+                                    + MazeRunner.VIEWING_WINDOW_SIZE_Y / 2);
                 } catch (final IOException ie) {
                     throw new InvalidMazeException(
                             "Error reading saved game file.");
@@ -1401,7 +1413,8 @@ public class MazeRunner {
                         "Saved game file couldn't be opened.");
             }
         } catch (final InvalidMazeException ime) {
-            if (this.getMessageEnabled(MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
+            if (this.getMessageEnabled(
+                    MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
                 Messager.showDialog(ime.getMessage());
             } else {
                 Messager.showDialog("Invalid Saved Game File");
@@ -1507,37 +1520,42 @@ public class MazeRunner {
                 destX = Integer.parseInt(mazeFile.readLine());
                 destZ = Integer.parseInt(mazeFile.readLine());
                 destW = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeTeleporter(destX, destY, destZ,
-                        destW), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeTeleporter(destX, destY, destZ, destW), x, y, z,
+                        w);
             } else if (inputLine.equals("IT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
                 destZ = Integer.parseInt(mazeFile.readLine());
                 destW = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeInvisibleTeleporter(destX, destY,
-                        destZ, destW), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeInvisibleTeleporter(destX, destY, destZ, destW),
+                        x, y, z, w);
             } else if (inputLine.equals("RT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeRandomTeleporter(destX, destY),
-                        x, y, z, w);
+                this.gameMaze.setCell(new MazeRandomTeleporter(destX, destY), x,
+                        y, z, w);
             } else if (inputLine.equals("OT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
                 destZ = Integer.parseInt(mazeFile.readLine());
                 destW = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeOneShotTeleporter(destX, destY,
-                        destZ, destW), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeOneShotTeleporter(destX, destY, destZ, destW),
+                        x, y, z, w);
             } else if (inputLine.equals("ROT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeRandomOneShotTeleporter(destX,
-                        destY), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeRandomOneShotTeleporter(destX, destY), x, y, z,
+                        w);
             } else if (inputLine.equals("RIT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeRandomInvisibleTeleporter(destX,
-                        destY), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeRandomInvisibleTeleporter(destX, destY), x, y,
+                        z, w);
             } else if (inputLine.equals("IOT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
@@ -1548,8 +1566,9 @@ public class MazeRunner {
             } else if (inputLine.equals("RIOT")) {
                 destY = Integer.parseInt(mazeFile.readLine());
                 destX = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeRandomInvisibleOneShotTeleporter(
-                        destX, destY), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeRandomInvisibleOneShotTeleporter(destX, destY),
+                        x, y, z, w);
             } else if (inputLine.equals("OWEW")) {
                 this.gameMaze.setCell(new MazeOneWayEastWall(), x, y, z, w);
             } else if (inputLine.equals("OWNW")) {
@@ -1567,8 +1586,9 @@ public class MazeRunner {
                 destX = Integer.parseInt(mazeFile.readLine());
                 destZ = Integer.parseInt(mazeFile.readLine());
                 destW = Integer.parseInt(mazeFile.readLine());
-                this.gameMaze.setCell(new MazeTwoWayTeleporter(destX, destY,
-                        destZ, destW), x, y, z, w);
+                this.gameMaze.setCell(
+                        new MazeTwoWayTeleporter(destX, destY, destZ, destW), x,
+                        y, z, w);
             } else if (inputLine.equals("PIT")) {
                 this.gameMaze.setCell(new MazePit(), x, y, z, w);
             } else if (inputLine.equals("TILE")) {
@@ -1657,7 +1677,8 @@ public class MazeRunner {
             if (this.IN_GAME) {
                 if (extension != null) {
                     if (!extension.equals("mrv")) {
-                        filename = MazeRunner.getNameWithoutExtension(file) + ".mrv";
+                        filename = MazeRunner.getNameWithoutExtension(file)
+                                + ".mrv";
                     }
                 } else {
                     filename += ".mrv";
@@ -1669,7 +1690,8 @@ public class MazeRunner {
             } else {
                 if (extension != null) {
                     if (!extension.equals("mrm")) {
-                        filename = MazeRunner.getNameWithoutExtension(file) + ".mrm";
+                        filename = MazeRunner.getNameWithoutExtension(file)
+                                + ".mrm";
                     }
                 } else {
                     filename += ".mrm";
@@ -1687,8 +1709,8 @@ public class MazeRunner {
         int x = 0, y = 0, z = 0, w = 0;
         boolean success = true;
         try {
-            try (PrintWriter mazeFile = new PrintWriter(new BufferedWriter(
-                    new FileWriter(filename)))) {
+            try (PrintWriter mazeFile = new PrintWriter(
+                    new BufferedWriter(new FileWriter(filename)))) {
                 mazeFile.print(this.playerLocationW);
                 mazeFile.print("\n");
                 mazeFile.print(this.mazeSizeX);
@@ -1703,8 +1725,8 @@ public class MazeRunner {
                     for (z = 0; z < this.mazeSizeZ; z++) {
                         for (y = 0; y < this.mazeSizeY; y++) {
                             for (x = 0; x < this.mazeSizeX; x++) {
-                                mazeFile.print(this.gameMaze
-                                        .getCell(x, y, z, w).toString());
+                                mazeFile.print(this.gameMaze.getCell(x, y, z, w)
+                                        .toString());
                                 mazeFile.print("\n");
                             }
                         }
@@ -1720,7 +1742,8 @@ public class MazeRunner {
                         "Saved game file couldn't be written to.");
             }
         } catch (final InvalidMazeException ime) {
-            if (this.getMessageEnabled(MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
+            if (this.getMessageEnabled(
+                    MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
                 Messager.showDialog(ime.getMessage());
             } else {
                 Messager.showDialog("Saved game couldn't be created.");
@@ -1761,13 +1784,13 @@ public class MazeRunner {
                 this.outputFrame = new JFrame("Maze Runner");
                 this.outputPane = new Container();
                 this.outputFrame.setContentPane(this.borderPane);
-                this.outputFrame
-                        .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                this.outputFrame.setDefaultCloseOperation(
+                        WindowConstants.DO_NOTHING_ON_CLOSE);
                 this.borderPane.add(this.outputPane, BorderLayout.CENTER);
                 this.borderPane.add(this.messageLabel, BorderLayout.SOUTH);
-                this.outputPane.setLayout(new GridLayout(
-                        MazeRunner.VIEWING_WINDOW_SIZE_X,
-                        MazeRunner.VIEWING_WINDOW_SIZE_Y));
+                this.outputPane.setLayout(
+                        new GridLayout(MazeRunner.VIEWING_WINDOW_SIZE_X,
+                                MazeRunner.VIEWING_WINDOW_SIZE_Y));
                 this.outputFrame.setResizable(false);
                 this.outputFrame.addKeyListener(this.handler);
                 this.outputFrame.addWindowListener(this.handler);
@@ -1868,7 +1891,8 @@ public class MazeRunner {
         if (result) {
             this.setMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY, true);
         } else {
-            this.setMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY, false);
+            this.setMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY,
+                    false);
         }
         result = this.msgSpecificMazeErrors.isSelected();
         if (result) {
@@ -2030,8 +2054,8 @@ public class MazeRunner {
                     InputEvent.META_MASK);
             this.editPasteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
                     InputEvent.META_MASK);
-            this.editPreferencesAccel = KeyStroke.getKeyStroke(
-                    KeyEvent.VK_PERIOD, InputEvent.META_MASK);
+            this.editPreferencesAccel = KeyStroke
+                    .getKeyStroke(KeyEvent.VK_PERIOD, InputEvent.META_MASK);
             this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                     InputEvent.META_MASK);
             this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
@@ -2063,8 +2087,8 @@ public class MazeRunner {
                     InputEvent.CTRL_MASK);
             this.editPasteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
                     InputEvent.CTRL_MASK);
-            this.editPreferencesAccel = KeyStroke.getKeyStroke(
-                    KeyEvent.VK_COMMA, InputEvent.CTRL_MASK);
+            this.editPreferencesAccel = KeyStroke
+                    .getKeyStroke(KeyEvent.VK_COMMA, InputEvent.CTRL_MASK);
             this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
                     InputEvent.CTRL_MASK);
             this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,

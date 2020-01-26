@@ -29,11 +29,8 @@ public class FadingWall extends GenericWall {
                 .getPlayerLocationZ();
         final int pl = WorldConstants.LAYER_OBJECT;
         final String targetName = new Player().getName();
-        scanResult = app
-                .getWorldManager()
-                .getWorld()
-                .radialScan(dirX, dirY, pz, pl, FadingWall.SCAN_LIMIT,
-                        targetName);
+        scanResult = app.getWorldManager().getWorld().radialScan(dirX, dirY, pz,
+                pl, FadingWall.SCAN_LIMIT, targetName);
         if (scanResult) {
             app.getGameManager().morph(new Empty(), dirX, dirY, pz);
         }

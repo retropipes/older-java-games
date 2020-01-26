@@ -22,68 +22,75 @@ public class DisruptedHotCrystalBlock extends AbstractReactionDisruptedObject {
 
     // Constructors
     public DisruptedHotCrystalBlock() {
-	super();
-	this.disruptionLeft = DisruptedHotCrystalBlock.DISRUPTION_START;
-	this.activateTimer(1);
-	this.setMaterial(MaterialConstants.MATERIAL_FIRE);
+        super();
+        this.disruptionLeft = DisruptedHotCrystalBlock.DISRUPTION_START;
+        this.activateTimer(1);
+        this.setMaterial(MaterialConstants.MATERIAL_FIRE);
     }
 
     @Override
     public boolean doLasersPassThrough() {
-	return true;
+        return true;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 128;
+        return 128;
     }
 
     @Override
-    public Direction laserEnteredActionHook(final int locX, final int locY, final int locZ, final int dirX,
-	    final int dirY, final int laserType, final int forceUnits) {
-	if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
-	    // Destroy disrupted hot crystal block
-	    SoundManager.playSound(SoundConstants.SOUND_BOOM);
-	    LaserTank.getApplication().getGameManager().morph(new Empty(), locX, locY, locZ, this.getLayer());
-	    return Direction.NONE;
-	} else if (laserType == LaserTypeConstants.LASER_TYPE_BLUE) {
-	    // Reflect laser
-	    return DirectionResolver.resolveRelativeInvert(dirX, dirY);
-	} else {
-	    // Pass laser through
-	    return DirectionResolver.resolveRelative(dirX, dirY);
-	}
+    public Direction laserEnteredActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
+            // Destroy disrupted hot crystal block
+            SoundManager.playSound(SoundConstants.SOUND_BOOM);
+            LaserTank.getApplication().getGameManager().morph(new Empty(), locX,
+                    locY, locZ, this.getLayer());
+            return Direction.NONE;
+        } else if (laserType == LaserTypeConstants.LASER_TYPE_BLUE) {
+            // Reflect laser
+            return DirectionResolver.resolveRelativeInvert(dirX, dirY);
+        } else {
+            // Pass laser through
+            return DirectionResolver.resolveRelative(dirX, dirY);
+        }
     }
 
     @Override
-    public Direction laserExitedAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType) {
-	return DirectionResolver.resolveRelative(dirX, dirY);
+    public Direction laserExitedAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY,
+            final int laserType) {
+        return DirectionResolver.resolveRelative(dirX, dirY);
     }
 
     @Override
-    public boolean rangeActionHook(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int rangeType, final int forceUnits) {
-	if (RangeTypeConstants.getMaterialForRangeType(rangeType) == MaterialConstants.MATERIAL_METALLIC) {
-	    // Destroy disrupted hot crystal block
-	    LaserTank.getApplication().getGameManager().morph(new Empty(), locX + dirX, locY + dirY, locZ,
-		    this.getLayer());
-	    return true;
-	} else {
-	    // Do nothing
-	    return true;
-	}
+    public boolean rangeActionHook(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int rangeType,
+            final int forceUnits) {
+        if (RangeTypeConstants.getMaterialForRangeType(
+                rangeType) == MaterialConstants.MATERIAL_METALLIC) {
+            // Destroy disrupted hot crystal block
+            LaserTank.getApplication().getGameManager().morph(new Empty(),
+                    locX + dirX, locY + dirY, locZ, this.getLayer());
+            return true;
+        } else {
+            // Do nothing
+            return true;
+        }
     }
 
     @Override
     public void timerExpiredAction(final int locX, final int locY) {
-	this.disruptionLeft--;
-	if (this.disruptionLeft == 0) {
-	    SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
-	    final int z = LaserTank.getApplication().getGameManager().getPlayerManager().getPlayerLocationZ();
-	    LaserTank.getApplication().getGameManager().morph(new HotCrystalBlock(), locX, locY, z, this.getLayer());
-	} else {
-	    this.activateTimer(1);
-	}
+        this.disruptionLeft--;
+        if (this.disruptionLeft == 0) {
+            SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
+            final int z = LaserTank.getApplication().getGameManager()
+                    .getPlayerManager().getPlayerLocationZ();
+            LaserTank.getApplication().getGameManager().morph(
+                    new HotCrystalBlock(), locX, locY, z, this.getLayer());
+        } else {
+            this.activateTimer(1);
+        }
     }
 }

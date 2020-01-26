@@ -23,7 +23,7 @@ public class RaceConstants {
     private static String[] RACE_NAMES = {};
     private static boolean INITED = false;
 
-    public static final String getRaceName(int index) {
+    public static final String getRaceName(final int index) {
         return RaceConstants.RACE_NAMES[index];
     }
 
@@ -44,9 +44,9 @@ public class RaceConstants {
             try {
                 // Fetch data
                 final ResourceStreamReader rsr = new ResourceStreamReader(
-                        RaceDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/dungeondiver3/support/resources/data/race/catalog.txt"));
-                ArrayList<String> tempNames = new ArrayList<>();
+                        RaceDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/dungeondiver3/support/resources/data/race/catalog.txt"));
+                final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";
                 while (input != null) {
                     input = rsr.readString();

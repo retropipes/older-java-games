@@ -14,14 +14,15 @@ import com.puttysoftware.fantastlex.maze.utilities.TypeConstants;
 import com.puttysoftware.fantastlex.resourcemanagers.SoundConstants;
 import com.puttysoftware.fantastlex.resourcemanagers.SoundManager;
 
-public abstract class AbstractRandomInvisibleTeleport extends
-        AbstractRandomTeleport {
+public abstract class AbstractRandomInvisibleTeleport
+        extends AbstractRandomTeleport {
     // Constructors
     public AbstractRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX, final int attrName) {
         super(newRandomRangeY, newRandomRangeX, attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
@@ -29,8 +30,8 @@ public abstract class AbstractRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         int dr, dc;
         do {
@@ -45,8 +46,8 @@ public abstract class AbstractRandomInvisibleTeleport extends
     @Override
     public AbstractMazeObject editorPropertiesHook() {
         final MazeEditorLogic me = FantastleX.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        return me.editTeleportDestination(
+                MazeEditorLogic.TELEPORT_TYPE_RANDOM_INVISIBLE);
     }
 
     @Override

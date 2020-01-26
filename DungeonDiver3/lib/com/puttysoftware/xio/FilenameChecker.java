@@ -1,7 +1,7 @@
 package com.puttysoftware.xio;
 
 public class FilenameChecker {
-    public static boolean isFilenameOK(String filename) {
+    public static boolean isFilenameOK(final String filename) {
         if (filename.contains("/")) {
             return false;
         }

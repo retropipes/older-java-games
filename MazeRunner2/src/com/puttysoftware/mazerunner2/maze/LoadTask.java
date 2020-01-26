@@ -16,24 +16,23 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
-import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.mazerunner2.resourcemanagers.LogoManager;
 import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields
-    private String filename;
-    private boolean isSavedGame;
-    private JFrame loadFrame;
+    private final String filename;
+    private final boolean isSavedGame;
+    private final JFrame loadFrame;
 
     // Constructors
-    public LoadTask(String file, boolean saved) {
+    public LoadTask(final String file, final boolean saved) {
         this.filename = file;
         this.isSavedGame = saved;
         this.setName("File Loader");
         this.loadFrame = new JFrame("Loading...");
         this.loadFrame.setIconImage(LogoManager.getIconLogo());
-        JProgressBar loadBar = new JProgressBar();
+        final JProgressBar loadBar = new JProgressBar();
         loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(loadBar);
         this.loadFrame.setResizable(false);
@@ -46,7 +45,7 @@ public class LoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int startW;
         String sg;
         if (this.isSavedGame) {
@@ -57,7 +56,7 @@ public class LoadTask extends Thread {
             sg = "Maze";
         }
         try {
-            File mazeFile = new File(this.filename);
+            final File mazeFile = new File(this.filename);
             Maze gameMaze = new Maze();
             ZipUtilities.unzipDirectory(mazeFile,
                     new File(gameMaze.getBasePath()));
@@ -85,8 +84,8 @@ public class LoadTask extends Thread {
                 gameMaze.save();
             }
             // Final cleanup
-            String lum = app.getMazeManager().getLastUsedMaze();
-            String lug = app.getMazeManager().getLastUsedGame();
+            final String lum = app.getMazeManager().getLastUsedMaze();
+            final String lug = app.getMazeManager().getLastUsedGame();
             app.getMazeManager().clearLastUsedFilenames();
             if (this.isSavedGame) {
                 app.getMazeManager().setLastUsedGame(lug);
@@ -99,10 +98,8 @@ public class LoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {
             CommonDialogs.showDialog("Error loading " + sg.toLowerCase()

@@ -13,7 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
+
     Any questions should be directed to the author via email at: products@puttysoftware.com
  */
 package com.puttysoftware.dungeondiver4.dungeon.objects;
@@ -42,9 +42,9 @@ public class OneShotTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
@@ -63,9 +63,10 @@ public class OneShotTeleport extends AbstractTeleport {
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
-        return me
-                .editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_ONESHOT);
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
+        return me.editTeleportDestination(
+                DungeonEditorLogic.TELEPORT_TYPE_ONESHOT);
     }
 
     @Override

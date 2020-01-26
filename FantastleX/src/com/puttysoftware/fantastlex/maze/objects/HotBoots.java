@@ -38,7 +38,7 @@ public class HotBoots extends AbstractBoots {
                 .getPlayerLocationY();
         final int z = FantastleX.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        FantastleX.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        FantastleX.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 }

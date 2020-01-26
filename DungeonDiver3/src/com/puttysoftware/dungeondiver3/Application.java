@@ -90,12 +90,10 @@ public class Application {
         CommonDialogs.setIcon(Application.getMicroLogo());
         Support.createScenario();
         this.getScenarioManager().setMap(new Map());
-        this.getScenarioManager()
-                .getMap()
-                .addLevel(Support.getGameMapSize(), Support.getGameMapSize(),
-                        Support.getGameMapFloorSize());
-        this.getScenarioManager().getMap()
-                .fillLevelRandomly(new Tile(), new Empty());
+        this.getScenarioManager().getMap().addLevel(Support.getGameMapSize(),
+                Support.getGameMapSize(), Support.getGameMapFloorSize());
+        this.getScenarioManager().getMap().fillLevelRandomly(new Tile(),
+                new Empty());
         this.getScenarioManager().getMap().setPlayerLocationW(0);
         this.getScenarioManager().getMap().findStart();
     }
@@ -133,7 +131,7 @@ public class Application {
         return this.formerMode;
     }
 
-    public void showMessage(String msg) {
+    public void showMessage(final String msg) {
         if (this.currentMode == Application.STATUS_GAME) {
             this.getGameManager().setStatusMessage(msg);
         } else if (this.currentMode == Application.STATUS_BATTLE) {
@@ -184,7 +182,7 @@ public class Application {
     public void notifyAllNonCurrentEditorsDisableCommands() {
         for (int x = 0; x < this.allEditors.size(); x++) {
             if (x != this.currentEditor) {
-                GenericEditor ge = this.allEditors.get(x);
+                final GenericEditor ge = this.allEditors.get(x);
                 ge.disableEditorCommands();
             }
         }
@@ -193,13 +191,13 @@ public class Application {
     public void notifyAllNonCurrentEditorsEnableCommands() {
         for (int x = 0; x < this.allEditors.size(); x++) {
             if (x != this.currentEditor) {
-                GenericEditor ge = this.allEditors.get(x);
+                final GenericEditor ge = this.allEditors.get(x);
                 ge.enableEditorCommands();
             }
         }
     }
 
-    public void setCurrentEditor(int ce) {
+    public void setCurrentEditor(final int ce) {
         this.currentEditor = ce;
     }
 
@@ -236,7 +234,7 @@ public class Application {
             } else {
                 return null;
             }
-        } catch (NullPointerException npe) {
+        } catch (final NullPointerException npe) {
             return null;
         }
     }
@@ -245,7 +243,7 @@ public class Application {
         return this.objects;
     }
 
-    public Shop getGenericShop(int shopType) {
+    public Shop getGenericShop(final int shopType) {
         switch (shopType) {
         case ShopTypes.SHOP_TYPE_ARMOR:
             return this.armor;

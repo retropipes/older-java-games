@@ -22,34 +22,34 @@ public class BossImageManager {
     static final int BOSS_IMAGE_SIZE = 64;
 
     public static BufferedImageIcon getBossImage() {
-	// Get it from the cache
-	final BufferedImageIcon bii = BossImageCache.getCachedImage("boss");
-	return ImageTransformer.getTransformedImage(bii, BOSS_IMAGE_SIZE);
+        // Get it from the cache
+        final BufferedImageIcon bii = BossImageCache.getCachedImage("boss");
+        return ImageTransformer.getTransformedImage(bii,
+                BossImageManager.BOSS_IMAGE_SIZE);
     }
 
     static BufferedImageIcon getUncachedImage(final String name) {
-	try {
-	    if (PreferencesManager.getHighDefEnabled()) {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = BossImageManager.LOAD_CLASS
-			.getResource(BossImageManager.LOAD_PATH + normalName
-				+ HI_DEF_SUFFIX + ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedRetinaImageIcon(image);
-	    } else {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = BossImageManager.LOAD_CLASS
-			.getResource(BossImageManager.LOAD_PATH + normalName
-				+ ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedImageIcon(image);
-	    }
-	} catch (final IOException ie) {
-	    return null;
-	} catch (final NullPointerException np) {
-	    return null;
-	} catch (final IllegalArgumentException ia) {
-	    return null;
-	}
+        try {
+            if (PreferencesManager.getHighDefEnabled()) {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = BossImageManager.LOAD_CLASS
+                        .getResource(BossImageManager.LOAD_PATH + normalName
+                                + BossImageManager.HI_DEF_SUFFIX + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedRetinaImageIcon(image);
+            } else {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = BossImageManager.LOAD_CLASS.getResource(
+                        BossImageManager.LOAD_PATH + normalName + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedImageIcon(image);
+            }
+        } catch (final IOException ie) {
+            return null;
+        } catch (final NullPointerException np) {
+            return null;
+        } catch (final IllegalArgumentException ia) {
+            return null;
+        }
     }
 }

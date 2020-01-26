@@ -22,8 +22,8 @@ public class MazePit extends MazeStairsDown {
     @Override
     public void preMoveAction(final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
-        if (!app.isFloorBelow()
-                && app.getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY)) {
+        if (!app.isFloorBelow() && app
+                .getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY)) {
             Messager.showMessage("Can't go that way");
         }
     }
@@ -32,8 +32,8 @@ public class MazePit extends MazeStairsDown {
     public void preMoveAction(final boolean ie, final int dirX, final int dirY,
             final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
-        if (!app.isFloorBelow()
-                && app.getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY)) {
+        if (!app.isFloorBelow() && app
+                .getMessageEnabled(MazeRunner.MESSAGE_CANNOT_GO_THAT_WAY)) {
             Messager.showMessage("Can't go that way");
         }
     }
@@ -47,8 +47,8 @@ public class MazePit extends MazeStairsDown {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor(),

@@ -24,13 +24,10 @@ public class SpellLoader {
             return SystemLoader.loadSpell(file);
         } else {
             try {
-                final XDataReader spellFile = new XDataReader(Support
-                        .getVariables().getBasePath()
-                        + File.separator
-                        + "spells"
-                        + File.separator
-                        + file
-                        + Extension.getSpellExtensionWithPeriod(),
+                final XDataReader spellFile = new XDataReader(
+                        Support.getVariables().getBasePath() + File.separator
+                                + "spells" + File.separator + file
+                                + Extension.getSpellExtensionWithPeriod(),
                         Extension.getSpellExtension());
                 final Spell s = Spell.read(spellFile);
                 spellFile.close();

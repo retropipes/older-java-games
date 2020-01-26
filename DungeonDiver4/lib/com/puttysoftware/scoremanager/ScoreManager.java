@@ -16,7 +16,7 @@ public class ScoreManager {
     protected SortedScoreTable table;
     private String name;
     private String title;
-    private String viewerTitle;
+    private final String viewerTitle;
 
     // Constructors
     public ScoreManager() {
@@ -26,8 +26,9 @@ public class ScoreManager {
         this.viewerTitle = ScoreManager.DIALOG_TITLE;
     }
 
-    public ScoreManager(int mv, int length, boolean sortOrder,
-            long startingScore, String customTitle, String[] customUnit) {
+    public ScoreManager(final int mv, final int length, final boolean sortOrder,
+            final long startingScore, final String customTitle,
+            final String[] customUnit) {
         this.table = new SortedScoreTable(mv, length, sortOrder, startingScore,
                 customUnit);
         this.name = "";
@@ -40,7 +41,7 @@ public class ScoreManager {
     }
 
     // Methods
-    public boolean addScore(long newScore) {
+    public boolean addScore(final long newScore) {
         boolean success = true;
         this.name = null;
         this.name = CommonDialogs.showTextInputDialog(ScoreManager.NAME_PROMPT,
@@ -53,7 +54,7 @@ public class ScoreManager {
         return success;
     }
 
-    public boolean addScore(long[] newScore) {
+    public boolean addScore(final long[] newScore) {
         boolean success = true;
         this.name = null;
         this.name = CommonDialogs.showTextInputDialog(ScoreManager.NAME_PROMPT,
@@ -66,12 +67,12 @@ public class ScoreManager {
         return success;
     }
 
-    public boolean checkScore(long[] newScore) {
+    public boolean checkScore(final long[] newScore) {
         return this.table.checkScore(newScore);
     }
 
-    public boolean addScore(long newScore, String newName) {
-        boolean success = true;
+    public boolean addScore(final long newScore, final String newName) {
+        final boolean success = true;
         this.table.addScore(newScore, newName);
         return success;
     }

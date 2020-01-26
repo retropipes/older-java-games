@@ -52,11 +52,8 @@ public class DungeonDiverII {
             DungeonDiverII.application.getGUIManager().showGUI();
             // Initialize map
             DungeonDiverII.application.getVariablesManager().setMap(new Map());
-            DungeonDiverII.application
-                    .getVariablesManager()
-                    .getMap()
-                    .addLevel(Support.MAP_ROWS, Support.MAP_COLS,
-                            Support.MAP_FLOORS);
+            DungeonDiverII.application.getVariablesManager().getMap().addLevel(
+                    Support.MAP_ROWS, Support.MAP_COLS, Support.MAP_FLOORS);
             // Register platform hooks
             platform.hookAbout(DungeonDiverII.application.getAboutDialog(),
                     DungeonDiverII.application.getAboutDialog().getClass()
@@ -69,11 +66,10 @@ public class DungeonDiverII {
             }
             platform.hookFileOpen(
                     DungeonDiverII.application.getVariablesManager(),
-                    DungeonDiverII.application
-                            .getVariablesManager()
-                            .getClass()
+                    DungeonDiverII.application.getVariablesManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             platform.hookQuit(DungeonDiverII.application.getGUIManager(),

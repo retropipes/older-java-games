@@ -45,16 +45,15 @@ public class LockedSaveTask extends Thread {
             // Set suffix handler
             app.getMazeManager().getMaze().setSuffixHandler(null);
             app.getMazeManager().getMaze().writeMaze();
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), tempLock);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    tempLock);
             // Lock the file
             LockedWrapper.lock(tempLock, mazeFile);
             tempLock.delete();
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the locked "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the locked " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             WeaselWeb.getErrorLogger().logError(ex);

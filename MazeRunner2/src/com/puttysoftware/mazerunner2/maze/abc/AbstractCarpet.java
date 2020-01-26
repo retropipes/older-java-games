@@ -7,10 +7,10 @@ package com.puttysoftware.mazerunner2.maze.abc;
 
 public abstract class AbstractCarpet extends AbstractGround {
     // Fields
-    private String color;
+    private final String color;
 
     // Constructors
-    protected AbstractCarpet(String newColor, int tc) {
+    protected AbstractCarpet(final String newColor, final int tc) {
         super(tc);
         this.color = newColor;
     }

@@ -19,9 +19,10 @@ public final class DirectoryUtilities {
                 targetLocation.mkdir();
             }
             final String[] children = sourceLocation.list();
-            for (int i = 0; i < children.length; i++) {
-                copyDirectory(new File(sourceLocation, children[i]), new File(
-                        targetLocation, children[i]));
+            for (final String element : children) {
+                DirectoryUtilities.copyDirectory(
+                        new File(sourceLocation, element),
+                        new File(targetLocation, element));
             }
         } else {
             try (InputStream in = new FileInputStream(sourceLocation);
@@ -42,8 +43,8 @@ public final class DirectoryUtilities {
         boolean success;
         if (location.isDirectory()) {
             final String[] children = location.list();
-            for (int i = 0; i < children.length; i++) {
-                removeDirectory(new File(location, children[i]));
+            for (final String element : children) {
+                DirectoryUtilities.removeDirectory(new File(location, element));
             }
             success = location.delete();
             if (!success) {

@@ -30,7 +30,8 @@ public class ObjectImageManager {
             if (icon != null) {
                 final BufferedImageIcon result = new BufferedImageIcon(icon);
                 for (int x = 0; x < ImageConstants.getScaledImageSize(); x++) {
-                    for (int y = 0; y < ImageConstants.getScaledImageSize(); y++) {
+                    for (int y = 0; y < ImageConstants
+                            .getScaledImageSize(); y++) {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
@@ -66,9 +67,8 @@ public class ObjectImageManager {
                 name = obj.getName();
             }
             final String normalName = ObjectImageManager.normalizeName(name);
-            final URL url = ObjectImageManager.LOAD_CLASS
-                    .getResource(ObjectImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = ObjectImageManager.LOAD_CLASS.getResource(
+                    ObjectImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return ImageScaleManager.getScaledImage(icon);

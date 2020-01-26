@@ -8,21 +8,21 @@ public class Hash {
         // Do nothing
     }
 
-    public static byte[] hash(byte[] input) {
+    public static byte[] hash(final byte[] input) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("SHA-512");
-        } catch (NoSuchAlgorithmException nsae) {
+        } catch (final NoSuchAlgorithmException nsae) {
             return null;
         }
         return md.digest(input);
     }
 
-    public static byte[] hash(byte[] input, String algorithm) {
+    public static byte[] hash(final byte[] input, final String algorithm) {
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance(algorithm);
-        } catch (NoSuchAlgorithmException nsae) {
+        } catch (final NoSuchAlgorithmException nsae) {
             return null;
         }
         return md.digest(input);

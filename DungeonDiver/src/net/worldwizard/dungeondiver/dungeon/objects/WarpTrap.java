@@ -26,9 +26,9 @@ public class WarpTrap extends GenericNSRSBObject {
             final RandomRange row = new RandomRange(0,
                     gui.getDungeon().getDimensions()
                             .getLocation(NDimensionalMap.ROW_DIMENSION) - 1);
-            final RandomRange column = new RandomRange(0, gui.getDungeon()
-                    .getDimensions()
-                    .getLocation(NDimensionalMap.COLUMN_DIMENSION) - 1);
+            final RandomRange column = new RandomRange(0,
+                    gui.getDungeon().getDimensions()
+                            .getLocation(NDimensionalMap.COLUMN_DIMENSION) - 1);
             int x = (int) row.generate();
             int y = (int) column.generate();
             while (!gui.tryWarp(x, y)) {

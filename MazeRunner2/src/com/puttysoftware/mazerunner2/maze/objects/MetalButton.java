@@ -19,10 +19,10 @@ import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
 
 public class MetalButton extends AbstractField {
     // Fields
-    private int targetRow;
-    private int targetCol;
-    private int targetFloor;
-    private int targetLevel;
+    private final int targetRow;
+    private final int targetCol;
+    private final int targetFloor;
+    private final int targetLevel;
 
     // Constructors
     public MetalButton() {
@@ -43,7 +43,7 @@ public class MetalButton extends AbstractField {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -96,18 +96,17 @@ public class MetalButton extends AbstractField {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
-            Application app = MazeRunnerII.getApplication();
-            AbstractMazeObject there = app.getMazeManager().getMazeObject(
+            final Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject there = app.getMazeManager().getMazeObject(
                     this.getTargetRow(), this.getTargetColumn(),
                     this.getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
+                            this.getTargetColumn(), this.getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(),
                             this.getTargetRow(), this.getTargetColumn(),
@@ -159,10 +158,9 @@ public class MetalButton extends AbstractField {
 
     @Override
     public void editorProbeHook() {
-        MazeRunnerII.getApplication().showMessage(
-                this.getName() + ": Target (" + (this.targetCol + 1) + ","
-                        + (this.targetRow + 1) + "," + (this.targetFloor + 1)
-                        + "," + (this.targetLevel + 1) + ")");
+        MazeRunnerII.getApplication().showMessage(this.getName() + ": Target ("
+                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
+                + (this.targetFloor + 1) + "," + (this.targetLevel + 1) + ")");
     }
 
     @Override

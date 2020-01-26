@@ -28,13 +28,13 @@ public class DungeonEffect {
         int result = 1;
         result = prime * result + this.initialRounds;
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         result = prime * result + this.rounds;
         return result;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -44,7 +44,7 @@ public class DungeonEffect {
         if (!(obj instanceof DungeonEffect)) {
             return false;
         }
-        DungeonEffect other = (DungeonEffect) obj;
+        final DungeonEffect other = (DungeonEffect) obj;
         if (this.initialRounds != other.initialRounds) {
             return false;
         }
@@ -79,14 +79,14 @@ public class DungeonEffect {
     }
 
     public boolean areRoundsInfinite() {
-        return (this.rounds == DungeonEffect.ROUNDS_INFINITE);
+        return this.rounds == DungeonEffect.ROUNDS_INFINITE;
     }
 
     public boolean isActive() {
         if (this.areRoundsInfinite()) {
             return true;
         } else {
-            return (this.rounds > 0);
+            return this.rounds > 0;
         }
     }
 

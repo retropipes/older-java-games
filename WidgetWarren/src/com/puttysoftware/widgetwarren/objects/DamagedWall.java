@@ -20,8 +20,8 @@ public class DamagedWall extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         this.moveFailedAction(true, locX, locY, inv);
         return false;
     }

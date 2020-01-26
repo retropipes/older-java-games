@@ -33,8 +33,8 @@ class PreferencesGUIManager {
     // Fields
     private JFrame prefFrame;
     private JTabbedPane prefTabPane;
-    private Container mainPrefPane, buttonPane, editorPane, miscPane,
-            soundPane, musicPane;
+    private Container mainPrefPane, buttonPane, editorPane, miscPane, soundPane,
+            musicPane;
     private JButton prefsOK, prefsCancel;
     JCheckBox[] sounds;
     JCheckBox[] music;
@@ -59,7 +59,7 @@ class PreferencesGUIManager {
     }
 
     public JFrame getPrefFrame() {
-        if ((this.prefFrame != null) && this.prefFrame.isVisible()) {
+        if (this.prefFrame != null && this.prefFrame.isVisible()) {
             return this.prefFrame;
         } else {
             return null;
@@ -100,35 +100,34 @@ class PreferencesGUIManager {
     }
 
     private void loadPrefs() {
-        this.editorFillChoices.setSelectedItem(PreferencesManager
-                .getEditorDefaultFill());
+        this.editorFillChoices
+                .setSelectedItem(PreferencesManager.getEditorDefaultFill());
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             this.sounds[x].setSelected(PreferencesManager.getSoundEnabled(x));
         }
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
         }
-        this.checkUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckUpdatesAtStartup());
-        this.checkBetaUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckBetaUpdatesAtStartup());
+        this.checkUpdatesStartup
+                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
+        this.checkBetaUpdatesStartup.setSelected(
+                PreferencesManager.shouldCheckBetaUpdatesAtStartup());
         this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
     }
 
     public void setPrefs() {
-        PreferencesManager.setEditorDefaultFill((String) this.editorFillChoices
-                .getSelectedItem());
+        PreferencesManager.setEditorDefaultFill(
+                (String) this.editorFillChoices.getSelectedItem());
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             PreferencesManager.setSoundEnabled(x, this.sounds[x].isSelected());
         }
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
         }
-        PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup
-                .isSelected());
-        PreferencesManager
-                .setCheckBetaUpdatesAtStartup(this.checkBetaUpdatesStartup
-                        .isSelected());
+        PreferencesManager.setCheckUpdatesAtStartup(
+                this.checkUpdatesStartup.isSelected());
+        PreferencesManager.setCheckBetaUpdatesAtStartup(
+                this.checkBetaUpdatesStartup.isSelected());
         PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
         this.hidePrefs();
     }
@@ -167,8 +166,8 @@ class PreferencesGUIManager {
                 "Enable ALL music", true);
         this.music[PreferencesManager.MUSIC_EXPLORING] = new JCheckBox(
                 "Enable exploring music", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.checkBetaUpdatesStartup = new JCheckBox(
                 "Check for Beta Updates at Startup", true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
@@ -178,22 +177,22 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        this.editorPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.editorPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.editorPane.add(new JLabel("Default fill for new mazes:"));
         this.editorPane.add(this.editorFillChoices);
-        this.soundPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.soundPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
             this.soundPane.add(this.sounds[x]);
         }
-        this.musicPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.musicPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.musicPane.add(this.music[x]);
         }
-        this.miscPane.setLayout(new GridLayout(PreferencesGUIManager
-                .getGridLength(), 1));
+        this.miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.miscPane.add(this.checkUpdatesStartup);
         if (Mazer5D.getApplication().isBetaModeEnabled()) {
             this.miscPane.add(this.checkBetaUpdatesStartup);
@@ -218,8 +217,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         public EventHandler() {
             // Do nothing
         }
@@ -247,7 +246,8 @@ class PreferencesGUIManager {
                 final Object o = e.getItem();
                 if (o.getClass().equals(JCheckBox.class)) {
                     final JCheckBox check = (JCheckBox) o;
-                    if (check.equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
+                    if (check
+                            .equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                                 pm.sounds[x].setEnabled(true);

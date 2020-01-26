@@ -30,10 +30,10 @@ public abstract class AbstractShop extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        final Shop shop = FantastleX.getApplication().getGenericShop(
-                this.shopType);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Shop shop = FantastleX.getApplication()
+                .getGenericShop(this.shopType);
         if (shop != null) {
             shop.showShop();
         }

@@ -12,7 +12,7 @@ import com.puttysoftware.gemma.support.scenario.Extension;
 
 public class RaceDataManager {
     public static int[] getRaceData(final int r) {
-        String name = RaceConstants.getRaceName(r).toLowerCase();
+        final String name = RaceConstants.getRaceName(r).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
                 RaceDataManager.class.getResourceAsStream(
                         "/com/puttysoftware/gemma/support/resources/data/race/"

@@ -27,9 +27,9 @@ public class Exit extends AbstractTeleportTo {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_DOWN);
         app.getGameManager().goToLevel(this.getDestinationLevel());
     }

@@ -6,8 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver4.dungeon.objects;
 
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
-import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleTeleport;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractDungeonObject;
+import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleTeleport;
 import com.puttysoftware.dungeondiver4.editor.DungeonEditorLogic;
 import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
 
@@ -41,9 +41,10 @@ public class InvisibleTeleport extends AbstractInvisibleTeleport {
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
-        return me
-                .editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_INVISIBLE_GENERIC);
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
+        return me.editTeleportDestination(
+                DungeonEditorLogic.TELEPORT_TYPE_INVISIBLE_GENERIC);
     }
 
     @Override

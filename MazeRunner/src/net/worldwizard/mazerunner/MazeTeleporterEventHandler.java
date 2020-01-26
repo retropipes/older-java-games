@@ -8,8 +8,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MazeTeleporterEventHandler implements AdjustmentListener,
-        MouseListener, KeyListener {
+public class MazeTeleporterEventHandler
+        implements AdjustmentListener, MouseListener, KeyListener {
     // handle scroll bars
     @Override
     public void adjustmentValueChanged(final AdjustmentEvent e) {

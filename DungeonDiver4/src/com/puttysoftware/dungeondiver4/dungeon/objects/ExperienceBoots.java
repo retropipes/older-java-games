@@ -50,7 +50,7 @@ public class ExperienceBoots extends AbstractBoots {
 
     @Override
     public void stepAction() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         playerCharacter.offsetExperience(ExperienceBoots.EXP_AMOUNT);
         DungeonDiver4.getApplication().getGameManager()
                 .addToScore(ExperienceBoots.EXP_AMOUNT);

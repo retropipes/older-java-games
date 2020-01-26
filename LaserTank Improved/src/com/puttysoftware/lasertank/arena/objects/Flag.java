@@ -11,33 +11,33 @@ import com.puttysoftware.lasertank.arena.abstractobjects.AbstractPassThroughObje
 public class Flag extends AbstractPassThroughObject {
     // Constructors
     public Flag() {
-	super();
-	this.setFrameNumber(1);
+        super();
+        this.setFrameNumber(1);
     }
 
     // Scriptability
     @Override
     public boolean defersSetProperties() {
-	return false;
+        return false;
     }
 
     @Override
     public AbstractArenaObject editorPropertiesHook() {
-	return null;
+        return null;
     }
 
     @Override
     public int getCustomFormat() {
-	return 0;
+        return 0;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 13;
+        return 13;
     }
 
     @Override
     public boolean solvesOnMove() {
-	return true;
+        return true;
     }
 }

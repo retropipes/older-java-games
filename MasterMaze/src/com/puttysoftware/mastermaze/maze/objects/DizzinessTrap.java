@@ -36,14 +36,12 @@ public class DizzinessTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MasterMaze.getApplication().showMessage("You feel dizzy!");
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_DIZZY,
-                        DizzinessTrap.EFFECT_DURATION);
+        MasterMaze.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_DIZZY,
+                DizzinessTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_DIZZY);
     }
 

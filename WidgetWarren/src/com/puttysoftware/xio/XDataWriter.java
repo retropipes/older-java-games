@@ -27,14 +27,15 @@ public class XDataWriter implements AutoCloseable {
     }
 
     public void writeDouble(final double d) throws IOException {
-        this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">"
-                + Double.toString(d) + "</" + XDataConstants.DOUBLE_TAG + ">"
+        this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">" + Double.toString(d)
+                + "</" + XDataConstants.DOUBLE_TAG + ">"
                 + XDataWriter.END_OF_LINE);
     }
 
     public void writeInt(final int i) throws IOException {
         this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i)
-                + "</" + XDataConstants.INT_TAG + ">" + XDataWriter.END_OF_LINE);
+                + "</" + XDataConstants.INT_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
     public void writeLong(final long l) throws IOException {

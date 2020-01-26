@@ -24,7 +24,8 @@ public class Map2D implements NDimensionalMap {
 
     // Constructors
     public Map2D(final int rows, final int cols,
-            final Dimension viewingWindowDimensions, final MapObject errorObject) {
+            final Dimension viewingWindowDimensions,
+            final MapObject errorObject) {
         this.mapData = new MapObject[cols][rows];
         this.savedLevel = new MapObject[cols][rows];
         this.playerData = new int[Map2D.MAX_DIMENSIONS];
@@ -115,8 +116,8 @@ public class Map2D implements NDimensionalMap {
             for (y = 0; y < rows; y++) {
                 if (this.mapData[x][y].getName().equals(obj.getName())) {
                     // Found it
-                    this.findResult.setLocation(
-                            NDimensionalMap.COLUMN_DIMENSION, x);
+                    this.findResult
+                            .setLocation(NDimensionalMap.COLUMN_DIMENSION, x);
                     this.findResult.setLocation(NDimensionalMap.ROW_DIMENSION,
                             y);
                     return true;
@@ -148,8 +149,8 @@ public class Map2D implements NDimensionalMap {
                         // Found it
                         this.findResult.setLocation(
                                 NDimensionalMap.COLUMN_DIMENSION, x);
-                        this.findResult.setLocation(
-                                NDimensionalMap.ROW_DIMENSION, y);
+                        this.findResult
+                                .setLocation(NDimensionalMap.ROW_DIMENSION, y);
                         return true;
                     }
                 }
@@ -305,8 +306,9 @@ public class Map2D implements NDimensionalMap {
         }
         // Pass N + 1
         final MapObject[] requiredObjects = objects.getAllRequired();
-        final RandomRange row = new RandomRange(0, this.getDimensions()
-                .getLocation(NDimensionalMap.ROW_DIMENSION) - 1);
+        final RandomRange row = new RandomRange(0,
+                this.getDimensions().getLocation(NDimensionalMap.ROW_DIMENSION)
+                        - 1);
         final RandomRange column = new RandomRange(0, this.getDimensions()
                 .getLocation(NDimensionalMap.COLUMN_DIMENSION) - 1);
         final NDimensionalLocation loc3 = new NDimensionalLocation(
@@ -369,8 +371,8 @@ public class Map2D implements NDimensionalMap {
         for (x = this.viewingWindowLocation.x; x < maxViewingWindowColumn; x++) {
             for (y = this.viewingWindowLocation.y; y < maxViewingWindowRow; y++) {
                 try {
-                    this.view.add(new JLabel(this.mapData[y][x]
-                            .getGameAppearance()));
+                    this.view.add(
+                            new JLabel(this.mapData[y][x].getGameAppearance()));
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     this.view.add(new JLabel(this.error.getGameAppearance()));
                 } catch (final NullPointerException np) {
@@ -395,11 +397,11 @@ public class Map2D implements NDimensionalMap {
                 try {
                     if (this.isVisibleHorizontal(x)
                             && this.isVisibleVertical(y)) {
-                        this.view.add(new JLabel(this.mapData[y][x]
-                                .getGameAppearance()));
+                        this.view.add(new JLabel(
+                                this.mapData[y][x].getGameAppearance()));
                     } else {
-                        this.view.add(new JLabel(this.hidden
-                                .getGameAppearance()));
+                        this.view.add(
+                                new JLabel(this.hidden.getGameAppearance()));
                     }
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     this.view.add(new JLabel(this.error.getGameAppearance()));
@@ -422,8 +424,8 @@ public class Map2D implements NDimensionalMap {
         for (x = this.viewingWindowLocation.x; x < maxViewingWindowColumn; x++) {
             for (y = this.viewingWindowLocation.y; y < maxViewingWindowRow; y++) {
                 try {
-                    this.view.add(new JLabel(this.mapData[y][x]
-                            .getEditorAppearance()));
+                    this.view.add(new JLabel(
+                            this.mapData[y][x].getEditorAppearance()));
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     this.view.add(new JLabel(this.error.getEditorAppearance()));
                 } catch (final NullPointerException np) {
@@ -448,11 +450,11 @@ public class Map2D implements NDimensionalMap {
                 try {
                     if (this.isVisibleHorizontal(x)
                             && this.isVisibleVertical(y)) {
-                        this.view.add(new JLabel(this.mapData[y][x]
-                                .getEditorAppearance()));
+                        this.view.add(new JLabel(
+                                this.mapData[y][x].getEditorAppearance()));
                     } else {
-                        this.view.add(new JLabel(this.hidden
-                                .getEditorAppearance()));
+                        this.view.add(
+                                new JLabel(this.hidden.getEditorAppearance()));
                     }
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     this.view.add(new JLabel(this.error.getEditorAppearance()));
@@ -479,11 +481,11 @@ public class Map2D implements NDimensionalMap {
                     this.view.add(new JLabel(this.mapData[y][x]
                             .getOtherAppearance(appearanceID)));
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
-                    this.view.add(new JLabel(this.error
-                            .getOtherAppearance(appearanceID)));
+                    this.view.add(new JLabel(
+                            this.error.getOtherAppearance(appearanceID)));
                 } catch (final NullPointerException np) {
-                    this.view.add(new JLabel(this.error
-                            .getOtherAppearance(appearanceID)));
+                    this.view.add(new JLabel(
+                            this.error.getOtherAppearance(appearanceID)));
                 }
             }
         }
@@ -507,15 +509,15 @@ public class Map2D implements NDimensionalMap {
                         this.view.add(new JLabel(this.mapData[y][x]
                                 .getOtherAppearance(appearanceID)));
                     } else {
-                        this.view.add(new JLabel(this.hidden
-                                .getOtherAppearance(appearanceID)));
+                        this.view.add(new JLabel(
+                                this.hidden.getOtherAppearance(appearanceID)));
                     }
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
-                    this.view.add(new JLabel(this.error
-                            .getOtherAppearance(appearanceID)));
+                    this.view.add(new JLabel(
+                            this.error.getOtherAppearance(appearanceID)));
                 } catch (final NullPointerException np) {
-                    this.view.add(new JLabel(this.error
-                            .getOtherAppearance(appearanceID)));
+                    this.view.add(new JLabel(
+                            this.error.getOtherAppearance(appearanceID)));
                 }
             }
         }
@@ -610,8 +612,9 @@ public class Map2D implements NDimensionalMap {
     }
 
     private boolean isVisibleVertical(final int y) {
-        if (Math.abs(y - this.viewingWindowLocation.y
-                - this.viewingWindowSize.height / 2) < this.drawDistance.height) {
+        if (Math.abs(
+                y - this.viewingWindowLocation.y - this.viewingWindowSize.height
+                        / 2) < this.drawDistance.height) {
             return true;
         } else {
             return false;

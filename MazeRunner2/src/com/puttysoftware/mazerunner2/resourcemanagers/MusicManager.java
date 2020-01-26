@@ -23,13 +23,13 @@ public class MusicManager {
 
     private static MicroMod getMusic(final String filename) {
         try {
-            final File modFile = new File(Maze.getMazeTempFolder()
-                    + File.separator + "MusicTemp" + File.separator
-                    + filename.toLowerCase() + ".mod");
+            final File modFile = new File(
+                    Maze.getMazeTempFolder() + File.separator + "MusicTemp"
+                            + File.separator + filename.toLowerCase() + ".mod");
             if (!modFile.exists()) {
-                File modParent = modFile.getParentFile();
+                final File modParent = modFile.getParentFile();
                 if (!modParent.exists()) {
-                    boolean result = modParent.mkdirs();
+                    final boolean result = modParent.mkdirs();
                     if (!result) {
                         throw new IOException();
                     }
@@ -40,7 +40,7 @@ public class MusicManager {
                     DirectoryUtilities.copyRAMFile(is, modFile);
                 }
             }
-            MicroMod mm = new MicroMod();
+            final MicroMod mm = new MicroMod();
             mm.loadModule(modFile);
             return mm;
         } catch (final NullPointerException np) {
@@ -50,7 +50,7 @@ public class MusicManager {
         }
     }
 
-    public static void playMusic(String musicName) {
+    public static void playMusic(final String musicName) {
         MusicManager.CURRENT_MUSIC = MusicManager.getMusic(musicName);
         if (MusicManager.CURRENT_MUSIC != null) {
             // Play the music
@@ -63,11 +63,11 @@ public class MusicManager {
             // Stop the music
             try {
                 MusicManager.CURRENT_MUSIC.stopModule();
-            } catch (BufferUnderflowException bue) {
+            } catch (final BufferUnderflowException bue) {
                 // Ignore
-            } catch (NullPointerException np) {
+            } catch (final NullPointerException np) {
                 // Ignore
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 MazeRunnerII.getErrorLogger().logError(t);
             }
         }

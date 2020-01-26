@@ -78,8 +78,9 @@ public class Party {
     public int getPartyLevel() {
         int min = Integer.MAX_VALUE;
         for (int x = 0; x < this.battlers.length - 1; x++) {
-            final int newMin = Math.min(this.battlers[x].getTemplate()
-                    .getLevel(), this.battlers[x + 1].getTemplate().getLevel());
+            final int newMin = Math.min(
+                    this.battlers[x].getTemplate().getLevel(),
+                    this.battlers[x + 1].getTemplate().getLevel());
             min = Math.min(min, newMin);
         }
         if (min == Integer.MAX_VALUE) {
@@ -97,9 +98,10 @@ public class Party {
                         .getSoundEnabled(PreferencesManager.SOUNDS_BATTLE)) {
                     SoundManager.playSound("levelup");
                 }
-                Messager.showTitledDialog(battler.getTemplate().getName()
-                        + " reached level " + battler.getTemplate().getLevel()
-                        + "!", "Level Up");
+                Messager.showTitledDialog(
+                        battler.getTemplate().getName() + " reached level "
+                                + battler.getTemplate().getLevel() + "!",
+                        "Level Up");
             }
         }
     }
@@ -265,9 +267,11 @@ public class Party {
 
     private PartyMember pickPartyMemberInternal(final String[] pickNames,
             final int current, final int number) {
-        final String response = Messager.showInputDialog("Pick " + number
-                + " Party Member(s) - " + current + " of " + number, "Worldz",
-                pickNames, pickNames[0]);
+        final String response = Messager
+                .showInputDialog(
+                        "Pick " + number + " Party Member(s) - " + current
+                                + " of " + number,
+                        "Worldz", pickNames, pickNames[0]);
         if (response != null) {
             final int loc = this.findMember(response, 0, this.playerLimit);
             if (loc != -1) {
@@ -348,7 +352,8 @@ public class Party {
         }
     }
 
-    private int findMember(final String name, final int start, final int limit) {
+    private int findMember(final String name, final int start,
+            final int limit) {
         for (int x = start; x < limit; x++) {
             if (this.members[x] != null) {
                 if (this.members[x].getName().equals(name)) {

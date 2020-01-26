@@ -9,8 +9,8 @@ import com.puttysoftware.fantastlex.FantastleX;
 import com.puttysoftware.fantastlex.maze.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.fantastlex.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleOneShotConditionalTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_ONE_SHOT_CONDITIONAL);

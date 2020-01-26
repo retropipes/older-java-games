@@ -12,8 +12,7 @@ public class EquipmentFactory {
         final Equipment e = new Equipment(
                 WeaponMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
                         + WeaponConstants.WEAPON_1H[weaponType],
-                0,
-                0,
+                0, 0,
                 EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ONE_HANDED_WEAPON,
                 material);
         e.setFirstSlotUsed(EquipmentSlotConstants.SLOT_MAINHAND);
@@ -29,8 +28,7 @@ public class EquipmentFactory {
         final Equipment e = new Equipment(
                 WeaponMaterialConstants.MATERIAL_COMMON_NAMES[material]
                         + " Claws",
-                0,
-                0,
+                0, 0,
                 EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ONE_HANDED_WEAPON,
                 material);
         e.setFirstSlotUsed(EquipmentSlotConstants.SLOT_MAINHAND);
@@ -45,8 +43,7 @@ public class EquipmentFactory {
         final Equipment e = new Equipment(
                 WeaponMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
                         + WeaponConstants.WEAPON_2H[weaponType],
-                0,
-                0,
+                0, 0,
                 EquipmentCategoryConstants.EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON,
                 material);
         e.setFirstSlotUsed(EquipmentSlotConstants.SLOT_MAINHAND);
@@ -58,11 +55,13 @@ public class EquipmentFactory {
         return e;
     }
 
-    public static Equipment createArmor(final int material, final int armorType) {
+    public static Equipment createArmor(final int material,
+            final int armorType) {
         final Equipment e = new Equipment(
                 ArmorMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
-                        + ArmorConstants.ARMOR[armorType], 0, 0,
-                EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR, material);
+                        + ArmorConstants.ARMOR[armorType],
+                0, 0, EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR,
+                material);
         e.setFirstSlotUsed(armorType);
         e.setConditionalSlot(false);
         e.setPotency(material + ArmorMaterialConstants.MATERIALS_POWER_OFFSET);

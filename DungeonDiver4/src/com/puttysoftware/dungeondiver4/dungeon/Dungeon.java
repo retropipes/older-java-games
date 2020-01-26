@@ -36,7 +36,7 @@ public class Dungeon implements DungeonConstants {
     private String basePath;
     private PrefixIO prefixHandler;
     private SuffixIO suffixHandler;
-    private int[] savedStart;
+    private final int[] savedStart;
     private static final int MIN_LEVELS = 1;
     private static final int MAX_LEVELS = Integer.MAX_VALUE;
     private static final String DUNGEON_PREFIX_GROUP = "prefix";
@@ -56,12 +56,12 @@ public class Dungeon implements DungeonConstants {
         this.dungeonStartMessage = "Let's Solve The Dungeon!";
         this.dungeonEndMessage = "Dungeon Solved!";
         this.savedStart = new int[4];
-        long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
-        String randomID = Long.toHexString(random);
+        final long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
+        final String randomID = Long.toHexString(random);
         this.basePath = System.getProperty("java.io.tmpdir") + File.separator
                 + "DungeonDiver4" + File.separator + randomID + ".dungeon";
-        File base = new File(this.basePath);
-        boolean success = base.mkdirs();
+        final File base = new File(this.basePath);
+        final boolean success = base.mkdirs();
         if (!success) {
             CommonDialogs.showErrorDialog(
                     "Dungeon temporary folder creation failed!",
@@ -109,13 +109,13 @@ public class Dungeon implements DungeonConstants {
 
     // Methods
     public static Dungeon getTemporaryBattleCopy() {
-        Dungeon temp = new Dungeon();
+        final Dungeon temp = new Dungeon();
         temp.addLevel(DungeonDiver4.getBattleDungeonSize(),
                 DungeonDiver4.getBattleDungeonSize(), 1);
-        DungeonObjectList list = new DungeonObjectList();
-        AbstractDungeonObject[] glo = list.getAllGroundLayerObjects();
-        RandomRange gen = new RandomRange(0, glo.length - 1);
-        AbstractDungeonObject rand = glo[gen.generate()];
+        final DungeonObjectList list = new DungeonObjectList();
+        final AbstractDungeonObject[] glo = list.getAllGroundLayerObjects();
+        final RandomRange gen = new RandomRange(0, glo.length - 1);
+        final AbstractDungeonObject rand = glo[gen.generate()];
         if (PreferencesManager.getRandomBattleEnvironment()) {
             temp.fillLevelRandomlyInBattle(rand, new Empty());
         } else {
@@ -129,8 +129,8 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.updateMonsterPosition(move, xLoc, yLoc, monster);
     }
 
-    public void postBattle(MonsterObject m, final int xLoc, final int yLoc,
-            boolean player) {
+    public void postBattle(final MonsterObject m, final int xLoc,
+            final int yLoc, final boolean player) {
         this.dungeonData.postBattle(m, xLoc, yLoc, player);
     }
 
@@ -150,11 +150,11 @@ public class Dungeon implements DungeonConstants {
         return this.basePath;
     }
 
-    public void setPrefixHandler(PrefixIO xph) {
+    public void setPrefixHandler(final PrefixIO xph) {
         this.prefixHandler = xph;
     }
 
-    public void setSuffixHandler(SuffixIO xsh) {
+    public void setSuffixHandler(final SuffixIO xsh) {
         this.suffixHandler = xsh;
     }
 
@@ -162,7 +162,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonTitle;
     }
 
-    public void setDungeonTitle(String title) {
+    public void setDungeonTitle(final String title) {
         if (title == null) {
             throw new IllegalArgumentException("Title cannot be null!");
         }
@@ -173,7 +173,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonStartMessage;
     }
 
-    public void setDungeonStartMessage(String msg) {
+    public void setDungeonStartMessage(final String msg) {
         if (msg == null) {
             throw new IllegalArgumentException("Message cannot be null!");
         }
@@ -184,7 +184,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonEndMessage;
     }
 
-    public void setDungeonEndMessage(String msg) {
+    public void setDungeonEndMessage(final String msg) {
         if (msg == null) {
             throw new IllegalArgumentException("Message cannot be null!");
         }
@@ -195,7 +195,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getLevelTitle();
     }
 
-    public void setLevelTitle(String title) {
+    public void setLevelTitle(final String title) {
         this.dungeonData.setLevelTitle(title);
     }
 
@@ -203,7 +203,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getLevelStartMessage();
     }
 
-    public void setLevelStartMessage(String msg) {
+    public void setLevelStartMessage(final String msg) {
         this.dungeonData.setLevelStartMessage(msg);
     }
 
@@ -211,7 +211,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getLevelEndMessage();
     }
 
-    public void setLevelEndMessage(String msg) {
+    public void setLevelEndMessage(final String msg) {
         this.dungeonData.setLevelEndMessage(msg);
     }
 
@@ -219,7 +219,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getPoisonPower();
     }
 
-    public void setPoisonPower(int pp) {
+    public void setPoisonPower(final int pp) {
         this.dungeonData.setPoisonPower(pp);
     }
 
@@ -247,7 +247,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getVisionRadius();
     }
 
-    public void setVisionRadius(int vr) {
+    public void setVisionRadius(final int vr) {
         this.dungeonData.setVisionRadius(vr);
     }
 
@@ -350,7 +350,8 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.updateMovingBlockPosition(move, xLoc, yLoc, block);
     }
 
-    public void warpObject(AbstractDungeonObject mo, int x, int y, int z, int l) {
+    public void warpObject(final AbstractDungeonObject mo, final int x,
+            final int y, final int z, final int l) {
         this.dungeonData.warpObject(mo, x, y, z, l);
     }
 
@@ -358,7 +359,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getExploreRadius();
     }
 
-    public void setExploreRadius(int newER) {
+    public void setExploreRadius(final int newER) {
         this.dungeonData.setExploreRadius(newER);
     }
 
@@ -366,7 +367,7 @@ public class Dungeon implements DungeonConstants {
         return this.dungeonData.getVisionMode();
     }
 
-    public void setVisionMode(int newVM) {
+    public void setVisionMode(final int newVM) {
         this.dungeonData.setVisionMode(newVM);
     }
 
@@ -374,7 +375,7 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.resetVisibleSquares();
     }
 
-    public void updateVisibleSquares(int xp, int yp, int zp) {
+    public void updateVisibleSquares(final int xp, final int yp, final int zp) {
         this.dungeonData.updateVisibleSquares(xp, yp, zp);
     }
 
@@ -382,21 +383,21 @@ public class Dungeon implements DungeonConstants {
         return this.activeLevel;
     }
 
-    public void switchLevel(int level) {
+    public void switchLevel(final int level) {
         this.switchLevelInternal(level);
     }
 
-    public void switchLevelOffset(int level) {
+    public void switchLevelOffset(final int level) {
         this.switchLevelInternal(this.activeLevel + level);
     }
 
-    private void switchLevelInternal(int level) {
+    private void switchLevelInternal(final int level) {
         if (this.activeLevel != level) {
             if (this.dungeonData != null) {
                 try (XDataWriter writer = this.getLevelWriter()) {
                     // Save old level
                     this.writeDungeonLevel(writer);
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
@@ -404,7 +405,7 @@ public class Dungeon implements DungeonConstants {
             try (XDataReader reader = this.getLevelReader()) {
                 // Load new level
                 this.readDungeonLevel(reader);
-            } catch (IOException io) {
+            } catch (final IOException io) {
                 // Ignore
             }
         }
@@ -452,7 +453,7 @@ public class Dungeon implements DungeonConstants {
                 try (XDataWriter writer = this.getLevelWriter()) {
                     // Save old level
                     this.writeDungeonLevel(writer);
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
@@ -470,19 +471,19 @@ public class Dungeon implements DungeonConstants {
             if (this.activeLevel >= 1 && this.activeLevel <= this.levelCount) {
                 this.dungeonData = null;
                 // Delete file corresponding to current level
-                boolean delSuccess = this.getLevelFile(this.activeLevel)
+                final boolean delSuccess = this.getLevelFile(this.activeLevel)
                         .delete();
                 if (!delSuccess) {
                     return false;
                 }
                 // Shift all higher-numbered levels down
                 for (int x = this.activeLevel; x < this.levelCount - 1; x++) {
-                    File sourceLocation = this.getLevelFile(x + 1);
-                    File targetLocation = this.getLevelFile(x);
+                    final File sourceLocation = this.getLevelFile(x + 1);
+                    final File targetLocation = this.getLevelFile(x);
                     try {
                         DirectoryUtilities.moveFile(sourceLocation,
                                 targetLocation);
-                    } catch (IOException io) {
+                    } catch (final IOException io) {
                         // Ignore
                     }
                 }
@@ -498,15 +499,15 @@ public class Dungeon implements DungeonConstants {
         }
     }
 
-    public boolean hasNote(int x, int y, int z) {
+    public boolean hasNote(final int x, final int y, final int z) {
         return this.dungeonData.hasNote(x, y, z);
     }
 
-    public void createNote(int x, int y, int z) {
+    public void createNote(final int x, final int y, final int z) {
         this.dungeonData.createNote(x, y, z);
     }
 
-    public DungeonNote getNote(int x, int y, int z) {
+    public DungeonNote getNote(final int x, final int y, final int z) {
         return this.dungeonData.getNote(x, y, z);
     }
 
@@ -586,14 +587,15 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.resize(x, y, z);
     }
 
-    public boolean isSquareVisible(int x1, int y1, int x2, int y2) {
+    public boolean isSquareVisible(final int x1, final int y1, final int x2,
+            final int y2) {
         return this.dungeonData.isSquareVisible(x1, y1, x2, y2);
     }
 
     public void setBattleCell(final AbstractDungeonObject mo, final int row,
             final int col) {
-        this.dungeonData
-                .setCell(mo, row, col, 0, DungeonConstants.LAYER_OBJECT);
+        this.dungeonData.setCell(mo, row, col, 0,
+                DungeonConstants.LAYER_OBJECT);
     }
 
     public void setCell(final AbstractDungeonObject mo, final int row,
@@ -656,21 +658,21 @@ public class Dungeon implements DungeonConstants {
     }
 
     public void fill() {
-        AbstractDungeonObject bottom = PreferencesManager
+        final AbstractDungeonObject bottom = PreferencesManager
                 .getEditorDefaultFill();
-        AbstractDungeonObject top = new Empty();
+        final AbstractDungeonObject top = new Empty();
         this.dungeonData.fill(bottom, top);
     }
 
-    public void fillFloor(int floor) {
-        AbstractDungeonObject bottom = PreferencesManager
+    public void fillFloor(final int floor) {
+        final AbstractDungeonObject bottom = PreferencesManager
                 .getEditorDefaultFill();
-        AbstractDungeonObject top = new Empty();
+        final AbstractDungeonObject top = new Empty();
         this.dungeonData.fillFloor(bottom, top, floor);
     }
 
-    public void fillLevel(AbstractDungeonObject bottom,
-            AbstractDungeonObject top) {
+    public void fillLevel(final AbstractDungeonObject bottom,
+            final AbstractDungeonObject top) {
         this.dungeonData.fill(bottom, top);
     }
 
@@ -678,7 +680,7 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.fillRandomly(this, this.activeLevel);
     }
 
-    public void fillFloorRandomly(int z) {
+    public void fillFloorRandomly(final int z) {
         this.dungeonData.fillFloorRandomly(this, z, this.activeLevel);
     }
 
@@ -686,36 +688,36 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.fillRandomlyCustom(this, this.activeLevel);
     }
 
-    public void fillFloorRandomlyCustom(int z) {
+    public void fillFloorRandomlyCustom(final int z) {
         this.dungeonData.fillFloorRandomlyCustom(this, z, this.activeLevel);
     }
 
-    public void fillLayer(int layer) {
-        AbstractDungeonObject fillWith = PreferencesManager
+    public void fillLayer(final int layer) {
+        final AbstractDungeonObject fillWith = PreferencesManager
                 .getEditorDefaultFill(layer);
         this.dungeonData.fillLayer(fillWith, layer);
     }
 
-    public void fillFloorAndLayer(int floor, int layer) {
-        AbstractDungeonObject fillWith = PreferencesManager
+    public void fillFloorAndLayer(final int floor, final int layer) {
+        final AbstractDungeonObject fillWith = PreferencesManager
                 .getEditorDefaultFill(layer);
         this.dungeonData.fillFloorAndLayer(fillWith, floor, layer);
     }
 
-    public void fillLevelAndLayerRandomly(int layer) {
+    public void fillLevelAndLayerRandomly(final int layer) {
         this.dungeonData.fillLayerRandomly(this, this.activeLevel, layer);
     }
 
-    public void fillFloorAndLayerRandomly(int z, int layer) {
+    public void fillFloorAndLayerRandomly(final int z, final int layer) {
         this.dungeonData.fillFloorAndLayerRandomly(this, z, this.activeLevel,
                 layer);
     }
 
-    public void fillLevelAndLayerRandomlyCustom(int layer) {
+    public void fillLevelAndLayerRandomlyCustom(final int layer) {
         this.dungeonData.fillLayerRandomlyCustom(this, this.activeLevel, layer);
     }
 
-    public void fillFloorAndLayerRandomlyCustom(int z, int layer) {
+    public void fillFloorAndLayerRandomlyCustom(final int z, final int layer) {
         this.dungeonData.fillFloorAndLayerRandomlyCustom(this, z,
                 this.activeLevel, layer);
     }
@@ -753,7 +755,7 @@ public class Dungeon implements DungeonConstants {
         this.dungeonData.setStartFloor(this.savedStart[3]);
     }
 
-    public void hotGround(int x, int y, int z) {
+    public void hotGround(final int x, final int y, final int z) {
         this.dungeonData.hotGround(x, y, z);
     }
 
@@ -794,7 +796,7 @@ public class Dungeon implements DungeonConstants {
     }
 
     public Dungeon readDungeon() throws IOException {
-        Dungeon m = new Dungeon();
+        final Dungeon m = new Dungeon();
         // Attach handlers
         m.setPrefixHandler(this.prefixHandler);
         m.setSuffixHandler(this.suffixHandler);
@@ -802,11 +804,11 @@ public class Dungeon implements DungeonConstants {
         m.basePath = this.basePath;
         int version = 0;
         // Create metafile reader
-        try (XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "dungeon")) {
+        try (XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "dungeon")) {
             // Read metafile
             version = m.readDungeonMetafile(metaReader);
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
         // Create data reader
@@ -814,7 +816,7 @@ public class Dungeon implements DungeonConstants {
             // Read data
             m.readDungeonLevel(dataReader, version);
             return m;
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
     }
@@ -824,14 +826,15 @@ public class Dungeon implements DungeonConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private int readDungeonMetafile(XDataReader reader) throws IOException {
+    private int readDungeonMetafile(final XDataReader reader)
+            throws IOException {
         int ver = FormatConstants.DUNGEON_FORMAT_1;
-        reader.readOpeningGroup(DUNGEON_PREFIX_GROUP);
+        reader.readOpeningGroup(Dungeon.DUNGEON_PREFIX_GROUP);
         if (this.prefixHandler != null) {
             ver = this.prefixHandler.readPrefix(reader);
         }
-        reader.readClosingGroup(DUNGEON_PREFIX_GROUP);
-        reader.readOpeningGroup(DUNGEON_SETTINGS_GROUP);
+        reader.readClosingGroup(Dungeon.DUNGEON_PREFIX_GROUP);
+        reader.readOpeningGroup(Dungeon.DUNGEON_SETTINGS_GROUP);
         this.levelCount = reader.readInt();
         this.startW = reader.readInt();
         this.dungeonTitle = reader.readString();
@@ -843,21 +846,21 @@ public class Dungeon implements DungeonConstants {
         for (int y = 0; y < 4; y++) {
             this.savedStart[y] = reader.readInt();
         }
-        reader.readClosingGroup(DUNGEON_SETTINGS_GROUP);
-        reader.readOpeningGroup(DUNGEON_SUFFIX_GROUP);
+        reader.readClosingGroup(Dungeon.DUNGEON_SETTINGS_GROUP);
+        reader.readOpeningGroup(Dungeon.DUNGEON_SUFFIX_GROUP);
         if (this.suffixHandler != null) {
             this.suffixHandler.readSuffix(reader, ver);
         }
-        reader.readClosingGroup(DUNGEON_SUFFIX_GROUP);
+        reader.readClosingGroup(Dungeon.DUNGEON_SUFFIX_GROUP);
         return ver;
     }
 
-    private void readDungeonLevel(XDataReader reader) throws IOException {
+    private void readDungeonLevel(final XDataReader reader) throws IOException {
         this.readDungeonLevel(reader, FormatConstants.DUNGEON_FORMAT_LATEST);
     }
 
-    private void readDungeonLevel(XDataReader reader, int formatVersion)
-            throws IOException {
+    private void readDungeonLevel(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
             this.dungeonData = LayeredTower.readLayeredTowerV1(reader);
             this.dungeonData.readSavedTowerState(reader, formatVersion);
@@ -866,15 +869,16 @@ public class Dungeon implements DungeonConstants {
         }
     }
 
-    private File getLevelFile(int level) {
+    private File getLevelFile(final int level) {
         return new File(this.basePath + File.separator + level + ".level");
     }
 
     public void writeDungeon() throws IOException {
         try {
             // Create metafile writer
-            try (XDataWriter metaWriter = new XDataWriter(this.basePath
-                    + File.separator + "metafile.xml", "dungeon")) {
+            try (XDataWriter metaWriter = new XDataWriter(
+                    this.basePath + File.separator + "metafile.xml",
+                    "dungeon")) {
                 // Write metafile
                 this.writeDungeonMetafile(metaWriter);
             }
@@ -883,7 +887,7 @@ public class Dungeon implements DungeonConstants {
                 // Write data
                 this.writeDungeonLevel(dataWriter);
             }
-        } catch (IOException ioe) {
+        } catch (final IOException ioe) {
             throw ioe;
         }
     }
@@ -893,13 +897,14 @@ public class Dungeon implements DungeonConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeDungeonMetafile(XDataWriter writer) throws IOException {
-        writer.writeOpeningGroup(DUNGEON_PREFIX_GROUP);
+    private void writeDungeonMetafile(final XDataWriter writer)
+            throws IOException {
+        writer.writeOpeningGroup(Dungeon.DUNGEON_PREFIX_GROUP);
         if (this.prefixHandler != null) {
             this.prefixHandler.writePrefix(writer);
         }
-        writer.writeClosingGroup(DUNGEON_PREFIX_GROUP);
-        writer.writeOpeningGroup(DUNGEON_SETTINGS_GROUP);
+        writer.writeClosingGroup(Dungeon.DUNGEON_PREFIX_GROUP);
+        writer.writeOpeningGroup(Dungeon.DUNGEON_SETTINGS_GROUP);
         writer.writeInt(this.levelCount);
         writer.writeInt(this.startW);
         writer.writeString(this.dungeonTitle);
@@ -911,15 +916,16 @@ public class Dungeon implements DungeonConstants {
         for (int y = 0; y < 4; y++) {
             writer.writeInt(this.savedStart[y]);
         }
-        writer.writeClosingGroup(DUNGEON_SETTINGS_GROUP);
-        writer.writeOpeningGroup(DUNGEON_SUFFIX_GROUP);
+        writer.writeClosingGroup(Dungeon.DUNGEON_SETTINGS_GROUP);
+        writer.writeOpeningGroup(Dungeon.DUNGEON_SUFFIX_GROUP);
         if (this.suffixHandler != null) {
             this.suffixHandler.writeSuffix(writer);
         }
-        writer.writeClosingGroup(DUNGEON_SUFFIX_GROUP);
+        writer.writeClosingGroup(Dungeon.DUNGEON_SUFFIX_GROUP);
     }
 
-    private void writeDungeonLevel(XDataWriter writer) throws IOException {
+    private void writeDungeonLevel(final XDataWriter writer)
+            throws IOException {
         // Write the level
         this.dungeonData.writeLayeredTower(writer);
         this.dungeonData.writeSavedTowerState(writer);

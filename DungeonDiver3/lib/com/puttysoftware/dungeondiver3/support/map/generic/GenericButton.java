@@ -27,18 +27,18 @@ public abstract class GenericButton extends MapObject {
         this.setTemplateTransform(tt);
         // Create post-move script
         this.postMove = new InternalScript();
-        InternalScriptEntry act0 = new InternalScriptEntry();
+        final InternalScriptEntry act0 = new InternalScriptEntry();
         act0.setActionCode(InternalScriptActionCode.SWAP_PAIRS);
-        act0.addActionArg(new InternalScriptEntryArgument(this.offState
-                .getName()));
-        act0.addActionArg(new InternalScriptEntryArgument(this.onState
-                .getName()));
+        act0.addActionArg(
+                new InternalScriptEntryArgument(this.offState.getName()));
+        act0.addActionArg(
+                new InternalScriptEntryArgument(this.onState.getName()));
         act0.finalizeActionArgs();
         this.postMove.addAction(act0);
-        InternalScriptEntry act1 = new InternalScriptEntry();
+        final InternalScriptEntry act1 = new InternalScriptEntry();
         act1.setActionCode(InternalScriptActionCode.REDRAW);
         this.postMove.addAction(act1);
-        InternalScriptEntry act2 = new InternalScriptEntry();
+        final InternalScriptEntry act2 = new InternalScriptEntry();
         act2.setActionCode(InternalScriptActionCode.SOUND);
         act2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_CA_CLICK));
@@ -48,7 +48,7 @@ public abstract class GenericButton extends MapObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -56,13 +56,12 @@ public abstract class GenericButton extends MapObject {
             return false;
         }
         final GenericButton other = (GenericButton) obj;
-        if (this.offState != other.offState
-                && (this.offState == null || !this.offState
-                        .equals(other.offState))) {
+        if (this.offState != other.offState && (this.offState == null
+                || !this.offState.equals(other.offState))) {
             return false;
         }
-        if (this.onState != other.onState
-                && (this.onState == null || !this.onState.equals(other.onState))) {
+        if (this.onState != other.onState && (this.onState == null
+                || !this.onState.equals(other.onState))) {
             return false;
         }
         return true;
@@ -78,7 +77,7 @@ public abstract class GenericButton extends MapObject {
 
     @Override
     public GenericButton clone() {
-        GenericButton copy = (GenericButton) super.clone();
+        final GenericButton copy = (GenericButton) super.clone();
         copy.offState = (GenericToggleWall) this.offState.clone();
         copy.onState = (GenericToggleWall) this.onState.clone();
         return copy;
@@ -105,12 +104,12 @@ public abstract class GenericButton extends MapObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return MapObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 

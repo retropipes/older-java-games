@@ -12,21 +12,21 @@ public class RandomDecimalRange {
 
     // Methods
     public static void setMinimum(final double newMin) {
-        minimum = newMin;
+        RandomDecimalRange.minimum = newMin;
     }
 
     public static void setMaximum(final double newMax) {
-        maximum = newMax;
+        RandomDecimalRange.maximum = newMax;
     }
 
     public static float generateFloat() {
-        return (float) generateDouble();
+        return (float) RandomDecimalRange.generateDouble();
     }
 
     public static double generateDouble() {
-        return Math.abs((RandomnessSource.nextDouble())
-                % (maximum - minimum + 1))
-                + minimum;
+        return Math.abs(RandomnessSource.nextDouble()
+                % (RandomDecimalRange.maximum - RandomDecimalRange.minimum + 1))
+                + RandomDecimalRange.minimum;
     }
 
     public static double generateRawDouble() {

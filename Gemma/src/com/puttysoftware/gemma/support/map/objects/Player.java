@@ -30,11 +30,11 @@ public class Player extends GenericCharacter {
 
     @Override
     public TemplateTransform getGameTemplateTransform() {
-        Color faithColor = PartyManager.getParty().getLeader().getFaith()
+        final Color faithColor = PartyManager.getParty().getLeader().getFaith()
                 .getColor();
-        double tr = faithColor.getRed() / 256.0;
-        double tg = faithColor.getGreen() / 256.0;
-        double tb = faithColor.getBlue() / 256.0;
+        final double tr = faithColor.getRed() / 256.0;
+        final double tg = faithColor.getGreen() / 256.0;
+        final double tb = faithColor.getBlue() / 256.0;
         return new TemplateTransform(tr, tg, tb);
     }
 
@@ -55,12 +55,12 @@ public class Player extends GenericCharacter {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Map map) {
+    public int getMinimumRequiredQuantity(final Map map) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Map map) {
+    public int getMaximumRequiredQuantity(final Map map) {
         return 1;
     }
 }

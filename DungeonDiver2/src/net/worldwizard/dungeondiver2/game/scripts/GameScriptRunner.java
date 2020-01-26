@@ -100,16 +100,15 @@ public final class GameScriptRunner {
                         final int modY = se.getActionArg(3).getInteger();
                         final int modZ = se.getActionArg(4).getInteger();
                         final int modL = se.getActionArg(5).getInteger();
-                        final MapObject modObj = DungeonDiverII
-                                .getApplication().getObjects()
-                                .getNewInstanceByName(modObjName);
+                        final MapObject modObj = DungeonDiverII.getApplication()
+                                .getObjects().getNewInstanceByName(modObjName);
                         if (stickyScript) {
                             final MapObject wasThere = DungeonDiverII
                                     .getApplication().getVariablesManager()
                                     .getMap().getCell(modX, modY, modZ, modL);
                             if (wasThere.hasCustomScript()) {
-                                modObj.setCustomScript(wasThere
-                                        .getCustomScript());
+                                modObj.setCustomScript(
+                                        wasThere.getCustomScript());
                             }
                         }
                         DungeonDiverII.getApplication().getVariablesManager()
@@ -139,14 +138,11 @@ public final class GameScriptRunner {
                             @Override
                             public void run() {
                                 try {
-                                    DungeonDiverII
-                                            .getApplication()
-                                            .getBattle()
-                                            .doFixedBattle(
-                                                    DungeonDiverII
-                                                            .getApplication()
-                                                            .getGameManager()
-                                                            .getTemporaryBattleCopy(),
+                                    DungeonDiverII.getApplication().getBattle()
+                                            .doFixedBattle(DungeonDiverII
+                                                    .getApplication()
+                                                    .getGameManager()
+                                                    .getTemporaryBattleCopy(),
                                                     battle);
                                 } catch (final Exception e) {
                                     // Something went wrong in the battle
@@ -211,8 +207,8 @@ public final class GameScriptRunner {
                     + ", action #" + actionCounter + ": ";
             final String endMsg = e.getMessage();
             final String scriptMsg = beginMsg + endMsg;
-            DungeonDiverII.getNonFatalLogger().logNonFatalError(
-                    new GameScriptException(scriptMsg, e));
+            DungeonDiverII.getNonFatalLogger()
+                    .logNonFatalError(new GameScriptException(scriptMsg, e));
         }
     }
 

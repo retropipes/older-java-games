@@ -11,7 +11,7 @@ import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractBattleCharacter;
 
 public class BattleCharacter extends AbstractBattleCharacter {
     // Constructors
-    public BattleCharacter(AbstractCreature newTemplate) {
+    public BattleCharacter(final AbstractCreature newTemplate) {
         super(newTemplate);
     }
 }

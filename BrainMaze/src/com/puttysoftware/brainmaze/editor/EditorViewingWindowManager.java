@@ -98,8 +98,10 @@ public class EditorViewingWindowManager {
     }
 
     public void halfOffsetMaximumViewingWindowLocationsFromMaze(final Maze m) {
-        this.MIN_VIEWING_WINDOW_X = -(PreferencesManager.getViewingWindowSize() / 2);
-        this.MIN_VIEWING_WINDOW_Y = -(PreferencesManager.getViewingWindowSize() / 2);
+        this.MIN_VIEWING_WINDOW_X = -(PreferencesManager.getViewingWindowSize()
+                / 2);
+        this.MIN_VIEWING_WINDOW_Y = -(PreferencesManager.getViewingWindowSize()
+                / 2);
         this.MAX_VIEWING_WINDOW_X = m.getColumns() + this.getOffsetFactorX();
         this.MAX_VIEWING_WINDOW_Y = m.getRows() + this.getOffsetFactorY();
         this.locX = this.MIN_VIEWING_WINDOW_X;

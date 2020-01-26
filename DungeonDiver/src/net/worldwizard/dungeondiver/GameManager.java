@@ -13,8 +13,8 @@ public class GameManager {
     public boolean newGame() {
         final int c = SpellBookManager.selectClass();
         if (c != 0) {
-            DungeonDiver.getHoldingBag().setPlayer(
-                    ClassManager.getNewPlayerInstance(c));
+            DungeonDiver.getHoldingBag()
+                    .setPlayer(ClassManager.getNewPlayerInstance(c));
             return true;
         } else {
             return false;

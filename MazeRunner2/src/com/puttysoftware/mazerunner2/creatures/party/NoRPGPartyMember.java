@@ -14,8 +14,8 @@ import com.puttysoftware.mazerunner2.creatures.races.RaceManager;
 public class NoRPGPartyMember extends PartyMember {
     // Constructors
     NoRPGPartyMember() {
-        super(RaceManager.getRace(0), CasteManager.getCaste(0), FaithManager
-                .getFaith(0), PersonalityManager.getPersonality(0),
+        super(RaceManager.getRace(0), CasteManager.getCaste(0),
+                FaithManager.getFaith(0), PersonalityManager.getPersonality(0),
                 GenderManager.getGender(0), null);
         // Set initial statistics
         this.setVitality(500);

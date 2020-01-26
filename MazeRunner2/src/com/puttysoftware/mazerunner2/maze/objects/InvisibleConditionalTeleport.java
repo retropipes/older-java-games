@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleConditionalTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleConditionalTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_CONDITIONAL);

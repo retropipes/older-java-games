@@ -15,21 +15,21 @@ import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
 public class CharacterLoader {
-    private static PartyMember loadCharacter(String name) {
-        String basePath = CharacterRegistration.getBasePath();
+    private static PartyMember loadCharacter(final String name) {
+        final String basePath = CharacterRegistration.getBasePath();
         XDataReader loader = null;
         try {
-            String loadPath = basePath + File.separator + name
+            final String loadPath = basePath + File.separator + name
                     + Extension.getCharacterExtensionWithPeriod();
             loader = new XDataReader(loadPath, "character");
             return PartyMember.read(loader);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             return null;
         } finally {
             if (loader != null) {
                 try {
                     loader.close();
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
@@ -37,13 +37,14 @@ public class CharacterLoader {
     }
 
     public static PartyMember[] loadAllRegisteredCharacters() {
-        String[] registeredNames = CharacterRegistration.getCharacterNameList();
+        final String[] registeredNames = CharacterRegistration
+                .getCharacterNameList();
         if (registeredNames != null) {
-            PartyMember[] res = new PartyMember[registeredNames.length];
+            final PartyMember[] res = new PartyMember[registeredNames.length];
             // Load characters
             for (int x = 0; x < registeredNames.length; x++) {
-                String name = registeredNames[x];
-                PartyMember characterWithName = CharacterLoader
+                final String name = registeredNames[x];
+                final PartyMember characterWithName = CharacterLoader
                         .loadCharacter(name);
                 if (characterWithName != null) {
                     res[x] = characterWithName;
@@ -57,43 +58,43 @@ public class CharacterLoader {
         return null;
     }
 
-    public static void saveCharacter(PartyMember character) {
-        String basePath = CharacterRegistration.getBasePath();
-        String name = character.getName();
-        String characterFile = basePath + File.separator + name
+    public static void saveCharacter(final PartyMember character) {
+        final String basePath = CharacterRegistration.getBasePath();
+        final String name = character.getName();
+        final String characterFile = basePath + File.separator + name
                 + Extension.getCharacterExtensionWithPeriod();
         XDataWriter saver = null;
         try {
             saver = new XDataWriter(characterFile, "character");
             character.write(saver);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             // Ignore
         } finally {
             if (saver != null) {
                 try {
                     saver.close();
-                } catch (IOException io) {
+                } catch (final IOException io) {
                     // Ignore
                 }
             }
         }
     }
 
-    static void deleteCharacter(String name) {
-        String basePath = CharacterRegistration.getBasePath();
-        String characterFile = basePath + File.separator + name
+    static void deleteCharacter(final String name) {
+        final String basePath = CharacterRegistration.getBasePath();
+        final String characterFile = basePath + File.separator + name
                 + Extension.getCharacterExtensionWithPeriod();
-        File toDelete = new File(characterFile);
+        final File toDelete = new File(characterFile);
         if (toDelete.exists()) {
-            boolean success = toDelete.delete();
+            final boolean success = toDelete.delete();
             if (success) {
                 CommonDialogs.showDialog("Character removed.");
             } else {
                 CommonDialogs.showDialog("Character removal failed!");
             }
         } else {
-            CommonDialogs
-                    .showDialog("The character to be removed does not have a corresponding file.");
+            CommonDialogs.showDialog(
+                    "The character to be removed does not have a corresponding file.");
         }
     }
 }

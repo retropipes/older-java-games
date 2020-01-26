@@ -59,9 +59,8 @@ public class RotationTrap extends GenericTrap {
         } else {
             dir = "Counterclockwise";
         }
-        MasterMaze.getApplication().showMessage(
-                this.getName() + " (Radius " + this.radius + ", Direction "
-                        + dir + ")");
+        MasterMaze.getApplication().showMessage(this.getName() + " (Radius "
+                + this.radius + ", Direction " + dir + ")");
     }
 
     @Override
@@ -84,8 +83,8 @@ public class RotationTrap extends GenericTrap {
         }
         final String[] dChoices = new String[] { "Clockwise",
                 "Counterclockwise" };
-        final String dres = CommonDialogs.showInputDialog(
-                "Rotation Direction:", "Editor", dChoices, dChoices[di]);
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "Editor", dChoices, dChoices[di]);
         if (dres.equals(dChoices[0])) {
             d = RotationTrap.CLOCKWISE;
         } else {
@@ -125,8 +124,8 @@ public class RotationTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (this.direction) {
             MasterMaze.getApplication().getGameManager()
                     .doClockwiseRotate(this.radius);

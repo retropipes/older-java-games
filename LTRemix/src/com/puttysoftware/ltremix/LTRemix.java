@@ -41,7 +41,7 @@ public class LTRemix {
         return LTRemix.errorLogger;
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         try {
             try {
                 // Initialize strings

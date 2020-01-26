@@ -33,8 +33,8 @@ public class WindowBattleLogic extends AbstractBattle {
     private boolean playerDidDamage;
     private AbstractMonster enemy;
     private int result;
-    private AbstractDamageEngine de;
-    private WindowBattleGUI gui;
+    private final AbstractDamageEngine de;
+    private final WindowBattleGUI gui;
     private static final int BASE_RUN_CHANCE = 80;
     private static final int RUN_CHANCE_DIFF_FACTOR = 5;
     private static final int ENEMY_BASE_RUN_CHANCE = 60;
@@ -58,11 +58,12 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     @Override
-    public final boolean doPlayerActions(int actionToPerform) {
+    public final boolean doPlayerActions(final int actionToPerform) {
         boolean success = true;
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         if (actionToPerform == AbstractWindowAIRoutine.ACTION_ATTACK) {
-            int actions = playerCharacter.getWindowBattleActionsPerRound();
+            final int actions = playerCharacter
+                    .getWindowBattleActionsPerRound();
             for (int x = 0; x < actions; x++) {
                 this.computePlayerDamage();
                 this.displayPlayerRoundResults();
@@ -70,8 +71,8 @@ public class WindowBattleLogic extends AbstractBattle {
         } else if (actionToPerform == AbstractWindowAIRoutine.ACTION_CAST_SPELL) {
             success = this.castSpell();
         } else if (actionToPerform == AbstractWindowAIRoutine.ACTION_FLEE) {
-            RandomRange rf = new RandomRange(0, 100);
-            int runChance = rf.generate();
+            final RandomRange rf = new RandomRange(0, 100);
+            final int runChance = rf.generate();
             if (runChance <= this.computeRunChance()) {
                 // Success
                 this.setResult(BattleResults.FLED);
@@ -106,10 +107,10 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final void executeNextAIAction() {
-        int actionToPerform = this.enemy.getWindowAI()
+        final int actionToPerform = this.enemy.getWindowAI()
                 .getNextAction(this.enemy);
         if (actionToPerform == AbstractWindowAIRoutine.ACTION_ATTACK) {
-            int actions = this.enemy.getWindowBattleActionsPerRound();
+            final int actions = this.enemy.getWindowBattleActionsPerRound();
             for (int x = 0; x < actions; x++) {
                 this.computeEnemyDamage();
                 this.displayEnemyRoundResults();
@@ -118,8 +119,8 @@ public class WindowBattleLogic extends AbstractBattle {
             SpellCaster.castSpell(this.enemy.getWindowAI().getSpellToCast(),
                     this.enemy);
         } else if (actionToPerform == AbstractWindowAIRoutine.ACTION_FLEE) {
-            RandomRange rf = new RandomRange(0, 100);
-            int runChance = rf.generate();
+            final RandomRange rf = new RandomRange(0, 100);
+            final int runChance = rf.generate();
             if (runChance <= this.computeEnemyRunChance()) {
                 // Success
                 this.setResult(BattleResults.ENEMY_FLED);
@@ -130,11 +131,11 @@ public class WindowBattleLogic extends AbstractBattle {
         }
     }
 
-    private void computeDamage(AbstractCreature theEnemy,
-            AbstractCreature acting) {
+    private void computeDamage(final AbstractCreature theEnemy,
+            final AbstractCreature acting) {
         // Compute Damage
         this.damage = 0;
-        int actual = this.de.computeDamage(theEnemy, acting);
+        final int actual = this.de.computeDamage(theEnemy, acting);
         // Update Prestige
         if (actual != 0) {
             BattlePrestige.dealtDamage(acting, actual);
@@ -185,18 +186,18 @@ public class WindowBattleLogic extends AbstractBattle {
     final int computeRunChance() {
         return WindowBattleLogic.BASE_RUN_CHANCE
                 - this.enemy.getLevelDifference()
-                * WindowBattleLogic.RUN_CHANCE_DIFF_FACTOR;
+                        * WindowBattleLogic.RUN_CHANCE_DIFF_FACTOR;
     }
 
     final int computeEnemyRunChance() {
         return WindowBattleLogic.ENEMY_BASE_RUN_CHANCE
                 + this.enemy.getLevelDifference()
-                * WindowBattleLogic.ENEMY_RUN_CHANCE_DIFF_FACTOR;
+                        * WindowBattleLogic.ENEMY_RUN_CHANCE_DIFF_FACTOR;
     }
 
     @Override
     public final void displayBattleStats() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         final String enemyName = this.enemy.getName();
         final String fightingWhat = this.enemy.getFightingWhatString();
         final String monsterLevelString = enemyName + "'s Level: "
@@ -238,7 +239,7 @@ public class WindowBattleLogic extends AbstractBattle {
                 } else if (this.damage < 0) {
                     displayPlayerDamageString = "You try to hit the "
                             + enemyName + ", but are RIPOSTED for "
-                            + (-this.damage) + " damage!";
+                            + -this.damage + " damage!";
                     SoundManager.playSound(SoundConstants.SOUND_COUNTER);
                 } else {
                     displayPlayerDamageString = "You hit the " + enemyName
@@ -283,7 +284,7 @@ public class WindowBattleLogic extends AbstractBattle {
                 } else if (this.damage < 0) {
                     displayEnemyDamageString = "The " + enemyName
                             + " tries to hit you, but you RIPOSTE for "
-                            + (-this.damage) + " damage!";
+                            + -this.damage + " damage!";
                     SoundManager.playSound(SoundConstants.SOUND_COUNTER);
                 } else {
                     displayEnemyDamageString = "The " + enemyName
@@ -309,7 +310,8 @@ public class WindowBattleLogic extends AbstractBattle {
     @Override
     public void doBattle() {
         MazeRunnerII.getApplication().getGameManager().hideOutput();
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.playMusic("battle");
         }
         SoundManager.playSound(SoundConstants.SOUND_BATTLE);
@@ -328,8 +330,8 @@ public class WindowBattleLogic extends AbstractBattle {
         this.enemy = MonsterFactory.getNewMonsterInstance(true, true, true,
                 false);
         this.enemy.loadMonster();
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        AbstractMonster m = this.enemy;
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final AbstractMonster m = this.enemy;
         playerCharacter.offsetExperience(m.getExperience());
         playerCharacter.offsetGold(m.getGold());
         MazeRunnerII.getApplication().getGameManager()
@@ -345,7 +347,7 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final int getResult() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         int currResult;
         if (this.result != BattleResults.IN_PROGRESS) {
             return this.result;
@@ -372,7 +374,7 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final void maintainEffects() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         playerCharacter.useEffects();
         playerCharacter.cullInactiveEffects();
         this.enemy.useEffects();
@@ -382,17 +384,19 @@ public class WindowBattleLogic extends AbstractBattle {
     @Override
     public final void displayActiveEffects() {
         boolean flag1 = false, flag2 = false, flag3 = false;
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        String effectString = playerCharacter.getCompleteEffectString();
-        String effectMessages = playerCharacter.getAllCurrentEffectMessages();
-        String enemyEffectMessages = this.enemy.getAllCurrentEffectMessages();
-        if (!(effectString.equals(Effect.getNullMessage()))) {
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final String effectString = playerCharacter.getCompleteEffectString();
+        final String effectMessages = playerCharacter
+                .getAllCurrentEffectMessages();
+        final String enemyEffectMessages = this.enemy
+                .getAllCurrentEffectMessages();
+        if (!effectString.equals(Effect.getNullMessage())) {
             flag1 = true;
         }
-        if (!(effectMessages.equals(Effect.getNullMessage()))) {
+        if (!effectMessages.equals(Effect.getNullMessage())) {
             flag2 = true;
         }
-        if (!(enemyEffectMessages.equals(Effect.getNullMessage()))) {
+        if (!enemyEffectMessages.equals(Effect.getNullMessage())) {
             flag3 = true;
         }
         if (flag1) {
@@ -411,7 +415,7 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     @Override
-    public final void setStatusMessage(String s) {
+    public final void setStatusMessage(final String s) {
         this.gui.setStatusMessage(s);
     }
 
@@ -436,8 +440,8 @@ public class WindowBattleLogic extends AbstractBattle {
             enemyGotJump = false;
         } else {
             // Equal, decide randomly
-            RandomRange jump = new RandomRange(0, 1);
-            int whoFirst = jump.generate();
+            final RandomRange jump = new RandomRange(0, 1);
+            final int whoFirst = jump.generate();
             if (whoFirst == 1) {
                 // Enemy acts first!
                 enemyGotJump = true;
@@ -464,7 +468,8 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     final void updateMessageAreaEnemyFleeFailed() {
-        this.setStatusMessage("The enemy tries to run away, but doesn't quite make it!");
+        this.setStatusMessage(
+                "The enemy tries to run away, but doesn't quite make it!");
     }
 
     final void updateMessageAreaPostSteal() {
@@ -482,24 +487,25 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final boolean steal() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        int stealChance = StatConstants.CHANCE_STEAL;
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final int stealChance = StatConstants.CHANCE_STEAL;
         if (stealChance <= 0) {
             // Failed
             this.stealAmount = 0;
             return false;
         } else if (stealChance >= 100) {
             // Succeeded
-            RandomRange stole = new RandomRange(0, this.enemy.getGold());
+            final RandomRange stole = new RandomRange(0, this.enemy.getGold());
             this.stealAmount = stole.generate();
             playerCharacter.offsetGold(this.stealAmount);
             return true;
         } else {
-            RandomRange chance = new RandomRange(0, 100);
-            int randomChance = chance.generate();
+            final RandomRange chance = new RandomRange(0, 100);
+            final int randomChance = chance.generate();
             if (randomChance <= stealChance) {
                 // Succeeded
-                RandomRange stole = new RandomRange(0, this.enemy.getGold());
+                final RandomRange stole = new RandomRange(0,
+                        this.enemy.getGold());
                 this.stealAmount = stole.generate();
                 playerCharacter.offsetGold(this.stealAmount);
                 return true;
@@ -513,26 +519,27 @@ public class WindowBattleLogic extends AbstractBattle {
 
     @Override
     public final boolean drain() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        int drainChance = StatConstants.CHANCE_DRAIN;
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final int drainChance = StatConstants.CHANCE_DRAIN;
         if (drainChance <= 0) {
             // Failed
             return false;
         } else if (drainChance >= 100) {
             // Succeeded
-            RandomRange drained = new RandomRange(0, this.enemy.getCurrentMP());
-            int drainAmount = drained.generate();
+            final RandomRange drained = new RandomRange(0,
+                    this.enemy.getCurrentMP());
+            final int drainAmount = drained.generate();
             this.enemy.offsetCurrentMP(-drainAmount);
             playerCharacter.offsetCurrentMP(drainAmount);
             return true;
         } else {
-            RandomRange chance = new RandomRange(0, 100);
-            int randomChance = chance.generate();
+            final RandomRange chance = new RandomRange(0, 100);
+            final int randomChance = chance.generate();
             if (randomChance <= drainChance) {
                 // Succeeded
-                RandomRange drained = new RandomRange(0,
+                final RandomRange drained = new RandomRange(0,
                         this.enemy.getCurrentMP());
-                int drainAmount = drained.generate();
+                final int drainAmount = drained.generate();
                 this.enemy.offsetCurrentMP(-drainAmount);
                 playerCharacter.offsetCurrentMP(drainAmount);
                 return true;
@@ -544,20 +551,23 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     final void updateMessageAreaStealFailed() {
-        this.setStatusMessage("You try to steal money from the enemy, but the attempt fails!");
+        this.setStatusMessage(
+                "You try to steal money from the enemy, but the attempt fails!");
     }
 
     final void updateMessageAreaDrainFailed() {
-        this.setStatusMessage("You try to drain the enemy's MP, but the attempt fails!");
+        this.setStatusMessage(
+                "You try to drain the enemy's MP, but the attempt fails!");
     }
 
     @Override
     public void doResult() {
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
         }
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
-        AbstractMonster m = this.enemy;
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final AbstractMonster m = this.enemy;
         if (this.result == BattleResults.WON) {
             this.setStatusMessage("You gain " + m.getExperience()
                     + " experience and " + m.getGold() + " Gold.");
@@ -574,27 +584,26 @@ public class WindowBattleLogic extends AbstractBattle {
             playerCharacter.offsetExperience(m.getExperience());
             playerCharacter.offsetGold(m.getGold() + m.getPerfectBonusGold());
             SoundManager.playSound(SoundConstants.SOUND_VICTORY);
-            MazeRunnerII
-                    .getApplication()
-                    .getGameManager()
-                    .addToScore(
-                            m.getExperience() + m.getGold()
-                                    + m.getPerfectBonusGold());
+            MazeRunnerII.getApplication().getGameManager().addToScore(
+                    m.getExperience() + m.getGold() + m.getPerfectBonusGold());
         } else if (this.result == BattleResults.LOST) {
             this.setStatusMessage("You lost...");
         } else if (this.result == BattleResults.ANNIHILATED) {
-            this.setStatusMessage("You lost without hurting your foe... you were annihilated!");
+            this.setStatusMessage(
+                    "You lost without hurting your foe... you were annihilated!");
         } else if (this.result == BattleResults.DRAW) {
-            this.setStatusMessage("The battle was a draw. You are fully healed!");
+            this.setStatusMessage(
+                    "The battle was a draw. You are fully healed!");
             playerCharacter
                     .healPercentage(AbstractCreature.FULL_HEAL_PERCENTAGE);
-            playerCharacter
-                    .regeneratePercentage(AbstractCreature.FULL_HEAL_PERCENTAGE);
+            playerCharacter.regeneratePercentage(
+                    AbstractCreature.FULL_HEAL_PERCENTAGE);
         } else if (this.result == BattleResults.FLED) {
             this.setStatusMessage("You ran away successfully!");
         } else if (this.result == BattleResults.ENEMY_FLED) {
             this.setStatusMessage("The enemy runs away!");
-            this.setStatusMessage("Since the enemy ran away, you gain nothing for this battle.");
+            this.setStatusMessage(
+                    "Since the enemy ran away, you gain nothing for this battle.");
         }
         // Cleanup
         this.gui.doResultCleanup();
@@ -606,15 +615,15 @@ public class WindowBattleLogic extends AbstractBattle {
             if (PreferencesManager.getSoundsEnabled()) {
                 SoundManager.playSound(SoundConstants.SOUND_LEVEL_UP);
             }
-            this.setStatusMessage("You reached level "
-                    + playerCharacter.getLevel() + ".");
+            this.setStatusMessage(
+                    "You reached level " + playerCharacter.getLevel() + ".");
         }
         // Final Cleanup
         this.gui.doResultFinalCleanup();
     }
 
     @Override
-    public final void setResult(int newResult) {
+    public final void setResult(final int newResult) {
         this.result = newResult;
     }
 
@@ -636,29 +645,29 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     @Override
-    public boolean updatePosition(int x, int y) {
+    public boolean updatePosition(final int x, final int y) {
         return true;
     }
 
     @Override
-    public void fireArrow(int x, int y) {
+    public void fireArrow(final int x, final int y) {
         // Do nothing
     }
 
     @Override
-    public void arrowDone(BattleCharacter hit) {
+    public void arrowDone(final BattleCharacter hit) {
         // Do nothing
     }
 
     @Override
     public boolean castSpell() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         return SpellCaster.selectAndCastSpell(playerCharacter);
     }
 
     @Override
     public boolean useItem() {
-        PartyMember playerCharacter = PartyManager.getParty().getLeader();
+        final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         return CombatItemChucker.selectAndUseItem(playerCharacter);
     }
 
@@ -668,7 +677,8 @@ public class WindowBattleLogic extends AbstractBattle {
     }
 
     @Override
-    public void redrawOneBattleSquare(int x, int y, AbstractMazeObject obj3) {
+    public void redrawOneBattleSquare(final int x, final int y,
+            final AbstractMazeObject obj3) {
         // Do nothing
     }
 

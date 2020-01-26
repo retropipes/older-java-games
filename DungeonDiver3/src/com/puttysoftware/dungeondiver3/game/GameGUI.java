@@ -73,11 +73,11 @@ class GameGUI {
     public void redrawMap() {
         // Draw the map, if it is visible
         if (this.outputFrame.isVisible()) {
-            Application app = DungeonDiver3.getApplication();
+            final Application app = DungeonDiver3.getApplication();
             int x, y, u, v;
             int xFix, yFix;
             boolean visible;
-            Map m = DungeonDiver3.getApplication().getScenarioManager()
+            final Map m = DungeonDiver3.getApplication().getScenarioManager()
                     .getMap();
             u = m.getPlayerLocationX();
             v = m.getPlayerLocationY();
@@ -97,68 +97,58 @@ class GameGUI {
                             obj2 = m.getCell(y, x, m.getPlayerLocationZ(),
                                     MapConstants.LAYER_OBJECT);
                             String name1, name2;
-                            name1 = obj1.gameRenderHook(y, x, m
-                                    .getPlayerLocationZ(), app
-                                    .getScenarioManager().getMap());
-                            name2 = obj2.gameRenderHook(y, x, m
-                                    .getPlayerLocationZ(), app
-                                    .getScenarioManager().getMap());
-                            boolean hasNote = m.hasNote(y, x,
+                            name1 = obj1.gameRenderHook(y, x,
+                                    m.getPlayerLocationZ(),
+                                    app.getScenarioManager().getMap());
+                            name2 = obj2.gameRenderHook(y, x,
+                                    m.getPlayerLocationZ(),
+                                    app.getScenarioManager().getMap());
+                            final boolean hasNote = m.hasNote(y, x,
                                     m.getPlayerLocationZ());
                             if (hasNote) {
-                                this.drawGrid
-                                        .setImageCell(
-                                                ImageTransformer.getCompositeImage(
-                                                        ImageManager
-                                                                .getMapImage(
-                                                                        name1,
-                                                                        obj1.getGameName(),
-                                                                        obj1.getGameTemplateTransform()),
-                                                        ImageManager
-                                                                .getMapImage(
-                                                                        name2,
-                                                                        obj2.getGameName(),
-                                                                        obj2.getGameTemplateTransform()),
-                                                        ImageManager
-                                                                .getMapImage(
-                                                                        "Map Note",
-                                                                        "Map Note",
-                                                                        null)),
-                                                xFix, yFix);
+                                this.drawGrid.setImageCell(
+                                        ImageTransformer.getCompositeImage(
+                                                ImageManager.getMapImage(name1,
+                                                        obj1.getGameName(),
+                                                        obj1.getGameTemplateTransform()),
+                                                ImageManager.getMapImage(name2,
+                                                        obj2.getGameName(),
+                                                        obj2.getGameTemplateTransform()),
+                                                ImageManager.getMapImage(
+                                                        "Map Note", "Map Note",
+                                                        null)),
+                                        xFix, yFix);
                             } else {
-                                this.drawGrid
-                                        .setImageCell(
-                                                ImageTransformer
-                                                        .getCompositeImage(
-                                                                ImageManager
-                                                                        .getMapImage(
-                                                                                name1,
-                                                                                obj1.getGameName(),
-                                                                                obj1.getGameTemplateTransform()),
-                                                                ImageManager
-                                                                        .getMapImage(
-                                                                                name2,
-                                                                                obj2.getGameName(),
-                                                                                obj2.getGameTemplateTransform())),
-                                                xFix, yFix);
+                                this.drawGrid.setImageCell(
+                                        ImageTransformer.getCompositeImage(
+                                                ImageManager.getMapImage(name1,
+                                                        obj1.getGameName(),
+                                                        obj1.getGameTemplateTransform()),
+                                                ImageManager.getMapImage(name2,
+                                                        obj2.getGameName(),
+                                                        obj2.getGameTemplateTransform())),
+                                        xFix, yFix);
                             }
                         } else {
-                            this.drawGrid.setImageCell(ImageManager
-                                    .getMapImage("Darkness", "Darkness", null),
-                                    xFix, yFix);
+                            this.drawGrid.setImageCell(ImageManager.getMapImage(
+                                    "Darkness", "Darkness", null), xFix, yFix);
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        this.drawGrid.setImageCell(ImageManager.getMapImage(
-                                new EmptyVoid().gameRenderHook(y, x, m
-                                        .getPlayerLocationZ(), app
-                                        .getScenarioManager().getMap()),
-                                "Void", null), xFix, yFix);
+                        this.drawGrid
+                                .setImageCell(ImageManager.getMapImage(
+                                        new EmptyVoid().gameRenderHook(y, x,
+                                                m.getPlayerLocationZ(),
+                                                app.getScenarioManager()
+                                                        .getMap()),
+                                        "Void", null), xFix, yFix);
                     } catch (final NullPointerException np) {
-                        this.drawGrid.setImageCell(ImageManager.getMapImage(
-                                new EmptyVoid().gameRenderHook(y, x, m
-                                        .getPlayerLocationZ(), app
-                                        .getScenarioManager().getMap()),
-                                "Void", null), xFix, yFix);
+                        this.drawGrid
+                                .setImageCell(ImageManager.getMapImage(
+                                        new EmptyVoid().gameRenderHook(y, x,
+                                                m.getPlayerLocationZ(),
+                                                app.getScenarioManager()
+                                                        .getMap()),
+                                        "Void", null), xFix, yFix);
                     }
                 }
             }
@@ -170,7 +160,8 @@ class GameGUI {
     }
 
     public void resetViewingWindow() {
-        Map m = DungeonDiver3.getApplication().getScenarioManager().getMap();
+        final Map m = DungeonDiver3.getApplication().getScenarioManager()
+                .getMap();
         this.vwMgr.setViewingWindowLocationX(m.getPlayerLocationY()
                 - GameViewingWindowManager.getOffsetFactor());
         this.vwMgr.setViewingWindowLocationY(m.getPlayerLocationX()
@@ -185,14 +176,14 @@ class GameGUI {
         this.borderPane.removeAll();
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
         this.getStatGUI().updateImages();
         this.getStatGUI().updateStats();
     }
 
     public void showOutput() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         app.getMenuManager().setGameMenus();
         if (PreferencesManager
                 .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
@@ -216,7 +207,7 @@ class GameGUI {
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
@@ -231,17 +222,19 @@ class GameGUI {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(GameViewingWindowManager
-                .getViewingWindowSize(), GameViewingWindowManager
-                .getViewingWindowSize()));
+        this.outputPane.setLayout(
+                new GridLayout(GameViewingWindowManager.getViewingWindowSize(),
+                        GameViewingWindowManager.getViewingWindowSize()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(handler);
         this.outputFrame.addWindowListener(handler);
         this.outputPane.addMouseListener(handler);
         this.drawGrid = new DrawGrid(
                 GameViewingWindowManager.getViewingWindowSize());
-        for (int x = 0; x < GameViewingWindowManager.getViewingWindowSize(); x++) {
-            for (int y = 0; y < GameViewingWindowManager.getViewingWindowSize(); y++) {
+        for (int x = 0; x < GameViewingWindowManager
+                .getViewingWindowSize(); x++) {
+            for (int y = 0; y < GameViewingWindowManager
+                    .getViewingWindowSize(); y++) {
                 this.drawGrid.setImageCell(
                         ImageManager.getMapImage("Darkness", "Darkness", null),
                         x, y);
@@ -250,12 +243,12 @@ class GameGUI {
         this.outputPane.updateGrid(this.drawGrid);
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         public EventHandler() {
             // Do nothing
         }
@@ -299,7 +292,8 @@ class GameGUI {
 
         public void handleMovement(final KeyEvent e) {
             try {
-                GameLogic gm = DungeonDiver3.getApplication().getGameManager();
+                final GameLogic gm = DungeonDiver3.getApplication()
+                        .getGameManager();
                 final int keyCode = e.getKeyCode();
                 switch (keyCode) {
                 case KeyEvent.VK_NUMPAD4:
@@ -345,7 +339,7 @@ class GameGUI {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver3.getErrorLogger().logError(ex);
             }
         }
@@ -364,7 +358,7 @@ class GameGUI {
         @Override
         public void windowClosing(final WindowEvent we) {
             try {
-                Application app = DungeonDiver3.getApplication();
+                final Application app = DungeonDiver3.getApplication();
                 boolean success = false;
                 int status = 0;
                 if (app.getScenarioManager().getDirty()) {
@@ -380,7 +374,7 @@ class GameGUI {
                 } else {
                     app.getGameManager().exitGame();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver3.getErrorLogger().logError(ex);
             }
         }
@@ -419,13 +413,14 @@ class GameGUI {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                GameLogic gm = DungeonDiver3.getApplication().getGameManager();
+                final GameLogic gm = DungeonDiver3.getApplication()
+                        .getGameManager();
                 if (e.isShiftDown()) {
                     final int x = e.getX();
                     final int y = e.getY();
                     gm.identifyObject(x, y);
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver3.getErrorLogger().logError(ex);
             }
         }

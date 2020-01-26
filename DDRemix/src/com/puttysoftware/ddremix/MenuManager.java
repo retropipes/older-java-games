@@ -31,8 +31,8 @@ public class MenuManager {
     private JMenuItem fileOpenGame, fileClose, fileSaveGame, filePreferences,
             fileExit;
     private JMenuItem gameNewGame, gameEquipment, gameInventory,
-            gameRegisterCharacter, gameUnregisterCharacter,
-            gameRemoveCharacter, gameEditNote, gameViewStats;
+            gameRegisterCharacter, gameUnregisterCharacter, gameRemoveCharacter,
+            gameEditNote, gameViewStats;
     private JMenuItem helpAbout, helpObjectHelp;
     private KeyStroke fileOpenGameAccel, fileCloseAccel, fileSaveGameAccel,
             filePreferencesAccel;

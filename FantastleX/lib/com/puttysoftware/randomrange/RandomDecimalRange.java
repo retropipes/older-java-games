@@ -24,10 +24,8 @@ public class RandomDecimalRange {
     }
 
     public static double generateDouble() {
-        return Math
-                .abs(RandomnessSource.nextDouble()
-                        % (RandomDecimalRange.maximum
-                                - RandomDecimalRange.minimum + 1))
+        return Math.abs(RandomnessSource.nextDouble()
+                % (RandomDecimalRange.maximum - RandomDecimalRange.minimum + 1))
                 + RandomDecimalRange.minimum;
     }
 

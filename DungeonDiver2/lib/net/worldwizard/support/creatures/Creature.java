@@ -186,12 +186,14 @@ public abstract class Creature extends Identifiable implements StatConstants {
     }
 
     public int getArmorBlock() {
-        return (int) (this.getItems().getTotalAbsorb() * StatConstants.FACTOR_ABSORB_DEFENSE);
+        return (int) (this.getItems().getTotalAbsorb()
+                * StatConstants.FACTOR_ABSORB_DEFENSE);
     }
 
     public int getAttack() {
-        return (int) (this.getStrength() * StatConstants.FACTOR_STRENGTH_ATTACK + this
-                .getItems().getTotalPower() * StatConstants.FACTOR_POWER_ATTACK);
+        return (int) (this.getStrength() * StatConstants.FACTOR_STRENGTH_ATTACK
+                + this.getItems().getTotalPower()
+                        * StatConstants.FACTOR_POWER_ATTACK);
     }
 
     public String getAttackString() {
@@ -237,9 +239,9 @@ public abstract class Creature extends Identifiable implements StatConstants {
     }
 
     public int getDefense() {
-        return (int) (this.getBlock() * StatConstants.FACTOR_BLOCK_DEFENSE + this
-                .getItems().getTotalAbsorb()
-                * StatConstants.FACTOR_ABSORB_DEFENSE);
+        return (int) (this.getBlock() * StatConstants.FACTOR_BLOCK_DEFENSE
+                + this.getItems().getTotalAbsorb()
+                        * StatConstants.FACTOR_ABSORB_DEFENSE);
     }
 
     public String getDefenseString() {
@@ -360,11 +362,13 @@ public abstract class Creature extends Identifiable implements StatConstants {
     }
 
     public int getMaximumHP() {
-        return (int) (this.getVitality() * StatConstants.FACTOR_VITALITY_HEALTH);
+        return (int) (this.getVitality()
+                * StatConstants.FACTOR_VITALITY_HEALTH);
     }
 
     public int getMaximumMP() {
-        return (int) (this.getIntelligence() * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
+        return (int) (this.getIntelligence()
+                * StatConstants.FACTOR_INTELLIGENCE_MAGIC);
     }
 
     public int getEffectedMaximumHP() {
@@ -392,13 +396,15 @@ public abstract class Creature extends Identifiable implements StatConstants {
 
     public int getEffectedSpeed() {
         return (int) (this.getEffectedStat(StatConstants.STAT_AGILITY)
-                * StatConstants.FACTOR_AGILITY_SPEED - this.items
-                .getTotalEquipmentWeight() * StatConstants.FACTOR_WEIGHT_SPEED);
+                * StatConstants.FACTOR_AGILITY_SPEED
+                - this.items.getTotalEquipmentWeight()
+                        * StatConstants.FACTOR_WEIGHT_SPEED);
     }
 
     public int getSpeed() {
-        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED - this.items
-                .getTotalEquipmentWeight() * StatConstants.FACTOR_WEIGHT_SPEED);
+        return (int) (this.getAgility() * StatConstants.FACTOR_AGILITY_SPEED
+                - this.items.getTotalEquipmentWeight()
+                        * StatConstants.FACTOR_WEIGHT_SPEED);
     }
 
     public SpellBook getSpellBook() {
@@ -473,7 +479,8 @@ public abstract class Creature extends Identifiable implements StatConstants {
     }
 
     public int getWeaponPower() {
-        return (int) (this.getItems().getTotalPower() * StatConstants.FACTOR_POWER_ATTACK);
+        return (int) (this.getItems().getTotalPower()
+                * StatConstants.FACTOR_POWER_ATTACK);
     }
 
     public int getUnfactoredWeaponPower() {
@@ -801,8 +808,9 @@ public abstract class Creature extends Identifiable implements StatConstants {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                this.getName()).multiply(BigInteger.valueOf(2)));
+        longHash = longHash
+                .add(IDGenerator.computeStringLongHash(this.getName())
+                        .multiply(BigInteger.valueOf(2)));
         return longHash;
     }
 }

@@ -39,9 +39,10 @@ public class VariableHealTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
-        this.maxHealing = PartyManager.getParty().getLeader().getMaximumHP() / 10;
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        this.maxHealing = PartyManager.getParty().getLeader().getMaximumHP()
+                / 10;
         if (this.maxHealing < VariableHealTrap.MIN_HEALING) {
             this.maxHealing = VariableHealTrap.MIN_HEALING;
         }

@@ -17,16 +17,17 @@ public final class TemplateTransform {
     private final double transformBlue;
 
     // Constructors
-    public TemplateTransform(final double tr, final double tg, final double tb) {
+    public TemplateTransform(final double tr, final double tg,
+            final double tb) {
         this.transformRed = tr;
         this.transformGreen = tg;
         this.transformBlue = tb;
     }
 
     TemplateTransform(final Color src) {
-        double tr = (src.getRed() + 1) / 256.0;
-        double tg = (src.getGreen() + 1) / 256.0;
-        double tb = (src.getBlue() + 1) / 256.0;
+        final double tr = (src.getRed() + 1) / 256.0;
+        final double tg = (src.getGreen() + 1) / 256.0;
+        final double tb = (src.getBlue() + 1) / 256.0;
         this.transformRed = tr;
         this.transformGreen = tg;
         this.transformBlue = tb;
@@ -39,17 +40,17 @@ public final class TemplateTransform {
     }
 
     // Methods
-    public Color applyTransform(Color source) {
-        int red = source.getRed();
-        int green = source.getGreen();
-        int blue = source.getBlue();
+    public Color applyTransform(final Color source) {
+        final int red = source.getRed();
+        final int green = source.getGreen();
+        final int blue = source.getBlue();
         Color transformed = null;
         if (source.equals(TemplateTransform.makeTrans)) {
             transformed = new Color(red, green, blue, 0);
         } else {
-            int transformedRed = (int) (red * this.transformRed);
-            int transformedGreen = (int) (green * this.transformGreen);
-            int transformedBlue = (int) (blue * this.transformBlue);
+            final int transformedRed = (int) (red * this.transformRed);
+            final int transformedGreen = (int) (green * this.transformGreen);
+            final int transformedBlue = (int) (blue * this.transformBlue);
             transformed = new Color(transformedRed, transformedGreen,
                     transformedBlue);
         }
@@ -62,15 +63,15 @@ public final class TemplateTransform {
         int result = 1;
         long temp;
         temp = Double.doubleToLongBits(this.transformBlue);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformGreen);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformRed);
-        return prime * result + (int) (temp ^ (temp >>> 32));
+        return prime * result + (int) (temp ^ temp >>> 32);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -80,7 +81,7 @@ public final class TemplateTransform {
         if (!(obj instanceof TemplateTransform)) {
             return false;
         }
-        TemplateTransform other = (TemplateTransform) obj;
+        final TemplateTransform other = (TemplateTransform) obj;
         if (Double.doubleToLongBits(this.transformBlue) != Double
                 .doubleToLongBits(other.transformBlue)) {
             return false;

@@ -41,7 +41,8 @@ public class BarrierGenerator extends AbstractGenerator {
 
     @Override
     protected void arrowHitActionHook(final int locX, final int locY,
-            final int locZ, final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int arrowType,
+            final MazeObjectInventory inv) {
         final GameLogicManager gm = FantastleX.getApplication()
                 .getGameManager();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {

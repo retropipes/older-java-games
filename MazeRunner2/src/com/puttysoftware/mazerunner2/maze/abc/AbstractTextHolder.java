@@ -26,8 +26,8 @@ public abstract class AbstractTextHolder extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         // Do nothing
     }
 
@@ -51,12 +51,12 @@ public abstract class AbstractTextHolder extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
@@ -69,20 +69,22 @@ public abstract class AbstractTextHolder extends AbstractMazeObject {
 
     @Override
     protected AbstractMazeObject readLegacyMazeObjectHook(
-            XLegacyDataReader reader, int formatVersion) throws IOException {
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
         this.text = reader.readString();
         return this;
     }
 
     @Override
-    protected AbstractMazeObject readMazeObjectHook(XDataReader reader,
-            int formatVersion) throws IOException {
+    protected AbstractMazeObject readMazeObjectHook(final XDataReader reader,
+            final int formatVersion) throws IOException {
         this.text = reader.readString();
         return this;
     }
 
     @Override
-    protected void writeMazeObjectHook(XDataWriter writer) throws IOException {
+    protected void writeMazeObjectHook(final XDataWriter writer)
+            throws IOException {
         writer.writeString(this.text);
     }
 

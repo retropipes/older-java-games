@@ -6,20 +6,20 @@ public class HexBytes {
     /**
      * Convert a byte[] array to readable string format. This makes the "hex"
      * readable!
-     * 
+     *
      * @return result String buffer in String format
      * @param in
      *            byte[] buffer to convert to string format
      */
-    public static String hexBytes(byte[] in) {
+    public static String hexBytes(final byte[] in) {
         byte ch = 0x00;
         int i = 0;
         if (in == null || in.length <= 0) {
             return null;
         }
-        String pseudo[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-                "A", "B", "C", "D", "E", "F" };
-        StringBuffer out = new StringBuffer(in.length * 2);
+        final String pseudo[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8",
+                "9", "A", "B", "C", "D", "E", "F" };
+        final StringBuffer out = new StringBuffer(in.length * 2);
         while (i < in.length) {
             ch = (byte) (in[i] & 0xF0); // Strip off high nibble
             ch = (byte) (ch >>> 4); // shift the bits down
@@ -32,7 +32,7 @@ public class HexBytes {
         return out.toString();
     }
 
-    public static byte[] unhexBytes(String in) {
+    public static byte[] unhexBytes(final String in) {
         char ch;
         byte low = 0x00;
         byte high = 0x00;
@@ -40,10 +40,10 @@ public class HexBytes {
         if (in == null || in.length() <= 0) {
             return null;
         }
-        String fIn = in.toUpperCase();
-        String pseudo[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-                "A", "B", "C", "D", "E", "F" };
-        byte[] out = new byte[fIn.length() / 2];
+        final String fIn = in.toUpperCase();
+        final String pseudo[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8",
+                "9", "A", "B", "C", "D", "E", "F" };
+        final byte[] out = new byte[fIn.length() / 2];
         while (i < fIn.length()) {
             ch = fIn.charAt(i);
             for (int z = 0; z < pseudo.length; z++) {

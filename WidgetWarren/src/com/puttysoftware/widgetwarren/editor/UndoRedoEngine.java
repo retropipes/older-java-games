@@ -28,7 +28,7 @@ public class UndoRedoEngine {
 
     // Public methods
     public void undo() {
-        if (!(this.undoHistory.isEmpty())) {
+        if (!this.undoHistory.isEmpty()) {
             final Link entry = this.undoHistory.pop();
             this.object = entry.mo;
             this.destX = entry.coordX;
@@ -47,7 +47,7 @@ public class UndoRedoEngine {
     }
 
     public void redo() {
-        if (!(this.redoHistory.isEmpty())) {
+        if (!this.redoHistory.isEmpty()) {
             final Link entry = this.redoHistory.pop();
             this.object = entry.mo;
             this.destX = entry.coordX;
@@ -66,11 +66,11 @@ public class UndoRedoEngine {
     }
 
     public boolean tryUndo() {
-        return !(this.undoHistory.isEmpty());
+        return !this.undoHistory.isEmpty();
     }
 
     public boolean tryRedo() {
-        return !(this.redoHistory.isEmpty());
+        return !this.redoHistory.isEmpty();
     }
 
     public boolean tryBoth() {
@@ -118,8 +118,8 @@ public class UndoRedoEngine {
         public int coordX, coordY, coordZ, coordW, coordE;
         public Link next;
 
-        public Link(final MazeObject obj, final int x, final int y,
-                final int z, final int w, final int e) {
+        public Link(final MazeObject obj, final int x, final int y, final int z,
+                final int w, final int e) {
             this.mo = obj;
             this.coordX = x;
             this.coordY = y;

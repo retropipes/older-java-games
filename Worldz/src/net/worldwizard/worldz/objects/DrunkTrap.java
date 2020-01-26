@@ -33,13 +33,11 @@ public class DrunkTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Messager.showMessage("You stumble around drunkenly!");
-        Worldz.getApplication()
-                .getGameManager()
-                .activateEffect(EffectConstants.EFFECT_DRUNK,
-                        DrunkTrap.EFFECT_DURATION);
+        Worldz.getApplication().getGameManager().activateEffect(
+                EffectConstants.EFFECT_DRUNK, DrunkTrap.EFFECT_DURATION);
         if (Worldz.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playDrunkSound();

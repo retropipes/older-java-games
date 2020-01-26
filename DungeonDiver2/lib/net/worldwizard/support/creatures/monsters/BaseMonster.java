@@ -19,8 +19,10 @@ public abstract class BaseMonster extends Creature {
     private String type;
     private Element element;
     private int teamID;
-    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0 / 2.0;
-    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0 / 2.0;
+    protected static final double MINIMUM_EXPERIENCE_RANDOM_VARIANCE = -5.0
+            / 2.0;
+    protected static final double MAXIMUM_EXPERIENCE_RANDOM_VARIANCE = 5.0
+            / 2.0;
     protected static final int GOLD_TOUGHNESS_MULTIPLIER = 5;
 
     // Constructors
@@ -182,12 +184,10 @@ public abstract class BaseMonster extends Creature {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "monsters"
-                + File.separator
-                + this.getID() + Extension.getMonsterExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "monsters" + File.separator + this.getID()
+                        + Extension.getMonsterExtensionWithPeriod(),
                 Extension.getMonsterExtension());
         this.write(writer);
         writer.close();

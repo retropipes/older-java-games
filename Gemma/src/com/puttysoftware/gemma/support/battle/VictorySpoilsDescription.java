@@ -11,25 +11,25 @@ public class VictorySpoilsDescription {
     private int goldWon;
 
     // Constructor
-    public VictorySpoilsDescription(int monsterCount) {
+    public VictorySpoilsDescription(final int monsterCount) {
         this.expPerMonster = new long[monsterCount];
         this.goldWon = 0;
     }
 
     // Methods
-    public long getExpPerMonster(int index) {
+    public long getExpPerMonster(final int index) {
         return this.expPerMonster[index];
     }
 
     public long getTotalExp() {
         long total = 0;
-        for (int x = 0; x < this.expPerMonster.length; x++) {
-            total += this.expPerMonster[x];
+        for (final long element : this.expPerMonster) {
+            total += element;
         }
         return total;
     }
 
-    public void setExpPerMonster(int index, long value) {
+    public void setExpPerMonster(final int index, final long value) {
         this.expPerMonster[index] = value;
     }
 
@@ -37,7 +37,7 @@ public class VictorySpoilsDescription {
         return this.goldWon;
     }
 
-    public void setGoldWon(int value) {
+    public void setGoldWon(final int value) {
         this.goldWon = value;
     }
 

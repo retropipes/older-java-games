@@ -91,11 +91,11 @@ public class LevelPreferencesManager {
         }
         m.setUseAlternateOffset(this.useAlternateOffset.isSelected());
         if (this.useAlternateOffset.isSelected()) {
-            m.setAlternateNextLevelOffset(Integer
-                    .parseInt(this.alternateNextLevel.getText()));
+            m.setAlternateNextLevelOffset(
+                    Integer.parseInt(this.alternateNextLevel.getText()));
         } else {
-            m.setAlternateNextLevel(Integer.parseInt(this.alternateNextLevel
-                    .getText()) - 1);
+            m.setAlternateNextLevel(
+                    Integer.parseInt(this.alternateNextLevel.getText()) - 1);
         }
         int newER = m.getExploreRadius();
         try {
@@ -121,8 +121,8 @@ public class LevelPreferencesManager {
         final Maze m = LoopChute.getApplication().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
@@ -134,11 +134,11 @@ public class LevelPreferencesManager {
         }
         this.useAlternateOffset.setSelected(m.useAlternateOffset());
         if (m.useAlternateOffset()) {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel()));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel()));
         } else {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel() + 1));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel() + 1));
         }
         this.exploreRadius.setText(Integer.toString(m.getExploreRadius()));
         final int vm = m.getVisionMode();

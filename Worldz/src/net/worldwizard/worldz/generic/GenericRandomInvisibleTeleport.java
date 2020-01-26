@@ -12,8 +12,8 @@ import net.worldwizard.worldz.Worldz;
 import net.worldwizard.worldz.editor.WorldEditor;
 import net.worldwizard.worldz.game.ObjectInventory;
 
-public abstract class GenericRandomInvisibleTeleport extends
-        GenericRandomTeleport {
+public abstract class GenericRandomInvisibleTeleport
+        extends GenericRandomTeleport {
     // Constructors
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {
@@ -25,8 +25,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         int dr, dc;
         do {
@@ -35,8 +35,8 @@ public abstract class GenericRandomInvisibleTeleport extends
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
         Messager.showMessage("Invisible Teleport!");
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -44,8 +44,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     @Override
     public WorldObject editorPropertiesHook() {
         final WorldEditor me = Worldz.getApplication().getEditor();
-        final WorldObject mo = me
-                .editTeleportDestination(WorldEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        final WorldObject mo = me.editTeleportDestination(
+                WorldEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
     }
 

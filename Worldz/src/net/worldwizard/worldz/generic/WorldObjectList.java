@@ -70,18 +70,18 @@ public class WorldObjectList {
             new RandomOneShotTeleport(), new RandomInvisibleOneShotTeleport(),
             new OneShotTeleport(), new InvisibleOneShotTeleport(),
             new TwoWayTeleport(), new ControllableTeleport(),
-            new OneShotControllableTeleport(), new StairsUp(),
-            new StairsDown(), new Pit(), new InvisiblePit(),
-            new PushableBlock(), new PullableBlock(),
-            new PushablePullableBlock(), new PushableBlockOnce(),
-            new PushableBlockTwice(), new PushableBlockThrice(),
-            new PullableBlockOnce(), new PullableBlockTwice(),
-            new PullableBlockThrice(), new MovingBlock(), new MetalBoots(),
-            new NoBoots(), new HealBoots(), new GlueBoots(), new AquaBoots(),
-            new BioHazardBoots(), new FireBoots(), new AnnihilationWand(),
-            new WallMakingWand(), new TeleportWand(), new WallBreakingWand(),
-            new DisarmTrapWand(), new RemoteActionWand(), new RotationWand(),
-            new WarpWand(), new EmptyVoid(), new HealTrap(), new HurtTrap(),
+            new OneShotControllableTeleport(), new StairsUp(), new StairsDown(),
+            new Pit(), new InvisiblePit(), new PushableBlock(),
+            new PullableBlock(), new PushablePullableBlock(),
+            new PushableBlockOnce(), new PushableBlockTwice(),
+            new PushableBlockThrice(), new PullableBlockOnce(),
+            new PullableBlockTwice(), new PullableBlockThrice(),
+            new MovingBlock(), new MetalBoots(), new NoBoots(), new HealBoots(),
+            new GlueBoots(), new AquaBoots(), new BioHazardBoots(),
+            new FireBoots(), new AnnihilationWand(), new WallMakingWand(),
+            new TeleportWand(), new WallBreakingWand(), new DisarmTrapWand(),
+            new RemoteActionWand(), new RotationWand(), new WarpWand(),
+            new EmptyVoid(), new HealTrap(), new HurtTrap(),
             new VariableHealTrap(), new VariableHurtTrap(),
             new ClockwiseRotationTrap(), new CounterclockwiseRotationTrap(),
             new UTurnTrap(), new ConfusionTrap(), new DizzinessTrap(),
@@ -106,20 +106,18 @@ public class WorldObjectList {
             new MajorUnknownPotion(), new SuperHealPotion(),
             new SuperHurtPotion(), new SuperUnknownPotion(), new CrystalWall(),
             new BlackCrystal(), new BlueCrystal(), new CyanCrystal(),
-            new DarkBlueCrystal(), new DarkCyanCrystal(),
-            new DarkGrayCrystal(), new DarkGreenCrystal(),
-            new DarkMagentaCrystal(), new DarkRedCrystal(),
-            new DarkYellowCrystal(), new GrayCrystal(), new GreenCrystal(),
-            new LightBlueCrystal(), new LightCyanCrystal(),
+            new DarkBlueCrystal(), new DarkCyanCrystal(), new DarkGrayCrystal(),
+            new DarkGreenCrystal(), new DarkMagentaCrystal(),
+            new DarkRedCrystal(), new DarkYellowCrystal(), new GrayCrystal(),
+            new GreenCrystal(), new LightBlueCrystal(), new LightCyanCrystal(),
             new LightGrayCrystal(), new LightGreenCrystal(),
             new LightMagentaCrystal(), new LightRedCrystal(),
-            new LightYellowCrystal(), new MagentaCrystal(),
-            new OrangeCrystal(), new PlantCrystal(), new PurpleCrystal(),
-            new RedCrystal(), new RoseCrystal(), new SeaweedCrystal(),
-            new SkyCrystal(), new WhiteCrystal(), new YellowCrystal(),
-            new ArmorShop(), new Bank(), new Healer(), new ItemShop(),
-            new Regenerator(), new SocksShop(), new SpellShop(),
-            new WeaponsShop() };
+            new LightYellowCrystal(), new MagentaCrystal(), new OrangeCrystal(),
+            new PlantCrystal(), new PurpleCrystal(), new RedCrystal(),
+            new RoseCrystal(), new SeaweedCrystal(), new SkyCrystal(),
+            new WhiteCrystal(), new YellowCrystal(), new ArmorShop(),
+            new Bank(), new Healer(), new ItemShop(), new Regenerator(),
+            new SocksShop(), new SpellShop(), new WeaponsShop() };
 
     public WorldObject[] getAllObjects() {
         return this.allObjects;
@@ -742,8 +740,8 @@ public class WorldObjectList {
         }
     }
 
-    public final static WorldObject[] getAllRequiredSubset(final WorldObject[] objs,
-            final int layer) {
+    public final static WorldObject[] getAllRequiredSubset(
+            final WorldObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }

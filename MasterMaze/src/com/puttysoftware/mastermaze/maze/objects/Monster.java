@@ -29,10 +29,11 @@ public class Monster extends GenericMovingObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
-            if (MasterMaze.getApplication().getMode() != Application.STATUS_BATTLE) {
+            if (MasterMaze.getApplication()
+                    .getMode() != Application.STATUS_BATTLE) {
                 MasterMaze.getApplication().getBattle().doBattle();
                 MasterMaze.getApplication().getMazeManager().getMaze()
                         .postBattle(this, dirX, dirY, true);
@@ -44,18 +45,16 @@ public class Monster extends GenericMovingObject {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
             if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
                 // Transform into iced monster, if hit by an ice arrow
                 final int pz = MasterMaze.getApplication().getMazeManager()
                         .getMaze().getPlayerLocationZ();
-                MasterMaze
-                        .getApplication()
-                        .getGameManager()
-                        .morph(new IcedMonster(this.getSavedObject()), locX,
-                                locY, pz, MazeConstants.LAYER_OBJECT);
+                MasterMaze.getApplication().getGameManager().morph(
+                        new IcedMonster(this.getSavedObject()), locX, locY, pz,
+                        MazeConstants.LAYER_OBJECT);
                 return false;
             } else {
                 return true;

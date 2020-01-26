@@ -19,8 +19,8 @@ public class MazeFakeFinish extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         // Display fake exit message, if it's enabled
         final MazeRunner app = MazeRunner.getApplication();
         if (app.getMessageEnabled(MazeRunner.MESSAGE_FAKE_EXIT)) {

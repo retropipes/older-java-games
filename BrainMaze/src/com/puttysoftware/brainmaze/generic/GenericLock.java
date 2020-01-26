@@ -23,9 +23,10 @@ public abstract class GenericLock extends MazeObject {
         this.key = mgk;
     }
 
-    protected GenericLock(final GenericKey mgk, final boolean doesAcceptPushInto) {
-        super(true, false, doesAcceptPushInto, false, false, false, false,
-                true, false);
+    protected GenericLock(final GenericKey mgk,
+            final boolean doesAcceptPushInto) {
+        super(true, false, doesAcceptPushInto, false, false, false, false, true,
+                false);
         this.key = mgk;
     }
 
@@ -65,8 +66,8 @@ public abstract class GenericLock extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = BrainMaze.getApplication();
         if (!inv.isItemThere(new PasswallBoots())) {
             if (!this.key.isInfinite()) {

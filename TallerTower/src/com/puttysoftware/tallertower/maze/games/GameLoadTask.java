@@ -56,8 +56,8 @@ public class GameLoadTask extends Thread {
             final Application app = TallerTower.getApplication();
             int startW;
             app.getGameManager().setSavedGameFlag(false);
-            final File tempLock = new File(Maze.getMazeTempFolder()
-                    + "lock.tmp");
+            final File tempLock = new File(
+                    Maze.getMazeTempFolder() + "lock.tmp");
             Maze gameMaze = new Maze();
             // Unlock the file
             GameFileManager.load(mazeFile, tempLock);
@@ -98,10 +98,8 @@ public class GameLoadTask extends Thread {
             TallerTower.getApplication().getMazeManager()
                     .handleDeferredSuccess(false, true, mazeFile);
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Loading the "
-                            + sg.toLowerCase()
-                            + " failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                    + " failed, probably due to illegal characters in the file name.");
             TallerTower.getApplication().getMazeManager()
                     .handleDeferredSuccess(false, false, null);
         } catch (final IOException ie) {

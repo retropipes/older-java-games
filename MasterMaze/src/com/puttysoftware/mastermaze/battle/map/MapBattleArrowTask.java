@@ -86,24 +86,27 @@ class MapBattleArrowTask extends Thread {
                 // Arrow hit a creature, hurt it
                 SoundManager.playSound(SoundConstants.SOUND_ARROW_DIE);
                 hit = (BattleCharacter) o;
-                final Faith shooter = this.bd.getActiveCharacter()
-                        .getTemplate().getFaith();
+                final Faith shooter = this.bd.getActiveCharacter().getTemplate()
+                        .getFaith();
                 final Faith target = hit.getTemplate().getFaith();
                 final int mult = (int) (shooter
                         .getMultiplierForOtherFaith(target.getFaithID()) * 10);
                 final GenericBattle bl = app.getBattle();
                 if (mult == 0) {
                     hit.getTemplate().doDamagePercentage(1);
-                    bl.setStatusMessage("Ow, you got shot! It didn't hurt much.");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It didn't hurt much.");
                 } else if (mult == 5) {
                     hit.getTemplate().doDamagePercentage(3);
-                    bl.setStatusMessage("Ow, you got shot! It hurt a little bit.");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It hurt a little bit.");
                 } else if (mult == 10) {
                     hit.getTemplate().doDamagePercentage(5);
                     bl.setStatusMessage("Ow, you got shot! It hurt somewhat.");
                 } else if (mult == 20) {
                     hit.getTemplate().doDamagePercentage(8);
-                    bl.setStatusMessage("Ow, you got shot! It hurt significantly!");
+                    bl.setStatusMessage(
+                            "Ow, you got shot! It hurt significantly!");
                 }
             } else {
                 // Arrow has died

@@ -87,7 +87,8 @@ public class ScoreTable {
         return st;
     }
 
-    public void writeScoreTable(final BufferedWriter stream) throws IOException {
+    public void writeScoreTable(final BufferedWriter stream)
+            throws IOException {
         stream.write(Integer.toString(this.table.length) + "\n");
         if (this.unit.length() > 1) {
             stream.write(this.unit.substring(1) + "\n");

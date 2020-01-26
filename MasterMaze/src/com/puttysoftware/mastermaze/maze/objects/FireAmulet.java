@@ -42,16 +42,13 @@ public class FireAmulet extends GenericAmulet {
                 .getPlayerLocationY();
         final int z = MasterMaze.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MasterMaze.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        MasterMaze.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 
     @Override
     public void postMoveActionHook() {
-        MasterMaze
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_FIERY,
-                        FireAmulet.EFFECT_DURATION);
+        MasterMaze.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
     }
 }

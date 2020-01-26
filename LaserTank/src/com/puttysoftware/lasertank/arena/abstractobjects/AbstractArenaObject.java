@@ -607,8 +607,9 @@ public abstract class AbstractArenaObject extends CloneableObject {
      * @param laserType
      * @return
      */
-    public Direction laserExitedAction(final int locX, final int locY, final int locZ,
-            final int dirX, final int dirY, final int laserType) {
+    public Direction laserExitedAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY,
+            final int laserType) {
         return DirectionResolver.resolveRelativeDirection(dirX, dirY);
     }
 
@@ -784,7 +785,7 @@ public abstract class AbstractArenaObject extends CloneableObject {
             final int cc = this.getCustomFormat();
             if (cc == AbstractArenaObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 this.direction = Direction.values()[reader.readInt()];
-                        reader.readInt();
+                reader.readInt();
                 this.color = reader.readInt();
                 return this.readArenaObjectHookG2(reader, ver);
             } else {

@@ -10,15 +10,16 @@ public class HealIfHealthLowAIRoutine extends AbstractWindowAIRoutine {
     private static final double HEAL_PERCENT = 0.2;
 
     @Override
-    public int getNextAction(AbstractCreature c) {
-        Spell heal = c.getSpellBook().getSpellByID(0);
-        int cost = heal.getCost();
-        int currMP = c.getCurrentMP();
+    public int getNextAction(final AbstractCreature c) {
+        final Spell heal = c.getSpellBook().getSpellByID(0);
+        final int cost = heal.getCost();
+        final int currMP = c.getCurrentMP();
         if (cost <= currMP) {
-            int currHP = c.getCurrentHP();
-            int targetHP = (int) (currHP * HealIfHealthLowAIRoutine.HEAL_PERCENT);
+            final int currHP = c.getCurrentHP();
+            final int targetHP = (int) (currHP
+                    * HealIfHealthLowAIRoutine.HEAL_PERCENT);
             if (currHP <= targetHP) {
-                RandomRange chance = new RandomRange(1, 100);
+                final RandomRange chance = new RandomRange(1, 100);
                 if (chance.generate() <= HealIfHealthLowAIRoutine.HEAL_CHANCE) {
                     this.spell = heal;
                     return AbstractWindowAIRoutine.ACTION_CAST_SPELL;

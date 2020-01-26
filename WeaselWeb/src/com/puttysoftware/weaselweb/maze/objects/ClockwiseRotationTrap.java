@@ -32,16 +32,14 @@ public class ClockwiseRotationTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CHANGE);
         WeaselWeb.getApplication().showMessage("Your controls are rotated!");
-        WeaselWeb
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
-                        ClockwiseRotationTrap.EFFECT_DURATION);
+        WeaselWeb.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,
+                ClockwiseRotationTrap.EFFECT_DURATION);
     }
 
     @Override

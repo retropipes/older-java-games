@@ -46,7 +46,7 @@ class PreferencesGUIManager {
     private static final int[] VIEWING_WINDOW_SIZES = new int[] { 19, 17, 23,
             27, 33 };
     private static final int DEFAULT_SIZE_INDEX = 3;
-    static final int DEFAULT_VIEWING_WINDOW_SIZE = VIEWING_WINDOW_SIZES[DEFAULT_SIZE_INDEX];
+    static final int DEFAULT_VIEWING_WINDOW_SIZE = PreferencesGUIManager.VIEWING_WINDOW_SIZES[PreferencesGUIManager.DEFAULT_SIZE_INDEX];
     private static final String[] VIEWING_WINDOW_SIZE_NAMES = new String[] {
             "Mobile", "Small", "Medium", "Large", "Huge" };
     private static final String[] editorFillChoiceArray = new String[] {
@@ -58,17 +58,17 @@ class PreferencesGUIManager {
     // Constructors
     public PreferencesGUIManager() {
         this.music = new JCheckBox[PreferencesManager.MUSIC_LENGTH];
-        setUpGUI();
-        setDefaultPrefs();
+        this.setUpGUI();
+        this.setDefaultPrefs();
     }
 
     // Methods
-    private static int viewingWindowSizeToIndex(int size) {
+    private static int viewingWindowSizeToIndex(final int size) {
         return (size - 13) / 4;
     }
 
     public JFrame getPrefFrame() {
-        if ((this.prefFrame != null) && this.prefFrame.isVisible()) {
+        if (this.prefFrame != null && this.prefFrame.isVisible()) {
             return this.prefFrame;
         } else {
             return null;
@@ -76,14 +76,14 @@ class PreferencesGUIManager {
     }
 
     public void showPrefs() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.setInPrefs();
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             this.prefFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         }
         app.getMenuManager().setPrefMenus();
         this.prefFrame.setVisible(true);
-        int formerMode = app.getFormerMode();
+        final int formerMode = app.getFormerMode();
         if (formerMode == Application.STATUS_GUI) {
             app.getGUIManager().hideGUITemporarily();
         } else if (formerMode == Application.STATUS_GAME) {
@@ -94,10 +94,10 @@ class PreferencesGUIManager {
     }
 
     public void hidePrefs() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         this.prefFrame.setVisible(false);
         PreferencesManager.writePrefs();
-        int formerMode = app.getFormerMode();
+        final int formerMode = app.getFormerMode();
         if (formerMode == Application.STATUS_GUI) {
             app.getGUIManager().showGUI();
         } else if (formerMode == Application.STATUS_GAME) {
@@ -108,41 +108,41 @@ class PreferencesGUIManager {
     }
 
     private void loadPrefs() {
-        this.editorFillChoices.setSelectedItem(PreferencesManager
-                .getEditorDefaultFill());
+        this.editorFillChoices
+                .setSelectedItem(PreferencesManager.getEditorDefaultFill());
         this.editorAutoEdge.setSelected(PreferencesManager.getEditorAutoEdge());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.music[x].setSelected(PreferencesManager.getMusicEnabled(x));
         }
-        this.checkUpdatesStartup.setSelected(PreferencesManager
-                .shouldCheckUpdatesAtStartup());
+        this.checkUpdatesStartup
+                .setSelected(PreferencesManager.shouldCheckUpdatesAtStartup());
         this.moveOneAtATime.setSelected(PreferencesManager.oneMove());
-        this.viewingWindowChoices.setSelectedIndex(PreferencesGUIManager
-                .viewingWindowSizeToIndex(PreferencesManager
-                        .getViewingWindowSize()));
-        this.battleSpeedChoices.setSelectedIndex(PreferencesManager
-                .getBattleSpeedValue());
+        this.viewingWindowChoices.setSelectedIndex(
+                PreferencesGUIManager.viewingWindowSizeToIndex(
+                        PreferencesManager.getViewingWindowSize()));
+        this.battleSpeedChoices
+                .setSelectedIndex(PreferencesManager.getBattleSpeedValue());
         this.sound.setSelected(PreferencesManager.getSoundsEnabled());
-        this.characterChangesPermanent.setSelected(PreferencesManager
-                .areCharacterChangesPermanent());
-        this.randomBattle.setSelected(PreferencesManager
-                .getRandomBattleEnvironment());
+        this.characterChangesPermanent
+                .setSelected(PreferencesManager.areCharacterChangesPermanent());
+        this.randomBattle
+                .setSelected(PreferencesManager.getRandomBattleEnvironment());
         this.rpgMode.setSelected(PreferencesManager.getRPGEnabled());
         this.battleStyle.setSelected(PreferencesManager.getBattleStyle());
     }
 
     public void setPrefs() {
-        PreferencesManager.setEditorDefaultFill((String) this.editorFillChoices
-                .getSelectedItem());
+        PreferencesManager.setEditorDefaultFill(
+                (String) this.editorFillChoices.getSelectedItem());
         PreferencesManager.setEditorAutoEdge(this.editorAutoEdge.isSelected());
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             PreferencesManager.setMusicEnabled(x, this.music[x].isSelected());
         }
-        PreferencesManager.setCheckUpdatesAtStartup(this.checkUpdatesStartup
-                .isSelected());
+        PreferencesManager.setCheckUpdatesAtStartup(
+                this.checkUpdatesStartup.isSelected());
         PreferencesManager.setOneMove(this.moveOneAtATime.isSelected());
-        int vwSize = PreferencesManager.getViewingWindowSize();
-        int newSize = PreferencesGUIManager.VIEWING_WINDOW_SIZES[this.viewingWindowChoices
+        final int vwSize = PreferencesManager.getViewingWindowSize();
+        final int newSize = PreferencesGUIManager.VIEWING_WINDOW_SIZES[this.viewingWindowChoices
                 .getSelectedIndex()];
         PreferencesManager.setViewingWindowSize(newSize);
         if (vwSize != newSize) {
@@ -151,41 +151,41 @@ class PreferencesGUIManager {
             MazeRunnerII.getApplication().getEditor()
                     .viewingWindowSizeChanged();
         }
-        PreferencesManager.setBattleSpeed(this.battleSpeedChoices
-                .getSelectedIndex());
         PreferencesManager
-                .setCharacterChangesPermanent(this.characterChangesPermanent
-                        .isSelected());
+                .setBattleSpeed(this.battleSpeedChoices.getSelectedIndex());
+        PreferencesManager.setCharacterChangesPermanent(
+                this.characterChangesPermanent.isSelected());
         PreferencesManager.setSoundsEnabled(this.sound.isSelected());
-        PreferencesManager.setRandomBattleEnvironment(this.randomBattle
-                .isSelected());
+        PreferencesManager
+                .setRandomBattleEnvironment(this.randomBattle.isSelected());
         PreferencesManager.setRPGEnabled(this.rpgMode.isSelected());
         PreferencesManager.setBattleStyle(this.battleStyle.isSelected());
-        hidePrefs();
+        this.hidePrefs();
     }
 
     public final void setDefaultPrefs() {
         PreferencesManager.readPrefs();
-        loadPrefs();
+        this.loadPrefs();
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.prefFrame = new JFrame("Preferences");
-        JTabbedPane prefTabPane = new JTabbedPane();
-        Container mainPrefPane = new Container();
-        Container gamePane = new Container();
-        Container editorPane = new Container();
-        Container mediaPane = new Container();
-        Container miscPane = new Container();
+        final JTabbedPane prefTabPane = new JTabbedPane();
+        final Container mainPrefPane = new Container();
+        final Container gamePane = new Container();
+        final Container editorPane = new Container();
+        final Container mediaPane = new Container();
+        final Container miscPane = new Container();
         prefTabPane.setOpaque(true);
-        Container buttonPane = new Container();
-        JButton prefsOK = new JButton("OK");
+        final Container buttonPane = new Container();
+        final JButton prefsOK = new JButton("OK");
         prefsOK.setDefaultCapable(true);
         this.prefFrame.getRootPane().setDefaultButton(prefsOK);
-        JButton prefsCancel = new JButton("Cancel");
+        final JButton prefsCancel = new JButton("Cancel");
         prefsCancel.setDefaultCapable(false);
-        this.editorFillChoices = new JComboBox<>(editorFillChoiceArray);
+        this.editorFillChoices = new JComboBox<>(
+                PreferencesGUIManager.editorFillChoiceArray);
         this.editorAutoEdge = new JCheckBox("Enable automatic transitions",
                 false);
         this.viewingWindowChoices = new JComboBox<>(
@@ -197,10 +197,11 @@ class PreferencesGUIManager {
         this.music[PreferencesManager.MUSIC_BATTLE] = new JCheckBox(
                 "Enable battle music", true);
         this.sound = new JCheckBox("Enable sounds", true);
-        this.checkUpdatesStartup = new JCheckBox(
-                "Check for Updates at Startup", true);
+        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
+                true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
-        this.battleSpeedChoices = new JComboBox<>(battleSpeedChoiceArray);
+        this.battleSpeedChoices = new JComboBox<>(
+                PreferencesGUIManager.battleSpeedChoiceArray);
         this.randomBattle = new JCheckBox("Randomize Battlefield", false);
         this.characterChangesPermanent = new JCheckBox(
                 "Make Character Changes Permanent", false);
@@ -212,24 +213,26 @@ class PreferencesGUIManager {
         this.prefFrame.addWindowListener(handler);
         mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        gamePane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        gamePane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         gamePane.add(new JLabel("Battle Speed"));
         gamePane.add(this.battleSpeedChoices);
         gamePane.add(this.moveOneAtATime);
         gamePane.add(this.randomBattle);
         gamePane.add(this.battleStyle);
-        editorPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH,
-                1));
+        editorPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         editorPane.add(new JLabel("Default fill for new mazes:"));
         editorPane.add(this.editorFillChoices);
         editorPane.add(this.editorAutoEdge);
-        mediaPane
-                .setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        mediaPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             mediaPane.add(this.music[x]);
         }
         mediaPane.add(this.sound);
-        miscPane.setLayout(new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
+        miscPane.setLayout(
+                new GridLayout(PreferencesGUIManager.GRID_LENGTH, 1));
         miscPane.add(this.checkUpdatesStartup);
         miscPane.add(this.moveOneAtATime);
         miscPane.add(new JLabel("Viewing Window Size"));
@@ -252,8 +255,8 @@ class PreferencesGUIManager {
         this.prefFrame.pack();
     }
 
-    private class EventHandler implements ActionListener, ItemListener,
-            WindowListener {
+    private class EventHandler
+            implements ActionListener, ItemListener, WindowListener {
         EventHandler() {
             // Do nothing
         }
@@ -262,25 +265,25 @@ class PreferencesGUIManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                PreferencesGUIManager pm = PreferencesGUIManager.this;
+                final PreferencesGUIManager pm = PreferencesGUIManager.this;
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("OK")) {
                     pm.setPrefs();
                 } else if (cmd.equals("Cancel")) {
                     pm.hidePrefs();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void itemStateChanged(ItemEvent e) {
+        public void itemStateChanged(final ItemEvent e) {
             try {
-                PreferencesGUIManager pm = PreferencesGUIManager.this;
-                Object o = e.getItem();
+                final PreferencesGUIManager pm = PreferencesGUIManager.this;
+                final Object o = e.getItem();
                 if (o.getClass().equals(JCheckBox.class)) {
-                    JCheckBox check = (JCheckBox) o;
+                    final JCheckBox check = (JCheckBox) o;
                     if (check.equals(pm.music[PreferencesManager.MUSIC_ALL])) {
                         if (e.getStateChange() == ItemEvent.SELECTED) {
                             for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -293,44 +296,44 @@ class PreferencesGUIManager {
                         }
                     }
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            PreferencesGUIManager pm = PreferencesGUIManager.this;
+        public void windowClosing(final WindowEvent e) {
+            final PreferencesGUIManager pm = PreferencesGUIManager.this;
             pm.hidePrefs();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

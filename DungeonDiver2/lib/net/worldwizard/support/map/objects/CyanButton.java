@@ -10,8 +10,8 @@ import net.worldwizard.support.map.generic.TemplateTransform;
 
 public class CyanButton extends GenericButton {
     public CyanButton() {
-        super(new CyanWallOff(), new CyanWallOn(), new TemplateTransform(0.0,
-                1.0, 1.0, ""));
+        super(new CyanWallOff(), new CyanWallOn(),
+                new TemplateTransform(0.0, 1.0, 1.0, ""));
     }
 
     @Override

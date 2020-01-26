@@ -18,7 +18,7 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
     private int destinationLevel;
 
     // Constructors
-    public AbstractTeleportTo(int tc) {
+    public AbstractTeleportTo(final int tc) {
         super(false, ObjectImageConstants.OBJECT_IMAGE_NONE);
         this.destinationLevel = 0;
         this.setTemplateColor(tc);
@@ -26,9 +26,9 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_FINISH);
         app.getGameManager().solvedLevelWarp(this.getDestinationLevel());
     }
@@ -42,7 +42,7 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -52,7 +52,7 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
         if (!(obj instanceof AbstractTeleportTo)) {
             return false;
         }
-        AbstractTeleportTo other = (AbstractTeleportTo) obj;
+        final AbstractTeleportTo other = (AbstractTeleportTo) obj;
         if (this.destinationLevel != other.destinationLevel) {
             return false;
         }
@@ -69,7 +69,7 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
         return this.destinationLevel;
     }
 
-    public void setDestinationLevel(int level) {
+    public void setDestinationLevel(final int level) {
         this.destinationLevel = level;
     }
 
@@ -87,7 +87,7 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
 
     @Override
     public AbstractMazeObject editorPropertiesHook() {
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.editFinishToDestination(this);
         return this;
     }
@@ -98,12 +98,12 @@ public abstract class AbstractTeleportTo extends AbstractTeleport {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return this.destinationLevel;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         this.destinationLevel = value;
     }
 }

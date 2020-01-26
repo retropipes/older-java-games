@@ -12,20 +12,20 @@ import com.puttysoftware.fantastlereboot.ai.AIRoutine;
 import com.puttysoftware.fantastlereboot.creatures.Creature;
 
 public class AutoMapAI extends AbstractMapAIRoutine {
-  // Constructor
-  public AutoMapAI() {
-    super();
-  }
-
-  @Override
-  public int getNextAction(final Creature c, final AIContext ac) {
-    final Point there = ac.isEnemyNearby();
-    if (there != null) {
-      // Something hostile is nearby, so attack it
-      this.moveX = there.x;
-      this.moveY = there.y;
-      return AIRoutine.ACTION_MOVE;
+    // Constructor
+    public AutoMapAI() {
+        super();
     }
-    return AIRoutine.ACTION_END_TURN;
-  }
+
+    @Override
+    public int getNextAction(final Creature c, final AIContext ac) {
+        final Point there = ac.isEnemyNearby();
+        if (there != null) {
+            // Something hostile is nearby, so attack it
+            this.moveX = there.x;
+            this.moveY = there.y;
+            return AIRoutine.ACTION_MOVE;
+        }
+        return AIRoutine.ACTION_END_TURN;
+    }
 }

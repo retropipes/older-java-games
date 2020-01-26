@@ -30,10 +30,10 @@ class BattleEffects {
         return this.effectsPane;
     }
 
-    void updateEffects(BattleCharacter bc) {
+    void updateEffects(final BattleCharacter bc) {
         if (bc != null) {
-            int count = bc.getTemplate().getActiveEffectCount();
-            String[] es = bc.getTemplate().getCompleteEffectString();
+            final int count = bc.getTemplate().getActiveEffectCount();
+            final String[] es = bc.getTemplate().getCompleteEffectString();
             for (int x = 0; x < count; x++) {
                 this.effectLabel.setText(es[x]);
             }

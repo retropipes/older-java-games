@@ -188,14 +188,17 @@ public abstract class GenericEditor implements EditorProperties {
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
                 pw = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
                 ph = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();
@@ -230,14 +233,17 @@ public abstract class GenericEditor implements EditorProperties {
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > ImageTransformer.MAX_WINDOW_SIZE) {
                 pw = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > ImageTransformer.MAX_WINDOW_SIZE) {
                 ph = ImageTransformer.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();

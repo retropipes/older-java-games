@@ -36,10 +36,8 @@ public class PoisonousAmulet extends AbstractAmulet {
 
     @Override
     public void postMoveActionHook() {
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_POISONOUS,
-                        PoisonousAmulet.EFFECT_DURATION);
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_POISONOUS,
+                PoisonousAmulet.EFFECT_DURATION);
     }
 }

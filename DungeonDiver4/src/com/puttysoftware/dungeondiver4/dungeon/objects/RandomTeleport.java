@@ -19,16 +19,17 @@ public class RandomTeleport extends AbstractRandomTeleport {
         super(0, 0, ObjectImageConstants.OBJECT_IMAGE_RANDOM);
     }
 
-    public RandomTeleport(final int newRandomRangeY, final int newRandomRangeX) {
+    public RandomTeleport(final int newRandomRangeY,
+            final int newRandomRangeX) {
         super(newRandomRangeY, newRandomRangeX,
                 ObjectImageConstants.OBJECT_IMAGE_RANDOM);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();

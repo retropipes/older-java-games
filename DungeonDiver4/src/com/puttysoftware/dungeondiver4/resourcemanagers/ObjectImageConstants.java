@@ -240,21 +240,21 @@ public class ObjectImageConstants {
     public static final int OBJECT_IMAGE_Z_PLUG = 246;
     public static final int OBJECT_IMAGE_Z_PORT = 247;
     public static final int OBJECT_IMAGE_N_WAY = 248;
-    private static final String[] OBJECT_IMAGE_NAMES = { "amulet",
-            "armor_shop", "arrow", "arrow_east", "arrow_north",
-            "arrow_northeast", "arrow_northwest", "arrow_south",
-            "arrow_southeast", "arrow_southwest", "arrow_west", "axe",
-            "a_plug", "a_port", "bank", "barrier_generator", "block_base",
-            "bolt", "bomb", "boots", "bow", "bracers", "breakable_horizontal",
-            "breakable_vertical", "brick_wall", "bridge_horizontal",
-            "bridge_vertical", "button", "b_plug", "b_port", "cap", "carpet",
-            "chain", "closed_door", "conditional", "conditional_chain",
-            "confusion", "controllable", "cracked", "crevasse", "crumbling",
-            "crystal", "crystal_wall", "custom_shop", "cut_tree", "c_plug",
-            "c_port", "dagger", "damageable", "damaged", "darkness",
-            "destination", "dizziness", "drunk", "d_plug", "d_port", "empty",
-            "energy_sphere", "enhancement_shop", null, "exploding", "explore",
-            "e_plug", "e_port", "fading", "faith_power_shop", null, null, null,
+    private static final String[] OBJECT_IMAGE_NAMES = { "amulet", "armor_shop",
+            "arrow", "arrow_east", "arrow_north", "arrow_northeast",
+            "arrow_northwest", "arrow_south", "arrow_southeast",
+            "arrow_southwest", "arrow_west", "axe", "a_plug", "a_port", "bank",
+            "barrier_generator", "block_base", "bolt", "bomb", "boots", "bow",
+            "bracers", "breakable_horizontal", "breakable_vertical",
+            "brick_wall", "bridge_horizontal", "bridge_vertical", "button",
+            "b_plug", "b_port", "cap", "carpet", "chain", "closed_door",
+            "conditional", "conditional_chain", "confusion", "controllable",
+            "cracked", "crevasse", "crumbling", "crystal", "crystal_wall",
+            "custom_shop", "cut_tree", "c_plug", "c_port", "dagger",
+            "damageable", "damaged", "darkness", "destination", "dizziness",
+            "drunk", "d_plug", "d_port", "empty", "energy_sphere",
+            "enhancement_shop", null, "exploding", "explore", "e_plug",
+            "e_port", "fading", "faith_power_shop", null, null, null,
             "force_field", "f_plug", "f_port", "gem", "generic_wall_trap",
             "gloves", "g_plug", "g_port", "hammer", "health", "heal_shop",
             "horizontal_barrier", null, null, "h_plug", "h_port",
@@ -268,37 +268,36 @@ public class ObjectImageConstants {
             "major_heal_potion", "major_hurt_potion", "major_random_potion",
             "major_regen_potion", "major_unknown_potion", "map_note",
             "minor_drain_potion", "minor_heal_potion", "minor_hurt_potion",
-            "minor_random_potion", "minor_regen_potion",
-            "minor_unknown_potion", "monster", "m_plug", "m_port", "necklace",
-            "no", "n_plug", "n_port", "once", "one_shot", "one_shot_chain",
-            "one_shot_conditional", "one_shot_controllable", "one_way_east",
-            "one_way_north", "one_way_south", "one_way_west", "open_door",
-            "o_plug", "o_port", "pit", "player", "pullable", "p_plug",
-            "p_port", "q_plug", "q_port", "random", "random_one_shot",
-            "regenerator", "r_plug", "r_port", "sealed_finish", "sealing_wall",
-            "shield", "sign", "small_0", "small_1", "small_10", "small_11",
-            "small_12", "small_13", "small_14", "small_15", "small_16",
-            "small_17", "small_18", "small_19", "small_2", "small_3",
-            "small_4", "small_5", "small_6", "small_7", "small_8", "small_9",
-            "small_exit", "small_master", "small_move", "small_rotation",
-            "socks_shop", "spell_shop", "springboard", "square", "staff",
-            "stairs_down", "stairs_up", "stone", "stump", "suit",
-            "super_drain_potion", "super_heal_potion", "super_hurt_potion",
-            "super_random_potion", "super_regen_potion",
+            "minor_random_potion", "minor_regen_potion", "minor_unknown_potion",
+            "monster", "m_plug", "m_port", "necklace", "no", "n_plug", "n_port",
+            "once", "one_shot", "one_shot_chain", "one_shot_conditional",
+            "one_shot_controllable", "one_way_east", "one_way_north",
+            "one_way_south", "one_way_west", "open_door", "o_plug", "o_port",
+            "pit", "player", "pullable", "p_plug", "p_port", "q_plug", "q_port",
+            "random", "random_one_shot", "regenerator", "r_plug", "r_port",
+            "sealed_finish", "sealing_wall", "shield", "sign", "small_0",
+            "small_1", "small_10", "small_11", "small_12", "small_13",
+            "small_14", "small_15", "small_16", "small_17", "small_18",
+            "small_19", "small_2", "small_3", "small_4", "small_5", "small_6",
+            "small_7", "small_8", "small_9", "small_exit", "small_master",
+            "small_move", "small_rotation", "socks_shop", "spell_shop",
+            "springboard", "square", "staff", "stairs_down", "stairs_up",
+            "stone", "stump", "suit", "super_drain_potion", "super_heal_potion",
+            "super_hurt_potion", "super_random_potion", "super_regen_potion",
             "super_unknown_potion", "sword", "s_plug", "s_port", "tablet",
             "tablet_slot", "teleport", "teleport_base", "textured", "thrice",
             "tile", "trap_base", "treasure_chest", "tree", "twice", "two_way",
-            "t_plug", "t_port", "u_plug", "u_port", "u_turn",
-            "variable_health", "vertical_barrier", "void", "v_plug", "v_port",
-            "wall_making", "wall_off", "wall_on", "wand", "warp",
-            "weapons_shop", "w_plug", "w_port", "x_plug", "x_port", "y_plug",
-            "y_port", "z_plug", "z_port", "n_way" };
+            "t_plug", "t_port", "u_plug", "u_port", "u_turn", "variable_health",
+            "vertical_barrier", "void", "v_plug", "v_port", "wall_making",
+            "wall_off", "wall_on", "wand", "warp", "weapons_shop", "w_plug",
+            "w_port", "x_plug", "x_port", "y_plug", "y_port", "z_plug",
+            "z_port", "n_way" };
 
-    static String getObjectImageName(int ID) {
-        if (ID == OBJECT_IMAGE_NONE) {
+    static String getObjectImageName(final int ID) {
+        if (ID == ObjectImageConstants.OBJECT_IMAGE_NONE) {
             return "";
         } else {
-            return OBJECT_IMAGE_NAMES[ID];
+            return ObjectImageConstants.OBJECT_IMAGE_NAMES[ID];
         }
     }
 }

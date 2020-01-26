@@ -6,17 +6,17 @@
 package com.puttysoftware.gemma.support.map.generic;
 
 public interface TypeConstants {
-    public static final int TYPE_GROUND = 0;
-    public static final int TYPE_FIELD = 1;
-    public static final int TYPE_CHARACTER = 2;
-    public static final int TYPE_PASS_THROUGH = 3;
-    public static final int TYPE_TELEPORT = 9;
-    public static final int TYPE_WALL = 10;
-    public static final int TYPE_BUTTON = 11;
-    public static final int TYPE_TOGGLE_WALL = 12;
-    public static final int TYPE_PLAIN_WALL = 14;
-    public static final int TYPE_EMPTY_SPACE = 15;
-    public static final int TYPE_BATTLE_CHARACTER = 16;
-    public static final int TYPE_SHOP = 17;
-    public static final int TYPES_COUNT = 21;
+    int TYPE_GROUND = 0;
+    int TYPE_FIELD = 1;
+    int TYPE_CHARACTER = 2;
+    int TYPE_PASS_THROUGH = 3;
+    int TYPE_TELEPORT = 9;
+    int TYPE_WALL = 10;
+    int TYPE_BUTTON = 11;
+    int TYPE_TOGGLE_WALL = 12;
+    int TYPE_PLAIN_WALL = 14;
+    int TYPE_EMPTY_SPACE = 15;
+    int TYPE_BATTLE_CHARACTER = 16;
+    int TYPE_SHOP = 17;
+    int TYPES_COUNT = 21;
 }

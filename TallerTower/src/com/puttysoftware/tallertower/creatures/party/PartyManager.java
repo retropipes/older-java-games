@@ -31,8 +31,8 @@ public class PartyManager {
     private static Party party;
     private static int bank = 0;
     private static final int PARTY_SIZE = 1;
-    private final static String[] buttonNames = new String[] { "Done",
-            "Create", "Pick" };
+    private final static String[] buttonNames = new String[] { "Done", "Create",
+            "Pick" };
 
     // Constructors
     private PartyManager() {
@@ -56,15 +56,15 @@ public class PartyManager {
                 }
             } else {
                 final int response = CommonDialogs.showCustomDialog(
-                        "Pick, Create, or Done?", "Create Party", buttonNames,
-                        buttonNames[2]);
+                        "Pick, Create, or Done?", "Create Party",
+                        PartyManager.buttonNames, PartyManager.buttonNames[2]);
                 if (response == 2) {
                     pc = PartyManager.pickOnePartyMemberCreate(pickMembers);
                 } else if (response == 1) {
                     pc = PartyManager.createNewPC(owner);
                     if (pc != null) {
-                        CharacterRegistration.autoregisterCharacter(pc
-                                .getName());
+                        CharacterRegistration
+                                .autoregisterCharacter(pc.getName());
                         CharacterLoader.saveCharacter(pc);
                     }
                 }
@@ -136,7 +136,7 @@ public class PartyManager {
     }
 
     public static void updatePostKill() {
-        final PartyMember leader = getParty().getLeader();
+        final PartyMember leader = PartyManager.getParty().getLeader();
         leader.initPostKill(leader.getRace(), leader.getCaste(),
                 leader.getFaith(), leader.getPersonality(), leader.getGender());
     }
@@ -185,9 +185,9 @@ public class PartyManager {
         }
         final String[] names = new String[nnc];
         nnc = 0;
-        for (int x = 0; x < tempNames.length; x++) {
-            if (tempNames[x] != null) {
-                names[nnc] = tempNames[x];
+        for (final String tempName : tempNames) {
+            if (tempName != null) {
+                names[nnc] = tempName;
                 nnc++;
             }
         }
@@ -200,9 +200,9 @@ public class PartyManager {
         final String response = CommonDialogs.showInputDialog(
                 "Pick 1 Party Member", "Create Party", pickNames, pickNames[0]);
         if (response != null) {
-            for (int x = 0; x < members.length; x++) {
-                if (members[x].getName().equals(response)) {
-                    return members[x];
+            for (final PartyMember member : members) {
+                if (member.getName().equals(response)) {
+                    return member;
                 }
             }
             return null;

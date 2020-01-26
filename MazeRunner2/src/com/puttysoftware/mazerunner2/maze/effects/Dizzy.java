@@ -11,7 +11,7 @@ import com.puttysoftware.randomrange.RandomRange;
 public class Dizzy extends MazeEffect {
     // Fields
     private int state;
-    private RandomRange r;
+    private final RandomRange r;
     private static final int DIZZY_STATE_UDRL = 1;
     private static final int DIZZY_STATE_ULDR = 2;
     private static final int DIZZY_STATE_ULRD = 3;
@@ -53,7 +53,7 @@ public class Dizzy extends MazeEffect {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -63,7 +63,7 @@ public class Dizzy extends MazeEffect {
         if (!(obj instanceof Dizzy)) {
             return false;
         }
-        Dizzy other = (Dizzy) obj;
+        final Dizzy other = (Dizzy) obj;
         if (this.state != other.state) {
             return false;
         }

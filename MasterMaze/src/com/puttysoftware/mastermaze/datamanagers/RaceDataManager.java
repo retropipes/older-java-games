@@ -16,9 +16,10 @@ public class RaceDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    RaceDataManager.class.getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/race/"
-                            + name
-                            + Extension.getInternalDataExtensionWithPeriod()));
+                    RaceDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/mastermaze/resources/data/race/"
+                                    + name + Extension
+                                            .getInternalDataExtensionWithPeriod()));
             final int[] rawData = new int[RaceConstants.RACE_ATTRIBUTE_COUNT];
             for (int x = 0; x < rawData.length; x++) {
                 rawData[x] = rsr.readInt();

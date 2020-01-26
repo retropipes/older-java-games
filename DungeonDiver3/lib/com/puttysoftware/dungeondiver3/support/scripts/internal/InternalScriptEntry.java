@@ -26,7 +26,7 @@ public class InternalScriptEntry {
         return this.actionArgs[0];
     }
 
-    public InternalScriptEntryArgument getActionArg(int index) {
+    public InternalScriptEntryArgument getActionArg(final int index) {
         return this.actionArgs[index];
     }
 
@@ -34,22 +34,22 @@ public class InternalScriptEntry {
         return this.actionArgs;
     }
 
-    public void addActionArg(InternalScriptEntryArgument arg) {
+    public void addActionArg(final InternalScriptEntryArgument arg) {
         this.tempArgs.add(arg);
     }
 
     public void finalizeActionArgs() {
         if (!this.tempArgs.isEmpty()) {
             this.tempArgs.trimToSize();
-            InternalScriptEntryArgument[] args = this.tempArgs
-                    .toArray(new InternalScriptEntryArgument[this.tempArgs
-                            .size()]);
+            final InternalScriptEntryArgument[] args = this.tempArgs.toArray(
+                    new InternalScriptEntryArgument[this.tempArgs.size()]);
             this.setActionArgs(args);
             this.tempArgs = null;
         }
     }
 
-    private void setActionArgs(InternalScriptEntryArgument... newActionArgs) {
+    private void setActionArgs(
+            final InternalScriptEntryArgument... newActionArgs) {
         this.actionArgs = newActionArgs;
     }
 
@@ -57,7 +57,7 @@ public class InternalScriptEntry {
         return this.actionCode;
     }
 
-    public void setActionCode(InternalScriptActionCode newActionCode) {
+    public void setActionCode(final InternalScriptActionCode newActionCode) {
         this.actionCode = newActionCode;
     }
 
@@ -67,13 +67,13 @@ public class InternalScriptEntry {
         int result = 1;
         result = prime * result + Arrays.hashCode(this.actionArgs);
         result = prime * result
-                + ((this.actionCode == null) ? 0 : this.actionCode.hashCode());
+                + (this.actionCode == null ? 0 : this.actionCode.hashCode());
         return prime * result
-                + ((this.tempArgs == null) ? 0 : this.tempArgs.hashCode());
+                + (this.tempArgs == null ? 0 : this.tempArgs.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -83,7 +83,7 @@ public class InternalScriptEntry {
         if (!(obj instanceof InternalScriptEntry)) {
             return false;
         }
-        InternalScriptEntry other = (InternalScriptEntry) obj;
+        final InternalScriptEntry other = (InternalScriptEntry) obj;
         if (!Arrays.equals(this.actionArgs, other.actionArgs)) {
             return false;
         }

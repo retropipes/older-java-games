@@ -23,17 +23,17 @@ public class Water extends GenericField {
     // Scriptability
     @Override
     protected InternalScript playSoundHook() {
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry0 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry0 = new InternalScriptEntry();
         entry0.setActionCode(InternalScriptActionCode.SOUND);
         entry0.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_WATER));
         entry0.finalizeActionArgs();
         scpt.addAction(entry0);
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.MESSAGE);
-        entry1.addActionArg(new InternalScriptEntryArgument(
-                "Brrr, that water's COLD!"));
+        entry1.addActionArg(
+                new InternalScriptEntryArgument("Brrr, that water's COLD!"));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
         scpt.finalizeActions();

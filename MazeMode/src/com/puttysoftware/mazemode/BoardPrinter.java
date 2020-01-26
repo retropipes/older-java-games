@@ -57,14 +57,14 @@ public class BoardPrinter {
                 job.print(doc, pras);
             }
         } catch (final IOException ioe) {
-            CommonDialogs
-                    .showErrorDialog("Printing failed!", "Print GameBoard");
+            CommonDialogs.showErrorDialog("Printing failed!",
+                    "Print GameBoard");
         } catch (final PrintException pe) {
-            CommonDialogs
-                    .showErrorDialog("Printing failed!", "Print GameBoard");
+            CommonDialogs.showErrorDialog("Printing failed!",
+                    "Print GameBoard");
         } catch (final NullPointerException npe) {
-            CommonDialogs
-                    .showErrorDialog("Printing failed!", "Print GameBoard");
+            CommonDialogs.showErrorDialog("Printing failed!",
+                    "Print GameBoard");
         }
     }
 }

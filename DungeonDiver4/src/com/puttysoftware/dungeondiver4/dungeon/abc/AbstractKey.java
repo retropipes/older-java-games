@@ -19,7 +19,7 @@ public abstract class AbstractKey extends AbstractInventoryableObject {
 
     @Override
     public AbstractKey clone() {
-        AbstractKey copy = (AbstractKey) super.clone();
+        final AbstractKey copy = (AbstractKey) super.clone();
         copy.infinite = this.infinite;
         return copy;
     }

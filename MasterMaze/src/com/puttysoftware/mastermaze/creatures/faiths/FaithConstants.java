@@ -58,8 +58,9 @@ public class FaithConstants {
     }
 
     public static String getFaithPowerName(final int f, final int p) {
-        return NamesManager.getName(NamesConstants.SECTION_FAITH_POWERS_PREFIX
-                + FaithConstants.FAITH_NAMES[f],
+        return NamesManager.getName(
+                NamesConstants.SECTION_FAITH_POWERS_PREFIX
+                        + FaithConstants.FAITH_NAMES[f],
                 NamesConstants.SECTION_ARRAY_FAITH_POWERS[p]);
     }
 
@@ -83,8 +84,8 @@ public class FaithConstants {
             try {
                 // Fetch data
                 final ResourceStreamReader rsr1 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/faith/catalog.txt"));
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/mastermaze/resources/data/faith/catalog.txt"));
                 final ArrayList<String> tempNames = new ArrayList<>();
                 String input1 = "";
                 while (input1 != null) {
@@ -98,8 +99,8 @@ public class FaithConstants {
                         .toArray(new String[tempNames.size()]);
                 FaithConstants.FAITHS_COUNT = FaithConstants.FAITH_NAMES.length;
                 final ResourceStreamReader rsr2 = new ResourceStreamReader(
-                        FaithDataManager.class
-                                .getResourceAsStream("/com/puttysoftware/mastermaze/resources/data/faith/colors.txt"));
+                        FaithDataManager.class.getResourceAsStream(
+                                "/com/puttysoftware/mastermaze/resources/data/faith/colors.txt"));
                 final ArrayList<String> tempColors = new ArrayList<>();
                 String input2 = "";
                 while (input2 != null) {

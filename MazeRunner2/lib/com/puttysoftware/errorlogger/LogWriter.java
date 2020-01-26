@@ -44,8 +44,8 @@ class LogWriter {
                 }
             }
             // Print to the file
-            try (PrintStream s = new PrintStream(new BufferedOutputStream(
-                    new FileOutputStream(df)))) {
+            try (PrintStream s = new PrintStream(
+                    new BufferedOutputStream(new FileOutputStream(df)))) {
                 this.t.printStackTrace(s);
                 s.close();
             }

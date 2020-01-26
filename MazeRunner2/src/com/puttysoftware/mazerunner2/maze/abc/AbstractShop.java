@@ -21,7 +21,7 @@ public abstract class AbstractShop extends AbstractMazeObject {
     private final int shopType;
 
     // Constructors
-    public AbstractShop(int newShopType) {
+    public AbstractShop(final int newShopType) {
         super(false, false);
         this.setTemplateColor(ColorConstants.COLOR_ORANGE);
         this.shopType = newShopType;
@@ -34,11 +34,11 @@ public abstract class AbstractShop extends AbstractMazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (PreferencesManager.getRPGEnabled()) {
-            Shop shop = MazeRunnerII.getApplication().getGenericShop(
-                    this.shopType);
+            final Shop shop = MazeRunnerII.getApplication()
+                    .getGenericShop(this.shopType);
             if (shop != null) {
                 shop.showShop();
             }
@@ -53,12 +53,12 @@ public abstract class AbstractShop extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 
@@ -68,7 +68,8 @@ public abstract class AbstractShop extends AbstractMazeObject {
     }
 
     @Override
-    public AbstractMazeObject gameRenderHook(int x, int y, int z) {
+    public AbstractMazeObject gameRenderHook(final int x, final int y,
+            final int z) {
         if (PreferencesManager.getRPGEnabled()) {
             return this;
         } else {

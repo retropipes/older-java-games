@@ -15,36 +15,37 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class ClosedDoor extends AbstractTrigger {
     // Constructors
     public ClosedDoor() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_CLOSED_DOOR;
+        return ObjectImageConstants.OBJECT_IMAGE_CLOSED_DOOR;
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Closed Door";
+        return "Closed Door";
     }
 
     @Override
     public String getPluralName() {
-	return "Closed Doors";
+        return "Closed Doors";
     }
 
     @Override
     public String getDescription() {
-	return "Closed Doors open when stepped on.";
+        return "Closed Doors open when stepped on.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	SoundManager.playSound(SoundConstants.SOUND_PICK_LOCK);
-	final GameLogicManager glm = DynamicDungeon.getApplication()
-		.getGameManager();
-	GameLogicManager.morph(new OpenDoor());
-	glm.redrawDungeon();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        SoundManager.playSound(SoundConstants.SOUND_PICK_LOCK);
+        final GameLogicManager glm = DynamicDungeon.getApplication()
+                .getGameManager();
+        GameLogicManager.morph(new OpenDoor());
+        glm.redrawDungeon();
     }
 }

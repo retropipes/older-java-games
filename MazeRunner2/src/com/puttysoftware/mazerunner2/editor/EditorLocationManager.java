@@ -64,46 +64,46 @@ public class EditorLocationManager {
         return this.cameFromZ;
     }
 
-    public void setEditorLocationX(int val) {
+    public void setEditorLocationX(final int val) {
         this.locX = val;
         this.checkLimits();
     }
 
-    public void setEditorLocationY(int val) {
+    public void setEditorLocationY(final int val) {
         this.locY = val;
         this.checkLimits();
     }
 
-    public void setEditorLocationZ(int val) {
+    public void setEditorLocationZ(final int val) {
         this.locZ = val;
         this.checkLimits();
     }
 
-    public void setEditorLocationW(int val) {
+    public void setEditorLocationW(final int val) {
         this.locW = val;
         this.checkLimits();
     }
 
-    public void setEditorLocationE(int val) {
+    public void setEditorLocationE(final int val) {
         this.locE = val;
         this.checkLimits();
     }
 
-    public void setCameFromZ(int val) {
+    public void setCameFromZ(final int val) {
         this.cameFromZ = val;
     }
 
-    public void offsetEditorLocationZ(int val) {
+    public void offsetEditorLocationZ(final int val) {
         this.locZ += val;
         this.checkLimits();
     }
 
-    public void offsetEditorLocationW(int val) {
+    public void offsetEditorLocationW(final int val) {
         this.locW += val;
         this.checkLimits();
     }
 
-    public void setLimitsFromMaze(Maze m) {
+    public void setLimitsFromMaze(final Maze m) {
         this.minX = 0;
         this.minY = 0;
         this.minZ = 0;
@@ -137,7 +137,7 @@ public class EditorLocationManager {
 
     private void checkLimits() {
         // Check for limits out of bounds
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
         if (this.locW < this.minW) {
             this.locW = this.minW;
         }

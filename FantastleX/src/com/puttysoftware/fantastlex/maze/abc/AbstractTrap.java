@@ -12,7 +12,8 @@ import com.puttysoftware.fantastlex.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractTrap extends AbstractMazeObject {
     // Constructors
-    protected AbstractTrap(final int tc, final int attrName, final int attrColor) {
+    protected AbstractTrap(final int tc, final int attrName,
+            final int attrColor) {
         super(false, false);
         this.setTemplateColor(tc);
         this.setAttributeID(attrName);

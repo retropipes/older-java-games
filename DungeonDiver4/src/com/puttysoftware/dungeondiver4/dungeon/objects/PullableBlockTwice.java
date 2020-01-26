@@ -37,7 +37,7 @@ public class PullableBlockTwice extends AbstractMovableObject {
     public void pullAction(final DungeonObjectInventory inv,
             final AbstractDungeonObject mo, final int x, final int y,
             final int pushX, final int pushY) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
         SoundManager.playSound(SoundConstants.SOUND_PUSH_PULL);
         app.getGameManager().morphOther(new PullableBlockOnce(), pushX, pushY,

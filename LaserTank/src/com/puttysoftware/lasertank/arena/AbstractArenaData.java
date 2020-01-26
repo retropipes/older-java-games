@@ -54,7 +54,8 @@ public abstract class AbstractArenaData implements Cloneable {
 
     public abstract int getFloors();
 
-    public abstract int[] findPlayer(final AbstractArena arena, final int number);
+    public abstract int[] findPlayer(final AbstractArena arena,
+            final int number);
 
     public abstract void tickTimers(final AbstractArena arena, final int floor,
             final int actionType);
@@ -131,7 +132,8 @@ public abstract class AbstractArenaData implements Cloneable {
 
     public abstract void clearVirtualGrid(final AbstractArena arena);
 
-    public abstract void fill(final AbstractArena arena, final AbstractArenaObject fillWith);
+    public abstract void fill(final AbstractArena arena,
+            final AbstractArenaObject fillWith);
 
     public abstract void fillVirtual();
 

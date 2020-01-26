@@ -18,8 +18,8 @@ public class MazerPlatform {
             System.setProperty("apple.laf.useScreenMenuBar", "true");
             try {
                 // Tell the UIManager to use the Quaqua look and feel
-                UIManager
-                        .setLookAndFeel("ch.randelshofer.quaqua.QuaquaLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "ch.randelshofer.quaqua.QuaquaLookAndFeel");
             } catch (final Exception e) {
                 // Do nothing
             }
@@ -27,8 +27,8 @@ public class MazerPlatform {
             // Windows-specific stuff
             try {
                 // Tell the UIManager to use the Windows look and feel
-                UIManager
-                        .setLookAndFeel("com.jgoodies.looks.windows.WindowsLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "com.jgoodies.looks.windows.WindowsLookAndFeel");
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -38,16 +38,16 @@ public class MazerPlatform {
             // All other platforms
             try {
                 // Tell the UIManager to use the GTK look and feel
-                UIManager
-                        .setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+                UIManager.setLookAndFeel(
+                        "com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
                 try {
                     // Tell the UIManager to use the platform native look and
                     // feel, as a fall-back
-                    UIManager.setLookAndFeel(UIManager
-                            .getSystemLookAndFeelClassName());
+                    UIManager.setLookAndFeel(
+                            UIManager.getSystemLookAndFeelClassName());
                     // Hint to the UI that the L&F is decorated
                     JFrame.setDefaultLookAndFeelDecorated(true);
                 } catch (final Exception e2) {

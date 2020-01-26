@@ -7,8 +7,8 @@ package com.puttysoftware.dungeondiver4.dungeon.objects;
 
 import com.puttysoftware.dungeondiver4.Application;
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
-import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleTeleport;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractDungeonObject;
+import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleTeleport;
 import com.puttysoftware.dungeondiver4.dungeon.utilities.DungeonObjectInventory;
 import com.puttysoftware.dungeondiver4.editor.DungeonEditorLogic;
 import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
@@ -29,9 +29,9 @@ public class InvisibleOneShotTeleport extends AbstractInvisibleTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
@@ -56,9 +56,10 @@ public class InvisibleOneShotTeleport extends AbstractInvisibleTeleport {
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
-        return me
-                .editTeleportDestination(DungeonEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT);
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
+        return me.editTeleportDestination(
+                DungeonEditorLogic.TELEPORT_TYPE_INVISIBLE_ONESHOT);
     }
 
     @Override

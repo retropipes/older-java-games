@@ -30,7 +30,7 @@ class PsyLook {
     int[] octave;
 
     /**
-     * 
+     *
      * @param vi1
      * @param n1
      * @param rate

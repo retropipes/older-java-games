@@ -12,15 +12,14 @@ import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithDescriptionManager {
     public static String getFaithDescription(final int f) {
-        String name = FaithConstants.getFaithName(f).toLowerCase();
+        final String name = FaithConstants.getFaithName(f).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                FaithDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/descriptions/faith/"
-                                + name
-                                + Extension
+                FaithDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/dungeondiver4/resources/descriptions/faith/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
-            String desc = rsr.readString();
+            final String desc = rsr.readString();
             return desc;
         } catch (final Exception e) {
             return null;

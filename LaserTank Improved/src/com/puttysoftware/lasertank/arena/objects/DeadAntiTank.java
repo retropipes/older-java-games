@@ -15,31 +15,34 @@ import com.puttysoftware.lasertank.utilities.LaserTypeConstants;
 public class DeadAntiTank extends AbstractMovableObject {
     // Constructors
     public DeadAntiTank() {
-	super(false);
-	this.setDirection(Direction.NORTH);
+        super(false);
+        this.setDirection(Direction.NORTH);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 11;
+        return 11;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	LaserTank.getApplication().getGameManager().haltMovingObjects();
-	if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
-	    // Destroy
-	    SoundManager.playSound(SoundConstants.SOUND_BOOM);
-	    LaserTank.getApplication().getGameManager().morph(this.getSavedObject(), locX, locY, locZ, this.getLayer());
-	} else {
-	    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	}
-	return Direction.NONE;
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        LaserTank.getApplication().getGameManager().haltMovingObjects();
+        if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
+            // Destroy
+            SoundManager.playSound(SoundConstants.SOUND_BOOM);
+            LaserTank.getApplication().getGameManager().morph(
+                    this.getSavedObject(), locX, locY, locZ, this.getLayer());
+        } else {
+            return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                    laserType, forceUnits);
+        }
+        return Direction.NONE;
     }
 
     @Override
     public void playSoundHook() {
-	// Do nothing
+        // Do nothing
     }
 }

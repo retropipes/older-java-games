@@ -73,8 +73,7 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
 
     @Override
     public AbstractConditionalTeleport clone() {
-        final AbstractConditionalTeleport copy = (AbstractConditionalTeleport) super
-                .clone();
+        final AbstractConditionalTeleport copy = (AbstractConditionalTeleport) super.clone();
         copy.destCol2 = this.destCol2;
         copy.destFloor2 = this.destFloor2;
         copy.destRow2 = this.destRow2;
@@ -127,8 +126,8 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         int testVal;
         if (this.sunMoon == AbstractConditionalTeleport.TRIGGER_SUN) {

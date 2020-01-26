@@ -25,8 +25,8 @@ public final class StackedPicturePicker {
     private final ButtonGroup radioGroup;
     private JRadioButton[] radioButtons;
     int index;
-    private Color savedCRCColor;
-    private Color savedCHColor;
+    private final Color savedCRCColor;
+    private final Color savedCHColor;
     private final EventHandler handler;
     private final int stackCount;
     private final int imageSize;
@@ -54,16 +54,16 @@ public final class StackedPicturePicker {
     public void disablePicker() {
         this.pickerContainer.setEnabled(false);
         this.pickerContainer.setBackground(Color.gray);
-        for (int x = 0; x < this.radioButtons.length; x++) {
-            this.radioButtons[x].setEnabled(false);
+        for (final JRadioButton radioButton : this.radioButtons) {
+            radioButton.setEnabled(false);
         }
     }
 
     public void enablePicker() {
         this.pickerContainer.setEnabled(true);
         this.pickerContainer.setBackground(this.savedCRCColor);
-        for (int x = 0; x < this.radioButtons.length; x++) {
-            this.radioButtons[x].setEnabled(true);
+        for (final JRadioButton radioButton : this.radioButtons) {
+            radioButton.setEnabled(true);
         }
     }
 
@@ -93,8 +93,9 @@ public final class StackedPicturePicker {
                     this.pickerContainer.add(this.choiceArray[picCounter]);
                 } else if (rowCounter == rows - 2) {
                     // Add spacer
-                    final JLabel spacer = new JLabel("", new BufferedImageIcon(
-                            this.imageSize, this.savedCHColor),
+                    final JLabel spacer = new JLabel("",
+                            new BufferedImageIcon(this.imageSize,
+                                    this.savedCHColor),
                             SwingConstants.LEFT);
                     this.pickerContainer.add(spacer);
                 }
@@ -107,8 +108,8 @@ public final class StackedPicturePicker {
                     this.radioButtons[radioCounter]
                             .setHorizontalAlignment(SwingConstants.CENTER);
                     this.radioButtons[radioCounter].setOpaque(true);
-                    this.radioButtons[radioCounter].setActionCommand(Integer
-                            .valueOf(radioCounter).toString());
+                    this.radioButtons[radioCounter].setActionCommand(
+                            Integer.valueOf(radioCounter).toString());
                     this.radioGroup.add(this.radioButtons[radioCounter]);
                     this.radioButtons[radioCounter]
                             .addActionListener(this.handler);
@@ -116,8 +117,9 @@ public final class StackedPicturePicker {
                     this.pickerContainer.add(this.radioButtons[radioCounter]);
                 } else if (rowCounter == rows - 1) {
                     // Add spacer
-                    final JLabel spacer = new JLabel("", new BufferedImageIcon(
-                            this.imageSize, this.savedCHColor),
+                    final JLabel spacer = new JLabel("",
+                            new BufferedImageIcon(this.imageSize,
+                                    this.savedCHColor),
                             SwingConstants.LEFT);
                     this.pickerContainer.add(spacer);
                 }
@@ -139,8 +141,8 @@ public final class StackedPicturePicker {
                 .preferredLayoutSize(this.pickerContainer).width;
         final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
                 .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
-                newPreferredHeight));
+        this.pickerContainer.setPreferredSize(
+                new Dimension(newPreferredWidth, newPreferredHeight));
     }
 
     public void selectLastPickedChoice(final int lastPicked) {
@@ -148,7 +150,7 @@ public final class StackedPicturePicker {
     }
 
     /**
-     * 
+     *
      * @return the index of the picture picked
      */
     public int getPicked() {

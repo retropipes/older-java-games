@@ -32,7 +32,7 @@ public abstract class GenericEditor implements EditorProperties {
     private JLabel messageLabel;
     private JScrollPane scrollPane;
     private boolean objectChanged;
-    private int editorID;
+    private final int editorID;
     private boolean readOnly;
 
     protected GenericEditor(final String newType, final String newSource,
@@ -68,7 +68,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     public final void edit() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         app.getGUIManager().hideGUI();
         app.setInEditor();
         app.setCurrentEditor(this.editorID);
@@ -108,7 +108,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     private final void showOutput() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         this.outputFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         app.getMenuManager().setEditorMenus();
         this.outputFrame.setVisible(true);
@@ -122,7 +122,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     public final JFrame getOutputFrame() {
-        if ((this.outputFrame != null) && this.outputFrame.isVisible()) {
+        if (this.outputFrame != null && this.outputFrame.isVisible()) {
             return this.outputFrame;
         } else {
             return null;
@@ -134,7 +134,7 @@ public abstract class GenericEditor implements EditorProperties {
     }
 
     public final void exitEditor() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         app.notifyAllNonCurrentEditorsEnableCommands();
         // Save changes
         this.saveObject();
@@ -200,21 +200,24 @@ public abstract class GenericEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > GraphicsConstants.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > GraphicsConstants.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > GraphicsConstants.MAX_WINDOW_SIZE) {
                 pw = GraphicsConstants.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
                 ph = GraphicsConstants.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();
@@ -242,21 +245,24 @@ public abstract class GenericEditor implements EditorProperties {
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
         this.outputFrame.setResizable(false);
-        WindowListener wl = this.guiHookWindow();
+        final WindowListener wl = this.guiHookWindow();
         if (wl != null) {
             this.outputFrame.addWindowListener(wl);
         }
         this.outputFrame.setContentPane(this.scrollPane);
         this.outputFrame.pack();
         if (this.outputFrame.getWidth() > GraphicsConstants.MAX_WINDOW_SIZE
-                || this.outputFrame.getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
+                || this.outputFrame
+                        .getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
             int pw, ph;
-            if (this.outputFrame.getWidth() > GraphicsConstants.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getWidth() > GraphicsConstants.MAX_WINDOW_SIZE) {
                 pw = GraphicsConstants.MAX_WINDOW_SIZE;
             } else {
                 pw = this.scrollPane.getWidth();
             }
-            if (this.outputFrame.getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
+            if (this.outputFrame
+                    .getHeight() > GraphicsConstants.MAX_WINDOW_SIZE) {
                 ph = GraphicsConstants.MAX_WINDOW_SIZE;
             } else {
                 ph = this.scrollPane.getHeight();

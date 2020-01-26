@@ -51,9 +51,8 @@ public abstract class GenericMultipleLock extends GenericLock {
         } else {
             fill = "";
         }
-        WeaselWeb.getApplication().showMessage(
-                "You need " + this.keyCount + " " + this.getKey().getName()
-                        + fill);
+        WeaselWeb.getApplication().showMessage("You need " + this.keyCount + " "
+                + this.getKey().getName() + fill);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_WALK_FAILED);
     }
@@ -71,8 +70,8 @@ public abstract class GenericMultipleLock extends GenericLock {
     @Override
     public MazeObject editorPropertiesHook() {
         try {
-            this.keyCount = Integer.parseInt(CommonDialogs
-                    .showTextInputDialogWithDefault(
+            this.keyCount = Integer
+                    .parseInt(CommonDialogs.showTextInputDialogWithDefault(
                             "Set Key Count for " + this.getName(), "Editor",
                             Integer.toString(this.keyCount)));
         } catch (final NumberFormatException nf) {

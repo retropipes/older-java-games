@@ -17,12 +17,12 @@ public class Fighter extends Player {
         this.classBonusDefense = 0;
         this.updateMaxHPandMP();
         this.healFully();
-        this.spellsKnown = SpellBookManager.getSpellBookByID(this
-                .getPlayerClass());
+        this.spellsKnown = SpellBookManager
+                .getSpellBookByID(this.getPlayerClass());
     }
 
-    public Fighter(final int pAtk, final int pDef, final int pHP,
-            final int pMP, final int k) {
+    public Fighter(final int pAtk, final int pDef, final int pHP, final int pMP,
+            final int k) {
         super(pAtk, pDef, pHP, pMP, k);
         this.hpPerLevel = 12;
         this.mpPerLevel = 2;
@@ -32,8 +32,8 @@ public class Fighter extends Player {
         this.classBonusDefense = 0;
         this.updateMaxHPandMP();
         this.healFully();
-        this.spellsKnown = SpellBookManager.getSpellBookByID(this
-                .getPlayerClass());
+        this.spellsKnown = SpellBookManager
+                .getSpellBookByID(this.getPlayerClass());
     }
 
     // Methods

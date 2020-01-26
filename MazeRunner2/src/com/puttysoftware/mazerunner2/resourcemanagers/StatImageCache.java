@@ -16,20 +16,22 @@ public class StatImageCache {
     // Methods
     static BufferedImageIcon getCachedImage(final String name) {
         if (!StatImageCache.isInCache(name)) {
-            BufferedImageIcon bii = StatImageManager.getUncachedImage(name);
-            BufferedImageIcon fixed = ImageTransformer.getTransformedImage(bii);
+            final BufferedImageIcon bii = StatImageManager
+                    .getUncachedImage(name);
+            final BufferedImageIcon fixed = ImageTransformer
+                    .getTransformedImage(bii);
             StatImageCache.addToCache(name, fixed);
         }
-        for (int x = 0; x < StatImageCache.cache.length; x++) {
-            if (name.equals(StatImageCache.cache[x].getName())) {
-                return StatImageCache.cache[x].getImage();
+        for (final CacheEntry element : StatImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;
     }
 
     private static void expandCache() {
-        CacheEntry[] tempCache = new CacheEntry[StatImageCache.cache.length
+        final CacheEntry[] tempCache = new CacheEntry[StatImageCache.cache.length
                 + StatImageCache.CACHE_INCREMENT];
         for (int x = 0; x < StatImageCache.CACHE_SIZE; x++) {
             tempCache[x] = StatImageCache.cache[x];

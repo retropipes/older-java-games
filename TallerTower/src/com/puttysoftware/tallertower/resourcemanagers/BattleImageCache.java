@@ -21,9 +21,9 @@ public class BattleImageCache {
                     .getUncachedImage(baseName);
             BattleImageCache.addToCache(name, bii);
         }
-        for (int x = 0; x < BattleImageCache.cache.length; x++) {
-            if (name.equals(BattleImageCache.cache[x].getName())) {
-                return BattleImageCache.cache[x].getImage();
+        for (final CacheEntry element : BattleImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;

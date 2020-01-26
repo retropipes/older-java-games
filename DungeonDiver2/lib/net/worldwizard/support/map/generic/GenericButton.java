@@ -38,8 +38,8 @@ public abstract class GenericButton extends MapObject {
         this.postMove.addAction(act1);
         final GameScriptEntry act2 = new GameScriptEntry();
         act2.setActionCode(GameActionCode.SOUND);
-        act2.addActionArg(new GameScriptEntryArgument(
-                GameSoundConstants.SOUND_BUTTON));
+        act2.addActionArg(
+                new GameScriptEntryArgument(GameSoundConstants.SOUND_BUTTON));
         act2.finalizeActionArgs();
         this.postMove.addAction(act2);
         this.postMove.finalizeActions();
@@ -54,13 +54,12 @@ public abstract class GenericButton extends MapObject {
             return false;
         }
         final GenericButton other = (GenericButton) obj;
-        if (this.offState != other.offState
-                && (this.offState == null || !this.offState
-                        .equals(other.offState))) {
+        if (this.offState != other.offState && (this.offState == null
+                || !this.offState.equals(other.offState))) {
             return false;
         }
-        if (this.onState != other.onState
-                && (this.onState == null || !this.onState.equals(other.onState))) {
+        if (this.onState != other.onState && (this.onState == null
+                || !this.onState.equals(other.onState))) {
             return false;
         }
         return true;

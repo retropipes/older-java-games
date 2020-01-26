@@ -43,11 +43,10 @@ public class PrestigeViewer {
             final long prestigeScore = leader.computePrestige();
             for (int x = 0; x < PrestigeConstants.MAX_PRESTIGE; x++) {
                 final long value = leader.getPrestigeValue(x);
-                PrestigeViewer.prestigeValues[x].setForeground(Creature
-                        .getPrestigeColor(x));
                 PrestigeViewer.prestigeValues[x]
-                        .setText(PrestigeConstants.PRESTIGE_NAMES[x] + ": "
-                                + value);
+                        .setForeground(Creature.getPrestigeColor(x));
+                PrestigeViewer.prestigeValues[x].setText(
+                        PrestigeConstants.PRESTIGE_NAMES[x] + ": " + value);
             }
             PrestigeViewer.prestigeValues[PrestigeConstants.MAX_PRESTIGE]
                     .setText("Overall Prestige: " + prestigeScore);
@@ -66,15 +65,15 @@ public class PrestigeViewer {
             PrestigeViewer.prestigePane = new JPanel();
             PrestigeViewer.prestigePane.setLayout(new BorderLayout());
             PrestigeViewer.contentPane = new JPanel();
-            PrestigeViewer.contentPane.setLayout(new GridLayout(
-                    PrestigeConstants.MAX_PRESTIGE + 1, 1));
+            PrestigeViewer.contentPane.setLayout(
+                    new GridLayout(PrestigeConstants.MAX_PRESTIGE + 1, 1));
             PrestigeViewer.buttonPane = new JPanel();
             PrestigeViewer.buttonPane.setLayout(new FlowLayout());
             PrestigeViewer.btnOK = new JButton("OK");
-            PrestigeViewer.btnOK
-                    .addActionListener(e -> PrestigeViewer.prestigeFrame
-                            .setVisible(false));
-            PrestigeViewer.prestigeValues = new JLabel[PrestigeConstants.MAX_PRESTIGE + 1];
+            PrestigeViewer.btnOK.addActionListener(
+                    e -> PrestigeViewer.prestigeFrame.setVisible(false));
+            PrestigeViewer.prestigeValues = new JLabel[PrestigeConstants.MAX_PRESTIGE
+                    + 1];
             for (int x = 0; x < PrestigeConstants.MAX_PRESTIGE + 1; x++) {
                 PrestigeViewer.prestigeValues[x] = new JLabel();
                 PrestigeViewer.contentPane

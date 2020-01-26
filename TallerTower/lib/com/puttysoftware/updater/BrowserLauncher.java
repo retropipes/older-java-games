@@ -15,17 +15,20 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 public class BrowserLauncher {
     private static final String errMsg = "Error attempting to launch web browser!";
 
-    public static void openURL(String url) {
+    public static void openURL(final String url) {
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI(url));
-            } catch (IOException e) {
-                CommonDialogs.showErrorDialog(errMsg, "Updater Error");
-            } catch (URISyntaxException e) {
-                CommonDialogs.showErrorDialog(errMsg, "Updater Error");
+            } catch (final IOException e) {
+                CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                        "Updater Error");
+            } catch (final URISyntaxException e) {
+                CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                        "Updater Error");
             }
         } else {
-            CommonDialogs.showErrorDialog(errMsg, "Updater Error");
+            CommonDialogs.showErrorDialog(BrowserLauncher.errMsg,
+                    "Updater Error");
         }
     }
 }

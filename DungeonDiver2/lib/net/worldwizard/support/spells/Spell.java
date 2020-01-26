@@ -123,12 +123,13 @@ public class Spell extends Identifiable {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(this.effect.computeLongHash().multiply(
-                BigInteger.valueOf(2)));
+        longHash = longHash.add(
+                this.effect.computeLongHash().multiply(BigInteger.valueOf(2)));
         longHash = longHash.add(IDGenerator.computeLongLongHash(this.cost)
                 .multiply(BigInteger.valueOf(3)));
-        longHash = longHash.add(IDGenerator.computeLongLongHash(
-                this.soundEffect).multiply(BigInteger.valueOf(4)));
+        longHash = longHash
+                .add(IDGenerator.computeLongLongHash(this.soundEffect)
+                        .multiply(BigInteger.valueOf(4)));
         return longHash;
     }
 
@@ -155,12 +156,10 @@ public class Spell extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "spells"
-                + File.separator
-                + this.getID() + Extension.getSpellExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "spells" + File.separator + this.getID()
+                        + Extension.getSpellExtensionWithPeriod(),
                 Extension.getSpellExtension());
         this.write(writer);
         writer.close();

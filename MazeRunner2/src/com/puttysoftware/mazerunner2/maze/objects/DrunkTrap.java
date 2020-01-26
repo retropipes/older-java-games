@@ -36,15 +36,12 @@ public class DrunkTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(boolean ie, int dirX, int dirY,
-            MazeObjectInventory inv) {
-        MazeRunnerII.getApplication().showMessage(
-                "You stumble around drunkenly!");
-        MazeRunnerII
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_DRUNK,
-                        DrunkTrap.EFFECT_DURATION);
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        MazeRunnerII.getApplication()
+                .showMessage("You stumble around drunkenly!");
+        MazeRunnerII.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_DRUNK, DrunkTrap.EFFECT_DURATION);
         SoundManager.playSound(SoundConstants.SOUND_DRUNK);
     }
 

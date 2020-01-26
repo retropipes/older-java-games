@@ -8,16 +8,16 @@ import net.dynamicdungeon.dynamicdungeon.creatures.party.PartyManager;
 
 public class FileHooks {
     private FileHooks() {
-	// Do nothing
+        // Do nothing
     }
 
     public static void loadGameHook(final DatabaseReader mapFile)
-	    throws IOException {
-	PartyManager.loadGameHook(mapFile);
+            throws IOException {
+        PartyManager.loadGameHook(mapFile);
     }
 
     public static void saveGameHook(final DatabaseWriter mapFile)
-	    throws IOException {
-	PartyManager.saveGameHook(mapFile);
+            throws IOException {
+        PartyManager.saveGameHook(mapFile);
     }
 }

@@ -48,32 +48,32 @@ public class StairsUp extends AbstractTeleport {
 
     @Override
     public int getDestinationRow() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         return app.getDungeonManager().getDungeon().getPlayerLocationX();
     }
 
     @Override
     public int getDestinationColumn() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         return app.getDungeonManager().getDungeon().getPlayerLocationY();
     }
 
     @Override
     public int getDestinationFloor() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         return app.getDungeonManager().getDungeon().getPlayerLocationZ() + 1;
     }
 
     @Override
     public int getDestinationLevel() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         return app.getDungeonManager().getDungeon().getPlayerLocationW();
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
@@ -82,7 +82,8 @@ public class StairsUp extends AbstractTeleport {
 
     @Override
     public void editorPlaceHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
         me.pairStairs(DungeonEditorLogic.STAIRS_UP);
     }
 
@@ -102,12 +103,12 @@ public class StairsUp extends AbstractTeleport {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

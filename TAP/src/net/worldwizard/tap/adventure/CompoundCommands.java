@@ -2,7 +2,8 @@ package net.worldwizard.tap.adventure;
 
 class CompoundCommands {
     // Fields
-    private static final String[] COMPOUND_COMMAND_WORDS = { " and ", " then " };
+    private static final String[] COMPOUND_COMMAND_WORDS = { " and ",
+            " then " };
     private static final String COMPOUND_COMMAND_SEPARATOR = " && ";
 
     // Private constructor

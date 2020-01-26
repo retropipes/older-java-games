@@ -20,9 +20,9 @@ public class BossImageCache {
                     .getUncachedImage(name);
             BossImageCache.addToCache(name, bii);
         }
-        for (int x = 0; x < BossImageCache.cache.length; x++) {
-            if (name.equals(BossImageCache.cache[x].getName())) {
-                return BossImageCache.cache[x].getImage();
+        for (final CacheEntry element : BossImageCache.cache) {
+            if (name.equals(element.getName())) {
+                return element.getImage();
             }
         }
         return null;

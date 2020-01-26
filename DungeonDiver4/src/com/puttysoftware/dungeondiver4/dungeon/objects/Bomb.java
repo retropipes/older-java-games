@@ -44,12 +44,9 @@ public class Bomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Kill any monsters nearby
-        DungeonDiver4
-                .getApplication()
-                .getDungeonManager()
-                .getDungeon()
+        DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .radialScanKillMonsters(x, y, z, DungeonConstants.LAYER_OBJECT,
                         AbstractBomb.EFFECT_RADIUS);
     }

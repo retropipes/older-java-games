@@ -12,14 +12,14 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class TankMover extends AbstractMover {
     // Constructors
     public TankMover() {
-	super();
-	this.setDirection(Direction.NORTH);
-	this.setFrameNumber(1);
-	this.type.set(TypeConstants.TYPE_MOVER);
+        super();
+        this.setDirection(Direction.NORTH);
+        this.setFrameNumber(1);
+        this.type.set(TypeConstants.TYPE_MOVER);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 37;
+        return 37;
     }
 }

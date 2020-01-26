@@ -15,32 +15,32 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class PlasticBox extends AbstractMovableObject {
     // Constructors
     public PlasticBox() {
-	super(true);
-	this.type.set(TypeConstants.TYPE_BOX);
-	this.setMaterial(MaterialConstants.MATERIAL_PLASTIC);
+        super(true);
+        this.type.set(TypeConstants.TYPE_BOX);
+        this.setMaterial(MaterialConstants.MATERIAL_PLASTIC);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_ICE:
-	    final IcyBox ib = new IcyBox();
-	    ib.setPreviousState(this);
-	    return ib;
-	case MaterialConstants.MATERIAL_FIRE:
-	    return new HotBox();
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_ICE:
+            final IcyBox ib = new IcyBox();
+            ib.setPreviousState(this);
+            return ib;
+        case MaterialConstants.MATERIAL_FIRE:
+            return new HotBox();
+        default:
+            return this;
+        }
     }
 
     @Override
     public final int getStringBaseID() {
-	return 72;
+        return 72;
     }
 
     @Override
     public void playSoundHook() {
-	SoundManager.playSound(SoundConstants.SOUND_PUSH_BOX);
+        SoundManager.playSound(SoundConstants.SOUND_PUSH_BOX);
     }
 }

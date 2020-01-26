@@ -36,7 +36,7 @@ public abstract class AbstractCheckpoint extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -63,14 +63,15 @@ public abstract class AbstractCheckpoint extends AbstractDungeonObject {
 
     @Override
     public AbstractCheckpoint clone() {
-        AbstractCheckpoint copy = (AbstractCheckpoint) super.clone();
+        final AbstractCheckpoint copy = (AbstractCheckpoint) super.clone();
         copy.key = (AbstractCheckKey) this.key.clone();
         return copy;
     }
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
-        DungeonEditorLogic me = DungeonDiver4.getApplication().getEditor();
+        final DungeonEditorLogic me = DungeonDiver4.getApplication()
+                .getEditor();
         me.editCheckpointProperties(this);
         return this;
     }
@@ -79,23 +80,24 @@ public abstract class AbstractCheckpoint extends AbstractDungeonObject {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.showMessage("You may NOT pass: you need " + this.keyCount + " "
                 + this.key.getPluralName() + " to continue.");
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.showMessage("You may pass.");
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
     @Override
     public boolean isConditionallySolid(final DungeonObjectInventory inv) {
-        return !(inv.isItemThere(this.key) && inv.getItemCount(this.key) >= this.keyCount);
+        return !(inv.isItemThere(this.key)
+                && inv.getItemCount(this.key) >= this.keyCount);
     }
 
     @Override
@@ -113,8 +115,8 @@ public abstract class AbstractCheckpoint extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }
@@ -125,12 +127,12 @@ public abstract class AbstractCheckpoint extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return this.keyCount;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         this.keyCount = value;
     }
 }

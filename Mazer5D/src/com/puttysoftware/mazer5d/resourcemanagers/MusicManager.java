@@ -23,9 +23,9 @@ public class MusicManager {
 
     private static MicroMod getMusic(final String filename) {
         try {
-            final File modFile = new File(Maze.getMazeTempFolder()
-                    + File.separator + "MusicTemp" + File.separator + filename
-                    + ".mod");
+            final File modFile = new File(
+                    Maze.getMazeTempFolder() + File.separator + "MusicTemp"
+                            + File.separator + filename + ".mod");
             if (!modFile.exists()) {
                 final File modParent = modFile.getParentFile();
                 if (!modParent.exists()) {
@@ -35,8 +35,8 @@ public class MusicManager {
                     }
                 }
                 try (final InputStream is = MusicManager.LOAD_CLASS
-                        .getResourceAsStream(MusicManager.LOAD_PATH + filename
-                                + ".mod")) {
+                        .getResourceAsStream(
+                                MusicManager.LOAD_PATH + filename + ".mod")) {
                     DirectoryUtilities.copyRAMFile(is, modFile);
                 }
             }

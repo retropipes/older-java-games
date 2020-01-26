@@ -169,8 +169,8 @@ public class Battle {
         // Start Battle
         this.vwMgr.setViewingWindowCenterX(this.activeCharacter.getY());
         this.vwMgr.setViewingWindowCenterY(this.activeCharacter.getX());
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_BATTLE)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_BATTLE)) {
             SoundManager.playSound("battle");
         }
         this.showBattle();
@@ -323,7 +323,8 @@ public class Battle {
         }
     }
 
-    private void displayRoundResults(final Creature enemy, final Creature active) {
+    private void displayRoundResults(final Creature enemy,
+            final Creature active) {
         // Display round results
         final String activeName = active.getName();
         final String enemyName = enemy.getName();
@@ -363,8 +364,8 @@ public class Battle {
         this.fumbleDamage = 0;
         if (Battle.fumble(acting)) {
             // Fumble!
-            final RandomRange fumDamage = new RandomRange(1, Math.max(
-                    acting.getWeaponPower(), 1));
+            final RandomRange fumDamage = new RandomRange(1,
+                    Math.max(acting.getWeaponPower(), 1));
             this.fumbleDamage = fumDamage.generate();
             acting.doDamage(this.fumbleDamage);
         } else {
@@ -383,7 +384,8 @@ public class Battle {
                 // Hit
                 currDamage = randomAttack - randomEnemyDefense;
             }
-            this.damage = (int) (currDamage * StatConstants.FACTOR_DIFFERENTIAL_DAMAGE);
+            this.damage = (int) (currDamage
+                    * StatConstants.FACTOR_DIFFERENTIAL_DAMAGE);
             enemy.doDamage(this.damage);
         }
         this.displayRoundResults(enemy, acting);
@@ -633,8 +635,9 @@ public class Battle {
         } else {
             text = "Pick 1 Enemy";
         }
-        final String response = Messager.showInputDialog(text + " - " + current
-                + " of " + number, "Battle", pickNames, pickNames[0]);
+        final String response = Messager.showInputDialog(
+                text + " - " + current + " of " + number, "Battle", pickNames,
+                pickNames[0]);
         if (response != null) {
             final int loc = this.findEnemy(response, 0, this.battlers.length);
             if (loc != -1) {
@@ -704,11 +707,11 @@ public class Battle {
 
     private boolean areEnemiesGone() {
         boolean res = true;
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTeamID() != 0) {
-                    if (this.battlers[x].getTemplate().isAlive()) {
-                        res = res && !this.battlers[x].isActive();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTeamID() != 0) {
+                    if (battler.getTemplate().isAlive()) {
+                        res = res && !battler.isActive();
                     }
                 }
             }
@@ -718,11 +721,11 @@ public class Battle {
 
     private boolean areFriendsGone() {
         boolean res = true;
-        for (int x = 0; x < this.battlers.length; x++) {
-            if (this.battlers[x] != null) {
-                if (this.battlers[x].getTeamID() == 0) {
-                    if (this.battlers[x].getTemplate().isAlive()) {
-                        res = res && !this.battlers[x].isActive();
+        for (final BattleCharacter battler : this.battlers) {
+            if (battler != null) {
+                if (battler.getTeamID() == 0) {
+                    if (battler.getTemplate().isAlive()) {
+                        res = res && !battler.isActive();
                     }
                 }
             }
@@ -825,9 +828,10 @@ public class Battle {
                     }
                     // Auto-attack check
                     if (obj1 != null) {
-                        if (obj1.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == -1 && y == 0 || x == -1 && y == -1 || x == 0
-                                    && y == -1)) {
+                        if (obj1.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == -1
+                                    || x == 0 && y == -1)) {
                                 final BattleCharacter bc1 = (BattleCharacter) obj1;
                                 if (bc1.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc1);
@@ -836,7 +840,8 @@ public class Battle {
                         }
                     }
                     if (obj2 != null) {
-                        if (obj2.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj2.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == 1) {
                                 final BattleCharacter bc2 = (BattleCharacter) obj2;
                                 if (bc2.getTeamID() != active.getTeamID()) {
@@ -846,9 +851,10 @@ public class Battle {
                         }
                     }
                     if (obj3 != null) {
-                        if (obj3.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == 0 && y == -1 || x == 1 && y == -1 || x == 1
-                                    && y == 0)) {
+                        if (obj3.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == -1 || x == 1 && y == -1
+                                    || x == 1 && y == 0)) {
                                 final BattleCharacter bc3 = (BattleCharacter) obj3;
                                 if (bc3.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc3);
@@ -857,7 +863,8 @@ public class Battle {
                         }
                     }
                     if (obj4 != null) {
-                        if (obj4.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj4.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == 1) {
                                 final BattleCharacter bc4 = (BattleCharacter) obj4;
                                 if (bc4.getTeamID() != active.getTeamID()) {
@@ -867,7 +874,8 @@ public class Battle {
                         }
                     }
                     if (obj6 != null) {
-                        if (obj6.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj6.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (x == -1) {
                                 final BattleCharacter bc6 = (BattleCharacter) obj6;
                                 if (bc6.getTeamID() != active.getTeamID()) {
@@ -877,9 +885,10 @@ public class Battle {
                         }
                     }
                     if (obj7 != null) {
-                        if (obj7.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == -1 && y == 0 || x == -1 && y == 1 || x == 0
-                                    && y == 1)) {
+                        if (obj7.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == -1 && y == 0 || x == -1 && y == 1
+                                    || x == 0 && y == 1)) {
                                 final BattleCharacter bc7 = (BattleCharacter) obj7;
                                 if (bc7.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc7);
@@ -888,7 +897,8 @@ public class Battle {
                         }
                     }
                     if (obj8 != null) {
-                        if (obj8.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (obj8.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             if (y == -1) {
                                 final BattleCharacter bc8 = (BattleCharacter) obj8;
                                 if (bc8.getTeamID() != active.getTeamID()) {
@@ -898,9 +908,10 @@ public class Battle {
                         }
                     }
                     if (obj9 != null) {
-                        if (obj9.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
-                            if (!(x == 0 && y == 1 || x == 1 && y == 1 || x == 1
-                                    && y == 0)) {
+                        if (obj9.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                            if (!(x == 0 && y == 1 || x == 1 && y == 1
+                                    || x == 1 && y == 0)) {
                                 final BattleCharacter bc9 = (BattleCharacter) obj9;
                                 if (bc9.getTeamID() != active.getTeamID()) {
                                     this.executeAutoAI(bc9);
@@ -921,13 +932,14 @@ public class Battle {
                     // Maintain effects
                     this.maintainEffects();
                     if (Worldz.getApplication().getPrefsManager()
-                            .getSoundEnabled(PreferencesManager.SOUNDS_BATTLE)) {
+                            .getSoundEnabled(
+                                    PreferencesManager.SOUNDS_BATTLE)) {
                         SoundManager.playSound("walk");
                     } else {
                         // Deny move - out of actions
                         if (!this.activeCharacter.getTemplate().hasAI()
                                 || this.activeCharacter.getTemplate().hasAI()
-                                && !this.aiEnabled) {
+                                        && !this.aiEnabled) {
                             this.setStatusMessage("Out of moves!");
                         }
                         return false;
@@ -969,7 +981,7 @@ public class Battle {
                         // Deny attack - out of actions
                         if (!this.activeCharacter.getTemplate().hasAI()
                                 || this.activeCharacter.getTemplate().hasAI()
-                                && !this.aiEnabled) {
+                                        && !this.aiEnabled) {
                             this.setStatusMessage("Out of attacks!");
                         }
                         return false;
@@ -978,10 +990,8 @@ public class Battle {
                     // Move Failed
                     if (!active.getTemplate().hasAI()
                             || this.activeCharacter.getTemplate().hasAI()
-                            && !this.aiEnabled) {
-                        if (Worldz
-                                .getApplication()
-                                .getPrefsManager()
+                                    && !this.aiEnabled) {
+                        if (Worldz.getApplication().getPrefsManager()
                                 .getSoundEnabled(
                                         PreferencesManager.SOUNDS_BATTLE)) {
                             SoundManager.playSound("walkfail");
@@ -1041,7 +1051,8 @@ public class Battle {
                 }
                 if (next != null) {
                     if (next.isSolid()) {
-                        if (next.isOfType(TypeConstants.TYPE_BATTLE_CHARACTER)) {
+                        if (next.isOfType(
+                                TypeConstants.TYPE_BATTLE_CHARACTER)) {
                             final BattleCharacter bc = (BattleCharacter) next;
                             return bc;
                         }
@@ -1057,7 +1068,7 @@ public class Battle {
         if (this.getActiveSpellCounter() > 0) {
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 // Active character has no AI, or AI is turned off
                 final boolean success = SpellBookManager
                         .selectAndCastSpell(this.activeCharacter.getTemplate());
@@ -1098,7 +1109,7 @@ public class Battle {
             // Deny cast - out of actions
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 this.setStatusMessage("Out of actions!");
             }
             return false;
@@ -1110,7 +1121,7 @@ public class Battle {
         if (this.getActiveActionCounter() > 0) {
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 // Active character has no AI, or AI is turned off
                 final boolean success = CombatItemManager
                         .selectAndUseItem(this.activeCharacter.getTemplate());
@@ -1151,7 +1162,7 @@ public class Battle {
             // Deny use - out of actions
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 this.setStatusMessage("Out of actions!");
             }
             return false;
@@ -1176,8 +1187,8 @@ public class Battle {
             try {
                 final Caste caste = ((PartyMember) this.activeCharacter
                         .getTemplate()).getCaste();
-                stealChance = StatConstants.CHANCE_STEAL
-                        + caste.getAttribute(CasteConstants.CASTE_ATTRIBUTE_STEAL_SUCCESS_MODIFIER);
+                stealChance = StatConstants.CHANCE_STEAL + caste.getAttribute(
+                        CasteConstants.CASTE_ATTRIBUTE_STEAL_SUCCESS_MODIFIER);
             } catch (final ClassCastException cce) {
                 stealChance = StatConstants.CHANCE_STEAL;
             }
@@ -1226,7 +1237,7 @@ public class Battle {
             // Deny steal - out of actions
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 this.setStatusMessage("Out of actions!");
             }
             return false;
@@ -1251,8 +1262,8 @@ public class Battle {
             try {
                 final Caste caste = ((PartyMember) this.activeCharacter
                         .getTemplate()).getCaste();
-                drainChance = StatConstants.CHANCE_DRAIN
-                        + caste.getAttribute(CasteConstants.CASTE_ATTRIBUTE_DRAIN_SUCCESS_MODIFIER);
+                drainChance = StatConstants.CHANCE_DRAIN + caste.getAttribute(
+                        CasteConstants.CASTE_ATTRIBUTE_DRAIN_SUCCESS_MODIFIER);
             } catch (final ClassCastException cce) {
                 drainChance = StatConstants.CHANCE_DRAIN;
             }
@@ -1287,8 +1298,8 @@ public class Battle {
                             activeEnemy.getGold());
                     drainAmount = drained.generate();
                     activeEnemy.offsetCurrentMP(-drainAmount);
-                    this.activeCharacter.getTemplate().offsetCurrentMP(
-                            drainAmount);
+                    this.activeCharacter.getTemplate()
+                            .offsetCurrentMP(drainAmount);
                     this.setStatusMessage(this.activeCharacter.getName()
                             + " tries to drain, and successfully drains "
                             + drainAmount + " MP!");
@@ -1304,7 +1315,7 @@ public class Battle {
             // Deny drain - out of actions
             if (!this.activeCharacter.getTemplate().hasAI()
                     || this.activeCharacter.getTemplate().hasAI()
-                    && !this.aiEnabled) {
+                            && !this.aiEnabled) {
                 this.setStatusMessage("Out of actions!");
             }
             return false;
@@ -1362,11 +1373,11 @@ public class Battle {
                         this.drawGrid[xFix][yFix].setIcon(GraphicsManager
                                 .getCompositeImage(icon1, icon2));
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                                .getImage("Void"));
+                        this.drawGrid[xFix][yFix]
+                                .setIcon(GraphicsManager.getImage("Void"));
                     } catch (final NullPointerException np) {
-                        this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                                .getImage("Void"));
+                        this.drawGrid[xFix][yFix]
+                                .setIcon(GraphicsManager.getImage("Void"));
                     }
                 }
             }
@@ -1395,8 +1406,8 @@ public class Battle {
     private void showBattle() {
         final Application app = Worldz.getApplication();
         app.getMenuManager().setBattleMenus();
-        if (app.getPrefsManager().getMusicEnabled(
-                PreferencesManager.MUSIC_BATTLE)) {
+        if (app.getPrefsManager()
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             if (!MusicManager.isMusicPlaying()) {
                 MusicManager.playMusic("battle");
             }
@@ -1430,11 +1441,12 @@ public class Battle {
         this.battleFrame.setIconImage(iconlogo);
         this.battleFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.battlePane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.battlePane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.battleFrame.setResizable(false);
-        this.drawGrid = new JLabel[this.vwMgr.getViewingWindowSizeX()][this.vwMgr
-                .getViewingWindowSizeY()];
+        this.drawGrid = new JLabel[this.vwMgr
+                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
         final EmptyBorder eb = new EmptyBorder(0, 0, 0, 0);
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {

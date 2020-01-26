@@ -12,7 +12,7 @@ import com.puttysoftware.gemma.support.scenario.Extension;
 
 public class FaithDataManager {
     public static double[] getFaithData(final int f) {
-        String name = FaithConstants.getFaithName(f).toLowerCase();
+        final String name = FaithConstants.getFaithName(f).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
                 FaithDataManager.class.getResourceAsStream(
                         "/com/puttysoftware/gemma/support/resources/data/faith/"
@@ -24,7 +24,7 @@ public class FaithDataManager {
                 rawData[x] = rsr.readInt();
             }
             // Parse raw data
-            double[] finalData = new double[rawData.length];
+            final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {
                 finalData[x] = FaithConstants.getLookupTableEntry(rawData[x]);
             }

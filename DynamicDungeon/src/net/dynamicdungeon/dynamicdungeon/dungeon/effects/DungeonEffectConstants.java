@@ -16,20 +16,23 @@ public class DungeonEffectConstants {
     public static final int EFFECT_POWER_GATHER = 7;
     public static final int EFFECT_POWER_WITHER = 8;
     private static final int[] DURATIONS_VERY_EASY = new int[] { 2, 2, 2, 2, 1,
-	    3, 25, 12, 2 };
+            3, 25, 12, 2 };
     private static final int[] DURATIONS_EASY = new int[] { 4, 4, 4, 4, 2, 6,
-	    20, 9, 4 };
+            20, 9, 4 };
     private static final int[] DURATIONS_NORMAL = new int[] { 6, 6, 6, 6, 3, 9,
-	    15, 6, 6 };
+            15, 6, 6 };
     private static final int[] DURATIONS_HARD = new int[] { 8, 8, 8, 8, 6, 12,
-	    10, 3, 9 };
-    private static final int[] DURATIONS_VERY_HARD = new int[] { 10, 10, 10,
-	    10, 9, 15, 5, 2, 12 };
-    static final int[][] DURATIONS = new int[][] { DURATIONS_VERY_EASY,
-	    DURATIONS_EASY, DURATIONS_NORMAL, DURATIONS_HARD,
-	    DURATIONS_VERY_HARD };
+            10, 3, 9 };
+    private static final int[] DURATIONS_VERY_HARD = new int[] { 10, 10, 10, 10,
+            9, 15, 5, 2, 12 };
+    static final int[][] DURATIONS = new int[][] {
+            DungeonEffectConstants.DURATIONS_VERY_EASY,
+            DungeonEffectConstants.DURATIONS_EASY,
+            DungeonEffectConstants.DURATIONS_NORMAL,
+            DungeonEffectConstants.DURATIONS_HARD,
+            DungeonEffectConstants.DURATIONS_VERY_HARD };
 
     private DungeonEffectConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

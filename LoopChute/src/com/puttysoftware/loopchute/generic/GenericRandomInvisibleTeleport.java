@@ -12,14 +12,15 @@ import com.puttysoftware.loopchute.game.ObjectInventory;
 import com.puttysoftware.loopchute.resourcemanagers.SoundConstants;
 import com.puttysoftware.loopchute.resourcemanagers.SoundManager;
 
-public abstract class GenericRandomInvisibleTeleport extends
-        GenericRandomTeleport {
+public abstract class GenericRandomInvisibleTeleport
+        extends GenericRandomTeleport {
     // Constructors
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX, final String attrName) {
         super(newRandomRangeY, newRandomRangeX, attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
@@ -27,8 +28,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     abstract public String getName();
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = LoopChute.getApplication();
         int dr, dc;
         do {
@@ -44,8 +45,8 @@ public abstract class GenericRandomInvisibleTeleport extends
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = LoopChute.getApplication().getEditor();
-        return me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
+        return me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
     }
 
     @Override

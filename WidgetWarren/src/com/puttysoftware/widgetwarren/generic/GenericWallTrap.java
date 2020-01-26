@@ -37,8 +37,8 @@ public abstract class GenericWallTrap extends MazeObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         WidgetWarren.getApplication().getGameManager().decay();
         WidgetWarren.getApplication().getMazeManager().getMaze()
                 .findAllMatchingObjectsAndDecay(this.masterTrigger);

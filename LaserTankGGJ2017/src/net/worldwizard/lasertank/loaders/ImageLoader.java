@@ -11,26 +11,28 @@ import net.worldwizard.lasertank.assets.GameImage;
 public class ImageLoader {
     // Private constructor
     private ImageLoader() {
-	// Do nothing
+        // Do nothing
     }
 
     public static GameImage loadObjectImage(final String imageName) {
-	try (InputStream is = ImageLoader.class
-		.getResourceAsStream("/net/worldwizard/lasertank/assets/images/objects/" + imageName + ".png")) {
-	    final BufferedImage bi = ImageIO.read(is);
-	    return new GameImage(imageName, bi);
-	} catch (final IOException e) {
-	    return new GameImage("null");
-	}
+        try (InputStream is = ImageLoader.class.getResourceAsStream(
+                "/net/worldwizard/lasertank/assets/images/objects/" + imageName
+                        + ".png")) {
+            final BufferedImage bi = ImageIO.read(is);
+            return new GameImage(imageName, bi);
+        } catch (final IOException e) {
+            return new GameImage("null");
+        }
     }
 
     public static GameImage loadUIImage(final String imageName) {
-	try (InputStream is = ImageLoader.class
-		.getResourceAsStream("/net/worldwizard/lasertank/assets/images/ui/" + imageName + ".png")) {
-	    final BufferedImage bi = ImageIO.read(is);
-	    return new GameImage(imageName, bi);
-	} catch (final IOException e) {
-	    return new GameImage("null");
-	}
+        try (InputStream is = ImageLoader.class.getResourceAsStream(
+                "/net/worldwizard/lasertank/assets/images/ui/" + imageName
+                        + ".png")) {
+            final BufferedImage bi = ImageIO.read(is);
+            return new GameImage(imageName, bi);
+        } catch (final IOException e) {
+            return new GameImage("null");
+        }
     }
 }

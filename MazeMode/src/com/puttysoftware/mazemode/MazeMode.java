@@ -21,7 +21,8 @@ public class MazeMode {
             + "Subject: MazeMode Bug Report";
     private static final String ERROR_TITLE = "MazeMode Error";
     private static final ErrorLogger elog = new ErrorLogger(
-            MazeMode.PROGRAM_NAME, MazeMode.ERROR_MESSAGE, MazeMode.ERROR_TITLE);
+            MazeMode.PROGRAM_NAME, MazeMode.ERROR_MESSAGE,
+            MazeMode.ERROR_TITLE);
     private static boolean IN_MAZEMODE = true;
 
     // Methods
@@ -71,13 +72,11 @@ public class MazeMode {
             } else {
                 s = args[0];
             }
-            platform.hookFileOpen(
-                    MazeMode.application.getMazeManager(),
-                    MazeMode.application
-                            .getMazeManager()
-                            .getClass()
+            platform.hookFileOpen(MazeMode.application.getMazeManager(),
+                    MazeMode.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             platform.hookQuit(MazeMode.application.getGUIManager(),

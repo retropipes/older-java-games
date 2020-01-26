@@ -22,67 +22,72 @@ public class DisruptedIcyWall extends AbstractDisruptedObject {
 
     // Constructors
     public DisruptedIcyWall() {
-	super();
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.disruptionLeft = DisruptedIcyWall.DISRUPTION_START;
-	this.activateTimer(1);
-	this.setMaterial(MaterialConstants.MATERIAL_ICE);
+        super();
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.disruptionLeft = DisruptedIcyWall.DISRUPTION_START;
+        this.activateTimer(1);
+        this.setMaterial(MaterialConstants.MATERIAL_ICE);
     }
 
     DisruptedIcyWall(final int disruption) {
-	super();
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.disruptionLeft = disruption;
-	this.activateTimer(1);
-	this.setMaterial(MaterialConstants.MATERIAL_ICE);
+        super();
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.disruptionLeft = disruption;
+        this.activateTimer(1);
+        this.setMaterial(MaterialConstants.MATERIAL_ICE);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_FIRE:
-	    return new DisruptedWall(this.disruptionLeft);
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_FIRE:
+            return new DisruptedWall(this.disruptionLeft);
+        default:
+            return this;
+        }
     }
 
     @Override
     public final int getStringBaseID() {
-	return 59;
+        return 59;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
-	    // Defrost icy wall
-	    SoundManager.playSound(SoundConstants.SOUND_DEFROST);
-	    final DisruptedWall dw = new DisruptedWall();
-	    if (this.hasPreviousState()) {
-		dw.setPreviousState(this.getPreviousState());
-	    }
-	    LaserTank.getApplication().getGameManager().morph(dw, locX, locY, locZ, this.getLayer());
-	    return Direction.NONE;
-	} else {
-	    // Stop laser
-	    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	}
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        if (laserType == LaserTypeConstants.LASER_TYPE_MISSILE) {
+            // Defrost icy wall
+            SoundManager.playSound(SoundConstants.SOUND_DEFROST);
+            final DisruptedWall dw = new DisruptedWall();
+            if (this.hasPreviousState()) {
+                dw.setPreviousState(this.getPreviousState());
+            }
+            LaserTank.getApplication().getGameManager().morph(dw, locX, locY,
+                    locZ, this.getLayer());
+            return Direction.NONE;
+        } else {
+            // Stop laser
+            return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                    laserType, forceUnits);
+        }
     }
 
     @Override
     public void timerExpiredAction(final int locX, final int locY) {
-	this.disruptionLeft--;
-	if (this.disruptionLeft == 0) {
-	    SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
-	    final int z = LaserTank.getApplication().getGameManager().getPlayerManager().getPlayerLocationZ();
-	    final IcyWall iw = new IcyWall();
-	    if (this.hasPreviousState()) {
-		iw.setPreviousState(this.getPreviousState());
-	    }
-	    LaserTank.getApplication().getGameManager().morph(iw, locX, locY, z, this.getLayer());
-	} else {
-	    this.activateTimer(1);
-	}
+        this.disruptionLeft--;
+        if (this.disruptionLeft == 0) {
+            SoundManager.playSound(SoundConstants.SOUND_DISRUPT_END);
+            final int z = LaserTank.getApplication().getGameManager()
+                    .getPlayerManager().getPlayerLocationZ();
+            final IcyWall iw = new IcyWall();
+            if (this.hasPreviousState()) {
+                iw.setPreviousState(this.getPreviousState());
+            }
+            LaserTank.getApplication().getGameManager().morph(iw, locX, locY, z,
+                    this.getLayer());
+        } else {
+            this.activateTimer(1);
+        }
     }
 }

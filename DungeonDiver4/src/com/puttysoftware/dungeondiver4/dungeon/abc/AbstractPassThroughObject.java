@@ -17,19 +17,20 @@ public abstract class AbstractPassThroughObject extends AbstractDungeonObject {
         super(false, false);
     }
 
-    protected AbstractPassThroughObject(boolean sightBlock) {
+    protected AbstractPassThroughObject(final boolean sightBlock) {
         super(false, sightBlock);
     }
 
-    protected AbstractPassThroughObject(boolean acceptPushInto,
-            boolean acceptPushOut, boolean acceptPullInto, boolean acceptPullOut) {
+    protected AbstractPassThroughObject(final boolean acceptPushInto,
+            final boolean acceptPushOut, final boolean acceptPullInto,
+            final boolean acceptPullOut) {
         super(false, false, acceptPushInto, acceptPushOut, false,
                 acceptPullInto, acceptPullOut, true, false);
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
@@ -47,12 +48,12 @@ public abstract class AbstractPassThroughObject extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

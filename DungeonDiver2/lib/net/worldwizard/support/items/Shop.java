@@ -63,7 +63,8 @@ public class Shop implements ShopTypes {
         return (int) (Math.log10(x) * (z - y));
     }
 
-    public static int getRegenerationCost(final int x, final int y, final int z) {
+    public static int getRegenerationCost(final int x, final int y,
+            final int z) {
         final int diff = z - y;
         if (diff == 0) {
             return 0;
@@ -162,9 +163,8 @@ public class Shop implements ShopTypes {
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             if (this.typeResult.equals(this.typeChoices[0])) {
-                this.choices = EquipmentFactory
-                        .createOneHandedWeaponNames(playerCharacter.getCaste()
-                                .getCasteID());
+                this.choices = EquipmentFactory.createOneHandedWeaponNames(
+                        playerCharacter.getCaste().getCasteID());
                 // Choose Hand
                 this.handChoices = WeaponConstants.HAND_CHOICES;
                 this.handDefault = 0;
@@ -181,9 +181,8 @@ public class Shop implements ShopTypes {
                     this.handIndex = false;
                 }
             } else {
-                this.choices = EquipmentFactory
-                        .createTwoHandedWeaponNames(playerCharacter.getCaste()
-                                .getCasteID());
+                this.choices = EquipmentFactory.createTwoHandedWeaponNames(
+                        playerCharacter.getCaste().getCasteID());
             }
         } else if (this.type == ShopTypes.SHOP_TYPE_ARMOR) {
             this.choices = EquipmentFactory.createArmorNames(this.typeIndex);
@@ -239,9 +238,8 @@ public class Shop implements ShopTypes {
         // Stage 3
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         // Check
-        if (this.type == ShopTypes.SHOP_TYPE_HEALER
-                && playerCharacter.getCurrentHP() == playerCharacter
-                        .getMaximumHP()) {
+        if (this.type == ShopTypes.SHOP_TYPE_HEALER && playerCharacter
+                .getCurrentHP() == playerCharacter.getMaximumHP()) {
             CommonDialogs.showDialog("You don't need healing.");
             return false;
         } else if (this.type == ShopTypes.SHOP_TYPE_REGENERATOR
@@ -249,15 +247,15 @@ public class Shop implements ShopTypes {
                         .getMaximumMP()) {
             CommonDialogs.showDialog("You don't need regeneration.");
             return false;
-        } else if (this.type == ShopTypes.SHOP_TYPE_SPELLS
-                && playerCharacter.getSpellBook().getSpellsKnownCount() == playerCharacter
+        } else if (this.type == ShopTypes.SHOP_TYPE_SPELLS && playerCharacter
+                .getSpellBook().getSpellsKnownCount() == playerCharacter
                         .getSpellBook().getMaximumSpellsKnownCount()) {
             CommonDialogs.showDialog("There are no more spells to learn.");
             return false;
         }
-        this.result = CommonDialogs.showInputDialog(this.getGoldTotals()
-                + "Select", this.getShopNameFromType(), this.choices,
-                this.choices[this.defaultChoice]);
+        this.result = CommonDialogs.showInputDialog(
+                this.getGoldTotals() + "Select", this.getShopNameFromType(),
+                this.choices, this.choices[this.defaultChoice]);
         if (this.result == null) {
             return false;
         }
@@ -272,8 +270,8 @@ public class Shop implements ShopTypes {
                 }
             }
         } else {
-            this.index = playerCharacter.getSpellBook().getSpellIDByName(
-                    this.result);
+            this.index = playerCharacter.getSpellBook()
+                    .getSpellIDByName(this.result);
         }
         return true;
     }
@@ -379,15 +377,13 @@ public class Shop implements ShopTypes {
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             playerCharacter.offsetGold(-this.cost);
             if (this.typeResult.equals(this.typeChoices[0])) {
-                final Equipment bought = EquipmentFactory
-                        .createOneHandedWeapon(this.index, playerCharacter
-                                .getCaste().getCasteID());
+                final Equipment bought = EquipmentFactory.createOneHandedWeapon(
+                        this.index, playerCharacter.getCaste().getCasteID());
                 playerCharacter.getItems().equipOneHandedWeapon(bought,
                         this.handIndex);
             } else {
-                final Equipment bought = EquipmentFactory
-                        .createTwoHandedWeapon(this.index, playerCharacter
-                                .getCaste().getCasteID());
+                final Equipment bought = EquipmentFactory.createTwoHandedWeapon(
+                        this.index, playerCharacter.getCaste().getCasteID());
                 playerCharacter.getItems().equipTwoHandedWeapon(bought);
             }
         } else if (this.type == ShopTypes.SHOP_TYPE_ARMOR) {

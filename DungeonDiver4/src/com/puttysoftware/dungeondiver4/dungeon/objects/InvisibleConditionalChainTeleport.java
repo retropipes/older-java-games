@@ -8,8 +8,8 @@ package com.puttysoftware.dungeondiver4.dungeon.objects;
 import com.puttysoftware.dungeondiver4.dungeon.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleConditionalChainTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleConditionalChainTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_CONDITIONAL_CHAIN);

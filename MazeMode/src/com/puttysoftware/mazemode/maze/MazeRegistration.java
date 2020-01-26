@@ -57,8 +57,9 @@ public class MazeRegistration {
             }
         }
         // Get list of files in Mazes folder
-        final String[] mazeNames = new File(MazeRegistration.getBasePath()
-                + File.separator + "Mazes").list(new MazeFilter());
+        final String[] mazeNames = new File(
+                MazeRegistration.getBasePath() + File.separator + "Mazes")
+                        .list(new MazeFilter());
         if (mazeNames != null && mazeNames.length > 0) {
             // Strip extension from list entries
             for (int z = 0; z < mazeNames.length; z++) {
@@ -83,10 +84,11 @@ public class MazeRegistration {
                         if (new File(MazeRegistration.getBasePath()
                                 + File.separator + "Mazes" + File.separator
                                 + res + Extension.getMazeExtensionWithPeriod())
-                                .exists()) {
+                                        .exists()) {
                             // Register it
                             if (mazeList != null && anyFound) {
-                                final String[] newMazeList = new String[mazeList.length + 1];
+                                final String[] newMazeList = new String[mazeList.length
+                                        + 1];
                                 for (int x = 0; x < newMazeList.length; x++) {
                                     if (x < mazeList.length) {
                                         newMazeList[x] = mazeList[x];
@@ -97,8 +99,8 @@ public class MazeRegistration {
                                 MazeRegistration
                                         .writeGlobalMazeRegistry(newMazeList);
                             } else {
-                                MazeRegistration
-                                        .writeGlobalMazeRegistry(new String[] { res });
+                                MazeRegistration.writeGlobalMazeRegistry(
+                                        new String[] { res });
                             }
                         }
                     }
@@ -153,10 +155,11 @@ public class MazeRegistration {
                         if (new File(MazeRegistration.getPerUserBasePath()
                                 + File.separator + res
                                 + Extension.getMazeExtensionWithPeriod())
-                                .exists()) {
+                                        .exists()) {
                             // Register it
                             if (mazeList != null && anyFound) {
-                                final String[] newMazeList = new String[mazeList.length + 1];
+                                final String[] newMazeList = new String[mazeList.length
+                                        + 1];
                                 for (int x = 0; x < newMazeList.length; x++) {
                                     if (x < mazeList.length) {
                                         newMazeList[x] = mazeList[x];
@@ -167,8 +170,8 @@ public class MazeRegistration {
                                 MazeRegistration
                                         .writeUserMazeRegistry(newMazeList);
                             } else {
-                                MazeRegistration
-                                        .writeUserMazeRegistry(new String[] { res });
+                                MazeRegistration.writeUserMazeRegistry(
+                                        new String[] { res });
                             }
                         }
                     }
@@ -237,10 +240,12 @@ public class MazeRegistration {
                     // Verify that maze file exists
                     if (new File(MazeRegistration.getPerUserBasePath()
                             + File.separator + res
-                            + Extension.getMazeExtensionWithPeriod()).exists()) {
+                            + Extension.getMazeExtensionWithPeriod())
+                                    .exists()) {
                         // Register it
                         if (mazeList != null && anyFound) {
-                            final String[] newMazeList = new String[mazeList.length + 1];
+                            final String[] newMazeList = new String[mazeList.length
+                                    + 1];
                             for (int x = 0; x < newMazeList.length; x++) {
                                 if (x < mazeList.length) {
                                     newMazeList[x] = mazeList[x];
@@ -250,8 +255,8 @@ public class MazeRegistration {
                             }
                             MazeRegistration.writeUserMazeRegistry(newMazeList);
                         } else {
-                            MazeRegistration
-                                    .writeUserMazeRegistry(new String[] { res });
+                            MazeRegistration.writeUserMazeRegistry(
+                                    new String[] { res });
                         }
                     }
                 }
@@ -263,9 +268,9 @@ public class MazeRegistration {
         final String basePath = MazeRegistration.getPerUserBasePath();
         // Load maze registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "MazeRegistry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "MazeRegistry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             final ResourceStreamReader rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -286,9 +291,9 @@ public class MazeRegistration {
         final String basePath = MazeRegistration.getPerUserBasePath();
         // Load maze registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "UserMazeRegistry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + File.separator + "UserMazeRegistry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             final ResourceStreamReader rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -316,8 +321,8 @@ public class MazeRegistration {
             }
         }
         // Save maze registry file
-        try (final BufferedWriter bw = new BufferedWriter(new FileWriter(
-                basePath + File.separator + "MazeRegistry"
+        try (final BufferedWriter bw = new BufferedWriter(
+                new FileWriter(basePath + File.separator + "MazeRegistry"
                         + Extension.getRegistryExtensionWithPeriod()))) {
             if (newMazeList != null) {
                 for (int x = 0; x < newMazeList.length; x++) {
@@ -346,8 +351,8 @@ public class MazeRegistration {
             }
         }
         // Save maze registry file
-        try (final BufferedWriter bw = new BufferedWriter(new FileWriter(
-                basePath + File.separator + "UserMazeRegistry"
+        try (final BufferedWriter bw = new BufferedWriter(
+                new FileWriter(basePath + File.separator + "UserMazeRegistry"
                         + Extension.getRegistryExtensionWithPeriod()))) {
             if (newMazeList != null) {
                 for (int x = 0; x < newMazeList.length; x++) {

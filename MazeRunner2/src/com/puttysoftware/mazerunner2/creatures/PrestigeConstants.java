@@ -18,8 +18,8 @@ public class PrestigeConstants {
     public static final int PRESTIGE_TIMES_KILLED = 8;
     public static final int PRESTIGE_TIMES_RAN_AWAY = 9;
     public static final int MAX_PRESTIGE = 10;
-    public static final String[] PRESTIGE_NAMES = new String[] {
-            "Damage Given", "Damage Taken", "Hits Given", "Hits Taken",
-            "Attacks Dodged", "Missed Attacks", "Monsters Killed",
-            "Spells Cast", "Times Killed", "Times Ran Away" };
+    public static final String[] PRESTIGE_NAMES = new String[] { "Damage Given",
+            "Damage Taken", "Hits Given", "Hits Taken", "Attacks Dodged",
+            "Missed Attacks", "Monsters Killed", "Spells Cast", "Times Killed",
+            "Times Ran Away" };
 }

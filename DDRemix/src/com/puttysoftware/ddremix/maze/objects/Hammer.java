@@ -41,7 +41,8 @@ public class Hammer extends AbstractItem {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         final Application app = DDRemix.getApplication();
         app.getMazeManager().getMaze().addHammer();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);

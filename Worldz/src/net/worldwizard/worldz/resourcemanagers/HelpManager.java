@@ -9,7 +9,7 @@ import java.net.URL;
 
 public class HelpManager {
     public static URL getHelpURL() {
-        return HelpManager.class
-                .getResource("/net/worldwizard/worldz/resources/help/WorldzHelp.html");
+        return HelpManager.class.getResource(
+                "/net/worldwizard/worldz/resources/help/WorldzHelp.html");
     }
 }

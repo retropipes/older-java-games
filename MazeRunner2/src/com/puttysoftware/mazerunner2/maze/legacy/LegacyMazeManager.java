@@ -38,24 +38,24 @@ public class LegacyMazeManager {
 
     // Methods
     private static boolean getLoaded() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getLoaded();
     }
 
     private static boolean getDirty() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         return app.getMazeManager().getDirty();
     }
 
-    private static void setDirty(boolean newDirty) {
-        Application app = MazeRunnerII.getApplication();
+    private static void setDirty(final boolean newDirty) {
+        final Application app = MazeRunnerII.getApplication();
         app.getMazeManager().setDirty(newDirty);
     }
 
     private static int showSaveDialog() {
         String type, source;
-        Application app = MazeRunnerII.getApplication();
-        int mode = app.getMode();
+        final Application app = MazeRunnerII.getApplication();
+        final int mode = app.getMode();
         if (mode == Application.STATUS_EDITOR) {
             type = "maze";
             source = "Editor";
@@ -66,12 +66,12 @@ public class LegacyMazeManager {
             // Not in the game or editor, so abort
             return JOptionPane.NO_OPTION;
         }
-        return CommonDialogs.showYNCConfirmDialog("Do you want to save your "
-                + type + "?", source);
+        return CommonDialogs.showYNCConfirmDialog(
+                "Do you want to save your " + type + "?", source);
     }
 
-    public void legacyLoadFromOSHandler(String filename) {
-        Application app = MazeRunnerII.getApplication();
+    public void legacyLoadFromOSHandler(final String filename) {
+        final Application app = MazeRunnerII.getApplication();
         String extension;
         final File file = new File(filename);
         String loadFile;
@@ -82,18 +82,18 @@ public class LegacyMazeManager {
             LegacyMazeManager.loadLegacyFile(loadFile, false, false);
         } else if (extension.equals(LegacyExtension.getLegacyGameExtension())) {
             LegacyMazeManager.loadLegacyFile(loadFile, false, true);
-        } else if (extension.equals(LegacyExtension
-                .getLegacySavedGameExtension())) {
+        } else if (extension
+                .equals(LegacyExtension.getLegacySavedGameExtension())) {
             LegacyMazeManager.loadLegacyFile(loadFile, true, false);
         }
     }
 
     public boolean loadLegacyMaze() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int status = 0;
         boolean saved = true;
         String filename, extension;
-        String lastOpen = PreferencesManager.getLastDirOpen();
+        final String lastOpen = PreferencesManager.getLastDirOpen();
         File lastOpenDir = null;
         if (lastOpen != null) {
             lastOpenDir = new File(lastOpen);
@@ -115,7 +115,7 @@ public class LegacyMazeManager {
             fc.setAcceptAllFileFilterUsed(false);
             fc.addChoosableFileFilter(xmf);
             fc.addChoosableFileFilter(xgf);
-            int filter = PreferencesManager.getLastFilterUsedOpen();
+            final int filter = PreferencesManager.getLastFilterUsedOpen();
             if (filter == PreferencesManager.FILTER_MAZE) {
                 fc.setFileFilter(xmf);
             } else {
@@ -124,27 +124,28 @@ public class LegacyMazeManager {
             final int returnVal = fc.showOpenDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
-                FileFilter ff = fc.getFileFilter();
+                final FileFilter ff = fc.getFileFilter();
                 if (ff.getDescription().equals(xmf.getDescription())) {
-                    PreferencesManager
-                            .setLastFilterUsedOpen(PreferencesManager.FILTER_MAZE);
+                    PreferencesManager.setLastFilterUsedOpen(
+                            PreferencesManager.FILTER_MAZE);
                 } else {
-                    PreferencesManager
-                            .setLastFilterUsedOpen(PreferencesManager.FILTER_GAME);
+                    PreferencesManager.setLastFilterUsedOpen(
+                            PreferencesManager.FILTER_GAME);
                 }
-                PreferencesManager.setLastDirOpen(fc.getCurrentDirectory()
-                        .getAbsolutePath());
+                PreferencesManager.setLastDirOpen(
+                        fc.getCurrentDirectory().getAbsolutePath());
                 filename = file.getAbsolutePath();
                 extension = LegacyMazeManager.getExtension(file);
                 app.getGameManager().resetObjectInventory();
-                if (extension.equals(LegacyExtension.getLegacyMazeExtension())) {
+                if (extension
+                        .equals(LegacyExtension.getLegacyMazeExtension())) {
                     LegacyMazeManager.loadLegacyFile(filename, false, false);
-                } else if (extension.equals(LegacyExtension
-                        .getLegacySavedGameExtension())) {
+                } else if (extension.equals(
+                        LegacyExtension.getLegacySavedGameExtension())) {
                     LegacyMazeManager.loadLegacyFile(filename, true, false);
                 } else {
-                    CommonDialogs
-                            .showDialog("You opened something other than a maze file. Select a maze file, and try again.");
+                    CommonDialogs.showDialog(
+                            "You opened something other than a maze file. Select a maze file, and try again.");
                 }
             } else {
                 // User cancelled
@@ -157,7 +158,7 @@ public class LegacyMazeManager {
     }
 
     public boolean loadLegacyGame() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int status = 0;
         boolean saved = true;
         String filename;
@@ -173,16 +174,16 @@ public class LegacyMazeManager {
             }
         }
         if (saved) {
-            String gameDir = LegacyMazeManager.getGameDirectory();
-            String[] rawChoices = new File(gameDir).list(gf);
+            final String gameDir = LegacyMazeManager.getGameDirectory();
+            final String[] rawChoices = new File(gameDir).list(gf);
             if (rawChoices != null) {
-                String[] choices = new String[rawChoices.length];
+                final String[] choices = new String[rawChoices.length];
                 // Strip extension
                 for (int x = 0; x < choices.length; x++) {
                     choices[x] = LegacyMazeManager
                             .getNameWithoutExtension(rawChoices[x]);
                 }
-                String returnVal = CommonDialogs.showInputDialog(
+                final String returnVal = CommonDialogs.showInputDialog(
                         "Select a Game", "Load Game", choices, choices[0]);
                 if (returnVal != null) {
                     int index = -1;
@@ -220,11 +221,11 @@ public class LegacyMazeManager {
     }
 
     public boolean importLegacyGame() {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int status = 0;
         boolean saved = true;
         String filename, extension;
-        String lastOpen = PreferencesManager.getLastDirOpen();
+        final String lastOpen = PreferencesManager.getLastDirOpen();
         File lastOpenDir = null;
         if (lastOpen != null) {
             lastOpenDir = new File(lastOpen);
@@ -248,18 +249,19 @@ public class LegacyMazeManager {
             final int returnVal = fc.showOpenDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
-                PreferencesManager.setLastDirOpen(fc.getCurrentDirectory()
-                        .getAbsolutePath());
+                PreferencesManager.setLastDirOpen(
+                        fc.getCurrentDirectory().getAbsolutePath());
                 filename = file.getAbsolutePath();
                 extension = LegacyMazeManager.getExtension(file);
                 app.getGameManager().resetObjectInventory();
-                if (extension.equals(LegacyExtension.getLegacyGameExtension())) {
+                if (extension
+                        .equals(LegacyExtension.getLegacyGameExtension())) {
                     // Make sure folder exists
                     if (!file.getParentFile().exists()) {
-                        boolean okay = file.getParentFile().mkdirs();
+                        final boolean okay = file.getParentFile().mkdirs();
                         if (!okay) {
-                            MazeRunnerII.getErrorLogger().logError(
-                                    new IOException(
+                            MazeRunnerII.getErrorLogger()
+                                    .logError(new IOException(
                                             "Cannot create game folder!"));
                         }
                     }
@@ -267,13 +269,13 @@ public class LegacyMazeManager {
                         DirectoryUtilities.copyFile(file,
                                 new File(LegacyMazeManager.getGameDirectory()
                                         + file.getName()));
-                    } catch (IOException ioe) {
+                    } catch (final IOException ioe) {
                         MazeRunnerII.getErrorLogger().logError(ioe);
                     }
                     LegacyMazeManager.loadLegacyFile(filename, false, true);
                 } else {
-                    CommonDialogs
-                            .showDialog("You opened something other than a game file. Select a game file, and try again.");
+                    CommonDialogs.showDialog(
+                            "You opened something other than a game file. Select a game file, and try again.");
                 }
             } else {
                 // User cancelled
@@ -285,31 +287,31 @@ public class LegacyMazeManager {
         return false;
     }
 
-    private static void loadLegacyFile(String filename,
+    private static void loadLegacyFile(final String filename,
             final boolean isSavedGame, final boolean locked) {
-        if (!FilenameChecker.isFilenameOK(LegacyMazeManager
-                .getNameWithoutExtension(LegacyMazeManager
-                        .getFileNameOnly(filename)))) {
-            CommonDialogs
-                    .showErrorDialog(
-                            "The file you selected contains illegal characters in its\n"
-                                    + "name. These characters are not allowed: /?<>\\:|\"\n"
-                                    + "Files named con, nul, or prn are illegal, as are files\n"
-                                    + "named com1 through com9 and lpt1 through lpt9.",
-                            "Load");
+        if (!FilenameChecker
+                .isFilenameOK(LegacyMazeManager.getNameWithoutExtension(
+                        LegacyMazeManager.getFileNameOnly(filename)))) {
+            CommonDialogs.showErrorDialog(
+                    "The file you selected contains illegal characters in its\n"
+                            + "name. These characters are not allowed: /?<>\\:|\"\n"
+                            + "Files named con, nul, or prn are illegal, as are files\n"
+                            + "named com1 through com9 and lpt1 through lpt9.",
+                    "Load");
         } else {
             if (locked) {
-                LegacyGameLoadTask llt = new LegacyGameLoadTask(filename);
+                final LegacyGameLoadTask llt = new LegacyGameLoadTask(filename);
                 llt.start();
             } else {
-                LegacyLoadTask xlt = new LegacyLoadTask(filename, isSavedGame);
+                final LegacyLoadTask xlt = new LegacyLoadTask(filename,
+                        isSavedGame);
                 xlt.start();
             }
         }
     }
 
     private static String getGameDirectoryPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(LegacyMazeManager.MAC_PREFIX);
@@ -323,7 +325,7 @@ public class LegacyMazeManager {
     }
 
     private static String getGameDirectoryName() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return LegacyMazeManager.MAC_DIR;
@@ -337,7 +339,7 @@ public class LegacyMazeManager {
     }
 
     private static String getGameDirectory() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(LegacyMazeManager.getGameDirectoryPrefix());
         b.append(LegacyMazeManager.getGameDirectoryName());
         return b.toString();
@@ -347,7 +349,7 @@ public class LegacyMazeManager {
         String ext = null;
         final String s = f.getName();
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(i + 1).toLowerCase();
         }
         return ext;
@@ -356,7 +358,7 @@ public class LegacyMazeManager {
     private static String getNameWithoutExtension(final String s) {
         String ext = null;
         final int i = s.lastIndexOf('.');
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             ext = s.substring(0, i);
         } else {
             ext = s;
@@ -367,7 +369,7 @@ public class LegacyMazeManager {
     private static String getFileNameOnly(final String s) {
         String fno = null;
         final int i = s.lastIndexOf(File.separatorChar);
-        if ((i > 0) && (i < s.length() - 1)) {
+        if (i > 0 && i < s.length() - 1) {
             fno = s.substring(i + 1);
         } else {
             fno = s;

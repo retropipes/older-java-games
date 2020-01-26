@@ -19,15 +19,15 @@ class EquipmentFactory {
         final Equipment e = new Equipment(
                 WeaponMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
                         + WeaponConstants.get1HWeapons()[weaponType],
-                0,
-                0,
+                0, 0,
                 EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ONE_HANDED_WEAPON,
                 material);
         e.setFirstSlotUsed(EquipmentSlotConstants.SLOT_MAINHAND);
         e.setSecondSlotUsed(EquipmentSlotConstants.SLOT_OFFHAND);
         e.setConditionalSlot(true);
-        e.setPotency(material
-                * WeaponMaterialConstants.MATERIALS_POWER_MULTIPLIER + bonus);
+        e.setPotency(
+                material * WeaponMaterialConstants.MATERIALS_POWER_MULTIPLIER
+                        + bonus);
         e.setBuyPrice(Shop.getEquipmentCost(material));
         e.setSellPrice(Shop.getEquipmentCost(material) / 2);
         return e;
@@ -38,15 +38,15 @@ class EquipmentFactory {
         final Equipment e = new Equipment(
                 WeaponMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
                         + WeaponConstants.get2HWeapons()[weaponType],
-                0,
-                0,
+                0, 0,
                 EquipmentCategoryConstants.EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON,
                 material);
         e.setFirstSlotUsed(EquipmentSlotConstants.SLOT_MAINHAND);
         e.setSecondSlotUsed(EquipmentSlotConstants.SLOT_OFFHAND);
         e.setConditionalSlot(false);
-        e.setPotency(material
-                * WeaponMaterialConstants.MATERIALS_POWER_MULTIPLIER + bonus);
+        e.setPotency(
+                material * WeaponMaterialConstants.MATERIALS_POWER_MULTIPLIER
+                        + bonus);
         e.setBuyPrice(Shop.getEquipmentCost(material) * 2);
         e.setSellPrice(Shop.getEquipmentCost(material));
         return e;
@@ -56,12 +56,14 @@ class EquipmentFactory {
             final int bonus) {
         final Equipment e = new Equipment(
                 ArmorMaterialConstants.MATERIAL_COMMON_NAMES[material] + " "
-                        + ArmorConstants.getArmor()[armorType], 0, 0,
-                EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR, material);
+                        + ArmorConstants.getArmor()[armorType],
+                0, 0, EquipmentCategoryConstants.EQUIPMENT_CATEGORY_ARMOR,
+                material);
         e.setFirstSlotUsed(armorType);
         e.setConditionalSlot(false);
-        e.setPotency(material
-                * ArmorMaterialConstants.MATERIALS_POWER_MULTIPLIER + bonus);
+        e.setPotency(
+                material * ArmorMaterialConstants.MATERIALS_POWER_MULTIPLIER
+                        + bonus);
         e.setBuyPrice(Shop.getEquipmentCost(material));
         e.setSellPrice(Shop.getEquipmentCost(material) / 2);
         return e;

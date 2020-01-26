@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractAttribute extends AbstractPassThroughObject {
     // Constructors
     protected AbstractAttribute() {
-	super();
-	this.type.set(TypeConstants.TYPE_ATTRIBUTE);
+        super();
+        this.type.set(TypeConstants.TYPE_ATTRIBUTE);
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_UPPER_OBJECTS;
+        return ArenaConstants.LAYER_UPPER_OBJECTS;
     }
 }

@@ -37,8 +37,8 @@ public class MovingFinish extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         if (this.active) {
             final Application app = WidgetWarren.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -64,12 +64,10 @@ public class MovingFinish extends GenericTeleport {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObject obj = WidgetWarren
-                .getApplication()
-                .getMazeManager()
+        final MazeObject obj = WidgetWarren.getApplication().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(),
-                        this.getDestinationFloor(), MazeConstants.LAYER_OBJECT);
+                        this.getDestinationColumn(), this.getDestinationFloor(),
+                        MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -100,8 +98,8 @@ public class MovingFinish extends GenericTeleport {
 
     @Override
     public void editorProbeHook() {
-        WidgetWarren.getApplication().showMessage(
-                this.getName() + ": Next Moving Finish ("
+        WidgetWarren.getApplication()
+                .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
                         + (this.getDestinationFloor() + 1) + ")");
@@ -134,8 +132,8 @@ public class MovingFinish extends GenericTeleport {
     @Override
     public MazeObject editorPropertiesHook() {
         final MazeEditor me = WidgetWarren.getApplication().getEditor();
-        final MazeObject mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
+        final MazeObject mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
 

@@ -76,11 +76,11 @@ public abstract class AbstractContainer extends AbstractLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
@@ -106,8 +106,8 @@ public abstract class AbstractContainer extends AbstractLock {
             FantastleX.getApplication().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            FantastleX.getApplication().showMessage(
-                    this.getName() + ": Contains Nothing");
+            FantastleX.getApplication()
+                    .showMessage(this.getName() + ": Contains Nothing");
         }
     }
 

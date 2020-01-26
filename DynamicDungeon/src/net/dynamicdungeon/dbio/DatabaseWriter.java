@@ -14,45 +14,45 @@ public class DatabaseWriter implements AutoCloseable {
 
     // Constructors
     public DatabaseWriter(final String filename) throws IOException {
-	this.dbwf = new FileOutputStream(filename);
-	this.dbwb = new BufferedOutputStream(this.dbwf,
-		DatabaseWriter.BUFFER_SIZE);
-	this.dbw = new DataOutputStream(this.dbwb);
+        this.dbwf = new FileOutputStream(filename);
+        this.dbwb = new BufferedOutputStream(this.dbwf,
+                DatabaseWriter.BUFFER_SIZE);
+        this.dbw = new DataOutputStream(this.dbwb);
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-	this.dbw.close();
-	this.dbwb.close();
-	this.dbwf.close();
+        this.dbw.close();
+        this.dbwb.close();
+        this.dbwf.close();
     }
 
     public void writeDouble(final double d) throws IOException {
-	this.dbw.writeDouble(d);
+        this.dbw.writeDouble(d);
     }
 
     public void writeLong(final long l) throws IOException {
-	this.dbw.writeLong(l);
+        this.dbw.writeLong(l);
     }
 
     public void writeInt(final int i) throws IOException {
-	this.dbw.writeInt(i);
+        this.dbw.writeInt(i);
     }
 
     public void writeShort(final int s) throws IOException {
-	this.dbw.writeShort(s);
+        this.dbw.writeShort(s);
     }
 
     public void writeByte(final int b) throws IOException {
-	this.dbw.writeByte(b);
+        this.dbw.writeByte(b);
     }
 
     public void writeBoolean(final boolean b) throws IOException {
-	this.dbw.writeBoolean(b);
+        this.dbw.writeBoolean(b);
     }
 
     public void writeString(final String s) throws IOException {
-	this.dbw.writeUTF(s);
+        this.dbw.writeUTF(s);
     }
 }

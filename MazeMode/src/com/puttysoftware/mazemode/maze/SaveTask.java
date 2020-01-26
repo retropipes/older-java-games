@@ -77,17 +77,16 @@ public class SaveTask extends Thread {
                 // Restore start location
                 app.getMazeManager().getMaze().restoreStart();
             }
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), mazeFile);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    mazeFile);
             if (!this.isSavedGame) {
                 // Auto-register maze
                 MazeRegistration.autoRegisterUserMaze(mazeFile);
             }
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             MazeMode.getErrorLogger().logError(ex);

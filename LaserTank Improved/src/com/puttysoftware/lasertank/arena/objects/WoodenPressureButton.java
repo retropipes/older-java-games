@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class WoodenPressureButton extends AbstractPressureButton {
     // Constructors
     public WoodenPressureButton() {
-	super(new WoodenPressureButtonDoor(), false);
-	this.setMaterial(MaterialConstants.MATERIAL_WOODEN);
+        super(new WoodenPressureButtonDoor(), false);
+        this.setMaterial(MaterialConstants.MATERIAL_WOODEN);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 118;
+        return 118;
     }
 }

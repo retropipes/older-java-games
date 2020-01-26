@@ -31,7 +31,7 @@ public class ShuffleBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Shuffle objects
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .radialScanShuffleObjects(x, y, z, AbstractBomb.EFFECT_RADIUS);

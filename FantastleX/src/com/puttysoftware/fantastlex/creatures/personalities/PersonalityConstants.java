@@ -54,8 +54,8 @@ public class PersonalityConstants {
     static void initPersonalities() {
         if (!PersonalityConstants.INITED) {
             try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                    PersonalityDataManager.class
-                            .getResourceAsStream("/com/puttysoftware/fantastlex/resources/data/personality/catalog.txt"))) {
+                    PersonalityDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/fantastlex/resources/data/personality/catalog.txt"))) {
                 // Fetch data
                 final ArrayList<String> tempNames = new ArrayList<>();
                 String input = "";

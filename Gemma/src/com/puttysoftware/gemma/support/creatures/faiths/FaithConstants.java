@@ -30,35 +30,35 @@ public class FaithConstants {
 
     // Methods
     public static int getFaithsCount() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITHS_COUNT;
     }
 
     static String[] getFaithNames() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_NAMES;
     }
 
     public static String getFaithName(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_DISPLAY_NAMES[f];
     }
 
     public static String[] getFaithDisplayNames() {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_DISPLAY_NAMES;
     }
 
     public static String getFaithPowerName(final int f, final int p) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return NamesManager.getName(
@@ -68,7 +68,7 @@ public class FaithConstants {
     }
 
     public static Color getFaithColor(final int f) {
-        if (!INITED) {
+        if (!FaithConstants.INITED) {
             FaithConstants.initFaiths();
         }
         return FaithConstants.FAITH_COLORS[f];
@@ -88,7 +88,7 @@ public class FaithConstants {
                     FaithDataManager.class.getResourceAsStream(
                             "/com/puttysoftware/gemma/support/resources/data/faith/catalog.txt"))) {
                 // Fetch data
-                ArrayList<String> tempNames = new ArrayList<>();
+                final ArrayList<String> tempNames = new ArrayList<>();
                 String input1 = "";
                 while (input1 != null) {
                     input1 = rsr1.readString();
@@ -105,7 +105,7 @@ public class FaithConstants {
             try (final ResourceStreamReader rsr2 = new ResourceStreamReader(
                     FaithDataManager.class.getResourceAsStream(
                             "/com/puttysoftware/gemma/support/resources/data/faith/colors.txt"))) {
-                ArrayList<String> tempColors = new ArrayList<>();
+                final ArrayList<String> tempColors = new ArrayList<>();
                 String input2 = "";
                 while (input2 != null) {
                     input2 = rsr2.readString();
@@ -113,12 +113,12 @@ public class FaithConstants {
                         tempColors.add(input2);
                     }
                 }
-                String[] tempColors2 = tempColors
+                final String[] tempColors2 = tempColors
                         .toArray(new String[tempColors.size()]);
                 FaithConstants.FAITH_COLORS = new Color[tempColors2.length];
-                int[][] tempColors3 = new int[tempColors2.length][3];
+                final int[][] tempColors3 = new int[tempColors2.length][3];
                 for (int x = 0; x < tempColors2.length; x++) {
-                    String[] tempColorSplit = tempColors2[x].split(",");
+                    final String[] tempColorSplit = tempColors2[x].split(",");
                     for (int y = 0; y < 3; y++) {
                         tempColors3[x][y] = Integer.parseInt(tempColorSplit[y]);
                     }
@@ -127,7 +127,7 @@ public class FaithConstants {
                             tempColors3[x][2]);
                 }
                 if (FaithConstants.FAITH_DISPLAY_NAMES == null) {
-                    String[] temp = new String[FaithConstants.FAITHS_COUNT];
+                    final String[] temp = new String[FaithConstants.FAITHS_COUNT];
                     for (int x = 0; x < temp.length; x++) {
                         temp[x] = NamesManager.getName(
                                 NamesConstants.SECTION_FAITHS,

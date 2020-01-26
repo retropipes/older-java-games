@@ -24,154 +24,185 @@ public abstract class AbstractMovableObject extends AbstractArenaObject {
 
     // Constructors
     protected AbstractMovableObject(final boolean pushable) {
-	super(true, pushable, true);
-	this.setSavedObject(new Empty());
-	this.waitingOnTunnel = false;
-	this.type.set(TypeConstants.TYPE_MOVABLE);
+        super(true, pushable, true);
+        this.setSavedObject(new Empty());
+        this.waitingOnTunnel = false;
+        this.type.set(TypeConstants.TYPE_MOVABLE);
     }
 
     @Override
     public boolean canMove() {
-	return this.isPushable();
+        return this.isPushable();
     }
 
     @Override
     public AbstractArenaObject clone() {
-	final AbstractMovableObject copy = (AbstractMovableObject) super.clone();
-	if (this.getSavedObject() != null) {
-	    copy.setSavedObject(this.getSavedObject().clone());
-	}
-	return copy;
+        final AbstractMovableObject copy = (AbstractMovableObject) super.clone();
+        if (this.getSavedObject() != null) {
+            copy.setSavedObject(this.getSavedObject().clone());
+        }
+        return copy;
     }
 
     @Override
     public boolean doLasersPassThrough() {
-	return false;
+        return false;
     }
 
     @Override
     public int getCustomFormat() {
-	return AbstractArenaObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        return AbstractArenaObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_LOWER_OBJECTS;
+        return ArenaConstants.LAYER_LOWER_OBJECTS;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	final Application app = LaserTank.getApplication();
-	if (this.canMove()) {
-	    if (forceUnits >= this.getMinimumReactionForce()) {
-		try {
-		    final AbstractArenaObject mof = app.getArenaManager().getArena().getCell(locX + dirX, locY + dirY,
-			    locZ, this.getLayer());
-		    final AbstractArenaObject mor = app.getArenaManager().getArena().getCell(locX - dirX, locY - dirY,
-			    locZ, this.getLayer());
-		    if (this.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
-			if (laserType == LaserTypeConstants.LASER_TYPE_BLUE && mof != null
-				&& (mof.isOfType(TypeConstants.TYPE_CHARACTER) || !mof.isSolid())) {
-			    app.getGameManager().updatePushedPosition(locX, locY, locX - dirX, locY - dirY, this);
-			    this.playSoundHook();
-			} else if (mor != null && (mor.isOfType(TypeConstants.TYPE_CHARACTER) || !mor.isSolid())) {
-			    app.getGameManager().updatePushedPosition(locX, locY, locX + dirX, locY + dirY, this);
-			    this.playSoundHook();
-			} else {
-			    // Object doesn't react to this type of laser
-			    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-			}
-		    } else {
-			if (laserType == LaserTypeConstants.LASER_TYPE_BLUE && mor != null
-				&& (mor.isOfType(TypeConstants.TYPE_CHARACTER) || !mor.isSolid())) {
-			    app.getGameManager().updatePushedPosition(locX, locY, locX - dirX, locY - dirY, this);
-			    this.playSoundHook();
-			} else if (mof != null && (mof.isOfType(TypeConstants.TYPE_CHARACTER) || !mof.isSolid())) {
-			    app.getGameManager().updatePushedPosition(locX, locY, locX + dirX, locY + dirY, this);
-			    this.playSoundHook();
-			} else {
-			    // Object doesn't react to this type of laser
-			    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-			}
-		    }
-		} catch (final ArrayIndexOutOfBoundsException aioobe) {
-		    // Object can't go that way
-		    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-		}
-	    } else {
-		// Not enough force
-		return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	    }
-	} else {
-	    // Object is not movable
-	    return super.laserEnteredAction(locX, locY, locZ, dirX, dirY, laserType, forceUnits);
-	}
-	return Direction.NONE;
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        final Application app = LaserTank.getApplication();
+        if (this.canMove()) {
+            if (forceUnits >= this.getMinimumReactionForce()) {
+                try {
+                    final AbstractArenaObject mof = app.getArenaManager()
+                            .getArena().getCell(locX + dirX, locY + dirY, locZ,
+                                    this.getLayer());
+                    final AbstractArenaObject mor = app.getArenaManager()
+                            .getArena().getCell(locX - dirX, locY - dirY, locZ,
+                                    this.getLayer());
+                    if (this.getMaterial() == MaterialConstants.MATERIAL_MAGNETIC) {
+                        if (laserType == LaserTypeConstants.LASER_TYPE_BLUE
+                                && mof != null
+                                && (mof.isOfType(TypeConstants.TYPE_CHARACTER)
+                                        || !mof.isSolid())) {
+                            app.getGameManager().updatePushedPosition(locX,
+                                    locY, locX - dirX, locY - dirY, this);
+                            this.playSoundHook();
+                        } else if (mor != null
+                                && (mor.isOfType(TypeConstants.TYPE_CHARACTER)
+                                        || !mor.isSolid())) {
+                            app.getGameManager().updatePushedPosition(locX,
+                                    locY, locX + dirX, locY + dirY, this);
+                            this.playSoundHook();
+                        } else {
+                            // Object doesn't react to this type of laser
+                            return super.laserEnteredAction(locX, locY, locZ,
+                                    dirX, dirY, laserType, forceUnits);
+                        }
+                    } else {
+                        if (laserType == LaserTypeConstants.LASER_TYPE_BLUE
+                                && mor != null
+                                && (mor.isOfType(TypeConstants.TYPE_CHARACTER)
+                                        || !mor.isSolid())) {
+                            app.getGameManager().updatePushedPosition(locX,
+                                    locY, locX - dirX, locY - dirY, this);
+                            this.playSoundHook();
+                        } else if (mof != null
+                                && (mof.isOfType(TypeConstants.TYPE_CHARACTER)
+                                        || !mof.isSolid())) {
+                            app.getGameManager().updatePushedPosition(locX,
+                                    locY, locX + dirX, locY + dirY, this);
+                            this.playSoundHook();
+                        } else {
+                            // Object doesn't react to this type of laser
+                            return super.laserEnteredAction(locX, locY, locZ,
+                                    dirX, dirY, laserType, forceUnits);
+                        }
+                    }
+                } catch (final ArrayIndexOutOfBoundsException aioobe) {
+                    // Object can't go that way
+                    return super.laserEnteredAction(locX, locY, locZ, dirX,
+                            dirY, laserType, forceUnits);
+                }
+            } else {
+                // Not enough force
+                return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                        laserType, forceUnits);
+            }
+        } else {
+            // Object is not movable
+            return super.laserEnteredAction(locX, locY, locZ, dirX, dirY,
+                    laserType, forceUnits);
+        }
+        return Direction.NONE;
     }
 
     public abstract void playSoundHook();
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
-    protected AbstractArenaObject readArenaObjectHookG2(final XMLFileReader reader, final int formatVersion)
-	    throws IOException {
-	this.setSavedObject(LaserTank.getApplication().getObjects().readArenaObjectG2(reader, formatVersion));
-	return this;
+    protected AbstractArenaObject readArenaObjectHookG2(
+            final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        this.setSavedObject(LaserTank.getApplication().getObjects()
+                .readArenaObjectG2(reader, formatVersion));
+        return this;
     }
 
     @Override
-    protected AbstractArenaObject readArenaObjectHookG3(final XMLFileReader reader, final int formatVersion)
-	    throws IOException {
-	this.setSavedObject(LaserTank.getApplication().getObjects().readArenaObjectG3(reader, formatVersion));
-	return this;
+    protected AbstractArenaObject readArenaObjectHookG3(
+            final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        this.setSavedObject(LaserTank.getApplication().getObjects()
+                .readArenaObjectG3(reader, formatVersion));
+        return this;
     }
 
     @Override
-    protected AbstractArenaObject readArenaObjectHookG4(final XMLFileReader reader, final int formatVersion)
-	    throws IOException {
-	this.setSavedObject(LaserTank.getApplication().getObjects().readArenaObjectG4(reader, formatVersion));
-	return this;
+    protected AbstractArenaObject readArenaObjectHookG4(
+            final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        this.setSavedObject(LaserTank.getApplication().getObjects()
+                .readArenaObjectG4(reader, formatVersion));
+        return this;
     }
 
     @Override
-    protected AbstractArenaObject readArenaObjectHookG5(final XMLFileReader reader, final int formatVersion)
-	    throws IOException {
-	this.setSavedObject(LaserTank.getApplication().getObjects().readArenaObjectG5(reader, formatVersion));
-	return this;
+    protected AbstractArenaObject readArenaObjectHookG5(
+            final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        this.setSavedObject(LaserTank.getApplication().getObjects()
+                .readArenaObjectG5(reader, formatVersion));
+        return this;
     }
 
     @Override
-    protected AbstractArenaObject readArenaObjectHookG6(final XMLFileReader reader, final int formatVersion)
-	    throws IOException {
-	this.setSavedObject(LaserTank.getApplication().getObjects().readArenaObjectG6(reader, formatVersion));
-	return this;
+    protected AbstractArenaObject readArenaObjectHookG6(
+            final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        this.setSavedObject(LaserTank.getApplication().getObjects()
+                .readArenaObjectG6(reader, formatVersion));
+        return this;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 
     public final void setWaitingOnTunnel(final boolean value) {
-	this.waitingOnTunnel = value;
+        this.waitingOnTunnel = value;
     }
 
     public final boolean waitingOnTunnel() {
-	return this.waitingOnTunnel;
+        return this.waitingOnTunnel;
     }
 
     @Override
-    protected void writeArenaObjectHook(final XMLFileWriter writer) throws IOException {
-	this.getSavedObject().writeArenaObject(writer);
+    protected void writeArenaObjectHook(final XMLFileWriter writer)
+            throws IOException {
+        this.getSavedObject().writeArenaObject(writer);
     }
 }

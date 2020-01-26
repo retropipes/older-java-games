@@ -119,8 +119,8 @@ public class PlayScreen implements Screen {
 	final int left = this.getScrollX();
 	final int top = this.getScrollY();
 	this.displayTiles(terminal, left, top);
-	for (int i = 0; i < this.messages.size(); i++) {
-	    newMessages.write(this.messages.get(i));
+	for (final String element : this.messages) {
+	    newMessages.write(element);
 	}
 	this.messages.clear();
 	final String stats = String.format(

@@ -85,9 +85,10 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void use(final MazeObject mo, final int x, final int y, final int z) {
+    public void use(final MazeObject mo, final int x, final int y,
+            final int z) {
         int tempUses = this.getUses(mo);
-        if (mo.isUsable() && (tempUses > 0)) {
+        if (mo.isUsable() && tempUses > 0) {
             tempUses--;
             this.setUses(mo, tempUses);
             mo.useHelper(x, y, z);
@@ -136,12 +137,12 @@ public final class ObjectInventory implements Cloneable {
 
     // Transformers
     void fireStepActions() {
-        if (!this.boots.getName().equals(
-                ObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName()
+                .equals(ObjectInventory.DEFAULT_BOOTS.getName())) {
             this.boots.stepAction();
         }
-        if (!this.amulet.getName().equals(
-                ObjectInventory.DEFAULT_AMULET.getName())) {
+        if (!this.amulet.getName()
+                .equals(ObjectInventory.DEFAULT_AMULET.getName())) {
             this.amulet.stepAction();
         }
     }
@@ -280,7 +281,7 @@ public final class ObjectInventory implements Cloneable {
     }
 
     private int getBootsCount() {
-        if ((!this.boots.equals(ObjectInventory.DEFAULT_BOOTS))) {
+        if (!this.boots.equals(ObjectInventory.DEFAULT_BOOTS)) {
             return 1;
         } else {
             return 0;
@@ -499,14 +500,14 @@ public final class ObjectInventory implements Cloneable {
     public void writeInventoryXML(final XDataWriter writer) throws IOException {
         this.boots.writeMazeObjectXML(writer);
         this.amulet.writeMazeObjectXML(writer);
-        for (int x = 0; x < this.contents.length; x++) {
-            writer.writeInt(this.contents[x]);
+        for (final int content : this.contents) {
+            writer.writeInt(content);
         }
         for (int x = 0; x < this.contents.length; x++) {
             writer.writeInt(this.uses[x]);
         }
-        for (int x = 0; x < this.bows.length; x++) {
-            writer.writeInt(this.bows[x]);
+        for (final int bow : this.bows) {
+            writer.writeInt(bow);
         }
         for (int x = 0; x < this.bows.length; x++) {
             writer.writeInt(this.bowUses[x]);

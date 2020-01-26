@@ -20,7 +20,7 @@ public class CommonDialogs {
     // Methods
     /**
      * Displays a dialog.
-     * 
+     *
      * @param msg
      *            The dialog message.
      */
@@ -31,7 +31,7 @@ public class CommonDialogs {
 
     /**
      * Displays a dialog with a title.
-     * 
+     *
      * @param msg
      *            The dialog message.
      * @param title
@@ -44,7 +44,7 @@ public class CommonDialogs {
 
     /**
      * Displays an error dialog with a title.
-     * 
+     *
      * @param msg
      *            The dialog message.
      * @param title
@@ -57,7 +57,7 @@ public class CommonDialogs {
 
     /**
      * Displays an input dialog, allowing the user to pick from a list.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -78,7 +78,7 @@ public class CommonDialogs {
 
     /**
      * Displays a text input dialog, allowing the user to enter a value.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -93,7 +93,7 @@ public class CommonDialogs {
 
     /**
      * Displays a text input dialog, allowing the user to enter a value.
-     * 
+     *
      * @param prompt
      *            The input prompt.
      * @param title
@@ -109,14 +109,15 @@ public class CommonDialogs {
 
     /**
      * Displays a yes/no confirm dialog.
-     * 
+     *
      * @param prompt
      *            The confirmation prompt.
      * @param title
      *            The dialog title.
      * @return A JOptionPane constant specifying what the user clicked.
      */
-    public static int showConfirmDialog(final String prompt, final String title) {
+    public static int showConfirmDialog(final String prompt,
+            final String title) {
         return JOptionPane.showConfirmDialog(null, prompt, title,
                 JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 CommonDialogs.ICON);
@@ -124,7 +125,7 @@ public class CommonDialogs {
 
     /**
      * Displays a yes/no/cancel confirm dialog.
-     * 
+     *
      * @param prompt
      *            The confirmation prompt.
      * @param title
@@ -148,7 +149,7 @@ public class CommonDialogs {
 
     /**
      * Sets the default title for dialogs.
-     * 
+     *
      * @param title
      *            The default title
      */
@@ -158,7 +159,7 @@ public class CommonDialogs {
 
     /**
      * Sets the image to use instead of the default icons.
-     * 
+     *
      * @param icon
      *            The image - should be a BufferedImageIcon from the Graphics
      *            library.

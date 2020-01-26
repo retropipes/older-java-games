@@ -53,8 +53,8 @@ public class Pit extends StairsDown {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObject obj = app.getMazeManager().getMaze()
-                    .getCell(dirX, dirY, floor, MazeConstants.LAYER_OBJECT);
+            final MazeObject obj = app.getMazeManager().getMaze().getCell(dirX,
+                    dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
@@ -74,8 +74,8 @@ public class Pit extends StairsDown {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = MasterMaze.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

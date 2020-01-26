@@ -141,12 +141,10 @@ class GameGUIManager {
 
     void updateAlternateAutoFinishProgress(final int progress) {
         this.alternateAutoFinishProgress.setValue(progress);
-        this.alternateAutoFinishProgress
-                .setString((int) ((double) this.alternateAutoFinishProgress
-                        .getValue()
-                        / (double) this.alternateAutoFinishProgress
-                                .getMaximum() * 100.0)
-                        + "%");
+        this.alternateAutoFinishProgress.setString(
+                (int) ((double) this.alternateAutoFinishProgress.getValue()
+                        / (double) this.alternateAutoFinishProgress.getMaximum()
+                        * 100.0) + "%");
     }
 
     void setAutoFinishMax(final int max) {
@@ -182,88 +180,88 @@ class GameGUIManager {
                         .getLowerRightViewingWindowLocationY(); y++) {
                     xFix = x - this.vwMgr.getViewingWindowLocationX();
                     yFix = y - this.vwMgr.getViewingWindowLocationY();
-                    visible = app.getMazeManager().getMaze()
-                            .isSquareVisible(u, v, y, x);
+                    visible = app.getMazeManager().getMaze().isSquareVisible(u,
+                            v, y, x);
                     try {
                         if (visible) {
                             if (this.trueSightFlag) {
-                                final AbstractMazeObject obj1 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        MazeConstants.LAYER_GROUND)
+                                final AbstractMazeObject obj1 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                MazeConstants.LAYER_GROUND)
                                         .editorRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                final AbstractMazeObject obj2 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        MazeConstants.LAYER_OBJECT)
+                                final AbstractMazeObject obj2 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                MazeConstants.LAYER_OBJECT)
                                         .editorRenderHook(y, x,
                                                 m.getPlayerLocationZ());
                                 final BufferedImageIcon img1 = ObjectImageManager
-                                        .getImage(obj1.getName(), obj1
-                                                .getBaseID(), obj1
-                                                .getTemplateColor(), obj1
-                                                .getAttributeID(), obj1
-                                                .getAttributeTemplateColor());
+                                        .getImage(obj1.getName(),
+                                                obj1.getBaseID(),
+                                                obj1.getTemplateColor(),
+                                                obj1.getAttributeID(),
+                                                obj1.getAttributeTemplateColor());
                                 final BufferedImageIcon img2 = ObjectImageManager
-                                        .getImage(obj2.getName(), obj2
-                                                .getBaseID(), obj2
-                                                .getTemplateColor(), obj2
-                                                .getAttributeID(), obj2
-                                                .getAttributeTemplateColor());
+                                        .getImage(obj2.getName(),
+                                                obj2.getBaseID(),
+                                                obj2.getTemplateColor(),
+                                                obj2.getAttributeID(),
+                                                obj2.getAttributeTemplateColor());
                                 if (u == y && v == x) {
                                     final AbstractMazeObject obj3 = new Player()
                                             .editorRenderHook(y, x,
                                                     m.getPlayerLocationZ());
                                     final BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                            .getImage(obj3.getName(),
                                                     obj3.getBaseID(),
                                                     obj3.getTemplateColor(),
                                                     obj3.getAttributeID(),
                                                     obj3.getAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else if (m.hasNote(x, y,
                                         m.getPlayerLocationZ())) {
                                     final AbstractMazeObject obj3 = GameGUIManager.NOTE
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
                                     final BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else {
                                     this.drawGrid.setImageCell(ImageTransformer
                                             .getCompositeImage(img1, img2),
                                             xFix, yFix);
                                 }
                             } else {
-                                final AbstractMazeObject obj1 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        MazeConstants.LAYER_GROUND)
+                                final AbstractMazeObject obj1 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                MazeConstants.LAYER_GROUND)
                                         .gameRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                final AbstractMazeObject obj2 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        MazeConstants.LAYER_OBJECT)
+                                final AbstractMazeObject obj2 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                MazeConstants.LAYER_OBJECT)
                                         .gameRenderHook(y, x,
                                                 m.getPlayerLocationZ());
                                 final BufferedImageIcon img1 = ObjectImageManager
-                                        .getImage(
-                                                obj1.getName(),
+                                        .getImage(obj1.getName(),
                                                 obj1.getGameBaseID(),
                                                 obj1.getGameTemplateColor(),
                                                 obj1.getGameAttributeID(),
                                                 obj1.getGameAttributeTemplateColor());
                                 final BufferedImageIcon img2 = ObjectImageManager
-                                        .getImage(
-                                                obj2.getName(),
+                                        .getImage(obj2.getName(),
                                                 obj2.getGameBaseID(),
                                                 obj2.getGameTemplateColor(),
                                                 obj2.getGameAttributeID(),
@@ -273,30 +271,32 @@ class GameGUIManager {
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
                                     final BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else if (m.hasNote(x, y,
                                         m.getPlayerLocationZ())) {
                                     final AbstractMazeObject obj3 = GameGUIManager.NOTE
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
                                     final BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else {
                                     this.drawGrid.setImageCell(ImageTransformer
                                             .getCompositeImage(img1, img2),
@@ -304,14 +304,15 @@ class GameGUIManager {
                                 }
                             }
                         } else {
-                            this.drawGrid.setImageCell(ObjectImageManager
-                                    .getImage(GameGUIManager.DARK.getName(),
+                            this.drawGrid.setImageCell(
+                                    ObjectImageManager.getImage(
+                                            GameGUIManager.DARK.getName(),
                                             GameGUIManager.DARK.getBaseID(),
                                             ColorConstants.COLOR_NONE,
                                             GameGUIManager.DARK
                                                     .getAttributeID(),
-                                            ColorConstants.COLOR_NONE), xFix,
-                                    yFix);
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
                         final AbstractMazeObject ev = new EmptyVoid()
@@ -360,21 +361,19 @@ class GameGUIManager {
             v = m.getPlayerLocationY();
             xFix = x - this.vwMgr.getViewingWindowLocationX();
             yFix = y - this.vwMgr.getViewingWindowLocationY();
-            visible = app.getMazeManager().getMaze()
-                    .isSquareVisible(u, v, y, x);
+            visible = app.getMazeManager().getMaze().isSquareVisible(u, v, y,
+                    x);
             onScreen = xFix >= 0 && xFix < this.vwMgr.getViewingWindowSizeX()
                     && yFix >= 0 && yFix < this.vwMgr.getViewingWindowSizeY();
             try {
                 if (visible) {
                     if (this.trueSightFlag) {
-                        final AbstractMazeObject obj1 = app
-                                .getMazeManager()
+                        final AbstractMazeObject obj1 = app.getMazeManager()
                                 .getMaze()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         MazeConstants.LAYER_GROUND)
                                 .editorRenderHook(y, x, m.getPlayerLocationZ());
-                        final AbstractMazeObject obj2 = app
-                                .getMazeManager()
+                        final AbstractMazeObject obj2 = app.getMazeManager()
                                 .getMaze()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         MazeConstants.LAYER_OBJECT)
@@ -398,22 +397,20 @@ class GameGUIManager {
                                             obj3.getTemplateColor(),
                                             obj3.getAttributeID(),
                                             obj3.getAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img3), xFix, yFix);
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img3),
+                                    xFix, yFix);
                         } else {
                             this.drawGrid.setImageCell(ImageTransformer
                                     .getCompositeImage(img1, img2), xFix, yFix);
                         }
                     } else {
-                        final AbstractMazeObject obj1 = app
-                                .getMazeManager()
+                        final AbstractMazeObject obj1 = app.getMazeManager()
                                 .getMaze()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         MazeConstants.LAYER_GROUND)
                                 .gameRenderHook(y, x, m.getPlayerLocationZ());
-                        final AbstractMazeObject obj2 = app
-                                .getMazeManager()
+                        final AbstractMazeObject obj2 = app.getMazeManager()
                                 .getMaze()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         MazeConstants.LAYER_OBJECT)
@@ -433,60 +430,57 @@ class GameGUIManager {
                                     .gameRenderHook(y, x,
                                             m.getPlayerLocationZ());
                             final BufferedImageIcon img3 = ObjectImageManager
-                                    .getImage(obj3.getName(), obj3
-                                            .getGameBaseID(), obj3
-                                            .getGameTemplateColor(), obj3
-                                            .getGameAttributeID(), obj3
-                                            .getGameAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img3), xFix, yFix);
+                                    .getImage(obj3.getName(),
+                                            obj3.getGameBaseID(),
+                                            obj3.getGameTemplateColor(),
+                                            obj3.getGameAttributeID(),
+                                            obj3.getGameAttributeTemplateColor());
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img3),
+                                    xFix, yFix);
                         } else {
-                            final AbstractMazeObject obj5 = obj4
-                                    .gameRenderHook(y, x,
-                                            m.getPlayerLocationZ());
+                            final AbstractMazeObject obj5 = obj4.gameRenderHook(
+                                    y, x, m.getPlayerLocationZ());
                             final BufferedImageIcon img4 = ObjectImageManager
-                                    .getImage(obj5.getName(), obj5
-                                            .getGameBaseID(), obj5
-                                            .getGameTemplateColor(), obj5
-                                            .getGameAttributeID(), obj5
-                                            .getGameAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img4), xFix, yFix);
+                                    .getImage(obj5.getName(),
+                                            obj5.getGameBaseID(),
+                                            obj5.getGameTemplateColor(),
+                                            obj5.getGameAttributeID(),
+                                            obj5.getGameAttributeTemplateColor());
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img4),
+                                    xFix, yFix);
                         }
                     }
                 } else {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            GameGUIManager.DARK.getName(),
-                            GameGUIManager.DARK.getBaseID(),
-                            ColorConstants.COLOR_NONE,
-                            GameGUIManager.DARK.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            GameGUIManager.DARK.getName(),
+                                            GameGUIManager.DARK.getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            GameGUIManager.DARK
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 }
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 if (onScreen) {
                     final AbstractMazeObject ev = new EmptyVoid()
                             .gameRenderHook(y, x, m.getPlayerLocationZ());
-                    this.drawGrid.setImageCell(
-                            ObjectImageManager.getImage(ev.getName(),
-                                    ev.getGameBaseID(),
-                                    ev.getGameTemplateColor(),
-                                    ev.getGameAttributeID(),
-                                    ev.getGameAttributeTemplateColor()), xFix,
-                            yFix);
+                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                            ev.getName(), ev.getGameBaseID(),
+                            ev.getGameTemplateColor(), ev.getGameAttributeID(),
+                            ev.getGameAttributeTemplateColor()), xFix, yFix);
                 }
             } catch (final NullPointerException np) {
                 if (onScreen) {
                     final AbstractMazeObject ev = new EmptyVoid()
                             .gameRenderHook(y, x, m.getPlayerLocationZ());
-                    this.drawGrid.setImageCell(
-                            ObjectImageManager.getImage(ev.getName(),
-                                    ev.getGameBaseID(),
-                                    ev.getGameTemplateColor(),
-                                    ev.getGameAttributeID(),
-                                    ev.getGameAttributeTemplateColor()), xFix,
-                            yFix);
+                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                            ev.getName(), ev.getGameBaseID(),
+                            ev.getGameTemplateColor(), ev.getGameAttributeID(),
+                            ev.getGameAttributeTemplateColor()), xFix, yFix);
                 }
             }
             if (this.knm) {
@@ -522,8 +516,8 @@ class GameGUIManager {
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.progressPane = new Container();
-        this.progressPane.setLayout(new BoxLayout(this.progressPane,
-                BoxLayout.Y_AXIS));
+        this.progressPane
+                .setLayout(new BoxLayout(this.progressPane, BoxLayout.Y_AXIS));
         this.autoFinishProgress = new JProgressBar(SwingConstants.VERTICAL);
         this.autoFinishProgress.setStringPainted(true);
         this.alternateAutoFinishProgress = new JProgressBar(
@@ -562,8 +556,9 @@ class GameGUIManager {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(handler);
         this.outputFrame.addWindowListener(handler);
@@ -571,8 +566,8 @@ class GameGUIManager {
         this.outputFrame.setBackground(new Color(223, 223, 223));
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         EventHandler() {
             // Do nothing
         }

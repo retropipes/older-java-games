@@ -15,27 +15,31 @@ import com.puttysoftware.lasertank.utilities.Direction;
 public class Damaged extends AbstractAttribute {
     // Constructors
     public Damaged() {
-	super();
+        super();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 133;
+        return 133;
     }
 
     @Override
-    public Direction laserEnteredAction(final int locX, final int locY, final int locZ, final int dirX, final int dirY,
-	    final int laserType, final int forceUnits) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().morph(new Crumbling(), locX, locY, locZ, this.getLayer());
-	SoundManager.playSound(SoundConstants.SOUND_CRACK);
-	return Direction.NONE;
+    public Direction laserEnteredAction(final int locX, final int locY,
+            final int locZ, final int dirX, final int dirY, final int laserType,
+            final int forceUnits) {
+        final Application app = LaserTank.getApplication();
+        app.getGameManager().morph(new Crumbling(), locX, locY, locZ,
+                this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_CRACK);
+        return Direction.NONE;
     }
 
     @Override
-    public void moveFailedAction(final int locX, final int locY, final int locZ) {
-	final Application app = LaserTank.getApplication();
-	app.getGameManager().morph(new Crumbling(), locX, locY, locZ, this.getLayer());
-	SoundManager.playSound(SoundConstants.SOUND_CRACK);
+    public void moveFailedAction(final int locX, final int locY,
+            final int locZ) {
+        final Application app = LaserTank.getApplication();
+        app.getGameManager().morph(new Crumbling(), locX, locY, locZ,
+                this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 }

@@ -32,8 +32,8 @@ public class NoBoots extends GenericInventoryModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MasterMaze.getApplication().getGameManager().decay();
         inv.removeAllBoots();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);

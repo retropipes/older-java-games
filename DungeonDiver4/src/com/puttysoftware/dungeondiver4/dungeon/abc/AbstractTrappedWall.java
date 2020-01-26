@@ -16,14 +16,14 @@ public abstract class AbstractTrappedWall extends AbstractWall {
     protected static final int NUMBER_MASTER = -1;
 
     // Constructors
-    protected AbstractTrappedWall(int newNumber) {
+    protected AbstractTrappedWall(final int newNumber) {
         super(ColorConstants.COLOR_BROWN);
         this.number = newNumber;
     }
 
     @Override
     public AbstractTrappedWall clone() {
-        AbstractTrappedWall copy = (AbstractTrappedWall) super.clone();
+        final AbstractTrappedWall copy = (AbstractTrappedWall) super.clone();
         copy.number = this.number;
         return copy;
     }
@@ -66,8 +66,8 @@ public abstract class AbstractTrappedWall extends AbstractWall {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }

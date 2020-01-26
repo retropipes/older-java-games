@@ -14,7 +14,7 @@ public class SpellBook {
     private final boolean[] known;
 
     // Constructors
-    protected SpellBook(int numSpells, boolean flag) {
+    protected SpellBook(final int numSpells, final boolean flag) {
         super();
         this.name = "No Name";
         this.spells = new Spell[numSpells];
@@ -39,18 +39,18 @@ public class SpellBook {
         return this.spells.length;
     }
 
-    public final boolean isSpellKnown(int ID) {
+    public final boolean isSpellKnown(final int ID) {
         return this.known[ID];
     }
 
-    public final Spell getSpellByID(int ID) {
+    public final Spell getSpellByID(final int ID) {
         return this.spells[ID];
     }
 
     public final int getSpellsKnownCount() {
         int k = 0;
-        for (int x = 0; x < this.known.length; x++) {
-            if (this.known[x]) {
+        for (final boolean element : this.known) {
+            if (element) {
                 k++;
             }
         }
@@ -62,13 +62,13 @@ public class SpellBook {
     }
 
     public final String[] getAllSpellsToLearnNames() {
-        int numKnown = this.getSpellsKnownCount();
-        int max = this.getMaximumSpellsKnownCount();
+        final int numKnown = this.getSpellsKnownCount();
+        final int max = this.getMaximumSpellsKnownCount();
         if (numKnown == max) {
             return null;
         } else {
             int counter = 0;
-            String[] res = new String[max - numKnown];
+            final String[] res = new String[max - numKnown];
             for (int x = 0; x < this.spells.length; x++) {
                 if (!this.known[x]) {
                     res[counter] = this.spells[x].getEffect().getName();
@@ -79,10 +79,10 @@ public class SpellBook {
         }
     }
 
-    final Spell getSpellByName(String sname) {
+    final Spell getSpellByName(final String sname) {
         int x;
         for (x = 0; x < this.spells.length; x++) {
-            String currName = this.spells[x].getEffect().getName();
+            final String currName = this.spells[x].getEffect().getName();
             if (currName.equals(sname)) {
                 // Found it
                 return this.spells[x];
@@ -92,7 +92,7 @@ public class SpellBook {
         return null;
     }
 
-    public final void learnSpellByID(int ID) {
+    public final void learnSpellByID(final int ID) {
         if (ID != -1) {
             this.known[ID] = true;
         }
@@ -114,7 +114,7 @@ public class SpellBook {
         int x;
         int k = 0;
         String[] names;
-        String[] tempnames = new String[this.spells.length];
+        final String[] tempnames = new String[this.spells.length];
         for (x = 0; x < this.spells.length; x++) {
             if (this.known[x]) {
                 tempnames[x] = this.spells[x].getEffect().getName();
@@ -140,7 +140,7 @@ public class SpellBook {
         int x;
         int k = 0;
         int[] costs;
-        int[] tempcosts = new int[this.spells.length];
+        final int[] tempcosts = new int[this.spells.length];
         for (x = 0; x < this.spells.length; x++) {
             if (this.known[x]) {
                 tempcosts[x] = this.spells[x].getCost();
@@ -166,7 +166,7 @@ public class SpellBook {
         int x;
         int k = 0;
         String[] names;
-        String[] tempnames = new String[this.spells.length];
+        final String[] tempnames = new String[this.spells.length];
         for (x = 0; x < this.spells.length; x++) {
             if (this.known[x]) {
                 tempnames[x] = this.spells[x].getEffect().getName();
@@ -189,8 +189,8 @@ public class SpellBook {
             k = 0;
             for (x = 0; x < this.spells.length; x++) {
                 if (this.known[x]) {
-                    int cost = this.spells[x].getCost();
-                    String costStr = Integer.toString(cost);
+                    final int cost = this.spells[x].getCost();
+                    final String costStr = Integer.toString(cost);
                     names[k] += " (" + costStr + " MP)";
                     k++;
                 }
@@ -199,10 +199,10 @@ public class SpellBook {
         return names;
     }
 
-    public final int getSpellIDByName(String sname) {
+    public final int getSpellIDByName(final String sname) {
         int x;
         for (x = 0; x < this.spells.length; x++) {
-            String currName = this.spells[x].getEffect().getName();
+            final String currName = this.spells[x].getEffect().getName();
             if (currName.equals(sname)) {
                 // Found it
                 return x;
@@ -212,7 +212,7 @@ public class SpellBook {
         return -1;
     }
 
-    public final void setName(String n) {
+    public final void setName(final String n) {
         this.name = n;
     }
 
@@ -222,12 +222,12 @@ public class SpellBook {
         int result = 1;
         result = prime * result + Arrays.hashCode(this.known);
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         return prime * result + Arrays.hashCode(this.spells);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -237,7 +237,7 @@ public class SpellBook {
         if (!(obj instanceof SpellBook)) {
             return false;
         }
-        SpellBook other = (SpellBook) obj;
+        final SpellBook other = (SpellBook) obj;
         if (!Arrays.equals(this.known, other.known)) {
             return false;
         }

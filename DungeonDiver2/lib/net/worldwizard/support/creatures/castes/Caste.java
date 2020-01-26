@@ -17,9 +17,9 @@ public class Caste extends Identifiable {
 
     public Caste(final int cid, final int... cdata) {
         if (cdata.length != CasteConstants.CASTE_ATTRIBUTE_COUNT) {
-            throw new IllegalArgumentException("Exactly "
-                    + CasteConstants.CASTE_ATTRIBUTE_COUNT
-                    + " attributes must be specified!");
+            throw new IllegalArgumentException(
+                    "Exactly " + CasteConstants.CASTE_ATTRIBUTE_COUNT
+                            + " attributes must be specified!");
         }
         this.casteID = cid;
         this.data = cdata;
@@ -41,17 +41,17 @@ public class Caste extends Identifiable {
     @Override
     public BigInteger computeLongHash() {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                CasteConstants.CASTE_NAMES[this.casteID]).multiply(
-                BigInteger.valueOf(2)));
+        longHash = longHash.add(IDGenerator
+                .computeStringLongHash(CasteConstants.CASTE_NAMES[this.casteID])
+                .multiply(BigInteger.valueOf(2)));
         return longHash;
     }
 
     public static String casteIDtoFilename(final int casteID) {
         BigInteger longHash = BigInteger.ZERO;
-        longHash = longHash.add(IDGenerator.computeStringLongHash(
-                CasteConstants.CASTE_NAMES[casteID]).multiply(
-                BigInteger.valueOf(2)));
+        longHash = longHash.add(IDGenerator
+                .computeStringLongHash(CasteConstants.CASTE_NAMES[casteID])
+                .multiply(BigInteger.valueOf(2)));
         return "$" + longHash.toString(36).toUpperCase();
     }
 
@@ -62,12 +62,10 @@ public class Caste extends Identifiable {
         if (!dir.exists()) {
             dir.mkdirs();
         }
-        final XDataWriter writer = new XDataWriter(Support.getSystemVariables()
-                .getBasePath()
-                + File.separator
-                + "castes"
-                + File.separator
-                + this.getID() + Extension.getCasteExtensionWithPeriod(),
+        final XDataWriter writer = new XDataWriter(
+                Support.getSystemVariables().getBasePath() + File.separator
+                        + "castes" + File.separator + this.getID()
+                        + Extension.getCasteExtensionWithPeriod(),
                 Extension.getCasteExtension());
         this.write(writer);
         writer.close();

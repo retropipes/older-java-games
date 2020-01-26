@@ -16,13 +16,13 @@ public final class Faith {
     private final double[] multipliers;
     private final String desc;
 
-    Faith(int fid) {
+    Faith(final int fid) {
         this.multipliers = FaithDataManager.getFaithData(fid);
         this.desc = FaithDescriptionManager.getFaithDescription(fid);
         this.faithID = fid;
     }
 
-    public double getMultiplierForOtherFaith(int fid) {
+    public double getMultiplierForOtherFaith(final int fid) {
         return this.multipliers[fid];
     }
 
@@ -51,7 +51,7 @@ public final class Faith {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -61,7 +61,7 @@ public final class Faith {
         if (!(obj instanceof Faith)) {
             return false;
         }
-        Faith other = (Faith) obj;
+        final Faith other = (Faith) obj;
         if (this.faithID != other.faithID) {
             return false;
         }

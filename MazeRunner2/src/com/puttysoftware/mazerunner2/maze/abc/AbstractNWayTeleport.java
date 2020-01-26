@@ -54,7 +54,7 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -64,7 +64,7 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
         if (!(obj instanceof AbstractNWayTeleport)) {
             return false;
         }
-        AbstractNWayTeleport other = (AbstractNWayTeleport) obj;
+        final AbstractNWayTeleport other = (AbstractNWayTeleport) obj;
         if (!Arrays.equals(this.destColN, other.destColN)) {
             return false;
         }
@@ -85,7 +85,7 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
 
     @Override
     public AbstractNWayTeleport clone() {
-        AbstractNWayTeleport copy = (AbstractNWayTeleport) super.clone();
+        final AbstractNWayTeleport copy = (AbstractNWayTeleport) super.clone();
         copy.destColN = this.destColN.clone();
         copy.destFloorN = this.destFloorN.clone();
         copy.destRowN = this.destRowN.clone();
@@ -114,7 +114,8 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
         this.destRowN[n - 1] = destinationRow;
     }
 
-    public void setDestinationColumnN(final int n, final int destinationColumn) {
+    public void setDestinationColumnN(final int n,
+            final int destinationColumn) {
         this.destColN[n - 1] = destinationColumn;
     }
 
@@ -132,9 +133,9 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         String input = null;
         int n = -1;
         while (input == null) {
@@ -176,13 +177,15 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
 
     @Override
     public void editorPlaceHook() {
-        String respN = CommonDialogs.showInputDialog("How Many Destinations?",
-                "Editor", nWayChoices, nWayChoices[0]);
+        final String respN = CommonDialogs.showInputDialog(
+                "How Many Destinations?", "Editor",
+                AbstractNWayTeleport.nWayChoices,
+                AbstractNWayTeleport.nWayChoices[0]);
         if (respN == null) {
             return;
         }
         this.ways = Integer.parseInt(respN) - 1;
-        MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
+        final MazeEditorLogic me = MazeRunnerII.getApplication().getEditor();
         me.setNWayDestCount(this.ways + 1);
     }
 
@@ -192,7 +195,7 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.getDestinationRow();
@@ -262,7 +265,7 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.setDestinationRow(value);

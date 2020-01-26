@@ -17,8 +17,8 @@ import net.worldwizard.images.BufferedImageIcon;
 public class GraphicsManager {
     public static BufferedImageIcon getMiniatureLogo() {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/tap/resources/graphics/logo/minilogo.png");
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/tap/resources/graphics/logo/minilogo.png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;
@@ -33,8 +33,8 @@ public class GraphicsManager {
 
     public static BufferedImageIcon getMicroLogo() {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/tap/resources/graphics/logo/micrologo.png");
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/tap/resources/graphics/logo/micrologo.png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;
@@ -49,8 +49,8 @@ public class GraphicsManager {
 
     public static Image getIconLogo() {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/tap/resources/graphics/logo/iconlogo.png");
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/tap/resources/graphics/logo/iconlogo.png");
             final BufferedImage image = ImageIO.read(url);
             return image;
         } catch (final IOException ie) {

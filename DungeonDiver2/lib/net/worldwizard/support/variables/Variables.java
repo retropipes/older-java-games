@@ -60,16 +60,16 @@ public class Variables {
     }
 
     public void read() throws IOException {
-        final XDataReader reader = new XDataReader(this.basePath
-                + File.separator + "metadata.xml",
+        final XDataReader reader = new XDataReader(
+                this.basePath + File.separator + "metadata.xml",
                 Extension.getVariablesExtension());
         this.variablesID = reader.readString();
         reader.close();
     }
 
     public void write() throws IOException {
-        final XDataWriter writer = new XDataWriter(this.basePath
-                + File.separator + "metadata.xml",
+        final XDataWriter writer = new XDataWriter(
+                this.basePath + File.separator + "metadata.xml",
                 Extension.getVariablesExtension());
         writer.writeString(this.variablesID);
         writer.close();

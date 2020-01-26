@@ -9,8 +9,8 @@ import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractInvisibleConditionalTeleport;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
-public class InvisibleOneShotConditionalTeleport extends
-        AbstractInvisibleConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends AbstractInvisibleConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super(ObjectImageConstants.OBJECT_IMAGE_ONE_SHOT_CONDITIONAL);

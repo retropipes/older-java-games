@@ -53,13 +53,13 @@ public final class PicturePicker {
         this.choiceRadioContainer = new Container();
         this.choiceRadioContainer.setLayout(new BorderLayout());
         this.choiceRadioContainer.add(this.radioContainer, BorderLayout.WEST);
-        this.choiceRadioContainer
-                .add(this.choiceContainer, BorderLayout.CENTER);
+        this.choiceRadioContainer.add(this.choiceContainer,
+                BorderLayout.CENTER);
         this.scrollPane = new JScrollPane(this.choiceRadioContainer);
-        this.scrollPane
-                .setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        this.scrollPane
-                .setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        this.scrollPane.setHorizontalScrollBarPolicy(
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        this.scrollPane.setVerticalScrollBarPolicy(
+                ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         this.pickerContainer.add(this.scrollPane, BorderLayout.CENTER);
         this.updatePicker(pictures, names);
         this.index = 0;
@@ -119,12 +119,12 @@ public final class PicturePicker {
                 + this.scrollPane.getVerticalScrollBar().getWidth();
         final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
                 .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
-                newPreferredHeight));
+        this.pickerContainer.setPreferredSize(
+                new Dimension(newPreferredWidth, newPreferredHeight));
     }
 
     /**
-     * 
+     *
      * @return the index of the picture picked
      */
     public int getPicked() {

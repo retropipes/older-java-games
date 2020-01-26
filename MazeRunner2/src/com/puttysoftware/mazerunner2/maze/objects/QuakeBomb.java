@@ -31,7 +31,7 @@ public class QuakeBomb extends AbstractBomb {
     }
 
     @Override
-    public void useActionHook(int x, int y, int z) {
+    public void useActionHook(final int x, final int y, final int z) {
         // Earthquake
         MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .radialScanQuakeBomb(x, y, z, AbstractBomb.EFFECT_RADIUS);

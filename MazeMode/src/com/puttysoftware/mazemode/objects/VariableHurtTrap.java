@@ -34,8 +34,8 @@ public class VariableHurtTrap extends GenericTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         this.maxDamage = MazeMode.getApplication().getMazeManager().getMaze()
                 .getMaximumHP() / 10;
         if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {

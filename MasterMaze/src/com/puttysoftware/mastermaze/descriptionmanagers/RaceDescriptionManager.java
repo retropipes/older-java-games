@@ -16,9 +16,10 @@ public class RaceDescriptionManager {
         try {
             // Fetch description
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    RaceDescriptionManager.class.getResourceAsStream("/com/puttysoftware/mastermaze/resources/descriptions/race/"
-                            + name
-                            + Extension.getInternalDataExtensionWithPeriod()));
+                    RaceDescriptionManager.class.getResourceAsStream(
+                            "/com/puttysoftware/mastermaze/resources/descriptions/race/"
+                                    + name + Extension
+                                            .getInternalDataExtensionWithPeriod()));
             final String desc = rsr.readString();
             rsr.close();
             return desc;

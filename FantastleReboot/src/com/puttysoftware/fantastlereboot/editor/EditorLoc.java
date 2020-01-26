@@ -22,152 +22,152 @@ import com.puttysoftware.fantastlereboot.objectmodel.Layers;
 import com.puttysoftware.fantastlereboot.world.World;
 
 class EditorLoc {
-  // Fields
-  private static int locX, locY, locZ;
-  private static int locW, locE;
-  private static int minX, minY, minZ, minW, minE;
-  private static int maxW, maxE;
-  private static int maxX, maxY, maxZ;
+    // Fields
+    private static int locX, locY, locZ;
+    private static int locW, locE;
+    private static int minX, minY, minZ, minW, minE;
+    private static int maxW, maxE;
+    private static int maxX, maxY, maxZ;
 
-  // Constructors
-  private EditorLoc() {
-    super();
-  }
-
-  // Methods
-  public static int getLocX() {
-    return EditorLoc.locX;
-  }
-
-  public static int getLocY() {
-    return EditorLoc.locY;
-  }
-
-  public static int getLocZ() {
-    return EditorLoc.locZ;
-  }
-
-  public static int getLocW() {
-    return EditorLoc.locW;
-  }
-
-  public static int getLocE() {
-    return EditorLoc.locE;
-  }
-
-  public static int getMaxLocZ() {
-    return EditorLoc.maxZ;
-  }
-
-  public static int getMaxLocW() {
-    return EditorLoc.maxW;
-  }
-
-  public static int getMinLocZ() {
-    return EditorLoc.minZ;
-  }
-
-  public static int getMinLocW() {
-    return EditorLoc.minW;
-  }
-
-  public static void setLocX(final int val) {
-    EditorLoc.locX = val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void setLocY(final int val) {
-    EditorLoc.locY = val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void setLocZ(final int val) {
-    EditorLoc.locZ = val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void setLocW(final int val) {
-    EditorLoc.locW = val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void setLocE(final int val) {
-    EditorLoc.locE = val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void offsetLocZ(final int val) {
-    EditorLoc.locZ += val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void offsetLocW(final int val) {
-    EditorLoc.locW += val;
-    EditorLoc.checkLimits();
-  }
-
-  public static void setLimitsFromWorld(final World m) {
-    EditorLoc.minX = 0;
-    EditorLoc.minY = 0;
-    EditorLoc.minZ = 0;
-    EditorLoc.minW = 0;
-    EditorLoc.minE = 0;
-    EditorLoc.maxW = World.getMaxLevels();
-    EditorLoc.maxE = Layers.COUNT - 1;
-    EditorLoc.maxX = m.getRows();
-    EditorLoc.maxY = m.getColumns();
-    EditorLoc.maxZ = m.getFloors() - 1;
-  }
-
-  public static void reset() {
-    EditorLoc.locX = 0;
-    EditorLoc.locY = 0;
-    EditorLoc.locZ = 0;
-    EditorLoc.locW = 0;
-    EditorLoc.locE = 0;
-    EditorLoc.maxX = 0;
-    EditorLoc.maxY = 0;
-    EditorLoc.maxZ = 0;
-    EditorLoc.maxW = 0;
-    EditorLoc.maxE = 0;
-    EditorLoc.minX = 0;
-    EditorLoc.minY = 0;
-    EditorLoc.minZ = 0;
-    EditorLoc.minW = 0;
-    EditorLoc.minE = 0;
-  }
-
-  private static void checkLimits() {
-    // Check for limits out of bounds
-    if (EditorLoc.locW < EditorLoc.minW) {
-      EditorLoc.locW = EditorLoc.minW;
+    // Constructors
+    private EditorLoc() {
+        super();
     }
-    if (EditorLoc.locW > EditorLoc.maxW) {
-      EditorLoc.locW = EditorLoc.maxW;
+
+    // Methods
+    public static int getLocX() {
+        return EditorLoc.locX;
     }
-    if (EditorLoc.locX < EditorLoc.minX) {
-      EditorLoc.locX = EditorLoc.minX;
+
+    public static int getLocY() {
+        return EditorLoc.locY;
     }
-    if (EditorLoc.locX > EditorLoc.maxX) {
-      EditorLoc.locX = EditorLoc.maxX;
+
+    public static int getLocZ() {
+        return EditorLoc.locZ;
     }
-    if (EditorLoc.locY < EditorLoc.minY) {
-      EditorLoc.locY = EditorLoc.minY;
+
+    public static int getLocW() {
+        return EditorLoc.locW;
     }
-    if (EditorLoc.locY > EditorLoc.maxY) {
-      EditorLoc.locY = EditorLoc.maxY;
+
+    public static int getLocE() {
+        return EditorLoc.locE;
     }
-    if (EditorLoc.locZ < EditorLoc.minZ) {
-      EditorLoc.locZ = EditorLoc.minZ;
+
+    public static int getMaxLocZ() {
+        return EditorLoc.maxZ;
     }
-    if (EditorLoc.locZ > EditorLoc.maxZ) {
-      EditorLoc.locZ = EditorLoc.maxZ;
+
+    public static int getMaxLocW() {
+        return EditorLoc.maxW;
     }
-    if (EditorLoc.locE < EditorLoc.minE) {
-      EditorLoc.locE = EditorLoc.minE;
+
+    public static int getMinLocZ() {
+        return EditorLoc.minZ;
     }
-    if (EditorLoc.locE > EditorLoc.maxE) {
-      EditorLoc.locE = EditorLoc.maxE;
+
+    public static int getMinLocW() {
+        return EditorLoc.minW;
     }
-  }
+
+    public static void setLocX(final int val) {
+        EditorLoc.locX = val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void setLocY(final int val) {
+        EditorLoc.locY = val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void setLocZ(final int val) {
+        EditorLoc.locZ = val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void setLocW(final int val) {
+        EditorLoc.locW = val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void setLocE(final int val) {
+        EditorLoc.locE = val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void offsetLocZ(final int val) {
+        EditorLoc.locZ += val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void offsetLocW(final int val) {
+        EditorLoc.locW += val;
+        EditorLoc.checkLimits();
+    }
+
+    public static void setLimitsFromWorld(final World m) {
+        EditorLoc.minX = 0;
+        EditorLoc.minY = 0;
+        EditorLoc.minZ = 0;
+        EditorLoc.minW = 0;
+        EditorLoc.minE = 0;
+        EditorLoc.maxW = World.getMaxLevels();
+        EditorLoc.maxE = Layers.COUNT - 1;
+        EditorLoc.maxX = m.getRows();
+        EditorLoc.maxY = m.getColumns();
+        EditorLoc.maxZ = m.getFloors() - 1;
+    }
+
+    public static void reset() {
+        EditorLoc.locX = 0;
+        EditorLoc.locY = 0;
+        EditorLoc.locZ = 0;
+        EditorLoc.locW = 0;
+        EditorLoc.locE = 0;
+        EditorLoc.maxX = 0;
+        EditorLoc.maxY = 0;
+        EditorLoc.maxZ = 0;
+        EditorLoc.maxW = 0;
+        EditorLoc.maxE = 0;
+        EditorLoc.minX = 0;
+        EditorLoc.minY = 0;
+        EditorLoc.minZ = 0;
+        EditorLoc.minW = 0;
+        EditorLoc.minE = 0;
+    }
+
+    private static void checkLimits() {
+        // Check for limits out of bounds
+        if (EditorLoc.locW < EditorLoc.minW) {
+            EditorLoc.locW = EditorLoc.minW;
+        }
+        if (EditorLoc.locW > EditorLoc.maxW) {
+            EditorLoc.locW = EditorLoc.maxW;
+        }
+        if (EditorLoc.locX < EditorLoc.minX) {
+            EditorLoc.locX = EditorLoc.minX;
+        }
+        if (EditorLoc.locX > EditorLoc.maxX) {
+            EditorLoc.locX = EditorLoc.maxX;
+        }
+        if (EditorLoc.locY < EditorLoc.minY) {
+            EditorLoc.locY = EditorLoc.minY;
+        }
+        if (EditorLoc.locY > EditorLoc.maxY) {
+            EditorLoc.locY = EditorLoc.maxY;
+        }
+        if (EditorLoc.locZ < EditorLoc.minZ) {
+            EditorLoc.locZ = EditorLoc.minZ;
+        }
+        if (EditorLoc.locZ > EditorLoc.maxZ) {
+            EditorLoc.locZ = EditorLoc.maxZ;
+        }
+        if (EditorLoc.locE < EditorLoc.minE) {
+            EditorLoc.locE = EditorLoc.minE;
+        }
+        if (EditorLoc.locE > EditorLoc.maxE) {
+            EditorLoc.locE = EditorLoc.maxE;
+        }
+    }
 }

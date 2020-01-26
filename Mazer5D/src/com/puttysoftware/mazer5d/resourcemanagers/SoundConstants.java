@@ -54,14 +54,14 @@ public class SoundConstants {
     public static final int SOUND_WIN_GAME = 46;
     // Package-Protected Constants
     static final String[] SOUND_NAMES = { "logo", "gameover", "highscore",
-            "actionfailed", "arrow", "arrowdead", "barrier", "button",
-            "change", "confused", "crack", "create", "darkness", "destroy",
-            "dizzy", "down", "drunk", "explode", "finish", "forcefield",
-            "generate", "grab", "heal", "hurt", "identify", "intopit", "lava",
-            "light", "pushpull", "pushpull", "shatter", "sinkblock", "slime",
-            "spring", "sunstone", "teleport", "unlock", "up", "walk",
-            "walkfailed", "walkice", "walklava", "walkslime", "walkwater",
-            "walltrap", "water", "wingame" };
+            "actionfailed", "arrow", "arrowdead", "barrier", "button", "change",
+            "confused", "crack", "create", "darkness", "destroy", "dizzy",
+            "down", "drunk", "explode", "finish", "forcefield", "generate",
+            "grab", "heal", "hurt", "identify", "intopit", "lava", "light",
+            "pushpull", "pushpull", "shatter", "sinkblock", "slime", "spring",
+            "sunstone", "teleport", "unlock", "up", "walk", "walkfailed",
+            "walkice", "walklava", "walkslime", "walkwater", "walltrap",
+            "water", "wingame" };
 
     // Private constructor
     private SoundConstants() {

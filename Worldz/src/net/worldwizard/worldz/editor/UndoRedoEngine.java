@@ -142,8 +142,8 @@ public class UndoRedoEngine {
             return this.first == null;
         }
 
-        public void insertFirst(final WorldObject obj, final int x,
-                final int y, final int z, final int w, final int e) {
+        public void insertFirst(final WorldObject obj, final int x, final int y,
+                final int z, final int w, final int e) {
             final Link newLink = new Link(obj, x, y, z, w, e);
             newLink.next = this.first;
             this.first = newLink;

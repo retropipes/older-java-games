@@ -14,24 +14,26 @@ import com.puttysoftware.fantastlex.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.fantastlex.resourcemanagers.SoundConstants;
 import com.puttysoftware.fantastlex.resourcemanagers.SoundManager;
 
-public abstract class AbstractInvisibleConditionalTeleport extends
-        AbstractConditionalTeleport {
+public abstract class AbstractInvisibleConditionalTeleport
+        extends AbstractConditionalTeleport {
     // Constructors
     protected AbstractInvisibleConditionalTeleport(final int attrName) {
         super(attrName);
         this.setTemplateColor(ColorConstants.COLOR_CYAN);
-        this.setAttributeTemplateColor(ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
+        this.setAttributeTemplateColor(
+                ColorConstants.COLOR_INVISIBLE_TELEPORT_ATTRIBUTE);
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         int testVal;
         if (this.getSunMoon() == AbstractConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
-        } else if (this.getSunMoon() == AbstractConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == AbstractConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(new MoonStone());
         } else {
             testVal = 0;

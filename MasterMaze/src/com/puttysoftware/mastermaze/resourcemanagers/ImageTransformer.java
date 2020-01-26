@@ -33,7 +33,8 @@ public class ImageTransformer {
             try {
                 final BufferedImageIcon result = new BufferedImageIcon(input);
                 for (int x = 0; x < ImageTransformer.getGraphicSize(); x++) {
-                    for (int y = 0; y < ImageTransformer.getGraphicSize(); y++) {
+                    for (int y = 0; y < ImageTransformer
+                            .getGraphicSize(); y++) {
                         final int pixel = input.getRGB(x, y);
                         final Color c = new Color(pixel);
                         final int r = c.getRed();
@@ -65,7 +66,8 @@ public class ImageTransformer {
             final BufferedImageIcon result = new BufferedImageIcon(icon);
             if (icon != null) {
                 for (int x = 0; x < ImageTransformer.getGraphicSize(); x++) {
-                    for (int y = 0; y < ImageTransformer.getGraphicSize(); y++) {
+                    for (int y = 0; y < ImageTransformer
+                            .getGraphicSize(); y++) {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {
@@ -91,7 +93,8 @@ public class ImageTransformer {
             final BufferedImageIcon result = new BufferedImageIcon(icon2);
             if (icon1 != null && icon2 != null) {
                 for (int x = 0; x < ImageTransformer.getGraphicSize(); x++) {
-                    for (int y = 0; y < ImageTransformer.getGraphicSize(); y++) {
+                    for (int y = 0; y < ImageTransformer
+                            .getGraphicSize(); y++) {
                         final int pixel = icon2.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {
@@ -114,12 +117,13 @@ public class ImageTransformer {
             final BufferedImageIcon icon1, final BufferedImageIcon icon2,
             final BufferedImageIcon icon3) {
         try {
-            final BufferedImageIcon icon4 = ImageTransformer.getCompositeImage(
-                    icon1, icon2);
+            final BufferedImageIcon icon4 = ImageTransformer
+                    .getCompositeImage(icon1, icon2);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon4 != null) {
                 for (int x = 0; x < ImageTransformer.getGraphicSize(); x++) {
-                    for (int y = 0; y < ImageTransformer.getGraphicSize(); y++) {
+                    for (int y = 0; y < ImageTransformer
+                            .getGraphicSize(); y++) {
                         final int pixel = icon3.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ImageTransformer.TRANSPARENT)) {

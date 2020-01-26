@@ -59,8 +59,8 @@ public class SeekerAI extends AIRoutine {
                                 return AIRoutine.ACTION_END_TURN;
                             }
                             // Last move failed, try to move around object
-                            there = SeekerAI
-                                    .turnRight45(this.moveX, this.moveY);
+                            there = SeekerAI.turnRight45(this.moveX,
+                                    this.moveY);
                             this.moveX = there[0];
                             this.moveY = there[1];
                         } else {
@@ -130,7 +130,8 @@ public class SeekerAI extends AIRoutine {
             if (maxIndex > -1) {
                 if (ac.getCharacter().getSpells() > 0) {
                     // Select a random spell to cast
-                    final RandomRange randomSpell = new RandomRange(0, maxIndex);
+                    final RandomRange randomSpell = new RandomRange(0,
+                            maxIndex);
                     final int randomSpellID = randomSpell.generate();
                     if (this.roundsRemaining[randomSpellID] == 0) {
                         this.spell = ac.getCharacter().getTemplate()

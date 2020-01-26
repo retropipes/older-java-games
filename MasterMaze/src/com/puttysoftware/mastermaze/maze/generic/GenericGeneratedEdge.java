@@ -61,8 +61,8 @@ public abstract class GenericGeneratedEdge extends MazeObject {
     @Override
     public String getDescription() {
         return this.plural + " are transitions in the " + this.dirName
-                + " direction, between " + this.source1 + " and "
-                + this.source2 + ".";
+                + " direction, between " + this.source1 + " and " + this.source2
+                + ".";
     }
 
     @Override
@@ -92,8 +92,8 @@ public abstract class GenericGeneratedEdge extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         // Do nothing
     }
 }

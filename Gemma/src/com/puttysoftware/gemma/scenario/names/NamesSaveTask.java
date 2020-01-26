@@ -16,11 +16,11 @@ import com.puttysoftware.gemma.support.names.NamesManager;
 
 class NamesSaveTask extends Thread {
     // Fields
-    private String filename;
-    private String[] namesData;
+    private final String filename;
+    private final String[] namesData;
 
     // Constructors
-    NamesSaveTask(String file, String[] data) {
+    NamesSaveTask(final String file, final String[] data) {
         this.filename = file;
         this.namesData = data;
         this.setName("Names File Writer");

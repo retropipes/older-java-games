@@ -22,11 +22,12 @@ public class ConditionalChainTeleport extends AbstractConditionalTeleport {
     @Override
     public final void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         int testVal;
         if (this.getSunMoon() == AbstractConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
-        } else if (this.getSunMoon() == AbstractConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == AbstractConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(new MoonStone());
         } else {
             testVal = 0;

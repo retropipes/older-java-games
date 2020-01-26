@@ -32,44 +32,44 @@ public class ExplodingWall extends AbstractWall {
     @Override
     public void chainReactionAction(final int x, final int y, final int z) {
         // Explode this wall, and any exploding walls next to this wall as well
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         ExplodingWall curr = null;
         try {
             curr = (ExplodingWall) app.getDungeonManager().getDungeonObject(x,
                     y, z, DungeonConstants.LAYER_OBJECT);
-        } catch (ClassCastException cce) {
+        } catch (final ClassCastException cce) {
             // We're not an exploding wall, so abort
             return;
         }
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, currName;
         invalidName = new EmptyVoid().getName();
         currName = curr.getName();
-        AbstractDungeonObject mo2 = app.getDungeonManager().getDungeonObject(
-                x - 1, y, z, DungeonConstants.LAYER_OBJECT);
+        final AbstractDungeonObject mo2 = app.getDungeonManager()
+                .getDungeonObject(x - 1, y, z, DungeonConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo2Name = invalidName;
         }
-        AbstractDungeonObject mo4 = app.getDungeonManager().getDungeonObject(x,
-                y - 1, z, DungeonConstants.LAYER_OBJECT);
+        final AbstractDungeonObject mo4 = app.getDungeonManager()
+                .getDungeonObject(x, y - 1, z, DungeonConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo4Name = invalidName;
         }
-        AbstractDungeonObject mo6 = app.getDungeonManager().getDungeonObject(x,
-                y + 1, z, DungeonConstants.LAYER_OBJECT);
+        final AbstractDungeonObject mo6 = app.getDungeonManager()
+                .getDungeonObject(x, y + 1, z, DungeonConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo6Name = invalidName;
         }
-        AbstractDungeonObject mo8 = app.getDungeonManager().getDungeonObject(
-                x + 1, y, z, DungeonConstants.LAYER_OBJECT);
+        final AbstractDungeonObject mo8 = app.getDungeonManager()
+                .getDungeonObject(x + 1, y, z, DungeonConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
-        } catch (NullPointerException np) {
+        } catch (final NullPointerException np) {
             mo8Name = invalidName;
         }
         app.getGameManager().morph(new Empty(), x, y, z, "BOOM!");

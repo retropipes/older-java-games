@@ -2,8 +2,13 @@ package com.puttysoftware.fantastlereboot.files.versions;
 
 @SuppressWarnings("serial")
 public class CharacterVersionException extends VersionException {
-  public CharacterVersionException(final int actualVersion) {
-    super("Unsupported character version found: " + actualVersion
-        + " (expected " + CharacterVersions.LATEST + " or earlier)");
-  }
+    /**
+     *
+     */
+    private static final long serialVersionUID = 3035517090820820740L;
+
+    public CharacterVersionException(final int actualVersion) {
+        super("Unsupported character version found: " + actualVersion
+                + " (expected " + CharacterVersions.LATEST + " or earlier)");
+    }
 }

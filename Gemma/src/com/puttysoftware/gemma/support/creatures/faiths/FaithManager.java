@@ -15,7 +15,7 @@ public class FaithManager {
     private static Faith[] CACHE;
     private static String[] DESC_CACHE;
 
-    public static Faith selectFaith(JFrame owner) {
+    public static Faith selectFaith(final JFrame owner) {
         FaithManager.createCache();
         final String[] names = FaithConstants.getFaithNames();
         String dialogResult;
@@ -34,14 +34,14 @@ public class FaithManager {
         }
     }
 
-    public static Faith getFaith(int faithID) {
+    public static Faith getFaith(final int faithID) {
         FaithManager.createCache();
         return FaithManager.CACHE[faithID];
     }
 
     public static Faith getRandomFaith() {
         FaithManager.createCache();
-        int faithID = new RandomRange(0, FaithManager.CACHE.length - 1)
+        final int faithID = new RandomRange(0, FaithManager.CACHE.length - 1)
                 .generate();
         return FaithManager.CACHE[faithID];
     }
@@ -52,7 +52,7 @@ public class FaithManager {
             if (!FaithConstants.faithsReady()) {
                 FaithConstants.initFaiths();
             }
-            int fc = FaithConstants.getFaithsCount();
+            final int fc = FaithConstants.getFaithsCount();
             FaithManager.CACHE = new Faith[fc];
             FaithManager.DESC_CACHE = new String[fc];
             for (int x = 0; x < fc; x++) {

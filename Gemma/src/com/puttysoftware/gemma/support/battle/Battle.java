@@ -23,7 +23,7 @@ public class Battle {
         // Fill array with monsters
         if (PartyManager.getParty().getLeader()
                 .getLevel() < StatConstants.LEVEL_MAX) {
-            int numMonsters = PartyManager.getParty().getActivePCCount();
+            final int numMonsters = PartyManager.getParty().getActivePCCount();
             for (int x = 0; x < numMonsters; x++) {
                 this.monsterArray[x] = MonsterFactory.getNewMonsterInstance();
             }
@@ -39,7 +39,7 @@ public class Battle {
     }
 
     private BaseMonster[] compactMonsterArray() {
-        BaseMonster[] temp = new BaseMonster[this.monsterArray.length];
+        final BaseMonster[] temp = new BaseMonster[this.monsterArray.length];
         System.arraycopy(this.monsterArray, 0, temp, 0,
                 this.monsterArray.length);
         for (int x = 0; x < temp.length; x++) {
@@ -53,8 +53,8 @@ public class Battle {
     }
 
     public BattleCharacter[] getBattlers() {
-        BaseMonster[] compacted = this.compactMonsterArray();
-        BattleCharacter[] battlerArray = new BattleCharacter[compacted.length];
+        final BaseMonster[] compacted = this.compactMonsterArray();
+        final BattleCharacter[] battlerArray = new BattleCharacter[compacted.length];
         for (int x = 0; x < battlerArray.length; x++) {
             if (compacted[x] != null) {
                 battlerArray[x] = new BattleCharacter(compacted[x]);

@@ -75,7 +75,7 @@ public class LevelPreferencesManager {
     }
 
     void setPrefs() {
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
         if (this.horizontalWrap.isSelected()) {
             m.enableHorizontalWraparound();
         } else {
@@ -102,11 +102,11 @@ public class LevelPreferencesManager {
         }
         m.setUseAlternateOffset(this.useAlternateOffset.isSelected());
         if (this.useAlternateOffset.isSelected()) {
-            m.setAlternateNextLevelOffset(Integer
-                    .parseInt(this.alternateNextLevel.getText()));
+            m.setAlternateNextLevelOffset(
+                    Integer.parseInt(this.alternateNextLevel.getText()));
         } else {
-            m.setAlternateNextLevel(Integer.parseInt(this.alternateNextLevel
-                    .getText()) - 1);
+            m.setAlternateNextLevel(
+                    Integer.parseInt(this.alternateNextLevel.getText()) - 1);
         }
         int newER = m.getExploreRadius();
         try {
@@ -114,7 +114,7 @@ public class LevelPreferencesManager {
             if (newER < 1 || newER > 16) {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             newER = m.getExploreRadius();
         }
         m.setExploreRadius(newER);
@@ -127,26 +127,26 @@ public class LevelPreferencesManager {
         }
         m.setVisionMode(newVM);
         m.setPoisonPower(this.poisonPowerChoices.getSelectedIndex());
-        int tv = Integer.parseInt(this.timeLimit.getText());
+        final int tv = Integer.parseInt(this.timeLimit.getText());
         if (tv > 0) {
             m.activateTimer(tv);
         } else {
             m.deactivateTimer();
         }
         m.setAutoFinishEnabled(this.autoFinishEnabled.isSelected());
-        m.setAutoFinishThreshold(Integer.parseInt(this.autoFinishThreshold
-                .getText()));
-        m.setAlternateAutoFinishEnabled(this.alternateAutoFinishEnabled
-                .isSelected());
-        m.setAlternateAutoFinishThreshold(Integer
-                .parseInt(this.alternateAutoFinishThreshold.getText()));
+        m.setAutoFinishThreshold(
+                Integer.parseInt(this.autoFinishThreshold.getText()));
+        m.setAlternateAutoFinishEnabled(
+                this.alternateAutoFinishEnabled.isSelected());
+        m.setAlternateAutoFinishThreshold(
+                Integer.parseInt(this.alternateAutoFinishThreshold.getText()));
         int newFMS = m.getFinishMoveSpeed();
         try {
             newFMS = Integer.parseInt(this.finishMoveSpeed.getText());
             if (newFMS < 1) {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             newFMS = m.getFinishMoveSpeed();
         }
         m.setFinishMoveSpeed(newFMS);
@@ -156,18 +156,18 @@ public class LevelPreferencesManager {
             if (newVR < 1 || newVR > 16) {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             newVR = m.getVisionRadius();
         }
         m.setVisionRadius(newVR);
     }
 
     private void loadPrefs() {
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
@@ -179,14 +179,14 @@ public class LevelPreferencesManager {
         }
         this.useAlternateOffset.setSelected(m.useAlternateOffset());
         if (m.useAlternateOffset()) {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel()));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel()));
         } else {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel() + 1));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel() + 1));
         }
         this.exploreRadius.setText(Integer.toString(m.getExploreRadius()));
-        int vm = m.getVisionMode();
+        final int vm = m.getVisionMode();
         if ((vm | MazeConstants.VISION_MODE_EXPLORE) == vm) {
             this.vmExplore.setSelected(true);
         } else {
@@ -204,28 +204,28 @@ public class LevelPreferencesManager {
             this.timeLimit.setText("0");
         }
         this.autoFinishEnabled.setSelected(m.getAutoFinishEnabled());
-        this.autoFinishThreshold.setText(Integer.toString(m
-                .getAutoFinishThreshold()));
-        this.alternateAutoFinishEnabled.setSelected(m
-                .getAlternateAutoFinishEnabled());
-        this.alternateAutoFinishThreshold.setText(Integer.toString(m
-                .getAlternateAutoFinishThreshold()));
+        this.autoFinishThreshold
+                .setText(Integer.toString(m.getAutoFinishThreshold()));
+        this.alternateAutoFinishEnabled
+                .setSelected(m.getAlternateAutoFinishEnabled());
+        this.alternateAutoFinishThreshold
+                .setText(Integer.toString(m.getAlternateAutoFinishThreshold()));
         this.illumination.setText(Integer.toString(m.getVisionRadius()));
         this.finishMoveSpeed.setText(Integer.toString(m.getFinishMoveSpeed()));
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.prefFrame = new JFrame("Level Preferences");
         final Image iconlogo = MazeRunnerII.getApplication().getIconLogo();
         this.prefFrame.setIconImage(iconlogo);
-        Container mainPrefPane = new Container();
-        Container contentPane = new Container();
-        Container buttonPane = new Container();
-        JButton prefsOK = new JButton("OK");
+        final Container mainPrefPane = new Container();
+        final Container contentPane = new Container();
+        final Container buttonPane = new Container();
+        final JButton prefsOK = new JButton("OK");
         prefsOK.setDefaultCapable(true);
         this.prefFrame.getRootPane().setDefaultButton(prefsOK);
-        JButton prefsCancel = new JButton("Cancel");
+        final JButton prefsCancel = new JButton("Cancel");
         prefsCancel.setDefaultCapable(false);
         this.horizontalWrap = new JCheckBox("Enable horizontal wraparound",
                 false);
@@ -254,7 +254,7 @@ public class LevelPreferencesManager {
                         + Integer.toString(x) + " steps";
             }
         }
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
+        final DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
                 this.poisonPowerChoiceArray);
         this.poisonPowerChoices = new JComboBox<>();
         this.poisonPowerChoices.setModel(model);
@@ -326,7 +326,7 @@ public class LevelPreferencesManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                LevelPreferencesManager lpm = LevelPreferencesManager.this;
+                final LevelPreferencesManager lpm = LevelPreferencesManager.this;
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("OK")) {
                     lpm.setPrefs();
@@ -334,45 +334,45 @@ public class LevelPreferencesManager {
                 } else if (cmd.equals("Cancel")) {
                     lpm.hidePrefs();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         // handle window
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            LevelPreferencesManager pm = LevelPreferencesManager.this;
+        public void windowClosing(final WindowEvent e) {
+            final LevelPreferencesManager pm = LevelPreferencesManager.this;
             pm.hidePrefs();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

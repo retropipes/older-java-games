@@ -10,7 +10,7 @@ import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractBoots extends AbstractPass {
     // Constructors
-    protected AbstractBoots(int tc) {
+    protected AbstractBoots(final int tc) {
         super();
         this.setTemplateColor(tc);
     }

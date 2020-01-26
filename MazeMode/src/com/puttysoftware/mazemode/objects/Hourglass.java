@@ -31,8 +31,8 @@ public class Hourglass extends GenericTimeModifier {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         MazeMode.getApplication().getGameManager().decay();
         MazeMode.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValue();

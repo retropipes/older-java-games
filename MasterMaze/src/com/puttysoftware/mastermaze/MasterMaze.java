@@ -77,13 +77,11 @@ public class MasterMaze {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    MasterMaze.application.getMazeManager(),
-                    MasterMaze.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(MasterMaze.application.getMazeManager(),
+                    MasterMaze.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(MasterMaze.application.getGUIManager(),

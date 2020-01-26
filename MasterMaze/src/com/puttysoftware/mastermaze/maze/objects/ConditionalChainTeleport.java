@@ -26,7 +26,8 @@ public class ConditionalChainTeleport extends GenericConditionalTeleport {
         int testVal;
         if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
-        } else if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(new MoonStone());
         } else {
             testVal = 0;

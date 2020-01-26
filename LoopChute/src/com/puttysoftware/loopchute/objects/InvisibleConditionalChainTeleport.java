@@ -7,8 +7,8 @@ package com.puttysoftware.loopchute.objects;
 
 import com.puttysoftware.loopchute.generic.GenericInvisibleConditionalTeleport;
 
-public class InvisibleConditionalChainTeleport extends
-        GenericInvisibleConditionalTeleport {
+public class InvisibleConditionalChainTeleport
+        extends GenericInvisibleConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super("conditional_chain");

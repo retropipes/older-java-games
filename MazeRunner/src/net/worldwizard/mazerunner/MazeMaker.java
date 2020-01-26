@@ -64,28 +64,32 @@ public class MazeMaker {
                 MazeMaker.app.getLowerViewingWindowLocation(true) + y);
         MazeMaker.editorLocationZ += z;
         MazeMaker.editorLocationW += w;
-        if (MazeMaker.app.getViewingWindowLocation(false) < MazeRunner.MIN_VIEWING_WINDOW_X) {
+        if (MazeMaker.app.getViewingWindowLocation(
+                false) < MazeRunner.MIN_VIEWING_WINDOW_X) {
             MazeMaker.app.setViewingWindowLocation(false,
                     MazeRunner.MIN_VIEWING_WINDOW_X);
             MazeMaker.app.setLowerViewingWindowLocation(false,
                     MazeRunner.MIN_VIEWING_WINDOW_X
                             + MazeRunner.VIEWING_WINDOW_SIZE_X - 1);
         }
-        if (MazeMaker.app.getViewingWindowLocation(true) < MazeRunner.MIN_VIEWING_WINDOW_Y) {
+        if (MazeMaker.app.getViewingWindowLocation(
+                true) < MazeRunner.MIN_VIEWING_WINDOW_Y) {
             MazeMaker.app.setViewingWindowLocation(true,
                     MazeRunner.MIN_VIEWING_WINDOW_Y);
             MazeMaker.app.setLowerViewingWindowLocation(true,
                     MazeRunner.MIN_VIEWING_WINDOW_Y
                             + MazeRunner.VIEWING_WINDOW_SIZE_Y - 1);
         }
-        if (MazeMaker.app.getLowerViewingWindowLocation(false) > MazeMaker.MAX_VIEWING_WINDOW_X) {
+        if (MazeMaker.app.getLowerViewingWindowLocation(
+                false) > MazeMaker.MAX_VIEWING_WINDOW_X) {
             MazeMaker.app.setLowerViewingWindowLocation(false,
                     MazeMaker.MAX_VIEWING_WINDOW_X);
             MazeMaker.app.setViewingWindowLocation(false,
                     MazeMaker.MAX_VIEWING_WINDOW_X
                             - MazeRunner.VIEWING_WINDOW_SIZE_X + 1);
         }
-        if (MazeMaker.app.getLowerViewingWindowLocation(true) > MazeMaker.MAX_VIEWING_WINDOW_Y) {
+        if (MazeMaker.app.getLowerViewingWindowLocation(
+                true) > MazeMaker.MAX_VIEWING_WINDOW_Y) {
             MazeMaker.app.setLowerViewingWindowLocation(true,
                     MazeMaker.MAX_VIEWING_WINDOW_Y);
             MazeMaker.app.setViewingWindowLocation(true,
@@ -116,19 +120,22 @@ public class MazeMaker {
         int x, y;
         MazeMaker.borderPane.removeAll();
         MazeMaker.secondaryPane.removeAll();
-        for (x = MazeMaker.app.getViewingWindowLocation(false); x <= MazeMaker.app
-                .getLowerViewingWindowLocation(false); x++) {
-            for (y = MazeMaker.app.getViewingWindowLocation(true); y <= MazeMaker.app
-                    .getLowerViewingWindowLocation(true); y++) {
+        for (x = MazeMaker.app
+                .getViewingWindowLocation(false); x <= MazeMaker.app
+                        .getLowerViewingWindowLocation(false); x++) {
+            for (y = MazeMaker.app
+                    .getViewingWindowLocation(true); y <= MazeMaker.app
+                            .getLowerViewingWindowLocation(true); y++) {
                 try {
-                    MazeMaker.secondaryPane.add(new JLabel("", MazeMaker.app
-                            .getMaze()
-                            .getCell(y, x, MazeMaker.editorLocationZ,
-                                    MazeMaker.editorLocationW)
-                            .getEditorAppearance(), SwingConstants.CENTER));
+                    MazeMaker.secondaryPane.add(new JLabel("",
+                            MazeMaker.app.getMaze()
+                                    .getCell(y, x, MazeMaker.editorLocationZ,
+                                            MazeMaker.editorLocationW)
+                                    .getEditorAppearance(),
+                            SwingConstants.CENTER));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
-                    MazeMaker.secondaryPane.add(new JLabel("", ImageSetManager
-                            .getImage(MazeObject.getSet(),
+                    MazeMaker.secondaryPane.add(new JLabel("",
+                            ImageSetManager.getImage(MazeObject.getSet(),
                                     MazeObject.getSize(), "Void"),
                             SwingConstants.CENTER));
                 }
@@ -138,9 +145,9 @@ public class MazeMaker {
         MazeMaker.borderPane.add(MazeMaker.app.getMessageLabel(),
                 BorderLayout.SOUTH);
         MazeMaker.outputFrame.pack();
-        MazeMaker.outputFrame.setTitle("Maze Maker - Floor "
-                + (MazeMaker.editorLocationZ + 1) + " Level "
-                + (MazeMaker.editorLocationW + 1));
+        MazeMaker.outputFrame.setTitle(
+                "Maze Maker - Floor " + (MazeMaker.editorLocationZ + 1)
+                        + " Level " + (MazeMaker.editorLocationW + 1));
         MazeMaker.showOutput();
     }
 
@@ -206,16 +213,16 @@ public class MazeMaker {
         String name2, name3;
         try {
             final MazeObject mo2 = MazeMaker.app.getMaze().getCell(
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    z + 1, w);
+                    MazeMaker.editorLocationX, MazeMaker.editorLocationY, z + 1,
+                    w);
             name2 = mo2.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name2 = "";
         }
         try {
             final MazeObject mo3 = MazeMaker.app.getMaze().getCell(
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    z - 1, w);
+                    MazeMaker.editorLocationX, MazeMaker.editorLocationY, z - 1,
+                    w);
             name3 = mo3.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name3 = "";
@@ -238,16 +245,16 @@ public class MazeMaker {
         String name2, name3;
         try {
             final MazeObject mo2 = MazeMaker.app.getMaze().getCell(
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    z + 1, w);
+                    MazeMaker.editorLocationX, MazeMaker.editorLocationY, z + 1,
+                    w);
             name2 = mo2.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name2 = "";
         }
         try {
             final MazeObject mo3 = MazeMaker.app.getMaze().getCell(
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    z - 1, w);
+                    MazeMaker.editorLocationX, MazeMaker.editorLocationY, z - 1,
+                    w);
             name3 = mo3.getName();
         } catch (final ArrayIndexOutOfBoundsException e) {
             name3 = "";
@@ -352,8 +359,8 @@ public class MazeMaker {
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
             destW = twt.getDestinationLevel();
-            final MazeObject mo2 = MazeMaker.app.getMaze().getCell(destX,
-                    destY, destZ, destW);
+            final MazeObject mo2 = MazeMaker.app.getMaze().getCell(destX, destY,
+                    destZ, destW);
             name2 = mo2.getName();
             if (name2.equals("Two-Way Teleporter")) {
                 MazeMaker.unpairTwoWayTeleporter(destX, destY, destZ, destW);
@@ -374,8 +381,8 @@ public class MazeMaker {
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
             destW = twt.getDestinationLevel();
-            final MazeObject mo2 = MazeMaker.app.getMaze().getCell(destX,
-                    destY, destZ, destW);
+            final MazeObject mo2 = MazeMaker.app.getMaze().getCell(destX, destY,
+                    destZ, destW);
             name2 = mo2.getName();
             if (!name2.equals("Two-Way Teleporter")) {
                 MazeMaker.pairTwoWayTeleporter(destX, destY, destZ, destW);
@@ -385,14 +392,14 @@ public class MazeMaker {
 
     public static void pairTwoWayTeleporter(final int destX, final int destY,
             final int destZ, final int destW) {
-        MazeMaker.app.getMaze().setCell(
-                new MazeTwoWayTeleporter(MazeMaker.editorLocationX,
+        MazeMaker.app.getMaze()
+                .setCell(new MazeTwoWayTeleporter(MazeMaker.editorLocationX,
                         MazeMaker.editorLocationY, MazeMaker.editorCameFromZ,
                         MazeMaker.editorCameFromW), destX, destY, destZ, destW);
     }
 
-    private static void unpairTwoWayTeleporter(final int destX,
-            final int destY, final int destZ, final int destW) {
+    private static void unpairTwoWayTeleporter(final int destX, final int destY,
+            final int destZ, final int destW) {
         MazeMaker.app.getMaze().setCell(new MazeGround(), destX, destY, destZ,
                 destW);
     }
@@ -438,7 +445,8 @@ public class MazeMaker {
                     destX = Integer.parseInt(input1);
                     destY = Integer.parseInt(input2);
                 } catch (final NumberFormatException nf) {
-                    Messager.showDialog("Row and column ranges must be integers.");
+                    Messager.showDialog(
+                            "Row and column ranges must be integers.");
                 }
                 switch (type) {
                 case TELEPORTER_TYPE_RANDOM:
@@ -492,7 +500,8 @@ public class MazeMaker {
                 destW = Integer.parseInt(input1) - 1;
                 return new MazeFinishTo(destW);
             } catch (final NumberFormatException nf) {
-                Messager.showDialog("Destination level must be an integer greater than 0.");
+                Messager.showDialog(
+                        "Destination level must be an integer greater than 0.");
             }
         }
         return null;
@@ -546,9 +555,9 @@ public class MazeMaker {
         case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
             MazeMaker.app.getMaze().setCell(
                     new MazeInvisibleOneShotTeleporter(destX, destY, destZ,
-                            destW), MazeMaker.editorLocationX,
-                    MazeMaker.editorLocationY, MazeMaker.editorCameFromZ,
-                    MazeMaker.editorCameFromW);
+                            destW),
+                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
             break;
         case TELEPORTER_TYPE_TWOWAY:
             MazeMaker.app.getMaze().setCell(
@@ -576,16 +585,16 @@ public class MazeMaker {
         MazeMaker.app.setPlayerLocation(true, true, MazeMaker.editorLocationW);
         MazeMaker.app.setPlayerLocation(true, false, MazeMaker.editorLocationZ);
         MazeMaker.app.setPlayerLocation(false, true, MazeMaker.editorLocationY);
-        MazeMaker.app
-                .setPlayerLocation(false, false, MazeMaker.editorLocationX);
+        MazeMaker.app.setPlayerLocation(false, false,
+                MazeMaker.editorLocationX);
     }
 
     public static boolean saveTextMaze(final String filename) {
         int x = 0, y = 0, z = 0, w = 0;
         boolean success = true;
         try {
-            try (PrintWriter mazeFile = new PrintWriter(new BufferedWriter(
-                    new FileWriter(filename)))) {
+            try (PrintWriter mazeFile = new PrintWriter(
+                    new BufferedWriter(new FileWriter(filename)))) {
                 mazeFile.print(MazeMaker.app.getMaze().getColumns());
                 mazeFile.print("\n");
                 mazeFile.print(MazeMaker.app.getMaze().getRows());
@@ -596,7 +605,8 @@ public class MazeMaker {
                 mazeFile.print("\n");
                 for (w = 0; w < MazeMaker.app.getMaze().getLevels(); w++) {
                     for (z = 0; z < MazeMaker.app.getMaze().getFloors(); z++) {
-                        for (y = 0; y < MazeMaker.app.getMaze().getRows(); y++) {
+                        for (y = 0; y < MazeMaker.app.getMaze()
+                                .getRows(); y++) {
                             for (x = 0; x < MazeMaker.app.getMaze()
                                     .getColumns(); x++) {
                                 mazeFile.print(MazeMaker.app.getMaze()
@@ -614,8 +624,8 @@ public class MazeMaker {
                         "Maze file couldn't be written to.");
             }
         } catch (final InvalidMazeException ime) {
-            if (MazeMaker.app
-                    .getMessageEnabled(MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
+            if (MazeMaker.app.getMessageEnabled(
+                    MazeRunner.MESSAGE_SPECIFIC_MAZE_ERRORS)) {
                 Messager.showDialog(ime.getMessage());
             } else {
                 Messager.showDialog("Maze could not be saved.");
@@ -641,8 +651,8 @@ public class MazeMaker {
                 MazeMaker.borderPane = new Container();
                 MazeMaker.borderPane.setLayout(new BorderLayout());
                 MazeMaker.outputFrame.setContentPane(MazeMaker.borderPane);
-                MazeMaker.outputFrame
-                        .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                MazeMaker.outputFrame.setDefaultCloseOperation(
+                        WindowConstants.DO_NOTHING_ON_CLOSE);
                 MazeMaker.borderPane.add(MazeMaker.outputPane,
                         BorderLayout.CENTER);
                 MazeMaker.borderPane.add(MazeMaker.app.getMessageLabel(),
@@ -655,9 +665,9 @@ public class MazeMaker {
                 MazeMaker.outputPane.setName("OutputPane");
                 MazeMaker.secondaryPane.setName("SecondaryPane");
                 MazeMaker.c.fill = GridBagConstraints.BOTH;
-                MazeMaker.secondaryPane.setLayout(new GridLayout(
-                        MazeRunner.VIEWING_WINDOW_SIZE_X,
-                        MazeRunner.VIEWING_WINDOW_SIZE_Y));
+                MazeMaker.secondaryPane.setLayout(
+                        new GridLayout(MazeRunner.VIEWING_WINDOW_SIZE_X,
+                                MazeRunner.VIEWING_WINDOW_SIZE_Y));
                 MazeMaker.horzScroll = new JScrollBar(Adjustable.HORIZONTAL,
                         MazeRunner.MIN_VIEWING_WINDOW_Y,
                         MazeRunner.VIEWING_WINDOW_SIZE_Y,
@@ -690,8 +700,8 @@ public class MazeMaker {
                 MazeMaker.vertScroll.addAdjustmentListener(MazeMaker.mhandler);
                 MazeMaker.secondaryPane.addMouseListener(MazeMaker.mhandler);
                 MazeMaker.outputFrame.addKeyListener(MazeMaker.mhandler);
-                MazeMaker.outputFrame.addWindowListener(MazeMaker.app
-                        .getEventHandler());
+                MazeMaker.outputFrame
+                        .addWindowListener(MazeMaker.app.getEventHandler());
                 MazeMaker.clearHistory();
                 MazeMaker.redrawEditor();
             } catch (final IllegalArgumentException ia) {
@@ -724,9 +734,8 @@ public class MazeMaker {
             input1 = JOptionPane.showInputDialog(null, "Number of rows?",
                     "New Maze", JOptionPane.OK_CANCEL_OPTION);
             if (input1 != null) {
-                input2 = JOptionPane.showInputDialog(null,
-                        "Number of columns?", "New Maze",
-                        JOptionPane.OK_CANCEL_OPTION);
+                input2 = JOptionPane.showInputDialog(null, "Number of columns?",
+                        "New Maze", JOptionPane.OK_CANCEL_OPTION);
                 if (input2 != null) {
                     input3 = JOptionPane.showInputDialog(null,
                             "Number of floors?", "New Maze",
@@ -747,29 +756,27 @@ public class MazeMaker {
                                 }
                                 MazeMaker.app.setPlayerLocation(false, false,
                                         -1);
-                                MazeMaker.app
-                                        .setPlayerLocation(false, true, -1);
-                                MazeMaker.app
-                                        .setPlayerLocation(true, false, -1);
+                                MazeMaker.app.setPlayerLocation(false, true,
+                                        -1);
+                                MazeMaker.app.setPlayerLocation(true, false,
+                                        -1);
                                 MazeMaker.app.setPlayerLocation(true, true, -1);
                                 MazeMaker.app.setMaze(new Maze(mazeSizeX,
                                         mazeSizeY, mazeSizeZ, mazeSizeW));
-                                MazeMaker.app
-                                        .setViewingWindowLocation(
-                                                false,
-                                                0 - (MazeRunner.VIEWING_WINDOW_SIZE_X - 1) / 2);
-                                MazeMaker.app
-                                        .setViewingWindowLocation(
-                                                true,
-                                                0 - (MazeRunner.VIEWING_WINDOW_SIZE_Y - 1) / 2);
-                                MazeMaker.app
-                                        .setLowerViewingWindowLocation(
-                                                false,
-                                                0 + (MazeRunner.VIEWING_WINDOW_SIZE_X - 1) / 2);
-                                MazeMaker.app
-                                        .setLowerViewingWindowLocation(
-                                                true,
-                                                0 + (MazeRunner.VIEWING_WINDOW_SIZE_Y - 1) / 2);
+                                MazeMaker.app.setViewingWindowLocation(false, 0
+                                        - (MazeRunner.VIEWING_WINDOW_SIZE_X - 1)
+                                                / 2);
+                                MazeMaker.app.setViewingWindowLocation(true, 0
+                                        - (MazeRunner.VIEWING_WINDOW_SIZE_Y - 1)
+                                                / 2);
+                                MazeMaker.app.setLowerViewingWindowLocation(
+                                        false,
+                                        0 + (MazeRunner.VIEWING_WINDOW_SIZE_X
+                                                - 1) / 2);
+                                MazeMaker.app.setLowerViewingWindowLocation(
+                                        true,
+                                        0 + (MazeRunner.VIEWING_WINDOW_SIZE_Y
+                                                - 1) / 2);
                                 MazeMaker.MAX_VIEWING_WINDOW_X = mazeSizeX
                                         + MazeRunner.VIEWING_WINDOW_SIZE_X / 2
                                         - 1;
@@ -780,21 +787,21 @@ public class MazeMaker {
                                     for (z = 0; z < mazeSizeZ; z++) {
                                         for (x = 0; x < mazeSizeX; x++) {
                                             for (y = 0; y < mazeSizeY; y++) {
-                                                MazeMaker.app
-                                                        .getMaze()
-                                                        .setCell(
-                                                                new MazeGround(),
-                                                                x, y, z, w);
+                                                MazeMaker.app.getMaze().setCell(
+                                                        new MazeGround(), x, y,
+                                                        z, w);
                                             }
                                         }
                                     }
                                 }
                                 MazeMaker.clearHistory();
                             } catch (final NumberFormatException nf) {
-                                Messager.showDialog("Rows, columns, floors, and levels must be integers greater than 0.");
+                                Messager.showDialog(
+                                        "Rows, columns, floors, and levels must be integers greater than 0.");
                                 success = false;
                             } catch (final OutOfMemoryError om) {
-                                Messager.showDialog("The maze size specified is too large.");
+                                Messager.showDialog(
+                                        "The maze size specified is too large.");
                                 success = false;
                             }
                         } else {
@@ -834,7 +841,8 @@ public class MazeMaker {
     }
 
     public static JFrame getOutputFrame() {
-        if (MazeMaker.outputFrame != null && MazeMaker.outputFrame.isVisible()) {
+        if (MazeMaker.outputFrame != null
+                && MazeMaker.outputFrame.isVisible()) {
             return MazeMaker.outputFrame;
         } else {
             return null;
@@ -856,7 +864,8 @@ public class MazeMaker {
             final MazeObject oldObj = MazeMaker.app.getMazeObject(x, y, z, w);
             if (!obj.getName().equals(new MazeStairsUp().getName())
                     && !obj.getName().equals(new MazeStairsDown().getName())) {
-                if (obj.getName().equals(new MazeTwoWayTeleporter().getName())) {
+                if (obj.getName()
+                        .equals(new MazeTwoWayTeleporter().getName())) {
                     MazeMaker.app.getMaze().setCell(obj, x, y, z, w);
                     MazeMaker.reverseCheckTwoWayTeleporterPair(z, w);
                     MazeMaker.checkStairPair(z, w);
@@ -891,7 +900,8 @@ public class MazeMaker {
             final MazeObject oldObj = MazeMaker.app.getMazeObject(x, y, z, w);
             if (!obj.getName().equals(new MazeStairsUp().getName())
                     && !obj.getName().equals(new MazeStairsDown().getName())) {
-                if (obj.getName().equals(new MazeTwoWayTeleporter().getName())) {
+                if (obj.getName()
+                        .equals(new MazeTwoWayTeleporter().getName())) {
                     MazeMaker.app.getMaze().setCell(obj, x, y, z, w);
                     MazeMaker.reverseCheckTwoWayTeleporterPair(z, w);
                     MazeMaker.checkStairPair(z, w);

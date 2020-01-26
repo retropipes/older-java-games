@@ -83,21 +83,21 @@ public class SoundConstants {
     public static final int SOUND_WEAKNESS = 80;
     public static final int SOUND_WIN_GAME = 81;
     // Package-Protected Constants
-    static final String[] SOUND_NAMES = { "action_failed", "arrow",
-            "arrow_die", "attack", "barrier", "battle", "bind", "bolt",
-            "button", "chain", "change", "cold", "confused", "counter",
-            "crack", "create", "critical", "darkness", "defense", "destroy",
-            "dizzy", "down", "drain", "drunk", "easier", "equip", "explode",
-            "falling", "finish", "fireball", "focus", "force_field", "fumble",
-            "game_over", "generate", "grab", "harder", "heal", "high_score",
-            "hit", "hurt", "identify", "into_pit", "level_up", "light",
-            "loading", "logo", "low_health", "missed", "next_round", "on_who",
-            "ow", "pick_lock", "player_up", "push_pull", "shatter", "shop",
-            "sink_block", "slime", "special", "spell", "spring", "squish",
-            "summon", "sun_stone", "teleport", "transact", "unlock", "up",
-            "victory", "walk_1", "walk_2", "walk_3", "walk_failed", "walk_ice",
-            "walk_lava", "walk_slime", "walk_water", "wall_trap", "water",
-            "weakness", "win_game" };
+    static final String[] SOUND_NAMES = { "action_failed", "arrow", "arrow_die",
+            "attack", "barrier", "battle", "bind", "bolt", "button", "chain",
+            "change", "cold", "confused", "counter", "crack", "create",
+            "critical", "darkness", "defense", "destroy", "dizzy", "down",
+            "drain", "drunk", "easier", "equip", "explode", "falling", "finish",
+            "fireball", "focus", "force_field", "fumble", "game_over",
+            "generate", "grab", "harder", "heal", "high_score", "hit", "hurt",
+            "identify", "into_pit", "level_up", "light", "loading", "logo",
+            "low_health", "missed", "next_round", "on_who", "ow", "pick_lock",
+            "player_up", "push_pull", "shatter", "shop", "sink_block", "slime",
+            "special", "spell", "spring", "squish", "summon", "sun_stone",
+            "teleport", "transact", "unlock", "up", "victory", "walk_1",
+            "walk_2", "walk_3", "walk_failed", "walk_ice", "walk_lava",
+            "walk_slime", "walk_water", "wall_trap", "water", "weakness",
+            "win_game" };
 
     // Private constructor
     private SoundConstants() {

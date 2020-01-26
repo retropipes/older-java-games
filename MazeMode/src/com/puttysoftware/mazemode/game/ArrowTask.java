@@ -65,7 +65,8 @@ public class ArrowTask extends Thread {
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 o = new Wall();
             }
-            final GenericTransientObject a = ArrowTask.createArrowForType(this.at);
+            final GenericTransientObject a = ArrowTask
+                    .createArrowForType(this.at);
             final String suffix = DirectionResolver
                     .resolveDirectionConstantToName(DirectionResolver
                             .resolveRelativeDirection(incX, incY));
@@ -78,8 +79,8 @@ public class ArrowTask extends Thread {
                 if (!res) {
                     break;
                 }
-                app.getGameManager().redrawOneSquare(px + cumX, py + cumY,
-                        true, a.getName());
+                app.getGameManager().redrawOneSquare(px + cumX, py + cumY, true,
+                        a.getName());
                 app.getGameManager().redrawOneSquare(px + cumX, py + cumY,
                         false, new Empty().getName());
                 cumX += incX;

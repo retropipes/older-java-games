@@ -57,7 +57,7 @@ final class SandboxManagerOSX extends SandboxManager {
     }
 
     private static String getLibraryFallbackDirectory() {
-        return System.getenv(SandboxManagerOSX.FALLBACK_PREFIX)
-                + File.separator + SandboxManagerOSX.LIBRARY_FALLBACK_DIR;
+        return System.getenv(SandboxManagerOSX.FALLBACK_PREFIX) + File.separator
+                + SandboxManagerOSX.LIBRARY_FALLBACK_DIR;
     }
 }

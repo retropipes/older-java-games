@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractMovableObject;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectInventory;
 import com.puttysoftware.mazerunner2.resourcemanagers.ObjectImageConstants;
@@ -37,7 +37,7 @@ public class PullableBlockOnce extends AbstractMovableObject {
     public void pullAction(final MazeObjectInventory inv,
             final AbstractMazeObject mo, final int x, final int y,
             final int pushX, final int pushY) {
-        Application app = MazeRunnerII.getApplication();
+        final Application app = MazeRunnerII.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
         SoundManager.playSound(SoundConstants.SOUND_PUSH_PULL);
         app.getGameManager().morphOther(new Wall(), pushX, pushY,

@@ -44,14 +44,12 @@ public class XMLRuleSetLoadTask extends Thread {
                 CommonDialogs.showTitledDialog(sg + " file loaded.",
                         "Rule Set Picker");
             } catch (final FileNotFoundException fnfe) {
-                CommonDialogs
-                        .showDialog("Loading the "
-                                + sg.toLowerCase()
-                                + " file failed, probably due to illegal characters in the file name.");
+                CommonDialogs.showDialog("Loading the " + sg.toLowerCase()
+                        + " file failed, probably due to illegal characters in the file name.");
                 app.getMazeManager().handleDeferredSuccess(false);
             } catch (final IOException ie) {
-                throw new InvalidRuleSetException("Error loading "
-                        + sg.toLowerCase() + " file.");
+                throw new InvalidRuleSetException(
+                        "Error loading " + sg.toLowerCase() + " file.");
             }
         } catch (final InvalidRuleSetException irse) {
             CommonDialogs.showDialog(irse.getMessage());

@@ -16,8 +16,8 @@ public abstract class MazeGenericGround extends MazeObject {
             final boolean doesAcceptPullOut) {
         super(false, false, false, false, false, false, false, false,
                 gameAppearance, editorAppearance, false, doesAcceptPushInto,
-                doesAcceptPushOut, false, doesAcceptPullInto,
-                doesAcceptPullOut, true, false, 0, false, false);
+                doesAcceptPushOut, false, doesAcceptPullInto, doesAcceptPullOut,
+                true, false, 0, false, false);
     }
 
     protected MazeGenericGround(final String gameAppearance,
@@ -26,8 +26,8 @@ public abstract class MazeGenericGround extends MazeObject {
             final boolean doesAcceptPullOut, final boolean hasFriction) {
         super(false, false, false, false, false, false, false, false,
                 gameAppearance, editorAppearance, false, doesAcceptPushInto,
-                doesAcceptPushOut, false, doesAcceptPullInto,
-                doesAcceptPullOut, hasFriction, false, 0, false, false);
+                doesAcceptPushOut, false, doesAcceptPullInto, doesAcceptPullOut,
+                hasFriction, false, 0, false, false);
     }
 
     @Override

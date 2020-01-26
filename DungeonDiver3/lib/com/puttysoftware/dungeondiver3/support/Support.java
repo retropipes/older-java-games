@@ -73,11 +73,11 @@ public class Support {
     }
 
     public static void deleteScenario() {
-        File scenFile = new File(Support.scen.getBasePath());
+        final File scenFile = new File(Support.scen.getBasePath());
         if (scenFile.isDirectory() && scenFile.exists()) {
             try {
                 DirectoryUtilities.removeDirectory(scenFile);
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 // Ignore
             }
         }
@@ -106,7 +106,7 @@ public class Support {
     }
 
     public static String getReleaseType() {
-        int code = Support.VERSION_CODE;
+        final int code = Support.VERSION_CODE;
         String rt;
         if (code == ProductData.CODE_PRE_ALPHA) {
             rt = "dev";
@@ -124,7 +124,7 @@ public class Support {
 
     public static String getVersionString() {
         if (Support.isBetaModeEnabled()) {
-            int code = Support.VERSION_CODE;
+            final int code = Support.VERSION_CODE;
             String rt;
             if (code == ProductData.CODE_PRE_ALPHA) {
                 rt = "-dev";
@@ -147,7 +147,7 @@ public class Support {
     }
 
     public static boolean isBetaModeEnabled() {
-        int code = Support.VERSION_CODE;
+        final int code = Support.VERSION_CODE;
         return code != ProductData.CODE_STABLE_RELEASE;
     }
 }

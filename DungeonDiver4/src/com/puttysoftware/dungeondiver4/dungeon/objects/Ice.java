@@ -38,8 +38,8 @@ public class Ice extends AbstractGround {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK_ICE);
     }
 
@@ -49,8 +49,8 @@ public class Ice extends AbstractGround {
     }
 
     @Override
-    public boolean hasFrictionConditionally(DungeonObjectInventory inv,
-            boolean moving) {
+    public boolean hasFrictionConditionally(final DungeonObjectInventory inv,
+            final boolean moving) {
         if (inv.isItemThere(new GlueBoots())) {
             if (moving) {
                 return false;

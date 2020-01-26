@@ -24,15 +24,16 @@ public abstract class AbstractBlockTeleport extends AbstractTeleport {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         SoundManager.playSound(SoundConstants.SOUND_WALK);
     }
 
     @Override
     public void pushIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),
@@ -42,8 +43,9 @@ public abstract class AbstractBlockTeleport extends AbstractTeleport {
 
     @Override
     public void pullIntoAction(final MazeObjectInventory inv,
-            final AbstractMazeObject mo, final int x, final int y, final int z) {
-        Application app = MazeRunnerII.getApplication();
+            final AbstractMazeObject mo, final int x, final int y,
+            final int z) {
+        final Application app = MazeRunnerII.getApplication();
         final AbstractMovableObject pushedInto = (AbstractMovableObject) mo;
         app.getGameManager().updatePushedIntoPositionAbsolute(
                 this.getDestinationRow(), this.getDestinationColumn(),

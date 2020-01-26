@@ -36,13 +36,13 @@ class RuleSetEditor {
 
     // Constructors
     public RuleSetEditor() {
-        setUpGUI();
+        this.setUpGUI();
     }
 
     // Methods
-    public void setRuleSet(RuleSet gen) {
+    public void setRuleSet(final RuleSet gen) {
         this.generator = gen;
-        loadRuleSetEditor();
+        this.loadRuleSetEditor();
     }
 
     public void showRuleSetEditor() {
@@ -57,10 +57,10 @@ class RuleSetEditor {
 
     void saveRuleSetEditor() {
         try {
-            int min = Integer.parseInt(this.minQuantity.getText());
-            int max = Integer.parseInt(this.maxQuantity.getText());
-            int gen = Integer.parseInt(this.generateQuantity.getText());
-            boolean req = this.required.isSelected();
+            final int min = Integer.parseInt(this.minQuantity.getText());
+            final int max = Integer.parseInt(this.maxQuantity.getText());
+            final int gen = Integer.parseInt(this.generateQuantity.getText());
+            final boolean req = this.required.isSelected();
             if (this.percentage.isSelected()) {
                 this.generator.setQuantityRelative(min, max);
             } else {
@@ -68,9 +68,9 @@ class RuleSetEditor {
             }
             this.generator.setGenerateQuantity(gen);
             this.generator.setRequired(req);
-        } catch (NumberFormatException nf) {
+        } catch (final NumberFormatException nf) {
             // Ignore
-        } catch (IllegalArgumentException ia) {
+        } catch (final IllegalArgumentException ia) {
             // Ignore
         }
     }
@@ -78,26 +78,26 @@ class RuleSetEditor {
     private void loadRuleSetEditor() {
         this.required.setSelected(this.generator.isRequired());
         this.percentage.setSelected(this.generator.getPercentageFlag());
-        this.minQuantity.setText(Integer.toString(this.generator
-                .getMinimumRequiredQuantity()));
-        this.maxQuantity.setText(Integer.toString(this.generator
-                .getMaximumRequiredQuantity()));
-        this.generateQuantity.setText(Integer.toString(this.generator
-                .getGenerateQuantity()));
+        this.minQuantity.setText(
+                Integer.toString(this.generator.getMinimumRequiredQuantity()));
+        this.maxQuantity.setText(
+                Integer.toString(this.generator.getMaximumRequiredQuantity()));
+        this.generateQuantity.setText(
+                Integer.toString(this.generator.getGenerateQuantity()));
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.editFrame = new JFrame("Rule Set Editor");
         final Image iconlogo = MazeRunnerII.getApplication().getIconLogo();
         this.editFrame.setIconImage(iconlogo);
-        Container mainEditPane = new Container();
-        Container contentPane = new Container();
-        Container buttonPane = new Container();
-        JButton editOK = new JButton("OK");
+        final Container mainEditPane = new Container();
+        final Container contentPane = new Container();
+        final Container buttonPane = new Container();
+        final JButton editOK = new JButton("OK");
         editOK.setDefaultCapable(true);
         this.editFrame.getRootPane().setDefaultButton(editOK);
-        JButton editCancel = new JButton("Cancel");
+        final JButton editCancel = new JButton("Cancel");
         editCancel.setDefaultCapable(false);
         this.required = new JCheckBox("Is Object Required?", true);
         this.percentage = new JCheckBox("Are Quantities Percents?", false);
@@ -138,7 +138,7 @@ class RuleSetEditor {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                RuleSetEditor ge = RuleSetEditor.this;
+                final RuleSetEditor ge = RuleSetEditor.this;
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("OK")) {
                     ge.saveRuleSetEditor();
@@ -146,45 +146,45 @@ class RuleSetEditor {
                 } else if (cmd.equals("Cancel")) {
                     ge.hideRuleSetEditor();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
 
         // handle window
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            RuleSetEditor pm = RuleSetEditor.this;
+        public void windowClosing(final WindowEvent e) {
+            final RuleSetEditor pm = RuleSetEditor.this;
             pm.hideRuleSetEditor();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

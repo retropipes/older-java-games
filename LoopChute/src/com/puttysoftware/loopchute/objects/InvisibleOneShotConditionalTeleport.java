@@ -8,8 +8,8 @@ package com.puttysoftware.loopchute.objects;
 import com.puttysoftware.loopchute.LoopChute;
 import com.puttysoftware.loopchute.generic.GenericInvisibleConditionalTeleport;
 
-public class InvisibleOneShotConditionalTeleport extends
-        GenericInvisibleConditionalTeleport {
+public class InvisibleOneShotConditionalTeleport
+        extends GenericInvisibleConditionalTeleport {
     // Constructors
     public InvisibleOneShotConditionalTeleport() {
         super("one_shot_conditional");

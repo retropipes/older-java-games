@@ -37,7 +37,7 @@ public class TeleportWand extends AbstractWand {
     @Override
     public void useAction(final AbstractDungeonObject mo, final int x,
             final int y, final int z) {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePositionAbsolute(x, y, z);
     }
 

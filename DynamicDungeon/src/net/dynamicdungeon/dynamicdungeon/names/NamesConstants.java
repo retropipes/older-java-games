@@ -36,24 +36,30 @@ public class NamesConstants {
     private static final String STAT_EVADE = "Evade";
     private static final String STAT_CAPACITY = "Capacity";
     public static final String[] SECTION_ARRAY_STATS = new String[] {
-	    STAT_STRENGTH, STAT_BLOCK, STAT_AGILITY, STAT_VITALITY,
-	    STAT_INTELLIGENCE, STAT_LUCK, STAT_CURRENT_HP, STAT_CURRENT_MP,
-	    STAT_GOLD, STAT_LEVEL, STAT_ATTACKS_PER_ROUND,
-	    STAT_SPELLS_PER_ROUND, STAT_LOAD, STAT_MAXIMUM_HP, STAT_MAXIMUM_MP,
-	    STAT_ATTACK, STAT_DEFENSE, STAT_SPEED, STAT_HIT, STAT_EVADE,
-	    STAT_CAPACITY };
+            NamesConstants.STAT_STRENGTH, NamesConstants.STAT_BLOCK,
+            NamesConstants.STAT_AGILITY, NamesConstants.STAT_VITALITY,
+            NamesConstants.STAT_INTELLIGENCE, NamesConstants.STAT_LUCK,
+            NamesConstants.STAT_CURRENT_HP, NamesConstants.STAT_CURRENT_MP,
+            NamesConstants.STAT_GOLD, NamesConstants.STAT_LEVEL,
+            NamesConstants.STAT_ATTACKS_PER_ROUND,
+            NamesConstants.STAT_SPELLS_PER_ROUND, NamesConstants.STAT_LOAD,
+            NamesConstants.STAT_MAXIMUM_HP, NamesConstants.STAT_MAXIMUM_MP,
+            NamesConstants.STAT_ATTACK, NamesConstants.STAT_DEFENSE,
+            NamesConstants.STAT_SPEED, NamesConstants.STAT_HIT,
+            NamesConstants.STAT_EVADE, NamesConstants.STAT_CAPACITY };
     // Equipment Slots Section Keys
     private static final String SLOT_MAIN_HAND = "MainHand";
     private static final String SLOT_BODY = "Body";
     public static final String[] SECTION_ARRAY_EQUIP_SLOTS = new String[] {
-	    SLOT_MAIN_HAND, SLOT_BODY };
+            NamesConstants.SLOT_MAIN_HAND, NamesConstants.SLOT_BODY };
     // Equipment Weapons Section Keys
     private static final String WEAPON_SPEAR = "Spear";
     private static final String WEAPON_AXE = "Axe";
     private static final String WEAPON_BOW = "Bow";
     private static final String WEAPON_WHIP = "Whip";
     public static final String[] SECTION_ARRAY_WEAPONS = new String[] {
-	    WEAPON_SPEAR, WEAPON_AXE, WEAPON_BOW, WEAPON_WHIP };
+            NamesConstants.WEAPON_SPEAR, NamesConstants.WEAPON_AXE,
+            NamesConstants.WEAPON_BOW, NamesConstants.WEAPON_WHIP };
     // Faith Section Keys
     private static final String FAITH_NONE = "None";
     private static final String FAITH_HEAT = "Heat";
@@ -65,12 +71,16 @@ public class NamesConstants {
     private static final String FAITH_BOLT = "Bolt";
     private static final String FAITH_BOOM = "Boom";
     public static final String[] SECTION_ARRAY_FAITHS = new String[] {
-	    FAITH_NONE, FAITH_HEAT, FAITH_COLD, FAITH_ROCK, FAITH_GUST,
-	    FAITH_BEAM, FAITH_DEAD, FAITH_BOLT, FAITH_BOOM };
+            NamesConstants.FAITH_NONE, NamesConstants.FAITH_HEAT,
+            NamesConstants.FAITH_COLD, NamesConstants.FAITH_ROCK,
+            NamesConstants.FAITH_GUST, NamesConstants.FAITH_BEAM,
+            NamesConstants.FAITH_DEAD, NamesConstants.FAITH_BOLT,
+            NamesConstants.FAITH_BOOM };
     // Names Length
-    public static final int NAMES_LENGTH = SECTION_ARRAY_STATS.length
-	    + SECTION_ARRAY_EQUIP_SLOTS.length + SECTION_ARRAY_WEAPONS.length
-	    + SECTION_ARRAY_FAITHS.length;
+    public static final int NAMES_LENGTH = NamesConstants.SECTION_ARRAY_STATS.length
+            + NamesConstants.SECTION_ARRAY_EQUIP_SLOTS.length
+            + NamesConstants.SECTION_ARRAY_WEAPONS.length
+            + NamesConstants.SECTION_ARRAY_FAITHS.length;
     // Names Version
     public static final int NAMES_VERSION = 1;
     // Editor Section Names
@@ -79,32 +89,40 @@ public class NamesConstants {
     private static final String EDITOR_SECTION_WEAPONS = "Weapons";
     private static final String EDITOR_SECTION_FAITHS = "Faith";
     // Editor Section Array
-    static final String[] EDITOR_SECTION_ARRAY = new String[NAMES_LENGTH];
-    private static String[] TEMP_SECTION_STATS = new String[SECTION_ARRAY_STATS.length];
-    private static String[] TEMP_SECTION_EQUIP_SLOTS = new String[SECTION_ARRAY_EQUIP_SLOTS.length];
-    private static String[] TEMP_SECTION_WEAPONS = new String[SECTION_ARRAY_WEAPONS.length];
-    private static String[] TEMP_SECTION_FAITHS = new String[SECTION_ARRAY_FAITHS.length];
+    static final String[] EDITOR_SECTION_ARRAY = new String[NamesConstants.NAMES_LENGTH];
+    private static String[] TEMP_SECTION_STATS = new String[NamesConstants.SECTION_ARRAY_STATS.length];
+    private static String[] TEMP_SECTION_EQUIP_SLOTS = new String[NamesConstants.SECTION_ARRAY_EQUIP_SLOTS.length];
+    private static String[] TEMP_SECTION_WEAPONS = new String[NamesConstants.SECTION_ARRAY_WEAPONS.length];
+    private static String[] TEMP_SECTION_FAITHS = new String[NamesConstants.SECTION_ARRAY_FAITHS.length];
     static {
-	Arrays.fill(TEMP_SECTION_STATS, EDITOR_SECTION_STATS);
-	Arrays.fill(TEMP_SECTION_EQUIP_SLOTS, EDITOR_SECTION_EQUIP_SLOT);
-	Arrays.fill(TEMP_SECTION_WEAPONS, EDITOR_SECTION_WEAPONS);
-	Arrays.fill(TEMP_SECTION_FAITHS, EDITOR_SECTION_FAITHS);
-	int counter = 0;
-	System.arraycopy(TEMP_SECTION_STATS, 0, EDITOR_SECTION_ARRAY, counter,
-		TEMP_SECTION_STATS.length);
-	counter += TEMP_SECTION_STATS.length;
-	System.arraycopy(TEMP_SECTION_EQUIP_SLOTS, 0, EDITOR_SECTION_ARRAY,
-		counter, TEMP_SECTION_EQUIP_SLOTS.length);
-	counter += TEMP_SECTION_EQUIP_SLOTS.length;
-	System.arraycopy(TEMP_SECTION_WEAPONS, 0, EDITOR_SECTION_ARRAY,
-		counter, TEMP_SECTION_WEAPONS.length);
-	counter += TEMP_SECTION_WEAPONS.length;
-	System.arraycopy(TEMP_SECTION_FAITHS, 0, EDITOR_SECTION_ARRAY, counter,
-		TEMP_SECTION_FAITHS.length);
+        Arrays.fill(NamesConstants.TEMP_SECTION_STATS,
+                NamesConstants.EDITOR_SECTION_STATS);
+        Arrays.fill(NamesConstants.TEMP_SECTION_EQUIP_SLOTS,
+                NamesConstants.EDITOR_SECTION_EQUIP_SLOT);
+        Arrays.fill(NamesConstants.TEMP_SECTION_WEAPONS,
+                NamesConstants.EDITOR_SECTION_WEAPONS);
+        Arrays.fill(NamesConstants.TEMP_SECTION_FAITHS,
+                NamesConstants.EDITOR_SECTION_FAITHS);
+        int counter = 0;
+        System.arraycopy(NamesConstants.TEMP_SECTION_STATS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_STATS.length);
+        counter += NamesConstants.TEMP_SECTION_STATS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_EQUIP_SLOTS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_EQUIP_SLOTS.length);
+        counter += NamesConstants.TEMP_SECTION_EQUIP_SLOTS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_WEAPONS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_WEAPONS.length);
+        counter += NamesConstants.TEMP_SECTION_WEAPONS.length;
+        System.arraycopy(NamesConstants.TEMP_SECTION_FAITHS, 0,
+                NamesConstants.EDITOR_SECTION_ARRAY, counter,
+                NamesConstants.TEMP_SECTION_FAITHS.length);
     }
 
     // Private constructor
     private NamesConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

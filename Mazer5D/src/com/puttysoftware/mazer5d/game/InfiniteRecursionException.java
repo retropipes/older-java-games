@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 /**
- * 
+ *
  * @author wrldwzrd89
  */
 public class InfiniteRecursionException extends RuntimeException {

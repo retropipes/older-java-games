@@ -50,8 +50,8 @@ public class CasteManager implements CasteConstants {
             CasteManager.CACHE = new Caste[CasteConstants.CASTES_COUNT];
             CasteManager.DESC_CACHE = new String[CasteConstants.CASTES_COUNT];
             for (int x = 0; x < CasteConstants.CASTES_COUNT; x++) {
-                CasteManager.CACHE[x] = CasteLoader.loadCaste(Caste
-                        .casteIDtoName(x));
+                CasteManager.CACHE[x] = CasteLoader
+                        .loadCaste(Caste.casteIDtoName(x));
                 CasteManager.DESC_CACHE[x] = CasteManager.CACHE[x]
                         .getDescription();
             }

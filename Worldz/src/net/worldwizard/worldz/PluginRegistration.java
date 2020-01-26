@@ -51,7 +51,8 @@ public class PluginRegistration {
                         + Extension.getPluginExtensionWithPeriod()).exists()) {
                     // Register it
                     if (pluginList != null && anyFound) {
-                        final String[] newPluginList = new String[pluginList.length + 1];
+                        final String[] newPluginList = new String[pluginList.length
+                                + 1];
                         for (int x = 0; x < newPluginList.length; x++) {
                             if (x < pluginList.length) {
                                 newPluginList[x] = pluginList[x];
@@ -66,12 +67,15 @@ public class PluginRegistration {
                     }
                     final Object plugin = PluginLoader.loadPlugin(res);
                     PluginLoader.injectNewlyRegisteredPlugin(plugin);
-                    Messager.showDialog("Plugin successfully registered and loaded.");
+                    Messager.showDialog(
+                            "Plugin successfully registered and loaded.");
                 } else {
-                    Messager.showDialog("The plugin to register is not a valid plugin.");
+                    Messager.showDialog(
+                            "The plugin to register is not a valid plugin.");
                 }
             } else {
-                Messager.showDialog("The plugin to register has been registered already.");
+                Messager.showDialog(
+                        "The plugin to register has been registered already.");
             }
         }
     }
@@ -115,7 +119,8 @@ public class PluginRegistration {
                 // Unregister it
                 if (pluginList.length > 1) {
                     pluginList[index] = null;
-                    final String[] newPluginList = new String[pluginList.length - 1];
+                    final String[] newPluginList = new String[pluginList.length
+                            - 1];
                     int offset = 0;
                     for (int x = 0; x < newPluginList.length; x++) {
                         if (pluginList[x + offset] != null) {
@@ -129,7 +134,8 @@ public class PluginRegistration {
                     PluginRegistration.writePluginRegistry(null);
                 }
                 if (anyFound) {
-                    Messager.showDialog("Note that newly unregistered plugins will not be unloaded until the program is restarted.");
+                    Messager.showDialog(
+                            "Note that newly unregistered plugins will not be unloaded until the program is restarted.");
                 }
             }
         }
@@ -140,8 +146,8 @@ public class PluginRegistration {
         // Load plugin registry file
         final Vector<String> registeredNames = new Vector<>();
         try (final FileInputStream fis = new FileInputStream(basePath
-                + File.separator + "Plugins" + File.separator
-                + "PluginRegistry" + Extension.getRegistryExtensionWithPeriod())) {
+                + File.separator + "Plugins" + File.separator + "PluginRegistry"
+                + Extension.getRegistryExtensionWithPeriod())) {
             final ResourceStreamReader rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -161,9 +167,9 @@ public class PluginRegistration {
     private static void writePluginRegistry(final String[] newPluginList) {
         final String basePath = PluginRegistration.getBasePath();
         // Save plugin registry file
-        try (final BufferedWriter bw = new BufferedWriter(new FileWriter(
-                basePath + File.separator + "Plugins" + File.separator
-                        + "PluginRegistry"
+        try (final BufferedWriter bw = new BufferedWriter(
+                new FileWriter(basePath + File.separator + "Plugins"
+                        + File.separator + "PluginRegistry"
                         + Extension.getRegistryExtensionWithPeriod()))) {
             if (newPluginList != null) {
                 for (int x = 0; x < newPluginList.length; x++) {

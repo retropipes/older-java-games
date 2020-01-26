@@ -103,8 +103,8 @@ public class MazeManager {
             return JOptionPane.NO_OPTION;
         }
         int status = JOptionPane.DEFAULT_OPTION;
-        status = CommonDialogs.showYNCConfirmDialog("Do you want to save your "
-                + type + "?", source);
+        status = CommonDialogs.showYNCConfirmDialog(
+                "Do you want to save your " + type + "?", source);
         return status;
     }
 
@@ -162,31 +162,32 @@ public class MazeManager {
         this.scoresFileName = filename;
     }
 
-    public void loadFromOSHandler(String infilename) { // NO_UCD
+    public void loadFromOSHandler(final String infilename) { // NO_UCD
         final Application app = Main.getApplication();
         if (!this.loaded) {
             String extension;
             final File file = new File(infilename);
-            String filename = file.getAbsolutePath();
+            final String filename = file.getAbsolutePath();
             extension = MazeManager.getExtension(file);
             app.getGameManager().resetObjectInventory();
             if (extension.equals(XMLExtension.getXMLMazeExtension())) {
                 this.lastUsedMazeFile = filename;
-                this.scoresFileName = MazeManager.getNameWithoutExtension(file
-                        .getName());
+                this.scoresFileName = MazeManager
+                        .getNameWithoutExtension(file.getName());
                 MazeManager.loadFile(filename, false);
             } else if (extension.equals(XMLExtension.getXMLGameExtension())) {
                 this.lastUsedGameFile = filename;
                 MazeManager.loadFile(filename, true);
             } else if (extension.equals(XMLExtension.getXMLScoresExtension())) {
-                CommonDialogs
-                        .showDialog("You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
+                CommonDialogs.showDialog(
+                        "You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
             } else if (extension.equals(Extension.getPreferencesExtension())) {
-                CommonDialogs
-                        .showDialog("You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
-            } else if (extension.equals(XMLExtension.getXMLRuleSetExtension())) {
-                CommonDialogs
-                        .showDialog("You double-clicked a rule set file. These are loaded by the Rule Set Picker, and need not be double-clicked.");
+                CommonDialogs.showDialog(
+                        "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
+            } else if (extension
+                    .equals(XMLExtension.getXMLRuleSetExtension())) {
+                CommonDialogs.showDialog(
+                        "You double-clicked a rule set file. These are loaded by the Rule Set Picker, and need not be double-clicked.");
             }
         }
     }
@@ -229,14 +230,14 @@ public class MazeManager {
                 final File file = fc.getSelectedFile();
                 final FileFilter ff = fc.getFileFilter();
                 if (ff.getDescription().equals(xmf.getDescription())) {
-                    PreferencesManager
-                            .setLastFilterUsedOpen(PreferencesManager.FILTER_XML_MAZE);
+                    PreferencesManager.setLastFilterUsedOpen(
+                            PreferencesManager.FILTER_XML_MAZE);
                 } else {
-                    PreferencesManager
-                            .setLastFilterUsedOpen(PreferencesManager.FILTER_XML_GAME);
+                    PreferencesManager.setLastFilterUsedOpen(
+                            PreferencesManager.FILTER_XML_GAME);
                 }
-                PreferencesManager.setLastDirOpen(fc.getCurrentDirectory()
-                        .getAbsolutePath());
+                PreferencesManager.setLastDirOpen(
+                        fc.getCurrentDirectory().getAbsolutePath());
                 filename = file.getAbsolutePath();
                 extension = MazeManager.getExtension(file);
                 app.getGameManager().resetObjectInventory();
@@ -245,12 +246,13 @@ public class MazeManager {
                     this.scoresFileName = MazeManager
                             .getNameWithoutExtension(file.getName());
                     MazeManager.loadFile(filename, false);
-                } else if (extension.equals(XMLExtension.getXMLGameExtension())) {
+                } else if (extension
+                        .equals(XMLExtension.getXMLGameExtension())) {
                     this.lastUsedGameFile = filename;
                     MazeManager.loadFile(filename, true);
                 } else {
-                    CommonDialogs
-                            .showDialog("You opened something other than a maze file. Select a maze file, and try again.");
+                    CommonDialogs.showDialog(
+                            "You opened something other than a maze file. Select a maze file, and try again.");
                 }
             } else {
                 // User cancelled
@@ -264,16 +266,14 @@ public class MazeManager {
 
     private static void loadFile(final String filename,
             final boolean isSavedGame) {
-        if (!FilenameChecker
-                .isFilenameOK(MazeManager.getNameWithoutExtension(MazeManager
-                        .getFileNameOnly(filename)))) {
-            CommonDialogs
-                    .showErrorDialog(
-                            "The file you selected contains illegal characters in its\n"
-                                    + "name. These characters are not allowed: /?<>\\:|\"\n"
-                                    + "Files named con, nul, or prn are illegal, as are files\n"
-                                    + "named com1 through com9 and lpt1 through lpt9.",
-                            "Load");
+        if (!FilenameChecker.isFilenameOK(MazeManager.getNameWithoutExtension(
+                MazeManager.getFileNameOnly(filename)))) {
+            CommonDialogs.showErrorDialog(
+                    "The file you selected contains illegal characters in its\n"
+                            + "name. These characters are not allowed: /?<>\\:|\"\n"
+                            + "Files named con, nul, or prn are illegal, as are files\n"
+                            + "named com1 through com9 and lpt1 through lpt9.",
+                    "Load");
         } else {
             final XMLLoadTask xlt = new XMLLoadTask(filename, isSavedGame);
             xlt.start();
@@ -358,20 +358,19 @@ public class MazeManager {
                         .getAbsolutePath();
                 fileOnly = filename.substring(dirOnly.length() + 1);
                 if (!FilenameChecker.isFilenameOK(fileOnly)) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The file name you entered contains illegal characters.\n"
-                                            + "These characters are not allowed: /?<>\\:|\"\n"
-                                            + "Files named con, nul, or prn are illegal, as are files\n"
-                                            + "named com1 through com9 and lpt1 through lpt9.",
-                                    "Save");
+                    CommonDialogs.showErrorDialog(
+                            "The file name you entered contains illegal characters.\n"
+                                    + "These characters are not allowed: /?<>\\:|\"\n"
+                                    + "Files named con, nul, or prn are illegal, as are files\n"
+                                    + "named com1 through com9 and lpt1 through lpt9.",
+                            "Save");
                 } else {
-                    PreferencesManager.setLastDirSave(fc.getCurrentDirectory()
-                            .getAbsolutePath());
+                    PreferencesManager.setLastDirSave(
+                            fc.getCurrentDirectory().getAbsolutePath());
                     if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
-                            if (!extension.equals(XMLExtension
-                                    .getXMLGameExtension())) {
+                            if (!extension.equals(
+                                    XMLExtension.getXMLGameExtension())) {
                                 filename = MazeManager
                                         .getNameWithoutExtension(file)
                                         + XMLExtension
@@ -385,8 +384,8 @@ public class MazeManager {
                         MazeManager.saveFile(filename, true);
                     } else {
                         if (extension != null) {
-                            if (!extension.equals(XMLExtension
-                                    .getXMLMazeExtension())) {
+                            if (!extension.equals(
+                                    XMLExtension.getXMLMazeExtension())) {
                                 filename = MazeManager
                                         .getNameWithoutExtension(file)
                                         + XMLExtension

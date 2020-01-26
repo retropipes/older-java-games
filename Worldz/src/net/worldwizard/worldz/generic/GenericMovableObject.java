@@ -15,8 +15,8 @@ public abstract class GenericMovableObject extends WorldObject {
     // Constructors
     protected GenericMovableObject(final boolean pushable,
             final boolean pullable) {
-        super(true, pushable, false, false, pullable, false, false, true,
-                false, 0);
+        super(true, pushable, false, false, pullable, false, false, true, false,
+                0);
     }
 
     @Override
@@ -24,8 +24,8 @@ public abstract class GenericMovableObject extends WorldObject {
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Worldz.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playPushSuccessSound();
         }
     }
@@ -35,8 +35,8 @@ public abstract class GenericMovableObject extends WorldObject {
             final int x, final int y, final int pullX, final int pullY) {
         final Application app = Worldz.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             WorldObject.playPullSuccessSound();
         }
     }

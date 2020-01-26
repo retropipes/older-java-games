@@ -32,9 +32,8 @@ public class ImageManager {
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
             final String normalName = ImageManager.normalizeName(name);
-            final URL url = ImageManager.LOAD_CLASS
-                    .getResource(ImageManager.LOAD_PATH + "objects/"
-                            + normalName + ".png");
+            final URL url = ImageManager.LOAD_CLASS.getResource(
+                    ImageManager.LOAD_PATH + "objects/" + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon icon = new BufferedImageIcon(image);
             return icon;
@@ -191,8 +190,8 @@ public class ImageManager {
             final BufferedImageIcon icon1, final BufferedImageIcon icon2,
             final BufferedImageIcon icon3) {
         try {
-            final BufferedImageIcon icon4 = ImageManager.getCompositeImage(
-                    icon1, icon2);
+            final BufferedImageIcon icon4 = ImageManager
+                    .getCompositeImage(icon1, icon2);
             final BufferedImageIcon result = new BufferedImageIcon(icon3);
             if (icon3 != null && icon4 != null) {
                 for (int x = 0; x < ImageManager.getGraphicSize(); x++) {

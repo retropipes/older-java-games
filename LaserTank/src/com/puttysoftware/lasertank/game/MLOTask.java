@@ -98,22 +98,18 @@ final class MLOTask extends Thread {
             final int py = gm.getPlayerManager().getPlayerLocationY();
             final int pz = gm.getPlayerManager().getPlayerLocationZ();
             if (zx == 3) {
-                this.sx = a.checkForMagnetic(pz, px, py,
-                        Direction.EAST);
+                this.sx = a.checkForMagnetic(pz, px, py, Direction.EAST);
                 this.sy = 0;
             } else if (zx == -3) {
-                this.sx = -a.checkForMagnetic(pz, px, py,
-                        Direction.WEST);
+                this.sx = -a.checkForMagnetic(pz, px, py, Direction.WEST);
                 this.sy = 0;
             }
             if (zy == 3) {
                 this.sx = 0;
-                this.sy = a.checkForMagnetic(pz, px, py,
-                        Direction.SOUTH);
+                this.sy = a.checkForMagnetic(pz, px, py, Direction.SOUTH);
             } else if (zy == -3) {
                 this.sx = 0;
-                this.sy = -a.checkForMagnetic(pz, px, py,
-                        Direction.NORTH);
+                this.sy = -a.checkForMagnetic(pz, px, py, Direction.NORTH);
             }
             this.magnet = true;
             if (this.sx == 0 && this.sy == 0) {

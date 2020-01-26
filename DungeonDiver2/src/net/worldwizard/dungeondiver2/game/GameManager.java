@@ -188,7 +188,8 @@ public class GameManager {
         do {
             try {
                 try {
-                    o = m.getCell(px + x, py + y, pz, MapConstants.LAYER_OBJECT);
+                    o = m.getCell(px + x, py + y, pz,
+                            MapConstants.LAYER_OBJECT);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     o = new Empty();
                 }
@@ -245,12 +246,11 @@ public class GameManager {
                         if (groundInto.overridesDefaultPostMove()) {
                             GameScriptRunner.runScript(groundInto
                                     .getPostMoveScript(false, px, py, pz, m));
-                            if (!this.savedMapObject
-                                    .isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
-                                GameScriptRunner
-                                        .runScript(this.savedMapObject
-                                                .getPostMoveScript(false, px,
-                                                        py, pz, m));
+                            if (!this.savedMapObject.isOfType(
+                                    TypeConstants.TYPE_PASS_THROUGH)) {
+                                GameScriptRunner.runScript(
+                                        this.savedMapObject.getPostMoveScript(
+                                                false, px, py, pz, m));
                             }
                         } else {
                             GameScriptRunner.runScript(this.savedMapObject
@@ -271,20 +271,19 @@ public class GameManager {
                             this.plMgr.getPlayerLocationZ(),
                             MapConstants.LAYER_OBJECT);
                     // Move failed - attempted to go outside the map
-                    DungeonDiverII.getApplication().showMessage(
-                            "Can't go that way");
+                    DungeonDiverII.getApplication()
+                            .showMessage("Can't go that way");
                     o = new Empty();
                     proceed = false;
                 }
             } else {
                 // Move failed - pre-move check failed
-                GameScriptRunner.runScript(o.getMoveFailedScript(false, px + x,
-                        py + y, pz));
+                GameScriptRunner.runScript(
+                        o.getMoveFailedScript(false, px + x, py + y, pz));
                 proceed = false;
             }
-            if (redrawsSuspended
-                    && !this.checkLoopCondition(proceed, groundInto, below,
-                            nextBelow, nextAbove)) {
+            if (redrawsSuspended && !this.checkLoopCondition(proceed,
+                    groundInto, below, nextBelow, nextAbove)) {
                 // Redraw post-suspend
                 this.redrawMap();
                 redrawsSuspended = false;
@@ -318,7 +317,8 @@ public class GameManager {
         do {
             try {
                 try {
-                    o = m.getCell(px + x, py + y, pz, MapConstants.LAYER_OBJECT);
+                    o = m.getCell(px + x, py + y, pz,
+                            MapConstants.LAYER_OBJECT);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     o = new Empty();
                 }
@@ -392,9 +392,8 @@ public class GameManager {
                 // Move failed - pre-move check failed
                 proceed = false;
             }
-            if (redrawsSuspended
-                    && !this.checkLoopCondition(proceed, groundInto, below,
-                            nextBelow, nextAbove)) {
+            if (redrawsSuspended && !this.checkLoopCondition(proceed,
+                    groundInto, below, nextBelow, nextAbove)) {
                 // Redraw post-suspend
                 this.redrawMap();
                 redrawsSuspended = false;
@@ -408,10 +407,8 @@ public class GameManager {
     private boolean checkLoopCondition(final boolean proceed,
             final MapObject groundInto, final MapObject below,
             final MapObject nextBelow, final MapObject nextAbove) {
-        return proceed
-                && !groundInto.hasFrictionConditionally(false)
-                && this.checkSolid(this.savedMapObject, below, nextBelow,
-                        nextAbove);
+        return proceed && !groundInto.hasFrictionConditionally(false) && this
+                .checkSolid(this.savedMapObject, below, nextBelow, nextAbove);
     }
 
     private boolean checkSolid(final MapObject inside, final MapObject below,
@@ -441,20 +438,20 @@ public class GameManager {
         final boolean nextBelowSolid = nextBelow.isConditionallySolid(m, z);
         final boolean nextAboveSolid = nextAbove.isConditionallySolid(m, z);
         if (insideSolid) {
-            GameScriptRunner.runScript(inside.getMoveFailedScript(false, x, y,
-                    z));
+            GameScriptRunner
+                    .runScript(inside.getMoveFailedScript(false, x, y, z));
         }
         if (belowSolid) {
-            GameScriptRunner.runScript(below
-                    .getMoveFailedScript(false, x, y, z));
+            GameScriptRunner
+                    .runScript(below.getMoveFailedScript(false, x, y, z));
         }
         if (nextBelowSolid) {
-            GameScriptRunner.runScript(nextBelow.getMoveFailedScript(false, x,
-                    y, z));
+            GameScriptRunner
+                    .runScript(nextBelow.getMoveFailedScript(false, x, y, z));
         }
         if (nextAboveSolid) {
-            GameScriptRunner.runScript(nextAbove.getMoveFailedScript(false, x,
-                    y, z));
+            GameScriptRunner
+                    .runScript(nextAbove.getMoveFailedScript(false, x, y, z));
         }
     }
 
@@ -479,12 +476,13 @@ public class GameManager {
                         this.plMgr.getPlayerLocationZ(),
                         MapConstants.LAYER_OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z, 0);
-                this.vwMgr.setViewingWindowLocationX(this.plMgr
-                        .getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(this.plMgr
-                        .getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
-                this.savedMapObject = m.getCell(
-                        this.plMgr.getPlayerLocationX(),
+                this.vwMgr.setViewingWindowLocationX(
+                        this.plMgr.getPlayerLocationY()
+                                - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        this.plMgr.getPlayerLocationX()
+                                - this.vwMgr.getOffsetFactorY());
+                this.savedMapObject = m.getCell(this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
                         MapConstants.LAYER_OBJECT);
@@ -503,16 +501,16 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication().showMessage(
-                    "Can't go outside the map");
+            DungeonDiverII.getApplication()
+                    .showMessage("Can't go outside the map");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication().showMessage(
-                    "Can't go outside the map");
+            DungeonDiverII.getApplication()
+                    .showMessage("Can't go outside the map");
         }
         GameManager.fireStepActions();
     }
@@ -532,12 +530,13 @@ public class GameManager {
                         MapConstants.LAYER_OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z,
                         this.plMgr.getPlayerLocationW());
-                this.vwMgr.setViewingWindowLocationX(this.plMgr
-                        .getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(this.plMgr
-                        .getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
-                this.savedMapObject = m.getCell(
-                        this.plMgr.getPlayerLocationX(),
+                this.vwMgr.setViewingWindowLocationX(
+                        this.plMgr.getPlayerLocationY()
+                                - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        this.plMgr.getPlayerLocationX()
+                                - this.vwMgr.getOffsetFactorY());
+                this.savedMapObject = m.getCell(this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
                         MapConstants.LAYER_OBJECT);
@@ -554,16 +553,16 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication().showMessage(
-                    "Can't go outside the map");
+            DungeonDiverII.getApplication()
+                    .showMessage("Can't go outside the map");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
             this.vwMgr.restoreViewingWindow();
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication().showMessage(
-                    "Can't go outside the map");
+            DungeonDiverII.getApplication()
+                    .showMessage("Can't go outside the map");
         }
     }
 
@@ -600,67 +599,51 @@ public class GameManager {
                         .getLowerRightViewingWindowLocationY(); y++) {
                     xFix = x - this.vwMgr.getViewingWindowLocationX();
                     yFix = y - this.vwMgr.getViewingWindowLocationY();
-                    visible = app
-                            .getVariablesManager()
-                            .getMap()
+                    visible = app.getVariablesManager().getMap()
                             .isSquareVisible(u, v, y, x,
                                     this.plMgr.getPlayerLocationZ());
                     try {
                         if (visible) {
                             MapObject obj1, obj2;
-                            obj1 = app
-                                    .getVariablesManager()
-                                    .getMap()
-                                    .getCell(y, x,
-                                            this.plMgr.getPlayerLocationZ(),
-                                            MapConstants.LAYER_GROUND);
-                            obj2 = app
-                                    .getVariablesManager()
-                                    .getMap()
-                                    .getCell(y, x,
-                                            this.plMgr.getPlayerLocationZ(),
-                                            MapConstants.LAYER_OBJECT);
+                            obj1 = app.getVariablesManager().getMap().getCell(y,
+                                    x, this.plMgr.getPlayerLocationZ(),
+                                    MapConstants.LAYER_GROUND);
+                            obj2 = app.getVariablesManager().getMap().getCell(y,
+                                    x, this.plMgr.getPlayerLocationZ(),
+                                    MapConstants.LAYER_OBJECT);
                             String name1, name2;
-                            name1 = obj1.gameRenderHook(y, x, this.plMgr
-                                    .getPlayerLocationZ(), app
-                                    .getVariablesManager().getMap());
-                            name2 = obj2.gameRenderHook(y, x, this.plMgr
-                                    .getPlayerLocationZ(), app
-                                    .getVariablesManager().getMap());
-                            this.drawGrid[xFix][yFix].setIcon(ImageTransformer
-                                    .getCompositeImage(name1,
+                            name1 = obj1.gameRenderHook(y, x,
+                                    this.plMgr.getPlayerLocationZ(),
+                                    app.getVariablesManager().getMap());
+                            name2 = obj2.gameRenderHook(y, x,
+                                    this.plMgr.getPlayerLocationZ(),
+                                    app.getVariablesManager().getMap());
+                            this.drawGrid[xFix][yFix].setIcon(
+                                    ImageTransformer.getCompositeImage(name1,
                                             obj1.getGameName(),
                                             obj1.getTemplateTransform(), name2,
                                             obj2.getGameName(),
                                             obj2.getTemplateTransform()));
                         } else {
-                            this.drawGrid[xFix][yFix]
-                                    .setIcon(MapObjectImageManager.getImage(
-                                            "Darkness", "Darkness", null));
+                            this.drawGrid[xFix][yFix].setIcon(
+                                    MapObjectImageManager.getImage("Darkness",
+                                            "Darkness", null));
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
                         this.drawGrid[xFix][yFix]
                                 .setIcon(MapObjectImageManager.getImage(
-                                        new EmptyVoid()
-                                                .gameRenderHook(
-                                                        y,
-                                                        x,
-                                                        this.plMgr
-                                                                .getPlayerLocationZ(),
-                                                        app.getVariablesManager()
-                                                                .getMap()),
+                                        new EmptyVoid().gameRenderHook(y, x,
+                                                this.plMgr.getPlayerLocationZ(),
+                                                app.getVariablesManager()
+                                                        .getMap()),
                                         "Void", null));
                     } catch (final NullPointerException np) {
                         this.drawGrid[xFix][yFix]
                                 .setIcon(MapObjectImageManager.getImage(
-                                        new EmptyVoid()
-                                                .gameRenderHook(
-                                                        y,
-                                                        x,
-                                                        this.plMgr
-                                                                .getPlayerLocationZ(),
-                                                        app.getVariablesManager()
-                                                                .getMap()),
+                                        new EmptyVoid().gameRenderHook(y, x,
+                                                this.plMgr.getPlayerLocationZ(),
+                                                app.getVariablesManager()
+                                                        .getMap()),
                                         "Void", null));
                     }
                 }
@@ -751,8 +734,8 @@ public class GameManager {
     public void goToFloorRelative(final int floor) {
         final Application app = DungeonDiverII.getApplication();
         final Map m = app.getVariablesManager().getMap();
-        final boolean floorExists = m.doesFloorExist(this.plMgr
-                .getPlayerLocationZ() + floor);
+        final boolean floorExists = m
+                .doesFloorExist(this.plMgr.getPlayerLocationZ() + floor);
         if (floorExists) {
             final int px = this.plMgr.getPlayerLocationX();
             final int py = this.plMgr.getPlayerLocationY();
@@ -816,8 +799,8 @@ public class GameManager {
         if (member != null) {
             final String[] equipString = member.getItems()
                     .generateEquipmentStringArray();
-            CommonDialogs.showInputDialog("Equipment", "Equipment",
-                    equipString, equipString[0]);
+            CommonDialogs.showInputDialog("Equipment", "Equipment", equipString,
+                    equipString[0]);
         }
     }
 
@@ -852,8 +835,8 @@ public class GameManager {
             target2.determineCurrentAppearance(destX, destY, destZ, m);
             final String gameName1 = target1.getGameName();
             final String gameName2 = target2.getGameName();
-            DungeonDiverII.getApplication().showMessage(
-                    gameName2 + " on " + gameName1);
+            DungeonDiverII.getApplication()
+                    .showMessage(gameName2 + " on " + gameName1);
             SoundManager.playSound(GameSoundConstants.SOUND_IDENTIFY);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             final EmptyVoid ev = new EmptyVoid();
@@ -885,8 +868,8 @@ public class GameManager {
         this.borderPane.removeAll();
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
         this.resetViewingWindowAndPlayerLocation();
         this.showOutput();
         this.getStatGUI().updateImages();
@@ -932,14 +915,15 @@ public class GameManager {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(this.handler);
         this.outputFrame.addWindowListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
-        this.drawGrid = new JLabel[this.vwMgr.getViewingWindowSizeX()][this.vwMgr
-                .getViewingWindowSizeY()];
+        this.drawGrid = new JLabel[this.vwMgr
+                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
                 this.drawGrid[x][y] = new JLabel();
@@ -952,12 +936,12 @@ public class GameManager {
         }
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
-        this.borderPane
-                .add(this.getStatGUI().getStatsPane(), BorderLayout.EAST);
+        this.borderPane.add(this.getStatGUI().getStatsPane(),
+                BorderLayout.EAST);
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         public EventHandler() {
             // TODO Auto-generated constructor stub
         }
@@ -984,7 +968,8 @@ public class GameManager {
         public void handleMovement(final KeyEvent e) {
             try {
                 boolean modKeyDown;
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     modKeyDown = e.isMetaDown();
                 } else {
                     modKeyDown = e.isControlDown();

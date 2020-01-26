@@ -27,7 +27,7 @@ public class SpellCaster {
             final BattleDefinitions battle) {
         boolean result = false;
         SpellCaster.NO_SPELLS_FLAG = false;
-        Spell s = SpellCaster.selectSpell(caster);
+        final Spell s = SpellCaster.selectSpell(caster);
         if (s != null) {
             result = SpellCaster.castSpell(s, caster, teamID, aiEnabled,
                     battle);
@@ -83,20 +83,19 @@ public class SpellCaster {
             final int teamID, final boolean aiEnabled,
             final BattleDefinitions battle) {
         if (cast != null && caster != null && battle != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCost();
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCost();
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect eff = cast.getEffect();
+                final Effect eff = cast.getEffect();
                 eff.setSource(caster);
                 eff.resetEffect();
-                Creature[] targets = SpellCaster.resolveTarget(cast, caster,
-                        teamID, aiEnabled, battle);
+                final Creature[] targets = SpellCaster.resolveTarget(cast,
+                        caster, teamID, aiEnabled, battle);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
-                for (int x = 0; x < targets.length; x++) {
-                    Creature target = targets[x];
+                for (final Creature target : targets) {
                     if (target != null) {
                         if (target.isEffectActive(eff)) {
                             target.extendEffect(eff, eff.getInitialRounds());
@@ -117,11 +116,11 @@ public class SpellCaster {
     }
 
     private static Creature[] resolveTarget(final Spell cast,
-            final Creature caster, final int teamID, boolean aiEnabled,
-            BattleDefinitions battle) {
-        BattleTarget target = cast.getTarget();
-        boolean hasAI = caster.hasAI();
-        boolean useAI = hasAI && aiEnabled;
+            final Creature caster, final int teamID, final boolean aiEnabled,
+            final BattleDefinitions battle) {
+        final BattleTarget target = cast.getTarget();
+        final boolean hasAI = caster.hasAI();
+        final boolean useAI = hasAI && aiEnabled;
         switch (target) {
         case SELF:
             // Self

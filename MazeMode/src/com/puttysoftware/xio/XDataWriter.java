@@ -34,7 +34,8 @@ public class XDataWriter {
 
     public void writeInt(final int i) throws IOException {
         this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i)
-                + "</" + XDataConstants.INT_TAG + ">" + XDataWriter.END_OF_LINE);
+                + "</" + XDataConstants.INT_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
     public void writeLong(final long l) throws IOException {

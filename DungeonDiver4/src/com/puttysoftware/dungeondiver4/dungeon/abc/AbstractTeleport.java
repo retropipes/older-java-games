@@ -51,7 +51,7 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -81,7 +81,7 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
 
     @Override
     public AbstractTeleport clone() {
-        AbstractTeleport copy = (AbstractTeleport) super.clone();
+        final AbstractTeleport copy = (AbstractTeleport) super.clone();
         copy.destCol = this.destCol;
         copy.destFloor = this.destFloor;
         copy.destRow = this.destRow;
@@ -121,9 +121,9 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_TELEPORT);
@@ -145,10 +145,9 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
     @Override
     public void editorProbeHook() {
         DungeonDiver4.getApplication()
-                .showMessage(
-                        this.getName() + ": Destination (" + (this.destCol + 1)
-                                + "," + (this.destRow + 1) + ","
-                                + (this.destFloor + 1) + ")");
+                .showMessage(this.getName() + ": Destination ("
+                        + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+                        + (this.destFloor + 1) + ")");
     }
 
     @Override
@@ -157,14 +156,14 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
     }
 
     @Override
-    public boolean shouldGenerateObject(Dungeon dungeon, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObject(final Dungeon dungeon, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Blacklist object
         return false;
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         switch (propID) {
         case 1:
             return this.destRow;
@@ -178,7 +177,7 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
         case 1:
             this.destRow = value;

@@ -17,50 +17,51 @@ import net.dynamicdungeon.dynamicdungeon.resourcemanagers.SoundManager;
 public class Hammer extends AbstractItem {
     // Constructors
     public Hammer() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_HAMMER;
+        return ObjectImageConstants.OBJECT_IMAGE_HAMMER;
     }
 
     @Override
     public String getName() {
-	return "Hammer";
+        return "Hammer";
     }
 
     @Override
     public String getPluralName() {
-	return "Hammers";
+        return "Hammers";
     }
 
     @Override
     public String getDescription() {
-	return "Hammers let you skip stone collecting.";
+        return "Hammers let you skip stone collecting.";
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	Application app = DynamicDungeon.getApplication();
-	app.getDungeonManager().getDungeon().addHammer();
-	SoundManager.playSound(SoundConstants.SOUND_GRAB);
-	app.showMessage("The way forward can now be forced open!");
-	GameLogicManager.decay();
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
+        final Application app = DynamicDungeon.getApplication();
+        app.getDungeonManager().getDungeon().addHammer();
+        SoundManager.playSound(SoundConstants.SOUND_GRAB);
+        app.showMessage("The way forward can now be forced open!");
+        GameLogicManager.decay();
     }
 
     @Override
     public int getMinimumRequiredQuantity(final Dungeon maze) {
-	return 1;
+        return 1;
     }
 
     @Override
     public int getMaximumRequiredQuantity(final Dungeon maze) {
-	return 1;
+        return 1;
     }
 
     @Override
     public boolean isRequired() {
-	return true;
+        return true;
     }
 }

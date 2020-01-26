@@ -22,11 +22,11 @@ public class Water extends GenericField {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveSuccessSound();
         }
     }
@@ -36,8 +36,8 @@ public class Water extends GenericField {
             final int dirY, final ObjectInventory inv) {
         final Application app = Worldz.getApplication();
         Messager.showMessage("You'll drown");
-        if (app.getPrefsManager().getSoundEnabled(
-                PreferencesManager.SOUNDS_GAME)) {
+        if (app.getPrefsManager()
+                .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             this.playMoveFailedSound();
         }
     }
@@ -51,8 +51,8 @@ public class Water extends GenericField {
                     WorldConstants.LAYER_GROUND);
             app.getGameManager().morph(new Empty(), x, y, z,
                     WorldConstants.LAYER_OBJECT);
-            if (app.getPrefsManager().getSoundEnabled(
-                    PreferencesManager.SOUNDS_GAME)) {
+            if (app.getPrefsManager()
+                    .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
                 WorldObject.playSinkBlockSound();
             }
         }

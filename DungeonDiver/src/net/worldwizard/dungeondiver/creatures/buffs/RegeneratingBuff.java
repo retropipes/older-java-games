@@ -18,7 +18,8 @@ public class RegeneratingBuff extends Buff {
 
     public RegeneratingBuff(final String buffName, final int MPAddition,
             final int newRounds, final double factor, final int scaleStat,
-            final double decay, final double rScaleFactor, final int rScaleStat) {
+            final double decay, final double rScaleFactor,
+            final int rScaleStat) {
         super(buffName, newRounds, rScaleFactor, rScaleStat);
         this.setAffectedStat(StatConstants.STAT_CURRENT_MP);
         this.setEffect(Buff.EFFECT_ADD, MPAddition, factor, scaleStat);

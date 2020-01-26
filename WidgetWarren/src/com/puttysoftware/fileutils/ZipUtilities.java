@@ -20,7 +20,7 @@ public final class ZipUtilities {
             throws IOException {
         try (ZipOutputStream zos = new ZipOutputStream(
                 new FileOutputStream(zip))) {
-            zip(directory, directory, zos);
+            ZipUtilities.zip(directory, directory, zos);
         } catch (final IOException ioe) {
             throw ioe;
         }
@@ -34,7 +34,7 @@ public final class ZipUtilities {
         final int n = files.length;
         for (int i = 0; i < n; i++) {
             if (files[i].isDirectory()) {
-                zip(files[i], base, zos);
+                ZipUtilities.zip(files[i], base, zos);
             } else {
                 try (FileInputStream in = new FileInputStream(files[i])) {
                     final ZipEntry entry = new ZipEntry(files[i].getPath()

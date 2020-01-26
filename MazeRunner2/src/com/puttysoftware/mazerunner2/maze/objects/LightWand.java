@@ -8,8 +8,8 @@ package com.puttysoftware.mazerunner2.maze.objects;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.mazerunner2.maze.MazeConstants;
-import com.puttysoftware.mazerunner2.maze.abc.AbstractWand;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
+import com.puttysoftware.mazerunner2.maze.abc.AbstractWand;
 import com.puttysoftware.mazerunner2.maze.utilities.ColorConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundConstants;
 import com.puttysoftware.mazerunner2.resourcemanagers.SoundManager;
@@ -32,8 +32,9 @@ public class LightWand extends AbstractWand {
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
-        Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
-        AbstractMazeObject obj = m.getCell(x, y, z, MazeConstants.LAYER_OBJECT);
+        final Maze m = MazeRunnerII.getApplication().getMazeManager().getMaze();
+        final AbstractMazeObject obj = m.getCell(x, y, z,
+                MazeConstants.LAYER_OBJECT);
         if (obj.getName().equals("Empty")) {
             // Create a Light Gem
             this.useAction(new LightGem(), x, y, z);

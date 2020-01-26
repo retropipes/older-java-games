@@ -11,12 +11,12 @@ import com.puttysoftware.lasertank.utilities.MaterialConstants;
 public class StoneTriggerButton extends AbstractTriggerButton {
     // Constructors
     public StoneTriggerButton() {
-	super(new StoneTriggerButtonDoor(), false);
-	this.setMaterial(MaterialConstants.MATERIAL_STONE);
+        super(new StoneTriggerButtonDoor(), false);
+        this.setMaterial(MaterialConstants.MATERIAL_STONE);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 108;
+        return 108;
     }
 }

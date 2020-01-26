@@ -22,8 +22,8 @@ public class ControllableTeleport extends AbstractTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         SoundManager.playSound(SoundConstants.SOUND_WALK);
         app.getGameManager().controllableTeleport();

@@ -35,9 +35,7 @@ public class IceAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_ICY,
-                        IceAmulet.EFFECT_DURATION);
+        Mazer5D.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
     }
 }

@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.dungeondiver3.support.creatures.monsters;
 
-class AppearanceRandomFixedDynamicMonster extends
-        AppearanceRandomFixedBaseMonster {
+class AppearanceRandomFixedDynamicMonster
+        extends AppearanceRandomFixedBaseMonster {
     // Constructors
     AppearanceRandomFixedDynamicMonster() {
         super();

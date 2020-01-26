@@ -20,8 +20,8 @@ public class DamageableWall extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         this.moveFailedAction(true, locX, locY, inv);
         return false;
     }
@@ -30,10 +30,10 @@ public class DamageableWall extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Crack the wall
-        final int pz = Main.getApplication().getGameManager()
-                .getPlayerManager().getPlayerLocationZ();
-        Main.getApplication().getGameManager()
-                .morph(new CrackedWall(), dirX, dirY, pz);
+        final int pz = Main.getApplication().getGameManager().getPlayerManager()
+                .getPlayerLocationZ();
+        Main.getApplication().getGameManager().morph(new CrackedWall(), dirX,
+                dirY, pz);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_CRACK);
     }

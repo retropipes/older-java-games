@@ -2,12 +2,12 @@ package com.puttysoftware.images.edges;
 
 public class EdgePosition {
     // Fields
-    private double offset;
+    private final double offset;
     // Constants
     public static final EdgePosition MIDDLE = new EdgePosition(0.5);
 
     // Constructor
-    private EdgePosition(double newOffset) {
+    private EdgePosition(final double newOffset) {
         this.offset = newOffset;
     }
 

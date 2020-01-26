@@ -32,8 +32,8 @@ public class BreakableWallVertical extends GenericWall {
         final Application app = WeaselWeb.getApplication();
         BreakableWallVertical curr = null;
         try {
-            curr = (BreakableWallVertical) app.getMazeManager().getMazeObject(
-                    x, y, z, MazeConstants.LAYER_OBJECT);
+            curr = (BreakableWallVertical) app.getMazeManager().getMazeObject(x,
+                    y, z, MazeConstants.LAYER_OBJECT);
         } catch (final ClassCastException cce) {
             // We're not a breakable wall vertical, so abort
             return;

@@ -386,7 +386,7 @@ class StaticCodeBook {
     static final int VQ_FEXP_BIAS = 768; // bias toward values smaller than 1.
 
     // doesn't currently guard under/overflow
-    static long float32_pack(float val1) {
+    static long float32_pack(final float val1) {
         float val = val1;
         int sign = 0;
         int exp;

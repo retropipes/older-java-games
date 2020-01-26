@@ -9,8 +9,8 @@ import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
 
 public class UndoRedoEngine {
     // Fields
-    private LinkStack undoHistory;
-    private LinkStack redoHistory;
+    private final LinkStack undoHistory;
+    private final LinkStack redoHistory;
     private AbstractMazeObject object;
     private int destX, destY, destZ, destW, destE;
 
@@ -28,8 +28,8 @@ public class UndoRedoEngine {
 
     // Public methods
     public void undo() {
-        if (!(this.undoHistory.isEmpty())) {
-            Link entry = this.undoHistory.pop();
+        if (!this.undoHistory.isEmpty()) {
+            final Link entry = this.undoHistory.pop();
             this.object = entry.mo;
             this.destX = entry.coordX;
             this.destY = entry.coordY;
@@ -47,8 +47,8 @@ public class UndoRedoEngine {
     }
 
     public void redo() {
-        if (!(this.redoHistory.isEmpty())) {
-            Link entry = this.redoHistory.pop();
+        if (!this.redoHistory.isEmpty()) {
+            final Link entry = this.redoHistory.pop();
             this.object = entry.mo;
             this.destX = entry.coordX;
             this.destY = entry.coordY;
@@ -66,24 +66,24 @@ public class UndoRedoEngine {
     }
 
     public boolean tryUndo() {
-        return !(this.undoHistory.isEmpty());
+        return !this.undoHistory.isEmpty();
     }
 
     public boolean tryRedo() {
-        return !(this.redoHistory.isEmpty());
+        return !this.redoHistory.isEmpty();
     }
 
     public boolean tryBoth() {
         return this.undoHistory.isEmpty() && this.redoHistory.isEmpty();
     }
 
-    public void updateUndoHistory(AbstractMazeObject obj, int x, int y, int z,
-            int w, int e) {
+    public void updateUndoHistory(final AbstractMazeObject obj, final int x,
+            final int y, final int z, final int w, final int e) {
         this.undoHistory.push(obj, x, y, z, w, e);
     }
 
-    public void updateRedoHistory(AbstractMazeObject obj, int x, int y, int z,
-            int w, int e) {
+    public void updateRedoHistory(final AbstractMazeObject obj, final int x,
+            final int y, final int z, final int w, final int e) {
         this.redoHistory.push(obj, x, y, z, w, e);
     }
 
@@ -118,7 +118,8 @@ public class UndoRedoEngine {
         public int coordX, coordY, coordZ, coordW, coordE;
         public Link next;
 
-        public Link(AbstractMazeObject obj, int x, int y, int z, int w, int e) {
+        public Link(final AbstractMazeObject obj, final int x, final int y,
+                final int z, final int w, final int e) {
             this.mo = obj;
             this.coordX = x;
             this.coordY = y;
@@ -141,15 +142,15 @@ public class UndoRedoEngine {
             return this.first == null;
         }
 
-        public void insertFirst(AbstractMazeObject obj, int x, int y, int z,
-                int w, int e) {
-            Link newLink = new Link(obj, x, y, z, w, e);
+        public void insertFirst(final AbstractMazeObject obj, final int x,
+                final int y, final int z, final int w, final int e) {
+            final Link newLink = new Link(obj, x, y, z, w, e);
             newLink.next = this.first;
             this.first = newLink;
         }
 
         public Link deleteFirst() {
-            Link temp = this.first;
+            final Link temp = this.first;
             this.first = this.first.next;
             return temp;
         }
@@ -157,14 +158,14 @@ public class UndoRedoEngine {
 
     private static class LinkStack {
         // Fields
-        private LinkList theList;
+        private final LinkList theList;
 
         public LinkStack() {
             this.theList = new LinkList();
         }
 
-        public void push(AbstractMazeObject obj, int x, int y, int z, int w,
-                int e) {
+        public void push(final AbstractMazeObject obj, final int x, final int y,
+                final int z, final int w, final int e) {
             this.theList.insertFirst(obj, x, y, z, w, e);
         }
 

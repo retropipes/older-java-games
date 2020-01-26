@@ -9,7 +9,7 @@ class LowLevelAMODataStore implements Cloneable {
     private final int[] interProd;
 
     // Constructor
-    public LowLevelAMODataStore(int... shape) {
+    public LowLevelAMODataStore(final int... shape) {
         this.dataShape = shape;
         this.interProd = new int[shape.length];
         int product = 1;
@@ -21,7 +21,7 @@ class LowLevelAMODataStore implements Cloneable {
     }
 
     // Methods
-    private int ravelLocation(int... loc) {
+    private int ravelLocation(final int... loc) {
         int res = 0;
         // Sanity check #1
         if (loc.length != this.interProd.length) {
@@ -32,14 +32,15 @@ class LowLevelAMODataStore implements Cloneable {
             if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
                 throw new ArrayIndexOutOfBoundsException(loc[x]);
             }
-            res += (loc[x] * this.interProd[x]);
+            res += loc[x] * this.interProd[x];
         }
         return res;
     }
 
     @Override
     public Object clone() {
-        LowLevelAMODataStore copy = new LowLevelAMODataStore(this.dataShape);
+        final LowLevelAMODataStore copy = new LowLevelAMODataStore(
+                this.dataShape);
         for (int x = 0; x < this.dataStore.length; x++) {
             copy.dataStore[x] = this.dataStore[x].clone();
         }
@@ -50,13 +51,13 @@ class LowLevelAMODataStore implements Cloneable {
         return this.dataShape;
     }
 
-    public AbstractMazeObject getCell(int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public AbstractMazeObject getCell(final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(AbstractMazeObject obj, int... loc) {
-        int aloc = this.ravelLocation(loc);
+    public void setCell(final AbstractMazeObject obj, final int... loc) {
+        final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }
 }

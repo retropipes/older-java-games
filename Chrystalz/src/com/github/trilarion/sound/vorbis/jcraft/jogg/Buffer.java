@@ -64,7 +64,7 @@ public class Buffer {
      * @param s
      * @param bytes
      */
-    public void read(final byte[] s, int bytes1) {
+    public void read(final byte[] s, final int bytes1) {
         int bytes = bytes1;
         int i = 0;
         while (bytes-- != 0) {
@@ -106,7 +106,7 @@ public class Buffer {
      * @param value
      * @param bits
      */
-    public void write(int value1, int bits1) {
+    public void write(final int value1, final int bits1) {
         int value = value1;
         int bits = bits1;
         if (this.endbyte + 4 >= this.storage) {

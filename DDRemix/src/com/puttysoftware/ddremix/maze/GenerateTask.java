@@ -51,8 +51,8 @@ public class GenerateTask extends Thread {
                 app.getMazeManager().setMaze(gameMaze);
             }
             final int levelCount = gameMaze.getLevels();
-            final int mazeSize = MazeConstants.MAZE_SIZE_BASE + levelCount
-                    * MazeConstants.MAZE_SIZE_INCREMENT;
+            final int mazeSize = MazeConstants.MAZE_SIZE_BASE
+                    + levelCount * MazeConstants.MAZE_SIZE_INCREMENT;
             gameMaze.addLevel(mazeSize, mazeSize, Maze.getMaxFloors());
             gameMaze.fillLevelRandomly();
             final RandomRange rR = new RandomRange(0, mazeSize - 1);
@@ -92,9 +92,8 @@ public class GenerateTask extends Thread {
             // Final cleanup
             app.getGameManager().updateStoneCount();
             AbstractMazeObject
-                    .setTemplateColor(ImageColorConstants
-                            .getColorForLevel(PartyManager.getParty()
-                                    .getDungeonLevel()));
+                    .setTemplateColor(ImageColorConstants.getColorForLevel(
+                            PartyManager.getParty().getDungeonLevel()));
             if (this.scratch) {
                 app.getGameManager().stateChanged();
                 app.getGameManager().playMaze();

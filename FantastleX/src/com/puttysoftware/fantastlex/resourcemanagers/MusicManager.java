@@ -19,9 +19,8 @@ public class MusicManager {
 
     private static OggPlayer getMusic(final String filename) {
         try {
-            final URL u = MusicManager.LOAD_CLASS
-                    .getResource(MusicManager.LOAD_PATH
-                            + filename.toLowerCase() + ".ogg");
+            final URL u = MusicManager.LOAD_CLASS.getResource(
+                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
             return new OggPlayer(u);
         } catch (final NullPointerException np) {
             return null;

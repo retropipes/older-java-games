@@ -303,7 +303,7 @@ public class MapBattleLogic extends AbstractBattle {
             final AbstractCreature active,
             final AbstractDamageEngine activeDE) {
         // Display round results
-        int hitSound = active.getItems().getWeaponHitSound(active);
+        final int hitSound = active.getItems().getWeaponHitSound(active);
         final String activeName = active.getName();
         final String enemyName = theEnemy.getName();
         String damageString = Integer.toString(this.damage);
@@ -610,7 +610,7 @@ public class MapBattleLogic extends AbstractBattle {
             final boolean useAP, final BattleCharacter activeBC,
             final BattleCharacter theEnemy,
             final AbstractDamageEngine activeDE) {
-        AbstractCreature active = activeBC.getTemplate();
+        final AbstractCreature active = activeBC.getTemplate();
         this.updateAllAIContexts();
         int px = activeBC.getX();
         int py = activeBC.getY();
@@ -1001,7 +1001,7 @@ public class MapBattleLogic extends AbstractBattle {
         // Check Action Counter
         if (this.getActiveActionCounter() > 0) {
             AbstractCreature activeEnemy = null;
-            AbstractBattleCharacter enemyBC = this.getEnemyBC();
+            final AbstractBattleCharacter enemyBC = this.getEnemyBC();
             if (enemyBC != null) {
                 activeEnemy = enemyBC.getTemplate();
             }
@@ -1081,7 +1081,7 @@ public class MapBattleLogic extends AbstractBattle {
         // Check Action Counter
         if (this.getActiveActionCounter() > 0) {
             AbstractCreature activeEnemy = null;
-            AbstractBattleCharacter enemyBC = this.getEnemyBC();
+            final AbstractBattleCharacter enemyBC = this.getEnemyBC();
             if (enemyBC != null) {
                 activeEnemy = enemyBC.getTemplate();
             }
@@ -1215,7 +1215,7 @@ public class MapBattleLogic extends AbstractBattle {
     public void maintainEffects(final boolean player) {
         for (int x = 0; x < this.bd.getBattlers().length; x++) {
             // Maintain Effects
-            BattleCharacter activeBC = this.bd.getBattlers()[x];
+            final BattleCharacter activeBC = this.bd.getBattlers()[x];
             if (activeBC != null && activeBC.isActive()) {
                 final AbstractCreature active = activeBC.getTemplate();
                 // Use Effects
@@ -1259,7 +1259,7 @@ public class MapBattleLogic extends AbstractBattle {
     private void handleDeath(final BattleCharacter activeBC) {
         // Something has died
         SoundManager.playSound(SoundConstants.DEATH);
-        AbstractCreature active = activeBC.getTemplate();
+        final AbstractCreature active = activeBC.getTemplate();
         // Set dead character to inactive
         activeBC.deactivate();
         // Remove effects from dead character

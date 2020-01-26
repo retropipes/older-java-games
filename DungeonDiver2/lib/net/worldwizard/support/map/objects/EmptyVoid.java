@@ -23,7 +23,8 @@ public class EmptyVoid extends GenericWall {
     @Override
     public String gameRenderHook(final int x, final int y, final int z,
             final Map map) {
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         MapObject mo1 = null;
         try {
@@ -118,7 +119,8 @@ public class EmptyVoid extends GenericWall {
     @Override
     public void determineCurrentAppearance(final int x, final int y,
             final int z, final Map map) {
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final MapObject mo1 = map.getCell(x - 1, y - 1, z,
                 MapConstants.LAYER_OBJECT);

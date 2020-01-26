@@ -21,7 +21,8 @@ public abstract class AbstractMultipleLock extends AbstractLock {
     private int keyCount;
 
     // Constructors
-    protected AbstractMultipleLock(final AbstractMultipleKey mgk, int attrColor) {
+    protected AbstractMultipleLock(final AbstractMultipleKey mgk,
+            final int attrColor) {
         super(mgk);
         this.keyCount = 0;
         this.setTemplateColor(ColorConstants.COLOR_BROWN);
@@ -47,7 +48,7 @@ public abstract class AbstractMultipleLock extends AbstractLock {
 
     @Override
     public boolean isConditionallySolid(final DungeonObjectInventory inv) {
-        return (inv.getItemCount(this.getKey()) < this.keyCount);
+        return inv.getItemCount(this.getKey()) < this.keyCount;
     }
 
     @Override
@@ -58,7 +59,7 @@ public abstract class AbstractMultipleLock extends AbstractLock {
                 || inv.isItemThere(new GhostAmulet())) {
             return false;
         } else {
-            return (inv.getItemCount(this.getKey()) < this.keyCount);
+            return inv.getItemCount(this.getKey()) < this.keyCount;
         }
     }
 
@@ -71,30 +72,29 @@ public abstract class AbstractMultipleLock extends AbstractLock {
         } else {
             fill = "";
         }
-        DungeonDiver4.getApplication().showMessage(
-                "You need " + this.keyCount + " " + this.getKey().getName()
-                        + fill);
+        DungeonDiver4.getApplication().showMessage("You need " + this.keyCount
+                + " " + this.getKey().getName() + fill);
         SoundManager.playSound(SoundConstants.SOUND_WALK_FAILED);
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return this.keyCount;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         this.keyCount = value;
     }
 
     @Override
     public AbstractDungeonObject editorPropertiesHook() {
         try {
-            this.keyCount = Integer.parseInt(CommonDialogs
-                    .showTextInputDialogWithDefault(
+            this.keyCount = Integer
+                    .parseInt(CommonDialogs.showTextInputDialogWithDefault(
                             "Set Key Count for " + this.getName(), "Editor",
                             Integer.toString(this.keyCount)));
-        } catch (NumberFormatException nf) {
+        } catch (final NumberFormatException nf) {
             // Ignore
         }
         return this;

@@ -37,8 +37,7 @@ class LoadTask extends Thread {
             app.getAdventureManager().setAdventure(this.gameAdventure);
             app.getAdventureManager().handleDeferredSuccess(true);
         } catch (final FileNotFoundException fnfe) {
-            Messager.showMessage("Loading the "
-                    + sg.toLowerCase()
+            Messager.showMessage("Loading the " + sg.toLowerCase()
                     + " file failed, probably due to illegal characters in the file name.");
             app.getAdventureManager().handleDeferredSuccess(false);
         } catch (final IOException ie) {

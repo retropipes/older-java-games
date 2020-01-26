@@ -23,8 +23,8 @@ public class MazeEffectConstants {
             15, 6, 6 };
     private static final int[] DURATIONS_HARD = new int[] { 8, 8, 8, 8, 6, 12,
             10, 3, 9 };
-    private static final int[] DURATIONS_VERY_HARD = new int[] { 10, 10, 10,
-            10, 9, 15, 5, 2, 12 };
+    private static final int[] DURATIONS_VERY_HARD = new int[] { 10, 10, 10, 10,
+            9, 15, 5, 2, 12 };
     static final int[][] DURATIONS = new int[][] {
             MazeEffectConstants.DURATIONS_VERY_EASY,
             MazeEffectConstants.DURATIONS_EASY,

@@ -22,7 +22,8 @@ public class Equipment extends Item {
     private String[] faithPowerName;
 
     // Constructors
-    private Equipment(Item i, int equipCategory, int newMaterialID) {
+    private Equipment(final Item i, final int equipCategory,
+            final int newMaterialID) {
         super(i.getName(), i.getInitialUses(), i.getWeightPerUse());
         this.equipCat = equipCategory;
         this.materialID = newMaterialID;
@@ -44,7 +45,7 @@ public class Equipment extends Item {
     }
 
     Equipment(final String itemName, final int itemInitialUses,
-            final int itemWeightPerUse, int equipCategory,
+            final int itemWeightPerUse, final int equipCategory,
             final int newMaterialID) {
         super(itemName, itemInitialUses, itemWeightPerUse);
         this.equipCat = equipCategory;
@@ -80,8 +81,8 @@ public class Equipment extends Item {
 
     @Override
     public String getName() {
-        StringBuilder faithBuilder = new StringBuilder();
-        int fc = FaithConstants.getFaithsCount();
+        final StringBuilder faithBuilder = new StringBuilder();
+        final int fc = FaithConstants.getFaithsCount();
         for (int z = 0; z < fc; z++) {
             if (!this.faithPowerName[z].isEmpty()) {
                 faithBuilder.append(this.faithPowerName[z]);
@@ -94,19 +95,19 @@ public class Equipment extends Item {
         return super.getName();
     }
 
-    final void enchantName(int bonus) {
+    final void enchantName(final int bonus) {
         String oldName = this.getName();
         // Check - is name enchanted already?
         if (oldName.charAt(oldName.length() - 2) == '+') {
             // Yes - remove old enchantment
             oldName = oldName.substring(0, oldName.length() - 3);
         }
-        String newName = oldName + " +" + bonus;
+        final String newName = oldName + " +" + bonus;
         this.setName(newName);
     }
 
-    final void applyFaithPower(int fid, int bonus) {
-        String fpName = FaithConstants.getFaithPowerName(fid, bonus);
+    final void applyFaithPower(final int fid, final int bonus) {
+        final String fpName = FaithConstants.getFaithPowerName(fid, bonus);
         this.faithPowerName[fid] = fpName + " ";
         this.faithPowersApplied[fid]++;
     }
@@ -115,7 +116,7 @@ public class Equipment extends Item {
         return this.firstSlotUsed;
     }
 
-    final void setFirstSlotUsed(int newFirstSlotUsed) {
+    final void setFirstSlotUsed(final int newFirstSlotUsed) {
         this.firstSlotUsed = newFirstSlotUsed;
     }
 
@@ -123,11 +124,11 @@ public class Equipment extends Item {
         return this.secondSlotUsed;
     }
 
-    final void setSecondSlotUsed(int newSecondSlotUsed) {
+    final void setSecondSlotUsed(final int newSecondSlotUsed) {
         this.secondSlotUsed = newSecondSlotUsed;
     }
 
-    final void setConditionalSlot(boolean newConditionalSlot) {
+    final void setConditionalSlot(final boolean newConditionalSlot) {
         this.conditionalSlot = newConditionalSlot;
     }
 
@@ -139,7 +140,7 @@ public class Equipment extends Item {
         return this.materialID;
     }
 
-    public final int getFaithPowerLevel(int fid) {
+    public final int getFaithPowerLevel(final int fid) {
         return this.faithPowersApplied[fid];
     }
 
@@ -149,19 +150,19 @@ public class Equipment extends Item {
                 && !this.conditionalSlot;
     }
 
-    static Equipment readEquipment(XDataReader dr) throws IOException {
-        Item i = Item.readItem(dr);
+    static Equipment readEquipment(final XDataReader dr) throws IOException {
+        final Item i = Item.readItem(dr);
         if (i == null) {
             // Abort
             return null;
         }
-        int matID = dr.readInt();
-        int eCat = dr.readInt();
-        Equipment ei = new Equipment(i, eCat, matID);
+        final int matID = dr.readInt();
+        final int eCat = dr.readInt();
+        final Equipment ei = new Equipment(i, eCat, matID);
         ei.firstSlotUsed = dr.readInt();
         ei.secondSlotUsed = dr.readInt();
         ei.conditionalSlot = dr.readBoolean();
-        int fc = FaithConstants.getFaithsCount();
+        final int fc = FaithConstants.getFaithsCount();
         for (int z = 0; z < fc; z++) {
             ei.faithPowerName[z] = dr.readString();
             ei.faithPowersApplied[z] = dr.readInt();
@@ -169,14 +170,14 @@ public class Equipment extends Item {
         return ei;
     }
 
-    final void writeEquipment(XDataWriter dw) throws IOException {
+    final void writeEquipment(final XDataWriter dw) throws IOException {
         super.writeItem(dw);
         dw.writeInt(this.materialID);
         dw.writeInt(this.equipCat);
         dw.writeInt(this.firstSlotUsed);
         dw.writeInt(this.secondSlotUsed);
         dw.writeBoolean(this.conditionalSlot);
-        int fc = FaithConstants.getFaithsCount();
+        final int fc = FaithConstants.getFaithsCount();
         for (int z = 0; z < fc; z++) {
             dw.writeString(this.faithPowerName[z]);
             dw.writeInt(this.faithPowersApplied[z]);

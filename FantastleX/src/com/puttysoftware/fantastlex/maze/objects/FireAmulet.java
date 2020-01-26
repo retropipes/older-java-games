@@ -42,16 +42,13 @@ public class FireAmulet extends AbstractAmulet {
                 .getPlayerLocationY();
         final int z = FantastleX.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        FantastleX.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        FantastleX.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 
     @Override
     public void postMoveActionHook() {
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .activateEffect(MazeEffectConstants.EFFECT_FIERY,
-                        FireAmulet.EFFECT_DURATION);
+        FantastleX.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
     }
 }

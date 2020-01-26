@@ -76,10 +76,10 @@ public class XDataReader {
         final String line = this.br.readLine();
         if (line != null) {
             final String[] split = XDataReader.splitLine(line);
-            XDataReader
-                    .validateOpeningTag(split[0], XDataConstants.BOOLEAN_TAG);
-            XDataReader
-                    .validateClosingTag(split[2], XDataConstants.BOOLEAN_TAG);
+            XDataReader.validateOpeningTag(split[0],
+                    XDataConstants.BOOLEAN_TAG);
+            XDataReader.validateClosingTag(split[2],
+                    XDataConstants.BOOLEAN_TAG);
             return Boolean.parseBoolean(split[1]);
         } else {
             throw new IOException("End of file!");

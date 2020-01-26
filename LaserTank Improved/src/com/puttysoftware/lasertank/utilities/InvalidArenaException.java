@@ -11,18 +11,18 @@ public class InvalidArenaException extends RuntimeException {
 
     // Constructors
     public InvalidArenaException() {
-	super();
+        super();
     }
 
     public InvalidArenaException(final String msg) {
-	super(msg);
+        super(msg);
     }
 
     public InvalidArenaException(final Throwable cause) {
-	super(cause);
+        super(cause);
     }
 
     public InvalidArenaException(final String msg, final Throwable cause) {
-	super(msg, cause);
+        super(msg, cause);
     }
 }

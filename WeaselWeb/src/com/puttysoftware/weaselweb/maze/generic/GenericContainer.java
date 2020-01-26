@@ -80,11 +80,11 @@ public abstract class GenericContainer extends GenericSingleLock {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WeaselWeb.getApplication();
-        if (!app.getGameManager().isEffectActive(
-                MazeEffectConstants.EFFECT_GHOSTLY)
+        if (!app.getGameManager()
+                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
@@ -113,8 +113,8 @@ public abstract class GenericContainer extends GenericSingleLock {
             WeaselWeb.getApplication().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            WeaselWeb.getApplication().showMessage(
-                    this.getName() + ": Contains Nothing");
+            WeaselWeb.getApplication()
+                    .showMessage(this.getName() + ": Contains Nothing");
         }
     }
 

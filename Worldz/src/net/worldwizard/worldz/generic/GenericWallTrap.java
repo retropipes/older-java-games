@@ -44,8 +44,8 @@ public abstract class GenericWallTrap extends WorldObject {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         Worldz.getApplication().getGameManager().decay();
         Worldz.getApplication().getWorldManager().getWorld()
                 .findAllMatchingObjectsAndDecay(this.masterTrigger);

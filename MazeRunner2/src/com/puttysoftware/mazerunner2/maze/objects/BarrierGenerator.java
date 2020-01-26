@@ -34,14 +34,17 @@ public class BarrierGenerator extends AbstractGenerator {
     }
 
     @Override
-    protected boolean preMoveActionHook(int dirX, int dirY, int dirZ, int dirW) {
+    protected boolean preMoveActionHook(final int dirX, final int dirY,
+            final int dirZ, final int dirW) {
         return true;
     }
 
     @Override
-    protected void arrowHitActionHook(int locX, int locY, int locZ,
-            int arrowType, MazeObjectInventory inv) {
-        GameLogicManager gm = MazeRunnerII.getApplication().getGameManager();
+    protected void arrowHitActionHook(final int locX, final int locY,
+            final int locZ, final int arrowType,
+            final MazeObjectInventory inv) {
+        final GameLogicManager gm = MazeRunnerII.getApplication()
+                .getGameManager();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             gm.morph(new IcedBarrierGenerator(), locX, locY, locZ);
         } else if (arrowType == ArrowTypeConstants.ARROW_TYPE_FIRE) {

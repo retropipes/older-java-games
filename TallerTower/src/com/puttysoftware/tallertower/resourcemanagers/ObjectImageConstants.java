@@ -57,10 +57,10 @@ public class ObjectImageConstants {
             .getObjectGraphicsData();
 
     static String getObjectImageName(final int ID) {
-        if (ID == OBJECT_IMAGE_NONE) {
+        if (ID == ObjectImageConstants.OBJECT_IMAGE_NONE) {
             return "";
         } else {
-            return OBJECT_IMAGE_NAMES[ID];
+            return ObjectImageConstants.OBJECT_IMAGE_NAMES[ID];
         }
     }
 }

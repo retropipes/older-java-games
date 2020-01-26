@@ -26,10 +26,10 @@ public class ItemInventory {
     private Socks socks;
 
     // Constructors
-    public ItemInventory(boolean hasCombatItems) {
+    public ItemInventory(final boolean hasCombatItems) {
         if (hasCombatItems) {
-            CombatItemList cil = new CombatItemList();
-            Item[] items = cil.getAllItems();
+            final CombatItemList cil = new CombatItemList();
+            final Item[] items = cil.getAllItems();
             this.entries = new ItemUseQuantity[items.length];
             for (int x = 0; x < items.length; x++) {
                 this.entries[x] = new ItemUseQuantity(items[x], 0, 0);
@@ -42,9 +42,9 @@ public class ItemInventory {
     }
 
     // Methods
-    void addItem(Item i) {
-        for (ItemUseQuantity iqu : this.entries) {
-            Item item = iqu.getItem();
+    void addItem(final Item i) {
+        for (final ItemUseQuantity iqu : this.entries) {
+            final Item item = iqu.getItem();
             if (i.getName().equals(item.getName())) {
                 iqu.incrementQuantity();
                 iqu.setUses(item.getInitialUses());
@@ -53,9 +53,9 @@ public class ItemInventory {
         }
     }
 
-    public int getUses(Item i) {
-        for (ItemUseQuantity iqu : this.entries) {
-            Item item = iqu.getItem();
+    public int getUses(final Item i) {
+        for (final ItemUseQuantity iqu : this.entries) {
+            final Item item = iqu.getItem();
             if (i.getName().equals(item.getName())) {
                 return iqu.getUses();
             }
@@ -63,8 +63,8 @@ public class ItemInventory {
         return 0;
     }
 
-    void equipOneHandedWeapon(AbstractCreature pc, Equipment ei,
-            boolean useFirst, boolean playSound) {
+    void equipOneHandedWeapon(final AbstractCreature pc, final Equipment ei,
+            final boolean useFirst, final boolean playSound) {
         // Fix character load, changing weapons
         if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null
                 && useFirst) {
@@ -97,8 +97,8 @@ public class ItemInventory {
         }
     }
 
-    void equipTwoHandedWeapon(AbstractCreature pc, Equipment ei,
-            boolean playSound) {
+    void equipTwoHandedWeapon(final AbstractCreature pc, final Equipment ei,
+            final boolean playSound) {
         // Fix character load, changing weapons
         if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null) {
             pc.offsetLoad(-this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
@@ -114,7 +114,8 @@ public class ItemInventory {
         }
     }
 
-    void equipArmor(AbstractCreature pc, Equipment ei, boolean playSound) {
+    void equipArmor(final AbstractCreature pc, final Equipment ei,
+            final boolean playSound) {
         // Check for socks
         if (ei instanceof Socks) {
             this.socks = (Socks) ei;
@@ -125,8 +126,9 @@ public class ItemInventory {
                 if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND] != null) {
                     if (this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
                             .getEquipCategory() == EquipmentCategoryConstants.EQUIPMENT_CATEGORY_TWO_HANDED_WEAPON) {
-                        pc.offsetLoad(-this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
-                                .getEffectiveWeight());
+                        pc.offsetLoad(
+                                -this.equipment[EquipmentSlotConstants.SLOT_MAINHAND]
+                                        .getEffectiveWeight());
                     }
                 }
             }
@@ -155,19 +157,19 @@ public class ItemInventory {
         }
     }
 
-    public Equipment getEquipmentInSlot(int slot) {
+    public Equipment getEquipmentInSlot(final int slot) {
         return this.equipment[slot];
     }
 
-    void setEquipmentInSlot(int slot, Equipment e) {
+    void setEquipmentInSlot(final int slot, final Equipment e) {
         this.equipment[slot] = e;
     }
 
     public String[] generateInventoryStringArray() {
-        ArrayList<String> result = new ArrayList<>();
+        final ArrayList<String> result = new ArrayList<>();
         StringBuilder sb;
         int counter = 0;
-        for (ItemUseQuantity iqu : this.entries) {
+        for (final ItemUseQuantity iqu : this.entries) {
             sb = new StringBuilder();
             sb.append("Slot ");
             sb.append(counter + 1);
@@ -185,9 +187,9 @@ public class ItemInventory {
     }
 
     public String[] generateCombatUsableStringArray() {
-        ArrayList<String> result = new ArrayList<>();
+        final ArrayList<String> result = new ArrayList<>();
         StringBuilder sb;
-        for (ItemUseQuantity iqu : this.entries) {
+        for (final ItemUseQuantity iqu : this.entries) {
             if (iqu.getItem().isCombatUsable()) {
                 sb = new StringBuilder();
                 sb.append(iqu.getItem().getName());
@@ -198,10 +200,10 @@ public class ItemInventory {
     }
 
     public String[] generateCombatUsableDisplayStringArray() {
-        ArrayList<String> result = new ArrayList<>();
+        final ArrayList<String> result = new ArrayList<>();
         StringBuilder sb;
         int counter = 0;
-        for (ItemUseQuantity iqu : this.entries) {
+        for (final ItemUseQuantity iqu : this.entries) {
             if (iqu.getItem().isCombatUsable()) {
                 sb = new StringBuilder();
                 sb.append("Slot ");
@@ -221,7 +223,7 @@ public class ItemInventory {
     }
 
     String[] generateEquipmentEnhancementStringArray() {
-        String[] result = new String[this.equipment.length];
+        final String[] result = new String[this.equipment.length];
         StringBuilder sb;
         for (int x = 0; x < result.length - 1; x++) {
             sb = new StringBuilder();
@@ -239,7 +241,7 @@ public class ItemInventory {
     }
 
     public String[] generateEquipmentStringArray() {
-        String[] result = new String[this.equipment.length + 1];
+        final String[] result = new String[this.equipment.length + 1];
         StringBuilder sb;
         for (int x = 0; x < result.length - 1; x++) {
             sb = new StringBuilder();
@@ -267,7 +269,7 @@ public class ItemInventory {
         return result;
     }
 
-    public void fireStepActions(AbstractCreature wearer) {
+    public void fireStepActions(final AbstractCreature wearer) {
         if (this.socks != null) {
             this.socks.stepAction(wearer);
         }
@@ -362,21 +364,21 @@ public class ItemInventory {
 
     public int getTotalInventoryWeight() {
         int total = 0;
-        for (ItemUseQuantity iqu : this.entries) {
+        for (final ItemUseQuantity iqu : this.entries) {
             total += iqu.getItem().getEffectiveWeight();
         }
         return total;
     }
 
-    public static ItemInventory readLegacyItemInventory(XLegacyDataReader dr)
-            throws IOException {
-        ItemInventory ii = new ItemInventory(true);
-        for (ItemUseQuantity iqu : ii.entries) {
+    public static ItemInventory readLegacyItemInventory(
+            final XLegacyDataReader dr) throws IOException {
+        final ItemInventory ii = new ItemInventory(true);
+        for (final ItemUseQuantity iqu : ii.entries) {
             iqu.setQuantity(dr.readInt());
             iqu.setUses(dr.readInt());
         }
         for (int x = 0; x < ii.equipment.length; x++) {
-            Equipment ei = Equipment.readLegacyEquipment(dr);
+            final Equipment ei = Equipment.readLegacyEquipment(dr);
             if (ei != null) {
                 ii.equipment[x] = ei;
             }
@@ -384,15 +386,15 @@ public class ItemInventory {
         return ii;
     }
 
-    public static ItemInventory readItemInventory(XDataReader dr)
+    public static ItemInventory readItemInventory(final XDataReader dr)
             throws IOException {
-        ItemInventory ii = new ItemInventory(true);
-        for (ItemUseQuantity iqu : ii.entries) {
+        final ItemInventory ii = new ItemInventory(true);
+        for (final ItemUseQuantity iqu : ii.entries) {
             iqu.setQuantity(dr.readInt());
             iqu.setUses(dr.readInt());
         }
         for (int x = 0; x < ii.equipment.length; x++) {
-            Equipment ei = Equipment.readEquipment(dr);
+            final Equipment ei = Equipment.readEquipment(dr);
             if (ei != null) {
                 ii.equipment[x] = ei;
             }
@@ -400,13 +402,12 @@ public class ItemInventory {
         return ii;
     }
 
-    public void writeItemInventory(XDataWriter dw) throws IOException {
-        for (ItemUseQuantity iqu : this.entries) {
+    public void writeItemInventory(final XDataWriter dw) throws IOException {
+        for (final ItemUseQuantity iqu : this.entries) {
             dw.writeInt(iqu.getQuantity());
             dw.writeInt(iqu.getUses());
         }
-        for (int x = 0; x < this.equipment.length; x++) {
-            Equipment ei = this.equipment[x];
+        for (final Equipment ei : this.equipment) {
             if (ei != null) {
                 ei.writeEquipment(dw);
             } else {
@@ -422,11 +423,11 @@ public class ItemInventory {
         result = prime * result + Arrays.hashCode(this.equipment);
         result = prime * result + Arrays.hashCode(this.entries);
         return prime * result
-                + ((this.socks == null) ? 0 : this.socks.hashCode());
+                + (this.socks == null ? 0 : this.socks.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -436,7 +437,7 @@ public class ItemInventory {
         if (!(obj instanceof ItemInventory)) {
             return false;
         }
-        ItemInventory other = (ItemInventory) obj;
+        final ItemInventory other = (ItemInventory) obj;
         if (!Arrays.equals(this.equipment, other.equipment)) {
             return false;
         }

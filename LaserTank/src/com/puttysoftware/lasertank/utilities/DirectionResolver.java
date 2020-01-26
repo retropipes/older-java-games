@@ -13,7 +13,8 @@ public class DirectionResolver {
         // Do nothing
     }
 
-    public static Direction resolveRelativeDirection(final int dX, final int dY) {
+    public static Direction resolveRelativeDirection(final int dX,
+            final int dY) {
         final int dirX = (int) Math.signum(dX);
         final int dirY = (int) Math.signum(dY);
         if (dirX == 0 && dirY == 0) {
@@ -66,7 +67,8 @@ public class DirectionResolver {
         }
     }
 
-    public static Direction resolveRelativeDirectionHV(final int dX, final int dY) {
+    public static Direction resolveRelativeDirectionHV(final int dX,
+            final int dY) {
         final int dirX = (int) Math.signum(dX);
         final int dirY = (int) Math.signum(dY);
         if (dirX == 0 && dirY == 0) {
@@ -127,7 +129,8 @@ public class DirectionResolver {
         return res;
     }
 
-    public static String resolveDirectionConstantToImageName(final Direction dir) {
+    public static String resolveDirectionConstantToImageName(
+            final Direction dir) {
         return StringLoader.loadString(StringConstants.STRINGS_FILE,
                 dir.getInternalValue());
     }

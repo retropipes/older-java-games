@@ -27,13 +27,13 @@ public abstract class AbstractLock extends AbstractMazeObject {
 
     protected AbstractLock(final AbstractKey mgk,
             final boolean doesAcceptPushInto) {
-        super(true, false, doesAcceptPushInto, false, false, false, false,
-                true, false);
+        super(true, false, doesAcceptPushInto, false, false, false, false, true,
+                false);
         this.key = mgk;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (obj == null) {
             return false;
         }
@@ -50,13 +50,13 @@ public abstract class AbstractLock extends AbstractMazeObject {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        final int hash = 7;
         return 71 * hash + (this.key != null ? this.key.hashCode() : 0);
     }
 
     @Override
     public AbstractLock clone() {
-        AbstractLock copy = (AbstractLock) super.clone();
+        final AbstractLock copy = (AbstractLock) super.clone();
         copy.key = this.key.clone();
         return copy;
     }
@@ -66,15 +66,15 @@ public abstract class AbstractLock extends AbstractMazeObject {
         return this.key;
     }
 
-    public void setKey(AbstractKey newKey) {
+    public void setKey(final AbstractKey newKey) {
         this.key = newKey;
     }
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
-        Application app = MazeRunnerII.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
+        final Application app = MazeRunnerII.getApplication();
         if (!inv.isItemThere(new PasswallBoots())) {
             if (!this.key.isInfinite()) {
                 inv.removeItem(this.key);
@@ -92,7 +92,7 @@ public abstract class AbstractLock extends AbstractMazeObject {
         if (inv.isItemThere(new PasswallBoots())) {
             return false;
         } else {
-            return !(inv.isItemThere(this.key));
+            return !inv.isItemThere(this.key);
         }
     }
 
@@ -110,12 +110,12 @@ public abstract class AbstractLock extends AbstractMazeObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

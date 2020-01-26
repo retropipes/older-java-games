@@ -53,7 +53,7 @@ public abstract class AIRoutine {
         return this.item;
     }
 
-    public final void setLastResult(boolean res) {
+    public final void setLastResult(final boolean res) {
         this.lastResult = res;
     }
 
@@ -62,16 +62,16 @@ public abstract class AIRoutine {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((this.item == null) ? 0 : this.item.hashCode());
+                + (this.item == null ? 0 : this.item.hashCode());
         result = prime * result + (this.lastResult ? 1231 : 1237);
         result = prime * result + this.moveX;
         result = prime * result + this.moveY;
         return prime * result
-                + ((this.spell == null) ? 0 : this.spell.hashCode());
+                + (this.spell == null ? 0 : this.spell.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -81,7 +81,7 @@ public abstract class AIRoutine {
         if (!(obj instanceof AIRoutine)) {
             return false;
         }
-        AIRoutine other = (AIRoutine) obj;
+        final AIRoutine other = (AIRoutine) obj;
         if (this.item == null) {
             if (other.item != null) {
                 return false;

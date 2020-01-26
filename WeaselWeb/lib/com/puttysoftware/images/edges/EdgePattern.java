@@ -12,7 +12,8 @@ public class EdgePattern {
 
     // Constructor
     public EdgePattern(final EdgePosition newPos, final EdgeDirection newDir,
-            final EdgeType newType, final Color newColor, final boolean invert) {
+            final EdgeType newType, final Color newColor,
+            final boolean invert) {
         this.direction = newDir;
         this.position = newPos;
         this.type = newType;

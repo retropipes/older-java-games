@@ -106,7 +106,8 @@ public class BossAIRoutine extends AIRoutine {
             } else {
                 if (cost <= currMP) {
                     final int currHP = c.getCurrentHP();
-                    final int targetHP = (int) (currHP * BossAIRoutine.HEAL_PERCENT);
+                    final int targetHP = (int) (currHP
+                            * BossAIRoutine.HEAL_PERCENT);
                     if (currHP <= targetHP) {
                         if (chance.generate() <= BossAIRoutine.HEAL_CHANCE) {
                             this.spell = which;

@@ -11,37 +11,37 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public abstract class AbstractGround extends AbstractArenaObject {
     // Constructors
     protected AbstractGround() {
-	super(false, false, true);
-	this.type.set(TypeConstants.TYPE_GROUND);
+        super(false, false, true);
+        this.type.set(TypeConstants.TYPE_GROUND);
     }
 
     protected AbstractGround(final boolean hasFriction) {
-	super(false, false, hasFriction);
-	this.type.set(TypeConstants.TYPE_GROUND);
+        super(false, false, hasFriction);
+        this.type.set(TypeConstants.TYPE_GROUND);
     }
 
     @Override
     public int getBlockHeight() {
-	return 0;
+        return 0;
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_LOWER_GROUND;
+        return ArenaConstants.LAYER_LOWER_GROUND;
     }
 
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

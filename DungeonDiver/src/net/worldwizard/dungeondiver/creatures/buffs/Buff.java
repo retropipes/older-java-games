@@ -128,18 +128,18 @@ public class Buff implements Serializable, StatConstants {
     public String getCurrentMessage() {
         String msg = Buff.getNullMessage();
         if (this.rounds == this.initialRounds) {
-            if (!this.messages[Buff.MESSAGE_INITIAL].equals(Buff
-                    .getNullMessage())) {
+            if (!this.messages[Buff.MESSAGE_INITIAL]
+                    .equals(Buff.getNullMessage())) {
                 msg += this.messages[Buff.MESSAGE_INITIAL] + "\n";
             }
         }
-        if (!this.messages[Buff.MESSAGE_SUBSEQUENT].equals(Buff
-                .getNullMessage())) {
+        if (!this.messages[Buff.MESSAGE_SUBSEQUENT]
+                .equals(Buff.getNullMessage())) {
             msg += this.messages[Buff.MESSAGE_SUBSEQUENT] + "\n";
         }
         if (this.rounds == 1) {
-            if (!this.messages[Buff.MESSAGE_WEAR_OFF].equals(Buff
-                    .getNullMessage())) {
+            if (!this.messages[Buff.MESSAGE_WEAR_OFF]
+                    .equals(Buff.getNullMessage())) {
                 msg += this.messages[Buff.MESSAGE_WEAR_OFF] + "\n";
             }
         }
@@ -273,7 +273,7 @@ public class Buff implements Serializable, StatConstants {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -302,7 +302,7 @@ public class Buff implements Serializable, StatConstants {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

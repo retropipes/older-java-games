@@ -24,7 +24,8 @@ public class ScoreTable {
         this.unit[0] = ScoreTable.DEFAULT_UNIT;
     }
 
-    public ScoreTable(final int mv, final int length, final String[] customUnit) {
+    public ScoreTable(final int mv, final int length,
+            final String[] customUnit) {
         this.table = new ArrayList<>(length);
         int x;
         for (x = 0; x < length; x++) {

@@ -20,28 +20,29 @@ class LocalPreferencesStoreManager {
     }
 
     // Methods
-    private String getString(String key, String defaultValue) {
+    private String getString(final String key, final String defaultValue) {
         return this.store.getProperty(key, defaultValue);
     }
 
-    private void setString(String key, String newValue) {
+    private void setString(final String key, final String newValue) {
         this.store.setProperty(key, newValue);
     }
 
-    public boolean getBoolean(String key, boolean defaultValue) {
-        String strVal = this.getString(key, Boolean.toString(defaultValue));
+    public boolean getBoolean(final String key, final boolean defaultValue) {
+        final String strVal = this.getString(key,
+                Boolean.toString(defaultValue));
         return Boolean.parseBoolean(strVal);
     }
 
-    public void setBoolean(String key, boolean newValue) {
+    public void setBoolean(final String key, final boolean newValue) {
         this.setString(key, Boolean.toString(newValue));
     }
 
-    public void loadStore(InputStream source) throws IOException {
+    public void loadStore(final InputStream source) throws IOException {
         this.store.loadFromXML(source);
     }
 
-    public void saveStore(OutputStream dest) throws IOException {
+    public void saveStore(final OutputStream dest) throws IOException {
         this.store.storeToXML(dest, null);
     }
 }

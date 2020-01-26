@@ -30,7 +30,8 @@ public class DelevelThenAttackAIRoutine extends AbstractWindowAIRoutine {
         final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.delevelRounds == 0) {
             final RandomRange chance = new RandomRange(1, 100);
-            if (chance.generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
+            if (chance
+                    .generate() <= DelevelThenAttackAIRoutine.DELEVEL_CHANCE) {
                 this.delevelRounds = delevel.getEffect().getInitialRounds();
                 this.spell = delevel;
                 return AbstractWindowAIRoutine.ACTION_CAST_SPELL;

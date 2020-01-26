@@ -71,13 +71,14 @@ class MapBattleGUI {
 
     void showBattle() {
         FantastleX.getApplication().getMenuManager().setBattleMenus();
-        if (PreferencesManager.getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
+        if (PreferencesManager
+                .getMusicEnabled(PreferencesManager.MUSIC_BATTLE)) {
             MusicManager.stopMusic();
             MusicManager.playMusic("battle");
         }
         this.battleFrame.setVisible(true);
-        this.battleFrame.setJMenuBar(FantastleX.getApplication()
-                .getMenuManager().getMainMenuBar());
+        this.battleFrame.setJMenuBar(
+                FantastleX.getApplication().getMenuManager().getMainMenuBar());
     }
 
     void hideBattle() {
@@ -180,14 +181,12 @@ class MapBattleGUI {
                 .getViewingWindowSize(); x++) {
             for (int y = 0; y < MapBattleViewingWindowManager
                     .getViewingWindowSize(); y++) {
-                final AbstractMazeObject dark = new Darkness().gameRenderHook(
-                        y, x, 0);
-                this.drawGrid.setImageCell(
-                        ObjectImageManager.getImage(dark.getName(),
-                                dark.getGameBaseID(),
-                                dark.getGameTemplateColor(),
-                                dark.getGameAttributeID(),
-                                dark.getGameAttributeTemplateColor()), x, y);
+                final AbstractMazeObject dark = new Darkness().gameRenderHook(y,
+                        x, 0);
+                this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                        dark.getName(), dark.getGameBaseID(),
+                        dark.getGameTemplateColor(), dark.getGameAttributeID(),
+                        dark.getGameAttributeTemplateColor()), x, y);
             }
         }
         this.battlePane = new MapBattleDraw(this.drawGrid);
@@ -244,7 +243,8 @@ class MapBattleGUI {
 
         private void handleMovement(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }
@@ -316,7 +316,8 @@ class MapBattleGUI {
 
         private void handleArrows(final KeyEvent e) {
             try {
-                if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
+                if (System.getProperty("os.name")
+                        .equalsIgnoreCase("Mac OS X")) {
                     if (e.isMetaDown()) {
                         return;
                     }

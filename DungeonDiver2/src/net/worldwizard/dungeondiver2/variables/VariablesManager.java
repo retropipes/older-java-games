@@ -60,8 +60,8 @@ public class VariablesManager {
             return JOptionPane.NO_OPTION;
         }
         int status = JOptionPane.DEFAULT_OPTION;
-        status = CommonDialogs.showYNCConfirmDialog("Do you want to save your "
-                + type + "?", source);
+        status = CommonDialogs.showYNCConfirmDialog(
+                "Do you want to save your " + type + "?", source);
         return status;
     }
 
@@ -145,8 +145,8 @@ public class VariablesManager {
                     this.lastUsedGameFile = filename;
                     VariablesManager.loadFile(filename, true);
                 } else {
-                    CommonDialogs
-                            .showDialog("You opened something other than a saved game file. Select a saved game file, and try again.");
+                    CommonDialogs.showDialog(
+                            "You opened something other than a saved game file. Select a saved game file, and try again.");
                 }
             }
         }
@@ -155,16 +155,15 @@ public class VariablesManager {
 
     private static void loadFile(final String filename,
             final boolean isSavedGame) {
-        if (!FilenameChecker.isFilenameOK(VariablesManager
-                .getNameWithoutExtension(VariablesManager
-                        .getFileNameOnly(filename)))) {
-            CommonDialogs
-                    .showErrorDialog(
-                            "The file you selected contains illegal characters in its\n"
-                                    + "name. These characters are not allowed: /?<>\\:|\"\n"
-                                    + "Files named con, nul, or prn are illegal, as are files\n"
-                                    + "named com1 through com9 and lpt1 through lpt9.",
-                            "Load Variables or Saved Game");
+        if (!FilenameChecker
+                .isFilenameOK(VariablesManager.getNameWithoutExtension(
+                        VariablesManager.getFileNameOnly(filename)))) {
+            CommonDialogs.showErrorDialog(
+                    "The file you selected contains illegal characters in its\n"
+                            + "name. These characters are not allowed: /?<>\\:|\"\n"
+                            + "Files named con, nul, or prn are illegal, as are files\n"
+                            + "named com1 through com9 and lpt1 through lpt9.",
+                    "Load Variables or Saved Game");
         } else {
             final LoadTask xlt = new LoadTask(filename, isSavedGame);
             xlt.start();
@@ -214,18 +213,18 @@ public class VariablesManager {
                 final String dirOnly = fc.getDirectory();
                 fileOnly = filename.substring(dirOnly.length() + 1);
                 if (!FilenameChecker.isFilenameOK(fileOnly)) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "The file name you entered contains illegal characters.\n"
-                                            + "These characters are not allowed: /?<>\\:|\"\n"
-                                            + "Files named con, nul, or prn are illegal, as are files\n"
-                                            + "named com1 through com9 and lpt1 through lpt9.",
-                                    "Save");
+                    CommonDialogs.showErrorDialog(
+                            "The file name you entered contains illegal characters.\n"
+                                    + "These characters are not allowed: /?<>\\:|\"\n"
+                                    + "Files named con, nul, or prn are illegal, as are files\n"
+                                    + "named com1 through com9 and lpt1 through lpt9.",
+                            "Save");
                 } else {
                     PreferencesManager.setLastDirSave(fc.getDirectory());
                     if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
-                            if (!extension.equals(Extension.getGameExtension())) {
+                            if (!extension
+                                    .equals(Extension.getGameExtension())) {
                                 filename = VariablesManager
                                         .getNameWithoutExtension(file)
                                         + Extension

@@ -20,9 +20,9 @@ public class MusicManager {
     private static Music getMusic(final String filename) {
         try {
             final String basePath = PluginRegistration.getBasePath();
-            final File file = new File(basePath + "/Music/"
-                    + filename.toLowerCase()
-                    + Extension.getMusicExtensionWithPeriod());
+            final File file = new File(
+                    basePath + "/Music/" + filename.toLowerCase()
+                            + Extension.getMusicExtensionWithPeriod());
             final Music mus = new Music(file.toURI().toURL());
             return mus;
         } catch (final Exception e) {

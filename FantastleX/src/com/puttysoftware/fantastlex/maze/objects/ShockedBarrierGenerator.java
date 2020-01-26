@@ -54,7 +54,8 @@ public class ShockedBarrierGenerator extends AbstractGenerator {
 
     @Override
     protected void arrowHitActionHook(final int locX, final int locY,
-            final int locZ, final int arrowType, final MazeObjectInventory inv) {
+            final int locZ, final int arrowType,
+            final MazeObjectInventory inv) {
         final Application app = FantastleX.getApplication();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,

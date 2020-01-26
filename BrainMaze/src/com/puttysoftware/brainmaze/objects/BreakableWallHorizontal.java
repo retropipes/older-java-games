@@ -53,11 +53,8 @@ public class BreakableWallHorizontal extends GenericWall {
     public void chainReactionAction(final int dirX, final int dirY,
             final int dirZ) {
         // Break up
-        BrainMaze
-                .getApplication()
-                .getGameManager()
-                .morph(new Empty(), dirX, dirY, dirZ,
-                        MazeConstants.LAYER_OBJECT);
+        BrainMaze.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, MazeConstants.LAYER_OBJECT);
         final Maze m = BrainMaze.getApplication().getMazeManager().getMaze();
         try {
             final MazeObject left = m.getCell(dirX - 1, dirY, dirZ,

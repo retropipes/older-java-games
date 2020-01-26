@@ -126,10 +126,7 @@ public class GameManager implements EffectConstants {
     }
 
     public World getTemporaryBattleCopy() {
-        return Worldz
-                .getApplication()
-                .getWorldManager()
-                .getWorld()
+        return Worldz.getApplication().getWorldManager().getWorld()
                 .getTemporaryBattleCopy(this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ());
@@ -360,14 +357,14 @@ public class GameManager implements EffectConstants {
         at.start();
     }
 
-    public void updatePositionRelative(int ox, int oy) {
+    public void updatePositionRelative(final int ox, final int oy) {
         this.actingRemotely = false;
         int px = this.plMgr.getPlayerLocationX();
         int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
         final int[] mod = this.doEffects(ox, oy);
-        int x = mod[0];
-        int y = mod[1];
+        final int x = mod[0];
+        final int y = mod[1];
         final Application app = Worldz.getApplication();
         final World m = app.getWorldManager().getWorld();
         m.tickTimers(pz);
@@ -468,10 +465,9 @@ public class GameManager implements EffectConstants {
                             // Do nothing
                         }
                         if (acted.isPullable() && this.isPullInProgress()) {
-                            if (!this
-                                    .checkPull(x, y, pullX, pullY, acted,
-                                            previousBelow, below,
-                                            this.savedWorldObject)) {
+                            if (!this.checkPull(x, y, pullX, pullY, acted,
+                                    previousBelow, below,
+                                    this.savedWorldObject)) {
                                 // Pull failed - object can't move that way
                                 acted.pullFailedAction(this.objectInv, x, y,
                                         pullX, pullY);
@@ -502,8 +498,8 @@ public class GameManager implements EffectConstants {
                         if (groundInto.overridesDefaultPostMove()) {
                             groundInto.postMoveAction(false, px, py,
                                     this.objectInv);
-                            if (!this.savedWorldObject
-                                    .isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
+                            if (!this.savedWorldObject.isOfType(
+                                    TypeConstants.TYPE_PASS_THROUGH)) {
                                 this.savedWorldObject.postMoveAction(false, px,
                                         py, this.objectInv);
                             }
@@ -541,8 +537,8 @@ public class GameManager implements EffectConstants {
                                 if (groundInto.overridesDefaultPostMove()) {
                                     groundInto.postMoveAction(false, px, py,
                                             this.objectInv);
-                                    if (!this.savedWorldObject
-                                            .isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
+                                    if (!this.savedWorldObject.isOfType(
+                                            TypeConstants.TYPE_PASS_THROUGH)) {
                                         this.savedWorldObject.postMoveAction(
                                                 false, px, py, this.objectInv);
                                     }
@@ -770,13 +766,13 @@ public class GameManager implements EffectConstants {
         final boolean nextNextBelowAccept = nextNextBelow.isPushableInto();
         final boolean nextNextAboveAccept = nextNextAbove.isPushableInto();
         if (nextBelowAccept && nextNextBelowAccept && nextNextAboveAccept) {
-            nextBelow.pushOutAction(this.objectInv, acted, px + pushX, py
-                    + pushY, pz);
+            nextBelow.pushOutAction(this.objectInv, acted, px + pushX,
+                    py + pushY, pz);
             acted.pushAction(this.objectInv, nextNextAbove, x, y, pushX, pushY);
-            nextNextAbove.pushIntoAction(this.objectInv, acted, px + pushX, py
-                    + pushY, pz);
-            nextNextBelow.pushIntoAction(this.objectInv, acted, px + pushX, py
-                    + pushY, pz);
+            nextNextAbove.pushIntoAction(this.objectInv, acted, px + pushX,
+                    py + pushY, pz);
+            nextNextBelow.pushIntoAction(this.objectInv, acted, px + pushX,
+                    py + pushY, pz);
             return true;
         } else {
             return false;
@@ -794,8 +790,8 @@ public class GameManager implements EffectConstants {
         final boolean belowAccept = below.isPullableInto();
         final boolean aboveAccept = above.isPullableInto();
         if (previousBelowAccept && belowAccept && aboveAccept) {
-            previousBelow.pullOutAction(this.objectInv, acted, px - pullX, py
-                    - pullY, pz);
+            previousBelow.pullOutAction(this.objectInv, acted, px - pullX,
+                    py - pullY, pz);
             acted.pullAction(this.objectInv, above, x, y, pullX, pullY);
             above.pullIntoAction(this.objectInv, acted, px - pullX, py - pullY,
                     pz);
@@ -813,19 +809,21 @@ public class GameManager implements EffectConstants {
         int cumPushX = pushX, cumPushY = pushY, cumX = x, cumY = y;
         final Application app = Worldz.getApplication();
         final WorldManager mm = app.getWorldManager();
-        WorldObject there = mm.getWorldObject(this.plMgr.getPlayerLocationX()
-                + cumX, this.plMgr.getPlayerLocationY() + cumY,
+        WorldObject there = mm.getWorldObject(
+                this.plMgr.getPlayerLocationX() + cumX,
+                this.plMgr.getPlayerLocationY() + cumY,
                 this.plMgr.getPlayerLocationZ(), WorldConstants.LAYER_GROUND);
         if (there != null) {
             do {
-                this.movePushedObjectPosition(cumX, cumY, cumPushX, cumPushY,
-                        o, there);
+                this.movePushedObjectPosition(cumX, cumY, cumPushX, cumPushY, o,
+                        there);
                 cumX += xInc;
                 cumY += yInc;
                 cumPushX += xInc;
                 cumPushY += yInc;
-                there = mm.getWorldObject(this.plMgr.getPlayerLocationX()
-                        + cumX, this.plMgr.getPlayerLocationY() + cumY,
+                there = mm.getWorldObject(
+                        this.plMgr.getPlayerLocationX() + cumX,
+                        this.plMgr.getPlayerLocationY() + cumY,
                         this.plMgr.getPlayerLocationZ(),
                         WorldConstants.LAYER_GROUND);
                 if (there == null) {
@@ -888,7 +886,8 @@ public class GameManager implements EffectConstants {
                         WorldConstants.LAYER_OBJECT);
                 m.setCell(pushedInto, x, y, z, WorldConstants.LAYER_OBJECT);
                 m.setCell(source, x2, y2, z2, WorldConstants.LAYER_OBJECT);
-                saved.pushIntoAction(this.objectInv, pushedInto, x2, y2, z2 - 1);
+                saved.pushIntoAction(this.objectInv, pushedInto, x2, y2,
+                        z2 - 1);
                 this.redrawWorld();
                 app.getWorldManager().setDirty(true);
             }
@@ -901,8 +900,7 @@ public class GameManager implements EffectConstants {
         try {
             final Application app = Worldz.getApplication();
             final World m = app.getWorldManager().getWorld();
-            final WorldObject below = m.getCell(
-                    this.plMgr.getPlayerLocationX(),
+            final WorldObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
                     WorldConstants.LAYER_GROUND);
@@ -928,8 +926,7 @@ public class GameManager implements EffectConstants {
         try {
             final Application app = Worldz.getApplication();
             final World m = app.getWorldManager().getWorld();
-            final WorldObject below = m.getCell(
-                    this.plMgr.getPlayerLocationX(),
+            final WorldObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
                     WorldConstants.LAYER_GROUND);
@@ -967,10 +964,12 @@ public class GameManager implements EffectConstants {
                         WorldConstants.LAYER_OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z,
                         this.plMgr.getPlayerLocationW());
-                this.vwMgr.setViewingWindowLocationX(this.plMgr
-                        .getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(this.plMgr
-                        .getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
+                this.vwMgr.setViewingWindowLocationX(
+                        this.plMgr.getPlayerLocationY()
+                                - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        this.plMgr.getPlayerLocationX()
+                                - this.vwMgr.getOffsetFactorY());
                 this.savedWorldObject = m.getCell(
                         this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
@@ -1024,10 +1023,12 @@ public class GameManager implements EffectConstants {
                         this.plMgr.getPlayerLocationZ(),
                         WorldConstants.LAYER_OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z, w);
-                this.vwMgr.setViewingWindowLocationX(this.plMgr
-                        .getPlayerLocationY() - this.vwMgr.getOffsetFactorX());
-                this.vwMgr.setViewingWindowLocationY(this.plMgr
-                        .getPlayerLocationX() - this.vwMgr.getOffsetFactorY());
+                this.vwMgr.setViewingWindowLocationX(
+                        this.plMgr.getPlayerLocationY()
+                                - this.vwMgr.getOffsetFactorX());
+                this.vwMgr.setViewingWindowLocationY(
+                        this.plMgr.getPlayerLocationX()
+                                - this.vwMgr.getOffsetFactorY());
                 this.savedWorldObject = m.getCell(
                         this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
@@ -1096,16 +1097,14 @@ public class GameManager implements EffectConstants {
                             .isSquareVisible(u, v, y, x);
                     try {
                         if (visible) {
-                            final String name1 = app
-                                    .getWorldManager()
+                            final String name1 = app.getWorldManager()
                                     .getWorld()
                                     .getCell(y, x,
                                             this.plMgr.getPlayerLocationZ(),
                                             WorldConstants.LAYER_GROUND)
                                     .gameRenderHook(y, x,
                                             this.plMgr.getPlayerLocationZ());
-                            final String name2 = app
-                                    .getWorldManager()
+                            final String name2 = app.getWorldManager()
                                     .getWorld()
                                     .getCell(y, x,
                                             this.plMgr.getPlayerLocationZ(),
@@ -1115,8 +1114,8 @@ public class GameManager implements EffectConstants {
                             this.drawGrid[xFix][yFix].setIcon(GraphicsManager
                                     .getCompositeImage(name1, name2));
                         } else {
-                            this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                                    .getImage("Darkness"));
+                            this.drawGrid[xFix][yFix].setIcon(
+                                    GraphicsManager.getImage("Darkness"));
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
                         this.drawGrid[xFix][yFix].setIcon(GraphicsManager
@@ -1147,23 +1146,17 @@ public class GameManager implements EffectConstants {
             boolean visible;
             xFix = y - this.vwMgr.getViewingWindowLocationX();
             yFix = x - this.vwMgr.getViewingWindowLocationY();
-            visible = app
-                    .getWorldManager()
-                    .getWorld()
-                    .isSquareVisible(this.plMgr.getPlayerLocationX(),
-                            this.plMgr.getPlayerLocationY(), x, y);
+            visible = app.getWorldManager().getWorld().isSquareVisible(
+                    this.plMgr.getPlayerLocationX(),
+                    this.plMgr.getPlayerLocationY(), x, y);
             try {
                 if (visible) {
-                    final String name1 = app
-                            .getWorldManager()
-                            .getWorld()
+                    final String name1 = app.getWorldManager().getWorld()
                             .getCell(x, y, this.plMgr.getPlayerLocationZ(),
                                     WorldConstants.LAYER_GROUND)
                             .gameRenderHook(x, y,
                                     this.plMgr.getPlayerLocationZ());
-                    final String name2 = app
-                            .getWorldManager()
-                            .getWorld()
+                    final String name2 = app.getWorldManager().getWorld()
                             .getCell(x, y, this.plMgr.getPlayerLocationZ(),
                                     WorldConstants.LAYER_OBJECT)
                             .gameRenderHook(x, y,
@@ -1171,8 +1164,8 @@ public class GameManager implements EffectConstants {
                     this.drawGrid[xFix][yFix].setIcon(GraphicsManager
                             .getVirtualCompositeImage(name1, name2, name3));
                 } else {
-                    this.drawGrid[xFix][yFix].setIcon(GraphicsManager
-                            .getImage("Darkness"));
+                    this.drawGrid[xFix][yFix]
+                            .setIcon(GraphicsManager.getImage("Darkness"));
                 }
                 this.drawGrid[xFix][yFix].repaint();
             } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -1288,12 +1281,9 @@ public class GameManager implements EffectConstants {
 
     public void decay() {
         if (this.actingRemotely) {
-            Worldz.getApplication()
-                    .getWorldManager()
-                    .getWorld()
-                    .setCell(new Empty(), this.remoteCoords[0],
-                            this.remoteCoords[1], this.remoteCoords[2],
-                            WorldConstants.LAYER_OBJECT);
+            Worldz.getApplication().getWorldManager().getWorld().setCell(
+                    new Empty(), this.remoteCoords[0], this.remoteCoords[1],
+                    this.remoteCoords[2], WorldConstants.LAYER_OBJECT);
         } else {
             this.savedWorldObject = new Empty();
         }
@@ -1301,11 +1291,9 @@ public class GameManager implements EffectConstants {
 
     public void decayTo(final WorldObject decay) {
         if (this.actingRemotely) {
-            Worldz.getApplication()
-                    .getWorldManager()
-                    .getWorld()
-                    .setCell(decay, this.remoteCoords[0], this.remoteCoords[1],
-                            this.remoteCoords[2], WorldConstants.LAYER_OBJECT);
+            Worldz.getApplication().getWorldManager().getWorld().setCell(decay,
+                    this.remoteCoords[0], this.remoteCoords[1],
+                    this.remoteCoords[2], WorldConstants.LAYER_OBJECT);
         } else {
             this.savedWorldObject = decay;
         }
@@ -1313,12 +1301,10 @@ public class GameManager implements EffectConstants {
 
     private void doDelayedDecay() {
         if (this.actingRemotely) {
-            Worldz.getApplication()
-                    .getWorldManager()
-                    .getWorld()
-                    .setCell(this.delayedDecayObject, this.remoteCoords[0],
-                            this.remoteCoords[1], this.remoteCoords[2],
-                            WorldConstants.LAYER_OBJECT);
+            Worldz.getApplication().getWorldManager().getWorld().setCell(
+                    this.delayedDecayObject, this.remoteCoords[0],
+                    this.remoteCoords[1], this.remoteCoords[2],
+                    WorldConstants.LAYER_OBJECT);
         } else {
             this.savedWorldObject = this.delayedDecayObject;
         }
@@ -1433,7 +1419,8 @@ public class GameManager implements EffectConstants {
                     this.lastUsedObjectIndex = x;
                     this.objectBeingUsed = choices[x];
                     if (this.objectInv.getUses(this.objectBeingUsed) == 0) {
-                        Messager.showMessage("That item has no more uses left.");
+                        Messager.showMessage(
+                                "That item has no more uses left.");
                         this.setUsingAnItem(false);
                     } else if (!this.objectBeingUsed
                             .isOfType(TypeConstants.TYPE_BOW)) {
@@ -1472,9 +1459,7 @@ public class GameManager implements EffectConstants {
         final int destZ = this.plMgr.getPlayerLocationZ();
         if (this.usingAnItem() && app.getMode() == Application.STATUS_GAME) {
             if (!this.objectBeingUsed.isOfType(TypeConstants.TYPE_BOW)) {
-                final boolean visible = app
-                        .getWorldManager()
-                        .getWorld()
+                final boolean visible = app.getWorldManager().getWorld()
                         .isSquareVisible(this.plMgr.getPlayerLocationX(),
                                 this.plMgr.getPlayerLocationY(), destX, destY);
                 try {
@@ -1500,14 +1485,14 @@ public class GameManager implements EffectConstants {
                         this.setUsingAnItem(false);
                         Messager.showMessage("Can't create a wall there");
                     }
-                    if ((!target.isDestroyable() || !target
-                            .isOfType(TypeConstants.TYPE_WALL))
+                    if ((!target.isDestroyable()
+                            || !target.isOfType(TypeConstants.TYPE_WALL))
                             && name.equals(new WallBreakingWand().getName())) {
                         this.setUsingAnItem(false);
                         Messager.showMessage("Aim at a wall");
                     }
-                    if ((!target.isDestroyable() || !target
-                            .isOfType(TypeConstants.TYPE_TRAP))
+                    if ((!target.isDestroyable()
+                            || !target.isOfType(TypeConstants.TYPE_TRAP))
                             && name.equals(new DisarmTrapWand().getName())) {
                         this.setUsingAnItem(false);
                         Messager.showMessage("Aim at a trap");
@@ -1590,10 +1575,10 @@ public class GameManager implements EffectConstants {
         }
     }
 
-    public void loadGameHook(final DataReader worldFile, final int formatVersion)
-            throws IOException {
-        this.objectInv = ObjectInventory
-                .readInventory(worldFile, formatVersion);
+    public void loadGameHook(final DataReader worldFile,
+            final int formatVersion) throws IOException {
+        this.objectInv = ObjectInventory.readInventory(worldFile,
+                formatVersion);
         this.savedObjectInv = ObjectInventory.readInventory(worldFile,
                 formatVersion);
     }
@@ -1612,11 +1597,8 @@ public class GameManager implements EffectConstants {
             if (this.stateChanged) {
                 // Initialize only if the world state has changed
                 this.poisonCounter = 0;
-                app.getWorldManager()
-                        .getWorld()
-                        .switchLevel(
-                                app.getWorldManager().getWorld()
-                                        .getStartLevel());
+                app.getWorldManager().getWorld().switchLevel(
+                        app.getWorldManager().getWorld().getStartLevel());
                 this.savedWorldObject = new Empty();
                 this.stateChanged = false;
             }
@@ -1641,8 +1623,8 @@ public class GameManager implements EffectConstants {
     public void showOutput() {
         final Application app = Worldz.getApplication();
         app.getMenuManager().setGameMenus();
-        if (app.getPrefsManager().getMusicEnabled(
-                PreferencesManager.MUSIC_EXPLORING)) {
+        if (app.getPrefsManager()
+                .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
             if (!MusicManager.isMusicPlaying()) {
                 MusicManager.playMusic("exploring");
             }
@@ -1677,14 +1659,15 @@ public class GameManager implements EffectConstants {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(this.handler);
         this.outputFrame.addWindowListener(this.handler);
         this.outputPane.addMouseListener(this.handler);
-        this.drawGrid = new JLabel[this.vwMgr.getViewingWindowSizeX()][this.vwMgr
-                .getViewingWindowSizeY()];
+        this.drawGrid = new JLabel[this.vwMgr
+                .getViewingWindowSizeX()][this.vwMgr.getViewingWindowSizeY()];
         for (int x = 0; x < this.vwMgr.getViewingWindowSizeX(); x++) {
             for (int y = 0; y < this.vwMgr.getViewingWindowSizeY(); y++) {
                 this.drawGrid[x][y] = new JLabel();
@@ -1701,8 +1684,8 @@ public class GameManager implements EffectConstants {
         this.borderPane.add(this.sg.getStatsPane(), BorderLayout.EAST);
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         public EventHandler() {
             // TODO Auto-generated constructor stub
         }

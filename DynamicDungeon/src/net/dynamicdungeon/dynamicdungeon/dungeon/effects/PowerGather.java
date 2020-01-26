@@ -13,12 +13,13 @@ public class PowerGather extends DungeonEffect {
 
     // Constructor
     public PowerGather(final int newRounds) {
-	super("Power Gather", newRounds);
+        super("Power Gather", newRounds);
     }
 
     @Override
     public int modifyMove1(final int arg) {
-	PartyManager.getParty().getLeader().offsetCurrentMP(MP_GAINED);
-	return arg;
+        PartyManager.getParty().getLeader()
+                .offsetCurrentMP(PowerGather.MP_GAINED);
+        return arg;
     }
 }

@@ -48,7 +48,8 @@ class Mdct {
                     .sin(Math.PI / (2 * n1) * (2 * i + 1));
         }
         for (int i = 0; i < n1 / 8; i++) {
-            this.trig[CE + i * 2] = (float) Math.cos(Math.PI / n1 * (4 * i + 2));
+            this.trig[CE + i * 2] = (float) Math
+                    .cos(Math.PI / n1 * (4 * i + 2));
             this.trig[CO
                     + i * 2] = (float) -Math.sin(Math.PI / n1 * (4 * i + 2));
         }
@@ -74,7 +75,7 @@ class Mdct {
     }
 
     /**
-     * 
+     *
      * @param in
      * @param out
      */
@@ -146,8 +147,8 @@ class Mdct {
         }
     }
 
-    private float[] mdct_kernel(float[] nx, float[] nw, final int n1, final int n2,
-            final int n4, final int n8) {
+    private float[] mdct_kernel(final float[] nx, final float[] nw,
+            final int n1, final int n2, final int n4, final int n8) {
         float[] x = nx;
         float[] w = nw;
         // step 2

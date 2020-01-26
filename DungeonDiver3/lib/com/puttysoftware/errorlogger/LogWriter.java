@@ -20,12 +20,12 @@ class LogWriter {
     private static final String MAC_EXT = ".crash";
     private static final String WIN_EXT = ".log";
     private static final String UNIX_EXT = ".log";
-    private Throwable t;
-    private Calendar c;
-    private String p;
+    private final Throwable t;
+    private final Calendar c;
+    private final String p;
 
     // Constructors
-    LogWriter(Throwable problem, String programName) {
+    LogWriter(final Throwable problem, final String programName) {
         this.t = problem;
         this.c = Calendar.getInstance();
         this.p = programName;
@@ -35,27 +35,27 @@ class LogWriter {
     void writeErrorInfo() {
         try {
             // Make sure the needed directories exist first
-            File df = this.getErrorFile();
-            File parent = new File(df.getParent());
+            final File df = this.getErrorFile();
+            final File parent = new File(df.getParent());
             if (!parent.exists()) {
-                boolean res = parent.mkdirs();
+                final boolean res = parent.mkdirs();
                 if (!res) {
                     throw new FileNotFoundException("Cannot make directories!");
                 }
             }
             // Print to the file
-            try (PrintStream s = new PrintStream(new BufferedOutputStream(
-                    new FileOutputStream(df)))) {
+            try (PrintStream s = new PrintStream(
+                    new BufferedOutputStream(new FileOutputStream(df)))) {
                 this.t.printStackTrace(s);
             }
-        } catch (FileNotFoundException fnf) {
+        } catch (final FileNotFoundException fnf) {
             // Print to standard error, if something went wrong
             this.t.printStackTrace(System.err);
         }
     }
 
     private static String getErrorDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(LogWriter.MAC_PREFIX);
@@ -69,7 +69,7 @@ class LogWriter {
     }
 
     private static String getErrorDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return LogWriter.MAC_DIR;
@@ -83,7 +83,7 @@ class LogWriter {
     }
 
     private static String getErrorFileExtension() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return LogWriter.MAC_EXT;
@@ -97,8 +97,9 @@ class LogWriter {
     }
 
     private String getStampSuffix() {
-        Date time = this.c.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat("'_'yyyyMMdd'_'HHmmssSSS");
+        final Date time = this.c.getTime();
+        final SimpleDateFormat sdf = new SimpleDateFormat(
+                "'_'yyyyMMdd'_'HHmmssSSS");
         return sdf.format(time);
     }
 
@@ -107,7 +108,7 @@ class LogWriter {
     }
 
     private File getErrorFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(LogWriter.getErrorDirPrefix());
         b.append(LogWriter.getErrorDirectory());
         b.append(this.getErrorFileName());

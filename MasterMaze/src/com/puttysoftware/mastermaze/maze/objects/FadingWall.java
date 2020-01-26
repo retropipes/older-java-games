@@ -29,8 +29,8 @@ public class FadingWall extends GenericWall {
         final int tx = app.getMazeManager().getMaze().getPlayerLocationX();
         final int ty = app.getMazeManager().getMaze().getPlayerLocationY();
         final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
-        scanResult = app.getMazeManager().getMaze()
-                .radialScan(dirX, dirY, FadingWall.SCAN_LIMIT, tx, ty);
+        scanResult = app.getMazeManager().getMaze().radialScan(dirX, dirY,
+                FadingWall.SCAN_LIMIT, tx, ty);
         if (scanResult) {
             app.getGameManager().morph(new Empty(), dirX, dirY, pz);
         }

@@ -10,17 +10,17 @@ import com.puttysoftware.lasertank.utilities.Direction;
 
 public class FrozenTank extends AbstractCharacter {
     public FrozenTank(final Direction dir, final int number) {
-	super(number);
-	this.setDirection(dir);
+        super(number);
+        this.setDirection(dir);
     }
 
     // Constructors
     public FrozenTank(final int number) {
-	super(number);
+        super(number);
     }
 
     @Override
     public final int getStringBaseID() {
-	return 15;
+        return 15;
     }
 }

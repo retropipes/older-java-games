@@ -40,8 +40,8 @@ public class PartyMember extends Creature {
     private static final double BASE_COEFF = 10.0;
 
     // Constructors
-    PartyMember(final Race r, final Caste c, final Faith f,
-            final Personality p, final Gender g, final String n) {
+    PartyMember(final Race r, final Caste c, final Faith f, final Personality p,
+            final Gender g, final String n) {
         super(true);
         this.name = n;
         this.race = r;
@@ -55,24 +55,19 @@ public class PartyMember extends Creature {
         this.permanentMP = 0;
         this.kills = 0;
         this.setLevel(1);
-        this.setStrength(StatConstants.GAIN_STRENGTH
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
-        this.setBlock(StatConstants.GAIN_BLOCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
-        this.setVitality(StatConstants.GAIN_VITALITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
-        this.setIntelligence(StatConstants.GAIN_INTELLIGENCE
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
-        this.setAgility(StatConstants.GAIN_AGILITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
-        this.setLuck(StatConstants.GAIN_LUCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
+        this.setStrength(StatConstants.GAIN_STRENGTH + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
+        this.setBlock(StatConstants.GAIN_BLOCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
+        this.setVitality(StatConstants.GAIN_VITALITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
+        this.setIntelligence(
+                StatConstants.GAIN_INTELLIGENCE + this.race.getAttribute(
+                        RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
+        this.setAgility(StatConstants.GAIN_AGILITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
+        this.setLuck(StatConstants.GAIN_LUCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
         this.setAttacksPerRound(1);
         this.setSpellsPerRound(1);
         this.healAndRegenerateFully();
@@ -80,13 +75,14 @@ public class PartyMember extends Creature {
         this.setExperience(0L);
         final Page nextLevelEquation = new Page(3, 1, 0, true);
         final double value = PartyMember.BASE_COEFF
-                * this.personality
-                        .getAttribute(PersonalityConstants.PERSONALITY_ATTRIBUTE_LEVEL_UP_SPEED);
+                * this.personality.getAttribute(
+                        PersonalityConstants.PERSONALITY_ATTRIBUTE_LEVEL_UP_SPEED);
         nextLevelEquation.setCoefficient(1, value);
         nextLevelEquation.setCoefficient(2, value);
         nextLevelEquation.setCoefficient(3, value);
         this.setToNextLevel(nextLevelEquation);
-        this.setSpellBook(CasteManager.getSpellBookByID(this.caste.getCasteID()));
+        this.setSpellBook(
+                CasteManager.getSpellBookByID(this.caste.getCasteID()));
     }
 
     // Methods
@@ -102,24 +98,19 @@ public class PartyMember extends Creature {
     // Transformers
     @Override
     protected void levelUpHook() {
-        this.offsetStrength(StatConstants.GAIN_STRENGTH
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
-        this.offsetBlock(StatConstants.GAIN_BLOCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
-        this.offsetVitality(StatConstants.GAIN_VITALITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
-        this.offsetIntelligence(StatConstants.GAIN_INTELLIGENCE
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
-        this.offsetAgility(StatConstants.GAIN_AGILITY
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
-        this.offsetLuck(StatConstants.GAIN_LUCK
-                + this.race
-                        .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
+        this.offsetStrength(StatConstants.GAIN_STRENGTH + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_STRENGTH_PER_LEVEL));
+        this.offsetBlock(StatConstants.GAIN_BLOCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_BLOCK_PER_LEVEL));
+        this.offsetVitality(StatConstants.GAIN_VITALITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_VITALITY_PER_LEVEL));
+        this.offsetIntelligence(
+                StatConstants.GAIN_INTELLIGENCE + this.race.getAttribute(
+                        RaceConstants.RACE_ATTRIBUTE_INTELLIGENCE_PER_LEVEL));
+        this.offsetAgility(StatConstants.GAIN_AGILITY + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_AGILITY_PER_LEVEL));
+        this.offsetLuck(StatConstants.GAIN_LUCK + this.race
+                .getAttribute(RaceConstants.RACE_ATTRIBUTE_LUCK_PER_LEVEL));
         this.healAndRegenerateFully();
     }
 
@@ -147,29 +138,24 @@ public class PartyMember extends Creature {
 
     @Override
     public int getMapBattleActionsPerRound() {
-        return (int) (super.getMapBattleActionsPerRound() * this
-                .getPersonality().getAttribute(
+        return (int) (super.getMapBattleActionsPerRound()
+                * this.getPersonality().getAttribute(
                         PersonalityConstants.PERSONALITY_ATTRIBUTE_MOVE_MOD));
     }
 
     @Override
     public int getCapacity() {
-        return Math
-                .max(StatConstants.MIN_CAPACITY,
-                        (int) (super.getCapacity() * this
-                                .getPersonality()
-                                .getAttribute(
-                                        PersonalityConstants.PERSONALITY_ATTRIBUTE_CAPACITY_MOD)));
+        return Math.max(StatConstants.MIN_CAPACITY,
+                (int) (super.getCapacity() * this.getPersonality().getAttribute(
+                        PersonalityConstants.PERSONALITY_ATTRIBUTE_CAPACITY_MOD)));
     }
 
     @Override
     public void offsetGold(final int value) {
         int fixedValue = value;
         if (value > 0) {
-            fixedValue = (int) (fixedValue * this
-                    .getPersonality()
-                    .getAttribute(
-                            PersonalityConstants.PERSONALITY_ATTRIBUTE_WEALTH_MOD));
+            fixedValue = (int) (fixedValue * this.getPersonality().getAttribute(
+                    PersonalityConstants.PERSONALITY_ATTRIBUTE_WEALTH_MOD));
         }
         super.offsetGold(fixedValue);
     }

@@ -172,6 +172,6 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     public boolean shouldGenerateObject(final Maze maze, final int row,
             final int col, final int floor, final int level, final int layer) {
         final int genval = this.rng.generate();
-        return (genval <= this.generateQuantity);
+        return genval <= this.generateQuantity;
     }
 }

@@ -75,11 +75,11 @@ public class Support {
     }
 
     public static void deleteScenario() {
-        File scenFile = new File(Support.scen.getBasePath());
+        final File scenFile = new File(Support.scen.getBasePath());
         if (scenFile.isDirectory() && scenFile.exists()) {
             try {
                 DirectoryUtilities.removeDirectory(scenFile);
-            } catch (Throwable t) {
+            } catch (final Throwable t) {
                 // Ignore
             }
         }
@@ -113,7 +113,7 @@ public class Support {
 
     public static String getVersionString() {
         if (Support.isBetaModeEnabled()) {
-            int code = Support.VERSION_CODE;
+            final int code = Support.VERSION_CODE;
             String rt;
             if (code == ProductData.CODE_BETA) {
                 rt = "-beta";
@@ -130,7 +130,7 @@ public class Support {
     }
 
     private static boolean isBetaModeEnabled() {
-        int code = Support.VERSION_CODE;
+        final int code = Support.VERSION_CODE;
         return code != ProductData.CODE_STABLE;
     }
 }

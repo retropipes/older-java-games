@@ -34,33 +34,33 @@ import com.puttysoftware.fantastlereboot.loaders.UserInterfaceImageLoader;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class GUIManager {
-  // Fields
-  private MainWindow guiFrame;
-  private final JPanel guiPane;
-  private final JLabel logoLabel;
+    // Fields
+    private MainWindow guiFrame;
+    private final JPanel guiPane;
+    private final JLabel logoLabel;
 
-  // Constructors
-  public GUIManager() {
-    this.guiPane = new JPanel();
-    this.guiPane.setLayout(new GridLayout(1, 1));
-    this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
-    this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
-    this.guiPane.add(this.logoLabel);
-    final BufferedImageIcon logo = UserInterfaceImageLoader
-        .load(UserInterfaceImageIndex.LOGO);
-    this.logoLabel.setIcon(logo);
-  }
+    // Constructors
+    public GUIManager() {
+        this.guiPane = new JPanel();
+        this.guiPane.setLayout(new GridLayout(1, 1));
+        this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
+        this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
+        this.guiPane.add(this.logoLabel);
+        final BufferedImageIcon logo = UserInterfaceImageLoader
+                .load(UserInterfaceImageIndex.LOGO);
+        this.logoLabel.setIcon(logo);
+    }
 
-  // Methods
-  public void showGUI() {
-    this.guiFrame = MainWindow.getOutputFrame();
-    this.guiFrame.setTitle("Fantastle Reboot");
-    this.guiFrame.attachContent(this.guiPane);
-    this.guiFrame.pack();
-    final BagOStuff bag = FantastleReboot.getBagOStuff();
-    Modes.setInGUI();
-    bag.getMenuManager().setMainMenus();
-    bag.getMenuManager().checkFlags();
-    BagOStuff.checkForUpdates(false);
-  }
+    // Methods
+    public void showGUI() {
+        this.guiFrame = MainWindow.getOutputFrame();
+        this.guiFrame.setTitle("Fantastle Reboot");
+        this.guiFrame.attachContent(this.guiPane);
+        this.guiFrame.pack();
+        final BagOStuff bag = FantastleReboot.getBagOStuff();
+        Modes.setInGUI();
+        bag.getMenuManager().setMainMenus();
+        bag.getMenuManager().checkFlags();
+        BagOStuff.checkForUpdates(false);
+    }
 }

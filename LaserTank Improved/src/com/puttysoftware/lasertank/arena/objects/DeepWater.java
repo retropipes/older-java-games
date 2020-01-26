@@ -18,54 +18,57 @@ import com.puttysoftware.lasertank.utilities.TypeConstants;
 public class DeepWater extends AbstractGround {
     // Constructors
     public DeepWater() {
-	super();
-	this.setFrameNumber(1);
-	this.setMaterial(MaterialConstants.MATERIAL_WOODEN);
+        super();
+        this.setFrameNumber(1);
+        this.setMaterial(MaterialConstants.MATERIAL_WOODEN);
     }
 
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
-	switch (materialID) {
-	case MaterialConstants.MATERIAL_ICE:
-	    final Ice i = new Ice();
-	    i.setPreviousState(this);
-	    return i;
-	case MaterialConstants.MATERIAL_FIRE:
-	    return new Water();
-	default:
-	    return this;
-	}
+        switch (materialID) {
+        case MaterialConstants.MATERIAL_ICE:
+            final Ice i = new Ice();
+            i.setPreviousState(this);
+            return i;
+        case MaterialConstants.MATERIAL_FIRE:
+            return new Water();
+        default:
+            return this;
+        }
     }
 
     @Override
     public int getBlockHeight() {
-	return -2;
+        return -2;
     }
 
     @Override
     public final int getStringBaseID() {
-	return 67;
+        return 67;
     }
 
     @Override
     public boolean killsOnMove() {
-	return true;
+        return true;
     }
 
     // Scriptability
     @Override
-    public boolean pushIntoAction(final AbstractMovableObject pushed, final int x, final int y, final int z) {
-	final Application app = LaserTank.getApplication();
-	// Get rid of pushed object
-	app.getGameManager().morph(new Empty(), x, y, z, pushed.getLayer());
-	if (pushed.isOfType(TypeConstants.TYPE_BOX)) {
-	    if (pushed.getMaterial() == MaterialConstants.MATERIAL_WOODEN) {
-		app.getGameManager().morph(new Bridge(), x, y, z, this.getLayer());
-	    } else {
-		app.getGameManager().morph(new Water(), x, y, z, this.getLayer());
-	    }
-	}
-	SoundManager.playSound(SoundConstants.SOUND_SINK);
-	return false;
+    public boolean pushIntoAction(final AbstractMovableObject pushed,
+            final int x, final int y, final int z) {
+        final Application app = LaserTank.getApplication();
+        // Get rid of pushed object
+        app.getGameManager().morph(new Empty(), x, y, z, pushed.getLayer());
+        if (pushed.isOfType(TypeConstants.TYPE_BOX)) {
+            if (pushed.getMaterial() == MaterialConstants.MATERIAL_WOODEN) {
+                app.getGameManager().morph(new Bridge(), x, y, z,
+                        this.getLayer());
+            } else {
+                app.getGameManager().morph(new Water(), x, y, z,
+                        this.getLayer());
+            }
+        }
+        SoundManager.playSound(SoundConstants.SOUND_SINK);
+        return false;
     }
 }

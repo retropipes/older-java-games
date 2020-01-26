@@ -15,10 +15,10 @@ public class GraphicsManager {
     // Methods
     public static ImageIcon getBossImage() {
         try {
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/DungeonDiver/resources/graphics/boss/boss.png");
-            final Image image = Toolkit.getDefaultToolkit().createImage(
-                    (ImageProducer) url.getContent());
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/DungeonDiver/resources/graphics/boss/boss.png");
+            final Image image = Toolkit.getDefaultToolkit()
+                    .createImage((ImageProducer) url.getContent());
             final ImageIcon icon = new ImageIcon(image);
             return icon;
         } catch (final IOException ie) {
@@ -55,8 +55,8 @@ public class GraphicsManager {
     private static BufferedImage getMonsterTemplate(final String name) {
         try {
             final String normalName = GraphicsManager.normalizeName(name);
-            final URL url = GraphicsManager.class
-                    .getResource("/net/worldwizard/DungeonDiver/resources/graphics/monsters/"
+            final URL url = GraphicsManager.class.getResource(
+                    "/net/worldwizard/DungeonDiver/resources/graphics/monsters/"
                             + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             if (image != null) {

@@ -27,41 +27,44 @@ import com.puttysoftware.fantastlereboot.assets.ObjectImageIndex;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class ObjectImageLoader {
-  private static String[] allFilenames;
-  private static Properties fileExtensions;
-  private static final int MAX_INDEX = 244;
+    private static String[] allFilenames;
+    private static Properties fileExtensions;
+    private static final int MAX_INDEX = 244;
 
-  public static BufferedImageIcon load(final ObjectImageIndex image) {
-    if (image != ObjectImageIndex._NONE) {
-      final String imageExt = ObjectImageLoader.fileExtensions
-          .getProperty("images");
-      final String name = "/assets/images/objects/"
-          + ObjectImageLoader.allFilenames[image.ordinal()] + imageExt;
-      return ImageLoader.load(name, ObjectImageLoader.class.getResource(name));
+    public static BufferedImageIcon load(final ObjectImageIndex image) {
+        if (image != ObjectImageIndex._NONE) {
+            final String imageExt = ObjectImageLoader.fileExtensions
+                    .getProperty("images");
+            final String name = "/assets/images/objects/"
+                    + ObjectImageLoader.allFilenames[image.ordinal()]
+                    + imageExt;
+            return ImageLoader.load(name,
+                    ObjectImageLoader.class.getResource(name));
+        }
+        return null;
     }
-    return null;
-  }
 
-  public static void cacheAll() {
-    ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
-    try {
-      ObjectImageLoader.fileExtensions = new Properties();
-      ObjectImageLoader.fileExtensions
-          .load(ObjectImageLoader.class.getResourceAsStream(
-              "/assets/data/extensions/extensions.properties"));
-    } catch (final IOException e) {
-      FantastleReboot.exception(e);
+    public static void cacheAll() {
+        ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
+        try {
+            ObjectImageLoader.fileExtensions = new Properties();
+            ObjectImageLoader.fileExtensions
+                    .load(ObjectImageLoader.class.getResourceAsStream(
+                            "/assets/data/extensions/extensions.properties"));
+        } catch (final IOException e) {
+            FantastleReboot.exception(e);
+        }
+        final String imageExt = ObjectImageLoader.fileExtensions
+                .getProperty("images");
+        for (int i = 0; i <= ObjectImageLoader.MAX_INDEX; i++) {
+            final String name = "/assets/images/objects/"
+                    + ObjectImageLoader.allFilenames[i] + imageExt;
+            try {
+                ImageLoader.load(name,
+                        ObjectImageLoader.class.getResource(name));
+            } catch (final IllegalArgumentException iae) {
+                // Ignore - image unused
+            }
+        }
     }
-    final String imageExt = ObjectImageLoader.fileExtensions
-        .getProperty("images");
-    for (int i = 0; i <= ObjectImageLoader.MAX_INDEX; i++) {
-      final String name = "/assets/images/objects/"
-          + ObjectImageLoader.allFilenames[i] + imageExt;
-      try {
-        ImageLoader.load(name, ObjectImageLoader.class.getResource(name));
-      } catch (IllegalArgumentException iae) {
-        // Ignore - image unused
-      }
-    }
-  }
 }

@@ -46,8 +46,9 @@ public class GameSaveTask extends Thread {
             // Set suffix handler
             app.getMazeManager().getMaze().setSuffixHandler(null);
             app.getMazeManager().getMaze().writeMaze();
-            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
-                    .getBasePath()), tempLock);
+            ZipUtilities.zipDirectory(
+                    new File(app.getMazeManager().getMaze().getBasePath()),
+                    tempLock);
             // Lock the file
             GameFileManager.save(tempLock, mazeFile);
             final boolean delSuccess = tempLock.delete();
@@ -55,10 +56,8 @@ public class GameSaveTask extends Thread {
                 throw new IOException("Failed to delete temporary file!");
             }
         } catch (final FileNotFoundException fnfe) {
-            CommonDialogs
-                    .showDialog("Writing the locked "
-                            + sg.toLowerCase()
-                            + " file failed, probably due to illegal characters in the file name.");
+            CommonDialogs.showDialog("Writing the locked " + sg.toLowerCase()
+                    + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
             LoopChute.getErrorLogger().logError(ex);

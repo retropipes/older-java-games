@@ -38,7 +38,7 @@ public class HotBoots extends GenericBoots {
                 .getPlayerLocationY();
         final int z = MasterMaze.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MasterMaze.getApplication().getMazeManager().getMaze()
-                .hotGround(x, y, z);
+        MasterMaze.getApplication().getMazeManager().getMaze().hotGround(x, y,
+                z);
     }
 }

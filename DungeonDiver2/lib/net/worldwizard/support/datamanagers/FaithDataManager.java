@@ -18,8 +18,8 @@ public class FaithDataManager {
         try {
             // Fetch data
             final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDataManager.class
-                            .getResourceAsStream("/net/worldwizard/support/resources/data/faith/"
+                    FaithDataManager.class.getResourceAsStream(
+                            "/net/worldwizard/support/resources/data/faith/"
                                     + name + ".dat"));
             final int[] rawData = new int[FaithConstants.getFaithsCount()];
             for (int x = 0; x < rawData.length; x++) {

@@ -12,6 +12,6 @@ import net.dynamicdungeon.dynamicdungeon.dungeon.abc.AbstractBattleCharacter;
 public class BattleCharacter extends AbstractBattleCharacter {
     // Constructors
     public BattleCharacter(final AbstractCreature newTemplate) {
-	super(newTemplate);
+        super(newTemplate);
     }
 }

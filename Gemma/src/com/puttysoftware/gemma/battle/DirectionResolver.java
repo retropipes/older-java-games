@@ -6,33 +6,33 @@
 package com.puttysoftware.gemma.battle;
 
 class DirectionResolver {
-    static int resolveRelativeDirection(int dirX, int dirY) {
-        int fdX = (int) Math.signum(dirX);
-        int fdY = (int) Math.signum(dirY);
-        if ((fdX == 0) && (fdY == 0)) {
+    static int resolveRelativeDirection(final int dirX, final int dirY) {
+        final int fdX = (int) Math.signum(dirX);
+        final int fdY = (int) Math.signum(dirY);
+        if (fdX == 0 && fdY == 0) {
             return DirectionConstants.DIRECTION_NONE;
-        } else if ((fdX == 0) && (fdY == -1)) {
+        } else if (fdX == 0 && fdY == -1) {
             return DirectionConstants.DIRECTION_NORTH;
-        } else if ((fdX == 0) && (fdY == 1)) {
+        } else if (fdX == 0 && fdY == 1) {
             return DirectionConstants.DIRECTION_SOUTH;
-        } else if ((fdX == -1) && (fdY == 0)) {
+        } else if (fdX == -1 && fdY == 0) {
             return DirectionConstants.DIRECTION_WEST;
-        } else if ((fdX == 1) && (fdY == 0)) {
+        } else if (fdX == 1 && fdY == 0) {
             return DirectionConstants.DIRECTION_EAST;
-        } else if ((fdX == 1) && (fdY == 1)) {
+        } else if (fdX == 1 && fdY == 1) {
             return DirectionConstants.DIRECTION_SOUTHEAST;
-        } else if ((fdX == -1) && (fdY == 1)) {
+        } else if (fdX == -1 && fdY == 1) {
             return DirectionConstants.DIRECTION_SOUTHWEST;
-        } else if ((fdX == -1) && (fdY == -1)) {
+        } else if (fdX == -1 && fdY == -1) {
             return DirectionConstants.DIRECTION_NORTHWEST;
-        } else if ((fdX == 1) && (fdY == -1)) {
+        } else if (fdX == 1 && fdY == -1) {
             return DirectionConstants.DIRECTION_NORTHEAST;
         } else {
             return DirectionConstants.DIRECTION_INVALID;
         }
     }
 
-    static String resolveDirectionConstantToName(int dir) {
+    static String resolveDirectionConstantToName(final int dir) {
         String res = null;
         if (dir == DirectionConstants.DIRECTION_NORTH) {
             res = DirectionConstants.DIRECTION_NORTH_NAME;

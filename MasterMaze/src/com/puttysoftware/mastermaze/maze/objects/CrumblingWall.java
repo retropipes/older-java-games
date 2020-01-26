@@ -43,8 +43,8 @@ public class CrumblingWall extends GenericWall {
             final int dirY, final ObjectInventory inv) {
         final int z = MasterMaze.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MasterMaze.getApplication().getGameManager()
-                .morph(new Empty(), dirX, dirY, z, MazeConstants.LAYER_OBJECT);
+        MasterMaze.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 

@@ -62,9 +62,8 @@ public class RotationTrap extends AbstractTrap {
         } else {
             dir = "Counterclockwise";
         }
-        FantastleX.getApplication().showMessage(
-                this.getName() + " (Radius " + this.radius + ", Direction "
-                        + dir + ")");
+        FantastleX.getApplication().showMessage(this.getName() + " (Radius "
+                + this.radius + ", Direction " + dir + ")");
     }
 
     @Override
@@ -84,9 +83,8 @@ public class RotationTrap extends AbstractTrap {
         } else {
             di = 1;
         }
-        final String dres = CommonDialogs.showInputDialog(
-                "Rotation Direction:", "Editor", RotationTrap.dChoices,
-                RotationTrap.dChoices[di]);
+        final String dres = CommonDialogs.showInputDialog("Rotation Direction:",
+                "Editor", RotationTrap.dChoices, RotationTrap.dChoices[di]);
         if (dres.equals(RotationTrap.dChoices[0])) {
             d = RotationTrap.CLOCKWISE;
         } else {
@@ -126,8 +124,8 @@ public class RotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         if (this.direction) {
             FantastleX.getApplication().getGameManager()
                     .doClockwiseRotate(this.radius);

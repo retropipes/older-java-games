@@ -25,8 +25,8 @@ public class Springboard extends StairsUp {
         super();
         this.setTemplateTransform(new TemplateTransform(1.0, 0.75, 0.5));
         // Create post-move script
-        InternalScript scpt = new InternalScript();
-        InternalScriptEntry entry1 = new InternalScriptEntry();
+        final InternalScript scpt = new InternalScript();
+        final InternalScriptEntry entry1 = new InternalScriptEntry();
         entry1.setActionCode(InternalScriptActionCode.MOVE);
         entry1.addActionArg(new InternalScriptEntryArgument(false));
         entry1.addActionArg(new InternalScriptEntryArgument(false));
@@ -35,7 +35,7 @@ public class Springboard extends StairsUp {
         entry1.addActionArg(new InternalScriptEntryArgument(1));
         entry1.finalizeActionArgs();
         scpt.addAction(entry1);
-        InternalScriptEntry entry2 = new InternalScriptEntry();
+        final InternalScriptEntry entry2 = new InternalScriptEntry();
         entry2.setActionCode(InternalScriptActionCode.SOUND);
         entry2.addActionArg(new InternalScriptEntryArgument(
                 GameSoundConstants.SOUND_JUMPING));
@@ -64,12 +64,12 @@ public class Springboard extends StairsUp {
     private boolean searchNestedSprings(final int dirX, final int dirY,
             final int floor, final Map map) {
         // Stop infinite recursion
-        int ucl = map.getFloors() * 2;
+        final int ucl = map.getFloors() * 2;
         if (floor >= ucl) {
             throw new InfiniteRecursionException();
         }
         if (map.doesFloorExist(floor)) {
-            MapObject obj = map.getCell(dirX, dirY, floor,
+            final MapObject obj = map.getCell(dirX, dirY, floor,
                     MapConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(map, floor)) {
                 return false;

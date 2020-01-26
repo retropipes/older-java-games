@@ -10,31 +10,31 @@ public class PrefixHandler implements PrefixIO {
 
     @Override
     public int readPrefix(final DatabaseReader reader) throws IOException {
-	final byte formatVer = PrefixHandler.readFormatVersion(reader);
-	final boolean res = PrefixHandler.checkFormatVersion(formatVer);
-	if (!res) {
-	    throw new IOException("Unsupported maze format version: "
-		    + formatVer);
-	}
-	return formatVer;
+        final byte formatVer = PrefixHandler.readFormatVersion(reader);
+        final boolean res = PrefixHandler.checkFormatVersion(formatVer);
+        if (!res) {
+            throw new IOException(
+                    "Unsupported maze format version: " + formatVer);
+        }
+        return formatVer;
     }
 
     @Override
     public void writePrefix(final DatabaseWriter writer) throws IOException {
-	PrefixHandler.writeFormatVersion(writer);
+        PrefixHandler.writeFormatVersion(writer);
     }
 
     private static byte readFormatVersion(final DatabaseReader reader)
-	    throws IOException {
-	return (byte) reader.readByte();
+            throws IOException {
+        return (byte) reader.readByte();
     }
 
     private static boolean checkFormatVersion(final byte version) {
-	return (version <= PrefixHandler.FORMAT_VERSION);
+        return version <= PrefixHandler.FORMAT_VERSION;
     }
 
     private static void writeFormatVersion(final DatabaseWriter writer)
-	    throws IOException {
-	writer.writeByte(PrefixHandler.FORMAT_VERSION);
+            throws IOException {
+        writer.writeByte(PrefixHandler.FORMAT_VERSION);
     }
 }

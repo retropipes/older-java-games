@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver3.support.map.generic;
 
 /**
- * 
+ *
  * @author wrldwzrd89
  */
 public class InfiniteRecursionException extends RuntimeException {

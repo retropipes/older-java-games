@@ -157,7 +157,7 @@ public abstract class AbstractArena {
     public abstract void switchLevel(int level);
 
     public abstract void switchLevelOffset(int level);
-    
+
     public abstract void switchEra(final int era);
 
     public abstract void switchEraOffset(final int era);

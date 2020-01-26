@@ -27,9 +27,8 @@ public class StatImageManager {
     static BufferedImageIcon getUncachedImage(final String name) {
         try {
             final String normalName = ImageTransformer.normalizeName(name);
-            final URL url = StatImageManager.LOAD_CLASS
-                    .getResource(StatImageManager.LOAD_PATH + normalName
-                            + ".png");
+            final URL url = StatImageManager.LOAD_CLASS.getResource(
+                    StatImageManager.LOAD_PATH + normalName + ".png");
             final BufferedImage image = ImageIO.read(url);
             return new BufferedImageIcon(image);
         } catch (final IOException ie) {

@@ -10,15 +10,15 @@ import com.puttysoftware.lasertank.utilities.ArenaConstants;
 public abstract class AbstractMover extends AbstractGround {
     // Constructors
     protected AbstractMover() {
-	super();
+        super();
     }
 
     protected AbstractMover(final boolean hasFriction) {
-	super(hasFriction);
+        super(hasFriction);
     }
 
     @Override
     public int getLayer() {
-	return ArenaConstants.LAYER_UPPER_GROUND;
+        return ArenaConstants.LAYER_UPPER_GROUND;
     }
 }

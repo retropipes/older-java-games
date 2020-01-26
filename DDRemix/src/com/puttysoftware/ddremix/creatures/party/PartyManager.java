@@ -25,8 +25,8 @@ public class PartyManager {
     private static Party party;
     private static int bank = 0;
     private static final int PARTY_SIZE = 1;
-    private final static String[] buttonNames = new String[] { "Done",
-            "Create", "Pick" };
+    private final static String[] buttonNames = new String[] { "Done", "Create",
+            "Pick" };
 
     // Constructors
     private PartyManager() {
@@ -57,8 +57,8 @@ public class PartyManager {
                 } else if (response == 1) {
                     pc = PartyManager.createNewPC(owner);
                     if (pc != null) {
-                        CharacterRegistration.autoregisterCharacter(pc
-                                .getName());
+                        CharacterRegistration
+                                .autoregisterCharacter(pc.getName());
                         CharacterLoader.saveCharacter(pc);
                     }
                 }

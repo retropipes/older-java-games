@@ -174,8 +174,8 @@ public final class Application {
         } else {
             rt = "";
         }
-        return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR
-                + "." + Application.VERSION_BUGFIX + rt;
+        return Application.VERSION_MAJOR + "." + Application.VERSION_MINOR + "."
+                + Application.VERSION_BUGFIX + rt;
     }
 
     public JFrame getOutputFrame() {

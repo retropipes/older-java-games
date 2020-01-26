@@ -12,8 +12,8 @@ import com.puttysoftware.widgetwarren.generic.GenericConditionalTeleport;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundConstants;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundManager;
 
-public class InvisibleConditionalChainTeleport extends
-        GenericConditionalTeleport {
+public class InvisibleConditionalChainTeleport
+        extends GenericConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super();
@@ -26,7 +26,8 @@ public class InvisibleConditionalChainTeleport extends
         int testVal;
         if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
-        } else if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
+        } else if (this
+                .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
             testVal = inv.getItemCount(new MoonStone());
         } else {
             testVal = 0;

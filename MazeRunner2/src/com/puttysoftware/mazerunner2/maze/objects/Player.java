@@ -42,12 +42,12 @@ public class Player extends AbstractCharacter {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Maze maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(Maze maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         return 1;
     }
 }

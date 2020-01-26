@@ -41,10 +41,10 @@ public class CrumblingWall extends AbstractWall {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final MazeObjectInventory inv) {
-        int z = MazeRunnerII.getApplication().getMazeManager().getMaze()
+        final int z = MazeRunnerII.getApplication().getMazeManager().getMaze()
                 .getPlayerLocationZ();
-        MazeRunnerII.getApplication().getGameManager()
-                .morph(new Empty(), dirX, dirY, z, MazeConstants.LAYER_OBJECT);
+        MazeRunnerII.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, z, MazeConstants.LAYER_OBJECT);
         SoundManager.playSound(SoundConstants.SOUND_CRACK);
     }
 

@@ -30,8 +30,8 @@ public class MusicManager {
 
     private static Music getMusic(final String filename) {
         try {
-            final File file = new File("./Music/" + filename.toLowerCase()
-                    + ".wav");
+            final File file = new File(
+                    "./Music/" + filename.toLowerCase() + ".wav");
             final Music mus = new Music(file.toURI().toURL());
             return mus;
         } catch (final Exception e) {

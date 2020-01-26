@@ -28,8 +28,8 @@ public class MazeFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "WeaselWeb  Mazes ("
-                + FileExtension.getMazeExtensionWithPeriod() + ")";
+        return "WeaselWeb  Mazes (" + FileExtension.getMazeExtensionWithPeriod()
+                + ")";
     }
 
     private static String getExtension(final File f) {

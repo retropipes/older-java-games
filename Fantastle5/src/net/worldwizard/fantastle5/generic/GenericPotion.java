@@ -28,7 +28,8 @@ import net.worldwizard.fantastle5.objects.Empty;
 import net.worldwizard.fantastle5.resourcemanagers.SoundManager;
 import net.worldwizard.randomnumbers.RandomRange;
 
-public abstract class GenericPotion extends MazeObject implements StatConstants {
+public abstract class GenericPotion extends MazeObject
+        implements StatConstants {
     // Fields
     private int effectValue;
     private RandomRange effect;
@@ -135,8 +136,8 @@ public abstract class GenericPotion extends MazeObject implements StatConstants 
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int locW, final int dirX, final int dirY,
             final int arrowType, final ObjectInventory inv) {
-        Fantastle5.getApplication().getGameManager()
-                .morph(new Empty(), locX, locY, locZ, locW);
+        Fantastle5.getApplication().getGameManager().morph(new Empty(), locX,
+                locY, locZ, locW);
         if (Fantastle5.getApplication().getPrefsManager()
                 .getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
             SoundManager.playSoundAsynchronously("shatter");

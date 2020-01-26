@@ -77,13 +77,11 @@ public class MazeRunnerII {
             } else {
                 s = args[0];
             }
-            Platform.hookFileOpen(
-                    MazeRunnerII.application.getMazeManager(),
-                    MazeRunnerII.application
-                            .getMazeManager()
-                            .getClass()
+            Platform.hookFileOpen(MazeRunnerII.application.getMazeManager(),
+                    MazeRunnerII.application.getMazeManager().getClass()
                             .getDeclaredMethod("loadFromOSHandler",
-                                    String.class), s);
+                                    String.class),
+                    s);
             Platform.hookPreferences(PreferencesManager.class,
                     PreferencesManager.class.getDeclaredMethod("showPrefs"));
             Platform.hookQuit(MazeRunnerII.application.getGUIManager(),
@@ -92,7 +90,7 @@ public class MazeRunnerII {
             // Set up Common Dialogs
             CommonDialogs.setDefaultTitle(MazeRunnerII.PROGRAM_NAME);
             CommonDialogs.setIcon(MazeRunnerII.application.getMicroLogo());
-        } catch (Throwable t) {
+        } catch (final Throwable t) {
             MazeRunnerII.getErrorLogger().logError(t);
         }
     }

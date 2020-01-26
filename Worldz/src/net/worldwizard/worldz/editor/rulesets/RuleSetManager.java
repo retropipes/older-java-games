@@ -38,15 +38,16 @@ public class RuleSetManager {
             if (extension.equals(Extension.getRuleSetExtension())) {
                 RuleSetManager.loadFile(filename);
             } else {
-                Messager.showDialog("You opened something other than a rule set file. Select a rule set file, and try again.");
+                Messager.showDialog(
+                        "You opened something other than a rule set file. Select a rule set file, and try again.");
             }
         }
     }
 
     private static void loadFile(final String filename) {
-        if (!FilenameChecker.isFilenameOK(RuleSetManager
-                .getNameWithoutExtension(RuleSetManager
-                        .getFileNameOnly(filename)))) {
+        if (!FilenameChecker
+                .isFilenameOK(RuleSetManager.getNameWithoutExtension(
+                        RuleSetManager.getFileNameOnly(filename)))) {
             Messager.showErrorDialog(
                     "The file you selected contains illegal characters in its\n"
                             + "name. These characters are not allowed: /?<>\\:|\"\n"
@@ -86,7 +87,8 @@ public class RuleSetManager {
                             "Save");
                 } else {
                     if (extension != null) {
-                        if (!extension.equals(Extension.getRuleSetExtension())) {
+                        if (!extension
+                                .equals(Extension.getRuleSetExtension())) {
                             filename = RuleSetManager
                                     .getNameWithoutExtension(file)
                                     + Extension.getRuleSetExtensionWithPeriod();

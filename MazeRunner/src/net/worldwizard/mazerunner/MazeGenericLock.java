@@ -34,8 +34,8 @@ public abstract class MazeGenericLock extends MazeObject {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         inv.removeItem(this.key);
         final MazeRunner app = MazeRunner.getApplication();
         app.decay();

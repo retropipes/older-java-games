@@ -24,7 +24,7 @@ public class NamesDataManager {
     private static final String UNIX_DIR = "/.puttysoftware/mastermaze/";
 
     public static String[] getNamesData() {
-        File overrideData = NamesDataManager.getNamesOverrideFile();
+        final File overrideData = NamesDataManager.getNamesOverrideFile();
         if (overrideData.exists()) {
             return NamesDataManager.getNamesOverrideData();
         } else {
@@ -34,9 +34,9 @@ public class NamesDataManager {
 
     private static String[] getNamesDefaultData() {
         try {
-            ResourceStreamReader rsr = new ResourceStreamReader(
-                    NamesDataManager.class
-                            .getResourceAsStream("/com/puttysoftware/dungeondiver4/resources/data/names/names.txt"));
+            final ResourceStreamReader rsr = new ResourceStreamReader(
+                    NamesDataManager.class.getResourceAsStream(
+                            "/com/puttysoftware/dungeondiver4/resources/data/names/names.txt"));
             // Load default
             final ArrayList<String> data = new ArrayList<>();
             // Ignore first line
@@ -45,8 +45,8 @@ public class NamesDataManager {
                 raw = rsr.readString();
                 data.add(raw);
             }
-            Object[] arr = data.toArray();
-            String[] tempres = new String[arr.length];
+            final Object[] arr = data.toArray();
+            final String[] tempres = new String[arr.length];
             int count = 0;
             for (int x = 0; x < arr.length; x++) {
                 if (arr[x] != null) {
@@ -54,11 +54,11 @@ public class NamesDataManager {
                     count++;
                 }
             }
-            String[] res = new String[count];
+            final String[] res = new String[count];
             count = 0;
-            for (int x = 0; x < tempres.length; x++) {
-                if (tempres[x] != null) {
-                    res[count] = tempres[x];
+            for (final String tempre : tempres) {
+                if (tempre != null) {
+                    res[count] = tempre;
                     count++;
                 }
             }
@@ -72,19 +72,18 @@ public class NamesDataManager {
 
     private static String[] getNamesOverrideData() {
         try {
-            File overrideData = NamesDataManager.getNamesOverrideFile();
+            final File overrideData = NamesDataManager.getNamesOverrideFile();
             // Version check
-            if (overrideData.exists()
-                    && !NamesDataManager
-                            .isNamesFileCorrectVersion(overrideData)) {
-                boolean success = overrideData.delete();
+            if (overrideData.exists() && !NamesDataManager
+                    .isNamesFileCorrectVersion(overrideData)) {
+                final boolean success = overrideData.delete();
                 if (!success) {
                     throw new IOException("Deleting override failed!");
                 }
             }
             try (FileInputStream fis = new FileInputStream(overrideData);) {
                 final ArrayList<String> data = new ArrayList<>();
-                ResourceStreamReader rsr = new ResourceStreamReader(fis);
+                final ResourceStreamReader rsr = new ResourceStreamReader(fis);
                 // Ignore first line
                 String raw = rsr.readString();
                 while (raw != null) {
@@ -92,8 +91,8 @@ public class NamesDataManager {
                     data.add(raw);
                 }
                 rsr.close();
-                Object[] arr = data.toArray();
-                String[] tempres = new String[arr.length];
+                final Object[] arr = data.toArray();
+                final String[] tempres = new String[arr.length];
                 int count = 0;
                 for (int x = 0; x < arr.length; x++) {
                     if (arr[x] != null) {
@@ -101,11 +100,11 @@ public class NamesDataManager {
                         count++;
                     }
                 }
-                String[] res = new String[count];
+                final String[] res = new String[count];
                 count = 0;
-                for (int x = 0; x < tempres.length; x++) {
-                    if (tempres[x] != null) {
-                        res[count] = tempres[x];
+                for (final String tempre : tempres) {
+                    if (tempre != null) {
+                        res[count] = tempre;
                         count++;
                     }
                 }
@@ -119,10 +118,10 @@ public class NamesDataManager {
 
     public static void resetNames() {
         try {
-            File overrideData = NamesDataManager.getNamesOverrideFile();
+            final File overrideData = NamesDataManager.getNamesOverrideFile();
             // Version check
             if (overrideData.exists()) {
-                boolean success = overrideData.delete();
+                final boolean success = overrideData.delete();
                 if (!success) {
                     throw new IOException("Deleting override failed!");
                 }
@@ -133,7 +132,7 @@ public class NamesDataManager {
     }
 
     private static String getNamesDirPrefix() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return System.getenv(NamesDataManager.MAC_PREFIX);
@@ -147,7 +146,7 @@ public class NamesDataManager {
     }
 
     private static String getNamesDirectory() {
-        String osName = System.getProperty("os.name");
+        final String osName = System.getProperty("os.name");
         if (osName.indexOf("Mac OS X") != -1) {
             // Mac OS X
             return NamesDataManager.MAC_DIR;
@@ -161,19 +160,19 @@ public class NamesDataManager {
     }
 
     public static File getNamesOverrideFile() {
-        StringBuilder b = new StringBuilder();
+        final StringBuilder b = new StringBuilder();
         b.append(NamesDataManager.getNamesDirPrefix());
         b.append(NamesDataManager.getNamesDirectory());
         b.append("names.txt");
         return new File(b.toString());
     }
 
-    private static boolean isNamesFileCorrectVersion(File f) {
+    private static boolean isNamesFileCorrectVersion(final File f) {
         try (FileInputStream fis = new FileInputStream(f)) {
-            ResourceStreamReader rsr = new ResourceStreamReader(fis);
-            int version = rsr.readInt();
-            return (version == NamesConstants.NAMES_VERSION);
-        } catch (Exception e) {
+            final ResourceStreamReader rsr = new ResourceStreamReader(fis);
+            final int version = rsr.readInt();
+            return version == NamesConstants.NAMES_VERSION;
+        } catch (final Exception e) {
             return false;
         }
     }

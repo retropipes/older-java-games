@@ -39,7 +39,8 @@ public class Tablet extends AbstractItem {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().getMazeManager().getMaze().addTablet();
         SoundManager.playSound(SoundConstants.SOUND_GRAB);
         GameLogicManager.decay();

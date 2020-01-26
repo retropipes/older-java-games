@@ -14,24 +14,30 @@ import com.puttysoftware.lasertank.utilities.FormatConstants;
 
 public class SuffixHandler implements AbstractSuffixIO {
     @Override
-    public void readSuffix(final XMLFileReader reader, final int formatVersion) throws IOException {
-	if (FormatConstants.isFormatVersionValidGeneration1(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG1(reader);
-	} else if (FormatConstants.isFormatVersionValidGeneration2(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG2(reader);
-	} else if (FormatConstants.isFormatVersionValidGeneration3(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG3(reader);
-	} else if (FormatConstants.isFormatVersionValidGeneration4(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG4(reader);
-	} else if (FormatConstants.isFormatVersionValidGeneration5(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG5(reader);
-	} else if (FormatConstants.isFormatVersionValidGeneration6(formatVersion)) {
-	    LaserTank.getApplication().getGameManager().loadGameHookG6(reader);
-	}
+    public void readSuffix(final XMLFileReader reader, final int formatVersion)
+            throws IOException {
+        if (FormatConstants.isFormatVersionValidGeneration1(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG1(reader);
+        } else if (FormatConstants
+                .isFormatVersionValidGeneration2(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG2(reader);
+        } else if (FormatConstants
+                .isFormatVersionValidGeneration3(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG3(reader);
+        } else if (FormatConstants
+                .isFormatVersionValidGeneration4(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG4(reader);
+        } else if (FormatConstants
+                .isFormatVersionValidGeneration5(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG5(reader);
+        } else if (FormatConstants
+                .isFormatVersionValidGeneration6(formatVersion)) {
+            LaserTank.getApplication().getGameManager().loadGameHookG6(reader);
+        }
     }
 
     @Override
     public void writeSuffix(final XMLFileWriter writer) throws IOException {
-	LaserTank.getApplication().getGameManager().saveGameHook(writer);
+        LaserTank.getApplication().getGameManager().saveGameHook(writer);
     }
 }

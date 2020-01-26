@@ -21,7 +21,8 @@ public class BreakableWallVertical extends AbstractWall {
     // Constructors
     public BreakableWallVertical() {
         super(ColorConstants.COLOR_BROWN);
-        this.setAttributeID(ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_VERTICAL);
+        this.setAttributeID(
+                ObjectImageConstants.OBJECT_IMAGE_BREAKABLE_VERTICAL);
         this.setAttributeTemplateColor(ColorConstants.COLOR_NONE);
     }
 
@@ -53,11 +54,8 @@ public class BreakableWallVertical extends AbstractWall {
     public void chainReactionAction(final int dirX, final int dirY,
             final int dirZ) {
         // Break up
-        FantastleX
-                .getApplication()
-                .getGameManager()
-                .morph(new Empty(), dirX, dirY, dirZ,
-                        MazeConstants.LAYER_OBJECT);
+        FantastleX.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, MazeConstants.LAYER_OBJECT);
         final Maze m = FantastleX.getApplication().getMazeManager().getMaze();
         final AbstractMazeObject above = m.getCell(dirX, dirY - 1, dirZ,
                 MazeConstants.LAYER_OBJECT);

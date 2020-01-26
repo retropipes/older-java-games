@@ -13,19 +13,20 @@ import com.puttysoftware.lasertank.resourcemanagers.SoundManager;
 public class AntiBelt extends AbstractSpell {
     // Constructors
     public AntiBelt() {
-	super();
+        super();
     }
 
     @Override
     public final int getStringBaseID() {
-	return 144;
+        return 144;
     }
 
     // Scriptability
     @Override
     public void postMoveAction(final int dirX, final int dirY, final int dirZ) {
-	SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
-	LaserTank.getApplication().getGameManager().setDisguisedTank();
-	LaserTank.getApplication().getGameManager().morph(new Empty(), dirX, dirY, dirZ, this.getLayer());
+        SoundManager.playSound(SoundConstants.SOUND_DISRUPTED);
+        LaserTank.getApplication().getGameManager().setDisguisedTank();
+        LaserTank.getApplication().getGameManager().morph(new Empty(), dirX,
+                dirY, dirZ, this.getLayer());
     }
 }

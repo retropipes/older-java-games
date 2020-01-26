@@ -29,13 +29,12 @@ public class CounterclockwiseRotationTrap extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         SoundManager.playSound(SoundConstants.SOUND_CHANGE);
         DDRemix.getApplication().showMessage("Your controls are rotated!");
-        DDRemix.getApplication()
-                .getGameManager()
-                .activateEffect(
-                        MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
+        DDRemix.getApplication().getGameManager().activateEffect(
+                MazeEffectConstants.EFFECT_ROTATED_COUNTERCLOCKWISE);
     }
 
     @Override

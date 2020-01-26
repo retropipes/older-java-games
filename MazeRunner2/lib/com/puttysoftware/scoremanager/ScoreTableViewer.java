@@ -18,8 +18,9 @@ public final class ScoreTableViewer {
     }
 
     // Methods
-    public static void view(ScoreTable table, String customTitle, String[] unit) {
-        StringBuilder msgBuilder = new StringBuilder();
+    public static void view(final ScoreTable table, final String customTitle,
+            final String[] unit) {
+        final StringBuilder msgBuilder = new StringBuilder();
         String msg = null;
         String title = null;
         if (customTitle == null || customTitle.isEmpty()) {
@@ -30,7 +31,8 @@ public final class ScoreTableViewer {
         int x;
         int y;
         int z;
-        for (x = 0; x < table.getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
+        for (x = 0; x < table
+                .getLength(); x += ScoreTableViewer.ENTRIES_PER_PAGE) {
             msg = "";
             for (y = 1; y <= ScoreTableViewer.ENTRIES_PER_PAGE; y++) {
                 try {
@@ -44,7 +46,7 @@ public final class ScoreTableViewer {
                         }
                     }
                     msgBuilder.append("\n");
-                } catch (ArrayIndexOutOfBoundsException ae) {
+                } catch (final ArrayIndexOutOfBoundsException ae) {
                     // Do nothing
                 }
             }

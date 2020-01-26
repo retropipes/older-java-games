@@ -17,10 +17,9 @@ public class FaithDescriptionManager {
     public static String getFaithDescription(final int f) {
         final String name = FaithConstants.getFaithName(f).toLowerCase();
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                FaithDescriptionManager.class
-                        .getResourceAsStream("/com/puttysoftware/tallertower/resources/descriptions/faith/"
-                                + name
-                                + Extension
+                FaithDescriptionManager.class.getResourceAsStream(
+                        "/com/puttysoftware/tallertower/resources/descriptions/faith/"
+                                + name + Extension
                                         .getInternalDataExtensionWithPeriod()))) {
             // Fetch description
             final String desc = rsr.readString();

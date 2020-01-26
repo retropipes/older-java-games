@@ -15,7 +15,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     private boolean percentageFlag;
     private boolean required;
     private int generateQuantity;
-    private RandomRange rng;
+    private final RandomRange rng;
 
     // Constructor
     public RuleSet() {
@@ -30,7 +30,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     // Methods
     @Override
     public RuleSet clone() {
-        RuleSet copy = new RuleSet();
+        final RuleSet copy = new RuleSet();
         copy.maxQuantity = this.maxQuantity;
         copy.minQuantity = this.minQuantity;
         copy.percentageFlag = this.percentageFlag;
@@ -39,7 +39,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         return copy;
     }
 
-    public void setQuantityAbsolute(int min, int max) {
+    public void setQuantityAbsolute(final int min, final int max) {
         // Check for valid arguments
         if (min < 0) {
             throw new IllegalArgumentException("Minimum must be at least zero");
@@ -56,7 +56,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         this.percentageFlag = false;
     }
 
-    public void setQuantityRelative(int min, int max) {
+    public void setQuantityRelative(final int min, final int max) {
         // Check for valid arguments
         if (min < 0) {
             throw new IllegalArgumentException("Minimum must be at least zero");
@@ -85,7 +85,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         this.percentageFlag = true;
     }
 
-    public void setGenerateQuantity(int value) {
+    public void setGenerateQuantity(final int value) {
         // Check for valid arguments
         if (value < 0) {
             throw new IllegalArgumentException("Value must be at least zero");
@@ -96,7 +96,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         this.generateQuantity = value;
     }
 
-    public void setRequired(boolean newReq) {
+    public void setRequired(final boolean newReq) {
         this.required = newReq;
     }
 
@@ -108,7 +108,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         return this.generateQuantity;
     }
 
-    public void readRuleSet(XDataReader reader, int rsFormat)
+    public void readRuleSet(final XDataReader reader, final int rsFormat)
             throws IOException {
         this.maxQuantity = reader.readInt();
         this.minQuantity = reader.readInt();
@@ -122,7 +122,7 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
         }
     }
 
-    public void writeRuleSet(XDataWriter writer) throws IOException {
+    public void writeRuleSet(final XDataWriter writer) throws IOException {
         writer.writeInt(this.maxQuantity);
         writer.writeInt(this.minQuantity);
         writer.writeBoolean(this.percentageFlag);
@@ -142,10 +142,10 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
      * Methods implementing RandomGenerationRule
      */
     @Override
-    public int getMaximumRequiredQuantity(Maze maze) {
+    public int getMaximumRequiredQuantity(final Maze maze) {
         if (this.percentageFlag) {
-            int base = maze.getRows() * maze.getColumns();
-            double factor = this.maxQuantity / 100.0;
+            final int base = maze.getRows() * maze.getColumns();
+            final double factor = this.maxQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.maxQuantity;
@@ -153,10 +153,10 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(Maze maze) {
+    public int getMinimumRequiredQuantity(final Maze maze) {
         if (this.percentageFlag) {
-            int base = maze.getRows() * maze.getColumns();
-            double factor = this.minQuantity / 100.0;
+            final int base = maze.getRows() * maze.getColumns();
+            final double factor = this.minQuantity / 100.0;
             return (int) (base * factor);
         } else {
             return this.minQuantity;
@@ -169,26 +169,26 @@ public final class RuleSet implements Cloneable, RandomGenerationRule {
     }
 
     @Override
-    public boolean shouldGenerateObject(Maze maze, int row, int col, int floor,
-            int level, int layer) {
-        int genval = this.rng.generate();
-        return (genval <= this.generateQuantity);
+    public boolean shouldGenerateObject(final Maze maze, final int row,
+            final int col, final int floor, final int level, final int layer) {
+        final int genval = this.rng.generate();
+        return genval <= this.generateQuantity;
     }
 
     @Override
-    public boolean shouldGenerateObjectInBattle(Maze maze, int row, int col,
-            int floor, int level, int layer) {
+    public boolean shouldGenerateObjectInBattle(final Maze maze, final int row,
+            final int col, final int floor, final int level, final int layer) {
         // Generate objects at 100%
         return true;
     }
 
     @Override
-    public int getMinimumRequiredQuantityInBattle(Maze maze) {
+    public int getMinimumRequiredQuantityInBattle(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantityInBattle(Maze maze) {
+    public int getMaximumRequiredQuantityInBattle(final Maze maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 

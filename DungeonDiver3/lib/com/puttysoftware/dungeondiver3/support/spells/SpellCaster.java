@@ -29,17 +29,16 @@ public class SpellCaster {
             final BattleDefinitions battle) {
         boolean result = false;
         SpellCaster.NO_SPELLS_FLAG = false;
-        Spell s = SpellCaster.selectSpell(caster);
+        final Spell s = SpellCaster.selectSpell(caster);
         if (s != null) {
-            int power = SpellCaster.selectSpellPower();
+            final int power = SpellCaster.selectSpellPower();
             if (power != -1) {
                 result = SpellCaster.castSpellWithPower(s, power, caster,
                         teamID, aiEnabled, battle);
                 if (!result && !SpellCaster.NO_SPELLS_FLAG) {
-                    CommonDialogs
-                            .showErrorDialog(
-                                    "You try to cast a spell, but realize you don't have enough MP!",
-                                    "Select Spell");
+                    CommonDialogs.showErrorDialog(
+                            "You try to cast a spell, but realize you don't have enough MP!",
+                            "Select Spell");
                 }
             }
         }
@@ -71,10 +70,9 @@ public class SpellCaster {
                 }
             } else {
                 SpellCaster.NO_SPELLS_FLAG = true;
-                CommonDialogs
-                        .showErrorDialog(
-                                "You try to cast a spell, but realize you don't know any!",
-                                "Select Spell");
+                CommonDialogs.showErrorDialog(
+                        "You try to cast a spell, but realize you don't know any!",
+                        "Select Spell");
                 return null;
             }
         } else {
@@ -88,13 +86,13 @@ public class SpellCaster {
 
     private static int selectSpellPower() {
         String dialogResult = null;
-        dialogResult = CommonDialogs
-                .showInputDialog("Select a Spell Power Level", "Select Power",
-                        powers, powers[0]);
+        dialogResult = CommonDialogs.showInputDialog(
+                "Select a Spell Power Level", "Select Power",
+                SpellCaster.powers, SpellCaster.powers[0]);
         if (dialogResult != null) {
             int index;
-            for (index = 0; index < powers.length; index++) {
-                if (dialogResult.equals(powers[index])) {
+            for (index = 0; index < SpellCaster.powers.length; index++) {
+                if (dialogResult.equals(SpellCaster.powers[index])) {
                     break;
                 }
             }
@@ -108,20 +106,19 @@ public class SpellCaster {
             final int teamID, final boolean aiEnabled,
             final BattleDefinitions battle) {
         if (cast != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCost();
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCost();
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect eff = cast.getEffect();
+                final Effect eff = cast.getEffect();
                 eff.setSource(caster);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
-                Creature[] targets = SpellCaster.resolveTarget(cast, caster,
-                        teamID, aiEnabled, battle);
-                for (int x = 0; x < targets.length; x++) {
-                    Creature target = targets[x];
+                final Creature[] targets = SpellCaster.resolveTarget(cast,
+                        caster, teamID, aiEnabled, battle);
+                for (final Creature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
                     } else {
@@ -139,25 +136,24 @@ public class SpellCaster {
         }
     }
 
-    private static boolean castSpellWithPower(final Spell cast,
-            final int power, final Creature caster, final int teamID,
-            final boolean aiEnabled, final BattleDefinitions battle) {
+    private static boolean castSpellWithPower(final Spell cast, final int power,
+            final Creature caster, final int teamID, final boolean aiEnabled,
+            final BattleDefinitions battle) {
         if (cast != null) {
-            int casterMP = caster.getCurrentMP();
-            int cost = cast.getCostForPower(power);
+            final int casterMP = caster.getCurrentMP();
+            final int cost = cast.getCostForPower(power);
             if (casterMP >= cost) {
                 // Cast Spell
                 caster.drain(cost);
-                Effect eff = cast.getEffect();
+                final Effect eff = cast.getEffect();
                 eff.setSource(caster);
                 // Play spell's associated sound effect, if it has one
                 SoundManager.playSound(cast.getSound());
                 eff.resetEffect();
                 eff.modifyEffectForPower(power);
-                Creature[] targets = SpellCaster.resolveTarget(cast, caster,
-                        teamID, aiEnabled, battle);
-                for (int x = 0; x < targets.length; x++) {
-                    Creature target = targets[x];
+                final Creature[] targets = SpellCaster.resolveTarget(cast,
+                        caster, teamID, aiEnabled, battle);
+                for (final Creature target : targets) {
                     if (target.isEffectActive(eff)) {
                         target.extendEffect(eff, eff.getInitialRounds());
                     } else {
@@ -176,11 +172,11 @@ public class SpellCaster {
     }
 
     private static Creature[] resolveTarget(final Spell cast,
-            final Creature caster, final int teamID, boolean aiEnabled,
-            BattleDefinitions battle) {
-        BattleTarget target = cast.getTarget();
-        boolean hasAI = caster.hasAI();
-        boolean useAI = hasAI && aiEnabled;
+            final Creature caster, final int teamID, final boolean aiEnabled,
+            final BattleDefinitions battle) {
+        final BattleTarget target = cast.getTarget();
+        final boolean hasAI = caster.hasAI();
+        final boolean useAI = hasAI && aiEnabled;
         switch (target) {
         case SELF:
             // Self
@@ -188,8 +184,8 @@ public class SpellCaster {
         case ONE_ALLY:
             // One Ally
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneFriendOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneFriendOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(GameSoundConstants.SOUND_ON_WHO);
                 return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
@@ -197,8 +193,8 @@ public class SpellCaster {
         case ONE_ENEMY:
             // One Enemy
             if (useAI) {
-                return new Creature[] { battle
-                        .pickOneEnemyOfTeamRandomly(teamID) };
+                return new Creature[] {
+                        battle.pickOneEnemyOfTeamRandomly(teamID) };
             } else {
                 SoundManager.playSound(GameSoundConstants.SOUND_ON_WHO);
                 return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };

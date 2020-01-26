@@ -10,7 +10,7 @@ public class RandomRange {
 
     // Constructor
     /**
-     * 
+     *
      * @param min
      * @param max
      */
@@ -22,7 +22,7 @@ public class RandomRange {
 
     // Methods
     /**
-     * 
+     *
      * @return the random number generated
      */
     public int generate() {
@@ -30,12 +30,12 @@ public class RandomRange {
     }
 
     /**
-     * 
+     *
      * @return the random number generated
      */
     public long generateLong() {
-        return Math.abs(this.generator.nextLong()
-                % (this.maximum - this.minimum + 1))
+        return Math.abs(
+                this.generator.nextLong() % (this.maximum - this.minimum + 1))
                 + this.minimum;
     }
 }

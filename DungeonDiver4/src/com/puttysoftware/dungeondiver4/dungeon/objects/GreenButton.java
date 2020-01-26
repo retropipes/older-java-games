@@ -10,7 +10,8 @@ import com.puttysoftware.dungeondiver4.dungeon.utilities.ColorConstants;
 
 public class GreenButton extends AbstractButton {
     public GreenButton() {
-        super(new GreenWallOff(), new GreenWallOn(), ColorConstants.COLOR_GREEN);
+        super(new GreenWallOff(), new GreenWallOn(),
+                ColorConstants.COLOR_GREEN);
     }
 
     @Override

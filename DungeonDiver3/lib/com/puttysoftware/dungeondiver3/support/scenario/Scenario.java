@@ -15,12 +15,12 @@ public class Scenario {
 
     // Constructors
     public Scenario() {
-        long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
-        String randomID = Long.toHexString(random);
+        final long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
+        final String randomID = Long.toHexString(random);
         this.basePath = System.getProperty("java.io.tmpdir") + "DungeonDiver3"
                 + File.separator + randomID
                 + Extension.getScenarioExtensionWithPeriod();
-        File base = new File(this.basePath);
+        final File base = new File(this.basePath);
         if (!base.exists()) {
             base.mkdirs();
         }

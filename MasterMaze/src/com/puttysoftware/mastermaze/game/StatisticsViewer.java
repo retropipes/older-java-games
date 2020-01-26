@@ -48,14 +48,12 @@ public class StatisticsViewer {
                         || x == StatConstants.STAT_EVADE) {
                     final double fmtVal = value / 100.0;
                     StatisticsViewer.statisticsValues[x].setText(" "
-                            + NamesManager.getName(
-                                    NamesConstants.SECTION_STATS,
+                            + NamesManager.getName(NamesConstants.SECTION_STATS,
                                     NamesConstants.SECTION_ARRAY_STATS[x])
                             + ": " + fmtVal + "%  ");
                 } else {
                     StatisticsViewer.statisticsValues[x].setText(" "
-                            + NamesManager.getName(
-                                    NamesConstants.SECTION_STATS,
+                            + NamesManager.getName(NamesConstants.SECTION_STATS,
                                     NamesConstants.SECTION_ARRAY_STATS[x])
                             + ": " + value + "  ");
                 }
@@ -78,14 +76,13 @@ public class StatisticsViewer {
             StatisticsViewer.statisticsPane = new JPanel();
             StatisticsViewer.statisticsPane.setLayout(new BorderLayout());
             StatisticsViewer.contentPane = new JPanel();
-            StatisticsViewer.contentPane.setLayout(new GridLayout(
-                    StatConstants.MAX_STATS, 1));
+            StatisticsViewer.contentPane
+                    .setLayout(new GridLayout(StatConstants.MAX_STATS, 1));
             StatisticsViewer.buttonPane = new JPanel();
             StatisticsViewer.buttonPane.setLayout(new FlowLayout());
             StatisticsViewer.btnOK = new JButton("OK");
-            StatisticsViewer.btnOK
-                    .addActionListener(e -> StatisticsViewer.statisticsFrame
-                            .setVisible(false));
+            StatisticsViewer.btnOK.addActionListener(
+                    e -> StatisticsViewer.statisticsFrame.setVisible(false));
             StatisticsViewer.statisticsValues = new JLabel[StatConstants.MAX_DISPLAY_STATS];
             for (int x = 0; x < StatConstants.MAX_DISPLAY_STATS; x++) {
                 StatisticsViewer.statisticsValues[x] = new JLabel();

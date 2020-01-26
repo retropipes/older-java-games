@@ -95,8 +95,10 @@ public class SystemRegistration {
             }
             if (!alreadyRegistered) {
                 // Register it
-                if (systemObjectIDList != null && systemObjectNameList != null) {
-                    final String[] newSystemObjectList = new String[systemObjectIDList.length + 1];
+                if (systemObjectIDList != null
+                        && systemObjectNameList != null) {
+                    final String[] newSystemObjectList = new String[systemObjectIDList.length
+                            + 1];
                     for (int x = 0; x < newSystemObjectList.length; x++) {
                         if (x < systemObjectIDList.length) {
                             newSystemObjectList[x] = systemObjectIDList[x]
@@ -108,9 +110,8 @@ public class SystemRegistration {
                     SystemRegistration
                             .writeSystemObjectRegistry(newSystemObjectList);
                 } else {
-                    SystemRegistration
-                            .writeSystemObjectRegistry(new String[] { id
-                                    + " , " + name });
+                    SystemRegistration.writeSystemObjectRegistry(
+                            new String[] { id + " , " + name });
                 }
             }
         }
@@ -121,9 +122,9 @@ public class SystemRegistration {
         // Load systemObject registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
         ResourceStreamReader rsr = null;
-        try (final FileInputStream fis = new FileInputStream(basePath
-                + SystemRegistration.systemObjectType + "Registry"
-                + Extension.getRegistryExtensionWithPeriod())) {
+        try (final FileInputStream fis = new FileInputStream(
+                basePath + SystemRegistration.systemObjectType + "Registry"
+                        + Extension.getRegistryExtensionWithPeriod())) {
             rsr = new ResourceStreamReader(fis);
             String input = "";
             while (input != null) {
@@ -151,9 +152,9 @@ public class SystemRegistration {
             final String[] newSystemObjectList) {
         final String basePath = SystemRegistration.getBasePath();
         // Check if registry is writable
-        final File regFile = new File(basePath
-                + SystemRegistration.systemObjectType + "Registry"
-                + Extension.getRegistryExtensionWithPeriod());
+        final File regFile = new File(
+                basePath + SystemRegistration.systemObjectType + "Registry"
+                        + Extension.getRegistryExtensionWithPeriod());
         if (!regFile.exists()) {
             // Not writable, probably because needed folders don't exist
             final File regParent = regFile.getParentFile();

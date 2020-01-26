@@ -25,8 +25,8 @@ public class MazeRandomOneShotTeleporter extends MazeRandomTeleporter {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final Inventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final Inventory inv) {
         final MazeRunner app = MazeRunner.getApplication();
         app.decay();
         app.updatePosition(this.getDestinationRow(),
@@ -46,8 +46,8 @@ public class MazeRandomOneShotTeleporter extends MazeRandomTeleporter {
 
     @Override
     public MazeObject editorHook() {
-        final MazeObject mo = MazeMaker
-                .editTeleporterDestination(MazeMaker.TELEPORTER_TYPE_RANDOM_ONESHOT);
+        final MazeObject mo = MazeMaker.editTeleporterDestination(
+                MazeMaker.TELEPORTER_TYPE_RANDOM_ONESHOT);
         return mo;
     }
 }

@@ -54,7 +54,8 @@ public abstract class MapObject implements RandomGenerationRule {
 
     public final void setOtherAppearance(final int ID,
             final ImageIcon newAppearance) {
-        this.appearances[MapObject.OTHER_APPEARANCES_OFFSET + ID] = newAppearance;
+        this.appearances[MapObject.OTHER_APPEARANCES_OFFSET
+                + ID] = newAppearance;
     }
 
     public final int getOtherAppearanceCount() {

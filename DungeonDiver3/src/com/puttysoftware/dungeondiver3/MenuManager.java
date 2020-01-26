@@ -38,9 +38,8 @@ public class MenuManager {
     private JMenuItem fileOpenSavedGame, fileClose, fileSave, fileSaveAs,
             filePrint, filePreferences, fileExit;
     private JMenuItem gamePlay, gameEquipment, gameInventory, gamePickLeader,
-            gameRegisterCharacter, gameUnregisterCharacter,
-            gameRemoveCharacter, gameEditNote, gameViewPrestige, gameViewScore,
-            gameViewStats;
+            gameRegisterCharacter, gameUnregisterCharacter, gameRemoveCharacter,
+            gameEditNote, gameViewPrestige, gameViewScore, gameViewStats;
     private JMenuItem battleItem, battleSpell, battleSteal, battleDrain,
             battleEndTurn;
     private JMenuItem helpAbout, helpObjectHelp, helpWhatsNew;
@@ -73,9 +72,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableBattleMenus();
         this.disableGameMenus();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -89,9 +88,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.enableBattleMenus();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -103,9 +102,9 @@ public class MenuManager {
         this.enableGameMenus();
         this.disableBattleMenus();
         this.checkFlags();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -119,9 +118,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.disableBattleMenus();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -135,9 +134,9 @@ public class MenuManager {
         this.fileExit.setEnabled(true);
         this.disableGameMenus();
         this.disableBattleMenus();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.disableEditorCommands();
         }
     }
@@ -149,9 +148,9 @@ public class MenuManager {
         this.disableGameMenus();
         this.disableBattleMenus();
         this.checkFlags();
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
     }
@@ -193,7 +192,7 @@ public class MenuManager {
     }
 
     public void checkFlags() {
-        Application app = DungeonDiver3.getApplication();
+        final Application app = DungeonDiver3.getApplication();
         if (app.getScenarioManager().getDirty()) {
             this.setMenusDirtyOn();
         } else {
@@ -235,15 +234,15 @@ public class MenuManager {
                 modKey);
         this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W, modKey);
         this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey);
-        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.filePrintAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey);
         this.filePreferencesAccel = KeyStroke.getKeyStroke(KeyEvent.VK_COMMA,
                 modKey);
-        this.gamePlayMapAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
-        this.gameEditNoteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N, modKey
-                | InputEvent.SHIFT_DOWN_MASK);
+        this.gamePlayMapAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
+        this.gameEditNoteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N,
+                modKey | InputEvent.SHIFT_DOWN_MASK);
         this.battleItemAccel = KeyStroke.getKeyStroke(KeyEvent.VK_M, modKey);
         this.battleSpellAccel = KeyStroke.getKeyStroke(KeyEvent.VK_L, modKey);
         this.battleStealAccel = KeyStroke.getKeyStroke(KeyEvent.VK_T, modKey);
@@ -253,11 +252,11 @@ public class MenuManager {
 
     private void createMenus() {
         this.mainMenuBar = new JMenuBar();
-        JMenu fileMenu = new JMenu("File");
-        JMenu gameMenu = new JMenu("Game");
-        JMenu battleMenu = new JMenu("Battle");
-        JMenu editorMenu = new JMenu("Editor");
-        JMenu helpMenu = new JMenu("Help");
+        final JMenu fileMenu = new JMenu("File");
+        final JMenu gameMenu = new JMenu("Game");
+        final JMenu battleMenu = new JMenu("Battle");
+        final JMenu editorMenu = new JMenu("Editor");
+        final JMenu helpMenu = new JMenu("Help");
         this.fileOpenSavedGame = new JMenuItem("Open Saved Game...");
         this.fileOpenSavedGame.setAccelerator(this.fileOpenSavedGameAccel);
         this.fileClose = new JMenuItem("Close");
@@ -328,7 +327,7 @@ public class MenuManager {
         fileMenu.add(this.fileSave);
         fileMenu.add(this.fileSaveAs);
         fileMenu.add(this.filePrint);
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             fileMenu.add(this.filePreferences);
             fileMenu.add(this.fileExit);
         }
@@ -348,12 +347,12 @@ public class MenuManager {
         battleMenu.add(this.battleSteal);
         battleMenu.add(this.battleDrain);
         battleMenu.add(this.battleEndTurn);
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             editorMenu.add(ge.createEditorCommandsMenu());
         }
-        if (!(System.getProperty("os.name").equalsIgnoreCase("Mac OS X"))) {
+        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             helpMenu.add(this.helpAbout);
         }
         helpMenu.add(this.helpObjectHelp);
@@ -382,9 +381,9 @@ public class MenuManager {
         this.helpAbout.setEnabled(true);
         this.helpObjectHelp.setEnabled(true);
         this.helpWhatsNew.setEnabled(true);
-        ArrayList<GenericEditor> allEditors = DungeonDiver3.getApplication()
-                .getAllEditors();
-        for (GenericEditor ge : allEditors) {
+        final ArrayList<GenericEditor> allEditors = DungeonDiver3
+                .getApplication().getAllEditors();
+        for (final GenericEditor ge : allEditors) {
             ge.enableEditorCommands();
         }
     }
@@ -405,7 +404,7 @@ public class MenuManager {
         public void actionPerformed(final ActionEvent e) {
             try {
                 final Application app = DungeonDiver3.getApplication();
-                BattleLogic ba = app.getBattle();
+                final BattleLogic ba = app.getBattle();
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("Open Saved Game...")) {
                     app.getScenarioManager().loadSavedGame();
@@ -446,7 +445,7 @@ public class MenuManager {
                     PreferencesManager.showPrefs();
                 } else if (cmd.equals("Play")) {
                     // Play the current scenario
-                    boolean proceed = app.getGameManager().newGame();
+                    final boolean proceed = app.getGameManager().newGame();
                     if (proceed) {
                         app.getGameManager().playMap();
                     }
@@ -458,7 +457,7 @@ public class MenuManager {
                     CharacterRegistration.unregisterCharacter();
                 } else if (cmd.equals("Remove Character...")) {
                     // Confirm
-                    int confirm = CommonDialogs.showConfirmDialog(
+                    final int confirm = CommonDialogs.showConfirmDialog(
                             "WARNING: This will DELETE the character from disk,\n"
                                     + "and CANNOT be undone! Proceed anyway?",
                             "Remove Character" + this.suffix);
@@ -471,7 +470,7 @@ public class MenuManager {
                 } else if (cmd.equals("Show Inventory...")) {
                     InventoryViewer.showInventoryDialog();
                 } else if (cmd.equals("Pick Leader...")) {
-                    PartyMember pm = PartyManager.getParty()
+                    final PartyMember pm = PartyManager.getParty()
                             .pickOnePartyMember();
                     if (pm != null) {
                         PartyManager.getParty().setLeader(pm.getName());
@@ -507,7 +506,7 @@ public class MenuManager {
                     app.getHistoryManager().showHelp();
                 }
                 MenuManager.this.checkFlags();
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver3.getErrorLogger().logError(ex);
             }
         }

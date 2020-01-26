@@ -14,7 +14,7 @@ public class PersonalityManager {
     private static Personality[] CACHE;
     private static String[] DESC_CACHE;
 
-    public static Personality selectPersonality(JFrame owner) {
+    public static Personality selectPersonality(final JFrame owner) {
         PersonalityManager.createCache();
         final String[] names = PersonalityConstants.getPersonalityNames();
         String dialogResult = null;
@@ -34,7 +34,7 @@ public class PersonalityManager {
         }
     }
 
-    public static Personality getPersonality(int personalityID) {
+    public static Personality getPersonality(final int personalityID) {
         PersonalityManager.createCache();
         return PersonalityManager.CACHE[personalityID];
     }
@@ -48,7 +48,7 @@ public class PersonalityManager {
             if (!PersonalityConstants.personalitiesReady()) {
                 PersonalityConstants.initPersonalities();
             }
-            int pc = PersonalityConstants.getPersonalitiesCount();
+            final int pc = PersonalityConstants.getPersonalitiesCount();
             PersonalityManager.CACHE = new Personality[pc];
             PersonalityManager.DESC_CACHE = new String[pc];
             for (int x = 0; x < pc; x++) {

@@ -30,7 +30,8 @@ public class Amulet extends AbstractTrap {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
+    public void postMoveAction(final boolean ie, final int dirX,
+            final int dirY) {
         DDRemix.getApplication().showMessage("You no longer slide on ice!");
         final GameLogicManager glm = DDRemix.getApplication().getGameManager();
         glm.activateEffect(MazeEffectConstants.EFFECT_STICKY);

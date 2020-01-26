@@ -12,11 +12,12 @@ import com.puttysoftware.dungeondiver4.resourcemanagers.ObjectImageConstants;
 
 public abstract class AbstractTransientObject extends AbstractDungeonObject {
     // Fields
-    private String name;
+    private final String name;
     private int dir;
 
     // Constructors
-    protected AbstractTransientObject(String newName, int arrowColor) {
+    protected AbstractTransientObject(final String newName,
+            final int arrowColor) {
         super(true, false);
         this.name = newName;
         this.dir = DirectionConstants.DIRECTION_NONE;
@@ -25,8 +26,8 @@ public abstract class AbstractTransientObject extends AbstractDungeonObject {
 
     // Methods
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
         // Do nothing
     }
 
@@ -69,7 +70,7 @@ public abstract class AbstractTransientObject extends AbstractDungeonObject {
         return "";
     }
 
-    public final void setDirection(int newDir) {
+    public final void setDirection(final int newDir) {
         this.dir = newDir;
     }
 
@@ -84,12 +85,12 @@ public abstract class AbstractTransientObject extends AbstractDungeonObject {
     }
 
     @Override
-    public int getCustomProperty(int propID) {
+    public int getCustomProperty(final int propID) {
         return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
-    public void setCustomProperty(int propID, int value) {
+    public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
 }

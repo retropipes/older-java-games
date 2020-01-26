@@ -16,7 +16,7 @@ public class Element {
     private final Faith faith;
 
     // Constructor
-    public Element(Faith f) {
+    public Element(final Faith f) {
         this.faith = f;
         this.transformRed = f.getColor().getRed() / 256.0;
         this.transformGreen = f.getColor().getGreen() / 256.0;
@@ -38,20 +38,20 @@ public class Element {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((this.faith == null) ? 0 : this.faith.hashCode());
+                + (this.faith == null ? 0 : this.faith.hashCode());
         result = prime * result
-                + ((this.name == null) ? 0 : this.name.hashCode());
+                + (this.name == null ? 0 : this.name.hashCode());
         long temp;
         temp = Double.doubleToLongBits(this.transformBlue);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformGreen);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + (int) (temp ^ temp >>> 32);
         temp = Double.doubleToLongBits(this.transformRed);
-        return prime * result + (int) (temp ^ (temp >>> 32));
+        return prime * result + (int) (temp ^ temp >>> 32);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -61,7 +61,7 @@ public class Element {
         if (!(obj instanceof Element)) {
             return false;
         }
-        Element other = (Element) obj;
+        final Element other = (Element) obj;
         if (this.faith == null) {
             if (other.faith != null) {
                 return false;

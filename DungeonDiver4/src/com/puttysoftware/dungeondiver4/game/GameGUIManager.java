@@ -96,7 +96,7 @@ class GameGUIManager {
     }
 
     public void showOutput() {
-        Application app = DungeonDiver4.getApplication();
+        final Application app = DungeonDiver4.getApplication();
         app.getMenuManager().setGameMenus();
         if (PreferencesManager
                 .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
@@ -127,7 +127,7 @@ class GameGUIManager {
         this.messageLabel.setText(msg);
     }
 
-    private void resetBorderPane(DungeonEffectManager em) {
+    private void resetBorderPane(final DungeonEffectManager em) {
         this.borderPane.removeAll();
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.messageLabel, BorderLayout.NORTH);
@@ -138,8 +138,8 @@ class GameGUIManager {
     public void redrawDungeon() {
         // Draw the dungeon, if it is visible
         if (this.outputFrame.isVisible()) {
-            Application app = DungeonDiver4.getApplication();
-            Dungeon m = app.getDungeonManager().getDungeon();
+            final Application app = DungeonDiver4.getApplication();
+            final Dungeon m = app.getDungeonManager().getDungeon();
             int x, y, u, v;
             int xFix, yFix;
             boolean visible;
@@ -156,116 +156,118 @@ class GameGUIManager {
                     try {
                         if (visible) {
                             if (this.trueSightFlag) {
-                                AbstractDungeonObject obj1 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        DungeonConstants.LAYER_GROUND)
+                                final AbstractDungeonObject obj1 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                DungeonConstants.LAYER_GROUND)
                                         .editorRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                AbstractDungeonObject obj2 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        DungeonConstants.LAYER_OBJECT)
+                                final AbstractDungeonObject obj2 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                DungeonConstants.LAYER_OBJECT)
                                         .editorRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                BufferedImageIcon img1 = ObjectImageManager
-                                        .getImage(obj1.getName(), obj1
-                                                .getBaseID(), obj1
-                                                .getTemplateColor(), obj1
-                                                .getAttributeID(), obj1
-                                                .getAttributeTemplateColor());
-                                BufferedImageIcon img2 = ObjectImageManager
-                                        .getImage(obj2.getName(), obj2
-                                                .getBaseID(), obj2
-                                                .getTemplateColor(), obj2
-                                                .getAttributeID(), obj2
-                                                .getAttributeTemplateColor());
+                                final BufferedImageIcon img1 = ObjectImageManager
+                                        .getImage(obj1.getName(),
+                                                obj1.getBaseID(),
+                                                obj1.getTemplateColor(),
+                                                obj1.getAttributeID(),
+                                                obj1.getAttributeTemplateColor());
+                                final BufferedImageIcon img2 = ObjectImageManager
+                                        .getImage(obj2.getName(),
+                                                obj2.getBaseID(),
+                                                obj2.getTemplateColor(),
+                                                obj2.getAttributeID(),
+                                                obj2.getAttributeTemplateColor());
                                 if (u == y && v == x) {
-                                    AbstractDungeonObject obj3 = new Player()
+                                    final AbstractDungeonObject obj3 = new Player()
                                             .editorRenderHook(y, x,
                                                     m.getPlayerLocationZ());
-                                    BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                    final BufferedImageIcon img3 = ObjectImageManager
+                                            .getImage(obj3.getName(),
                                                     obj3.getBaseID(),
                                                     obj3.getTemplateColor(),
                                                     obj3.getAttributeID(),
                                                     obj3.getAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else if (m.hasNote(x, y,
                                         m.getPlayerLocationZ())) {
-                                    AbstractDungeonObject obj3 = NOTE
+                                    final AbstractDungeonObject obj3 = GameGUIManager.NOTE
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
-                                    BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                    final BufferedImageIcon img3 = ObjectImageManager
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else {
                                     this.drawGrid.setImageCell(ImageTransformer
                                             .getCompositeImage(img1, img2),
                                             xFix, yFix);
                                 }
                             } else {
-                                AbstractDungeonObject obj1 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        DungeonConstants.LAYER_GROUND)
+                                final AbstractDungeonObject obj1 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                DungeonConstants.LAYER_GROUND)
                                         .gameRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                AbstractDungeonObject obj2 = m.getCell(y, x,
-                                        m.getPlayerLocationZ(),
-                                        DungeonConstants.LAYER_OBJECT)
+                                final AbstractDungeonObject obj2 = m
+                                        .getCell(y, x, m.getPlayerLocationZ(),
+                                                DungeonConstants.LAYER_OBJECT)
                                         .gameRenderHook(y, x,
                                                 m.getPlayerLocationZ());
-                                BufferedImageIcon img1 = ObjectImageManager
-                                        .getImage(
-                                                obj1.getName(),
+                                final BufferedImageIcon img1 = ObjectImageManager
+                                        .getImage(obj1.getName(),
                                                 obj1.getGameBaseID(),
                                                 obj1.getGameTemplateColor(),
                                                 obj1.getGameAttributeID(),
                                                 obj1.getGameAttributeTemplateColor());
-                                BufferedImageIcon img2 = ObjectImageManager
-                                        .getImage(
-                                                obj2.getName(),
+                                final BufferedImageIcon img2 = ObjectImageManager
+                                        .getImage(obj2.getName(),
                                                 obj2.getGameBaseID(),
                                                 obj2.getGameTemplateColor(),
                                                 obj2.getGameAttributeID(),
                                                 obj2.getGameAttributeTemplateColor());
                                 if (u == y && v == x) {
-                                    AbstractDungeonObject obj3 = new Player()
+                                    final AbstractDungeonObject obj3 = new Player()
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
-                                    BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                    final BufferedImageIcon img3 = ObjectImageManager
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else if (m.hasNote(x, y,
                                         m.getPlayerLocationZ())) {
-                                    AbstractDungeonObject obj3 = NOTE
+                                    final AbstractDungeonObject obj3 = GameGUIManager.NOTE
                                             .gameRenderHook(y, x,
                                                     m.getPlayerLocationZ());
-                                    BufferedImageIcon img3 = ObjectImageManager
-                                            .getImage(
-                                                    obj3.getName(),
+                                    final BufferedImageIcon img3 = ObjectImageManager
+                                            .getImage(obj3.getName(),
                                                     obj3.getGameBaseID(),
                                                     obj3.getGameTemplateColor(),
                                                     obj3.getGameAttributeID(),
                                                     obj3.getGameAttributeTemplateColor());
-                                    this.drawGrid.setImageCell(ImageTransformer
-                                            .getVirtualCompositeImage(img1,
-                                                    img2, img3), xFix, yFix);
+                                    this.drawGrid.setImageCell(
+                                            ImageTransformer
+                                                    .getVirtualCompositeImage(
+                                                            img1, img2, img3),
+                                            xFix, yFix);
                                 } else {
                                     this.drawGrid.setImageCell(ImageTransformer
                                             .getCompositeImage(img1, img2),
@@ -273,15 +275,18 @@ class GameGUIManager {
                                 }
                             }
                         } else {
-                            this.drawGrid.setImageCell(ObjectImageManager
-                                    .getImage(DARK.getName(), DARK.getBaseID(),
+                            this.drawGrid.setImageCell(
+                                    ObjectImageManager.getImage(
+                                            GameGUIManager.DARK.getName(),
+                                            GameGUIManager.DARK.getBaseID(),
                                             ColorConstants.COLOR_NONE,
-                                            DARK.getAttributeID(),
-                                            ColorConstants.COLOR_NONE), xFix,
-                                    yFix);
+                                            GameGUIManager.DARK
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
-                        AbstractDungeonObject ev = new EmptyVoid()
+                        final AbstractDungeonObject ev = new EmptyVoid()
                                 .gameRenderHook(y, x, m.getPlayerLocationZ());
                         this.drawGrid.setImageCell(
                                 ObjectImageManager.getImage(ev.getName(),
@@ -291,7 +296,7 @@ class GameGUIManager {
                                         ev.getGameAttributeTemplateColor()),
                                 xFix, yFix);
                     } catch (final NullPointerException np) {
-                        AbstractDungeonObject ev = new EmptyVoid()
+                        final AbstractDungeonObject ev = new EmptyVoid()
                                 .gameRenderHook(y, x, m.getPlayerLocationZ());
                         this.drawGrid.setImageCell(
                                 ObjectImageManager.getImage(ev.getName(),
@@ -314,12 +319,12 @@ class GameGUIManager {
         }
     }
 
-    void redrawOneSquare(int x, int y, boolean useDelay,
-            AbstractDungeonObject obj4) {
+    void redrawOneSquare(final int x, final int y, final boolean useDelay,
+            final AbstractDungeonObject obj4) {
         // Draw the dungeon, if it is visible
         if (this.outputFrame.isVisible()) {
-            Application app = DungeonDiver4.getApplication();
-            Dungeon m = app.getDungeonManager().getDungeon();
+            final Application app = DungeonDiver4.getApplication();
+            final Dungeon m = app.getDungeonManager().getDungeon();
             int u, v;
             int xFix, yFix;
             boolean visible;
@@ -328,128 +333,127 @@ class GameGUIManager {
             v = m.getPlayerLocationY();
             xFix = x - this.vwMgr.getViewingWindowLocationX();
             yFix = y - this.vwMgr.getViewingWindowLocationY();
-            visible = app.getDungeonManager().getDungeon()
-                    .isSquareVisible(u, v, y, x);
-            onScreen = (xFix >= 0 && xFix < this.vwMgr.getViewingWindowSizeX()
-                    && yFix >= 0 && yFix < this.vwMgr.getViewingWindowSizeY());
+            visible = app.getDungeonManager().getDungeon().isSquareVisible(u, v,
+                    y, x);
+            onScreen = xFix >= 0 && xFix < this.vwMgr.getViewingWindowSizeX()
+                    && yFix >= 0 && yFix < this.vwMgr.getViewingWindowSizeY();
             try {
                 if (visible) {
                     if (this.trueSightFlag) {
-                        AbstractDungeonObject obj1 = app
-                                .getDungeonManager()
-                                .getDungeon()
+                        final AbstractDungeonObject obj1 = app
+                                .getDungeonManager().getDungeon()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         DungeonConstants.LAYER_GROUND)
                                 .editorRenderHook(y, x, m.getPlayerLocationZ());
-                        AbstractDungeonObject obj2 = app
-                                .getDungeonManager()
-                                .getDungeon()
+                        final AbstractDungeonObject obj2 = app
+                                .getDungeonManager().getDungeon()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         DungeonConstants.LAYER_OBJECT)
                                 .editorRenderHook(y, x, m.getPlayerLocationZ());
-                        BufferedImageIcon img1 = ObjectImageManager.getImage(
-                                obj1.getName(), obj1.getBaseID(),
-                                obj1.getTemplateColor(), obj1.getAttributeID(),
-                                obj1.getAttributeTemplateColor());
-                        BufferedImageIcon img2 = ObjectImageManager.getImage(
-                                obj2.getName(), obj2.getBaseID(),
-                                obj2.getTemplateColor(), obj2.getAttributeID(),
-                                obj2.getAttributeTemplateColor());
+                        final BufferedImageIcon img1 = ObjectImageManager
+                                .getImage(obj1.getName(), obj1.getBaseID(),
+                                        obj1.getTemplateColor(),
+                                        obj1.getAttributeID(),
+                                        obj1.getAttributeTemplateColor());
+                        final BufferedImageIcon img2 = ObjectImageManager
+                                .getImage(obj2.getName(), obj2.getBaseID(),
+                                        obj2.getTemplateColor(),
+                                        obj2.getAttributeID(),
+                                        obj2.getAttributeTemplateColor());
                         if (u == y && v == x) {
-                            AbstractDungeonObject obj3 = new Player()
+                            final AbstractDungeonObject obj3 = new Player()
                                     .editorRenderHook(y, x,
                                             m.getPlayerLocationZ());
-                            BufferedImageIcon img3 = ObjectImageManager
+                            final BufferedImageIcon img3 = ObjectImageManager
                                     .getImage(obj3.getName(), obj3.getBaseID(),
                                             obj3.getTemplateColor(),
                                             obj3.getAttributeID(),
                                             obj3.getAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img3), xFix, yFix);
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img3),
+                                    xFix, yFix);
                         } else {
                             this.drawGrid.setImageCell(ImageTransformer
                                     .getCompositeImage(img1, img2), xFix, yFix);
                         }
                     } else {
-                        AbstractDungeonObject obj1 = app
-                                .getDungeonManager()
-                                .getDungeon()
+                        final AbstractDungeonObject obj1 = app
+                                .getDungeonManager().getDungeon()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         DungeonConstants.LAYER_GROUND)
                                 .gameRenderHook(y, x, m.getPlayerLocationZ());
-                        AbstractDungeonObject obj2 = app
-                                .getDungeonManager()
-                                .getDungeon()
+                        final AbstractDungeonObject obj2 = app
+                                .getDungeonManager().getDungeon()
                                 .getCell(y, x, m.getPlayerLocationZ(),
                                         DungeonConstants.LAYER_OBJECT)
                                 .gameRenderHook(y, x, m.getPlayerLocationZ());
-                        BufferedImageIcon img1 = ObjectImageManager.getImage(
-                                obj1.getName(), obj1.getGameBaseID(),
-                                obj1.getGameTemplateColor(),
-                                obj1.getGameAttributeID(),
-                                obj1.getGameAttributeTemplateColor());
-                        BufferedImageIcon img2 = ObjectImageManager.getImage(
-                                obj2.getName(), obj2.getGameBaseID(),
-                                obj2.getGameTemplateColor(),
-                                obj2.getGameAttributeID(),
-                                obj2.getGameAttributeTemplateColor());
+                        final BufferedImageIcon img1 = ObjectImageManager
+                                .getImage(obj1.getName(), obj1.getGameBaseID(),
+                                        obj1.getGameTemplateColor(),
+                                        obj1.getGameAttributeID(),
+                                        obj1.getGameAttributeTemplateColor());
+                        final BufferedImageIcon img2 = ObjectImageManager
+                                .getImage(obj2.getName(), obj2.getGameBaseID(),
+                                        obj2.getGameTemplateColor(),
+                                        obj2.getGameAttributeID(),
+                                        obj2.getGameAttributeTemplateColor());
                         if (u == y && v == x) {
-                            AbstractDungeonObject obj3 = new Player()
+                            final AbstractDungeonObject obj3 = new Player()
                                     .gameRenderHook(y, x,
                                             m.getPlayerLocationZ());
-                            BufferedImageIcon img3 = ObjectImageManager
-                                    .getImage(obj3.getName(), obj3
-                                            .getGameBaseID(), obj3
-                                            .getGameTemplateColor(), obj3
-                                            .getGameAttributeID(), obj3
-                                            .getGameAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img3), xFix, yFix);
+                            final BufferedImageIcon img3 = ObjectImageManager
+                                    .getImage(obj3.getName(),
+                                            obj3.getGameBaseID(),
+                                            obj3.getGameTemplateColor(),
+                                            obj3.getGameAttributeID(),
+                                            obj3.getGameAttributeTemplateColor());
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img3),
+                                    xFix, yFix);
                         } else {
-                            AbstractDungeonObject obj5 = obj4.gameRenderHook(y,
-                                    x, m.getPlayerLocationZ());
-                            BufferedImageIcon img4 = ObjectImageManager
-                                    .getImage(obj5.getName(), obj5
-                                            .getGameBaseID(), obj5
-                                            .getGameTemplateColor(), obj5
-                                            .getGameAttributeID(), obj5
-                                            .getGameAttributeTemplateColor());
-                            this.drawGrid.setImageCell(
-                                    ImageTransformer.getVirtualCompositeImage(
-                                            img1, img2, img4), xFix, yFix);
+                            final AbstractDungeonObject obj5 = obj4
+                                    .gameRenderHook(y, x,
+                                            m.getPlayerLocationZ());
+                            final BufferedImageIcon img4 = ObjectImageManager
+                                    .getImage(obj5.getName(),
+                                            obj5.getGameBaseID(),
+                                            obj5.getGameTemplateColor(),
+                                            obj5.getGameAttributeID(),
+                                            obj5.getGameAttributeTemplateColor());
+                            this.drawGrid.setImageCell(ImageTransformer
+                                    .getVirtualCompositeImage(img1, img2, img4),
+                                    xFix, yFix);
                         }
                     }
                 } else {
-                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
-                            DARK.getName(), DARK.getBaseID(),
-                            ColorConstants.COLOR_NONE, DARK.getAttributeID(),
-                            ColorConstants.COLOR_NONE), xFix, yFix);
+                    this.drawGrid
+                            .setImageCell(
+                                    ObjectImageManager.getImage(
+                                            GameGUIManager.DARK.getName(),
+                                            GameGUIManager.DARK.getBaseID(),
+                                            ColorConstants.COLOR_NONE,
+                                            GameGUIManager.DARK
+                                                    .getAttributeID(),
+                                            ColorConstants.COLOR_NONE),
+                                    xFix, yFix);
                 }
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 if (onScreen) {
-                    AbstractDungeonObject ev = new EmptyVoid().gameRenderHook(
-                            y, x, m.getPlayerLocationZ());
-                    this.drawGrid.setImageCell(
-                            ObjectImageManager.getImage(ev.getName(),
-                                    ev.getGameBaseID(),
-                                    ev.getGameTemplateColor(),
-                                    ev.getGameAttributeID(),
-                                    ev.getGameAttributeTemplateColor()), xFix,
-                            yFix);
+                    final AbstractDungeonObject ev = new EmptyVoid()
+                            .gameRenderHook(y, x, m.getPlayerLocationZ());
+                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                            ev.getName(), ev.getGameBaseID(),
+                            ev.getGameTemplateColor(), ev.getGameAttributeID(),
+                            ev.getGameAttributeTemplateColor()), xFix, yFix);
                 }
             } catch (final NullPointerException np) {
                 if (onScreen) {
-                    AbstractDungeonObject ev = new EmptyVoid().gameRenderHook(
-                            y, x, m.getPlayerLocationZ());
-                    this.drawGrid.setImageCell(
-                            ObjectImageManager.getImage(ev.getName(),
-                                    ev.getGameBaseID(),
-                                    ev.getGameTemplateColor(),
-                                    ev.getGameAttributeID(),
-                                    ev.getGameAttributeTemplateColor()), xFix,
-                            yFix);
+                    final AbstractDungeonObject ev = new EmptyVoid()
+                            .gameRenderHook(y, x, m.getPlayerLocationZ());
+                    this.drawGrid.setImageCell(ObjectImageManager.getImage(
+                            ev.getName(), ev.getGameBaseID(),
+                            ev.getGameTemplateColor(), ev.getGameAttributeID(),
+                            ev.getGameAttributeTemplateColor()), xFix, yFix);
                 }
             }
             if (this.knm) {
@@ -463,7 +467,7 @@ class GameGUIManager {
                 // Delay, for animation purposes
                 try {
                     Thread.sleep(60);
-                } catch (InterruptedException ie) {
+                } catch (final InterruptedException ie) {
                     // Ignore
                 }
             }
@@ -474,14 +478,14 @@ class GameGUIManager {
         this.knm = true;
     }
 
-    void updateGameGUI(DungeonEffectManager em) {
+    void updateGameGUI(final DungeonEffectManager em) {
         this.resetBorderPane(em);
         this.sg.updateImages();
         this.sg.updateStats();
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
@@ -502,7 +506,7 @@ class GameGUIManager {
     }
 
     private void partialSetUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
@@ -515,8 +519,9 @@ class GameGUIManager {
         this.outputFrame.setContentPane(this.borderPane);
         this.outputFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        this.outputPane.setLayout(new GridLayout(this.vwMgr
-                .getViewingWindowSizeX(), this.vwMgr.getViewingWindowSizeY()));
+        this.outputPane
+                .setLayout(new GridLayout(this.vwMgr.getViewingWindowSizeX(),
+                        this.vwMgr.getViewingWindowSizeY()));
         this.outputFrame.setResizable(false);
         this.outputFrame.addKeyListener(handler);
         this.outputFrame.addWindowListener(handler);
@@ -524,15 +529,15 @@ class GameGUIManager {
         this.outputFrame.setBackground(new Color(223, 223, 223));
     }
 
-    private class EventHandler implements KeyListener, WindowListener,
-            MouseListener {
+    private class EventHandler
+            implements KeyListener, WindowListener, MouseListener {
         EventHandler() {
             // Do nothing
         }
 
         @Override
         public void keyPressed(final KeyEvent e) {
-            GameLogicManager glm = DungeonDiver4.getApplication()
+            final GameLogicManager glm = DungeonDiver4.getApplication()
                     .getGameManager();
             if (!glm.isArrowActive()) {
                 if (!PreferencesManager.oneMove()) {
@@ -547,7 +552,7 @@ class GameGUIManager {
 
         @Override
         public void keyReleased(final KeyEvent e) {
-            GameLogicManager glm = DungeonDiver4.getApplication()
+            final GameLogicManager glm = DungeonDiver4.getApplication()
                     .getGameManager();
             if (!glm.isArrowActive()) {
                 if (PreferencesManager.oneMove()) {
@@ -567,7 +572,7 @@ class GameGUIManager {
 
         public void handleMovement(final KeyEvent e) {
             try {
-                GameLogicManager glm = DungeonDiver4.getApplication()
+                final GameLogicManager glm = DungeonDiver4.getApplication()
                         .getGameManager();
                 final int keyCode = e.getKeyCode();
                 if (e.isShiftDown()) {
@@ -644,14 +649,14 @@ class GameGUIManager {
                 if (glm.isPullInProgress()) {
                     glm.setPullInProgress(false);
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
 
         public void handleArrows(final KeyEvent e) {
             try {
-                GameLogicManager glm = DungeonDiver4.getApplication()
+                final GameLogicManager glm = DungeonDiver4.getApplication()
                         .getGameManager();
                 final int keyCode = e.getKeyCode();
                 switch (keyCode) {
@@ -710,7 +715,7 @@ class GameGUIManager {
                 default:
                     break;
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -729,7 +734,7 @@ class GameGUIManager {
         @Override
         public void windowClosing(final WindowEvent we) {
             try {
-                Application app = DungeonDiver4.getApplication();
+                final Application app = DungeonDiver4.getApplication();
                 boolean success = false;
                 int status = 0;
                 if (app.getDungeonManager().getDirty()) {
@@ -745,7 +750,7 @@ class GameGUIManager {
                 } else {
                     app.getGameManager().exitGame();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
@@ -784,7 +789,7 @@ class GameGUIManager {
         @Override
         public void mouseClicked(final MouseEvent e) {
             try {
-                GameLogicManager gm = DungeonDiver4.getApplication()
+                final GameLogicManager gm = DungeonDiver4.getApplication()
                         .getGameManager();
                 if (gm.usingAnItem()) {
                     final int x = e.getX();
@@ -801,7 +806,7 @@ class GameGUIManager {
                     final int y = e.getY();
                     gm.controllableTeleportHandler(x, y);
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }

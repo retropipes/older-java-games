@@ -932,8 +932,8 @@ public class Maze implements MazeConstants {
         // Make base paths the same
         m.basePath = this.basePath;
         // Create metafile reader
-        final XDataReader metaReader = new XDataReader(m.basePath
-                + File.separator + "metafile.xml", "maze");
+        final XDataReader metaReader = new XDataReader(
+                m.basePath + File.separator + "metafile.xml", "maze");
         // Read metafile
         final int version = m.readMazeMetafile(metaReader);
         metaReader.close();
@@ -974,11 +974,11 @@ public class Maze implements MazeConstants {
         this.readMazeLevel(reader, FormatConstants.LATEST_MAZE_FORMAT);
     }
 
-    private void readMazeLevel(final XDataReader reader, final int formatVersion)
-            throws IOException {
+    private void readMazeLevel(final XDataReader reader,
+            final int formatVersion) throws IOException {
         if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
-            this.mazeData = LayeredTower
-                    .readLayeredTower(reader, formatVersion);
+            this.mazeData = LayeredTower.readLayeredTower(reader,
+                    formatVersion);
             this.mazeData.readSavedTowerState(reader, formatVersion);
         } else {
             throw new IOException("Unknown maze format version!");
@@ -991,8 +991,8 @@ public class Maze implements MazeConstants {
 
     public void writeMaze() throws IOException {
         // Create metafile writer
-        final XDataWriter metaWriter = new XDataWriter(this.basePath
-                + File.separator + "metafile.xml", "maze");
+        final XDataWriter metaWriter = new XDataWriter(
+                this.basePath + File.separator + "metafile.xml", "maze");
         // Write metafile
         this.writeMazeMetafile(metaWriter);
         // Close writer
@@ -1010,7 +1010,8 @@ public class Maze implements MazeConstants {
                 + this.activeLevel + ".xml", "level");
     }
 
-    private void writeMazeMetafile(final XDataWriter writer) throws IOException {
+    private void writeMazeMetafile(final XDataWriter writer)
+            throws IOException {
         if (this.xmlPrefixHandler != null) {
             this.xmlPrefixHandler.writePrefix(writer);
         }

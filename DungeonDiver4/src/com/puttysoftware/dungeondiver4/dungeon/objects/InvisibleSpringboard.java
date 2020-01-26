@@ -23,14 +23,14 @@ public class InvisibleSpringboard extends Springboard {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final DungeonObjectInventory inv) {
-        DungeonDiver4.getApplication().showMessage(
-                "Some unseen force prevents movement that way...");
+        DungeonDiver4.getApplication()
+                .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final DungeonObjectInventory inv) {
-        Application app = DungeonDiver4.getApplication();
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final DungeonObjectInventory inv) {
+        final Application app = DungeonDiver4.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_SPRING);

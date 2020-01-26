@@ -28,7 +28,7 @@ public class InvisibleWall extends AbstractWall {
     }
 
     @Override
-    public boolean isConditionallySolid(DungeonObjectInventory inv) {
+    public boolean isConditionallySolid(final DungeonObjectInventory inv) {
         // Disallow passing through Invisible Walls under ANY circumstances
         return true;
     }

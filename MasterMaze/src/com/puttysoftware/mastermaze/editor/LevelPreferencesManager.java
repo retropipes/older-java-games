@@ -102,11 +102,11 @@ public class LevelPreferencesManager {
         }
         m.setUseAlternateOffset(this.useAlternateOffset.isSelected());
         if (this.useAlternateOffset.isSelected()) {
-            m.setAlternateNextLevelOffset(Integer
-                    .parseInt(this.alternateNextLevel.getText()));
+            m.setAlternateNextLevelOffset(
+                    Integer.parseInt(this.alternateNextLevel.getText()));
         } else {
-            m.setAlternateNextLevel(Integer.parseInt(this.alternateNextLevel
-                    .getText()) - 1);
+            m.setAlternateNextLevel(
+                    Integer.parseInt(this.alternateNextLevel.getText()) - 1);
         }
         int newER = m.getExploreRadius();
         try {
@@ -134,12 +134,12 @@ public class LevelPreferencesManager {
             m.deactivateTimer();
         }
         m.setAutoFinishEnabled(this.autoFinishEnabled.isSelected());
-        m.setAutoFinishThreshold(Integer.parseInt(this.autoFinishThreshold
-                .getText()));
-        m.setAlternateAutoFinishEnabled(this.alternateAutoFinishEnabled
-                .isSelected());
-        m.setAlternateAutoFinishThreshold(Integer
-                .parseInt(this.alternateAutoFinishThreshold.getText()));
+        m.setAutoFinishThreshold(
+                Integer.parseInt(this.autoFinishThreshold.getText()));
+        m.setAlternateAutoFinishEnabled(
+                this.alternateAutoFinishEnabled.isSelected());
+        m.setAlternateAutoFinishThreshold(
+                Integer.parseInt(this.alternateAutoFinishThreshold.getText()));
         int newFMS = m.getFinishMoveSpeed();
         try {
             newFMS = Integer.parseInt(this.finishMoveSpeed.getText());
@@ -166,8 +166,8 @@ public class LevelPreferencesManager {
         final Maze m = MasterMaze.getApplication().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
@@ -179,11 +179,11 @@ public class LevelPreferencesManager {
         }
         this.useAlternateOffset.setSelected(m.useAlternateOffset());
         if (m.useAlternateOffset()) {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel()));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel()));
         } else {
-            this.alternateNextLevel.setText(Integer.toString(m
-                    .getAlternateNextLevel() + 1));
+            this.alternateNextLevel
+                    .setText(Integer.toString(m.getAlternateNextLevel() + 1));
         }
         this.exploreRadius.setText(Integer.toString(m.getExploreRadius()));
         final int vm = m.getVisionMode();
@@ -204,12 +204,12 @@ public class LevelPreferencesManager {
             this.timeLimit.setText("0");
         }
         this.autoFinishEnabled.setSelected(m.getAutoFinishEnabled());
-        this.autoFinishThreshold.setText(Integer.toString(m
-                .getAutoFinishThreshold()));
-        this.alternateAutoFinishEnabled.setSelected(m
-                .getAlternateAutoFinishEnabled());
-        this.alternateAutoFinishThreshold.setText(Integer.toString(m
-                .getAlternateAutoFinishThreshold()));
+        this.autoFinishThreshold
+                .setText(Integer.toString(m.getAutoFinishThreshold()));
+        this.alternateAutoFinishEnabled
+                .setSelected(m.getAlternateAutoFinishEnabled());
+        this.alternateAutoFinishThreshold
+                .setText(Integer.toString(m.getAlternateAutoFinishThreshold()));
         this.illumination.setText(Integer.toString(m.getVisionRadius()));
         this.finishMoveSpeed.setText(Integer.toString(m.getFinishMoveSpeed()));
     }

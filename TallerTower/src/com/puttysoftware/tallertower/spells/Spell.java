@@ -55,10 +55,10 @@ public class Spell {
         int result = 1;
         result = prime * result + this.cost;
         result = prime * result
-                + ((this.effect == null) ? 0 : this.effect.hashCode());
+                + (this.effect == null ? 0 : this.effect.hashCode());
         result = prime * result + this.soundEffect;
         return prime * result
-                + ((this.target == null) ? 0 : this.target.hashCode());
+                + (this.target == null ? 0 : this.target.hashCode());
     }
 
     @Override

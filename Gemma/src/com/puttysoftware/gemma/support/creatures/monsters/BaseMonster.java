@@ -29,7 +29,7 @@ public abstract class BaseMonster extends Creature {
         super(true);
         this.setAI(BaseMonster.getInitialAI());
         this.element = new Element(FaithManager.getFaith(0));
-        SpellBook spells = new SystemMonsterSpellBook();
+        final SpellBook spells = new SystemMonsterSpellBook();
         spells.learnAllSpells();
         this.setSpellBook(spells);
     }
@@ -63,7 +63,7 @@ public abstract class BaseMonster extends Creature {
         return this.element;
     }
 
-    final void setType(String newType) {
+    final void setType(final String newType) {
         this.type = newType;
     }
 
@@ -85,13 +85,12 @@ public abstract class BaseMonster extends Creature {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result
-                + ((this.element == null) ? 0 : this.element.hashCode());
-        return prime * result
-                + ((this.type == null) ? 0 : this.type.hashCode());
+                + (this.element == null ? 0 : this.element.hashCode());
+        return prime * result + (this.type == null ? 0 : this.type.hashCode());
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -101,7 +100,7 @@ public abstract class BaseMonster extends Creature {
         if (!(obj instanceof BaseMonster)) {
             return false;
         }
-        BaseMonster other = (BaseMonster) obj;
+        final BaseMonster other = (BaseMonster) obj;
         if (this.element == null) {
             if (other.element != null) {
                 return false;

@@ -32,12 +32,12 @@ public class HotBoots extends AbstractBoots {
 
     @Override
     public void stepAction() {
-        int x = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationX();
-        int y = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationY();
-        int z = DungeonDiver4.getApplication().getDungeonManager().getDungeon()
-                .getPlayerLocationZ();
+        final int x = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationX();
+        final int y = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationY();
+        final int z = DungeonDiver4.getApplication().getDungeonManager()
+                .getDungeon().getPlayerLocationZ();
         DungeonDiver4.getApplication().getDungeonManager().getDungeon()
                 .hotGround(x, y, z);
     }

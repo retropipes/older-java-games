@@ -24,13 +24,13 @@ public final class Score {
         this.name = "Nobody";
     }
 
-    public Score(long newScore, String newName) {
+    public Score(final long newScore, final String newName) {
         this.scores = new long[1];
         this.scores[0] = newScore;
         this.name = newName;
     }
 
-    public Score(int mv) {
+    public Score(final int mv) {
         this.scores = new long[mv];
         for (int x = 0; x < mv; x++) {
             this.scores[x] = 0L;
@@ -38,7 +38,7 @@ public final class Score {
         this.name = "Nobody";
     }
 
-    public Score(int mv, long[] newScore, String newName) {
+    public Score(final int mv, final long[] newScore, final String newName) {
         this.scores = new long[mv];
         for (int x = 0; x < mv; x++) {
             this.scores[x] = newScore[x];
@@ -51,7 +51,7 @@ public final class Score {
         return this.scores[0];
     }
 
-    public long getScore(int which) {
+    public long getScore(final int which) {
         return this.scores[which];
     }
 
@@ -59,22 +59,22 @@ public final class Score {
         return this.name;
     }
 
-    public void setScore(long newScore) {
+    public void setScore(final long newScore) {
         this.scores[0] = newScore;
     }
 
-    public void setScore(int pos, long newScore) {
+    public void setScore(final int pos, final long newScore) {
         this.scores[pos] = newScore;
     }
 
-    public void setName(String newName) {
+    public void setName(final String newName) {
         this.name = newName;
     }
 
-    public static Score readScore(XDataReader xdr) throws IOException {
-        String sname = xdr.readString();
-        int len = xdr.readInt();
-        Score s = new Score(len);
+    public static Score readScore(final XDataReader xdr) throws IOException {
+        final String sname = xdr.readString();
+        final int len = xdr.readInt();
+        final Score s = new Score(len);
         s.name = sname;
         for (int x = 0; x < len; x++) {
             s.scores[x] = xdr.readLong();
@@ -82,21 +82,21 @@ public final class Score {
         return s;
     }
 
-    public void writeScore(XDataWriter xdw) throws IOException {
+    public void writeScore(final XDataWriter xdw) throws IOException {
         xdw.writeString(this.name);
         xdw.writeInt(this.scores.length);
-        for (int x = 0; x < this.scores.length; x++) {
-            xdw.writeLong(this.scores[x]);
+        for (final long score : this.scores) {
+            xdw.writeLong(score);
         }
     }
 
-    public static class ScoreComparatorAsc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorAsc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423564L;
 
         @Override
-        public int compare(Score o1, Score o2) {
-            int lesser = Math.min(o1.scores.length, o2.scores.length);
+        public int compare(final Score o1, final Score o2) {
+            final int lesser = Math.min(o1.scores.length, o2.scores.length);
             for (int z = 0; z < lesser; z++) {
                 if (o1.scores[z] > o2.scores[z]) {
                     // Greater
@@ -120,13 +120,13 @@ public final class Score {
         }
     }
 
-    public static class ScoreComparatorDesc implements Comparator<Score>,
-            Serializable {
+    public static class ScoreComparatorDesc
+            implements Comparator<Score>, Serializable {
         private static final long serialVersionUID = 30523263423565L;
 
         @Override
-        public int compare(Score o1, Score o2) {
-            int lesser = Math.min(o1.scores.length, o2.scores.length);
+        public int compare(final Score o1, final Score o2) {
+            final int lesser = Math.min(o1.scores.length, o2.scores.length);
             for (int z = 0; z < lesser; z++) {
                 if (o1.scores[z] > o2.scores[z]) {
                     // Greater

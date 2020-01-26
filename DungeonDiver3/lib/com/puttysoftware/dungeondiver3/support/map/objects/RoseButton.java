@@ -10,8 +10,8 @@ import com.puttysoftware.dungeondiver3.support.map.generic.TemplateTransform;
 
 public class RoseButton extends GenericButton {
     public RoseButton() {
-        super(new RoseWallOff(), new RoseWallOn(), new TemplateTransform(1.0,
-                0.5, 0.5));
+        super(new RoseWallOff(), new RoseWallOn(),
+                new TemplateTransform(1.0, 0.5, 0.5));
     }
 
     @Override

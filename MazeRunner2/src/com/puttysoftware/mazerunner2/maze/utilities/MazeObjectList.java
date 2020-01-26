@@ -29,7 +29,7 @@ public class MazeObjectList {
 
     // Constructor
     public MazeObjectList() {
-        AbstractMazeObject[] allObjects = { new Amethyst(),
+        final AbstractMazeObject[] allObjects = { new Amethyst(),
                 new AnnihilationWand(), new APlug(), new APort(),
                 new AquaBoots(), new ArmorShop(), new ArrowTrap(), new Axe(),
                 new Bank(), new BarrierGenerator(), new BioHazardBoots(),
@@ -43,23 +43,22 @@ public class MazeObjectList {
                 new BridgedLavaVertical(), new BridgedSlimeHorizontal(),
                 new BridgedSlimeVertical(), new BridgedWaterHorizontal(),
                 new BridgedWaterVertical(), new BrightnessGem(), new Cap(),
-                new CapWall(), new ChainTeleport(),
-                new ClockwiseRotationTrap(), new ClosedDoor(),
-                new ConditionalChainTeleport(), new ConditionalTeleport(),
-                new ConfusionTrap(), new ControllableTeleport(),
-                new CounterclockwiseRotationTrap(), new CounterpoisonAmulet(),
-                new CPlug(), new CPort(), new CrackedWall(), new Crevasse(),
-                new CrumblingWall(), new CrystalWall(), new CutTree(),
-                new CyanButton(), new CyanCarpet(), new CyanCrystal(),
-                new CyanHouse(), new CyanKey(), new CyanLock(),
-                new CyanWallOff(), new CyanWallOn(), new Dagger(),
-                new DaggerWall(), new DamageableWall(), new DamagedWall(),
-                new DarkBlueCrystal(), new DarkCyanCrystal(), new DarkGem(),
-                new DarkGrayCrystal(), new DarkGreenCrystal(),
-                new DarkMagentaCrystal(), new DarknessGem(),
-                new DarkRedCrystal(), new DarkWand(), new DarkYellowCrystal(),
-                new Diamond(), new DimnessGem(), new Dirt(),
-                new DisarmTrapWand(), new DizzinessTrap(),
+                new CapWall(), new ChainTeleport(), new ClockwiseRotationTrap(),
+                new ClosedDoor(), new ConditionalChainTeleport(),
+                new ConditionalTeleport(), new ConfusionTrap(),
+                new ControllableTeleport(), new CounterclockwiseRotationTrap(),
+                new CounterpoisonAmulet(), new CPlug(), new CPort(),
+                new CrackedWall(), new Crevasse(), new CrumblingWall(),
+                new CrystalWall(), new CutTree(), new CyanButton(),
+                new CyanCarpet(), new CyanCrystal(), new CyanHouse(),
+                new CyanKey(), new CyanLock(), new CyanWallOff(),
+                new CyanWallOn(), new Dagger(), new DaggerWall(),
+                new DamageableWall(), new DamagedWall(), new DarkBlueCrystal(),
+                new DarkCyanCrystal(), new DarkGem(), new DarkGrayCrystal(),
+                new DarkGreenCrystal(), new DarkMagentaCrystal(),
+                new DarknessGem(), new DarkRedCrystal(), new DarkWand(),
+                new DarkYellowCrystal(), new Diamond(), new DimnessGem(),
+                new Dirt(), new DisarmTrapWand(), new DizzinessTrap(),
                 new DoubleHourglass(), new DPlug(), new DPort(),
                 new DrunkTrap(), new Empty(), new EmptyVoid(),
                 new EnergySphere(), new EnhancementShop(),
@@ -91,9 +90,9 @@ public class MazeObjectList {
                 new InvisibleWall(), new IPlug(), new IPort(), new ItemShop(),
                 new JPlug(), new JPort(), new Key(), new KPlug(), new KPort(),
                 new Lava(), new LightBlueCrystal(), new LightCyanCrystal(),
-                new LightGem(), new LightGrayCrystal(),
-                new LightGreenCrystal(), new LightMagentaCrystal(),
-                new LightnessGem(), new LightRedCrystal(), new LightWand(),
+                new LightGem(), new LightGrayCrystal(), new LightGreenCrystal(),
+                new LightMagentaCrystal(), new LightnessGem(),
+                new LightRedCrystal(), new LightWand(),
                 new LightYellowCrystal(), new Lock(), new LPlug(), new LPort(),
                 new MagentaButton(), new MagentaCarpet(), new MagentaCrystal(),
                 new MagentaHouse(), new MagentaKey(), new MagentaLock(),
@@ -101,9 +100,9 @@ public class MazeObjectList {
                 new MajorDrainPotion(), new MajorHealPotion(),
                 new MajorHurtPotion(), new MajorRandomPotion(),
                 new MajorRegenPotion(), new MajorUnknownPotion(),
-                new MasterTrappedWall(), new MasterWallTrap(),
-                new MetalBoots(), new MetalButton(), new MetalDoor(),
-                new MetalKey(), new MinorDrainPotion(), new MinorHealPotion(),
+                new MasterTrappedWall(), new MasterWallTrap(), new MetalBoots(),
+                new MetalButton(), new MetalDoor(), new MetalKey(),
+                new MinorDrainPotion(), new MinorHealPotion(),
                 new MinorHurtPotion(), new MinorRandomPotion(),
                 new MinorRegenPotion(), new MinorUnknownPotion(),
                 new MoneyBoots(), new Monster(), new MoonDoor(),
@@ -146,12 +145,11 @@ public class MazeObjectList {
                 new SealingWall(), new SeaweedButton(), new SeaweedCarpet(),
                 new SeaweedCrystal(), new SeaweedHouse(), new SeaweedKey(),
                 new SeaweedLock(), new SeaweedWallOff(), new SeaweedWallOn(),
-                new Shield(), new ShieldWall(), new ShockBomb(),
-                new ShockBow(), new ShockedBarrierGenerator(),
-                new ShuffleBomb(), new Sign(), new SilverSquare(),
-                new SilverWall(), new SkyButton(), new SkyCarpet(),
-                new SkyCrystal(), new SkyHouse(), new SkyKey(), new SkyLock(),
-                new SkyWallOff(), new SkyWallOn(), new Slime(),
+                new Shield(), new ShieldWall(), new ShockBomb(), new ShockBow(),
+                new ShockedBarrierGenerator(), new ShuffleBomb(), new Sign(),
+                new SilverSquare(), new SilverWall(), new SkyButton(),
+                new SkyCarpet(), new SkyCrystal(), new SkyHouse(), new SkyKey(),
+                new SkyLock(), new SkyWallOff(), new SkyWallOn(), new Slime(),
                 new SlipperyBoots(), new SmokeBomb(), new Snow(),
                 new SocksShop(), new SpellShop(), new SPlug(), new SPort(),
                 new Springboard(), new Staff(), new StaffWall(),
@@ -160,20 +158,19 @@ public class MazeObjectList {
                 new SunStone(), new SuperDrainPotion(), new SuperHealPotion(),
                 new SuperHurtPotion(), new SuperRandomPotion(),
                 new SuperRegenPotion(), new SuperUnknownPotion(), new Sword(),
-                new SwordWall(), new Tablet(), new TabletSlot(),
-                new Teleport(), new TeleportWand(), new Tile(),
-                new TopazSquare(), new TopazWall(), new TPlug(), new TPort(),
-                new TrappedWall0(), new TrappedWall1(), new TrappedWall10(),
-                new TrappedWall11(), new TrappedWall12(), new TrappedWall13(),
-                new TrappedWall14(), new TrappedWall15(), new TrappedWall16(),
-                new TrappedWall17(), new TrappedWall18(), new TrappedWall19(),
-                new TrappedWall2(), new TrappedWall3(), new TrappedWall4(),
-                new TrappedWall5(), new TrappedWall6(), new TrappedWall7(),
-                new TrappedWall8(), new TrappedWall9(), new TreasureChest(),
-                new TreasureKey(), new Tree(), new TripleHourglass(),
-                new TrueSightAmulet(), new Tundra(), new TwoWayTeleport(),
-                new UPlug(), new UPort(), new UTurnTrap(),
-                new VariableHealTrap(), new VariableHurtTrap(),
+                new SwordWall(), new Tablet(), new TabletSlot(), new Teleport(),
+                new TeleportWand(), new Tile(), new TopazSquare(),
+                new TopazWall(), new TPlug(), new TPort(), new TrappedWall0(),
+                new TrappedWall1(), new TrappedWall10(), new TrappedWall11(),
+                new TrappedWall12(), new TrappedWall13(), new TrappedWall14(),
+                new TrappedWall15(), new TrappedWall16(), new TrappedWall17(),
+                new TrappedWall18(), new TrappedWall19(), new TrappedWall2(),
+                new TrappedWall3(), new TrappedWall4(), new TrappedWall5(),
+                new TrappedWall6(), new TrappedWall7(), new TrappedWall8(),
+                new TrappedWall9(), new TreasureChest(), new TreasureKey(),
+                new Tree(), new TripleHourglass(), new TrueSightAmulet(),
+                new Tundra(), new TwoWayTeleport(), new UPlug(), new UPort(),
+                new UTurnTrap(), new VariableHealTrap(), new VariableHurtTrap(),
                 new VerticalBarrier(), new VPlug(), new VPort(), new Wall(),
                 new WallBreakingWand(), new WallMakingTrap(),
                 new WallMakingWand(), new WallTrap0(), new WallTrap1(),
@@ -194,8 +191,8 @@ public class MazeObjectList {
                 new YPort(), new ZPlug(), new ZPort() };
         this.allObjectList = new ArrayList<>();
         // Add all predefined objects to the list
-        for (int z = 0; z < allObjects.length; z++) {
-            this.allObjectList.add(allObjects[z]);
+        for (final AbstractMazeObject allObject : allObjects) {
+            this.allObjectList.add(allObject);
         }
     }
 
@@ -205,13 +202,13 @@ public class MazeObjectList {
                 .toArray(new AbstractMazeObject[this.allObjectList.size()]);
     }
 
-    public void addObject(AbstractMazeObject o) {
+    public void addObject(final AbstractMazeObject o) {
         this.allObjectList.add(o);
     }
 
     public String[] getAllNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] allNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] allNames = new String[objects.length];
         for (int x = 0; x < objects.length; x++) {
             allNames[x] = objects[x].getName();
         }
@@ -219,8 +216,8 @@ public class MazeObjectList {
     }
 
     public String[] getAllDescriptions() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] allDescriptions = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] allDescriptions = new String[objects.length];
         for (int x = 0; x < objects.length; x++) {
             allDescriptions[x] = objects[x].getDescription();
         }
@@ -228,24 +225,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllObjectsWithRuleSets() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllObjectsWithRuleSets = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllObjectsWithRuleSets = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].hasRuleSet()) {
                 tempAllObjectsWithRuleSets[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
+        for (final AbstractMazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allObjectsWithRuleSets = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allObjectsWithRuleSets = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithRuleSets.length; x++) {
-            if (tempAllObjectsWithRuleSets[x] != null) {
-                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSets[x];
+        for (final AbstractMazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+            if (tempAllObjectsWithRuleSet != null) {
+                allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSet;
                 objectCount++;
             }
         }
@@ -253,24 +250,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllObjectsWithoutRuleSets() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllObjectsWithoutRuleSets = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllObjectsWithoutRuleSets = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (!objects[x].hasRuleSet()) {
                 tempAllObjectsWithoutRuleSets[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
+        for (final AbstractMazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allObjectsWithoutRuleSets = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allObjectsWithoutRuleSets = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectsWithoutRuleSets.length; x++) {
-            if (tempAllObjectsWithoutRuleSets[x] != null) {
-                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSets[x];
+        for (final AbstractMazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+            if (tempAllObjectsWithoutRuleSet != null) {
+                allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSet;
                 objectCount++;
             }
         }
@@ -278,24 +275,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllGroundLayerObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllGroundLayerObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllGroundLayerObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_GROUND) {
                 tempAllGroundLayerObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
+        for (final AbstractMazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allGroundLayerObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allGroundLayerObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerObjects.length; x++) {
-            if (tempAllGroundLayerObjects[x] != null) {
-                allGroundLayerObjects[objectCount] = tempAllGroundLayerObjects[x];
+        for (final AbstractMazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+            if (tempAllGroundLayerObject != null) {
+                allGroundLayerObjects[objectCount] = tempAllGroundLayerObject;
                 objectCount++;
             }
         }
@@ -303,24 +300,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllGenerationEligibleTypedObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllGenerationEligibleTypedObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllGenerationEligibleTypedObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_GENERATION_ELIGIBLE)) {
                 tempAllGenerationEligibleTypedObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGenerationEligibleTypedObjects.length; x++) {
-            if (tempAllGenerationEligibleTypedObjects[x] != null) {
+        for (final AbstractMazeObject tempAllGenerationEligibleTypedObject : tempAllGenerationEligibleTypedObjects) {
+            if (tempAllGenerationEligibleTypedObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allGenerationEligibleTypedObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allGenerationEligibleTypedObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGenerationEligibleTypedObjects.length; x++) {
-            if (tempAllGenerationEligibleTypedObjects[x] != null) {
-                allGenerationEligibleTypedObjects[objectCount] = tempAllGenerationEligibleTypedObjects[x];
+        for (final AbstractMazeObject tempAllGenerationEligibleTypedObject : tempAllGenerationEligibleTypedObjects) {
+            if (tempAllGenerationEligibleTypedObject != null) {
+                allGenerationEligibleTypedObjects[objectCount] = tempAllGenerationEligibleTypedObject;
                 objectCount++;
             }
         }
@@ -328,24 +325,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllGeneratedTypedObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllGeneratedTypedObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllGeneratedTypedObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
                 tempAllGeneratedTypedObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllGeneratedTypedObjects.length; x++) {
-            if (tempAllGeneratedTypedObjects[x] != null) {
+        for (final AbstractMazeObject tempAllGeneratedTypedObject : tempAllGeneratedTypedObjects) {
+            if (tempAllGeneratedTypedObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allGeneratedTypedObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allGeneratedTypedObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGeneratedTypedObjects.length; x++) {
-            if (tempAllGeneratedTypedObjects[x] != null) {
-                allGeneratedTypedObjects[objectCount] = tempAllGeneratedTypedObjects[x];
+        for (final AbstractMazeObject tempAllGeneratedTypedObject : tempAllGeneratedTypedObjects) {
+            if (tempAllGeneratedTypedObject != null) {
+                allGeneratedTypedObjects[objectCount] = tempAllGeneratedTypedObject;
                 objectCount++;
             }
         }
@@ -353,24 +350,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllObjectLayerObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllObjectLayerObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllObjectLayerObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_OBJECT) {
                 tempAllObjectLayerObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
+        for (final AbstractMazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allObjectLayerObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allObjectLayerObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerObjects.length; x++) {
-            if (tempAllObjectLayerObjects[x] != null) {
-                allObjectLayerObjects[objectCount] = tempAllObjectLayerObjects[x];
+        for (final AbstractMazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+            if (tempAllObjectLayerObject != null) {
+                allObjectLayerObjects[objectCount] = tempAllObjectLayerObject;
                 objectCount++;
             }
         }
@@ -378,24 +375,24 @@ public class MazeObjectList {
     }
 
     public String[] getAllGroundLayerNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllGroundLayerNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllGroundLayerNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_GROUND) {
                 tempAllGroundLayerNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
                 objectCount++;
             }
         }
-        String[] allGroundLayerNames = new String[objectCount];
+        final String[] allGroundLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerNames.length; x++) {
-            if (tempAllGroundLayerNames[x] != null) {
-                allGroundLayerNames[objectCount] = tempAllGroundLayerNames[x];
+        for (final String tempAllGroundLayerName : tempAllGroundLayerNames) {
+            if (tempAllGroundLayerName != null) {
+                allGroundLayerNames[objectCount] = tempAllGroundLayerName;
                 objectCount++;
             }
         }
@@ -403,24 +400,24 @@ public class MazeObjectList {
     }
 
     public String[] getAllObjectLayerNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllObjectLayerNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllObjectLayerNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_OBJECT) {
                 tempAllObjectLayerNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
                 objectCount++;
             }
         }
-        String[] allObjectLayerNames = new String[objectCount];
+        final String[] allObjectLayerNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerNames.length; x++) {
-            if (tempAllObjectLayerNames[x] != null) {
-                allObjectLayerNames[objectCount] = tempAllObjectLayerNames[x];
+        for (final String tempAllObjectLayerName : tempAllObjectLayerNames) {
+            if (tempAllObjectLayerName != null) {
+                allObjectLayerNames[objectCount] = tempAllObjectLayerName;
                 objectCount++;
             }
         }
@@ -428,12 +425,12 @@ public class MazeObjectList {
     }
 
     public BufferedImageIcon[] getAllEditorAppearances() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] allEditorAppearances = new BufferedImageIcon[objects.length];
         for (int x = 0; x < allEditorAppearances.length; x++) {
-            allEditorAppearances[x] = ImageTransformer
-                    .getTransformedImage(ObjectImageManager.getImage(
-                            objects[x].getName(), objects[x].getBaseID(),
+            allEditorAppearances[x] = ImageTransformer.getTransformedImage(
+                    ObjectImageManager.getImage(objects[x].getName(),
+                            objects[x].getBaseID(),
                             objects[x].getTemplateColor(),
                             objects[x].getAttributeID(),
                             objects[x].getAttributeTemplateColor()));
@@ -442,8 +439,8 @@ public class MazeObjectList {
     }
 
     public BufferedImageIcon[] getAllGroundLayerEditorAppearances() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllGroundLayerEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllGroundLayerEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_GROUND) {
@@ -455,16 +452,16 @@ public class MazeObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allGroundLayerEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allGroundLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllGroundLayerEditorAppearances.length; x++) {
-            if (tempAllGroundLayerEditorAppearances[x] != null) {
-                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllGroundLayerEditorAppearance : tempAllGroundLayerEditorAppearances) {
+            if (tempAllGroundLayerEditorAppearance != null) {
+                allGroundLayerEditorAppearances[objectCount] = tempAllGroundLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -472,8 +469,8 @@ public class MazeObjectList {
     }
 
     public BufferedImageIcon[] getAllObjectLayerEditorAppearances() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllObjectLayerEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllObjectLayerEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].getLayer() == MazeConstants.LAYER_OBJECT) {
@@ -485,16 +482,16 @@ public class MazeObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allObjectLayerEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allObjectLayerEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllObjectLayerEditorAppearances.length; x++) {
-            if (tempAllObjectLayerEditorAppearances[x] != null) {
-                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearances[x];
+        for (final BufferedImageIcon tempAllObjectLayerEditorAppearance : tempAllObjectLayerEditorAppearances) {
+            if (tempAllObjectLayerEditorAppearance != null) {
+                allObjectLayerEditorAppearances[objectCount] = tempAllObjectLayerEditorAppearance;
                 objectCount++;
             }
         }
@@ -502,8 +499,8 @@ public class MazeObjectList {
     }
 
     public BufferedImageIcon[] getAllContainableObjectEditorAppearances() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        BufferedImageIcon[] tempAllContainableObjectEditorAppearances = new BufferedImageIcon[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final BufferedImageIcon[] tempAllContainableObjectEditorAppearances = new BufferedImageIcon[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
@@ -515,16 +512,16 @@ public class MazeObjectList {
                                 objects[x].getAttributeTemplateColor()));
             }
         }
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
                 objectCount++;
             }
         }
-        BufferedImageIcon[] allContainableObjectEditorAppearances = new BufferedImageIcon[objectCount];
+        final BufferedImageIcon[] allContainableObjectEditorAppearances = new BufferedImageIcon[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjectEditorAppearances.length; x++) {
-            if (tempAllContainableObjectEditorAppearances[x] != null) {
-                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearances[x];
+        for (final BufferedImageIcon tempAllContainableObjectEditorAppearance : tempAllContainableObjectEditorAppearances) {
+            if (tempAllContainableObjectEditorAppearance != null) {
+                allContainableObjectEditorAppearances[objectCount] = tempAllContainableObjectEditorAppearance;
                 objectCount++;
             }
         }
@@ -532,24 +529,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllContainableObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllContainableObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllContainableObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
                 tempAllContainableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
+        for (final AbstractMazeObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allContainableObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allContainableObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableObjects.length; x++) {
-            if (tempAllContainableObjects[x] != null) {
-                allContainableObjects[objectCount] = tempAllContainableObjects[x];
+        for (final AbstractMazeObject tempAllContainableObject : tempAllContainableObjects) {
+            if (tempAllContainableObject != null) {
+                allContainableObjects[objectCount] = tempAllContainableObject;
                 objectCount++;
             }
         }
@@ -557,24 +554,24 @@ public class MazeObjectList {
     }
 
     public String[] getAllContainableNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllContainableNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllContainableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
                 tempAllContainableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
                 objectCount++;
             }
         }
-        String[] allContainableNames = new String[objectCount];
+        final String[] allContainableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllContainableNames.length; x++) {
-            if (tempAllContainableNames[x] != null) {
-                allContainableNames[objectCount] = tempAllContainableNames[x];
+        for (final String tempAllContainableName : tempAllContainableNames) {
+            if (tempAllContainableName != null) {
+                allContainableNames[objectCount] = tempAllContainableName;
                 objectCount++;
             }
         }
@@ -582,8 +579,8 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllInventoryableObjectsMinusSpecial() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllInventoryableObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllInventoryableObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isInventoryable()
@@ -593,16 +590,16 @@ public class MazeObjectList {
                 tempAllInventoryableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
+        for (final AbstractMazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allInventoryableObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allInventoryableObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableObjects.length; x++) {
-            if (tempAllInventoryableObjects[x] != null) {
-                allInventoryableObjects[objectCount] = tempAllInventoryableObjects[x];
+        for (final AbstractMazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+            if (tempAllInventoryableObject != null) {
+                allInventoryableObjects[objectCount] = tempAllInventoryableObject;
                 objectCount++;
             }
         }
@@ -610,8 +607,8 @@ public class MazeObjectList {
     }
 
     public String[] getAllInventoryableNamesMinusSpecial() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllInventoryableNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllInventoryableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isInventoryable()
@@ -621,16 +618,16 @@ public class MazeObjectList {
                 tempAllInventoryableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
                 objectCount++;
             }
         }
-        String[] allInventoryableNames = new String[objectCount];
+        final String[] allInventoryableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllInventoryableNames.length; x++) {
-            if (tempAllInventoryableNames[x] != null) {
-                allInventoryableNames[objectCount] = tempAllInventoryableNames[x];
+        for (final String tempAllInventoryableName : tempAllInventoryableNames) {
+            if (tempAllInventoryableName != null) {
+                allInventoryableNames[objectCount] = tempAllInventoryableName;
                 objectCount++;
             }
         }
@@ -638,24 +635,24 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllProgrammableKeys() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllProgrammableKeys = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllProgrammableKeys = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
                 tempAllProgrammableKeys[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
+        for (final AbstractMazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allProgrammableKeys = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allProgrammableKeys = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeys.length; x++) {
-            if (tempAllProgrammableKeys[x] != null) {
-                allProgrammableKeys[objectCount] = tempAllProgrammableKeys[x];
+        for (final AbstractMazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+            if (tempAllProgrammableKey != null) {
+                allProgrammableKeys[objectCount] = tempAllProgrammableKey;
                 objectCount++;
             }
         }
@@ -663,24 +660,24 @@ public class MazeObjectList {
     }
 
     public String[] getAllProgrammableKeyNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllProgrammableKeyNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllProgrammableKeyNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_PROGRAMMABLE_KEY)) {
                 tempAllProgrammableKeyNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
                 objectCount++;
             }
         }
-        String[] allProgrammableKeyNames = new String[objectCount];
+        final String[] allProgrammableKeyNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllProgrammableKeyNames.length; x++) {
-            if (tempAllProgrammableKeyNames[x] != null) {
-                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyNames[x];
+        for (final String tempAllProgrammableKeyName : tempAllProgrammableKeyNames) {
+            if (tempAllProgrammableKeyName != null) {
+                allProgrammableKeyNames[objectCount] = tempAllProgrammableKeyName;
                 objectCount++;
             }
         }
@@ -688,8 +685,8 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllUsableObjects() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllUsableObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllUsableObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isUsable()
@@ -699,16 +696,16 @@ public class MazeObjectList {
                 tempAllUsableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final AbstractMazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allUsableObjects = new AbstractMazeObject[objectCount];
+        final AbstractMazeObject[] allUsableObjects = new AbstractMazeObject[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
-                allUsableObjects[objectCount] = tempAllUsableObjects[x];
+        for (final AbstractMazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
+                allUsableObjects[objectCount] = tempAllUsableObject;
                 objectCount++;
             }
         }
@@ -716,8 +713,8 @@ public class MazeObjectList {
     }
 
     public String[] getAllUsableNamesMinusSpecial() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllUsableNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllUsableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isUsable()
@@ -727,16 +724,16 @@ public class MazeObjectList {
                 tempAllUsableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
-        String[] allUsableNames = new String[objectCount];
+        final String[] allUsableNames = new String[objectCount];
         objectCount = 0;
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
-                allUsableNames[objectCount] = tempAllUsableNames[x];
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
+                allUsableNames[objectCount] = tempAllUsableName;
                 objectCount++;
             }
         }
@@ -744,20 +741,21 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject[] getAllBows() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllUsableObjects = new AbstractMazeObject[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllUsableObjects = new AbstractMazeObject[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableObjects[x] = objects[x];
             }
         }
-        for (int x = 0; x < tempAllUsableObjects.length; x++) {
-            if (tempAllUsableObjects[x] != null) {
+        for (final AbstractMazeObject tempAllUsableObject : tempAllUsableObjects) {
+            if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        AbstractMazeObject[] allUsableObjects = new AbstractMazeObject[objectCount + 1];
+        final AbstractMazeObject[] allUsableObjects = new AbstractMazeObject[objectCount
+                + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableObjects.length - 1; x++) {
             if (tempAllUsableObjects[x] != null) {
@@ -770,20 +768,20 @@ public class MazeObjectList {
     }
 
     public String[] getAllBowNames() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        String[] tempAllUsableNames = new String[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final String[] tempAllUsableNames = new String[objects.length];
         int objectCount = 0;
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableNames[x] = objects[x].getName();
             }
         }
-        for (int x = 0; x < tempAllUsableNames.length; x++) {
-            if (tempAllUsableNames[x] != null) {
+        for (final String tempAllUsableName : tempAllUsableNames) {
+            if (tempAllUsableName != null) {
                 objectCount++;
             }
         }
-        String[] allUsableNames = new String[objectCount + 1];
+        final String[] allUsableNames = new String[objectCount + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableNames.length - 1; x++) {
             if (tempAllUsableNames[x] != null) {
@@ -795,13 +793,13 @@ public class MazeObjectList {
         return allUsableNames;
     }
 
-    public final AbstractMazeObject[] getAllRequired(int layer) {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objects.length];
+    public final AbstractMazeObject[] getAllRequired(final int layer) {
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objects.length];
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && objects[x].isRequired()) {
+            if (objects[x].getLayer() == layer && objects[x].isRequired()) {
                 tempAllRequired[count] = objects[x];
                 count++;
             }
@@ -809,7 +807,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -818,13 +816,13 @@ public class MazeObjectList {
     }
 
     public final AbstractMazeObject[] getAllWithoutPrerequisiteAndNotRequired(
-            int layer) {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objects.length];
+            final int layer) {
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objects.length];
         int x;
         int count = 0;
         for (x = 0; x < objects.length; x++) {
-            if ((objects[x].getLayer() == layer) && !(objects[x].isRequired())) {
+            if (objects[x].getLayer() == layer && !objects[x].isRequired()) {
                 tempAllWithoutPrereq[count] = objects[x];
                 count++;
             }
@@ -832,7 +830,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -840,13 +838,13 @@ public class MazeObjectList {
         }
     }
 
-    public final AbstractMazeObject[] getAllRequiredInBattle(int layer) {
-        AbstractMazeObject[] objs = this.getAllObjects();
-        AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objs.length];
+    public final AbstractMazeObject[] getAllRequiredInBattle(final int layer) {
+        final AbstractMazeObject[] objs = this.getAllObjects();
+        final AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
-            if ((objs[x].getLayer() == layer) && objs[x].isRequiredInBattle()) {
+            if (objs[x].getLayer() == layer && objs[x].isRequiredInBattle()) {
                 tempAllRequired[count] = objs[x];
                 count++;
             }
@@ -854,7 +852,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -862,14 +860,14 @@ public class MazeObjectList {
         }
     }
 
-    public final AbstractMazeObject[] getAllNotRequiredInBattle(int layer) {
-        AbstractMazeObject[] objs = this.getAllObjects();
-        AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objs.length];
+    public final AbstractMazeObject[] getAllNotRequiredInBattle(
+            final int layer) {
+        final AbstractMazeObject[] objs = this.getAllObjects();
+        final AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
-            if ((objs[x].getLayer() == layer)
-                    && !(objs[x].isRequiredInBattle())) {
+            if (objs[x].getLayer() == layer && !objs[x].isRequiredInBattle()) {
                 tempAllWithoutPrereq[count] = objs[x];
                 count++;
             }
@@ -877,7 +875,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -886,11 +884,11 @@ public class MazeObjectList {
     }
 
     public static final AbstractMazeObject[] getAllRequiredSubset(
-            AbstractMazeObject[] objs, int layer) {
+            final AbstractMazeObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objs.length];
+        final AbstractMazeObject[] tempAllRequired = new AbstractMazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -910,7 +908,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allRequired = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -919,11 +917,11 @@ public class MazeObjectList {
     }
 
     public static final AbstractMazeObject[] getAllWithoutPrerequisiteAndNotRequiredSubset(
-            AbstractMazeObject[] objs, int layer) {
+            final AbstractMazeObject[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objs.length];
+        final AbstractMazeObject[] tempAllWithoutPrereq = new AbstractMazeObject[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -943,7 +941,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
+            final AbstractMazeObject[] allWithoutPrereq = new AbstractMazeObject[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -951,8 +949,8 @@ public class MazeObjectList {
         }
     }
 
-    public final AbstractMazeObject getNewInstanceByName(String name) {
-        AbstractMazeObject[] objects = this.getAllObjects();
+    public final AbstractMazeObject getNewInstanceByName(final String name) {
+        final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject instance = null;
         int x;
         for (x = 0; x < objects.length; x++) {
@@ -978,9 +976,10 @@ public class MazeObjectList {
         }
     }
 
-    public AbstractMazeObject readLegacyMazeObject(XLegacyDataReader reader,
-            int formatVersion) throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
+    public AbstractMazeObject readLegacyMazeObject(
+            final XLegacyDataReader reader, final int formatVersion)
+            throws IOException {
+        final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject o = null;
         String UID = "";
         if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1
@@ -993,13 +992,13 @@ public class MazeObjectList {
             this.readLegacyMazeObject(reader, formatVersion);
             return new Player();
         } else {
-            for (int x = 0; x < objects.length; x++) {
+            for (final AbstractMazeObject object : objects) {
                 try {
                     AbstractMazeObject instance;
-                    if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                        instance = objects[x].clone();
+                    if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                        instance = object.clone();
                     } else {
-                        instance = objects[x].getClass().newInstance();
+                        instance = object.getClass().newInstance();
                     }
                     if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1) {
                         o = instance.readLegacyMazeObjectV1(reader, UID);
@@ -1012,9 +1011,9 @@ public class MazeObjectList {
                             return o;
                         }
                     }
-                } catch (InstantiationException ex) {
+                } catch (final InstantiationException ex) {
                     MazeRunnerII.getErrorLogger().logError(ex);
-                } catch (IllegalAccessException ex) {
+                } catch (final IllegalAccessException ex) {
                     MazeRunnerII.getErrorLogger().logError(ex);
                 }
             }
@@ -1022,35 +1021,35 @@ public class MazeObjectList {
         }
     }
 
-    public AbstractMazeObject readMazeObject(XDataReader reader,
-            int formatVersion) throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
+    public AbstractMazeObject readMazeObject(final XDataReader reader,
+            final int formatVersion) throws IOException {
+        final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject o = null;
         String UID = "";
         if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
-            reader.readOpeningGroup(OBJECT_GROUP);
-            reader.readOpeningGroup(OBJECT_ID_GROUP);
+            reader.readOpeningGroup(MazeObjectList.OBJECT_GROUP);
+            reader.readOpeningGroup(MazeObjectList.OBJECT_ID_GROUP);
             UID = reader.readString();
-            reader.readClosingGroup(OBJECT_ID_GROUP);
+            reader.readClosingGroup(MazeObjectList.OBJECT_ID_GROUP);
         }
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                    instance = objects[x].clone();
+                if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                    instance = object.clone();
                 } else {
-                    instance = objects[x].getClass().newInstance();
+                    instance = object.getClass().newInstance();
                 }
                 if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
                     o = instance.readMazeObjectV1(reader, UID);
                     if (o != null) {
-                        reader.readClosingGroup(OBJECT_GROUP);
+                        reader.readClosingGroup(MazeObjectList.OBJECT_GROUP);
                         return o;
                     }
                 }
-            } catch (InstantiationException ex) {
+            } catch (final InstantiationException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (IllegalAccessException ex) {
+            } catch (final IllegalAccessException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
@@ -1058,17 +1057,17 @@ public class MazeObjectList {
     }
 
     public AbstractMazeObject readLegacySavedMazeObject(
-            XLegacyDataReader reader, String UID, int formatVersion)
-            throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
+            final XLegacyDataReader reader, final String UID,
+            final int formatVersion) throws IOException {
+        final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject o = null;
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                    instance = objects[x].clone();
+                if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                    instance = object.clone();
                 } else {
-                    instance = objects[x].getClass().newInstance();
+                    instance = object.getClass().newInstance();
                 }
                 if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1) {
                     o = instance.readLegacyMazeObjectV1(reader, UID);
@@ -1076,26 +1075,26 @@ public class MazeObjectList {
                         return o;
                     }
                 }
-            } catch (InstantiationException ex) {
+            } catch (final InstantiationException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (IllegalAccessException ex) {
+            } catch (final IllegalAccessException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
         return null;
     }
 
-    public AbstractMazeObject readSavedMazeObject(XDataReader reader,
-            String UID, int formatVersion) throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
+    public AbstractMazeObject readSavedMazeObject(final XDataReader reader,
+            final String UID, final int formatVersion) throws IOException {
+        final AbstractMazeObject[] objects = this.getAllObjects();
         AbstractMazeObject o = null;
-        for (int x = 0; x < objects.length; x++) {
+        for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                if (objects[x].isOfType(TypeConstants.TYPE_GENERATED)) {
-                    instance = objects[x].clone();
+                if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
+                    instance = object.clone();
                 } else {
-                    instance = objects[x].getClass().newInstance();
+                    instance = object.getClass().newInstance();
                 }
                 if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
                     o = instance.readMazeObjectV1(reader, UID);
@@ -1103,21 +1102,21 @@ public class MazeObjectList {
                         return o;
                     }
                 }
-            } catch (InstantiationException ex) {
+            } catch (final InstantiationException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (IllegalAccessException ex) {
+            } catch (final IllegalAccessException ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
             }
         }
         return null;
     }
 
-    public void readRuleSet(XDataReader reader, int rsFormat)
+    public void readRuleSet(final XDataReader reader, final int rsFormat)
             throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
+        final AbstractMazeObject[] objects = this.getAllObjects();
         // Read map length
-        int mapLen = reader.readInt();
-        boolean[] map = new boolean[mapLen];
+        final int mapLen = reader.readInt();
+        final boolean[] map = new boolean[mapLen];
         // Read map
         for (int x = 0; x < mapLen; x++) {
             map[x] = reader.readBoolean();
@@ -1131,14 +1130,14 @@ public class MazeObjectList {
         }
     }
 
-    public void writeRuleSet(XDataWriter writer) throws IOException {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        boolean[] map = this.generateMaze();
+    public void writeRuleSet(final XDataWriter writer) throws IOException {
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final boolean[] map = this.generateMaze();
         // Write map length
         writer.writeInt(map.length);
         // Write map
-        for (int x = 0; x < map.length; x++) {
-            writer.writeBoolean(map[x]);
+        for (final boolean element : map) {
+            writer.writeBoolean(element);
         }
         // Write data
         for (int x = 0; x < map.length; x++) {
@@ -1149,8 +1148,8 @@ public class MazeObjectList {
     }
 
     private boolean[] generateMaze() {
-        AbstractMazeObject[] objects = this.getAllObjects();
-        boolean[] map = new boolean[objects.length];
+        final AbstractMazeObject[] objects = this.getAllObjects();
+        final boolean[] map = new boolean[objects.length];
         for (int x = 0; x < map.length; x++) {
             if (objects[x].hasRuleSet()) {
                 map[x] = true;

@@ -36,8 +36,8 @@ public class SunStone extends AbstractCheckKey {
     }
 
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final MazeObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final MazeObjectInventory inv) {
         inv.addItem(this);
         final Application app = FantastleX.getApplication();
         app.getGameManager().decay();

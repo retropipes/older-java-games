@@ -65,7 +65,7 @@ public class LevelPreferencesManager {
     }
 
     void setPrefs() {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
         if (this.horizontalWrap.isSelected()) {
             m.enableHorizontalWraparound();
@@ -91,7 +91,7 @@ public class LevelPreferencesManager {
             if (newER < 1 || newER > 16) {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             newER = m.getExploreRadius();
         }
         m.setExploreRadius(newER);
@@ -110,24 +110,24 @@ public class LevelPreferencesManager {
             if (newVR < 1 || newVR > 16) {
                 throw new NumberFormatException();
             }
-        } catch (NumberFormatException nfe) {
+        } catch (final NumberFormatException nfe) {
             newVR = m.getVisionRadius();
         }
         m.setVisionRadius(newVR);
     }
 
     private void loadPrefs() {
-        Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
+        final Dungeon m = DungeonDiver4.getApplication().getDungeonManager()
                 .getDungeon();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap.setSelected(m
-                .is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap
+                .setSelected(m.is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
         this.exploreRadius.setText(Integer.toString(m.getExploreRadius()));
-        int vm = m.getVisionMode();
+        final int vm = m.getVisionMode();
         if ((vm | DungeonConstants.VISION_MODE_EXPLORE) == vm) {
             this.vmExplore.setSelected(true);
         } else {
@@ -143,17 +143,17 @@ public class LevelPreferencesManager {
     }
 
     private void setUpGUI() {
-        EventHandler handler = new EventHandler();
+        final EventHandler handler = new EventHandler();
         this.prefFrame = new JFrame("Level Preferences");
         final Image iconlogo = DungeonDiver4.getApplication().getIconLogo();
         this.prefFrame.setIconImage(iconlogo);
-        Container mainPrefPane = new Container();
-        Container contentPane = new Container();
-        Container buttonPane = new Container();
-        JButton prefsOK = new JButton("OK");
+        final Container mainPrefPane = new Container();
+        final Container contentPane = new Container();
+        final Container buttonPane = new Container();
+        final JButton prefsOK = new JButton("OK");
         prefsOK.setDefaultCapable(true);
         this.prefFrame.getRootPane().setDefaultButton(prefsOK);
-        JButton prefsCancel = new JButton("Cancel");
+        final JButton prefsCancel = new JButton("Cancel");
         prefsCancel.setDefaultCapable(false);
         this.horizontalWrap = new JCheckBox("Enable horizontal wraparound",
                 false);
@@ -166,7 +166,8 @@ public class LevelPreferencesManager {
         this.exploreRadius = new JTextField("");
         this.vmExplore = new JCheckBox("Enable exploring vision mode");
         this.vmLOS = new JCheckBox("Enable line-of-sight vision mode");
-        this.poisonPowerChoiceArray = new String[Dungeon.getMaxPoisonPower() + 1];
+        this.poisonPowerChoiceArray = new String[Dungeon.getMaxPoisonPower()
+                + 1];
         for (int x = 0; x < this.poisonPowerChoiceArray.length; x++) {
             if (x == 0) {
                 this.poisonPowerChoiceArray[x] = "None";
@@ -177,7 +178,7 @@ public class LevelPreferencesManager {
                         + Integer.toString(x) + " steps";
             }
         }
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
+        final DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
                 this.poisonPowerChoiceArray);
         this.poisonPowerChoices = new JComboBox<>();
         this.poisonPowerChoices.setModel(model);
@@ -225,7 +226,7 @@ public class LevelPreferencesManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                LevelPreferencesManager lpm = LevelPreferencesManager.this;
+                final LevelPreferencesManager lpm = LevelPreferencesManager.this;
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("OK")) {
                     lpm.setPrefs();
@@ -233,45 +234,45 @@ public class LevelPreferencesManager {
                 } else if (cmd.equals("Cancel")) {
                     lpm.hidePrefs();
                 }
-            } catch (Exception ex) {
+            } catch (final Exception ex) {
                 DungeonDiver4.getErrorLogger().logError(ex);
             }
         }
 
         // handle window
         @Override
-        public void windowOpened(WindowEvent e) {
+        public void windowOpened(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {
-            LevelPreferencesManager pm = LevelPreferencesManager.this;
+        public void windowClosing(final WindowEvent e) {
+            final LevelPreferencesManager pm = LevelPreferencesManager.this;
             pm.hidePrefs();
         }
 
         @Override
-        public void windowClosed(WindowEvent e) {
+        public void windowClosed(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowIconified(WindowEvent e) {
+        public void windowIconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeiconified(WindowEvent e) {
+        public void windowDeiconified(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowActivated(WindowEvent e) {
+        public void windowActivated(final WindowEvent e) {
             // Do nothing
         }
 
         @Override
-        public void windowDeactivated(WindowEvent e) {
+        public void windowDeactivated(final WindowEvent e) {
             // Do nothing
         }
     }

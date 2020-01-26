@@ -40,8 +40,8 @@ public class OneShotChainTeleport extends GenericTeleport {
 
     // Scriptability
     @Override
-    public void postMoveAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
+    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+            final ObjectInventory inv) {
         final Application app = WeaselWeb.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsoluteNoEvents(

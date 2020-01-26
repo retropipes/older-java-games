@@ -25,12 +25,12 @@ public class FadingWall extends AbstractWall {
     public void timerExpiredAction(final int dirX, final int dirY) {
         // Disappear if the player is close to us
         boolean scanResult = false;
-        Application app = MazeRunnerII.getApplication();
-        int tx = app.getMazeManager().getMaze().getPlayerLocationX();
-        int ty = app.getMazeManager().getMaze().getPlayerLocationY();
-        int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
-        scanResult = app.getMazeManager().getMaze()
-                .radialScan(dirX, dirY, FadingWall.SCAN_LIMIT, tx, ty);
+        final Application app = MazeRunnerII.getApplication();
+        final int tx = app.getMazeManager().getMaze().getPlayerLocationX();
+        final int ty = app.getMazeManager().getMaze().getPlayerLocationY();
+        final int pz = app.getMazeManager().getMaze().getPlayerLocationZ();
+        scanResult = app.getMazeManager().getMaze().radialScan(dirX, dirY,
+                FadingWall.SCAN_LIMIT, tx, ty);
         if (scanResult) {
             app.getGameManager().morph(new Empty(), dirX, dirY, pz);
         }

@@ -19,9 +19,8 @@ public class MusicManager {
 
     private static Media getMusic(final String filename) {
         try {
-            final URL url = MusicManager.LOAD_CLASS
-                    .getResource(MusicManager.LOAD_PATH
-                            + filename.toLowerCase() + ".ogg");
+            final URL url = MusicManager.LOAD_CLASS.getResource(
+                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
             final Media mus = Media.getLoopingResource(url);
             return mus;
         } catch (final NullPointerException np) {

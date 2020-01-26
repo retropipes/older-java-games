@@ -26,7 +26,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
     // Constructors
     /**
      * Creates a blank BufferedImageIcon.
-     * 
+     *
      * @param w
      *            the pixel width of the new object
      * @param h
@@ -38,7 +38,7 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
 
     /**
      * Creates a square BufferedImageIcon of a given color.
-     * 
+     *
      * @param d
      *            the pixel size of the new object
      * @param c
@@ -46,14 +46,14 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
      */
     public BufferedImageIcon(final int d, final Color c) {
         super(d, d, BufferedImageIcon.DEFAULT_TYPE);
-        Graphics g = this.getGraphics();
+        final Graphics g = this.getGraphics();
         g.setColor(c);
         g.fillRect(0, 0, d, d);
     }
 
     /**
      * Creates a BufferedImageIcon based on an Image object.
-     * 
+     *
      * @param i
      *            the Image to use as a template
      */
@@ -65,63 +65,64 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
 
     /**
      * Convenience method for scaling fixed values.
-     * 
+     *
      * @param value
      *            the input
      * @return the output
      */
     public static int getScaledValue(final int value) {
-        return (int) (value * SCALE / SCALE_MULT);
+        return (int) (value * BufferedImageIcon.SCALE
+                / BufferedImageIcon.SCALE_MULT);
     }
 
     /**
      * Convenience method for determining the normalized scale.
-     * 
+     *
      * @return the normalized scale value
      */
     public static double getNormalizedScale() {
-        return SCALE / SCALE_MULT;
+        return BufferedImageIcon.SCALE / BufferedImageIcon.SCALE_MULT;
     }
 
     /**
      * Convenience method for getting the scaling multiplier.
-     * 
+     *
      * @return the scaling multiplier
      */
     public static int getScaleMult() {
-        return (int) SCALE_MULT;
+        return (int) BufferedImageIcon.SCALE_MULT;
     }
 
     /**
      * Gets the global scaling factor for image drawing.
-     * 
+     *
      * @return the global scaling factor
      */
     public static int getScale() {
-        return SCALE;
+        return BufferedImageIcon.SCALE;
     }
 
     /**
      * Sets the global scaling factor for image drawing. A value of 100 means
      * 100% scaling (smallest allowed value). A value of 200 means 200% scaling
      * (Apple Retina mode).
-     * 
+     *
      * @param value
      *            the new global scaling factor
      * @throws IllegalArgumentException
      *             if the global scaling factor isn't valid
      */
     public static void setScale(final int value) {
-        if (value < SCALE_MIN) {
+        if (value < BufferedImageIcon.SCALE_MIN) {
             throw new IllegalArgumentException(Integer.toString(value));
         }
-        SCALE = value;
+        BufferedImageIcon.SCALE = value;
     }
 
     /**
      * Paints the BufferedImageIcon, using the given Graphics, on the given
      * Component at the given x, y location, using the scale factor.
-     * 
+     *
      * @param c
      *            the Component to paint on
      * @param g
@@ -134,9 +135,10 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
     @Override
     public void paintIcon(final Component c, final Graphics g, final int x,
             final int y) {
-        if (SCALE > SCALE_MIN) {
+        if (BufferedImageIcon.SCALE > BufferedImageIcon.SCALE_MIN) {
             if (g != null) {
-                final double factor = SCALE_MULT / SCALE;
+                final double factor = BufferedImageIcon.SCALE_MULT
+                        / BufferedImageIcon.SCALE;
                 final int width = this.getWidth(c);
                 final int height = this.getHeight(c);
                 final Graphics2D g2d = (Graphics2D) g.create(x, y, width,
@@ -156,22 +158,24 @@ public class BufferedImageIcon extends BufferedImage implements Icon {
     /**
      * Gets the pixel width of this BufferedImageIcon, adjusted for the scale
      * factor.
-     * 
+     *
      * @return the adjusted width of this BufferedImageIcon, in pixels
      */
     @Override
     public int getIconWidth() {
-        return ((int) SCALE_MULT) * this.getWidth() / SCALE;
+        return (int) BufferedImageIcon.SCALE_MULT * this.getWidth()
+                / BufferedImageIcon.SCALE;
     }
 
     /**
      * Gets the pixel height of this BufferedImageIcon, adjusted for the scale
      * factor.
-     * 
+     *
      * @return the adjusted height of this BufferedImageIcon, in pixels
      */
     @Override
     public int getIconHeight() {
-        return ((int) SCALE_MULT) * this.getHeight() / SCALE;
+        return (int) BufferedImageIcon.SCALE_MULT * this.getHeight()
+                / BufferedImageIcon.SCALE;
     }
 }

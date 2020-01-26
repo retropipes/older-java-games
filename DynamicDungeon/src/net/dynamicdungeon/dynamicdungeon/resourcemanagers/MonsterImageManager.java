@@ -22,36 +22,37 @@ public class MonsterImageManager {
     private static Class<?> LOAD_CLASS = MonsterImageManager.class;
     static final int MONSTER_IMAGE_SIZE = 32;
 
-    public static BufferedImageIcon getImage(final String name,
-	    final int level, final Element e) {
-	// Get it from the cache
-	return MonsterImageCache.getCachedImage(name, level, e);
+    public static BufferedImageIcon getImage(final String name, final int level,
+            final Element e) {
+        // Get it from the cache
+        return MonsterImageCache.getCachedImage(name, level, e);
     }
 
-    static BufferedImageIcon getUncachedImage(final String name, final int level) {
-	try {
-	    if (PreferencesManager.getHighDefEnabled()) {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = MonsterImageManager.LOAD_CLASS
-			.getResource(MonsterImageManager.LOAD_PATH + "level"
-				+ level + "/" + normalName + HI_DEF_SUFFIX
-				+ ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedRetinaImageIcon(image);
-	    } else {
-		final String normalName = ImageTransformer.normalizeName(name);
-		final URL url = MonsterImageManager.LOAD_CLASS
-			.getResource(MonsterImageManager.LOAD_PATH + "level"
-				+ level + "/" + normalName + ".png");
-		final BufferedImage image = ImageIO.read(url);
-		return new BufferedImageIcon(image);
-	    }
-	} catch (final IOException ie) {
-	    return null;
-	} catch (final NullPointerException np) {
-	    return null;
-	} catch (final IllegalArgumentException ia) {
-	    return null;
-	}
+    static BufferedImageIcon getUncachedImage(final String name,
+            final int level) {
+        try {
+            if (PreferencesManager.getHighDefEnabled()) {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = MonsterImageManager.LOAD_CLASS
+                        .getResource(MonsterImageManager.LOAD_PATH + "level"
+                                + level + "/" + normalName
+                                + MonsterImageManager.HI_DEF_SUFFIX + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedRetinaImageIcon(image);
+            } else {
+                final String normalName = ImageTransformer.normalizeName(name);
+                final URL url = MonsterImageManager.LOAD_CLASS
+                        .getResource(MonsterImageManager.LOAD_PATH + "level"
+                                + level + "/" + normalName + ".png");
+                final BufferedImage image = ImageIO.read(url);
+                return new BufferedImageIcon(image);
+            }
+        } catch (final IOException ie) {
+            return null;
+        } catch (final NullPointerException np) {
+            return null;
+        } catch (final IllegalArgumentException ia) {
+            return null;
+        }
     }
 }

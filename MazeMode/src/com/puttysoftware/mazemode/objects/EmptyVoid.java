@@ -25,7 +25,8 @@ public class EmptyVoid extends GenericWall {
     @Override
     public String gameRenderHook(final int x, final int y, final int z) {
         final Application app = MazeMode.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final MazeObject mo1 = app.getMazeManager().getMazeObject(x - 1, y - 1,
                 z, MazeConstants.LAYER_OBJECT);
@@ -103,9 +104,11 @@ public class EmptyVoid extends GenericWall {
     }
 
     @Override
-    public void determineCurrentAppearance(final int x, final int y, final int z) {
+    public void determineCurrentAppearance(final int x, final int y,
+            final int z) {
         final Application app = MazeMode.getApplication();
-        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name, mo9Name, thisName;
+        String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
+                mo9Name, thisName;
         thisName = this.getName();
         final MazeObject mo1 = app.getMazeManager().getMazeObject(x - 1, y - 1,
                 z, MazeConstants.LAYER_OBJECT);
@@ -195,8 +198,8 @@ public class EmptyVoid extends GenericWall {
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
-            final int locZ, final int dirX, final int dirY,
-            final int arrowType, final ObjectInventory inv) {
+            final int locZ, final int dirX, final int dirY, final int arrowType,
+            final ObjectInventory inv) {
         // Stop arrow
         return false;
     }

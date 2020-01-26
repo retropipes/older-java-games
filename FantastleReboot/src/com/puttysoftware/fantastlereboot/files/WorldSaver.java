@@ -13,52 +13,52 @@ import com.puttysoftware.fantastlereboot.world.WorldManager;
 import com.puttysoftware.fileutils.ZipUtilities;
 
 public class WorldSaver extends Thread {
-  // Fields
-  private String filename;
+    // Fields
+    private String filename;
 
-  // Constructors
-  public WorldSaver(final String file) {
-    this.filename = file;
-    this.setName("Game Writer");
-  }
+    // Constructors
+    public WorldSaver(final String file) {
+        this.filename = file;
+        this.setName("Game Writer");
+    }
 
-  @Override
-  public void run() {
-    final boolean success = true;
-    final String sg = "Game";
-    try {
-      final BagOStuff bag = FantastleReboot.getBagOStuff();
-      // filename check
-      final boolean hasExtension = WorldSaver.hasExtension(this.filename);
-      if (!hasExtension) {
-        this.filename += FileExtensions.getWorldExtensionWithPeriod();
-      }
-      final File worldFile = new File(this.filename);
-      // Set prefix handler
-      WorldManager.getWorld().setPrefixHandler(new PrefixHandler());
-      // Set suffix handler
-      WorldManager.getWorld().setSuffixHandler(new SuffixHandler());
-      WorldManager.getWorld().writeWorld();
-      // Zip the file
-      ZipUtilities.zipDirectory(new File(WorldManager.getWorld().getBasePath()),
-          worldFile);
-      bag.showMessage(sg + " saved.");
-    } catch (final Exception ex) {
-      FantastleReboot.exception(ex);
+    @Override
+    public void run() {
+        final boolean success = true;
+        final String sg = "Game";
+        try {
+            final BagOStuff bag = FantastleReboot.getBagOStuff();
+            // filename check
+            final boolean hasExtension = WorldSaver.hasExtension(this.filename);
+            if (!hasExtension) {
+                this.filename += FileExtensions.getWorldExtensionWithPeriod();
+            }
+            final File worldFile = new File(this.filename);
+            // Set prefix handler
+            WorldManager.getWorld().setPrefixHandler(new PrefixHandler());
+            // Set suffix handler
+            WorldManager.getWorld().setSuffixHandler(new SuffixHandler());
+            WorldManager.getWorld().writeWorld();
+            // Zip the file
+            ZipUtilities.zipDirectory(
+                    new File(WorldManager.getWorld().getBasePath()), worldFile);
+            bag.showMessage(sg + " saved.");
+        } catch (final Exception ex) {
+            FantastleReboot.exception(ex);
+        }
+        WorldFileManager.handleDeferredSuccess(success, false, null);
     }
-    WorldFileManager.handleDeferredSuccess(success, false, null);
-  }
 
-  private static boolean hasExtension(final String s) {
-    String ext = null;
-    final int i = s.lastIndexOf('.');
-    if (i > 0 && i < s.length() - 1) {
-      ext = s.substring(i + 1).toLowerCase();
+    private static boolean hasExtension(final String s) {
+        String ext = null;
+        final int i = s.lastIndexOf('.');
+        if (i > 0 && i < s.length() - 1) {
+            ext = s.substring(i + 1).toLowerCase();
+        }
+        if (ext == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
-    if (ext == null) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 }
