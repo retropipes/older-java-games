@@ -10,10 +10,10 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.loopchute.Application;
 import com.puttysoftware.loopchute.LoopChute;
 import com.puttysoftware.loopchute.maze.Extension;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class RuleSetManager {
     // Constructors

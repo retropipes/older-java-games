@@ -7,8 +7,8 @@ package com.puttysoftware.lasertank.resourcemanagers;
 
 import java.io.File;
 
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.lasertank.LaserTank;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class ExternalMusicSaveTask extends Thread {
     // Fields
@@ -27,7 +27,7 @@ public class ExternalMusicSaveTask extends Thread {
         try {
             final String basePath = LaserTank.getApplication().getArenaManager()
                     .getArena().getArenaTempMusicFolder();
-            DirectoryUtilities.copyFile(new File(this.pathname + this.filename),
+            FileUtilities.copyFile(new File(this.pathname + this.filename),
                     new File(basePath + File.separator
                             + this.filename.toLowerCase()));
         } catch (final Exception ex) {

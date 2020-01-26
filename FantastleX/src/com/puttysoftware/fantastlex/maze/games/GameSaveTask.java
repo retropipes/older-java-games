@@ -15,7 +15,7 @@ import com.puttysoftware.fantastlex.FantastleX;
 import com.puttysoftware.fantastlex.maze.Extension;
 import com.puttysoftware.fantastlex.maze.Maze;
 import com.puttysoftware.fantastlex.maze.PrefixHandler;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

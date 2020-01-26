@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.lasertank.stringmanagers.StringConstants;
 import com.puttysoftware.lasertank.stringmanagers.StringLoader;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 final class CheatManager {
     // Fields

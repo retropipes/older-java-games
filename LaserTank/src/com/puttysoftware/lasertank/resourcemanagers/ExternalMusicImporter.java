@@ -9,10 +9,10 @@ import java.io.File;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.lasertank.LaserTank;
 import com.puttysoftware.lasertank.stringmanagers.StringConstants;
 import com.puttysoftware.lasertank.utilities.IDGenerator;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class ExternalMusicImporter {
     private static final String MAC_PREFIX = "HOME";
@@ -34,7 +34,7 @@ public class ExternalMusicImporter {
             if (!dest.getParentFile().exists()) {
                 dest.getParentFile().mkdirs();
             }
-            DirectoryUtilities.copyFile(source, dest);
+            FileUtilities.copyFile(source, dest);
             MusicManager.deleteExternalMusicFile();
             LaserTank.getApplication().getEditor()
                     .setMusicFilename(musicfilename);

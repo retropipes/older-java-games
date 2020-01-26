@@ -134,7 +134,7 @@ public class RuleSetPicker {
         this.picker = new PicturePicker(this.editorAppearances, this.names,
                 new Color(223, 223, 223));
         this.picker.changePickerColor(new Color(223, 223, 223));
-        this.picker.setPickerDimensions(ImageConstants.MAX_WINDOW_SIZE);
+        this.picker.updatePickerLayout(ImageConstants.MAX_WINDOW_SIZE);
         this.borderPane.add(this.picker.getPicker(), BorderLayout.CENTER);
         this.outputFrame.setResizable(false);
         this.outputFrame.pack();

@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.BufferUnderflowException;
 
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.micromod.MicroMod;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.maze.Extension;
 import com.puttysoftware.tallertower.maze.Maze;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class MusicManager {
     private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/tallertower/resources/music/";
@@ -38,7 +38,7 @@ public class MusicManager {
                 try (final InputStream is = MusicManager.LOAD_CLASS
                         .getResourceAsStream(MusicManager.LOAD_PATH + filename
                                 + Extension.getMusicExtensionWithPeriod())) {
-                    DirectoryUtilities.copyRAMFile(is, modFile);
+                    FileUtilities.copyRAMFile(is, modFile);
                 }
             }
             final MicroMod mm = new MicroMod();

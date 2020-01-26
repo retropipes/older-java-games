@@ -8,7 +8,7 @@ package com.puttysoftware.fantastlex.descriptionmanagers;
 
 import com.puttysoftware.fantastlex.creatures.personalities.PersonalityConstants;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {

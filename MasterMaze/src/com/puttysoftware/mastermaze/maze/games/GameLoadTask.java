@@ -14,12 +14,12 @@ import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mastermaze.Application;
 import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.maze.Maze;
 import com.puttysoftware.mastermaze.maze.PrefixHandler;
 import com.puttysoftware.mastermaze.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields

@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.loopchute.Application;
 import com.puttysoftware.loopchute.LoopChute;
 import com.puttysoftware.loopchute.generic.MazeObject;
@@ -22,8 +24,6 @@ import com.puttysoftware.loopchute.maze.games.GameFinder;
 import com.puttysoftware.loopchute.maze.games.GameLoadTask;
 import com.puttysoftware.loopchute.maze.games.GameSaveTask;
 import com.puttysoftware.loopchute.prefs.PreferencesManager;
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class MazeManager {
     // Fields
@@ -365,7 +365,7 @@ public class MazeManager {
                         }
                     }
                     try {
-                        DirectoryUtilities.copyFile(file,
+                        FileUtilities.copyFile(file,
                                 new File(MazeManager.getGameDirectory()
                                         + file.getName()));
                     } catch (final IOException ioe) {

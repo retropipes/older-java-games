@@ -23,8 +23,8 @@ import com.puttysoftware.ddremix.maze.Maze;
 import com.puttysoftware.ddremix.maze.MazeManager;
 import com.puttysoftware.ddremix.prefs.PreferencesManager;
 import com.puttysoftware.ddremix.resourcemanagers.LogoManager;
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public final class GUIManager {
     // Fields

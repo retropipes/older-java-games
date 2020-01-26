@@ -7,9 +7,45 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/jogg-0.0.7.jar"/>
-	<classpathentry kind="lib" path="extlib/jorbis-0.0.15.jar"/>
-	<classpathentry kind="lib" path="extlib/tritonus_share.jar"/>
-	<classpathentry kind="lib" path="extlib/vorbisspi1.0.3.jar"/>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.github.vorbis-support.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.desktop.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.integration.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.mod.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.randomrange.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.storage.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.wav.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.diane.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

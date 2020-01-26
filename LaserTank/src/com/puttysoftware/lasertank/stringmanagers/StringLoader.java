@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.lasertank.LaserTank;
 import com.puttysoftware.lasertank.prefs.PreferencesManager;
 import com.puttysoftware.lasertank.resourcemanagers.ImageManager;
 import com.puttysoftware.lasertank.utilities.ArenaConstants;
 import com.puttysoftware.lasertank.utilities.DifficultyConstants;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class StringLoader {
     private static final String LOAD_PATH = "/com/puttysoftware/lasertank/strings/";

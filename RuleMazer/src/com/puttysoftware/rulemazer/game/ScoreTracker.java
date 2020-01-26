@@ -72,9 +72,9 @@ public class ScoreTracker {
             }
         }
         this.scoresFile = sf.getAbsolutePath();
-        this.ssMgr = new SavedScoreManager(10,
-                ScoreManager.SORT_ORDER_ASCENDING, 0L, true,
-                "RuleMazer High Scores", "points", this.scoresFile);
+        this.ssMgr = new SavedScoreManager(1, 10,
+                ScoreManager.SORT_ORDER_ASCENDING, 0L, "RuleMazer High Scores",
+                new String[] { "points" }, this.scoresFile);
     }
 
     public void addToScore(final long value) {

@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.ltremix.Application;
 import com.puttysoftware.ltremix.LTRemix;
 import com.puttysoftware.ltremix.arena.current.CurrentArena;
@@ -20,7 +21,6 @@ import com.puttysoftware.ltremix.prefs.PreferencesManager;
 import com.puttysoftware.ltremix.stringmanagers.StringConstants;
 import com.puttysoftware.ltremix.stringmanagers.StringLoader;
 import com.puttysoftware.ltremix.utilities.Extension;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class ArenaManager {
     // Fields

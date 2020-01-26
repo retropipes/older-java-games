@@ -8,8 +8,8 @@ package com.puttysoftware.mastermaze.creatures.personalities;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.datamanagers.PersonalityDataManager;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityConstants {
     // Fields

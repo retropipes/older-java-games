@@ -14,6 +14,7 @@ import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.tallertower.Application;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.VersionException;
@@ -24,7 +25,6 @@ import com.puttysoftware.tallertower.maze.SuffixHandler;
 import com.puttysoftware.tallertower.maze.abc.AbstractMazeObject;
 import com.puttysoftware.tallertower.maze.utilities.ImageColorConstants;
 import com.puttysoftware.tallertower.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields

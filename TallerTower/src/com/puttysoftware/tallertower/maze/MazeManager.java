@@ -12,13 +12,13 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.tallertower.Application;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.maze.abc.AbstractMazeObject;
 import com.puttysoftware.tallertower.maze.games.GameFinder;
 import com.puttysoftware.tallertower.maze.games.GameLoadTask;
 import com.puttysoftware.tallertower.maze.games.GameSaveTask;
-import com.puttysoftware.xio.FilenameChecker;
 
 public final class MazeManager {
     // Fields

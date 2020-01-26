@@ -24,8 +24,8 @@ import com.puttysoftware.fantastlex.maze.Maze;
 import com.puttysoftware.fantastlex.maze.MazeManager;
 import com.puttysoftware.fantastlex.prefs.PreferencesManager;
 import com.puttysoftware.fantastlex.resourcemanagers.LogoManager;
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class GUIManager {
     // Fields

@@ -197,34 +197,5 @@ Temporary Items
 # Linux: .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
-# Exclusions
-!BrainMaze/extlib/*.jar
-!Chrystalz/extlib/*.jar
-!DDRemix/extlib/*.jar
-!DungeonDiver/extlib/*.jar
-!DungeonDiver2/extlib/*.jar
-!DungeonDiver3/extlib/*.jar
-!DungeonDiver4/extlib/*.jar
-!DynamicDungeon/extlib/*.jar
-!fantastle-reboot/extlib/*.jar
-!Fantastle5/extlib/*.jar
-!FantastleX/extlib/*.jar
-!Gemma/extlib/*.jar
-!laser-tank-improved/extlib/*.jar
-!LaserTank/extlib/*.jar
-!LaserTankGGJ2017/extlib/*.jar
-!LoopChute/extlib/*.jar
-!LTRemix/extlib/*.jar
-!MasterMaze/extlib/*.jar
-!MazeMode/extlib/*.jar
-!Mazer5D/extlib/*.jar
-!MazeRunner/extlib/*.jar
-!MazeRunner2/extlib/*.jar
-!RiskyRescue/extlib/*.jar
-!RuleMazer/extlib/*.jar
-!TallerTower/extlib/*.jar
-!TAP/extlib/*.jar
-!twisted-trek/extlib/*.jar
-!WeaselWeb/extlib/*.jar
-!WidgetWarren/extlib/*.jar
-!Worldz/extlib/*.jar
+# Exceptions
+!extlib/*.jar

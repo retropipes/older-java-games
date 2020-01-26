@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import com.puttysoftware.fantastlex.datamanagers.FaithDataManager;
 import com.puttysoftware.fantastlex.names.NamesConstants;
 import com.puttysoftware.fantastlex.names.NamesManager;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithConstants {
     // Fields

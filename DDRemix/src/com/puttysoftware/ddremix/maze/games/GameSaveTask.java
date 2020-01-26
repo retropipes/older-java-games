@@ -16,7 +16,7 @@ import com.puttysoftware.ddremix.maze.Extension;
 import com.puttysoftware.ddremix.maze.Maze;
 import com.puttysoftware.ddremix.maze.PrefixHandler;
 import com.puttysoftware.ddremix.maze.SuffixHandler;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

@@ -8,10 +8,10 @@ package com.puttysoftware.tallertower.datamanagers;
 
 import java.io.IOException;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.creatures.races.RaceConstants;
 import com.puttysoftware.tallertower.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class RaceDataManager {
     public static int[] getRaceData(final int r) {

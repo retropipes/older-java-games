@@ -8,10 +8,10 @@ package com.puttysoftware.tallertower.descriptionmanagers;
 
 import java.io.IOException;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.creatures.castes.CasteConstants;
 import com.puttysoftware.tallertower.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {

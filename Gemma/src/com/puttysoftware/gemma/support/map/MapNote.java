@@ -7,7 +7,7 @@ package com.puttysoftware.gemma.support.map;
 
 import java.io.IOException;
 
-import com.puttysoftware.llds.CloneableObject;
+import com.puttysoftware.storage.CloneableObject;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 

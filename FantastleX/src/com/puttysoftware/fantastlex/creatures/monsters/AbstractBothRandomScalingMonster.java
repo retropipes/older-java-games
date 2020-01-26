@@ -7,6 +7,7 @@ package com.puttysoftware.fantastlex.creatures.monsters;
 
 import com.puttysoftware.fantastlex.creatures.StatConstants;
 import com.puttysoftware.fantastlex.creatures.party.PartyManager;
+import com.puttysoftware.randomrange.RandomLongRange;
 import com.puttysoftware.randomrange.RandomRange;
 
 abstract class AbstractBothRandomScalingMonster
@@ -54,15 +55,15 @@ abstract class AbstractBothRandomScalingMonster
     }
 
     private long getInitialExperience() {
-        int minvar, maxvar;
-        minvar = (int) (this.getLevel()
+        long minvar, maxvar;
+        minvar = (long) (this.getLevel()
                 * AbstractMonster.MINIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        maxvar = (int) (this.getLevel()
+        maxvar = (long) (this.getLevel()
                 * AbstractMonster.MAXIMUM_EXPERIENCE_RANDOM_VARIANCE);
-        final RandomRange r = new RandomRange(minvar, maxvar);
+        final RandomLongRange r = new RandomLongRange(minvar, maxvar);
         final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
         final long factor = this.getBattlesToNextLevel();
-        return expbase / factor + r.generateLong();
+        return expbase / factor + r.generate();
     }
 
     private int getToughness() {

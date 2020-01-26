@@ -9,12 +9,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.weaselweb.Application;
 import com.puttysoftware.weaselweb.WeaselWeb;
 import com.puttysoftware.weaselweb.maze.FileExtension;
 import com.puttysoftware.weaselweb.maze.Maze;
 import com.puttysoftware.weaselweb.maze.PrefixHandler;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class LockedSaveTask extends Thread {
     // Fields

@@ -24,7 +24,7 @@ import com.puttysoftware.ddremix.maze.SuffixHandler;
 import com.puttysoftware.ddremix.maze.abc.AbstractMazeObject;
 import com.puttysoftware.ddremix.maze.utilities.ImageColorConstants;
 import com.puttysoftware.ddremix.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields

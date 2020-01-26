@@ -165,7 +165,7 @@ public class MazeEditor {
                 this.containableEditorAppearances, this.containableNames,
                 new Color(223, 223, 223));
         this.treasurePicker.changePickerColor(new Color(223, 223, 223));
-        this.treasurePicker.setPickerDimensions(ImageManager.MAX_WINDOW_SIZE);
+        this.treasurePicker.updatePickerLayout(ImageManager.MAX_WINDOW_SIZE);
         this.treasurePane = this.treasurePicker.getPicker();
         this.treasureFrame.setContentPane(this.treasurePane);
         this.treasureFrame.addWindowListener(this.rhandler);
@@ -2026,7 +2026,7 @@ public class MazeEditor {
                         new Color(223, 223, 223));
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
-            this.picker.setPickerDimensions(this.outputPane.getHeight());
+            this.picker.updatePickerLayout(this.outputPane.getHeight());
         }
     }
 

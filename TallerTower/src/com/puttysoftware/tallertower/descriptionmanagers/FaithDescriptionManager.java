@@ -8,10 +8,10 @@ package com.puttysoftware.tallertower.descriptionmanagers;
 
 import java.io.IOException;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.creatures.faiths.FaithConstants;
 import com.puttysoftware.tallertower.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithDescriptionManager {
     public static String getFaithDescription(final int f) {

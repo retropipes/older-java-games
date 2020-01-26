@@ -8,9 +8,9 @@ package com.puttysoftware.tallertower.creatures.races;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.datamanagers.RaceDataManager;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class RaceConstants {
     public static final int RACE_ATTRIBUTE_STRENGTH_PER_LEVEL = 0;

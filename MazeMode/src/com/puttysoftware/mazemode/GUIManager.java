@@ -19,11 +19,11 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazemode.maze.MazeManager;
 import com.puttysoftware.mazemode.prefs.PreferencesManager;
 import com.puttysoftware.mazemode.resourcemanagers.GraphicsManager;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class GUIManager {
     // Fields

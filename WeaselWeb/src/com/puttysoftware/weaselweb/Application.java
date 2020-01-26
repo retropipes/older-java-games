@@ -214,6 +214,6 @@ public class Application {
     }
 
     public boolean isBetaModeEnabled() {
-        return Application.VERSION_CODE != ProductData.CODE_STABLE_RELEASE;
+        return Application.VERSION_CODE != ProductData.CODE_STABLE;
     }
 }

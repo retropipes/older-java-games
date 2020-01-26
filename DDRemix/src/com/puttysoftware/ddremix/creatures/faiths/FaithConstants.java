@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import com.puttysoftware.ddremix.DDRemix;
 import com.puttysoftware.ddremix.names.NamesConstants;
 import com.puttysoftware.ddremix.names.NamesManager;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithConstants {
     // Fields

@@ -33,7 +33,7 @@ public class ScoreTracker {
 
     // Methods
     public boolean checkScore() {
-        return this.ssMgr.checkScore(1, this.score);
+        return this.ssMgr.checkScore(this.score);
     }
 
     public void commitScore() {

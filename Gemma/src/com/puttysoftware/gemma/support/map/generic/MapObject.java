@@ -20,8 +20,8 @@ import com.puttysoftware.gemma.support.scripts.internal.InternalScriptActionCode
 import com.puttysoftware.gemma.support.scripts.internal.InternalScriptEntry;
 import com.puttysoftware.gemma.support.scripts.internal.InternalScriptEntryArgument;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.llds.CloneableObject;
 import com.puttysoftware.randomrange.RandomRange;
+import com.puttysoftware.storage.CloneableObject;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 

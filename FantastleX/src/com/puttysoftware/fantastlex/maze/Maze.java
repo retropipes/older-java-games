@@ -16,8 +16,9 @@ import com.puttysoftware.fantastlex.maze.objects.Monster;
 import com.puttysoftware.fantastlex.maze.objects.MovingBlock;
 import com.puttysoftware.fantastlex.maze.utilities.MazeObjectList;
 import com.puttysoftware.fantastlex.prefs.PreferencesManager;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.randomrange.RandomLongRange;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.DirectoryUtilities;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -56,7 +57,7 @@ public class Maze implements MazeConstants {
         this.mazeStartMessage = "Let's Solve The Maze!";
         this.mazeEndMessage = "Maze Solved!";
         this.savedStart = new int[4];
-        final long random = new RandomRange(0, Long.MAX_VALUE).generateLong();
+        final long random = RandomLongRange.generateRaw();
         final String randomID = Long.toHexString(random);
         this.basePath = System.getProperty("java.io.tmpdir") + File.separator
                 + "FantastleX" + File.separator + randomID + ".maze";
@@ -629,7 +630,7 @@ public class Maze implements MazeConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        DirectoryUtilities.moveFile(sourceLocation,
+                        FileUtilities.moveFile(sourceLocation,
                                 targetLocation);
                     } catch (final IOException io) {
                         // Ignore

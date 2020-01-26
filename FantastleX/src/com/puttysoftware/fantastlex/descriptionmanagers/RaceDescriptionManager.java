@@ -8,7 +8,7 @@ package com.puttysoftware.fantastlex.descriptionmanagers;
 
 import com.puttysoftware.fantastlex.creatures.races.RaceConstants;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class RaceDescriptionManager {
     public static String getRaceDescription(final int r) {

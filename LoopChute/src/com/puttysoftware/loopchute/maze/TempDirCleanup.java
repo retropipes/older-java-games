@@ -2,7 +2,7 @@ package com.puttysoftware.loopchute.maze;
 
 import java.io.File;
 
-import com.puttysoftware.xio.DirectoryUtilities;
+import com.puttysoftware.fileutils.DirectoryUtilities;
 
 public class TempDirCleanup extends Thread {
     @Override

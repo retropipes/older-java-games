@@ -9,9 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.loopchute.Application;
 import com.puttysoftware.loopchute.LoopChute;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class SaveTask extends Thread {
     // Fields

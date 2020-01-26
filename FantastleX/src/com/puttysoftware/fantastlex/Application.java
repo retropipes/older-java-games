@@ -61,7 +61,7 @@ public class Application {
     private static final int VERSION_MAJOR = 1;
     private static final int VERSION_MINOR = 0;
     private static final int VERSION_BUGFIX = 0;
-    private static final int VERSION_CODE = ProductData.CODE_STABLE_RELEASE;
+    private static final int VERSION_CODE = ProductData.CODE_STABLE;
     private static final int VERSION_PRERELEASE = 0;
     public static final int STATUS_GUI = 0;
     public static final int STATUS_GAME = 1;
@@ -293,7 +293,7 @@ public class Application {
         } else {
             rt = "";
         }
-        if (code < ProductData.CODE_STABLE_RELEASE) {
+        if (code < ProductData.CODE_STABLE) {
             return "" + Application.VERSION_MAJOR + "."
                     + Application.VERSION_MINOR + "."
                     + Application.VERSION_BUGFIX + rt

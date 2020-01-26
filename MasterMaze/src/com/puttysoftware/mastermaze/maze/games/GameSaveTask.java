@@ -10,12 +10,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mastermaze.Application;
 import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.maze.Extension;
 import com.puttysoftware.mastermaze.maze.Maze;
 import com.puttysoftware.mastermaze.maze.PrefixHandler;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

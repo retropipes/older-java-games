@@ -12,32 +12,42 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/desktop-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.github.vorbis-support.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/platform-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.desktop.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/random-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.integration.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/storage-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.mod.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/vorbis-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.randomrange.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="extlib/wav-support.jar">
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.storage.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.wav.module.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.diane.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

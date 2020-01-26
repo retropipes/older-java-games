@@ -21,8 +21,7 @@ public class MazeMode {
             + "Subject: MazeMode Bug Report";
     private static final String ERROR_TITLE = "MazeMode Error";
     private static final ErrorLogger elog = new ErrorLogger(
-            MazeMode.PROGRAM_NAME, MazeMode.ERROR_MESSAGE,
-            MazeMode.ERROR_TITLE);
+            MazeMode.PROGRAM_NAME);
     private static boolean IN_MAZEMODE = true;
 
     // Methods
@@ -44,6 +43,8 @@ public class MazeMode {
     }
 
     public static ErrorLogger getErrorLogger() {
+        CommonDialogs.showErrorDialog(MazeMode.ERROR_MESSAGE,
+                MazeMode.ERROR_TITLE);
         return MazeMode.elog;
     }
 

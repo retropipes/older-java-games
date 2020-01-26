@@ -15,6 +15,7 @@ import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.lasertank.Application;
 import com.puttysoftware.lasertank.LaserTank;
 import com.puttysoftware.lasertank.resourcemanagers.LogoManager;
@@ -22,7 +23,6 @@ import com.puttysoftware.lasertank.resourcemanagers.MusicManager;
 import com.puttysoftware.lasertank.stringmanagers.StringConstants;
 import com.puttysoftware.lasertank.stringmanagers.StringLoader;
 import com.puttysoftware.lasertank.utilities.InvalidArenaException;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

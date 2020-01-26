@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mastermaze.descriptionmanagers;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.creatures.personalities.PersonalityConstants;
 import com.puttysoftware.mastermaze.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {

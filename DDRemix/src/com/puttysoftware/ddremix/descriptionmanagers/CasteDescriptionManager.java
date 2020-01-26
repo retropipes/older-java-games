@@ -11,7 +11,7 @@ import java.io.IOException;
 import com.puttysoftware.ddremix.DDRemix;
 import com.puttysoftware.ddremix.creatures.castes.CasteConstants;
 import com.puttysoftware.ddremix.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {

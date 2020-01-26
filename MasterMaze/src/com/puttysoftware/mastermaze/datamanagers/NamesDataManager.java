@@ -11,9 +11,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.names.NamesConstants;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class NamesDataManager {
     private static final String MAC_PREFIX = "HOME";

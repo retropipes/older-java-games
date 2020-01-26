@@ -18,7 +18,7 @@ import com.puttysoftware.ddremix.maze.abc.AbstractMazeObject;
 import com.puttysoftware.ddremix.maze.games.GameFinder;
 import com.puttysoftware.ddremix.maze.games.GameLoadTask;
 import com.puttysoftware.ddremix.maze.games.GameSaveTask;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public final class MazeManager {
     // Fields

@@ -9,10 +9,10 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.datamanagers.FaithDataManager;
 import com.puttysoftware.mastermaze.names.NamesConstants;
 import com.puttysoftware.mastermaze.names.NamesManager;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithConstants {
     // Fields

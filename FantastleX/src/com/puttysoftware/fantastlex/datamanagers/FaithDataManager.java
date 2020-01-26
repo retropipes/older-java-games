@@ -8,7 +8,7 @@ package com.puttysoftware.fantastlex.datamanagers;
 
 import com.puttysoftware.fantastlex.creatures.faiths.FaithConstants;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithDataManager {
     public static double[] getFaithData(final int f) {

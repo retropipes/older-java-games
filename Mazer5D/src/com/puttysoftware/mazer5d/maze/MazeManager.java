@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -25,7 +26,6 @@ import com.puttysoftware.mazer5d.maze.xml.XMLLoadTask;
 import com.puttysoftware.mazer5d.maze.xml.XMLMazeFilter;
 import com.puttysoftware.mazer5d.maze.xml.XMLSaveTask;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class MazeManager {
     // Fields

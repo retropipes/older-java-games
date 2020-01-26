@@ -8,9 +8,9 @@ package com.puttysoftware.tallertower.creatures.personalities;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.datamanagers.PersonalityDataManager;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityConstants {
     // Fields

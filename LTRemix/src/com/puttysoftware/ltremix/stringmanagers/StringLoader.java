@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.ltremix.LTRemix;
 import com.puttysoftware.ltremix.prefs.PreferencesManager;
 import com.puttysoftware.ltremix.resourcemanagers.ImageManager;
 import com.puttysoftware.ltremix.utilities.ArenaConstants;
 import com.puttysoftware.ltremix.utilities.DifficultyConstants;
 import com.puttysoftware.ltremix.utilities.EraConstants;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class StringLoader {
     private static final String LOAD_PATH = "/com/puttysoftware/ltremix/strings/";

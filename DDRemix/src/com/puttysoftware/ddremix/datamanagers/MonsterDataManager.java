@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.puttysoftware.ddremix.DDRemix;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class MonsterDataManager {
     public static String[] getMonsterData(final int level,

@@ -299,7 +299,7 @@ public class Application {
         } else {
             rt = "";
         }
-        if (code < ProductData.CODE_STABLE_RELEASE) {
+        if (code < ProductData.CODE_STABLE) {
             return "" + Application.VERSION_MAJOR + "."
                     + Application.VERSION_MINOR + "."
                     + Application.VERSION_BUGFIX + rt

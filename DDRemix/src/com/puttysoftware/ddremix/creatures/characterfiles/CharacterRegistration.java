@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.ddremix.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class CharacterRegistration {
     // Fields

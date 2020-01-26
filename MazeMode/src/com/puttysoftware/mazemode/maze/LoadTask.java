@@ -13,11 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazemode.Application;
 import com.puttysoftware.mazemode.CommonDialogs;
 import com.puttysoftware.mazemode.MazeMode;
 import com.puttysoftware.mazemode.resourcemanagers.GraphicsManager;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

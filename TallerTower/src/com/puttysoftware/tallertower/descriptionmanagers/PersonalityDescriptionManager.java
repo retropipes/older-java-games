@@ -8,10 +8,10 @@ package com.puttysoftware.tallertower.descriptionmanagers;
 
 import java.io.IOException;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.creatures.personalities.PersonalityConstants;
 import com.puttysoftware.tallertower.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {

@@ -13,7 +13,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fantastlex.Application;
 import com.puttysoftware.fantastlex.FantastleX;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class RuleSetManager {
     // Constructors

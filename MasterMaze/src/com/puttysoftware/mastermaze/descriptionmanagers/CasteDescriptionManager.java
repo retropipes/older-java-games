@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mastermaze.descriptionmanagers;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.creatures.castes.CasteConstants;
 import com.puttysoftware.mastermaze.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {

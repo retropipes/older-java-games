@@ -9,8 +9,8 @@ package com.puttysoftware.tallertower.datamanagers;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class MusicDataManager {
     public static String[] getMusicData() {

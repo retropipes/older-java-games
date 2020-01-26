@@ -14,10 +14,10 @@ import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.weaselweb.Application;
 import com.puttysoftware.weaselweb.WeaselWeb;
 import com.puttysoftware.weaselweb.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

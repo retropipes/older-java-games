@@ -8,7 +8,7 @@ package com.puttysoftware.fantastlex.descriptionmanagers;
 
 import com.puttysoftware.fantastlex.creatures.faiths.FaithConstants;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithDescriptionManager {
     public static String getFaithDescription(final int f) {

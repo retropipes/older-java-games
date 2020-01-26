@@ -13,8 +13,8 @@ import java.nio.BufferUnderflowException;
 import com.puttysoftware.ddremix.DDRemix;
 import com.puttysoftware.ddremix.maze.Extension;
 import com.puttysoftware.ddremix.maze.Maze;
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.micromod.MicroMod;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class MusicManager {
     private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/ddremix/resources/music/";
@@ -38,7 +38,7 @@ public class MusicManager {
                 try (final InputStream is = MusicManager.LOAD_CLASS
                         .getResourceAsStream(MusicManager.LOAD_PATH + filename
                                 + Extension.getMusicExtensionWithPeriod())) {
-                    DirectoryUtilities.copyRAMFile(is, modFile);
+                    FileUtilities.copyRAMFile(is, modFile);
                 }
             }
             final MicroMod mm = new MicroMod();

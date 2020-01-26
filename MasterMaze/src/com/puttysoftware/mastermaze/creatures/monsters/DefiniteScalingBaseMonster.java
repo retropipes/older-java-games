@@ -62,7 +62,7 @@ abstract class DefiniteScalingBaseMonster extends DefiniteBaseMonster {
         final RandomRange r = new RandomRange(minvar, maxvar);
         final long expbase = PartyManager.getParty().getPartyMaxToNextLevel();
         final long factor = this.getBattlesToNextLevel();
-        return expbase / factor + r.generateLong();
+        return expbase / factor + r.generate();
     }
 
     private int getToughness() {

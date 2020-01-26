@@ -12,6 +12,6 @@ module com.puttysoftware.gemma {
     requires com.puttysoftware.audio.wav;
     requires com.puttysoftware.desktop;
     requires com.puttysoftware.integration;
-    requires com.puttysoftware.llds;
     requires com.puttysoftware.randomrange;
+    requires com.puttysoftware.storage;
 }

@@ -6,6 +6,7 @@
 package com.puttysoftware.gemma.support.resourcemanagers;
 
 import com.puttysoftware.audio.wav.WAVFactory;
+import com.puttysoftware.gemma.support.Support;
 import com.puttysoftware.gemma.support.prefs.LocalPreferencesManager;
 import com.puttysoftware.randomrange.RandomRange;
 
@@ -41,7 +42,7 @@ public class SoundManager {
                         + offset];
                 final WAVFactory snd = SoundManager.getSound(soundName);
                 if (snd != null) {
-                    snd.start();
+                    snd.start(Support.getErrorLogger());
                 }
             } catch (final ArrayIndexOutOfBoundsException aioob) {
                 // Do nothing

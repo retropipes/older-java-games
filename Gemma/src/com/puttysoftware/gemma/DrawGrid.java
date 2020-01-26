@@ -1,9 +1,9 @@
 package com.puttysoftware.gemma;
 
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.llds.BasicLowLevelDataStore;
+import com.puttysoftware.storage.ObjectStorage;
 
-public class DrawGrid extends BasicLowLevelDataStore {
+public class DrawGrid extends ObjectStorage {
     public DrawGrid(final int numSquares) {
         super(numSquares, numSquares);
     }

@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class MazeRegistration {
     private static final String MAC_PREFIX = "HOME";
@@ -192,7 +192,7 @@ public class MazeRegistration {
         final String res = f.getName().substring(0, f.getName().length() - 5);
         // Copy file to user mazes folder
         try {
-            DirectoryUtilities.copyFile(f,
+            FileUtilities.copyFile(f,
                     new File(MazeRegistration.getPerUserBasePath()
                             + File.separator + f.getName()));
         } catch (final IOException e) {

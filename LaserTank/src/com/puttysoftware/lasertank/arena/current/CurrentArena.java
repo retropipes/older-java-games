@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.lasertank.LaserTank;
 import com.puttysoftware.lasertank.arena.AbstractArena;
 import com.puttysoftware.lasertank.arena.AbstractArenaData;
@@ -28,7 +29,6 @@ import com.puttysoftware.lasertank.utilities.Direction;
 import com.puttysoftware.lasertank.utilities.Extension;
 import com.puttysoftware.lasertank.utilities.FormatConstants;
 import com.puttysoftware.randomrange.RandomLongRange;
-import com.puttysoftware.xio.DirectoryUtilities;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -397,7 +397,7 @@ public class CurrentArena extends AbstractArena {
                         final File sourceLocation = this.getLevelFile(x + 1, e);
                         final File targetLocation = this.getLevelFile(x, e);
                         try {
-                            DirectoryUtilities.moveFile(sourceLocation,
+                            FileUtilities.moveFile(sourceLocation,
                                     targetLocation);
                         } catch (final IOException io) {
                             // Ignore

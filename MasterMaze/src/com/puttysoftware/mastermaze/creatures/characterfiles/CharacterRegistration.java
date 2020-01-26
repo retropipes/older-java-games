@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mastermaze.MasterMaze;
 import com.puttysoftware.mastermaze.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class CharacterRegistration {
     // Fields

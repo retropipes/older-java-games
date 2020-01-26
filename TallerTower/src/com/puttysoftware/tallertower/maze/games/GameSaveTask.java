@@ -10,13 +10,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.tallertower.Application;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.maze.Extension;
 import com.puttysoftware.tallertower.maze.Maze;
 import com.puttysoftware.tallertower.maze.PrefixHandler;
 import com.puttysoftware.tallertower.maze.SuffixHandler;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

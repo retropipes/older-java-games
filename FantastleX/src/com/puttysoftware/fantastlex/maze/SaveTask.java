@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fantastlex.Application;
 import com.puttysoftware.fantastlex.FantastleX;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class SaveTask extends Thread {
     // Fields

@@ -8,7 +8,7 @@ package com.puttysoftware.fantastlex.descriptionmanagers;
 
 import com.puttysoftware.fantastlex.creatures.castes.CasteConstants;
 import com.puttysoftware.fantastlex.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {

@@ -22,8 +22,8 @@ import com.puttysoftware.fantastlex.maze.games.GameFinder;
 import com.puttysoftware.fantastlex.maze.games.GameLoadTask;
 import com.puttysoftware.fantastlex.maze.games.GameSaveTask;
 import com.puttysoftware.fantastlex.prefs.PreferencesManager;
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class MazeManager {
     // Fields
@@ -368,7 +368,7 @@ public class MazeManager {
                         }
                     }
                     try {
-                        DirectoryUtilities.copyFile(file,
+                        FileUtilities.copyFile(file,
                                 new File(MazeManager.getGameDirectory()
                                         + file.getName()));
                     } catch (final IOException ioe) {

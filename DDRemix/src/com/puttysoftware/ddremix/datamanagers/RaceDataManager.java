@@ -11,7 +11,7 @@ import java.io.IOException;
 import com.puttysoftware.ddremix.DDRemix;
 import com.puttysoftware.ddremix.creatures.races.RaceConstants;
 import com.puttysoftware.ddremix.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class RaceDataManager {
     public static int[] getRaceData(final int r) {

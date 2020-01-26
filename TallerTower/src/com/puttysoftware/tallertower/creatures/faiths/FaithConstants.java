@@ -9,11 +9,11 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.tallertower.TallerTower;
 import com.puttysoftware.tallertower.datamanagers.FaithDataManager;
 import com.puttysoftware.tallertower.names.NamesConstants;
 import com.puttysoftware.tallertower.names.NamesManager;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithConstants {
     // Fields

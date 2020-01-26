@@ -6,9 +6,9 @@
 package com.puttysoftware.gemma.support.map;
 
 import com.puttysoftware.gemma.support.map.generic.MapObject;
-import com.puttysoftware.llds.LowLevelObjectDataStore;
+import com.puttysoftware.storage.ObjectStorage;
 
-class LowLevelDataStore extends LowLevelObjectDataStore {
+class LowLevelDataStore extends ObjectStorage {
     // Constructor
     LowLevelDataStore(final int... shape) {
         super(shape);

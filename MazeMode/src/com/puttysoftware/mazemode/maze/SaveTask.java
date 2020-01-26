@@ -8,10 +8,10 @@ package com.puttysoftware.mazemode.maze;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazemode.Application;
 import com.puttysoftware.mazemode.CommonDialogs;
 import com.puttysoftware.mazemode.MazeMode;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class SaveTask extends Thread {
     // Fields

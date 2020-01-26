@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.maze;
 import java.io.File;
 import java.io.IOException;
 
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.GenericCharacter;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -18,7 +19,6 @@ import com.puttysoftware.mazer5d.objects.Empty;
 import com.puttysoftware.mazer5d.objects.MovingBlock;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 import com.puttysoftware.randomrange.RandomLongRange;
-import com.puttysoftware.xio.DirectoryUtilities;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -517,7 +517,7 @@ public class Maze implements MazeConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        DirectoryUtilities.moveFile(sourceLocation,
+                        FileUtilities.moveFile(sourceLocation,
                                 targetLocation);
                     } catch (final IOException io) {
                         // Ignore
