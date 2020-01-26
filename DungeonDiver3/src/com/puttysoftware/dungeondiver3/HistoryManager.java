@@ -13,7 +13,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.dungeondiver3.resourcemanagers.GraphicsConstants;
 import com.puttysoftware.dungeondiver3.support.Support;
-import com.puttysoftware.help.XHTMLHelpViewer;
+import com.puttysoftware.help.HTMLHelpViewer;
 import com.puttysoftware.platform.Platform;
 
 class HistoryManager {
@@ -46,7 +46,7 @@ class HistoryManager {
             final URL histDoc = HistoryManager.class.getResource(
                     "/com/puttysoftware/dungeondiver3/resources/help/history/"
                             + rt + "history.xhtml");
-            final XHTMLHelpViewer hv = new XHTMLHelpViewer(histDoc);
+            final HTMLHelpViewer hv = new HTMLHelpViewer(histDoc);
             this.helpFrame = new JFrame(title);
             Platform.hookFrameIcon(this.helpFrame, Application.getIconLogo());
             this.helpFrame

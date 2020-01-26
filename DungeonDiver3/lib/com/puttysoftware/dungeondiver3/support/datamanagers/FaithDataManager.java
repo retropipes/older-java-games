@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver3.support.datamanagers;
 
 import com.puttysoftware.dungeondiver3.support.creatures.faiths.FaithConstants;
 import com.puttysoftware.dungeondiver3.support.scenario.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithDataManager {
     public static double[] getFaithData(final int f) {

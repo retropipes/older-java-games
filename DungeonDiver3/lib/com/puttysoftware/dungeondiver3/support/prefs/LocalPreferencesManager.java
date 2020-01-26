@@ -107,21 +107,19 @@ public class LocalPreferencesManager {
     }
 
     public static void writePrefs() {
-        try {
-            LocalPreferencesManager.storeMgr
-                    .saveStore(new BufferedOutputStream(new FileOutputStream(
-                            LocalPreferencesManager.getPrefsFile())));
+        try (BufferedOutputStream bos = new BufferedOutputStream(
+                new FileOutputStream(LocalPreferencesManager.getPrefsFile()))) {
+            LocalPreferencesManager.storeMgr.saveStore(bos);
         } catch (final IOException io) {
             // Ignore
         }
     }
 
     public static void readPrefs() {
-        try {
+        try (BufferedInputStream bis = new BufferedInputStream(
+                new FileInputStream(LocalPreferencesManager.getPrefsFile()))) {
             // Read new preferences
-            LocalPreferencesManager.storeMgr
-                    .loadStore(new BufferedInputStream(new FileInputStream(
-                            LocalPreferencesManager.getPrefsFile())));
+            LocalPreferencesManager.storeMgr.loadStore(bis);
         } catch (final IOException io) {
             // Populate store with defaults
             LocalPreferencesManager.storeMgr.setBoolean("SoundsEnabled", true);

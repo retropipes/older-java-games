@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import com.puttysoftware.dungeondiver3.support.Support;
 import com.puttysoftware.dungeondiver3.support.names.NamesConstants;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class NamesDataManager {
     private static final String MAC_PREFIX = "HOME";

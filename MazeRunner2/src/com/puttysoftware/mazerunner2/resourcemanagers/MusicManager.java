@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.BufferUnderflowException;
 
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.micromod.MicroMod;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class MusicManager {
     private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/mazerunner2/resources/music/";
@@ -37,7 +37,7 @@ public class MusicManager {
                 try (final InputStream is = MusicManager.LOAD_CLASS
                         .getResourceAsStream(MusicManager.LOAD_PATH
                                 + filename.toLowerCase() + ".mod")) {
-                    DirectoryUtilities.copyRAMFile(is, modFile);
+                    FileUtilities.copyRAMFile(is, modFile);
                 }
             }
             final MicroMod mm = new MicroMod();

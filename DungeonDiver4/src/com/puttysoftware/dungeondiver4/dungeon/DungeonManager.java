@@ -22,8 +22,8 @@ import com.puttysoftware.dungeondiver4.dungeon.games.GameFinder;
 import com.puttysoftware.dungeondiver4.dungeon.games.GameLoadTask;
 import com.puttysoftware.dungeondiver4.dungeon.games.GameSaveTask;
 import com.puttysoftware.dungeondiver4.prefs.PreferencesManager;
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class DungeonManager {
     // Fields
@@ -373,7 +373,7 @@ public class DungeonManager {
                         }
                     }
                     try {
-                        DirectoryUtilities.copyFile(file,
+                        FileUtilities.copyFile(file,
                                 new File(DungeonManager.getGameDirectory()
                                         + file.getName()));
                     } catch (final IOException ioe) {

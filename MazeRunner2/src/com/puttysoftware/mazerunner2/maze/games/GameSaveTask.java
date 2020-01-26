@@ -10,12 +10,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Extension;
 import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.mazerunner2.maze.PrefixHandler;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

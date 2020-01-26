@@ -38,6 +38,9 @@ public class Support {
     private static final int GAME_MAP_SIZE = 256;
     private static final int GAME_MAP_FLOOR_SIZE = 1;
     private static final boolean debugMode = false;
+    private static final ProductData pd = new ProductData(VERSION_MAJOR,
+            VERSION_MINOR, VERSION_BUGFIX, VERSION_CODE,
+            VERSION_PRERELEASE);
 
     // Methods
     public static ErrorLogger getErrorLogger() {
@@ -112,25 +115,6 @@ public class Support {
     }
 
     public static String getVersionString() {
-        if (Support.isBetaModeEnabled()) {
-            final int code = Support.VERSION_CODE;
-            String rt;
-            if (code == ProductData.CODE_BETA) {
-                rt = "-beta";
-            } else {
-                rt = "";
-            }
-            return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR
-                    + "." + Support.VERSION_BUGFIX + rt
-                    + Support.VERSION_PRERELEASE;
-        } else {
-            return "" + Support.VERSION_MAJOR + "." + Support.VERSION_MINOR
-                    + "." + Support.VERSION_BUGFIX;
-        }
-    }
-
-    private static boolean isBetaModeEnabled() {
-        final int code = Support.VERSION_CODE;
-        return code != ProductData.CODE_STABLE;
+        return pd.getVersionString();
     }
 }

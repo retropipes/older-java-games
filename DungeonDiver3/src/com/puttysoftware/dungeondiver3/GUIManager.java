@@ -24,9 +24,9 @@ import com.puttysoftware.dungeondiver3.resourcemanagers.LogoManager;
 import com.puttysoftware.dungeondiver3.scenario.ScenarioManager;
 import com.puttysoftware.dungeondiver3.support.Support;
 import com.puttysoftware.dungeondiver3.support.creatures.PartyManager;
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.platform.Platform;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class GUIManager {
     // Fields

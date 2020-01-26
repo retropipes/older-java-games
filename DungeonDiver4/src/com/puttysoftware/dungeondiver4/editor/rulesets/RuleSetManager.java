@@ -13,7 +13,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.dungeondiver4.Application;
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.dungeon.Extension;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class RuleSetManager {
     // Constructors

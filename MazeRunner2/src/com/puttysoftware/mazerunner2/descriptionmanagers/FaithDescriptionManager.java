@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazerunner2.descriptionmanagers;
 
+import com.puttysoftware.fileutils.ResourceStreamReader;
 import com.puttysoftware.mazerunner2.creatures.faiths.FaithConstants;
 import com.puttysoftware.mazerunner2.maze.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
 
 public class FaithDescriptionManager {
     public static String getFaithDescription(final int f) {

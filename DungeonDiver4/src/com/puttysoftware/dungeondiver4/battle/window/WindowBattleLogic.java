@@ -483,31 +483,18 @@ public class WindowBattleLogic extends AbstractBattle {
     public final boolean steal() {
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         final int stealChance = StatConstants.CHANCE_STEAL;
-        if (stealChance <= 0) {
-            // Failed
-            this.stealAmount = 0;
-            return false;
-        } else if (stealChance >= 100) {
+        final RandomRange chance = new RandomRange(0, 100);
+        final int randomChance = chance.generate();
+        if (randomChance <= stealChance) {
             // Succeeded
             final RandomRange stole = new RandomRange(0, this.enemy.getGold());
             this.stealAmount = stole.generate();
             playerCharacter.offsetGold(this.stealAmount);
             return true;
         } else {
-            final RandomRange chance = new RandomRange(0, 100);
-            final int randomChance = chance.generate();
-            if (randomChance <= stealChance) {
-                // Succeeded
-                final RandomRange stole = new RandomRange(0,
-                        this.enemy.getGold());
-                this.stealAmount = stole.generate();
-                playerCharacter.offsetGold(this.stealAmount);
-                return true;
-            } else {
-                // Failed
-                this.stealAmount = 0;
-                return false;
-            }
+            // Failed
+            this.stealAmount = 0;
+            return false;
         }
     }
 
@@ -515,10 +502,9 @@ public class WindowBattleLogic extends AbstractBattle {
     public final boolean drain() {
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         final int drainChance = StatConstants.CHANCE_DRAIN;
-        if (drainChance <= 0) {
-            // Failed
-            return false;
-        } else if (drainChance >= 100) {
+        final RandomRange chance = new RandomRange(0, 100);
+        final int randomChance = chance.generate();
+        if (randomChance <= drainChance) {
             // Succeeded
             final RandomRange drained = new RandomRange(0,
                     this.enemy.getCurrentMP());
@@ -527,20 +513,8 @@ public class WindowBattleLogic extends AbstractBattle {
             playerCharacter.offsetCurrentMP(drainAmount);
             return true;
         } else {
-            final RandomRange chance = new RandomRange(0, 100);
-            final int randomChance = chance.generate();
-            if (randomChance <= drainChance) {
-                // Succeeded
-                final RandomRange drained = new RandomRange(0,
-                        this.enemy.getCurrentMP());
-                final int drainAmount = drained.generate();
-                this.enemy.offsetCurrentMP(-drainAmount);
-                playerCharacter.offsetCurrentMP(drainAmount);
-                return true;
-            } else {
-                // Failed
-                return false;
-            }
+            // Failed
+            return false;
         }
     }
 

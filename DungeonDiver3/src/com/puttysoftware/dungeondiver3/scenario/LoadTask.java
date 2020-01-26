@@ -20,7 +20,7 @@ import com.puttysoftware.dungeondiver3.resourcemanagers.LogoManager;
 import com.puttysoftware.dungeondiver3.support.Support;
 import com.puttysoftware.dungeondiver3.support.map.InvalidMapException;
 import com.puttysoftware.dungeondiver3.support.map.Map;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 class LoadTask extends Thread {
     // Fields

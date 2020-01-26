@@ -13,14 +13,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.legacy.games.LegacyGameFilter;
 import com.puttysoftware.mazerunner2.maze.legacy.games.LegacyGameFinder;
 import com.puttysoftware.mazerunner2.maze.legacy.games.LegacyGameLoadTask;
 import com.puttysoftware.mazerunner2.prefs.PreferencesManager;
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class LegacyMazeManager {
     // Fields
@@ -266,7 +266,7 @@ public class LegacyMazeManager {
                         }
                     }
                     try {
-                        DirectoryUtilities.copyFile(file,
+                        FileUtilities.copyFile(file,
                                 new File(LegacyMazeManager.getGameDirectory()
                                         + file.getName()));
                     } catch (final IOException ioe) {

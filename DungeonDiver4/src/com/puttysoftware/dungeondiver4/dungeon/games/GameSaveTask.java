@@ -15,7 +15,7 @@ import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.dungeon.Dungeon;
 import com.puttysoftware.dungeondiver4.dungeon.Extension;
 import com.puttysoftware.dungeondiver4.dungeon.PrefixHandler;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

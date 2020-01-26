@@ -24,8 +24,8 @@ import com.puttysoftware.dungeondiver4.dungeon.Dungeon;
 import com.puttysoftware.dungeondiver4.dungeon.DungeonManager;
 import com.puttysoftware.dungeondiver4.prefs.PreferencesManager;
 import com.puttysoftware.dungeondiver4.resourcemanagers.LogoManager;
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class GUIManager {
     // Fields

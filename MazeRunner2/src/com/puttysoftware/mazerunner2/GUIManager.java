@@ -19,13 +19,13 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+import com.puttysoftware.fileutils.DirectoryUtilities;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazerunner2.creatures.party.PartyManager;
 import com.puttysoftware.mazerunner2.maze.Maze;
 import com.puttysoftware.mazerunner2.maze.MazeManager;
 import com.puttysoftware.mazerunner2.prefs.PreferencesManager;
 import com.puttysoftware.mazerunner2.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.DirectoryUtilities;
 
 public class GUIManager {
     // Fields

@@ -184,9 +184,9 @@ public class PreferencesManager {
     }
 
     public static void writePrefs() {
-        try {
-            PreferencesManager.storeMgr.saveStore(new BufferedOutputStream(
-                    new FileOutputStream(PreferencesManager.getPrefsFile())));
+        try (BufferedOutputStream bos = new BufferedOutputStream(
+                new FileOutputStream(PreferencesManager.getPrefsFile()))) {
+            PreferencesManager.storeMgr.saveStore(bos);
         } catch (final IOException io) {
             // Ignore
         }
@@ -194,10 +194,10 @@ public class PreferencesManager {
     }
 
     static void readPrefs() {
-        try {
+        try (BufferedInputStream bis = new BufferedInputStream(
+                new FileInputStream(PreferencesManager.getPrefsFile()))) {
             // Read new preferences
-            PreferencesManager.storeMgr.loadStore(new BufferedInputStream(
-                    new FileInputStream(PreferencesManager.getPrefsFile())));
+            PreferencesManager.storeMgr.loadStore(bis);
         } catch (final IOException io) {
             // Populate store with defaults
             PreferencesManager.storeMgr.setBoolean("UpdatesStartup", true);

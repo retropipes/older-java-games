@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver3.support.datamanagers;
 
 import com.puttysoftware.dungeondiver3.support.creatures.races.RaceConstants;
 import com.puttysoftware.dungeondiver3.support.scenario.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class RaceDataManager {
     public static int[] getRaceData(final int r) {

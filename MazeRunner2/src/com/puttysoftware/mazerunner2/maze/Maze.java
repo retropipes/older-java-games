@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.abc.AbstractMazeObject;
 import com.puttysoftware.mazerunner2.maze.legacy.LegacyFormatConstants;
@@ -20,7 +21,6 @@ import com.puttysoftware.mazerunner2.maze.objects.MovingBlock;
 import com.puttysoftware.mazerunner2.maze.utilities.MazeObjectList;
 import com.puttysoftware.mazerunner2.prefs.PreferencesManager;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.DirectoryUtilities;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 import com.puttysoftware.xio.legacy.XLegacyDataReader;
@@ -645,7 +645,7 @@ public class Maze implements MazeConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        DirectoryUtilities.moveFile(sourceLocation,
+                        FileUtilities.moveFile(sourceLocation,
                                 targetLocation);
                     } catch (final IOException io) {
                         // Ignore

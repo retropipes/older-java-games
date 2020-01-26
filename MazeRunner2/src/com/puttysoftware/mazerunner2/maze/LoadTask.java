@@ -14,10 +14,10 @@ import javax.swing.JProgressBar;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

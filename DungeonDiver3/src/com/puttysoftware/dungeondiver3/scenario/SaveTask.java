@@ -13,7 +13,7 @@ import com.puttysoftware.dungeondiver3.Application;
 import com.puttysoftware.dungeondiver3.DungeonDiver3;
 import com.puttysoftware.dungeondiver3.support.Support;
 import com.puttysoftware.dungeondiver3.support.scenario.Extension;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 class SaveTask extends Thread {
     // Fields

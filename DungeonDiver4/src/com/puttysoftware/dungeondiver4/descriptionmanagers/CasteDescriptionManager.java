@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver4.descriptionmanagers;
 
 import com.puttysoftware.dungeondiver4.creatures.castes.CasteConstants;
 import com.puttysoftware.dungeondiver4.dungeon.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class CasteDescriptionManager {
     public static String getCasteDescription(final int c) {

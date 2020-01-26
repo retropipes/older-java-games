@@ -105,7 +105,7 @@ class DungeonEditorGUI {
                 new Color(223, 223, 223));
         this.treasurePicker.changePickerColor(new Color(223, 223, 223));
         this.treasurePicker
-                .setPickerDimensions(ImageTransformer.MAX_WINDOW_SIZE);
+                .updatePickerLayout(ImageTransformer.MAX_WINDOW_SIZE);
         this.treasurePane = this.treasurePicker.getPicker();
         this.treasureFrame.setContentPane(this.treasurePane);
         this.treasureFrame.addWindowListener(this.rhandler);
@@ -712,7 +712,7 @@ class DungeonEditorGUI {
                         new Color(223, 223, 223));
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
-            this.picker.setPickerDimensions(this.outputPane.getHeight());
+            this.picker.updatePickerLayout(this.outputPane.getHeight());
         }
     }
 

@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver4.descriptionmanagers;
 
 import com.puttysoftware.dungeondiver4.creatures.personalities.PersonalityConstants;
 import com.puttysoftware.dungeondiver4.dungeon.Extension;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class PersonalityDescriptionManager {
     public static String getPersonalityDescription(final int p) {

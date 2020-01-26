@@ -18,7 +18,7 @@ import com.puttysoftware.dungeondiver3.support.Support;
 import com.puttysoftware.dungeondiver3.support.map.Map;
 import com.puttysoftware.dungeondiver3.support.scenario.Extension;
 import com.puttysoftware.dungeondiver3.support.scenario.SaveRegistration;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class ScenarioManager {
     // Fields

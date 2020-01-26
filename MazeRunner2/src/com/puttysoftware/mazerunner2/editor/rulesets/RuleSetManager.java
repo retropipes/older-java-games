@@ -10,10 +10,10 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazerunner2.Application;
 import com.puttysoftware.mazerunner2.MazeRunnerII;
 import com.puttysoftware.mazerunner2.maze.Extension;
-import com.puttysoftware.xio.FilenameChecker;
 
 public class RuleSetManager {
     // Constructors

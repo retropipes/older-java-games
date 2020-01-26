@@ -8,7 +8,7 @@ package com.puttysoftware.dungeondiver3.support.datamanagers;
 
 import java.util.ArrayList;
 
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class SoundDataManager {
     public static String[] getSoundData() {

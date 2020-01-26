@@ -16,8 +16,8 @@ import com.puttysoftware.dungeondiver4.dungeon.objects.MonsterObject;
 import com.puttysoftware.dungeondiver4.dungeon.objects.MovingBlock;
 import com.puttysoftware.dungeondiver4.dungeon.utilities.DungeonObjectList;
 import com.puttysoftware.dungeondiver4.prefs.PreferencesManager;
+import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.DirectoryUtilities;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -481,7 +481,7 @@ public class Dungeon implements DungeonConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        DirectoryUtilities.moveFile(sourceLocation,
+                        FileUtilities.moveFile(sourceLocation,
                                 targetLocation);
                     } catch (final IOException io) {
                         // Ignore

@@ -70,6 +70,9 @@ public class Application {
     public static final int STATUS_PREFS = 4;
     public static final int STATUS_NULL = 5;
     public static final int EDITOR_NAME = 0;
+    private static final ProductData pd = new ProductData(VERSION_MAJOR,
+            VERSION_MINOR, VERSION_BUGFIX, VERSION_CODE,
+            VERSION_PRERELEASE);
 
     // Constructors
     public Application() {
@@ -286,23 +289,7 @@ public class Application {
     }
 
     private static String getVersionString() {
-        final int code = Application.VERSION_CODE;
-        String rt;
-        if (code == ProductData.CODE_BETA) {
-            rt = "-beta";
-        } else {
-            rt = "";
-        }
-        if (code < ProductData.CODE_STABLE_RELEASE) {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX + rt
-                    + Application.VERSION_PRERELEASE;
-        } else {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX;
-        }
+        return pd.getVersionString();
     }
 
     public JFrame getOutputFrame() {

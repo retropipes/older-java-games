@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import com.puttysoftware.dungeondiver3.support.datamanagers.FaithDataManager;
 import com.puttysoftware.dungeondiver3.support.names.NamesConstants;
 import com.puttysoftware.dungeondiver3.support.names.NamesManager;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class FaithConstants {
     // Fields

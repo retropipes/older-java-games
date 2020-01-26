@@ -17,7 +17,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.dungeondiver4.Application;
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

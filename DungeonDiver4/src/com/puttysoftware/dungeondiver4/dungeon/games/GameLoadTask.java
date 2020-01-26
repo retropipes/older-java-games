@@ -19,7 +19,7 @@ import com.puttysoftware.dungeondiver4.DungeonDiver4;
 import com.puttysoftware.dungeondiver4.dungeon.Dungeon;
 import com.puttysoftware.dungeondiver4.dungeon.PrefixHandler;
 import com.puttysoftware.dungeondiver4.resourcemanagers.LogoManager;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields

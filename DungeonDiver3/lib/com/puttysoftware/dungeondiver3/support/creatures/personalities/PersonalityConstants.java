@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import com.puttysoftware.dungeondiver3.support.datamanagers.PersonalityDataManager;
-import com.puttysoftware.xio.ResourceStreamReader;
+import com.puttysoftware.fileutils.ResourceStreamReader;
 
 public class PersonalityConstants {
     // Fields
