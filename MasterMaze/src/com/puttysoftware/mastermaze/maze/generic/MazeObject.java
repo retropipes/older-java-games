@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mastermaze.maze.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.images.BufferedImageIcon;
@@ -228,7 +229,7 @@ public abstract class MazeObject extends CloneableObject
     @Override
     public MazeObject clone() {
         try {
-            final MazeObject copy = this.getClass().newInstance();
+            final MazeObject copy = this.getClass().getConstructor().newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -253,10 +254,9 @@ public abstract class MazeObject extends CloneableObject
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (final InstantiationException e) {
-            MasterMaze.getErrorLogger().logError(e);
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             MasterMaze.getErrorLogger().logError(e);
             return null;
         }

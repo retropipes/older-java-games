@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.WindowConstants;
 
 import apple.dts.samplecode.osxadapter.OSXAdapter;
 import net.worldwizard.fantastle5.resourcemanagers.GraphicsManager;
@@ -145,7 +146,7 @@ public class Fantastle5 {
         textContainer.add(waitProgress);
         waitFrame.getContentPane().add(logoContainer, BorderLayout.CENTER);
         waitFrame.getContentPane().add(textContainer, BorderLayout.SOUTH);
-        waitFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        waitFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         waitFrame.setResizable(false);
         waitFrame.pack();
         // Do the loading

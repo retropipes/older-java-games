@@ -24,6 +24,7 @@ import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import net.worldwizard.fantastle5.resourcemanagers.GraphicsManager;
@@ -39,7 +40,7 @@ public class GUIManager {
     public GUIManager() {
         this.guiFrame = new JFrame("Fantastle");
         this.guiPane = this.guiFrame.getContentPane();
-        this.guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.guiFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.guiFrame.setLayout(new GridLayout(1, 1));
         this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
         this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));

@@ -1969,7 +1969,7 @@ public class MazeRunner {
         this.handler = new MazeRunnerEventHandler();
         this.menuFrame = new JFrame("Maze Runner");
         this.menuPane = this.menuFrame.getContentPane();
-        this.menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.menuFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.menuFrame.setLayout(new FlowLayout());
         this.borderPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
@@ -2035,70 +2035,70 @@ public class MazeRunner {
     private void createAccelerators() {
         if (System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
             this.fileNewAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                    InputEvent.META_MASK | InputEvent.SHIFT_MASK);
+                    InputEvent.META_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK);
             this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
-                    InputEvent.META_MASK | InputEvent.SHIFT_MASK);
+                    InputEvent.META_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK);
             this.editCutAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.editCopyAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.editPasteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.editPreferencesAccel = KeyStroke
-                    .getKeyStroke(KeyEvent.VK_PERIOD, InputEvent.META_MASK);
+                    .getKeyStroke(KeyEvent.VK_PERIOD, InputEvent.META_DOWN_MASK);
             this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.playEditMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.gameInventoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
             this.gameUseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_U,
-                    InputEvent.META_MASK);
+                    InputEvent.META_DOWN_MASK);
         } else {
             this.fileNewAccel = KeyStroke.getKeyStroke(KeyEvent.VK_N,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.fileOpenAccel = KeyStroke.getKeyStroke(KeyEvent.VK_O,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.fileCloseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_W,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.fileSaveAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.fileSaveAsAccel = KeyStroke.getKeyStroke(KeyEvent.VK_S,
-                    InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK);
+                    InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK);
             this.editUndoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.editRedoAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Z,
-                    InputEvent.CTRL_MASK | InputEvent.SHIFT_MASK);
+                    InputEvent.CTRL_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK);
             this.editCutAccel = KeyStroke.getKeyStroke(KeyEvent.VK_X,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.editCopyAccel = KeyStroke.getKeyStroke(KeyEvent.VK_C,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.editPasteAccel = KeyStroke.getKeyStroke(KeyEvent.VK_V,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.editPreferencesAccel = KeyStroke
-                    .getKeyStroke(KeyEvent.VK_COMMA, InputEvent.CTRL_MASK);
+                    .getKeyStroke(KeyEvent.VK_COMMA, InputEvent.CTRL_DOWN_MASK);
             this.editClearHistoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_Y,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.playPlayMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_P,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.playEditMazeAccel = KeyStroke.getKeyStroke(KeyEvent.VK_E,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.gameInventoryAccel = KeyStroke.getKeyStroke(KeyEvent.VK_I,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
             this.gameUseAccel = KeyStroke.getKeyStroke(KeyEvent.VK_U,
-                    InputEvent.CTRL_MASK);
+                    InputEvent.CTRL_DOWN_MASK);
         }
     }
 

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.loopchute.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.loopchute.LoopChute;
@@ -189,7 +190,7 @@ public abstract class MazeObject
     @Override
     public MazeObject clone() {
         try {
-            final MazeObject copy = this.getClass().newInstance();
+            final MazeObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -212,10 +213,9 @@ public abstract class MazeObject
             copy.usable = this.usable;
             copy.uses = this.uses;
             return copy;
-        } catch (final InstantiationException e) {
-            LoopChute.getErrorLogger().logError(e);
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             LoopChute.getErrorLogger().logError(e);
             return null;
         }

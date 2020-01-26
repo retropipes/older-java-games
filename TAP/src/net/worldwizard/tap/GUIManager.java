@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
 import net.worldwizard.tap.resourcemanagers.GraphicsManager;
 
@@ -32,7 +33,7 @@ public class GUIManager {
         this.ciHandler = new CommandInputHandler();
         this.guiFrame = new JFrame("Text Adventure Parser (TAP)");
         this.guiPane = this.guiFrame.getContentPane();
-        this.guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.guiFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.guiPane.setLayout(new BorderLayout());
         final Image iconlogo = GraphicsManager.getIconLogo();
         this.guiFrame.setIconImage(iconlogo);

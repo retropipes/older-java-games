@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazerunner2.maze.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import com.puttysoftware.images.BufferedImageIcon;
@@ -966,11 +967,11 @@ public class MazeObjectList {
                 if (instance.isOfType(TypeConstants.TYPE_GENERATED)) {
                     return instance.clone();
                 } else {
-                    return instance.getClass().newInstance();
+                    return instance.getClass().getConstructor().newInstance();
                 }
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -998,7 +999,7 @@ public class MazeObjectList {
                     if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                         instance = object.clone();
                     } else {
-                        instance = object.getClass().newInstance();
+                        instance = object.getClass().getConstructor().newInstance();
                     }
                     if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1) {
                         o = instance.readLegacyMazeObjectV1(reader, UID);
@@ -1011,10 +1012,10 @@ public class MazeObjectList {
                             return o;
                         }
                     }
-                } catch (final InstantiationException ex) {
-                    MazeRunnerII.getErrorLogger().logError(ex);
-                } catch (final IllegalAccessException ex) {
-                    MazeRunnerII.getErrorLogger().logError(ex);
+                } catch (final InstantiationException | IllegalAccessException
+                        | IllegalArgumentException | InvocationTargetException
+                        | NoSuchMethodException | SecurityException e) {
+                    MazeRunnerII.getErrorLogger().logError(e);
                 }
             }
             return null;
@@ -1038,7 +1039,7 @@ public class MazeObjectList {
                 if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                     instance = object.clone();
                 } else {
-                    instance = object.getClass().newInstance();
+                    instance = object.getClass().getConstructor().newInstance();
                 }
                 if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
                     o = instance.readMazeObjectV1(reader, UID);
@@ -1047,10 +1048,10 @@ public class MazeObjectList {
                         return o;
                     }
                 }
-            } catch (final InstantiationException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                MazeRunnerII.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -1067,7 +1068,7 @@ public class MazeObjectList {
                 if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                     instance = object.clone();
                 } else {
-                    instance = object.getClass().newInstance();
+                    instance = object.getClass().getConstructor().newInstance();
                 }
                 if (formatVersion == LegacyFormatConstants.LEGACY_MAZE_FORMAT_1) {
                     o = instance.readLegacyMazeObjectV1(reader, UID);
@@ -1075,10 +1076,10 @@ public class MazeObjectList {
                         return o;
                     }
                 }
-            } catch (final InstantiationException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                MazeRunnerII.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -1094,7 +1095,7 @@ public class MazeObjectList {
                 if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                     instance = object.clone();
                 } else {
-                    instance = object.getClass().newInstance();
+                    instance = object.getClass().getConstructor().newInstance();
                 }
                 if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
                     o = instance.readMazeObjectV1(reader, UID);
@@ -1102,10 +1103,10 @@ public class MazeObjectList {
                         return o;
                     }
                 }
-            } catch (final InstantiationException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                MazeRunnerII.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                MazeRunnerII.getErrorLogger().logError(e);
             }
         }
         return null;

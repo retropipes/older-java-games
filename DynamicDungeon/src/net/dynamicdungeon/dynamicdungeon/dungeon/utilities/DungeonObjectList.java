@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package net.dynamicdungeon.dynamicdungeon.dungeon.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import net.dynamicdungeon.dbio.DatabaseReader;
@@ -172,10 +173,10 @@ public class DungeonObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -192,15 +193,17 @@ public class DungeonObjectList {
         for (final AbstractDungeonObject object : objects) {
             try {
                 AbstractDungeonObject instance;
-                instance = object.getClass().newInstance();
+                instance = object.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readDungeonObjectV1(reader, UID);
                     if (o != null) {
                         return o;
                     }
                 }
-            } catch (InstantiationException | IllegalAccessException ex) {
-                DynamicDungeon.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                DynamicDungeon.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -214,15 +217,17 @@ public class DungeonObjectList {
         for (final AbstractDungeonObject object : objects) {
             try {
                 AbstractDungeonObject instance;
-                instance = object.getClass().newInstance();
+                instance = object.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readDungeonObjectV1(reader, UID);
                     if (o != null) {
                         return o;
                     }
                 }
-            } catch (InstantiationException | IllegalAccessException ex) {
-                DynamicDungeon.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                DynamicDungeon.getErrorLogger().logError(e);
             }
         }
         return null;

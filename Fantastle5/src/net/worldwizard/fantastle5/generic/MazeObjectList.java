@@ -19,6 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package net.worldwizard.fantastle5.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import net.worldwizard.fantastle5.Fantastle5;
 import net.worldwizard.fantastle5.maze.FormatConstants;
@@ -642,7 +643,7 @@ public class MazeObjectList {
             if (allObject.hasAdditionalProperties()) {
                 try {
                     final MazeObject instance = allObject.getClass()
-                            .newInstance();
+                            .getConstructor().newInstance();
                     if (formatVersion == FormatConstants.MAZE_FORMAT_3) {
                         o = instance.readMazeObject(reader, groupID, objectID);
                     } else if (formatVersion == FormatConstants.MAZE_FORMAT_4) {
@@ -653,10 +654,10 @@ public class MazeObjectList {
                     if (o != null) {
                         return o;
                     }
-                } catch (final InstantiationException ex) {
-                    Fantastle5.getDebug().debug(ex);
-                } catch (final IllegalAccessException ex) {
-                    Fantastle5.getDebug().debug(ex);
+                } catch (final InstantiationException | IllegalAccessException
+                        | IllegalArgumentException | InvocationTargetException
+                        | NoSuchMethodException | SecurityException e) {
+                    Fantastle5.getDebug().debug(e);
                 }
             } else {
                 if (formatVersion == FormatConstants.MAZE_FORMAT_3) {

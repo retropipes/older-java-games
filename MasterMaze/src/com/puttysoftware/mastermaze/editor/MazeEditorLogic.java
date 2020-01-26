@@ -1125,6 +1125,7 @@ public class MazeEditorLogic {
                     }
                 }
             }
+            break;
         default:
             break;
         }

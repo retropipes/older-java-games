@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.weaselweb.maze.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.weaselweb.WeaselWeb;
@@ -994,10 +995,10 @@ public class MazeObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -1012,17 +1013,17 @@ public class MazeObjectList {
         }
         for (final MazeObject allObject : this.allObjects) {
             try {
-                final MazeObject instance = allObject.getClass().newInstance();
+                final MazeObject instance = allObject.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_1) {
                     o = instance.readMazeObject(reader, UID, formatVersion);
                 }
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                WeaselWeb.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                WeaselWeb.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                WeaselWeb.getErrorLogger().logError(e);
             }
         }
         return null;

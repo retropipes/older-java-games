@@ -6,6 +6,7 @@
 package com.puttysoftware.ltremix.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.ltremix.LTRemix;
@@ -142,7 +143,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration1(formatVersion)
                         || FormatConstants.isFormatVersionValidGeneration2(
@@ -154,10 +155,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -175,7 +176,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration3(formatVersion)) {
                     o = instance.readArenaObjectG3(reader, UID, formatVersion);
@@ -185,10 +186,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -206,7 +207,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration4(formatVersion)) {
                     o = instance.readArenaObjectG4(reader, UID, formatVersion);
@@ -216,10 +217,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -237,7 +238,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration5(formatVersion)) {
                     o = instance.readArenaObjectG5(reader, UID, formatVersion);
@@ -247,10 +248,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -268,7 +269,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration6(formatVersion)) {
                     o = instance.readArenaObjectG6(reader, UID, formatVersion);
@@ -278,10 +279,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -299,7 +300,7 @@ public class ArenaObjectList {
         for (final AbstractArenaObject allObject : this.allObjects) {
             try {
                 final AbstractArenaObject instance = allObject.getClass()
-                        .newInstance();
+                        .getConstructor().newInstance();
                 if (FormatConstants
                         .isFormatVersionValidGeneration7(formatVersion)) {
                     o = instance.readArenaObjectG7(reader, UID, formatVersion);
@@ -309,10 +310,10 @@ public class ArenaObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                LTRemix.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                LTRemix.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                LTRemix.getErrorLogger().logError(e);
             }
         }
         return null;

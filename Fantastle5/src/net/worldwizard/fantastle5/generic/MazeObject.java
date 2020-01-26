@@ -19,6 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package net.worldwizard.fantastle5.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import net.worldwizard.fantastle5.Fantastle5;
@@ -344,7 +345,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     @Override
     public MazeObject clone() {
         try {
-            final MazeObject copy = this.getClass().newInstance();
+            final MazeObject copy = this.getClass().getConstructor().newInstance();
             copy.sp = this.sp.clone();
             copy.mp = this.mp.clone();
             copy.friction = this.friction;
@@ -358,9 +359,9 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
             copy.initialTimerValue = this.initialTimerValue;
             copy.timerActive = this.timerActive;
             return copy;
-        } catch (final InstantiationException e) {
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             return null;
         }
     }

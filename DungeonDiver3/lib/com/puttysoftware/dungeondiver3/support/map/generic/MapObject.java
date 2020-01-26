@@ -7,6 +7,7 @@ package com.puttysoftware.dungeondiver3.support.map.generic;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.dungeondiver3.support.Support;
@@ -58,7 +59,7 @@ public abstract class MapObject extends CloneableObject
     @Override
     public MapObject clone() {
         try {
-            final MapObject copy = this.getClass().newInstance();
+            final MapObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.type = (BitSet) this.type.clone();
             copy.blocksLOS = this.blocksLOS;
@@ -66,10 +67,9 @@ public abstract class MapObject extends CloneableObject
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (final InstantiationException e) {
-            Support.getErrorLogger().logError(e);
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             Support.getErrorLogger().logError(e);
             return null;
         }

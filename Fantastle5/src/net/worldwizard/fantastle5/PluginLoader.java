@@ -14,7 +14,7 @@ public class PluginLoader {
             try (final URLClassLoader instance = URLClassLoader
                     .newInstance(loadPath)) {
                 return instance.loadClass("net.worldwizard.fantastle5." + name)
-                        .newInstance();
+                        .getConstructor().newInstance();
             }
         } catch (final Exception e) {
             return null;

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: worldz@worldwizard.
 package net.worldwizard.worldz.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import net.worldwizard.images.BufferedImageIcon;
@@ -222,7 +223,7 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
     @Override
     public WorldObject clone() {
         try {
-            final WorldObject copy = this.getClass().newInstance();
+            final WorldObject copy = this.getClass().getConstructor().newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -244,9 +245,9 @@ public abstract class WorldObject implements DirectionConstants, TypeConstants,
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (final InstantiationException e) {
-            throw new AssertionError("Should not ever get here!");
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             throw new AssertionError("Should not ever get here!");
         }
     }

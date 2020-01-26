@@ -49,8 +49,8 @@ public final class PageViewer {
         final long[] lData = page.evaluateToArray();
         final String[] sData = new String[lData.length];
         for (int x = 0; x < lData.length; x++) {
-            sData[x] = new Integer(x + 1).toString() + ": "
-                    + new Long(lData[x]).toString();
+            sData[x] = Integer.valueOf(x + 1).toString() + ": "
+                    + Long.valueOf(lData[x]).toString();
         }
         CommonDialogs.showInputDialog("List of values:", viewerString, sData,
                 sData[0]);
@@ -104,7 +104,7 @@ public final class PageViewer {
             }
             final long value = page.evaluate(paramValues);
             CommonDialogs.showTitledDialog("Value for the given parameters: "
-                    + new Long(value).toString(), viewerString);
+                    + Long.valueOf(value).toString(), viewerString);
             final int returnCode = CommonDialogs
                     .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {
@@ -150,7 +150,7 @@ public final class PageViewer {
             paramValue = input;
             final long value = page.evaluate(paramValue);
             CommonDialogs.showTitledDialog(
-                    "Value: " + new Long(value).toString(), viewerString);
+                    "Value: " + Long.valueOf(value).toString(), viewerString);
             final int returnCode = CommonDialogs
                     .showConfirmDialog("View more values?", viewerString);
             if (returnCode == CommonDialogs.YES_OPTION) {

@@ -17,7 +17,7 @@ public class PluginLoader {
                     .newInstance(loadPath)) {
                 return instance
                         .loadClass("net.worldwizard.worldz.plugins." + name)
-                        .newInstance();
+                        .getConstructor().newInstance();
             }
         } catch (final Exception e) {
             // Ignore

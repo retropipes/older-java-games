@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package net.worldwizard.support.map.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.support.map.MapConstants;
@@ -289,10 +290,10 @@ public class MapObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -307,16 +308,16 @@ public class MapObjectList {
         }
         for (final MapObject allObject : this.allObjects) {
             try {
-                final MapObject instance = allObject.getClass().newInstance();
+                final MapObject instance = allObject.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.SCENARIO_FORMAT_1) {
                     o = instance.readMapObjectX(reader, UID, formatVersion);
                 }
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                // Ignore
-            } catch (final IllegalAccessException ex) {
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 // Ignore
             }
         }

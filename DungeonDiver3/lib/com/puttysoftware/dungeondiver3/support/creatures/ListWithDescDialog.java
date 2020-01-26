@@ -83,7 +83,7 @@ class ListWithDescDialog extends JDialog implements ActionListener {
         descArea.setPreferredSize(new Dimension(250, 80));
         descPane.add(descArea);
         // main part of the dialog
-        this.list = new JList<String>(data) {
+        this.list = new JList<>(data) {
             private static final long serialVersionUID = 1L;
 
             // Subclass JList to workaround bug 4832765, which can cause the

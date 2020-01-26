@@ -7,6 +7,7 @@ package com.puttysoftware.ltremix.arena.abstractobjects;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.llds.CloneableObject;
@@ -110,7 +111,7 @@ public abstract class AbstractArenaObject extends CloneableObject {
     @Override
     public AbstractArenaObject clone() {
         try {
-            final AbstractArenaObject copy = this.getClass().newInstance();
+            final AbstractArenaObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.pushable = this.pushable;
             copy.friction = this.friction;
@@ -126,10 +127,9 @@ public abstract class AbstractArenaObject extends CloneableObject {
             copy.material = this.material;
             copy.instanceNum = this.instanceNum;
             return copy;
-        } catch (final InstantiationException e) {
-            LTRemix.getErrorLogger().logError(e);
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             LTRemix.getErrorLogger().logError(e);
             return null;
         }

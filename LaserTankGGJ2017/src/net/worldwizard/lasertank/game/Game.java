@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 
 import net.worldwizard.lasertank.assets.GameImage;
 import net.worldwizard.lasertank.assets.GameImageCache;
@@ -64,7 +65,7 @@ public class Game extends JFrame {
     public Game() {
         super("LaserTank");
         this.eh = new EventHandler();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.facing = Game.FACING_NORTH;
         this.playerX = 0;
         this.playerY = 0;

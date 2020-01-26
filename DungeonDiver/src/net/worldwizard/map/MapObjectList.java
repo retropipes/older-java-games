@@ -1,5 +1,7 @@
 package net.worldwizard.map;
 
+import java.lang.reflect.InvocationTargetException;
+
 import javax.swing.ImageIcon;
 
 public class MapObjectList {
@@ -228,10 +230,10 @@ public class MapObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -242,10 +244,10 @@ public class MapObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }

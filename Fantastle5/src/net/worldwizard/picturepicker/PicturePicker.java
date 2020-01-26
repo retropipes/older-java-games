@@ -96,7 +96,7 @@ public final class PicturePicker {
                     this.choices[x], SwingConstants.LEFT);
             this.choiceContainer.add(this.choiceArray[x]);
             this.radioButtons[x] = new JRadioButton();
-            this.radioButtons[x].setActionCommand(new Integer(x).toString());
+            this.radioButtons[x].setActionCommand(Integer.valueOf(x).toString());
             this.radioGroup.add(this.radioButtons[x]);
             this.radioButtons[x].addActionListener(this.handler);
             this.radioContainer.add(this.radioButtons[x]);

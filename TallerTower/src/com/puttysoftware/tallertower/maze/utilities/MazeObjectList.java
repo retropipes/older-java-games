@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.tallertower.maze.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import com.puttysoftware.images.BufferedImageIcon;
@@ -167,10 +168,10 @@ public class MazeObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -187,15 +188,17 @@ public class MazeObjectList {
         for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                instance = object.getClass().newInstance();
+                instance = object.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readMazeObjectV1(reader, UID);
                     if (o != null) {
                         return o;
                     }
                 }
-            } catch (InstantiationException | IllegalAccessException ex) {
-                TallerTower.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                TallerTower.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -208,15 +211,17 @@ public class MazeObjectList {
         for (final AbstractMazeObject object : objects) {
             try {
                 AbstractMazeObject instance;
-                instance = object.getClass().newInstance();
+                instance = object.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.MAZE_FORMAT_LATEST) {
                     o = instance.readMazeObjectV1(reader, UID);
                     if (o != null) {
                         return o;
                     }
                 }
-            } catch (InstantiationException | IllegalAccessException ex) {
-                TallerTower.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                TallerTower.getErrorLogger().logError(e);
             }
         }
         return null;

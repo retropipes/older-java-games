@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.fantastlex.maze.abc;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.fantastlex.FantastleX;
@@ -238,7 +239,7 @@ public abstract class AbstractMazeObject extends CloneableObject
     @Override
     public AbstractMazeObject clone() {
         try {
-            final AbstractMazeObject copy = this.getClass().newInstance();
+            final AbstractMazeObject copy = this.getClass().getConstructor().newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;
@@ -263,10 +264,9 @@ public abstract class AbstractMazeObject extends CloneableObject
                 copy.ruleSet = this.ruleSet.clone();
             }
             return copy;
-        } catch (final InstantiationException e) {
-            FantastleX.getErrorLogger().logError(e);
-            return null;
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             FantastleX.getErrorLogger().logError(e);
             return null;
         }

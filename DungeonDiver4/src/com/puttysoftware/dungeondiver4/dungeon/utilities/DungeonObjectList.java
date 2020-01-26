@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver4.dungeon.utilities;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import com.puttysoftware.dungeondiver4.DungeonDiver4;
@@ -958,11 +959,11 @@ public class DungeonObjectList {
                 if (instance.isOfType(TypeConstants.TYPE_GENERATED)) {
                     return instance.clone();
                 } else {
-                    return instance.getClass().newInstance();
+                    return instance.getClass().getConstructor().newInstance();
                 }
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -985,7 +986,7 @@ public class DungeonObjectList {
                 if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                     instance = object.clone();
                 } else {
-                    instance = object.getClass().newInstance();
+                    instance = object.getClass().getConstructor().newInstance();
                 }
                 if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
                     o = instance.readDungeonObjectV1(reader, UID);
@@ -994,10 +995,10 @@ public class DungeonObjectList {
                         return o;
                     }
                 }
-            } catch (final InstantiationException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                DungeonDiver4.getErrorLogger().logError(e);
             }
         }
         return null;
@@ -1014,7 +1015,7 @@ public class DungeonObjectList {
                 if (object.isOfType(TypeConstants.TYPE_GENERATED)) {
                     instance = object.clone();
                 } else {
-                    instance = object.getClass().newInstance();
+                    instance = object.getClass().getConstructor().newInstance();
                 }
                 if (formatVersion == FormatConstants.DUNGEON_FORMAT_1) {
                     o = instance.readDungeonObjectV1(reader, UID);
@@ -1022,10 +1023,10 @@ public class DungeonObjectList {
                         return o;
                     }
                 }
-            } catch (final InstantiationException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
-            } catch (final IllegalAccessException ex) {
-                DungeonDiver4.getErrorLogger().logError(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                DungeonDiver4.getErrorLogger().logError(e);
             }
         }
         return null;

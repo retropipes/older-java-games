@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: worldz@worldwizard.
 package net.worldwizard.worldz.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.io.DataReader;
@@ -870,10 +871,10 @@ public class WorldObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -888,17 +889,17 @@ public class WorldObjectList {
         }
         for (final WorldObject allObject : this.allObjects) {
             try {
-                final WorldObject instance = allObject.getClass().newInstance();
+                final WorldObject instance = allObject.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.WORLD_FORMAT_1) {
                     o = instance.readWorldObject(reader, UID);
                 }
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                Worldz.getDebug().debug(ex);
-            } catch (final IllegalAccessException ex) {
-                Worldz.getDebug().debug(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                Worldz.getDebug().debug(e);
             }
         }
         return null;

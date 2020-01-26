@@ -2,6 +2,7 @@ package net.worldwizard.dungeondiver;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.WindowConstants;
 
 public class GUIManager {
     // Fields
@@ -14,7 +15,7 @@ public class GUIManager {
         // Initialize GUI
         this.mgr = new MenuManager();
         this.menuFrame = new JFrame("Dungeon Diver");
-        this.menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.menuFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.menuFrame.setJMenuBar(this.mgr.getMenuBar());
         this.logoLabel = new JLabel(GraphicsManager.getLogo());
         this.menuFrame.getContentPane().add(this.logoLabel);

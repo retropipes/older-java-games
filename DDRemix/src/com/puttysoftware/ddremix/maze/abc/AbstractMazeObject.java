@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.ddremix.maze.abc;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.ddremix.DDRemix;
@@ -79,7 +80,7 @@ public abstract class AbstractMazeObject extends CloneableObject
     @Override
     public AbstractMazeObject clone() {
         try {
-            final AbstractMazeObject copy = this.getClass().newInstance();
+            final AbstractMazeObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.friction = this.friction;
             copy.type = (BitSet) this.type.clone();
@@ -88,7 +89,9 @@ public abstract class AbstractMazeObject extends CloneableObject
             copy.timerActive = this.timerActive;
             copy.type = (BitSet) this.type.clone();
             return copy;
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             DDRemix.getErrorLogger().logError(e);
             return null;
         }

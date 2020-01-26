@@ -79,7 +79,7 @@ public final class PageEditor {
                                         + ySuffix
                                         + PageEditor.ENTRY_PROMPT_PART_2,
                                 editorString,
-                                new Double(this.page.getCoefficient(x, y))
+                                Double.valueOf(this.page.getCoefficient(x, y))
                                         .toString());
                         try {
                             input = Double.parseDouble(rawInput);

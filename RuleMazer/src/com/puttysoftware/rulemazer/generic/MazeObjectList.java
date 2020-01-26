@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: rulemazer@puttysoft
 package com.puttysoftware.rulemazer.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.rulemazer.Main;
@@ -1052,10 +1053,10 @@ public class MazeObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 return null;
             }
         }
@@ -1076,7 +1077,7 @@ public class MazeObjectList {
         }
         for (final MazeObject allObject : this.allObjects) {
             try {
-                final MazeObject instance = allObject.getClass().newInstance();
+                final MazeObject instance = allObject.getClass().getConstructor().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);
                 } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
@@ -1089,10 +1090,10 @@ public class MazeObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                Main.getDebug().debug(ex);
-            } catch (final IllegalAccessException ex) {
-                Main.getDebug().debug(ex);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                Main.getDebug().debug(e);
             }
         }
         return null;

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.dungeondiver3.support.map.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import com.puttysoftware.dungeondiver3.support.map.MapConstants;
@@ -296,11 +297,11 @@ public class MapObjectList {
             return null;
         } else {
             try {
-                return instance.getClass().newInstance();
-            } catch (final IllegalAccessException iae) {
-                return null;
-            } catch (final InstantiationException ie) {
-                return null;
+                return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                return null;           
             }
         }
     }
@@ -316,7 +317,7 @@ public class MapObjectList {
         }
         for (final MapObject obj : objs) {
             try {
-                final MapObject instance = obj.getClass().newInstance();
+                final MapObject instance = obj.getClass().getConstructor().newInstance();
                 if (formatVersion == FormatConstants.SCENARIO_FORMAT_1
                         || formatVersion == FormatConstants.SCENARIO_FORMAT_2) {
                     o = instance.readMapObject(reader, UID, formatVersion);
@@ -324,9 +325,9 @@ public class MapObjectList {
                 if (o != null) {
                     return o;
                 }
-            } catch (final InstantiationException ex) {
-                // Ignore
-            } catch (final IllegalAccessException ex) {
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
                 // Ignore
             }
         }

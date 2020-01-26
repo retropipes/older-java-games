@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package net.dynamicdungeon.dynamicdungeon.dungeon.abc;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import net.dynamicdungeon.dbio.DatabaseReader;
@@ -80,7 +81,7 @@ public abstract class AbstractDungeonObject extends CloneableObject
     @Override
     public AbstractDungeonObject clone() {
         try {
-            final AbstractDungeonObject copy = this.getClass().newInstance();
+            final AbstractDungeonObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.friction = this.friction;
             copy.type = (BitSet) this.type.clone();
@@ -89,7 +90,9 @@ public abstract class AbstractDungeonObject extends CloneableObject
             copy.timerActive = this.timerActive;
             copy.type = (BitSet) this.type.clone();
             return copy;
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             DynamicDungeon.getErrorLogger().logError(e);
             return null;
         }

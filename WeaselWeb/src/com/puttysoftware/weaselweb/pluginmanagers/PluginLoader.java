@@ -34,7 +34,7 @@ public class PluginLoader {
                 final Object plugin = instance
                         .loadClass(
                                 "com.puttysoftware.weaselweb.plugins." + name)
-                        .newInstance();
+                        .getConstructor().newInstance();
                 PluginLoader.LOADED_PLUGINS.add(plugin);
                 return plugin;
             }

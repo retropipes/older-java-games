@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package net.worldwizard.support.map.generic;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import net.worldwizard.images.BufferedImageIcon;
@@ -57,14 +58,14 @@ public abstract class MapObject implements TypeConstants, RandomGenerationRule {
     @Override
     public MapObject clone() {
         try {
-            final MapObject copy = this.getClass().newInstance();
+            final MapObject copy = this.getClass().getConstructor().newInstance();
             copy.solid = this.solid;
             copy.friction = this.friction;
             copy.type = (BitSet) this.type.clone();
             return copy;
-        } catch (final InstantiationException e) {
-            throw new AssertionError("Should not ever get here!");
-        } catch (final IllegalAccessException e) {
+        } catch (final InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             throw new AssertionError("Should not ever get here!");
         }
     }
