@@ -13,7 +13,7 @@ import com.puttysoftware.brainmaze.Application;
 import com.puttysoftware.brainmaze.BrainMaze;
 import com.puttysoftware.brainmaze.maze.Extension;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class RuleSetManager {
     // Constructors

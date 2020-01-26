@@ -19,7 +19,7 @@ import com.puttysoftware.brainmaze.maze.Maze;
 import com.puttysoftware.brainmaze.maze.PrefixHandler;
 import com.puttysoftware.brainmaze.resourcemanagers.LogoManager;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameLoadTask extends Thread {
     // Fields

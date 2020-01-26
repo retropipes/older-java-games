@@ -17,7 +17,7 @@ import com.puttysoftware.brainmaze.Application;
 import com.puttysoftware.brainmaze.BrainMaze;
 import com.puttysoftware.brainmaze.resourcemanagers.LogoManager;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class LoadTask extends Thread {
     // Fields

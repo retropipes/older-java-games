@@ -15,7 +15,7 @@ import com.puttysoftware.brainmaze.maze.Extension;
 import com.puttysoftware.brainmaze.maze.Maze;
 import com.puttysoftware.brainmaze.maze.PrefixHandler;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class GameSaveTask extends Thread {
     // Fields

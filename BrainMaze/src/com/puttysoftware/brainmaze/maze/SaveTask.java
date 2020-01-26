@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 import com.puttysoftware.brainmaze.Application;
 import com.puttysoftware.brainmaze.BrainMaze;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.ZipUtilities;
+import com.puttysoftware.fileutils.ZipUtilities;
 
 public class SaveTask extends Thread {
     // Fields

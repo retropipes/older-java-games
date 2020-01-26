@@ -2508,7 +2508,7 @@ public class MazeEditor {
                         223, 223, 223));
                 this.picker.changePickerColor(new Color(223, 223, 223));
             }
-            this.picker.setPickerDimensions(this.outputPane.getHeight());
+            this.picker.updatePickerLayout(this.outputPane.getHeight());
         }
     }
 

@@ -22,8 +22,8 @@ import com.puttysoftware.brainmaze.maze.games.GameLoadTask;
 import com.puttysoftware.brainmaze.maze.games.GameSaveTask;
 import com.puttysoftware.brainmaze.prefs.PreferencesManager;
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.xio.DirectoryUtilities;
-import com.puttysoftware.xio.FilenameChecker;
+import com.puttysoftware.fileutils.FileUtilities;
+import com.puttysoftware.fileutils.FilenameChecker;
 
 public class MazeManager {
     // Fields
@@ -365,7 +365,7 @@ public class MazeManager {
                         }
                     }
                     try {
-                        DirectoryUtilities.copyFile(
+                        FileUtilities.copyFile(
                                 file,
                                 new File(MazeManager.getGameDirectory()
                                         + file.getName()));
