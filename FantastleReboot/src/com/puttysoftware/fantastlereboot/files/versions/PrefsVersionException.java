@@ -1,6 +1,5 @@
 package com.puttysoftware.fantastlereboot.files.versions;
 
-@SuppressWarnings("serial")
 public class PrefsVersionException extends VersionException {
     /**
      *

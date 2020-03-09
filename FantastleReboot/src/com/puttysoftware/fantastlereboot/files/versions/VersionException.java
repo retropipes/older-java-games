@@ -5,7 +5,6 @@ import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-@SuppressWarnings("serial")
 public abstract class VersionException extends RuntimeException {
     /**
      *

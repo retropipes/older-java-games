@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/ericahnell/Stuff/Development/Repos/older-java-games/extlib/com.puttysoftware.storage.module.jar">
+	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.storage.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
