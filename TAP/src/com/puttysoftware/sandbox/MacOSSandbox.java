@@ -1,5 +1,7 @@
 package com.puttysoftware.sandbox;
 
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.HashMap;
 
@@ -173,10 +175,19 @@ final class MacOSSandbox extends Sandbox {
 
     @Override
     public void cacheFlags() {
+        boolean noCapsLockLM = System
+                .getProperty("LaunchModifierFlagCapsLock") == null;
+        boolean capsLockFlag;
+        if (noCapsLockLM) {
+            capsLockFlag = Toolkit.getDefaultToolkit()
+                    .getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
+        } else {
+            capsLockFlag = System
+                    .getProperty("LaunchModifierFlagCapsLock") == "true";
+        }
         this.flagCache.put(SandboxFlag.ALT_OPTION,
                 System.getProperty("LaunchModifierFlagOption") == "true");
-        this.flagCache.put(SandboxFlag.CAPS_LOCK,
-                System.getProperty("LaunchModifierFlagCapsLock") == "true");
+        this.flagCache.put(SandboxFlag.CAPS_LOCK, capsLockFlag);
         this.flagCache.put(SandboxFlag.CONTROL,
                 System.getProperty("LaunchModifierFlagControl") == "true");
         this.flagCache.put(SandboxFlag.FUNCTION,

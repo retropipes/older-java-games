@@ -44,7 +44,8 @@ public class Game {
         this.ciHandler = new CommandInputHandler();
         this.commandInput.addActionListener(this.ciHandler);
         this.commandInput.setEnabled(false);
-        this.commandOutput = new JTextArea(" ", 30, 60); //$NON-NLS-1$
+        this.commandOutput = new JTextArea(
+                Messages.getMessageValue(Game.getWelcomeMessage()), 30, 60);
         this.commandOutput.setEditable(false);
         this.commandOutput.setLineWrap(true);
         this.commandOutput.setWrapStyleWord(true);
