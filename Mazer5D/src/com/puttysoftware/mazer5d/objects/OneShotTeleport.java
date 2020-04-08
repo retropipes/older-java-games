@@ -18,7 +18,6 @@
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -42,7 +41,7 @@ public class OneShotTeleport extends GenericTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());

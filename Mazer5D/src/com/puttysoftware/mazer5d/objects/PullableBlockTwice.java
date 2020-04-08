@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.GenericMovableObject;
@@ -33,7 +32,7 @@ public class PullableBlockTwice extends GenericMovableObject {
     @Override
     public void pullAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pushX, final int pushY) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_PULL);

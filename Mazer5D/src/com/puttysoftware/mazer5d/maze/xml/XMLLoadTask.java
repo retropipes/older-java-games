@@ -15,7 +15,6 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.maze.InvalidMazeException;
 import com.puttysoftware.mazer5d.maze.Maze;
@@ -49,7 +48,7 @@ public class XMLLoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         int startW;
         String sg;
         if (this.isSavedGame) {
@@ -101,7 +100,7 @@ public class XMLLoadTask extends Thread {
                 } else {
                     app.getMazeManager().setLastUsedMaze(lum);
                 }
-                app.getMenuManager().clearLockedFlag();
+                app.clearLockedFlag();
                 app.getEditor().mazeChanged();
                 app.getGameManager().stateChanged();
                 CommonDialogs.showDialog(sg + " file loaded.");

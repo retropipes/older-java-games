@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -28,7 +27,7 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().decay();
         int dr, dc;
         do {

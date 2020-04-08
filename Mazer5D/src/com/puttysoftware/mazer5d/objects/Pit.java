@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -43,7 +42,7 @@ public class Pit extends StairsDown {
 
     private boolean searchNestedPits(final int dirX, final int dirY,
             final int floor, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         // Stop infinite recursion
         final int lcl = -app.getMazeManager().getMaze().getFloors();
         if (floor <= lcl) {
@@ -73,7 +72,7 @@ public class Pit extends StairsDown {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -83,7 +82,7 @@ public class Pit extends StairsDown {
     @Override
     public void pushIntoAction(final ObjectInventory inv,
             final MazeObject pushed, final int x, final int y, final int z) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         try {
             this.searchNestedPits(x, y, z - 1, inv);
             if (pushed.isPushable()) {
@@ -105,7 +104,7 @@ public class Pit extends StairsDown {
     @Override
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         if (!app.getGameManager().isFloorBelow()) {
             if (ie) {
                 return true;

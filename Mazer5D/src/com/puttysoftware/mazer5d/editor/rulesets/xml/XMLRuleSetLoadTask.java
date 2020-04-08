@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.xio.XDataReader;
@@ -27,7 +26,7 @@ public class XMLRuleSetLoadTask extends Thread {
     // Methods
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final String sg = "Rule Set";
         try (XDataReader ruleSetFile = new XDataReader(this.filename,
                 "ruleset")) {

@@ -82,7 +82,7 @@ public class PreferencesManager {
     }
 
     public static boolean shouldCheckBetaUpdatesAtStartup() {
-        if (Mazer5D.getApplication().isBetaModeEnabled()) {
+        if (Mazer5D.getApplication().isPrerelease()) {
             return PreferencesManager.storeMgr.getBoolean("BetaUpdatesStartup",
                     true);
         } else {
@@ -160,6 +160,10 @@ public class PreferencesManager {
 
     public static void showPrefs() {
         PreferencesManager.guiMgr.showPrefs();
+    }
+
+    public static void hidePrefs() {
+        PreferencesManager.guiMgr.hidePrefs();
     }
 
     private static String getPrefsDirPrefix() {

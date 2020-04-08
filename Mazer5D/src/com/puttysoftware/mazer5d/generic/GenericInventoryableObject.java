@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.generic;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
@@ -26,7 +25,7 @@ public abstract class GenericInventoryableObject extends MazeObject {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         inv.addItem(this);
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().decay();
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_GRAB);

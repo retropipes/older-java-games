@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.GenericWall;
@@ -30,7 +29,7 @@ public class ExplodingWall extends GenericWall {
     @Override
     public void chainReactionAction(final int x, final int y, final int z) {
         // Explode this wall, and any exploding walls next to this wall as well
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         ExplodingWall curr = null;
         try {
             curr = (ExplodingWall) app.getMazeManager().getMazeObject(x, y, z,

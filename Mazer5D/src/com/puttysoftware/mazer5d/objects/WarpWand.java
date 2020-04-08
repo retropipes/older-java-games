@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.GenericWand;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -38,7 +37,7 @@ public class WarpWand extends GenericWand {
     @Override
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getMazeManager().getMaze().warpObject(
                 app.getMazeManager().getMaze().getCell(x, y, z,
                         MazeConstants.LAYER_OBJECT),

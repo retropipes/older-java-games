@@ -10,10 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.BufferUnderflowException;
 
+import com.puttysoftware.audio.mod.MicroMod;
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.micromod.MicroMod;
 
 public class MusicManager {
     private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/mazer5d/resources/music/";

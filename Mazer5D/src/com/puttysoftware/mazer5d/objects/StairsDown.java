@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -37,32 +36,32 @@ public class StairsDown extends GenericTeleport {
 
     @Override
     public int getDestinationRow() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         return app.getGameManager().getPlayerManager().getPlayerLocationX();
     }
 
     @Override
     public int getDestinationColumn() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         return app.getGameManager().getPlayerManager().getPlayerLocationY();
     }
 
     @Override
     public int getDestinationFloor() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         return app.getGameManager().getPlayerManager().getPlayerLocationZ() - 1;
     }
 
     @Override
     public int getDestinationLevel() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         return app.getGameManager().getPlayerManager().getPlayerLocationW();
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());

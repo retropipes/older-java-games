@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.llds.LowLevelFlagDataStore;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.DirectionResolver;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -36,6 +34,7 @@ import com.puttysoftware.mazer5d.objects.ShockedBarrierGenerator;
 import com.puttysoftware.mazer5d.objects.Slime;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 import com.puttysoftware.randomrange.RandomRange;
+import com.puttysoftware.storage.FlagStorage;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -43,7 +42,7 @@ class LayeredTower implements Cloneable {
     // Properties
     private LowLevelDataStore data;
     private SavedTowerState savedTowerState;
-    private final LowLevelFlagDataStore visionData;
+    private final FlagStorage visionData;
     private final int[] playerData;
     private final int[] findResult;
     private int visionRadius;
@@ -89,7 +88,7 @@ class LayeredTower implements Cloneable {
         this.data = new LowLevelDataStore(cols, rows, floors,
                 MazeConstants.LAYER_COUNT);
         this.savedTowerState = new SavedTowerState(rows, cols, floors);
-        this.visionData = new LowLevelFlagDataStore(cols, rows, floors);
+        this.visionData = new FlagStorage(cols, rows, floors);
         this.playerData = new int[3];
         Arrays.fill(this.playerData, -1);
         this.findResult = new int[3];
@@ -980,7 +979,7 @@ class LayeredTower implements Cloneable {
                             .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
                             .isOfType(TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
-                        final Application app = Mazer5D.getApplication();
+                        final Mazer5D app = Mazer5D.getApplication();
                         final Maze m = app.getMazeManager().getMaze();
                         app.getGameManager().keepNextMessage();
                         app.showMessage(

@@ -7,7 +7,6 @@ package com.puttysoftware.mazer5d.generic;
 
 import java.util.Random;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -100,7 +99,7 @@ public abstract class GenericRandomTeleport extends MazeObject {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();

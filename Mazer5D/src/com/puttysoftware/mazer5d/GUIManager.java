@@ -8,6 +8,9 @@ package com.puttysoftware.mazer5d;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.desktop.QuitEvent;
+import java.awt.desktop.QuitHandler;
+import java.awt.desktop.QuitResponse;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -24,7 +27,7 @@ import com.puttysoftware.mazer5d.maze.TempDirCleanup;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 
-public class GUIManager {
+public class GUIManager implements QuitHandler {
     // Fields
     private final JFrame guiFrame;
     private final Container guiPane;
@@ -56,21 +59,10 @@ public class GUIManager {
     }
 
     public void showGUI() {
-        final Application app = Mazer5D.getApplication();
-        app.setInGUI(true);
-        this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         this.guiFrame.setVisible(true);
-        app.getMenuManager().setMainMenus();
-        app.getMenuManager().checkFlags();
     }
 
     public void hideGUI() {
-        final Application app = Mazer5D.getApplication();
-        app.setInGUI(false);
-        this.guiFrame.setVisible(false);
-    }
-
-    public void hideGUITemporarily() {
         this.guiFrame.setVisible(false);
     }
 
@@ -144,6 +136,16 @@ public class GUIManager {
         @Override
         public void windowOpened(final WindowEvent arg0) {
             // Do nothing
+        }
+    }
+
+    @Override
+    public void handleQuitRequestWith(QuitEvent inE, QuitResponse inResponse) {
+        boolean ok = this.quitHandler();
+        if (ok) {
+            inResponse.performQuit();
+        } else {
+            inResponse.cancelQuit();
         }
     }
 }

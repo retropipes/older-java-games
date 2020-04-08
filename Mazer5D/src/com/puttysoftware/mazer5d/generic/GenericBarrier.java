@@ -5,7 +5,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.generic;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
@@ -25,7 +24,7 @@ public abstract class GenericBarrier extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Display impassable barrier message
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         Mazer5D.getApplication().showMessage("The barrier is impassable!");
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_BARRIER);

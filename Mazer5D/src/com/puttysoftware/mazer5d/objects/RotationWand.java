@@ -6,7 +6,6 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.GenericWand;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -41,7 +40,7 @@ public class RotationWand extends GenericWand {
     @Override
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         app.getGameManager().setRemoteAction(x, y, z);
         int r = 1;
         final String[] rChoices = new String[] { "1", "2", "3" };

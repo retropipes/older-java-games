@@ -29,7 +29,6 @@ public class ObjectHelpManager {
     private String[] objectNames;
     private BufferedImageIcon[] objectAppearances;
     GraphicalHelpViewer hv;
-    private MenuManager menu;
     private ButtonHandler buttonHandler;
     private boolean inited = false;
 
@@ -74,9 +73,7 @@ public class ObjectHelpManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                this.menu = new MenuManager();
-                this.menu.setHelpMenus();
-                this.helpFrame.setJMenuBar(this.menu.getMainMenuBar());
+                Mazer5D.getApplication().setHelpMenus();
             }
             this.inited = true;
         }

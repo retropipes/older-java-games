@@ -27,7 +27,6 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.GenericBow;
@@ -204,7 +203,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public boolean isFloorBelow() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.getCell(this.plMgr.getPlayerLocationX(),
@@ -220,7 +219,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public boolean isFloorAbove() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.getCell(this.plMgr.getPlayerLocationX(),
@@ -236,7 +235,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public boolean doesFloorExist(final int floor) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.getCell(this.plMgr.getPlayerLocationX(),
@@ -419,7 +418,7 @@ public class GameManager implements MazeEffectConstants {
         final int[] mod = this.doEffects(dirX, dirY);
         final int fX = mod[0];
         final int fY = mod[1];
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         m.tickTimers(pz);
         boolean proceed = false;
@@ -862,7 +861,7 @@ public class GameManager implements MazeEffectConstants {
             final int pushY, final GenericMovableObject o) {
         final int xInc = (int) Math.signum(x), yInc = (int) Math.signum(y);
         int cumPushX = pushX, cumPushY = pushY, cumX = x, cumY = y;
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final MazeManager mm = app.getMazeManager();
         MazeObject there = mm.getMazeObject(
                 this.plMgr.getPlayerLocationX() + cumX,
@@ -890,7 +889,7 @@ public class GameManager implements MazeEffectConstants {
     private void movePushedObjectPosition(final int x, final int y,
             final int pushX, final int pushY, final GenericMovableObject o,
             final MazeObject g) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(o.getSavedObject(), this.plMgr.getPlayerLocationX() + x,
@@ -912,7 +911,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void updatePulledPosition(final int x, final int y, final int pullX,
             final int pullY, final GenericMovableObject o) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(o.getSavedObject(), this.plMgr.getPlayerLocationX() - x,
@@ -931,7 +930,7 @@ public class GameManager implements MazeEffectConstants {
     public void updatePushedIntoPositionAbsolute(final int x, final int y,
             final int z, final int x2, final int y2, final int z2,
             final GenericMovableObject pushedInto, final MazeObject source) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             if (!m.getCell(x, y, z, MazeConstants.LAYER_OBJECT)
@@ -953,7 +952,7 @@ public class GameManager implements MazeEffectConstants {
 
     public boolean tryUpdatePositionRelative(final int x, final int y) {
         try {
-            final Application app = Mazer5D.getApplication();
+            final Mazer5D app = Mazer5D.getApplication();
             final Maze m = app.getMazeManager().getMaze();
             final MazeObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
@@ -979,7 +978,7 @@ public class GameManager implements MazeEffectConstants {
     public boolean tryUpdatePositionAbsolute(final int x, final int y,
             final int z) {
         try {
-            final Application app = Mazer5D.getApplication();
+            final Mazer5D app = Mazer5D.getApplication();
             final Maze m = app.getMazeManager().getMaze();
             final MazeObject below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
@@ -997,7 +996,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void updatePositionAbsolute(final int x, final int y, final int z) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.getCell(x, y, z, MazeConstants.LAYER_OBJECT).preMoveAction(true,
@@ -1058,7 +1057,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void updatePositionAbsoluteNoEvents(final int x, final int y,
             final int z, final int w) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         this.plMgr.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
@@ -1140,7 +1139,7 @@ public class GameManager implements MazeEffectConstants {
     public void redrawMazeNoRebuild() {
         // Draw the maze, if it is visible
         if (this.outputFrame.isVisible()) {
-            final Application app = Mazer5D.getApplication();
+            final Mazer5D app = Mazer5D.getApplication();
             int x, y, u, v;
             int xFix, yFix;
             boolean visible;
@@ -1207,7 +1206,7 @@ public class GameManager implements MazeEffectConstants {
     void redrawOneSquare(final int x, final int y, final boolean useDelay,
             final MazeObject obj3) {
         // Draw the square, if the maze is visible
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         if (this.outputFrame.isVisible()) {
             int xFix, yFix;
             boolean visible;
@@ -1273,7 +1272,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void resetPlayerLocation(final int level) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         m.switchLevel(level);
         this.plMgr.setPlayerLocation(m.getStartColumn(), m.getStartRow(),
@@ -1286,7 +1285,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void resetGameState() {
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         app.getMazeManager().setDirty(false);
         m.restore();
@@ -1308,7 +1307,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void resetLevel(final int level) {
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         app.getMazeManager().setDirty(true);
         m.restore();
@@ -1329,7 +1328,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void goToLevel(final int level) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         final boolean levelExists = m.doesLevelExist(level);
         if (levelExists) {
@@ -1345,7 +1344,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void solvedLevel() {
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         CommonDialogs.showTitledDialog(m.getLevelEndMessage(),
                 m.getLevelTitle());
@@ -1384,7 +1383,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void solvedLevelAlternate() {
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         CommonDialogs.showTitledDialog(m.getLevelEndMessage(),
                 m.getLevelTitle());
@@ -1423,7 +1422,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void solvedLevelWarp(final int level) {
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         CommonDialogs.showTitledDialog(m.getLevelEndMessage(),
                 m.getLevelTitle());
@@ -1467,7 +1466,7 @@ public class GameManager implements MazeEffectConstants {
     public void exitGame() {
         this.stateChanged = true;
         this.deactivateAllEffects();
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         // Restore the maze
         m.restore();
@@ -1485,7 +1484,6 @@ public class GameManager implements MazeEffectConstants {
         app.getMazeManager().setDirty(false);
         // Exit game
         this.hideOutput();
-        app.setInGame(false);
         app.getGUIManager().showGUI();
     }
 
@@ -1545,7 +1543,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void morph(final MazeObject morphInto, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(morphInto, x, y, z, morphInto.getLayer());
@@ -1560,7 +1558,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void morph(final MazeObject morphInto, final int x, final int y,
             final int z, final String msg) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(morphInto, x, y, z, morphInto.getLayer());
@@ -1577,7 +1575,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void morph(final MazeObject morphInto, final int x, final int y,
             final int z, final int e) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(morphInto, x, y, z, e);
@@ -1592,7 +1590,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void morphOther(final MazeObject morphInto, final int x, final int y,
             final int e) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         try {
             m.setCell(morphInto, this.plMgr.getPlayerLocationX() + x,
@@ -1680,7 +1678,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void useItemHandler(final int x, final int y) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         final int xOffset = this.vwMgr.getViewingWindowLocationX()
                 - this.vwMgr.getOffsetFactorX();
@@ -1691,7 +1689,7 @@ public class GameManager implements MazeEffectConstants {
         final int destY = y / ObjectImageManager.getObjectImageSize()
                 + this.vwMgr.getViewingWindowLocationY() + xOffset - yOffset;
         final int destZ = this.plMgr.getPlayerLocationZ();
-        if (this.usingAnItem() && app.getMode() == Application.STATUS_GAME) {
+        if (this.usingAnItem() && app.inGame()) {
             final boolean visible = app.getMazeManager().getMaze()
                     .isSquareVisible(this.plMgr.getPlayerLocationX(),
                             this.plMgr.getPlayerLocationY(), destX, destY);
@@ -1792,7 +1790,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void identifyObject(final int x, final int y) {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         final int xOffset = this.vwMgr.getViewingWindowLocationX()
                 - this.vwMgr.getOffsetFactorX();
@@ -1827,7 +1825,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void loadGameHookXML(final XDataReader mazeFile,
             final int formatVersion) throws IOException {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         this.objectInv = ObjectInventory.readInventoryXML(mazeFile,
                 formatVersion);
         this.savedObjectInv = ObjectInventory.readInventoryXML(mazeFile,
@@ -1837,7 +1835,7 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void saveGameHookXML(final XDataWriter mazeFile) throws IOException {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         this.objectInv.writeInventoryXML(mazeFile);
         this.savedObjectInv.writeInventoryXML(mazeFile);
         mazeFile.writeString(app.getMazeManager().getScoresFileName());
@@ -1845,11 +1843,11 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void playMaze() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         final Maze m = app.getMazeManager().getMaze();
         if (app.getMazeManager().getLoaded()) {
             app.getGUIManager().hideGUI();
-            app.setInGame(true);
+            app.setInGame();
             if (this.stateChanged) {
                 // Initialize only if the maze state has changed
                 this.poisonCounter = 0;
@@ -1914,8 +1912,8 @@ public class GameManager implements MazeEffectConstants {
     }
 
     public void showOutput() {
-        final Application app = Mazer5D.getApplication();
-        app.getMenuManager().setGameMenus();
+        final Mazer5D app = Mazer5D.getApplication();
+        app.setGameMenus();
         if (PreferencesManager
                 .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
             if (!MusicManager.isMusicPlaying()) {
@@ -1923,7 +1921,6 @@ public class GameManager implements MazeEffectConstants {
             }
         }
         this.outputFrame.setVisible(true);
-        this.outputFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
     }
 
     public void hideOutput() {
@@ -2207,7 +2204,7 @@ public class GameManager implements MazeEffectConstants {
         @Override
         public void windowClosing(final WindowEvent we) {
             try {
-                final Application app = Mazer5D.getApplication();
+                final Mazer5D app = Mazer5D.getApplication();
                 boolean success = false;
                 int status = 0;
                 if (app.getMazeManager().getDirty()) {

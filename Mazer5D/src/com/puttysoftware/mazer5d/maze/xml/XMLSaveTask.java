@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 
 public class XMLSaveTask extends Thread {
@@ -28,7 +27,7 @@ public class XMLSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final Mazer5D app = Mazer5D.getApplication();
         boolean success = true;
         final String sg;
         if (this.isSavedGame) {
