@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.GenericInfiniteLock;
@@ -34,7 +35,7 @@ public class Tree extends GenericInfiniteLock {
         if (!this.getKey().isInfinite()) {
             inv.removeItem(this.getKey());
         }
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getGameManager().decayTo(new CutTree());
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                 SoundConstants.SOUND_UNLOCK);

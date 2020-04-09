@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.generic;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
@@ -35,7 +36,7 @@ public abstract class GenericGenerator extends GenericWall {
         // Remove barriers if present
         boolean scanResult = false;
         boolean flag = false;
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final int pw = app.getGameManager().getPlayerManager()
@@ -137,7 +138,7 @@ public abstract class GenericGenerator extends GenericWall {
         // Generate barriers again
         boolean scanResult = false;
         boolean flag = false;
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
@@ -228,7 +229,7 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected boolean scan(final int dir, final int x, final int y, final int z,
             final int limit, final boolean o) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
@@ -368,7 +369,7 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected void generate(final int dir, final int x, final int y,
             final int z, final int limit, final boolean o) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {

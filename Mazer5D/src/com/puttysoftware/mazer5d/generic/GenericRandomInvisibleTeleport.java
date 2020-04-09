@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.generic;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -26,7 +27,7 @@ public abstract class GenericRandomInvisibleTeleport
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int dr, dc;
         do {
             dr = this.getDestinationRow();

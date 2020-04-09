@@ -5,13 +5,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.editor.rulesets;
 
-import java.awt.Frame;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetFilter;
 import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetLoadTask;
@@ -26,13 +26,13 @@ public class RuleSetManager {
 
     // Methods
     public static void importRuleSet() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         String filename, extension;
         final JFileChooser fc = new JFileChooser();
         final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
-        final int returnVal = fc.showOpenDialog((Frame) null);
+        final int returnVal = fc.showOpenDialog(app.getOutputFrame());
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             final File file = fc.getSelectedFile();
             filename = file.getAbsolutePath();
@@ -64,6 +64,7 @@ public class RuleSetManager {
     }
 
     public static boolean exportRuleSet() {
+        final Application app = Mazer5D.getApplication();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -72,7 +73,7 @@ public class RuleSetManager {
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter(xrsf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((Frame) null);
+            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = RuleSetManager.getExtension(file);

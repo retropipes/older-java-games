@@ -66,7 +66,7 @@ public class MusicManager {
             } catch (final NullPointerException np) {
                 // Ignore
             } catch (final Throwable t) {
-                Mazer5D.getErrorLogger().logError(t);
+                Mazer5D.logError(t);
             }
         }
     }

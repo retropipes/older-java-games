@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
@@ -42,7 +43,7 @@ public class EnragedBarrierGenerator extends GenericGenerator {
             final int dirZ, final int dirW) {
         this.RAGE_CYCLES++;
         if (this.RAGE_CYCLES == EnragedBarrierGenerator.RAGE_LIMIT) {
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, dirX, dirY, dirZ);
             bg.timerExpiredAction(dirX, dirY);
@@ -53,7 +54,7 @@ public class EnragedBarrierGenerator extends GenericGenerator {
     @Override
     protected void arrowHitActionHook(final int locX, final int locY,
             final int locZ, final int arrowType, final ObjectInventory inv) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,
                     locZ);

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -38,7 +39,7 @@ public class MovingFinish extends Finish {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (this.active) {
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
                     SoundConstants.SOUND_FINISH);
             app.getGameManager().solvedLevel();
@@ -72,7 +73,7 @@ public class MovingFinish extends Finish {
                     SoundConstants.SOUND_CHANGE);
             mf.activate();
         } else {
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             final MazeObject saved = app.getGameManager().getSavedMazeObject();
             final int px = app.getGameManager().getPlayerManager()
                     .getPlayerLocationX();

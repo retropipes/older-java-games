@@ -59,10 +59,20 @@ public class GUIManager implements QuitHandler {
     }
 
     public void showGUI() {
+        final Application app = Mazer5D.getApplication();
+        app.setInGUI(true);
         this.guiFrame.setVisible(true);
+        app.getMenuManager().setMainMenus();
+        app.getMenuManager().checkFlags();
     }
 
     public void hideGUI() {
+        final Application app = Mazer5D.getApplication();
+        app.setInGUI(false);
+        this.guiFrame.setVisible(false);
+    }
+
+    public void hideGUITemporarily() {
         this.guiFrame.setVisible(false);
     }
 

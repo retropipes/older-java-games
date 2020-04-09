@@ -151,7 +151,7 @@ class RuleSetEditor {
                     ge.hideRuleSetEditor();
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 

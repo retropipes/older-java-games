@@ -5,17 +5,18 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.maze;
 
-import java.awt.Frame;
 import java.awt.desktop.OpenFilesEvent;
 import java.awt.desktop.OpenFilesHandler;
 import java.io.File;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.maze.locking.LockedFilter;
@@ -91,7 +92,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setDirty(false);
         Mazer5D.getApplication().getGameManager().stateChanged();
         Mazer5D.getApplication().getEditor().mazeChanged();
-        Mazer5D.getApplication().checkFlags();
+        Mazer5D.getApplication().getMenuManager().checkFlags();
     }
 
     public MazeObject getMazeObject(final int x, final int y, final int z,
@@ -105,11 +106,12 @@ public class MazeManager implements OpenFilesHandler {
 
     public int showSaveDialog() {
         String type, source;
-        final Mazer5D app = Mazer5D.getApplication();
-        if (app.inEditor()) {
+        final Application app = Mazer5D.getApplication();
+        final int mode = app.getMode();
+        if (mode == Application.STATUS_EDITOR) {
             type = "maze";
             source = "Editor";
-        } else if (app.inGame()) {
+        } else if (mode == Application.STATUS_GAME) {
             type = "game";
             source = "Mazer5D";
         } else {
@@ -127,9 +129,9 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setLoaded(final boolean status) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.loaded = status;
-        app.checkFlags();
+        app.getMenuManager().checkFlags();
     }
 
     public boolean getDirty() {
@@ -137,9 +139,14 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setDirty(final boolean newDirty) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.isDirty = newDirty;
-        app.checkFlags();
+        final JFrame frame = app.getOutputFrame();
+        if (frame != null) {
+            frame.getRootPane().putClientProperty("Window.documentModified",
+                    Boolean.valueOf(newDirty));
+        }
+        app.getMenuManager().checkFlags();
     }
 
     public void clearLastUsedFilenames() {
@@ -171,11 +178,50 @@ public class MazeManager implements OpenFilesHandler {
         this.scoresFileName = filename;
     }
 
-    public void loadFromOSHandler(final String filename) { // NO_UCD
+    @Override
+    public void openFiles(OpenFilesEvent inE) {
+        final Application app = Mazer5D.getApplication();
+        if (!this.loaded) {
+            for (File file : inE.getFiles()) {
+                String extension;
+                String loadFile;
+                loadFile = file.getAbsolutePath();
+                extension = MazeManager.getExtension(file);
+                app.getGameManager().resetObjectInventory();
+                if (extension.equals(XMLExtension.getXMLMazeExtension())) {
+                    this.lastUsedMazeFile = loadFile;
+                    this.scoresFileName = MazeManager
+                            .getNameWithoutExtension(file.getName());
+                    MazeManager.loadFile(loadFile, false, false);
+                } else if (extension
+                        .equals(Extension.getLockedMazeExtension())) {
+                    this.lastUsedMazeFile = loadFile;
+                    this.scoresFileName = MazeManager
+                            .getNameWithoutExtension(file.getName());
+                    MazeManager.loadFile(loadFile, false, true);
+                } else if (extension
+                        .equals(XMLExtension.getXMLGameExtension())) {
+                    this.lastUsedGameFile = loadFile;
+                    MazeManager.loadFile(loadFile, true, false);
+                } else if (extension
+                        .equals(XMLExtension.getXMLScoresExtension())) {
+                    CommonDialogs.showDialog(
+                            "You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
+                } else if (extension
+                        .equals(Extension.getPreferencesExtension())) {
+                    CommonDialogs.showDialog(
+                            "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
+                } else if (extension
+                        .equals(XMLExtension.getXMLRuleSetExtension())) {
+                    CommonDialogs.showDialog(
+                            "You double-clicked a rule set file. These are loaded by the Rule Set Picker, and need not be double-clicked.");
+                }
+            }
+        }
     }
 
     public boolean loadMaze() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int status = 0;
         boolean saved = true;
         String filename, extension;
@@ -207,7 +253,7 @@ public class MazeManager implements OpenFilesHandler {
             } else {
                 fc.setFileFilter(xgf);
             }
-            final int returnVal = fc.showOpenDialog((Frame) null);
+            final int returnVal = fc.showOpenDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 final FileFilter ff = fc.getFileFilter();
@@ -247,7 +293,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public boolean loadLockedMaze() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int status = 0;
         boolean saved = true;
         String filename, extension;
@@ -272,7 +318,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setAcceptAllFileFilterUsed(false);
             fc.addChoosableFileFilter(lf);
             fc.setFileFilter(lf);
-            final int returnVal = fc.showOpenDialog((Frame) null);
+            final int returnVal = fc.showOpenDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 PreferencesManager.setLastDirOpen(
@@ -324,8 +370,8 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final Mazer5D app = Mazer5D.getApplication();
-        if (app.inGame()) {
+        final Application app = Mazer5D.getApplication();
+        if (app.getMode() == Application.STATUS_GAME) {
             if (this.lastUsedGameFile != null
                     && !this.lastUsedGameFile.equals("")) {
                 final String extension = MazeManager
@@ -371,7 +417,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -384,7 +430,7 @@ public class MazeManager implements OpenFilesHandler {
         final XMLMazeFilter xmf = new XMLMazeFilter();
         final XMLGameFilter xgf = new XMLGameFilter();
         fc.setAcceptAllFileFilterUsed(false);
-        if (app.inGame()) {
+        if (app.getMode() == Application.STATUS_GAME) {
             fc.addChoosableFileFilter(xgf);
             fc.setFileFilter(xgf);
         } else {
@@ -392,7 +438,7 @@ public class MazeManager implements OpenFilesHandler {
             fc.setFileFilter(xmf);
         }
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((Frame) null);
+            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);
@@ -410,7 +456,7 @@ public class MazeManager implements OpenFilesHandler {
                 } else {
                     PreferencesManager.setLastDirSave(
                             fc.getCurrentDirectory().getAbsolutePath());
-                    if (app.inGame()) {
+                    if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
                             if (!extension.equals(
                                     XMLExtension.getXMLGameExtension())) {
@@ -455,6 +501,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
+        final Application app = Mazer5D.getApplication();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -469,7 +516,7 @@ public class MazeManager implements OpenFilesHandler {
         fc.addChoosableFileFilter(lf);
         fc.setFileFilter(lf);
         while (!FilenameChecker.isFilenameOK(fileOnly)) {
-            final int returnVal = fc.showSaveDialog((Frame) null);
+            final int returnVal = fc.showSaveDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
                 extension = MazeManager.getExtension(file);
@@ -583,47 +630,5 @@ public class MazeManager implements OpenFilesHandler {
             fno = s;
         }
         return fno;
-    }
-
-    @Override
-    public void openFiles(OpenFilesEvent inE) {
-        for (File file : inE.getFiles()) {
-            final Mazer5D app = Mazer5D.getApplication();
-            if (!this.loaded) {
-                String extension;
-                String loadFile;
-                loadFile = file.getAbsolutePath();
-                extension = MazeManager.getExtension(file);
-                app.getGameManager().resetObjectInventory();
-                if (extension.equals(XMLExtension.getXMLMazeExtension())) {
-                    this.lastUsedMazeFile = loadFile;
-                    this.scoresFileName = MazeManager
-                            .getNameWithoutExtension(file.getName());
-                    MazeManager.loadFile(loadFile, false, false);
-                } else if (extension
-                        .equals(Extension.getLockedMazeExtension())) {
-                    this.lastUsedMazeFile = loadFile;
-                    this.scoresFileName = MazeManager
-                            .getNameWithoutExtension(file.getName());
-                    MazeManager.loadFile(loadFile, false, true);
-                } else if (extension
-                        .equals(XMLExtension.getXMLGameExtension())) {
-                    this.lastUsedGameFile = loadFile;
-                    MazeManager.loadFile(loadFile, true, false);
-                } else if (extension
-                        .equals(XMLExtension.getXMLScoresExtension())) {
-                    CommonDialogs.showDialog(
-                            "You double-clicked a scores file. These are automatically loaded when their associated maze is loaded, and need not be double-clicked.");
-                } else if (extension
-                        .equals(Extension.getPreferencesExtension())) {
-                    CommonDialogs.showDialog(
-                            "You double-clicked a preferences file. These are automatically loaded when the program is loaded, and need not be double-clicked.");
-                } else if (extension
-                        .equals(XMLExtension.getXMLRuleSetExtension())) {
-                    CommonDialogs.showDialog(
-                            "You double-clicked a rule set file. These are loaded by the Rule Set Picker, and need not be double-clicked.");
-                }
-            }
-        }
     }
 }

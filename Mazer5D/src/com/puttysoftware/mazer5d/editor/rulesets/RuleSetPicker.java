@@ -21,6 +21,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.generic.MazeObjectList;
@@ -81,7 +82,7 @@ public class RuleSetPicker {
     }
 
     public void editRuleSets() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getEditor().hideOutput();
         this.showOutput();
     }
@@ -97,7 +98,7 @@ public class RuleSetPicker {
     }
 
     void exitRuleSetEditor() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.hideOutput();
         app.getEditor().showOutput();
     }

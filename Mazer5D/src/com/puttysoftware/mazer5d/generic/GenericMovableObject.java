@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.generic;
 
 import java.io.IOException;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
@@ -50,7 +51,7 @@ public abstract class GenericMovableObject extends MazeObject {
     @Override
     public void pushAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pushX, final int pushY) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         this.savedObject = mo;
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
@@ -60,7 +61,7 @@ public abstract class GenericMovableObject extends MazeObject {
     @Override
     public void pullAction(final ObjectInventory inv, final MazeObject mo,
             final int x, final int y, final int pullX, final int pullY) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
         this.savedObject = mo;
         SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,

@@ -29,6 +29,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.generic.GenericConditionalTeleport;
@@ -230,84 +231,84 @@ public class MazeEditor {
     }
 
     private void checkMenus() {
-        final Mazer5D app = Mazer5D.getApplication();
-        if (app.inEditor()) {
+        final Application app = Mazer5D.getApplication();
+        if (app.getMode() == Application.STATUS_EDITOR) {
             final Maze m = app.getMazeManager().getMaze();
             if (m.getLevels() == Maze.getMinLevels()) {
-                app.disableRemoveLevel();
+                app.getMenuManager().disableRemoveLevel();
             } else {
-                app.enableRemoveLevel();
+                app.getMenuManager().enableRemoveLevel();
             }
             if (m.getLevels() == Maze.getMaxLevels()) {
-                app.disableAddLevel();
+                app.getMenuManager().disableAddLevel();
             } else {
-                app.enableAddLevel();
+                app.getMenuManager().enableAddLevel();
             }
             try {
                 if (app.getMazeManager().getMaze()
                         .is3rdDimensionWraparoundEnabled()) {
-                    app.enableDownOneFloor();
+                    app.getMenuManager().enableDownOneFloor();
                 } else {
                     if (this.elMgr.getEditorLocationZ() == this.elMgr
                             .getMinEditorLocationZ()) {
-                        app.disableDownOneFloor();
+                        app.getMenuManager().disableDownOneFloor();
                     } else {
-                        app.enableDownOneFloor();
+                        app.getMenuManager().enableDownOneFloor();
                     }
                 }
                 if (app.getMazeManager().getMaze()
                         .is3rdDimensionWraparoundEnabled()) {
-                    app.enableUpOneFloor();
+                    app.getMenuManager().enableUpOneFloor();
                 } else {
                     if (this.elMgr.getEditorLocationZ() == this.elMgr
                             .getMaxEditorLocationZ()) {
-                        app.disableUpOneFloor();
+                        app.getMenuManager().disableUpOneFloor();
                     } else {
-                        app.enableUpOneFloor();
+                        app.getMenuManager().enableUpOneFloor();
                     }
                 }
                 if (this.elMgr.getEditorLocationW() == this.elMgr
                         .getMinEditorLocationW()) {
-                    app.disableDownOneLevel();
+                    app.getMenuManager().disableDownOneLevel();
                 } else {
-                    app.enableDownOneLevel();
+                    app.getMenuManager().enableDownOneLevel();
                 }
                 if (this.elMgr.getEditorLocationW() == this.elMgr
                         .getMaxEditorLocationW()) {
-                    app.disableUpOneLevel();
+                    app.getMenuManager().disableUpOneLevel();
                 } else {
-                    app.enableUpOneLevel();
+                    app.getMenuManager().enableUpOneLevel();
                 }
             } catch (final NullPointerException npe) {
-                app.disableDownOneFloor();
-                app.disableUpOneFloor();
-                app.disableDownOneLevel();
-                app.disableUpOneLevel();
+                app.getMenuManager().disableDownOneFloor();
+                app.getMenuManager().disableUpOneFloor();
+                app.getMenuManager().disableDownOneLevel();
+                app.getMenuManager().disableUpOneLevel();
             }
             if (this.elMgr != null) {
                 if (this.elMgr
                         .getEditorLocationE() != MazeConstants.LAYER_GROUND) {
-                    app.enableSetStartPoint();
+                    app.getMenuManager().enableSetStartPoint();
                 } else {
-                    app.disableSetStartPoint();
+                    app.getMenuManager().disableSetStartPoint();
                 }
             } else {
-                app.disableSetStartPoint();
+                app.getMenuManager().disableSetStartPoint();
             }
             if (!this.engine.tryUndo()) {
-                app.disableUndo();
+                app.getMenuManager().disableUndo();
             } else {
-                app.enableUndo();
+                app.getMenuManager().enableUndo();
             }
             if (!this.engine.tryRedo()) {
-                app.disableRedo();
+                app.getMenuManager().disableRedo();
             } else {
-                app.enableRedo();
+                app.getMenuManager().enableRedo();
             }
             if (this.engine.tryBoth()) {
-                app.disableClearHistory();
+                app.getMenuManager().disableClearHistory();
             } else {
-                app.enableClearHistory();
+                app.getMenuManager().enableClearHistory();
             }
         }
     }
@@ -341,7 +342,7 @@ public class MazeEditor {
 
     private void redrawGround() {
         // Draw the maze in edit mode
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int x, y, w;
         int xFix, yFix;
         w = this.elMgr.getEditorLocationW();
@@ -374,7 +375,7 @@ public class MazeEditor {
 
     private void redrawGroundAndObjects() {
         // Draw the maze in edit mode
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int x, y, w;
         int xFix, yFix;
         w = this.elMgr.getEditorLocationW();
@@ -411,7 +412,7 @@ public class MazeEditor {
     private void redrawVirtual(final int x, final int y,
             final MazeObject obj3) {
         // Draw the square
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int xFix, yFix;
         xFix = y - this.evMgr.getViewingWindowLocationX();
         yFix = x - this.evMgr.getViewingWindowLocationY();
@@ -435,7 +436,7 @@ public class MazeEditor {
     }
 
     public void editObject(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.currentObjectIndex = this.picker.getPicked();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
@@ -486,7 +487,7 @@ public class MazeEditor {
     }
 
     public void probeObjectProperties(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -511,7 +512,7 @@ public class MazeEditor {
     }
 
     public void editObjectProperties(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -558,7 +559,7 @@ public class MazeEditor {
     }
 
     private void checkStairPair(final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final MazeObject mo1 = app.getMazeManager().getMaze().getCell(
                 this.elMgr.getEditorLocationX(),
                 this.elMgr.getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
@@ -594,7 +595,7 @@ public class MazeEditor {
     }
 
     private void reverseCheckStairPair(final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final MazeObject mo1 = app.getMazeManager().getMaze().getCell(
                 this.elMgr.getEditorLocationX(),
                 this.elMgr.getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
@@ -630,7 +631,7 @@ public class MazeEditor {
     }
 
     public void pairStairs(final int type) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
@@ -660,7 +661,7 @@ public class MazeEditor {
     }
 
     private void pairStairs(final int type, final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
@@ -688,7 +689,7 @@ public class MazeEditor {
     }
 
     private void unpairStairs(final int type, final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         switch (type) {
         case STAIRS_UP:
             try {
@@ -716,7 +717,7 @@ public class MazeEditor {
     }
 
     private void checkTwoWayTeleportPair(final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final MazeObject mo1 = app.getMazeManager().getMaze().getCell(
                 this.elMgr.getEditorLocationX(),
                 this.elMgr.getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
@@ -738,7 +739,7 @@ public class MazeEditor {
     }
 
     private void reverseCheckTwoWayTeleportPair(final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final MazeObject mo1 = app.getMazeManager().getMaze().getCell(
                 this.elMgr.getEditorLocationX(),
                 this.elMgr.getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
@@ -761,7 +762,7 @@ public class MazeEditor {
 
     public void pairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getMazeManager().getMaze().setCell(
                 new TwoWayTeleport(this.elMgr.getEditorLocationX(),
                         this.elMgr.getEditorLocationY(),
@@ -771,14 +772,14 @@ public class MazeEditor {
 
     private static void unpairTwoWayTeleport(final int destX, final int destY,
             final int destZ) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         app.getMazeManager().getMaze().setCell(new Empty(), destX, destY, destZ,
                 MazeConstants.LAYER_OBJECT);
     }
 
     public void editConditionalTeleportDestination(
             final GenericConditionalTeleport instance) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final String[] choices = new String[] { "Edit Destination 1",
                 "Edit Destination 2", "Edit Condition Trigger",
                 "Edit Trigger Type" };
@@ -841,8 +842,8 @@ public class MazeEditor {
                     this.vertScroll.addAdjustmentListener(this.cthandler);
                     this.secondaryPane.addMouseListener(this.cthandler);
                     this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-                    app.disableDownOneLevel();
-                    app.disableUpOneLevel();
+                    app.getMenuManager().disableDownOneLevel();
+                    app.getMenuManager().disableUpOneLevel();
                 }
             } else {
                 this.instanceBeingEdited = null;
@@ -851,7 +852,7 @@ public class MazeEditor {
     }
 
     public MazeObject editTeleportDestination(final int type) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         String input1 = null, input2 = null;
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
@@ -939,8 +940,8 @@ public class MazeEditor {
                 this.vertScroll.addAdjustmentListener(this.thandler);
                 this.secondaryPane.addMouseListener(this.thandler);
                 this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-                app.disableDownOneLevel();
-                app.disableUpOneLevel();
+                app.getMenuManager().disableDownOneLevel();
+                app.getMenuManager().disableUpOneLevel();
                 break;
             default:
                 break;
@@ -952,7 +953,7 @@ public class MazeEditor {
     public MazeObject editMetalButtonTarget() {
         Mazer5D.getApplication()
                 .showMessage("Click to set metal button target");
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.horzScroll.removeAdjustmentListener(this.mhandler);
         this.vertScroll.removeAdjustmentListener(this.mhandler);
         this.secondaryPane.removeMouseListener(this.mhandler);
@@ -960,8 +961,8 @@ public class MazeEditor {
         this.vertScroll.addAdjustmentListener(this.mbhandler);
         this.secondaryPane.addMouseListener(this.mbhandler);
         this.elMgr.setCameFromZ(this.elMgr.getEditorLocationZ());
-        app.disableDownOneLevel();
-        app.disableUpOneLevel();
+        app.getMenuManager().disableDownOneLevel();
+        app.getMenuManager().disableUpOneLevel();
         return null;
     }
 
@@ -977,7 +978,7 @@ public class MazeEditor {
         TreasureChest tc = null;
         MazeObject contents = null;
         int contentsIndex = 0;
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         try {
             tc = (TreasureChest) app.getMazeManager().getMazeObject(
                     this.elMgr.getEditorLocationX(),
@@ -1016,7 +1017,7 @@ public class MazeEditor {
     }
 
     public void setTeleportDestination(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -1138,7 +1139,7 @@ public class MazeEditor {
     }
 
     void setConditionalTeleportDestination(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -1173,7 +1174,7 @@ public class MazeEditor {
     }
 
     public void setMetalButtonTarget(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -1214,7 +1215,7 @@ public class MazeEditor {
 
     public void setTreasureChestContents() {
         this.enableOutput();
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final MazeObject contents = this.containableObjects[this.treasurePicker
                 .getPicked()];
         app.getMazeManager().getMaze().setCell(new TreasureChest(contents),
@@ -1239,7 +1240,7 @@ public class MazeEditor {
     }
 
     public void setPlayerLocation(final int x, final int y, final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int oldX = app.getMazeManager().getMaze().getStartColumn();
         final int oldY = app.getMazeManager().getMaze().getStartRow();
         final int oldZ = app.getMazeManager().getMaze().getStartFloor();
@@ -1259,7 +1260,7 @@ public class MazeEditor {
     }
 
     public void setPlayerLocation() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int oldX = app.getMazeManager().getMaze().getStartColumn();
         final int oldY = app.getMazeManager().getMaze().getStartRow();
         final int oldZ = app.getMazeManager().getMaze().getStartFloor();
@@ -1284,7 +1285,7 @@ public class MazeEditor {
     }
 
     void setPlayerLocation(final int x, final int y) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int xOffset = this.vertScroll.getValue()
                 - this.vertScroll.getMinimum();
         final int yOffset = this.horzScroll.getValue()
@@ -1337,10 +1338,10 @@ public class MazeEditor {
     }
 
     public void editMaze() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         if (app.getMazeManager().getLoaded()) {
             app.getGUIManager().hideGUI();
-            app.setInEditor();
+            app.setInEditor(true);
             // Reset game state
             app.getGameManager().resetGameState();
             // Create the managers
@@ -1367,7 +1368,7 @@ public class MazeEditor {
     }
 
     public boolean newMaze() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         boolean success = true;
         boolean saved = true;
         int status = 0;
@@ -1401,7 +1402,7 @@ public class MazeEditor {
 
     public void fixLimits() {
         // Fix limits
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         if (app.getMazeManager().getMaze() != null && this.elMgr != null
                 && this.evMgr != null) {
             this.elMgr.setLimitsFromMaze(app.getMazeManager().getMaze());
@@ -1447,7 +1448,7 @@ public class MazeEditor {
     public void fillLevelRandomly() {
         if (this.confirmNonUndoable(
                 "overwrite the active level with random data")) {
-            if (Mazer5D.getApplication().useFillRuleSets()) {
+            if (Mazer5D.getApplication().getMenuManager().useFillRuleSets()) {
                 Mazer5D.getApplication().getMazeManager().getMaze()
                         .fillLevelRandomlyCustom();
             } else {
@@ -1463,7 +1464,7 @@ public class MazeEditor {
     public void fillFloorRandomly() {
         if (this.confirmNonUndoable(
                 "overwrite the active floor within the active level with random data")) {
-            if (Mazer5D.getApplication().useFillRuleSets()) {
+            if (Mazer5D.getApplication().getMenuManager().useFillRuleSets()) {
                 Mazer5D.getApplication().getMazeManager().getMaze()
                         .fillFloorRandomlyCustom(
                                 this.elMgr.getEditorLocationZ());
@@ -1482,7 +1483,7 @@ public class MazeEditor {
     }
 
     private boolean addLevelInternal(final boolean flag) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int levelSizeX, levelSizeY, levelSizeZ;
         final int maxR = Maze.getMaxRows();
         final int minR = Maze.getMinRows();
@@ -1581,7 +1582,7 @@ public class MazeEditor {
     }
 
     public boolean resizeLevel() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int levelSizeX, levelSizeY, levelSizeZ;
         final int maxR = Maze.getMaxRows();
         final int minR = Maze.getMinRows();
@@ -1669,7 +1670,7 @@ public class MazeEditor {
     }
 
     public boolean removeLevel() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         int level;
         boolean success = true;
         String input;
@@ -1776,8 +1777,8 @@ public class MazeEditor {
     }
 
     public void showOutput() {
-        final Mazer5D app = Mazer5D.getApplication();
-        app.setEditorMenus();
+        final Application app = Mazer5D.getApplication();
+        app.getMenuManager().setEditorMenus();
         this.outputFrame.setVisible(true);
         this.outputFrame.pack();
     }
@@ -1806,9 +1807,10 @@ public class MazeEditor {
     }
 
     public void exitEditor() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         // Hide the editor
         this.hideOutput();
+        app.setInEditor(false);
         final MazeManager mm = app.getMazeManager();
         final GameManager gm = app.getGameManager();
         // Save the entire level
@@ -1891,7 +1893,7 @@ public class MazeEditor {
     }
 
     public void undo() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.engine.undo();
         final MazeObject obj = this.engine.getObject();
         final int x = this.engine.getX();
@@ -1929,7 +1931,7 @@ public class MazeEditor {
     }
 
     public void redo() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         this.engine.redo();
         final MazeObject obj = this.engine.getObject();
         final int x = this.engine.getX();
@@ -2005,7 +2007,7 @@ public class MazeEditor {
 
     public void handleCloseWindow() {
         try {
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             boolean success = false;
             int status = JOptionPane.DEFAULT_OPTION;
             if (app.getMazeManager().getDirty()) {
@@ -2023,7 +2025,7 @@ public class MazeEditor {
                 this.exitEditor();
             }
         } catch (final Exception ex) {
-            Mazer5D.getErrorLogger().logError(ex);
+            Mazer5D.logError(ex);
         }
     }
 
@@ -2055,7 +2057,7 @@ public class MazeEditor {
                     break;
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2090,7 +2092,7 @@ public class MazeEditor {
                     }
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2211,7 +2213,7 @@ public class MazeEditor {
                     break;
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2233,7 +2235,7 @@ public class MazeEditor {
                 final int y = e.getY();
                 MazeEditor.this.setPlayerLocation(x, y);
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2276,7 +2278,7 @@ public class MazeEditor {
                     break;
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2298,7 +2300,7 @@ public class MazeEditor {
                 final int y = e.getY();
                 MazeEditor.this.setTeleportDestination(x, y);
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2341,7 +2343,7 @@ public class MazeEditor {
                     break;
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2363,7 +2365,7 @@ public class MazeEditor {
                 final int y = e.getY();
                 MazeEditor.this.setConditionalTeleportDestination(x, y);
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2406,7 +2408,7 @@ public class MazeEditor {
                     break;
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -2428,7 +2430,7 @@ public class MazeEditor {
                 final int y = e.getY();
                 MazeEditor.this.setMetalButtonTarget(x, y);
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 

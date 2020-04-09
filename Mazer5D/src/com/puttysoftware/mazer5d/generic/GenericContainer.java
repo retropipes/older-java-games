@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.generic;
 
 import java.io.IOException;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
@@ -75,7 +76,7 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         if (!app.getGameManager()
                 .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {

@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.GenericWall;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -26,7 +27,7 @@ public class BreakableWallVertical extends GenericWall {
     }
 
     public void doChainReact(final int x, final int y, final int z) {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         BreakableWallVertical curr = null;
         try {
             curr = (BreakableWallVertical) app.getMazeManager().getMazeObject(x,

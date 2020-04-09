@@ -24,15 +24,14 @@ public class SoundManager {
     private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/mazer5d/resources/sounds/";
     private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = SoundManager.class;
-    private static final int BUFFER_SIZE = 4096; // 4Kb
 
     public static void playSound(final int soundCat, final int soundID) {
         if (PreferencesManager.getSoundEnabled(soundCat + 1)) {
+            final String filename = SoundConstants.SOUND_NAMES[soundID];
             try {
-                final String soundName = SoundConstants.SOUND_NAMES[soundID];
                 final URL url = SoundManager.LOAD_CLASS
                         .getResource(SoundManager.LOAD_PATH
-                                + soundName.toLowerCase() + ".wav");
+                                + filename.toLowerCase() + ".wav");
                 SoundManager.play(url);
             } catch (final ArrayIndexOutOfBoundsException aioob) {
                 // Do nothing
@@ -40,7 +39,9 @@ public class SoundManager {
         }
     }
 
-    public static void play(final URL soundURL) {
+    private static final int BUFFER_SIZE = 4096; // 4Kb
+
+    private static void play(final URL soundURL) {
         new Thread() {
             @Override
             public void run() {
@@ -49,8 +50,8 @@ public class SoundManager {
                     final AudioFormat format = audioInputStream.getFormat();
                     final DataLine.Info info = new DataLine.Info(
                             SourceDataLine.class, format);
-                    try (Line rawLine = AudioSystem.getLine(info);
-                            SourceDataLine auline = (SourceDataLine) rawLine) {
+                    try (Line line = AudioSystem.getLine(info);
+                            SourceDataLine auline = (SourceDataLine) line) {
                         auline.open(format);
                         auline.start();
                         int nBytesRead = 0;
@@ -63,13 +64,18 @@ public class SoundManager {
                                     auline.write(abData, 0, nBytesRead);
                                 }
                             }
+                        } catch (final IOException e) {
+                            Mazer5D.logError(e);
                         } finally {
                             auline.drain();
                         }
+                    } catch (final LineUnavailableException e) {
+                        Mazer5D.logError(e);
                     }
-                } catch (final LineUnavailableException
-                        | UnsupportedAudioFileException | IOException e) {
-                    Mazer5D.getErrorLogger().logError(e);
+                } catch (final UnsupportedAudioFileException e) {
+                    Mazer5D.logError(e);
+                } catch (final IOException e) {
+                    Mazer5D.logError(e);
                 }
             }
         }.start();

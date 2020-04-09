@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
@@ -24,7 +25,7 @@ public class IcedBarrierGenerator extends GenericWall {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         // De-ice
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final BarrierGenerator bg = new BarrierGenerator();
@@ -41,7 +42,7 @@ public class IcedBarrierGenerator extends GenericWall {
             this.extendTimer(IcedBarrierGenerator.TIMER_DELAY);
         } else {
             // Else, de-ice
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, locX, locY, locZ);
             bg.timerExpiredAction(locX, locY);

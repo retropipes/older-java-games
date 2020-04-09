@@ -100,13 +100,13 @@ public class AboutDialog implements AboutHandler {
                     ad.hideAboutDialog();
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
     }
 
     @Override
     public void handleAbout(AboutEvent inE) {
-        this.aboutFrame.setVisible(true);
+        this.showAboutDialog();
     }
 }

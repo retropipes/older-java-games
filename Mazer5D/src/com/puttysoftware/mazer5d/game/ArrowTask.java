@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.game;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.DirectionResolver;
@@ -40,7 +41,7 @@ public class ArrowTask extends Thread {
     public void run() {
         try {
             boolean res = true;
-            final Mazer5D app = Mazer5D.getApplication();
+            final Application app = Mazer5D.getApplication();
             final PlayerLocationManager plMgr = app.getGameManager()
                     .getPlayerManager();
             final ObjectInventory inv = app.getGameManager()
@@ -101,7 +102,7 @@ public class ArrowTask extends Thread {
                     SoundConstants.SOUND_ARROW_DEAD);
             app.getGameManager().arrowDone();
         } catch (final Throwable t) {
-            Mazer5D.getErrorLogger().logError(t);
+            Mazer5D.logError(t);
         }
     }
 

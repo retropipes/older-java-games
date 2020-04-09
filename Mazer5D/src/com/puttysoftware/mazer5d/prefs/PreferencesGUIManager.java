@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 
@@ -66,12 +67,33 @@ class PreferencesGUIManager {
     }
 
     public void showPrefs() {
+        final Application app = Mazer5D.getApplication();
+        app.setInPrefs(true);
+        app.getMenuManager().setPrefMenus();
         this.prefFrame.setVisible(true);
+        final int formerMode = app.getFormerMode();
+        if (formerMode == Application.STATUS_GUI) {
+            app.getGUIManager().hideGUITemporarily();
+        } else if (formerMode == Application.STATUS_GAME) {
+            app.getGameManager().hideOutput();
+        } else if (formerMode == Application.STATUS_EDITOR) {
+            app.getEditor().hideOutput();
+        }
     }
 
     public void hidePrefs() {
+        final Application app = Mazer5D.getApplication();
+        app.setInPrefs(false);
         this.prefFrame.setVisible(false);
         PreferencesManager.writePrefs();
+        final int formerMode = app.getFormerMode();
+        if (formerMode == Application.STATUS_GUI) {
+            app.getGUIManager().showGUI();
+        } else if (formerMode == Application.STATUS_GAME) {
+            app.getGameManager().showOutput();
+        } else if (formerMode == Application.STATUS_EDITOR) {
+            app.getEditor().showOutput();
+        }
     }
 
     private void loadPrefs() {
@@ -169,7 +191,7 @@ class PreferencesGUIManager {
         this.miscPane.setLayout(
                 new GridLayout(PreferencesGUIManager.getGridLength(), 1));
         this.miscPane.add(this.checkUpdatesStartup);
-        if (Mazer5D.getApplication().isPrerelease()) {
+        if (Mazer5D.getApplication().isBetaModeEnabled()) {
             this.miscPane.add(this.checkBetaUpdatesStartup);
         }
         this.miscPane.add(this.moveOneAtATime);
@@ -210,7 +232,7 @@ class PreferencesGUIManager {
                     pm.hidePrefs();
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 
@@ -246,7 +268,7 @@ class PreferencesGUIManager {
                     }
                 }
             } catch (final Exception ex) {
-                Mazer5D.getErrorLogger().logError(ex);
+                Mazer5D.logError(ex);
             }
         }
 

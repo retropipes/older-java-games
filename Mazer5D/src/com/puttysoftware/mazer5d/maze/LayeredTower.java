@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.DirectionResolver;
 import com.puttysoftware.mazer5d.generic.MazeObject;
@@ -979,7 +980,7 @@ class LayeredTower implements Cloneable {
                             .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
                             .isOfType(TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
-                        final Mazer5D app = Mazer5D.getApplication();
+                        final Application app = Mazer5D.getApplication();
                         final Maze m = app.getMazeManager().getMaze();
                         app.getGameManager().keepNextMessage();
                         app.showMessage(

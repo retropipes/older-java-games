@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 
 public class XMLSaveTask extends Thread {
@@ -27,7 +28,7 @@ public class XMLSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         boolean success = true;
         final String sg;
         if (this.isSavedGame) {
@@ -84,7 +85,7 @@ public class XMLSaveTask extends Thread {
                     + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final Exception ex) {
-            Mazer5D.getErrorLogger().logError(ex);
+            Mazer5D.logError(ex);
         }
         Mazer5D.getApplication().showMessage(sg + " file saved.");
         app.getMazeManager().handleDeferredSuccess(success);

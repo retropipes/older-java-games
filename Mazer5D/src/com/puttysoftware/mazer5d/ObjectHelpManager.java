@@ -73,7 +73,7 @@ public class ObjectHelpManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                Mazer5D.getApplication().setHelpMenus();
+                Mazer5D.getApplication().getMenuManager().setHelpMenus();
             }
             this.inited = true;
         }

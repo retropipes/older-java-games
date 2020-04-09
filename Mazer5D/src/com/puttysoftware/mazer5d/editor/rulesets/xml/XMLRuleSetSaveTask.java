@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.editor.rulesets.xml;
 import java.io.FileNotFoundException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
@@ -25,7 +26,7 @@ public class XMLRuleSetSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final String sg = "Rule Set";
         // filename check
         final boolean hasExtension = XMLRuleSetSaveTask
@@ -43,7 +44,7 @@ public class XMLRuleSetSaveTask extends Thread {
             CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
                     + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
-            Mazer5D.getErrorLogger().logError(ex);
+            Mazer5D.logError(ex);
         }
     }
 

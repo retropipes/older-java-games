@@ -800,8 +800,7 @@ public class MazeObjectList {
         }
         for (final MazeObject allObject : this.allObjects) {
             try {
-                final MazeObject instance = allObject.getClass()
-                        .getConstructor().newInstance();
+                final MazeObject instance = allObject.getClass().getConstructor().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);
                 } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
@@ -819,7 +818,7 @@ public class MazeObjectList {
             } catch (final InstantiationException | IllegalAccessException
                     | IllegalArgumentException | InvocationTargetException
                     | NoSuchMethodException | SecurityException e) {
-                Mazer5D.getErrorLogger().logError(e);
+                Mazer5D.logError(e);
             }
         }
         return null;

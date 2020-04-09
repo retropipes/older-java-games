@@ -5,6 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
+import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.generic.GenericWall;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
@@ -23,7 +24,7 @@ public class FadingWall extends GenericWall {
     public void timerExpiredAction(final int dirX, final int dirY) {
         // Disappear if the player is close to us
         boolean scanResult = false;
-        final Mazer5D app = Mazer5D.getApplication();
+        final Application app = Mazer5D.getApplication();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final int pl = MazeConstants.LAYER_OBJECT;
