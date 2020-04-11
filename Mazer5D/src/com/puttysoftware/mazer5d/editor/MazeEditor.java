@@ -31,6 +31,9 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.ImageConstants;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.assetmanagers.ObjectImageManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.generic.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.generic.GenericTeleport;
@@ -63,9 +66,6 @@ import com.puttysoftware.mazer5d.objects.Teleport;
 import com.puttysoftware.mazer5d.objects.TreasureChest;
 import com.puttysoftware.mazer5d.objects.TwoWayTeleport;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
-import com.puttysoftware.mazer5d.resourcemanagers.ImageConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
-import com.puttysoftware.mazer5d.resourcemanagers.ObjectImageManager;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class MazeEditor {

@@ -5,10 +5,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.generic;
 
+import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
+import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 
 public abstract class GenericPassThroughObject extends MazeObject {
     // Constructors

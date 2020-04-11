@@ -13,8 +13,8 @@ import javax.swing.SwingConstants;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.StatImageManager;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.resourcemanagers.StatImageManager;
 
 class StatGUI {
     // Fields

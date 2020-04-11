@@ -26,8 +26,8 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 
 public class LevelPreferencesManager {
     // Fields

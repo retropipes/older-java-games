@@ -23,10 +23,10 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.ImageConstants;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.generic.MazeObjectList;
-import com.puttysoftware.mazer5d.resourcemanagers.ImageConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {

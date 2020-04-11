@@ -7,6 +7,8 @@ package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
+import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.DirectionResolver;
 import com.puttysoftware.mazer5d.generic.GenericTransientObject;
@@ -21,8 +23,6 @@ import com.puttysoftware.mazer5d.objects.IceArrow;
 import com.puttysoftware.mazer5d.objects.PoisonArrow;
 import com.puttysoftware.mazer5d.objects.ShockArrow;
 import com.puttysoftware.mazer5d.objects.Wall;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 
 public class ArrowTask extends Thread {
     // Fields

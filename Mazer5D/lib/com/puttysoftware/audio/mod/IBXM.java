@@ -4,7 +4,7 @@ package com.puttysoftware.audio.mod;
  ProTracker, Scream Tracker 3, FastTracker 2 Replay (c)2011 mumart@gmail.com
  */
 public class IBXM {
-    public static final String VERSION = "a61 (c)2011 mumart@gmail.com"; //$NON-NLS-1$
+    public static final String VERSION = "a61 (c)2011 mumart@gmail.com"; //$NON-NLS-1$ NO_UCD
     private static final int OVERSAMPLE = 2;
     private final Module module;
     private final int[] rampBuffer;

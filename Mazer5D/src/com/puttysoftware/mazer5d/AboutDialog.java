@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 
 public class AboutDialog implements AboutHandler {
     // Fields
@@ -79,10 +79,6 @@ public class AboutDialog implements AboutHandler {
         this.aboutOK.addActionListener(this.handler);
         this.aboutFrame.setContentPane(this.aboutPane);
         this.aboutFrame.pack();
-    }
-
-    public void update() {
-        this.miniLabel.setIcon(LogoManager.getMiniatureLogo());
     }
 
     private class EventHandler implements ActionListener {

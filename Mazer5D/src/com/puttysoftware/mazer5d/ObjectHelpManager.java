@@ -17,9 +17,9 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.assetmanagers.ImageConstants;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.generic.MazeObjectList;
-import com.puttysoftware.mazer5d.resourcemanagers.ImageConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 
 public class ObjectHelpManager {
     // Fields
@@ -41,12 +41,6 @@ public class ObjectHelpManager {
     public void showHelp() {
         this.initHelp();
         this.helpFrame.setVisible(true);
-    }
-
-    public void updateHelp() {
-        this.initHelp();
-        final MazeObjectList objs = Mazer5D.getApplication().getObjects();
-        this.hv.updateHelp(objs.getAllEditorAppearances(), objs.getAllNames());
     }
 
     private void initHelp() {

@@ -10,14 +10,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
+import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 import com.puttysoftware.mazer5d.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.objects.PasswallBoots;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;

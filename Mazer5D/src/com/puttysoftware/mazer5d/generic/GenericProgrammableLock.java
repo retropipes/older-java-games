@@ -10,13 +10,13 @@ import java.io.IOException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
+import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.objects.SignalCrystal;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 

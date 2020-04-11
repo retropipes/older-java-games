@@ -11,8 +11,8 @@ import java.awt.desktop.PreferencesHandler;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.errorlogger.ErrorLogger;
 import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
 
 public class Mazer5D {
     // Constants
@@ -29,10 +29,6 @@ public class Mazer5D {
     // Methods
     public static Application getApplication() {
         return Mazer5D.application;
-    }
-
-    public static ErrorLogger getErrorLogger() {
-        return Mazer5D.errorLogger;
     }
 
     public static void logError(Throwable e) {

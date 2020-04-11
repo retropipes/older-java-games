@@ -29,6 +29,11 @@ import javax.swing.border.EmptyBorder;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.assetmanagers.MusicManager;
+import com.puttysoftware.mazer5d.assetmanagers.ObjectImageManager;
+import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
+import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.GenericBow;
 import com.puttysoftware.mazer5d.generic.GenericCharacter;
@@ -65,11 +70,6 @@ import com.puttysoftware.mazer5d.objects.Wall;
 import com.puttysoftware.mazer5d.objects.WallBreakingWand;
 import com.puttysoftware.mazer5d.objects.WallMakingWand;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
-import com.puttysoftware.mazer5d.resourcemanagers.MusicManager;
-import com.puttysoftware.mazer5d.resourcemanagers.ObjectImageManager;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundConstants;
-import com.puttysoftware.mazer5d.resourcemanagers.SoundManager;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -173,10 +173,6 @@ public class GameManager implements MazeEffectConstants {
         this.objectInv.useBow(this.activeBow);
         this.getStatGUI().updateStats();
         this.checkGameOver();
-    }
-
-    public void updateStatImages() {
-        this.getStatGUI().updateImages();
     }
 
     public MazeObject getSavedMazeObject() {

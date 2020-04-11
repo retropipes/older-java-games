@@ -27,7 +27,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.resourcemanagers.LogoManager;
+import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 
 class PreferencesGUIManager {
     // Fields

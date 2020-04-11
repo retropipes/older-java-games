@@ -15,9 +15,4 @@ public final class ErrorLogger {
         lw.writeErrorInfo();
         System.exit(1);
     }
-
-    public final void logNonFatalError(final Throwable t) {
-        final NonFatalLogger nfl = new NonFatalLogger(t, this.name);
-        nfl.writeLogInfo();
-    }
 }
