@@ -6,8 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.EmptyVoid;
@@ -15,6 +15,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.HorizontalBarrier;
 import com.puttysoftware.mazer5d.compatibility.objects.VerticalBarrier;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericGenerator extends GenericWall {
     // Fields
@@ -119,8 +120,8 @@ public abstract class GenericGenerator extends GenericWall {
             }
         }
         if (flag) {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_GENERATE);
+            SoundPlayer.playSound(SoundIndex.GENERATE,
+                    SoundGroup.GAME);
             this.activateTimer(this.TIMER_DELAY);
             app.getGameManager().redrawMazeNoRebuild();
         }
@@ -219,8 +220,8 @@ public abstract class GenericGenerator extends GenericWall {
             }
         }
         if (flag) {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_GENERATE);
+            SoundPlayer.playSound(SoundIndex.GENERATE,
+                    SoundGroup.GAME);
             app.getGameManager().redrawMazeNoRebuild();
         }
         // Activate the timer again

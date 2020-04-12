@@ -6,13 +6,14 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class PushableBlockThrice extends GenericMovableObject {
     // Constructors
@@ -35,8 +36,8 @@ public class PushableBlockThrice extends GenericMovableObject {
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_PUSH);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
+                SoundGroup.GAME);
         app.getGameManager().morphOther(new PushableBlockTwice(), pushX, pushY,
                 MazeConstants.LAYER_OBJECT);
     }

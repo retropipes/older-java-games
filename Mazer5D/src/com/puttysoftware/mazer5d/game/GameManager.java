@@ -30,6 +30,8 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
@@ -40,8 +42,6 @@ import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
@@ -72,6 +72,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.WallMakingWand;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -683,9 +684,9 @@ public class GameManager implements MazeEffectConstants {
                             * 100.0) + "%");
             if (ssCount >= this.autoFinishThreshold) {
                 // Auto-Finish
-                SoundManager.playSound(
-                        SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                        SoundConstants.SOUND_FINISH);
+                SoundPlayer.playSound(
+                        SoundIndex.FINISH,
+                        SoundGroup.GAME);
                 this.solvedLevel();
             }
             // Alternate auto-finish
@@ -698,9 +699,9 @@ public class GameManager implements MazeEffectConstants {
                             * 100.0) + "%");
             if (msCount >= this.alternateAutoFinishThreshold) {
                 // Auto-Finish
-                SoundManager.playSound(
-                        SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                        SoundConstants.SOUND_FINISH);
+                SoundPlayer.playSound(
+                        SoundIndex.FINISH,
+                        SoundGroup.GAME);
                 this.solvedLevelAlternate();
             }
         }
@@ -1452,8 +1453,8 @@ public class GameManager implements MazeEffectConstants {
     public void solvedMaze() {
         final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
         m.resetTimer();
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_WIN_GAME);
+        SoundPlayer.playSound(SoundIndex.WIN_GAME,
+                SoundGroup.GAME);
         CommonDialogs.showTitledDialog(m.getMazeEndMessage(), m.getMazeTitle());
         if (this.st.checkScore()) {
             Mazer5D.getApplication().playHighScoreSound();
@@ -1494,8 +1495,8 @@ public class GameManager implements MazeEffectConstants {
     }
 
     private void gameOver() {
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_USER_INTERFACE,
-                SoundConstants.SOUND_GAME_OVER);
+        SoundPlayer.playSound(SoundIndex.GAME_OVER,
+                SoundGroup.USER_INTERFACE);
         CommonDialogs.showDialog("You have died - Game Over!");
         this.exitGame();
     }
@@ -1783,8 +1784,8 @@ public class GameManager implements MazeEffectConstants {
                     - yOffset;
             final int destZ = this.plMgr.getPlayerLocationZ();
             this.updatePositionAbsolute(destX, destY, destZ);
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_TELEPORT);
+            SoundPlayer.playSound(SoundIndex.TELEPORT,
+                    SoundGroup.GAME);
             this.teleporting = false;
         }
     }
@@ -1812,14 +1813,14 @@ public class GameManager implements MazeEffectConstants {
             final String gameName2 = target2.getGameName();
             Mazer5D.getApplication()
                     .showMessage(gameName2 + " on " + gameName1);
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_IDENTIFY);
+            SoundPlayer.playSound(SoundIndex.IDENTIFY,
+                    SoundGroup.GAME);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(destX, destY, destZ);
             Mazer5D.getApplication().showMessage(ev.getGameName());
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_IDENTIFY);
+            SoundPlayer.playSound(SoundIndex.IDENTIFY,
+                    SoundGroup.GAME);
         }
     }
 

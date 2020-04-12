@@ -8,12 +8,13 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -54,8 +55,8 @@ public abstract class GenericMovableObject extends MazeObject {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         this.savedObject = mo;
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_PUSH);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
+                SoundGroup.GAME);
     }
 
     @Override
@@ -64,8 +65,8 @@ public abstract class GenericMovableObject extends MazeObject {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
         this.savedObject = mo;
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_PULL);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
+                SoundGroup.GAME);
     }
 
     @Override

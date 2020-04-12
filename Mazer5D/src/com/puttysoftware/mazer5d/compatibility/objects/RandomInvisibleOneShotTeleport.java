@@ -6,12 +6,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     // Constructors
@@ -37,8 +38,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
         Mazer5D.getApplication().showMessage("Invisible Teleport!");
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_TELEPORT);
+        SoundPlayer.playSound(SoundIndex.TELEPORT,
+                SoundGroup.GAME);
     }
 
     @Override

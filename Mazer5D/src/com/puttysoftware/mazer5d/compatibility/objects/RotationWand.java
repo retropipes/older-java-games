@@ -7,11 +7,12 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class RotationWand extends GenericWand {
     // Fields
@@ -74,8 +75,8 @@ public class RotationWand extends GenericWand {
             Mazer5D.getApplication().getGameManager()
                     .doCounterclockwiseRotate(r);
         }
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_CHANGE);
+        SoundPlayer.playSound(SoundIndex.CHANGE,
+                SoundGroup.GAME);
     }
 
     @Override

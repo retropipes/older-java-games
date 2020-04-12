@@ -6,10 +6,11 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Lava extends GenericField {
     // Constructors
@@ -20,16 +21,16 @@ public class Lava extends GenericField {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_WALK_ON_LAVA);
+        SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA,
+                SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         Mazer5D.getApplication().showMessage("You'll burn");
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_LAVA);
+        SoundPlayer.playSound(SoundIndex.LAVA,
+                SoundGroup.GAME);
     }
 
     @Override

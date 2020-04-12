@@ -9,14 +9,15 @@ import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.compatibility.objects.SignalCrystal;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -49,13 +50,13 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             }
             app.getGameManager().decay();
             // Play unlock sound, if it's enabled
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_WALK);
+            SoundPlayer.playSound(SoundIndex.WALK,
+                    SoundGroup.GAME);
             Mazer5D.getApplication().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_WALK);
+            SoundPlayer.playSound(SoundIndex.WALK,
+                    SoundGroup.GAME);
         }
     }
 
@@ -70,8 +71,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
                         .showMessage("You need a " + this.getKey().getName());
             }
         }
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_WALK_FAILED);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
+                SoundGroup.GAME);
     }
 
     @Override

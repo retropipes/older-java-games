@@ -7,11 +7,12 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericMultipleLock extends GenericLock {
     // Fields
@@ -58,8 +59,8 @@ public abstract class GenericMultipleLock extends GenericLock {
         }
         Mazer5D.getApplication().showMessage("You need " + this.keyCount + " "
                 + this.getKey().getName() + fill);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_WALK_FAILED);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
+                SoundGroup.GAME);
     }
 
     @Override

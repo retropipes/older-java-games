@@ -7,13 +7,14 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class MovingFinish extends Finish {
     // Fields
@@ -40,12 +41,12 @@ public class MovingFinish extends Finish {
             final ObjectInventory inv) {
         if (this.active) {
             final Application app = Mazer5D.getApplication();
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_FINISH);
+            SoundPlayer.playSound(SoundIndex.FINISH,
+                    SoundGroup.GAME);
             app.getGameManager().solvedLevel();
         } else {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_WALK);
+            SoundPlayer.playSound(SoundIndex.WALK,
+                    SoundGroup.GAME);
         }
     }
 
@@ -69,8 +70,8 @@ public class MovingFinish extends Finish {
                         MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_CHANGE);
+            SoundPlayer.playSound(SoundIndex.CHANGE,
+                    SoundGroup.GAME);
             mf.activate();
         } else {
             final Application app = Mazer5D.getApplication();
@@ -86,9 +87,9 @@ public class MovingFinish extends Finish {
             final int az = this.getDestinationFloor();
             if (saved instanceof MovingFinish && px == ax && py == ay
                     && pz == az) {
-                SoundManager.playSound(
-                        SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                        SoundConstants.SOUND_FINISH);
+                SoundPlayer.playSound(
+                        SoundIndex.FINISH,
+                        SoundGroup.GAME);
                 CommonDialogs.showDialog("A finish opens under your feet!");
                 app.getGameManager().solvedLevel();
             }

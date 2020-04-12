@@ -11,16 +11,17 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.gui.ObjectHelpManager;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Application {
     // Fields
@@ -157,14 +158,14 @@ public class Application {
     }
 
     public void playHighScoreSound() {
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_USER_INTERFACE,
-                SoundConstants.SOUND_HIGH_SCORE);
+        SoundPlayer.playSound(SoundIndex.HIGH_SCORE,
+                SoundGroup.USER_INTERFACE);
     }
 
     public void playLogoSound() {
         MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_USER_INTERFACE,
-                SoundConstants.SOUND_LOGO);
+        SoundPlayer.playSound(SoundIndex.LOGO,
+                SoundGroup.USER_INTERFACE);
     }
 
     private String getVersionString() {

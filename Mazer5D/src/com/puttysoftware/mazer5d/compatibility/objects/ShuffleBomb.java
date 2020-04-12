@@ -6,11 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericUsableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ShuffleBomb extends GenericUsableObject {
     // Constants
@@ -53,8 +54,8 @@ public class ShuffleBomb extends GenericUsableObject {
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Shuffle objects
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_EXPLODE);
+        SoundPlayer.playSound(SoundIndex.EXPLODE,
+                SoundGroup.GAME);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanShuffleObjects(x, y, z, ShuffleBomb.EFFECT_RADIUS);
         // Player might have moved

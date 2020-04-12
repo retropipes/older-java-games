@@ -8,13 +8,14 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -90,14 +91,14 @@ public abstract class GenericContainer extends GenericLock {
             } else {
                 app.getGameManager().decay();
             }
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_UNLOCK);
+            SoundPlayer.playSound(SoundIndex.UNLOCK,
+                    SoundGroup.GAME);
             app.getGameManager().backUpPlayer();
             Mazer5D.getApplication().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_WALK);
+            SoundPlayer.playSound(SoundIndex.WALK,
+                    SoundGroup.GAME);
         }
     }
 

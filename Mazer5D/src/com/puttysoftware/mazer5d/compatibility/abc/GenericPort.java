@@ -6,9 +6,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericPort extends GenericInfiniteLock {
     // Fields
@@ -38,8 +39,8 @@ public abstract class GenericPort extends GenericInfiniteLock {
         }
         Mazer5D.getApplication()
                 .showMessage("You need " + fill + " " + this.letter + " plug");
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_WALK_FAILED);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
+                SoundGroup.GAME);
     }
 
     @Override

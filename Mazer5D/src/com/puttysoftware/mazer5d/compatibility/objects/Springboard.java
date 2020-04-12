@@ -6,14 +6,15 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Springboard extends StairsUp {
     // Constructors
@@ -76,8 +77,8 @@ public class Springboard extends StairsUp {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_SPRINGBOARD);
+        SoundPlayer.playSound(SoundIndex.SPRINGBOARD,
+                SoundGroup.GAME);
     }
 
     @Override
@@ -90,13 +91,13 @@ public class Springboard extends StairsUp {
                 final GenericMovableObject pushedInto = (GenericMovableObject) pushed;
                 app.getGameManager().updatePushedIntoPositionAbsolute(x, y,
                         z - 1, x, y, z, pushedInto, this);
-                SoundManager.playSound(
-                        SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                        SoundConstants.SOUND_SPRINGBOARD);
+                SoundPlayer.playSound(
+                        SoundIndex.SPRINGBOARD,
+                        SoundGroup.GAME);
             }
         } catch (final InfiniteRecursionException ir) {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_SPRINGBOARD);
+            SoundPlayer.playSound(SoundIndex.SPRINGBOARD,
+                    SoundGroup.GAME);
             Mazer5D.getApplication().getMazeManager().getMaze()
                     .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
         }

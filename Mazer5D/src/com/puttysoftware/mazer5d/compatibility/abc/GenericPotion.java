@@ -6,12 +6,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.randomrange.RandomRange;
 
 public abstract class GenericPotion extends MazeObject {
@@ -82,11 +83,11 @@ public abstract class GenericPotion extends MazeObject {
         }
         Mazer5D.getApplication().getGameManager().decay();
         if (this.effectValue >= 0) {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_HEAL);
+            SoundPlayer.playSound(SoundIndex.HEAL,
+                    SoundGroup.GAME);
         } else {
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_HURT);
+            SoundPlayer.playSound(SoundIndex.HURT,
+                    SoundGroup.GAME);
         }
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericPotion.SCORE_CONSUME);
@@ -98,8 +99,8 @@ public abstract class GenericPotion extends MazeObject {
             final ObjectInventory inv) {
         Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_SHATTER);
+        SoundPlayer.playSound(SoundIndex.SHATTER,
+                SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericPotion.SCORE_SMASH);
         return false;

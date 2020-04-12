@@ -6,10 +6,11 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericAmulet extends GenericInventoryableObject {
     // Fields
@@ -35,8 +36,8 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
             final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().decay();
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_GRAB);
+        SoundPlayer.playSound(SoundIndex.GRAB,
+                SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericAmulet.SCORE_INCREASE);
         this.postMoveActionHook();

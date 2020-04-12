@@ -8,12 +8,13 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import java.util.Random;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericRandomTeleport extends MazeObject {
     // Fields
@@ -107,8 +108,8 @@ public abstract class GenericRandomTeleport extends MazeObject {
             dc = this.getDestinationColumn();
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_TELEPORT);
+        SoundPlayer.playSound(SoundIndex.TELEPORT,
+                SoundGroup.GAME);
     }
 
     @Override

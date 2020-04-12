@@ -6,12 +6,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class DarkWand extends GenericWand {
     // Constructors
@@ -36,13 +37,13 @@ public class DarkWand extends GenericWand {
         if (obj.getName().equals("Empty")) {
             // Create a Dark Gem
             this.useAction(new DarkGem(), x, y, z);
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_DARKNESS);
+            SoundPlayer.playSound(SoundIndex.DARKNESS,
+                    SoundGroup.GAME);
         } else if (obj.getName().equals("Light Gem")) {
             // Destroy the Light Gem
             this.useAction(new Empty(), x, y, z);
-            SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                    SoundConstants.SOUND_SHATTER);
+            SoundPlayer.playSound(SoundIndex.SHATTER,
+                    SoundGroup.GAME);
         }
     }
 

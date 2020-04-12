@@ -8,11 +8,12 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -70,8 +71,8 @@ public abstract class GenericCharacter extends MazeObject {
             Mazer5D.getApplication().getMazeManager().getMaze()
                     .doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
         }
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_LAVA);
+        SoundPlayer.playSound(SoundIndex.LAVA,
+                SoundGroup.GAME);
         return false;
     }
 

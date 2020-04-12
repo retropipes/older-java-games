@@ -6,12 +6,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericUsableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class WarpBomb extends GenericUsableObject {
     // Constants
@@ -54,8 +55,8 @@ public class WarpBomb extends GenericUsableObject {
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Warp objects
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_EXPLODE);
+        SoundPlayer.playSound(SoundIndex.EXPLODE,
+                SoundGroup.GAME);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
                         WarpBomb.EFFECT_RADIUS);

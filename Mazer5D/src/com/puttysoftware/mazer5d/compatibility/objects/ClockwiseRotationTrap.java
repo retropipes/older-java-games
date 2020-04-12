@@ -6,11 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ClockwiseRotationTrap extends GenericTrap {
     // Fields
@@ -34,8 +35,8 @@ public class ClockwiseRotationTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_CHANGE);
+        SoundPlayer.playSound(SoundIndex.CHANGE,
+                SoundGroup.GAME);
         Mazer5D.getApplication().showMessage("Your controls are rotated!");
         Mazer5D.getApplication().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,

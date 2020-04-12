@@ -6,9 +6,10 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGem;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class DarknessGem extends GenericGem {
     // Constructors
@@ -30,8 +31,8 @@ public class DarknessGem extends GenericGem {
     public void postMoveActionHook() {
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .setVisionRadiusToMinimum();
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_DARKNESS);
+        SoundPlayer.playSound(SoundIndex.DARKNESS,
+                SoundGroup.GAME);
     }
 
     @Override

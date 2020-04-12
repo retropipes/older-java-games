@@ -6,12 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.SoundGroup;
+import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
@@ -23,6 +23,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.PoisonArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.ShockArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Wall;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ArrowTask extends Thread {
     // Fields
@@ -66,8 +67,8 @@ public class ArrowTask extends Thread {
         final String suffix = DirectionResolver.resolveDirectionConstantToName(
                 DirectionResolver.resolveRelativeDirection(incX, incY));
         a.setNameSuffix(suffix);
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_ARROW_FIRED);
+        SoundPlayer.playSound(SoundIndex.ARROW_FIRED,
+                SoundGroup.GAME);
         while (res) {
             res = o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY,
                     this.at, inv);
@@ -92,8 +93,8 @@ public class ArrowTask extends Thread {
             o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY, this.at,
                     inv);
         }
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_ARROW_DEAD);
+        SoundPlayer.playSound(SoundIndex.ARROW_DEAD,
+                SoundGroup.GAME);
         app.getGameManager().arrowDone();
     }
 

@@ -19,7 +19,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 
-public class SoundLoader {
+class SoundLoader {
     private SoundLoader() {
         // Do nothing
     }
