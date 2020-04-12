@@ -16,10 +16,10 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.files.xml.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.LogoManager;
-import com.puttysoftware.mazer5d.maze.InvalidMazeException;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class LockedLoadTask extends Thread {

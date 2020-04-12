@@ -3,13 +3,11 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.editor.rulesets.xml;
+package com.puttysoftware.mazer5d.files.xml;
 
 import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
-
-import com.puttysoftware.mazer5d.files.xml.XMLExtension;
 
 public class XMLRuleSetFilter extends FileFilter {
     @Override

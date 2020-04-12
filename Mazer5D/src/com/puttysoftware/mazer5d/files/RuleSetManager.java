@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.editor.rulesets;
+package com.puttysoftware.mazer5d.files;
 
 import java.io.File;
 
@@ -12,10 +12,10 @@ import javax.swing.JFileChooser;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetFilter;
-import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetLoadTask;
-import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetSaveTask;
 import com.puttysoftware.mazer5d.files.xml.XMLExtension;
+import com.puttysoftware.mazer5d.files.xml.XMLRuleSetFilter;
+import com.puttysoftware.mazer5d.files.xml.XMLRuleSetLoadTask;
+import com.puttysoftware.mazer5d.files.xml.XMLRuleSetSaveTask;
 import com.puttysoftware.mazer5d.gui.Application;
 
 public class RuleSetManager {

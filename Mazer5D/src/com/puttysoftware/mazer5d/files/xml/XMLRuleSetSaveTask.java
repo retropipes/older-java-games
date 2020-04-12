@@ -3,14 +3,13 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.editor.rulesets.xml;
+package com.puttysoftware.mazer5d.files.xml;
 
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
-import com.puttysoftware.mazer5d.files.xml.XMLExtension;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.xio.XDataWriter;
 
