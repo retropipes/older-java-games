@@ -11,7 +11,6 @@ import java.io.IOException;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.Mazer5DException;
 
 public class XMLSaveTask extends Thread {
     // Fields
@@ -81,7 +80,7 @@ public class XMLSaveTask extends Thread {
                     new File(app.getMazeManager().getMaze().getBasePath()),
                     mazeFile);
         } catch (final IOException e) {
-            Mazer5D.logError(Mazer5DException.from(e));
+            Mazer5D.logError(e);
         }
         Mazer5D.getApplication().showMessage(sg + " file saved.");
         app.getMazeManager().handleDeferredSuccess(success);

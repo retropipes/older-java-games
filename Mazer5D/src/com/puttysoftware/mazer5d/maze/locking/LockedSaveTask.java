@@ -13,7 +13,6 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.maze.Extension;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.xml.XMLPrefixHandler;
@@ -58,7 +57,7 @@ public class LockedSaveTask extends Thread {
                     + " file failed, probably due to illegal characters in the file name.");
             success = false;
         } catch (final IOException e) {
-            Mazer5D.logError(Mazer5DException.from(e));
+            Mazer5D.logError(e);
         }
         Mazer5D.getApplication().showMessage("Locked " + sg + " file saved.");
         app.getMazeManager().handleDeferredSuccess(success);

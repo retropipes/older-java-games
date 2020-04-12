@@ -16,7 +16,6 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.maze.InvalidMazeException;
 import com.puttysoftware.mazer5d.maze.Maze;
@@ -105,7 +104,7 @@ public class XMLLoadTask extends Thread {
             CommonDialogs.showDialog(sg + " file loaded.");
             app.getMazeManager().handleDeferredSuccess(true);
         } catch (final IOException | InvalidMazeException e) {
-            Mazer5D.logError(Mazer5DException.from(e));
+            Mazer5D.logError(e);
         } finally {
             this.loadFrame.setVisible(false);
         }

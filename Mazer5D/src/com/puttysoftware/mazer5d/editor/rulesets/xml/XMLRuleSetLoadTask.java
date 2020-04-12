@@ -11,7 +11,6 @@ import java.io.IOException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.xio.XDataReader;
 
@@ -46,7 +45,7 @@ public class XMLRuleSetLoadTask extends Thread {
                     + " file failed, probably due to illegal characters in the file name.");
             app.getMazeManager().handleDeferredSuccess(false);
         } catch (final IOException e) {
-            Mazer5D.logError(Mazer5DException.from(e));
+            Mazer5D.logError(e);
         }
     }
 }

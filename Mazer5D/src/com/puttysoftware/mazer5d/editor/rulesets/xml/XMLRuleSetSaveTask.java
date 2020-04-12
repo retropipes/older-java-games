@@ -10,7 +10,6 @@ import java.io.IOException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
 import com.puttysoftware.xio.XDataWriter;
@@ -42,7 +41,7 @@ public class XMLRuleSetSaveTask extends Thread {
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final IOException e) {
-            Mazer5D.logError(Mazer5DException.from(e));
+            Mazer5D.logError(e);
         }
     }
 

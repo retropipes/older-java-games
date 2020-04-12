@@ -24,13 +24,8 @@ public class Mazer5D {
         return Mazer5D.application;
     }
 
-    public static void logError(Mazer5DException e) {
-        Mazer5D.errhand.uncaughtException(Thread.currentThread(), e.getCause());
-    }
-
-    @Deprecated
-    public static void logError(RuntimeException re) {
-        // Does nothing. Don't call this.
+    public static void logError(Throwable t) {
+        Mazer5D.errhand.uncaughtException(Thread.currentThread(), t);
     }
 
     public static void main(final String[] args) {
