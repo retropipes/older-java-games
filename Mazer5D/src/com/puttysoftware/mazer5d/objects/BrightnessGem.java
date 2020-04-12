@@ -6,9 +6,9 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
-import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.generic.GenericGem;
+import com.puttysoftware.mazer5d.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.loaders.SoundManager;
 
 public class BrightnessGem extends GenericGem {
     // Constructors

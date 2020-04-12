@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.mazer5d.maze.MazeManager;
 import com.puttysoftware.mazer5d.maze.TempDirCleanup;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;

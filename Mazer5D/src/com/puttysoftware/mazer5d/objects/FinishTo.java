@@ -6,12 +6,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
-import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.loaders.SoundManager;
 
 public class FinishTo extends Finish {
     // Fields

@@ -10,8 +10,8 @@ import java.awt.desktop.PreferencesHandler;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
-import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class Mazer5D {

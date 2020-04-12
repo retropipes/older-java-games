@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.assetmanagers;
+package com.puttysoftware.mazer5d.loaders;
 
 public class SoundConstants {
     // Public Category Constants

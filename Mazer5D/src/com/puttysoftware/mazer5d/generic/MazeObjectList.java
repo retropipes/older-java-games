@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.ObjectImageManager;
+import com.puttysoftware.mazer5d.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 import com.puttysoftware.mazer5d.maze.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.objects.*;

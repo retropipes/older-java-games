@@ -10,10 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.BitSet;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
-import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.loaders.SoundManager;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 import com.puttysoftware.mazer5d.objects.GhostAmulet;

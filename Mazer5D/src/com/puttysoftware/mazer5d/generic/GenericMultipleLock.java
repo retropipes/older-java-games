@@ -7,9 +7,9 @@ package com.puttysoftware.mazer5d.generic;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
-import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.loaders.SoundManager;
 import com.puttysoftware.mazer5d.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.objects.PasswallBoots;
 

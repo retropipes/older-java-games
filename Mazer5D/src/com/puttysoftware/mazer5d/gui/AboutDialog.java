@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.loaders.LogoManager;
 
 public class AboutDialog implements AboutHandler {
     // Fields

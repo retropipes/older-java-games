@@ -6,13 +6,13 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
-import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.DirectionResolver;
 import com.puttysoftware.mazer5d.generic.GenericTransientObject;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.loaders.SoundManager;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 import com.puttysoftware.mazer5d.objects.Arrow;

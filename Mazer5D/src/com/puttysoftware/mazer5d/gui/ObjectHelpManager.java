@@ -18,9 +18,9 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.assetmanagers.ImageConstants;
-import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.generic.MazeObjectList;
+import com.puttysoftware.mazer5d.loaders.ImageConstants;
+import com.puttysoftware.mazer5d.loaders.LogoManager;
 
 public class ObjectHelpManager {
     // Fields
