@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d;
+package com.puttysoftware.mazer5d.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,6 +17,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assetmanagers.ImageConstants;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.generic.MazeObjectList;

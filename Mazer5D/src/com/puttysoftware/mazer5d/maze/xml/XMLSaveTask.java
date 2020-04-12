@@ -9,8 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 import com.puttysoftware.fileutils.ZipUtilities;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.gui.Application;
 
 public class XMLSaveTask extends Thread {
     // Fields

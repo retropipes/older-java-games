@@ -8,9 +8,9 @@ package com.puttysoftware.mazer5d.editor.rulesets.xml;
 import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
 import com.puttysoftware.xio.XDataWriter;
 

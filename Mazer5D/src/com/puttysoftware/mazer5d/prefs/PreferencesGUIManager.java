@@ -25,9 +25,9 @@ import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.gui.Application;
 
 class PreferencesGUIManager {
     // Fields

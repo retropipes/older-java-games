@@ -11,6 +11,7 @@ import java.awt.desktop.PreferencesHandler;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class Mazer5D {
@@ -35,8 +36,7 @@ public class Mazer5D {
         // Integrate with host platform
         NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
-        Mazer5D.application = new Application();
-        Mazer5D.application.configureMenus(ni);
+        Mazer5D.application = new Application(ni);
         ni.setAboutHandler(Mazer5D.application.getAboutDialog());
         ni.setOpenFileHandler(Mazer5D.application.getMazeManager());
         ni.setPreferencesHandler(new PreferencesLauncher());

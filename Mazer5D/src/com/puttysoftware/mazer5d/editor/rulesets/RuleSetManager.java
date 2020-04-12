@@ -11,11 +11,11 @@ import javax.swing.JFileChooser;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetFilter;
 import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetLoadTask;
 import com.puttysoftware.mazer5d.editor.rulesets.xml.XMLRuleSetSaveTask;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
 
 public class RuleSetManager {

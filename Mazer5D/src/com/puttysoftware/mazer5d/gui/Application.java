@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d;
+package com.puttysoftware.mazer5d.gui;
 
 import javax.swing.JFrame;
 
@@ -41,20 +41,17 @@ public class Application {
     public static final int STATUS_NULL = 4;
 
     // Constructors
-    public Application() {
+    public Application(final NativeIntegration ni) {
         this.objects = new MazeObjectList();
         this.about = new AboutDialog(this.getVersionString());
         this.guiMgr = new GUIManager();
         this.oHelpMgr = new ObjectHelpManager();
         this.menuMgr = new MenuManager();
         this.guiMgr.updateLogo();
-    }
-
-    // Methods
-    void configureMenus(final NativeIntegration ni) {
         this.menuMgr.configureMenus(ni);
     }
 
+    // Methods
     public void setInGUI(final boolean value) {
         this.IN_GUI = value;
     }

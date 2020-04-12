@@ -5,11 +5,11 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.GenericWall;
 import com.puttysoftware.mazer5d.generic.MazeObject;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 
 public class EmptyVoid extends GenericWall {

@@ -7,12 +7,12 @@ package com.puttysoftware.mazer5d.generic;
 
 import java.util.Random;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assetmanagers.SoundConstants;
 import com.puttysoftware.mazer5d.assetmanagers.SoundManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 
 public abstract class GenericRandomTeleport extends MazeObject {

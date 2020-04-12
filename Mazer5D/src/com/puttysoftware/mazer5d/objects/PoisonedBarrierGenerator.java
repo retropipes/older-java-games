@@ -5,11 +5,11 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.objects;
 
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.GenericGenerator;
+import com.puttysoftware.mazer5d.gui.Application;
 
 public class PoisonedBarrierGenerator extends GenericGenerator {
     // Fields

@@ -14,9 +14,9 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
-import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
+import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.maze.InvalidMazeException;
 import com.puttysoftware.mazer5d.maze.Maze;
 

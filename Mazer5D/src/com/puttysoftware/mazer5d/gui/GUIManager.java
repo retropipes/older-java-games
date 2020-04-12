@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d;
+package com.puttysoftware.mazer5d.gui;
 
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -22,6 +22,7 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assetmanagers.LogoManager;
 import com.puttysoftware.mazer5d.maze.MazeManager;
 import com.puttysoftware.mazer5d.maze.TempDirCleanup;
