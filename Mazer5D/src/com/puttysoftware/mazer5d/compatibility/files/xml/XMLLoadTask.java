@@ -15,10 +15,11 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.InvalidMazeException;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class XMLLoadTask extends Thread {
     // Fields
@@ -34,7 +35,7 @@ public class XMLLoadTask extends Thread {
         this.isSavedGame = saved;
         this.setName("XML File Loader");
         this.loadFrame = new JFrame("Loading...");
-        this.loadFrame.setIconImage(LogoManager.getLogo());
+        this.loadFrame.setIconImage(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
         this.loadBar = new JProgressBar();
         this.loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(this.loadBar);

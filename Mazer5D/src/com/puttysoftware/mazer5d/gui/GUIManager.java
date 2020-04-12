@@ -23,9 +23,10 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
@@ -78,9 +79,9 @@ public class GUIManager implements QuitHandler {
     }
 
     public void updateLogo() {
-        final BufferedImageIcon logo = LogoManager.getLogo();
+        final BufferedImageIcon logo = LogoImageLoader.load(LogoImageIndex.MINI_LOGO);
         this.logoLabel.setIcon(logo);
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.guiFrame.setIconImage(iconlogo);
         this.guiFrame.pack();
     }

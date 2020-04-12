@@ -21,7 +21,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class AboutDialog implements AboutHandler {
     // Fields
@@ -48,15 +49,15 @@ public class AboutDialog implements AboutHandler {
     private void setUpGUI(final String ver) {
         this.handler = new EventHandler();
         this.aboutFrame = new JFrame("About Mazer5D");
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.aboutFrame.setIconImage(iconlogo);
         this.aboutPane = new Container();
         this.textPane = new Container();
         this.buttonPane = new Container();
         this.logoPane = new Container();
         this.aboutOK = new JButton("OK");
-        this.miniLabel = new JLabel("", LogoManager.getMiniatureLogo(),
-                SwingConstants.LEFT);
+        this.miniLabel = new JLabel("", LogoImageLoader.load(
+                LogoImageIndex.MINI_LOGO), SwingConstants.LEFT);
         this.aboutOK.setDefaultCapable(true);
         this.aboutFrame.getRootPane().setDefaultButton(this.aboutOK);
         this.aboutFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -66,8 +67,8 @@ public class AboutDialog implements AboutHandler {
         this.textPane.setLayout(new GridLayout(4, 1));
         this.textPane.add(new JLabel("Mazer5D Version: " + ver));
         this.textPane.add(new JLabel("Author: Eric Ahnell"));
-        this.textPane.add(
-                new JLabel("Web Site: http://www.puttysoftware.com/mazer5d/"));
+        this.textPane.add(new JLabel(
+                "Web Site: http://www.puttysoftware.com/mazer5d/"));
         this.textPane.add(new JLabel(
                 "E-mail bug reports to: products@puttysoftware.com  "));
         this.buttonPane.setLayout(new FlowLayout());

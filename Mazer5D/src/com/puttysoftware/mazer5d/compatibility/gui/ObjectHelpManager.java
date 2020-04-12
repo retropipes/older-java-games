@@ -18,9 +18,10 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class ObjectHelpManager {
     // Fields
@@ -55,7 +56,7 @@ public class ObjectHelpManager {
             this.export = new JButton("Export");
             this.export.addActionListener(this.buttonHandler);
             this.helpFrame = new JFrame("Mazer5D Object Help");
-            final Image iconlogo = LogoManager.getLogo();
+            final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
             this.helpFrame.setIconImage(iconlogo);
             this.helpFrame
                     .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

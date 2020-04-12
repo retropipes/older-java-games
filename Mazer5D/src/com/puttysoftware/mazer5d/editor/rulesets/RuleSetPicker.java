@@ -22,12 +22,13 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {
@@ -106,7 +107,7 @@ public class RuleSetPicker {
 
     private void setUpGUI() {
         this.outputFrame = new JFrame("Rule Set Picker");
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.outputFrame.setIconImage(iconlogo);
         this.outputPane = new Container();
         this.borderPane = new Container();

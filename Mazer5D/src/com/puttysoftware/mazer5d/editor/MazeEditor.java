@@ -30,13 +30,13 @@ import javax.swing.border.EmptyBorder;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
@@ -65,6 +65,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.TreasureChest;
 import com.puttysoftware.mazer5d.compatibility.objects.TwoWayTeleport;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.picturepicker.PicturePicker;
 
@@ -159,7 +160,7 @@ public class MazeEditor {
         this.containableEditorAppearances = this.objectList
                 .getAllContainableObjectEditorAppearances();
         this.treasureFrame = new JFrame("Treasure Chest Contents");
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.treasureFrame.setIconImage(iconlogo);
         this.treasureFrame
                 .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -1827,7 +1828,7 @@ public class MazeEditor {
         }
         this.messageLabel = new JLabel(" ");
         this.outputFrame = new JFrame("Editor");
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.outputFrame.setIconImage(iconlogo);
         this.outputPane = new Container();
         this.secondaryPane = new Container();

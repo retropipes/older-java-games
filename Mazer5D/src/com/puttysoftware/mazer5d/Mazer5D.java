@@ -10,8 +10,9 @@ import java.awt.desktop.PreferencesHandler;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class Mazer5D {
@@ -43,7 +44,7 @@ public class Mazer5D {
         ni.setQuitHandler(Mazer5D.application.getGUIManager());
         // Set up Common Dialogs
         CommonDialogs.setDefaultTitle(Mazer5D.PROGRAM_NAME);
-        CommonDialogs.setIcon(LogoManager.getMicroLogo());
+        CommonDialogs.setIcon(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
         // Launch GUI
         Mazer5D.application.playLogoSound();
         Mazer5D.application.getGUIManager().showGUI();

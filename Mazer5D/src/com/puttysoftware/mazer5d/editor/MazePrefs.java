@@ -25,8 +25,9 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
+import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class MazePrefs {
     // Fields
@@ -93,7 +94,7 @@ public class MazePrefs {
     private void setUpGUI() {
         this.handler = new EventHandler();
         this.prefFrame = new JFrame("Maze Preferences");
-        final Image iconlogo = LogoManager.getLogo();
+        final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.prefFrame.setIconImage(iconlogo);
         this.mainPrefPane = new Container();
         this.contentPane = new Container();
