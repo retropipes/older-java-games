@@ -15,7 +15,7 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class MazeObject extends GameObject implements MazeObjectModel {
+public final class MazeObject extends GameObject implements MazeObjectModel {
     // Properties
     private MazeObjectModel savedObject = null;
 

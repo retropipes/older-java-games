@@ -322,8 +322,7 @@ public class Prefs {
     }
 
     public static MazeObjectModel getEditorDefaultFill() {
-        return new MazeObject(0) {
-        };
+        return new MazeObject(0);
     }
 
     private static void defaultEnableSoundGroups() {
