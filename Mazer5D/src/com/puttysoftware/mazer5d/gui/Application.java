@@ -20,14 +20,14 @@ import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class Application {
     // Fields
-    private AboutDialog about;
+    private final AboutDialog about;
     private GameManager gameMgr;
     private MazeManager mazeMgr;
-    private MenuManager menuMgr;
-    private ObjectHelpManager oHelpMgr;
+    private final MenuManager menuMgr;
+    private final ObjectHelpManager oHelpMgr;
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
-    private GUIManager guiMgr;
+    private final GUIManager guiMgr;
     private final MazeObjectList objects;
     private boolean IN_GUI, IN_PREFS, IN_GAME, IN_EDITOR;
     private static final int VERSION_MAJOR = 9;

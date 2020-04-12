@@ -151,8 +151,9 @@ public class GUIManager implements QuitHandler {
     }
 
     @Override
-    public void handleQuitRequestWith(QuitEvent inE, QuitResponse inResponse) {
-        boolean ok = this.quitHandler();
+    public void handleQuitRequestWith(final QuitEvent inE,
+            final QuitResponse inResponse) {
+        final boolean ok = this.quitHandler();
         if (ok) {
             inResponse.performQuit();
         } else {

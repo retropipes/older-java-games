@@ -517,8 +517,7 @@ public class Maze implements MazeConstants {
                     final File sourceLocation = this.getLevelFile(x + 1);
                     final File targetLocation = this.getLevelFile(x);
                     try {
-                        FileUtilities.moveFile(sourceLocation,
-                                targetLocation);
+                        FileUtilities.moveFile(sourceLocation, targetLocation);
                     } catch (final IOException io) {
                         // Ignore
                     }

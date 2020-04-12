@@ -23,7 +23,8 @@ final class GameErrorHandler implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(final Thread t, final Throwable e) {
-        CommonDialogs.showErrorDialog(ERROR_MESSAGE, ERROR_TITLE);
+        CommonDialogs.showErrorDialog(GameErrorHandler.ERROR_MESSAGE,
+                GameErrorHandler.ERROR_TITLE);
         this.logger.logError(e);
     }
 }

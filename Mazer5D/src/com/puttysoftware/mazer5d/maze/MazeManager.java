@@ -179,10 +179,10 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     @Override
-    public void openFiles(OpenFilesEvent inE) {
+    public void openFiles(final OpenFilesEvent inE) {
         final Application app = Mazer5D.getApplication();
         if (!this.loaded) {
-            for (File file : inE.getFiles()) {
+            for (final File file : inE.getFiles()) {
                 String extension;
                 String loadFile;
                 loadFile = file.getAbsolutePath();

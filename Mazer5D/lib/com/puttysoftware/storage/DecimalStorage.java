@@ -18,7 +18,7 @@ public class DecimalStorage {
     // Constructor
     /**
      * Main constructor.
-     * 
+     *
      * @param shape
      *            simulated dimensions for the stored data
      */
@@ -36,7 +36,7 @@ public class DecimalStorage {
     // Copy constructor
     /**
      * Main copy constructor.
-     * 
+     *
      * @param source
      *            the @self to make a copy of
      */
@@ -54,7 +54,7 @@ public class DecimalStorage {
     // Protected copy constructor
     /**
      * Serialization-related protected copy constructor.
-     * 
+     *
      * @param source
      *            the underlying array where stored data came from
      * @param shape
@@ -74,7 +74,7 @@ public class DecimalStorage {
     // Methods
     /**
      * Check for equality.
-     * 
+     *
      * @param obj
      *            the other object to check
      * @return true if equal, false otherwise
@@ -99,7 +99,7 @@ public class DecimalStorage {
 
     /**
      * Fill the storage with the same data everywhere.
-     * 
+     *
      * @param obj
      *            the data to fill with
      */
@@ -111,7 +111,7 @@ public class DecimalStorage {
 
     /**
      * Get data at a given location in storage.
-     * 
+     *
      * @param loc
      *            the location to get data from
      * @return the data at that location
@@ -124,7 +124,7 @@ public class DecimalStorage {
     /**
      * Get data directly from the underlying array. To convert a simulated index
      * to a raw index, use ravelLocation().
-     * 
+     *
      * @param rawLoc
      *            the index within the array to get data from
      * @return the data at that index
@@ -135,7 +135,7 @@ public class DecimalStorage {
 
     /**
      * Get the length of the underlying array.
-     * 
+     *
      * @return the underlying array length
      */
     protected final int getRawLength() {
@@ -144,7 +144,7 @@ public class DecimalStorage {
 
     /**
      * Get the shape (dimensions) of the storage.
-     * 
+     *
      * @return the shape, as an array of integers
      */
     public final int[] getShape() {
@@ -163,7 +163,7 @@ public class DecimalStorage {
 
     /**
      * Utility to convert simulated indexes to raw indexes.
-     * 
+     *
      * @param loc
      *            a simulated index
      * @return a raw index
@@ -186,7 +186,7 @@ public class DecimalStorage {
 
     /**
      * Change stored data at a given location.
-     * 
+     *
      * @param obj
      *            the new data value
      * @param loc
@@ -200,7 +200,7 @@ public class DecimalStorage {
     /**
      * Change stored data directly in the underlying array. To convert a
      * simulated index to a raw index, use ravelLocation().
-     * 
+     *
      * @param obj
      *            the new data value
      * @param rawLoc

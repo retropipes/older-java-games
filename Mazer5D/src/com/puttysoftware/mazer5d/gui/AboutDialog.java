@@ -98,7 +98,7 @@ public class AboutDialog implements AboutHandler {
     }
 
     @Override
-    public void handleAbout(AboutEvent inE) {
+    public void handleAbout(final AboutEvent inE) {
         this.showAboutDialog();
     }
 }

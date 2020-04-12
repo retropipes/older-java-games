@@ -25,16 +25,16 @@ public class Mazer5D {
         return Mazer5D.application;
     }
 
-    public static void logError(Throwable t) {
+    public static void logError(final Throwable t) {
         Mazer5D.errhand.uncaughtException(Thread.currentThread(), t);
     }
 
     public static void main(final String[] args) {
         // Install error handler
         Mazer5D.errhand = new GameErrorHandler();
-        Thread.setDefaultUncaughtExceptionHandler(errhand);
+        Thread.setDefaultUncaughtExceptionHandler(Mazer5D.errhand);
         // Integrate with host platform
-        NativeIntegration ni = new NativeIntegration();
+        final NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
         Mazer5D.application = new Application(ni);
         ni.setAboutHandler(Mazer5D.application.getAboutDialog());
@@ -51,7 +51,7 @@ public class Mazer5D {
 
     private static class PreferencesLauncher implements PreferencesHandler {
         @Override
-        public void handlePreferences(PreferencesEvent inE) {
+        public void handlePreferences(final PreferencesEvent inE) {
             PreferencesManager.showPrefs();
         }
     }

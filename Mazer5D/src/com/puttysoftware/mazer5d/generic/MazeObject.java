@@ -221,7 +221,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     @Override
     public MazeObject clone() {
         try {
-            final MazeObject copy = this.getClass().getConstructor().newInstance();
+            final MazeObject copy = this.getClass().getConstructor()
+                    .newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
             copy.pushableInto = this.pushableInto;

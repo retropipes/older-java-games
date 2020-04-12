@@ -28,7 +28,7 @@ public class XMLSaveTask extends Thread {
     @Override
     public void run() {
         final Application app = Mazer5D.getApplication();
-        boolean success = true;
+        final boolean success = true;
         final String sg;
         if (this.isSavedGame) {
             sg = "Saved Game";
