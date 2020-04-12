@@ -28,6 +28,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.MusicGroup;
+import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
@@ -37,7 +39,6 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
-import com.puttysoftware.mazer5d.compatibility.loaders.MusicManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
 import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
@@ -70,6 +71,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.WallBreakingWand;
 import com.puttysoftware.mazer5d.compatibility.objects.WallMakingWand;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -1912,22 +1914,12 @@ public class GameManager implements MazeEffectConstants {
     public void showOutput() {
         final Application app = Mazer5D.getApplication();
         app.getMenuManager().setGameMenus();
-        if (PreferencesManager
-                .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
-            if (!MusicManager.isMusicPlaying()) {
-                MusicManager.playMusic("exploring");
-            }
-        }
+        MusicPlayer.playMusic(MusicIndex.EXPLORING, MusicGroup.GAME);
         this.outputFrame.setVisible(true);
     }
 
     public void hideOutput() {
-        if (PreferencesManager
-                .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
-            if (MusicManager.isMusicPlaying()) {
-                MusicManager.stopMusic();
-            }
-        }
+        MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
         if (this.outputFrame != null) {
             this.outputFrame.setVisible(false);
         }
