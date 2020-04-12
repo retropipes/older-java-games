@@ -1,7 +1,7 @@
-/*  Diane Game Engine
-Copyleft (C) 2019 Eric Ahnell
+/*  Mazer5D: A Maze-Solving Game
+Copyright (C) 2008-2020 Eric Ahnell
 
-Any questions should be directed to the author via email at: support@puttysoftware.com
+Any questions should be directed to the author via email at: products@puttysoftware.com
  */
 package com.puttysoftware.mazer5d.assets;
 
