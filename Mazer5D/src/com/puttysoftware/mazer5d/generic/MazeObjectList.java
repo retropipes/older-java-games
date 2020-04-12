@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.assetmanagers.ObjectImageManager;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
 import com.puttysoftware.mazer5d.maze.xml.XMLFormatConstants;
@@ -800,7 +801,8 @@ public class MazeObjectList {
         }
         for (final MazeObject allObject : this.allObjects) {
             try {
-                final MazeObject instance = allObject.getClass().getConstructor().newInstance();
+                final MazeObject instance = allObject.getClass()
+                        .getConstructor().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);
                 } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_2) {
@@ -818,7 +820,7 @@ public class MazeObjectList {
             } catch (final InstantiationException | IllegalAccessException
                     | IllegalArgumentException | InvocationTargetException
                     | NoSuchMethodException | SecurityException e) {
-                Mazer5D.logError(e);
+                Mazer5D.logError(Mazer5DException.from(e));
             }
         }
         return null;

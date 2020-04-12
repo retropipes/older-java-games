@@ -18,6 +18,7 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class SoundManager {
@@ -65,17 +66,17 @@ public class SoundManager {
                                 }
                             }
                         } catch (final IOException e) {
-                            Mazer5D.logError(e);
+                            Mazer5D.logError(Mazer5DException.from(e));
                         } finally {
                             auline.drain();
                         }
                     } catch (final LineUnavailableException e) {
-                        Mazer5D.logError(e);
+                        Mazer5D.logError(Mazer5DException.from(e));
                     }
                 } catch (final UnsupportedAudioFileException e) {
-                    Mazer5D.logError(e);
+                    Mazer5D.logError(Mazer5DException.from(e));
                 } catch (final IOException e) {
-                    Mazer5D.logError(e);
+                    Mazer5D.logError(Mazer5DException.from(e));
                 }
             }
         }.start();

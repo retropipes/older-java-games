@@ -104,8 +104,6 @@ public class LockedLoadTask extends Thread {
         } catch (final InvalidMazeException ime) {
             CommonDialogs.showDialog(ime.getMessage());
             app.getMazeManager().handleDeferredSuccess(false);
-        } catch (final Exception ex) {
-            Mazer5D.logError(ex);
         } finally {
             this.loadFrame.setVisible(false);
         }

@@ -297,17 +297,13 @@ public class LevelPreferencesManager {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            try {
-                final LevelPreferencesManager lpm = LevelPreferencesManager.this;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("OK")) {
-                    lpm.setPrefs();
-                    lpm.hidePrefs();
-                } else if (cmd.equals("Cancel")) {
-                    lpm.hidePrefs();
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final LevelPreferencesManager lpm = LevelPreferencesManager.this;
+            final String cmd = e.getActionCommand();
+            if (cmd.equals("OK")) {
+                lpm.setPrefs();
+                lpm.hidePrefs();
+            } else if (cmd.equals("Cancel")) {
+                lpm.hidePrefs();
             }
         }
 

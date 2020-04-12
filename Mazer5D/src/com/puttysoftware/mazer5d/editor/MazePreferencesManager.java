@@ -143,17 +143,13 @@ public class MazePreferencesManager {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            try {
-                final MazePreferencesManager mpm = MazePreferencesManager.this;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("OK")) {
-                    mpm.setPrefs();
-                    mpm.hidePrefs();
-                } else if (cmd.equals("Cancel")) {
-                    mpm.hidePrefs();
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazePreferencesManager mpm = MazePreferencesManager.this;
+            final String cmd = e.getActionCommand();
+            if (cmd.equals("OK")) {
+                mpm.setPrefs();
+                mpm.hidePrefs();
+            } else if (cmd.equals("Cancel")) {
+                mpm.hidePrefs();
             }
         }
 

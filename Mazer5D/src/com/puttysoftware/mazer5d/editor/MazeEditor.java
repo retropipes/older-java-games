@@ -2006,26 +2006,22 @@ public class MazeEditor {
     }
 
     public void handleCloseWindow() {
-        try {
-            final Application app = Mazer5D.getApplication();
-            boolean success = false;
-            int status = JOptionPane.DEFAULT_OPTION;
-            if (app.getMazeManager().getDirty()) {
-                status = app.getMazeManager().showSaveDialog();
-                if (status == JOptionPane.YES_OPTION) {
-                    success = app.getMazeManager().saveMaze();
-                    if (success) {
-                        this.exitEditor();
-                    }
-                } else if (status == JOptionPane.NO_OPTION) {
-                    app.getMazeManager().setDirty(false);
+        final Application app = Mazer5D.getApplication();
+        boolean success = false;
+        int status = JOptionPane.DEFAULT_OPTION;
+        if (app.getMazeManager().getDirty()) {
+            status = app.getMazeManager().showSaveDialog();
+            if (status == JOptionPane.YES_OPTION) {
+                success = app.getMazeManager().saveMaze();
+                if (success) {
                     this.exitEditor();
                 }
-            } else {
+            } else if (status == JOptionPane.NO_OPTION) {
+                app.getMazeManager().setDirty(false);
                 this.exitEditor();
             }
-        } catch (final Exception ex) {
-            Mazer5D.logError(ex);
+        } else {
+            this.exitEditor();
         }
     }
 
@@ -2038,26 +2034,22 @@ public class MazeEditor {
         // handle scroll bars
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final Adjustable src = e.getAdjustable();
-                final int dir = src.getOrientation();
-                final int value = src.getValue();
-                int relValue = 0;
-                switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazeEditor me = MazeEditor.this;
+            final Adjustable src = e.getAdjustable();
+            final int dir = src.getOrientation();
+            final int value = src.getValue();
+            int relValue = 0;
+            switch (dir) {
+            case Adjustable.HORIZONTAL:
+                relValue = value - me.evMgr.getViewingWindowLocationY();
+                me.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - me.evMgr.getViewingWindowLocationX();
+                me.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -2074,25 +2066,21 @@ public class MazeEditor {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final int x = e.getX();
-                final int y = e.getY();
-                if (e.isAltDown()) {
-                    if (!me.goToDestMode) {
-                        me.editObjectProperties(x, y);
-                    }
-                } else if (e.isShiftDown()) {
-                    me.probeObjectProperties(x, y);
-                } else {
-                    if (me.goToDestMode) {
-                        me.goToDestination(x, y);
-                    } else {
-                        me.editObject(x, y);
-                    }
+            final MazeEditor me = MazeEditor.this;
+            final int x = e.getX();
+            final int y = e.getY();
+            if (e.isAltDown()) {
+                if (!me.goToDestMode) {
+                    me.editObjectProperties(x, y);
                 }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            } else if (e.isShiftDown()) {
+                me.probeObjectProperties(x, y);
+            } else {
+                if (me.goToDestMode) {
+                    me.goToDestination(x, y);
+                } else {
+                    me.editObject(x, y);
+                }
             }
         }
 
@@ -2194,26 +2182,22 @@ public class MazeEditor {
         // handle scroll bars
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final Adjustable src = e.getAdjustable();
-                final int dir = src.getOrientation();
-                final int value = src.getValue();
-                int relValue = 0;
-                switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazeEditor me = MazeEditor.this;
+            final Adjustable src = e.getAdjustable();
+            final int dir = src.getOrientation();
+            final int value = src.getValue();
+            int relValue = 0;
+            switch (dir) {
+            case Adjustable.HORIZONTAL:
+                relValue = value - me.evMgr.getViewingWindowLocationY();
+                me.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - me.evMgr.getViewingWindowLocationX();
+                me.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -2230,13 +2214,9 @@ public class MazeEditor {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final int x = e.getX();
-                final int y = e.getY();
-                MazeEditor.this.setPlayerLocation(x, y);
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
-            }
+            final int x = e.getX();
+            final int y = e.getY();
+            MazeEditor.this.setPlayerLocation(x, y);
         }
 
         @Override
@@ -2259,26 +2239,22 @@ public class MazeEditor {
         // handle scroll bars
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final Adjustable src = e.getAdjustable();
-                final int dir = src.getOrientation();
-                final int value = src.getValue();
-                int relValue = 0;
-                switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazeEditor me = MazeEditor.this;
+            final Adjustable src = e.getAdjustable();
+            final int dir = src.getOrientation();
+            final int value = src.getValue();
+            int relValue = 0;
+            switch (dir) {
+            case Adjustable.HORIZONTAL:
+                relValue = value - me.evMgr.getViewingWindowLocationY();
+                me.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - me.evMgr.getViewingWindowLocationX();
+                me.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -2295,13 +2271,9 @@ public class MazeEditor {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final int x = e.getX();
-                final int y = e.getY();
-                MazeEditor.this.setTeleportDestination(x, y);
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
-            }
+            final int x = e.getX();
+            final int y = e.getY();
+            MazeEditor.this.setTeleportDestination(x, y);
         }
 
         @Override
@@ -2324,26 +2296,22 @@ public class MazeEditor {
         // handle scroll bars
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final Adjustable src = e.getAdjustable();
-                final int dir = src.getOrientation();
-                final int value = src.getValue();
-                int relValue = 0;
-                switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazeEditor me = MazeEditor.this;
+            final Adjustable src = e.getAdjustable();
+            final int dir = src.getOrientation();
+            final int value = src.getValue();
+            int relValue = 0;
+            switch (dir) {
+            case Adjustable.HORIZONTAL:
+                relValue = value - me.evMgr.getViewingWindowLocationY();
+                me.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - me.evMgr.getViewingWindowLocationX();
+                me.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -2360,13 +2328,9 @@ public class MazeEditor {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final int x = e.getX();
-                final int y = e.getY();
-                MazeEditor.this.setConditionalTeleportDestination(x, y);
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
-            }
+            final int x = e.getX();
+            final int y = e.getY();
+            MazeEditor.this.setConditionalTeleportDestination(x, y);
         }
 
         @Override
@@ -2389,26 +2353,22 @@ public class MazeEditor {
         // handle scroll bars
         @Override
         public void adjustmentValueChanged(final AdjustmentEvent e) {
-            try {
-                final MazeEditor me = MazeEditor.this;
-                final Adjustable src = e.getAdjustable();
-                final int dir = src.getOrientation();
-                final int value = src.getValue();
-                int relValue = 0;
-                switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final MazeEditor me = MazeEditor.this;
+            final Adjustable src = e.getAdjustable();
+            final int dir = src.getOrientation();
+            final int value = src.getValue();
+            int relValue = 0;
+            switch (dir) {
+            case Adjustable.HORIZONTAL:
+                relValue = value - me.evMgr.getViewingWindowLocationY();
+                me.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - me.evMgr.getViewingWindowLocationX();
+                me.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
             }
         }
 
@@ -2425,13 +2385,9 @@ public class MazeEditor {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final int x = e.getX();
-                final int y = e.getY();
-                MazeEditor.this.setMetalButtonTarget(x, y);
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
-            }
+            final int x = e.getX();
+            final int y = e.getY();
+            MazeEditor.this.setMetalButtonTarget(x, y);
         }
 
         @Override

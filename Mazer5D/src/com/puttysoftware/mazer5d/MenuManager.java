@@ -769,204 +769,200 @@ public class MenuManager {
         // Handle menus
         @Override
         public void actionPerformed(final ActionEvent e) {
-            try {
-                final Application app = Mazer5D.getApplication();
-                boolean loaded = false;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("New...")) {
-                    loaded = app.getEditor().newMaze();
-                    app.getMazeManager().setLoaded(loaded);
-                    if (loaded) {
-                        app.getMenuManager().clearLockedFlag();
-                    }
-                } else if (cmd.equals("Open...")) {
-                    loaded = app.getMazeManager().loadMaze();
-                    app.getMazeManager().setLoaded(loaded);
-                } else if (cmd.equals("Open Locked...")) {
-                    loaded = app.getMazeManager().loadLockedMaze();
-                    app.getMazeManager().setLoaded(loaded);
-                } else if (cmd.equals("Close")) {
-                    // Close the window
-                    if (app.getMode() == Application.STATUS_EDITOR) {
-                        app.getEditor().handleCloseWindow();
-                    } else if (app.getMode() == Application.STATUS_GAME) {
-                        boolean saved = true;
-                        int status = 0;
-                        if (app.getMazeManager().getDirty()) {
-                            status = app.getMazeManager().showSaveDialog();
-                            if (status == JOptionPane.YES_OPTION) {
-                                saved = app.getMazeManager().saveMaze();
-                            } else if (status == JOptionPane.CANCEL_OPTION) {
-                                saved = false;
-                            } else {
-                                app.getMazeManager().setDirty(false);
-                            }
-                        }
-                        if (saved) {
-                            app.getGameManager().exitGame();
-                        }
-                    }
-                } else if (cmd.equals("Save")) {
-                    if (app.getMazeManager().getLoaded()) {
-                        app.getMazeManager().saveMaze();
-                    } else {
-                        CommonDialogs.showDialog("No Maze Opened");
-                    }
-                } else if (cmd.equals("Save As...")) {
-                    if (app.getMazeManager().getLoaded()) {
-                        app.getMazeManager().saveMazeAs();
-                    } else {
-                        CommonDialogs.showDialog("No Maze Opened");
-                    }
-                } else if (cmd.equals("Save Locked...")) {
-                    if (app.getMazeManager().getLoaded()) {
-                        app.getMazeManager().saveLockedMaze();
-                    } else {
-                        CommonDialogs.showDialog("No Maze Opened");
-                    }
-                } else if (cmd.equals("Exit")) {
-                    // Exit program
-                    if (app.getGUIManager().quitHandler()) {
-                        System.exit(0);
-                    }
-                } else if (cmd.equals("Undo")) {
-                    // Undo most recent action
-                    app.getEditor().undo();
-                } else if (cmd.equals("Redo")) {
-                    // Redo most recent undone action
-                    app.getEditor().redo();
-                } else if (cmd.equals("Cut Level")) {
-                    // Cut Level
-                    final int level = app.getEditor().getLocationManager()
-                            .getEditorLocationW();
-                    app.getMazeManager().getMaze().cutLevel();
-                    app.getEditor().fixLimits();
-                    app.getEditor().updateEditorLevelAbsolute(level);
-                } else if (cmd.equals("Copy Level")) {
-                    // Copy Level
-                    app.getMazeManager().getMaze().copyLevel();
-                } else if (cmd.equals("Paste Level")) {
-                    // Paste Level
-                    app.getMazeManager().getMaze().pasteLevel();
-                    app.getEditor().fixLimits();
-                    app.getEditor().redrawEditor();
-                } else if (cmd.equals("Insert Level From Clipboard")) {
-                    // Insert Level From Clipboard
-                    app.getMazeManager().getMaze().insertLevelFromClipboard();
-                    app.getEditor().fixLimits();
-                } else if (cmd.equals("Preferences...")) {
-                    // Show preferences dialog
-                    PreferencesManager.showPrefs();
-                } else if (cmd.equals("Clear History")) {
-                    // Clear undo/redo history, confirm first
-                    final int res = CommonDialogs.showConfirmDialog(
-                            "Are you sure you want to clear the history?",
-                            "Editor");
-                    if (res == JOptionPane.YES_OPTION) {
-                        app.getEditor().clearHistory();
-                    }
-                } else if (cmd.equals("Go To Location...")) {
-                    // Go To Location
-                    app.getEditor().goToLocationHandler();
-                } else if (cmd.equals("Go To Destination...")) {
-                    // Go To Destination
-                    app.getEditor().goToDestinationHandler();
-                } else if (cmd.equals("Up One Floor")) {
-                    // Go up one floor
-                    app.getEditor().updateEditorPosition(0, 0, 1, 0);
-                } else if (cmd.equals("Down One Floor")) {
-                    // Go down one floor
-                    app.getEditor().updateEditorPosition(0, 0, -1, 0);
-                } else if (cmd.equals("Up One Level")) {
-                    // Go up one level
-                    app.getEditor().updateEditorPosition(0, 0, 0, 1);
-                } else if (cmd.equals("Down One Level")) {
-                    // Go down one level
-                    app.getEditor().updateEditorPosition(0, 0, 0, -1);
-                } else if (cmd.equals("Add a Level...")) {
-                    // Add a level
-                    app.getEditor().addLevel();
-                } else if (cmd.equals("Remove a Level...")) {
-                    // Remove a level
-                    app.getEditor().removeLevel();
-                } else if (cmd.equals("Resize Current Level...")) {
-                    // Resize level
-                    app.getEditor().resizeLevel();
-                } else if (cmd.equals("Fill Current Floor")) {
-                    // Fill floor
-                    app.getEditor().fillFloor();
-                } else if (cmd.equals("Fill Current Level")) {
-                    // Fill level
-                    app.getEditor().fillLevel();
-                } else if (cmd.equals("Fill Current Floor Randomly")) {
-                    // Fill floor randomly
-                    app.getEditor().fillFloorRandomly();
-                } else if (cmd.equals("Fill Current Level Randomly")) {
-                    // Fill level randomly
-                    app.getEditor().fillLevelRandomly();
-                } else if (cmd.equals("Fill Rule Sets...")) {
-                    // Fill Rule Sets
-                    app.getRuleSetPicker().editRuleSets();
-                } else if (cmd.equals("Toggle Layer")) {
-                    // Toggle current layer
-                    app.getEditor().toggleLayer();
-                } else if (cmd.equals("Level Preferences...")) {
-                    // Set Level Preferences
-                    app.getEditor().setLevelPrefs();
-                } else if (cmd.equals("Maze Preferences...")) {
-                    // Set Maze Preferences
-                    app.getEditor().setMazePrefs();
-                } else if (cmd.equals("Set Start Point...")) {
-                    // Set Start Point
-                    app.getEditor().editPlayerLocation();
-                } else if (cmd.equals("Set First Moving Finish...")) {
-                    // Set First Moving Finish
-                    app.getEditor().editTeleportDestination(
-                            MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH);
-                } else if (cmd.equals("Play")) {
-                    // Play the current maze
-                    final boolean proceed = app.getGameManager().newGame();
-                    if (proceed) {
-                        app.getGameManager().playMaze();
-                    }
-                } else if (cmd.equals("Edit")) {
-                    // Edit the current maze
-                    app.getEditor().editMaze();
-                } else if (cmd.equals("Show Inventory...")) {
-                    if (!app.getGameManager().usingAnItem()) {
-                        app.getGameManager().showInventoryDialog();
-                    }
-                } else if (cmd.equals("Use an Item...")) {
-                    if (!app.getGameManager().usingAnItem()) {
-                        app.getGameManager().setUsingAnItem(true);
-                        app.getGameManager().showUseDialog();
-                    }
-                } else if (cmd.equals("Switch Bow...")) {
-                    if (!app.getGameManager().usingAnItem()) {
-                        app.getGameManager().showSwitchBowDialog();
-                    }
-                } else if (cmd.equals("Reset Current Level")) {
-                    if (!app.getGameManager().usingAnItem()) {
-                        final int result = CommonDialogs.showConfirmDialog(
-                                "Are you sure you want to reset the current level?",
-                                "Mazer5D");
-                        if (result == JOptionPane.YES_OPTION) {
-                            app.getGameManager().resetCurrentLevel();
-                        }
-                    }
-                } else if (cmd.equals("Show Current Score")) {
-                    app.getGameManager().showCurrentScore();
-                } else if (cmd.equals("Show Score Table")) {
-                    app.getGameManager().showScoreTable();
-                } else if (cmd.equals("About Mazer5D...")) {
-                    app.getAboutDialog().showAboutDialog();
-                } else if (cmd.equals("Mazer5D Object Help")) {
-                    app.getObjectHelpManager().showHelp();
+            final Application app = Mazer5D.getApplication();
+            boolean loaded = false;
+            final String cmd = e.getActionCommand();
+            if (cmd.equals("New...")) {
+                loaded = app.getEditor().newMaze();
+                app.getMazeManager().setLoaded(loaded);
+                if (loaded) {
+                    app.getMenuManager().clearLockedFlag();
                 }
-                MenuManager.this.checkFlags();
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            } else if (cmd.equals("Open...")) {
+                loaded = app.getMazeManager().loadMaze();
+                app.getMazeManager().setLoaded(loaded);
+            } else if (cmd.equals("Open Locked...")) {
+                loaded = app.getMazeManager().loadLockedMaze();
+                app.getMazeManager().setLoaded(loaded);
+            } else if (cmd.equals("Close")) {
+                // Close the window
+                if (app.getMode() == Application.STATUS_EDITOR) {
+                    app.getEditor().handleCloseWindow();
+                } else if (app.getMode() == Application.STATUS_GAME) {
+                    boolean saved = true;
+                    int status = 0;
+                    if (app.getMazeManager().getDirty()) {
+                        status = app.getMazeManager().showSaveDialog();
+                        if (status == JOptionPane.YES_OPTION) {
+                            saved = app.getMazeManager().saveMaze();
+                        } else if (status == JOptionPane.CANCEL_OPTION) {
+                            saved = false;
+                        } else {
+                            app.getMazeManager().setDirty(false);
+                        }
+                    }
+                    if (saved) {
+                        app.getGameManager().exitGame();
+                    }
+                }
+            } else if (cmd.equals("Save")) {
+                if (app.getMazeManager().getLoaded()) {
+                    app.getMazeManager().saveMaze();
+                } else {
+                    CommonDialogs.showDialog("No Maze Opened");
+                }
+            } else if (cmd.equals("Save As...")) {
+                if (app.getMazeManager().getLoaded()) {
+                    app.getMazeManager().saveMazeAs();
+                } else {
+                    CommonDialogs.showDialog("No Maze Opened");
+                }
+            } else if (cmd.equals("Save Locked...")) {
+                if (app.getMazeManager().getLoaded()) {
+                    app.getMazeManager().saveLockedMaze();
+                } else {
+                    CommonDialogs.showDialog("No Maze Opened");
+                }
+            } else if (cmd.equals("Exit")) {
+                // Exit program
+                if (app.getGUIManager().quitHandler()) {
+                    System.exit(0);
+                }
+            } else if (cmd.equals("Undo")) {
+                // Undo most recent action
+                app.getEditor().undo();
+            } else if (cmd.equals("Redo")) {
+                // Redo most recent undone action
+                app.getEditor().redo();
+            } else if (cmd.equals("Cut Level")) {
+                // Cut Level
+                final int level = app.getEditor().getLocationManager()
+                        .getEditorLocationW();
+                app.getMazeManager().getMaze().cutLevel();
+                app.getEditor().fixLimits();
+                app.getEditor().updateEditorLevelAbsolute(level);
+            } else if (cmd.equals("Copy Level")) {
+                // Copy Level
+                app.getMazeManager().getMaze().copyLevel();
+            } else if (cmd.equals("Paste Level")) {
+                // Paste Level
+                app.getMazeManager().getMaze().pasteLevel();
+                app.getEditor().fixLimits();
+                app.getEditor().redrawEditor();
+            } else if (cmd.equals("Insert Level From Clipboard")) {
+                // Insert Level From Clipboard
+                app.getMazeManager().getMaze().insertLevelFromClipboard();
+                app.getEditor().fixLimits();
+            } else if (cmd.equals("Preferences...")) {
+                // Show preferences dialog
+                PreferencesManager.showPrefs();
+            } else if (cmd.equals("Clear History")) {
+                // Clear undo/redo history, confirm first
+                final int res = CommonDialogs.showConfirmDialog(
+                        "Are you sure you want to clear the history?",
+                        "Editor");
+                if (res == JOptionPane.YES_OPTION) {
+                    app.getEditor().clearHistory();
+                }
+            } else if (cmd.equals("Go To Location...")) {
+                // Go To Location
+                app.getEditor().goToLocationHandler();
+            } else if (cmd.equals("Go To Destination...")) {
+                // Go To Destination
+                app.getEditor().goToDestinationHandler();
+            } else if (cmd.equals("Up One Floor")) {
+                // Go up one floor
+                app.getEditor().updateEditorPosition(0, 0, 1, 0);
+            } else if (cmd.equals("Down One Floor")) {
+                // Go down one floor
+                app.getEditor().updateEditorPosition(0, 0, -1, 0);
+            } else if (cmd.equals("Up One Level")) {
+                // Go up one level
+                app.getEditor().updateEditorPosition(0, 0, 0, 1);
+            } else if (cmd.equals("Down One Level")) {
+                // Go down one level
+                app.getEditor().updateEditorPosition(0, 0, 0, -1);
+            } else if (cmd.equals("Add a Level...")) {
+                // Add a level
+                app.getEditor().addLevel();
+            } else if (cmd.equals("Remove a Level...")) {
+                // Remove a level
+                app.getEditor().removeLevel();
+            } else if (cmd.equals("Resize Current Level...")) {
+                // Resize level
+                app.getEditor().resizeLevel();
+            } else if (cmd.equals("Fill Current Floor")) {
+                // Fill floor
+                app.getEditor().fillFloor();
+            } else if (cmd.equals("Fill Current Level")) {
+                // Fill level
+                app.getEditor().fillLevel();
+            } else if (cmd.equals("Fill Current Floor Randomly")) {
+                // Fill floor randomly
+                app.getEditor().fillFloorRandomly();
+            } else if (cmd.equals("Fill Current Level Randomly")) {
+                // Fill level randomly
+                app.getEditor().fillLevelRandomly();
+            } else if (cmd.equals("Fill Rule Sets...")) {
+                // Fill Rule Sets
+                app.getRuleSetPicker().editRuleSets();
+            } else if (cmd.equals("Toggle Layer")) {
+                // Toggle current layer
+                app.getEditor().toggleLayer();
+            } else if (cmd.equals("Level Preferences...")) {
+                // Set Level Preferences
+                app.getEditor().setLevelPrefs();
+            } else if (cmd.equals("Maze Preferences...")) {
+                // Set Maze Preferences
+                app.getEditor().setMazePrefs();
+            } else if (cmd.equals("Set Start Point...")) {
+                // Set Start Point
+                app.getEditor().editPlayerLocation();
+            } else if (cmd.equals("Set First Moving Finish...")) {
+                // Set First Moving Finish
+                app.getEditor().editTeleportDestination(
+                        MazeEditor.TELEPORT_TYPE_FIRST_MOVING_FINISH);
+            } else if (cmd.equals("Play")) {
+                // Play the current maze
+                final boolean proceed = app.getGameManager().newGame();
+                if (proceed) {
+                    app.getGameManager().playMaze();
+                }
+            } else if (cmd.equals("Edit")) {
+                // Edit the current maze
+                app.getEditor().editMaze();
+            } else if (cmd.equals("Show Inventory...")) {
+                if (!app.getGameManager().usingAnItem()) {
+                    app.getGameManager().showInventoryDialog();
+                }
+            } else if (cmd.equals("Use an Item...")) {
+                if (!app.getGameManager().usingAnItem()) {
+                    app.getGameManager().setUsingAnItem(true);
+                    app.getGameManager().showUseDialog();
+                }
+            } else if (cmd.equals("Switch Bow...")) {
+                if (!app.getGameManager().usingAnItem()) {
+                    app.getGameManager().showSwitchBowDialog();
+                }
+            } else if (cmd.equals("Reset Current Level")) {
+                if (!app.getGameManager().usingAnItem()) {
+                    final int result = CommonDialogs.showConfirmDialog(
+                            "Are you sure you want to reset the current level?",
+                            "Mazer5D");
+                    if (result == JOptionPane.YES_OPTION) {
+                        app.getGameManager().resetCurrentLevel();
+                    }
+                }
+            } else if (cmd.equals("Show Current Score")) {
+                app.getGameManager().showCurrentScore();
+            } else if (cmd.equals("Show Score Table")) {
+                app.getGameManager().showScoreTable();
+            } else if (cmd.equals("About Mazer5D...")) {
+                app.getAboutDialog().showAboutDialog();
+            } else if (cmd.equals("Mazer5D Object Help")) {
+                app.getObjectHelpManager().showHelp();
             }
+            MenuManager.this.checkFlags();
         }
     }
 }

@@ -89,14 +89,10 @@ public class AboutDialog implements AboutHandler {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            try {
-                final AboutDialog ad = AboutDialog.this;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("OK")) {
-                    ad.hideAboutDialog();
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final AboutDialog ad = AboutDialog.this;
+            final String cmd = e.getActionCommand();
+            if (cmd.equals("OK")) {
+                ad.hideAboutDialog();
             }
         }
     }

@@ -8,11 +8,9 @@ package com.puttysoftware.mazer5d.assetmanagers;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.BufferUnderflowException;
 
 import com.puttysoftware.audio.mod.MicroMod;
 import com.puttysoftware.fileutils.FileUtilities;
-import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.maze.Maze;
 
 public class MusicManager {
@@ -59,15 +57,7 @@ public class MusicManager {
     public static void stopMusic() {
         if (MusicManager.CURRENT_MUSIC != null) {
             // Stop the music
-            try {
-                MusicManager.CURRENT_MUSIC.stopModule();
-            } catch (final BufferUnderflowException bue) {
-                // Ignore
-            } catch (final NullPointerException np) {
-                // Ignore
-            } catch (final Throwable t) {
-                Mazer5D.logError(t);
-            }
+            MusicManager.CURRENT_MUSIC.stopModule();
         }
     }
 

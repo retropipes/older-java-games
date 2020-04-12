@@ -223,52 +223,43 @@ class PreferencesGUIManager {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            try {
-                final PreferencesGUIManager pm = PreferencesGUIManager.this;
-                final String cmd = e.getActionCommand();
-                if (cmd.equals("OK")) {
-                    pm.setPrefs();
-                } else if (cmd.equals("Cancel")) {
-                    pm.hidePrefs();
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final PreferencesGUIManager pm = PreferencesGUIManager.this;
+            final String cmd = e.getActionCommand();
+            if (cmd.equals("OK")) {
+                pm.setPrefs();
+            } else if (cmd.equals("Cancel")) {
+                pm.hidePrefs();
             }
         }
 
         @Override
         public void itemStateChanged(final ItemEvent e) {
-            try {
-                final PreferencesGUIManager pm = PreferencesGUIManager.this;
-                final Object o = e.getItem();
-                if (o.getClass().equals(JCheckBox.class)) {
-                    final JCheckBox check = (JCheckBox) o;
-                    if (check
-                            .equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
-                        if (e.getStateChange() == ItemEvent.SELECTED) {
-                            for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
-                                pm.sounds[x].setEnabled(true);
-                            }
-                        } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                            for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
-                                pm.sounds[x].setEnabled(false);
-                            }
+            final PreferencesGUIManager pm = PreferencesGUIManager.this;
+            final Object o = e.getItem();
+            if (o.getClass().equals(JCheckBox.class)) {
+                final JCheckBox check = (JCheckBox) o;
+                if (check.equals(pm.sounds[PreferencesManager.SOUNDS_ALL])) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
+                            pm.sounds[x].setEnabled(true);
                         }
-                    } else if (check
-                            .equals(pm.music[PreferencesManager.MUSIC_ALL])) {
-                        if (e.getStateChange() == ItemEvent.SELECTED) {
-                            for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                                pm.music[x].setEnabled(true);
-                            }
-                        } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                            for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
-                                pm.music[x].setEnabled(false);
-                            }
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        for (int x = 1; x < PreferencesManager.SOUNDS_LENGTH; x++) {
+                            pm.sounds[x].setEnabled(false);
+                        }
+                    }
+                } else if (check
+                        .equals(pm.music[PreferencesManager.MUSIC_ALL])) {
+                    if (e.getStateChange() == ItemEvent.SELECTED) {
+                        for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
+                            pm.music[x].setEnabled(true);
+                        }
+                    } else if (e.getStateChange() == ItemEvent.DESELECTED) {
+                        for (int x = 1; x < PreferencesManager.MUSIC_LENGTH; x++) {
+                            pm.music[x].setEnabled(false);
                         }
                     }
                 }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
             }
         }
 

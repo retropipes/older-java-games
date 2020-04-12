@@ -5,11 +5,12 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.editor.rulesets.xml;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Application;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.Mazer5DException;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
 import com.puttysoftware.xio.XDataWriter;
@@ -40,11 +41,8 @@ public class XMLRuleSetSaveTask extends Thread {
             app.getObjects().writeRuleSetXML(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
-        } catch (final FileNotFoundException fnfe) {
-            CommonDialogs.showDialog("Saving the " + sg.toLowerCase()
-                    + " file failed, probably due to illegal characters in the file name.");
-        } catch (final Exception ex) {
-            Mazer5D.logError(ex);
+        } catch (final IOException e) {
+            Mazer5D.logError(Mazer5DException.from(e));
         }
     }
 

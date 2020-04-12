@@ -2023,168 +2023,160 @@ public class GameManager implements MazeEffectConstants {
         }
 
         public void handleMovement(final KeyEvent e) {
-            try {
-                final GameManager gm = GameManager.this;
-                final int keyCode = e.getKeyCode();
-                if (e.isShiftDown()) {
-                    gm.setPullInProgress(true);
+            final GameManager gm = GameManager.this;
+            final int keyCode = e.getKeyCode();
+            if (e.isShiftDown()) {
+                gm.setPullInProgress(true);
+            }
+            switch (keyCode) {
+            case KeyEvent.VK_NUMPAD4:
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(-1, 0);
                 }
-                switch (keyCode) {
-                case KeyEvent.VK_NUMPAD4:
-                case KeyEvent.VK_LEFT:
-                case KeyEvent.VK_A:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                case KeyEvent.VK_DOWN:
-                case KeyEvent.VK_X:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                case KeyEvent.VK_RIGHT:
-                case KeyEvent.VK_D:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_W:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                case KeyEvent.VK_Q:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                case KeyEvent.VK_E:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                case KeyEvent.VK_C:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                case KeyEvent.VK_Z:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD5:
-                case KeyEvent.VK_S:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 0);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        Mazer5D.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.teleporting = false;
-                        Mazer5D.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                break;
+            case KeyEvent.VK_NUMPAD2:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_X:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(0, 1);
                 }
-                if (gm.isPullInProgress()) {
-                    gm.setPullInProgress(false);
+                break;
+            case KeyEvent.VK_NUMPAD6:
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(1, 0);
                 }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+                break;
+            case KeyEvent.VK_NUMPAD8:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(0, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD7:
+            case KeyEvent.VK_Q:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(-1, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD9:
+            case KeyEvent.VK_E:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(1, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD3:
+            case KeyEvent.VK_C:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(1, 1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD1:
+            case KeyEvent.VK_Z:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(-1, 1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD5:
+            case KeyEvent.VK_S:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.updatePositionRelative(0, 0);
+                }
+                break;
+            case KeyEvent.VK_ESCAPE:
+                if (gm.usingAnItem()) {
+                    gm.setUsingAnItem(false);
+                    Mazer5D.getApplication().showMessage(" ");
+                } else if (gm.isTeleporting()) {
+                    gm.teleporting = false;
+                    Mazer5D.getApplication().showMessage(" ");
+                }
+                break;
+            default:
+                break;
+            }
+            if (gm.isPullInProgress()) {
+                gm.setPullInProgress(false);
             }
         }
 
         public void handleArrows(final KeyEvent e) {
-            try {
-                final GameManager gm = GameManager.this;
-                final int keyCode = e.getKeyCode();
-                if (e.isShiftDown()) {
-                    gm.setPullInProgress(true);
+            final GameManager gm = GameManager.this;
+            final int keyCode = e.getKeyCode();
+            if (e.isShiftDown()) {
+                gm.setPullInProgress(true);
+            }
+            switch (keyCode) {
+            case KeyEvent.VK_NUMPAD4:
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(-1, 0);
                 }
-                switch (keyCode) {
-                case KeyEvent.VK_NUMPAD4:
-                case KeyEvent.VK_LEFT:
-                case KeyEvent.VK_A:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                case KeyEvent.VK_DOWN:
-                case KeyEvent.VK_X:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                case KeyEvent.VK_RIGHT:
-                case KeyEvent.VK_D:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_W:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                case KeyEvent.VK_Q:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                case KeyEvent.VK_E:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                case KeyEvent.VK_C:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                case KeyEvent.VK_Z:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        Mazer5D.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.teleporting = false;
-                        Mazer5D.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                break;
+            case KeyEvent.VK_NUMPAD2:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_X:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(0, 1);
                 }
-                if (gm.isPullInProgress()) {
-                    gm.setPullInProgress(false);
+                break;
+            case KeyEvent.VK_NUMPAD6:
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(1, 0);
                 }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+                break;
+            case KeyEvent.VK_NUMPAD8:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(0, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD7:
+            case KeyEvent.VK_Q:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(-1, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD9:
+            case KeyEvent.VK_E:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(1, -1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD3:
+            case KeyEvent.VK_C:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(1, 1);
+                }
+                break;
+            case KeyEvent.VK_NUMPAD1:
+            case KeyEvent.VK_Z:
+                if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                    gm.fireArrow(-1, 1);
+                }
+                break;
+            case KeyEvent.VK_ESCAPE:
+                if (gm.usingAnItem()) {
+                    gm.setUsingAnItem(false);
+                    Mazer5D.getApplication().showMessage(" ");
+                } else if (gm.isTeleporting()) {
+                    gm.teleporting = false;
+                    Mazer5D.getApplication().showMessage(" ");
+                }
+                break;
+            default:
+                break;
+            }
+            if (gm.isPullInProgress()) {
+                gm.setPullInProgress(false);
             }
         }
 
@@ -2201,25 +2193,21 @@ public class GameManager implements MazeEffectConstants {
 
         @Override
         public void windowClosing(final WindowEvent we) {
-            try {
-                final Application app = Mazer5D.getApplication();
-                boolean success = false;
-                int status = 0;
-                if (app.getMazeManager().getDirty()) {
-                    status = app.getMazeManager().showSaveDialog();
-                    if (status == JOptionPane.YES_OPTION) {
-                        success = app.getMazeManager().saveMaze();
-                        if (success) {
-                            app.getGameManager().exitGame();
-                        }
-                    } else if (status == JOptionPane.NO_OPTION) {
+            final Application app = Mazer5D.getApplication();
+            boolean success = false;
+            int status = 0;
+            if (app.getMazeManager().getDirty()) {
+                status = app.getMazeManager().showSaveDialog();
+                if (status == JOptionPane.YES_OPTION) {
+                    success = app.getMazeManager().saveMaze();
+                    if (success) {
                         app.getGameManager().exitGame();
                     }
-                } else {
+                } else if (status == JOptionPane.NO_OPTION) {
                     app.getGameManager().exitGame();
                 }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            } else {
+                app.getGameManager().exitGame();
             }
         }
 
@@ -2256,24 +2244,20 @@ public class GameManager implements MazeEffectConstants {
 
         @Override
         public void mouseClicked(final MouseEvent e) {
-            try {
-                final GameManager gm = GameManager.this;
-                if (gm.usingAnItem()) {
-                    final int x = e.getX();
-                    final int y = e.getY();
-                    gm.useItemHandler(x, y);
-                    gm.setUsingAnItem(false);
-                } else if (e.isShiftDown()) {
-                    final int x = e.getX();
-                    final int y = e.getY();
-                    gm.identifyObject(x, y);
-                } else if (gm.isTeleporting()) {
-                    final int x = e.getX();
-                    final int y = e.getY();
-                    gm.controllableTeleportHandler(x, y);
-                }
-            } catch (final Exception ex) {
-                Mazer5D.logError(ex);
+            final GameManager gm = GameManager.this;
+            if (gm.usingAnItem()) {
+                final int x = e.getX();
+                final int y = e.getY();
+                gm.useItemHandler(x, y);
+                gm.setUsingAnItem(false);
+            } else if (e.isShiftDown()) {
+                final int x = e.getX();
+                final int y = e.getY();
+                gm.identifyObject(x, y);
+            } else if (gm.isTeleporting()) {
+                final int x = e.getX();
+                final int y = e.getY();
+                gm.controllableTeleportHandler(x, y);
             }
         }
 
