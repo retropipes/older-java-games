@@ -22,11 +22,11 @@ import javax.swing.WindowConstants;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.files.RuleSetManager;
-import com.puttysoftware.mazer5d.generic.MazeObject;
-import com.puttysoftware.mazer5d.generic.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
+import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.picturepicker.PicturePicker;
 

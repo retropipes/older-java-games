@@ -2,8 +2,8 @@ package com.puttysoftware.mazer5d.editor.rulesets;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.generic.RandomGenerationRule;
-import com.puttysoftware.mazer5d.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
+import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;

@@ -6,23 +6,23 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
-import com.puttysoftware.mazer5d.generic.DirectionResolver;
-import com.puttysoftware.mazer5d.generic.GenericTransientObject;
-import com.puttysoftware.mazer5d.generic.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
+import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
+import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
+import com.puttysoftware.mazer5d.compatibility.objects.Empty;
+import com.puttysoftware.mazer5d.compatibility.objects.FireArrow;
+import com.puttysoftware.mazer5d.compatibility.objects.GhostArrow;
+import com.puttysoftware.mazer5d.compatibility.objects.IceArrow;
+import com.puttysoftware.mazer5d.compatibility.objects.PoisonArrow;
+import com.puttysoftware.mazer5d.compatibility.objects.ShockArrow;
+import com.puttysoftware.mazer5d.compatibility.objects.Wall;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.loaders.SoundManager;
-import com.puttysoftware.mazer5d.maze.Maze;
-import com.puttysoftware.mazer5d.maze.MazeConstants;
-import com.puttysoftware.mazer5d.objects.Arrow;
-import com.puttysoftware.mazer5d.objects.Empty;
-import com.puttysoftware.mazer5d.objects.FireArrow;
-import com.puttysoftware.mazer5d.objects.GhostArrow;
-import com.puttysoftware.mazer5d.objects.IceArrow;
-import com.puttysoftware.mazer5d.objects.PoisonArrow;
-import com.puttysoftware.mazer5d.objects.ShockArrow;
-import com.puttysoftware.mazer5d.objects.Wall;
 
 public class ArrowTask extends Thread {
     // Fields

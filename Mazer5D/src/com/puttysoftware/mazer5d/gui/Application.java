@@ -9,14 +9,15 @@ import javax.swing.JFrame;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
+import com.puttysoftware.mazer5d.compatibility.gui.ObjectHelpManager;
+import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
+import com.puttysoftware.mazer5d.compatibility.loaders.SoundManager;
+import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
-import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.game.GameManager;
-import com.puttysoftware.mazer5d.generic.MazeObjectList;
-import com.puttysoftware.mazer5d.loaders.SoundConstants;
-import com.puttysoftware.mazer5d.loaders.SoundManager;
-import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class Application {
     // Fields

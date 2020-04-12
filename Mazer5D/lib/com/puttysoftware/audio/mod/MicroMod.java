@@ -3,6 +3,8 @@ package com.puttysoftware.audio.mod;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
@@ -11,20 +13,23 @@ import javax.sound.sampled.SourceDataLine;
 public class MicroMod {
     private static final int SAMPLE_RATE = 41000;
     private Module module;
-    IBXM ibxm;
-    volatile boolean playing;
+    private IBXM ibxm;
+    private volatile boolean playing;
     private int interpolation;
     private Thread playThread;
 
-    public MicroMod() {
-        // Do nothing
+    private MicroMod(final Module moduleData) {
+        this.module = moduleData;
+        this.ibxm = new IBXM(this.module, MicroMod.SAMPLE_RATE);
+        this.ibxm.setInterpolation(this.interpolation);
     }
 
-    public boolean isPlayThreadAlive() {
+    public boolean isPlaying() {
         return this.playThread != null && this.playThread.isAlive();
     }
 
-    public synchronized void loadModule(final File modFile) throws IOException {
+    public static synchronized MicroMod loadFile(final File modFile)
+            throws IOException {
         final byte[] moduleData = new byte[(int) modFile.length()];
         try (FileInputStream inputStream = new FileInputStream(modFile)) {
             int offset = 0;
@@ -37,16 +42,19 @@ public class MicroMod {
                 }
                 offset += len;
             }
-            inputStream.close();
-            this.module = new Module(moduleData);
-            this.ibxm = new IBXM(this.module, MicroMod.SAMPLE_RATE);
-            this.ibxm.setInterpolation(this.interpolation);
-        } catch (final IOException ioe) {
-            throw ioe;
+            return new MicroMod(new Module(moduleData));
         }
     }
 
-    public synchronized void playModule() {
+    public static synchronized MicroMod loadResource(final URL modResource)
+            throws IOException {
+        try (InputStream inputStream = modResource.openStream()) {
+            final byte[] moduleData = inputStream.readAllBytes();
+            return new MicroMod(new Module(moduleData));
+        }
+    }
+
+    public synchronized void play() {
         if (this.ibxm != null) {
             this.playing = true;
             this.playThread = new Thread(() -> {
@@ -86,7 +94,7 @@ public class MicroMod {
         }
     }
 
-    public synchronized void stopModule() {
+    public synchronized void stopLoop() {
         this.playing = false;
         try {
             if (this.playThread != null) {

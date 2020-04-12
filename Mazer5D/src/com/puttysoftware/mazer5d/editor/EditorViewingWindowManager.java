@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.editor;
 
-import com.puttysoftware.mazer5d.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 
 public class EditorViewingWindowManager {
     // Fields

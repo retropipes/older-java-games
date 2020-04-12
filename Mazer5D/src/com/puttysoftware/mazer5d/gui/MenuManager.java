@@ -20,8 +20,8 @@ import javax.swing.KeyStroke;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
-import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class MenuManager {
     // Fields

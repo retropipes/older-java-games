@@ -49,6 +49,17 @@ public class CommonDialogs {
     }
 
     /**
+     * Displays an error dialog with the default title.
+     *
+     * @param msg
+     *            The dialog message.
+     */
+    public static void showErrorDialog(final String msg) {
+        JOptionPane.showMessageDialog(null, msg, CommonDialogs.DEFAULT_TITLE,
+                JOptionPane.ERROR_MESSAGE, CommonDialogs.ICON);
+    }
+
+    /**
      * Displays an error dialog with a title.
      *
      * @param msg

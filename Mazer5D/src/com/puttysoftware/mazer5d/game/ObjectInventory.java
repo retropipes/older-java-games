@@ -8,15 +8,15 @@ package com.puttysoftware.mazer5d.game;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.generic.GenericAmulet;
-import com.puttysoftware.mazer5d.generic.GenericBoots;
-import com.puttysoftware.mazer5d.generic.GenericBow;
-import com.puttysoftware.mazer5d.generic.MazeObject;
-import com.puttysoftware.mazer5d.generic.MazeObjectList;
-import com.puttysoftware.mazer5d.generic.TypeConstants;
-import com.puttysoftware.mazer5d.objects.Bow;
-import com.puttysoftware.mazer5d.objects.NormalAmulet;
-import com.puttysoftware.mazer5d.objects.RegularBoots;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
+import com.puttysoftware.mazer5d.compatibility.objects.Bow;
+import com.puttysoftware.mazer5d.compatibility.objects.NormalAmulet;
+import com.puttysoftware.mazer5d.compatibility.objects.RegularBoots;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
