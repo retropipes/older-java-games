@@ -21,7 +21,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 
 public class SoundManager {
-    private static final String DEFAULT_LOAD_PATH = "/assets/sounds/";
+    private static final String DEFAULT_LOAD_PATH = "/assets/sound/";
     private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = SoundManager.class;
 

@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.loaders;
+package com.puttysoftware.mazer5d.compatibility.loaders;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 import com.puttysoftware.images.BufferedImageIcon;
 
 public class LogoManager {
-    private static final String DEFAULT_LOAD_PATH = "/assets/images/logo/";
+    private static final String DEFAULT_LOAD_PATH = "/assets/image/logo/";
     private static String LOAD_PATH = LogoManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = LogoManager.class;
 

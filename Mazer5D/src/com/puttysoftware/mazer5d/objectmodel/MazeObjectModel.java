@@ -8,8 +8,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public interface MazeObjectModel
-        extends ObjectModel, RandomGenerationRule {
+public interface MazeObjectModel extends ObjectModel, RandomGenerationRule {
     void setGameLook(String cacheName, ObjectImageIndex image);
 
     void setGameLook(String cacheName, ObjectImageIndex image,
@@ -37,6 +36,5 @@ public interface MazeObjectModel
 
     void writeObject(XDataWriter writer) throws IOException;
 
-    MazeObjectModel readObject(XDataReader reader, int uid)
-            throws IOException;
+    MazeObjectModel readObject(XDataReader reader, int uid) throws IOException;
 }

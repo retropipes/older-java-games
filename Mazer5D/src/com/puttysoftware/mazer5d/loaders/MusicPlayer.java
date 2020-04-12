@@ -26,7 +26,7 @@ public class MusicPlayer {
             MusicPlayer.allFilenames = DataLoader.loadMusicData();
             try (final InputStream stream = MusicPlayer.class
                     .getResourceAsStream(
-                            "/assets/data/extensions/extensions.properties")) {
+                            "/assets/data/extension/extension.properties")) {
                 MusicPlayer.fileExtensions = new Properties();
                 MusicPlayer.fileExtensions.load(stream);
             } catch (final IOException e) {

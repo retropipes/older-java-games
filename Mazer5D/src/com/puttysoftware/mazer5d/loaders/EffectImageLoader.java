@@ -35,7 +35,7 @@ public class EffectImageLoader {
         if (image != EffectImageIndex._NONE) {
             final String imageExt = EffectImageLoader.fileExtensions
                     .getProperty("images");
-            final String name = "/assets/images/effects/"
+            final String name = "/assets/image/effects/"
                     + EffectImageLoader.allFilenames[image.ordinal()]
                     + imageExt;
             return ImageLoader.load(name,
@@ -48,7 +48,7 @@ public class EffectImageLoader {
         EffectImageLoader.allFilenames = DataLoader.loadEffectImageData();
         try (final InputStream stream = EffectImageLoader.class
                 .getResourceAsStream(
-                        "/assets/data/extensions/extensions.properties")) {
+                        "/assets/data/extension/extension.properties")) {
             EffectImageLoader.fileExtensions = new Properties();
             EffectImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
@@ -57,7 +57,7 @@ public class EffectImageLoader {
         final String imageExt = EffectImageLoader.fileExtensions
                 .getProperty("images");
         for (int i = 0; i <= EffectImageLoader.MAX_INDEX; i++) {
-            final String name = "/assets/images/effects/"
+            final String name = "/assets/image/effects/"
                     + EffectImageLoader.allFilenames[i] + imageExt;
             try {
                 ImageLoader.load(name,

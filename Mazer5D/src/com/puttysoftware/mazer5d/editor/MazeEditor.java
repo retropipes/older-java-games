@@ -36,6 +36,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
+import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
@@ -65,7 +66,6 @@ import com.puttysoftware.mazer5d.compatibility.objects.TwoWayTeleport;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class MazeEditor {

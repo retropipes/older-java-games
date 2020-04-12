@@ -20,7 +20,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
-import com.puttysoftware.mazer5d.loaders.LogoManager;
+import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 
 public class ObjectHelpManager {
     // Fields

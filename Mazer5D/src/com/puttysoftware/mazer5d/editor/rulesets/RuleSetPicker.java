@@ -26,8 +26,8 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
+import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {

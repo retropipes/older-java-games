@@ -16,7 +16,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 
 public class ObjectImageManager {
-    private static final String DEFAULT_LOAD_PATH = "/assets/images/object/";
+    private static final String DEFAULT_LOAD_PATH = "/assets/image/object/";
     private static String LOAD_PATH = ObjectImageManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = ObjectImageManager.class;
     private static final Color TRANSPARENT = new Color(200, 100, 100);

@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.loaders;
+package com.puttysoftware.mazer5d.compatibility.loaders;
 
 import com.puttysoftware.images.BufferedImageIcon;
 

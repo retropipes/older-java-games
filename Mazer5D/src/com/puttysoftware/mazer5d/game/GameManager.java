@@ -36,6 +36,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
+import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.MusicManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.SoundConstants;
@@ -69,7 +70,6 @@ import com.puttysoftware.mazer5d.compatibility.objects.WallBreakingWand;
 import com.puttysoftware.mazer5d.compatibility.objects.WallMakingWand;
 import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.LogoManager;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 

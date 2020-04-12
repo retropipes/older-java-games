@@ -24,7 +24,7 @@ public class SoundPlayer {
             SoundPlayer.allFilenames = DataLoader.loadSoundData();
             try (final InputStream stream = SoundPlayer.class
                     .getResourceAsStream(
-                            "/assets/data/extensions/extensions.properties")) {
+                            "/assets/data/extension/extension.properties")) {
                 SoundPlayer.fileExtensions = new Properties();
                 SoundPlayer.fileExtensions.load(stream);
             } catch (final IOException e) {
@@ -50,7 +50,7 @@ public class SoundPlayer {
             if (sound != null && sound != SoundIndex._NONE) {
                 final String filename = SoundPlayer.getSoundFilename(sound);
                 SoundLoader.play(SoundPlayer.class
-                        .getResource("/assets/sounds/" + filename));
+                        .getResource("/assets/sound/" + filename));
             }
         }
     }

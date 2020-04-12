@@ -18,7 +18,7 @@ import com.puttysoftware.images.BufferedImageIcon;
 public class StatImageManager {
     private static final Color TRANSPARENT = new Color(200, 100, 100);
     private static Color REPLACE_STAT = UIManager.getColor("control");
-    private static final String DEFAULT_LOAD_PATH = "/assets/images/stats/";
+    private static final String DEFAULT_LOAD_PATH = "/assets/image/stats/";
     private static String LOAD_PATH = StatImageManager.DEFAULT_LOAD_PATH;
     private static Class<?> LOAD_CLASS = StatImageManager.class;
 

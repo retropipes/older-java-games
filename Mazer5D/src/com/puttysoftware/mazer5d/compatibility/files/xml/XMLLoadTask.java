@@ -16,9 +16,9 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.InvalidMazeException;
+import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.loaders.LogoManager;
 
 public class XMLLoadTask extends Thread {
     // Fields

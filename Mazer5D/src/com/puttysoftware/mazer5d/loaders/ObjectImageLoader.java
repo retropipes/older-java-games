@@ -35,7 +35,7 @@ public class ObjectImageLoader {
         if (image != ObjectImageIndex._NONE) {
             final String imageExt = ObjectImageLoader.fileExtensions
                     .getProperty("images");
-            final String name = "/assets/images/objects/"
+            final String name = "/assets/image/object/"
                     + ObjectImageLoader.allFilenames[image.ordinal()]
                     + imageExt;
             return ImageLoader.load(name,
@@ -48,7 +48,7 @@ public class ObjectImageLoader {
         ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
         try (final InputStream stream = ObjectImageLoader.class
                 .getResourceAsStream(
-                        "/assets/data/extensions/extensions.properties")) {
+                        "/assets/data/extension/extension.properties")) {
             ObjectImageLoader.fileExtensions = new Properties();
             ObjectImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
@@ -57,7 +57,7 @@ public class ObjectImageLoader {
         final String imageExt = ObjectImageLoader.fileExtensions
                 .getProperty("images");
         for (int i = 0; i <= ObjectImageLoader.MAX_INDEX; i++) {
-            final String name = "/assets/images/objects/"
+            final String name = "/assets/image/object/"
                     + ObjectImageLoader.allFilenames[i] + imageExt;
             try {
                 ImageLoader.load(name,
