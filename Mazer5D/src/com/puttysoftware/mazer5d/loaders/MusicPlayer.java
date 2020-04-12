@@ -9,7 +9,6 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.randomrange.RandomRange;
 
 public class MusicPlayer {
     private MusicPlayer() {
@@ -34,14 +33,6 @@ public class MusicPlayer {
             }
         }
         final String musicExt = MusicPlayer.fileExtensions.getProperty("music");
-        if (music == MusicIndex.DUNGEON || music == MusicIndex._DUNGEON_RANDOM_2
-                || music == MusicIndex._DUNGEON_RANDOM_3
-                || music == MusicIndex._DUNGEON_RANDOM_4) {
-            // Pick random dungeon music and play it
-            final int base = MusicIndex.DUNGEON.ordinal();
-            final int offset = RandomRange.generate(0, 3);
-            return MusicPlayer.allFilenames[base + offset] + musicExt;
-        }
         return MusicPlayer.allFilenames[music.ordinal()] + musicExt;
     }
 
