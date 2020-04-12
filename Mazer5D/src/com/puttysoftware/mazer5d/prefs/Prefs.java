@@ -52,8 +52,6 @@ import com.puttysoftware.mazer5d.files.CommonPaths;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.objectmodel.MazeObject;
-import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
 import com.puttysoftware.xio.XDataReader;
@@ -270,9 +268,13 @@ public class Prefs {
         }
     }
 
-    public static MazeObjectModel getEditorDefaultFill() {
-        return new MazeObject(0);
+    public static com.puttysoftware.mazer5d.compatibility.abc.MazeObject getEditorDefaultFill() {
+        return new com.puttysoftware.mazer5d.compatibility.objects.Tile();
     }
+    //
+    // public static MazeObjectModel getEditorDefaultFill() {
+    // return new MazeObject(0);
+    // }
 
     private static void defaultEnableSoundGroups() {
         for (int x = 0; x < Prefs.SOUNDS_LENGTH; x++) {
