@@ -20,8 +20,8 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
-import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class ObjectHelpManager {
     // Fields
@@ -56,15 +56,16 @@ public class ObjectHelpManager {
             this.export = new JButton("Export");
             this.export.addActionListener(this.buttonHandler);
             this.helpFrame = new JFrame("Mazer5D Object Help");
-            final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
+            final Image iconlogo = LogoImageLoader.load(
+                    LogoImageIndex.MICRO_LOGO);
             this.helpFrame.setIconImage(iconlogo);
-            this.helpFrame
-                    .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+            this.helpFrame.setDefaultCloseOperation(
+                    WindowConstants.HIDE_ON_CLOSE);
             this.helpFrame.setLayout(new BorderLayout());
             this.helpFrame.add(this.hv.getHelp(), BorderLayout.CENTER);
             this.helpFrame.add(this.export, BorderLayout.SOUTH);
-            this.hv.setHelpSize(ImageConstants.MAX_WINDOW_SIZE,
-                    ImageConstants.MAX_WINDOW_SIZE);
+            int maxSize = Prefs.getEditorWindowSize();
+            this.hv.setHelpSize(maxSize, maxSize);
             this.helpFrame.pack();
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes

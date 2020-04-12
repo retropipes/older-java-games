@@ -13,8 +13,9 @@ import javax.swing.SwingConstants;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.loaders.StatImageManager;
+import com.puttysoftware.mazer5d.assets.EffectImageIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
 
 class StatGUI {
     // Fields
@@ -43,29 +44,29 @@ class StatGUI {
     private void setUpGUI() {
         this.statsPane = new Container();
         this.statsPane.setLayout(new GridLayout(3, 1));
-        final BufferedImageIcon hpImage = StatImageManager
-                .getStatImage("health");
+        final BufferedImageIcon hpImage = EffectImageLoader.load(
+                EffectImageIndex.HEALTH);
         this.hpLabel = new JLabel("", hpImage, SwingConstants.LEFT);
         this.statsPane.add(this.hpLabel);
-        final BufferedImageIcon poisonImage = StatImageManager
-                .getStatImage("poison");
+        final BufferedImageIcon poisonImage = EffectImageLoader.load(
+                EffectImageIndex.POISON);
         this.poisonLabel = new JLabel("", poisonImage, SwingConstants.LEFT);
         this.statsPane.add(this.poisonLabel);
-        final BufferedImageIcon timeImage = StatImageManager
-                .getStatImage("time");
+        final BufferedImageIcon timeImage = EffectImageLoader.load(
+                EffectImageIndex.TIME_19);
         this.timeLabel = new JLabel("", timeImage, SwingConstants.LEFT);
         this.statsPane.add(this.timeLabel);
     }
 
     public void updateImages() {
-        final BufferedImageIcon hpImage = StatImageManager
-                .getStatImage("health");
+        final BufferedImageIcon hpImage = EffectImageLoader.load(
+                EffectImageIndex.HEALTH);
         this.hpLabel.setIcon(hpImage);
-        final BufferedImageIcon poisonImage = StatImageManager
-                .getStatImage("poison");
+        final BufferedImageIcon poisonImage = EffectImageLoader.load(
+                EffectImageIndex.POISON);
         this.poisonLabel.setIcon(poisonImage);
-        final BufferedImageIcon timeImage = StatImageManager
-                .getStatImage("time");
+        final BufferedImageIcon timeImage = EffectImageLoader.load(
+                EffectImageIndex.TIME_19);
         this.timeLabel.setIcon(timeImage);
     }
 }

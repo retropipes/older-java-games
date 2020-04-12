@@ -26,9 +26,9 @@ import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
-import com.puttysoftware.mazer5d.compatibility.loaders.ImageConstants;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class RuleSetPicker {
@@ -118,8 +118,8 @@ public class RuleSetPicker {
         this.exportXML = new JButton("Save");
         this.borderPane.setLayout(new BorderLayout());
         this.outputFrame.setContentPane(this.borderPane);
-        this.outputFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.outputFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.borderPane.add(this.outputPane, BorderLayout.SOUTH);
         this.outputPane.setLayout(new FlowLayout());
         this.outputPane.add(this.create);
@@ -136,7 +136,8 @@ public class RuleSetPicker {
         this.picker = new PicturePicker(this.editorAppearances, this.names,
                 new Color(223, 223, 223));
         this.picker.changePickerColor(new Color(223, 223, 223));
-        this.picker.updatePickerLayout(ImageConstants.MAX_WINDOW_SIZE);
+        int maxSize = Prefs.getEditorWindowSize();
+        this.picker.updatePickerLayout(maxSize);
         this.borderPane.add(this.picker.getPicker(), BorderLayout.CENTER);
         this.outputFrame.setResizable(false);
         this.outputFrame.pack();
