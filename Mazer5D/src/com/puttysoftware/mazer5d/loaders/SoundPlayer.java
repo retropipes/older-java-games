@@ -8,7 +8,6 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.randomrange.RandomRange;
 
 public class SoundPlayer {
     private SoundPlayer() {
@@ -33,14 +32,6 @@ public class SoundPlayer {
         }
         final String soundExt = SoundPlayer.fileExtensions
                 .getProperty("sounds");
-        if (sound == SoundIndex.WALK || sound == SoundIndex.WALK_2
-                || sound == SoundIndex.WALK_3 || sound == SoundIndex.WALK_4
-                || sound == SoundIndex.WALK_5 || sound == SoundIndex.WALK_6) {
-            // Pick a random walk sound and play it
-            final int base = SoundIndex.WALK.ordinal();
-            final int offset = RandomRange.generate(0, 5);
-            return SoundPlayer.allFilenames[base + offset] + soundExt;
-        }
         return SoundPlayer.allFilenames[sound.ordinal()] + soundExt;
     }
 
