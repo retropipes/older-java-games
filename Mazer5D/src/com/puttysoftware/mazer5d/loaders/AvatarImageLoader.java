@@ -16,16 +16,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Any questions should be directed to the author via email at: fantastle@worldwizard.net
  */
-package com.puttysoftware.fantastlereboot.loaders;
+package com.puttysoftware.mazer5d.loaders;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import com.puttysoftware.diane.loaders.ColorReplaceRules;
-import com.puttysoftware.diane.loaders.ImageLoader;
-import com.puttysoftware.fantastlereboot.FantastleReboot;
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.assets.ColorReplaceRules;
 
 public class AvatarImageLoader {
     private static Properties fileExtensions;
@@ -40,7 +39,7 @@ public class AvatarImageLoader {
                             "/assets/data/extensions/extensions.properties")) {
                 AvatarImageLoader.fileExtensions.load(stream);
             } catch (final IOException e) {
-                FantastleReboot.exception(e);
+                Mazer5D.logError(e);
             }
         }
         final String imageExt = AvatarImageLoader.fileExtensions
@@ -58,7 +57,7 @@ public class AvatarImageLoader {
                         "/assets/data/extensions/extensions.properties")) {
             AvatarImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
-            FantastleReboot.exception(e);
+            Mazer5D.logError(e);
         }
         final String imageExt = AvatarImageLoader.fileExtensions
                 .getProperty("images");
