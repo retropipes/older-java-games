@@ -14,8 +14,8 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.files.Extension;
 import com.puttysoftware.mazer5d.generic.MazeObject;
-import com.puttysoftware.mazer5d.maze.Extension;
 import com.puttysoftware.mazer5d.objects.Dirt;
 import com.puttysoftware.mazer5d.objects.Grass;
 import com.puttysoftware.mazer5d.objects.Sand;

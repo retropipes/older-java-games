@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.maze.xml;
+package com.puttysoftware.mazer5d.files.xml;
 
 import java.io.IOException;
 

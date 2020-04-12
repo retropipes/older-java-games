@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.maze.locking;
+package com.puttysoftware.mazer5d.files.locking;
 
 import java.io.File;
 import java.io.FileInputStream;

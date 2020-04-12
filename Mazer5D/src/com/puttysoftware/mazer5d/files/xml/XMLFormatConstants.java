@@ -1,4 +1,4 @@
-package com.puttysoftware.mazer5d.maze.xml;
+package com.puttysoftware.mazer5d.files.xml;
 
 public interface XMLFormatConstants {
     int XML_MAZE_FORMAT_1 = 1;

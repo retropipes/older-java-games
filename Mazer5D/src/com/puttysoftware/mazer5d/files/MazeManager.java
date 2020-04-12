@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.maze;
+package com.puttysoftware.mazer5d.files;
 
 import java.awt.desktop.OpenFilesEvent;
 import java.awt.desktop.OpenFilesHandler;
@@ -17,16 +17,17 @@ import javax.swing.filechooser.FileFilter;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.files.locking.LockedFilter;
+import com.puttysoftware.mazer5d.files.locking.LockedLoadTask;
+import com.puttysoftware.mazer5d.files.locking.LockedSaveTask;
+import com.puttysoftware.mazer5d.files.xml.XMLExtension;
+import com.puttysoftware.mazer5d.files.xml.XMLGameFilter;
+import com.puttysoftware.mazer5d.files.xml.XMLLoadTask;
+import com.puttysoftware.mazer5d.files.xml.XMLMazeFilter;
+import com.puttysoftware.mazer5d.files.xml.XMLSaveTask;
 import com.puttysoftware.mazer5d.generic.MazeObject;
 import com.puttysoftware.mazer5d.gui.Application;
-import com.puttysoftware.mazer5d.maze.locking.LockedFilter;
-import com.puttysoftware.mazer5d.maze.locking.LockedLoadTask;
-import com.puttysoftware.mazer5d.maze.locking.LockedSaveTask;
-import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
-import com.puttysoftware.mazer5d.maze.xml.XMLGameFilter;
-import com.puttysoftware.mazer5d.maze.xml.XMLLoadTask;
-import com.puttysoftware.mazer5d.maze.xml.XMLMazeFilter;
-import com.puttysoftware.mazer5d.maze.xml.XMLSaveTask;
+import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.prefs.PreferencesManager;
 
 public class MazeManager implements OpenFilesHandler {
@@ -65,7 +66,7 @@ public class MazeManager implements OpenFilesHandler {
         return this.mazeXML1Compatible;
     }
 
-    void setMazeXML1Compatible(final boolean value) {
+    public void setMazeXML1Compatible(final boolean value) {
         this.mazeXML1Compatible = value;
     }
 
@@ -73,7 +74,7 @@ public class MazeManager implements OpenFilesHandler {
         return this.mazeXML2Compatible;
     }
 
-    void setMazeXML2Compatible(final boolean value) {
+    public void setMazeXML2Compatible(final boolean value) {
         this.mazeXML2Compatible = value;
     }
 
@@ -81,7 +82,7 @@ public class MazeManager implements OpenFilesHandler {
         return this.mazeXML4Compatible;
     }
 
-    void setMazeXML4Compatible(final boolean value) {
+    public void setMazeXML4Compatible(final boolean value) {
         this.mazeXML4Compatible = value;
     }
 

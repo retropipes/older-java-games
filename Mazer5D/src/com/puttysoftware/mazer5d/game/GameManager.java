@@ -28,6 +28,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.files.MazeManager;
 import com.puttysoftware.mazer5d.generic.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.generic.GenericBow;
 import com.puttysoftware.mazer5d.generic.GenericCharacter;
@@ -43,7 +44,6 @@ import com.puttysoftware.mazer5d.loaders.SoundConstants;
 import com.puttysoftware.mazer5d.loaders.SoundManager;
 import com.puttysoftware.mazer5d.maze.Maze;
 import com.puttysoftware.mazer5d.maze.MazeConstants;
-import com.puttysoftware.mazer5d.maze.MazeManager;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.maze.effects.MazeEffectManager;
 import com.puttysoftware.mazer5d.objects.AnnihilationWand;

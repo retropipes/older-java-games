@@ -9,7 +9,7 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
+import com.puttysoftware.mazer5d.files.xml.XMLExtension;
 
 public class XMLRuleSetFilter extends FileFilter {
     @Override

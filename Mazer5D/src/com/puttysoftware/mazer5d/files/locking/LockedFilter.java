@@ -3,21 +3,23 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.maze.xml;
+package com.puttysoftware.mazer5d.files.locking;
 
 import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-public class XMLGameFilter extends FileFilter {
+import com.puttysoftware.mazer5d.files.Extension;
+
+public class LockedFilter extends FileFilter {
     @Override
     public boolean accept(final File f) {
         if (f.isDirectory()) {
             return true;
         }
-        final String extension = XMLGameFilter.getExtension(f);
+        final String extension = LockedFilter.getExtension(f);
         if (extension != null) {
-            if (extension.equals(XMLExtension.getXMLGameExtension())) {
+            if (extension.equals(Extension.getLockedMazeExtension())) {
                 return true;
             } else {
                 return false;
@@ -28,8 +30,8 @@ public class XMLGameFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Mazer5D XML Saved Games ("
-                + XMLExtension.getXMLGameExtensionWithPeriod() + ")";
+        return "Mazer5D Locked Mazes ("
+                + Extension.getLockedMazeExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

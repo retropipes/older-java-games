@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.game;
 import java.io.File;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.mazer5d.maze.xml.XMLExtension;
+import com.puttysoftware.mazer5d.files.xml.XMLExtension;
 import com.puttysoftware.scoremanager.SavedScoreManager;
 import com.puttysoftware.scoremanager.ScoreManager;
 
