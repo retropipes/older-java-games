@@ -35,8 +35,7 @@ public class DamagedWall extends GenericWall {
                 .getPlayerManager().getPlayerLocationZ();
         Mazer5D.getApplication().getGameManager().morph(new CrumblingWall(),
                 dirX, dirY, pz);
-        SoundPlayer.playSound(SoundIndex.CRACK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }
 
     @Override

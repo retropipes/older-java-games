@@ -53,8 +53,7 @@ public class ShockBomb extends GenericUsableObject {
     @Override
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Shock objects that react to shock
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanShockObjects(x, y, z, ShockBomb.EFFECT_RADIUS);

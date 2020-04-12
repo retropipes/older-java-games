@@ -55,8 +55,7 @@ public class WarpBomb extends GenericUsableObject {
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Warp objects
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
                         WarpBomb.EFFECT_RADIUS);

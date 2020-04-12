@@ -37,8 +37,7 @@ public class HalfHourglass extends GenericTimeModifier {
         Mazer5D.getApplication().getGameManager().decay();
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValueHalved();
-        SoundPlayer.playSound(SoundIndex.GRAB,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(HalfHourglass.SCORE_GRAB);
     }

@@ -55,8 +55,7 @@ public abstract class GenericMovableObject extends MazeObject {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         this.savedObject = mo;
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
     }
 
     @Override
@@ -65,8 +64,7 @@ public abstract class GenericMovableObject extends MazeObject {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
         this.savedObject = mo;
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
     }
 
     @Override

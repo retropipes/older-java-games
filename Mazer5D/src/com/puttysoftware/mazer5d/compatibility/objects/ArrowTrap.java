@@ -31,8 +31,7 @@ public class ArrowTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override

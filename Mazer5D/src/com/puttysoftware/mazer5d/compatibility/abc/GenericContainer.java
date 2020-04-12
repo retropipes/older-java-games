@@ -91,14 +91,12 @@ public abstract class GenericContainer extends GenericLock {
             } else {
                 app.getGameManager().decay();
             }
-            SoundPlayer.playSound(SoundIndex.UNLOCK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
             app.getGameManager().backUpPlayer();
             Mazer5D.getApplication().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
     }
 

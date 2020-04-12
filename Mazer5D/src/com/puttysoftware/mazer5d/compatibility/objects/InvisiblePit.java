@@ -31,8 +31,7 @@ public class InvisiblePit extends Pit {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
         Mazer5D.getApplication().showMessage("Invisible Pit!");
     }
 

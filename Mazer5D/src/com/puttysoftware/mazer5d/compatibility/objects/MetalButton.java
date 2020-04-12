@@ -104,11 +104,9 @@ public class MetalButton extends GenericField {
                             this.getTargetFloor());
                 }
             }
-            SoundPlayer.playSound(SoundIndex.BUTTON,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
         } else {
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
     }
 

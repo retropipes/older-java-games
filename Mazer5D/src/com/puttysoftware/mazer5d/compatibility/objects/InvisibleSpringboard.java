@@ -31,8 +31,7 @@ public class InvisibleSpringboard extends Springboard {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.SPRINGBOARD,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
         Mazer5D.getApplication().showMessage("Invisible Springboard!");
     }
 

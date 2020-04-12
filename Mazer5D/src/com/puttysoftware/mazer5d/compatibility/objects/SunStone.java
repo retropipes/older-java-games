@@ -43,8 +43,7 @@ public class SunStone extends GenericInventoryableObject {
         inv.addItem(this);
         final Application app = Mazer5D.getApplication();
         app.getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.SUN_STONE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(SunStone.SCORE_GRAB_STONE);
     }

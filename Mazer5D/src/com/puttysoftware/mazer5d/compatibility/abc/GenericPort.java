@@ -39,8 +39,7 @@ public abstract class GenericPort extends GenericInfiniteLock {
         }
         Mazer5D.getApplication()
                 .showMessage("You need " + fill + " " + this.letter + " plug");
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

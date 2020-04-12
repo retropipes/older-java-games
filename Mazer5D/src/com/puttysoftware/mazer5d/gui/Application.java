@@ -16,7 +16,6 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.gui.ObjectHelpManager;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetPicker;
 import com.puttysoftware.mazer5d.game.GameManager;
@@ -158,14 +157,12 @@ public class Application {
     }
 
     public void playHighScoreSound() {
-        SoundPlayer.playSound(SoundIndex.HIGH_SCORE,
-                SoundGroup.USER_INTERFACE);
+        SoundPlayer.playSound(SoundIndex.HIGH_SCORE, SoundGroup.USER_INTERFACE);
     }
 
     public void playLogoSound() {
         MusicPlayer.playMusic(MusicIndex.TITLE, MusicGroup.USER_INTERFACE);
-        SoundPlayer.playSound(SoundIndex.LOGO,
-                SoundGroup.USER_INTERFACE);
+        SoundPlayer.playSound(SoundIndex.LOGO, SoundGroup.USER_INTERFACE);
     }
 
     private String getVersionString() {
@@ -184,7 +181,7 @@ public class Application {
     public JFrame getOutputFrame() {
         try {
             if (this.getMode() == Application.STATUS_PREFS) {
-                return PreferencesManager.getPrefFrame();
+                return MainWindow.owner();
             } else if (this.getMode() == Application.STATUS_GUI) {
                 return this.getGUIManager().getGUIFrame();
             } else if (this.getMode() == Application.STATUS_GAME) {

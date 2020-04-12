@@ -54,8 +54,6 @@ import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.objectmodel.MazeObject;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
-import com.puttysoftware.randomrange.RandomLongRange;
-import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
 import com.puttysoftware.xio.XDataReader;
@@ -74,7 +72,6 @@ public class Prefs {
     private static JCheckBox moveOneAtATime;
     private static JComboBox<String> editorFillChoices;
     private static String[] editorFillChoiceArray;
-    private static JComboBox<String> difficultyChoices;
     private static JComboBox<String> updateCheckInterval;
     private static String[] updateCheckIntervalValues;
     private static JComboBox<String> viewingWindowChoices;
@@ -89,7 +86,6 @@ public class Prefs {
     private static int editorFill;
     private static boolean checkUpdatesStartupEnabled;
     private static boolean moveOneAtATimeEnabled;
-    private static int difficultySetting = Prefs.DEFAULT_DIFFICULTY;
     private static int viewingWindowIndex;
     private static int editorWindowIndex;
     private static int updateCheckIntervalIndex;
@@ -97,6 +93,9 @@ public class Prefs {
     private static int randomHallSizeIndex;
     private static long lastUpdateCheck;
     private static int worldGenerator;
+    private static int lastFilterUsedOpen;
+    private static String lastDirOpen;
+    private static String lastDirSave;
     private static int cachedMajorVersion;
     private static int cachedMinorVersion;
     private static int cachedBugfixVersion;
@@ -116,50 +115,27 @@ public class Prefs {
     private static final int DEFAULT_UPDATE_CHECK_INTERVAL_INDEX = 2;
     private static final long[] UPDATE_CHECK_INTERVAL_VALUES = new long[] {
             86400L, 172800L, 604800L, 1209600L, 2592000L };
-    private static final int[] MDM_MIN_TOP = new int[] { 5, 4, 3, 2, 1 };
-    private static final int[] MDM_MIN_BOT = new int[] { 5, 5, 5, 5, 5 };
-    private static final int[] MDM_MAX_TOP = new int[] { 5, 5, 5, 5, 5 };
-    private static final int[] MDM_MAX_BOT = new int[] { 5, 4, 3, 2, 1 };
-    private static final int[] EXP_MIN_TOP = new int[] { 9, 9, 9, 9, 9 };
-    private static final int[] EXP_MIN_BOT = new int[] { 8, 7, 6, 5, 4 };
-    private static final int[] EXP_MAX_TOP = new int[] { 9, 9, 9, 9, 9 };
-    private static final int[] EXP_MAX_BOT = new int[] { 6, 5, 4, 3, 2 };
-    private static final int[] GLD_MIN_TOP = new int[] { 23, 23, 23, 23, 23 };
-    private static final int[] GLD_MIN_BOT = new int[] { 22, 20, 18, 16, 14 };
-    private static final int[] GLD_MAX_TOP = new int[] { 23, 23, 23, 23, 23 };
-    private static final int[] GLD_MAX_BOT = new int[] { 18, 16, 14, 12, 10 };
     private static final int DEFAULT_GAME_VIEW_SIZE_INDEX = 2;
     private static final int DEFAULT_EDITOR_VIEW_SIZE_INDEX = 2;
     private static final String[] VIEWING_WINDOW_SIZE_NAMES = new String[] {
             "Tiny", "Small", "Medium", "Large", "Huge", "Tiny HD", "Small HD",
             "Medium HD", "Large HD", "Huge HD" };
-    private static final String[] DIFFICULTY_CHOICE_NAMES = new String[] {
-            "Very Easy", "Easy", "Normal", "Hard", "Very Hard" };
     private static final int SOUNDS_ALL = 0;
     private static final int SOUNDS_UI = 1;
     private static final int SOUNDS_GAME = 2;
-    private static final int SOUNDS_BATTLE = 3;
-    private static final int SOUNDS_SHOP = 4;
     private static final int MUSIC_ALL = 0;
     private static final int MUSIC_UI = 1;
     private static final int MUSIC_GAME = 2;
-    private static final int MUSIC_BATTLE = 3;
-    private static final int MUSIC_SHOP = 4;
     private static final int GENERATOR_OBSOLETE = 0;
     private static final int GENERATOR_CONSTRAINED_RANDOM = 1;
     private static final int GENERATOR_TWISTER = 2;
-    public static final int DIFFICULTY_VERY_EASY = 0;
-    public static final int DIFFICULTY_EASY = 1;
-    public static final int DIFFICULTY_NORMAL = 2;
-    public static final int DIFFICULTY_HARD = 3;
-    public static final int DIFFICULTY_VERY_HARD = 4;
-    private static final int DEFAULT_DIFFICULTY = Prefs.DIFFICULTY_NORMAL;
-    private static final int BATTLE_SPEED = 1000;
-    private static final int MUSIC_LENGTH = 5;
-    private static final int SOUNDS_LENGTH = 5;
+    private static final int MUSIC_LENGTH = 3;
+    private static final int SOUNDS_LENGTH = 3;
     private static final int GRID_LENGTH = 8;
     private static final long DEFAULT_NEXT_UPDATE = -1L;
     private static final String DOC_TAG = "settings";
+    public static final int FILTER_MAZE = 1;
+    public static final int FILTER_GAME = 2;
 
     // Constructors
     private Prefs() {
@@ -167,47 +143,28 @@ public class Prefs {
     }
 
     // Methods
-    public static int getMonsterCount(final int pmCount) {
-        final int diff = Prefs.getGameDifficulty();
-        int min = pmCount * Prefs.MDM_MIN_TOP[diff] / Prefs.MDM_MIN_BOT[diff];
-        if (min < 1) {
-            min = 1;
-        }
-        int max = pmCount * Prefs.MDM_MAX_TOP[diff] / Prefs.MDM_MAX_BOT[diff];
-        if (max < 1) {
-            max = 1;
-        }
-        return RandomRange.generate(min, max);
+    public static String getLastDirOpen() {
+        return Prefs.lastDirOpen;
     }
 
-    public static int getPerfectBattleGold(final int battleGold) {
-        final int diff = Prefs.getGameDifficulty();
-        int min = battleGold * Prefs.GLD_MIN_TOP[diff]
-                / Prefs.GLD_MIN_BOT[diff];
-        if (min < 1) {
-            min = 1;
-        }
-        int max = battleGold * Prefs.GLD_MAX_TOP[diff]
-                / Prefs.GLD_MAX_BOT[diff];
-        if (max < 1) {
-            max = 1;
-        }
-        return RandomRange.generate(min, max);
+    public static void setLastDirOpen(final String value) {
+        Prefs.lastDirOpen = value;
     }
 
-    public static long getPerfectBattleExp(final long battleExp) {
-        final int diff = Prefs.getGameDifficulty();
-        long min = battleExp * Prefs.EXP_MIN_TOP[diff]
-                / Prefs.EXP_MIN_BOT[diff];
-        if (min < 1) {
-            min = 1;
-        }
-        long max = battleExp * Prefs.EXP_MAX_TOP[diff]
-                / Prefs.EXP_MAX_BOT[diff];
-        if (max < 1) {
-            max = 1;
-        }
-        return new RandomLongRange(min, max).generate();
+    public static String getLastDirSave() {
+        return Prefs.lastDirSave;
+    }
+
+    public static void setLastDirSave(final String value) {
+        Prefs.lastDirSave = value;
+    }
+
+    public static int getLastFilterUsedOpen() {
+        return Prefs.lastFilterUsedOpen;
+    }
+
+    public static void setLastFilterUsedOpen(final int value) {
+        Prefs.lastFilterUsedOpen = value;
     }
 
     public static boolean isWorldGeneratorConstrainedRandom() {
@@ -225,14 +182,6 @@ public class Prefs {
 
     public static int getRandomHallSize() {
         return Prefs.randomHallSizeIndex;
-    }
-
-    public static int getBattleSpeed() {
-        return Prefs.BATTLE_SPEED;
-    }
-
-    public static int getGameDifficulty() {
-        return Prefs.difficultySetting;
     }
 
     private static boolean useCache(final boolean manual) {
@@ -397,7 +346,6 @@ public class Prefs {
         Prefs.updateCheckInterval
                 .setSelectedIndex(Prefs.updateCheckIntervalIndex);
         Prefs.checkUpdatesStartup.setSelected(Prefs.checkUpdatesStartupEnabled);
-        Prefs.difficultyChoices.setSelectedIndex(Prefs.difficultySetting);
         Prefs.moveOneAtATime.setSelected(Prefs.moveOneAtATimeEnabled);
         Prefs.viewingWindowChoices.setSelectedIndex(Prefs.viewingWindowIndex);
         Prefs.editorWindowChoices.setSelectedIndex(Prefs.editorWindowIndex);
@@ -428,7 +376,6 @@ public class Prefs {
                 .getSelectedIndex();
         Prefs.checkUpdatesStartupEnabled = Prefs.checkUpdatesStartup
                 .isSelected();
-        Prefs.difficultySetting = Prefs.difficultyChoices.getSelectedIndex();
         Prefs.moveOneAtATimeEnabled = Prefs.moveOneAtATime.isSelected();
         Prefs.viewingWindowIndex = Prefs.viewingWindowChoices
                 .getSelectedIndex();
@@ -460,8 +407,6 @@ public class Prefs {
         Prefs.defaultEnableMusicGroups();
         Prefs.checkUpdatesStartup.setSelected(false);
         Prefs.checkUpdatesStartupEnabled = false;
-        Prefs.difficultySetting = Prefs.DEFAULT_DIFFICULTY;
-        Prefs.difficultyChoices.setSelectedIndex(Prefs.difficultySetting);
         Prefs.moveOneAtATime.setSelected(true);
         Prefs.moveOneAtATimeEnabled = true;
         Prefs.viewingWindowIndex = Prefs.DEFAULT_GAME_VIEW_SIZE_INDEX;
@@ -525,18 +470,10 @@ public class Prefs {
                 "Enable user interface sounds", true);
         Prefs.sounds[Prefs.SOUNDS_GAME] = new JCheckBox("Enable game sounds",
                 true);
-        Prefs.sounds[Prefs.SOUNDS_BATTLE] = new JCheckBox(
-                "Enable battle sounds", true);
-        Prefs.sounds[Prefs.SOUNDS_SHOP] = new JCheckBox("Enable shop sounds",
-                true);
         Prefs.music[Prefs.MUSIC_ALL] = new JCheckBox("Enable ALL music", true);
         Prefs.music[Prefs.MUSIC_UI] = new JCheckBox(
                 "Enable user interface music", true);
         Prefs.music[Prefs.MUSIC_GAME] = new JCheckBox("Enable game music",
-                true);
-        Prefs.music[Prefs.MUSIC_BATTLE] = new JCheckBox("Enable battle music",
-                true);
-        Prefs.music[Prefs.MUSIC_SHOP] = new JCheckBox("Enable shop music",
                 true);
         Prefs.checkUpdatesStartup = new JCheckBox(
                 "Check for Updates at Startup", true);
@@ -545,8 +482,6 @@ public class Prefs {
                 "Every 2nd Day", "Weekly", "Every 2nd Week", "Monthly" };
         Prefs.updateCheckInterval = new JComboBox<>(
                 Prefs.updateCheckIntervalValues);
-        Prefs.difficultyChoices = new JComboBox<>(
-                Prefs.DIFFICULTY_CHOICE_NAMES);
         Prefs.generatorConstrainedRandom = new JRadioButton(
                 "Randomness with limits", true);
         Prefs.generatorTwister = new JRadioButton("Twisted Hallways With Rooms",
@@ -585,8 +520,6 @@ public class Prefs {
         miscPane.add(Prefs.moveOneAtATime);
         miscPane.add(new JLabel("Check How Often For Updates"));
         miscPane.add(Prefs.updateCheckInterval);
-        miscPane.add(new JLabel("Game Difficulty"));
-        miscPane.add(Prefs.difficultyChoices);
         final JPanel viewPane = new JPanel();
         viewPane.setLayout(new GridLayout(Prefs.GRID_LENGTH, 1));
         viewPane.add(new JLabel("Viewing Window Size"));
@@ -666,7 +599,6 @@ public class Prefs {
                 } else {
                     cachedBugfix = reader.readInt();
                 }
-                Prefs.difficultySetting = reader.readInt();
                 Prefs.viewingWindowIndex = reader.readInt();
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
@@ -718,7 +650,6 @@ public class Prefs {
                 }
                 writer.writeInt(Prefs.updateCheckIntervalIndex);
                 writer.writeInt(Prefs.cachedBugfixVersion);
-                writer.writeInt(Prefs.difficultySetting);
                 writer.writeInt(Prefs.viewingWindowIndex);
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);
@@ -770,7 +701,6 @@ public class Prefs {
                 } else {
                     cachedBugfix = reader.readInt();
                 }
-                Prefs.difficultySetting = reader.readInt();
                 Prefs.viewingWindowIndex = reader.readInt();
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     Prefs.musicEnabled[x] = reader.readBoolean();
@@ -816,7 +746,6 @@ public class Prefs {
                 }
                 writer.writeInt(Prefs.updateCheckIntervalIndex);
                 writer.writeInt(Prefs.cachedBugfixVersion);
-                writer.writeInt(Prefs.difficultySetting);
                 writer.writeInt(Prefs.viewingWindowIndex);
                 for (int x = 0; x < Prefs.MUSIC_LENGTH; x++) {
                     writer.writeBoolean(Prefs.musicEnabled[x]);

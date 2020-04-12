@@ -71,8 +71,7 @@ public abstract class GenericCharacter extends MazeObject {
             Mazer5D.getApplication().getMazeManager().getMaze()
                     .doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
         }
-        SoundPlayer.playSound(SoundIndex.LAVA,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
         return false;
     }
 

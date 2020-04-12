@@ -21,16 +21,14 @@ public class Lava extends GenericField {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_ON_LAVA, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         Mazer5D.getApplication().showMessage("You'll burn");
-        SoundPlayer.playSound(SoundIndex.LAVA,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
     }
 
     @Override

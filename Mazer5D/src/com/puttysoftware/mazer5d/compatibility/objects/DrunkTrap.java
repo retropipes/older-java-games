@@ -38,8 +38,7 @@ public class DrunkTrap extends GenericTrap {
         Mazer5D.getApplication().showMessage("You stumble around drunkenly!");
         Mazer5D.getApplication().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_DRUNK, DrunkTrap.EFFECT_DURATION);
-        SoundPlayer.playSound(SoundIndex.DRUNK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.DRUNK, SoundGroup.GAME);
     }
 
     @Override

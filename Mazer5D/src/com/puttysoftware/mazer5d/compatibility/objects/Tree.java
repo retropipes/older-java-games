@@ -26,8 +26,7 @@ public class Tree extends GenericInfiniteLock {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
             Mazer5D.getApplication().showMessage("You need an axe");
         }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override
@@ -38,8 +37,7 @@ public class Tree extends GenericInfiniteLock {
         }
         final Application app = Mazer5D.getApplication();
         app.getGameManager().decayTo(new CutTree());
-        SoundPlayer.playSound(SoundIndex.UNLOCK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
     }
 
     @Override

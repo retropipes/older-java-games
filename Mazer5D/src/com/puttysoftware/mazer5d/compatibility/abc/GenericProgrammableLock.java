@@ -50,13 +50,11 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             }
             app.getGameManager().decay();
             // Play unlock sound, if it's enabled
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
             Mazer5D.getApplication().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
     }
 
@@ -71,8 +69,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
                         .showMessage("You need a " + this.getKey().getName());
             }
         }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

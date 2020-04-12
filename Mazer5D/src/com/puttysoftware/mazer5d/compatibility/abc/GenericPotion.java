@@ -83,11 +83,9 @@ public abstract class GenericPotion extends MazeObject {
         }
         Mazer5D.getApplication().getGameManager().decay();
         if (this.effectValue >= 0) {
-            SoundPlayer.playSound(SoundIndex.HEAL,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.HEAL, SoundGroup.GAME);
         } else {
-            SoundPlayer.playSound(SoundIndex.HURT,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.HURT, SoundGroup.GAME);
         }
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericPotion.SCORE_CONSUME);
@@ -99,8 +97,7 @@ public abstract class GenericPotion extends MazeObject {
             final ObjectInventory inv) {
         Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
-        SoundPlayer.playSound(SoundIndex.SHATTER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericPotion.SCORE_SMASH);
         return false;

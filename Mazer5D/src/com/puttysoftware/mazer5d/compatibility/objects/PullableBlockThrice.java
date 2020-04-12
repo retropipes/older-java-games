@@ -36,8 +36,7 @@ public class PullableBlockThrice extends GenericMovableObject {
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
         app.getGameManager().morphOther(new PullableBlockTwice(), pushX, pushY,
                 MazeConstants.LAYER_OBJECT);
     }

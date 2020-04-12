@@ -18,7 +18,7 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixIO;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSuffixIO;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.MovingBlock;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomLongRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -754,13 +754,13 @@ public class Maze implements MazeConstants {
     }
 
     public void fillLevelDefault() {
-        final MazeObject bottom = PreferencesManager.getEditorDefaultFill();
+        final MazeObject bottom = Prefs.getEditorDefaultFill();
         final MazeObject top = new Empty();
         this.mazeData.fill(bottom, top);
     }
 
     public void fillFloorDefault(final int floor) {
-        final MazeObject bottom = PreferencesManager.getEditorDefaultFill();
+        final MazeObject bottom = Prefs.getEditorDefaultFill();
         final MazeObject top = new Empty();
         this.mazeData.fillFloor(bottom, top, floor);
     }

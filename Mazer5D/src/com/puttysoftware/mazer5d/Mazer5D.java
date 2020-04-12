@@ -11,8 +11,8 @@ import java.awt.desktop.PreferencesHandler;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class Mazer5D {
     // Constants
@@ -52,7 +52,7 @@ public class Mazer5D {
     private static class PreferencesLauncher implements PreferencesHandler {
         @Override
         public void handlePreferences(final PreferencesEvent inE) {
-            PreferencesManager.showPrefs();
+            Prefs.showPrefs();
         }
     }
 }

@@ -51,8 +51,7 @@ public class WarpTrap extends GenericTrap {
         } while (!app.getGameManager().tryUpdatePositionAbsolute(rRow, rCol,
                 rFloor));
         app.getGameManager().updatePositionAbsolute(rRow, rCol, rFloor);
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

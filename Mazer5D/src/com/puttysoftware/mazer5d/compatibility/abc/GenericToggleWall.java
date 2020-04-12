@@ -21,16 +21,14 @@ public abstract class GenericToggleWall extends MazeObject {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         Mazer5D.getApplication().showMessage("Can't go that way");
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

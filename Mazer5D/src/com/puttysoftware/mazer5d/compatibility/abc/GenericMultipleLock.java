@@ -59,8 +59,7 @@ public abstract class GenericMultipleLock extends GenericLock {
         }
         Mazer5D.getApplication().showMessage("You need " + this.keyCount + " "
                 + this.getKey().getName() + fill);
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

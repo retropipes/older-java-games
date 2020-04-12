@@ -20,8 +20,8 @@ import javax.swing.KeyStroke;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MenuManager {
     // Fields
@@ -856,7 +856,7 @@ public class MenuManager {
                 app.getEditor().fixLimits();
             } else if (cmd.equals("Preferences...")) {
                 // Show preferences dialog
-                PreferencesManager.showPrefs();
+                Prefs.showPrefs();
             } else if (cmd.equals("Clear History")) {
                 // Clear undo/redo history, confirm first
                 final int res = CommonDialogs.showConfirmDialog(

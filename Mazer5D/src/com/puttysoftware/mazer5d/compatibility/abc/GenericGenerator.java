@@ -120,8 +120,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         }
         if (flag) {
-            SoundPlayer.playSound(SoundIndex.GENERATE,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.GENERATE, SoundGroup.GAME);
             this.activateTimer(this.TIMER_DELAY);
             app.getGameManager().redrawMazeNoRebuild();
         }
@@ -220,8 +219,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         }
         if (flag) {
-            SoundPlayer.playSound(SoundIndex.GENERATE,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.GENERATE, SoundGroup.GAME);
             app.getGameManager().redrawMazeNoRebuild();
         }
         // Activate the timer again

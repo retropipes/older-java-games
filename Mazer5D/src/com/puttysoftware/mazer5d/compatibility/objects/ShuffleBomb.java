@@ -54,8 +54,7 @@ public class ShuffleBomb extends GenericUsableObject {
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
         // Shuffle objects
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanShuffleObjects(x, y, z, ShuffleBomb.EFFECT_RADIUS);
         // Player might have moved

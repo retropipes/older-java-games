@@ -31,8 +31,7 @@ public class BrightnessGem extends GenericGem {
     public void postMoveActionHook() {
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .setVisionRadiusToMaximum();
-        SoundPlayer.playSound(SoundIndex.LIGHT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.LIGHT, SoundGroup.GAME);
     }
 
     @Override

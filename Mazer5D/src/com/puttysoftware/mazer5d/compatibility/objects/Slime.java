@@ -21,16 +21,14 @@ public class Slime extends GenericField {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_ON_SLIME, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         Mazer5D.getApplication().showMessage("You'll corrode");
-        SoundPlayer.playSound(SoundIndex.SLIME,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
     }
 
     @Override

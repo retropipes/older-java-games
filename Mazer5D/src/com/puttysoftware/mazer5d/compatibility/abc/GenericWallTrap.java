@@ -53,8 +53,7 @@ public abstract class GenericWallTrap extends MazeObject {
                     .findAllMatchingObjectsAndDecay(this.trigger);
         }
         Mazer5D.getApplication().getGameManager().redrawMaze();
-        SoundPlayer.playSound(SoundIndex.WALL_TRAP,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALL_TRAP, SoundGroup.GAME);
     }
 
     @Override

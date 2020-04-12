@@ -27,8 +27,8 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLLoadTask;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLMazeFilter;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSaveTask;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MazeManager implements OpenFilesHandler {
     // Fields
@@ -226,7 +226,7 @@ public class MazeManager implements OpenFilesHandler {
         int status = 0;
         boolean saved = true;
         String filename, extension;
-        final String lastOpen = PreferencesManager.getLastDirOpen();
+        final String lastOpen = Prefs.getLastDirOpen();
         File lastOpenDir = null;
         if (lastOpen != null) {
             lastOpenDir = new File(lastOpen);
@@ -248,8 +248,8 @@ public class MazeManager implements OpenFilesHandler {
             fc.setAcceptAllFileFilterUsed(false);
             fc.addChoosableFileFilter(xmf);
             fc.addChoosableFileFilter(xgf);
-            final int filter = PreferencesManager.getLastFilterUsedOpen();
-            if (filter == PreferencesManager.FILTER_XML_MAZE) {
+            final int filter = Prefs.getLastFilterUsedOpen();
+            if (filter == Prefs.FILTER_MAZE) {
                 fc.setFileFilter(xmf);
             } else {
                 fc.setFileFilter(xgf);
@@ -259,13 +259,11 @@ public class MazeManager implements OpenFilesHandler {
                 final File file = fc.getSelectedFile();
                 final FileFilter ff = fc.getFileFilter();
                 if (ff.getDescription().equals(xmf.getDescription())) {
-                    PreferencesManager.setLastFilterUsedOpen(
-                            PreferencesManager.FILTER_XML_MAZE);
+                    Prefs.setLastFilterUsedOpen(Prefs.FILTER_MAZE);
                 } else {
-                    PreferencesManager.setLastFilterUsedOpen(
-                            PreferencesManager.FILTER_XML_GAME);
+                    Prefs.setLastFilterUsedOpen(Prefs.FILTER_GAME);
                 }
-                PreferencesManager.setLastDirOpen(
+                Prefs.setLastDirOpen(
                         fc.getCurrentDirectory().getAbsolutePath());
                 filename = file.getAbsolutePath();
                 extension = MazeManager.getExtension(file);
@@ -298,7 +296,7 @@ public class MazeManager implements OpenFilesHandler {
         int status = 0;
         boolean saved = true;
         String filename, extension;
-        final String lastOpen = PreferencesManager.getLastDirOpen();
+        final String lastOpen = Prefs.getLastDirOpen();
         File lastOpenDir = null;
         if (lastOpen != null) {
             lastOpenDir = new File(lastOpen);
@@ -322,7 +320,7 @@ public class MazeManager implements OpenFilesHandler {
             final int returnVal = fc.showOpenDialog(app.getOutputFrame());
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 final File file = fc.getSelectedFile();
-                PreferencesManager.setLastDirOpen(
+                Prefs.setLastDirOpen(
                         fc.getCurrentDirectory().getAbsolutePath());
                 filename = file.getAbsolutePath();
                 extension = MazeManager.getExtension(file);
@@ -422,7 +420,7 @@ public class MazeManager implements OpenFilesHandler {
         String filename = "";
         String fileOnly = "\\";
         String extension;
-        final String lastSave = PreferencesManager.getLastDirSave();
+        final String lastSave = Prefs.getLastDirSave();
         File lastSaveDir = null;
         if (lastSave != null) {
             lastSaveDir = new File(lastSave);
@@ -455,7 +453,7 @@ public class MazeManager implements OpenFilesHandler {
                                     + "named com1 through com9 and lpt1 through lpt9.",
                             "Save");
                 } else {
-                    PreferencesManager.setLastDirSave(
+                    Prefs.setLastDirSave(
                             fc.getCurrentDirectory().getAbsolutePath());
                     if (app.getMode() == Application.STATUS_GAME) {
                         if (extension != null) {
@@ -506,7 +504,7 @@ public class MazeManager implements OpenFilesHandler {
         String filename = "";
         String fileOnly = "\\";
         String extension;
-        final String lastSave = PreferencesManager.getLastDirSave();
+        final String lastSave = Prefs.getLastDirSave();
         File lastSaveDir = null;
         if (lastSave != null) {
             lastSaveDir = new File(lastSave);
@@ -533,7 +531,7 @@ public class MazeManager implements OpenFilesHandler {
                                     + "named com1 through com9 and lpt1 through lpt9.",
                             "Save");
                 } else {
-                    PreferencesManager.setLastDirSave(
+                    Prefs.setLastDirSave(
                             fc.getCurrentDirectory().getAbsolutePath());
                     if (extension != null) {
                         if (!extension

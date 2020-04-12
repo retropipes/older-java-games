@@ -35,8 +35,7 @@ public class RandomTeleport extends GenericRandomTeleport {
             dc = this.getDestinationColumn();
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

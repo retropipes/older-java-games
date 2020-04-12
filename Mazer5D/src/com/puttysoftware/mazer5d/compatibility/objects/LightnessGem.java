@@ -31,8 +31,7 @@ public class LightnessGem extends GenericGem {
     public void postMoveActionHook() {
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .incrementVisionRadius();
-        SoundPlayer.playSound(SoundIndex.LIGHT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.LIGHT, SoundGroup.GAME);
     }
 
     @Override

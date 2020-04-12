@@ -24,8 +24,7 @@ public class InvisibleWall extends GenericWall {
             final int dirY, final ObjectInventory inv) {
         // Display invisible wall message, if it's enabled
         Mazer5D.getApplication().showMessage("Invisible Wall!");
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

@@ -128,8 +128,7 @@ public class RotationTrap extends GenericTrap implements Cloneable {
             Mazer5D.getApplication().getGameManager()
                     .doCounterclockwiseRotate(this.radius);
         }
-        SoundPlayer.playSound(SoundIndex.CHANGE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }
 
     @Override

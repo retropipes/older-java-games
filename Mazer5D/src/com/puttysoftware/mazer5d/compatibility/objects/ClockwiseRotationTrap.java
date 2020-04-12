@@ -35,8 +35,7 @@ public class ClockwiseRotationTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.CHANGE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
         Mazer5D.getApplication().showMessage("Your controls are rotated!");
         Mazer5D.getApplication().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE,

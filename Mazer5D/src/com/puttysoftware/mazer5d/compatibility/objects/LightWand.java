@@ -37,13 +37,11 @@ public class LightWand extends GenericWand {
         if (obj.getName().equals("Empty")) {
             // Create a Light Gem
             this.useAction(new LightGem(), x, y, z);
-            SoundPlayer.playSound(SoundIndex.LIGHT,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.LIGHT, SoundGroup.GAME);
         } else if (obj.getName().equals("Dark Gem")) {
             // Destroy the Dark Gem
             this.useAction(new Empty(), x, y, z);
-            SoundPlayer.playSound(SoundIndex.SHATTER,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         }
     }
 

@@ -47,8 +47,7 @@ public class OneShotTeleport extends GenericTeleport {
         app.getGameManager().decay();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

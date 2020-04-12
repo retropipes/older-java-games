@@ -41,8 +41,7 @@ public class ConditionalChainTeleport extends GenericConditionalTeleport {
                     this.getDestinationRow(), this.getDestinationColumn(),
                     this.getDestinationFloor(), this.getDestinationLevel());
         }
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
         this.postMoveActionHook();
     }
 

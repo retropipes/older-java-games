@@ -39,8 +39,7 @@ public class DizzinessTrap extends GenericTrap {
         Mazer5D.getApplication().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_DIZZY,
                 DizzinessTrap.EFFECT_DURATION);
-        SoundPlayer.playSound(SoundIndex.DIZZY,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.DIZZY, SoundGroup.GAME);
     }
 
     @Override

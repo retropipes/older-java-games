@@ -28,8 +28,7 @@ public abstract class GenericBarrier extends GenericWall {
         // Display impassable barrier message
         final Application app = Mazer5D.getApplication();
         Mazer5D.getApplication().showMessage("The barrier is impassable!");
-        SoundPlayer.playSound(SoundIndex.BARRIER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         // Hurt the player for trying to cross the barrier
         app.getMazeManager().getMaze()
                 .doDamagePercentage(GenericBarrier.BARRIER_DAMAGE_PERCENT);

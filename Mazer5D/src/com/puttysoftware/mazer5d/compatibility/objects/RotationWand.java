@@ -75,8 +75,7 @@ public class RotationWand extends GenericWand {
             Mazer5D.getApplication().getGameManager()
                     .doCounterclockwiseRotate(r);
         }
-        SoundPlayer.playSound(SoundIndex.CHANGE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }
 
     @Override

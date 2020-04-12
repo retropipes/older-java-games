@@ -41,12 +41,10 @@ public class MovingFinish extends Finish {
             final ObjectInventory inv) {
         if (this.active) {
             final Application app = Mazer5D.getApplication();
-            SoundPlayer.playSound(SoundIndex.FINISH,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
             app.getGameManager().solvedLevel();
         } else {
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
     }
 
@@ -70,8 +68,7 @@ public class MovingFinish extends Finish {
                         MazeConstants.LAYER_OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
-            SoundPlayer.playSound(SoundIndex.CHANGE,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
             mf.activate();
         } else {
             final Application app = Mazer5D.getApplication();
@@ -87,9 +84,7 @@ public class MovingFinish extends Finish {
             final int az = this.getDestinationFloor();
             if (saved instanceof MovingFinish && px == ax && py == ay
                     && pz == az) {
-                SoundPlayer.playSound(
-                        SoundIndex.FINISH,
-                        SoundGroup.GAME);
+                SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
                 CommonDialogs.showDialog("A finish opens under your feet!");
                 app.getGameManager().solvedLevel();
             }

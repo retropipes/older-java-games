@@ -28,8 +28,7 @@ public class WallMakingWand extends GenericWand {
     @Override
     public void useHelper(final int x, final int y, final int z) {
         this.useAction(new Wall(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.CREATE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CREATE, SoundGroup.GAME);
     }
 
     @Override

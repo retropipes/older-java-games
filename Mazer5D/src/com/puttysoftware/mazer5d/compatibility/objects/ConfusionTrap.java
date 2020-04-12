@@ -39,8 +39,7 @@ public class ConfusionTrap extends GenericTrap {
         Mazer5D.getApplication().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_CONFUSED,
                 ConfusionTrap.EFFECT_DURATION);
-        SoundPlayer.playSound(SoundIndex.CONFUSED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CONFUSED, SoundGroup.GAME);
     }
 
     @Override

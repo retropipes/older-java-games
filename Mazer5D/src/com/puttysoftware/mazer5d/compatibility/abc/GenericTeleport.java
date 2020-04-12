@@ -117,8 +117,7 @@ public abstract class GenericTeleport extends MazeObject {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

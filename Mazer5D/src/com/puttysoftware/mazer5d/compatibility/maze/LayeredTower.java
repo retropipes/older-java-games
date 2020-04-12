@@ -32,8 +32,8 @@ import com.puttysoftware.mazer5d.compatibility.objects.MovingFinish;
 import com.puttysoftware.mazer5d.compatibility.objects.PoisonedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.ShockedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.Slime;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
 import com.puttysoftware.xio.XDataReader;
@@ -1247,8 +1247,7 @@ class LayeredTower implements Cloneable {
     public void fillFloorRandomly(final Maze maze, final int z, final int w) {
         // Pre-Pass
         final MazeObjectList objects = Mazer5D.getApplication().getObjects();
-        final MazeObject pass1FillBottom = PreferencesManager
-                .getEditorDefaultFill();
+        final MazeObject pass1FillBottom = Prefs.getEditorDefaultFill();
         final MazeObject pass1FillTop = new Empty();
         RandomRange r = null;
         int x, y, e;
@@ -1333,8 +1332,7 @@ class LayeredTower implements Cloneable {
             final int w) {
         // Pre-Pass
         final MazeObjectList objects = Mazer5D.getApplication().getObjects();
-        final MazeObject pass1FillBottom = PreferencesManager
-                .getEditorDefaultFill();
+        final MazeObject pass1FillBottom = Prefs.getEditorDefaultFill();
         final MazeObject pass1FillTop = new Empty();
         final MazeObject[] withoutRuleSets = objects
                 .getAllObjectsWithoutRuleSets();
@@ -1513,7 +1511,7 @@ class LayeredTower implements Cloneable {
     }
 
     private void fillNulls() {
-        final MazeObject bottom = PreferencesManager.getEditorDefaultFill();
+        final MazeObject bottom = Prefs.getEditorDefaultFill();
         final MazeObject top = new Empty();
         int y, x, z, e;
         for (x = 0; x < this.getColumns(); x++) {

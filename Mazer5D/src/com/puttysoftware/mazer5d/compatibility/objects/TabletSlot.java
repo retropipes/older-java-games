@@ -25,8 +25,7 @@ public class TabletSlot extends GenericInfiniteLock {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
             Mazer5D.getApplication().showMessage("You need a tablet");
         }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

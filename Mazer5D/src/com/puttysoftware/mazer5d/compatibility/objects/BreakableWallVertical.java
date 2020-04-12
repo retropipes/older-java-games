@@ -22,8 +22,7 @@ public class BreakableWallVertical extends GenericWall {
 
     @Override
     public void chainReactionAction(final int x, final int y, final int z) {
-        SoundPlayer.playSound(SoundIndex.CRACK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
         this.doChainReact(x, y, z);
     }
 

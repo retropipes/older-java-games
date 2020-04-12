@@ -26,7 +26,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class GUIManager implements QuitHandler {
     // Fields
@@ -100,7 +100,7 @@ public class GUIManager implements QuitHandler {
             }
         }
         if (saved) {
-            PreferencesManager.writePrefs();
+            Prefs.writePrefs();
             // Run cleanup task
             new TempDirCleanup().start();
         }

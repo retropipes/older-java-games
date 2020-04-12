@@ -25,8 +25,7 @@ public class OrangeLock extends GenericSingleLock {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
             Mazer5D.getApplication().showMessage("You need an orange key");
         }
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
     @Override

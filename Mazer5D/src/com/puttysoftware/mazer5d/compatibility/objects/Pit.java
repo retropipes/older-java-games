@@ -77,8 +77,7 @@ public class Pit extends StairsDown {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
     }
 
     @Override
@@ -91,13 +90,11 @@ public class Pit extends StairsDown {
                 final GenericMovableObject pushedInto = (GenericMovableObject) pushed;
                 app.getGameManager().updatePushedIntoPositionAbsolute(x, y,
                         z - 1, x, y, z, pushedInto, this);
-                SoundPlayer.playSound(
-                        SoundIndex.FALL_INTO_PIT,
+                SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT,
                         SoundGroup.GAME);
             }
         } catch (final InfiniteRecursionException ir) {
-            SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
             Mazer5D.getApplication().getMazeManager().getMaze()
                     .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
         }

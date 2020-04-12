@@ -37,8 +37,7 @@ public class Hourglass extends GenericTimeModifier {
         Mazer5D.getApplication().getGameManager().decay();
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValue();
-        SoundPlayer.playSound(SoundIndex.GRAB,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(Hourglass.SCORE_GRAB);
     }

@@ -477,8 +477,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      */
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
         Mazer5D.getApplication().showMessage("Can't go that way");
     }
 
@@ -570,8 +569,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     public void pushFailedAction(final ObjectInventory inv, final int x,
             final int y, final int pushX, final int pushY) {
         // Play push failed sound, if it's enabled
-        SoundPlayer.playSound(SoundIndex.ACTION_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager().keepNextMessage();
         Mazer5D.getApplication().showMessage("Can't push that");
     }
@@ -626,8 +624,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      */
     public void pullFailedAction(final ObjectInventory inv, final int x,
             final int y, final int pullX, final int pullY) {
-        SoundPlayer.playSound(SoundIndex.ACTION_FAILED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager().keepNextMessage();
         Mazer5D.getApplication().showMessage("Can't pull that");
     }

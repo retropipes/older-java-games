@@ -38,8 +38,7 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
         Mazer5D.getApplication().showMessage("Invisible Teleport!");
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

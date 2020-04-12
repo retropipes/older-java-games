@@ -67,8 +67,7 @@ public class StairsDown extends GenericTeleport {
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
-        SoundPlayer.playSound(SoundIndex.DOWN,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.DOWN, SoundGroup.GAME);
     }
 
     @Override

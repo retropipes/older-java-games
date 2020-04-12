@@ -29,7 +29,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 
-public class LevelPreferencesManager {
+public class LevelPrefs {
     // Fields
     private JFrame prefFrame;
     private Container mainPrefPane, contentPane, buttonPane;
@@ -56,7 +56,7 @@ public class LevelPreferencesManager {
     private EventHandler handler;
 
     // Constructors
-    public LevelPreferencesManager() {
+    public LevelPrefs() {
         this.setUpGUI();
     }
 
@@ -297,7 +297,7 @@ public class LevelPreferencesManager {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final LevelPreferencesManager lpm = LevelPreferencesManager.this;
+            final LevelPrefs lpm = LevelPrefs.this;
             final String cmd = e.getActionCommand();
             if (cmd.equals("OK")) {
                 lpm.setPrefs();
@@ -315,7 +315,7 @@ public class LevelPreferencesManager {
 
         @Override
         public void windowClosing(final WindowEvent e) {
-            final LevelPreferencesManager pm = LevelPreferencesManager.this;
+            final LevelPrefs pm = LevelPrefs.this;
             pm.hidePrefs();
         }
 

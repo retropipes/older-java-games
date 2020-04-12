@@ -31,8 +31,7 @@ public class DimnessGem extends GenericGem {
     public void postMoveActionHook() {
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .decrementVisionRadius();
-        SoundPlayer.playSound(SoundIndex.DARKNESS,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
     }
 
     @Override

@@ -94,13 +94,11 @@ public abstract class GenericLock extends MazeObject {
                 inv.removeItem(this.key);
             }
             app.getGameManager().decay();
-            SoundPlayer.playSound(SoundIndex.UNLOCK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
             Mazer5D.getApplication().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
-            SoundPlayer.playSound(SoundIndex.WALK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
     }
 

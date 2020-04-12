@@ -53,8 +53,7 @@ public class FireBomb extends GenericUsableObject {
     @Override
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Enrage objects that react to fire
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanEnrageObjects(x, y, z, FireBomb.EFFECT_RADIUS);

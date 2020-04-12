@@ -36,8 +36,7 @@ public abstract class GenericAmulet extends GenericInventoryableObject {
             final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().decay();
-        SoundPlayer.playSound(SoundIndex.GRAB,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericAmulet.SCORE_INCREASE);
         this.postMoveActionHook();

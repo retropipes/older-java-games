@@ -46,8 +46,7 @@ public class VariableHealTrap extends GenericTrap {
                 this.maxHealing);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .heal(this.healingGiven.generate());
-        SoundPlayer.playSound(SoundIndex.BARRIER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager().decay();
     }
 

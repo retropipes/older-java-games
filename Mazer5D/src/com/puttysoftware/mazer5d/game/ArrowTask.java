@@ -67,8 +67,7 @@ public class ArrowTask extends Thread {
         final String suffix = DirectionResolver.resolveDirectionConstantToName(
                 DirectionResolver.resolveRelativeDirection(incX, incY));
         a.setNameSuffix(suffix);
-        SoundPlayer.playSound(SoundIndex.ARROW_FIRED,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.ARROW_FIRED, SoundGroup.GAME);
         while (res) {
             res = o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY,
                     this.at, inv);
@@ -93,8 +92,7 @@ public class ArrowTask extends Thread {
             o.arrowHitAction(px + cumX, py + cumY, pz, incX, incY, this.at,
                     inv);
         }
-        SoundPlayer.playSound(SoundIndex.ARROW_DEAD,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.ARROW_DEAD, SoundGroup.GAME);
         app.getGameManager().arrowDone();
     }
 

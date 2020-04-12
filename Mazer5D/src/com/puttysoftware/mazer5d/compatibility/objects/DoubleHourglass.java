@@ -37,8 +37,7 @@ public class DoubleHourglass extends GenericTimeModifier {
         Mazer5D.getApplication().getGameManager().decay();
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .extendTimerByInitialValueDoubled();
-        SoundPlayer.playSound(SoundIndex.GRAB,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(DoubleHourglass.SCORE_GRAB);
     }

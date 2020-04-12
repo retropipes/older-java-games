@@ -29,8 +29,7 @@ public class AnnihilationWand extends GenericWand {
     @Override
     public void useHelper(final int x, final int y, final int z) {
         this.useAction(new Empty(), x, y, z);
-        SoundPlayer.playSound(SoundIndex.DESTROY,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.DESTROY, SoundGroup.GAME);
     }
 
     @Override

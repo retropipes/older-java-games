@@ -35,8 +35,7 @@ public class CrackedWall extends GenericWall {
                 .getPlayerManager().getPlayerLocationZ();
         Mazer5D.getApplication().getGameManager().morph(new DamagedWall(), dirX,
                 dirY, pz);
-        SoundPlayer.playSound(SoundIndex.CRACK,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }
 
     @Override

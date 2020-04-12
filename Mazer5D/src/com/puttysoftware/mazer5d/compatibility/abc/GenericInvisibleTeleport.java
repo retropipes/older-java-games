@@ -27,8 +27,7 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         Mazer5D.getApplication().showMessage("Invisible Teleport!");
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

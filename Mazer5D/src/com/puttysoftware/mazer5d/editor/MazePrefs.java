@@ -28,7 +28,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.loaders.LogoManager;
 import com.puttysoftware.mazer5d.compatibility.maze.Maze;
 
-public class MazePreferencesManager {
+public class MazePrefs {
     // Fields
     private JFrame prefFrame;
     private Container mainPrefPane, contentPane, buttonPane;
@@ -42,7 +42,7 @@ public class MazePreferencesManager {
     private EventHandler handler;
 
     // Constructors
-    public MazePreferencesManager() {
+    public MazePrefs() {
         this.setUpGUI();
     }
 
@@ -143,7 +143,7 @@ public class MazePreferencesManager {
         // Handle buttons
         @Override
         public void actionPerformed(final ActionEvent e) {
-            final MazePreferencesManager mpm = MazePreferencesManager.this;
+            final MazePrefs mpm = MazePrefs.this;
             final String cmd = e.getActionCommand();
             if (cmd.equals("OK")) {
                 mpm.setPrefs();
@@ -161,7 +161,7 @@ public class MazePreferencesManager {
 
         @Override
         public void windowClosing(final WindowEvent e) {
-            final MazePreferencesManager pm = MazePreferencesManager.this;
+            final MazePrefs pm = MazePrefs.this;
             pm.hidePrefs();
         }
 

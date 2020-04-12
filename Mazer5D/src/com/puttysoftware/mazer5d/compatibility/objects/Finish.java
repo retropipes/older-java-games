@@ -27,8 +27,7 @@ public class Finish extends GenericTeleport {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final Application app = Mazer5D.getApplication();
-        SoundPlayer.playSound(SoundIndex.FINISH,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
         app.getGameManager().solvedLevel();
     }
 

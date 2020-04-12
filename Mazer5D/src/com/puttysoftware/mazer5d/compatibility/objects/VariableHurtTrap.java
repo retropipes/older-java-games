@@ -46,8 +46,7 @@ public class VariableHurtTrap extends GenericTrap {
                 this.maxDamage);
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .doDamage(this.damageDealt.generate());
-        SoundPlayer.playSound(SoundIndex.BARRIER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager().decay();
     }
 

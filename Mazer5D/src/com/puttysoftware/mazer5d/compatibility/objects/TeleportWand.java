@@ -31,8 +31,7 @@ public class TeleportWand extends GenericWand {
     @Override
     public void useHelper(final int x, final int y, final int z) {
         this.useAction(null, x, y, z);
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override

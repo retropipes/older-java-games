@@ -40,8 +40,7 @@ public class HealTrap extends GenericTrap {
             this.healing = 1;
         }
         Mazer5D.getApplication().getMazeManager().getMaze().heal(this.healing);
-        SoundPlayer.playSound(SoundIndex.BARRIER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }
 
     @Override

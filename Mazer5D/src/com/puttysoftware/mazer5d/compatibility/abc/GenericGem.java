@@ -52,8 +52,7 @@ public abstract class GenericGem extends MazeObject {
             final ObjectInventory inv) {
         Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
-        SoundPlayer.playSound(SoundIndex.SHATTER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         Mazer5D.getApplication().getGameManager()
                 .addToScore(GenericGem.SCORE_SMASH);
         return false;

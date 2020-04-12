@@ -36,8 +36,7 @@ public class PushableBlockTwice extends GenericMovableObject {
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-        SoundPlayer.playSound(SoundIndex.PUSH_PULL,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
         app.getGameManager().morphOther(new PushableBlockOnce(), pushX, pushY,
                 MazeConstants.LAYER_OBJECT);
     }

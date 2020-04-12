@@ -148,8 +148,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
                     this.getDestinationRow(), this.getDestinationColumn(),
                     this.getDestinationFloor());
         }
-        SoundPlayer.playSound(SoundIndex.TELEPORT,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
         this.postMoveActionHook();
     }
 

@@ -63,9 +63,9 @@ import com.puttysoftware.mazer5d.compatibility.objects.StairsUp;
 import com.puttysoftware.mazer5d.compatibility.objects.Teleport;
 import com.puttysoftware.mazer5d.compatibility.objects.TreasureChest;
 import com.puttysoftware.mazer5d.compatibility.objects.TwoWayTeleport;
-import com.puttysoftware.mazer5d.compatibility.prefs.PreferencesManager;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.picturepicker.PicturePicker;
 
 public class MazeEditor {
@@ -85,8 +85,8 @@ public class MazeEditor {
     private final TreasureEventHandler rhandler;
     private final MetalButtonEventHandler mbhandler;
     private final ConditionalTeleportEventHandler cthandler;
-    private final LevelPreferencesManager lPrefs;
-    private final MazePreferencesManager mPrefs;
+    private final LevelPrefs lPrefs;
+    private final MazePrefs mPrefs;
     private PicturePicker picker;
     private final PicturePicker treasurePicker;
     private final MazeObjectList objectList;
@@ -135,8 +135,8 @@ public class MazeEditor {
 
     public MazeEditor() {
         this.savedMazeObject = new Empty();
-        this.lPrefs = new LevelPreferencesManager();
-        this.mPrefs = new MazePreferencesManager();
+        this.lPrefs = new LevelPrefs();
+        this.mPrefs = new MazePrefs();
         this.mhandler = new EventHandler();
         this.mbhandler = new MetalButtonEventHandler();
         this.shandler = new StartEventHandler();
@@ -1554,8 +1554,7 @@ public class MazeEditor {
                                                 - 1) / 2);
                             }
                             app.getMazeManager().getMaze().fillLevel(
-                                    PreferencesManager.getEditorDefaultFill(),
-                                    new Empty());
+                                    Prefs.getEditorDefaultFill(), new Empty());
                             // Save the entire level
                             app.getMazeManager().getMaze().save();
                             app.getMazeManager().getMaze()

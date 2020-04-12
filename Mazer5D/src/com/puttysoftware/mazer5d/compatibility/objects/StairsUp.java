@@ -67,8 +67,7 @@ public class StairsUp extends GenericTeleport {
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
-        SoundPlayer.playSound(SoundIndex.UP,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
     }
 
     @Override

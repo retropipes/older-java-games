@@ -53,8 +53,7 @@ public class PoisonBomb extends GenericUsableObject {
     @Override
     public void useAction(final MazeObject mo, final int x, final int y,
             final int z) {
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Poison objects that react to poison
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .radialScanPoisonObjects(x, y, z, PoisonBomb.EFFECT_RADIUS);

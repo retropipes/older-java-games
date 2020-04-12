@@ -41,8 +41,7 @@ public class HurtTrap extends GenericTrap {
         }
         Mazer5D.getApplication().getMazeManager().getMaze()
                 .doDamage(this.damage);
-        SoundPlayer.playSound(SoundIndex.BARRIER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }
 
     @Override

@@ -84,8 +84,7 @@ public class ExplodingWall extends GenericWall {
         if (mo8Name.equals(currName)) {
             curr.chainReactionAction(x + 1, y, z);
         }
-        SoundPlayer.playSound(SoundIndex.EXPLODE,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
     }
 
     @Override

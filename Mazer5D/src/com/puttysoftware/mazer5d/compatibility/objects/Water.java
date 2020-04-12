@@ -25,16 +25,14 @@ public class Water extends GenericField {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        SoundPlayer.playSound(SoundIndex.WALK_ON_WATER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WALK_ON_WATER, SoundGroup.GAME);
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         Mazer5D.getApplication().showMessage("You'll drown");
-        SoundPlayer.playSound(SoundIndex.WATER,
-                SoundGroup.GAME);
+        SoundPlayer.playSound(SoundIndex.WATER, SoundGroup.GAME);
     }
 
     @Override
@@ -46,8 +44,7 @@ public class Water extends GenericField {
                     MazeConstants.LAYER_GROUND);
             app.getGameManager().morph(new Empty(), x, y, z,
                     MazeConstants.LAYER_OBJECT);
-            SoundPlayer.playSound(SoundIndex.SINK_BLOCK,
-                    SoundGroup.GAME);
+            SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
         }
     }
 
