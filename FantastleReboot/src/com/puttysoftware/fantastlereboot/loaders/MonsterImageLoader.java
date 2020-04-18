@@ -21,6 +21,7 @@ package com.puttysoftware.fantastlereboot.loaders;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -39,8 +40,8 @@ public class MonsterImageLoader {
     static BufferedImageIcon loadUncached(final String name,
             final ColorShader shader) {
         try {
-            final URL url = MonsterImageLoader.class
-                    .getResource("/assets/images/monsters/" + name);
+            final URL url = MonsterImageLoader.class.getResource(
+                    "/assets/images/monsters/" + name);
             final BufferedImage image = ImageIO.read(url);
             final BufferedImageIcon input = new BufferedImageIcon(image);
             final BufferedImageIcon result = new BufferedImageIcon(input);
@@ -64,21 +65,21 @@ public class MonsterImageLoader {
     public static BufferedImageIcon load(final int imageID, final Faith faith) {
         final ColorShader shader = faith.getShader();
         if (MonsterImageLoader.fileExtensions == null) {
-            try {
+            try (InputStream stream = MonsterImageLoader.class
+                    .getResourceAsStream(
+                            "/assets/data/extensions/extensions.properties")) {
                 MonsterImageLoader.fileExtensions = new Properties();
-                MonsterImageLoader.fileExtensions
-                        .load(MonsterImageLoader.class.getResourceAsStream(
-                                "/assets/data/extensions/extensions.properties"));
+                MonsterImageLoader.fileExtensions.load(stream);
             } catch (final IOException e) {
                 FantastleReboot.exception(e);
             }
         }
-        final String imageExt = MonsterImageLoader.fileExtensions
-                .getProperty("images");
-        final String cacheName = shader.getName() + "_"
-                + Integer.toString(imageID);
-        return ImageCache.getCachedImage(shader,
-                Integer.toString(imageID) + imageExt, cacheName);
+        final String imageExt = MonsterImageLoader.fileExtensions.getProperty(
+                "images");
+        final String cacheName = shader.getName() + "_" + Integer.toString(
+                imageID);
+        return ImageCache.getCachedImage(shader, Integer.toString(imageID)
+                + imageExt, cacheName);
     }
 
     private static class ImageCache {
@@ -99,8 +100,8 @@ public class MonsterImageLoader {
                 }
             }
             // Not found: Add to cache
-            final BufferedImageIcon newImage = MonsterImageLoader
-                    .loadUncached(imagePath, shader);
+            final BufferedImageIcon newImage = MonsterImageLoader.loadUncached(
+                    imagePath, shader);
             final ImageCacheEntry newEntry = new ImageCacheEntry(newImage,
                     name);
             ImageCache.cache.add(newEntry);

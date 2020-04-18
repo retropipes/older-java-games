@@ -19,6 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package com.puttysoftware.fantastlereboot.loaders;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.diane.loaders.ImageLoader;
@@ -31,8 +32,8 @@ public class BossImageLoader {
     private static Properties fileExtensions;
 
     public static BufferedImageIcon load() {
-        final String imageExt = BossImageLoader.fileExtensions
-                .getProperty("images");
+        final String imageExt = BossImageLoader.fileExtensions.getProperty(
+                "images");
         final BossImageIndex image = BossImageIndex.BOSS;
         final String name = "/assets/images/boss/"
                 + BossImageLoader.allFilenames[image.ordinal()] + imageExt;
@@ -41,16 +42,15 @@ public class BossImageLoader {
 
     public static void cacheAll() {
         BossImageLoader.allFilenames = DataLoader.loadBossImageData();
-        try {
+        try (InputStream stream = BossImageLoader.class.getResourceAsStream(
+                "/assets/data/extensions/extensions.properties")) {
             BossImageLoader.fileExtensions = new Properties();
-            BossImageLoader.fileExtensions
-                    .load(BossImageLoader.class.getResourceAsStream(
-                            "/assets/data/extensions/extensions.properties"));
+            BossImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
             FantastleReboot.exception(e);
         }
-        final String imageExt = BossImageLoader.fileExtensions
-                .getProperty("images");
+        final String imageExt = BossImageLoader.fileExtensions.getProperty(
+                "images");
         final BossImageIndex image = BossImageIndex.BOSS;
         final String name = "/assets/images/boss/"
                 + BossImageLoader.allFilenames[image.ordinal()] + imageExt;

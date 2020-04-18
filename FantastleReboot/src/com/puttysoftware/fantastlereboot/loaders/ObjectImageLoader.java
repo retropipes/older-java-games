@@ -19,6 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package com.puttysoftware.fantastlereboot.loaders;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.diane.loaders.ImageLoader;
@@ -38,30 +39,29 @@ public class ObjectImageLoader {
             final String name = "/assets/images/objects/"
                     + ObjectImageLoader.allFilenames[image.ordinal()]
                     + imageExt;
-            return ImageLoader.load(name,
-                    ObjectImageLoader.class.getResource(name));
+            return ImageLoader.load(name, ObjectImageLoader.class.getResource(
+                    name));
         }
         return null;
     }
 
     public static void cacheAll() {
         ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
-        try {
+        try (InputStream stream = ObjectImageLoader.class.getResourceAsStream(
+                "/assets/data/extensions/extensions.properties")) {
             ObjectImageLoader.fileExtensions = new Properties();
-            ObjectImageLoader.fileExtensions
-                    .load(ObjectImageLoader.class.getResourceAsStream(
-                            "/assets/data/extensions/extensions.properties"));
+            ObjectImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
             FantastleReboot.exception(e);
         }
-        final String imageExt = ObjectImageLoader.fileExtensions
-                .getProperty("images");
+        final String imageExt = ObjectImageLoader.fileExtensions.getProperty(
+                "images");
         for (int i = 0; i <= ObjectImageLoader.MAX_INDEX; i++) {
             final String name = "/assets/images/objects/"
                     + ObjectImageLoader.allFilenames[i] + imageExt;
             try {
-                ImageLoader.load(name,
-                        ObjectImageLoader.class.getResource(name));
+                ImageLoader.load(name, ObjectImageLoader.class.getResource(
+                        name));
             } catch (final IllegalArgumentException iae) {
                 // Ignore - image unused
             }

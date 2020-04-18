@@ -1,6 +1,7 @@
 package com.puttysoftware.fantastlereboot.loaders;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.diane.loaders.SoundLoader;
@@ -22,17 +23,16 @@ public class SoundPlayer {
         if (SoundPlayer.allFilenames == null
                 && SoundPlayer.fileExtensions == null) {
             SoundPlayer.allFilenames = DataLoader.loadSoundData();
-            try {
+            try (InputStream stream = SoundPlayer.class.getResourceAsStream(
+                    "/assets/data/extensions/extensions.properties")) {
                 SoundPlayer.fileExtensions = new Properties();
-                SoundPlayer.fileExtensions
-                        .load(SoundPlayer.class.getResourceAsStream(
-                                "/assets/data/extensions/extensions.properties"));
+                SoundPlayer.fileExtensions.load(stream);
             } catch (final IOException e) {
                 FantastleReboot.exception(e);
             }
         }
-        final String soundExt = SoundPlayer.fileExtensions
-                .getProperty("sounds");
+        final String soundExt = SoundPlayer.fileExtensions.getProperty(
+                "sounds");
         if (sound == SoundIndex.WALK || sound == SoundIndex.WALK_2
                 || sound == SoundIndex.WALK_3 || sound == SoundIndex.WALK_4
                 || sound == SoundIndex.WALK_5 || sound == SoundIndex.WALK_6) {
@@ -49,8 +49,8 @@ public class SoundPlayer {
         if (Prefs.isSoundGroupEnabled(group)) {
             if (sound != null && sound != SoundIndex._NONE) {
                 final String filename = SoundPlayer.getSoundFilename(sound);
-                SoundLoader.play(SoundPlayer.class
-                        .getResource("/assets/sounds/" + filename));
+                SoundLoader.play(SoundPlayer.class.getResource("/assets/sounds/"
+                        + filename));
             }
         }
     }

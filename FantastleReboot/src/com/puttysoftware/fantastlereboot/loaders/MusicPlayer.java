@@ -1,6 +1,7 @@
 package com.puttysoftware.fantastlereboot.loaders;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.fantastlereboot.FantastleReboot;
@@ -23,11 +24,10 @@ public class MusicPlayer {
         if (MusicPlayer.allFilenames == null
                 && MusicPlayer.fileExtensions == null) {
             MusicPlayer.allFilenames = DataLoader.loadMusicData();
-            try {
+            try (InputStream stream = MusicPlayer.class.getResourceAsStream(
+                    "/assets/data/extensions/extensions.properties")) {
                 MusicPlayer.fileExtensions = new Properties();
-                MusicPlayer.fileExtensions
-                        .load(MusicPlayer.class.getResourceAsStream(
-                                "/assets/data/extensions/extensions.properties"));
+                MusicPlayer.fileExtensions.load(stream);
             } catch (final IOException e) {
                 FantastleReboot.exception(e);
             }
@@ -49,8 +49,8 @@ public class MusicPlayer {
         if (Prefs.isMusicGroupEnabled(group)) {
             if (music != null && music != MusicIndex._NONE) {
                 final String filename = MusicPlayer.getMusicFilename(music);
-                if (MusicPlayer.MUSIC != null
-                        && MusicPlayer.MUSIC.isPlaying()) {
+                if (MusicPlayer.MUSIC != null && MusicPlayer.MUSIC
+                        .isPlaying()) {
                     MusicPlayer.MUSIC.stopLoop();
                 }
                 MusicPlayer.MUSIC = OggLoader.loadResource(MusicPlayer.class

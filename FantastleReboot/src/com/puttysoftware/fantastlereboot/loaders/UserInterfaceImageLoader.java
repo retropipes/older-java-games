@@ -19,6 +19,7 @@ Any questions should be directed to the author via email at: fantastle@worldwiza
 package com.puttysoftware.fantastlereboot.loaders;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.puttysoftware.diane.loaders.ImageLoader;
@@ -34,11 +35,11 @@ public class UserInterfaceImageLoader {
     public static void preInit() {
         UserInterfaceImageLoader.allFilenames = DataLoader
                 .loadUserInterfaceImageData();
-        try {
+        try (InputStream stream = UserInterfaceImageLoader.class
+                .getResourceAsStream(
+                        "/assets/data/extensions/extensions.properties")) {
             UserInterfaceImageLoader.fileExtensions = new Properties();
-            UserInterfaceImageLoader.fileExtensions
-                    .load(UserInterfaceImageLoader.class.getResourceAsStream(
-                            "/assets/data/extensions/extensions.properties"));
+            UserInterfaceImageLoader.fileExtensions.load(stream);
         } catch (final IOException e) {
             FantastleReboot.exception(e);
         }
@@ -50,8 +51,8 @@ public class UserInterfaceImageLoader {
         final String name = "/assets/images/ui/"
                 + UserInterfaceImageLoader.allFilenames[image.ordinal()]
                 + imageExt;
-        return ImageLoader.load(name,
-                UserInterfaceImageLoader.class.getResource(name));
+        return ImageLoader.load(name, UserInterfaceImageLoader.class
+                .getResource(name));
     }
 
     public static void cacheAll() {
@@ -60,8 +61,8 @@ public class UserInterfaceImageLoader {
         for (int i = 1; i <= UserInterfaceImageLoader.MAX_INDEX; i++) {
             final String name = "/assets/images/ui/"
                     + UserInterfaceImageLoader.allFilenames[i] + imageExt;
-            ImageLoader.load(name,
-                    UserInterfaceImageLoader.class.getResource(name));
+            ImageLoader.load(name, UserInterfaceImageLoader.class.getResource(
+                    name));
         }
     }
 }

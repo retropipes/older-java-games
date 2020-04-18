@@ -13,6 +13,7 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.Line;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
@@ -101,7 +102,8 @@ class OggPlayer {
         SourceDataLine res = null;
         final DataLine.Info info = new DataLine.Info(SourceDataLine.class,
                 audioFormat);
-        res = (SourceDataLine) AudioSystem.getLine(info);
+        Line line = AudioSystem.getLine(info);
+        res = (SourceDataLine) line;
         res.open(audioFormat);
         return res;
     }
