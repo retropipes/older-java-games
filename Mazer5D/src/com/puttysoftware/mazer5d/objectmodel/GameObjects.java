@@ -20,7 +20,7 @@ public final class GameObjects {
 
     // Methods
     public static MazeObjectModel getEmptySpace() {
-        return GameObjects.createObject(-1);
+        return GameObjects.createObject(MazeObjects.EMPTY);
     }
 
     public static MazeObjectModel[] getAllObjects() {
@@ -171,7 +171,7 @@ public final class GameObjects {
         // FIXME: Stub
     }
 
-    public static MazeObjectModel createObject(final int uid) {
+    public static MazeObjectModel createObject(final MazeObjects uid) {
         return new MazeObject(uid);
     }
 
@@ -181,7 +181,7 @@ public final class GameObjects {
         if (formatVersion == MazeVersions.LATEST) {
             UID = reader.readInt();
         }
-        MazeObjectModel o = GameObjects.createObject(UID);
+        MazeObjectModel o = new MazeObject(UID);
         o.loadState(reader, UID);
         return o;
     }

@@ -32,7 +32,7 @@ final class MazeObject implements MazeObjectModel {
     private MazeObjectModel savedObject = null;
 
     // Constructors
-    public MazeObject(final int objectID) {
+    MazeObject(final int objectID) {
         this.uniqueID = objectID;
         this.tile = null;
         this.sp = new SolidProperties();
@@ -45,9 +45,22 @@ final class MazeObject implements MazeObjectModel {
         this.ct = new CustomTexts();
     }
 
-    public MazeObject(final int objectID, final String cacheName,
+    public MazeObject(final MazeObjects objectID) {
+        this.uniqueID = objectID.ordinal();
+        this.tile = null;
+        this.sp = new SolidProperties();
+        this.vp = new VisionProperties();
+        this.mp = new MoveProperties();
+        this.op = new OtherProperties();
+        this.oc = new OtherCounters();
+        this.cc = new CustomCounters();
+        this.cf = new CustomFlags();
+        this.ct = new CustomTexts();
+    }
+
+    public MazeObject(final MazeObjects objectID, final String cacheName,
             final ObjectImageIndex image) {
-        this.uniqueID = objectID;
+        this.uniqueID = objectID.ordinal();
         this.tile = new Tile(new ObjectAppearance(cacheName, image));
         this.sp = new SolidProperties();
         this.vp = new VisionProperties();
@@ -59,9 +72,9 @@ final class MazeObject implements MazeObjectModel {
         this.ct = new CustomTexts();
     }
 
-    public MazeObject(final int objectID, final String cacheName,
+    public MazeObject(final MazeObjects objectID, final String cacheName,
             final ObjectImageIndex image, final ColorShader shader) {
-        this.uniqueID = objectID;
+        this.uniqueID = objectID.ordinal();
         this.tile = new Tile(new ObjectAppearance(cacheName, image, shader));
         this.sp = new SolidProperties();
         this.vp = new VisionProperties();
