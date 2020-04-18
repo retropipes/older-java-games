@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.objectmodel;
 import java.io.IOException;
 
 import com.puttysoftware.images.BufferedImageIcon;
+import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.files.versions.MazeVersions;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -175,7 +176,7 @@ public final class GameObjects {
     }
 
     public static MazeObjectModel readObject(final XDataReader reader,
-            final int formatVersion) throws IOException {
+            final MazeVersion formatVersion) throws IOException {
         int UID = -1;
         if (formatVersion == MazeVersions.LATEST) {
             UID = reader.readInt();

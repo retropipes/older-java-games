@@ -3,6 +3,7 @@ package com.puttysoftware.mazer5d.mazemodel;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -222,7 +223,7 @@ public class MazeDataStorage {
     }
 
     public static MazeDataStorage loadState(final XDataReader reader,
-            final int formatVersion) throws IOException {
+            final MazeVersion formatVersion) throws IOException {
         // FIXME: Stub
         return new MazeDataStorage();
     }
