@@ -134,12 +134,18 @@ final class MazeObject extends GameObject implements MazeObjectModel {
     }
 
     @Override
-    public final void writeObject(final XDataWriter writer) throws IOException {
+    public boolean isOfType(final MazeObjectType testType) {
+        // FIXME: Stub
+        return false;
+    }
+
+    @Override
+    public final void dumpState(final XDataWriter writer) throws IOException {
         writer.writeInt(this.getUniqueID());
         if (this.savedObject == null) {
             writer.writeInt(-1);
         } else {
-            this.savedObject.writeObject(writer);
+            this.savedObject.dumpState(writer);
         }
         final int cc = this.customCountersLength();
         for (int x = 0; x < cc; x++) {
@@ -149,13 +155,13 @@ final class MazeObject extends GameObject implements MazeObjectModel {
     }
 
     @Override
-    public final MazeObjectModel readObject(final XDataReader reader,
+    public final MazeObjectModel loadState(final XDataReader reader,
             final int uid) throws IOException {
         if (uid == this.getUniqueID()) {
             final int savedIdent = reader.readInt();
             if (savedIdent != -1) {
                 this.savedObject = new MazeObject(savedIdent);
-                this.savedObject = this.savedObject.readObject(reader,
+                this.savedObject = this.savedObject.loadState(reader,
                         savedIdent);
             }
             final int cc = this.customCountersLength();

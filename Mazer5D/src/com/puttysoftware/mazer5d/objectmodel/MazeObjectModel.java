@@ -34,7 +34,9 @@ public interface MazeObjectModel extends ObjectModel, RandomGenerationRule {
 
     int getLayer();
 
-    void writeObject(XDataWriter writer) throws IOException;
+    boolean isOfType(MazeObjectType testType);
 
-    MazeObjectModel readObject(XDataReader reader, int uid) throws IOException;
+    void dumpState(XDataWriter writer) throws IOException;
+
+    MazeObjectModel loadState(XDataReader reader, int uid) throws IOException;
 }

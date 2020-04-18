@@ -16,6 +16,10 @@ public final class GameObjects {
     }
 
     // Methods
+    public static MazeObjectModel getEmptySpace() {
+        return GameObjects.getNewInstanceByUniqueID(-1);
+    }
+
     public static MazeObjectModel getNewInstanceByUniqueID(final int uid) {
         return new MazeObject(uid);
     }
@@ -27,7 +31,7 @@ public final class GameObjects {
             UID = reader.readInt();
         }
         MazeObjectModel o = GameObjects.getNewInstanceByUniqueID(UID);
-        o.readObject(reader, UID);
+        o.loadState(reader, UID);
         return o;
     }
 }
