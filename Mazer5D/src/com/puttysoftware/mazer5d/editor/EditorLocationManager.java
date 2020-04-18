@@ -6,8 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.editor;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class EditorLocationManager {
     // Fields
@@ -110,7 +110,7 @@ public class EditorLocationManager {
         this.minW = 0;
         this.minE = 0;
         this.maxW = m.getLevels() - 1;
-        this.maxE = MazeConstants.LAYER_COUNT - 1;
+        this.maxE = Layers.COUNT - 1;
         this.maxX = m.getRows();
         this.maxY = m.getColumns();
         this.maxZ = m.getFloors() - 1;

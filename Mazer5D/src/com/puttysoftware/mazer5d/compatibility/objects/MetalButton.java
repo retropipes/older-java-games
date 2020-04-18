@@ -11,10 +11,10 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class MetalButton extends GenericField {
     // Fields
@@ -92,16 +92,16 @@ public class MetalButton extends GenericField {
         if (inv.isItemThere(this.getKey())) {
             final BagOStuff app = Mazer5D.getBagOStuff();
             final MazeObjectModel there = app.getMazeManager().getMazeObject(
-                    this.getTargetRow(), this.getTargetColumn(),
-                    this.getTargetFloor(), this.getLayer());
+                    this.getTargetRow(), this.getTargetColumn(), this
+                            .getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
                     app.getGameManager().morph(new Empty(), this.getTargetRow(),
                             this.getTargetColumn(), this.getTargetFloor());
                 } else {
-                    app.getGameManager().morph(new MetalDoor(),
-                            this.getTargetRow(), this.getTargetColumn(),
-                            this.getTargetFloor());
+                    app.getGameManager().morph(new MetalDoor(), this
+                            .getTargetRow(), this.getTargetColumn(), this
+                                    .getTargetFloor());
                 }
             }
             SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
@@ -129,8 +129,8 @@ public class MetalButton extends GenericField {
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(new PasswallBoots())
-                || inv.isItemThere(new GhostAmulet())) {
+        if (inv.isItemThere(new PasswallBoots()) || inv.isItemThere(
+                new GhostAmulet())) {
             return false;
         } else {
             return this.isDirectionallySolid(ie, dirX, dirY);
@@ -139,15 +139,14 @@ public class MetalButton extends GenericField {
 
     @Override
     public int getLayer() {
-        return MazeConstants.LAYER_OBJECT;
+        return Layers.OBJECT;
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff()
-                .showMessage(this.getName() + ": Target ("
-                        + (this.targetCol + 1) + "," + (this.targetRow + 1)
-                        + "," + (this.targetFloor + 1) + ")");
+        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Target ("
+                + (this.targetCol + 1) + "," + (this.targetRow + 1) + ","
+                + (this.targetFloor + 1) + ")");
     }
 
     @Override

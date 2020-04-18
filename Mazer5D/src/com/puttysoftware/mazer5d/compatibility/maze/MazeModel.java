@@ -23,7 +23,7 @@ import com.puttysoftware.randomrange.RandomLongRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public class MazeModel implements MazeConstants {
+public class MazeModel {
     // Properties
     private LayeredTower mazeData;
     private LayeredTower clipboard;

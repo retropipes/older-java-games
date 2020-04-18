@@ -12,8 +12,8 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.*;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -226,7 +226,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_GROUND) {
+                    .getLayer() == Layers.GROUND) {
                 tempAllGroundLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
@@ -251,7 +251,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_OBJECT) {
+                    .getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
@@ -276,7 +276,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_GROUND) {
+                    .getLayer() == Layers.GROUND) {
                 tempAllGroundLayerNames[x] = GameObjects.allObjects[x]
                         .getName();
             }
@@ -302,7 +302,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_OBJECT) {
+                    .getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerNames[x] = GameObjects.allObjects[x]
                         .getName();
             }
@@ -337,7 +337,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_GROUND) {
+                    .getLayer() == Layers.GROUND) {
                 tempAllGroundLayerEditorAppearances[x] = ObjectImageManager
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
@@ -363,7 +363,7 @@ public class GameObjects {
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
             if (GameObjects.allObjects[x]
-                    .getLayer() == MazeConstants.LAYER_OBJECT) {
+                    .getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerEditorAppearances[x] = ObjectImageManager
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }

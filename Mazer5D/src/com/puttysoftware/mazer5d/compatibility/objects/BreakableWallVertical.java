@@ -10,9 +10,9 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class BreakableWallVertical extends GenericWall {
     // Constructors
@@ -31,7 +31,7 @@ public class BreakableWallVertical extends GenericWall {
         BreakableWallVertical curr = null;
         try {
             curr = (BreakableWallVertical) app.getMazeManager().getMazeObject(x,
-                    y, z, MazeConstants.LAYER_OBJECT);
+                    y, z, Layers.OBJECT);
         } catch (final ClassCastException cce) {
             // We're not a breakable wall vertical, so abort
             return;
@@ -40,14 +40,14 @@ public class BreakableWallVertical extends GenericWall {
         invalidName = new EmptyVoid().getName();
         currName = curr.getName();
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x, y - 1, z,
-                MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
         try {
             mo2Name = mo2.getName();
         } catch (final NullPointerException np) {
             mo2Name = invalidName;
         }
         final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(x, y + 1, z,
-                MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
         try {
             mo8Name = mo8.getName();
         } catch (final NullPointerException np) {

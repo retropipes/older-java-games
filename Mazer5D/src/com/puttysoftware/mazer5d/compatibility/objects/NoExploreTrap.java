@@ -9,9 +9,9 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.mazemodel.VisionModes;
 
 public class NoExploreTrap extends GenericTrap {
     // Constructors
@@ -34,7 +34,7 @@ public class NoExploreTrap extends GenericTrap {
             final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .removeVisionMode(MazeConstants.VISION_MODE_EXPLORE);
+                .removeVisionMode(VisionModes.EXPLORE);
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
 

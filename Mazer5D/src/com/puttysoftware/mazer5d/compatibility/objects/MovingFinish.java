@@ -10,11 +10,11 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class MovingFinish extends Finish {
     // Fields
@@ -65,7 +65,7 @@ public class MovingFinish extends Finish {
         final MazeObjectModel obj = Mazer5D.getBagOStuff().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
                         this.getDestinationColumn(), this.getDestinationFloor(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);

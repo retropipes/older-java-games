@@ -10,11 +10,11 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class Pit extends StairsDown {
     // Constructors
@@ -52,7 +52,7 @@ public class Pit extends StairsDown {
         }
         if (app.getGameManager().doesFloorExist(floor)) {
             final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(dirX,
-                    dirY, floor, MazeConstants.LAYER_OBJECT);
+                    dirY, floor, Layers.OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
@@ -96,7 +96,7 @@ public class Pit extends StairsDown {
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
             Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
+                    .setCell(new Empty(), x, y, z, Layers.OBJECT);
         }
     }
 

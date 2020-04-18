@@ -12,7 +12,6 @@ import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
@@ -24,6 +23,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.ShockArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Wall;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class ArrowTask extends Thread {
     // Fields
@@ -59,7 +59,7 @@ public class ArrowTask extends Thread {
         m.tickTimers(pz);
         MazeObjectModel o = null;
         try {
-            o = m.getCell(px + cumX, py + cumY, pz, MazeConstants.LAYER_OBJECT);
+            o = m.getCell(px + cumX, py + cumY, pz, Layers.OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             o = new Wall();
         }
@@ -81,7 +81,7 @@ public class ArrowTask extends Thread {
             cumY += incY;
             try {
                 o = m.getCell(px + cumX, py + cumY, pz,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 res = false;
             }

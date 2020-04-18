@@ -42,7 +42,6 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectManager;
@@ -73,6 +72,7 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -190,7 +190,7 @@ public class GameManager implements MazeEffectConstants {
         final int pz = this.plMgr.getPlayerLocationZ();
         final GenericCharacter player = (GenericCharacter) Mazer5D
                 .getBagOStuff().getMazeManager().getMaze()
-                .getCell(px, py, pz, MazeConstants.LAYER_OBJECT);
+                .getCell(px, py, pz, Layers.OBJECT);
         player.setSavedObject(this.savedMazeObject);
     }
 
@@ -200,7 +200,7 @@ public class GameManager implements MazeEffectConstants {
         final int pz = this.plMgr.getPlayerLocationZ();
         final GenericCharacter player = (GenericCharacter) Mazer5D
                 .getBagOStuff().getMazeManager().getMaze()
-                .getCell(px, py, pz, MazeConstants.LAYER_OBJECT);
+                .getCell(px, py, pz, Layers.OBJECT);
         this.savedMazeObject = player.getSavedObject();
     }
 
@@ -211,7 +211,7 @@ public class GameManager implements MazeEffectConstants {
             m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ() - 1,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             return true;
         } catch (final ArrayIndexOutOfBoundsException ae) {
             return false;
@@ -227,7 +227,7 @@ public class GameManager implements MazeEffectConstants {
             m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ() + 1,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             return true;
         } catch (final ArrayIndexOutOfBoundsException ae) {
             return false;
@@ -242,7 +242,7 @@ public class GameManager implements MazeEffectConstants {
         try {
             m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(), floor,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             return true;
         } catch (final ArrayIndexOutOfBoundsException ae) {
             return false;
@@ -327,7 +327,7 @@ public class GameManager implements MazeEffectConstants {
     public void doRemoteAction(final int x, final int y, final int z) {
         this.setRemoteAction(x, y, z);
         final MazeObjectModel acted = Mazer5D.getBagOStuff().getMazeManager()
-                .getMazeObject(x, y, z, MazeConstants.LAYER_OBJECT);
+                .getMazeObject(x, y, z, Layers.OBJECT);
         acted.preMoveAction(false, x, y, this.objectInv);
         acted.postMoveAction(false, x, y, this.objectInv);
         if (acted.doesChainReact()) {
@@ -450,42 +450,42 @@ public class GameManager implements MazeEffectConstants {
             try {
                 try {
                     o = m.getCell(px + fX, py + fY, pz,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     o = new Empty();
                 }
                 try {
-                    below = m.getCell(px, py, pz, MazeConstants.LAYER_GROUND);
+                    below = m.getCell(px, py, pz, Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     below = new Empty();
                 }
                 try {
                     nextBelow = m.getCell(px + fX, py + fY, pz,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     nextBelow = new Empty();
                 }
                 try {
                     nextAbove = m.getCell(px + fX, py + fY, pz,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     nextAbove = new Wall();
                 }
                 try {
                     previousBelow = m.getCell(px - fX, py - fY, pz,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     previousBelow = new Empty();
                 }
                 try {
                     nextNextBelow = m.getCell(px + 2 * fX, py + 2 * fY, pz,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     nextNextBelow = new Empty();
                 }
                 try {
                     nextNextAbove = m.getCell(px + 2 * fX, py + 2 * fY, pz,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     nextNextAbove = new Wall();
                 }
@@ -511,11 +511,11 @@ public class GameManager implements MazeEffectConstants {
                             this.doDelayedDecay();
                         }
                         m.setCell(this.savedMazeObject, px, py, pz,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         acted = new Empty();
                         try {
                             acted = m.getCell(px - fX, py - fY, pz,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException ae) {
                             // Do nothing
                         }
@@ -544,9 +544,9 @@ public class GameManager implements MazeEffectConstants {
                         this.vwMgr.offsetViewingWindowLocationX(fY);
                         this.vwMgr.offsetViewingWindowLocationY(fX);
                         this.savedMazeObject = m.getCell(px, py, pz,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         m.setCell(new Player(), px, py, pz,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         this.decayEffects();
                         app.getMazeManager().setDirty(true);
                         this.fireStepActions();
@@ -558,9 +558,9 @@ public class GameManager implements MazeEffectConstants {
                             this.redrawMaze();
                         }
                         groundInto = m.getCell(px, py, pz,
-                                MazeConstants.LAYER_GROUND);
+                                Layers.GROUND);
                         m.setCell(groundInto, px, py, pz,
-                                MazeConstants.LAYER_GROUND);
+                                Layers.GROUND);
                         if (groundInto.overridesDefaultPostMove()) {
                             groundInto.postMoveAction(false, px, py,
                                     this.objectInv);
@@ -576,7 +576,7 @@ public class GameManager implements MazeEffectConstants {
                         this.outputFrame.pack();
                     } else {
                         acted = m.getCell(px + fX, py + fY, pz,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         if (acted.isPushable()) {
                             if (this.checkPush(fX, fY, pushX, pushY, acted,
                                     nextBelow, nextNextBelow, nextNextAbove)) {
@@ -584,7 +584,7 @@ public class GameManager implements MazeEffectConstants {
                                     this.doDelayedDecay();
                                 }
                                 m.setCell(this.savedMazeObject, px, py, pz,
-                                        MazeConstants.LAYER_OBJECT);
+                                        Layers.OBJECT);
                                 this.plMgr.offsetPlayerLocationX(fX);
                                 this.plMgr.offsetPlayerLocationY(fY);
                                 px += fX;
@@ -592,9 +592,9 @@ public class GameManager implements MazeEffectConstants {
                                 this.vwMgr.offsetViewingWindowLocationX(fY);
                                 this.vwMgr.offsetViewingWindowLocationY(fX);
                                 this.savedMazeObject = m.getCell(px, py, pz,
-                                        MazeConstants.LAYER_OBJECT);
+                                        Layers.OBJECT);
                                 m.setCell(new Player(), px, py, pz,
-                                        MazeConstants.LAYER_OBJECT);
+                                        Layers.OBJECT);
                                 this.decayEffects();
                                 app.getMazeManager().setDirty(true);
                                 this.fireStepActions();
@@ -606,9 +606,9 @@ public class GameManager implements MazeEffectConstants {
                                     this.redrawMaze();
                                 }
                                 groundInto = m.getCell(px, py, pz,
-                                        MazeConstants.LAYER_GROUND);
+                                        Layers.GROUND);
                                 m.setCell(groundInto, px, py, pz,
-                                        MazeConstants.LAYER_GROUND);
+                                        Layers.GROUND);
                                 if (groundInto.overridesDefaultPostMove()) {
                                     groundInto.postMoveAction(false, px, py,
                                             this.objectInv);
@@ -648,7 +648,7 @@ public class GameManager implements MazeEffectConstants {
                     m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                             this.plMgr.getPlayerLocationY(),
                             this.plMgr.getPlayerLocationZ(),
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     // Move failed - attempted to go outside the maze
                     o.moveFailedAction(false, this.plMgr.getPlayerLocationX(),
                             this.plMgr.getPlayerLocationY(), this.objectInv);
@@ -730,8 +730,8 @@ public class GameManager implements MazeEffectConstants {
         final int opx = this.plMgr.getPlayerLocationX();
         final int opy = this.plMgr.getPlayerLocationY();
         this.savedMazeObject = m.getCell(opx, opy, pz,
-                MazeConstants.LAYER_OBJECT);
-        m.setCell(new Player(), opx, opy, pz, MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
+        m.setCell(new Player(), opx, opy, pz, Layers.OBJECT);
         this.redrawMaze();
     }
 
@@ -864,7 +864,7 @@ public class GameManager implements MazeEffectConstants {
         MazeObjectModel there = mm.getMazeObject(
                 this.plMgr.getPlayerLocationX() + cumX,
                 this.plMgr.getPlayerLocationY() + cumY,
-                this.plMgr.getPlayerLocationZ(), MazeConstants.LAYER_GROUND);
+                this.plMgr.getPlayerLocationZ(), Layers.GROUND);
         if (there != null) {
             do {
                 this.movePushedObjectPosition(cumX, cumY, cumPushX, cumPushY, o,
@@ -876,7 +876,7 @@ public class GameManager implements MazeEffectConstants {
                 there = mm.getMazeObject(this.plMgr.getPlayerLocationX() + cumX,
                         this.plMgr.getPlayerLocationY() + cumY,
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_GROUND);
+                        Layers.GROUND);
                 if (there == null) {
                     break;
                 }
@@ -893,11 +893,11 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(o.getSavedObject(), this.plMgr.getPlayerLocationX() + x,
                     this.plMgr.getPlayerLocationY() + y,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             m.setCell(o, this.plMgr.getPlayerLocationX() + pushX,
                     this.plMgr.getPlayerLocationY() + pushY,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             if (g.overridesDefaultPostMove()) {
                 g.postMoveAction(false, this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(), this.objectInv);
@@ -915,11 +915,11 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(o.getSavedObject(), this.plMgr.getPlayerLocationX() - x,
                     this.plMgr.getPlayerLocationY() - y,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             m.setCell(o, this.plMgr.getPlayerLocationX() - pullX,
                     this.plMgr.getPlayerLocationY() - pullY,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
         }
@@ -931,20 +931,20 @@ public class GameManager implements MazeEffectConstants {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final MazeModel m = app.getMazeManager().getMaze();
         try {
-            if (!m.getCell(x, y, z, MazeConstants.LAYER_OBJECT)
+            if (!m.getCell(x, y, z, Layers.OBJECT)
                     .isConditionallySolid(this.objectInv)) {
                 final MazeObjectModel saved = m.getCell(x, y, z,
-                        MazeConstants.LAYER_OBJECT);
-                m.setCell(pushedInto, x, y, z, MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
+                m.setCell(pushedInto, x, y, z, Layers.OBJECT);
                 pushedInto.setSavedObject(saved);
-                m.setCell(source, x2, y2, z2, MazeConstants.LAYER_OBJECT);
+                m.setCell(source, x2, y2, z2, Layers.OBJECT);
                 saved.pushIntoAction(this.objectInv, pushedInto, x2, y2,
                         z2 - 1);
                 this.redrawMaze();
                 app.getMazeManager().setDirty(true);
             }
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            m.setCell(new Empty(), x2, y2, z2, MazeConstants.LAYER_OBJECT);
+            m.setCell(new Empty(), x2, y2, z2, Layers.OBJECT);
         }
     }
 
@@ -955,17 +955,17 @@ public class GameManager implements MazeEffectConstants {
             final MazeObjectModel below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             final MazeObjectModel nextBelow = m.getCell(
                     this.plMgr.getPlayerLocationX() + x,
                     this.plMgr.getPlayerLocationY() + y,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             final MazeObjectModel nextAbove = m.getCell(
                     this.plMgr.getPlayerLocationX() + x,
                     this.plMgr.getPlayerLocationY() + y,
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             return this.checkSolid(x, y, this.savedMazeObject, below, nextBelow,
                     nextAbove);
         } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -981,11 +981,11 @@ public class GameManager implements MazeEffectConstants {
             final MazeObjectModel below = m.getCell(this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             final MazeObjectModel nextBelow = m.getCell(x, y, z,
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             final MazeObjectModel nextAbove = m.getCell(x, y, z,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             return this.checkSolidAbsolute(this.savedMazeObject, below,
                     nextBelow, nextAbove);
         } catch (final ArrayIndexOutOfBoundsException ae) {
@@ -997,7 +997,7 @@ public class GameManager implements MazeEffectConstants {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final MazeModel m = app.getMazeManager().getMaze();
         try {
-            m.getCell(x, y, z, MazeConstants.LAYER_OBJECT).preMoveAction(true,
+            m.getCell(x, y, z, Layers.OBJECT).preMoveAction(true,
                     x, y, this.objectInv);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             // Do nothing
@@ -1007,12 +1007,12 @@ public class GameManager implements MazeEffectConstants {
         this.plMgr.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
         try {
-            if (!m.getCell(x, y, z, MazeConstants.LAYER_OBJECT)
+            if (!m.getCell(x, y, z, Layers.OBJECT)
                     .isConditionallySolid(this.objectInv)) {
                 m.setCell(this.savedMazeObject, this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z, 0);
                 this.vwMgr.setViewingWindowLocationX(
                         this.plMgr.getPlayerLocationY()
@@ -1024,11 +1024,11 @@ public class GameManager implements MazeEffectConstants {
                         this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 this.redrawMaze();
                 app.getMazeManager().setDirty(true);
                 this.savedMazeObject.postMoveAction(false, x, y,
@@ -1040,7 +1040,7 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             Mazer5D.getBagOStuff().showMessage("Can't go outside the maze");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
@@ -1048,7 +1048,7 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             Mazer5D.getBagOStuff().showMessage("Can't go outside the maze");
         }
     }
@@ -1060,12 +1060,12 @@ public class GameManager implements MazeEffectConstants {
         this.plMgr.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
         try {
-            if (!m.getCell(x, y, z, MazeConstants.LAYER_OBJECT)
+            if (!m.getCell(x, y, z, Layers.OBJECT)
                     .isConditionallySolid(this.objectInv)) {
                 m.setCell(this.savedMazeObject, this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 this.plMgr.setPlayerLocation(x, y, z, w);
                 this.vwMgr.setViewingWindowLocationX(
                         this.plMgr.getPlayerLocationY()
@@ -1077,11 +1077,11 @@ public class GameManager implements MazeEffectConstants {
                         this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                         this.plMgr.getPlayerLocationY(),
                         this.plMgr.getPlayerLocationZ(),
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 this.redrawMaze();
                 app.getMazeManager().setDirty(true);
             }
@@ -1091,7 +1091,7 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             Mazer5D.getBagOStuff().showMessage("Can't go outside the maze");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
@@ -1099,7 +1099,7 @@ public class GameManager implements MazeEffectConstants {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(),
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             Mazer5D.getBagOStuff().showMessage("Can't go outside the maze");
         }
     }
@@ -1156,10 +1156,10 @@ public class GameManager implements MazeEffectConstants {
                             MazeObjectModel name1, name2;
                             name1 = app.getMazeManager().getMaze().getCell(y, x,
                                     this.plMgr.getPlayerLocationZ(),
-                                    MazeConstants.LAYER_GROUND);
+                                    Layers.GROUND);
                             name2 = app.getMazeManager().getMaze().getCell(y, x,
                                     this.plMgr.getPlayerLocationZ(),
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                             if (this.trueSightFlag) {
                                 this.drawGrid[xFix][yFix].setIcon(
                                         ObjectImageManager.getCompositeImage(
@@ -1218,10 +1218,10 @@ public class GameManager implements MazeEffectConstants {
                     MazeObjectModel name1, name2;
                     name1 = app.getMazeManager().getMaze().getCell(x, y,
                             this.plMgr.getPlayerLocationZ(),
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                     name2 = app.getMazeManager().getMaze().getCell(x, y,
                             this.plMgr.getPlayerLocationZ(),
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (this.trueSightFlag) {
                         this.drawGrid[xFix][yFix].setIcon(
                                 ObjectImageManager.getVirtualCompositeImage(
@@ -1505,7 +1505,7 @@ public class GameManager implements MazeEffectConstants {
         if (this.actingRemotely) {
             Mazer5D.getBagOStuff().getMazeManager().getMaze().setCell(
                     new Empty(), this.remoteCoords[0], this.remoteCoords[1],
-                    this.remoteCoords[2], MazeConstants.LAYER_OBJECT);
+                    this.remoteCoords[2], Layers.OBJECT);
         } else {
             this.savedMazeObject = new Empty();
         }
@@ -1515,7 +1515,7 @@ public class GameManager implements MazeEffectConstants {
         if (this.actingRemotely) {
             Mazer5D.getBagOStuff().getMazeManager().getMaze().setCell(decay,
                     this.remoteCoords[0], this.remoteCoords[1],
-                    this.remoteCoords[2], MazeConstants.LAYER_OBJECT);
+                    this.remoteCoords[2], Layers.OBJECT);
         } else {
             this.savedMazeObject = decay;
         }
@@ -1526,7 +1526,7 @@ public class GameManager implements MazeEffectConstants {
             Mazer5D.getBagOStuff().getMazeManager().getMaze().setCell(
                     this.delayedDecayObject, this.remoteCoords[0],
                     this.remoteCoords[1], this.remoteCoords[2],
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
         } else {
             this.savedMazeObject = this.delayedDecayObject;
         }
@@ -1690,7 +1690,7 @@ public class GameManager implements MazeEffectConstants {
                             this.plMgr.getPlayerLocationY(), destX, destY);
             try {
                 final MazeObjectModel target = m.getCell(destX, destY, destZ,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 final String name = this.objectBeingUsed.getName();
                 if ((target.isSolid() || !visible)
                         && name.equals(new TeleportWand().getName())) {
@@ -1797,9 +1797,9 @@ public class GameManager implements MazeEffectConstants {
         final int destZ = this.plMgr.getPlayerLocationZ();
         try {
             final MazeObjectModel target1 = m.getCell(destX, destY, destZ,
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             final MazeObjectModel target2 = m.getCell(destX, destY, destZ,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             target1.determineCurrentAppearance(destX, destY, destZ);
             target2.determineCurrentAppearance(destX, destY, destZ);
             final String gameName1 = target1.getGameName();

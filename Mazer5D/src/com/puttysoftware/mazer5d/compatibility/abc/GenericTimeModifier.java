@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.abc;
 
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public abstract class GenericTimeModifier extends MazeObjectModel {
     // Constructors
@@ -25,7 +25,7 @@ public abstract class GenericTimeModifier extends MazeObjectModel {
 
     @Override
     public int getLayer() {
-        return MazeConstants.LAYER_OBJECT;
+        return Layers.OBJECT;
     }
 
     @Override

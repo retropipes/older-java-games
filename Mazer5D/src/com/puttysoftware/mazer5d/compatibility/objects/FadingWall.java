@@ -7,8 +7,8 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class FadingWall extends GenericWall {
     // Fields
@@ -27,7 +27,7 @@ public class FadingWall extends GenericWall {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
-        final int pl = MazeConstants.LAYER_OBJECT;
+        final int pl = Layers.OBJECT;
         final String targetName = new Player().getName();
         scanResult = app.getMazeManager().getMaze().radialScan(dirX, dirY, pz,
                 pl, FadingWall.SCAN_LIMIT, targetName);

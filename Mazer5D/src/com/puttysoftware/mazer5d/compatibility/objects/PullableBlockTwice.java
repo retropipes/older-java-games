@@ -10,10 +10,10 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class PullableBlockTwice extends GenericMovableObject {
     // Constructors
@@ -38,7 +38,7 @@ public class PullableBlockTwice extends GenericMovableObject {
         app.getGameManager().updatePulledPosition(x, y, pushX, pushY, this);
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
         app.getGameManager().morphOther(new PullableBlockOnce(), pushX, pushY,
-                MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
     }
 
     @Override

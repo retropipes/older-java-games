@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
@@ -19,7 +20,7 @@ class SavedTowerState implements Cloneable {
 
     // Constructors
     public SavedTowerState(final int rows, final int cols, final int floors) {
-        this.saveData = new MazeObjectModel[cols][rows][floors][MazeConstants.LAYER_COUNT];
+        this.saveData = new MazeObjectModel[cols][rows][floors][Layers.COUNT];
         this.c = cols;
         this.r = rows;
         this.f = floors;
@@ -33,7 +34,7 @@ class SavedTowerState implements Cloneable {
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
                 for (z = 0; z < this.f; z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         copy.saveData[x][y][z][e] = this.saveData[x][y][z][e]
                                 .clone();
                     }
@@ -62,7 +63,7 @@ class SavedTowerState implements Cloneable {
         for (x = 0; x < this.c; x++) {
             for (y = 0; y < this.r; y++) {
                 for (z = 0; z < this.f; z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         this.saveData[x][y][z][e].writeMazeObjectXML(writer);
                     }
                 }
@@ -81,7 +82,7 @@ class SavedTowerState implements Cloneable {
         for (x = 0; x < sts.c; x++) {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         sts.saveData[x][y][z][e] = GameObjects
                                 .readObject(reader, formatVersion);
                     }

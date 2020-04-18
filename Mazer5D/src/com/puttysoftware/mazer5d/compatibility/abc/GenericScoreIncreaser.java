@@ -8,10 +8,10 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public abstract class GenericScoreIncreaser extends MazeObjectModel {
     // Constructors
@@ -38,7 +38,7 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
 
     @Override
     public int getLayer() {
-        return MazeConstants.LAYER_OBJECT;
+        return Layers.OBJECT;
     }
 
     @Override

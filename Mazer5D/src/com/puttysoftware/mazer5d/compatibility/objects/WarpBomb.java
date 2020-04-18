@@ -10,9 +10,9 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericUsableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class WarpBomb extends GenericUsableObject {
     // Constants
@@ -57,7 +57,7 @@ public class WarpBomb extends GenericUsableObject {
         // Warp objects
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanWarpObjects(x, y, z, MazeConstants.LAYER_OBJECT,
+                .radialScanWarpObjects(x, y, z, Layers.OBJECT,
                         WarpBomb.EFFECT_RADIUS);
         // Player might have moved
         Mazer5D.getBagOStuff().getGameManager().findPlayerAndAdjust();

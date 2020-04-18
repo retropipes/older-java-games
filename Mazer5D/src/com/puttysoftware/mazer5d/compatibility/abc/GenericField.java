@@ -5,8 +5,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package com.puttysoftware.mazer5d.compatibility.abc;
 
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public abstract class GenericField extends GenericInfiniteLock {
     // Constructors
@@ -46,7 +46,7 @@ public abstract class GenericField extends GenericInfiniteLock {
 
     @Override
     public int getLayer() {
-        return MazeConstants.LAYER_GROUND;
+        return Layers.GROUND;
     }
 
     @Override

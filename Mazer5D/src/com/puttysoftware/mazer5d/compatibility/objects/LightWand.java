@@ -10,9 +10,9 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class LightWand extends GenericWand {
     // Constructors
@@ -33,7 +33,7 @@ public class LightWand extends GenericWand {
     @Override
     public void useHelper(final int x, final int y, final int z) {
         final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
-        final MazeObjectModel obj = m.getCell(x, y, z, MazeConstants.LAYER_OBJECT);
+        final MazeObjectModel obj = m.getCell(x, y, z, Layers.OBJECT);
         if (obj.getName().equals("Empty")) {
             // Create a Light Gem
             this.useAction(new LightGem(), x, y, z);

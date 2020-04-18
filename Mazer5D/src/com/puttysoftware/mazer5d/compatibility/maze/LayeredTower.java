@@ -33,6 +33,8 @@ import com.puttysoftware.mazer5d.compatibility.objects.PoisonedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.ShockedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.Slime;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.mazemodel.VisionModes;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
@@ -87,7 +89,7 @@ class LayeredTower implements Cloneable {
     // Constructors
     public LayeredTower(final int rows, final int cols, final int floors) {
         this.data = new LowLevelDataStore(cols, rows, floors,
-                MazeConstants.LAYER_COUNT);
+                Layers.COUNT);
         this.savedTowerState = new SavedTowerState(rows, cols, floors);
         this.visionData = new FlagStorage(cols, rows, floors);
         this.playerData = new int[3];
@@ -113,7 +115,7 @@ class LayeredTower implements Cloneable {
         this.nextLevelOffset = 1;
         this.useOffset = true;
         this.finishMoveSpeed = 10;
-        this.visionMode = MazeConstants.VISION_MODE_RADIUS;
+        this.visionMode = VisionModes.RADIUS;
         this.visionModeExploreRadius = 2;
     }
 
@@ -443,7 +445,7 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     final MazeObjectModel mo = this.getCell(y, x, z,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals("Player")) {
                             this.playerData[1] = x;
@@ -462,7 +464,7 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     final MazeObjectModel mo = this.getCell(y, x, z,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals("Player")) {
                             this.findResult[1] = x;
@@ -484,14 +486,14 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     final MazeObjectModel mo = this.getCell(y, x, z,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o1.getName())) {
                             this.setCell(o2, y, x, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         } else if (mo.getName().equals(o2.getName())) {
                             this.setCell(o1, y, x, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         }
                     }
                 }
@@ -506,11 +508,11 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     final MazeObjectModel mo = this.getCell(y, x, z,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (mo != null) {
                         if (mo.getName().equals(o.getName())) {
                             this.setCell(decayTo, y, x, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         }
                     }
                 }
@@ -525,12 +527,12 @@ class LayeredTower implements Cloneable {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
                     final MazeObjectModel mo = this.getCell(y, x, z,
-                            MazeConstants.LAYER_OBJECT);
+                            Layers.OBJECT);
                     if (mo != null) {
                         if (mo.isOfType(TypeConstants.TYPE_WALL_TRAP) || mo
                                 .isOfType(TypeConstants.TYPE_TRAPPED_WALL)) {
                             this.setCell(decayTo, y, x, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         }
                     }
                 }
@@ -544,7 +546,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 final MazeObjectModel mo = this.getCell(y, x, floor,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 if (mo != null) {
                     mo.tickTimer(y, x);
                 }
@@ -571,11 +573,11 @@ class LayeredTower implements Cloneable {
         final int cosineTheta = 0;
         final int sineTheta = 1;
         final MazeObjectModel[][][] tempStorage = new MazeObjectModel[2 * r + 1][2 * r
-                + 1][MazeConstants.LAYER_COUNT];
+                + 1][Layers.COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
-                    for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                    for (l = 0; l < Layers.COUNT; l++) {
                         uFix = u - x;
                         vFix = v - y;
                         uRot = uFix * cosineTheta - vFix * sineTheta;
@@ -588,7 +590,7 @@ class LayeredTower implements Cloneable {
             }
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
-                    for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                    for (l = 0; l < Layers.COUNT; l++) {
                         uFix = u - (x - r);
                         vFix = v - (y - r);
                         this.setCell(tempStorage[uFix][vFix][l], u, v, z, l);
@@ -610,11 +612,11 @@ class LayeredTower implements Cloneable {
         final int cosineTheta = 0;
         final int sineTheta = 1;
         final MazeObjectModel[][][] tempStorage = new MazeObjectModel[2 * r + 1][2 * r
-                + 1][MazeConstants.LAYER_COUNT];
+                + 1][Layers.COUNT];
         try {
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
-                    for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                    for (l = 0; l < Layers.COUNT; l++) {
                         uFix = u - x;
                         vFix = v - y;
                         uRot = uFix * cosineTheta + vFix * sineTheta;
@@ -627,7 +629,7 @@ class LayeredTower implements Cloneable {
             }
             for (u = x - r; u <= x + r; u++) {
                 for (v = y - r; v <= y + r; v++) {
-                    for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                    for (l = 0; l < Layers.COUNT; l++) {
                         uFix = u - (x - r);
                         vFix = v - (y - r);
                         this.setCell(tempStorage[uFix][vFix][l], u, v, z, l);
@@ -643,13 +645,13 @@ class LayeredTower implements Cloneable {
     public void resize(final int x, final int y, final int z) {
         // Allocate temporary storage array
         final LowLevelDataStore tempStorage = new LowLevelDataStore(y, x, z,
-                MazeConstants.LAYER_COUNT);
+                Layers.COUNT);
         // Copy existing maze into temporary array
         int u, v, w, e;
         for (u = 0; u < y; u++) {
             for (v = 0; v < x; v++) {
                 for (w = 0; w < z; w++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         try {
                             tempStorage.setCell(this.getCell(u, v, w, e), u, v,
                                     w, e);
@@ -697,15 +699,15 @@ class LayeredTower implements Cloneable {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean reactsToIce = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_REACTS_TO_ICE);
                     if (reactsToIce) {
                         final MazeObjectModel there = this.getCell(u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Freeze the generator
                             this.setCell(new IcedBarrierGenerator(), u, v, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         } else {
                             // Assume object is already iced, and extend its
                             // timer
@@ -729,7 +731,7 @@ class LayeredTower implements Cloneable {
                 try {
                     // Freeze the ground
                     this.setCell(new Ice(), u, v, z,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
@@ -746,15 +748,15 @@ class LayeredTower implements Cloneable {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean reactsToFire = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_REACTS_TO_FIRE);
                     if (reactsToFire) {
                         final MazeObjectModel there = this.getCell(u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Enrage the generator
                             this.setCell(new EnragedBarrierGenerator(), u, v, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         } else {
                             // Assume object is already enraged, and reset its
                             // timer
@@ -778,7 +780,7 @@ class LayeredTower implements Cloneable {
                 try {
                     // Burn the ground
                     this.setCell(new Dirt(), u, v, z,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
@@ -795,15 +797,15 @@ class LayeredTower implements Cloneable {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean reactsToPoison = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_REACTS_TO_POISON);
                     if (reactsToPoison) {
                         final MazeObjectModel there = this.getCell(u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Weaken the generator
                             this.setCell(new PoisonedBarrierGenerator(), u, v,
-                                    z, MazeConstants.LAYER_OBJECT);
+                                    z, Layers.OBJECT);
                         } else {
                             // Assume object is already poisoned, and reset its
                             // timer
@@ -827,7 +829,7 @@ class LayeredTower implements Cloneable {
                 try {
                     // Poison the ground
                     this.setCell(new Slime(), u, v, z,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
@@ -844,15 +846,15 @@ class LayeredTower implements Cloneable {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean reactsToShock = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_REACTS_TO_SHOCK);
                     if (reactsToShock) {
                         final MazeObjectModel there = this.getCell(u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                         if (there.getClass() == BarrierGenerator.class) {
                             // Shock the generator
                             this.setCell(new ShockedBarrierGenerator(), u, v, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         } else {
                             // Assume object is already shocked, and reset its
                             // timer
@@ -876,7 +878,7 @@ class LayeredTower implements Cloneable {
                 try {
                     // Shock the ground
                     this.setCell(new ForceField(), u, v, z,
-                            MazeConstants.LAYER_GROUND);
+                            Layers.GROUND);
                 } catch (final ArrayIndexOutOfBoundsException aioob) {
                     // Do nothing
                 }
@@ -908,11 +910,11 @@ class LayeredTower implements Cloneable {
             final int r) {
         int u, v, l, uFix, vFix;
         final MazeObjectModel[][][] preShuffle = new MazeObjectModel[2 * r + 1][2 * r
-                + 1][MazeConstants.LAYER_COUNT];
+                + 1][Layers.COUNT];
         // Load the preShuffle array
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
-                for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                for (l = 0; l < Layers.COUNT; l++) {
                     uFix = u - (x - r);
                     vFix = v - (y - r);
                     try {
@@ -929,7 +931,7 @@ class LayeredTower implements Cloneable {
         // Load the maze with the postShuffle array
         for (u = x - r; u <= x + r; u++) {
             for (v = y - r; v <= y + r; v++) {
-                for (l = 0; l < MazeConstants.LAYER_COUNT; l++) {
+                for (l = 0; l < Layers.COUNT; l++) {
                     uFix = u - (x - r);
                     vFix = v - (y - r);
                     if (postShuffle[uFix][vFix][l] != null) {
@@ -949,7 +951,7 @@ class LayeredTower implements Cloneable {
             for (v = y - r; v <= y + r; v++) {
                 try {
                     final boolean isEmpty = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_EMPTY_SPACE);
                     if (isEmpty) {
                         final RandomRange rr = new RandomRange(1, 5);
@@ -957,27 +959,27 @@ class LayeredTower implements Cloneable {
                         if (chance == 1) {
                             // Grow a crevasse
                             this.setCell(new Crevasse(), u, v, z,
-                                    MazeConstants.LAYER_OBJECT);
+                                    Layers.OBJECT);
                         }
                     }
                     final boolean isBreakable = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_BREAKABLE_WALL);
                     if (isBreakable) {
                         // Destroy the wall
                         this.setCell(new Empty(), u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                     }
                     final boolean isWall = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_PLAIN_WALL);
                     if (isWall) {
                         // Crack the wall
                         this.setCell(new CrackedWall(), u, v, z,
-                                MazeConstants.LAYER_OBJECT);
+                                Layers.OBJECT);
                     }
                     final boolean isCharacter = this
-                            .getCell(u, v, z, MazeConstants.LAYER_OBJECT)
+                            .getCell(u, v, z, Layers.OBJECT)
                             .isOfType(TypeConstants.TYPE_CHARACTER);
                     if (isCharacter) {
                         final BagOStuff app = Mazer5D.getBagOStuff();
@@ -1006,7 +1008,7 @@ class LayeredTower implements Cloneable {
 
     public void updateVisibleSquares(final int xp, final int yp, final int zp) {
         if ((this.visionMode
-                | MazeConstants.VISION_MODE_EXPLORE) == this.visionMode) {
+                | VisionModes.EXPLORE) == this.visionMode) {
             for (int x = xp - this.visionModeExploreRadius; x <= xp
                     + this.visionModeExploreRadius; x++) {
                 for (int y = yp - this.visionModeExploreRadius; y <= yp
@@ -1023,16 +1025,16 @@ class LayeredTower implements Cloneable {
 
     public boolean isSquareVisible(final int x1, final int y1, final int x2,
             final int y2) {
-        if (this.visionMode == MazeConstants.VISION_MODE_NONE) {
+        if (this.visionMode == VisionModes.NONE) {
             return LayeredTower.isSquareVisibleNone();
         } else {
             boolean result = true;
             if ((this.visionMode
-                    | MazeConstants.VISION_MODE_RADIUS) == this.visionMode) {
+                    | VisionModes.RADIUS) == this.visionMode) {
                 result = result && this.isSquareVisibleRadius(x1, y1, x2, y2);
             }
             if ((this.visionMode
-                    | MazeConstants.VISION_MODE_EXPLORE) == this.visionMode) {
+                    | VisionModes.EXPLORE) == this.visionMode) {
                 result = result && this.isSquareVisibleExplore(x2, y2);
             }
             return result;
@@ -1053,14 +1055,14 @@ class LayeredTower implements Cloneable {
         final int xDist = this.pointDistance(x1, x2, 1);
         final int yDist = this.pointDistance(y1, y2, 2);
         if (xDist <= this.visionRadius && yDist <= this.visionRadius) {
-            if (this.radialScan(x2, y2, zLoc, MazeConstants.LAYER_OBJECT,
+            if (this.radialScan(x2, y2, zLoc, Layers.OBJECT,
                     dg.getEffectRadius(), dg.getName())) {
                 result = false;
             } else {
                 result = true;
             }
         } else {
-            if (this.radialScan(x2, y2, zLoc, MazeConstants.LAYER_OBJECT,
+            if (this.radialScan(x2, y2, zLoc, Layers.OBJECT,
                     lg.getEffectRadius(), lg.getName())) {
                 result = true;
             } else {
@@ -1177,7 +1179,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         final MazeObjectModel obj = this.getCell(y, x, z, e);
                         if (obj instanceof MovingFinish) {
                             final MovingFinish mf = (MovingFinish) obj;
@@ -1192,7 +1194,7 @@ class LayeredTower implements Cloneable {
     public void activateFirstMovingFinish() {
         final MazeObjectModel obj = this.getCell(this.getFirstMovingFinishX(),
                 this.getFirstMovingFinishY(), this.getFirstMovingFinishZ(),
-                MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
             mf.activate();
@@ -1204,8 +1206,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        if (e == MazeConstants.LAYER_GROUND) {
+                    for (e = 0; e < Layers.COUNT; e++) {
+                        if (e == Layers.GROUND) {
                             this.setCell(bottom, y, x, z, e);
                         } else {
                             this.setCell(top, y, x, z, e);
@@ -1221,8 +1223,8 @@ class LayeredTower implements Cloneable {
         int x, y, e;
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
-                for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                    if (e == MazeConstants.LAYER_GROUND) {
+                for (e = 0; e < Layers.COUNT; e++) {
+                    if (e == Layers.GROUND) {
                         this.setCell(bottom, y, x, z, e);
                     } else {
                         this.setCell(top, y, x, z, e);
@@ -1255,7 +1257,7 @@ class LayeredTower implements Cloneable {
         // Pass 2
         final int columns = this.getColumns();
         final int rows = this.getRows();
-        for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+        for (e = 0; e < Layers.COUNT; e++) {
             final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
                     .getAllWithoutPrerequisiteAndNotRequired(e);
             if (objectsWithoutPrerequisites != null) {
@@ -1276,7 +1278,7 @@ class LayeredTower implements Cloneable {
             }
         }
         // Pass 3
-        for (int layer = 0; layer < MazeConstants.LAYER_COUNT; layer++) {
+        for (int layer = 0; layer < Layers.COUNT; layer++) {
             final MazeObjectModel[] requiredObjects = GameObjects.getAllRequired(layer);
             if (requiredObjects != null) {
                 final RandomRange row = new RandomRange(0, this.getRows() - 1);
@@ -1343,7 +1345,7 @@ class LayeredTower implements Cloneable {
         final int columns = this.getColumns();
         final int rows = this.getRows();
         if (withoutRuleSets != null) {
-            for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+            for (e = 0; e < Layers.COUNT; e++) {
                 final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withoutRuleSets, e);
@@ -1369,7 +1371,7 @@ class LayeredTower implements Cloneable {
                 }
             }
             // Pass 3
-            for (int layer = 0; layer < MazeConstants.LAYER_COUNT; layer++) {
+            for (int layer = 0; layer < Layers.COUNT; layer++) {
                 final MazeObjectModel[] requiredObjects = GameObjects
                         .getAllRequiredSubset(withoutRuleSets, layer);
                 if (requiredObjects != null) {
@@ -1425,7 +1427,7 @@ class LayeredTower implements Cloneable {
         }
         if (withRuleSets != null) {
             // Pass N + 2
-            for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+            for (e = 0; e < Layers.COUNT; e++) {
                 final MazeObjectModel[] objectsWithoutPrerequisites = GameObjects
                         .getAllWithoutPrerequisiteAndNotRequiredSubset(
                                 withRuleSets, e);
@@ -1450,7 +1452,7 @@ class LayeredTower implements Cloneable {
                 }
             }
             // Pass N + 3
-            for (int layer = 0; layer < MazeConstants.LAYER_COUNT; layer++) {
+            for (int layer = 0; layer < Layers.COUNT; layer++) {
                 final MazeObjectModel[] requiredObjects = GameObjects
                         .getAllRequiredSubset(withRuleSets, layer);
                 if (requiredObjects != null) {
@@ -1515,9 +1517,9 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         if (this.getCell(y, x, z, e) == null) {
-                            if (e == MazeConstants.LAYER_GROUND) {
+                            if (e == Layers.GROUND) {
                                 this.setCell(bottom, y, x, z, e);
                             } else {
                                 this.setCell(top, y, x, z, e);
@@ -1534,7 +1536,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         this.savedTowerState.setDataCell(
                                 this.getCell(y, x, z, e), x, y, z, e);
                     }
@@ -1548,7 +1550,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         this.setCell(
                                 this.savedTowerState.getDataCell(x, y, z, e), y,
                                 x, z, e);
@@ -1566,16 +1568,16 @@ class LayeredTower implements Cloneable {
                 .getPlayerManager().getPlayerLocationZ();
         try {
             final MazeObjectModel there = this.getCell(xLoc + dirMove[0],
-                    yLoc + dirMove[1], zLoc, MazeConstants.LAYER_OBJECT);
+                    yLoc + dirMove[1], zLoc, Layers.OBJECT);
             final MazeObjectModel ground = this.getCell(xLoc + dirMove[0],
-                    yLoc + dirMove[1], zLoc, MazeConstants.LAYER_GROUND);
+                    yLoc + dirMove[1], zLoc, Layers.GROUND);
             if (!there.isSolid() && !there.getName().equals("Player")) {
                 this.setCell(block.getSavedObject(), xLoc, yLoc, zLoc,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 // Move the block
                 block.setSavedObject(there);
                 this.setCell(block, xLoc + dirMove[0], yLoc + dirMove[1], zLoc,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
                 // Does the ground have friction?
                 if (!ground.hasFriction()) {
                     // No - move the block again
@@ -1596,26 +1598,26 @@ class LayeredTower implements Cloneable {
         randomRow = row.generate();
         randomColumn = column.generate();
         final MazeObjectModel currObj = this.getCell(randomRow, randomColumn, z,
-                MazeConstants.LAYER_OBJECT);
+                Layers.OBJECT);
         if (!currObj.isSolid()) {
             this.setCell(new Empty(), x, y, z, l);
             this.setCell(mo, randomRow, randomColumn, z,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
         } else {
             while (currObj.isSolid()) {
                 randomRow = row.generate();
                 randomColumn = column.generate();
                 this.getCell(randomRow, randomColumn, z,
-                        MazeConstants.LAYER_OBJECT);
+                        Layers.OBJECT);
             }
             this.setCell(new Empty(), x, y, z, l);
             this.setCell(mo, randomRow, randomColumn, z,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
         }
     }
 
     public void hotGround(final int x, final int y, final int z) {
-        this.setCell(new HotRock(), x, y, z, MazeConstants.LAYER_GROUND);
+        this.setCell(new HotRock(), x, y, z, Layers.GROUND);
     }
 
     public final String getTimeString() {
@@ -1678,7 +1680,7 @@ class LayeredTower implements Cloneable {
     private static MazeObjectModel[][][] shuffleObjects(
             final MazeObjectModel[][][] preShuffle, final int r) {
         final MazeObjectModel[][][] postShuffle = new MazeObjectModel[2 * r + 1][2 * r
-                + 1][MazeConstants.LAYER_COUNT];
+                + 1][Layers.COUNT];
         int[][] randomLocations = new int[(2 * r + 1) * (2 * r + 1)][2];
         // Populate randomLocations array
         int counter = 0;
@@ -1700,7 +1702,7 @@ class LayeredTower implements Cloneable {
         counter = 0;
         for (int x = 0; x < preShuffle.length; x++) {
             for (int y = 0; y < preShuffle[x].length; y++) {
-                for (int z = 0; z < MazeConstants.LAYER_COUNT; z++) {
+                for (int z = 0; z < Layers.COUNT; z++) {
                     if (preShuffle[x][y][z] == null) {
                         postShuffle[x][y][z] = null;
                     } else {
@@ -1829,7 +1831,7 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < this.getColumns(); x++) {
             for (y = 0; y < this.getRows(); y++) {
                 for (z = 0; z < this.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
+                    for (e = 0; e < Layers.COUNT; e++) {
                         this.getCell(y, x, z, e).writeMazeObjectXML(writer);
                     }
                 }
@@ -1876,8 +1878,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        
+                    for (e = 0; e < Layers.COUNT; e++) {
+
                         lt.setCell(
                                 GameObjects
                                         .readObject(reader, ver),
@@ -1918,8 +1920,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        
+                    for (e = 0; e < Layers.COUNT; e++) {
+
                         lt.setCell(
                                 GameObjects
                                         .readObject(reader, ver),
@@ -1965,8 +1967,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        
+                    for (e = 0; e < Layers.COUNT; e++) {
+
                         lt.setCell(
                                 GameObjects
                                         .readObject(reader, ver),
@@ -2012,8 +2014,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        
+                    for (e = 0; e < Layers.COUNT; e++) {
+
                         lt.setCell(
                                 GameObjects
                                         .readObject(reader, ver),
@@ -2064,8 +2066,8 @@ class LayeredTower implements Cloneable {
         for (x = 0; x < lt.getColumns(); x++) {
             for (y = 0; y < lt.getRows(); y++) {
                 for (z = 0; z < lt.getFloors(); z++) {
-                    for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        
+                    for (e = 0; e < Layers.COUNT; e++) {
+
                         lt.setCell(
                                 GameObjects
                                         .readObject(reader, ver),

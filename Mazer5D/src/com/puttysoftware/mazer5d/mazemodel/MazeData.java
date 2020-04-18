@@ -8,6 +8,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.GameObjects;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;

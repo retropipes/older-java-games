@@ -10,10 +10,10 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 
 public class Water extends GenericField {
     // Constructors
@@ -41,9 +41,9 @@ public class Water extends GenericField {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,
-                    MazeConstants.LAYER_GROUND);
+                    Layers.GROUND);
             app.getGameManager().morph(new Empty(), x, y, z,
-                    MazeConstants.LAYER_OBJECT);
+                    Layers.OBJECT);
             SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
         }
     }

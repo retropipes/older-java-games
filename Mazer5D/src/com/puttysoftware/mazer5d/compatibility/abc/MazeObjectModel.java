@@ -12,13 +12,13 @@ import java.util.BitSet;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -799,7 +799,7 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     @Override
     public boolean shouldGenerateObject(final MazeModel maze, final int row,
             final int col, final int floor, final int level, final int layer) {
-        if (layer == MazeConstants.LAYER_OBJECT) {
+        if (layer == Layers.OBJECT) {
             // Handle object layer
             if (!this.isOfType(TypeConstants.TYPE_PASS_THROUGH)) {
                 // Limit generation of other objects to 20%, unless required
