@@ -19,7 +19,7 @@ import com.puttysoftware.help.GraphicalHelpViewer;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
@@ -27,7 +27,6 @@ public class ObjectHelpManager {
     // Fields
     private JFrame helpFrame;
     private JButton export;
-    private MazeObjectList objectList;
     private String[] objectNames;
     private BufferedImageIcon[] objectAppearances;
     GraphicalHelpViewer hv;
@@ -48,9 +47,8 @@ public class ObjectHelpManager {
     private void initHelp() {
         if (!this.inited) {
             this.buttonHandler = new ButtonHandler();
-            this.objectList = Mazer5D.getBagOStuff().getObjects();
-            this.objectNames = this.objectList.getAllDescriptions();
-            this.objectAppearances = this.objectList.getAllEditorAppearances();
+            this.objectNames = GameObjects.getAllDescriptions();
+            this.objectAppearances = GameObjects.getAllEditorAppearances();
             this.hv = new GraphicalHelpViewer(this.objectAppearances,
                     this.objectNames, new Color(223, 223, 223));
             this.export = new JButton("Export");

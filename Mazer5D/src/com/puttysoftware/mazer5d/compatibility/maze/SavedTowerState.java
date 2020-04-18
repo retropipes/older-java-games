@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.maze;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -82,8 +82,7 @@ class SavedTowerState implements Cloneable {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        sts.saveData[x][y][z][e] = Mazer5D.getBagOStuff()
-                                .getObjects()
+                        sts.saveData[x][y][z][e] = GameObjects
                                 .readMazeObjectXML(reader, formatVersion);
                     }
                 }

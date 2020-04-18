@@ -13,7 +13,6 @@ import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.gui.ObjectHelpManager;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
@@ -32,7 +31,6 @@ public class BagOStuff {
     private MazeEditor editor;
     private RuleSetPicker rsPicker;
     private final GUIManager guiMgr;
-    private final MazeObjectList objects;
     private boolean IN_GUI, IN_PREFS, IN_GAME, IN_EDITOR;
     private static final int VERSION_MAJOR = 9;
     private static final int VERSION_MINOR = 0;
@@ -46,7 +44,6 @@ public class BagOStuff {
 
     // Constructors
     public BagOStuff(final NativeIntegration ni) {
-        this.objects = new MazeObjectList();
         this.about = new AboutDialog(this.getVersionString());
         this.guiMgr = new GUIManager();
         this.oHelpMgr = new ObjectHelpManager();
@@ -167,14 +164,12 @@ public class BagOStuff {
 
     private String getVersionString() {
         if (this.isBetaModeEnabled()) {
-            return "" + BagOStuff.VERSION_MAJOR + "."
-                    + BagOStuff.VERSION_MINOR + "."
-                    + BagOStuff.VERSION_BUGFIX + "b"
+            return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR
+                    + "." + BagOStuff.VERSION_BUGFIX + "b"
                     + BagOStuff.VERSION_BETA;
         } else {
-            return "" + BagOStuff.VERSION_MAJOR + "."
-                    + BagOStuff.VERSION_MINOR + "."
-                    + BagOStuff.VERSION_BUGFIX;
+            return "" + BagOStuff.VERSION_MAJOR + "." + BagOStuff.VERSION_MINOR
+                    + "." + BagOStuff.VERSION_BUGFIX;
         }
     }
 
@@ -194,10 +189,6 @@ public class BagOStuff {
         } catch (final NullPointerException npe) {
             return null;
         }
-    }
-
-    public MazeObjectList getObjects() {
-        return this.objects;
     }
 
     public boolean isBetaModeEnabled() {

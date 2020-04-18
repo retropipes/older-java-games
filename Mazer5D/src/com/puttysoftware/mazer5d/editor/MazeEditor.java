@@ -33,7 +33,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
@@ -89,7 +89,6 @@ public class MazeEditor {
     private final MazePrefs mPrefs;
     private PicturePicker picker;
     private final PicturePicker treasurePicker;
-    private final MazeObjectList objectList;
     private final String[] groundNames;
     private final String[] objectNames;
     private final MazeObjectModel[] groundObjects;
@@ -143,20 +142,19 @@ public class MazeEditor {
         this.thandler = new TeleportEventHandler();
         this.cthandler = new ConditionalTeleportEventHandler();
         this.engine = new UndoRedoEngine();
-        this.objectList = Mazer5D.getBagOStuff().getObjects();
         this.rhandler = new TreasureEventHandler();
-        this.groundNames = this.objectList.getAllGroundLayerNames();
-        this.objectNames = this.objectList.getAllObjectLayerNames();
-        this.groundObjects = this.objectList.getAllGroundLayerObjects();
-        this.objectObjects = this.objectList.getAllObjectLayerObjects();
-        this.groundEditorAppearances = this.objectList
+        this.groundNames = GameObjects.getAllGroundLayerNames();
+        this.objectNames = GameObjects.getAllObjectLayerNames();
+        this.groundObjects = GameObjects.getAllGroundLayerObjects();
+        this.objectObjects = GameObjects.getAllObjectLayerObjects();
+        this.groundEditorAppearances = GameObjects
                 .getAllGroundLayerEditorAppearances();
-        this.objectEditorAppearances = this.objectList
+        this.objectEditorAppearances = GameObjects
                 .getAllObjectLayerEditorAppearances();
         // Set up treasure picker
-        this.containableNames = this.objectList.getAllContainableNames();
-        this.containableObjects = this.objectList.getAllContainableObjects();
-        this.containableEditorAppearances = this.objectList
+        this.containableNames = GameObjects.getAllContainableNames();
+        this.containableObjects = GameObjects.getAllContainableObjects();
+        this.containableEditorAppearances = GameObjects
                 .getAllContainableObjectEditorAppearances();
         this.treasureFrame = new JFrame("Treasure Chest Contents");
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
@@ -194,8 +192,8 @@ public class MazeEditor {
         this.elMgr.offsetEditorLocationZ(z);
         if (w != 0) {
             // Level Change
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .switchLevelOffset(w);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().switchLevelOffset(
+                    w);
             this.fixLimits();
             this.setUpGUI();
         }
@@ -212,8 +210,8 @@ public class MazeEditor {
         this.elMgr.setEditorLocationZ(z);
         if (w != oldW) {
             // Level Change
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .switchLevelOffset(w);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().switchLevelOffset(
+                    w);
             this.fixLimits();
             this.setUpGUI();
         }
@@ -459,8 +457,8 @@ public class MazeEditor {
             choices = this.objectObjects;
         }
         final MazeObjectModel mo = choices[this.currentObjectIndex];
-        final MazeObjectModel instance = app.getObjects().getNewInstanceByName(mo
-                .getName());
+        
+        final MazeObjectModel instance = GameObjects.createObject(mo.getName());
         this.elMgr.setEditorLocationX(gridX);
         this.elMgr.setEditorLocationY(gridY);
         mo.editorPlaceHook();
@@ -496,8 +494,8 @@ public class MazeEditor {
         final int gridY = y / ObjectImageManager.getObjectImageSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(gridX,
-                    gridY, this.elMgr.getEditorLocationZ(), this.elMgr
+            final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(
+                    gridX, gridY, this.elMgr.getEditorLocationZ(), this.elMgr
                             .getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
@@ -521,8 +519,8 @@ public class MazeEditor {
         final int gridY = y / ObjectImageManager.getObjectImageSize()
                 + this.evMgr.getViewingWindowLocationY() + xOffset - yOffset;
         try {
-            final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(gridX,
-                    gridY, this.elMgr.getEditorLocationZ(), this.elMgr
+            final MazeObjectModel mo = app.getMazeManager().getMaze().getCell(
+                    gridX, gridY, this.elMgr.getEditorLocationZ(), this.elMgr
                             .getEditorLocationE());
             this.elMgr.setEditorLocationX(gridX);
             this.elMgr.setEditorLocationY(gridY);
@@ -559,9 +557,9 @@ public class MazeEditor {
 
     private void checkStairPair(final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(this.elMgr
-                .getEditorLocationX(), this.elMgr.getEditorLocationY(), z,
-                MazeConstants.LAYER_OBJECT);
+        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(
+                this.elMgr.getEditorLocationX(), this.elMgr
+                        .getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
@@ -595,9 +593,9 @@ public class MazeEditor {
 
     private void reverseCheckStairPair(final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(this.elMgr
-                .getEditorLocationX(), this.elMgr.getEditorLocationY(), z,
-                MazeConstants.LAYER_OBJECT);
+        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(
+                this.elMgr.getEditorLocationX(), this.elMgr
+                        .getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2, name3;
         try {
@@ -715,9 +713,9 @@ public class MazeEditor {
 
     private void checkTwoWayTeleportPair(final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(this.elMgr
-                .getEditorLocationX(), this.elMgr.getEditorLocationY(), z,
-                MazeConstants.LAYER_OBJECT);
+        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(
+                this.elMgr.getEditorLocationX(), this.elMgr
+                        .getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2;
         int destX, destY, destZ;
@@ -726,8 +724,8 @@ public class MazeEditor {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final MazeObjectModel mo2 = app.getMazeManager().getMaze().getCell(destX,
-                    destY, destZ, MazeConstants.LAYER_OBJECT);
+            final MazeObjectModel mo2 = app.getMazeManager().getMaze().getCell(
+                    destX, destY, destZ, MazeConstants.LAYER_OBJECT);
             name2 = mo2.getName();
             if (name2.equals("Two-Way Teleport")) {
                 MazeEditor.unpairTwoWayTeleport(destX, destY, destZ);
@@ -737,9 +735,9 @@ public class MazeEditor {
 
     private void reverseCheckTwoWayTeleportPair(final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(this.elMgr
-                .getEditorLocationX(), this.elMgr.getEditorLocationY(), z,
-                MazeConstants.LAYER_OBJECT);
+        final MazeObjectModel mo1 = app.getMazeManager().getMaze().getCell(
+                this.elMgr.getEditorLocationX(), this.elMgr
+                        .getEditorLocationY(), z, MazeConstants.LAYER_OBJECT);
         final String name1 = mo1.getName();
         String name2;
         int destX, destY, destZ;
@@ -748,8 +746,8 @@ public class MazeEditor {
             destX = twt.getDestinationRow();
             destY = twt.getDestinationColumn();
             destZ = twt.getDestinationFloor();
-            final MazeObjectModel mo2 = app.getMazeManager().getMaze().getCell(destX,
-                    destY, destZ, MazeConstants.LAYER_OBJECT);
+            final MazeObjectModel mo2 = app.getMazeManager().getMaze().getCell(
+                    destX, destY, destZ, MazeConstants.LAYER_OBJECT);
             name2 = mo2.getName();
             if (!name2.equals("Two-Way Teleport")) {
                 this.pairTwoWayTeleport(destX, destY, destZ);
@@ -947,8 +945,7 @@ public class MazeEditor {
     }
 
     public MazeObjectModel editMetalButtonTarget() {
-        Mazer5D.getBagOStuff().showMessage(
-                "Click to set metal button target");
+        Mazer5D.getBagOStuff().showMessage("Click to set metal button target");
         final BagOStuff app = Mazer5D.getBagOStuff();
         this.horzScroll.removeAdjustmentListener(this.mhandler);
         this.vertScroll.removeAdjustmentListener(this.mhandler);
@@ -1421,8 +1418,8 @@ public class MazeEditor {
     public void fillFloor() {
         if (this.confirmNonUndoable(
                 "overwrite the active floor within the active level with default data")) {
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .fillFloorDefault(this.elMgr.getEditorLocationZ());
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().fillFloorDefault(
+                    this.elMgr.getEditorLocationZ());
             Mazer5D.getBagOStuff().showMessage("Floor filled.");
             Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
             this.redrawEditor();
@@ -1739,8 +1736,8 @@ public class MazeEditor {
                     + this.evMgr.getViewingWindowLocationY() + xOffset
                     - yOffset;
             final int locZ = this.elMgr.getEditorLocationZ();
-            final MazeObjectModel there = Mazer5D.getBagOStuff().getMazeManager()
-                    .getMazeObject(locX, locY, locZ,
+            final MazeObjectModel there = Mazer5D.getBagOStuff()
+                    .getMazeManager().getMazeObject(locX, locY, locZ,
                             MazeConstants.LAYER_OBJECT);
             if (there instanceof GenericTeleport) {
                 final GenericTeleport gt = (GenericTeleport) there;
@@ -1886,8 +1883,8 @@ public class MazeEditor {
         this.elMgr.setEditorLocationY(y);
         this.elMgr.setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            final MazeObjectModel oldObj = app.getMazeManager().getMazeObject(x, y,
-                    z, e);
+            final MazeObjectModel oldObj = app.getMazeManager().getMazeObject(x,
+                    y, z, e);
             if (!obj.getName().equals(new StairsUp().getName()) && !obj
                     .getName().equals(new StairsDown().getName())) {
                 if (obj.getName().equals(new TwoWayTeleport().getName())) {
@@ -1924,8 +1921,8 @@ public class MazeEditor {
         this.elMgr.setEditorLocationY(y);
         this.elMgr.setCameFromZ(z);
         if (x != -1 && y != -1 && z != -1 && w != -1) {
-            final MazeObjectModel oldObj = app.getMazeManager().getMazeObject(x, y,
-                    z, e);
+            final MazeObjectModel oldObj = app.getMazeManager().getMazeObject(x,
+                    y, z, e);
             if (!obj.getName().equals(new StairsUp().getName()) && !obj
                     .getName().equals(new StairsDown().getName())) {
                 if (obj.getName().equals(new TwoWayTeleport().getName())) {

@@ -7,11 +7,10 @@ package com.puttysoftware.mazer5d.game;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Bow;
@@ -35,9 +34,8 @@ public final class ObjectInventory implements Cloneable {
 
     // Constructors
     public ObjectInventory() {
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        this.nameList = list.getAllInventoryableNamesMinusSpecial();
-        this.bowNameList = list.getAllBowNames();
+        this.nameList = GameObjects.getAllInventoryableNamesMinusSpecial();
+        this.bowNameList = GameObjects.getAllBowNames();
         this.contents = new int[this.nameList.length];
         this.uses = new int[this.nameList.length];
         this.bows = new int[this.bowNameList.length];
@@ -124,8 +122,7 @@ public final class ObjectInventory implements Cloneable {
     }
 
     public boolean isItemCategoryThere(final int cat) {
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        final MazeObjectModel[] objects = list
+        final MazeObjectModel[] objects = GameObjects
                 .getAllInventoryableObjectsMinusSpecial();
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(cat) && this.contents[x] > 0) {
@@ -230,8 +227,7 @@ public final class ObjectInventory implements Cloneable {
     }
 
     public String[] generateUseStringArray() {
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        final String[] names = list.getAllUsableNamesMinusSpecial();
+        final String[] names = GameObjects.getAllUsableNamesMinusSpecial();
         final int len = names.length;
         StringBuilder sb;
         final String[] result = new String[len];
@@ -250,8 +246,7 @@ public final class ObjectInventory implements Cloneable {
     }
 
     public String[] generateBowStringArray() {
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        final String[] names = list.getAllBowNames();
+        final String[] names = GameObjects.getAllBowNames();
         final int len = names.length;
         StringBuilder sb;
         final String[] result = new String[len];
@@ -470,14 +465,13 @@ public final class ObjectInventory implements Cloneable {
 
     public static ObjectInventory readInventoryXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectList objects = Mazer5D.getBagOStuff().getObjects();
         final ObjectInventory i = new ObjectInventory();
-        i.boots = (GenericBoots) objects.readMazeObjectXML(reader,
+        i.boots = (GenericBoots) GameObjects.readMazeObjectXML(reader,
                 formatVersion);
         if (i.boots == null) {
             i.boots = ObjectInventory.DEFAULT_BOOTS;
         }
-        i.amulet = (GenericAmulet) objects.readMazeObjectXML(reader,
+        i.amulet = (GenericAmulet) GameObjects.readMazeObjectXML(reader,
                 formatVersion);
         if (i.amulet == null) {
             i.amulet = ObjectInventory.DEFAULT_AMULET;

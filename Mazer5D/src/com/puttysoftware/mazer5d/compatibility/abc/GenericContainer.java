@@ -53,8 +53,8 @@ public abstract class GenericContainer extends GenericLock {
             return false;
         }
         final GenericContainer other = (GenericContainer) obj;
-        if (this.inside != other.inside
-                && (this.inside == null || !this.inside.equals(other.inside))) {
+        if (this.inside != other.inside && (this.inside == null || !this.inside
+                .equals(other.inside))) {
             return false;
         }
         return true;
@@ -78,9 +78,9 @@ public abstract class GenericContainer extends GenericLock {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (!app.getGameManager()
-                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
-                && !inv.isItemThere(new PasswallBoots())) {
+        if (!app.getGameManager().isEffectActive(
+                MazeEffectConstants.EFFECT_GHOSTLY) && !inv.isItemThere(
+                        new PasswallBoots())) {
             if (!this.getKey().isInfinite()) {
                 inv.removeItem(this.getKey());
             }
@@ -93,8 +93,8 @@ public abstract class GenericContainer extends GenericLock {
             }
             SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
             app.getGameManager().backUpPlayer();
-            Mazer5D.getBagOStuff().getGameManager()
-                    .addToScore(GenericLock.SCORE_UNLOCK);
+            Mazer5D.getBagOStuff().getGameManager().addToScore(
+                    GenericLock.SCORE_UNLOCK);
         } else {
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
@@ -103,11 +103,11 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     public void editorProbeHook() {
         if (!this.inside.getName().equals("Empty")) {
-            Mazer5D.getBagOStuff().showMessage(
-                    this.getName() + ": Contains " + this.inside.getName());
+            Mazer5D.getBagOStuff().showMessage(this.getName() + ": Contains "
+                    + this.inside.getName());
         } else {
-            Mazer5D.getBagOStuff()
-                    .showMessage(this.getName() + ": Contains Nothing");
+            Mazer5D.getBagOStuff().showMessage(this.getName()
+                    + ": Contains Nothing");
         }
     }
 
@@ -124,8 +124,7 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectList objectList = Mazer5D.getBagOStuff().getObjects();
-        this.inside = objectList.readMazeObjectXML(reader, formatVersion);
+        this.inside = GameObjects.readMazeObjectXML(reader, formatVersion);
         return this;
     }
 

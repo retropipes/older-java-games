@@ -103,7 +103,8 @@ public abstract class GenericCharacter extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = Mazer5D.getBagOStuff().getObjects()
+        
+        this.savedObject = GameObjects
                 .readMazeObjectXML(reader, formatVersion);
         return this;
     }

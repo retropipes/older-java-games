@@ -34,10 +34,10 @@ import com.puttysoftware.mazer5d.assets.MusicIndex;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.MazeManager;
@@ -125,7 +125,8 @@ public class GameManager implements MazeEffectConstants {
         this.setUsingAnItem(false);
         this.savedMazeObject = new Empty();
         this.lastUsedObjectIndex = 0;
-        this.lastUsedBowIndex = Mazer5D.getBagOStuff().getObjects()
+        
+        this.lastUsedBowIndex = GameObjects
                 .getAllBowNames().length - 1;
         this.knm = false;
         this.savedGameFlag = false;
@@ -1614,8 +1615,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void showUseDialog() {
         int x;
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        final MazeObjectModel[] choices = list.getAllUsableObjects();
+        final MazeObjectModel[] choices = GameObjects.getAllUsableObjects();
         final String[] userChoices = this.objectInv.generateUseStringArray();
         final String result = CommonDialogs.showInputDialog("Use which item?",
                 "Mazer5D", userChoices, userChoices[this.lastUsedObjectIndex]);
@@ -1642,8 +1642,7 @@ public class GameManager implements MazeEffectConstants {
 
     public void showSwitchBowDialog() {
         int x;
-        final MazeObjectList list = Mazer5D.getBagOStuff().getObjects();
-        final MazeObjectModel[] choices = list.getAllBows();
+        final MazeObjectModel[] choices = GameObjects.getAllBows();
         final String[] userChoices = this.objectInv.generateBowStringArray();
         final String result = CommonDialogs.showInputDialog(
                 "Switch to which bow?", "Mazer5D", userChoices,

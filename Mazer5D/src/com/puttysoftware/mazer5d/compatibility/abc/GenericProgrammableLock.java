@@ -111,9 +111,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeObjectList objects = Mazer5D.getBagOStuff().getObjects();
-        final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
-        final MazeObjectModel[] tempKeys = objects.getAllProgrammableKeys();
+        final String[] tempKeyNames = GameObjects.getAllProgrammableKeyNames();
+        final MazeObjectModel[] tempKeys = GameObjects.getAllProgrammableKeys();
         final String[] keyNames = new String[tempKeyNames.length + 1];
         final MazeObjectModel[] keys = new MazeObjectModel[tempKeys.length + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
@@ -150,7 +149,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectModel o = Mazer5D.getBagOStuff().getObjects()
+        
+        final MazeObjectModel o = GameObjects
                 .readMazeObjectXML(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);

@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.xio.XDataReader;
@@ -33,8 +34,9 @@ public class XMLRuleSetLoadTask extends Thread {
                 "ruleset")) {
             final int magic = ruleSetFile.readInt();
             if (magic == RuleSetConstants.MAGIC_NUMBER_2) {
+                
                 // Format 2 file
-                app.getObjects().readRuleSetXML(ruleSetFile,
+                GameObjects.readRuleSetXML(ruleSetFile,
                         RuleSetConstants.FORMAT_2);
             }
             ruleSetFile.close();
