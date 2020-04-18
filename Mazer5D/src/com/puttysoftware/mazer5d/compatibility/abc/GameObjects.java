@@ -807,7 +807,7 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel readMazeObjectXML(final XDataReader reader,
+    public static MazeObjectModel readObject(final XDataReader reader,
             final int formatVersion) throws IOException {
         MazeObjectModel o = null;
         String UID = "";
@@ -849,7 +849,7 @@ public class GameObjects {
         return null;
     }
 
-    public static void readRuleSetXML(final XDataReader reader,
+    public static void readRuleSet(final XDataReader reader,
             final int rsFormat) throws IOException {
         // Read map length
         final int mapLen = reader.readInt();
@@ -868,7 +868,7 @@ public class GameObjects {
         }
     }
 
-    public static void writeRuleSetXML(final XDataWriter writer)
+    public static void writeRuleSet(final XDataWriter writer)
             throws IOException {
         final boolean[] map = GameObjects.generateMap();
         // Write map length

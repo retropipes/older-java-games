@@ -70,7 +70,7 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = GameObjects.readMazeObjectXML(reader, formatVersion);
+        this.savedObject = GameObjects.readObject(reader, formatVersion);
         return this;
     }
 }

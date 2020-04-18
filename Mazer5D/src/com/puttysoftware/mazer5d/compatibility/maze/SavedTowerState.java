@@ -83,7 +83,7 @@ class SavedTowerState implements Cloneable {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
                         sts.saveData[x][y][z][e] = GameObjects
-                                .readMazeObjectXML(reader, formatVersion);
+                                .readObject(reader, formatVersion);
                     }
                 }
             }

@@ -105,7 +105,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
             final int formatVersion) throws IOException {
         
         this.savedObject = GameObjects
-                .readMazeObjectXML(reader, formatVersion);
+                .readObject(reader, formatVersion);
         return this;
     }
 }

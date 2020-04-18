@@ -151,7 +151,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             final int formatVersion) throws IOException {
         
         final MazeObjectModel o = GameObjects
-                .readMazeObjectXML(reader, formatVersion);
+                .readObject(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);
         } else {

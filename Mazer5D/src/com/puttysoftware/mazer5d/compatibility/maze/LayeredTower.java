@@ -1880,7 +1880,7 @@ class LayeredTower implements Cloneable {
                         
                         lt.setCell(
                                 GameObjects
-                                        .readMazeObjectXML(reader, ver),
+                                        .readObject(reader, ver),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;
@@ -1922,7 +1922,7 @@ class LayeredTower implements Cloneable {
                         
                         lt.setCell(
                                 GameObjects
-                                        .readMazeObjectXML(reader, ver),
+                                        .readObject(reader, ver),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;
@@ -1969,7 +1969,7 @@ class LayeredTower implements Cloneable {
                         
                         lt.setCell(
                                 GameObjects
-                                        .readMazeObjectXML(reader, ver),
+                                        .readObject(reader, ver),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;
@@ -2016,7 +2016,7 @@ class LayeredTower implements Cloneable {
                         
                         lt.setCell(
                                 GameObjects
-                                        .readMazeObjectXML(reader, ver),
+                                        .readObject(reader, ver),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;
@@ -2068,7 +2068,7 @@ class LayeredTower implements Cloneable {
                         
                         lt.setCell(
                                 GameObjects
-                                        .readMazeObjectXML(reader, ver),
+                                        .readObject(reader, ver),
                                 y, x, z, e);
                         if (lt.getCell(y, x, z, e) == null) {
                             return null;

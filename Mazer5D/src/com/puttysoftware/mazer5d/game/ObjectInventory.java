@@ -466,12 +466,12 @@ public final class ObjectInventory implements Cloneable {
     public static ObjectInventory readInventoryXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         final ObjectInventory i = new ObjectInventory();
-        i.boots = (GenericBoots) GameObjects.readMazeObjectXML(reader,
+        i.boots = (GenericBoots) GameObjects.readObject(reader,
                 formatVersion);
         if (i.boots == null) {
             i.boots = ObjectInventory.DEFAULT_BOOTS;
         }
-        i.amulet = (GenericAmulet) GameObjects.readMazeObjectXML(reader,
+        i.amulet = (GenericAmulet) GameObjects.readObject(reader,
                 formatVersion);
         if (i.amulet == null) {
             i.amulet = ObjectInventory.DEFAULT_AMULET;

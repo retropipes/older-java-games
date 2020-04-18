@@ -124,7 +124,7 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.inside = GameObjects.readMazeObjectXML(reader, formatVersion);
+        this.inside = GameObjects.readObject(reader, formatVersion);
         return this;
     }
 

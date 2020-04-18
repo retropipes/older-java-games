@@ -36,7 +36,7 @@ public class XMLRuleSetSaveTask extends Thread {
                 "ruleset")) {
             ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
 
-            GameObjects.writeRuleSetXML(ruleSetFile);
+            GameObjects.writeRuleSet(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");
         } catch (final IOException e) {
