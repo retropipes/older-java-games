@@ -9,7 +9,7 @@ import java.util.Objects;
 
 import com.puttysoftware.images.BufferedImageIcon;
 
-public abstract class GameObject implements ObjectModel {
+abstract class GameObject implements ObjectModel {
     // Properties
     private final int uniqueID;
     private final Tile tile;

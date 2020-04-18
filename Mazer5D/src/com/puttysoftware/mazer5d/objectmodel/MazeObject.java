@@ -15,7 +15,7 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public final class MazeObject extends GameObject implements MazeObjectModel {
+final class MazeObject extends GameObject implements MazeObjectModel {
     // Properties
     private MazeObjectModel savedObject = null;
 
@@ -152,16 +152,17 @@ public final class MazeObject extends GameObject implements MazeObjectModel {
     public final MazeObjectModel readObject(final XDataReader reader,
             final int uid) throws IOException {
         if (uid == this.getUniqueID()) {
-            // final int savedIdent = reader.readInt();
-            // if (savedIdent != -1) {
-            // this.savedObject = GameObjects.readSavedObject(reader,
-            // savedIdent, MazeVersions.LATEST);
-            // }
-            // final int cc = this.customCountersLength();
-            // for (int x = 0; x < cc; x++) {
-            // final int cx = reader.readInt();
-            // this.setCustomCounter(x, cx);
-            // }
+            final int savedIdent = reader.readInt();
+            if (savedIdent != -1) {
+                this.savedObject = new MazeObject(savedIdent);
+                this.savedObject = this.savedObject.readObject(reader,
+                        savedIdent);
+            }
+            final int cc = this.customCountersLength();
+            for (int x = 0; x < cc; x++) {
+                final int cx = reader.readInt();
+                this.setCustomCounter(x, cx);
+            }
             return this;
         } else {
             return null;
