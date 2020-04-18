@@ -35,7 +35,7 @@ class StatGUI {
     }
 
     public void updateStats() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         this.hpLabel.setText(m.getHPString());
         this.poisonLabel.setText(m.getPoisonString());
         this.timeLabel.setText(m.getTimeString());

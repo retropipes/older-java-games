@@ -23,7 +23,7 @@ public class RedLock extends GenericSingleLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getApplication().showMessage("You need a red key");
+            Mazer5D.getBagOStuff().showMessage("You need a red key");
         }
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }

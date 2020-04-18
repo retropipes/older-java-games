@@ -66,9 +66,9 @@ public abstract class GenericButton extends MazeObjectModel {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .findAllObjectPairsAndSwap(this.offState, this.onState);
-        Mazer5D.getApplication().getGameManager().redrawMazeNoRebuild();
+        Mazer5D.getBagOStuff().getGameManager().redrawMazeNoRebuild();
         SoundPlayer.playSound(SoundIndex.BUTTON, SoundGroup.GAME);
     }
 

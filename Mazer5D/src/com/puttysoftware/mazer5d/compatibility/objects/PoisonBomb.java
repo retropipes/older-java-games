@@ -44,7 +44,7 @@ public class PoisonBomb extends GenericUsableObject {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
         // Stop arrow
         return false;
@@ -55,10 +55,10 @@ public class PoisonBomb extends GenericUsableObject {
             final int z) {
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Poison objects that react to poison
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanPoisonObjects(x, y, z, PoisonBomb.EFFECT_RADIUS);
         // Poison the ground, too
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanPoisonGround(x, y, z, PoisonBomb.EFFECT_RADIUS);
     }
 

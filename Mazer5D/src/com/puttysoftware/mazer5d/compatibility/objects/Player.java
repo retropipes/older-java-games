@@ -28,13 +28,13 @@ public class Player extends GenericCharacter {
 
     @Override
     public void editorPlaceHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         me.setPlayerLocation();
     }
 
     @Override
     public void editorGenerateHook(final int x, final int y, final int z) {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         me.setPlayerLocation(x, y, z);
     }
 

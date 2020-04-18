@@ -43,7 +43,7 @@ public final class FileStateManager {
 
     public static void setLoaded(final boolean status) {
         FileStateManager.loaded = status;
-        Mazer5D.getApplication().getMenuManager().checkFlags();
+        Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 
     public static boolean getDirty() {
@@ -52,6 +52,6 @@ public final class FileStateManager {
 
     public static void setDirty(final boolean newDirty) {
         FileStateManager.isDirty = newDirty;
-        Mazer5D.getApplication().getMenuManager().checkFlags();
+        Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 }

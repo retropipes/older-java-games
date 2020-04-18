@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericRandomTeleport extends MazeObjectModel {
@@ -101,7 +101,7 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int dr, dc;
         do {
             dr = this.getDestinationRow();
@@ -113,13 +113,13 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(this.getName() + ": Row Radius "
+        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Row Radius "
                 + this.randomRangeY + ", Column Radius " + this.randomRangeX);
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         final MazeObjectModel mo = me
                 .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;

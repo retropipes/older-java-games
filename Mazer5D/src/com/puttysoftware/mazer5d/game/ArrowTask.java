@@ -12,8 +12,8 @@ import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.FireArrow;
@@ -22,7 +22,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.IceArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.PoisonArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.ShockArrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Wall;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ArrowTask extends Thread {
@@ -41,7 +41,7 @@ public class ArrowTask extends Thread {
     @Override
     public void run() {
         boolean res = true;
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final PlayerLocationManager plMgr = app.getGameManager()
                 .getPlayerManager();
         final ObjectInventory inv = app.getGameManager().getObjectInventory();

@@ -22,7 +22,7 @@ public class FakeFinish extends GenericPassThroughObject {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-        Mazer5D.getApplication().showMessage("Fake exit!");
+        Mazer5D.getBagOStuff().showMessage("Fake exit!");
     }
 
     @Override

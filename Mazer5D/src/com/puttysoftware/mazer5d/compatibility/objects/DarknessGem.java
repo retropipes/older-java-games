@@ -29,7 +29,7 @@ public class DarknessGem extends GenericGem {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .setVisionRadiusToMinimum();
         SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
     }

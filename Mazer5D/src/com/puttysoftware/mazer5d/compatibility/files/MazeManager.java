@@ -27,7 +27,7 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLLoadTask;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLMazeFilter;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSaveTask;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MazeManager implements OpenFilesHandler {
@@ -91,9 +91,9 @@ public class MazeManager implements OpenFilesHandler {
             this.setLoaded(true);
         }
         this.setDirty(false);
-        Mazer5D.getApplication().getGameManager().stateChanged();
-        Mazer5D.getApplication().getEditor().mazeChanged();
-        Mazer5D.getApplication().getMenuManager().checkFlags();
+        Mazer5D.getBagOStuff().getGameManager().stateChanged();
+        Mazer5D.getBagOStuff().getEditor().mazeChanged();
+        Mazer5D.getBagOStuff().getMenuManager().checkFlags();
     }
 
     public MazeObjectModel getMazeObject(final int x, final int y, final int z,
@@ -107,12 +107,12 @@ public class MazeManager implements OpenFilesHandler {
 
     public int showSaveDialog() {
         String type, source;
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final int mode = app.getMode();
-        if (mode == Application.STATUS_EDITOR) {
+        if (mode == BagOStuff.STATUS_EDITOR) {
             type = "maze";
             source = "Editor";
-        } else if (mode == Application.STATUS_GAME) {
+        } else if (mode == BagOStuff.STATUS_GAME) {
             type = "game";
             source = "Mazer5D";
         } else {
@@ -130,7 +130,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setLoaded(final boolean status) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         this.loaded = status;
         app.getMenuManager().checkFlags();
     }
@@ -140,7 +140,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public void setDirty(final boolean newDirty) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         this.isDirty = newDirty;
         final JFrame frame = app.getOutputFrame();
         if (frame != null) {
@@ -181,7 +181,7 @@ public class MazeManager implements OpenFilesHandler {
 
     @Override
     public void openFiles(final OpenFilesEvent inE) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (!this.loaded) {
             for (final File file : inE.getFiles()) {
                 String extension;
@@ -222,7 +222,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public boolean loadMaze() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int status = 0;
         boolean saved = true;
         String filename, extension;
@@ -292,7 +292,7 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     public boolean loadLockedMaze() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int status = 0;
         boolean saved = true;
         String filename, extension;
@@ -369,8 +369,8 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final Application app = Mazer5D.getApplication();
-        if (app.getMode() == Application.STATUS_GAME) {
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        if (app.getMode() == BagOStuff.STATUS_GAME) {
             if (this.lastUsedGameFile != null
                     && !this.lastUsedGameFile.equals("")) {
                 final String extension = MazeManager
@@ -416,7 +416,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -429,7 +429,7 @@ public class MazeManager implements OpenFilesHandler {
         final XMLMazeFilter xmf = new XMLMazeFilter();
         final XMLGameFilter xgf = new XMLGameFilter();
         fc.setAcceptAllFileFilterUsed(false);
-        if (app.getMode() == Application.STATUS_GAME) {
+        if (app.getMode() == BagOStuff.STATUS_GAME) {
             fc.addChoosableFileFilter(xgf);
             fc.setFileFilter(xgf);
         } else {
@@ -455,7 +455,7 @@ public class MazeManager implements OpenFilesHandler {
                 } else {
                     Prefs.setLastDirSave(
                             fc.getCurrentDirectory().getAbsolutePath());
-                    if (app.getMode() == Application.STATUS_GAME) {
+                    if (app.getMode() == BagOStuff.STATUS_GAME) {
                         if (extension != null) {
                             if (!extension.equals(
                                     XMLExtension.getXMLGameExtension())) {
@@ -500,7 +500,7 @@ public class MazeManager implements OpenFilesHandler {
         this.setMazeXML1Compatible(false);
         this.setMazeXML2Compatible(false);
         this.setMazeXML4Compatible(false);
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -568,7 +568,7 @@ public class MazeManager implements OpenFilesHandler {
                 sg = "Maze";
             }
         }
-        Mazer5D.getApplication().showMessage("Saving " + sg + " file...");
+        Mazer5D.getBagOStuff().showMessage("Saving " + sg + " file...");
         if (locked) {
             final LockedSaveTask lst = new LockedSaveTask(filename);
             lst.start();

@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class WarpWand extends GenericWand {
@@ -38,7 +38,7 @@ public class WarpWand extends GenericWand {
     @Override
     public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getMazeManager().getMaze().warpObject(
                 app.getMazeManager().getMaze().getCell(x, y, z,
                         MazeConstants.LAYER_OBJECT),

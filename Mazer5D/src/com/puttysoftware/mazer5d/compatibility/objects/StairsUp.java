@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class StairsUp extends GenericTeleport {
@@ -38,32 +38,32 @@ public class StairsUp extends GenericTeleport {
 
     @Override
     public int getDestinationRow() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         return app.getGameManager().getPlayerManager().getPlayerLocationX();
     }
 
     @Override
     public int getDestinationColumn() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         return app.getGameManager().getPlayerManager().getPlayerLocationY();
     }
 
     @Override
     public int getDestinationFloor() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         return app.getGameManager().getPlayerManager().getPlayerLocationZ() + 1;
     }
 
     @Override
     public int getDestinationLevel() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         return app.getGameManager().getPlayerManager().getPlayerLocationW();
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
@@ -72,7 +72,7 @@ public class StairsUp extends GenericTeleport {
 
     @Override
     public void editorPlaceHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         me.pairStairs(MazeEditor.STAIRS_UP);
     }
 

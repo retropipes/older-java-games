@@ -23,7 +23,7 @@ public class InvisibleWall extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Display invisible wall message, if it's enabled
-        Mazer5D.getApplication().showMessage("Invisible Wall!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Wall!");
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
 
@@ -39,7 +39,7 @@ public class InvisibleWall extends GenericWall {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Behave as if the wall was walked into
-        Mazer5D.getApplication().showMessage("Invisible Wall!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Wall!");
         return false;
     }
 

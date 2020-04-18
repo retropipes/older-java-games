@@ -23,7 +23,7 @@ public class OrangeLock extends GenericSingleLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getApplication().showMessage("You need an orange key");
+            Mazer5D.getBagOStuff().showMessage("You need an orange key");
         }
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }

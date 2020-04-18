@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ExplodingWall extends GenericWall {
@@ -24,14 +24,14 @@ public class ExplodingWall extends GenericWall {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("BOOM!");
+        Mazer5D.getBagOStuff().showMessage("BOOM!");
         return true;
     }
 
     @Override
     public void chainReactionAction(final int x, final int y, final int z) {
         // Explode this wall, and any exploding walls next to this wall as well
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         ExplodingWall curr = null;
         try {
             curr = (ExplodingWall) app.getMazeManager().getMazeObject(x, y, z,

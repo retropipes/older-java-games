@@ -465,7 +465,7 @@ public class MazeModel implements MazeConstants {
     public void pasteLevel() {
         if (this.clipboard != null) {
             this.mazeData = this.clipboard.clone();
-            Mazer5D.getApplication().getMazeManager().setDirty(true);
+            Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
         }
     }
 
@@ -907,33 +907,33 @@ public class MazeModel implements MazeConstants {
             final int version = m.readMazeMetafileXML(metaReader);
             // Set XML compatibility flags
             if (version == XMLFormatConstants.XML_MAZE_FORMAT_1) {
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML1Compatible(true);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML2Compatible(true);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML4Compatible(true);
             } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_2) {
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML1Compatible(false);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML2Compatible(true);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML4Compatible(true);
             } else if (version == XMLFormatConstants.XML_MAZE_FORMAT_3
                     || version == XMLFormatConstants.XML_MAZE_FORMAT_4) {
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML1Compatible(false);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML2Compatible(false);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML4Compatible(true);
             } else {
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML1Compatible(false);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML2Compatible(false);
-                Mazer5D.getApplication().getMazeManager()
+                Mazer5D.getBagOStuff().getMazeManager()
                         .setMazeXML4Compatible(false);
             }
             // Create data reader
@@ -1007,11 +1007,11 @@ public class MazeModel implements MazeConstants {
 
     public void writeMazeXML() throws IOException {
         // Clear XML compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML1Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
         // Clear XML 2 compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML2Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
         // Clear XML 4 compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML4Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
         // Create metafile writer
         try (XDataWriter metaWriter = new XDataWriter(
                 this.basePath + File.separator + "metafile.xml", "maze")) {
@@ -1050,11 +1050,11 @@ public class MazeModel implements MazeConstants {
     private void writeMazeLevelXML(final XDataWriter writer)
             throws IOException {
         // Clear XML compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML1Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML1Compatible(false);
         // Clear XML 2 compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML2Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML2Compatible(false);
         // Clear XML 4 compatibility flag
-        Mazer5D.getApplication().getMazeManager().setMazeXML4Compatible(false);
+        Mazer5D.getBagOStuff().getMazeManager().setMazeXML4Compatible(false);
         // Write the level
         this.mazeData.writeXMLLayeredTower(writer);
         this.mazeData.writeSavedTowerStateXML(writer);

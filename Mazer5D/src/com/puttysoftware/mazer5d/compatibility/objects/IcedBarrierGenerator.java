@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class IcedBarrierGenerator extends GenericWall {
     // Constants
@@ -25,7 +25,7 @@ public class IcedBarrierGenerator extends GenericWall {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         // De-ice
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final BarrierGenerator bg = new BarrierGenerator();
@@ -42,7 +42,7 @@ public class IcedBarrierGenerator extends GenericWall {
             this.extendTimer(IcedBarrierGenerator.TIMER_DELAY);
         } else {
             // Else, de-ice
-            final Application app = Mazer5D.getApplication();
+            final BagOStuff app = Mazer5D.getBagOStuff();
             final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, locX, locY, locZ);
             bg.timerExpiredAction(locX, locY);

@@ -35,8 +35,8 @@ public class DizzinessTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("You feel dizzy!");
-        Mazer5D.getApplication().getGameManager().activateEffect(
+        Mazer5D.getBagOStuff().showMessage("You feel dizzy!");
+        Mazer5D.getBagOStuff().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_DIZZY,
                 DizzinessTrap.EFFECT_DURATION);
         SoundPlayer.playSound(SoundIndex.DIZZY, SoundGroup.GAME);

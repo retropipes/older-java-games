@@ -48,7 +48,7 @@ public class ObjectHelpManager {
     private void initHelp() {
         if (!this.inited) {
             this.buttonHandler = new ButtonHandler();
-            this.objectList = Mazer5D.getApplication().getObjects();
+            this.objectList = Mazer5D.getBagOStuff().getObjects();
             this.objectNames = this.objectList.getAllDescriptions();
             this.objectAppearances = this.objectList.getAllEditorAppearances();
             this.hv = new GraphicalHelpViewer(this.objectAppearances,
@@ -70,7 +70,7 @@ public class ObjectHelpManager {
             this.helpFrame.setResizable(false);
             // Mac OS X-specific fixes
             if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                Mazer5D.getApplication().getMenuManager().setHelpMenus();
+                Mazer5D.getBagOStuff().getMenuManager().setHelpMenus();
             }
             this.inited = true;
         }

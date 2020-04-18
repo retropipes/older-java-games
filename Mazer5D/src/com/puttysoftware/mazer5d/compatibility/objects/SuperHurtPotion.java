@@ -26,7 +26,7 @@ public class SuperHurtPotion extends GenericPotion {
 
     @Override
     public int getEffectValue() {
-        return -(Mazer5D.getApplication().getMazeManager().getMaze()
+        return -(Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .getCurrentHP() - 1);
     }
 

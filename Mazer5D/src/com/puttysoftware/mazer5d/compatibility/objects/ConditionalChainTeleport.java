@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class ConditionalChainTeleport extends GenericConditionalTeleport {
@@ -22,7 +22,7 @@ public class ConditionalChainTeleport extends GenericConditionalTeleport {
     @Override
     public final void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int testVal;
         if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());

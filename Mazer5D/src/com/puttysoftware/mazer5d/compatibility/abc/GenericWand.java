@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.abc;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public abstract class GenericWand extends GenericUsableObject {
     // Fields
@@ -23,9 +23,9 @@ public abstract class GenericWand extends GenericUsableObject {
     @Override
     public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().morph(mo, x, y, z);
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(GenericWand.SCORE_USE);
     }
 

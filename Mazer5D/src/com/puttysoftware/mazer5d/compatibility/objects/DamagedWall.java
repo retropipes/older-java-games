@@ -31,9 +31,9 @@ public class DamagedWall extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Destroy the wall
-        final int pz = Mazer5D.getApplication().getGameManager()
+        final int pz = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        Mazer5D.getApplication().getGameManager().morph(new CrumblingWall(),
+        Mazer5D.getBagOStuff().getGameManager().morph(new CrumblingWall(),
                 dirX, dirY, pz);
         SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }

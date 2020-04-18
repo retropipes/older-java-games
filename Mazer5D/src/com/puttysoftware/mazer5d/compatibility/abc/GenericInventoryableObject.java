@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericInventoryableObject extends MazeObjectModel {
@@ -27,10 +27,10 @@ public abstract class GenericInventoryableObject extends MazeObjectModel {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         inv.addItem(this);
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(GenericInventoryableObject.SCORE_GRAB);
     }
 

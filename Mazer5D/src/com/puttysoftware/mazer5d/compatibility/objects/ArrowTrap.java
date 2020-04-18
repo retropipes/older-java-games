@@ -38,7 +38,7 @@ public class ArrowTrap extends GenericTrap {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("The arrow is stopped!");
+        Mazer5D.getBagOStuff().showMessage("The arrow is stopped!");
         return false;
     }
 

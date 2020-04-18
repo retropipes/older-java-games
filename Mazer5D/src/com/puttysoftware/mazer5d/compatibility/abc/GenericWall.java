@@ -41,7 +41,7 @@ public abstract class GenericWall extends MazeObjectModel {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("Can't go that way");
+        Mazer5D.getBagOStuff().showMessage("Can't go that way");
         // Play move failed sound, if it's enabled
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }

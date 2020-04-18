@@ -35,7 +35,7 @@ public class TrueSightAmulet extends GenericAmulet {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getGameManager().activateEffect(
+        Mazer5D.getBagOStuff().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_TRUE_SIGHT,
                 TrueSightAmulet.EFFECT_DURATION);
     }

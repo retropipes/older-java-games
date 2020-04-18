@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class EmptyVoid extends GenericWall {
     // Properties
@@ -32,7 +32,7 @@ public class EmptyVoid extends GenericWall {
     @Override
     public void determineCurrentAppearance(final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
                 mo9Name, thisName;
         thisName = this.getName();

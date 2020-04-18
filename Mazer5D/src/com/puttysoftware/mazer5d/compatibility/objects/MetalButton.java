@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class MetalButton extends GenericField {
@@ -90,7 +90,7 @@ public class MetalButton extends GenericField {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
-            final Application app = Mazer5D.getApplication();
+            final BagOStuff app = Mazer5D.getBagOStuff();
             final MazeObjectModel there = app.getMazeManager().getMazeObject(
                     this.getTargetRow(), this.getTargetColumn(),
                     this.getTargetFloor(), this.getLayer());
@@ -144,7 +144,7 @@ public class MetalButton extends GenericField {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication()
+        Mazer5D.getBagOStuff()
                 .showMessage(this.getName() + ": Target ("
                         + (this.targetCol + 1) + "," + (this.targetRow + 1)
                         + "," + (this.targetFloor + 1) + ")");
@@ -152,7 +152,7 @@ public class MetalButton extends GenericField {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        return Mazer5D.getApplication().getEditor().editMetalButtonTarget();
+        return Mazer5D.getBagOStuff().getEditor().editMetalButtonTarget();
     }
 
     @Override

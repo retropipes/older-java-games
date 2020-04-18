@@ -11,7 +11,7 @@ import java.io.IOException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.xio.XDataReader;
 
 public class XMLRuleSetLoadTask extends Thread {
@@ -27,7 +27,7 @@ public class XMLRuleSetLoadTask extends Thread {
     // Methods
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final String sg = "Rule Set";
         try (XDataReader ruleSetFile = new XDataReader(this.filename,
                 "ruleset")) {

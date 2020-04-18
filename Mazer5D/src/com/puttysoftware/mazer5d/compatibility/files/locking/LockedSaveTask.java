@@ -15,7 +15,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.Extension;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class LockedSaveTask extends Thread {
     // Fields
@@ -29,7 +29,7 @@ public class LockedSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         boolean success = true;
         final String sg = "Maze";
         // filename check
@@ -59,7 +59,7 @@ public class LockedSaveTask extends Thread {
         } catch (final IOException e) {
             Mazer5D.logError(e);
         }
-        Mazer5D.getApplication().showMessage("Locked " + sg + " file saved.");
+        Mazer5D.getBagOStuff().showMessage("Locked " + sg + " file saved.");
         app.getMazeManager().handleDeferredSuccess(success);
     }
 

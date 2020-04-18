@@ -23,10 +23,10 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.picturepicker.PicturePicker;
@@ -47,7 +47,7 @@ public class RuleSetPicker {
 
     public RuleSetPicker() {
         this.handler = new EventHandler();
-        this.objectList = Mazer5D.getApplication().getObjects();
+        this.objectList = Mazer5D.getBagOStuff().getObjects();
         this.names = this.objectList.getAllNames();
         this.objects = this.objectList.getAllObjects();
         this.editorAppearances = this.objectList.getAllEditorAppearances();
@@ -84,7 +84,7 @@ public class RuleSetPicker {
     }
 
     public void editRuleSets() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getEditor().hideOutput();
         this.showOutput();
     }
@@ -100,7 +100,7 @@ public class RuleSetPicker {
     }
 
     void exitRuleSetEditor() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         this.hideOutput();
         app.getEditor().showOutput();
     }

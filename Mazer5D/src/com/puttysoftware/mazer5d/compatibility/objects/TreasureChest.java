@@ -28,7 +28,7 @@ public class TreasureChest extends GenericContainer {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getApplication().showMessage("You need a key");
+            Mazer5D.getBagOStuff().showMessage("You need a key");
         }
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
@@ -45,7 +45,7 @@ public class TreasureChest extends GenericContainer {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        return Mazer5D.getApplication().getEditor().editTreasureChestContents();
+        return Mazer5D.getBagOStuff().getEditor().editTreasureChestContents();
     }
 
     @Override

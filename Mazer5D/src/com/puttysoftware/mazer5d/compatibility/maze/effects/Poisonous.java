@@ -17,15 +17,15 @@ public class Poisonous extends MazeEffect {
     @Override
     public void customExtendLogic() {
         // Apply the effect
-        Mazer5D.getApplication().getMazeManager().getMaze().doPoisonousAmulet();
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().doPoisonousAmulet();
     }
 
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getApplication().getGameManager().getObjectInventory()
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
                 .removeItem(new PoisonousAmulet());
         // Undo the effect
-        Mazer5D.getApplication().getMazeManager().getMaze().undoPoisonAmulets();
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
     }
 }

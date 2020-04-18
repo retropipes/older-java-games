@@ -42,7 +42,7 @@ public class ShuffleBomb extends GenericUsableObject {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Destroy bomb
-        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
@@ -55,10 +55,10 @@ public class ShuffleBomb extends GenericUsableObject {
             final int z) {
         // Shuffle objects
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanShuffleObjects(x, y, z, ShuffleBomb.EFFECT_RADIUS);
         // Player might have moved
-        Mazer5D.getApplication().getGameManager().findPlayerAndAdjust();
+        Mazer5D.getBagOStuff().getGameManager().findPlayerAndAdjust();
     }
 
     @Override

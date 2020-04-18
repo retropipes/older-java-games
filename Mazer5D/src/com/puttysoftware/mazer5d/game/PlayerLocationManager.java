@@ -83,7 +83,7 @@ public class PlayerLocationManager {
     }
 
     private void fixLocations() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         if (m.is3rdDimensionWraparoundEnabled()) {
             if (this.locZ < 0) {
                 this.locZ = m.getFloors() - 1;

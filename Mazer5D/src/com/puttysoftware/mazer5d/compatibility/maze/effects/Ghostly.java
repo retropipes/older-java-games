@@ -17,7 +17,7 @@ public class Ghostly extends MazeEffect {
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getApplication().getGameManager().getObjectInventory()
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
                 .removeItem(new GhostAmulet());
     }
 }

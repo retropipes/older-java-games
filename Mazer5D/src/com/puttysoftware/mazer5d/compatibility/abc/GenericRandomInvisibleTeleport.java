@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericRandomInvisibleTeleport
@@ -28,20 +28,20 @@ public abstract class GenericRandomInvisibleTeleport
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int dr, dc;
         do {
             dr = this.getDestinationRow();
             dc = this.getDestinationColumn();
         } while (!app.getGameManager().tryUpdatePositionRelative(dr, dc));
         app.getGameManager().updatePositionRelative(dr, dc);
-        Mazer5D.getApplication().showMessage("Invisible Teleport!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;

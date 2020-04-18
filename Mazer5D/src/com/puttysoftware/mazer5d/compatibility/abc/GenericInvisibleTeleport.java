@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericInvisibleTeleport extends GenericTeleport {
@@ -23,10 +23,10 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
-        Mazer5D.getApplication().showMessage("Invisible Teleport!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 

@@ -37,17 +37,17 @@ public class VariableHurtTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        this.maxDamage = Mazer5D.getApplication().getMazeManager().getMaze()
+        this.maxDamage = Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .getMaximumHP() / 10;
         if (this.maxDamage < VariableHurtTrap.MIN_DAMAGE) {
             this.maxDamage = VariableHurtTrap.MIN_DAMAGE;
         }
         this.damageDealt = new RandomRange(VariableHurtTrap.MIN_DAMAGE,
                 this.maxDamage);
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .doDamage(this.damageDealt.generate());
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override

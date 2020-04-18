@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -35,7 +35,7 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
         // Move the block
         final RandomRange r = new RandomRange(0, 7);
         final int move = r.generate();
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .updateMovingBlockPosition(move, dirX, dirY, this);
         final RandomRange t = new RandomRange(1, 2);
         this.activateTimer(t.generate());
@@ -70,7 +70,7 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectList objectList = Mazer5D.getApplication().getObjects();
+        final MazeObjectList objectList = Mazer5D.getBagOStuff().getObjects();
         this.savedObject = objectList.readMazeObjectXML(reader, formatVersion);
         return this;
     }

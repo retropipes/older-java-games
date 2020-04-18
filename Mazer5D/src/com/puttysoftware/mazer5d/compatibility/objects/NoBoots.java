@@ -31,7 +31,7 @@ public class NoBoots extends GenericInventoryModifier {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
         inv.removeAllBoots();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
     }

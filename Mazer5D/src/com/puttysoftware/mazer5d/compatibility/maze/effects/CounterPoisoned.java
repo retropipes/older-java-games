@@ -17,16 +17,16 @@ public class CounterPoisoned extends MazeEffect {
     @Override
     public void customExtendLogic() {
         // Apply the effect
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .doCounterpoisonAmulet();
     }
 
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getApplication().getGameManager().getObjectInventory()
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
                 .removeItem(new CounterpoisonAmulet());
         // Undo the effect
-        Mazer5D.getApplication().getMazeManager().getMaze().undoPoisonAmulets();
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
     }
 }

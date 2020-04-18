@@ -29,7 +29,7 @@ public class Amethyst extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(Amethyst.SCORE_INCREASE);
     }
 

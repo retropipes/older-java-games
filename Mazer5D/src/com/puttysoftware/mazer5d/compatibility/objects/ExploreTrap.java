@@ -33,9 +33,9 @@ public class ExploreTrap extends GenericTrap {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .addVisionMode(MazeConstants.VISION_MODE_EXPLORE);
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class InvisiblePit extends Pit {
@@ -21,18 +21,18 @@ public class InvisiblePit extends Pit {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication()
+        Mazer5D.getBagOStuff()
                 .showMessage("Some unseen force prevents movement that way...");
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
-        Mazer5D.getApplication().showMessage("Invisible Pit!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Pit!");
     }
 
     @Override

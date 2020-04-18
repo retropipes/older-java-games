@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class RotationWand extends GenericWand {
@@ -42,7 +42,7 @@ public class RotationWand extends GenericWand {
     @Override
     public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().setRemoteAction(x, y, z);
         int r = 1;
         final String[] rChoices = new String[] { "1", "2", "3" };
@@ -70,9 +70,9 @@ public class RotationWand extends GenericWand {
             d = RotationWand.COUNTERCLOCKWISE;
         }
         if (d) {
-            Mazer5D.getApplication().getGameManager().doClockwiseRotate(r);
+            Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(r);
         } else {
-            Mazer5D.getApplication().getGameManager()
+            Mazer5D.getBagOStuff().getGameManager()
                     .doCounterclockwiseRotate(r);
         }
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);

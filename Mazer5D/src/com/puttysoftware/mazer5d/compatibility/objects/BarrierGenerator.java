@@ -41,7 +41,7 @@ public class BarrierGenerator extends GenericGenerator {
     @Override
     protected void arrowHitActionHook(final int locX, final int locY,
             final int locZ, final int arrowType, final ObjectInventory inv) {
-        final GameManager gm = Mazer5D.getApplication().getGameManager();
+        final GameManager gm = Mazer5D.getBagOStuff().getGameManager();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             gm.morph(new IcedBarrierGenerator(), locX, locY, locZ);
         } else if (arrowType == ArrowTypeConstants.ARROW_TYPE_FIRE) {

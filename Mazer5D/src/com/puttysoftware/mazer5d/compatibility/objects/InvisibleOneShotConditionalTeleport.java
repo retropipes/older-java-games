@@ -32,7 +32,7 @@ public class InvisibleOneShotConditionalTeleport
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override

@@ -27,7 +27,7 @@ public class Slime extends GenericField {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("You'll corrode");
+        Mazer5D.getBagOStuff().showMessage("You'll corrode");
         SoundPlayer.playSound(SoundIndex.SLIME, SoundGroup.GAME);
     }
 

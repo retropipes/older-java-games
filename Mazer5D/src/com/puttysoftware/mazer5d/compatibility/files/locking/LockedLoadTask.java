@@ -20,7 +20,7 @@ import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixHandler;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class LockedLoadTask extends Thread {
@@ -49,7 +49,7 @@ public class LockedLoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int startW;
         String sg;
         app.getGameManager().setSavedGameFlag(false);

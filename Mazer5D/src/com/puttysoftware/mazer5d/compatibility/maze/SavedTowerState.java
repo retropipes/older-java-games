@@ -82,7 +82,7 @@ class SavedTowerState implements Cloneable {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < MazeConstants.LAYER_COUNT; e++) {
-                        sts.saveData[x][y][z][e] = Mazer5D.getApplication()
+                        sts.saveData[x][y][z][e] = Mazer5D.getBagOStuff()
                                 .getObjects()
                                 .readMazeObjectXML(reader, formatVersion);
                     }

@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericInvisibleTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class InvisibleChainTeleport extends GenericInvisibleTeleport {
@@ -30,11 +30,11 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePositionAbsoluteNoEvents(
                 this.getDestinationRow(), this.getDestinationColumn(),
                 this.getDestinationFloor(), this.getDestinationLevel());
-        Mazer5D.getApplication().showMessage("Invisible Teleport!");
+        Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
@@ -55,7 +55,7 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_INVISIBLE_GENERIC);
         return mo;

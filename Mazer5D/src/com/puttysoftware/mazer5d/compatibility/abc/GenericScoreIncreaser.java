@@ -22,10 +22,10 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
         this.postMoveActionHook();
-        Mazer5D.getApplication().getGameManager().redrawMaze();
+        Mazer5D.getBagOStuff().getGameManager().redrawMaze();
     }
 
     public abstract void postMoveActionHook();
@@ -45,7 +45,7 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         return false;

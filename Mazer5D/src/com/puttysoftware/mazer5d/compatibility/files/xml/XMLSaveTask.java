@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class XMLSaveTask extends Thread {
     // Fields
@@ -27,7 +27,7 @@ public class XMLSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final boolean success = true;
         final String sg;
         if (this.isSavedGame) {
@@ -82,7 +82,7 @@ public class XMLSaveTask extends Thread {
         } catch (final IOException e) {
             Mazer5D.logError(e);
         }
-        Mazer5D.getApplication().showMessage(sg + " file saved.");
+        Mazer5D.getBagOStuff().showMessage(sg + " file saved.");
         app.getMazeManager().handleDeferredSuccess(success);
     }
 

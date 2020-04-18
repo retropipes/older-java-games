@@ -50,19 +50,19 @@ public class MazePrefs {
     // Methods
     public void showPrefs() {
         this.loadPrefs();
-        Mazer5D.getApplication().getEditor().disableOutput();
+        Mazer5D.getBagOStuff().getEditor().disableOutput();
         this.prefFrame.setVisible(true);
     }
 
     public void hidePrefs() {
         this.prefFrame.setVisible(false);
-        Mazer5D.getApplication().getEditor().enableOutput();
-        Mazer5D.getApplication().getMazeManager().setDirty(true);
-        Mazer5D.getApplication().getEditor().redrawEditor();
+        Mazer5D.getBagOStuff().getEditor().enableOutput();
+        Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
+        Mazer5D.getBagOStuff().getEditor().redrawEditor();
     }
 
     void setPrefs() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         m.setStartLevel(this.startLevelChoices.getSelectedIndex());
         try {
             m.setMaximumHP(Integer.parseInt(this.health.getText()));
@@ -76,7 +76,7 @@ public class MazePrefs {
     }
 
     private void loadPrefs() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         this.startLevelChoiceArray = new String[m.getLevels()];
         for (int x = 0; x < m.getLevels(); x++) {
             this.startLevelChoiceArray[x] = Integer.toString(x + 1);

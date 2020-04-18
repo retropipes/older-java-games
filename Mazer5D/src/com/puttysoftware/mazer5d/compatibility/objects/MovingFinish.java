@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class MovingFinish extends Finish {
@@ -40,7 +40,7 @@ public class MovingFinish extends Finish {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (this.active) {
-            final Application app = Mazer5D.getApplication();
+            final BagOStuff app = Mazer5D.getBagOStuff();
             SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
             app.getGameManager().solvedLevel();
         } else {
@@ -50,7 +50,7 @@ public class MovingFinish extends Finish {
 
     public void activate() {
         this.active = true;
-        this.activateTimer(Mazer5D.getApplication().getMazeManager().getMaze()
+        this.activateTimer(Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .getFinishMoveSpeed());
     }
 
@@ -62,7 +62,7 @@ public class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObjectModel obj = Mazer5D.getApplication().getMazeManager()
+        final MazeObjectModel obj = Mazer5D.getBagOStuff().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
                         this.getDestinationColumn(), this.getDestinationFloor(),
                         MazeConstants.LAYER_OBJECT);
@@ -71,7 +71,7 @@ public class MovingFinish extends Finish {
             SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
             mf.activate();
         } else {
-            final Application app = Mazer5D.getApplication();
+            final BagOStuff app = Mazer5D.getBagOStuff();
             final MazeObjectModel saved = app.getGameManager().getSavedMazeObject();
             final int px = app.getGameManager().getPlayerManager()
                     .getPlayerLocationX();
@@ -93,7 +93,7 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication()
+        Mazer5D.getBagOStuff()
                 .showMessage(this.getName() + ": Next Moving Finish ("
                         + (this.getDestinationColumn() + 1) + ","
                         + (this.getDestinationRow() + 1) + ","
@@ -131,7 +131,7 @@ public class MovingFinish extends Finish {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
         return mo;

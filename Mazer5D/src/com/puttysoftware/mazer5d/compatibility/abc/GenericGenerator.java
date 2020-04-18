@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.EmptyVoid;
 import com.puttysoftware.mazer5d.compatibility.objects.HorizontalBarrier;
 import com.puttysoftware.mazer5d.compatibility.objects.VerticalBarrier;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericGenerator extends GenericWall {
@@ -37,7 +37,7 @@ public abstract class GenericGenerator extends GenericWall {
         // Remove barriers if present
         boolean scanResult = false;
         boolean flag = false;
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final int pw = app.getGameManager().getPlayerManager()
@@ -138,7 +138,7 @@ public abstract class GenericGenerator extends GenericWall {
         // Generate barriers again
         boolean scanResult = false;
         boolean flag = false;
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
@@ -228,7 +228,7 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected boolean scan(final int dir, final int x, final int y, final int z,
             final int limit, final boolean o) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
@@ -368,7 +368,7 @@ public abstract class GenericGenerator extends GenericWall {
 
     protected void generate(final int dir, final int x, final int y,
             final int z, final int limit, final boolean o) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {

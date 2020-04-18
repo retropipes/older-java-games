@@ -31,9 +31,9 @@ public class CrackedWall extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Crack the wall
-        final int pz = Mazer5D.getApplication().getGameManager()
+        final int pz = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        Mazer5D.getApplication().getGameManager().morph(new DamagedWall(), dirX,
+        Mazer5D.getBagOStuff().getGameManager().morph(new DamagedWall(), dirX,
                 dirY, pz);
         SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }

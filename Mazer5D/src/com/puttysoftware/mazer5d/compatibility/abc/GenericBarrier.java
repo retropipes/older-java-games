@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericBarrier extends GenericWall {
@@ -26,8 +26,8 @@ public abstract class GenericBarrier extends GenericWall {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         // Display impassable barrier message
-        final Application app = Mazer5D.getApplication();
-        Mazer5D.getApplication().showMessage("The barrier is impassable!");
+        final BagOStuff app = Mazer5D.getBagOStuff();
+        Mazer5D.getBagOStuff().showMessage("The barrier is impassable!");
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         // Hurt the player for trying to cross the barrier
         app.getMazeManager().getMaze()

@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -52,7 +52,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pushX, final int pushY) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         this.savedObject = mo;
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
@@ -61,7 +61,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     public void pullAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pullX, final int pullY) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
         this.savedObject = mo;
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
@@ -93,7 +93,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = Mazer5D.getApplication().getObjects()
+        this.savedObject = Mazer5D.getBagOStuff().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
         return this;
     }
@@ -106,7 +106,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getApplication().getMazeManager().isMazeXML1Compatible()) {
+        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML1Compatible()) {
             return 0;
         } else {
             return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;

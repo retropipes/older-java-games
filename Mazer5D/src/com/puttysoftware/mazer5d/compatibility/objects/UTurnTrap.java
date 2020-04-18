@@ -35,9 +35,9 @@ public class UTurnTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication()
+        Mazer5D.getBagOStuff()
                 .showMessage("Your controls are turned around!");
-        Mazer5D.getApplication().getGameManager().activateEffect(
+        Mazer5D.getBagOStuff().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_U_TURNED, UTurnTrap.EFFECT_DURATION);
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }

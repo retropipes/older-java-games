@@ -17,15 +17,15 @@ public class TrueSight extends MazeEffect {
     @Override
     public void customExtendLogic() {
         // Apply the effect
-        Mazer5D.getApplication().getGameManager().enableTrueSight();
+        Mazer5D.getBagOStuff().getGameManager().enableTrueSight();
     }
 
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getApplication().getGameManager().getObjectInventory()
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
                 .removeItem(new TrueSightAmulet());
         // Undo the effect
-        Mazer5D.getApplication().getGameManager().disableTrueSight();
+        Mazer5D.getBagOStuff().getGameManager().disableTrueSight();
     }
 }

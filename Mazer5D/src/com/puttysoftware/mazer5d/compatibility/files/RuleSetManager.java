@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLExtension;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLRuleSetFilter;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLRuleSetLoadTask;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLRuleSetSaveTask;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class RuleSetManager {
     // Constructors
@@ -26,7 +26,7 @@ public class RuleSetManager {
 
     // Methods
     public static void importRuleSet() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename, extension;
         final JFileChooser fc = new JFileChooser();
         final XMLRuleSetFilter xrsf = new XMLRuleSetFilter();
@@ -64,7 +64,7 @@ public class RuleSetManager {
     }
 
     public static boolean exportRuleSet() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         String filename = "";
         String fileOnly = "\\";
         String extension;

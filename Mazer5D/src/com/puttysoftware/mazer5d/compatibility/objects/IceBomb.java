@@ -44,7 +44,7 @@ public class IceBomb extends GenericUsableObject {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
         // Stop arrow
         return false;
@@ -55,10 +55,10 @@ public class IceBomb extends GenericUsableObject {
             final int z) {
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Freeze objects that react to ice
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanFreezeObjects(x, y, z, IceBomb.EFFECT_RADIUS);
         // Freeze ground, too
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanFreezeGround(x, y, z, IceBomb.EFFECT_RADIUS);
     }
 

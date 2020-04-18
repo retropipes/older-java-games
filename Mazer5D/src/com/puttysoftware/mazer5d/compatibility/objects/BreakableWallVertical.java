@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class BreakableWallVertical extends GenericWall {
@@ -27,7 +27,7 @@ public class BreakableWallVertical extends GenericWall {
     }
 
     public void doChainReact(final int x, final int y, final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         BreakableWallVertical curr = null;
         try {
             curr = (BreakableWallVertical) app.getMazeManager().getMazeObject(x,

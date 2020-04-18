@@ -22,7 +22,7 @@ import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public class Application {
+public class BagOStuff {
     // Fields
     private final AboutDialog about;
     private GameManager gameMgr;
@@ -45,7 +45,7 @@ public class Application {
     public static final int STATUS_NULL = 4;
 
     // Constructors
-    public Application(final NativeIntegration ni) {
+    public BagOStuff(final NativeIntegration ni) {
         this.objects = new MazeObjectList();
         this.about = new AboutDialog(this.getVersionString());
         this.guiMgr = new GUIManager();
@@ -74,27 +74,27 @@ public class Application {
 
     public int getMode() {
         if (this.IN_PREFS) {
-            return Application.STATUS_PREFS;
+            return BagOStuff.STATUS_PREFS;
         } else if (this.IN_GUI) {
-            return Application.STATUS_GUI;
+            return BagOStuff.STATUS_GUI;
         } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
+            return BagOStuff.STATUS_GAME;
         } else if (this.IN_EDITOR) {
-            return Application.STATUS_EDITOR;
+            return BagOStuff.STATUS_EDITOR;
         } else {
-            return Application.STATUS_NULL;
+            return BagOStuff.STATUS_NULL;
         }
     }
 
     public int getFormerMode() {
         if (this.IN_GUI) {
-            return Application.STATUS_GUI;
+            return BagOStuff.STATUS_GUI;
         } else if (this.IN_GAME) {
-            return Application.STATUS_GAME;
+            return BagOStuff.STATUS_GAME;
         } else if (this.IN_EDITOR) {
-            return Application.STATUS_EDITOR;
+            return BagOStuff.STATUS_EDITOR;
         } else {
-            return Application.STATUS_NULL;
+            return BagOStuff.STATUS_NULL;
         }
     }
 
@@ -167,26 +167,26 @@ public class Application {
 
     private String getVersionString() {
         if (this.isBetaModeEnabled()) {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX + "b"
-                    + Application.VERSION_BETA;
+            return "" + BagOStuff.VERSION_MAJOR + "."
+                    + BagOStuff.VERSION_MINOR + "."
+                    + BagOStuff.VERSION_BUGFIX + "b"
+                    + BagOStuff.VERSION_BETA;
         } else {
-            return "" + Application.VERSION_MAJOR + "."
-                    + Application.VERSION_MINOR + "."
-                    + Application.VERSION_BUGFIX;
+            return "" + BagOStuff.VERSION_MAJOR + "."
+                    + BagOStuff.VERSION_MINOR + "."
+                    + BagOStuff.VERSION_BUGFIX;
         }
     }
 
     public JFrame getOutputFrame() {
         try {
-            if (this.getMode() == Application.STATUS_PREFS) {
+            if (this.getMode() == BagOStuff.STATUS_PREFS) {
                 return MainWindow.owner();
-            } else if (this.getMode() == Application.STATUS_GUI) {
+            } else if (this.getMode() == BagOStuff.STATUS_GUI) {
                 return this.getGUIManager().getGUIFrame();
-            } else if (this.getMode() == Application.STATUS_GAME) {
+            } else if (this.getMode() == BagOStuff.STATUS_GAME) {
                 return this.getGameManager().getOutputFrame();
-            } else if (this.getMode() == Application.STATUS_EDITOR) {
+            } else if (this.getMode() == BagOStuff.STATUS_EDITOR) {
                 return this.getEditor().getOutputFrame();
             } else {
                 return null;
@@ -201,6 +201,6 @@ public class Application {
     }
 
     public boolean isBetaModeEnabled() {
-        return Application.VERSION_BETA > 0;
+        return BagOStuff.VERSION_BETA > 0;
     }
 }

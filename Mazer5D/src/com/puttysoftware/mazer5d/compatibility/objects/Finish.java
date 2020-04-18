@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Finish extends GenericTeleport {
@@ -26,7 +26,7 @@ public class Finish extends GenericTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
         app.getGameManager().solvedLevel();
     }
@@ -48,7 +48,7 @@ public class Finish extends GenericTeleport {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(this.getName());
+        Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     @Override

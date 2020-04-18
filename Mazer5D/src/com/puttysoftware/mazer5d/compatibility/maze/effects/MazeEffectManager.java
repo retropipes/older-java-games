@@ -79,12 +79,12 @@ public class MazeEffectManager {
                 // Update effect grid
                 this.updateGridEntry(x);
                 if (!this.activeEffects[x].isActive()) {
-                    Mazer5D.getApplication()
+                    Mazer5D.getBagOStuff()
                             .showMessage("You feel normal again.");
                     // Clear effect grid
                     this.clearGridEntry(x);
                     // Pack
-                    Mazer5D.getApplication().getGameManager().getOutputFrame()
+                    Mazer5D.getBagOStuff().getGameManager().getOutputFrame()
                             .pack();
                 }
             }
@@ -102,7 +102,7 @@ public class MazeEffectManager {
             this.addGridEntry(effectID);
         }
         // Keep effect message
-        Mazer5D.getApplication().getGameManager().keepNextMessage();
+        Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
     }
 
     public void deactivateEffect(final int effectID) {
@@ -115,7 +115,7 @@ public class MazeEffectManager {
     public void deactivateAllEffects() {
         this.clearAllGridEntries();
         // Pack
-        Mazer5D.getApplication().getGameManager().getOutputFrame().pack();
+        Mazer5D.getBagOStuff().getGameManager().getOutputFrame().pack();
         for (int x = 0; x < MazeEffectManager.NUM_EFFECTS; x++) {
             this.activeEffects[x].deactivateEffect();
         }

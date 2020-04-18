@@ -43,7 +43,6 @@ import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
-import com.puttysoftware.gui.MainWindow;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
@@ -51,7 +50,8 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.files.CommonPaths;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.gui.MainWindow;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
 import com.puttysoftware.xio.XDataReader;
@@ -309,7 +309,7 @@ public class Prefs {
         Prefs.prefFrame.attachContent(Prefs.mainPrefPane);
         Prefs.prefFrame.addWindowListener(Prefs.handler);
         Prefs.prefFrame.pack();
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         Modes.setInPrefs();
         app.getMenuManager().setPrefMenus();
     }

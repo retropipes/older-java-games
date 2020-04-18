@@ -29,7 +29,7 @@ public class Diamond extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(Diamond.SCORE_INCREASE);
     }
 

@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.compatibility.objects.SignalCrystal;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -39,7 +39,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (!app.getGameManager()
                 .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
@@ -51,7 +51,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             app.getGameManager().decay();
             // Play unlock sound, if it's enabled
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-            Mazer5D.getApplication().getGameManager()
+            Mazer5D.getBagOStuff().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
@@ -63,9 +63,9 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
             if (this.getKey() == GenericProgrammableLock.SIGNAL) {
-                Mazer5D.getApplication().showMessage("You need a Crystal");
+                Mazer5D.getBagOStuff().showMessage("You need a Crystal");
             } else {
-                Mazer5D.getApplication()
+                Mazer5D.getBagOStuff()
                         .showMessage("You need a " + this.getKey().getName());
             }
         }
@@ -111,7 +111,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeObjectList objects = Mazer5D.getApplication().getObjects();
+        final MazeObjectList objects = Mazer5D.getBagOStuff().getObjects();
         final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
         final MazeObjectModel[] tempKeys = objects.getAllProgrammableKeys();
         final String[] keyNames = new String[tempKeyNames.length + 1];
@@ -150,7 +150,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectModel o = Mazer5D.getApplication().getObjects()
+        final MazeObjectModel o = Mazer5D.getBagOStuff().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);

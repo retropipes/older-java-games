@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGenerator;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class EnragedBarrierGenerator extends GenericGenerator {
     // Fields
@@ -43,7 +43,7 @@ public class EnragedBarrierGenerator extends GenericGenerator {
             final int dirZ, final int dirW) {
         this.RAGE_CYCLES++;
         if (this.RAGE_CYCLES == EnragedBarrierGenerator.RAGE_LIMIT) {
-            final Application app = Mazer5D.getApplication();
+            final BagOStuff app = Mazer5D.getBagOStuff();
             final BarrierGenerator bg = new BarrierGenerator();
             app.getGameManager().morph(bg, dirX, dirY, dirZ);
             bg.timerExpiredAction(dirX, dirY);
@@ -54,7 +54,7 @@ public class EnragedBarrierGenerator extends GenericGenerator {
     @Override
     protected void arrowHitActionHook(final int locX, final int locY,
             final int locZ, final int arrowType, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_ICE) {
             app.getGameManager().morph(new IcedBarrierGenerator(), locX, locY,
                     locZ);

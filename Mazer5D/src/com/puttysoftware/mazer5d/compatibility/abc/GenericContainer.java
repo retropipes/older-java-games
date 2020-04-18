@@ -14,7 +14,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -77,7 +77,7 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (!app.getGameManager()
                 .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
                 && !inv.isItemThere(new PasswallBoots())) {
@@ -93,7 +93,7 @@ public abstract class GenericContainer extends GenericLock {
             }
             SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
             app.getGameManager().backUpPlayer();
-            Mazer5D.getApplication().getGameManager()
+            Mazer5D.getBagOStuff().getGameManager()
                     .addToScore(GenericLock.SCORE_UNLOCK);
         } else {
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
@@ -103,10 +103,10 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     public void editorProbeHook() {
         if (!this.inside.getName().equals("Empty")) {
-            Mazer5D.getApplication().showMessage(
+            Mazer5D.getBagOStuff().showMessage(
                     this.getName() + ": Contains " + this.inside.getName());
         } else {
-            Mazer5D.getApplication()
+            Mazer5D.getBagOStuff()
                     .showMessage(this.getName() + ": Contains Nothing");
         }
     }
@@ -124,7 +124,7 @@ public abstract class GenericContainer extends GenericLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObjectList objectList = Mazer5D.getApplication().getObjects();
+        final MazeObjectList objectList = Mazer5D.getBagOStuff().getObjects();
         this.inside = objectList.readMazeObjectXML(reader, formatVersion);
         return this;
     }

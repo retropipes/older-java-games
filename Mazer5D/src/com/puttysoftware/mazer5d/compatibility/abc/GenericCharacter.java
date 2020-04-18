@@ -63,12 +63,12 @@ public abstract class GenericCharacter extends MazeObjectModel {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Shot self
-        Mazer5D.getApplication().showMessage("Ouch, you shot yourself!");
+        Mazer5D.getBagOStuff().showMessage("Ouch, you shot yourself!");
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .doDamage(GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
         } else {
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
         }
         SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
@@ -77,7 +77,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getApplication().getMazeManager().isMazeXML2Compatible()) {
+        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML2Compatible()) {
             return 0;
         } else {
             return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
@@ -103,7 +103,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        this.savedObject = Mazer5D.getApplication().getObjects()
+        this.savedObject = Mazer5D.getBagOStuff().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
         return this;
     }

@@ -22,7 +22,7 @@ public class ForceField extends GenericField {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("You'll get zapped");
+        Mazer5D.getBagOStuff().showMessage("You'll get zapped");
         SoundPlayer.playSound(SoundIndex.FORCE_FIELD, SoundGroup.GAME);
     }
 

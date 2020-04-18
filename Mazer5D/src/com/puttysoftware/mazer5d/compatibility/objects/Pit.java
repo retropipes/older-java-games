@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Pit extends StairsDown {
@@ -37,14 +37,14 @@ public class Pit extends StairsDown {
             final int dirY, final ObjectInventory inv) {
         return this
                 .searchNestedPits(dirX, dirY,
-                        Mazer5D.getApplication().getGameManager()
+                        Mazer5D.getBagOStuff().getGameManager()
                                 .getPlayerManager().getPlayerLocationZ() - 1,
                         inv);
     }
 
     private boolean searchNestedPits(final int dirX, final int dirY,
             final int floor, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         // Stop infinite recursion
         final int lcl = -app.getMazeManager().getMaze().getFloors();
         if (floor <= lcl) {
@@ -74,7 +74,7 @@ public class Pit extends StairsDown {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
                 this.getDestinationColumn(), this.getDestinationFloor());
         SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
@@ -83,7 +83,7 @@ public class Pit extends StairsDown {
     @Override
     public void pushIntoAction(final ObjectInventory inv,
             final MazeObjectModel pushed, final int x, final int y, final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         try {
             this.searchNestedPits(x, y, z - 1, inv);
             if (pushed.isPushable()) {
@@ -95,7 +95,7 @@ public class Pit extends StairsDown {
             }
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .setCell(new Empty(), x, y, z, MazeConstants.LAYER_OBJECT);
         }
     }
@@ -103,7 +103,7 @@ public class Pit extends StairsDown {
     @Override
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (!app.getGameManager().isFloorBelow()) {
             if (ie) {
                 return true;

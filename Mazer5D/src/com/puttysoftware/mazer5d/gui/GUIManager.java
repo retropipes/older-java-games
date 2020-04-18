@@ -61,7 +61,7 @@ public class GUIManager implements QuitHandler {
     }
 
     public void showGUI() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.setInGUI(true);
         this.guiFrame.setVisible(true);
         app.getMenuManager().setMainMenus();
@@ -69,7 +69,7 @@ public class GUIManager implements QuitHandler {
     }
 
     public void hideGUI() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.setInGUI(false);
         this.guiFrame.setVisible(false);
     }
@@ -87,7 +87,7 @@ public class GUIManager implements QuitHandler {
     }
 
     public boolean quitHandler() {
-        final MazeManager mm = Mazer5D.getApplication().getMazeManager();
+        final MazeManager mm = Mazer5D.getBagOStuff().getMazeManager();
         boolean saved = true;
         int status = JOptionPane.DEFAULT_OPTION;
         if (mm.getDirty()) {

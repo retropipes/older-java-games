@@ -34,7 +34,7 @@ public class NormalAmulet extends GenericAmulet {
     @Override
     public void postMoveActionHook() {
         // Deactivate other amulet effects
-        final GameManager gm = Mazer5D.getApplication().getGameManager();
+        final GameManager gm = Mazer5D.getBagOStuff().getGameManager();
         gm.deactivateEffect(MazeEffectConstants.EFFECT_COUNTER_POISONED);
         gm.deactivateEffect(MazeEffectConstants.EFFECT_FIERY);
         gm.deactivateEffect(MazeEffectConstants.EFFECT_GHOSTLY);

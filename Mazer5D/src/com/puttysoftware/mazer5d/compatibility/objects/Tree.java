@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInfiniteLock;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Tree extends GenericInfiniteLock {
@@ -24,7 +24,7 @@ public class Tree extends GenericInfiniteLock {
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-            Mazer5D.getApplication().showMessage("You need an axe");
+            Mazer5D.getBagOStuff().showMessage("You need an axe");
         }
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
     }
@@ -35,7 +35,7 @@ public class Tree extends GenericInfiniteLock {
         if (!this.getKey().isInfinite()) {
             inv.removeItem(this.getKey());
         }
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decayTo(new CutTree());
         SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
     }

@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class FinishTo extends Finish {
@@ -28,7 +28,7 @@ public class FinishTo extends Finish {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         SoundPlayer.playSound(SoundIndex.FINISH, SoundGroup.GAME);
         app.getGameManager().solvedLevelWarp(this.getDestinationLevel());
     }
@@ -80,19 +80,19 @@ public class FinishTo extends Finish {
 
     @Override
     public void gameProbeHook() {
-        Mazer5D.getApplication().showMessage(
+        Mazer5D.getBagOStuff().showMessage(
                 this.getName() + " Level " + (this.getDestinationLevel() + 1));
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(
+        Mazer5D.getBagOStuff().showMessage(
                 this.getName() + " Level " + (this.getDestinationLevel() + 1));
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         me.editFinishToDestination(this);
         return this;
     }

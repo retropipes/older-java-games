@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 
 public class FadingWall extends GenericWall {
     // Fields
@@ -24,7 +24,7 @@ public class FadingWall extends GenericWall {
     public void timerExpiredAction(final int dirX, final int dirY) {
         // Disappear if the player is close to us
         boolean scanResult = false;
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
         final int pl = MazeConstants.LAYER_OBJECT;

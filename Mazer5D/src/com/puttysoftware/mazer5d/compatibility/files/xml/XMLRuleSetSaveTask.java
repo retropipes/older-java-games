@@ -10,7 +10,7 @@ import java.io.IOException;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.xio.XDataWriter;
 
 public class XMLRuleSetSaveTask extends Thread {
@@ -25,7 +25,7 @@ public class XMLRuleSetSaveTask extends Thread {
 
     @Override
     public void run() {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         final String sg = "Rule Set";
         // filename check
         final boolean hasExtension = XMLRuleSetSaveTask

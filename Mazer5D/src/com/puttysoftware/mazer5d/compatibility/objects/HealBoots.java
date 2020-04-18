@@ -34,7 +34,7 @@ public class HealBoots extends GenericBoots {
 
     @Override
     public void stepAction() {
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .heal(HealBoots.HEAL_AMOUNT);
     }
 }

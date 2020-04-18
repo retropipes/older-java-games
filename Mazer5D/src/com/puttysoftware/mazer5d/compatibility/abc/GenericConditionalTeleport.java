@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.MoonStone;
 import com.puttysoftware.mazer5d.compatibility.objects.SunStone;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public abstract class GenericConditionalTeleport extends GenericTeleport {
@@ -130,7 +130,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         int testVal;
         if (this.sunMoon == GenericConditionalTeleport.TRIGGER_SUN) {
             testVal = inv.getItemCount(new SunStone());
@@ -171,13 +171,13 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(
+        Mazer5D.getBagOStuff().showMessage(
                 this.getName() + ": Trigger Value " + this.triggerVal);
     }
 
     @Override
     public final MazeObjectModel editorPropertiesHook() {
-        final MazeEditor me = Mazer5D.getApplication().getEditor();
+        final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
         me.editConditionalTeleportDestination(this);
         return this;
     }
@@ -245,7 +245,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public int getCustomFormat() {
-        if (Mazer5D.getApplication().getMazeManager().isMazeXML4Compatible()) {
+        if (Mazer5D.getBagOStuff().getMazeManager().isMazeXML4Compatible()) {
             return 7;
         } else {
             return 8;

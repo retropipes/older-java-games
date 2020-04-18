@@ -12,8 +12,8 @@ import java.util.BitSet;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
@@ -478,7 +478,7 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
-        Mazer5D.getApplication().showMessage("Can't go that way");
+        Mazer5D.getBagOStuff().showMessage("Can't go that way");
     }
 
     /**
@@ -493,7 +493,7 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     }
 
     public void gameProbeHook() {
-        Mazer5D.getApplication().showMessage(this.getName());
+        Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     public void editorPlaceHook() {
@@ -511,7 +511,7 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     }
 
     public void editorProbeHook() {
-        Mazer5D.getApplication().showMessage(this.getName());
+        Mazer5D.getBagOStuff().showMessage(this.getName());
     }
 
     public MazeObjectModel editorPropertiesHook() {
@@ -570,8 +570,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
             final int y, final int pushX, final int pushY) {
         // Play push failed sound, if it's enabled
         SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
-        Mazer5D.getApplication().getGameManager().keepNextMessage();
-        Mazer5D.getApplication().showMessage("Can't push that");
+        Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
+        Mazer5D.getBagOStuff().showMessage("Can't push that");
     }
 
     /**
@@ -625,8 +625,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     public void pullFailedAction(final ObjectInventory inv, final int x,
             final int y, final int pullX, final int pullY) {
         SoundPlayer.playSound(SoundIndex.ACTION_FAILED, SoundGroup.GAME);
-        Mazer5D.getApplication().getGameManager().keepNextMessage();
-        Mazer5D.getApplication().showMessage("Can't pull that");
+        Mazer5D.getBagOStuff().getGameManager().keepNextMessage();
+        Mazer5D.getBagOStuff().showMessage("Can't pull that");
     }
 
     /**

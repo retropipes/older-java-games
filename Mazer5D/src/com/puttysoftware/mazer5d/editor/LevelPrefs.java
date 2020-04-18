@@ -64,19 +64,19 @@ public class LevelPrefs {
     // Methods
     public void showPrefs() {
         this.loadPrefs();
-        Mazer5D.getApplication().getEditor().disableOutput();
+        Mazer5D.getBagOStuff().getEditor().disableOutput();
         this.prefFrame.setVisible(true);
     }
 
     public void hidePrefs() {
         this.prefFrame.setVisible(false);
-        Mazer5D.getApplication().getEditor().enableOutput();
-        Mazer5D.getApplication().getMazeManager().setDirty(true);
-        Mazer5D.getApplication().getEditor().redrawEditor();
+        Mazer5D.getBagOStuff().getEditor().enableOutput();
+        Mazer5D.getBagOStuff().getMazeManager().setDirty(true);
+        Mazer5D.getBagOStuff().getEditor().redrawEditor();
     }
 
     void setPrefs() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         if (this.horizontalWrap.isSelected()) {
             m.enableHorizontalWraparound();
         } else {
@@ -154,7 +154,7 @@ public class LevelPrefs {
     }
 
     private void loadPrefs() {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
         this.thirdDimensionalWrap

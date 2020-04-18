@@ -51,13 +51,13 @@ class RuleSetEditor {
     }
 
     public void showRuleSetEditor() {
-        Mazer5D.getApplication().getRuleSetPicker().hideOutput();
+        Mazer5D.getBagOStuff().getRuleSetPicker().hideOutput();
         this.editFrame.setVisible(true);
     }
 
     void hideRuleSetEditor() {
         this.editFrame.setVisible(false);
-        Mazer5D.getApplication().getRuleSetPicker().showOutput();
+        Mazer5D.getBagOStuff().getRuleSetPicker().showOutput();
     }
 
     void saveRuleSetEditor() {

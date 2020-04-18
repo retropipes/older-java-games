@@ -40,19 +40,19 @@ public abstract class GenericWallTrap extends MazeObjectModel {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getGameManager().decay();
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getGameManager().decay();
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .findAllMatchingObjectsAndDecay(this.masterTrigger);
         if (this.number == GenericWallTrap.NUMBER_MASTER) {
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .masterTrapTrigger();
         } else {
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .findAllMatchingObjectsAndDecay(this);
-            Mazer5D.getApplication().getMazeManager().getMaze()
+            Mazer5D.getBagOStuff().getMazeManager().getMaze()
                     .findAllMatchingObjectsAndDecay(this.trigger);
         }
-        Mazer5D.getApplication().getGameManager().redrawMaze();
+        Mazer5D.getBagOStuff().getGameManager().redrawMaze();
         SoundPlayer.playSound(SoundIndex.WALL_TRAP, SoundGroup.GAME);
     }
 

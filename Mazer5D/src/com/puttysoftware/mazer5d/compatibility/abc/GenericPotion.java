@@ -8,8 +8,8 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -62,7 +62,7 @@ public abstract class GenericPotion extends MazeObjectModel {
     @Override
     public final void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         if (this.effect != null) {
             this.effectValue = this.effect.generate();
         } else {
@@ -81,13 +81,13 @@ public abstract class GenericPotion extends MazeObjectModel {
                 m.doDamage(-this.effectValue);
             }
         }
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
         if (this.effectValue >= 0) {
             SoundPlayer.playSound(SoundIndex.HEAL, SoundGroup.GAME);
         } else {
             SoundPlayer.playSound(SoundIndex.HURT, SoundGroup.GAME);
         }
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(GenericPotion.SCORE_CONSUME);
     }
 
@@ -95,10 +95,10 @@ public abstract class GenericPotion extends MazeObjectModel {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getApplication().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
                 locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        Mazer5D.getApplication().getGameManager()
+        Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(GenericPotion.SCORE_SMASH);
         return false;
     }

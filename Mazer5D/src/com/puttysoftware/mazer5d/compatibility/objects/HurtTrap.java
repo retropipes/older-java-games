@@ -34,12 +34,12 @@ public class HurtTrap extends GenericTrap {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        this.damage = Mazer5D.getApplication().getMazeManager().getMaze()
+        this.damage = Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .getMaximumHP() / 50;
         if (this.damage < 1) {
             this.damage = 1;
         }
-        Mazer5D.getApplication().getMazeManager().getMaze()
+        Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .doDamage(this.damage);
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }

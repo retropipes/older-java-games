@@ -31,6 +31,6 @@ public class OneShotConditionalTeleport extends GenericConditionalTeleport {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getApplication().getGameManager().decay();
+        Mazer5D.getBagOStuff().getGameManager().decay();
     }
 }

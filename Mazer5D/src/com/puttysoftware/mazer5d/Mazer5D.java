@@ -11,19 +11,19 @@ import java.awt.desktop.PreferencesHandler;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.integration.NativeIntegration;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class Mazer5D {
     // Constants
-    private static Application application;
+    private static BagOStuff bagOStuff;
     private static GameErrorHandler errhand;
     private static final String PROGRAM_NAME = "Mazer5D";
 
     // Methods
-    public static Application getApplication() {
-        return Mazer5D.application;
+    public static BagOStuff getBagOStuff() {
+        return Mazer5D.bagOStuff;
     }
 
     public static void logError(final Throwable t) {
@@ -37,17 +37,17 @@ public class Mazer5D {
         // Integrate with host platform
         final NativeIntegration ni = new NativeIntegration();
         ni.configureLookAndFeel();
-        Mazer5D.application = new Application(ni);
-        ni.setAboutHandler(Mazer5D.application.getAboutDialog());
-        ni.setOpenFileHandler(Mazer5D.application.getMazeManager());
+        Mazer5D.bagOStuff = new BagOStuff(ni);
+        ni.setAboutHandler(Mazer5D.bagOStuff.getAboutDialog());
+        ni.setOpenFileHandler(Mazer5D.bagOStuff.getMazeManager());
         ni.setPreferencesHandler(new PreferencesLauncher());
-        ni.setQuitHandler(Mazer5D.application.getGUIManager());
+        ni.setQuitHandler(Mazer5D.bagOStuff.getGUIManager());
         // Set up Common Dialogs
         CommonDialogs.setDefaultTitle(Mazer5D.PROGRAM_NAME);
         CommonDialogs.setIcon(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
         // Launch GUI
-        Mazer5D.application.playLogoSound();
-        Mazer5D.application.getGUIManager().showGUI();
+        Mazer5D.bagOStuff.playLogoSound();
+        Mazer5D.bagOStuff.getGUIManager().showGUI();
     }
 
     private static class PreferencesLauncher implements PreferencesHandler {

@@ -54,7 +54,7 @@ public class RotationTrap extends GenericTrap implements Cloneable {
         } else {
             dir = "Counterclockwise";
         }
-        Mazer5D.getApplication().showMessage(this.getName() + " (Radius "
+        Mazer5D.getBagOStuff().showMessage(this.getName() + " (Radius "
                 + this.radius + ", Direction " + dir + ")");
     }
 
@@ -122,10 +122,10 @@ public class RotationTrap extends GenericTrap implements Cloneable {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (this.direction) {
-            Mazer5D.getApplication().getGameManager()
+            Mazer5D.getBagOStuff().getGameManager()
                     .doClockwiseRotate(this.radius);
         } else {
-            Mazer5D.getApplication().getGameManager()
+            Mazer5D.getBagOStuff().getGameManager()
                     .doCounterclockwiseRotate(this.radius);
         }
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);

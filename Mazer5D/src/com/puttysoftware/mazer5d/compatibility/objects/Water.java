@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class Water extends GenericField {
@@ -31,14 +31,14 @@ public class Water extends GenericField {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getApplication().showMessage("You'll drown");
+        Mazer5D.getBagOStuff().showMessage("You'll drown");
         SoundPlayer.playSound(SoundIndex.WATER, SoundGroup.GAME);
     }
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
             final MazeObjectModel pushed, final int x, final int y, final int z) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,
                     MazeConstants.LAYER_GROUND);

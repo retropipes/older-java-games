@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
 public class PushableBlockOnce extends GenericMovableObject {
@@ -34,7 +34,7 @@ public class PushableBlockOnce extends GenericMovableObject {
     @Override
     public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pushX, final int pushY) {
-        final Application app = Mazer5D.getApplication();
+        final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
         SoundPlayer.playSound(SoundIndex.PUSH_PULL, SoundGroup.GAME);
         app.getGameManager().morphOther(new Wall(), pushX, pushY,

@@ -1,6 +1,6 @@
 package com.puttysoftware.mazer5d;
 
-import com.puttysoftware.mazer5d.gui.Application;
+import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class Modes {
@@ -60,7 +60,7 @@ public class Modes {
     }
 
     public static void restore() {
-        final Application bag = Mazer5D.getApplication();
+        final BagOStuff bag = Mazer5D.getBagOStuff();
         Modes.current = Modes.former;
         switch (Modes.current) {
         case GUI:
