@@ -12,7 +12,7 @@ import java.util.BitSet;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
@@ -23,7 +23,7 @@ import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class MazeObject implements DirectionConstants, TypeConstants,
+public abstract class MazeObjectModel implements DirectionConstants, TypeConstants,
         ArrowTypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
@@ -48,7 +48,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
 
     // Constructors
-    public MazeObject(final boolean isSolid) {
+    public MazeObjectModel(final boolean isSolid) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
         this.pushable = false;
@@ -70,7 +70,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.setTypes();
     }
 
-    public MazeObject(final boolean isSolidXN, final boolean isSolidXS,
+    public MazeObjectModel(final boolean isSolidXN, final boolean isSolidXS,
             final boolean isSolidXE, final boolean isSolidXW,
             final boolean isSolidIN, final boolean isSolidIS,
             final boolean isSolidIE, final boolean isSolidIW) {
@@ -125,7 +125,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.setTypes();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isPushable,
+    public MazeObjectModel(final boolean isSolid, final boolean isPushable,
             final boolean doesAcceptPushInto, final boolean doesAcceptPushOut,
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
@@ -150,7 +150,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.setTypes();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isPushable,
+    public MazeObjectModel(final boolean isSolid, final boolean isPushable,
             final boolean doesAcceptPushInto, final boolean doesAcceptPushOut,
             final boolean isPullable, final boolean doesAcceptPullInto,
             final boolean doesAcceptPullOut, final boolean hasFriction,
@@ -176,7 +176,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.setTypes();
     }
 
-    public MazeObject(final boolean isSolid, final boolean isUsable,
+    public MazeObjectModel(final boolean isSolid, final boolean isUsable,
             final int newUses, final boolean canBeInventoried) {
         this.sp = new SolidProperties();
         this.sp.setSolid(isSolid);
@@ -198,7 +198,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         this.setTypes();
     }
 
-    public MazeObject() {
+    public MazeObjectModel() {
         this.sp = new SolidProperties();
         this.pushable = false;
         this.pushableInto = false;
@@ -220,9 +220,9 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
 
     // Methods
     @Override
-    public MazeObject clone() {
+    public MazeObjectModel clone() {
         try {
-            final MazeObject copy = this.getClass().getConstructor()
+            final MazeObjectModel copy = this.getClass().getConstructor()
                     .newInstance();
             copy.sp = this.sp.clone();
             copy.pushable = this.pushable;
@@ -285,10 +285,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof MazeObject)) {
+        if (!(obj instanceof MazeObjectModel)) {
             return false;
         }
-        final MazeObject other = (MazeObject) obj;
+        final MazeObjectModel other = (MazeObjectModel) obj;
         if (this.chainReacts != other.chainReacts) {
             return false;
         }
@@ -514,7 +514,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         Mazer5D.getApplication().showMessage(this.getName());
     }
 
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return null;
     }
 
@@ -527,7 +527,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param pushX
      * @param pushY
      */
-    public void pushAction(final ObjectInventory inv, final MazeObject mo,
+    public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pushX, final int pushY) {
         // Do nothing
     }
@@ -541,7 +541,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param z
      */
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObject pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -554,7 +554,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param z
      */
     public void pushOutAction(final ObjectInventory inv,
-            final MazeObject pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -583,7 +583,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param pullX
      * @param pullY
      */
-    public void pullAction(final ObjectInventory inv, final MazeObject mo,
+    public void pullAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pullX, final int pullY) {
         // Do nothing
     }
@@ -597,7 +597,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param z
      */
     public void pullIntoAction(final ObjectInventory inv,
-            final MazeObject pulled, final int x, final int y, final int z) {
+            final MazeObjectModel pulled, final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -610,7 +610,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param z
      */
     public void pullOutAction(final ObjectInventory inv,
-            final MazeObject pulled, final int x, final int y, final int z) {
+            final MazeObjectModel pulled, final int x, final int y, final int z) {
         // Do nothing
     }
 
@@ -636,7 +636,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @param y
      * @param z
      */
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -727,7 +727,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public MazeObject gameRenderHook() {
+    public MazeObjectModel gameRenderHook() {
         return this;
     }
 
@@ -797,7 +797,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     @Override
-    public boolean shouldGenerateObject(final Maze maze, final int row,
+    public boolean shouldGenerateObject(final MazeModel maze, final int row,
             final int col, final int floor, final int level, final int layer) {
         if (layer == MazeConstants.LAYER_OBJECT) {
             // Handle object layer
@@ -835,12 +835,12 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final Maze maze) {
+    public int getMinimumRequiredQuantity(final MazeModel maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(final Maze maze) {
+    public int getMaximumRequiredQuantity(final MazeModel maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
@@ -853,7 +853,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
             throws IOException {
         writer.writeString(this.getXMLIdentifier());
         final int cc = this.getCustomFormat();
-        if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+        if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
             this.writeMazeObjectHookXML(writer);
         } else {
             for (int x = 0; x < cc; x++) {
@@ -863,11 +863,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public final MazeObject readMazeObjectXML(final XDataReader reader,
+    public final MazeObjectModel readMazeObjectXML(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int cc = this.getCustomFormat();
-            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
@@ -881,11 +881,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public final MazeObject readMazeObjectXML2(final XDataReader reader,
+    public final MazeObjectModel readMazeObjectXML2(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int cc = this.getCustomFormat();
-            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
@@ -899,11 +899,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public final MazeObject readMazeObjectXML3(final XDataReader reader,
+    public final MazeObjectModel readMazeObjectXML3(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int cc = this.getCustomFormat();
-            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
@@ -917,11 +917,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public final MazeObject readMazeObjectXML4(final XDataReader reader,
+    public final MazeObjectModel readMazeObjectXML4(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int cc = this.getCustomFormat();
-            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
@@ -935,11 +935,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
         }
     }
 
-    public final MazeObject readMazeObjectXML5(final XDataReader reader,
+    public final MazeObjectModel readMazeObjectXML5(final XDataReader reader,
             final String ident, final int ver) throws IOException {
         if (ident.equals(this.getXMLIdentifier())) {
             final int cc = this.getCustomFormat();
-            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            if (cc == MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
                 return this.readMazeObjectHookXML(reader, ver);
             } else {
                 for (int x = 0; x < cc; x++) {
@@ -970,7 +970,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants,
      * @return
      * @throws IOException
      */
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         // Dummy implementation, subclasses can override
         return this;

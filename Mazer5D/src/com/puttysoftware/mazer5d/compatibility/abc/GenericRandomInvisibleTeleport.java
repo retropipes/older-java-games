@@ -40,9 +40,9 @@ public abstract class GenericRandomInvisibleTeleport
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
+        final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE);
         return mo;
     }

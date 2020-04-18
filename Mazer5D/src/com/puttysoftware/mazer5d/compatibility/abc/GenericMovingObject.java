@@ -3,9 +3,9 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 
-public abstract class GenericMovingObject extends MazeObject {
+public abstract class GenericMovingObject extends MazeObjectModel {
     // Fields
-    protected MazeObject savedObject;
+    protected MazeObjectModel savedObject;
 
     // Constructors
     public GenericMovingObject(final boolean solid) {
@@ -18,7 +18,7 @@ public abstract class GenericMovingObject extends MazeObject {
         return true;
     }
 
-    public MazeObject getSavedObject() {
+    public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }
 
@@ -47,7 +47,7 @@ public abstract class GenericMovingObject extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

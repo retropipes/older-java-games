@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
@@ -43,28 +43,28 @@ public class ExplodingWall extends GenericWall {
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, currName;
         invalidName = new EmptyVoid().getName();
         currName = curr.getName();
-        final MazeObject mo2 = app.getMazeManager().getMazeObject(x - 1, y, z,
+        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x - 1, y, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
         } catch (final NullPointerException np) {
             mo2Name = invalidName;
         }
-        final MazeObject mo4 = app.getMazeManager().getMazeObject(x, y - 1, z,
+        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(x, y - 1, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
         } catch (final NullPointerException np) {
             mo4Name = invalidName;
         }
-        final MazeObject mo6 = app.getMazeManager().getMazeObject(x, y + 1, z,
+        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(x, y + 1, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
         } catch (final NullPointerException np) {
             mo6Name = invalidName;
         }
-        final MazeObject mo8 = app.getMazeManager().getMazeObject(x + 1, y, z,
+        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(x + 1, y, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();

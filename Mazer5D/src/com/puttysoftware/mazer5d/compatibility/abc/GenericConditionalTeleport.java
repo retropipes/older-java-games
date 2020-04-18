@@ -176,7 +176,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
     }
 
     @Override
-    public final MazeObject editorPropertiesHook() {
+    public final MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
         me.editConditionalTeleportDestination(this);
         return this;
@@ -207,7 +207,7 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
         case 8:
             return this.sunMoon;
         default:
-            return MazeObject.DEFAULT_CUSTOM_VALUE;
+            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
         }
     }
 

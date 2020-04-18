@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
@@ -57,9 +57,9 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
+        final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT);
         return mo;
     }

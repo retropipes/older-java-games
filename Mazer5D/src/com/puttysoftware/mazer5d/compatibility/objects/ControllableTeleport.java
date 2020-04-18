@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -45,7 +45,7 @@ public class ControllableTeleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return null;
     }
 

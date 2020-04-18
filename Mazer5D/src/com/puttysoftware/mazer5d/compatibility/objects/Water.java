@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
@@ -37,7 +37,7 @@ public class Water extends GenericField {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObject pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y, final int z) {
         final Application app = Mazer5D.getApplication();
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,

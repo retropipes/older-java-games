@@ -14,7 +14,7 @@ public abstract class GenericUsableObject extends GenericInventoryableObject {
     }
 
     @Override
-    public abstract void useAction(MazeObject mo, int x, int y, int z);
+    public abstract void useAction(MazeObjectModel mo, int x, int y, int z);
 
     @Override
     public abstract String getName();

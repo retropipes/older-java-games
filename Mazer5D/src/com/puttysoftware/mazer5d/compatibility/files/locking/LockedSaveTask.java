@@ -14,7 +14,7 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.Extension;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixHandler;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.gui.Application;
 
 public class LockedSaveTask extends Thread {
@@ -38,7 +38,7 @@ public class LockedSaveTask extends Thread {
             this.filename += Extension.getLockedMazeExtensionWithPeriod();
         }
         final File mazeFile = new File(this.filename);
-        final File tempLock = new File(Maze.getMazeTempFolder() + "lock.tmp");
+        final File tempLock = new File(MazeModel.getMazeTempFolder() + "lock.tmp");
         try {
             // Set prefix handler
             app.getMazeManager().getMaze()

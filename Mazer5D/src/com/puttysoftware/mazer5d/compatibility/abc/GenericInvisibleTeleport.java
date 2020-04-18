@@ -40,5 +40,5 @@ public abstract class GenericInvisibleTeleport extends GenericTeleport {
     }
 
     @Override
-    public abstract MazeObject editorPropertiesHook();
+    public abstract MazeObjectModel editorPropertiesHook();
 }

@@ -18,9 +18,9 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class GenericMovableObject extends MazeObject {
+public abstract class GenericMovableObject extends MazeObjectModel {
     // Fields
-    private MazeObject savedObject;
+    private MazeObjectModel savedObject;
 
     // Constructors
     protected GenericMovableObject(final boolean pushable,
@@ -35,11 +35,11 @@ public abstract class GenericMovableObject extends MazeObject {
         return true;
     }
 
-    public MazeObject getSavedObject() {
+    public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }
 
-    public void setSavedObject(final MazeObject obj) {
+    public void setSavedObject(final MazeObjectModel obj) {
         this.savedObject = obj;
     }
 
@@ -50,7 +50,7 @@ public abstract class GenericMovableObject extends MazeObject {
     }
 
     @Override
-    public void pushAction(final ObjectInventory inv, final MazeObject mo,
+    public void pushAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pushX, final int pushY) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
@@ -59,7 +59,7 @@ public abstract class GenericMovableObject extends MazeObject {
     }
 
     @Override
-    public void pullAction(final ObjectInventory inv, final MazeObject mo,
+    public void pullAction(final ObjectInventory inv, final MazeObjectModel mo,
             final int x, final int y, final int pullX, final int pullY) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().updatePulledPosition(x, y, pullX, pullY, this);
@@ -82,7 +82,7 @@ public abstract class GenericMovableObject extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
@@ -91,7 +91,7 @@ public abstract class GenericMovableObject extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.savedObject = Mazer5D.getApplication().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
@@ -109,7 +109,7 @@ public abstract class GenericMovableObject extends MazeObject {
         if (Mazer5D.getApplication().getMazeManager().isMazeXML1Compatible()) {
             return 0;
         } else {
-            return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+            return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
         }
     }
 }

@@ -19,7 +19,7 @@ import com.puttysoftware.xio.XDataWriter;
 
 public class MazeObjectList {
     // Fields
-    private final MazeObject[] allObjects = { new Empty(), new Grass(),
+    private final MazeObjectModel[] allObjects = { new Empty(), new Grass(),
             new Dirt(), new Sand(), new Snow(), new Tundra(), new Tile(),
             new Ice(), new Water(), new HotRock(), new Slime(), new Lava(),
             new SunkenBlock(), new ForceField(), new BlueCarpet(),
@@ -149,7 +149,7 @@ public class MazeObjectList {
             new WhiteHouse(), new YellowHouse(), new Exit(),
             new SealingWall() };
 
-    public MazeObject[] getAllObjects() {
+    public MazeObjectModel[] getAllObjects() {
         return this.allObjects;
     }
 
@@ -169,22 +169,22 @@ public class MazeObjectList {
         return allDescriptions;
     }
 
-    public MazeObject[] getAllObjectsWithRuleSets() {
-        final MazeObject[] tempAllObjectsWithRuleSets = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllObjectsWithRuleSets() {
+        final MazeObjectModel[] tempAllObjectsWithRuleSets = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].hasRuleSet()) {
                 tempAllObjectsWithRuleSets[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+        for (final MazeObjectModel tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
             if (tempAllObjectsWithRuleSet != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allObjectsWithRuleSets = new MazeObject[objectCount];
+        final MazeObjectModel[] allObjectsWithRuleSets = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
+        for (final MazeObjectModel tempAllObjectsWithRuleSet : tempAllObjectsWithRuleSets) {
             if (tempAllObjectsWithRuleSet != null) {
                 allObjectsWithRuleSets[objectCount] = tempAllObjectsWithRuleSet;
                 objectCount++;
@@ -193,22 +193,22 @@ public class MazeObjectList {
         return allObjectsWithRuleSets;
     }
 
-    public MazeObject[] getAllObjectsWithoutRuleSets() {
-        final MazeObject[] tempAllObjectsWithoutRuleSets = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllObjectsWithoutRuleSets() {
+        final MazeObjectModel[] tempAllObjectsWithoutRuleSets = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (!this.allObjects[x].hasRuleSet()) {
                 tempAllObjectsWithoutRuleSets[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+        for (final MazeObjectModel tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
             if (tempAllObjectsWithoutRuleSet != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allObjectsWithoutRuleSets = new MazeObject[objectCount];
+        final MazeObjectModel[] allObjectsWithoutRuleSets = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
+        for (final MazeObjectModel tempAllObjectsWithoutRuleSet : tempAllObjectsWithoutRuleSets) {
             if (tempAllObjectsWithoutRuleSet != null) {
                 allObjectsWithoutRuleSets[objectCount] = tempAllObjectsWithoutRuleSet;
                 objectCount++;
@@ -217,22 +217,22 @@ public class MazeObjectList {
         return allObjectsWithoutRuleSets;
     }
 
-    public MazeObject[] getAllGroundLayerObjects() {
-        final MazeObject[] tempAllGroundLayerObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllGroundLayerObjects() {
+        final MazeObjectModel[] tempAllGroundLayerObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].getLayer() == MazeConstants.LAYER_GROUND) {
                 tempAllGroundLayerObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+        for (final MazeObjectModel tempAllGroundLayerObject : tempAllGroundLayerObjects) {
             if (tempAllGroundLayerObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allGroundLayerObjects = new MazeObject[objectCount];
+        final MazeObjectModel[] allGroundLayerObjects = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllGroundLayerObject : tempAllGroundLayerObjects) {
+        for (final MazeObjectModel tempAllGroundLayerObject : tempAllGroundLayerObjects) {
             if (tempAllGroundLayerObject != null) {
                 allGroundLayerObjects[objectCount] = tempAllGroundLayerObject;
                 objectCount++;
@@ -241,22 +241,22 @@ public class MazeObjectList {
         return allGroundLayerObjects;
     }
 
-    public MazeObject[] getAllObjectLayerObjects() {
-        final MazeObject[] tempAllObjectLayerObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllObjectLayerObjects() {
+        final MazeObjectModel[] tempAllObjectLayerObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].getLayer() == MazeConstants.LAYER_OBJECT) {
                 tempAllObjectLayerObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+        for (final MazeObjectModel tempAllObjectLayerObject : tempAllObjectLayerObjects) {
             if (tempAllObjectLayerObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allObjectLayerObjects = new MazeObject[objectCount];
+        final MazeObjectModel[] allObjectLayerObjects = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllObjectLayerObject : tempAllObjectLayerObjects) {
+        for (final MazeObjectModel tempAllObjectLayerObject : tempAllObjectLayerObjects) {
             if (tempAllObjectLayerObject != null) {
                 allObjectLayerObjects[objectCount] = tempAllObjectLayerObject;
                 objectCount++;
@@ -397,22 +397,22 @@ public class MazeObjectList {
         return allContainableObjectEditorAppearances;
     }
 
-    public MazeObject[] getAllContainableObjects() {
-        final MazeObject[] tempAllContainableObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllContainableObjects() {
+        final MazeObjectModel[] tempAllContainableObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].isOfType(TypeConstants.TYPE_CONTAINABLE)) {
                 tempAllContainableObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
+        for (final MazeObjectModel tempAllContainableObject : tempAllContainableObjects) {
             if (tempAllContainableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allContainableObjects = new MazeObject[objectCount];
+        final MazeObjectModel[] allContainableObjects = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllContainableObject : tempAllContainableObjects) {
+        for (final MazeObjectModel tempAllContainableObject : tempAllContainableObjects) {
             if (tempAllContainableObject != null) {
                 allContainableObjects[objectCount] = tempAllContainableObject;
                 objectCount++;
@@ -445,8 +445,8 @@ public class MazeObjectList {
         return allContainableNames;
     }
 
-    public MazeObject[] getAllInventoryableObjectsMinusSpecial() {
-        final MazeObject[] tempAllInventoryableObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllInventoryableObjectsMinusSpecial() {
+        final MazeObjectModel[] tempAllInventoryableObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].isInventoryable()
@@ -457,14 +457,14 @@ public class MazeObjectList {
                 tempAllInventoryableObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+        for (final MazeObjectModel tempAllInventoryableObject : tempAllInventoryableObjects) {
             if (tempAllInventoryableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allInventoryableObjects = new MazeObject[objectCount];
+        final MazeObjectModel[] allInventoryableObjects = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllInventoryableObject : tempAllInventoryableObjects) {
+        for (final MazeObjectModel tempAllInventoryableObject : tempAllInventoryableObjects) {
             if (tempAllInventoryableObject != null) {
                 allInventoryableObjects[objectCount] = tempAllInventoryableObject;
                 objectCount++;
@@ -501,8 +501,8 @@ public class MazeObjectList {
         return allInventoryableNames;
     }
 
-    public MazeObject[] getAllProgrammableKeys() {
-        final MazeObject[] tempAllProgrammableKeys = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllProgrammableKeys() {
+        final MazeObjectModel[] tempAllProgrammableKeys = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x]
@@ -510,14 +510,14 @@ public class MazeObjectList {
                 tempAllProgrammableKeys[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+        for (final MazeObjectModel tempAllProgrammableKey : tempAllProgrammableKeys) {
             if (tempAllProgrammableKey != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allProgrammableKeys = new MazeObject[objectCount];
+        final MazeObjectModel[] allProgrammableKeys = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllProgrammableKey : tempAllProgrammableKeys) {
+        for (final MazeObjectModel tempAllProgrammableKey : tempAllProgrammableKeys) {
             if (tempAllProgrammableKey != null) {
                 allProgrammableKeys[objectCount] = tempAllProgrammableKey;
                 objectCount++;
@@ -551,22 +551,22 @@ public class MazeObjectList {
         return allProgrammableKeyNames;
     }
 
-    public MazeObject[] getAllUsableObjects() {
-        final MazeObject[] tempAllUsableObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllUsableObjects() {
+        final MazeObjectModel[] tempAllUsableObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].isUsable()) {
                 tempAllUsableObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allUsableObjects = new MazeObject[objectCount];
+        final MazeObjectModel[] allUsableObjects = new MazeObjectModel[objectCount];
         objectCount = 0;
-        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 allUsableObjects[objectCount] = tempAllUsableObject;
                 objectCount++;
@@ -600,20 +600,20 @@ public class MazeObjectList {
         return allUsableNames;
     }
 
-    public MazeObject[] getAllBows() {
-        final MazeObject[] tempAllUsableObjects = new MazeObject[this.allObjects.length];
+    public MazeObjectModel[] getAllBows() {
+        final MazeObjectModel[] tempAllUsableObjects = new MazeObjectModel[this.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].isOfType(TypeConstants.TYPE_BOW)) {
                 tempAllUsableObjects[x] = this.allObjects[x];
             }
         }
-        for (final MazeObject tempAllUsableObject : tempAllUsableObjects) {
+        for (final MazeObjectModel tempAllUsableObject : tempAllUsableObjects) {
             if (tempAllUsableObject != null) {
                 objectCount++;
             }
         }
-        final MazeObject[] allUsableObjects = new MazeObject[objectCount + 1];
+        final MazeObjectModel[] allUsableObjects = new MazeObjectModel[objectCount + 1];
         objectCount = 0;
         for (int x = 0; x < tempAllUsableObjects.length - 1; x++) {
             if (tempAllUsableObjects[x] != null) {
@@ -650,8 +650,8 @@ public class MazeObjectList {
         return allUsableNames;
     }
 
-    public final MazeObject[] getAllRequired(final int layer) {
-        final MazeObject[] tempAllRequired = new MazeObject[this.allObjects.length];
+    public final MazeObjectModel[] getAllRequired(final int layer) {
+        final MazeObjectModel[] tempAllRequired = new MazeObjectModel[this.allObjects.length];
         int x;
         int count = 0;
         for (x = 0; x < this.allObjects.length; x++) {
@@ -664,7 +664,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            final MazeObject[] allRequired = new MazeObject[count];
+            final MazeObjectModel[] allRequired = new MazeObjectModel[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -672,9 +672,9 @@ public class MazeObjectList {
         }
     }
 
-    public final MazeObject[] getAllWithoutPrerequisiteAndNotRequired(
+    public final MazeObjectModel[] getAllWithoutPrerequisiteAndNotRequired(
             final int layer) {
-        final MazeObject[] tempAllWithoutPrereq = new MazeObject[this.allObjects.length];
+        final MazeObjectModel[] tempAllWithoutPrereq = new MazeObjectModel[this.allObjects.length];
         int x;
         int count = 0;
         for (x = 0; x < this.allObjects.length; x++) {
@@ -687,7 +687,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            final MazeObject[] allWithoutPrereq = new MazeObject[count];
+            final MazeObjectModel[] allWithoutPrereq = new MazeObjectModel[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -695,12 +695,12 @@ public class MazeObjectList {
         }
     }
 
-    public static final MazeObject[] getAllRequiredSubset(
-            final MazeObject[] objs, final int layer) {
+    public static final MazeObjectModel[] getAllRequiredSubset(
+            final MazeObjectModel[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        final MazeObject[] tempAllRequired = new MazeObject[objs.length];
+        final MazeObjectModel[] tempAllRequired = new MazeObjectModel[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -720,7 +720,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            final MazeObject[] allRequired = new MazeObject[count];
+            final MazeObjectModel[] allRequired = new MazeObjectModel[count];
             for (x = 0; x < count; x++) {
                 allRequired[x] = tempAllRequired[x];
             }
@@ -728,12 +728,12 @@ public class MazeObjectList {
         }
     }
 
-    public static final MazeObject[] getAllWithoutPrerequisiteAndNotRequiredSubset(
-            final MazeObject[] objs, final int layer) {
+    public static final MazeObjectModel[] getAllWithoutPrerequisiteAndNotRequiredSubset(
+            final MazeObjectModel[] objs, final int layer) {
         if (objs == null) {
             return null;
         }
-        final MazeObject[] tempAllWithoutPrereq = new MazeObject[objs.length];
+        final MazeObjectModel[] tempAllWithoutPrereq = new MazeObjectModel[objs.length];
         int x;
         int count = 0;
         for (x = 0; x < objs.length; x++) {
@@ -753,7 +753,7 @@ public class MazeObjectList {
         if (count == 0) {
             return null;
         } else {
-            final MazeObject[] allWithoutPrereq = new MazeObject[count];
+            final MazeObjectModel[] allWithoutPrereq = new MazeObjectModel[count];
             for (x = 0; x < count; x++) {
                 allWithoutPrereq[x] = tempAllWithoutPrereq[x];
             }
@@ -761,8 +761,8 @@ public class MazeObjectList {
         }
     }
 
-    public final MazeObject getNewInstanceByName(final String name) {
-        MazeObject instance = null;
+    public final MazeObjectModel getNewInstanceByName(final String name) {
+        MazeObjectModel instance = null;
         int x;
         for (x = 0; x < this.allObjects.length; x++) {
             if (this.allObjects[x].getName().equals(name)) {
@@ -783,9 +783,9 @@ public class MazeObjectList {
         }
     }
 
-    public MazeObject readMazeObjectXML(final XDataReader reader,
+    public MazeObjectModel readMazeObjectXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        MazeObject o = null;
+        MazeObjectModel o = null;
         String UID = "";
         if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
             UID = reader.readString();
@@ -798,9 +798,9 @@ public class MazeObjectList {
         } else if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_5) {
             UID = reader.readString();
         }
-        for (final MazeObject allObject : this.allObjects) {
+        for (final MazeObjectModel allObject : this.allObjects) {
             try {
-                final MazeObject instance = allObject.getClass()
+                final MazeObjectModel instance = allObject.getClass()
                         .getConstructor().newInstance();
                 if (formatVersion == XMLFormatConstants.XML_MAZE_FORMAT_1) {
                     o = instance.readMazeObjectXML(reader, UID, formatVersion);

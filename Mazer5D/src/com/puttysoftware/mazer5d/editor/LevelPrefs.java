@@ -27,7 +27,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class LevelPrefs {
@@ -76,7 +76,7 @@ public class LevelPrefs {
     }
 
     void setPrefs() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         if (this.horizontalWrap.isSelected()) {
             m.enableHorizontalWraparound();
         } else {
@@ -154,7 +154,7 @@ public class LevelPrefs {
     }
 
     private void loadPrefs() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
         this.thirdDimensionalWrap
@@ -213,7 +213,7 @@ public class LevelPrefs {
         this.levelTitle = new JTextField("");
         this.levelStartMessage = new JTextArea("");
         this.levelEndMessage = new JTextArea("");
-        this.poisonPowerChoiceArray = new String[Maze.getMaxPoisonPower() + 1];
+        this.poisonPowerChoiceArray = new String[MazeModel.getMaxPoisonPower() + 1];
         for (int x = 0; x < this.poisonPowerChoiceArray.length; x++) {
             if (x == 0) {
                 this.poisonPowerChoiceArray[x] = "None";

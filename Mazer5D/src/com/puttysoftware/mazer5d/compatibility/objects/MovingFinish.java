@@ -9,7 +9,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -62,7 +62,7 @@ public class MovingFinish extends Finish {
     @Override
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
-        final MazeObject obj = Mazer5D.getApplication().getMazeManager()
+        final MazeObjectModel obj = Mazer5D.getApplication().getMazeManager()
                 .getMazeObject(this.getDestinationRow(),
                         this.getDestinationColumn(), this.getDestinationFloor(),
                         MazeConstants.LAYER_OBJECT);
@@ -72,7 +72,7 @@ public class MovingFinish extends Finish {
             mf.activate();
         } else {
             final Application app = Mazer5D.getApplication();
-            final MazeObject saved = app.getGameManager().getSavedMazeObject();
+            final MazeObjectModel saved = app.getGameManager().getSavedMazeObject();
             final int px = app.getGameManager().getPlayerManager()
                     .getPlayerLocationX();
             final int py = app.getGameManager().getPlayerManager()
@@ -101,7 +101,7 @@ public class MovingFinish extends Finish {
     }
 
     @Override
-    public MazeObject gameRenderHook() {
+    public MazeObjectModel gameRenderHook() {
         if (this.active) {
             return this;
         } else {
@@ -130,9 +130,9 @@ public class MovingFinish extends Finish {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me.editTeleportDestination(
+        final MazeObjectModel mo = me.editTeleportDestination(
                 MazeEditor.TELEPORT_TYPE_MOVING_FINISH);
         return mo;
     }
@@ -157,7 +157,7 @@ public class MovingFinish extends Finish {
         case 3:
             return this.getDestinationFloor();
         default:
-            return MazeObject.DEFAULT_CUSTOM_VALUE;
+            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
         }
     }
 

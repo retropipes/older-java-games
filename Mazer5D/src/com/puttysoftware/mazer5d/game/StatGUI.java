@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.EffectImageIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.loaders.EffectImageLoader;
 
 class StatGUI {
@@ -35,7 +35,7 @@ class StatGUI {
     }
 
     public void updateStats() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         this.hpLabel.setText(m.getHPString());
         this.poisonLabel.setText(m.getPoisonString());
         this.timeLabel.setText(m.getTimeString());

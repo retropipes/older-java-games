@@ -8,14 +8,14 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.randomrange.RandomRange;
 
-public abstract class GenericPotion extends MazeObject {
+public abstract class GenericPotion extends MazeObjectModel {
     // Fields
     private int effectValue;
     private RandomRange effect;
@@ -62,7 +62,7 @@ public abstract class GenericPotion extends MazeObject {
     @Override
     public final void postMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         if (this.effect != null) {
             this.effectValue = this.effect.generate();
         } else {
@@ -113,7 +113,7 @@ public abstract class GenericPotion extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

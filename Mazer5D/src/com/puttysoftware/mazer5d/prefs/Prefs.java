@@ -268,7 +268,7 @@ public class Prefs {
         }
     }
 
-    public static com.puttysoftware.mazer5d.compatibility.abc.MazeObject getEditorDefaultFill() {
+    public static com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel getEditorDefaultFill() {
         return new com.puttysoftware.mazer5d.compatibility.objects.Tile();
     }
     //

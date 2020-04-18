@@ -21,7 +21,7 @@ public abstract class GenericBow extends GenericUsableObject {
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         // Do nothing
     }
@@ -35,7 +35,7 @@ public abstract class GenericBow extends GenericUsableObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

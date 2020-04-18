@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 
 public class Destination extends GenericTeleport {
     // Constructors
@@ -25,7 +25,7 @@ public class Destination extends GenericTeleport {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return null;
     }
 

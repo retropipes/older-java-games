@@ -9,9 +9,9 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
@@ -52,7 +52,7 @@ public class Finish extends GenericTeleport {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return null;
     }
 
@@ -73,12 +73,12 @@ public class Finish extends GenericTeleport {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final Maze maze) {
+    public int getMinimumRequiredQuantity(final MazeModel maze) {
         return 1;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(final Maze maze) {
+    public int getMaximumRequiredQuantity(final MazeModel maze) {
         return RandomGenerationRule.NO_LIMIT;
     }
 }

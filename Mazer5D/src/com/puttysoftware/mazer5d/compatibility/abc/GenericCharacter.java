@@ -17,9 +17,9 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class GenericCharacter extends MazeObject {
+public abstract class GenericCharacter extends MazeObjectModel {
     // Fields
-    private MazeObject savedObject;
+    private MazeObjectModel savedObject;
     public static final int FULL_HEAL_PERCENTAGE = 100;
     private static final int SHOT_SELF_NORMAL_DAMAGE = 5;
     private static final int SHOT_SELF_SPECIAL_DAMAGE = 10;
@@ -37,11 +37,11 @@ public abstract class GenericCharacter extends MazeObject {
         // Do nothing
     }
 
-    public MazeObject getSavedObject() {
+    public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }
 
-    public void setSavedObject(final MazeObject obj) {
+    public void setSavedObject(final MazeObjectModel obj) {
         this.savedObject = obj;
     }
 
@@ -80,13 +80,13 @@ public abstract class GenericCharacter extends MazeObject {
         if (Mazer5D.getApplication().getMazeManager().isMazeXML2Compatible()) {
             return 0;
         } else {
-            return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+            return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
         }
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
@@ -101,7 +101,7 @@ public abstract class GenericCharacter extends MazeObject {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.savedObject = Mazer5D.getApplication().getObjects()
                 .readMazeObjectXML(reader, formatVersion);

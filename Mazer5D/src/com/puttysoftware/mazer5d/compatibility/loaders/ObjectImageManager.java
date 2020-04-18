@@ -13,7 +13,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 
 public class ObjectImageManager {
     private static final String DEFAULT_LOAD_PATH = "/assets/image/object/";
@@ -22,7 +22,7 @@ public class ObjectImageManager {
     private static final Color TRANSPARENT = new Color(200, 100, 100);
     private static Color REPLACE = new Color(223, 223, 223);
 
-    public static BufferedImageIcon getTransformedImage(final MazeObject obj,
+    public static BufferedImageIcon getTransformedImage(final MazeObjectModel obj,
             final boolean game) {
         try {
             final BufferedImageIcon icon = ObjectImageCache
@@ -52,8 +52,8 @@ public class ObjectImageManager {
         }
     }
 
-    public static BufferedImageIcon getCompositeImage(final MazeObject obj1,
-            final MazeObject obj2, final boolean game) {
+    public static BufferedImageIcon getCompositeImage(final MazeObjectModel obj1,
+            final MazeObjectModel obj2, final boolean game) {
         try {
             final BufferedImageIcon icon1 = ObjectImageCache
                     .getCachedObjectImage(obj1, game);
@@ -84,7 +84,7 @@ public class ObjectImageManager {
     }
 
     public static BufferedImageIcon getVirtualCompositeImage(
-            final MazeObject obj1, final MazeObject obj2, final MazeObject obj3,
+            final MazeObjectModel obj1, final MazeObjectModel obj2, final MazeObjectModel obj3,
             final boolean game) {
         try {
             final BufferedImageIcon icon3 = ObjectImageCache
@@ -115,13 +115,13 @@ public class ObjectImageManager {
         }
     }
 
-    public static BufferedImageIcon getObjectImage(final MazeObject obj,
+    public static BufferedImageIcon getObjectImage(final MazeObjectModel obj,
             final boolean game) {
         // Get it from the cache
         return ObjectImageCache.getCachedObjectImage(obj, game);
     }
 
-    static BufferedImageIcon getUncachedObjectImage(final MazeObject obj,
+    static BufferedImageIcon getUncachedObjectImage(final MazeObjectModel obj,
             final boolean game) {
         try {
             String name;

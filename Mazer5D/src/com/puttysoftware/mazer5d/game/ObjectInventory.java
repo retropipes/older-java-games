@@ -11,7 +11,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Bow;
@@ -49,7 +49,7 @@ public final class ObjectInventory implements Cloneable {
     }
 
     // Accessors
-    public int getItemCount(final MazeObject mo) {
+    public int getItemCount(final MazeObjectModel mo) {
         if (ObjectInventory.isBoots(mo)) {
             return this.getBootsCount();
         } else if (ObjectInventory.isBow(mo)) {
@@ -61,7 +61,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public int getUses(final MazeObject mo) {
+    public int getUses(final MazeObjectModel mo) {
         if (ObjectInventory.isBoots(mo)) {
             return 0;
         } else if (ObjectInventory.isAmulet(mo)) {
@@ -75,7 +75,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private void setUses(final MazeObject mo, final int newUses) {
+    private void setUses(final MazeObjectModel mo, final int newUses) {
         if (!ObjectInventory.isBoots(mo) && !ObjectInventory.isAmulet(mo)) {
             if (!ObjectInventory.isBow(mo)) {
                 this.setOtherUses(mo, newUses);
@@ -85,7 +85,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void use(final MazeObject mo, final int x, final int y,
+    public void use(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         int tempUses = this.getUses(mo);
         if (mo.isUsable() && tempUses > 0) {
@@ -111,7 +111,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public boolean isItemThere(final MazeObject mo) {
+    public boolean isItemThere(final MazeObjectModel mo) {
         if (ObjectInventory.isBoots(mo)) {
             return this.areBootsThere(mo);
         } else if (ObjectInventory.isBow(mo)) {
@@ -125,7 +125,7 @@ public final class ObjectInventory implements Cloneable {
 
     public boolean isItemCategoryThere(final int cat) {
         final MazeObjectList list = Mazer5D.getApplication().getObjects();
-        final MazeObject[] objects = list
+        final MazeObjectModel[] objects = list
                 .getAllInventoryableObjectsMinusSpecial();
         for (int x = 0; x < objects.length; x++) {
             if (objects[x].isOfType(cat) && this.contents[x] > 0) {
@@ -147,7 +147,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void addItem(final MazeObject mo) {
+    public void addItem(final MazeObjectModel mo) {
         if (ObjectInventory.isBoots(mo)) {
             this.addBoots(mo);
         } else if (ObjectInventory.isBow(mo)) {
@@ -159,7 +159,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void removeItem(final MazeObject mo) {
+    public void removeItem(final MazeObjectModel mo) {
         if (ObjectInventory.isBoots(mo)) {
             this.removeBoots();
         } else if (ObjectInventory.isBow(mo)) {
@@ -288,37 +288,37 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private int getBowCount(final MazeObject mo) {
+    private int getBowCount(final MazeObjectModel mo) {
         final int loc = this.bowIndexOf(mo);
         return this.bows[loc];
     }
 
-    private int getOtherCount(final MazeObject mo) {
+    private int getOtherCount(final MazeObjectModel mo) {
         final int loc = this.indexOf(mo);
         return this.contents[loc];
     }
 
-    private int getBowUses(final MazeObject mo) {
+    private int getBowUses(final MazeObjectModel mo) {
         final int loc = this.bowIndexOf(mo);
         return this.bowUses[loc];
     }
 
-    private int getOtherUses(final MazeObject mo) {
+    private int getOtherUses(final MazeObjectModel mo) {
         final int loc = this.indexOf(mo);
         return this.uses[loc];
     }
 
-    private void setBowUses(final MazeObject mo, final int newUses) {
+    private void setBowUses(final MazeObjectModel mo, final int newUses) {
         final int loc = this.bowIndexOf(mo);
         this.bowUses[loc] = newUses;
     }
 
-    private void setOtherUses(final MazeObject mo, final int newUses) {
+    private void setOtherUses(final MazeObjectModel mo, final int newUses) {
         final int loc = this.indexOf(mo);
         this.uses[loc] = newUses;
     }
 
-    private boolean isBowThere(final MazeObject mo) {
+    private boolean isBowThere(final MazeObjectModel mo) {
         final int loc = this.bowIndexOf(mo);
         if (loc != -1) {
             return this.bows[loc] != 0;
@@ -327,7 +327,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private boolean isOtherThere(final MazeObject mo) {
+    private boolean isOtherThere(final MazeObjectModel mo) {
         final int loc = this.indexOf(mo);
         if (loc != -1) {
             return this.contents[loc] != 0;
@@ -336,29 +336,29 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private boolean isAmuletThere(final MazeObject mo) {
+    private boolean isAmuletThere(final MazeObjectModel mo) {
         return this.amulet.getName().equals(mo.getName());
     }
 
-    private boolean areBootsThere(final MazeObject mo) {
+    private boolean areBootsThere(final MazeObjectModel mo) {
         return this.boots.getName().equals(mo.getName());
     }
 
-    private void addAmulet(final MazeObject mo) {
+    private void addAmulet(final MazeObjectModel mo) {
         this.amulet = (GenericAmulet) mo;
     }
 
-    private void addBoots(final MazeObject mo) {
+    private void addBoots(final MazeObjectModel mo) {
         this.boots = (GenericBoots) mo;
     }
 
-    private void addBow(final MazeObject mo) {
+    private void addBow(final MazeObjectModel mo) {
         final int loc = this.bowIndexOf(mo);
         this.bows[loc]++;
         this.bowUses[loc] = mo.getUses();
     }
 
-    private void addOther(final MazeObject mo) {
+    private void addOther(final MazeObjectModel mo) {
         final int loc = this.indexOf(mo);
         this.contents[loc]++;
         this.uses[loc] = mo.getUses();
@@ -372,7 +372,7 @@ public final class ObjectInventory implements Cloneable {
         this.boots = ObjectInventory.DEFAULT_BOOTS;
     }
 
-    private void removeBow(final MazeObject mo) {
+    private void removeBow(final MazeObjectModel mo) {
         final int loc = this.bowIndexOf(mo);
         if (this.bows[loc] != 0) {
             this.bows[loc]--;
@@ -384,7 +384,7 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private void removeOther(final MazeObject mo) {
+    private void removeOther(final MazeObjectModel mo) {
         final int loc = this.indexOf(mo);
         if (this.contents[loc] != 0) {
             this.contents[loc]--;
@@ -396,19 +396,19 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    private static boolean isBoots(final MazeObject mo) {
+    private static boolean isBoots(final MazeObjectModel mo) {
         return mo.isOfType(TypeConstants.TYPE_BOOTS);
     }
 
-    private static boolean isBow(final MazeObject mo) {
+    private static boolean isBow(final MazeObjectModel mo) {
         return mo.isOfType(TypeConstants.TYPE_BOW);
     }
 
-    private static boolean isAmulet(final MazeObject mo) {
+    private static boolean isAmulet(final MazeObjectModel mo) {
         return mo.isOfType(TypeConstants.TYPE_AMULET);
     }
 
-    private int bowIndexOf(final MazeObject mo) {
+    private int bowIndexOf(final MazeObjectModel mo) {
         int x;
         for (x = 0; x < this.bows.length; x++) {
             if (mo.getName().equals(this.bowNameList[x])) {
@@ -418,7 +418,7 @@ public final class ObjectInventory implements Cloneable {
         return -1;
     }
 
-    private int indexOf(final MazeObject mo) {
+    private int indexOf(final MazeObjectModel mo) {
         int x;
         for (x = 0; x < this.contents.length; x++) {
             if (mo.getName().equals(this.nameList[x])) {

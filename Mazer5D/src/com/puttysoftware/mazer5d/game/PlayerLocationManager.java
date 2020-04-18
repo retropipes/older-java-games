@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.game;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 
 public class PlayerLocationManager {
     // Fields
@@ -83,7 +83,7 @@ public class PlayerLocationManager {
     }
 
     private void fixLocations() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         if (m.is3rdDimensionWraparoundEnabled()) {
             if (this.locZ < 0) {
                 this.locZ = m.getFloors() - 1;

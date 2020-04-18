@@ -21,7 +21,7 @@ import com.puttysoftware.xio.XDataWriter;
 
 public abstract class GenericContainer extends GenericLock {
     // Fields
-    private MazeObject inside;
+    private MazeObjectModel inside;
 
     // Constructors
     protected GenericContainer(final GenericSingleKey mgk) {
@@ -30,12 +30,12 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     protected GenericContainer(final GenericSingleKey mgk,
-            final MazeObject insideObject) {
+            final MazeObjectModel insideObject) {
         super(mgk);
         this.inside = insideObject;
     }
 
-    public MazeObject getInsideObject() {
+    public MazeObjectModel getInsideObject() {
         return this.inside;
     }
 
@@ -112,7 +112,7 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     @Override
-    public abstract MazeObject editorPropertiesHook();
+    public abstract MazeObjectModel editorPropertiesHook();
 
     @Override
     protected void setTypes() {
@@ -122,7 +122,7 @@ public abstract class GenericContainer extends GenericLock {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         final MazeObjectList objectList = Mazer5D.getApplication().getObjects();
         this.inside = objectList.readMazeObjectXML(reader, formatVersion);
@@ -141,6 +141,6 @@ public abstract class GenericContainer extends GenericLock {
 
     @Override
     public int getCustomFormat() {
-        return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 }

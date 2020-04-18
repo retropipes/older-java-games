@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericUsableObject;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
@@ -51,7 +51,7 @@ public class QuakeBomb extends GenericUsableObject {
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Earthquake

@@ -23,7 +23,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectList;
 import com.puttysoftware.mazer5d.compatibility.files.RuleSetManager;
 import com.puttysoftware.mazer5d.gui.Application;
@@ -39,7 +39,7 @@ public class RuleSetPicker {
     private PicturePicker picker;
     private final MazeObjectList objectList;
     private final String[] names;
-    private final MazeObject[] objects;
+    private final MazeObjectModel[] objects;
     private final BufferedImageIcon[] editorAppearances;
     private int index;
     private JButton create, destroy, edit, importXML, exportXML;
@@ -57,14 +57,14 @@ public class RuleSetPicker {
 
     void createObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObject object = this.objects[this.index];
+        final MazeObjectModel object = this.objects[this.index];
         object.giveRuleSet();
         CommonDialogs.showTitledDialog("Rule Set Created.", "Rule Set Picker");
     }
 
     void destroyObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObject object = this.objects[this.index];
+        final MazeObjectModel object = this.objects[this.index];
         object.takeRuleSet();
         CommonDialogs.showTitledDialog("Rule Set Destroyed.",
                 "Rule Set Picker");
@@ -72,7 +72,7 @@ public class RuleSetPicker {
 
     void editObjectRuleSet() {
         this.index = this.picker.getPicked();
-        final MazeObject object = this.objects[this.index];
+        final MazeObjectModel object = this.objects[this.index];
         if (object.hasRuleSet()) {
             this.rsEditor.setRuleSet(object.getRuleSet());
             this.rsEditor.showRuleSetEditor();

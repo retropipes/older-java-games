@@ -26,7 +26,7 @@ import javax.swing.WindowConstants;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class MazePrefs {
@@ -62,7 +62,7 @@ public class MazePrefs {
     }
 
     void setPrefs() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         m.setStartLevel(this.startLevelChoices.getSelectedIndex());
         try {
             m.setMaximumHP(Integer.parseInt(this.health.getText()));
@@ -76,7 +76,7 @@ public class MazePrefs {
     }
 
     private void loadPrefs() {
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         this.startLevelChoiceArray = new String[m.getLevels()];
         for (int x = 0; x < m.getLevels(); x++) {
             this.startLevelChoiceArray[x] = Integer.toString(x + 1);

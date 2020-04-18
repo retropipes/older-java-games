@@ -17,7 +17,7 @@ import javax.swing.filechooser.FileFilter;
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.fileutils.FilenameChecker;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.locking.LockedFilter;
 import com.puttysoftware.mazer5d.compatibility.files.locking.LockedLoadTask;
 import com.puttysoftware.mazer5d.compatibility.files.locking.LockedSaveTask;
@@ -26,13 +26,13 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLGameFilter;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLLoadTask;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLMazeFilter;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSaveTask;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 
 public class MazeManager implements OpenFilesHandler {
     // Fields
-    private Maze gameMaze;
+    private MazeModel gameMaze;
     private boolean loaded, isDirty;
     private String scoresFileName;
     private String lastUsedMazeFile;
@@ -54,11 +54,11 @@ public class MazeManager implements OpenFilesHandler {
     }
 
     // Methods
-    public Maze getMaze() {
+    public MazeModel getMaze() {
         return this.gameMaze;
     }
 
-    public void setMaze(final Maze newMaze) {
+    public void setMaze(final MazeModel newMaze) {
         this.gameMaze = newMaze;
     }
 
@@ -96,7 +96,7 @@ public class MazeManager implements OpenFilesHandler {
         Mazer5D.getApplication().getMenuManager().checkFlags();
     }
 
-    public MazeObject getMazeObject(final int x, final int y, final int z,
+    public MazeObjectModel getMazeObject(final int x, final int y, final int z,
             final int e) {
         try {
             return this.gameMaze.getCell(x, y, z, e);

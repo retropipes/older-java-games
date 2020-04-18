@@ -12,7 +12,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.xio.XDataReader;
@@ -59,7 +59,7 @@ public class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         int r = this.radius;
         final String[] rChoices = new String[] { "1", "2", "3" };
         final String rres = CommonDialogs.showInputDialog("Rotation Radius:",
@@ -99,7 +99,7 @@ public class RotationTrap extends GenericTrap implements Cloneable {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.radius = reader.readInt();
         this.direction = reader.readBoolean();
@@ -115,7 +115,7 @@ public class RotationTrap extends GenericTrap implements Cloneable {
 
     @Override
     public int getCustomFormat() {
-        return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 
     @Override

@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericGem extends MazeObject {
+public abstract class GenericGem extends MazeObjectModel {
     // Fields
     private static final long SCORE_SMASH = 10L;
     private static final long SCORE_GRAB = 20L;
@@ -60,7 +60,7 @@ public abstract class GenericGem extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

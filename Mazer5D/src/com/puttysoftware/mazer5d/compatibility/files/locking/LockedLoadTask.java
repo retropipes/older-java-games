@@ -19,13 +19,13 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.InvalidMazeException;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixHandler;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class LockedLoadTask extends Thread {
     // Fields
-    private Maze gameMaze;
+    private MazeModel gameMaze;
     private final String filename;
     private final JFrame loadFrame;
     private final JProgressBar loadBar;
@@ -57,9 +57,9 @@ public class LockedLoadTask extends Thread {
         try {
             final File mazeFile = new File(this.filename);
             final File tempLock = new File(
-                    Maze.getMazeTempFolder() + "lock.tmp");
+                    MazeModel.getMazeTempFolder() + "lock.tmp");
             try {
-                this.gameMaze = new Maze();
+                this.gameMaze = new MazeModel();
                 // Unlock the file
                 LockedWrapper.unlock(mazeFile, tempLock);
                 ZipUtilities.unzipDirectory(tempLock,

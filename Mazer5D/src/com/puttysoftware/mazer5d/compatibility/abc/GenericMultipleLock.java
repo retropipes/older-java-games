@@ -73,7 +73,7 @@ public abstract class GenericMultipleLock extends GenericLock {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         try {
             this.keyCount = Integer
                     .parseInt(CommonDialogs.showTextInputDialogWithDefault(

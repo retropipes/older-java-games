@@ -21,7 +21,7 @@ public abstract class GenericWand extends GenericUsableObject {
     public abstract String getName();
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().morph(mo, x, y, z);

@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericRandomTeleport extends MazeObject {
+public abstract class GenericRandomTeleport extends MazeObjectModel {
     // Fields
     private int randomRangeX;
     private int randomRangeY;
@@ -118,9 +118,9 @@ public abstract class GenericRandomTeleport extends MazeObject {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me
+        final MazeObjectModel mo = me
                 .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;
     }
@@ -138,7 +138,7 @@ public abstract class GenericRandomTeleport extends MazeObject {
         case 2:
             return this.randomRangeY;
         default:
-            return MazeObject.DEFAULT_CUSTOM_VALUE;
+            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
         }
     }
 

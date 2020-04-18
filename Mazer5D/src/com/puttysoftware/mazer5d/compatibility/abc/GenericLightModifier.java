@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 
-public abstract class GenericLightModifier extends MazeObject {
+public abstract class GenericLightModifier extends MazeObjectModel {
     // Fields
     private final int EFFECT_RADIUS = 1;
 
@@ -39,7 +39,7 @@ public abstract class GenericLightModifier extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

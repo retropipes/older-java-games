@@ -10,7 +10,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
@@ -40,7 +40,7 @@ public class RotationWand extends GenericWand {
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().setRemoteAction(x, y, z);

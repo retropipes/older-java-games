@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.editor;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 
 public class EditorLocationManager {
@@ -103,7 +103,7 @@ public class EditorLocationManager {
         this.checkLimits();
     }
 
-    public void setLimitsFromMaze(final Maze m) {
+    public void setLimitsFromMaze(final MazeModel m) {
         this.minX = 0;
         this.minY = 0;
         this.minZ = 0;
@@ -137,7 +137,7 @@ public class EditorLocationManager {
 
     private void checkLimits() {
         // Check for limits out of bounds
-        final Maze m = Mazer5D.getApplication().getMazeManager().getMaze();
+        final MazeModel m = Mazer5D.getApplication().getMazeManager().getMaze();
         if (this.locW < this.minW) {
             this.locW = this.minW;
         }

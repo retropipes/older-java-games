@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.MasterTrappedWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericWallTrap extends MazeObject {
+public abstract class GenericWallTrap extends MazeObjectModel {
     // Fields
     private int number;
     private GenericTrappedWall trigger;
@@ -91,7 +91,7 @@ public abstract class GenericWallTrap extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

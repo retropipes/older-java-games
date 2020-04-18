@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -91,7 +91,7 @@ public class MetalButton extends GenericField {
             final ObjectInventory inv) {
         if (inv.isItemThere(this.getKey())) {
             final Application app = Mazer5D.getApplication();
-            final MazeObject there = app.getMazeManager().getMazeObject(
+            final MazeObjectModel there = app.getMazeManager().getMazeObject(
                     this.getTargetRow(), this.getTargetColumn(),
                     this.getTargetFloor(), this.getLayer());
             if (there != null) {
@@ -151,7 +151,7 @@ public class MetalButton extends GenericField {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return Mazer5D.getApplication().getEditor().editMetalButtonTarget();
     }
 

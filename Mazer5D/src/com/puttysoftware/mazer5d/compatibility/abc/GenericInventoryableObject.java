@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericInventoryableObject extends MazeObject {
+public abstract class GenericInventoryableObject extends MazeObjectModel {
     // Fields
     protected static final long SCORE_GRAB = 10L;
 
@@ -47,7 +47,7 @@ public abstract class GenericInventoryableObject extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

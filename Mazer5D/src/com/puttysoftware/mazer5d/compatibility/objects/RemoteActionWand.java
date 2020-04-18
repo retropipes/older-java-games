@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.Application;
 
 public class RemoteActionWand extends GenericWand {
@@ -32,7 +32,7 @@ public class RemoteActionWand extends GenericWand {
     }
 
     @Override
-    public void useAction(final MazeObject mo, final int x, final int y,
+    public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         final Application app = Mazer5D.getApplication();
         app.getGameManager().doRemoteAction(x, y, z);

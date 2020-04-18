@@ -1,10 +1,10 @@
 package com.puttysoftware.mazer5d.compatibility.maze;
 
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 
 class LowLevelDataStore implements Cloneable {
     // Fields
-    private final MazeObject[] dataStore;
+    private final MazeObjectModel[] dataStore;
     private final int[] dataShape;
     private final int[] interProd;
 
@@ -17,7 +17,7 @@ class LowLevelDataStore implements Cloneable {
             this.interProd[x] = product;
             product *= shape[x];
         }
-        this.dataStore = new MazeObject[product];
+        this.dataStore = new MazeObjectModel[product];
     }
 
     // Methods
@@ -50,12 +50,12 @@ class LowLevelDataStore implements Cloneable {
         return this.dataShape;
     }
 
-    public MazeObject getCell(final int... loc) {
+    public MazeObjectModel getCell(final int... loc) {
         final int aloc = this.ravelLocation(loc);
         return this.dataStore[aloc];
     }
 
-    public void setCell(final MazeObject obj, final int... loc) {
+    public void setCell(final MazeObjectModel obj, final int... loc) {
         final int aloc = this.ravelLocation(loc);
         this.dataStore[aloc] = obj;
     }

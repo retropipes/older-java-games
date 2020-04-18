@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
 
 public class Teleport extends GenericTeleport {
@@ -32,9 +32,9 @@ public class Teleport extends GenericTeleport {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getApplication().getEditor();
-        final MazeObject mo = me
+        final MazeObjectModel mo = me
                 .editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
         return mo;
     }

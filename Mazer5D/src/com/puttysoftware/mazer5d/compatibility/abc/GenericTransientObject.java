@@ -8,7 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 
-public abstract class GenericTransientObject extends MazeObject {
+public abstract class GenericTransientObject extends MazeObjectModel {
     // Fields
     private String name;
     private final String baseName;
@@ -58,7 +58,7 @@ public abstract class GenericTransientObject extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

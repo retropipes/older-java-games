@@ -101,7 +101,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
@@ -110,12 +110,12 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         final MazeObjectList objects = Mazer5D.getApplication().getObjects();
         final String[] tempKeyNames = objects.getAllProgrammableKeyNames();
-        final MazeObject[] tempKeys = objects.getAllProgrammableKeys();
+        final MazeObjectModel[] tempKeys = objects.getAllProgrammableKeys();
         final String[] keyNames = new String[tempKeyNames.length + 1];
-        final MazeObject[] keys = new MazeObject[tempKeys.length + 1];
+        final MazeObjectModel[] keys = new MazeObjectModel[tempKeys.length + 1];
         System.arraycopy(tempKeyNames, 0, keyNames, 0, tempKeyNames.length);
         System.arraycopy(tempKeys, 0, keys, 0, tempKeys.length);
         keyNames[tempKeyNames.length] = "Any Crystal";
@@ -148,9 +148,9 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        final MazeObject o = Mazer5D.getApplication().getObjects()
+        final MazeObjectModel o = Mazer5D.getApplication().getObjects()
                 .readMazeObjectXML(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);
@@ -168,6 +168,6 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
 
     @Override
     public int getCustomFormat() {
-        return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 }

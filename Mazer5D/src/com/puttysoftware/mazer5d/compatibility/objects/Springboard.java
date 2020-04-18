@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.InfiniteRecursionException;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -51,7 +51,7 @@ public class Springboard extends StairsUp {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObject obj = app.getMazeManager().getMaze().getCell(dirX,
+            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(dirX,
                     dirY, floor, MazeConstants.LAYER_OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
@@ -82,7 +82,7 @@ public class Springboard extends StairsUp {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObject pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y, final int z) {
         final Application app = Mazer5D.getApplication();
         try {
             this.searchNestedSprings(x, y, z + 1, inv);
@@ -120,7 +120,7 @@ public class Springboard extends StairsUp {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return null;
     }
 

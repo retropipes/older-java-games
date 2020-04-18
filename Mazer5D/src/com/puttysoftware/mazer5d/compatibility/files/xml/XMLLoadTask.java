@@ -17,13 +17,13 @@ import com.puttysoftware.fileutils.ZipUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.LogoImageIndex;
 import com.puttysoftware.mazer5d.compatibility.files.InvalidMazeException;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 
 public class XMLLoadTask extends Thread {
     // Fields
-    private Maze gameMaze;
+    private MazeModel gameMaze;
     private final String filename;
     private final boolean isSavedGame;
     private final JFrame loadFrame;
@@ -61,7 +61,7 @@ public class XMLLoadTask extends Thread {
         }
         try {
             final File mazeFile = new File(this.filename);
-            this.gameMaze = new Maze();
+            this.gameMaze = new MazeModel();
             ZipUtilities.unzipDirectory(mazeFile,
                     new File(this.gameMaze.getBasePath()));
             // Set prefix handler

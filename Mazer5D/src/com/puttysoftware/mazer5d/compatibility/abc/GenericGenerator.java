@@ -47,7 +47,7 @@ public abstract class GenericGenerator extends GenericWall {
         invalidName = new EmptyVoid().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
-        final MazeObject mo2 = app.getMazeManager().getMazeObject(dirX - 1,
+        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
                 dirY, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
@@ -56,7 +56,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo2Name = invalidName;
         }
-        final MazeObject mo4 = app.getMazeManager().getMazeObject(dirX,
+        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(dirX,
                 dirY - 1, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
@@ -65,7 +65,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo4Name = invalidName;
         }
-        final MazeObject mo6 = app.getMazeManager().getMazeObject(dirX,
+        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(dirX,
                 dirY + 1, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
@@ -74,7 +74,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo6Name = invalidName;
         }
-        final MazeObject mo8 = app.getMazeManager().getMazeObject(dirX + 1,
+        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(dirX + 1,
                 dirY, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
@@ -146,7 +146,7 @@ public abstract class GenericGenerator extends GenericWall {
         invalidName = new EmptyVoid().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
-        final MazeObject mo2 = app.getMazeManager().getMazeObject(dirX - 1,
+        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
                 dirY, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
@@ -155,7 +155,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo2Name = invalidName;
         }
-        final MazeObject mo4 = app.getMazeManager().getMazeObject(dirX,
+        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(dirX,
                 dirY - 1, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
@@ -164,7 +164,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo4Name = invalidName;
         }
-        final MazeObject mo6 = app.getMazeManager().getMazeObject(dirX,
+        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(dirX,
                 dirY + 1, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
@@ -173,7 +173,7 @@ public abstract class GenericGenerator extends GenericWall {
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             mo6Name = invalidName;
         }
-        final MazeObject mo8 = app.getMazeManager().getMazeObject(dirX + 1,
+        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(dirX + 1,
                 dirY, pz, MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
@@ -232,7 +232,7 @@ public abstract class GenericGenerator extends GenericWall {
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x + l,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
                         y, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -265,7 +265,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_NORTH) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -298,7 +298,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -331,7 +331,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_WEST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x - l,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x - l,
                         y, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -372,7 +372,7 @@ public abstract class GenericGenerator extends GenericWall {
         final String invalidName = new EmptyVoid().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x + l,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
                         y, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -421,7 +421,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_NORTH) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -470,7 +470,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {
@@ -519,7 +519,7 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_WEST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObject mo = app.getMazeManager().getMazeObject(x - l,
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x - l,
                         y, z, MazeConstants.LAYER_OBJECT);
                 String moName;
                 try {

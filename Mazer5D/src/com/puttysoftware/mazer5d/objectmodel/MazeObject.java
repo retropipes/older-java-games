@@ -10,7 +10,7 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.assets.ColorShader;
 import com.puttysoftware.mazer5d.assets.ObjectImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
@@ -97,7 +97,7 @@ final class MazeObject extends GameObject implements MazeObjectModel {
     }
 
     @Override
-    public boolean shouldGenerateObject(final Maze world, final int row,
+    public boolean shouldGenerateObject(final MazeModel world, final int row,
             final int col, final int floor, final int level, final int layer) {
         if (layer == Layers.OBJECT) {
             // Handle object layer
@@ -119,12 +119,12 @@ final class MazeObject extends GameObject implements MazeObjectModel {
     }
 
     @Override
-    public int getMinimumRequiredQuantity(final Maze world) {
+    public int getMinimumRequiredQuantity(final MazeModel world) {
         return RandomGenerationRule.NO_LIMIT;
     }
 
     @Override
-    public int getMaximumRequiredQuantity(final Maze world) {
+    public int getMaximumRequiredQuantity(final MazeModel world) {
         return RandomGenerationRule.NO_LIMIT;
     }
 

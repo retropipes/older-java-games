@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericContainer;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
@@ -19,7 +19,7 @@ public class TreasureChest extends GenericContainer {
         super(new Key());
     }
 
-    public TreasureChest(final MazeObject inside) {
+    public TreasureChest(final MazeObjectModel inside) {
         super(new Key(), inside);
     }
 
@@ -44,7 +44,7 @@ public class TreasureChest extends GenericContainer {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         return Mazer5D.getApplication().getEditor().editTreasureChestContents();
     }
 

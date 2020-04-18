@@ -16,7 +16,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericLock extends MazeObject {
+public abstract class GenericLock extends MazeObjectModel {
     // Fields
     private GenericKey key;
     protected static final long SCORE_UNLOCK = 30L;
@@ -134,7 +134,7 @@ public abstract class GenericLock extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override

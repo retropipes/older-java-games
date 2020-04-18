@@ -11,7 +11,7 @@ import java.io.IOException;
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixIO;
@@ -23,7 +23,7 @@ import com.puttysoftware.randomrange.RandomLongRange;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public class Maze implements MazeConstants {
+public class MazeModel implements MazeConstants {
     // Properties
     private LayeredTower mazeData;
     private LayeredTower clipboard;
@@ -43,7 +43,7 @@ public class Maze implements MazeConstants {
     private static final int MAX_LEVELS = Integer.MAX_VALUE;
 
     // Constructors
-    public Maze() {
+    public MazeModel() {
         this.mazeData = null;
         this.clipboard = null;
         this.levelCount = 0;
@@ -77,11 +77,11 @@ public class Maze implements MazeConstants {
     }
 
     public static int getMinLevels() {
-        return Maze.MIN_LEVELS;
+        return MazeModel.MIN_LEVELS;
     }
 
     public static int getMaxLevels() {
-        return Maze.MAX_LEVELS;
+        return MazeModel.MAX_LEVELS;
     }
 
     public static int getMinFloors() {
@@ -478,7 +478,7 @@ public class Maze implements MazeConstants {
     }
 
     public boolean insertLevelFromClipboard() {
-        if (this.levelCount < Maze.MAX_LEVELS) {
+        if (this.levelCount < MazeModel.MAX_LEVELS) {
             this.mazeData = this.clipboard.clone();
             this.levelCount++;
             return true;
@@ -488,7 +488,7 @@ public class Maze implements MazeConstants {
     }
 
     public boolean addLevel(final int rows, final int cols, final int floors) {
-        if (this.levelCount < Maze.MAX_LEVELS) {
+        if (this.levelCount < MazeModel.MAX_LEVELS) {
             if (this.mazeData != null) {
                 try (XDataWriter writer = this.getLevelWriterXML()) {
                     // Save old level
@@ -535,7 +535,7 @@ public class Maze implements MazeConstants {
         }
     }
 
-    public MazeObject getCell(final int row, final int col, final int floor,
+    public MazeObjectModel getCell(final int row, final int col, final int floor,
             final int extra) {
         return this.mazeData.getCell(row, col, floor, extra);
     }
@@ -604,12 +604,12 @@ public class Maze implements MazeConstants {
         }
     }
 
-    public void findAllObjectPairsAndSwap(final MazeObject o1,
-            final MazeObject o2) {
+    public void findAllObjectPairsAndSwap(final MazeObjectModel o1,
+            final MazeObjectModel o2) {
         this.mazeData.findAllObjectPairsAndSwap(o1, o2);
     }
 
-    public void findAllMatchingObjectsAndDecay(final MazeObject o) {
+    public void findAllMatchingObjectsAndDecay(final MazeObjectModel o) {
         this.mazeData.findAllMatchingObjectsAndDecay(o);
     }
 
@@ -700,7 +700,7 @@ public class Maze implements MazeConstants {
         return this.mazeData.isSquareVisible(x1, y1, x2, y2);
     }
 
-    public void setCell(final MazeObject mo, final int row, final int col,
+    public void setCell(final MazeObjectModel mo, final int row, final int col,
             final int floor, final int extra) {
         this.mazeData.setCell(mo, row, col, floor, extra);
     }
@@ -754,18 +754,18 @@ public class Maze implements MazeConstants {
     }
 
     public void fillLevelDefault() {
-        final MazeObject bottom = Prefs.getEditorDefaultFill();
-        final MazeObject top = new Empty();
+        final MazeObjectModel bottom = Prefs.getEditorDefaultFill();
+        final MazeObjectModel top = new Empty();
         this.mazeData.fill(bottom, top);
     }
 
     public void fillFloorDefault(final int floor) {
-        final MazeObject bottom = Prefs.getEditorDefaultFill();
-        final MazeObject top = new Empty();
+        final MazeObjectModel bottom = Prefs.getEditorDefaultFill();
+        final MazeObjectModel top = new Empty();
         this.mazeData.fillFloor(bottom, top, floor);
     }
 
-    public void fillLevel(final MazeObject bottom, final MazeObject top) {
+    public void fillLevel(final MazeObjectModel bottom, final MazeObjectModel top) {
         this.mazeData.fill(bottom, top);
     }
 
@@ -812,7 +812,7 @@ public class Maze implements MazeConstants {
         this.mazeData.updateMovingBlockPosition(move, xLoc, yLoc, block);
     }
 
-    public void warpObject(final MazeObject mo, final int x, final int y,
+    public void warpObject(final MazeObjectModel mo, final int x, final int y,
             final int z, final int l) {
         this.mazeData.warpObject(mo, x, y, z, l);
     }
@@ -893,8 +893,8 @@ public class Maze implements MazeConstants {
         this.mazeData.extendTimerByInitialValueDoubled();
     }
 
-    public Maze readMazeXML() throws IOException {
-        final Maze m = new Maze();
+    public MazeModel readMazeXML() throws IOException {
+        final MazeModel m = new MazeModel();
         // Attach handlers
         m.setXMLPrefixHandler(this.xmlPrefixHandler);
         m.setXMLSuffixHandler(this.xmlSuffixHandler);

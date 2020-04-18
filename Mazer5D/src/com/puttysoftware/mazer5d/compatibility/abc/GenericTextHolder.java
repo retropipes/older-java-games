@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
-public abstract class GenericTextHolder extends MazeObject {
+public abstract class GenericTextHolder extends MazeObjectModel {
     // Fields
     private String text;
 
@@ -50,7 +50,7 @@ public abstract class GenericTextHolder extends MazeObject {
 
     @Override
     public int getCustomProperty(final int propID) {
-        return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
@@ -59,14 +59,14 @@ public abstract class GenericTextHolder extends MazeObject {
     }
 
     @Override
-    public MazeObject editorPropertiesHook() {
+    public MazeObjectModel editorPropertiesHook() {
         this.text = CommonDialogs.showTextInputDialogWithDefault(
                 "Set Text for " + this.getName(), "Editor", this.text);
         return this;
     }
 
     @Override
-    protected MazeObject readMazeObjectHookXML(final XDataReader reader,
+    protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         this.text = reader.readString();
         return this;
@@ -80,6 +80,6 @@ public abstract class GenericTextHolder extends MazeObject {
 
     @Override
     public int getCustomFormat() {
-        return MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE;
+        return MazeObjectModel.CUSTOM_FORMAT_MANUAL_OVERRIDE;
     }
 }

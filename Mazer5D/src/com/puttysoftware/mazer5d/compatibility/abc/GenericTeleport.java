@@ -13,7 +13,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericTeleport extends MazeObject {
+public abstract class GenericTeleport extends MazeObjectModel {
     // Fields
     private int destRow;
     private int destCol;
@@ -142,7 +142,7 @@ public abstract class GenericTeleport extends MazeObject {
     }
 
     @Override
-    public abstract MazeObject editorPropertiesHook();
+    public abstract MazeObjectModel editorPropertiesHook();
 
     @Override
     public boolean defersSetProperties() {
@@ -159,7 +159,7 @@ public abstract class GenericTeleport extends MazeObject {
         case 3:
             return this.destFloor;
         default:
-            return MazeObject.DEFAULT_CUSTOM_VALUE;
+            return MazeObjectModel.DEFAULT_CUSTOM_VALUE;
         }
     }
 

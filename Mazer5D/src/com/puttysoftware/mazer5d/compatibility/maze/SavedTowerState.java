@@ -8,18 +8,18 @@ package com.puttysoftware.mazer5d.compatibility.maze;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.xio.XDataReader;
 import com.puttysoftware.xio.XDataWriter;
 
 class SavedTowerState implements Cloneable {
     // Properties
     private final int r, c, f;
-    private final MazeObject[][][][] saveData;
+    private final MazeObjectModel[][][][] saveData;
 
     // Constructors
     public SavedTowerState(final int rows, final int cols, final int floors) {
-        this.saveData = new MazeObject[cols][rows][floors][MazeConstants.LAYER_COUNT];
+        this.saveData = new MazeObjectModel[cols][rows][floors][MazeConstants.LAYER_COUNT];
         this.c = cols;
         this.r = rows;
         this.f = floors;
@@ -43,12 +43,12 @@ class SavedTowerState implements Cloneable {
         return copy;
     }
 
-    public MazeObject getDataCell(final int x, final int y, final int z,
+    public MazeObjectModel getDataCell(final int x, final int y, final int z,
             final int e) {
         return this.saveData[x][y][z][e];
     }
 
-    public void setDataCell(final MazeObject newData, final int x, final int y,
+    public void setDataCell(final MazeObjectModel newData, final int x, final int y,
             final int z, final int e) {
         this.saveData[x][y][z][e] = newData;
     }

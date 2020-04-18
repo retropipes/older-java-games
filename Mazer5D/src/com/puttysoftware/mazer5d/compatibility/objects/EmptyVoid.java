@@ -7,7 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.Application;
@@ -36,56 +36,56 @@ public class EmptyVoid extends GenericWall {
         String mo1Name, mo2Name, mo3Name, mo4Name, mo6Name, mo7Name, mo8Name,
                 mo9Name, thisName;
         thisName = this.getName();
-        final MazeObject mo1 = app.getMazeManager().getMazeObject(x - 1, y - 1,
+        final MazeObjectModel mo1 = app.getMazeManager().getMazeObject(x - 1, y - 1,
                 z, MazeConstants.LAYER_OBJECT);
         try {
             mo1Name = mo1.getName();
         } catch (final NullPointerException np) {
             mo1Name = thisName;
         }
-        final MazeObject mo2 = app.getMazeManager().getMazeObject(x - 1, y, z,
+        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x - 1, y, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo2Name = mo2.getName();
         } catch (final NullPointerException np) {
             mo2Name = thisName;
         }
-        final MazeObject mo3 = app.getMazeManager().getMazeObject(x - 1, y + 1,
+        final MazeObjectModel mo3 = app.getMazeManager().getMazeObject(x - 1, y + 1,
                 z, MazeConstants.LAYER_OBJECT);
         try {
             mo3Name = mo3.getName();
         } catch (final NullPointerException np) {
             mo3Name = thisName;
         }
-        final MazeObject mo4 = app.getMazeManager().getMazeObject(x, y - 1, z,
+        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(x, y - 1, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo4Name = mo4.getName();
         } catch (final NullPointerException np) {
             mo4Name = thisName;
         }
-        final MazeObject mo6 = app.getMazeManager().getMazeObject(x, y + 1, z,
+        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(x, y + 1, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo6Name = mo6.getName();
         } catch (final NullPointerException np) {
             mo6Name = thisName;
         }
-        final MazeObject mo7 = app.getMazeManager().getMazeObject(x + 1, y - 1,
+        final MazeObjectModel mo7 = app.getMazeManager().getMazeObject(x + 1, y - 1,
                 z, MazeConstants.LAYER_OBJECT);
         try {
             mo7Name = mo7.getName();
         } catch (final NullPointerException np) {
             mo7Name = thisName;
         }
-        final MazeObject mo8 = app.getMazeManager().getMazeObject(x + 1, y, z,
+        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(x + 1, y, z,
                 MazeConstants.LAYER_OBJECT);
         try {
             mo8Name = mo8.getName();
         } catch (final NullPointerException np) {
             mo8Name = thisName;
         }
-        final MazeObject mo9 = app.getMazeManager().getMazeObject(x + 1, y + 1,
+        final MazeObjectModel mo9 = app.getMazeManager().getMazeObject(x + 1, y + 1,
                 z, MazeConstants.LAYER_OBJECT);
         try {
             mo9Name = mo9.getName();

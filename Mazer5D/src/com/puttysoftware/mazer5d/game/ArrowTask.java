@@ -11,8 +11,8 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
-import com.puttysoftware.mazer5d.compatibility.abc.MazeObject;
-import com.puttysoftware.mazer5d.compatibility.maze.Maze;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
@@ -55,9 +55,9 @@ public class ArrowTask extends Thread {
         int cumY = this.y;
         final int incX = this.x;
         final int incY = this.y;
-        final Maze m = app.getMazeManager().getMaze();
+        final MazeModel m = app.getMazeManager().getMaze();
         m.tickTimers(pz);
-        MazeObject o = null;
+        MazeObjectModel o = null;
         try {
             o = m.getCell(px + cumX, py + cumY, pz, MazeConstants.LAYER_OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
