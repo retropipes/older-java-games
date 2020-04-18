@@ -41,7 +41,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.ChainTeleport;
 import com.puttysoftware.mazer5d.compatibility.objects.Destination;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.EmptyVoid;
+import com.puttysoftware.mazer5d.compatibility.objects.Bounds;
 import com.puttysoftware.mazer5d.compatibility.objects.FinishTo;
 import com.puttysoftware.mazer5d.compatibility.objects.InvisibleChainTeleport;
 import com.puttysoftware.mazer5d.compatibility.objects.InvisibleOneShotChainTeleport;
@@ -108,7 +108,7 @@ public class MazeEditor {
     private JLabel[][] drawGrid;
     private boolean mazeChanged;
     boolean goToDestMode;
-    private static final EmptyVoid VOID = new EmptyVoid();
+    private static final Bounds VOID = new Bounds();
     private static final Destination DEST = new Destination();
     private static final int CEF_DEST1 = 1;
     private static final int CEF_DEST2 = 2;
@@ -501,7 +501,7 @@ public class MazeEditor {
             this.elMgr.setEditorLocationY(gridY);
             mo.editorProbeHook();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            final EmptyVoid ev = new EmptyVoid();
+            final Bounds ev = new Bounds();
             ev.determineCurrentAppearance(gridX, gridY, this.elMgr
                     .getEditorLocationZ());
             ev.editorProbeHook();

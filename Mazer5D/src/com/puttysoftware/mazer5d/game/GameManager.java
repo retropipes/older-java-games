@@ -52,7 +52,7 @@ import com.puttysoftware.mazer5d.compatibility.objects.DarkWand;
 import com.puttysoftware.mazer5d.compatibility.objects.Darkness;
 import com.puttysoftware.mazer5d.compatibility.objects.DisarmTrapWand;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.EmptyVoid;
+import com.puttysoftware.mazer5d.compatibility.objects.Bounds;
 import com.puttysoftware.mazer5d.compatibility.objects.FinishMakingWand;
 import com.puttysoftware.mazer5d.compatibility.objects.FireAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.HotBoots;
@@ -1176,18 +1176,18 @@ public class GameManager implements MazeEffectConstants {
                     } catch (final ArrayIndexOutOfBoundsException ae) {
                         if (this.trueSightFlag) {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(new EmptyVoid(), true));
+                                    .getObjectImage(new Bounds(), true));
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(new EmptyVoid(), true));
+                                    .getObjectImage(new Bounds(), true));
                         }
                     } catch (final NullPointerException np) {
                         if (this.trueSightFlag) {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(new EmptyVoid(), true));
+                                    .getObjectImage(new Bounds(), true));
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(new EmptyVoid(), true));
+                                    .getObjectImage(new Bounds(), true));
                         }
                     }
                 }
@@ -1808,7 +1808,7 @@ public class GameManager implements MazeEffectConstants {
                     .showMessage(gameName2 + " on " + gameName1);
             SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            final EmptyVoid ev = new EmptyVoid();
+            final Bounds ev = new Bounds();
             ev.determineCurrentAppearance(destX, destY, destZ);
             Mazer5D.getBagOStuff().showMessage(ev.getGameName());
             SoundPlayer.playSound(SoundIndex.IDENTIFY, SoundGroup.GAME);

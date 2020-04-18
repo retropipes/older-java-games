@@ -41,7 +41,7 @@ public class ExplodingWall extends GenericWall {
             return;
         }
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, currName;
-        invalidName = new EmptyVoid().getName();
+        invalidName = new Bounds().getName();
         currName = curr.getName();
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x - 1, y,
                 z, Layers.OBJECT);

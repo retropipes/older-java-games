@@ -101,7 +101,7 @@ public class GameObjects {
             new SlipperyBoots(), new AnnihilationWand(), new FinishMakingWand(),
             new WallMakingWand(), new TeleportWand(), new WallBreakingWand(),
             new DisarmTrapWand(), new RemoteActionWand(), new RotationWand(),
-            new WarpWand(), new LightWand(), new DarkWand(), new EmptyVoid(),
+            new WarpWand(), new LightWand(), new DarkWand(), new Bounds(),
             new HealTrap(), new HurtTrap(), new VariableHealTrap(),
             new VariableHurtTrap(), new ClockwiseRotationTrap(),
             new CounterclockwiseRotationTrap(), new UTurnTrap(),

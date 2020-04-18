@@ -38,7 +38,7 @@ public class BreakableWallHorizontal extends GenericWall {
             return;
         }
         String mo4Name, mo6Name, invalidName, currName;
-        invalidName = new EmptyVoid().getName();
+        invalidName = new Bounds().getName();
         currName = curr.getName();
         final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(x - 1, y, z,
                 Layers.OBJECT);

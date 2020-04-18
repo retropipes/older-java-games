@@ -12,12 +12,12 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 
-public class EmptyVoid extends GenericWall {
+public class Bounds extends GenericWall {
     // Properties
     private String currAppearance;
 
     // Constructors
-    public EmptyVoid() {
+    public Bounds() {
         super(false, false);
         this.currAppearance = "Void";
     }

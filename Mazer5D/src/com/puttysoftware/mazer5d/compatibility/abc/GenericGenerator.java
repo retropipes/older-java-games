@@ -9,7 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.EmptyVoid;
+import com.puttysoftware.mazer5d.compatibility.objects.Bounds;
 import com.puttysoftware.mazer5d.compatibility.objects.HorizontalBarrier;
 import com.puttysoftware.mazer5d.compatibility.objects.VerticalBarrier;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
@@ -44,7 +44,7 @@ public abstract class GenericGenerator extends GenericWall {
                 .getPlayerLocationW();
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
                 vertName;
-        invalidName = new EmptyVoid().getName();
+        invalidName = new Bounds().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
@@ -143,7 +143,7 @@ public abstract class GenericGenerator extends GenericWall {
                 .getPlayerLocationZ();
         String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
                 vertName;
-        invalidName = new EmptyVoid().getName();
+        invalidName = new Bounds().getName();
         horzName = new HorizontalBarrier().getName();
         vertName = new VerticalBarrier().getName();
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
@@ -229,7 +229,7 @@ public abstract class GenericGenerator extends GenericWall {
     protected boolean scan(final int dir, final int x, final int y, final int z,
             final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final String invalidName = new EmptyVoid().getName();
+        final String invalidName = new Bounds().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
@@ -369,7 +369,7 @@ public abstract class GenericGenerator extends GenericWall {
     protected void generate(final int dir, final int x, final int y,
             final int z, final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final String invalidName = new EmptyVoid().getName();
+        final String invalidName = new Bounds().getName();
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
