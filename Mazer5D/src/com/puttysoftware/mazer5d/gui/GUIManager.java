@@ -80,7 +80,7 @@ public class GUIManager implements QuitHandler {
 
     public void updateLogo() {
         final BufferedImageIcon logo = LogoImageLoader.load(
-                LogoImageIndex.MINI_LOGO);
+                LogoImageIndex.LOGO);
         this.logoLabel.setIcon(logo);
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.guiFrame.setIconImage(iconlogo);
