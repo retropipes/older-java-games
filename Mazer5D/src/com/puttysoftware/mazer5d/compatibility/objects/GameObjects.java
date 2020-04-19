@@ -12,6 +12,7 @@ import java.util.TreeMap;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
@@ -1362,6 +1363,10 @@ public class GameObjects {
             }
             return allWithoutPrereq;
         }
+    }
+
+    public static GenericSingleKey createSignalCrystal() {
+        return new SignalCrystal();
     }
 
     public static MazeObjectModel createObject(final MazeObjects uid) {

@@ -21,8 +21,8 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
-    private static final GenericSingleKey SIGNAL = (GenericSingleKey) GameObjects
-            .createObject(MazeObjects.SIGNAL_CRYSTAL);
+    private static final GenericSingleKey SIGNAL = GameObjects
+            .createSignalCrystal();
 
     protected GenericProgrammableLock() {
         super(GenericProgrammableLock.SIGNAL);
