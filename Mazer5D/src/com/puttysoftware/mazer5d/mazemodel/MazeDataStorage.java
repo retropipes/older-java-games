@@ -6,6 +6,7 @@ import java.util.Arrays;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
+import com.puttysoftware.mazer5d.objectmodel.GameObjects;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 
 /**
@@ -218,13 +219,49 @@ public class MazeDataStorage {
         this.dataStore[rawLoc] = obj;
     }
 
+    /**
+     * Dumps the state of this object to a file.
+     *
+     * @param writer
+     *            the file writer
+     * @throws IOException
+     *             if an I/O error occurs
+     */
     public final void dumpState(final XDataWriter writer) throws IOException {
-        // FIXME: Stub
+        int slen = this.dataShape.length;
+        writer.writeInt(slen);
+        for (int s = 0; s < slen; s++) {
+            writer.writeInt(this.dataShape[s]);
+        }
+        int dlen = this.getRawLength();
+        for (int i = 0; i < dlen; i++) {
+            this.dataStore[i].dumpState(writer);
+        }
     }
 
+    /**
+     * Loads the state of a previously dumped object.
+     *
+     * @param reader
+     *            the file reader
+     * @param formatVersion
+     *            the version of the data to load
+     * @return the loaded data
+     * @throws IOException
+     *             if an I/O error occurs
+     */
     public static MazeDataStorage loadState(final XDataReader reader,
             final MazeVersion formatVersion) throws IOException {
-        // FIXME: Stub
-        return new MazeDataStorage();
+        int slen = reader.readInt();
+        int[] shape = new int[slen];
+        for (int s = 0; s < slen; s++) {
+            shape[s] = reader.readInt();
+        }
+        MazeDataStorage loaded = new MazeDataStorage(shape);
+        int dlen = loaded.getRawLength();
+        for (int i = 0; i < dlen; i++) {
+            loaded.setRawCell(GameObjects.readObject(reader, formatVersion), i);
+        }
+        return loaded;
     }
 }
