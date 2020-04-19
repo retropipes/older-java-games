@@ -116,7 +116,7 @@ public class ObjectImageManager {
         }
     }
 
-    public static BufferedImageIcon getObjectImage(final MazeObjectModel obj,
+    public static BufferedImageIcon load(final MazeObjectModel obj,
             final boolean game) {
         // Get it from the cache
         return ObjectImageCache.getCachedObjectImage(obj, game);

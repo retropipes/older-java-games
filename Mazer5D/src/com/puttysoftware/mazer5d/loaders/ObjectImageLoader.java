@@ -29,9 +29,10 @@ import com.puttysoftware.mazer5d.assets.ObjectImageIndex;
 public class ObjectImageLoader {
     private static String[] allFilenames;
     private static Properties fileExtensions;
-    private static final int MAX_INDEX = 244;
+    private static boolean isCached = false;
 
     public static BufferedImageIcon load(final ObjectImageIndex image) {
+        ObjectImageLoader.cacheAll();
         if (image != ObjectImageIndex._NONE) {
             final String imageExt = ObjectImageLoader.fileExtensions
                     .getProperty("images");
@@ -45,26 +46,30 @@ public class ObjectImageLoader {
     }
 
     public static void cacheAll() {
-        ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
-        try (final InputStream stream = ObjectImageLoader.class
-                .getResourceAsStream(
-                        "/assets/data/extension/extension.properties")) {
-            ObjectImageLoader.fileExtensions = new Properties();
-            ObjectImageLoader.fileExtensions.load(stream);
-        } catch (final IOException e) {
-            Mazer5D.logError(e);
-        }
-        final String imageExt = ObjectImageLoader.fileExtensions.getProperty(
-                "images");
-        for (int i = 0; i <= ObjectImageLoader.MAX_INDEX; i++) {
-            final String name = "/assets/image/object/"
-                    + ObjectImageLoader.allFilenames[i] + imageExt;
-            try {
-                ImageLoader.load(name, ObjectImageLoader.class.getResource(
-                        name));
-            } catch (final IllegalArgumentException iae) {
-                // Ignore - image unused
+        if (!ObjectImageLoader.isCached) {
+            ObjectImageLoader.allFilenames = DataLoader.loadObjectImageData();
+            final int maxIndex = ObjectImageLoader.allFilenames.length;
+            try (final InputStream stream = ObjectImageLoader.class
+                    .getResourceAsStream(
+                            "/assets/data/extension/extension.properties")) {
+                ObjectImageLoader.fileExtensions = new Properties();
+                ObjectImageLoader.fileExtensions.load(stream);
+            } catch (final IOException e) {
+                Mazer5D.logError(e);
             }
+            final String imageExt = ObjectImageLoader.fileExtensions
+                    .getProperty("images");
+            for (int i = 0; i <= maxIndex; i++) {
+                final String name = "/assets/image/object/"
+                        + ObjectImageLoader.allFilenames[i] + imageExt;
+                try {
+                    ImageLoader.load(name, ObjectImageLoader.class.getResource(
+                            name));
+                } catch (final IllegalArgumentException iae) {
+                    // Ignore - image unused
+                }
+            }
+            ObjectImageLoader.isCached = true;
         }
     }
 }

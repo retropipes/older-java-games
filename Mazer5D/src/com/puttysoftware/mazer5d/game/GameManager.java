@@ -1118,27 +1118,27 @@ public class GameManager implements MazeEffectConstants {
                             }
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(GameObjects.createObject(
+                                    .load(GameObjects.createObject(
                                             MazeObjects.DARKNESS), true));
                         }
                     } catch (final ArrayIndexOutOfBoundsException ae) {
                         if (this.trueSightFlag) {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(GameObjects.createObject(
+                                    .load(GameObjects.createObject(
                                             MazeObjects.BOUNDS), true));
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(GameObjects.createObject(
+                                    .load(GameObjects.createObject(
                                             MazeObjects.BOUNDS), true));
                         }
                     } catch (final NullPointerException np) {
                         if (this.trueSightFlag) {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(GameObjects.createObject(
+                                    .load(GameObjects.createObject(
                                             MazeObjects.BOUNDS), true));
                         } else {
                             this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                                    .getObjectImage(GameObjects.createObject(
+                                    .load(GameObjects.createObject(
                                             MazeObjects.BOUNDS), true));
                         }
                     }
@@ -1183,7 +1183,7 @@ public class GameManager implements MazeEffectConstants {
                     }
                 } else {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(GameObjects.createObject(
+                            .load(GameObjects.createObject(
                                     MazeObjects.DARKNESS), true));
                 }
                 this.drawGrid[xFix][yFix].repaint();

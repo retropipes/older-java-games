@@ -337,13 +337,13 @@ public class MazeEditor {
                             .getCell(y, x, this.elMgr.getEditorLocationZ(),
                                     Layers.GROUND);
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(obj1, false));
+                            .load(obj1, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(MazeEditor.VOID, false));
+                            .load(MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(MazeEditor.VOID, false));
+                            .load(MazeEditor.VOID, false));
                 }
             }
         }
@@ -376,10 +376,10 @@ public class MazeEditor {
                             .getCompositeImage(obj1, obj2, false));
                 } catch (final ArrayIndexOutOfBoundsException ae) {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(MazeEditor.VOID, false));
+                            .load(MazeEditor.VOID, false));
                 } catch (final NullPointerException np) {
                     this.drawGrid[xFix][yFix].setIcon(ObjectImageManager
-                            .getObjectImage(MazeEditor.VOID, false));
+                            .load(MazeEditor.VOID, false));
                 }
             }
         }
