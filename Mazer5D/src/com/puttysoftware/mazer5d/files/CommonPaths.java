@@ -27,7 +27,7 @@ public class CommonPaths {
     private static final String LEGACY_PREFS_FILE_EXTENSION = ".5dp";
 
     private CommonPaths() {
-        // TODO Auto-generated constructor stub
+        super();
     }
 
     private static boolean useFallback() {

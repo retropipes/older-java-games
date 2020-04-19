@@ -18,6 +18,7 @@ import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.objectmodel.GameObjects;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
+import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomLongRange;
 
 class Maze implements MazeModel {
@@ -871,16 +872,16 @@ class Maze implements MazeModel {
 
     @Override
     public void fillLevelDefault() {
-        // FIXME: Use editor default fill
-        final MazeObjectModel bottom = null;
+        final MazeObjectModel bottom = GameObjects.createObject(Prefs
+                .getEditorDefaultFill());
         final MazeObjectModel top = GameObjects.getEmptySpace();
         this.mazeData.fill(bottom, top);
     }
 
     @Override
     public void fillFloorDefault(final int floor) {
-        // FIXME: Use editor default fill
-        final MazeObjectModel bottom = null;
+        final MazeObjectModel bottom = GameObjects.createObject(Prefs
+                .getEditorDefaultFill());
         final MazeObjectModel top = GameObjects.getEmptySpace();
         this.mazeData.fillFloor(bottom, top, floor);
     }
