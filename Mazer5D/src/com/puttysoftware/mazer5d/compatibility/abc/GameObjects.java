@@ -7,6 +7,8 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
+import java.util.TreeMap;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -20,135 +22,711 @@ import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class GameObjects {
     // Fields
-    private static final MazeObjectModel[] allObjects = { new Empty(),
-            new Grass(), new Dirt(), new Sand(), new Snow(), new Tundra(),
-            new Tile(), new Ice(), new Water(), new HotRock(), new Slime(),
-            new Lava(), new SunkenBlock(), new ForceField(), new BlueCarpet(),
-            new CyanCarpet(), new GreenCarpet(), new MagentaCarpet(),
-            new OrangeCarpet(), new PurpleCarpet(), new RedCarpet(),
-            new RoseCarpet(), new SeaweedCarpet(), new SkyCarpet(),
-            new WhiteCarpet(), new YellowCarpet(), new Player(), new SunStone(),
-            new MoonStone(), new Finish(), new FakeFinish(), new FinishTo(),
-            new MovingFinish(), new Wall(), new InvisibleWall(), new FakeWall(),
-            new BlueWallOff(), new BlueWallOn(), new GreenWallOff(),
-            new GreenWallOn(), new MagentaWallOff(), new MagentaWallOn(),
-            new OrangeWallOff(), new OrangeWallOn(), new PurpleWallOff(),
-            new PurpleWallOn(), new RedWallOff(), new RedWallOn(),
-            new RoseWallOff(), new RoseWallOn(), new SeaweedWallOff(),
-            new SeaweedWallOn(), new SkyWallOff(), new SkyWallOn(),
-            new WhiteWallOff(), new WhiteWallOn(), new YellowWallOff(),
-            new YellowWallOn(), new CyanWallOff(), new CyanWallOn(),
-            new OneWayEastWall(), new OneWayNorthWall(), new OneWaySouthWall(),
-            new OneWayWestWall(), new ExplodingWall(),
-            new BreakableWallHorizontal(), new BreakableWallVertical(),
-            new FadingWall(), new DamageableWall(), new CrackedWall(),
-            new DamagedWall(), new CrumblingWall(), new MasterTrappedWall(),
-            new TrappedWall0(), new TrappedWall1(), new TrappedWall2(),
-            new TrappedWall3(), new TrappedWall4(), new TrappedWall5(),
-            new TrappedWall6(), new TrappedWall7(), new TrappedWall8(),
-            new TrappedWall9(), new TrappedWall10(), new TrappedWall11(),
-            new TrappedWall12(), new TrappedWall13(), new TrappedWall14(),
-            new TrappedWall15(), new TrappedWall16(), new TrappedWall17(),
-            new TrappedWall18(), new TrappedWall19(), new Stump(),
-            new Crevasse(), new BrickWall(), new Hammer(), new Axe(),
-            new Tree(), new CutTree(), new Tablet(), new TabletSlot(),
-            new EnergySphere(), new APlug(), new APort(), new BPlug(),
-            new BPort(), new CPlug(), new CPort(), new DPlug(), new DPort(),
-            new EPlug(), new EPort(), new FPlug(), new FPort(), new GPlug(),
-            new GPort(), new HPlug(), new HPort(), new IPlug(), new IPort(),
-            new JPlug(), new JPort(), new KPlug(), new KPort(), new LPlug(),
-            new LPort(), new MPlug(), new MPort(), new NPlug(), new NPort(),
-            new OPlug(), new OPort(), new PPlug(), new PPort(), new QPlug(),
-            new QPort(), new RPlug(), new RPort(), new SPlug(), new SPort(),
-            new TPlug(), new TPort(), new UPlug(), new UPort(), new VPlug(),
-            new VPort(), new WPlug(), new WPort(), new XPlug(), new XPort(),
-            new YPlug(), new YPort(), new ZPlug(), new ZPort(),
-            new GarnetSquare(), new GarnetWall(), new GoldenSquare(),
-            new GoldenWall(), new RubySquare(), new RubyWall(),
-            new SapphireSquare(), new SapphireWall(), new SilverSquare(),
-            new SilverWall(), new TopazSquare(), new TopazWall(), new Key(),
-            new Lock(), new BlueKey(), new BlueLock(), new GreenKey(),
-            new GreenLock(), new MagentaKey(), new MagentaLock(),
-            new OrangeKey(), new OrangeLock(), new PurpleKey(),
-            new PurpleLock(), new RedKey(), new RedLock(), new RoseKey(),
-            new RoseLock(), new SeaweedKey(), new SeaweedLock(), new SkyKey(),
-            new SkyLock(), new WhiteKey(), new WhiteLock(), new YellowKey(),
-            new YellowLock(), new CyanKey(), new CyanLock(), new MetalKey(),
-            new MetalDoor(), new Door(), new BlueButton(), new GreenButton(),
-            new MagentaButton(), new OrangeButton(), new PurpleButton(),
-            new RedButton(), new RoseButton(), new SeaweedButton(),
-            new SkyButton(), new WhiteButton(), new YellowButton(),
-            new CyanButton(), new MetalButton(), new Teleport(),
-            new InvisibleTeleport(), new RandomTeleport(),
-            new RandomInvisibleTeleport(), new RandomOneShotTeleport(),
-            new RandomInvisibleOneShotTeleport(), new OneShotTeleport(),
-            new InvisibleOneShotTeleport(), new TwoWayTeleport(),
-            new ControllableTeleport(), new OneShotControllableTeleport(),
-            new ConditionalTeleport(), new InvisibleConditionalTeleport(),
-            new OneShotConditionalTeleport(),
-            new InvisibleOneShotConditionalTeleport(), new ChainTeleport(),
-            new InvisibleChainTeleport(), new OneShotChainTeleport(),
-            new InvisibleOneShotChainTeleport(), new ConditionalChainTeleport(),
-            new InvisibleConditionalChainTeleport(), new StairsUp(),
-            new StairsDown(), new Pit(), new InvisiblePit(), new Springboard(),
-            new InvisibleSpringboard(), new PushableBlock(),
-            new PullableBlock(), new PushablePullableBlock(),
-            new PushableBlockOnce(), new PushableBlockTwice(),
-            new PushableBlockThrice(), new PullableBlockOnce(),
-            new PullableBlockTwice(), new PullableBlockThrice(),
-            new MovingBlock(), new MetalBoots(), new NoBoots(), new HealBoots(),
-            new GlueBoots(), new AquaBoots(), new BioHazardBoots(),
-            new FireBoots(), new HotBoots(), new PasswallBoots(),
-            new SlipperyBoots(), new AnnihilationWand(), new FinishMakingWand(),
-            new WallMakingWand(), new TeleportWand(), new WallBreakingWand(),
-            new DisarmTrapWand(), new RemoteActionWand(), new RotationWand(),
-            new WarpWand(), new LightWand(), new DarkWand(), new Bounds(),
-            new HealTrap(), new HurtTrap(), new VariableHealTrap(),
-            new VariableHurtTrap(), new ClockwiseRotationTrap(),
-            new CounterclockwiseRotationTrap(), new UTurnTrap(),
-            new ConfusionTrap(), new DizzinessTrap(), new DrunkTrap(),
-            new WallMakingTrap(), new RotationTrap(), new WarpTrap(),
-            new ArrowTrap(), new ExploreTrap(), new NoExploreTrap(),
-            new MasterWallTrap(), new WallTrap0(), new WallTrap1(),
-            new WallTrap2(), new WallTrap3(), new WallTrap4(), new WallTrap5(),
-            new WallTrap6(), new WallTrap7(), new WallTrap8(), new WallTrap9(),
-            new WallTrap10(), new WallTrap11(), new WallTrap12(),
-            new WallTrap13(), new WallTrap14(), new WallTrap15(),
-            new WallTrap16(), new WallTrap17(), new WallTrap18(),
-            new WallTrap19(), new TreasureChest(), new DimnessGem(),
-            new DarknessGem(), new LightnessGem(), new BrightnessGem(),
-            new DarkGem(), new LightGem(), new HorizontalBarrier(),
-            new VerticalBarrier(), new BarrierGenerator(),
-            new EnragedBarrierGenerator(), new IcedBarrierGenerator(),
-            new PoisonedBarrierGenerator(), new ShockedBarrierGenerator(),
-            new WarpBomb(), new IceBomb(), new FireBomb(), new PoisonBomb(),
-            new ShockBomb(), new QuakeBomb(), new ShuffleBomb(), new IceBow(),
-            new FireBow(), new PoisonBow(), new ShockBow(), new GhostBow(),
-            new Sign(), new MinorHealPotion(), new MinorHurtPotion(),
-            new MinorUnknownPotion(), new MajorHealPotion(),
-            new MajorHurtPotion(), new MajorUnknownPotion(),
-            new SuperHealPotion(), new SuperHurtPotion(),
-            new SuperUnknownPotion(), new CrystalWall(), new BlackCrystal(),
-            new BlueCrystal(), new CyanCrystal(), new DarkBlueCrystal(),
-            new DarkCyanCrystal(), new DarkGrayCrystal(),
-            new DarkGreenCrystal(), new DarkMagentaCrystal(),
-            new DarkRedCrystal(), new DarkYellowCrystal(), new GrayCrystal(),
-            new GreenCrystal(), new LightBlueCrystal(), new LightCyanCrystal(),
-            new LightGrayCrystal(), new LightGreenCrystal(),
-            new LightMagentaCrystal(), new LightRedCrystal(),
-            new LightYellowCrystal(), new MagentaCrystal(), new OrangeCrystal(),
-            new PlantCrystal(), new PurpleCrystal(), new RedCrystal(),
-            new RoseCrystal(), new SeaweedCrystal(), new SkyCrystal(),
-            new WhiteCrystal(), new YellowCrystal(), new HalfHourglass(),
-            new Hourglass(), new DoubleHourglass(), new Amethyst(), new Ruby(),
-            new Sapphire(), new Diamond(), new NormalAmulet(), new FireAmulet(),
-            new IceAmulet(), new GhostAmulet(), new PoisonousAmulet(),
-            new CounterpoisonAmulet(), new TrueSightAmulet(), new BlueHouse(),
-            new CyanHouse(), new GreenHouse(), new MagentaHouse(),
-            new OrangeHouse(), new PurpleHouse(), new RedHouse(),
-            new RoseHouse(), new SeaweedHouse(), new SkyHouse(),
-            new WhiteHouse(), new YellowHouse(), new Exit(),
-            new SealingWall() };
+    private static final TreeMap<MazeObjects, MazeObjectModel> allObjectsLookup = new TreeMap<>();
+    private static MazeObjectModel[] allObjects;
+    static {
+        GameObjects.allObjectsLookup.put(MazeObjects._NONE, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.AMETHYST, new Amethyst());
+        GameObjects.allObjectsLookup.put(MazeObjects.ANNIHILATION_WAND,
+                new AnnihilationWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.A_PLUG, new APlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.A_PORT, new APort());
+        GameObjects.allObjectsLookup.put(MazeObjects.AQUA_BOOTS,
+                new AquaBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.ARROW, new ArrowTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.ARROW_TRAP, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.AXE, new Axe());
+        GameObjects.allObjectsLookup.put(MazeObjects.BARRIER_GENERATOR,
+                new BarrierGenerator());
+        GameObjects.allObjectsLookup.put(MazeObjects.BIO_HAZARD_BOOTS,
+                new BioHazardBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLACK_CRYSTAL,
+                new BlackCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_BUTTON,
+                new BlueButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_CARPET,
+                new BlueCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_CRYSTAL,
+                new BlueCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_HOUSE,
+                new BlueHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_KEY, new BlueKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_LOCK, new BlueLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_WALL_OFF,
+                new BlueWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.BLUE_WALL_ON,
+                new BlueWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.BOW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.B_PLUG, new BPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.B_PORT, new BPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.BREAKABLE_WALL_HORIZONTAL,
+                new BreakableWallHorizontal());
+        GameObjects.allObjectsLookup.put(MazeObjects.BREAKABLE_WALL_VERTICAL,
+                new BreakableWallVertical());
+        GameObjects.allObjectsLookup.put(MazeObjects.BRICK_WALL,
+                new BrickWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.BRIGHTNESS_GEM,
+                new BrightnessGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.CHAIN_TELEPORT,
+                new ChainTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.CLOCKWISE_ROTATION_TRAP,
+                new ClockwiseRotationTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.CONDITIONAL_CHAIN_TELEPORT,
+                new ConditionalChainTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.CONDITIONAL_TELEPORT,
+                new ConditionalTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.CONFUSION_TRAP,
+                new ConfusionTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.CONTROLLABLE_TELEPORT,
+                new ControllableTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.COUNTERCLOCKWISE_ROTATION_TRAP,
+                new CounterclockwiseRotationTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.COUNTERPOISON_AMULET,
+                new CounterpoisonAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.C_PLUG, new CPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.C_PORT, new CPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.CRACKED_WALL,
+                new CrackedWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.CREVASSE, new Crevasse());
+        GameObjects.allObjectsLookup.put(MazeObjects.CRUMBLING_WALL,
+                new CrumblingWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.CRYSTAL_WALL,
+                new CrystalWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.CUT_TREE, new CutTree());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_BUTTON,
+                new CyanButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_CARPET,
+                new CyanCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_CRYSTAL,
+                new CyanCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_HOUSE,
+                new CyanHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_KEY, new CyanKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_LOCK, new CyanLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_WALL_OFF,
+                new CyanWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.CYAN_WALL_ON,
+                new CyanWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.DAMAGEABLE_WALL,
+                new DamageableWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.DAMAGED_WALL,
+                new DamagedWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_BLUE_CRYSTAL,
+                new DarkBlueCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_CYAN_CRYSTAL,
+                new DarkCyanCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_GEM, new DarkGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_GRAY_CRYSTAL,
+                new DarkGrayCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_GREEN_CRYSTAL,
+                new DarkGreenCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_MAGENTA_CRYSTAL,
+                new DarkMagentaCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARKNESS, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.DARKNESS_GEM,
+                new DarknessGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_RED_CRYSTAL,
+                new DarkRedCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_WAND, new DarkWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.DARK_YELLOW_CRYSTAL,
+                new DarkYellowCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.DESTINATION, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.DIAMOND, new Diamond());
+        GameObjects.allObjectsLookup.put(MazeObjects.DIMNESS_GEM,
+                new DimnessGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.DIRT, new Dirt());
+        GameObjects.allObjectsLookup.put(MazeObjects.DISARM_TRAP_WAND,
+                new DisarmTrapWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.DIZZINESS_TRAP,
+                new DizzinessTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.DOOR, new Door());
+        GameObjects.allObjectsLookup.put(MazeObjects.DOUBLE_HOURGLASS,
+                new DoubleHourglass());
+        GameObjects.allObjectsLookup.put(MazeObjects.D_PLUG, new DPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.D_PORT, new DPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.DRUNK_TRAP,
+                new DrunkTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.EMPTY, new Empty());
+        GameObjects.allObjectsLookup.put(MazeObjects.BOUNDS, new Bounds());
+        GameObjects.allObjectsLookup.put(MazeObjects.ENERGY_SPHERE,
+                new EnergySphere());
+        GameObjects.allObjectsLookup.put(MazeObjects.ENRAGED_BARRIER_GENERATOR,
+                new EnragedBarrierGenerator());
+        GameObjects.allObjectsLookup.put(MazeObjects.E_PLUG, new EPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.E_PORT, new EPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.EXIT, new Exit());
+        GameObjects.allObjectsLookup.put(MazeObjects.EXPLODING_WALL,
+                new ExplodingWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.EXPLORE_TRAP,
+                new ExploreTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.FADING_WALL,
+                new FadingWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.FAKE_FINISH,
+                new FakeFinish());
+        GameObjects.allObjectsLookup.put(MazeObjects.FAKE_WALL, new FakeWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.FINISH, new Finish());
+        GameObjects.allObjectsLookup.put(MazeObjects.FINISH_MAKING_WAND,
+                new FinishMakingWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.FINISH_TO, new FinishTo());
+        GameObjects.allObjectsLookup.put(MazeObjects.FIRE_AMULET,
+                new FireAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.FIRE_ARROW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.FIRE_BOMB, new FireBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.FIRE_BOOTS,
+                new FireBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.FIRE_BOW, new FireBow());
+        GameObjects.allObjectsLookup.put(MazeObjects.FORCE_FIELD,
+                new ForceField());
+        GameObjects.allObjectsLookup.put(MazeObjects.F_PLUG, new FPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.F_PORT, new FPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.GARNET_SQUARE,
+                new GarnetSquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.GARNET_WALL,
+                new GarnetWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.GHOST_AMULET,
+                new GhostAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.GHOST_ARROW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.GHOST_BOW, new GhostBow());
+        GameObjects.allObjectsLookup.put(MazeObjects.GLUE_BOOTS,
+                new GlueBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.GOLDEN_SQUARE,
+                new GoldenSquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.GOLDEN_WALL,
+                new GoldenWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.G_PLUG, new GPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.G_PORT, new GPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.GRASS, new Grass());
+        GameObjects.allObjectsLookup.put(MazeObjects.GRAY_CRYSTAL,
+                new GrayCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_BUTTON,
+                new GreenButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_CARPET,
+                new GreenCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_CRYSTAL,
+                new GreenCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_HOUSE,
+                new GreenHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_KEY, new GreenKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_LOCK,
+                new GreenLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_WALL_OFF,
+                new GreenWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.GREEN_WALL_ON,
+                new GreenWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.HALF_HOURGLASS,
+                new HalfHourglass());
+        GameObjects.allObjectsLookup.put(MazeObjects.HAMMER, new Hammer());
+        GameObjects.allObjectsLookup.put(MazeObjects.HEAL_BOOTS,
+                new HealBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.HEAL_TRAP, new HealTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.HORIZONTAL_BARRIER,
+                new HorizontalBarrier());
+        GameObjects.allObjectsLookup.put(MazeObjects.HOT_BOOTS, new HotBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.HOT_ROCK, new HotRock());
+        GameObjects.allObjectsLookup.put(MazeObjects.HOURGLASS,
+                new Hourglass());
+        GameObjects.allObjectsLookup.put(MazeObjects.H_PLUG, new HPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.H_PORT, new HPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.HURT_TRAP, new HurtTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.ICE, new Ice());
+        GameObjects.allObjectsLookup.put(MazeObjects.ICE_AMULET,
+                new IceAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.ICE_ARROW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.ICE_BOMB, new IceBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.ICE_BOW, new IceBow());
+        GameObjects.allObjectsLookup.put(MazeObjects.ICED_BARRIER_GENERATOR,
+                new IcedBarrierGenerator());
+        GameObjects.allObjectsLookup.put(MazeObjects.INVISIBLE_CHAIN_TELEPORT,
+                new InvisibleChainTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.INVISIBLE_CONDITIONAL_CHAIN_TELEPORT,
+                new InvisibleConditionalChainTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.INVISIBLE_CONDITIONAL_TELEPORT,
+                new InvisibleConditionalTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.INVISIBLE_ONE_SHOT_CHAIN_TELEPORT,
+                new InvisibleOneShotChainTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.INVISIBLE_ONE_SHOT_CONDITIONAL_TELEPORT,
+                new InvisibleOneShotConditionalTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.INVISIBLE_ONE_SHOT_TELEPORT,
+                new InvisibleOneShotTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.INVISIBLE_PIT,
+                new InvisiblePit());
+        GameObjects.allObjectsLookup.put(MazeObjects.INVISIBLE_SPRINGBOARD,
+                new InvisibleSpringboard());
+        GameObjects.allObjectsLookup.put(MazeObjects.INVISIBLE_TELEPORT,
+                new InvisibleTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.INVISIBLE_WALL,
+                new InvisibleWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.I_PLUG, new IPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.I_PORT, new IPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.J_PLUG, new JPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.J_PORT, new JPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.KEY, new Key());
+        GameObjects.allObjectsLookup.put(MazeObjects.K_PLUG, new KPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.K_PORT, new KPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.LAVA, new Lava());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_BLUE_CRYSTAL,
+                new LightBlueCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_CYAN_CRYSTAL,
+                new LightCyanCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_GEM, new LightGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_GRAY_CRYSTAL,
+                new LightGrayCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_GREEN_CRYSTAL,
+                new LightGreenCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_MAGENTA_CRYSTAL,
+                new LightMagentaCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHTNESS_GEM,
+                new LightnessGem());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_RED_CRYSTAL,
+                new LightRedCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_WAND,
+                new LightWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.LIGHT_YELLOW_CRYSTAL,
+                new LightYellowCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.LOCK, new Lock());
+        GameObjects.allObjectsLookup.put(MazeObjects.L_PLUG, new LPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.L_PORT, new LPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_BUTTON,
+                new MagentaButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_CARPET,
+                new MagentaCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_CRYSTAL,
+                new MagentaCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_HOUSE,
+                new MagentaHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_KEY,
+                new MagentaKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_LOCK,
+                new MagentaLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_WALL_OFF,
+                new MagentaWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAGENTA_WALL_ON,
+                new MagentaWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAJOR_HEAL_POTION,
+                new MajorHealPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAJOR_HURT_POTION,
+                new MajorHurtPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MAJOR_UNKNOWN_POTION,
+                new MajorUnknownPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MASTER_TRAPPED_WALL,
+                new MasterTrappedWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.MASTER_WALL_TRAP,
+                new MasterWallTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.METAL_BOOTS,
+                new MetalBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.METAL_BUTTON,
+                new MetalButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.METAL_DOOR,
+                new MetalDoor());
+        GameObjects.allObjectsLookup.put(MazeObjects.METAL_KEY, new MetalKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.MINOR_HEAL_POTION,
+                new MinorHealPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MINOR_HURT_POTION,
+                new MinorHurtPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MINOR_UNKNOWN_POTION,
+                new MinorUnknownPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.MOON_STONE,
+                new MoonStone());
+        GameObjects.allObjectsLookup.put(MazeObjects.MOVING_BLOCK,
+                new MovingBlock());
+        GameObjects.allObjectsLookup.put(MazeObjects.MOVING_FINISH,
+                new MovingFinish());
+        GameObjects.allObjectsLookup.put(MazeObjects.M_PLUG, new MPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.M_PORT, new MPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.NO_BOOTS, new NoBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.NO_EXPLORE_TRAP,
+                new NoExploreTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.NORMAL_AMULET,
+                new NormalAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.N_PLUG, new NPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.N_PORT, new NPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_SHOT_CHAIN_TELEPORT,
+                new OneShotChainTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT,
+                new OneShotConditionalTeleport());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.ONE_SHOT_CONTROLLABLE_TELEPORT,
+                new OneShotControllableTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_SHOT_TELEPORT,
+                new OneShotTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_WAY_EAST_WALL,
+                new OneWayEastWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_WAY_NORTH_WALL,
+                new OneWayNorthWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_WAY_SOUTH_WALL,
+                new OneWaySouthWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.ONE_WAY_WEST_WALL,
+                new OneWayWestWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.O_PLUG, new OPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.O_PORT, new OPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_BUTTON,
+                new OrangeButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_CARPET,
+                new OrangeCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_CRYSTAL,
+                new OrangeCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_HOUSE,
+                new OrangeHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_KEY,
+                new OrangeKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_LOCK,
+                new OrangeLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_WALL_OFF,
+                new OrangeWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.ORANGE_WALL_ON,
+                new OrangeWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.PASSWALL_BOOTS,
+                new PasswallBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.PIT, new Pit());
+        GameObjects.allObjectsLookup.put(MazeObjects.PLANT_CRYSTAL,
+                new PlantCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.PLAYER, new Player());
+        GameObjects.allObjectsLookup.put(MazeObjects.POISON_ARROW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.POISON_BOMB,
+                new PoisonBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.POISON_BOW,
+                new PoisonBow());
+        GameObjects.allObjectsLookup.put(MazeObjects.POISONED_BARRIER_GENERATOR,
+                new PoisonedBarrierGenerator());
+        GameObjects.allObjectsLookup.put(MazeObjects.POISONOUS_AMULET,
+                new PoisonousAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.P_PLUG, new PPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.P_PORT, new PPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.PULLABLE_BLOCK,
+                new PullableBlock());
+        GameObjects.allObjectsLookup.put(MazeObjects.PULLABLE_BLOCK_ONCE,
+                new PullableBlockOnce());
+        GameObjects.allObjectsLookup.put(MazeObjects.PULLABLE_BLOCK_THRICE,
+                new PullableBlockThrice());
+        GameObjects.allObjectsLookup.put(MazeObjects.PULLABLE_BLOCK_TWICE,
+                new PullableBlockTwice());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_BUTTON,
+                new PurpleButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_CARPET,
+                new PurpleCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_CRYSTAL,
+                new PurpleCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_HOUSE,
+                new PurpleHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_KEY,
+                new PurpleKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_LOCK,
+                new PurpleLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_WALL_OFF,
+                new PurpleWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.PURPLE_WALL_ON,
+                new PurpleWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.PUSHABLE_BLOCK,
+                new PushableBlock());
+        GameObjects.allObjectsLookup.put(MazeObjects.PUSHABLE_BLOCK_ONCE,
+                new PushableBlockOnce());
+        GameObjects.allObjectsLookup.put(MazeObjects.PUSHABLE_BLOCK_THRICE,
+                new PushableBlockThrice());
+        GameObjects.allObjectsLookup.put(MazeObjects.PUSHABLE_BLOCK_TWICE,
+                new PushableBlockTwice());
+        GameObjects.allObjectsLookup.put(MazeObjects.PUSHABLE_PULLABLE_BLOCK,
+                new PushablePullableBlock());
+        GameObjects.allObjectsLookup.put(MazeObjects.Q_PLUG, new QPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.Q_PORT, new QPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.QUAKE_BOMB,
+                new QuakeBomb());
+        GameObjects.allObjectsLookup.put(
+                MazeObjects.RANDOM_INVISIBLE_ONE_SHOT_TELEPORT,
+                new RandomInvisibleOneShotTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.RANDOM_INVISIBLE_TELEPORT,
+                new RandomInvisibleTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.RANDOM_ONE_SHOT_TELEPORT,
+                new RandomOneShotTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.RANDOM_TELEPORT,
+                new RandomTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_BUTTON,
+                new RedButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_CARPET,
+                new RedCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_CRYSTAL,
+                new RedCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_HOUSE, new RedHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_KEY, new RedKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_LOCK, new RedLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_WALL_OFF,
+                new RedWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.RED_WALL_ON,
+                new RedWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.REGULAR_BOOTS, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.REMOTE_ACTION_WAND,
+                new RemoteActionWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_BUTTON,
+                new RoseButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_CARPET,
+                new RoseCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_CRYSTAL,
+                new RoseCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_HOUSE,
+                new RoseHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_KEY, new RoseKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_LOCK, new RoseLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_WALL_OFF,
+                new RoseWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROSE_WALL_ON,
+                new RoseWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROTATION_TRAP,
+                new RotationTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.ROTATION_WAND,
+                new RotationWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.R_PLUG, new RPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.R_PORT, new RPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.RUBY, new Ruby());
+        GameObjects.allObjectsLookup.put(MazeObjects.RUBY_SQUARE,
+                new RubySquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.RUBY_WALL, new RubyWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.SAND, new Sand());
+        GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE, new Sapphire());
+        GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE_SQUARE,
+                new SapphireSquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.SAPPHIRE_WALL,
+                new SapphireWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEALED_FINISH, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.SEALING_WALL,
+                new SealingWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_BUTTON,
+                new SeaweedButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_CARPET,
+                new SeaweedCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_CRYSTAL,
+                new SeaweedCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_HOUSE,
+                new SeaweedHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_KEY,
+                new SeaweedKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_LOCK,
+                new SeaweedLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_WALL_OFF,
+                new SeaweedWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.SEAWEED_WALL_ON,
+                new SeaweedWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.SHOCK_ARROW, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.SHOCK_BOMB,
+                new ShockBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.SHOCK_BOW, new ShockBow());
+        GameObjects.allObjectsLookup.put(MazeObjects.SHOCKED_BARRIER_GENERATOR,
+                new ShockedBarrierGenerator());
+        GameObjects.allObjectsLookup.put(MazeObjects.SHUFFLE_BOMB,
+                new ShuffleBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.SIGN, new Sign());
+        GameObjects.allObjectsLookup.put(MazeObjects.SIGNAL_CRYSTAL, null);
+        GameObjects.allObjectsLookup.put(MazeObjects.SILVER_SQUARE,
+                new SilverSquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.SILVER_WALL,
+                new SilverWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_BUTTON,
+                new SkyButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_CARPET,
+                new SkyCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_CRYSTAL,
+                new SkyCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_HOUSE, new SkyHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_KEY, new SkyKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_LOCK, new SkyLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_WALL_OFF,
+                new SkyWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.SKY_WALL_ON,
+                new SkyWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.SLIME, new Slime());
+        GameObjects.allObjectsLookup.put(MazeObjects.SLIPPERY_BOOTS,
+                new SlipperyBoots());
+        GameObjects.allObjectsLookup.put(MazeObjects.SNOW, new Snow());
+        GameObjects.allObjectsLookup.put(MazeObjects.S_PLUG, new SPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.S_PORT, new SPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.SPRINGBOARD,
+                new Springboard());
+        GameObjects.allObjectsLookup.put(MazeObjects.STAIRS_DOWN,
+                new StairsDown());
+        GameObjects.allObjectsLookup.put(MazeObjects.STAIRS_UP, new StairsUp());
+        GameObjects.allObjectsLookup.put(MazeObjects.STUMP, new Stump());
+        GameObjects.allObjectsLookup.put(MazeObjects.SUNKEN_BLOCK,
+                new SunkenBlock());
+        GameObjects.allObjectsLookup.put(MazeObjects.SUN_STONE, new SunStone());
+        GameObjects.allObjectsLookup.put(MazeObjects.SUPER_HEAL_POTION,
+                new SuperHealPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.SUPER_HURT_POTION,
+                new SuperHurtPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.SUPER_UNKNOWN_POTION,
+                new SuperUnknownPotion());
+        GameObjects.allObjectsLookup.put(MazeObjects.TABLET, new Tablet());
+        GameObjects.allObjectsLookup.put(MazeObjects.TABLET_SLOT,
+                new TabletSlot());
+        GameObjects.allObjectsLookup.put(MazeObjects.TELEPORT, new Teleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.TELEPORT_WAND,
+                new TeleportWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.TILE, new Tile());
+        GameObjects.allObjectsLookup.put(MazeObjects.TOPAZ_SQUARE,
+                new TopazSquare());
+        GameObjects.allObjectsLookup.put(MazeObjects.TOPAZ_WALL,
+                new TopazWall());
+        GameObjects.allObjectsLookup.put(MazeObjects.T_PLUG, new TPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.T_PORT, new TPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_0,
+                new TrappedWall0());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_1,
+                new TrappedWall1());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_2,
+                new TrappedWall2());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_3,
+                new TrappedWall3());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_4,
+                new TrappedWall4());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_5,
+                new TrappedWall5());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_6,
+                new TrappedWall6());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_7,
+                new TrappedWall7());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_8,
+                new TrappedWall8());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_9,
+                new TrappedWall9());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_10,
+                new TrappedWall10());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_11,
+                new TrappedWall11());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_12,
+                new TrappedWall12());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_13,
+                new TrappedWall13());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_14,
+                new TrappedWall14());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_15,
+                new TrappedWall15());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_16,
+                new TrappedWall16());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_17,
+                new TrappedWall17());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_18,
+                new TrappedWall18());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRAPPED_WALL_19,
+                new TrappedWall19());
+        GameObjects.allObjectsLookup.put(MazeObjects.TREASURE_CHEST,
+                new TreasureChest());
+        GameObjects.allObjectsLookup.put(MazeObjects.TREE, new Tree());
+        GameObjects.allObjectsLookup.put(MazeObjects.TRUE_SIGHT_AMULET,
+                new TrueSightAmulet());
+        GameObjects.allObjectsLookup.put(MazeObjects.TUNDRA, new Tundra());
+        GameObjects.allObjectsLookup.put(MazeObjects.TWO_WAY_TELEPORT,
+                new TwoWayTeleport());
+        GameObjects.allObjectsLookup.put(MazeObjects.U_PLUG, new UPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.U_PORT, new UPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.U_TURN_TRAP,
+                new UTurnTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.VARIABLE_HEAL_TRAP,
+                new VariableHealTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.VARIABLE_HURT_TRAP,
+                new VariableHurtTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.VERTICAL_BARRIER,
+                new VerticalBarrier());
+        GameObjects.allObjectsLookup.put(MazeObjects.V_PLUG, new VPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.V_PORT, new VPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL, new Wall());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_BREAKING_WAND,
+                new WallBreakingWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_MAKING_TRAP,
+                new WallMakingTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_MAKING_WAND,
+                new WallMakingWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_0,
+                new WallTrap0());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_1,
+                new WallTrap1());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_2,
+                new WallTrap2());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_3,
+                new WallTrap3());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_4,
+                new WallTrap4());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_5,
+                new WallTrap5());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_6,
+                new WallTrap6());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_7,
+                new WallTrap7());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_8,
+                new WallTrap8());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_9,
+                new WallTrap9());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_10,
+                new WallTrap10());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_11,
+                new WallTrap11());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_12,
+                new WallTrap12());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_13,
+                new WallTrap13());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_14,
+                new WallTrap14());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_15,
+                new WallTrap15());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_16,
+                new WallTrap16());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_17,
+                new WallTrap17());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_18,
+                new WallTrap18());
+        GameObjects.allObjectsLookup.put(MazeObjects.WALL_TRAP_19,
+                new WallTrap19());
+        GameObjects.allObjectsLookup.put(MazeObjects.WARP_BOMB, new WarpBomb());
+        GameObjects.allObjectsLookup.put(MazeObjects.WARP_TRAP, new WarpTrap());
+        GameObjects.allObjectsLookup.put(MazeObjects.WARP_WAND, new WarpWand());
+        GameObjects.allObjectsLookup.put(MazeObjects.WATER, new Water());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_BUTTON,
+                new WhiteButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_CARPET,
+                new WhiteCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_CRYSTAL,
+                new WhiteCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_HOUSE,
+                new WhiteHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_KEY, new WhiteKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_LOCK,
+                new WhiteLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_WALL_OFF,
+                new WhiteWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.WHITE_WALL_ON,
+                new WhiteWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.W_PLUG, new WPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.W_PORT, new WPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.X_PLUG, new XPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.X_PORT, new XPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_BUTTON,
+                new YellowButton());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_CARPET,
+                new YellowCarpet());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_CRYSTAL,
+                new YellowCrystal());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_HOUSE,
+                new YellowHouse());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_KEY,
+                new YellowKey());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_LOCK,
+                new YellowLock());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_WALL_OFF,
+                new YellowWallOff());
+        GameObjects.allObjectsLookup.put(MazeObjects.YELLOW_WALL_ON,
+                new YellowWallOn());
+        GameObjects.allObjectsLookup.put(MazeObjects.Y_PLUG, new YPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.Y_PORT, new YPort());
+        GameObjects.allObjectsLookup.put(MazeObjects.Z_PLUG, new ZPlug());
+        GameObjects.allObjectsLookup.put(MazeObjects.Z_PORT, new ZPort());
+        Collection<MazeObjectModel> values = GameObjects.allObjectsLookup
+                .values();
+        GameObjects.allObjects = values.toArray(new MazeObjectModel[values
+                .size()]);
+    }
 
     private GameObjects() {
         super();
@@ -781,15 +1359,7 @@ public class GameObjects {
     }
 
     public static MazeObjectModel createObject(final MazeObjects uid) {
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
