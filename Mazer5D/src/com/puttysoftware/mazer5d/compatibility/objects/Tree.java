@@ -34,7 +34,7 @@ public class Tree extends GenericInfiniteLock {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (!this.getKey().isInfinite()) {
-            inv.removeItem(this.getKey());
+            inv.removeItem(this.getKey().getUniqueID());
         }
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decayTo(new CutTree());

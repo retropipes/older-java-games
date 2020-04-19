@@ -72,7 +72,7 @@ public class ExplodingWall extends GenericWall {
         } catch (final NullPointerException np) {
             mo8Name = invalidName;
         }
-        app.getGameManager().morph(new Empty(), x, y, z, "BOOM!");
+        app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z, "BOOM!");
         if (mo2Name.equals(currName)) {
             curr.chainReactionAction(x - 1, y, z);
         }

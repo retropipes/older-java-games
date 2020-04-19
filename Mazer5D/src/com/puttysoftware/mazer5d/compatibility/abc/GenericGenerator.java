@@ -8,14 +8,12 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.Bounds;
-import com.puttysoftware.mazer5d.compatibility.objects.HorizontalBarrier;
-import com.puttysoftware.mazer5d.compatibility.objects.VerticalBarrier;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericGenerator extends GenericWall {
     // Fields
@@ -42,48 +40,48 @@ public abstract class GenericGenerator extends GenericWall {
                 .getPlayerLocationZ();
         final int pw = app.getGameManager().getPlayerManager()
                 .getPlayerLocationW();
-        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
-                vertName;
-        invalidName = new Bounds().getName();
-        horzName = new HorizontalBarrier().getName();
-        vertName = new VerticalBarrier().getName();
+        MazeObjects mo2UID, mo4UID, mo6UID, mo8UID, invalidUID, horzUID,
+                vertUID;
+        invalidUID = MazeObjects.BOUNDS;
+        horzUID = MazeObjects.HORIZONTAL_BARRIER;
+        vertUID = MazeObjects.VERTICAL_BARRIER;
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
                 dirY, pz, Layers.OBJECT);
         try {
-            mo2Name = mo2.getName();
+            mo2UID = mo2.getUniqueID();
         } catch (final NullPointerException np) {
-            mo2Name = invalidName;
+            mo2UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo2Name = invalidName;
+            mo2UID = invalidUID;
         }
         final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(dirX,
                 dirY - 1, pz, Layers.OBJECT);
         try {
-            mo4Name = mo4.getName();
+            mo4UID = mo4.getUniqueID();
         } catch (final NullPointerException np) {
-            mo4Name = invalidName;
+            mo4UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo4Name = invalidName;
+            mo4UID = invalidUID;
         }
         final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(dirX,
                 dirY + 1, pz, Layers.OBJECT);
         try {
-            mo6Name = mo6.getName();
+            mo6UID = mo6.getUniqueID();
         } catch (final NullPointerException np) {
-            mo6Name = invalidName;
+            mo6UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo6Name = invalidName;
+            mo6UID = invalidUID;
         }
         final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(dirX + 1,
                 dirY, pz, Layers.OBJECT);
         try {
-            mo8Name = mo8.getName();
+            mo8UID = mo8.getUniqueID();
         } catch (final NullPointerException np) {
-            mo8Name = invalidName;
+            mo8UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo8Name = invalidName;
+            mo8UID = invalidUID;
         }
-        if (mo2Name.equals(horzName)) {
+        if (mo2UID.equals(horzUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
@@ -92,7 +90,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (mo4Name.equals(vertName)) {
+        if (mo4UID.equals(vertUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_NORTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
@@ -101,7 +99,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (mo6Name.equals(vertName)) {
+        if (mo6UID.equals(vertUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_SOUTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
@@ -110,7 +108,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (mo8Name.equals(horzName)) {
+        if (mo8UID.equals(horzUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, false);
             if (scanResult) {
@@ -141,48 +139,48 @@ public abstract class GenericGenerator extends GenericWall {
         final BagOStuff app = Mazer5D.getBagOStuff();
         final int pz = app.getGameManager().getPlayerManager()
                 .getPlayerLocationZ();
-        String mo2Name, mo4Name, mo6Name, mo8Name, invalidName, horzName,
-                vertName;
-        invalidName = new Bounds().getName();
-        horzName = new HorizontalBarrier().getName();
-        vertName = new VerticalBarrier().getName();
+        MazeObjects mo2UID, mo4UID, mo6UID, mo8UID, invalidUID, horzUID,
+                vertUID;
+        invalidUID = MazeObjects.BOUNDS;
+        horzUID = MazeObjects.HORIZONTAL_BARRIER;
+        vertUID = MazeObjects.VERTICAL_BARRIER;
         final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(dirX - 1,
                 dirY, pz, Layers.OBJECT);
         try {
-            mo2Name = mo2.getName();
+            mo2UID = mo2.getUniqueID();
         } catch (final NullPointerException np) {
-            mo2Name = invalidName;
+            mo2UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo2Name = invalidName;
+            mo2UID = invalidUID;
         }
         final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(dirX,
                 dirY - 1, pz, Layers.OBJECT);
         try {
-            mo4Name = mo4.getName();
+            mo4UID = mo4.getUniqueID();
         } catch (final NullPointerException np) {
-            mo4Name = invalidName;
+            mo4UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo4Name = invalidName;
+            mo4UID = invalidUID;
         }
         final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(dirX,
                 dirY + 1, pz, Layers.OBJECT);
         try {
-            mo6Name = mo6.getName();
+            mo6UID = mo6.getUniqueID();
         } catch (final NullPointerException np) {
-            mo6Name = invalidName;
+            mo6UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo6Name = invalidName;
+            mo6UID = invalidUID;
         }
         final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(dirX + 1,
                 dirY, pz, Layers.OBJECT);
         try {
-            mo8Name = mo8.getName();
+            mo8UID = mo8.getUniqueID();
         } catch (final NullPointerException np) {
-            mo8Name = invalidName;
+            mo8UID = invalidUID;
         } catch (final ArrayIndexOutOfBoundsException aioob) {
-            mo8Name = invalidName;
+            mo8UID = invalidUID;
         }
-        if (!mo2Name.equals(horzName)) {
+        if (!mo2UID.equals(horzUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_WEST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
@@ -191,7 +189,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (!mo4Name.equals(vertName)) {
+        if (!mo4UID.equals(vertUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_NORTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
@@ -200,7 +198,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (!mo6Name.equals(vertName)) {
+        if (!mo6UID.equals(vertUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_SOUTH, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
@@ -209,7 +207,7 @@ public abstract class GenericGenerator extends GenericWall {
                 flag = true;
             }
         }
-        if (!mo8Name.equals(horzName)) {
+        if (!mo8UID.equals(horzUID)) {
             scanResult = this.scan(DirectionConstants.DIRECTION_EAST, dirX,
                     dirY, pz, this.SCAN_LIMIT, true);
             if (scanResult) {
@@ -229,16 +227,16 @@ public abstract class GenericGenerator extends GenericWall {
     protected boolean scan(final int dir, final int x, final int y, final int z,
             final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final String invalidName = new Bounds().getName();
+        final MazeObjects invalidUID = MazeObjects.BOUNDS;
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
-                        y, z, Layers.OBJECT);
-                String moName;
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
+                        + l, y, z, Layers.OBJECT);
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
                     try {
@@ -252,7 +250,7 @@ public abstract class GenericGenerator extends GenericWall {
                         // Do nothing
                     }
                 } else {
-                    if (!moName.equals(new HorizontalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         try {
                             if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
@@ -267,11 +265,11 @@ public abstract class GenericGenerator extends GenericWall {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, Layers.OBJECT);
-                String moName;
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
                     try {
@@ -285,7 +283,7 @@ public abstract class GenericGenerator extends GenericWall {
                         // Do nothing
                     }
                 } else {
-                    if (!moName.equals(new VerticalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         try {
                             if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
@@ -300,11 +298,11 @@ public abstract class GenericGenerator extends GenericWall {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, Layers.OBJECT);
-                String moName;
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
                     try {
@@ -318,7 +316,7 @@ public abstract class GenericGenerator extends GenericWall {
                         // Do nothing
                     }
                 } else {
-                    if (!moName.equals(new VerticalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         try {
                             if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
@@ -331,13 +329,13 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_WEST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x - l,
-                        y, z, Layers.OBJECT);
-                String moName;
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
+                        - l, y, z, Layers.OBJECT);
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
                     try {
@@ -351,7 +349,7 @@ public abstract class GenericGenerator extends GenericWall {
                         // Do nothing
                     }
                 } else {
-                    if (!moName.equals(new HorizontalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         try {
                             if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                                 return true;
@@ -369,19 +367,19 @@ public abstract class GenericGenerator extends GenericWall {
     protected void generate(final int dir, final int x, final int y,
             final int z, final int limit, final boolean o) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        final String invalidName = new Bounds().getName();
+        final MazeObjects invalidUID = MazeObjects.BOUNDS;
         if (dir == DirectionConstants.DIRECTION_EAST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x + l,
-                        y, z, Layers.OBJECT);
-                String moName;
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
+                        + l, y, z, Layers.OBJECT);
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
-                    if (moName.equals(new HorizontalBarrier().getName())) {
+                    if (moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -392,15 +390,16 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(
-                                    new HorizontalBarrier(), x + l, y, z,
-                                    Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .createObject(
+                                            MazeObjects.HORIZONTAL_BARRIER), x
+                                                    + l, y, z, Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
                     }
                 } else {
-                    if (!moName.equals(new HorizontalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -411,8 +410,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(new Empty(),
-                                    x + l, y, z, Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .getEmptySpace(), x + l, y, z,
+                                    Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -423,14 +423,14 @@ public abstract class GenericGenerator extends GenericWall {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y - l, z, Layers.OBJECT);
-                String moName;
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
-                    if (moName.equals(new VerticalBarrier().getName())) {
+                    if (moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -441,15 +441,15 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(
-                                    new VerticalBarrier(), x, y - l, z,
-                                    Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .createObject(MazeObjects.VERTICAL_BARRIER),
+                                    x, y - l, z, Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
                     }
                 } else {
-                    if (!moName.equals(new VerticalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -460,8 +460,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(new Empty(),
-                                    x, y - l, z, Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .getEmptySpace(), x, y - l, z,
+                                    Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -472,14 +473,14 @@ public abstract class GenericGenerator extends GenericWall {
             for (int l = 1; l < limit; l++) {
                 final MazeObjectModel mo = app.getMazeManager().getMazeObject(x,
                         y + l, z, Layers.OBJECT);
-                String moName;
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
-                    if (moName.equals(new VerticalBarrier().getName())) {
+                    if (moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -490,15 +491,15 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(
-                                    new VerticalBarrier(), x, y + l, z,
-                                    Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .createObject(MazeObjects.VERTICAL_BARRIER),
+                                    x, y + l, z, Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
                     }
                 } else {
-                    if (!moName.equals(new VerticalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.VERTICAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -509,8 +510,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(new Empty(),
-                                    x, y + l, z, Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .getEmptySpace(), x, y + l, z,
+                                    Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
@@ -519,31 +521,32 @@ public abstract class GenericGenerator extends GenericWall {
             }
         } else if (dir == DirectionConstants.DIRECTION_WEST) {
             for (int l = 1; l < limit; l++) {
-                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x - l,
-                        y, z, Layers.OBJECT);
-                String moName;
+                final MazeObjectModel mo = app.getMazeManager().getMazeObject(x
+                        - l, y, z, Layers.OBJECT);
+                MazeObjects moUID;
                 try {
-                    moName = mo.getName();
+                    moUID = mo.getUniqueID();
                 } catch (final NullPointerException np) {
-                    moName = invalidName;
+                    moUID = invalidUID;
                 }
                 if (o) {
-                    if (moName.equals(new HorizontalBarrier().getName())) {
+                    if (moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         break;
                     } else {
                         if (mo.isOfType(TypeConstants.TYPE_GENERATOR)) {
                             break;
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(
-                                    new HorizontalBarrier(), x - l, y, z,
-                                    Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .createObject(
+                                            MazeObjects.HORIZONTAL_BARRIER), x
+                                                    - l, y, z, Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }
                     }
                 } else {
-                    if (!moName.equals(new HorizontalBarrier().getName())) {
+                    if (!moUID.equals(MazeObjects.HORIZONTAL_BARRIER)) {
                         break;
                     } else {
                         try {
@@ -554,8 +557,9 @@ public abstract class GenericGenerator extends GenericWall {
                             // Do nothing
                         }
                         try {
-                            app.getMazeManager().getMaze().setCell(new Empty(),
-                                    x - l, y, z, Layers.OBJECT);
+                            app.getMazeManager().getMaze().setCell(GameObjects
+                                    .getEmptySpace(), x - l, y, z,
+                                    Layers.OBJECT);
                         } catch (final ArrayIndexOutOfBoundsException aioob) {
                             // Do nothing
                         }

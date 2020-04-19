@@ -111,6 +111,14 @@ public abstract class GenericTeleport extends MazeObjectModel {
     }
 
     // Scriptability
+    public void activate() {
+        // Do nothing
+    }
+
+    public void deactivate() {
+        // Do nothing
+    }
+
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
@@ -135,10 +143,9 @@ public abstract class GenericTeleport extends MazeObjectModel {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff()
-                .showMessage(this.getName() + ": Destination ("
-                        + (this.destCol + 1) + "," + (this.destRow + 1) + ","
-                        + (this.destFloor + 1) + ")");
+        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Destination ("
+                + (this.destCol + 1) + "," + (this.destRow + 1) + ","
+                + (this.destFloor + 1) + ")");
     }
 
     @Override
@@ -183,5 +190,9 @@ public abstract class GenericTeleport extends MazeObjectModel {
     @Override
     public int getCustomFormat() {
         return 3;
+    }
+
+    public void setDestinationLevel(int inDestW) {
+        // Do nothing
     }
 }

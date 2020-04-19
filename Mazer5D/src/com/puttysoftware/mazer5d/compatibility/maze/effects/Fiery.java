@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.maze.effects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.objects.FireAmulet;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Fiery extends MazeEffect {
     // Constructor
@@ -17,7 +17,7 @@ public class Fiery extends MazeEffect {
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(new FireAmulet());
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(
+                MazeObjects.FIRE_AMULET);
     }
 }

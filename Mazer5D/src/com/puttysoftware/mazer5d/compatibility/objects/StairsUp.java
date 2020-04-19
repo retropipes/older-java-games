@@ -22,7 +22,7 @@ public class StairsUp extends GenericTeleport {
         super(0, 0, 0);
     }
 
-    // For derived classes only
+    // For derived public classes only
     protected StairsUp(final boolean doesAcceptPushInto) {
         super(doesAcceptPushInto);
     }

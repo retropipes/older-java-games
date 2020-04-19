@@ -9,10 +9,9 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
-import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericMultipleLock extends GenericLock {
     // Fields
@@ -33,18 +32,19 @@ public abstract class GenericMultipleLock extends GenericLock {
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return inv.getItemCount(this.getKey()) < this.keyCount;
+        return inv.getItemCount(this.getKey().getUniqueID()) < this.keyCount;
     }
 
     @Override
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(new PasswallBoots())
-                || inv.isItemThere(new GhostAmulet())) {
+        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(
+                MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
-            return inv.getItemCount(this.getKey()) < this.keyCount;
+            return inv.getItemCount(this.getKey()
+                    .getUniqueID()) < this.keyCount;
         }
     }
 
@@ -75,10 +75,10 @@ public abstract class GenericMultipleLock extends GenericLock {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         try {
-            this.keyCount = Integer
-                    .parseInt(CommonDialogs.showTextInputDialogWithDefault(
-                            "Set Key Count for " + this.getName(), "Editor",
-                            Integer.toString(this.keyCount)));
+            this.keyCount = Integer.parseInt(CommonDialogs
+                    .showTextInputDialogWithDefault("Set Key Count for " + this
+                            .getName(), "Editor", Integer.toString(
+                                    this.keyCount)));
         } catch (final NumberFormatException nf) {
             // Ignore
         }

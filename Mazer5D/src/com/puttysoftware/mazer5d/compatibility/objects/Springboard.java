@@ -96,7 +96,7 @@ public class Springboard extends StairsUp {
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
             Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .setCell(new Empty(), x, y, z, Layers.OBJECT);
+                    .setCell(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
         }
     }
 

@@ -34,7 +34,7 @@ public class CrumblingWall extends GenericWall {
         // Destroy the wall
         final int pz = Mazer5D.getBagOStuff().getGameManager()
                 .getPlayerManager().getPlayerLocationZ();
-        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), dirX, dirY,
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), dirX, dirY,
                 pz);
         SoundPlayer.playSound(SoundIndex.CRACK, SoundGroup.GAME);
     }

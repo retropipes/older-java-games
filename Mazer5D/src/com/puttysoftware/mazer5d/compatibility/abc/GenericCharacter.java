@@ -10,12 +10,14 @@ import java.io.IOException;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+
+
 
 public abstract class GenericCharacter extends MazeObjectModel {
     // Fields
@@ -27,7 +29,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     // Constructors
     protected GenericCharacter() {
         super(false);
-        this.savedObject = new Empty();
+        this.savedObject = GameObjects.getEmptySpace();
     }
 
     // Methods

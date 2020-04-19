@@ -41,7 +41,7 @@ public class DarkWand extends GenericWand {
             SoundPlayer.playSound(SoundIndex.DARKNESS, SoundGroup.GAME);
         } else if (obj.getName().equals("Light Gem")) {
             // Destroy the Light Gem
-            this.useAction(new Empty(), x, y, z);
+            this.useAction(GameObjects.getEmptySpace(), x, y, z);
             SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         }
     }

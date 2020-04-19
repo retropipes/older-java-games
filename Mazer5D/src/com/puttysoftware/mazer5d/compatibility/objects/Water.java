@@ -43,7 +43,7 @@ public class Water extends GenericField {
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,
                     Layers.GROUND);
-            app.getGameManager().morph(new Empty(), x, y, z,
+            app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z,
                     Layers.OBJECT);
             SoundPlayer.playSound(SoundIndex.SINK_BLOCK, SoundGroup.GAME);
         }

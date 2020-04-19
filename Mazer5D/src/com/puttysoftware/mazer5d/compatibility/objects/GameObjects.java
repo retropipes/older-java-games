@@ -148,7 +148,8 @@ public class GameObjects {
         GameObjects.allObjectsLookup.put(MazeObjects.D_PORT, new DPort());
         GameObjects.allObjectsLookup.put(MazeObjects.DRUNK_TRAP,
                 new DrunkTrap());
-        GameObjects.allObjectsLookup.put(MazeObjects.EMPTY, new Empty());
+        GameObjects.allObjectsLookup.put(MazeObjects.EMPTY, GameObjects
+                .getEmptySpace());
         GameObjects.allObjectsLookup.put(MazeObjects.BOUNDS, new Bounds());
         GameObjects.allObjectsLookup.put(MazeObjects.ENERGY_SPHERE,
                 new EnergySphere());
@@ -1378,6 +1379,107 @@ public class GameObjects {
         } else {
             try {
                 return instance.getClass().getConstructor().newInstance();
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                return null;
+            }
+        }
+    }
+
+    public static MazeObjectModel createContainerObject(final MazeObjects uid,
+            final MazeObjects contentsUID) {
+        MazeObjectModel contents = GameObjects.createObject(contentsUID);
+        MazeObjectModel instance = null;
+        int x;
+        for (x = 0; x < GameObjects.allObjects.length; x++) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
+                instance = GameObjects.allObjects[x];
+                break;
+            }
+        }
+        if (instance == null) {
+            return null;
+        } else {
+            try {
+                return instance.getClass().getConstructor(contents.getClass())
+                        .newInstance(contents);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                return null;
+            }
+        }
+    }
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc) {
+        MazeObjectModel instance = null;
+        int x;
+        for (x = 0; x < GameObjects.allObjects.length; x++) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
+                instance = GameObjects.allObjects[x];
+                break;
+            }
+        }
+        if (instance == null) {
+            return null;
+        } else {
+            try {
+                return instance.getClass().getConstructor(int.class, int.class)
+                        .newInstance(dr, dc);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                return null;
+            }
+        }
+    }
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc, final int df) {
+        MazeObjectModel instance = null;
+        int x;
+        for (x = 0; x < GameObjects.allObjects.length; x++) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
+                instance = GameObjects.allObjects[x];
+                break;
+            }
+        }
+        if (instance == null) {
+            return null;
+        } else {
+            try {
+                return instance.getClass().getConstructor(int.class, int.class,
+                        int.class).newInstance(dr, dc, df);
+            } catch (final InstantiationException | IllegalAccessException
+                    | IllegalArgumentException | InvocationTargetException
+                    | NoSuchMethodException | SecurityException e) {
+                return null;
+            }
+        }
+    }
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc, final int df, final int dl) {
+        MazeObjectModel instance = null;
+        int x;
+        for (x = 0; x < GameObjects.allObjects.length; x++) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
+                instance = GameObjects.allObjects[x];
+                break;
+            }
+        }
+        if (instance == null) {
+            return null;
+        } else {
+            try {
+                return instance.getClass().getConstructor(int.class, int.class,
+                        int.class, int.class).newInstance(dr, dc, df, dl);
             } catch (final InstantiationException | IllegalAccessException
                     | IllegalArgumentException | InvocationTargetException
                     | NoSuchMethodException | SecurityException e) {

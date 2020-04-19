@@ -46,7 +46,7 @@ public class Ice extends GenericGround {
     @Override
     public boolean hasFrictionConditionally(final ObjectInventory inv,
             final boolean moving) {
-        if (inv.isItemThere(new GlueBoots())) {
+        if (inv.isItemThere(MazeObjects.GLUE_BOOTS)) {
             if (moving) {
                 return false;
             } else {

@@ -49,12 +49,14 @@ public class MovingFinish extends Finish {
         }
     }
 
+    @Override
     public void activate() {
         this.active = true;
         this.activateTimer(Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .getFinishMoveSpeed());
     }
 
+    @Override
     public void deactivate() {
         this.active = false;
         this.deactivateTimer();

@@ -8,16 +8,18 @@ package com.puttysoftware.mazer5d.compatibility.abc;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
-import com.puttysoftware.mazer5d.compatibility.objects.MasterTrappedWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.GameObjects;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericWallTrap extends MazeObjectModel {
     // Fields
     private int number;
     private GenericTrappedWall trigger;
-    private final GenericTrappedWall masterTrigger = new MasterTrappedWall();
+    private final GenericTrappedWall masterTrigger = (GenericTrappedWall) GameObjects
+            .createObject(MazeObjects.MASTER_TRAPPED_WALL);
     protected static final int NUMBER_MASTER = -1;
 
     // Constructors

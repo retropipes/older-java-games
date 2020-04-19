@@ -13,8 +13,6 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
-import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
@@ -24,8 +22,8 @@ import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
-public abstract class MazeObjectModel implements DirectionConstants, TypeConstants,
-        ArrowTypeConstants, RandomGenerationRule {
+public abstract class MazeObjectModel implements DirectionConstants,
+        TypeConstants, ArrowTypeConstants, RandomGenerationRule {
     // Properties
     private SolidProperties sp;
     private boolean pushable;
@@ -271,8 +269,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
         result = prime * result + (this.sp == null ? 0 : this.sp.hashCode());
         result = prime * result + (this.timerActive ? 1231 : 1237);
         result = prime * result + this.timerValue;
-        result = prime * result
-                + (this.type == null ? 0 : this.type.hashCode());
+        result = prime * result + (this.type == null ? 0
+                : this.type.hashCode());
         result = prime * result + (this.usable ? 1231 : 1237);
         result = prime * result + this.uses;
         return result;
@@ -370,8 +368,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
 
     public boolean isConditionallySolid(final ObjectInventory inv) {
         // Handle ghost amulet and passwall boots
-        if (inv.isItemThere(new GhostAmulet())
-                || inv.isItemThere(new PasswallBoots())) {
+        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
+                MazeObjects.PASSWALL_BOOTS)) {
             return false;
         } else {
             return this.sp.isSolid();
@@ -381,8 +379,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle ghost amulet and passwall boots
-        if (inv.isItemThere(new GhostAmulet())
-                || inv.isItemThere(new PasswallBoots())) {
+        if (inv.isItemThere(MazeObjects.GHOST_AMULET) || inv.isItemThere(
+                MazeObjects.PASSWALL_BOOTS)) {
             return false;
         } else {
             return this.sp.isDirectionallySolid(ie, dirX, dirY);
@@ -542,7 +540,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
      * @param z
      */
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -555,7 +554,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
      * @param z
      */
     public void pushOutAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -598,7 +598,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
      * @param z
      */
     public void pullIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pulled, final int x, final int y, final int z) {
+            final MazeObjectModel pulled, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 
@@ -611,7 +612,8 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
      * @param z
      */
     public void pullOutAction(final ObjectInventory inv,
-            final MazeObjectModel pulled, final int x, final int y, final int z) {
+            final MazeObjectModel pulled, final int x, final int y,
+            final int z) {
         // Do nothing
     }
 

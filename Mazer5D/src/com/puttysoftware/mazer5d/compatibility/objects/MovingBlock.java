@@ -3,7 +3,6 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
@@ -15,7 +14,7 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
     // Constructors
     public MovingBlock() {
         super(true);
-        this.savedObject = new Empty();
+        this.savedObject = GameObjects.getEmptySpace();
         final RandomRange t = new RandomRange(1, 2);
         this.activateTimer(t.generate());
     }
@@ -27,6 +26,7 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
         return copy;
     }
 
+    @Override
     public void setSavedObject(final MazeObjectModel newSavedObject) {
         this.savedObject = newSavedObject;
     }

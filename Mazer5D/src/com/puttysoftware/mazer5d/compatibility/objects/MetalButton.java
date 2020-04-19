@@ -90,15 +90,16 @@ public class MetalButton extends GenericField {
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
-        if (inv.isItemThere(this.getKey())) {
+        if (inv.isItemThere(this.getKey().getUniqueID())) {
             final BagOStuff app = Mazer5D.getBagOStuff();
             final MazeObjectModel there = app.getMazeManager().getMazeObject(
                     this.getTargetRow(), this.getTargetColumn(), this
                             .getTargetFloor(), this.getLayer());
             if (there != null) {
                 if (there.getName().equals(new MetalDoor().getName())) {
-                    app.getGameManager().morph(new Empty(), this.getTargetRow(),
-                            this.getTargetColumn(), this.getTargetFloor());
+                    app.getGameManager().morph(GameObjects.getEmptySpace(), this
+                            .getTargetRow(), this.getTargetColumn(), this
+                                    .getTargetFloor());
                 } else {
                     app.getGameManager().morph(new MetalDoor(), this
                             .getTargetRow(), this.getTargetColumn(), this
@@ -130,8 +131,8 @@ public class MetalButton extends GenericField {
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(new PasswallBoots()) || inv.isItemThere(
-                new GhostAmulet())) {
+        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(
+                MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
             return this.isDirectionallySolid(ie, dirX, dirY);
@@ -173,8 +174,8 @@ public class MetalButton extends GenericField {
         return true;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.METAL_BUTTON;
-    }}
+    }
+}

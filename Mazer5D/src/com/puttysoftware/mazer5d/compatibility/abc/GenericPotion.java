@@ -9,11 +9,13 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.randomrange.RandomRange;
+
+
 
 public abstract class GenericPotion extends MazeObjectModel {
     // Fields
@@ -95,7 +97,7 @@ public abstract class GenericPotion extends MazeObjectModel {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
                 locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getGameManager()

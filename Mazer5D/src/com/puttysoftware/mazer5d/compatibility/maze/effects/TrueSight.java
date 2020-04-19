@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.maze.effects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.objects.TrueSightAmulet;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TrueSight extends MazeEffect {
     // Constructor
@@ -24,7 +24,7 @@ public class TrueSight extends MazeEffect {
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
         Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(new TrueSightAmulet());
+                .removeItem(MazeObjects.TRUE_SIGHT_AMULET);
         // Undo the effect
         Mazer5D.getBagOStuff().getGameManager().disableTrueSight();
     }

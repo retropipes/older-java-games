@@ -12,17 +12,17 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
-import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
-import com.puttysoftware.mazer5d.compatibility.objects.SignalCrystal;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
-    private static final SignalCrystal SIGNAL = new SignalCrystal();
+    private static final GenericSingleKey SIGNAL = (GenericSingleKey) GameObjects
+            .createObject(MazeObjects.SIGNAL_CRYSTAL);
 
     protected GenericProgrammableLock() {
         super(GenericProgrammableLock.SIGNAL);
@@ -40,19 +40,19 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (!app.getGameManager()
-                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
-                && !inv.isItemThere(new PasswallBoots())) {
+        if (!app.getGameManager().isEffectActive(
+                MazeEffectConstants.EFFECT_GHOSTLY) && !inv.isItemThere(
+                        MazeObjects.PASSWALL_BOOTS)) {
             if (this.getKey() != GenericProgrammableLock.SIGNAL) {
                 if (!this.getKey().isInfinite()) {
-                    inv.removeItem(this.getKey());
+                    inv.removeItem(this.getKey().getUniqueID());
                 }
             }
             app.getGameManager().decay();
             // Play unlock sound, if it's enabled
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
-            Mazer5D.getBagOStuff().getGameManager()
-                    .addToScore(GenericLock.SCORE_UNLOCK);
+            Mazer5D.getBagOStuff().getGameManager().addToScore(
+                    GenericLock.SCORE_UNLOCK);
         } else {
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
@@ -65,8 +65,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
             if (this.getKey() == GenericProgrammableLock.SIGNAL) {
                 Mazer5D.getBagOStuff().showMessage("You need a Crystal");
             } else {
-                Mazer5D.getBagOStuff()
-                        .showMessage("You need a " + this.getKey().getName());
+                Mazer5D.getBagOStuff().showMessage("You need a " + this.getKey()
+                        .getName());
             }
         }
         SoundPlayer.playSound(SoundIndex.WALK_FAILED, SoundGroup.GAME);
@@ -75,10 +75,10 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
         if (this.getKey() != GenericProgrammableLock.SIGNAL) {
-            return !inv.isItemThere(this.getKey());
+            return !inv.isItemThere(this.getKey().getUniqueID());
         } else {
-            return !inv
-                    .isItemCategoryThere(TypeConstants.TYPE_PROGRAMMABLE_KEY);
+            return !inv.isItemCategoryThere(
+                    TypeConstants.TYPE_PROGRAMMABLE_KEY);
         }
     }
 
@@ -86,12 +86,12 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(new PasswallBoots())
-                || inv.isItemThere(new GhostAmulet())) {
+        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(
+                MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
             if (this.getKey() != GenericProgrammableLock.SIGNAL) {
-                return !inv.isItemThere(this.getKey());
+                return !inv.isItemThere(this.getKey().getUniqueID());
             } else {
                 return !inv.isItemCategoryThere(
                         TypeConstants.TYPE_PROGRAMMABLE_KEY);
@@ -129,9 +129,8 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
         if (oldIndex == -1) {
             oldIndex = 0;
         }
-        final String res = CommonDialogs.showInputDialog(
-                "Set Key for " + this.getName(), "Editor", keyNames,
-                keyNames[oldIndex]);
+        final String res = CommonDialogs.showInputDialog("Set Key for " + this
+                .getName(), "Editor", keyNames, keyNames[oldIndex]);
         if (res != null) {
             int index = -1;
             for (index = 0; index < keyNames.length; index++) {
@@ -149,9 +148,7 @@ public abstract class GenericProgrammableLock extends GenericSingleLock {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        
-        final MazeObjectModel o = GameObjects
-                .readObject(reader, formatVersion);
+        final MazeObjectModel o = GameObjects.readObject(reader, formatVersion);
         if (o == null) {
             this.setKey(GenericProgrammableLock.SIGNAL);
         } else {

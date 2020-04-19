@@ -27,10 +27,10 @@ public class InvisibleConditionalChainTeleport
         final BagOStuff app = Mazer5D.getBagOStuff();
         int testVal;
         if (this.getSunMoon() == GenericConditionalTeleport.TRIGGER_SUN) {
-            testVal = inv.getItemCount(new SunStone());
+            testVal = inv.getItemCount(MazeObjects.SUN_STONE);
         } else if (this
                 .getSunMoon() == GenericConditionalTeleport.TRIGGER_MOON) {
-            testVal = inv.getItemCount(new MoonStone());
+            testVal = inv.getItemCount(MazeObjects.MOON_STONE);
         } else {
             testVal = 0;
         }

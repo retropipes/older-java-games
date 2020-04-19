@@ -13,17 +13,11 @@ import com.puttysoftware.mazer5d.compatibility.abc.DirectionResolver;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTransientObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
-import com.puttysoftware.mazer5d.compatibility.objects.Arrow;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.FireArrow;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostArrow;
-import com.puttysoftware.mazer5d.compatibility.objects.IceArrow;
-import com.puttysoftware.mazer5d.compatibility.objects.PoisonArrow;
-import com.puttysoftware.mazer5d.compatibility.objects.ShockArrow;
-import com.puttysoftware.mazer5d.compatibility.objects.Wall;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ArrowTask extends Thread {
     // Fields
@@ -61,7 +55,7 @@ public class ArrowTask extends Thread {
         try {
             o = m.getCell(px + cumX, py + cumY, pz, Layers.OBJECT);
         } catch (final ArrayIndexOutOfBoundsException ae) {
-            o = new Wall();
+            o = GameObjects.createObject(MazeObjects.WALL);
         }
         final GenericTransientObject a = ArrowTask.createArrowForType(this.at);
         final String suffix = DirectionResolver.resolveDirectionConstantToName(
@@ -76,12 +70,11 @@ public class ArrowTask extends Thread {
             }
             app.getGameManager().redrawOneSquare(px + cumX, py + cumY, true, a);
             app.getGameManager().redrawOneSquare(px + cumX, py + cumY, false,
-                    new Empty());
+                    GameObjects.getEmptySpace());
             cumX += incX;
             cumY += incY;
             try {
-                o = m.getCell(px + cumX, py + cumY, pz,
-                        Layers.OBJECT);
+                o = m.getCell(px + cumX, py + cumY, pz, Layers.OBJECT);
             } catch (final ArrayIndexOutOfBoundsException ae) {
                 res = false;
             }
@@ -99,17 +92,23 @@ public class ArrowTask extends Thread {
     private static GenericTransientObject createArrowForType(final int type) {
         switch (type) {
         case ArrowTypeConstants.ARROW_TYPE_PLAIN:
-            return new Arrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.ARROW);
         case ArrowTypeConstants.ARROW_TYPE_ICE:
-            return new IceArrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.ICE_ARROW);
         case ArrowTypeConstants.ARROW_TYPE_FIRE:
-            return new FireArrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.FIRE_ARROW);
         case ArrowTypeConstants.ARROW_TYPE_POISON:
-            return new PoisonArrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.POISON_ARROW);
         case ArrowTypeConstants.ARROW_TYPE_SHOCK:
-            return new ShockArrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.SHOCK_ARROW);
         case ArrowTypeConstants.ARROW_TYPE_GHOST:
-            return new GhostArrow();
+            return (GenericTransientObject) GameObjects.createObject(
+                    MazeObjects.GHOST_ARROW);
         default:
             return null;
         }

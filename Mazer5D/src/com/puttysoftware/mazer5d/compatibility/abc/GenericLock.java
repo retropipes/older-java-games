@@ -9,12 +9,11 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
-import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericLock extends MazeObjectModel {
     // Fields
@@ -89,9 +88,9 @@ public abstract class GenericLock extends MazeObjectModel {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (!app.getGameManager()
                 .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
-                && !inv.isItemThere(new PasswallBoots())) {
+                && !inv.isItemThere(MazeObjects.PASSWALL_BOOTS)) {
             if (!this.key.isInfinite()) {
-                inv.removeItem(this.key);
+                inv.removeItem(this.key.getUniqueID());
             }
             app.getGameManager().decay();
             SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
@@ -104,18 +103,18 @@ public abstract class GenericLock extends MazeObjectModel {
 
     @Override
     public boolean isConditionallySolid(final ObjectInventory inv) {
-        return !inv.isItemThere(this.key);
+        return !inv.isItemThere(this.key.getUniqueID());
     }
 
     @Override
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(new PasswallBoots())
-                || inv.isItemThere(new GhostAmulet())) {
+        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS)
+                || inv.isItemThere(MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
-            return !inv.isItemThere(this.key);
+            return !inv.isItemThere(this.key.getUniqueID());
         }
     }
 

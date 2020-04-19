@@ -175,6 +175,31 @@ public final class GameObjects {
         return new MazeObject(uid);
     }
 
+    public static MazeObjectModel createContainerObject(final MazeObjects uid,
+            final MazeObjects contentsUID) {
+        // FIXME: Stub
+        return new MazeObject(uid);
+    }
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc) {
+        // FIXME: Stub
+        return new MazeObject(uid);
+    }
+
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc, final int df) {
+        // FIXME: Stub
+        return new MazeObject(uid);
+    }
+
+    public static MazeObjectModel createTeleportObject(final MazeObjects uid,
+            final int dr, final int dc, final int df, final int dl) {
+        // FIXME: Stub
+        return new MazeObject(uid);
+    }
+
     public static MazeObjectModel readObject(final XDataReader reader,
             final MazeVersion formatVersion) throws IOException {
         MazeObjects UID = MazeObjects._NONE;

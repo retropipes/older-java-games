@@ -97,7 +97,7 @@ public class Pit extends StairsDown {
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
             Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .setCell(new Empty(), x, y, z, Layers.OBJECT);
+                    .setCell(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
         }
     }
 

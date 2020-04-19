@@ -55,7 +55,7 @@ public class BreakableWallHorizontal extends GenericWall {
         } catch (final NullPointerException np) {
             mo6Name = invalidName;
         }
-        app.getGameManager().morph(new Empty(), x, y, z);
+        app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z);
         if (mo4Name.equals(currName)) {
             BreakableWallHorizontal.doChainReact(x - 1, y, z);
         }

@@ -10,15 +10,14 @@ import java.io.IOException;
 
 import com.puttysoftware.fileutils.FileUtilities;
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
+import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixIO;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSuffixIO;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.MovingBlock;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.prefs.Prefs;
@@ -757,14 +756,14 @@ public class MazeModel {
     public void fillLevelDefault() {
         final MazeObjectModel bottom = GameObjects.createObject(Prefs
                 .getEditorDefaultFill());
-        final MazeObjectModel top = new Empty();
+        final MazeObjectModel top = GameObjects.getEmptySpace();
         this.mazeData.fill(bottom, top);
     }
 
     public void fillFloorDefault(final int floor) {
         final MazeObjectModel bottom = GameObjects.createObject(Prefs
                 .getEditorDefaultFill());
-        final MazeObjectModel top = new Empty();
+        final MazeObjectModel top = GameObjects.getEmptySpace();
         this.mazeData.fillFloor(bottom, top, floor);
     }
 
@@ -812,7 +811,7 @@ public class MazeModel {
     }
 
     public void updateMovingBlockPosition(final int move, final int xLoc,
-            final int yLoc, final MovingBlock block) {
+            final int yLoc, final GenericMovingObject block) {
         this.mazeData.updateMovingBlockPosition(move, xLoc, yLoc, block);
     }
 

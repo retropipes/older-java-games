@@ -65,6 +65,7 @@ public class FinishTo extends Finish {
         return this.destinationLevel;
     }
 
+    @Override
     public void setDestinationLevel(final int level) {
         this.destinationLevel = level;
     }

@@ -54,7 +54,7 @@ public class BreakableWallVertical extends GenericWall {
         } catch (final NullPointerException np) {
             mo8Name = invalidName;
         }
-        app.getGameManager().morph(new Empty(), x, y, z);
+        app.getGameManager().morph(GameObjects.getEmptySpace(), x, y, z);
         if (mo2Name.equals(currName)) {
             curr.doChainReact(x, y - 1, z);
         }

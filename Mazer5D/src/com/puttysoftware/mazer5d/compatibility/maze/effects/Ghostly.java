@@ -6,7 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.maze.effects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Ghostly extends MazeEffect {
     // Constructor
@@ -18,6 +18,6 @@ public class Ghostly extends MazeEffect {
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
         Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(new GhostAmulet());
+                .removeItem(MazeObjects.GHOST_AMULET);
     }
 }

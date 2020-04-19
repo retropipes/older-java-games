@@ -43,7 +43,7 @@ public class ShuffleBomb extends GenericUsableObject {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(new Empty(), locX, locY,
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
                 locZ);
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);

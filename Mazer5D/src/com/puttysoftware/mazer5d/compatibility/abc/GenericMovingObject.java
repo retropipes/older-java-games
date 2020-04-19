@@ -54,4 +54,8 @@ public abstract class GenericMovingObject extends MazeObjectModel {
     public void setCustomProperty(final int propID, final int value) {
         // Do nothing
     }
+
+    public void setSavedObject(MazeObjectModel inThere) {
+        // Do nothing
+    }
 }

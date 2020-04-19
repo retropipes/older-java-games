@@ -7,17 +7,15 @@ package com.puttysoftware.mazer5d.game;
 
 import java.io.IOException;
 
-import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
-import com.puttysoftware.mazer5d.compatibility.objects.Bow;
-import com.puttysoftware.mazer5d.compatibility.objects.NormalAmulet;
-import com.puttysoftware.mazer5d.compatibility.objects.RegularBoots;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public final class ObjectInventory implements Cloneable {
     // Properties
@@ -29,8 +27,12 @@ public final class ObjectInventory implements Cloneable {
     private final int[] bowUses;
     private GenericBoots boots;
     private GenericAmulet amulet;
-    private static final GenericBoots DEFAULT_BOOTS = new RegularBoots();
-    private static final GenericAmulet DEFAULT_AMULET = new NormalAmulet();
+    private static final GenericBoots DEFAULT_BOOTS = (GenericBoots) GameObjects
+            .createObject(MazeObjects.REGULAR_BOOTS);
+    private static final GenericAmulet DEFAULT_AMULET = (GenericAmulet) GameObjects
+            .createObject(MazeObjects.NORMAL_AMULET);
+    private static final GenericBow DEFAULT_BOW = (GenericBow) GameObjects
+            .createObject(MazeObjects.BOW);
 
     // Constructors
     public ObjectInventory() {
@@ -42,12 +44,13 @@ public final class ObjectInventory implements Cloneable {
         this.bowUses = new int[this.bowNameList.length];
         this.boots = ObjectInventory.DEFAULT_BOOTS;
         this.amulet = ObjectInventory.DEFAULT_AMULET;
-        final int bowIndex = this.bowIndexOf(new Bow());
+        final int bowIndex = this.bowIndexOf(ObjectInventory.DEFAULT_BOW);
         this.bowUses[bowIndex] = -1;
     }
 
     // Accessors
-    public int getItemCount(final MazeObjectModel mo) {
+    public int getItemCount(final MazeObjects moUID) {
+        final MazeObjectModel mo = GameObjects.createObject(moUID);
         if (ObjectInventory.isBoots(mo)) {
             return this.getBootsCount();
         } else if (ObjectInventory.isBow(mo)) {
@@ -91,7 +94,7 @@ public final class ObjectInventory implements Cloneable {
             this.setUses(mo, tempUses);
             mo.useHelper(x, y, z);
             if (tempUses == 0) {
-                this.removeItem(mo);
+                this.removeItem(mo.getUniqueID());
             }
         }
     }
@@ -103,13 +106,14 @@ public final class ObjectInventory implements Cloneable {
                 tempUses--;
                 this.setUses(bow, tempUses);
                 if (tempUses == 0) {
-                    this.removeItem(bow);
+                    this.removeItem(bow.getUniqueID());
                 }
             }
         }
     }
 
-    public boolean isItemThere(final MazeObjectModel mo) {
+    public boolean isItemThere(final MazeObjects moUID) {
+        final MazeObjectModel mo = GameObjects.createObject(moUID);
         if (ObjectInventory.isBoots(mo)) {
             return this.areBootsThere(mo);
         } else if (ObjectInventory.isBow(mo)) {
@@ -134,12 +138,12 @@ public final class ObjectInventory implements Cloneable {
 
     // Transformers
     void fireStepActions() {
-        if (!this.boots.getName()
-                .equals(ObjectInventory.DEFAULT_BOOTS.getName())) {
+        if (!this.boots.getName().equals(ObjectInventory.DEFAULT_BOOTS
+                .getName())) {
             this.boots.stepAction();
         }
-        if (!this.amulet.getName()
-                .equals(ObjectInventory.DEFAULT_AMULET.getName())) {
+        if (!this.amulet.getName().equals(ObjectInventory.DEFAULT_AMULET
+                .getName())) {
             this.amulet.stepAction();
         }
     }
@@ -156,7 +160,8 @@ public final class ObjectInventory implements Cloneable {
         }
     }
 
-    public void removeItem(final MazeObjectModel mo) {
+    public void removeItem(final MazeObjects moUID) {
+        final MazeObjectModel mo = GameObjects.createObject(moUID);
         if (ObjectInventory.isBoots(mo)) {
             this.removeBoots();
         } else if (ObjectInventory.isBow(mo)) {
@@ -466,8 +471,7 @@ public final class ObjectInventory implements Cloneable {
     public static ObjectInventory readInventoryXML(final XDataReader reader,
             final int formatVersion) throws IOException {
         final ObjectInventory i = new ObjectInventory();
-        i.boots = (GenericBoots) GameObjects.readObject(reader,
-                formatVersion);
+        i.boots = (GenericBoots) GameObjects.readObject(reader, formatVersion);
         if (i.boots == null) {
             i.boots = ObjectInventory.DEFAULT_BOOTS;
         }

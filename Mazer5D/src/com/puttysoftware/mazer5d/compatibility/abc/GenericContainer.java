@@ -11,13 +11,13 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
-import com.puttysoftware.mazer5d.compatibility.objects.Empty;
-import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
+import com.puttysoftware.mazer5d.compatibility.objects.GameObjects;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public abstract class GenericContainer extends GenericLock {
     // Fields
@@ -26,7 +26,7 @@ public abstract class GenericContainer extends GenericLock {
     // Constructors
     protected GenericContainer(final GenericSingleKey mgk) {
         super(mgk);
-        this.inside = new Empty();
+        this.inside = GameObjects.getEmptySpace();
     }
 
     protected GenericContainer(final GenericSingleKey mgk,
@@ -80,9 +80,9 @@ public abstract class GenericContainer extends GenericLock {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (!app.getGameManager().isEffectActive(
                 MazeEffectConstants.EFFECT_GHOSTLY) && !inv.isItemThere(
-                        new PasswallBoots())) {
+                        MazeObjects.PASSWALL_BOOTS)) {
             if (!this.getKey().isInfinite()) {
-                inv.removeItem(this.getKey());
+                inv.removeItem(this.getKey().getUniqueID());
             }
             final int pz = app.getGameManager().getPlayerManager()
                     .getPlayerLocationZ();
@@ -132,7 +132,7 @@ public abstract class GenericContainer extends GenericLock {
     protected void writeMazeObjectHookXML(final XDataWriter writer)
             throws IOException {
         if (this.inside == null) {
-            new Empty().writeMazeObjectXML(writer);
+            GameObjects.getEmptySpace().writeMazeObjectXML(writer);
         } else {
             this.inside.writeMazeObjectXML(writer);
         }
