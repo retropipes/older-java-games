@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleKey;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Key extends GenericSingleKey {
     // Constructors
@@ -28,4 +29,9 @@ public class Key extends GenericSingleKey {
     public String getDescription() {
         return "Keys unlock Locks, and can only be used once.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.KEY;
+    }}

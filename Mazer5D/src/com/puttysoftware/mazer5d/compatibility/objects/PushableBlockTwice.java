@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class PushableBlockTwice extends GenericMovableObject {
     // Constructors
@@ -45,4 +46,9 @@ public class PushableBlockTwice extends GenericMovableObject {
     public String getDescription() {
         return "Pushable Blocks Twice can only be pushed twice, before turning into a wall.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.PUSHABLE_BLOCK_TWICE;
+    }}

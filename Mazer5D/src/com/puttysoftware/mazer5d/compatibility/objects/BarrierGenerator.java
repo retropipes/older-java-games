@@ -10,6 +10,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGenerator;
 import com.puttysoftware.mazer5d.game.GameManager;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class BarrierGenerator extends GenericGenerator {
     // Constructors
@@ -54,4 +55,9 @@ public class BarrierGenerator extends GenericGenerator {
             this.preMoveAction(false, locX, locY, inv);
         }
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BARRIER_GENERATOR;
+    }}

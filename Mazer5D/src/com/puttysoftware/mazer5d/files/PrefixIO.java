@@ -2,11 +2,11 @@ package com.puttysoftware.mazer5d.files;
 
 import java.io.IOException;
 
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.files.versions.MazeVersionException;
 import com.puttysoftware.mazer5d.files.versions.MazeVersions;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public class PrefixIO {
     private static final byte FORMAT_VERSION_MAJOR = (byte) MazeVersions.LATEST

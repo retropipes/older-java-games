@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class BreakableWallVertical extends GenericWall {
     // Constructors
@@ -81,4 +82,9 @@ public class BreakableWallVertical extends GenericWall {
     public String getDescription() {
         return "Breakable Walls Vertical disintegrate when touched, causing other Breakable Walls Vertical nearby to also disintegrate.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BREAKABLE_WALL_VERTICAL;
+    }}

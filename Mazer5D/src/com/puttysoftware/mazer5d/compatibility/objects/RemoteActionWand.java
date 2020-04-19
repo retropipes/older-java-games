@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RemoteActionWand extends GenericWand {
     // Constructors
@@ -42,4 +43,9 @@ public class RemoteActionWand extends GenericWand {
     public String getDescription() {
         return "Remote Action Wands will act on the target object as if you were there, on top of it.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.REMOTE_ACTION_WAND;
+    }}

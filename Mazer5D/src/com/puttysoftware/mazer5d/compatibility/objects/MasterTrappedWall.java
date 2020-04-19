@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrappedWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class MasterTrappedWall extends GenericTrappedWall {
     public MasterTrappedWall() {
@@ -16,4 +17,9 @@ public class MasterTrappedWall extends GenericTrappedWall {
     public String getDescription() {
         return "Master Trapped Walls disappear when any Wall Trap is triggered.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.MASTER_TRAPPED_WALL;
+    }}

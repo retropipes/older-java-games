@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FakeWall extends GenericPassThroughObject {
     // Constructors
@@ -31,5 +32,10 @@ public class FakeWall extends GenericPassThroughObject {
     @Override
     public String getDescription() {
         return "Fake Walls look like walls, but can be walked through.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FAKE_WALL;
     }
 }

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleLock;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SilverWall extends GenericMultipleLock {
     // Constructors
@@ -27,4 +28,9 @@ public class SilverWall extends GenericMultipleLock {
     public String getDescription() {
         return "Silver Walls are impassable without enough Silver Squares.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SILVER_WALL;
+    }}

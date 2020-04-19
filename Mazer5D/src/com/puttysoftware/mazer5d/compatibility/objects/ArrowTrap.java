@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ArrowTrap extends GenericTrap {
     // Constructors
@@ -45,5 +46,10 @@ public class ArrowTrap extends GenericTrap {
     @Override
     public String getDescription() {
         return "Arrow Traps stop arrows.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ARROW_TRAP;
     }
 }

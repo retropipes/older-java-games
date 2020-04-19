@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericProgrammableLock;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class CrystalWall extends GenericProgrammableLock {
     // Constructors
@@ -27,4 +28,9 @@ public class CrystalWall extends GenericProgrammableLock {
     public String getDescription() {
         return "Crystal Walls require one Crystal to open. The crystal type required may be different from wall to wall.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CRYSTAL_WALL;
+    }}

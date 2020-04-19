@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WhiteButton extends GenericButton {
     public WhiteButton() {
@@ -26,4 +27,9 @@ public class WhiteButton extends GenericButton {
     public String getDescription() {
         return "White Buttons will cause all White Walls Off to become On, and all White Walls On to become Off.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WHITE_BUTTON;
+    }}

@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGround;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Tile extends GenericGround {
     // Constructors
@@ -27,4 +28,9 @@ public class Tile extends GenericGround {
     public String getDescription() {
         return "Tile is one of the many types of ground - unlike other types of ground, objects can be pushed and pulled over Tiles.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TILE;
+    }}

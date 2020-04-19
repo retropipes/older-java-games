@@ -1,6 +1,7 @@
 package com.puttysoftware.mazer5d.objectmodel;
 
 public enum MazeObjects {
+    _NONE,
     AMETHYST,
     ANNIHILATION_WAND,
     A_PLUG,
@@ -329,6 +330,14 @@ public enum MazeObjects {
     T_PORT,
     TRAPPED_WALL_0,
     TRAPPED_WALL_1,
+    TRAPPED_WALL_2,
+    TRAPPED_WALL_3,
+    TRAPPED_WALL_4,
+    TRAPPED_WALL_5,
+    TRAPPED_WALL_6,
+    TRAPPED_WALL_7,
+    TRAPPED_WALL_8,
+    TRAPPED_WALL_9,
     TRAPPED_WALL_10,
     TRAPPED_WALL_11,
     TRAPPED_WALL_12,
@@ -339,14 +348,6 @@ public enum MazeObjects {
     TRAPPED_WALL_17,
     TRAPPED_WALL_18,
     TRAPPED_WALL_19,
-    TRAPPED_WALL_2,
-    TRAPPED_WALL_3,
-    TRAPPED_WALL_4,
-    TRAPPED_WALL_5,
-    TRAPPED_WALL_6,
-    TRAPPED_WALL_7,
-    TRAPPED_WALL_8,
-    TRAPPED_WALL_9,
     TREASURE_CHEST,
     TREE,
     TRUE_SIGHT_AMULET,
@@ -366,6 +367,14 @@ public enum MazeObjects {
     WALL_MAKING_WAND,
     WALL_TRAP_0,
     WALL_TRAP_1,
+    WALL_TRAP_2,
+    WALL_TRAP_3,
+    WALL_TRAP_4,
+    WALL_TRAP_5,
+    WALL_TRAP_6,
+    WALL_TRAP_7,
+    WALL_TRAP_8,
+    WALL_TRAP_9,
     WALL_TRAP_10,
     WALL_TRAP_11,
     WALL_TRAP_12,
@@ -376,14 +385,6 @@ public enum MazeObjects {
     WALL_TRAP_17,
     WALL_TRAP_18,
     WALL_TRAP_19,
-    WALL_TRAP_2,
-    WALL_TRAP_3,
-    WALL_TRAP_4,
-    WALL_TRAP_5,
-    WALL_TRAP_6,
-    WALL_TRAP_7,
-    WALL_TRAP_8,
-    WALL_TRAP_9,
     WARP_BOMB,
     WARP_TRAP,
     WARP_WAND,
@@ -411,6 +412,10 @@ public enum MazeObjects {
     Y_PLUG,
     Y_PORT,
     Z_PLUG,
-    Z_PORT,
-    _NONE
+    Z_PORT;
+
+    @Override
+    public String toString() {
+        return Integer.toString(ordinal());
+    }
 }

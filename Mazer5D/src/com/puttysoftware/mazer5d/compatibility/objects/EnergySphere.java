@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPass;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class EnergySphere extends GenericPass {
     // Constructors
@@ -27,4 +28,9 @@ public class EnergySphere extends GenericPass {
     public String getDescription() {
         return "Energy Spheres permit walking on Force Fields.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ENERGY_SPHERE;
+    }}

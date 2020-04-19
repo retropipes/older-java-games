@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class PoisonBow extends GenericBow {
     // Constants
@@ -31,4 +32,9 @@ public class PoisonBow extends GenericBow {
     public String getDescription() {
         return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do everything normal arrows do.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.POISON_BOW;
+    }}

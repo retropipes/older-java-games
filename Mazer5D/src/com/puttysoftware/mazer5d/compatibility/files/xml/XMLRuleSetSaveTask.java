@@ -11,7 +11,7 @@ import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSetConstants;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public class XMLRuleSetSaveTask extends Thread {
     // Fields

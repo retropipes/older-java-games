@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SeaweedButton extends GenericButton {
     public SeaweedButton() {
@@ -26,4 +27,9 @@ public class SeaweedButton extends GenericButton {
     public String getDescription() {
         return "Seaweed Buttons will cause all Seaweed Walls Off to become On, and all Seaweed Walls On to become Off.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SEAWEED_BUTTON;
+    }}

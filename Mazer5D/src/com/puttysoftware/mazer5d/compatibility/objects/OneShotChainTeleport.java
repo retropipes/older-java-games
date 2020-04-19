@@ -27,6 +27,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class OneShotChainTeleport extends GenericTeleport {
     // Constructors
@@ -73,4 +74,9 @@ public class OneShotChainTeleport extends GenericTeleport {
     public String getDescription() {
         return "One-Shot Chain Teleports behave like regular Teleports, except they only work once.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ONE_SHOT_CHAIN_TELEPORT;
+    }}

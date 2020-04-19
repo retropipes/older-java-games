@@ -27,6 +27,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class OneShotTeleport extends GenericTeleport {
     // Constructors
@@ -72,4 +73,9 @@ public class OneShotTeleport extends GenericTeleport {
     public String getDescription() {
         return "One-Shot Teleports behave like regular Teleports, except they only work once.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ONE_SHOT_TELEPORT;
+    }}

@@ -10,6 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGem;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class BrightnessGem extends GenericGem {
     // Constructors
@@ -38,4 +39,9 @@ public class BrightnessGem extends GenericGem {
     public String getDescription() {
         return "Brightness Gems increase the visible area to its maximum.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BRIGHTNESS_GEM;
+    }}

@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FireAmulet extends GenericAmulet {
     // Constants
@@ -35,12 +36,12 @@ public class FireAmulet extends GenericAmulet {
 
     @Override
     public void stepAction() {
-        final int x = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationX();
-        final int y = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationY();
-        final int z = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationZ();
+        final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationX();
+        final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationY();
+        final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationZ();
         Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
     }
 
@@ -48,5 +49,10 @@ public class FireAmulet extends GenericAmulet {
     public void postMoveActionHook() {
         Mazer5D.getBagOStuff().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_FIERY, FireAmulet.EFFECT_DURATION);
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FIRE_AMULET;
     }
 }

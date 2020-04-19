@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class DamageableWall extends GenericWall {
     // Constructors
@@ -63,4 +64,9 @@ public class DamageableWall extends GenericWall {
         this.type.set(TypeConstants.TYPE_PLAIN_WALL);
         this.type.set(TypeConstants.TYPE_WALL);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DAMAGEABLE_WALL;
+    }}

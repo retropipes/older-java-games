@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Comparator;
 
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public final class Score {
     // Fields

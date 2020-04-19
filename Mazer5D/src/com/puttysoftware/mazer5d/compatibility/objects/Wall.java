@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Wall extends GenericWall {
     // Constructors
@@ -34,4 +35,9 @@ public class Wall extends GenericWall {
         this.type.set(TypeConstants.TYPE_PLAIN_WALL);
         this.type.set(TypeConstants.TYPE_WALL);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WALL;
+    }}

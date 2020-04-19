@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public final class RuleSet implements Cloneable, RandomGenerationRule {
     // Fields

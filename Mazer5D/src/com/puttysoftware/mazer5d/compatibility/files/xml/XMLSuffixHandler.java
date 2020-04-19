@@ -3,8 +3,8 @@ package com.puttysoftware.mazer5d.compatibility.files.xml;
 import java.io.IOException;
 
 import com.puttysoftware.mazer5d.Mazer5D;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public class XMLSuffixHandler implements XMLSuffixIO {
     @Override

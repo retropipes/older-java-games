@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TeleportWand extends GenericWand {
     public TeleportWand() {
@@ -45,4 +46,9 @@ public class TeleportWand extends GenericWand {
     public String getDescription() {
         return "Teleport Wands will teleport you to the target square when used. You cannot teleport to areas you cannot see.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TELEPORT_WAND;
+    }}

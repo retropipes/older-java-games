@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.game.GameManager;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class NormalAmulet extends GenericAmulet {
     // Constructors
@@ -41,4 +42,9 @@ public class NormalAmulet extends GenericAmulet {
         gm.deactivateEffect(MazeEffectConstants.EFFECT_ICY);
         gm.deactivateEffect(MazeEffectConstants.EFFECT_POISONOUS);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.NORMAL_AMULET;
+    }}

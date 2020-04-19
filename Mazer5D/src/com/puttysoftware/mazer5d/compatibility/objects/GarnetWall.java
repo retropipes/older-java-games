@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleLock;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class GarnetWall extends GenericMultipleLock {
     // Constructors
@@ -26,5 +27,10 @@ public class GarnetWall extends GenericMultipleLock {
     @Override
     public String getDescription() {
         return "Garnet Walls are impassable without enough Garnet Squares.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.GARNET_WALL;
     }
 }

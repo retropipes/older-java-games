@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPotion;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SuperUnknownPotion extends GenericPotion {
     // Fields
@@ -32,4 +33,9 @@ public class SuperUnknownPotion extends GenericPotion {
     public String getDescription() {
         return "Super Unknown Potions might heal you almost fully or hurt you to the brink of death when picked up.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SUPER_UNKNOWN_POTION;
+    }}

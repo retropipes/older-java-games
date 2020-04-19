@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInfiniteKey;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Axe extends GenericInfiniteKey {
     // Constructors
@@ -27,4 +28,9 @@ public class Axe extends GenericInfiniteKey {
     public String getDescription() {
         return "With an Axe, Trees can be cut down. Axes never lose their ability to cut trees.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.AXE;
+    }}

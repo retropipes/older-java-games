@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleConditionalChainTeleport
         extends GenericConditionalTeleport {
@@ -66,4 +67,9 @@ public class InvisibleConditionalChainTeleport
     public String getGameName() {
         return "Empty";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_CONDITIONAL_CHAIN_TELEPORT;
+    }}

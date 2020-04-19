@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.mazemodel.VisionModes;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ExploreTrap extends GenericTrap {
     // Constructors
@@ -33,13 +34,18 @@ public class ExploreTrap extends GenericTrap {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .addVisionMode(VisionModes.EXPLORE);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().addVisionMode(
+                VisionModes.EXPLORE);
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
     @Override
     public String getDescription() {
         return "Explore Traps turn exploring mode on, then disappear.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.EXPLORE_TRAP;
     }
 }

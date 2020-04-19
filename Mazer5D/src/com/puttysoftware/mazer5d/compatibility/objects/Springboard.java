@@ -15,6 +15,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Springboard extends StairsUp {
     // Constructors
@@ -128,4 +129,9 @@ public class Springboard extends StairsUp {
     public String getDescription() {
         return "Springboards bounce anything that wanders into them to the floor above. If one of these is placed on the top-most floor, it is impassable.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SPRINGBOARD;
+    }}

@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FireBow extends GenericBow {
     // Constants
@@ -30,5 +31,10 @@ public class FireBow extends GenericBow {
     @Override
     public String getDescription() {
         return "Fire Bows allow shooting of Fire Arrows, which burn Barrier Generators upon contact, and do everything normal arrows do.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FIRE_BOW;
     }
 }

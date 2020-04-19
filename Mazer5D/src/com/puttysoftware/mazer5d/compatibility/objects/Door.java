@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Door extends GenericPassThroughObject {
     // Constructors
@@ -36,4 +37,9 @@ public class Door extends GenericPassThroughObject {
             final ObjectInventory inv) {
         return false;
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DOOR;
+    }}

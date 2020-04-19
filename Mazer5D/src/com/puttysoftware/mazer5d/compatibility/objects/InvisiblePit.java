@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisiblePit extends Pit {
     // Constructors
@@ -54,4 +55,9 @@ public class InvisiblePit extends Pit {
     public String getDescription() {
         return "Invisible Pits dump anything that wanders in to the floor below. If one of these is placed on the bottom-most floor, it is impassable.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_PIT;
+    }}

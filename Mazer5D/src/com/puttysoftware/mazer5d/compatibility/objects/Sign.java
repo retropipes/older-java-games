@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTextHolder;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Sign extends GenericTextHolder {
     // Constructors
@@ -27,4 +28,9 @@ public class Sign extends GenericTextHolder {
     public String getDescription() {
         return "Signs display their message when walked into.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SIGN;
+    }}

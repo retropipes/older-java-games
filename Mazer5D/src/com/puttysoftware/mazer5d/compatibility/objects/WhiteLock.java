@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleLock;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WhiteLock extends GenericSingleLock {
     // Constructors
@@ -42,4 +43,9 @@ public class WhiteLock extends GenericSingleLock {
     public String getDescription() {
         return "White Locks require White Keys to open.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WHITE_LOCK;
+    }}

@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class HealBoots extends GenericBoots {
     // Constants
@@ -37,4 +38,9 @@ public class HealBoots extends GenericBoots {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .heal(HealBoots.HEAL_AMOUNT);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.HEAL_BOOTS;
+    }}

@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ExplodingWall extends GenericWall {
     // Constructors
@@ -105,5 +106,10 @@ public class ExplodingWall extends GenericWall {
     @Override
     public String getDescription() {
         return "Exploding Walls explode when touched, causing other Exploding Walls nearby to also explode.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.EXPLODING_WALL;
     }
 }

@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTimeModifier;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class DoubleHourglass extends GenericTimeModifier {
     // Fields
@@ -46,4 +47,9 @@ public class DoubleHourglass extends GenericTimeModifier {
     public String getDescription() {
         return "Double Hourglasses extend the time to solve the current level by double the initial value.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DOUBLE_HOURGLASS;
+    }}

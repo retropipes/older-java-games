@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RoseWallOn extends GenericToggleWall {
     // Constructors
@@ -28,4 +29,9 @@ public class RoseWallOn extends GenericToggleWall {
     public String getDescription() {
         return "Rose Walls On can NOT be walked through, and will change to Rose Walls Off when a Rose Button is pressed.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ROSE_WALL_ON;
+    }}

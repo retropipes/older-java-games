@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WarpBomb extends GenericUsableObject {
     // Constants
@@ -67,4 +68,9 @@ public class WarpBomb extends GenericUsableObject {
     public void useHelper(final int x, final int y, final int z) {
         this.useAction(null, x, y, z);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WARP_BOMB;
+    }}

@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public class SortedScoreTable extends ScoreTable {
     // Fields

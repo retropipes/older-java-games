@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class AquaBoots extends GenericBoots {
     // Constructors
@@ -27,4 +28,9 @@ public class AquaBoots extends GenericBoots {
     public String getDescription() {
         return "Aqua Boots allow walking on water. Note that you can only wear one pair of boots at once.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.AQUA_BOOTS;
+    }}

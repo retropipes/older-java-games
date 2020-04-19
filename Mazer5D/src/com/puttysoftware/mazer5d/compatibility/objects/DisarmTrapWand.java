@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class DisarmTrapWand extends GenericWand {
     // Constructors
@@ -36,4 +37,9 @@ public class DisarmTrapWand extends GenericWand {
     public String getDescription() {
         return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DISARM_TRAP_WAND;
+    }}

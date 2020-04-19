@@ -6,9 +6,10 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovingObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public class MovingBlock extends GenericMovingObject implements Cloneable {
     // Constructors
@@ -73,4 +74,9 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
         this.savedObject = GameObjects.readObject(reader, formatVersion);
         return this;
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.MOVING_BLOCK;
+    }}

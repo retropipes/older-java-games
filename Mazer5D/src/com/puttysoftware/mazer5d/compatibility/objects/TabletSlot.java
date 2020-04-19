@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInfiniteLock;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TabletSlot extends GenericInfiniteLock {
     // Constructors
@@ -42,4 +43,9 @@ public class TabletSlot extends GenericInfiniteLock {
     public String getDescription() {
         return "Tablet Slots disappear when filled with a Tablet.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TABLET_SLOT;
+    }}

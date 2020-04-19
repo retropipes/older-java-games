@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericButton;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class OrangeButton extends GenericButton {
     public OrangeButton() {
@@ -26,4 +27,9 @@ public class OrangeButton extends GenericButton {
     public String getDescription() {
         return "Orange Buttons will cause all Orange Walls Off to become On, and all Orange Walls On to become Off.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ORANGE_BUTTON;
+    }}

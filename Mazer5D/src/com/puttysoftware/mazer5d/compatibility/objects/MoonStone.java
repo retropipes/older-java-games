@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericInventoryableObject;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class MoonStone extends GenericInventoryableObject {
     // Constants
@@ -47,4 +48,9 @@ public class MoonStone extends GenericInventoryableObject {
         Mazer5D.getBagOStuff().getGameManager()
                 .addToScore(MoonStone.SCORE_GRAB_STONE);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.MOON_STONE;
+    }}

@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBoots;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class HotBoots extends GenericBoots {
     // Constructors
@@ -39,4 +40,9 @@ public class HotBoots extends GenericBoots {
                 .getPlayerManager().getPlayerLocationZ();
         Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.HOT_BOOTS;
+    }}

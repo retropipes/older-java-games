@@ -2,8 +2,8 @@ package com.puttysoftware.mazer5d.compatibility.files.xml;
 
 import java.io.IOException;
 
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public class XMLPrefixHandler implements XMLPrefixIO {
     private static final byte FORMAT_VERSION_MAJOR = (byte) 5;

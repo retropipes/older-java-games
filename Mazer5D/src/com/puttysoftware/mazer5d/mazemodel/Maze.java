@@ -13,12 +13,12 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.TempDirCleanup;
 import com.puttysoftware.mazer5d.files.PrefixIO;
 import com.puttysoftware.mazer5d.files.SuffixIO;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.objectmodel.GameObjects;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 import com.puttysoftware.randomrange.RandomLongRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 class Maze implements MazeModel {
     // Properties

@@ -16,12 +16,13 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.editor.rulesets.RuleSet;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public abstract class MazeObjectModel implements DirectionConstants, TypeConstants,
         ArrowTypeConstants, RandomGenerationRule {
@@ -975,4 +976,6 @@ public abstract class MazeObjectModel implements DirectionConstants, TypeConstan
         // Dummy implementation, subclasses can override
         return this;
     }
+
+    public abstract MazeObjects getUniqueID();
 }

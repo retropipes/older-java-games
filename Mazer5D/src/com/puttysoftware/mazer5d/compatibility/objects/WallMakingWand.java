@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WallMakingWand extends GenericWand {
     public WallMakingWand() {
@@ -35,4 +36,9 @@ public class WallMakingWand extends GenericWand {
     public String getDescription() {
         return "Wall-Making Wands will create an ordinary wall in the target square when used.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WALL_MAKING_WAND;
+    }}

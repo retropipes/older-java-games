@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class CounterclockwiseRotationTrap extends GenericTrap {
     // Fields
@@ -46,4 +47,9 @@ public class CounterclockwiseRotationTrap extends GenericTrap {
     public String getDescription() {
         return "Counterclockwise Rotation Traps rotate your controls counterclockwise for 10 steps when stepped on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.COUNTERCLOCKWISE_ROTATION_TRAP;
+    }}

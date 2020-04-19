@@ -7,8 +7,8 @@ package com.puttysoftware.scoremanager;
 
 import java.io.IOException;
 
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public class SavedScoreManager extends ScoreManager {
     // Fields

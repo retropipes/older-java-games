@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMultipleKey;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class GoldenSquare extends GenericMultipleKey {
     // Constructors
@@ -26,5 +27,10 @@ public class GoldenSquare extends GenericMultipleKey {
     @Override
     public String getDescription() {
         return "Golden Squares are the keys to Golden Walls.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.GOLDEN_SQUARE;
     }
 }

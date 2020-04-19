@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleLock;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class YellowLock extends GenericSingleLock {
     // Constructors
@@ -42,4 +43,9 @@ public class YellowLock extends GenericSingleLock {
     public String getDescription() {
         return "Yellow Locks require Yellow Keys to open.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.YELLOW_LOCK;
+    }}

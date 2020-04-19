@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class OneShotConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
@@ -33,4 +34,9 @@ public class OneShotConditionalTeleport extends GenericConditionalTeleport {
     public void postMoveActionHook() {
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT;
+    }}

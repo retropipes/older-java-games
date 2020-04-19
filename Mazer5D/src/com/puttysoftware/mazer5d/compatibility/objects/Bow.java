@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Bow extends GenericBow {
     // Constants
@@ -30,5 +31,10 @@ public class Bow extends GenericBow {
     @Override
     public String getDescription() {
         return "Bows shoot an unlimited supply of normal arrows.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BOW;
     }
 }

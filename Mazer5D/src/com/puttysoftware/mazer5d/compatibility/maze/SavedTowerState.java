@@ -9,9 +9,9 @@ import java.io.IOException;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GameObjects;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 class SavedTowerState implements Cloneable {
     // Properties

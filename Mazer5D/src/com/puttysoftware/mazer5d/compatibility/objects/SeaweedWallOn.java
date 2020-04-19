@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SeaweedWallOn extends GenericToggleWall {
     // Constructors
@@ -28,4 +29,9 @@ public class SeaweedWallOn extends GenericToggleWall {
     public String getDescription() {
         return "Seaweed Walls On can NOT be walked through, and will change to Seaweed Walls Off when a Seaweed Button is pressed.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SEAWEED_WALL_ON;
+    }}

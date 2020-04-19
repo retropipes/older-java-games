@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WarpWand extends GenericWand {
     public WarpWand() {
@@ -49,4 +50,9 @@ public class WarpWand extends GenericWand {
     public String getDescription() {
         return "Warp Wands will teleport the object at the target square to a random location when used.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WARP_WAND;
+    }}

@@ -32,14 +32,14 @@ import com.puttysoftware.mazer5d.compatibility.objects.MovingFinish;
 import com.puttysoftware.mazer5d.compatibility.objects.PoisonedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.ShockedBarrierGenerator;
 import com.puttysoftware.mazer5d.compatibility.objects.Slime;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.mazemodel.VisionModes;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 class LayeredTower implements Cloneable {
     // Properties
@@ -1270,7 +1270,7 @@ class LayeredTower implements Cloneable {
                                 x, y, z, w, e);
                         if (okay) {
                             this.setCell(GameObjects.createObject(
-                                    placeObj.getName()), y, x, z, e);
+                                    placeObj.getUniqueID()), y, x, z, e);
                             placeObj.editorGenerateHook(y, x, z);
                         }
                     }
@@ -1308,7 +1308,7 @@ class LayeredTower implements Cloneable {
                                 randomColumn, z, w, layer)) {
                             this.setCell(
                                     GameObjects.createObject(
-                                            currObj.getName()),
+                                            currObj.getUniqueID()),
                                     randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         } else {
@@ -1319,7 +1319,7 @@ class LayeredTower implements Cloneable {
                             }
                             this.setCell(
                                     GameObjects.createObject(
-                                            currObj.getName()),
+                                            currObj.getUniqueID()),
                                     randomColumn, randomRow, z, layer);
                             currObj.editorGenerateHook(y, x, z);
                         }
@@ -1362,7 +1362,7 @@ class LayeredTower implements Cloneable {
                             if (okay) {
                                 this.setCell(
                                         GameObjects.createObject(
-                                                placeObj.getName()),
+                                                placeObj.getUniqueID()),
                                         y, x, z, e);
                                 placeObj.editorGenerateHook(y, x, z);
                             }
@@ -1405,7 +1405,7 @@ class LayeredTower implements Cloneable {
                                     randomColumn, z, w, layer)) {
                                 this.setCell(
                                         GameObjects.createObject(
-                                                currObj.getName()),
+                                                currObj.getUniqueID()),
                                         randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             } else {
@@ -1416,7 +1416,7 @@ class LayeredTower implements Cloneable {
                                 }
                                 this.setCell(
                                         GameObjects.createObject(
-                                                currObj.getName()),
+                                                currObj.getUniqueID()),
                                         randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             }
@@ -1443,7 +1443,7 @@ class LayeredTower implements Cloneable {
                             if (okay) {
                                 this.setCell(
                                         GameObjects.createObject(
-                                                placeObj.getName()),
+                                                placeObj.getUniqueID()),
                                         y, x, z, e);
                                 placeObj.editorGenerateHook(y, x, z);
                             }
@@ -1487,7 +1487,7 @@ class LayeredTower implements Cloneable {
                                     randomColumn, randomRow, z, w, layer)) {
                                 this.setCell(
                                         GameObjects.createObject(
-                                                currObj.getName()),
+                                                currObj.getUniqueID()),
                                         randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             } else {
@@ -1499,7 +1499,7 @@ class LayeredTower implements Cloneable {
                                 }
                                 this.setCell(
                                         GameObjects.createObject(
-                                                currObj.getName()),
+                                                currObj.getUniqueID()),
                                         randomColumn, randomRow, z, layer);
                                 currObj.editorGenerateHook(y, x, z);
                             }

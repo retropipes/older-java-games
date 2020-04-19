@@ -48,14 +48,14 @@ import com.puttysoftware.mazer5d.Modes;
 import com.puttysoftware.mazer5d.assets.MusicGroup;
 import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.files.CommonPaths;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersionException;
 import com.puttysoftware.mazer5d.files.versions.PrefsVersions;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.gui.MainWindow;
 import com.puttysoftware.updater.ProductData;
 import com.puttysoftware.updater.UpdateCheckResults;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public class Prefs {
     // Fields

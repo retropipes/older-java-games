@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RotationWand extends GenericWand {
     // Fields
@@ -82,4 +83,9 @@ public class RotationWand extends GenericWand {
     public String getDescription() {
         return "Rotation Wands will rotate part of the maze. You can choose the area of effect and the direction.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ROTATION_WAND;
+    }}

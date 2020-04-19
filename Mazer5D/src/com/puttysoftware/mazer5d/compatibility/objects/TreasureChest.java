@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericContainer;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TreasureChest extends GenericContainer {
     // Constructors
@@ -52,4 +53,9 @@ public class TreasureChest extends GenericContainer {
     public String getDescription() {
         return "Treasure Chests require Keys to open, and contain 1 other item.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TREASURE_CHEST;
+    }}

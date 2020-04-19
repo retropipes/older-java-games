@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ChainTeleport extends GenericTeleport {
     // Constructors
@@ -58,4 +59,9 @@ public class ChainTeleport extends GenericTeleport {
     public String getDescription() {
         return "Chain Teleports send you to a predetermined destination when stepped on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CHAIN_TELEPORT;
+    }}

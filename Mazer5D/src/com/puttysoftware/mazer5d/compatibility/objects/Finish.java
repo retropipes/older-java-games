@@ -15,6 +15,7 @@ import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Finish extends GenericTeleport {
     // Constructors
@@ -80,5 +81,10 @@ public class Finish extends GenericTeleport {
     @Override
     public int getMaximumRequiredQuantity(final MazeModel maze) {
         return RandomGenerationRule.NO_LIMIT;
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FINISH;
     }
 }

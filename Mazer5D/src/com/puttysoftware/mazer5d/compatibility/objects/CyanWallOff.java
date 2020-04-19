@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class CyanWallOff extends GenericToggleWall {
     // Constructors
@@ -28,4 +29,9 @@ public class CyanWallOff extends GenericToggleWall {
     public String getDescription() {
         return "Cyan Walls Off can be walked through, and will change to Cyan Walls On when a Cyan Button is pressed.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CYAN_WALL_OFF;
+    }}

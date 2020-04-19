@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class OneShotControllableTeleport extends GenericTeleport {
     // Constructors
@@ -59,4 +60,9 @@ public class OneShotControllableTeleport extends GenericTeleport {
     public int getCustomFormat() {
         return 0;
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ONE_SHOT_CONTROLLABLE_TELEPORT;
+    }}

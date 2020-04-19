@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Crevasse extends GenericWall {
     // Constructors
@@ -35,4 +36,9 @@ public class Crevasse extends GenericWall {
     public String getDescription() {
         return "Crevasses stop movement, but not arrows, which pass over them unimpeded.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CREVASSE;
+    }}

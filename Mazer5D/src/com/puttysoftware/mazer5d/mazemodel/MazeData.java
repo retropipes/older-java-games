@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 import com.puttysoftware.commondialogs.CommonDialogs;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.GameObjects;
@@ -14,8 +16,6 @@ import com.puttysoftware.mazer5d.objectmodel.MazeObjectType;
 import com.puttysoftware.mazer5d.utilities.DirectionResolver;
 import com.puttysoftware.randomrange.RandomRange;
 import com.puttysoftware.storage.FlagStorage;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 class MazeData {
     // Properties

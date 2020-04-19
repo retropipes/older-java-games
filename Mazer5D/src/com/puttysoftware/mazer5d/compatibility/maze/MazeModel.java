@@ -18,10 +18,10 @@ import com.puttysoftware.mazer5d.compatibility.files.xml.XMLPrefixIO;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLSuffixIO;
 import com.puttysoftware.mazer5d.compatibility.objects.Empty;
 import com.puttysoftware.mazer5d.compatibility.objects.MovingBlock;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.prefs.Prefs;
 import com.puttysoftware.randomrange.RandomLongRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public class MazeModel {
     // Properties

@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ConfusionTrap extends GenericTrap {
     // Fields
@@ -46,4 +47,9 @@ public class ConfusionTrap extends GenericTrap {
     public String getDescription() {
         return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CONFUSION_TRAP;
+    }}

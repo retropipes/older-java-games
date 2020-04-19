@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class IcedBarrierGenerator extends GenericWall {
     // Constants
@@ -73,4 +74,9 @@ public class IcedBarrierGenerator extends GenericWall {
         this.type.set(TypeConstants.TYPE_REACTS_TO_POISON);
         this.type.set(TypeConstants.TYPE_GENERATOR);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ICED_BARRIER_GENERATOR;
+    }}

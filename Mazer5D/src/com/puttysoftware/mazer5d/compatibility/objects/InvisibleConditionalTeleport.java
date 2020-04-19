@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleConditionalTeleport extends GenericConditionalTeleport {
     // Constructors
@@ -32,4 +33,9 @@ public class InvisibleConditionalTeleport extends GenericConditionalTeleport {
     public String getGameName() {
         return "Empty";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_CONDITIONAL_TELEPORT;
+    }}

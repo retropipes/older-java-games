@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class HealTrap extends GenericTrap {
     // Fields
@@ -47,4 +48,9 @@ public class HealTrap extends GenericTrap {
     public String getDescription() {
         return "Heal Traps heal you when stepped on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.HEAL_TRAP;
+    }}

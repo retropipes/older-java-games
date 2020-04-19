@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericSingleLock;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class MetalDoor extends GenericSingleLock {
     // Constructors
@@ -42,4 +43,9 @@ public class MetalDoor extends GenericSingleLock {
     public String getDescription() {
         return "Metal Doors require Metal Keys to open, or Metal Boots and a Metal Button.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.METAL_DOOR;
+    }}

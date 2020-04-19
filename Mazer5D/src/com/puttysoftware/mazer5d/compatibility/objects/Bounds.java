@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Bounds extends GenericWall {
     // Properties
@@ -129,4 +130,9 @@ public class Bounds extends GenericWall {
         // Stop arrow
         return false;
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BOUNDS;
+    }}

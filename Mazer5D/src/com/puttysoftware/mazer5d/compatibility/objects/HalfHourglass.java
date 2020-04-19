@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTimeModifier;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class HalfHourglass extends GenericTimeModifier {
     // Fields
@@ -46,4 +47,9 @@ public class HalfHourglass extends GenericTimeModifier {
     public String getDescription() {
         return "Half Hourglasses extend the time to solve the current level by half the initial value.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.HALF_HOURGLASS;
+    }}

@@ -15,11 +15,11 @@ import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
 import com.puttysoftware.mazer5d.compatibility.objects.GhostAmulet;
 import com.puttysoftware.mazer5d.compatibility.objects.PasswallBoots;
 import com.puttysoftware.mazer5d.compatibility.objects.SignalCrystal;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public abstract class GenericProgrammableLock extends GenericSingleLock {
     private static final SignalCrystal SIGNAL = new SignalCrystal();

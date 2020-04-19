@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class IceAmulet extends GenericAmulet {
     // Constants
@@ -38,4 +39,9 @@ public class IceAmulet extends GenericAmulet {
         Mazer5D.getBagOStuff().getGameManager().activateEffect(
                 MazeEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ICE_AMULET;
+    }}

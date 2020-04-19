@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericToggleWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class WhiteWallOn extends GenericToggleWall {
     // Constructors
@@ -28,4 +29,9 @@ public class WhiteWallOn extends GenericToggleWall {
     public String getDescription() {
         return "White Walls On can NOT be walked through, and will change to White Walls Off when a White Button is pressed.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WHITE_WALL_ON;
+    }}

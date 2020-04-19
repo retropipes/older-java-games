@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class PullableBlockThrice extends GenericMovableObject {
     // Constructors
@@ -45,4 +46,9 @@ public class PullableBlockThrice extends GenericMovableObject {
     public String getDescription() {
         return "Pullable Blocks Thrice can only be pulled three times, before turning into a wall.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.PULLABLE_BLOCK_THRICE;
+    }}

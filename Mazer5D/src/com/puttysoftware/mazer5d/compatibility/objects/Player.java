@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericCharacter;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Player extends GenericCharacter {
     // Constructors
@@ -58,4 +59,9 @@ public class Player extends GenericCharacter {
     public int getMaximumRequiredQuantity(final MazeModel maze) {
         return 1;
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.PLAYER;
+    }}

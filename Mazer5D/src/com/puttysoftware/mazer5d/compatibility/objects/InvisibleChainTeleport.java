@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleChainTeleport extends GenericInvisibleTeleport {
     // Constructors
@@ -65,4 +66,9 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
     public String getDescription() {
         return "Invisible Chain Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_CHAIN_TELEPORT;
+    }}

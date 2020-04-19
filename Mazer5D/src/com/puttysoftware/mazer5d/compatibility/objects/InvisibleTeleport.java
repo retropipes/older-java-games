@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInvisibleTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.editor.MazeEditor;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleTeleport extends GenericInvisibleTeleport {
     // Constructors
@@ -49,4 +50,9 @@ public class InvisibleTeleport extends GenericInvisibleTeleport {
     public String getDescription() {
         return "Invisible Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_TELEPORT;
+    }}

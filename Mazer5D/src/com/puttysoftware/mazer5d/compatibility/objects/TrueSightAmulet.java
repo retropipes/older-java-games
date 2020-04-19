@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TrueSightAmulet extends GenericAmulet {
     // Constants
@@ -39,4 +40,9 @@ public class TrueSightAmulet extends GenericAmulet {
                 MazeEffectConstants.EFFECT_TRUE_SIGHT,
                 TrueSightAmulet.EFFECT_DURATION);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TRUE_SIGHT_AMULET;
+    }}

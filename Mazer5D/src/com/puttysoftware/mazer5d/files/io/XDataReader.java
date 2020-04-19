@@ -1,10 +1,12 @@
-package com.puttysoftware.xio;
+package com.puttysoftware.mazer5d.files.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class XDataReader implements AutoCloseable {
     // Fields
@@ -53,6 +55,17 @@ public class XDataReader implements AutoCloseable {
             XDataReader.validateOpeningTag(split[0], XDataConstants.INT_TAG);
             XDataReader.validateClosingTag(split[2], XDataConstants.INT_TAG);
             return Integer.parseInt(split[1]);
+        }
+        throw new IOException("End of file!"); //$NON-NLS-1$
+    }
+
+    public MazeObjects readMazeObjectID() throws IOException {
+        final String line = this.br.readLine();
+        if (line != null) {
+            final String[] split = XDataReader.splitLine(line);
+            XDataReader.validateOpeningTag(split[0], XDataConstants.INT_TAG);
+            XDataReader.validateClosingTag(split[2], XDataConstants.INT_TAG);
+            return MazeObjects.valueOf(split[1]);
         }
         throw new IOException("End of file!"); //$NON-NLS-1$
     }
@@ -106,8 +119,8 @@ public class XDataReader implements AutoCloseable {
     public void readOpeningGroup(final String groupName) throws IOException {
         final String line = this.br.readLine();
         if (line != null) {
-            XDataReader.validateOpeningTag(
-                    XDataReader.replaceSpecialCharacters(line), groupName);
+            XDataReader.validateOpeningTag(XDataReader.replaceSpecialCharacters(
+                    line), groupName);
         } else {
             throw new IOException("End of file!");
         }
@@ -116,8 +129,8 @@ public class XDataReader implements AutoCloseable {
     public void readClosingGroup(final String groupName) throws IOException {
         final String line = this.br.readLine();
         if (line != null) {
-            XDataReader.validateClosingTag(
-                    XDataReader.replaceSpecialCharacters(line), groupName);
+            XDataReader.validateClosingTag(XDataReader.replaceSpecialCharacters(
+                    line), groupName);
         } else {
             throw new IOException("End of file!");
         }

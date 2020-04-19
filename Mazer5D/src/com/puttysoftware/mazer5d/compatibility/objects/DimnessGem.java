@@ -10,6 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGem;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class DimnessGem extends GenericGem {
     // Constructors
@@ -38,4 +39,9 @@ public class DimnessGem extends GenericGem {
     public String getDescription() {
         return "Dimness Gems decrease the visible area by 1.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DIMNESS_GEM;
+    }}

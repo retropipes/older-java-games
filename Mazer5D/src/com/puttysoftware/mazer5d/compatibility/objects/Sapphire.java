@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericScoreIncreaser;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Sapphire extends GenericScoreIncreaser {
     // Fields
@@ -37,4 +38,9 @@ public class Sapphire extends GenericScoreIncreaser {
     public String getDescription() {
         return "Sapphires increase your score when picked up.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SAPPHIRE;
+    }}

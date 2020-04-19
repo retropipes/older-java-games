@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericField;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Slime extends GenericField {
     // Constructors
@@ -50,4 +51,9 @@ public class Slime extends GenericField {
     public String getDescription() {
         return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SLIME;
+    }}

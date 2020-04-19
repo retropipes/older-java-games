@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBarrier;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class VerticalBarrier extends GenericBarrier {
     // Constructors
@@ -27,4 +28,9 @@ public class VerticalBarrier extends GenericBarrier {
     public String getDescription() {
         return "Vertical Barriers are impassable - you'll need to go around them.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.VERTICAL_BARRIER;
+    }}

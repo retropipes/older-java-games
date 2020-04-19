@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPassThroughObject;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FakeFinish extends GenericPassThroughObject {
     // Constructors
@@ -43,5 +44,10 @@ public class FakeFinish extends GenericPassThroughObject {
     @Override
     public String getDescription() {
         return "Fake Finishes look like regular finishes but don't lead anywhere.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FAKE_FINISH;
     }
 }

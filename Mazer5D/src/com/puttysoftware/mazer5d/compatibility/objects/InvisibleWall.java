@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleWall extends GenericWall {
     // Constructors
@@ -62,4 +63,9 @@ public class InvisibleWall extends GenericWall {
     public String getDescription() {
         return "Invisible Walls look like any other open space, but block any attempt at moving into them.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_WALL;
+    }}

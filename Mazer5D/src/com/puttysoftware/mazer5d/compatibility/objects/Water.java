@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Water extends GenericField {
     // Constructors
@@ -67,4 +68,9 @@ public class Water extends GenericField {
     public String getDescription() {
         return "Water is too unstable to walk on without Aqua Boots.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WATER;
+    }}

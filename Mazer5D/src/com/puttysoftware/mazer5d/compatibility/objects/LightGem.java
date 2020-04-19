@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericLightModifier;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class LightGem extends GenericLightModifier {
     // Constructors
@@ -27,4 +28,9 @@ public class LightGem extends GenericLightModifier {
     public String getDescription() {
         return "Light Gems bathe the immediately adjacent area in permanent light.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.LIGHT_GEM;
+    }}

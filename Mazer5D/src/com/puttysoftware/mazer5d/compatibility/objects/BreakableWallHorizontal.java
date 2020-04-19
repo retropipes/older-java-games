@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class BreakableWallHorizontal extends GenericWall {
     // Constructors
@@ -31,8 +32,8 @@ public class BreakableWallHorizontal extends GenericWall {
         final BagOStuff app = Mazer5D.getBagOStuff();
         BreakableWallHorizontal curr = null;
         try {
-            curr = (BreakableWallHorizontal) app.getMazeManager()
-                    .getMazeObject(x, y, z, Layers.OBJECT);
+            curr = (BreakableWallHorizontal) app.getMazeManager().getMazeObject(
+                    x, y, z, Layers.OBJECT);
         } catch (final ClassCastException cce) {
             // We're not a breakable wall horizontal, so abort
             return;
@@ -40,15 +41,15 @@ public class BreakableWallHorizontal extends GenericWall {
         String mo4Name, mo6Name, invalidName, currName;
         invalidName = new Bounds().getName();
         currName = curr.getName();
-        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(x - 1, y, z,
-                Layers.OBJECT);
+        final MazeObjectModel mo4 = app.getMazeManager().getMazeObject(x - 1, y,
+                z, Layers.OBJECT);
         try {
             mo4Name = mo4.getName();
         } catch (final NullPointerException np) {
             mo4Name = invalidName;
         }
-        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(x + 1, y, z,
-                Layers.OBJECT);
+        final MazeObjectModel mo6 = app.getMazeManager().getMazeObject(x + 1, y,
+                z, Layers.OBJECT);
         try {
             mo6Name = mo6.getName();
         } catch (final NullPointerException np) {
@@ -87,5 +88,10 @@ public class BreakableWallHorizontal extends GenericWall {
     protected void setTypes() {
         this.type.set(TypeConstants.TYPE_BREAKABLE_WALL);
         this.type.set(TypeConstants.TYPE_WALL);
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.BREAKABLE_WALL_HORIZONTAL;
     }
 }

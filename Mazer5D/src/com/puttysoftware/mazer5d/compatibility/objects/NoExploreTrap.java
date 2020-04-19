@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.mazemodel.VisionModes;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class NoExploreTrap extends GenericTrap {
     // Constructors
@@ -42,4 +43,9 @@ public class NoExploreTrap extends GenericTrap {
     public String getDescription() {
         return "No Explore Traps turn exploring mode off, then disappear.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.NO_EXPLORE_TRAP;
+    }}

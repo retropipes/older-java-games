@@ -6,10 +6,16 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPlug;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class IPlug extends GenericPlug {
     // Constructors
     public IPlug() {
         super('I');
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.I_PLUG;
+    }}

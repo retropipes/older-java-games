@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FinishTo extends Finish {
     // Fields
@@ -80,14 +81,14 @@ public class FinishTo extends Finish {
 
     @Override
     public void gameProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(
-                this.getName() + " Level " + (this.getDestinationLevel() + 1));
+        Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this
+                .getDestinationLevel() + 1));
     }
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(
-                this.getName() + " Level " + (this.getDestinationLevel() + 1));
+        Mazer5D.getBagOStuff().showMessage(this.getName() + " Level " + (this
+                .getDestinationLevel() + 1));
     }
 
     @Override
@@ -115,5 +116,10 @@ public class FinishTo extends Finish {
     @Override
     public void setCustomProperty(final int propID, final int value) {
         this.destinationLevel = value;
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FINISH_TO;
     }
 }

@@ -6,11 +6,11 @@ import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.assets.ColorShader;
 import com.puttysoftware.mazer5d.assets.ObjectImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 
 public interface MazeObjectModel extends RandomGenerationRule {
-    int getUniqueID();
+    MazeObjects getUniqueID();
 
     BufferedImageIcon getImage();
 
@@ -109,5 +109,5 @@ public interface MazeObjectModel extends RandomGenerationRule {
 
     void dumpState(XDataWriter writer) throws IOException;
 
-    MazeObjectModel loadState(XDataReader reader, int uid) throws IOException;
+    MazeObjectModel loadState(XDataReader reader, MazeObjects uid) throws IOException;
 }

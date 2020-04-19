@@ -13,6 +13,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RandomOneShotTeleport extends RandomTeleport {
     // Constructors
@@ -62,4 +63,9 @@ public class RandomOneShotTeleport extends RandomTeleport {
     public String getDescription() {
         return "Random One-Shot Teleports are random, and only work once.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.RANDOM_ONE_SHOT_TELEPORT;
+    }}

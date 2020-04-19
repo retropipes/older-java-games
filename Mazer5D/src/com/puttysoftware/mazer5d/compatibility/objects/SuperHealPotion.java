@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPotion;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SuperHealPotion extends GenericPotion {
     // Constructors
@@ -34,4 +35,9 @@ public class SuperHealPotion extends GenericPotion {
     public String getDescription() {
         return "Super Heal Potions heal you completely when picked up.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SUPER_HEAL_POTION;
+    }}

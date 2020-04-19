@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericMovableObject;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class PushablePullableBlock extends GenericMovableObject {
     // Constructors
@@ -27,4 +28,9 @@ public class PushablePullableBlock extends GenericMovableObject {
     public String getDescription() {
         return "Pushable/Pullable Blocks can be both pushed and pulled.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.PUSHABLE_PULLABLE_BLOCK;
+    }}

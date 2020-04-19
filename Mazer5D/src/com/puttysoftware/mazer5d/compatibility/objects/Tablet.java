@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericInfiniteKey;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Tablet extends GenericInfiniteKey {
     // Constructors
@@ -27,4 +28,9 @@ public class Tablet extends GenericInfiniteKey {
     public String getDescription() {
         return "Tablets are used to fill Tablet Slots, and make them disappear. Tablets can be used infinitely many times.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TABLET;
+    }}

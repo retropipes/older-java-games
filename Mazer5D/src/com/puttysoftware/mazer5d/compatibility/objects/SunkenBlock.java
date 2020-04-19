@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGround;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SunkenBlock extends GenericGround {
     // Constructors
@@ -27,4 +28,9 @@ public class SunkenBlock extends GenericGround {
     public String getDescription() {
         return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SUNKEN_BLOCK;
+    }}

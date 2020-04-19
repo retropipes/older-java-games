@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericConditionalTeleport;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class ConditionalChainTeleport extends GenericConditionalTeleport {
     // Constructors
@@ -59,4 +60,9 @@ public class ConditionalChainTeleport extends GenericConditionalTeleport {
     public String getDescription() {
         return "Conditional Chain Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.CONDITIONAL_CHAIN_TELEPORT;
+    }}

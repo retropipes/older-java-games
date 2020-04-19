@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericRandomTeleport;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RandomTeleport extends GenericRandomTeleport {
     // Constructors
@@ -52,4 +53,9 @@ public class RandomTeleport extends GenericRandomTeleport {
     public String getDescription() {
         return "Random Teleports, unlike regular Teleports, send you to a randomly chosen destination.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.RANDOM_TELEPORT;
+    }}

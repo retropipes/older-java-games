@@ -8,6 +8,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericAmulet;
 import com.puttysoftware.mazer5d.compatibility.maze.effects.MazeEffectConstants;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class PoisonousAmulet extends GenericAmulet {
     // Constants
@@ -39,4 +40,9 @@ public class PoisonousAmulet extends GenericAmulet {
                 MazeEffectConstants.EFFECT_POISONOUS,
                 PoisonousAmulet.EFFECT_DURATION);
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.POISONOUS_AMULET;
+    }}

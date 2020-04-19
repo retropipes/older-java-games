@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     // Constructors
@@ -65,4 +66,9 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
     public String getDescription() {
         return "Invisible One-Shot Teleports are a combination of invisible and one-shot teleport behaviors.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.INVISIBLE_ONE_SHOT_TELEPORT;
+    }}

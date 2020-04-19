@@ -10,6 +10,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericGem;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class DarknessGem extends GenericGem {
     // Constructors
@@ -38,4 +39,9 @@ public class DarknessGem extends GenericGem {
     public String getDescription() {
         return "Darkness Gems decrease the visible area to its minimum.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DARKNESS_GEM;
+    }}

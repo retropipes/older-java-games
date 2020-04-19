@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWand;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class AnnihilationWand extends GenericWand {
     // Constructors
@@ -36,4 +37,8 @@ public class AnnihilationWand extends GenericWand {
     public String getDescription() {
         return "Annihilation Wands will destroy any object (not ground) when used, except the Void or a Sealing Wall.";
     }
-}
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ANNIHILATION_WAND;
+    }}

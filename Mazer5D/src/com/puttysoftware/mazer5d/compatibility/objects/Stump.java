@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Stump extends GenericWall {
     // Constructors
@@ -35,4 +36,9 @@ public class Stump extends GenericWall {
     public String getDescription() {
         return "Stumps stop movement, but not arrows.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.STUMP;
+    }}

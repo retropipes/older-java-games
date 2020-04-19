@@ -1,4 +1,4 @@
-package com.puttysoftware.xio;
+package com.puttysoftware.mazer5d.files.io;
 
 import java.io.IOException;
 

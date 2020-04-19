@@ -6,10 +6,16 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericPort;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TPort extends GenericPort {
     // Constructors
     public TPort() {
         super(new TPlug(), 'T');
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.T_PORT;
+    }}

@@ -13,13 +13,13 @@ import com.puttysoftware.mazer5d.assets.ColorShader;
 import com.puttysoftware.mazer5d.assets.ObjectImageIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.RandomGenerationRule;
 import com.puttysoftware.mazer5d.compatibility.maze.MazeModel;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.randomrange.RandomRange;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 final class MazeObject implements MazeObjectModel {
     // Properties
-    private final int uniqueID;
+    private final MazeObjects uniqueID;
     private final Tile tile;
     private final SolidProperties sp;
     private final VisionProperties vp;
@@ -32,21 +32,8 @@ final class MazeObject implements MazeObjectModel {
     private MazeObjectModel savedObject = null;
 
     // Constructors
-    MazeObject(final int objectID) {
-        this.uniqueID = objectID;
-        this.tile = null;
-        this.sp = new SolidProperties();
-        this.vp = new VisionProperties();
-        this.mp = new MoveProperties();
-        this.op = new OtherProperties();
-        this.oc = new OtherCounters();
-        this.cc = new CustomCounters();
-        this.cf = new CustomFlags();
-        this.ct = new CustomTexts();
-    }
-
     public MazeObject(final MazeObjects objectID) {
-        this.uniqueID = objectID.ordinal();
+        this.uniqueID = objectID;
         this.tile = null;
         this.sp = new SolidProperties();
         this.vp = new VisionProperties();
@@ -60,7 +47,7 @@ final class MazeObject implements MazeObjectModel {
 
     public MazeObject(final MazeObjects objectID, final String cacheName,
             final ObjectImageIndex image) {
-        this.uniqueID = objectID.ordinal();
+        this.uniqueID = objectID;
         this.tile = new Tile(new ObjectAppearance(cacheName, image));
         this.sp = new SolidProperties();
         this.vp = new VisionProperties();
@@ -74,7 +61,7 @@ final class MazeObject implements MazeObjectModel {
 
     public MazeObject(final MazeObjects objectID, final String cacheName,
             final ObjectImageIndex image, final ColorShader shader) {
-        this.uniqueID = objectID.ordinal();
+        this.uniqueID = objectID;
         this.tile = new Tile(new ObjectAppearance(cacheName, image, shader));
         this.sp = new SolidProperties();
         this.vp = new VisionProperties();
@@ -111,7 +98,7 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public final int getUniqueID() {
+    public final MazeObjects getUniqueID() {
         return this.uniqueID;
     }
 
@@ -621,7 +608,7 @@ final class MazeObject implements MazeObjectModel {
 
     @Override
     public String getName() {
-        return Integer.toString(this.getUniqueID());
+        return Integer.toString(this.getUniqueID().ordinal());
     }
 
     @Override
@@ -669,9 +656,9 @@ final class MazeObject implements MazeObjectModel {
 
     @Override
     public final void dumpState(final XDataWriter writer) throws IOException {
-        writer.writeInt(this.getUniqueID());
+        writer.writeMazeObjectID(this.getUniqueID());
         if (this.savedObject == null) {
-            writer.writeInt(-1);
+            writer.writeMazeObjectID(MazeObjects._NONE);
         } else {
             this.savedObject.dumpState(writer);
         }
@@ -684,10 +671,10 @@ final class MazeObject implements MazeObjectModel {
 
     @Override
     public final MazeObjectModel loadState(final XDataReader reader,
-            final int uid) throws IOException {
+            final MazeObjects uid) throws IOException {
         if (uid == this.getUniqueID()) {
-            final int savedIdent = reader.readInt();
-            if (savedIdent != -1) {
+            final MazeObjects savedIdent = reader.readMazeObjectID();
+            if (savedIdent != MazeObjects._NONE) {
                 this.savedObject = new MazeObject(savedIdent);
                 this.savedObject = this.savedObject.loadState(reader,
                         savedIdent);

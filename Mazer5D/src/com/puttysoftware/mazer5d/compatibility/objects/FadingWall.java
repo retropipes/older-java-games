@@ -9,6 +9,7 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FadingWall extends GenericWall {
     // Fields
@@ -55,5 +56,10 @@ public class FadingWall extends GenericWall {
     @Override
     public String getDescription() {
         return "Fading Walls disappear when you get close to them.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FADING_WALL;
     }
 }

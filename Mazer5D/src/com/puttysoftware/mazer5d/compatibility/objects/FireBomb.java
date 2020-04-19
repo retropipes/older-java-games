@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericUsableObject;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class FireBomb extends GenericUsableObject {
     // Constants
@@ -58,12 +59,17 @@ public class FireBomb extends GenericUsableObject {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanEnrageObjects(x, y, z, FireBomb.EFFECT_RADIUS);
         // Burn the ground, too
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanBurnGround(x, y, z, FireBomb.EFFECT_RADIUS);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanBurnGround(
+                x, y, z, FireBomb.EFFECT_RADIUS);
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z) {
         this.useAction(null, x, y, z);
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.FIRE_BOMB;
     }
 }

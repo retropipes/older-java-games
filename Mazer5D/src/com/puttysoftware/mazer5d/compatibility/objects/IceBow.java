@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class IceBow extends GenericBow {
     // Constants
@@ -31,4 +32,9 @@ public class IceBow extends GenericBow {
     public String getDescription() {
         return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ICE_BOW;
+    }}

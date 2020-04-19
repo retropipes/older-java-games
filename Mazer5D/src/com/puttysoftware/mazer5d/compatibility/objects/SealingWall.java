@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericWall;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class SealingWall extends GenericWall {
     // Constructors
@@ -27,4 +28,9 @@ public class SealingWall extends GenericWall {
     public String getDescription() {
         return "Sealing Walls are impassable and impossible to destroy.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.SEALING_WALL;
+    }}

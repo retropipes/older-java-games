@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.ArrowTypeConstants;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericBow;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class GhostBow extends GenericBow {
     // Constants
@@ -30,5 +31,10 @@ public class GhostBow extends GenericBow {
     @Override
     public String getDescription() {
         return "Ghost Bows allow shooting of Ghost Arrows, which pass through objects that do not react to arrows, even if they are solid, and do everything normal arrows do.";
+    }
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.GHOST_BOW;
     }
 }

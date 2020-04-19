@@ -11,6 +11,7 @@ import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RoseHouse extends FinishTo {
     // Constructors
@@ -41,4 +42,9 @@ public class RoseHouse extends FinishTo {
     public String getDescription() {
         return "Rose Houses send you inside when walked on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ROSE_HOUSE;
+    }}

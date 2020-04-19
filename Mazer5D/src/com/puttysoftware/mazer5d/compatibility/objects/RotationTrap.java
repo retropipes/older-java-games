@@ -13,10 +13,11 @@ import com.puttysoftware.mazer5d.assets.SoundGroup;
 import com.puttysoftware.mazer5d.assets.SoundIndex;
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RotationTrap extends GenericTrap implements Cloneable {
     // Fields
@@ -135,4 +136,9 @@ public class RotationTrap extends GenericTrap implements Cloneable {
     public String getDescription() {
         return "Rotation Traps rotate part of the maze when stepped on.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.ROTATION_TRAP;
+    }}

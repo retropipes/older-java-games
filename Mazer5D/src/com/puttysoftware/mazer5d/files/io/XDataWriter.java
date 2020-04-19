@@ -1,8 +1,10 @@
-package com.puttysoftware.xio;
+package com.puttysoftware.mazer5d.files.io;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class XDataWriter implements AutoCloseable {
     // Fields
@@ -34,6 +36,12 @@ public class XDataWriter implements AutoCloseable {
 
     public void writeInt(final int i) throws IOException {
         this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i) //$NON-NLS-1$ //$NON-NLS-2$
+                + "</" + XDataConstants.INT_TAG + ">" //$NON-NLS-1$ //$NON-NLS-2$
+                + XDataWriter.END_OF_LINE);
+    }
+
+    public void writeMazeObjectID(final MazeObjects moid) throws IOException {
+        this.bw.write("<" + XDataConstants.INT_TAG + ">" + moid.toString() //$NON-NLS-1$ //$NON-NLS-2$
                 + "</" + XDataConstants.INT_TAG + ">" //$NON-NLS-1$ //$NON-NLS-2$
                 + XDataWriter.END_OF_LINE);
     }

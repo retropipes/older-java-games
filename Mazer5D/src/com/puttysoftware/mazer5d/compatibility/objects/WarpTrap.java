@@ -12,6 +12,7 @@ import com.puttysoftware.mazer5d.compatibility.abc.GenericTrap;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class WarpTrap extends GenericTrap {
@@ -58,4 +59,9 @@ public class WarpTrap extends GenericTrap {
     public String getDescription() {
         return "Warp Traps send anything that steps on one to a random location.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.WARP_TRAP;
+    }}

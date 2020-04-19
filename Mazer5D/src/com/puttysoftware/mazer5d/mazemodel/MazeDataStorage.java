@@ -3,10 +3,10 @@ package com.puttysoftware.mazer5d.mazemodel;
 import java.io.IOException;
 import java.util.Arrays;
 
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.files.versions.MazeVersion;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 /**
  * Data storage for maze objects.

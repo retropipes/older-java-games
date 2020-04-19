@@ -7,6 +7,7 @@ package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericTeleport;
 import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class Destination extends GenericTeleport {
     // Constructors
@@ -33,4 +34,9 @@ public class Destination extends GenericTeleport {
     public String getDescription() {
         return "Destinations are where Teleports take you to.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.DESTINATION;
+    }}

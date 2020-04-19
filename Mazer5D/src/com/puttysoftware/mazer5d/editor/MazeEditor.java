@@ -457,8 +457,8 @@ public class MazeEditor {
             choices = this.objectObjects;
         }
         final MazeObjectModel mo = choices[this.currentObjectIndex];
-        
-        final MazeObjectModel instance = GameObjects.createObject(mo.getName());
+
+        final MazeObjectModel instance = GameObjects.createObject(mo.getUniqueID());
         this.elMgr.setEditorLocationX(gridX);
         this.elMgr.setEditorLocationY(gridY);
         mo.editorPlaceHook();

@@ -14,6 +14,7 @@ import com.puttysoftware.mazer5d.editor.MazeEditor;
 import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class TwoWayTeleport extends GenericTeleport {
     public TwoWayTeleport() {
@@ -57,4 +58,9 @@ public class TwoWayTeleport extends GenericTeleport {
     public String getDescription() {
         return "Two-Way Teleports send you to their companion at their destination, and are linked such that stepping on the companion sends you back to the original.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.TWO_WAY_TELEPORT;
+    }}

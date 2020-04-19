@@ -6,6 +6,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package com.puttysoftware.mazer5d.compatibility.objects;
 
 import com.puttysoftware.mazer5d.compatibility.abc.GenericRandomInvisibleTeleport;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
     // Constructors
@@ -38,4 +39,9 @@ public class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
     public String getDescription() {
         return "Random Invisible Teleports are both random and invisible.";
     }
-}
+
+
+    @Override
+    public MazeObjects getUniqueID() {
+        return MazeObjects.RANDOM_INVISIBLE_TELEPORT;
+    }}

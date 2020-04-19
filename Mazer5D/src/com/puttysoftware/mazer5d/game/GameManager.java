@@ -68,14 +68,14 @@ import com.puttysoftware.mazer5d.compatibility.objects.TeleportWand;
 import com.puttysoftware.mazer5d.compatibility.objects.Wall;
 import com.puttysoftware.mazer5d.compatibility.objects.WallBreakingWand;
 import com.puttysoftware.mazer5d.compatibility.objects.WallMakingWand;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.LogoImageLoader;
 import com.puttysoftware.mazer5d.loaders.MusicPlayer;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.mazer5d.prefs.Prefs;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
 
 public class GameManager implements MazeEffectConstants {
     // Fields

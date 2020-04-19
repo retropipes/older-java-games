@@ -13,9 +13,10 @@ import com.puttysoftware.mazer5d.Mazer5D;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
 import com.puttysoftware.mazer5d.compatibility.objects.*;
+import com.puttysoftware.mazer5d.files.io.XDataReader;
+import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
-import com.puttysoftware.xio.XDataReader;
-import com.puttysoftware.xio.XDataWriter;
+import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
 public class GameObjects {
     // Fields
@@ -225,8 +226,7 @@ public class GameObjects {
         final MazeObjectModel[] tempAllGroundLayerObjects = new MazeObjectModel[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.GROUND) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.GROUND) {
                 tempAllGroundLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
@@ -250,8 +250,7 @@ public class GameObjects {
         final MazeObjectModel[] tempAllObjectLayerObjects = new MazeObjectModel[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.OBJECT) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerObjects[x] = GameObjects.allObjects[x];
             }
         }
@@ -275,8 +274,7 @@ public class GameObjects {
         final String[] tempAllGroundLayerNames = new String[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.GROUND) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.GROUND) {
                 tempAllGroundLayerNames[x] = GameObjects.allObjects[x]
                         .getName();
             }
@@ -301,8 +299,7 @@ public class GameObjects {
         final String[] tempAllObjectLayerNames = new String[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.OBJECT) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerNames[x] = GameObjects.allObjects[x]
                         .getName();
             }
@@ -336,8 +333,7 @@ public class GameObjects {
         final BufferedImageIcon[] tempAllGroundLayerEditorAppearances = new BufferedImageIcon[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.GROUND) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.GROUND) {
                 tempAllGroundLayerEditorAppearances[x] = ObjectImageManager
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
@@ -362,8 +358,7 @@ public class GameObjects {
         final BufferedImageIcon[] tempAllObjectLayerEditorAppearances = new BufferedImageIcon[GameObjects.allObjects.length];
         int objectCount = 0;
         for (int x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x]
-                    .getLayer() == Layers.OBJECT) {
+            if (GameObjects.allObjects[x].getLayer() == Layers.OBJECT) {
                 tempAllObjectLayerEditorAppearances[x] = ObjectImageManager
                         .getTransformedImage(GameObjects.allObjects[x], false);
             }
@@ -785,11 +780,12 @@ public class GameObjects {
         }
     }
 
-    public static MazeObjectModel createObject(final String name) {
+    public static MazeObjectModel createObject(final MazeObjects uid) {
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            if (GameObjects.allObjects[x].getName().equals(name)) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;
             }
@@ -849,8 +845,8 @@ public class GameObjects {
         return null;
     }
 
-    public static void readRuleSet(final XDataReader reader,
-            final int rsFormat) throws IOException {
+    public static void readRuleSet(final XDataReader reader, final int rsFormat)
+            throws IOException {
         // Read map length
         final int mapLen = reader.readInt();
         final boolean[] map = new boolean[mapLen];
