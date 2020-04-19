@@ -82,7 +82,7 @@ public class Prefs {
     private static EventHandler handler;
     private static final PrefsFileManager fileMgr = new PrefsFileManager();
     private static final ExportImportManager eiMgr = new ExportImportManager();
-    private static MazeObjects editorFill;
+    private static MazeObjects editorFill = MazeObjects.TILE;
     private static boolean checkUpdatesStartupEnabled;
     private static boolean moveOneAtATimeEnabled;
     private static int viewingWindowIndex;
