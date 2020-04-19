@@ -22,8 +22,8 @@ public class InvisiblePit extends Pit {
     @Override
     public void moveFailedAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        Mazer5D.getBagOStuff()
-                .showMessage("Some unseen force prevents movement that way...");
+        Mazer5D.getBagOStuff().showMessage(
+                "Some unseen force prevents movement that way...");
     }
 
     @Override
@@ -56,8 +56,8 @@ public class InvisiblePit extends Pit {
         return "Invisible Pits dump anything that wanders in to the floor below. If one of these is placed on the bottom-most floor, it is impassable.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_PIT;
-    }}
+    }
+}

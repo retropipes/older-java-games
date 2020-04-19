@@ -120,8 +120,8 @@ public abstract class GenericRandomTeleport extends MazeObjectModel {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_RANDOM);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_RANDOM);
         return mo;
     }
 

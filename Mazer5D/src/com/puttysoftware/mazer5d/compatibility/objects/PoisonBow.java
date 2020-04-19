@@ -33,8 +33,8 @@ public class PoisonBow extends GenericBow {
         return "Poison Bows allow shooting of Poison Arrows, which weaken Barrier Generators upon contact, and do everything normal arrows do.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.POISON_BOW;
-    }}
+    }
+}

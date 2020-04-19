@@ -724,7 +724,7 @@ public class GameObjects {
         GameObjects.allObjectsLookup.put(MazeObjects.Y_PORT, new YPort());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PLUG, new ZPlug());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PORT, new ZPort());
-        Collection<MazeObjectModel> values = GameObjects.allObjectsLookup
+        final Collection<MazeObjectModel> values = GameObjects.allObjectsLookup
                 .values();
         GameObjects.allObjects = values.toArray(new MazeObjectModel[values
                 .size()]);
@@ -1368,7 +1368,7 @@ public class GameObjects {
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
             if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;
@@ -1389,11 +1389,11 @@ public class GameObjects {
 
     public static MazeObjectModel createContainerObject(final MazeObjects uid,
             final MazeObjects contentsUID) {
-        MazeObjectModel contents = GameObjects.createObject(contentsUID);
+        final MazeObjectModel contents = GameObjects.createObject(contentsUID);
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
             if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;
@@ -1418,7 +1418,7 @@ public class GameObjects {
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
             if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;
@@ -1443,7 +1443,7 @@ public class GameObjects {
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
             if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;
@@ -1468,7 +1468,7 @@ public class GameObjects {
         MazeObjectModel instance = null;
         int x;
         for (x = 0; x < GameObjects.allObjects.length; x++) {
-            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
             if (uid.equals(objUID)) {
                 instance = GameObjects.allObjects[x];
                 break;

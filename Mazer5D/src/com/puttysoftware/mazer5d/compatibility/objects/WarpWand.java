@@ -40,10 +40,8 @@ public class WarpWand extends GenericWand {
     public void useAction(final MazeObjectModel mo, final int x, final int y,
             final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getMazeManager().getMaze().warpObject(
-                app.getMazeManager().getMaze().getCell(x, y, z,
-                        Layers.OBJECT),
-                x, y, z, Layers.OBJECT);
+        app.getMazeManager().getMaze().warpObject(app.getMazeManager().getMaze()
+                .getCell(x, y, z, Layers.OBJECT), x, y, z, Layers.OBJECT);
     }
 
     @Override
@@ -51,8 +49,8 @@ public class WarpWand extends GenericWand {
         return "Warp Wands will teleport the object at the target square to a random location when used.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WARP_WAND;
-    }}
+    }
+}

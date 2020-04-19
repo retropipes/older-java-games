@@ -15,8 +15,8 @@ public class DataLoader {
 
     public static String[] loadMusicData() {
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/music/files" + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/music/files"
+                        + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<String> data = new ArrayList<>();
@@ -36,8 +36,8 @@ public class DataLoader {
 
     public static String[] loadSoundData() {
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/sound/files" + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/sound/files"
+                        + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<String> data = new ArrayList<>();
@@ -79,8 +79,8 @@ public class DataLoader {
     public static int[] loadObjectActionAddonData(final int actionID) {
         final String name = "action-" + Integer.toString(actionID);
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/object/" + name + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/object/"
+                        + name + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<Integer> rawData = new ArrayList<>();
@@ -94,7 +94,7 @@ public class DataLoader {
             int index = 0;
             final int[] data = new int[rawData.size()];
             for (final Integer rawItem : rawData) {
-                data[index] = rawItem.intValue();
+                data[index] = rawItem;
                 index++;
             }
             return data;
@@ -106,8 +106,8 @@ public class DataLoader {
 
     public static String[] loadEffectImageData() {
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/image/effect" + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/image/effect"
+                        + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<String> data = new ArrayList<>();
@@ -127,8 +127,8 @@ public class DataLoader {
 
     public static String[] loadObjectImageData() {
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/image/object" + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/image/object"
+                        + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<String> data = new ArrayList<>();
@@ -148,8 +148,8 @@ public class DataLoader {
 
     public static String[] loadLogoImageData() {
         try (final ResourceStreamReader rsr = new ResourceStreamReader(
-                DataLoader.class.getResourceAsStream(
-                        "/assets/data/image/logo" + FileExtensions
+                DataLoader.class.getResourceAsStream("/assets/data/image/logo"
+                        + FileExtensions
                                 .getInternalDataExtensionWithPeriod()))) {
             // Fetch data
             final ArrayList<String> data = new ArrayList<>();

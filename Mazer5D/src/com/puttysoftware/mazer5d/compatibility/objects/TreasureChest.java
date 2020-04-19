@@ -54,8 +54,8 @@ public class TreasureChest extends GenericContainer {
         return "Treasure Chests require Keys to open, and contain 1 other item.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TREASURE_CHEST;
-    }}
+    }
+}

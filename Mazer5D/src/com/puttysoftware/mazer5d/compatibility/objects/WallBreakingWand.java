@@ -38,8 +38,8 @@ public class WallBreakingWand extends GenericWand {
         return "Wall-Breaking Wands will destroy one wall when used, if aimed at a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WALL_BREAKING_WAND;
-    }}
+    }
+}

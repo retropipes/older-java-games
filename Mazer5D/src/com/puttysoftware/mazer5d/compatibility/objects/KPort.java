@@ -14,8 +14,8 @@ public class KPort extends GenericPort {
         super(new KPlug(), 'K');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.K_PORT;
-    }}
+    }
+}

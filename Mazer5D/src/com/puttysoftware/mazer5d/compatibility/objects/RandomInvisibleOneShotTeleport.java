@@ -70,8 +70,8 @@ public class RandomInvisibleOneShotTeleport extends RandomInvisibleTeleport {
         return "Random Invisible One-Shot Teleports are random, invisible, and only work once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RANDOM_INVISIBLE_ONE_SHOT_TELEPORT;
-    }}
+    }
+}

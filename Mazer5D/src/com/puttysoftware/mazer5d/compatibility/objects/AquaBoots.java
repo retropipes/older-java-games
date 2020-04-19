@@ -29,8 +29,8 @@ public class AquaBoots extends GenericBoots {
         return "Aqua Boots allow walking on water. Note that you can only wear one pair of boots at once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.AQUA_BOOTS;
-    }}
+    }
+}

@@ -15,8 +15,6 @@ import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 import com.puttysoftware.randomrange.RandomRange;
 
-
-
 public abstract class GenericPotion extends MazeObjectModel {
     // Fields
     private int effectValue;
@@ -89,19 +87,19 @@ public abstract class GenericPotion extends MazeObjectModel {
         } else {
             SoundPlayer.playSound(SoundIndex.HURT, SoundGroup.GAME);
         }
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericPotion.SCORE_CONSUME);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericPotion.SCORE_CONSUME);
     }
 
     @Override
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericPotion.SCORE_SMASH);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericPotion.SCORE_SMASH);
         return false;
     }
 

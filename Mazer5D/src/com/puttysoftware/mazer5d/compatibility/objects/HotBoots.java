@@ -32,17 +32,17 @@ public class HotBoots extends GenericBoots {
 
     @Override
     public void stepAction() {
-        final int x = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationX();
-        final int y = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationY();
-        final int z = Mazer5D.getBagOStuff().getGameManager()
-                .getPlayerManager().getPlayerLocationZ();
+        final int x = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationX();
+        final int y = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationY();
+        final int z = Mazer5D.getBagOStuff().getGameManager().getPlayerManager()
+                .getPlayerLocationZ();
         Mazer5D.getBagOStuff().getMazeManager().getMaze().hotGround(x, y, z);
     }
-
 
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HOT_BOOTS;
-    }}
+    }
+}

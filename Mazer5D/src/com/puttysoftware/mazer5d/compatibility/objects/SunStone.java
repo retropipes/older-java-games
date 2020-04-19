@@ -45,12 +45,12 @@ public class SunStone extends GenericInventoryableObject {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
         SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(SunStone.SCORE_GRAB_STONE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                SunStone.SCORE_GRAB_STONE);
     }
-
 
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SUN_STONE;
-    }}
+    }
+}

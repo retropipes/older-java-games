@@ -28,8 +28,8 @@ public class OrangeButton extends GenericButton {
         return "Orange Buttons will cause all Orange Walls Off to become On, and all Orange Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ORANGE_BUTTON;
-    }}
+    }
+}

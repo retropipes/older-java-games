@@ -29,8 +29,8 @@ public class SlipperyBoots extends GenericBoots {
         return "Slippery Boots make all ground frictionless as you walk. Note that you can only wear one pair of boots at once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SLIPPERY_BOOTS;
-    }}
+    }
+}

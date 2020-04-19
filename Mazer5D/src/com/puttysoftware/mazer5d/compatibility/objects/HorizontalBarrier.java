@@ -29,8 +29,8 @@ public class HorizontalBarrier extends GenericBarrier {
         return "Horizontal Barriers are impassable - you'll need to go around them.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HORIZONTAL_BARRIER;
-    }}
+    }
+}

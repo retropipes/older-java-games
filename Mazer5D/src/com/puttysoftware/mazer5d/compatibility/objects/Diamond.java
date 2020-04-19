@@ -30,8 +30,8 @@ public class Diamond extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(Diamond.SCORE_INCREASE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                Diamond.SCORE_INCREASE);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class Diamond extends GenericScoreIncreaser {
         return "Diamonds increase your score when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DIAMOND;
-    }}
+    }
+}

@@ -28,8 +28,8 @@ public class XMLRuleSetFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Mazer5D XML Rule Sets ("
-                + XMLExtension.getXMLRuleSetExtensionWithPeriod() + ")";
+        return "Mazer5D XML Rule Sets (" + XMLExtension
+                .getXMLRuleSetExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

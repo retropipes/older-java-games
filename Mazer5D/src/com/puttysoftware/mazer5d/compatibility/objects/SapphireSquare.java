@@ -29,8 +29,8 @@ public class SapphireSquare extends GenericMultipleKey {
         return "Sapphire Squares are the keys to Sapphire Walls.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SAPPHIRE_SQUARE;
-    }}
+    }
+}

@@ -127,15 +127,14 @@ public class ProductData {
         int newMinor = this.minorVersion;
         int newBugfix = this.bugfixVersion;
         int newPrerelease = this.prereleaseVersion;
-        try (InputStreamReader isr = new InputStreamReader(
-                this.updateURL.openStream());
-                BufferedReader br = new BufferedReader(isr)) {
+        try (InputStreamReader isr = new InputStreamReader(this.updateURL
+                .openStream()); BufferedReader br = new BufferedReader(isr)) {
             newMajor = Integer.parseInt(br.readLine());
             newMinor = Integer.parseInt(br.readLine());
             newBugfix = Integer.parseInt(br.readLine());
             newPrerelease = Integer.parseInt(br.readLine());
         }
-        UpdateCheckResults hasUpdate = new UpdateCheckResults(newMajor,
+        final UpdateCheckResults hasUpdate = new UpdateCheckResults(newMajor,
                 newMinor, newBugfix, newPrerelease);
         if (newMajor > this.majorVersion) {
             return hasUpdate;

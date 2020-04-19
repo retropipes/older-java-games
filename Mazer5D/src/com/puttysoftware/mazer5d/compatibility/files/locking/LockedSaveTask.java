@@ -38,17 +38,17 @@ public class LockedSaveTask extends Thread {
             this.filename += Extension.getLockedMazeExtensionWithPeriod();
         }
         final File mazeFile = new File(this.filename);
-        final File tempLock = new File(MazeModel.getMazeTempFolder() + "lock.tmp");
+        final File tempLock = new File(MazeModel.getMazeTempFolder()
+                + "lock.tmp");
         try {
             // Set prefix handler
-            app.getMazeManager().getMaze()
-                    .setXMLPrefixHandler(new XMLPrefixHandler());
+            app.getMazeManager().getMaze().setXMLPrefixHandler(
+                    new XMLPrefixHandler());
             // Set suffix handler
             app.getMazeManager().getMaze().setXMLSuffixHandler(null);
             app.getMazeManager().getMaze().writeMazeXML();
-            ZipUtilities.zipDirectory(
-                    new File(app.getMazeManager().getMaze().getBasePath()),
-                    tempLock);
+            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
+                    .getBasePath()), tempLock);
             // Lock the file
             LockedWrapper.lock(tempLock, mazeFile);
             tempLock.delete();

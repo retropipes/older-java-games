@@ -14,8 +14,8 @@ public class IceArrow extends GenericTransientObject {
         super("Ice Arrow");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ICE_ARROW;
-    }}
+    }
+}

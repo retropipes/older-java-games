@@ -94,7 +94,7 @@ class MazeData {
         this.visionModeExploreRadius = 2;
     }
 
-    MazeData(MazeData orig) {
+    MazeData(final MazeData orig) {
         this.data = new MazeDataStorage(orig.data);
         this.savedTowerState = new MazeDataStorage(orig.savedTowerState);
         this.visionData = new FlagStorage(orig.visionData);

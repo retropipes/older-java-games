@@ -60,8 +60,8 @@ public class CrackedWall extends GenericWall {
         this.type.set(TypeConstants.TYPE_WALL);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CRACKED_WALL;
-    }}
+    }
+}

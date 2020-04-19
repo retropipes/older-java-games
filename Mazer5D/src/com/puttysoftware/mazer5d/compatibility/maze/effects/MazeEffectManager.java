@@ -49,8 +49,8 @@ public class MazeEffectManager {
         // Create GUI
         this.activeEffectMessageContainer = new Container();
         this.activeEffectMessages = new JLabel[MazeEffectManager.MAX_ACTIVE_EFFECTS];
-        this.activeEffectMessageContainer.setLayout(
-                new GridLayout(MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
+        this.activeEffectMessageContainer.setLayout(new GridLayout(
+                MazeEffectManager.MAX_ACTIVE_EFFECTS, 1));
         for (int z = 0; z < MazeEffectManager.MAX_ACTIVE_EFFECTS; z++) {
             this.activeEffectMessages[z] = new JLabel("");
             this.activeEffectMessageContainer.add(this.activeEffectMessages[z]);
@@ -79,8 +79,8 @@ public class MazeEffectManager {
                 // Update effect grid
                 this.updateGridEntry(x);
                 if (!this.activeEffects[x].isActive()) {
-                    Mazer5D.getBagOStuff()
-                            .showMessage("You feel normal again.");
+                    Mazer5D.getBagOStuff().showMessage(
+                            "You feel normal again.");
                     // Clear effect grid
                     this.clearGridEntry(x);
                     // Pack
@@ -200,8 +200,8 @@ public class MazeEffectManager {
             this.activeEffectIndices[this.newEffectIndex] = effectID;
             final String effectString = this.activeEffects[effectID]
                     .getEffectString();
-            this.activeEffectMessages[this.newEffectIndex]
-                    .setText(effectString);
+            this.activeEffectMessages[this.newEffectIndex].setText(
+                    effectString);
         }
     }
 
@@ -220,8 +220,8 @@ public class MazeEffectManager {
             // Compact grid
             for (int z = index; z < MazeEffectManager.MAX_ACTIVE_EFFECTS
                     - 1; z++) {
-                this.activeEffectMessages[z]
-                        .setText(this.activeEffectMessages[z + 1].getText());
+                this.activeEffectMessages[z].setText(this.activeEffectMessages[z
+                        + 1].getText());
                 this.activeEffectIndices[z] = this.activeEffectIndices[z + 1];
             }
             // Clear last entry

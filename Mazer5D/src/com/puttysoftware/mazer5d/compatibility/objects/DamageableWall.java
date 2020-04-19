@@ -65,8 +65,8 @@ public class DamageableWall extends GenericWall {
         this.type.set(TypeConstants.TYPE_WALL);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DAMAGEABLE_WALL;
-    }}
+    }
+}

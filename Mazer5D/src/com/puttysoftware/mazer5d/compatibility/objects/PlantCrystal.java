@@ -14,8 +14,8 @@ public class PlantCrystal extends GenericProgrammableKey {
         super("Plant");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PLANT_CRYSTAL;
-    }}
+    }
+}

@@ -43,8 +43,8 @@ public class SkyHouse extends FinishTo {
         return "Sky Houses send you inside when walked on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_HOUSE;
-    }}
+    }
+}

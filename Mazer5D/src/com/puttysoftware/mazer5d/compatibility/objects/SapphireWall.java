@@ -29,8 +29,8 @@ public class SapphireWall extends GenericMultipleLock {
         return "Sapphire Walls are impassable without enough Sapphire Squares.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SAPPHIRE_WALL;
-    }}
+    }
+}

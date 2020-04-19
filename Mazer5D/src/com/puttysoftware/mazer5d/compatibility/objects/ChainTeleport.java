@@ -31,9 +31,9 @@ public class ChainTeleport extends GenericTeleport {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
@@ -50,8 +50,8 @@ public class ChainTeleport extends GenericTeleport {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_GENERIC);
         return mo;
     }
 
@@ -60,8 +60,8 @@ public class ChainTeleport extends GenericTeleport {
         return "Chain Teleports send you to a predetermined destination when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CHAIN_TELEPORT;
-    }}
+    }
+}

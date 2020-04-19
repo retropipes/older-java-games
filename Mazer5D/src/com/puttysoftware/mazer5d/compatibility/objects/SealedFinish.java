@@ -29,8 +29,8 @@ public class SealedFinish extends GenericPassThroughObject {
         return null;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEALED_FINISH;
-    }}
+    }
+}

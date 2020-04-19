@@ -40,8 +40,8 @@ public class IceAmulet extends GenericAmulet {
                 MazeEffectConstants.EFFECT_ICY, IceAmulet.EFFECT_DURATION);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ICE_AMULET;
-    }}
+    }
+}

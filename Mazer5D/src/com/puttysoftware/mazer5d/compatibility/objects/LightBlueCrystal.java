@@ -14,8 +14,8 @@ public class LightBlueCrystal extends GenericProgrammableKey {
         super("Light Blue");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.LIGHT_BLUE_CRYSTAL;
-    }}
+    }
+}

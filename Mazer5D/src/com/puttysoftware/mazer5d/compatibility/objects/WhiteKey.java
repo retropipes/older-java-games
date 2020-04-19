@@ -30,8 +30,8 @@ public class WhiteKey extends GenericSingleKey {
         return "White Keys will unlock White Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WHITE_KEY;
-    }}
+    }
+}

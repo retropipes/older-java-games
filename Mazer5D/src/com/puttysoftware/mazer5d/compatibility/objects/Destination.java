@@ -35,8 +35,8 @@ public class Destination extends GenericTeleport {
         return "Destinations are where Teleports take you to.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DESTINATION;
-    }}
+    }
+}

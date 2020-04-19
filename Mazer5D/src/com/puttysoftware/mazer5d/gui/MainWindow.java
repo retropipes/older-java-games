@@ -22,8 +22,8 @@ public final class MainWindow {
     private MainWindow() {
         super();
         this.frame = new JFrame();
-        this.frame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.frame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.frame.setResizable(false);
         this.content = new JPanel();
         this.savedContent = this.content;

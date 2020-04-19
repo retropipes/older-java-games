@@ -57,8 +57,8 @@ public class Ice extends GenericGround {
         }
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ICE;
-    }}
+    }
+}

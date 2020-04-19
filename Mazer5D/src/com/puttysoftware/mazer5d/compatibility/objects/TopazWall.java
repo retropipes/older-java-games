@@ -29,8 +29,8 @@ public class TopazWall extends GenericMultipleLock {
         return "Topaz Walls are impassable without enough Topaz Squares.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TOPAZ_WALL;
-    }}
+    }
+}

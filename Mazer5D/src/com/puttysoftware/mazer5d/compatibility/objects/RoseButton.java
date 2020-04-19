@@ -28,8 +28,8 @@ public class RoseButton extends GenericButton {
         return "Rose Buttons will cause all Rose Walls Off to become On, and all Rose Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROSE_BUTTON;
-    }}
+    }
+}

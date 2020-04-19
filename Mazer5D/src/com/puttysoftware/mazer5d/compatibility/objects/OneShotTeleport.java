@@ -64,8 +64,8 @@ public class OneShotTeleport extends GenericTeleport {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_ONESHOT);
         return mo;
     }
 
@@ -74,8 +74,8 @@ public class OneShotTeleport extends GenericTeleport {
         return "One-Shot Teleports behave like regular Teleports, except they only work once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ONE_SHOT_TELEPORT;
-    }}
+    }
+}

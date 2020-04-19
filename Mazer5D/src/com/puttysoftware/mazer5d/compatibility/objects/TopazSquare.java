@@ -29,8 +29,8 @@ public class TopazSquare extends GenericMultipleKey {
         return "Topaz Squares are the keys to Topaz Walls.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TOPAZ_SQUARE;
-    }}
+    }
+}

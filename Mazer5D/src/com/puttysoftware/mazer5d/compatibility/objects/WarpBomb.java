@@ -44,8 +44,8 @@ public class WarpBomb extends GenericUsableObject {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Stop arrow
@@ -57,9 +57,8 @@ public class WarpBomb extends GenericUsableObject {
             final int z) {
         // Warp objects
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanWarpObjects(x, y, z, Layers.OBJECT,
-                        WarpBomb.EFFECT_RADIUS);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanWarpObjects(
+                x, y, z, Layers.OBJECT, WarpBomb.EFFECT_RADIUS);
         // Player might have moved
         Mazer5D.getBagOStuff().getGameManager().findPlayerAndAdjust();
     }
@@ -69,8 +68,8 @@ public class WarpBomb extends GenericUsableObject {
         this.useAction(null, x, y, z);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WARP_BOMB;
-    }}
+    }
+}

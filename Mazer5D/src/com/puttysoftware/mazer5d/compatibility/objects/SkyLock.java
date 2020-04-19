@@ -44,8 +44,8 @@ public class SkyLock extends GenericSingleLock {
         return "Sky Locks require Sky Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_LOCK;
-    }}
+    }
+}

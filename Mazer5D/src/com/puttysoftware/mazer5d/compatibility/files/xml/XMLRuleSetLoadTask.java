@@ -34,10 +34,8 @@ public class XMLRuleSetLoadTask extends Thread {
                 "ruleset")) {
             final int magic = ruleSetFile.readInt();
             if (magic == RuleSetConstants.MAGIC_NUMBER_2) {
-                
                 // Format 2 file
-                GameObjects.readRuleSet(ruleSetFile,
-                        RuleSetConstants.FORMAT_2);
+                GameObjects.readRuleSet(ruleSetFile, RuleSetConstants.FORMAT_2);
             }
             ruleSetFile.close();
             CommonDialogs.showTitledDialog(sg + " file loaded.",

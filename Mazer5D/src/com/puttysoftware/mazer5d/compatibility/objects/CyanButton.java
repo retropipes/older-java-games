@@ -28,8 +28,8 @@ public class CyanButton extends GenericButton {
         return "Cyan Buttons will cause all Cyan Walls Off to become On, and all Cyan Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CYAN_BUTTON;
-    }}
+    }
+}

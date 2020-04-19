@@ -44,8 +44,8 @@ public class YellowLock extends GenericSingleLock {
         return "Yellow Locks require Yellow Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.YELLOW_LOCK;
-    }}
+    }
+}

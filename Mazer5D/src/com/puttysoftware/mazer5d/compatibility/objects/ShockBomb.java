@@ -45,8 +45,8 @@ public class ShockBomb extends GenericUsableObject {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         // Stop arrow
         return false;
     }
@@ -59,8 +59,8 @@ public class ShockBomb extends GenericUsableObject {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .radialScanShockObjects(x, y, z, ShockBomb.EFFECT_RADIUS);
         // Shock the ground, too
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanShockGround(x, y, z, ShockBomb.EFFECT_RADIUS);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanShockGround(
+                x, y, z, ShockBomb.EFFECT_RADIUS);
     }
 
     @Override
@@ -68,8 +68,8 @@ public class ShockBomb extends GenericUsableObject {
         this.useAction(null, x, y, z);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SHOCK_BOMB;
-    }}
+    }
+}

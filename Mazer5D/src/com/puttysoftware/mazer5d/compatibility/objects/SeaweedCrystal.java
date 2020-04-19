@@ -14,8 +14,8 @@ public class SeaweedCrystal extends GenericProgrammableKey {
         super("Seaweed");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_CRYSTAL;
-    }}
+    }
+}

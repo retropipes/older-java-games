@@ -14,8 +14,8 @@ public class WhiteCarpet extends GenericCarpet {
         super("White");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WHITE_CARPET;
-    }}
+    }
+}

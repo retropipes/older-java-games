@@ -192,7 +192,7 @@ public abstract class GenericTeleport extends MazeObjectModel {
         return 3;
     }
 
-    public void setDestinationLevel(int inDestW) {
+    public void setDestinationLevel(final int inDestW) {
         // Do nothing
     }
 }

@@ -30,8 +30,8 @@ public class Sapphire extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(Sapphire.SCORE_INCREASE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                Sapphire.SCORE_INCREASE);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class Sapphire extends GenericScoreIncreaser {
         return "Sapphires increase your score when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SAPPHIRE;
-    }}
+    }
+}

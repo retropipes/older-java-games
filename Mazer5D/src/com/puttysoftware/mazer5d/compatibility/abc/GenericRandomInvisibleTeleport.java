@@ -13,8 +13,8 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 
-public abstract class GenericRandomInvisibleTeleport
-        extends GenericRandomTeleport {
+public abstract class GenericRandomInvisibleTeleport extends
+        GenericRandomTeleport {
     // Constructors
     public GenericRandomInvisibleTeleport(final int newRandomRangeY,
             final int newRandomRangeX) {

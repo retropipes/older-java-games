@@ -28,8 +28,8 @@ public class RedButton extends GenericButton {
         return "Red Buttons will cause all Red Walls Off to become On, and all Red Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RED_BUTTON;
-    }}
+    }
+}

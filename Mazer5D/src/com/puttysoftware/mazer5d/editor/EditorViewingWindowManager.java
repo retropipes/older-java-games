@@ -98,7 +98,8 @@ public class EditorViewingWindowManager {
         return this.MAX_VIEWING_WINDOW_Y;
     }
 
-    public void halfOffsetMaximumViewingWindowLocationsFromMaze(final MazeModel m) {
+    public void halfOffsetMaximumViewingWindowLocationsFromMaze(
+            final MazeModel m) {
         this.MAX_VIEWING_WINDOW_X = m.getColumns() + this.getOffsetFactorX();
         this.MAX_VIEWING_WINDOW_Y = m.getRows() + this.getOffsetFactorY();
     }

@@ -36,8 +36,8 @@ public class Wall extends GenericWall {
         this.type.set(TypeConstants.TYPE_WALL);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WALL;
-    }}
+    }
+}

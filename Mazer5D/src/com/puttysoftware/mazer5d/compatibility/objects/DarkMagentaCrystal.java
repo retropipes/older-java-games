@@ -14,8 +14,8 @@ public class DarkMagentaCrystal extends GenericProgrammableKey {
         super("Dark Magenta");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DARK_MAGENTA_CRYSTAL;
-    }}
+    }
+}

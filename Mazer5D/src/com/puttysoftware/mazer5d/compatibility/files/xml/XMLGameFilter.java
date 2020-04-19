@@ -28,8 +28,8 @@ public class XMLGameFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Mazer5D XML Saved Games ("
-                + XMLExtension.getXMLGameExtensionWithPeriod() + ")";
+        return "Mazer5D XML Saved Games (" + XMLExtension
+                .getXMLGameExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

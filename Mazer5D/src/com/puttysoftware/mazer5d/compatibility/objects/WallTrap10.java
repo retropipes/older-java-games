@@ -18,8 +18,8 @@ public class WallTrap10 extends GenericWallTrap {
         return "Wall Traps 10 disappear when stepped on, causing all Trapped Walls 10 to also disappear.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WALL_TRAP_10;
-    }}
+    }
+}

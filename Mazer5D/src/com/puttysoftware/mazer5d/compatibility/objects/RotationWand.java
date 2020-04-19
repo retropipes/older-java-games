@@ -73,8 +73,7 @@ public class RotationWand extends GenericWand {
         if (d) {
             Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(r);
         } else {
-            Mazer5D.getBagOStuff().getGameManager()
-                    .doCounterclockwiseRotate(r);
+            Mazer5D.getBagOStuff().getGameManager().doCounterclockwiseRotate(r);
         }
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }
@@ -84,8 +83,8 @@ public class RotationWand extends GenericWand {
         return "Rotation Wands will rotate part of the maze. You can choose the area of effect and the direction.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROTATION_WAND;
-    }}
+    }
+}

@@ -60,8 +60,8 @@ public abstract class GenericTextHolder extends MazeObjectModel {
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
-        this.text = CommonDialogs.showTextInputDialogWithDefault(
-                "Set Text for " + this.getName(), "Editor", this.text);
+        this.text = CommonDialogs.showTextInputDialogWithDefault("Set Text for "
+                + this.getName(), "Editor", this.text);
         return this;
     }
 

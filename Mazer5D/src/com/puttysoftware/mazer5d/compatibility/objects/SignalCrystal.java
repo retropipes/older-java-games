@@ -14,8 +14,8 @@ public class SignalCrystal extends GenericProgrammableKey {
         super("Signal");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SIGNAL_CRYSTAL;
-    }}
+    }
+}

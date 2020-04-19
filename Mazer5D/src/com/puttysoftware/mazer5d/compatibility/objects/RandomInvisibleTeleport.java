@@ -40,8 +40,8 @@ public class RandomInvisibleTeleport extends GenericRandomInvisibleTeleport {
         return "Random Invisible Teleports are both random and invisible.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RANDOM_INVISIBLE_TELEPORT;
-    }}
+    }
+}

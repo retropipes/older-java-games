@@ -30,8 +30,8 @@ public class Key extends GenericSingleKey {
         return "Keys unlock Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.KEY;
-    }}
+    }
+}

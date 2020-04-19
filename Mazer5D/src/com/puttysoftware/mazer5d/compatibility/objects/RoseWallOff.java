@@ -30,8 +30,8 @@ public class RoseWallOff extends GenericToggleWall {
         return "Rose Walls Off can be walked through, and will change to Rose Walls On when a Rose Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROSE_WALL_OFF;
-    }}
+    }
+}

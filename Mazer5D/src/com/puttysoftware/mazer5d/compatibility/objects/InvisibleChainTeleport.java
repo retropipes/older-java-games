@@ -32,9 +32,9 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
@@ -67,8 +67,8 @@ public class InvisibleChainTeleport extends GenericInvisibleTeleport {
         return "Invisible Chain Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_CHAIN_TELEPORT;
-    }}
+    }
+}

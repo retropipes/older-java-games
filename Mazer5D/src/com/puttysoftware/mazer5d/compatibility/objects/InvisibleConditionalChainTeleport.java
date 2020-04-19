@@ -14,8 +14,8 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjects;
 
-public class InvisibleConditionalChainTeleport
-        extends GenericConditionalTeleport {
+public class InvisibleConditionalChainTeleport extends
+        GenericConditionalTeleport {
     // Constructors
     public InvisibleConditionalChainTeleport() {
         super();
@@ -35,13 +35,14 @@ public class InvisibleConditionalChainTeleport
             testVal = 0;
         }
         if (testVal >= this.getTriggerValue()) {
-            app.getGameManager().updatePositionAbsoluteNoEvents(
-                    this.getDestinationRow2(), this.getDestinationColumn2(),
-                    this.getDestinationFloor2(), this.getDestinationLevel());
+            app.getGameManager().updatePositionAbsoluteNoEvents(this
+                    .getDestinationRow2(), this.getDestinationColumn2(), this
+                            .getDestinationFloor2(), this
+                                    .getDestinationLevel());
         } else {
-            app.getGameManager().updatePositionAbsoluteNoEvents(
-                    this.getDestinationRow(), this.getDestinationColumn(),
-                    this.getDestinationFloor(), this.getDestinationLevel());
+            app.getGameManager().updatePositionAbsoluteNoEvents(this
+                    .getDestinationRow(), this.getDestinationColumn(), this
+                            .getDestinationFloor(), this.getDestinationLevel());
         }
         Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
@@ -68,8 +69,8 @@ public class InvisibleConditionalChainTeleport
         return "Empty";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_CONDITIONAL_CHAIN_TELEPORT;
-    }}
+    }
+}

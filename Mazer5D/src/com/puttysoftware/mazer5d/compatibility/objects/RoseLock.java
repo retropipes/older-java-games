@@ -44,8 +44,8 @@ public class RoseLock extends GenericSingleLock {
         return "Rose Locks require Rose Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROSE_LOCK;
-    }}
+    }
+}

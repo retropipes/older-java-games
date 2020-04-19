@@ -18,8 +18,6 @@ import com.puttysoftware.mazer5d.gui.BagOStuff;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 
-
-
 public abstract class GenericMovableObject extends MazeObjectModel {
     // Fields
     private MazeObjectModel savedObject;
@@ -95,9 +93,7 @@ public abstract class GenericMovableObject extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        
-        this.savedObject = GameObjects
-                .readObject(reader, formatVersion);
+        this.savedObject = GameObjects.readObject(reader, formatVersion);
         return this;
     }
 

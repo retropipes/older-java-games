@@ -29,8 +29,8 @@ public class SealingWall extends GenericWall {
         return "Sealing Walls are impassable and impossible to destroy.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEALING_WALL;
-    }}
+    }
+}

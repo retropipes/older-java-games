@@ -139,13 +139,13 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
             testVal = 0;
         }
         if (testVal >= this.triggerVal) {
-            app.getGameManager().updatePositionAbsolute(
-                    this.getDestinationRow2(), this.getDestinationColumn2(),
-                    this.getDestinationFloor2());
+            app.getGameManager().updatePositionAbsolute(this
+                    .getDestinationRow2(), this.getDestinationColumn2(), this
+                            .getDestinationFloor2());
         } else {
-            app.getGameManager().updatePositionAbsolute(
-                    this.getDestinationRow(), this.getDestinationColumn(),
-                    this.getDestinationFloor());
+            app.getGameManager().updatePositionAbsolute(this
+                    .getDestinationRow(), this.getDestinationColumn(), this
+                            .getDestinationFloor());
         }
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
         this.postMoveActionHook();
@@ -170,8 +170,8 @@ public abstract class GenericConditionalTeleport extends GenericTeleport {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff().showMessage(
-                this.getName() + ": Trigger Value " + this.triggerVal);
+        Mazer5D.getBagOStuff().showMessage(this.getName() + ": Trigger Value "
+                + this.triggerVal);
     }
 
     @Override

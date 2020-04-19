@@ -44,8 +44,8 @@ public class BlueLock extends GenericSingleLock {
         return "Blue Locks require Blue Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BLUE_LOCK;
-    }}
+    }
+}

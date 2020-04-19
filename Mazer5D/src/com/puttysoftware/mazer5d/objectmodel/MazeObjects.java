@@ -416,6 +416,6 @@ public enum MazeObjects {
 
     @Override
     public String toString() {
-        return Integer.toString(ordinal());
+        return Integer.toString(this.ordinal());
     }
 }

@@ -44,8 +44,8 @@ public class CyanLock extends GenericSingleLock {
         return "Cyan Locks require Cyan Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CYAN_LOCK;
-    }}
+    }
+}

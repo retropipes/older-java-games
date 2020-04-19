@@ -14,7 +14,8 @@ public class ZPort extends GenericPort {
         super(new ZPlug(), 'Z');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
-        return MazeObjects.Z_PORT;    }}
+        return MazeObjects.Z_PORT;
+    }
+}

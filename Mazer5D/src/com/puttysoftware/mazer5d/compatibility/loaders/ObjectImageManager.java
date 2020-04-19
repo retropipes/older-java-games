@@ -22,8 +22,8 @@ public class ObjectImageManager {
     private static final Color TRANSPARENT = new Color(200, 100, 100);
     private static Color REPLACE = new Color(223, 223, 223);
 
-    public static BufferedImageIcon getTransformedImage(final MazeObjectModel obj,
-            final boolean game) {
+    public static BufferedImageIcon getTransformedImage(
+            final MazeObjectModel obj, final boolean game) {
         try {
             final BufferedImageIcon icon = ObjectImageCache
                     .getCachedObjectImage(obj, game);
@@ -36,8 +36,8 @@ public class ObjectImageManager {
                         final int pixel = icon.getRGB(x, y);
                         final Color c = new Color(pixel);
                         if (c.equals(ObjectImageManager.TRANSPARENT)) {
-                            result.setRGB(x, y,
-                                    ObjectImageManager.REPLACE.getRGB());
+                            result.setRGB(x, y, ObjectImageManager.REPLACE
+                                    .getRGB());
                         }
                     }
                 }
@@ -52,8 +52,9 @@ public class ObjectImageManager {
         }
     }
 
-    public static BufferedImageIcon getCompositeImage(final MazeObjectModel obj1,
-            final MazeObjectModel obj2, final boolean game) {
+    public static BufferedImageIcon getCompositeImage(
+            final MazeObjectModel obj1, final MazeObjectModel obj2,
+            final boolean game) {
         try {
             final BufferedImageIcon icon1 = ObjectImageCache
                     .getCachedObjectImage(obj1, game);
@@ -84,8 +85,8 @@ public class ObjectImageManager {
     }
 
     public static BufferedImageIcon getVirtualCompositeImage(
-            final MazeObjectModel obj1, final MazeObjectModel obj2, final MazeObjectModel obj3,
-            final boolean game) {
+            final MazeObjectModel obj1, final MazeObjectModel obj2,
+            final MazeObjectModel obj3, final boolean game) {
         try {
             final BufferedImageIcon icon3 = ObjectImageCache
                     .getCachedObjectImage(obj3, game);
@@ -148,8 +149,8 @@ public class ObjectImageManager {
     private static String normalizeName(final String name) {
         final StringBuffer sb = new StringBuffer(name);
         for (int x = 0; x < sb.length(); x++) {
-            if (!Character.isLetter(sb.charAt(x))
-                    && !Character.isDigit(sb.charAt(x))) {
+            if (!Character.isLetter(sb.charAt(x)) && !Character.isDigit(sb
+                    .charAt(x))) {
                 sb.setCharAt(x, '_');
             }
         }

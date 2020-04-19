@@ -14,7 +14,8 @@ import com.puttysoftware.storage.FlagStorage;
 class VisionProperties {
     // Private enumeration
     private enum VisionDataTypes {
-        EXTERNAL(0), INTERNAL(1);
+        EXTERNAL(0),
+        INTERNAL(1);
 
         private int index;
 
@@ -59,8 +60,8 @@ class VisionProperties {
     public boolean isSightBlocking() {
         boolean result = false;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result || this.visionData
-                    .getCell(VisionDataTypes.EXTERNAL.index, dir);
+            result = result || this.visionData.getCell(
+                    VisionDataTypes.EXTERNAL.index, dir);
         }
         return result;
     }
@@ -68,8 +69,8 @@ class VisionProperties {
     public boolean isInternallySightBlocking() {
         boolean result = false;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result || this.visionData
-                    .getCell(VisionDataTypes.INTERNAL.index, dir);
+            result = result || this.visionData.getCell(
+                    VisionDataTypes.INTERNAL.index, dir);
         }
         return result;
     }

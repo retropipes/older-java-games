@@ -33,8 +33,8 @@ public class IceBow extends GenericBow {
         return "Ice Bows allow shooting of Ice Arrows, which freeze Barrier Generators upon contact, and do everything normal arrows do.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ICE_BOW;
-    }}
+    }
+}

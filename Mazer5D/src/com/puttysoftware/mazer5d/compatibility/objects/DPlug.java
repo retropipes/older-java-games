@@ -14,8 +14,8 @@ public class DPlug extends GenericPlug {
         super('D');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.D_PLUG;
-    }}
+    }
+}

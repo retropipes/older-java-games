@@ -30,8 +30,8 @@ public class Amethyst extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(Amethyst.SCORE_INCREASE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                Amethyst.SCORE_INCREASE);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class Amethyst extends GenericScoreIncreaser {
         return "Amethysts increase your score when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.AMETHYST;
-    }}
+    }
+}

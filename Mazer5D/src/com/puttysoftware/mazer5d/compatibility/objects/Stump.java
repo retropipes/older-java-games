@@ -37,8 +37,8 @@ public class Stump extends GenericWall {
         return "Stumps stop movement, but not arrows.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.STUMP;
-    }}
+    }
+}

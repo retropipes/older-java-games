@@ -41,8 +41,8 @@ public class TrueSightAmulet extends GenericAmulet {
                 TrueSightAmulet.EFFECT_DURATION);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TRUE_SIGHT_AMULET;
-    }}
+    }
+}

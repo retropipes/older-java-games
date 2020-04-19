@@ -47,8 +47,8 @@ public abstract class GenericLock extends MazeObjectModel {
             return false;
         }
         final GenericLock other = (GenericLock) obj;
-        if (this.key != other.key
-                && (this.key == null || !this.key.equals(other.key))) {
+        if (this.key != other.key && (this.key == null || !this.key.equals(
+                other.key))) {
             return false;
         }
         return true;
@@ -86,16 +86,16 @@ public abstract class GenericLock extends MazeObjectModel {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        if (!app.getGameManager()
-                .isEffectActive(MazeEffectConstants.EFFECT_GHOSTLY)
-                && !inv.isItemThere(MazeObjects.PASSWALL_BOOTS)) {
+        if (!app.getGameManager().isEffectActive(
+                MazeEffectConstants.EFFECT_GHOSTLY) && !inv.isItemThere(
+                        MazeObjects.PASSWALL_BOOTS)) {
             if (!this.key.isInfinite()) {
                 inv.removeItem(this.key.getUniqueID());
             }
             app.getGameManager().decay();
             SoundPlayer.playSound(SoundIndex.UNLOCK, SoundGroup.GAME);
-            Mazer5D.getBagOStuff().getGameManager()
-                    .addToScore(GenericLock.SCORE_UNLOCK);
+            Mazer5D.getBagOStuff().getGameManager().addToScore(
+                    GenericLock.SCORE_UNLOCK);
         } else {
             SoundPlayer.playSound(SoundIndex.WALK, SoundGroup.GAME);
         }
@@ -110,8 +110,8 @@ public abstract class GenericLock extends MazeObjectModel {
     public boolean isConditionallyDirectionallySolid(final boolean ie,
             final int dirX, final int dirY, final ObjectInventory inv) {
         // Handle passwall boots and ghost amulet
-        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS)
-                || inv.isItemThere(MazeObjects.GHOST_AMULET)) {
+        if (inv.isItemThere(MazeObjects.PASSWALL_BOOTS) || inv.isItemThere(
+                MazeObjects.GHOST_AMULET)) {
             return false;
         } else {
             return !inv.isItemThere(this.key.getUniqueID());

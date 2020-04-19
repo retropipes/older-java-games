@@ -52,8 +52,8 @@ public class Lava extends GenericField {
         return "Lava is too hot to walk on without Fire Boots.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.LAVA;
-    }}
+    }
+}

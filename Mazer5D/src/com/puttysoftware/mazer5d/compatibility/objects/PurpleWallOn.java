@@ -30,8 +30,8 @@ public class PurpleWallOn extends GenericToggleWall {
         return "Purple Walls On can NOT be walked through, and will change to Purple Walls Off when a Purple Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PURPLE_WALL_ON;
-    }}
+    }
+}

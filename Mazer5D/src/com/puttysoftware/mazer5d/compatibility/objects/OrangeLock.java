@@ -44,8 +44,8 @@ public class OrangeLock extends GenericSingleLock {
         return "Orange Locks require Orange Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ORANGE_LOCK;
-    }}
+    }
+}

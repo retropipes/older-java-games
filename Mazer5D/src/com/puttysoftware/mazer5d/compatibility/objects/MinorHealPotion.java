@@ -33,8 +33,8 @@ public class MinorHealPotion extends GenericPotion {
         return "Minor Heal Potions heal you slightly when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MINOR_HEAL_POTION;
-    }}
+    }
+}

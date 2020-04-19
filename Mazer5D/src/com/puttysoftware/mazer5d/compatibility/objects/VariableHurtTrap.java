@@ -45,8 +45,8 @@ public class VariableHurtTrap extends GenericTrap {
         }
         this.damageDealt = new RandomRange(VariableHurtTrap.MIN_DAMAGE,
                 this.maxDamage);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .doDamage(this.damageDealt.generate());
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(
+                this.damageDealt.generate());
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
@@ -56,8 +56,8 @@ public class VariableHurtTrap extends GenericTrap {
         return "Variable Hurt Traps hurt you when stepped on, then disappear.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.VARIABLE_HURT_TRAP;
-    }}
+    }
+}

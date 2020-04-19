@@ -60,8 +60,8 @@ public class WarpTrap extends GenericTrap {
         return "Warp Traps send anything that steps on one to a random location.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WARP_TRAP;
-    }}
+    }
+}

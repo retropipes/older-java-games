@@ -37,8 +37,8 @@ public class WallMakingWand extends GenericWand {
         return "Wall-Making Wands will create an ordinary wall in the target square when used.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WALL_MAKING_WAND;
-    }}
+    }
+}

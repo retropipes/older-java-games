@@ -30,8 +30,8 @@ public class WhiteWallOn extends GenericToggleWall {
         return "White Walls On can NOT be walked through, and will change to White Walls Off when a White Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WHITE_WALL_ON;
-    }}
+    }
+}

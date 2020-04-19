@@ -44,8 +44,8 @@ public class RedLock extends GenericSingleLock {
         return "Red Locks require Red Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RED_LOCK;
-    }}
+    }
+}

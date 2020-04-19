@@ -30,8 +30,8 @@ public class SkyKey extends GenericSingleKey {
         return "Sky Keys will unlock Sky Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_KEY;
-    }}
+    }
+}

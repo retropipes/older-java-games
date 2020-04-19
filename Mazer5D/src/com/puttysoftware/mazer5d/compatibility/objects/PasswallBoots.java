@@ -29,8 +29,8 @@ public class PasswallBoots extends GenericBoots {
         return "Passwall Boots allow you to pass through most walls as you walk. Note that you can only wear one pair of boots at once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PASSWALL_BOOTS;
-    }}
+    }
+}

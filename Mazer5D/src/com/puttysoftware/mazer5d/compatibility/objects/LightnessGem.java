@@ -40,8 +40,8 @@ public class LightnessGem extends GenericGem {
         return "Lightness Gems increase the visible area by 1.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.LIGHTNESS_GEM;
-    }}
+    }
+}

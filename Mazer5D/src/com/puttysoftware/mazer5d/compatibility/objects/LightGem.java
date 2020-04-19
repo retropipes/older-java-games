@@ -29,8 +29,8 @@ public class LightGem extends GenericLightModifier {
         return "Light Gems bathe the immediately adjacent area in permanent light.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.LIGHT_GEM;
-    }}
+    }
+}

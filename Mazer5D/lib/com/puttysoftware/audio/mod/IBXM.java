@@ -75,12 +75,12 @@ public class IBXM {
         this.globalVol.volume = this.module.defaultGVol;
         this.speed = this.module.defaultSpeed > 0 ? this.module.defaultSpeed
                 : 6;
-        this.setTempo(
-                this.module.defaultTempo > 0 ? this.module.defaultTempo : 125);
+        this.setTempo(this.module.defaultTempo > 0 ? this.module.defaultTempo
+                : 125);
         this.plCount = this.plChannel = -1;
         for (int idx = 0; idx < this.module.numChannels; idx++) {
-            this.channels[idx] = new Channel(this.module, idx,
-                    this.sampleRate * IBXM.OVERSAMPLE, this.globalVol);
+            this.channels[idx] = new Channel(this.module, idx, this.sampleRate
+                    * IBXM.OVERSAMPLE, this.globalVol);
         }
         for (int idx = 0, end = this.rampLen * 2; idx < end; idx++) {
             this.rampBuffer[idx] = 0;

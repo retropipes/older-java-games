@@ -27,8 +27,8 @@ public class MazeEffect {
         final int prime = 31;
         int result = 1;
         result = prime * result + this.initialRounds;
-        result = prime * result
-                + (this.name == null ? 0 : this.name.hashCode());
+        result = prime * result + (this.name == null ? 0
+                : this.name.hashCode());
         result = prime * result + this.rounds;
         return result;
     }

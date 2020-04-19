@@ -20,9 +20,8 @@ public final class DirectoryUtilities {
             }
             final String[] children = sourceLocation.list();
             for (final String element : children) {
-                DirectoryUtilities.copyDirectory(
-                        new File(sourceLocation, element),
-                        new File(targetLocation, element));
+                DirectoryUtilities.copyDirectory(new File(sourceLocation,
+                        element), new File(targetLocation, element));
             }
         } else {
             try (InputStream in = new FileInputStream(sourceLocation);

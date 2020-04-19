@@ -36,11 +36,9 @@ public class Pit extends StairsDown {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        return this
-                .searchNestedPits(dirX, dirY,
-                        Mazer5D.getBagOStuff().getGameManager()
-                                .getPlayerManager().getPlayerLocationZ() - 1,
-                        inv);
+        return this.searchNestedPits(dirX, dirY, Mazer5D.getBagOStuff()
+                .getGameManager().getPlayerManager().getPlayerLocationZ() - 1,
+                inv);
     }
 
     private boolean searchNestedPits(final int dirX, final int dirY,
@@ -52,16 +50,16 @@ public class Pit extends StairsDown {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(dirX,
-                    dirY, floor, Layers.OBJECT);
+            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(
+                    dirX, dirY, floor, Layers.OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
-                if (obj.getName().equals("Pit")
-                        || obj.getName().equals("Invisible Pit")) {
+                if (obj.getName().equals("Pit") || obj.getName().equals(
+                        "Invisible Pit")) {
                     return this.searchNestedPits(dirX, dirY, floor - 1, inv);
-                } else if (obj.getName().equals("Springboard")
-                        || obj.getName().equals("Invisible Springboard")) {
+                } else if (obj.getName().equals("Springboard") || obj.getName()
+                        .equals("Invisible Springboard")) {
                     return false;
                 } else {
                     return true;
@@ -83,21 +81,22 @@ public class Pit extends StairsDown {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y,
+            final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         try {
             this.searchNestedPits(x, y, z - 1, inv);
             if (pushed.isPushable()) {
                 final GenericMovableObject pushedInto = (GenericMovableObject) pushed;
-                app.getGameManager().updatePushedIntoPositionAbsolute(x, y,
-                        z - 1, x, y, z, pushedInto, this);
+                app.getGameManager().updatePushedIntoPositionAbsolute(x, y, z
+                        - 1, x, y, z, pushedInto, this);
                 SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT,
                         SoundGroup.GAME);
             }
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.FALL_INTO_PIT, SoundGroup.GAME);
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .setCell(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().setCell(
+                    GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
         }
     }
 
@@ -131,8 +130,8 @@ public class Pit extends StairsDown {
         return "Pits dump anything that wanders in to the floor below. If one of these is placed on the bottom-most floor, it is impassable.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PIT;
-    }}
+    }
+}

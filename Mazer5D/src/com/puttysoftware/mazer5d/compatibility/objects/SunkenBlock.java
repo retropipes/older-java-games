@@ -29,8 +29,8 @@ public class SunkenBlock extends GenericGround {
         return "Sunken Blocks are created when Pushable Blocks are pushed into Water, and behave just like Tiles.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SUNKEN_BLOCK;
-    }}
+    }
+}

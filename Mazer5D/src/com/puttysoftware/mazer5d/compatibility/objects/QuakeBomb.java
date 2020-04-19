@@ -45,8 +45,8 @@ public class QuakeBomb extends GenericUsableObject {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         // Stop arrow
         return false;
     }
@@ -56,8 +56,8 @@ public class QuakeBomb extends GenericUsableObject {
             final int z) {
         SoundPlayer.playSound(SoundIndex.EXPLODE, SoundGroup.GAME);
         // Earthquake
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .radialScanQuakeBomb(x, y, z, QuakeBomb.EFFECT_RADIUS);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().radialScanQuakeBomb(x,
+                y, z, QuakeBomb.EFFECT_RADIUS);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class QuakeBomb extends GenericUsableObject {
         this.useAction(null, x, y, z);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.QUAKE_BOMB;
-    }}
+    }
+}

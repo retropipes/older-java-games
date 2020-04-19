@@ -30,8 +30,8 @@ public class CyanKey extends GenericSingleKey {
         return "Cyan Keys will unlock Cyan Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CYAN_KEY;
-    }}
+    }
+}

@@ -35,13 +35,14 @@ public class XMLLoadTask extends Thread {
         this.isSavedGame = saved;
         this.setName("XML File Loader");
         this.loadFrame = new JFrame("Loading...");
-        this.loadFrame.setIconImage(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
+        this.loadFrame.setIconImage(LogoImageLoader.load(
+                LogoImageIndex.MICRO_LOGO));
         this.loadBar = new JProgressBar();
         this.loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(this.loadBar);
         this.loadFrame.setResizable(false);
-        this.loadFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.loadFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.loadFrame.pack();
     }
 
@@ -62,8 +63,8 @@ public class XMLLoadTask extends Thread {
         try {
             final File mazeFile = new File(this.filename);
             this.gameMaze = new MazeModel();
-            ZipUtilities.unzipDirectory(mazeFile,
-                    new File(this.gameMaze.getBasePath()));
+            ZipUtilities.unzipDirectory(mazeFile, new File(this.gameMaze
+                    .getBasePath()));
             // Set prefix handler
             this.gameMaze.setXMLPrefixHandler(new XMLPrefixHandler());
             // Set suffix handler
@@ -82,9 +83,9 @@ public class XMLLoadTask extends Thread {
             final boolean playerExists = this.gameMaze.doesPlayerExist();
             if (playerExists) {
                 app.getGameManager().getPlayerManager().setPlayerLocation(
-                        this.gameMaze.getStartColumn(),
-                        this.gameMaze.getStartRow(),
-                        this.gameMaze.getStartFloor(), startW);
+                        this.gameMaze.getStartColumn(), this.gameMaze
+                                .getStartRow(), this.gameMaze.getStartFloor(),
+                        startW);
                 app.getGameManager().resetViewingWindow();
             }
             if (!this.isSavedGame) {

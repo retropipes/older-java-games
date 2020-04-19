@@ -39,8 +39,8 @@ public class HalfHourglass extends GenericTimeModifier {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .extendTimerByInitialValueHalved();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(HalfHourglass.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                HalfHourglass.SCORE_GRAB);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class HalfHourglass extends GenericTimeModifier {
         return "Half Hourglasses extend the time to solve the current level by half the initial value.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HALF_HOURGLASS;
-    }}
+    }
+}

@@ -21,8 +21,8 @@ public abstract class VersionException extends RuntimeException {
     }
 
     @SuppressWarnings("static-method")
-    private void readObject(final ObjectInputStream in)
-            throws IOException, ClassNotFoundException {
+    private void readObject(final ObjectInputStream in) throws IOException,
+            ClassNotFoundException {
         throw new NotSerializableException();
     }
 }

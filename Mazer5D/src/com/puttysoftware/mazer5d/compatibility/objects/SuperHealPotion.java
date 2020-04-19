@@ -27,8 +27,7 @@ public class SuperHealPotion extends GenericPotion {
 
     @Override
     public int getEffectValue() {
-        return Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .getMaximumHP();
+        return Mazer5D.getBagOStuff().getMazeManager().getMaze().getMaximumHP();
     }
 
     @Override
@@ -36,8 +35,8 @@ public class SuperHealPotion extends GenericPotion {
         return "Super Heal Potions heal you completely when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SUPER_HEAL_POTION;
-    }}
+    }
+}

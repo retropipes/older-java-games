@@ -29,8 +29,8 @@ public class PullableBlock extends GenericMovableObject {
         return "Pullable Blocks can only be pulled, not pushed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PULLABLE_BLOCK;
-    }}
+    }
+}

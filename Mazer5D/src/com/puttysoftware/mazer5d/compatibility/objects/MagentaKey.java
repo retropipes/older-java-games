@@ -30,8 +30,8 @@ public class MagentaKey extends GenericSingleKey {
         return "Magenta Keys will unlock Magenta Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAGENTA_KEY;
-    }}
+    }
+}

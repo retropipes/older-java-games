@@ -187,7 +187,6 @@ public final class GameObjects {
         return new MazeObject(uid);
     }
 
-
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df) {
         // FIXME: Stub
@@ -206,7 +205,7 @@ public final class GameObjects {
         if (formatVersion == MazeVersions.LATEST) {
             UID = reader.readMazeObjectID();
         }
-        MazeObjectModel o = new MazeObject(UID);
+        final MazeObjectModel o = new MazeObject(UID);
         o.loadState(reader, UID);
         return o;
     }

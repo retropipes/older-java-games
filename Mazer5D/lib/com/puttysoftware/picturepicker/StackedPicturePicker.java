@@ -99,15 +99,14 @@ public final class StackedPicturePicker {
                     this.choiceArray[picCounter] = new JLabel("", //$NON-NLS-1$
                             this.choices[picCounter], SwingConstants.LEFT);
                     this.choiceArray[picCounter].setOpaque(true);
-                    this.choiceArray[picCounter]
-                            .setBackground(this.savedCHColor);
+                    this.choiceArray[picCounter].setBackground(
+                            this.savedCHColor);
                     this.pickerContainer.add(this.choiceArray[picCounter]);
                 } else if (rowCounter == rows - 2) {
                     // Add spacer
                     final JLabel spacer = new JLabel("", //$NON-NLS-1$
                             new BufferedImageIcon(this.imageSize,
-                                    this.savedCHColor),
-                            SwingConstants.LEFT);
+                                    this.savedCHColor), SwingConstants.LEFT);
                     this.pickerContainer.add(spacer);
                 }
                 picCounter++;
@@ -116,24 +115,23 @@ public final class StackedPicturePicker {
             for (int y = 0; y < this.stackCount; y++) {
                 if (radioCounter < this.choices.length) {
                     this.radioButtons[radioCounter] = new JRadioButton();
-                    this.radioButtons[radioCounter]
-                            .setHorizontalAlignment(SwingConstants.CENTER);
+                    this.radioButtons[radioCounter].setHorizontalAlignment(
+                            SwingConstants.CENTER);
                     this.radioButtons[radioCounter].setOpaque(true);
-                    this.radioButtons[radioCounter]
-                            .setBackground(this.savedCHColor);
-                    this.radioButtons[radioCounter].setActionCommand(
-                            Integer.valueOf(radioCounter).toString());
+                    this.radioButtons[radioCounter].setBackground(
+                            this.savedCHColor);
+                    this.radioButtons[radioCounter].setActionCommand(Integer
+                            .valueOf(radioCounter).toString());
                     this.radioGroup.add(this.radioButtons[radioCounter]);
-                    this.radioButtons[radioCounter]
-                            .addActionListener(this.handler);
+                    this.radioButtons[radioCounter].addActionListener(
+                            this.handler);
                     this.radioButtons[x].setEnabled(enabled[x]);
                     this.pickerContainer.add(this.radioButtons[radioCounter]);
                 } else if (rowCounter == rows - 1) {
                     // Add spacer
                     final JLabel spacer = new JLabel("", //$NON-NLS-1$
                             new BufferedImageIcon(this.imageSize,
-                                    this.savedCHColor),
-                            SwingConstants.LEFT);
+                                    this.savedCHColor), SwingConstants.LEFT);
                     this.pickerContainer.add(spacer);
                 }
                 radioCounter++;
@@ -154,8 +152,8 @@ public final class StackedPicturePicker {
                 .preferredLayoutSize(this.pickerContainer).width;
         final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
                 .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(
-                new Dimension(newPreferredWidth, newPreferredHeight));
+        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
+                newPreferredHeight));
     }
 
     public void selectLastPickedChoice(final int lastPicked) {

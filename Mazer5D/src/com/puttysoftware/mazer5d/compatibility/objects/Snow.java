@@ -29,8 +29,8 @@ public class Snow extends GenericGround {
         return "Snow is one of the many types of ground.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SNOW;
-    }}
+    }
+}

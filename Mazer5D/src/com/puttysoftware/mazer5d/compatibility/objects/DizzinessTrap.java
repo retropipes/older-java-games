@@ -48,8 +48,8 @@ public class DizzinessTrap extends GenericTrap {
         return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DIZZINESS_TRAP;
-    }}
+    }
+}

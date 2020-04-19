@@ -40,15 +40,15 @@ public class BreakableWallVertical extends GenericWall {
         String mo2Name, mo8Name, invalidName, currName;
         invalidName = new Bounds().getName();
         currName = curr.getName();
-        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x, y - 1, z,
-                Layers.OBJECT);
+        final MazeObjectModel mo2 = app.getMazeManager().getMazeObject(x, y - 1,
+                z, Layers.OBJECT);
         try {
             mo2Name = mo2.getName();
         } catch (final NullPointerException np) {
             mo2Name = invalidName;
         }
-        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(x, y + 1, z,
-                Layers.OBJECT);
+        final MazeObjectModel mo8 = app.getMazeManager().getMazeObject(x, y + 1,
+                z, Layers.OBJECT);
         try {
             mo8Name = mo8.getName();
         } catch (final NullPointerException np) {
@@ -83,8 +83,8 @@ public class BreakableWallVertical extends GenericWall {
         return "Breakable Walls Vertical disintegrate when touched, causing other Breakable Walls Vertical nearby to also disintegrate.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BREAKABLE_WALL_VERTICAL;
-    }}
+    }
+}

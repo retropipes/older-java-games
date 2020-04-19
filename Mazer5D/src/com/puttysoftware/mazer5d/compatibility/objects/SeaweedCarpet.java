@@ -14,8 +14,8 @@ public class SeaweedCarpet extends GenericCarpet {
         super("Seaweed");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_CARPET;
-    }}
+    }
+}

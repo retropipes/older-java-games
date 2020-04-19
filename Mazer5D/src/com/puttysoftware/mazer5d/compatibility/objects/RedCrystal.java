@@ -14,8 +14,8 @@ public class RedCrystal extends GenericProgrammableKey {
         super("Red");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RED_CRYSTAL;
-    }}
+    }
+}

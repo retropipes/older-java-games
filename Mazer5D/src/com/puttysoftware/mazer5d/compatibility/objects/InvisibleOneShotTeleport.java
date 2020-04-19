@@ -67,8 +67,8 @@ public class InvisibleOneShotTeleport extends GenericInvisibleTeleport {
         return "Invisible One-Shot Teleports are a combination of invisible and one-shot teleport behaviors.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_ONE_SHOT_TELEPORT;
-    }}
+    }
+}

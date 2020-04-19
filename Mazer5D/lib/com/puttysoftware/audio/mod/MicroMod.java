@@ -12,8 +12,8 @@ import javax.sound.sampled.SourceDataLine;
 
 public class MicroMod {
     private static final int SAMPLE_RATE = 41000;
-    private Module module;
-    private IBXM ibxm;
+    private final Module module;
+    private final IBXM ibxm;
     private volatile boolean playing;
     private int interpolation;
     private Thread playThread;
@@ -64,8 +64,8 @@ public class MicroMod {
                 AudioFormat audioFormat = null;
                 audioFormat = new AudioFormat(MicroMod.SAMPLE_RATE, 16, 2, true,
                         true);
-                try (SourceDataLine audioLine = AudioSystem
-                        .getSourceDataLine(audioFormat)) {
+                try (SourceDataLine audioLine = AudioSystem.getSourceDataLine(
+                        audioFormat)) {
                     audioLine.open();
                     audioLine.start();
                     while (MicroMod.this.playing) {

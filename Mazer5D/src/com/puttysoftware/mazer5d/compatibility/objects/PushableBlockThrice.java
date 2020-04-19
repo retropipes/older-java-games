@@ -47,8 +47,8 @@ public class PushableBlockThrice extends GenericMovableObject {
         return "Pushable Blocks Thrice can only be pushed three times, before turning into a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PUSHABLE_BLOCK_THRICE;
-    }}
+    }
+}

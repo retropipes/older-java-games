@@ -35,8 +35,8 @@ public class Teleport extends GenericTeleport {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_GENERIC);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_GENERIC);
         return mo;
     }
 
@@ -45,8 +45,8 @@ public class Teleport extends GenericTeleport {
         return "Teleports send you to a predetermined destination when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TELEPORT;
-    }}
+    }
+}

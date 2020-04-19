@@ -28,8 +28,8 @@ public class BlueButton extends GenericButton {
         return "Blue Buttons will cause all Blue Walls Off to become On, and all Blue Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BLUE_BUTTON;
-    }}
+    }
+}

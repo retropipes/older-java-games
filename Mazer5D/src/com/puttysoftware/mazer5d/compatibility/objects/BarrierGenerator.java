@@ -56,8 +56,8 @@ public class BarrierGenerator extends GenericGenerator {
         }
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BARRIER_GENERATOR;
-    }}
+    }
+}

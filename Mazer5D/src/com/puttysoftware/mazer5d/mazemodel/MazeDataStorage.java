@@ -228,12 +228,12 @@ public class MazeDataStorage {
      *             if an I/O error occurs
      */
     public final void dumpState(final XDataWriter writer) throws IOException {
-        int slen = this.dataShape.length;
+        final int slen = this.dataShape.length;
         writer.writeInt(slen);
         for (int s = 0; s < slen; s++) {
             writer.writeInt(this.dataShape[s]);
         }
-        int dlen = this.getRawLength();
+        final int dlen = this.getRawLength();
         for (int i = 0; i < dlen; i++) {
             this.dataStore[i].dumpState(writer);
         }
@@ -252,13 +252,13 @@ public class MazeDataStorage {
      */
     public static MazeDataStorage loadState(final XDataReader reader,
             final MazeVersion formatVersion) throws IOException {
-        int slen = reader.readInt();
-        int[] shape = new int[slen];
+        final int slen = reader.readInt();
+        final int[] shape = new int[slen];
         for (int s = 0; s < slen; s++) {
             shape[s] = reader.readInt();
         }
-        MazeDataStorage loaded = new MazeDataStorage(shape);
-        int dlen = loaded.getRawLength();
+        final MazeDataStorage loaded = new MazeDataStorage(shape);
+        final int dlen = loaded.getRawLength();
         for (int i = 0; i < dlen; i++) {
             loaded.setRawCell(GameObjects.readObject(reader, formatVersion), i);
         }

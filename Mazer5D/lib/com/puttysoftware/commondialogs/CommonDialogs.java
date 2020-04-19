@@ -202,8 +202,8 @@ public class CommonDialogs {
             final String value = CommonDialogs.showInputDialog(prompt, "Open",
                     choices, choices[0]);
             if (value != null) {
-                return new File(
-                        dir.getAbsolutePath() + File.separator + value + ext);
+                return new File(dir.getAbsolutePath() + File.separator + value
+                        + ext);
             }
         }
         return null;

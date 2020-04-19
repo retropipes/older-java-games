@@ -29,8 +29,8 @@ public class SilverSquare extends GenericMultipleKey {
         return "Silver Squares are the keys to Silver Walls.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SILVER_SQUARE;
-    }}
+    }
+}

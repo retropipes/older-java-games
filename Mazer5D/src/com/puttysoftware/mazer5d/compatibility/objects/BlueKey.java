@@ -30,8 +30,8 @@ public class BlueKey extends GenericSingleKey {
         return "Blue Keys will unlock Blue Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BLUE_KEY;
-    }}
+    }
+}

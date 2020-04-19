@@ -65,9 +65,9 @@ public class StairsUp extends GenericTeleport {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         SoundPlayer.playSound(SoundIndex.UP, SoundGroup.GAME);
     }
 
@@ -102,8 +102,8 @@ public class StairsUp extends GenericTeleport {
         // Do nothing
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.STAIRS_UP;
-    }}
+    }
+}

@@ -13,8 +13,6 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 
-
-
 public abstract class GenericScoreIncreaser extends MazeObjectModel {
     // Constructors
     protected GenericScoreIncreaser() {
@@ -47,8 +45,8 @@ public abstract class GenericScoreIncreaser extends MazeObjectModel {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
         return false;
     }

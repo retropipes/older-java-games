@@ -27,15 +27,14 @@ public class XMLRuleSetSaveTask extends Thread {
     public void run() {
         final String sg = "Rule Set";
         // filename check
-        final boolean hasExtension = XMLRuleSetSaveTask
-                .hasExtension(this.filename);
+        final boolean hasExtension = XMLRuleSetSaveTask.hasExtension(
+                this.filename);
         if (!hasExtension) {
             this.filename += XMLExtension.getXMLRuleSetExtensionWithPeriod();
         }
         try (XDataWriter ruleSetFile = new XDataWriter(this.filename,
                 "ruleset")) {
             ruleSetFile.writeInt(RuleSetConstants.MAGIC_NUMBER_2);
-
             GameObjects.writeRuleSet(ruleSetFile);
             CommonDialogs.showTitledDialog(sg + " file saved.",
                     "Rule Set Picker");

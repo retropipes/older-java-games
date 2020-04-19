@@ -14,8 +14,8 @@ public class JPort extends GenericPort {
         super(new JPlug(), 'J');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.J_PORT;
-    }}
+    }
+}

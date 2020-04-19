@@ -30,8 +30,7 @@ public class Ruby extends GenericScoreIncreaser {
 
     @Override
     public void postMoveActionHook() {
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(Ruby.SCORE_INCREASE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(Ruby.SCORE_INCREASE);
     }
 
     @Override
@@ -39,8 +38,8 @@ public class Ruby extends GenericScoreIncreaser {
         return "Rubys increase your score when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RUBY;
-    }}
+    }
+}

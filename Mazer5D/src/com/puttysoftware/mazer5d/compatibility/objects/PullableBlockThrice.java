@@ -47,8 +47,8 @@ public class PullableBlockThrice extends GenericMovableObject {
         return "Pullable Blocks Thrice can only be pulled three times, before turning into a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PULLABLE_BLOCK_THRICE;
-    }}
+    }
+}

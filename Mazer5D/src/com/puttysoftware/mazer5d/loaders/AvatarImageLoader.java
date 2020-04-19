@@ -29,12 +29,12 @@ public class AvatarImageLoader {
                 Mazer5D.logError(e);
             }
         }
-        final String imageExt = AvatarImageLoader.fileExtensions
-                .getProperty("images");
-        final String name = "/assets/image/avatars/"
-                + Integer.toString(familyID) + imageExt;
-        return rules.applyAll(ImageLoader.load(name,
-                AvatarImageLoader.class.getResource(name)));
+        final String imageExt = AvatarImageLoader.fileExtensions.getProperty(
+                "images");
+        final String name = "/assets/image/avatars/" + Integer.toString(
+                familyID) + imageExt;
+        return rules.applyAll(ImageLoader.load(name, AvatarImageLoader.class
+                .getResource(name)));
     }
 
     public static void cacheAll() {
@@ -46,11 +46,11 @@ public class AvatarImageLoader {
         } catch (final IOException e) {
             Mazer5D.logError(e);
         }
-        final String imageExt = AvatarImageLoader.fileExtensions
-                .getProperty("images");
+        final String imageExt = AvatarImageLoader.fileExtensions.getProperty(
+                "images");
         for (int familyID = 0; familyID <= AvatarImageLoader.MAX_FAMILY_INDEX; familyID++) {
-            final String name = "/assets/image/avatar/"
-                    + Integer.toString(familyID) + imageExt;
+            final String name = "/assets/image/avatar/" + Integer.toString(
+                    familyID) + imageExt;
             ImageLoader.load(name, AvatarImageLoader.class.getResource(name));
         }
     }

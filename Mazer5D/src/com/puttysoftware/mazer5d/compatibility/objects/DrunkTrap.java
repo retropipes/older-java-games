@@ -47,8 +47,8 @@ public class DrunkTrap extends GenericTrap {
         return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DRUNK_TRAP;
-    }}
+    }
+}

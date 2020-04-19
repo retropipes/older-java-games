@@ -14,8 +14,8 @@ public class SkyCrystal extends GenericProgrammableKey {
         super("Sky");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_CRYSTAL;
-    }}
+    }
+}

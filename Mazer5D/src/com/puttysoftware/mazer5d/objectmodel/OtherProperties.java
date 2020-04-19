@@ -86,8 +86,8 @@ class OtherProperties {
     }
 
     public boolean isChainReacting() {
-        return this.isChainReactingHorizontally()
-                && this.isChainReactingVertically();
+        return this.isChainReactingHorizontally() && this
+                .isChainReactingVertically();
     }
 
     public boolean isChainReactingHorizontally() {

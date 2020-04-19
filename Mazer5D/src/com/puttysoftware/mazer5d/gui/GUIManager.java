@@ -41,8 +41,8 @@ public class GUIManager implements QuitHandler {
         this.cHandler = new CloseHandler();
         this.guiFrame = new JFrame("Mazer5D");
         this.guiPane = this.guiFrame.getContentPane();
-        this.guiFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.guiFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.guiFrame.setLayout(new GridLayout(1, 1));
         this.logoLabel = new JLabel("", null, SwingConstants.CENTER);
         this.logoLabel.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -79,7 +79,8 @@ public class GUIManager implements QuitHandler {
     }
 
     public void updateLogo() {
-        final BufferedImageIcon logo = LogoImageLoader.load(LogoImageIndex.MINI_LOGO);
+        final BufferedImageIcon logo = LogoImageLoader.load(
+                LogoImageIndex.MINI_LOGO);
         this.logoLabel.setIcon(logo);
         final Image iconlogo = LogoImageLoader.load(LogoImageIndex.MICRO_LOGO);
         this.guiFrame.setIconImage(iconlogo);

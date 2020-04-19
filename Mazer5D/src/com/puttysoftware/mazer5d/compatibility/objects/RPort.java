@@ -14,8 +14,8 @@ public class RPort extends GenericPort {
         super(new RPlug(), 'R');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.R_PORT;
-    }}
+    }
+}

@@ -44,8 +44,8 @@ public class MagentaLock extends GenericSingleLock {
         return "Magenta Locks require Magenta Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAGENTA_LOCK;
-    }}
+    }
+}

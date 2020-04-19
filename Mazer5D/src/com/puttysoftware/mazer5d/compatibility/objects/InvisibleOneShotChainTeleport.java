@@ -33,9 +33,9 @@ public class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         Mazer5D.getBagOStuff().showMessage("Invisible Teleport!");
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
@@ -68,8 +68,8 @@ public class InvisibleOneShotChainTeleport extends GenericInvisibleTeleport {
         return "Invisible One-Shot Chain Teleports are a combination of invisible, one-shot, and chain teleport behaviors.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_ONE_SHOT_CHAIN_TELEPORT;
-    }}
+    }
+}

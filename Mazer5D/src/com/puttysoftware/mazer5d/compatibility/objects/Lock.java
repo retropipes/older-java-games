@@ -44,8 +44,8 @@ public class Lock extends GenericSingleLock {
         return "Locks require Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.LOCK;
-    }}
+    }
+}

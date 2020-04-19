@@ -46,9 +46,9 @@ public class OneShotChainTeleport extends GenericTeleport {
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
@@ -65,8 +65,8 @@ public class OneShotChainTeleport extends GenericTeleport {
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_ONESHOT);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_ONESHOT);
         return mo;
     }
 
@@ -75,8 +75,8 @@ public class OneShotChainTeleport extends GenericTeleport {
         return "One-Shot Chain Teleports behave like regular Teleports, except they only work once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ONE_SHOT_CHAIN_TELEPORT;
-    }}
+    }
+}

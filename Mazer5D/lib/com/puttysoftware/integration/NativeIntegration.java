@@ -72,43 +72,43 @@ public class NativeIntegration {
     }
 
     public void addAppForegroundListener(final AppForegroundListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_FOREGROUND)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_FOREGROUND)) {
             this.desktop.addAppEventListener(listener);
         }
     }
 
     public void addAppHiddenListener(final AppHiddenListener listener) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_EVENT_HIDDEN)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_HIDDEN)) {
             this.desktop.addAppEventListener(listener);
         }
     }
 
     public void addAppReopenedListener(final AppReopenedListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_REOPENED)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_REOPENED)) {
             this.desktop.addAppEventListener(listener);
         }
     }
 
     public void addScreenSleepListener(final ScreenSleepListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_SCREEN_SLEEP)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_SCREEN_SLEEP)) {
             this.desktop.addAppEventListener(listener);
         }
     }
 
     public void addSystemSleepListener(final SystemSleepListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_SYSTEM_SLEEP)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_SYSTEM_SLEEP)) {
             this.desktop.addAppEventListener(listener);
         }
     }
 
     public void addUserSessionListener(final UserSessionListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_USER_SESSION)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_USER_SESSION)) {
             this.desktop.addAppEventListener(listener);
         }
     }
@@ -120,8 +120,8 @@ public class NativeIntegration {
     }
 
     public void browseFileDirectory(final File file) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.BROWSE_FILE_DIR)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.BROWSE_FILE_DIR)) {
             this.desktop.browseFileDirectory(file);
         }
     }
@@ -132,8 +132,8 @@ public class NativeIntegration {
             // macOS-specific stuff
             try {
                 // Tell the UIManager to use the native look and feel
-                UIManager.setLookAndFeel(
-                        UIManager.getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
             } catch (final Exception e) {
                 // Do nothing
             }
@@ -141,8 +141,8 @@ public class NativeIntegration {
             // Windows-specific stuff
             try {
                 // Tell the UIManager to use the native look and feel
-                UIManager.setLookAndFeel(
-                        UIManager.getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel(UIManager
+                        .getSystemLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -152,8 +152,8 @@ public class NativeIntegration {
             // All other platforms
             try {
                 // Tell the UIManager to use the Cross Platform look and feel
-                UIManager.setLookAndFeel(
-                        UIManager.getCrossPlatformLookAndFeelClassName());
+                UIManager.setLookAndFeel(UIManager
+                        .getCrossPlatformLookAndFeelClassName());
                 // Hint to the UI that the L&F is decorated
                 JFrame.setDefaultLookAndFeelDecorated(true);
             } catch (final Exception e) {
@@ -163,8 +163,8 @@ public class NativeIntegration {
     }
 
     public void disableSuddenTermination() {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_SUDDEN_TERMINATION)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_SUDDEN_TERMINATION)) {
             this.desktop.disableSuddenTermination();
         }
     }
@@ -176,8 +176,8 @@ public class NativeIntegration {
     }
 
     public void enableSuddenTermination() {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_SUDDEN_TERMINATION)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_SUDDEN_TERMINATION)) {
             this.desktop.enableSuddenTermination();
         }
     }
@@ -195,8 +195,8 @@ public class NativeIntegration {
     }
 
     public void moveToTrash(final File file) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.MOVE_TO_TRASH)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.MOVE_TO_TRASH)) {
             this.desktop.moveToTrash(file);
         }
     }
@@ -208,8 +208,8 @@ public class NativeIntegration {
     }
 
     public void openHelpViewer() {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_HELP_VIEWER)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_HELP_VIEWER)) {
             this.desktop.openHelpViewer();
         }
     }
@@ -222,107 +222,107 @@ public class NativeIntegration {
 
     public void removeAppForegroundListener(
             final AppForegroundListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_FOREGROUND)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_FOREGROUND)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void removeAppHiddenListener(final AppHiddenListener listener) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_EVENT_HIDDEN)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_HIDDEN)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void removeAppReopenedListener(final AppReopenedListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_REOPENED)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_REOPENED)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void removeScreenSleepListener(final ScreenSleepListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_SCREEN_SLEEP)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_SCREEN_SLEEP)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void removeSystemSleepListener(final SystemSleepListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_SYSTEM_SLEEP)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_SYSTEM_SLEEP)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void removeUserSessionListener(final UserSessionListener listener) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_EVENT_USER_SESSION)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_EVENT_USER_SESSION)) {
             this.desktop.removeAppEventListener(listener);
         }
     }
 
     public void requestForeground(final boolean allWindows) {
-        if (this.supported && this.desktop
-                .isSupported(Desktop.Action.APP_REQUEST_FOREGROUND)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_REQUEST_FOREGROUND)) {
             this.desktop.requestForeground(allWindows);
         }
     }
 
     public void setAboutHandler(final AboutHandler aboutHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_ABOUT)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_ABOUT)) {
             this.desktop.setAboutHandler(aboutHandler);
         }
     }
 
     public void setDefaultMenuBar(final JMenuBar defaultMenuBar) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_MENU_BAR)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_MENU_BAR)) {
             this.desktop.setDefaultMenuBar(defaultMenuBar);
         }
     }
 
     public void setOpenFileHandler(final OpenFilesHandler openFileHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_OPEN_FILE)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_OPEN_FILE)) {
             this.desktop.setOpenFileHandler(openFileHandler);
         }
     }
 
     public void setOpenURIHandler(final OpenURIHandler openURIHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_OPEN_URI)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_OPEN_URI)) {
             this.desktop.setOpenURIHandler(openURIHandler);
         }
     }
 
     public void setPreferencesHandler(
             final PreferencesHandler preferencesHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_PREFERENCES)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_PREFERENCES)) {
             this.desktop.setPreferencesHandler(preferencesHandler);
         }
     }
 
     public void setPrintFileHandler(final PrintFilesHandler printFileHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_PRINT_FILE)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_PRINT_FILE)) {
             this.desktop.setPrintFileHandler(printFileHandler);
         }
     }
 
     public void setQuitHandler(final QuitHandler quitHandler) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_QUIT_HANDLER)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_QUIT_HANDLER)) {
             this.desktop.setQuitHandler(quitHandler);
         }
     }
 
     public void setQuitStrategy(final QuitStrategy quitStrategy) {
-        if (this.supported
-                && this.desktop.isSupported(Desktop.Action.APP_QUIT_STRATEGY)) {
+        if (this.supported && this.desktop.isSupported(
+                Desktop.Action.APP_QUIT_STRATEGY)) {
             this.desktop.setQuitStrategy(quitStrategy);
         }
     }

@@ -14,8 +14,8 @@ public class SPort extends GenericPort {
         super(new SPlug(), 'S');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.S_PORT;
-    }}
+    }
+}

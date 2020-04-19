@@ -29,8 +29,8 @@ public class RegularBoots extends GenericBoots {
         return "";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.REGULAR_BOOTS;
-    }}
+    }
+}

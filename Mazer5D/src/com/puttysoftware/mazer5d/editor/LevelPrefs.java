@@ -103,10 +103,10 @@ public class LevelPrefs {
             m.deactivateTimer();
         }
         m.setAutoFinishThresholdEnabled(this.autoFinishEnabled.isSelected());
-        m.setAutoFinishThreshold(
-                Integer.parseInt(this.autoFinishThreshold.getText()));
-        m.setAlternateAutoFinishThreshold(
-                Integer.parseInt(this.alternateAutoFinishThreshold.getText()));
+        m.setAutoFinishThreshold(Integer.parseInt(this.autoFinishThreshold
+                .getText()));
+        m.setAlternateAutoFinishThreshold(Integer.parseInt(
+                this.alternateAutoFinishThreshold.getText()));
         m.setUseOffset(this.useOffset.isSelected());
         if (this.useOffset.isSelected()) {
             m.setNextLevelOffset(Integer.parseInt(this.nextLevel.getText()));
@@ -115,11 +115,11 @@ public class LevelPrefs {
         }
         m.setUseAlternateOffset(this.useAlternateOffset.isSelected());
         if (this.useAlternateOffset.isSelected()) {
-            m.setAlternateNextLevelOffset(
-                    Integer.parseInt(this.alternateNextLevel.getText()));
+            m.setAlternateNextLevelOffset(Integer.parseInt(
+                    this.alternateNextLevel.getText()));
         } else {
-            m.setAlternateNextLevel(
-                    Integer.parseInt(this.alternateNextLevel.getText()) - 1);
+            m.setAlternateNextLevel(Integer.parseInt(this.alternateNextLevel
+                    .getText()) - 1);
         }
         int newVR = m.getVisionRadius();
         try {
@@ -157,8 +157,8 @@ public class LevelPrefs {
         final MazeModel m = Mazer5D.getBagOStuff().getMazeManager().getMaze();
         this.horizontalWrap.setSelected(m.isHorizontalWraparoundEnabled());
         this.verticalWrap.setSelected(m.isVerticalWraparoundEnabled());
-        this.thirdDimensionalWrap
-                .setSelected(m.is3rdDimensionWraparoundEnabled());
+        this.thirdDimensionalWrap.setSelected(m
+                .is3rdDimensionWraparoundEnabled());
         this.levelTitle.setText(m.getLevelTitle());
         this.levelStartMessage.setText(m.getLevelStartMessage());
         this.levelEndMessage.setText(m.getLevelEndMessage());
@@ -169,10 +169,10 @@ public class LevelPrefs {
             this.timeLimit.setText("0");
         }
         this.autoFinishEnabled.setSelected(m.getAutoFinishThresholdEnabled());
-        this.autoFinishThreshold
-                .setText(Integer.toString(m.getAutoFinishThreshold()));
-        this.alternateAutoFinishThreshold
-                .setText(Integer.toString(m.getAlternateAutoFinishThreshold()));
+        this.autoFinishThreshold.setText(Integer.toString(m
+                .getAutoFinishThreshold()));
+        this.alternateAutoFinishThreshold.setText(Integer.toString(m
+                .getAlternateAutoFinishThreshold()));
         this.useOffset.setSelected(m.useOffset());
         if (m.useOffset()) {
             this.nextLevel.setText(Integer.toString(m.getNextLevel()));
@@ -181,11 +181,11 @@ public class LevelPrefs {
         }
         this.useAlternateOffset.setSelected(m.useAlternateOffset());
         if (m.useAlternateOffset()) {
-            this.alternateNextLevel
-                    .setText(Integer.toString(m.getAlternateNextLevel()));
+            this.alternateNextLevel.setText(Integer.toString(m
+                    .getAlternateNextLevel()));
         } else {
-            this.alternateNextLevel
-                    .setText(Integer.toString(m.getAlternateNextLevel() + 1));
+            this.alternateNextLevel.setText(Integer.toString(m
+                    .getAlternateNextLevel() + 1));
         }
         this.illumination.setText(Integer.toString(m.getVisionRadius()));
         this.finishMoveSpeed.setText(Integer.toString(m.getFinishMoveSpeed()));
@@ -213,15 +213,16 @@ public class LevelPrefs {
         this.levelTitle = new JTextField("");
         this.levelStartMessage = new JTextArea("");
         this.levelEndMessage = new JTextArea("");
-        this.poisonPowerChoiceArray = new String[MazeModel.getMaxPoisonPower() + 1];
+        this.poisonPowerChoiceArray = new String[MazeModel.getMaxPoisonPower()
+                + 1];
         for (int x = 0; x < this.poisonPowerChoiceArray.length; x++) {
             if (x == 0) {
                 this.poisonPowerChoiceArray[x] = "None";
             } else if (x == 1) {
                 this.poisonPowerChoiceArray[x] = "1 health / 1 step";
             } else {
-                this.poisonPowerChoiceArray[x] = "1 health / "
-                        + Integer.toString(x) + " steps";
+                this.poisonPowerChoiceArray[x] = "1 health / " + Integer
+                        .toString(x) + " steps";
             }
         }
         final DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(
@@ -241,13 +242,13 @@ public class LevelPrefs {
         this.finishMoveSpeed = new JTextField("");
         this.exploreRadius = new JTextField("");
         this.prefFrame.setContentPane(this.mainPrefPane);
-        this.prefFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.prefFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);
-        this.contentPane
-                .setLayout(new BoxLayout(this.contentPane, BoxLayout.Y_AXIS));
+        this.contentPane.setLayout(new BoxLayout(this.contentPane,
+                BoxLayout.Y_AXIS));
         this.contentPane.add(this.horizontalWrap);
         this.contentPane.add(this.verticalWrap);
         this.contentPane.add(this.thirdDimensionalWrap);
@@ -262,8 +263,8 @@ public class LevelPrefs {
         this.contentPane.add(new JLabel("Time Limit (0 to disable)"));
         this.contentPane.add(this.timeLimit);
         this.contentPane.add(this.autoFinishEnabled);
-        this.contentPane
-                .add(new JLabel("Sun Stones Needed To Trigger Auto-Finish"));
+        this.contentPane.add(new JLabel(
+                "Sun Stones Needed To Trigger Auto-Finish"));
         this.contentPane.add(this.autoFinishThreshold);
         this.contentPane.add(new JLabel(
                 "Moon Stones Needed To Trigger Alternate Auto-Finish"));

@@ -38,8 +38,8 @@ public class EffectImageLoader {
             final String name = "/assets/image/effects/"
                     + EffectImageLoader.allFilenames[image.ordinal()]
                     + imageExt;
-            return ImageLoader.load(name,
-                    EffectImageLoader.class.getResource(name));
+            return ImageLoader.load(name, EffectImageLoader.class.getResource(
+                    name));
         }
         return null;
     }
@@ -54,14 +54,14 @@ public class EffectImageLoader {
         } catch (final IOException e) {
             Mazer5D.logError(e);
         }
-        final String imageExt = EffectImageLoader.fileExtensions
-                .getProperty("images");
+        final String imageExt = EffectImageLoader.fileExtensions.getProperty(
+                "images");
         for (int i = 0; i <= EffectImageLoader.MAX_INDEX; i++) {
             final String name = "/assets/image/effects/"
                     + EffectImageLoader.allFilenames[i] + imageExt;
             try {
-                ImageLoader.load(name,
-                        EffectImageLoader.class.getResource(name));
+                ImageLoader.load(name, EffectImageLoader.class.getResource(
+                        name));
             } catch (final IllegalArgumentException iae) {
                 // Ignore - image unused
             }

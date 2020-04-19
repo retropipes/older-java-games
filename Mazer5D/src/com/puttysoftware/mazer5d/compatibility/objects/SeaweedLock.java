@@ -44,8 +44,8 @@ public class SeaweedLock extends GenericSingleLock {
         return "Seaweed Locks require Seaweed Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_LOCK;
-    }}
+    }
+}

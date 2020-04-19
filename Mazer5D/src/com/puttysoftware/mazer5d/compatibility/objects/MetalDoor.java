@@ -44,8 +44,8 @@ public class MetalDoor extends GenericSingleLock {
         return "Metal Doors require Metal Keys to open, or Metal Boots and a Metal Button.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.METAL_DOOR;
-    }}
+    }
+}

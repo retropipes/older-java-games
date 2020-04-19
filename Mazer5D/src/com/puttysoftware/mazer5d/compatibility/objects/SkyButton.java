@@ -28,8 +28,8 @@ public class SkyButton extends GenericButton {
         return "Sky Buttons will cause all Sky Walls Off to become On, and all Sky Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_BUTTON;
-    }}
+    }
+}

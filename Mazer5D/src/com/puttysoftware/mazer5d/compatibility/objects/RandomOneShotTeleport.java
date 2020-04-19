@@ -64,8 +64,8 @@ public class RandomOneShotTeleport extends RandomTeleport {
         return "Random One-Shot Teleports are random, and only work once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RANDOM_ONE_SHOT_TELEPORT;
-    }}
+    }
+}

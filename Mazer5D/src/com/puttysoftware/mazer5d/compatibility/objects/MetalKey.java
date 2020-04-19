@@ -30,8 +30,8 @@ public class MetalKey extends GenericSingleKey {
         return "Metal Keys will open Metal Doors, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.METAL_KEY;
-    }}
+    }
+}

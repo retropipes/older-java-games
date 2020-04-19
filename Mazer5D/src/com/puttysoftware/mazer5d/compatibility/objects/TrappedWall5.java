@@ -18,8 +18,8 @@ public class TrappedWall5 extends GenericTrappedWall {
         return "Trapped Walls 5 disappear when any Wall Trap 5 is triggered.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TRAPPED_WALL_5;
-    }}
+    }
+}

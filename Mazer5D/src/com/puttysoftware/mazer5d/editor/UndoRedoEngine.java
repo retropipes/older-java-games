@@ -118,8 +118,8 @@ public class UndoRedoEngine {
         public int coordX, coordY, coordZ, coordW, coordE;
         public Link next;
 
-        public Link(final MazeObjectModel obj, final int x, final int y, final int z,
-                final int w, final int e) {
+        public Link(final MazeObjectModel obj, final int x, final int y,
+                final int z, final int w, final int e) {
             this.mo = obj;
             this.coordX = x;
             this.coordY = y;
@@ -142,8 +142,8 @@ public class UndoRedoEngine {
             return this.first == null;
         }
 
-        public void insertFirst(final MazeObjectModel obj, final int x, final int y,
-                final int z, final int w, final int e) {
+        public void insertFirst(final MazeObjectModel obj, final int x,
+                final int y, final int z, final int w, final int e) {
             final Link newLink = new Link(obj, x, y, z, w, e);
             newLink.next = this.first;
             this.first = newLink;

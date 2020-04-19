@@ -48,8 +48,8 @@ public class ClockwiseRotationTrap extends GenericTrap {
         return "Clockwise Rotation Traps rotate your controls clockwise for 10 steps when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CLOCKWISE_ROTATION_TRAP;
-    }}
+    }
+}

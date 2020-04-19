@@ -14,8 +14,8 @@ public class PurpleCarpet extends GenericCarpet {
         super("Purple");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PURPLE_CARPET;
-    }}
+    }
+}

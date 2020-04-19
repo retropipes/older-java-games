@@ -41,4 +41,5 @@ public class AnnihilationWand extends GenericWand {
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ANNIHILATION_WAND;
-    }}
+    }
+}

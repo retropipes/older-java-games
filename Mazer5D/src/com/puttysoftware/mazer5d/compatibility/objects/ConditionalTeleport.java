@@ -29,8 +29,8 @@ public class ConditionalTeleport extends GenericConditionalTeleport {
         return "Conditional Teleports send you to one of two predetermined destinations when stepped on, depending on how many Sun or Moon Stones are in your inventory.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CONDITIONAL_TELEPORT;
-    }}
+    }
+}

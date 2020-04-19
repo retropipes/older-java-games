@@ -41,15 +41,15 @@ public class MusicPlayer {
         if (Prefs.isMusicGroupEnabled(group)) {
             if (music != null && music != MusicIndex._NONE) {
                 final String filename = MusicPlayer.getMusicFilename(music);
-                if (MusicPlayer.MUSIC != null
-                        && MusicPlayer.MUSIC.isPlaying()) {
+                if (MusicPlayer.MUSIC != null && MusicPlayer.MUSIC
+                        .isPlaying()) {
                     MusicPlayer.MUSIC.stopLoop();
                 }
                 try {
                     MusicPlayer.MUSIC = MicroMod.loadResource(MusicPlayer.class
                             .getResource("/assets/music/" + filename));
                     MusicPlayer.MUSIC.play();
-                } catch (IOException e) {
+                } catch (final IOException e) {
                     Mazer5D.logError(e);
                 }
             }

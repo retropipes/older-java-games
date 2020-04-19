@@ -29,8 +29,8 @@ public class CutTree extends GenericPassThroughObject {
         return "Cut Trees are the leftover stubs of Trees that have been cut by an Axe.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CUT_TREE;
-    }}
+    }
+}

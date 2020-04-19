@@ -14,8 +14,8 @@ public class VPort extends GenericPort {
         super(new VPlug(), 'V');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.V_PORT;
-    }}
+    }
+}

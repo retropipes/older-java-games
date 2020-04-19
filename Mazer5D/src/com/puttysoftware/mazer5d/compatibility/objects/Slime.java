@@ -52,8 +52,8 @@ public class Slime extends GenericField {
         return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SLIME;
-    }}
+    }
+}

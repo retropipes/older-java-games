@@ -47,8 +47,8 @@ public class PushableBlockOnce extends GenericMovableObject {
         return "Pushable Blocks Once can only be pushed once, before turning into a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PUSHABLE_BLOCK_ONCE;
-    }}
+    }
+}

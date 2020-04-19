@@ -54,8 +54,8 @@ public class RandomTeleport extends GenericRandomTeleport {
         return "Random Teleports, unlike regular Teleports, send you to a randomly chosen destination.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RANDOM_TELEPORT;
-    }}
+    }
+}

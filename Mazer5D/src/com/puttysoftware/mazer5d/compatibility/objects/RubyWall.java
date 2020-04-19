@@ -29,8 +29,8 @@ public class RubyWall extends GenericMultipleLock {
         return "Ruby Walls are impassable without enough Ruby Squares.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RUBY_WALL;
-    }}
+    }
+}

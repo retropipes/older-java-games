@@ -29,8 +29,8 @@ public class Axe extends GenericInfiniteKey {
         return "With an Axe, Trees can be cut down. Axes never lose their ability to cut trees.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.AXE;
-    }}
+    }
+}

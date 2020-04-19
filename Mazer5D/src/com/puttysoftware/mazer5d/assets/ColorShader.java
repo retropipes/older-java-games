@@ -60,7 +60,7 @@ public class ColorShader {
             return false;
         }
         final ColorShader other = (ColorShader) obj;
-        return Objects.equals(this.shadeColor, other.shadeColor)
-                && Objects.equals(this.shadeName, other.shadeName);
+        return Objects.equals(this.shadeColor, other.shadeColor) && Objects
+                .equals(this.shadeName, other.shadeName);
     }
 }

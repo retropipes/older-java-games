@@ -56,8 +56,8 @@ public class Tree extends GenericInfiniteLock {
         return "Trees transform into Cut Trees when hit with an Axe.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TREE;
-    }}
+    }
+}

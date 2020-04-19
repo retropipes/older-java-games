@@ -29,8 +29,8 @@ public class Sand extends GenericGround {
         return "Sand is one of the many types of ground.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SAND;
-    }}
+    }
+}

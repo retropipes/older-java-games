@@ -48,9 +48,9 @@ public class RuleSetManager {
     }
 
     private static void importFile(final String filename) {
-        if (!FilenameChecker
-                .isFilenameOK(RuleSetManager.getNameWithoutExtension(
-                        RuleSetManager.getFileNameOnly(filename)))) {
+        if (!FilenameChecker.isFilenameOK(RuleSetManager
+                .getNameWithoutExtension(RuleSetManager.getFileNameOnly(
+                        filename)))) {
             CommonDialogs.showErrorDialog(
                     "The file you selected contains illegal characters in its\n"
                             + "name. These characters are not allowed: /?<>\\:|\"\n"
@@ -90,11 +90,10 @@ public class RuleSetManager {
                             "Save");
                 } else {
                     if (extension != null) {
-                        if (!extension.equals(
-                                XMLExtension.getXMLRuleSetExtension())) {
-                            filename = RuleSetManager
-                                    .getNameWithoutExtension(file)
-                                    + XMLExtension
+                        if (!extension.equals(XMLExtension
+                                .getXMLRuleSetExtension())) {
+                            filename = RuleSetManager.getNameWithoutExtension(
+                                    file) + XMLExtension
                                             .getXMLRuleSetExtensionWithPeriod();
                         }
                     } else {

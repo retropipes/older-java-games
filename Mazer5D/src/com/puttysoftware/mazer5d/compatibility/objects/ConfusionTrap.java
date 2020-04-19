@@ -48,8 +48,8 @@ public class ConfusionTrap extends GenericTrap {
         return "Confusion Traps randomly alter your controls for 10 steps when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CONFUSION_TRAP;
-    }}
+    }
+}

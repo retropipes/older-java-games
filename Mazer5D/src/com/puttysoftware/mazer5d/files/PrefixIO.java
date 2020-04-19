@@ -53,7 +53,7 @@ public class PrefixIO {
         writer.writeByte(PrefixIO.FORMAT_VERSION_MINOR);
     }
 
-    private static MazeVersion decodeFormatByte(int input) {
+    private static MazeVersion decodeFormatByte(final int input) {
         switch (input) {
         case 1:
             return MazeVersion.V1;

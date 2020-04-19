@@ -47,12 +47,12 @@ public class XMLSaveTask extends Thread {
         final File mazeFile = new File(this.filename);
         try {
             // Set prefix handler
-            app.getMazeManager().getMaze()
-                    .setXMLPrefixHandler(new XMLPrefixHandler());
+            app.getMazeManager().getMaze().setXMLPrefixHandler(
+                    new XMLPrefixHandler());
             // Set suffix handler
             if (this.isSavedGame) {
-                app.getMazeManager().getMaze()
-                        .setXMLSuffixHandler(new XMLSuffixHandler());
+                app.getMazeManager().getMaze().setXMLSuffixHandler(
+                        new XMLSuffixHandler());
             } else {
                 app.getMazeManager().getMaze().setXMLSuffixHandler(null);
             }
@@ -76,9 +76,8 @@ public class XMLSaveTask extends Thread {
                 // Restore start location
                 app.getMazeManager().getMaze().restoreStart();
             }
-            ZipUtilities.zipDirectory(
-                    new File(app.getMazeManager().getMaze().getBasePath()),
-                    mazeFile);
+            ZipUtilities.zipDirectory(new File(app.getMazeManager().getMaze()
+                    .getBasePath()), mazeFile);
         } catch (final IOException e) {
             Mazer5D.logError(e);
         }

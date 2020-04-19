@@ -14,8 +14,8 @@ public class WPlug extends GenericPlug {
         super('W');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.W_PLUG;
-    }}
+    }
+}

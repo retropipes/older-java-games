@@ -30,8 +30,8 @@ public class MagentaWallOn extends GenericToggleWall {
         return "Magenta Walls On can NOT be walked through, and will change to Magenta Walls Off when a Magenta Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAGENTA_WALL_ON;
-    }}
+    }
+}

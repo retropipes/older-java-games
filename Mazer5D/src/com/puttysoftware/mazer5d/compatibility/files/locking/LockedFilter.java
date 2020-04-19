@@ -30,8 +30,8 @@ public class LockedFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Mazer5D Locked Mazes ("
-                + Extension.getLockedMazeExtensionWithPeriod() + ")";
+        return "Mazer5D Locked Mazes (" + Extension
+                .getLockedMazeExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

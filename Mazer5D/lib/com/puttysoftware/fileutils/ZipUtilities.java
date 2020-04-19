@@ -18,8 +18,8 @@ public final class ZipUtilities {
 
     public static void zipDirectory(final File directory, final File zip)
             throws IOException {
-        try (ZipOutputStream zos = new ZipOutputStream(
-                new FileOutputStream(zip))) {
+        try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(
+                zip))) {
             ZipUtilities.zip(directory, directory, zos);
         } catch (final IOException ioe) {
             throw ioe;

@@ -30,8 +30,8 @@ public class OrangeKey extends GenericSingleKey {
         return "Orange Keys will unlock Orange Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ORANGE_KEY;
-    }}
+    }
+}

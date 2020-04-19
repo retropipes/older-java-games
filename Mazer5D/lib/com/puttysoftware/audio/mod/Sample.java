@@ -58,8 +58,9 @@ public class Sample {
         // Compensate for sinc-interpolator delay.
         outLoopStart += Sample.DELAY;
         // Allocate new sample.
-        final int newSampleLength = Sample.DELAY + sampleLength
-                + (pingPong ? outLoopLength : 0) + Sample.FILTER_TAPS;
+        final int newSampleLength = Sample.DELAY + sampleLength + (pingPong
+                ? outLoopLength
+                : 0) + Sample.FILTER_TAPS;
         final short[] newSampleData = new short[newSampleLength];
         System.arraycopy(outSampleData, 0, newSampleData, Sample.DELAY,
                 sampleLength);

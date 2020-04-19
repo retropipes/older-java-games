@@ -169,17 +169,17 @@ public class PasswordProtect {
                 PasswordProtect.failure();
                 PasswordProtect.hideForm();
             });
-            PasswordProtect.passwordFrame.getRootPane()
-                    .setDefaultButton(PasswordProtect.okButton);
+            PasswordProtect.passwordFrame.getRootPane().setDefaultButton(
+                    PasswordProtect.okButton);
             PasswordProtect.buttonPanel.setLayout(new FlowLayout());
             PasswordProtect.buttonPanel.add(PasswordProtect.cancelButton);
             PasswordProtect.buttonPanel.add(PasswordProtect.okButton);
-            PasswordProtect.passwordFrame.getContentPane()
-                    .add(PasswordProtect.passwordLabel, BorderLayout.NORTH);
-            PasswordProtect.passwordFrame.getContentPane()
-                    .add(PasswordProtect.passwordField, BorderLayout.CENTER);
-            PasswordProtect.passwordFrame.getContentPane()
-                    .add(PasswordProtect.buttonPanel, BorderLayout.SOUTH);
+            PasswordProtect.passwordFrame.getContentPane().add(
+                    PasswordProtect.passwordLabel, BorderLayout.NORTH);
+            PasswordProtect.passwordFrame.getContentPane().add(
+                    PasswordProtect.passwordField, BorderLayout.CENTER);
+            PasswordProtect.passwordFrame.getContentPane().add(
+                    PasswordProtect.buttonPanel, BorderLayout.SOUTH);
             PasswordProtect.passwordFrame.pack();
         }
     }

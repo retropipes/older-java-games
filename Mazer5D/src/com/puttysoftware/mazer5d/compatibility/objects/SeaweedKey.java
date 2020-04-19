@@ -30,8 +30,8 @@ public class SeaweedKey extends GenericSingleKey {
         return "Seaweed Keys will unlock Seaweed Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_KEY;
-    }}
+    }
+}

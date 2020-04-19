@@ -47,8 +47,8 @@ public class PullableBlockOnce extends GenericMovableObject {
         return "Pullable Blocks Once can only be pulled once, before turning into a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PULLABLE_BLOCK_ONCE;
-    }}
+    }
+}

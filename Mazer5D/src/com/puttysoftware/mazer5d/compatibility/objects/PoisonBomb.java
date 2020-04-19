@@ -45,8 +45,8 @@ public class PoisonBomb extends GenericUsableObject {
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         // Stop arrow
         return false;
     }
@@ -68,8 +68,8 @@ public class PoisonBomb extends GenericUsableObject {
         this.useAction(null, x, y, z);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.POISON_BOMB;
-    }}
+    }
+}

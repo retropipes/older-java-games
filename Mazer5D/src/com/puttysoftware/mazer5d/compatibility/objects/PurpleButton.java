@@ -28,8 +28,8 @@ public class PurpleButton extends GenericButton {
         return "Purple Buttons will cause all Purple Walls Off to become On, and all Purple Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PURPLE_BUTTON;
-    }}
+    }
+}

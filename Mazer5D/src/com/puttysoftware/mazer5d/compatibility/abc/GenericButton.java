@@ -48,8 +48,8 @@ public abstract class GenericButton extends MazeObjectModel {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 13 * hash
-                + (this.offState != null ? this.offState.hashCode() : 0);
+        hash = 13 * hash + (this.offState != null ? this.offState.hashCode()
+                : 0);
         hash = 13 * hash + (this.onState != null ? this.onState.hashCode() : 0);
         return hash;
     }

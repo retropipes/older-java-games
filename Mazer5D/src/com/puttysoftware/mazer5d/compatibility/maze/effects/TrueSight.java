@@ -23,8 +23,8 @@ public class TrueSight extends MazeEffect {
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(MazeObjects.TRUE_SIGHT_AMULET);
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(
+                MazeObjects.TRUE_SIGHT_AMULET);
         // Undo the effect
         Mazer5D.getBagOStuff().getGameManager().disableTrueSight();
     }

@@ -14,8 +14,8 @@ public class TPort extends GenericPort {
         super(new TPlug(), 'T');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.T_PORT;
-    }}
+    }
+}

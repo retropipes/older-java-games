@@ -110,8 +110,8 @@ public class MazePrefs {
         this.mazeStartMessage = new JTextArea("");
         this.mazeEndMessage = new JTextArea("");
         this.prefFrame.setContentPane(this.mainPrefPane);
-        this.prefFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.prefFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.prefFrame.addWindowListener(this.handler);
         this.mainPrefPane.setLayout(new BorderLayout());
         this.prefFrame.setResizable(false);

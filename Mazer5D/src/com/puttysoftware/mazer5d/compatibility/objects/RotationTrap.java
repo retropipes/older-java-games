@@ -123,11 +123,11 @@ public class RotationTrap extends GenericTrap implements Cloneable {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         if (this.direction) {
-            Mazer5D.getBagOStuff().getGameManager()
-                    .doClockwiseRotate(this.radius);
+            Mazer5D.getBagOStuff().getGameManager().doClockwiseRotate(
+                    this.radius);
         } else {
-            Mazer5D.getBagOStuff().getGameManager()
-                    .doCounterclockwiseRotate(this.radius);
+            Mazer5D.getBagOStuff().getGameManager().doCounterclockwiseRotate(
+                    this.radius);
         }
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
     }
@@ -137,8 +137,8 @@ public class RotationTrap extends GenericTrap implements Cloneable {
         return "Rotation Traps rotate part of the maze when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROTATION_TRAP;
-    }}
+    }
+}

@@ -39,8 +39,8 @@ public class Hourglass extends GenericTimeModifier {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .extendTimerByInitialValue();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(Hourglass.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                Hourglass.SCORE_GRAB);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class Hourglass extends GenericTimeModifier {
         return "Hourglasses extend the time to solve the current level by the initial value.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HOURGLASS;
-    }}
+    }
+}

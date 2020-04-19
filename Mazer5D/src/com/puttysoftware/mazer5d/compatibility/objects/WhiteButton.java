@@ -28,8 +28,8 @@ public class WhiteButton extends GenericButton {
         return "White Buttons will cause all White Walls Off to become On, and all White Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WHITE_BUTTON;
-    }}
+    }
+}

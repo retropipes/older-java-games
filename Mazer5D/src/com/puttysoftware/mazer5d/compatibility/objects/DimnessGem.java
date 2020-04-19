@@ -40,8 +40,8 @@ public class DimnessGem extends GenericGem {
         return "Dimness Gems decrease the visible area by 1.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DIMNESS_GEM;
-    }}
+    }
+}

@@ -50,8 +50,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
             final String[] possibleValues, final String initialValue,
             final String descValue, final String... possibleDescriptions) {
         ListWithDescDialog.value = null;
-        final Frame frame = JOptionPane
-                .getFrameForComponent(MainWindow.owner());
+        final Frame frame = JOptionPane.getFrameForComponent(MainWindow
+                .owner());
         ListWithDescDialog.dialog = new ListWithDescDialog(frame, locationComp,
                 labelText, title, possibleValues, initialValue, descValue,
                 possibleDescriptions);
@@ -89,8 +89,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
         descPane.add(descArea);
         // main part of the dialog
         ListWithDescDialog.list = new SubJList<>(data);
-        ListWithDescDialog.list
-                .setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        ListWithDescDialog.list.setSelectionMode(
+                ListSelectionModel.SINGLE_SELECTION);
         ListWithDescDialog.list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
         ListWithDescDialog.list.setVisibleRowCount(-1);
         ListWithDescDialog.list.addMouseListener(new MouseAdapter() {
@@ -101,8 +101,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
                 }
             }
         });
-        ListWithDescDialog.list.addListSelectionListener(e -> descArea
-                .setText(ListWithDescDialog.descs[ListWithDescDialog.list
+        ListWithDescDialog.list.addListSelectionListener(e -> descArea.setText(
+                ListWithDescDialog.descs[ListWithDescDialog.list
                         .getSelectedIndex()]));
         final JScrollPane listScroller = new JScrollPane(
                 ListWithDescDialog.list);
@@ -144,8 +144,8 @@ public class ListWithDescDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(final ActionEvent e) {
         if ("OK".equals(e.getActionCommand())) {
-            ListWithDescDialog
-                    .setValue(ListWithDescDialog.list.getSelectedValue());
+            ListWithDescDialog.setValue(ListWithDescDialog.list
+                    .getSelectedValue());
         } else if ("Cancel".equals(e.getActionCommand())) {
             ListWithDescDialog.setValue(null);
         }

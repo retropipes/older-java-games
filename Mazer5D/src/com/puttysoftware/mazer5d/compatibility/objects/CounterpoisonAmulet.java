@@ -41,8 +41,8 @@ public class CounterpoisonAmulet extends GenericAmulet {
                 CounterpoisonAmulet.EFFECT_DURATION);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.COUNTERPOISON_AMULET;
-    }}
+    }
+}

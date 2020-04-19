@@ -35,8 +35,8 @@ public class OneWayNorthWall extends GenericWall {
         this.type.set(TypeConstants.TYPE_WALL);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ONE_WAY_NORTH_WALL;
-    }}
+    }
+}

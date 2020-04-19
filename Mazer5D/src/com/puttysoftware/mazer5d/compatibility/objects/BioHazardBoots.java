@@ -29,8 +29,8 @@ public class BioHazardBoots extends GenericBoots {
         return "Bio-Hazard Boots allow walking on slime. Note that you can only wear one pair of boots at once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BIO_HAZARD_BOOTS;
-    }}
+    }
+}

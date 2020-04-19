@@ -28,8 +28,8 @@ public class SeaweedButton extends GenericButton {
         return "Seaweed Buttons will cause all Seaweed Walls Off to become On, and all Seaweed Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_BUTTON;
-    }}
+    }
+}

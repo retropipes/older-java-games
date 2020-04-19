@@ -35,8 +35,8 @@ public class OneShotConditionalTeleport extends GenericConditionalTeleport {
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ONE_SHOT_CONDITIONAL_TELEPORT;
-    }}
+    }
+}

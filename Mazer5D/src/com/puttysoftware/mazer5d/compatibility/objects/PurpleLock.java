@@ -44,8 +44,8 @@ public class PurpleLock extends GenericSingleLock {
         return "Purple Locks require Purple Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PURPLE_LOCK;
-    }}
+    }
+}

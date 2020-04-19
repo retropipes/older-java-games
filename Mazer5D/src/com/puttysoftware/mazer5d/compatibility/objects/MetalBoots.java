@@ -29,8 +29,8 @@ public class MetalBoots extends GenericBoots {
         return "Metal Boots allow Metal Buttons to be triggered. Note that you can only wear one pair of boots at once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.METAL_BOOTS;
-    }}
+    }
+}

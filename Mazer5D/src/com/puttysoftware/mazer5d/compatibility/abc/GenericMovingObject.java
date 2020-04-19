@@ -55,7 +55,7 @@ public abstract class GenericMovingObject extends MazeObjectModel {
         // Do nothing
     }
 
-    public void setSavedObject(MazeObjectModel inThere) {
+    public void setSavedObject(final MazeObjectModel inThere) {
         // Do nothing
     }
 }

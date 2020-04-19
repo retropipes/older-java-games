@@ -75,8 +75,8 @@ public class IcedBarrierGenerator extends GenericWall {
         this.type.set(TypeConstants.TYPE_GENERATOR);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ICED_BARRIER_GENERATOR;
-    }}
+    }
+}

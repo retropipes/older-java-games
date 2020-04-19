@@ -1173,7 +1173,7 @@ class LayeredTower implements Cloneable {
                         final MazeObjectModel obj = this.getCell(y, x, z, e);
                         if (obj.getUniqueID().equals(
                                 MazeObjects.MOVING_FINISH)) {
-                            GenericTeleport gt = (GenericTeleport) obj;
+                            final GenericTeleport gt = (GenericTeleport) obj;
                             gt.deactivate();
                         }
                     }
@@ -1187,7 +1187,7 @@ class LayeredTower implements Cloneable {
                 this.getFirstMovingFinishY(), this.getFirstMovingFinishZ(),
                 Layers.OBJECT);
         if (obj.getUniqueID().equals(MazeObjects.MOVING_FINISH)) {
-            GenericTeleport gt = (GenericTeleport) obj;
+            final GenericTeleport gt = (GenericTeleport) obj;
             gt.activate();
         }
     }

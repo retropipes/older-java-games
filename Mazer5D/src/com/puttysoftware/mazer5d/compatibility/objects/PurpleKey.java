@@ -30,8 +30,8 @@ public class PurpleKey extends GenericSingleKey {
         return "Purple Keys will unlock Purple Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PURPLE_KEY;
-    }}
+    }
+}

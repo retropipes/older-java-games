@@ -30,8 +30,8 @@ public class RoseKey extends GenericSingleKey {
         return "Rose Keys will unlock Rose Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ROSE_KEY;
-    }}
+    }
+}

@@ -38,7 +38,8 @@ public class Water extends GenericField {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y,
+            final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         if (pushed.isPushable()) {
             app.getGameManager().morph(new SunkenBlock(), x, y, z,
@@ -69,8 +70,8 @@ public class Water extends GenericField {
         return "Water is too unstable to walk on without Aqua Boots.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WATER;
-    }}
+    }
+}

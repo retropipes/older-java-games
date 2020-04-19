@@ -28,8 +28,8 @@ public class XMLMazeFilter extends FileFilter {
 
     @Override
     public String getDescription() {
-        return "Mazer5D XML Mazes ("
-                + XMLExtension.getXMLMazeExtensionWithPeriod() + ")";
+        return "Mazer5D XML Mazes (" + XMLExtension
+                .getXMLMazeExtensionWithPeriod() + ")";
     }
 
     private static String getExtension(final File f) {

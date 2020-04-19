@@ -136,8 +136,8 @@ public final class AnonymousPicturePicker {
             this.radioButtons[x] = new JRadioButton();
             this.radioButtons[x].setOpaque(true);
             this.radioButtons[x].setBackground(this.savedCHColor);
-            this.radioButtons[x]
-                    .setActionCommand(Integer.valueOf(x).toString());
+            this.radioButtons[x].setActionCommand(Integer.valueOf(x)
+                    .toString());
             this.radioGroup.add(this.radioButtons[x]);
             this.radioButtons[x].addActionListener(this.handler);
             this.radioButtons[x].setEnabled(enabled[x]);
@@ -158,8 +158,8 @@ public final class AnonymousPicturePicker {
                 + this.scrollPane.getVerticalScrollBar().getWidth();
         final int newPreferredHeight = Math.min(maxHeight, this.pickerContainer
                 .getLayout().preferredLayoutSize(this.pickerContainer).height);
-        this.pickerContainer.setPreferredSize(
-                new Dimension(newPreferredWidth, newPreferredHeight));
+        this.pickerContainer.setPreferredSize(new Dimension(newPreferredWidth,
+                newPreferredHeight));
     }
 
     public void selectLastPickedChoice(final int lastPicked) {

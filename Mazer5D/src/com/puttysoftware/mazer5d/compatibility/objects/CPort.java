@@ -14,8 +14,8 @@ public class CPort extends GenericPort {
         super(new CPlug(), 'C');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.C_PORT;
-    }}
+    }
+}

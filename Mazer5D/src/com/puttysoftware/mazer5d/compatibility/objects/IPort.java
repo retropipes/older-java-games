@@ -14,8 +14,8 @@ public class IPort extends GenericPort {
         super(new IPlug(), 'I');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.I_PORT;
-    }}
+    }
+}

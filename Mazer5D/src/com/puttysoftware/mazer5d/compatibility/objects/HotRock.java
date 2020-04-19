@@ -29,8 +29,8 @@ public class HotRock extends GenericGround {
         return "Hot Rock is one of the many types of ground. It is created by Fire Amulets and Hot Boots, but can also exist on its own.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HOT_ROCK;
-    }}
+    }
+}

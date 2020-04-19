@@ -38,8 +38,8 @@ public class DisarmTrapWand extends GenericWand {
         return "Disarm Trap Wands will make one trap disappear when used, if aimed at a trap.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DISARM_TRAP_WAND;
-    }}
+    }
+}

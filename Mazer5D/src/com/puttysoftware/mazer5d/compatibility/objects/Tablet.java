@@ -29,8 +29,8 @@ public class Tablet extends GenericInfiniteKey {
         return "Tablets are used to fill Tablet Slots, and make them disappear. Tablets can be used infinitely many times.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TABLET;
-    }}
+    }
+}

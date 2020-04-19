@@ -110,8 +110,8 @@ public class SortedScoreTable extends ScoreTable {
         // Sort the score table
         Collections.sort(temp, new Score.ScoreComparatorAsc());
         // Determine if highest score would be removed
-        return !Collections.max(temp, new Score.ScoreComparatorAsc())
-                .equals(newEntry);
+        return !Collections.max(temp, new Score.ScoreComparatorAsc()).equals(
+                newEntry);
     }
 
     public static SortedScoreTable readSortedScoreTable(final XDataReader xdr)

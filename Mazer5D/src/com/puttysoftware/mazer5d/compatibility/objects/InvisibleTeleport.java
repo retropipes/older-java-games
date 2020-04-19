@@ -51,8 +51,8 @@ public class InvisibleTeleport extends GenericInvisibleTeleport {
         return "Invisible Teleports behave like regular teleports, except for the fact that they can't be seen.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_TELEPORT;
-    }}
+    }
+}

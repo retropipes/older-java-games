@@ -28,11 +28,11 @@ class ObjectAppearance extends Appearance {
 
     @Override
     public BufferedImageIcon getImage() {
-        BufferedImageIcon image = ObjectImageLoader
-                .load(this.getWhichObjectImage());
+        BufferedImageIcon image = ObjectImageLoader.load(this
+                .getWhichObjectImage());
         if (this.hasShading()) {
-            image = ImageShader.shade(this.getCacheName(), image,
-                    this.getShading());
+            image = ImageShader.shade(this.getCacheName(), image, this
+                    .getShading());
         }
         return image;
     }

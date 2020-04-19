@@ -14,8 +14,8 @@ public class BlackCrystal extends GenericProgrammableKey {
         super("Black");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BLACK_CRYSTAL;
-    }}
+    }
+}

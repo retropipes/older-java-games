@@ -95,8 +95,8 @@ public class Channel {
 
     public void updateSampleIdx(final int length) {
         this.sampleFra += this.step * length;
-        this.sampleIdx = this.sample.normaliseSampleIdx(
-                this.sampleIdx + (this.sampleFra >> Sample.FP_SHIFT));
+        this.sampleIdx = this.sample.normaliseSampleIdx(this.sampleIdx
+                + (this.sampleFra >> Sample.FP_SHIFT));
         this.sampleFra &= Sample.FP_MASK;
     }
 
@@ -330,7 +330,7 @@ public class Channel {
         this.vibratoAdd = 0;
         this.fxCount++;
         this.retrigCount++;
-        if (((this.noteEffect != 0x7D) || (this.fxCount > this.noteParam))) {
+        if (this.noteEffect != 0x7D || this.fxCount > this.noteParam) {
             switch (this.noteVol & 0xF0) {
             case 0x60: /* Vol Slide Down. */
                 this.volume -= this.noteVol & 0xF;
@@ -488,12 +488,12 @@ public class Channel {
                     this.fadeOutVol = 0;
                 }
             }
-            this.volEnvTick = this.instrument.volumeEnvelope
-                    .nextTick(this.volEnvTick, this.keyOn);
+            this.volEnvTick = this.instrument.volumeEnvelope.nextTick(
+                    this.volEnvTick, this.keyOn);
         }
         if (this.instrument.panningEnvelope.enabled) {
-            this.panEnvTick = this.instrument.panningEnvelope
-                    .nextTick(this.panEnvTick, this.keyOn);
+            this.panEnvTick = this.instrument.panningEnvelope.nextTick(
+                    this.panEnvTick, this.keyOn);
         }
     }
 
@@ -599,13 +599,13 @@ public class Channel {
     }
 
     private void vibrato(final boolean fine) {
-        this.vibratoAdd = this.waveform(this.vibratoPhase,
-                this.vibratoType & 0x3) * this.vibratoDepth >> (fine ? 7 : 5);
+        this.vibratoAdd = this.waveform(this.vibratoPhase, this.vibratoType
+                & 0x3) * this.vibratoDepth >> (fine ? 7 : 5);
     }
 
     private void tremolo() {
-        this.tremoloAdd = this.waveform(this.tremoloPhase,
-                this.tremoloType & 0x3) * this.tremoloDepth >> 6;
+        this.tremoloAdd = this.waveform(this.tremoloPhase, this.tremoloType
+                & 0x3) * this.tremoloDepth >> 6;
     }
 
     private int waveform(final int phase, final int type) {
@@ -745,8 +745,8 @@ public class Channel {
     private void calculateAmplitude() {
         int envVol = this.keyOn ? 64 : 0;
         if (this.instrument.volumeEnvelope.enabled) {
-            envVol = this.instrument.volumeEnvelope
-                    .calculateAmpl(this.volEnvTick);
+            envVol = this.instrument.volumeEnvelope.calculateAmpl(
+                    this.volEnvTick);
         }
         int vol = this.volume + this.tremoloAdd;
         if (vol > 64) {
@@ -760,8 +760,8 @@ public class Channel {
         this.ampl = vol * this.globalVol.volume * envVol >> 12;
         int envPan = 32;
         if (this.instrument.panningEnvelope.enabled) {
-            envPan = this.instrument.panningEnvelope
-                    .calculateAmpl(this.panEnvTick);
+            envPan = this.instrument.panningEnvelope.calculateAmpl(
+                    this.panEnvTick);
         }
         final int panRange = this.panning < 128 ? this.panning
                 : 255 - this.panning;

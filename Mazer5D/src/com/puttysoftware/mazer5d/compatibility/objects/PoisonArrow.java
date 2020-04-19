@@ -14,8 +14,8 @@ public class PoisonArrow extends GenericTransientObject {
         super("Poison Arrow");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.POISON_ARROW;
-    }}
+    }
+}

@@ -30,8 +30,8 @@ public class SkyWallOff extends GenericToggleWall {
         return "Sky Walls Off can be walked through, and will change to Sky Walls On when a Sky Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_WALL_OFF;
-    }}
+    }
+}

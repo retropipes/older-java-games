@@ -30,17 +30,17 @@ public class TwoWayTeleport extends GenericTeleport {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         final BagOStuff app = Mazer5D.getBagOStuff();
-        app.getGameManager().updatePositionAbsoluteNoEvents(
-                this.getDestinationRow(), this.getDestinationColumn(),
-                this.getDestinationFloor(), this.getDestinationLevel());
+        app.getGameManager().updatePositionAbsoluteNoEvents(this
+                .getDestinationRow(), this.getDestinationColumn(), this
+                        .getDestinationFloor(), this.getDestinationLevel());
         SoundPlayer.playSound(SoundIndex.TELEPORT, SoundGroup.GAME);
     }
 
     @Override
     public MazeObjectModel editorPropertiesHook() {
         final MazeEditor me = Mazer5D.getBagOStuff().getEditor();
-        final MazeObjectModel mo = me
-                .editTeleportDestination(MazeEditor.TELEPORT_TYPE_TWOWAY);
+        final MazeObjectModel mo = me.editTeleportDestination(
+                MazeEditor.TELEPORT_TYPE_TWOWAY);
         return mo;
     }
 
@@ -59,8 +59,8 @@ public class TwoWayTeleport extends GenericTeleport {
         return "Two-Way Teleports send you to their companion at their destination, and are linked such that stepping on the companion sends you back to the original.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TWO_WAY_TELEPORT;
-    }}
+    }
+}

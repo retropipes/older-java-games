@@ -47,8 +47,8 @@ public class PullableBlockTwice extends GenericMovableObject {
         return "Pullable Blocks Twice can only be pulled twice, before turning into a wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PULLABLE_BLOCK_TWICE;
-    }}
+    }
+}

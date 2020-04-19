@@ -14,8 +14,8 @@ public class ShockArrow extends GenericTransientObject {
         super("Shock Arrow");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SHOCK_ARROW;
-    }}
+    }
+}

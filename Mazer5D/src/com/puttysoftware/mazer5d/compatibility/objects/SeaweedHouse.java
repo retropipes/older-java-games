@@ -43,8 +43,8 @@ public class SeaweedHouse extends FinishTo {
         return "Seaweed Houses send you inside when walked on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_HOUSE;
-    }}
+    }
+}

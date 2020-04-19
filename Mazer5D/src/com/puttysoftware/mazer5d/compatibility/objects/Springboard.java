@@ -36,11 +36,9 @@ public class Springboard extends StairsUp {
     @Override
     public boolean preMoveAction(final boolean ie, final int dirX,
             final int dirY, final ObjectInventory inv) {
-        return this
-                .searchNestedSprings(dirX, dirY,
-                        Mazer5D.getBagOStuff().getGameManager()
-                                .getPlayerManager().getPlayerLocationZ() + 1,
-                        inv);
+        return this.searchNestedSprings(dirX, dirY, Mazer5D.getBagOStuff()
+                .getGameManager().getPlayerManager().getPlayerLocationZ() + 1,
+                inv);
     }
 
     private boolean searchNestedSprings(final int dirX, final int dirY,
@@ -52,16 +50,16 @@ public class Springboard extends StairsUp {
             throw new InfiniteRecursionException();
         }
         if (app.getGameManager().doesFloorExist(floor)) {
-            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(dirX,
-                    dirY, floor, Layers.OBJECT);
+            final MazeObjectModel obj = app.getMazeManager().getMaze().getCell(
+                    dirX, dirY, floor, Layers.OBJECT);
             if (obj.isConditionallySolid(inv)) {
                 return false;
             } else {
-                if (obj.getName().equals("Springboard")
-                        || obj.getName().equals("Invisible Springboard")) {
+                if (obj.getName().equals("Springboard") || obj.getName().equals(
+                        "Invisible Springboard")) {
                     return this.searchNestedSprings(dirX, dirY, floor + 1, inv);
-                } else if (obj.getName().equals("Pit")
-                        || obj.getName().equals("Invisible Pit")) {
+                } else if (obj.getName().equals("Pit") || obj.getName().equals(
+                        "Invisible Pit")) {
                     return false;
                 } else {
                     return true;
@@ -83,20 +81,21 @@ public class Springboard extends StairsUp {
 
     @Override
     public void pushIntoAction(final ObjectInventory inv,
-            final MazeObjectModel pushed, final int x, final int y, final int z) {
+            final MazeObjectModel pushed, final int x, final int y,
+            final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         try {
             this.searchNestedSprings(x, y, z + 1, inv);
             if (pushed.isPushable()) {
                 final GenericMovableObject pushedInto = (GenericMovableObject) pushed;
-                app.getGameManager().updatePushedIntoPositionAbsolute(x, y,
-                        z - 1, x, y, z, pushedInto, this);
+                app.getGameManager().updatePushedIntoPositionAbsolute(x, y, z
+                        - 1, x, y, z, pushedInto, this);
                 SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
             }
         } catch (final InfiniteRecursionException ir) {
             SoundPlayer.playSound(SoundIndex.SPRINGBOARD, SoundGroup.GAME);
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .setCell(GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().setCell(
+                    GameObjects.getEmptySpace(), x, y, z, Layers.OBJECT);
         }
     }
 
@@ -130,8 +129,8 @@ public class Springboard extends StairsUp {
         return "Springboards bounce anything that wanders into them to the floor above. If one of these is placed on the top-most floor, it is impassable.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SPRINGBOARD;
-    }}
+    }
+}

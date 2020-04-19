@@ -44,8 +44,8 @@ public class WhiteLock extends GenericSingleLock {
         return "White Locks require White Keys to open.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WHITE_LOCK;
-    }}
+    }
+}

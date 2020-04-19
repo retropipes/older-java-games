@@ -28,8 +28,8 @@ public class MagentaButton extends GenericButton {
         return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAGENTA_BUTTON;
-    }}
+    }
+}

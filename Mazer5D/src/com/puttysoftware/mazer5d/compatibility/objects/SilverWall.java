@@ -29,8 +29,8 @@ public class SilverWall extends GenericMultipleLock {
         return "Silver Walls are impassable without enough Silver Squares.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SILVER_WALL;
-    }}
+    }
+}

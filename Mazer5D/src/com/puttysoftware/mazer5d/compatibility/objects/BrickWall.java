@@ -43,8 +43,8 @@ public class BrickWall extends GenericSingleLock {
         return "Brick Walls require Hammers to destroy.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.BRICK_WALL;
-    }}
+    }
+}

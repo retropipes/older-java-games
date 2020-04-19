@@ -37,8 +37,8 @@ public class Crevasse extends GenericWall {
         return "Crevasses stop movement, but not arrows, which pass over them unimpeded.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CREVASSE;
-    }}
+    }
+}

@@ -29,8 +29,8 @@ public class Darkness extends GenericPassThroughObject {
         return null;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DARKNESS;
-    }}
+    }
+}

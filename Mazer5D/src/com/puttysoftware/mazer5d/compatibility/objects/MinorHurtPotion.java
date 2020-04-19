@@ -33,8 +33,8 @@ public class MinorHurtPotion extends GenericPotion {
         return "Minor Hurt Potions hurt you slightly when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MINOR_HURT_POTION;
-    }}
+    }
+}

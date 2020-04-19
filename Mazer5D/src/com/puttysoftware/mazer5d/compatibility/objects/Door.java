@@ -38,8 +38,8 @@ public class Door extends GenericPassThroughObject {
         return false;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DOOR;
-    }}
+    }
+}

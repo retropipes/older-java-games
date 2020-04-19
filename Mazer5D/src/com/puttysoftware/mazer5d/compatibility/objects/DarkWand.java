@@ -51,8 +51,8 @@ public class DarkWand extends GenericWand {
         return "Dark Wands have 2 uses. When aimed at an empty space, they create a Dark Gem. When aimed at a Light Gem, it is destroyed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DARK_WAND;
-    }}
+    }
+}

@@ -29,8 +29,8 @@ public class Sign extends GenericTextHolder {
         return "Signs display their message when walked into.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SIGN;
-    }}
+    }
+}

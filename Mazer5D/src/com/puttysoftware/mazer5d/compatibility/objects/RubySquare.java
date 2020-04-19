@@ -29,8 +29,8 @@ public class RubySquare extends GenericMultipleKey {
         return "Ruby Squares are the keys to Ruby Walls.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RUBY_SQUARE;
-    }}
+    }
+}

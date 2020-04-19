@@ -14,8 +14,8 @@ public class MagentaCarpet extends GenericCarpet {
         super("Magenta");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAGENTA_CARPET;
-    }}
+    }
+}

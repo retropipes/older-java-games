@@ -75,13 +75,13 @@ final class MazeObject implements MazeObjectModel {
 
     // Methods
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         return Objects.hash(this.mp, this.oc, this.op, this.sp, this.cc,
                 this.cf, this.ct, this.uniqueID);
     }
 
     @Override
-    public final boolean equals(final Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
@@ -98,27 +98,27 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public final MazeObjects getUniqueID() {
+    public MazeObjects getUniqueID() {
         return this.uniqueID;
     }
 
     @Override
-    public final BufferedImageIcon getImage() {
+    public BufferedImageIcon getImage() {
         return this.getImageHook();
     }
 
     @Override
-    public final BufferedImageIcon getGameImage() {
+    public BufferedImageIcon getGameImage() {
         return this.getGameImageHook();
     }
 
     @Override
-    public final BufferedImageIcon getEditorImage() {
+    public BufferedImageIcon getEditorImage() {
         return this.getEditorImageHook();
     }
 
     @Override
-    public final BufferedImageIcon getBattleImage() {
+    public BufferedImageIcon getBattleImage() {
         return this.getBattleImageHook();
     }
 
@@ -150,388 +150,379 @@ final class MazeObject implements MazeObjectModel {
         return null;
     }
 
-    protected final int customCountersLength() {
+    protected int customCountersLength() {
         return this.cc.length();
     }
 
-    protected final boolean addCustomCounter(final int count) {
+    protected boolean addCustomCounter(final int count) {
         return this.cc.add(count);
     }
 
-    protected final void addOneCustomCounter() {
+    protected void addOneCustomCounter() {
         this.cc.addOne();
     }
 
-    protected final void appendCustomCounter(final int count) {
+    protected void appendCustomCounter(final int count) {
         this.cc.append(count);
     }
 
-    protected final void appendOneCustomCounter() {
+    protected void appendOneCustomCounter() {
         this.cc.appendOne();
     }
 
-    protected final int getCustomCounter(final int index) {
+    protected int getCustomCounter(final int index) {
         return this.cc.get(index);
     }
 
-    protected final boolean decrementCustomCounter(final int index) {
+    protected boolean decrementCustomCounter(final int index) {
         return this.cc.decrement(index);
     }
 
-    protected final boolean incrementCustomCounter(final int index) {
+    protected boolean incrementCustomCounter(final int index) {
         return this.cc.increment(index);
     }
 
-    protected final boolean offsetCustomCounter(final int index,
-            final int value) {
+    protected boolean offsetCustomCounter(final int index, final int value) {
         return this.cc.offset(index, value);
     }
 
-    protected final boolean setCustomCounter(final int index, final int value) {
+    protected boolean setCustomCounter(final int index, final int value) {
         return this.cc.set(index, value);
     }
 
-    protected final int customFlagsLength() {
+    protected int customFlagsLength() {
         return this.cf.length();
     }
 
-    protected final boolean addCustomFlag(final int count) {
+    protected boolean addCustomFlag(final int count) {
         return this.cf.add(count);
     }
 
-    protected final void addOneCustomFlag() {
+    protected void addOneCustomFlag() {
         this.cf.addOne();
     }
 
-    protected final void appendCustomFlag(final int count) {
+    protected void appendCustomFlag(final int count) {
         this.cf.append(count);
     }
 
-    protected final void appendOneCustomFlag() {
+    protected void appendOneCustomFlag() {
         this.cf.appendOne();
     }
 
-    protected final boolean getCustomFlag(final int index) {
+    protected boolean getCustomFlag(final int index) {
         return this.cf.get(index);
     }
 
-    protected final boolean toggleCustomFlag(final int index) {
+    protected boolean toggleCustomFlag(final int index) {
         return this.cf.toggle(index);
     }
 
-    protected final boolean setCustomFlag(final int index,
-            final boolean value) {
+    protected boolean setCustomFlag(final int index, final boolean value) {
         return this.cf.set(index, value);
     }
 
-    protected final int customTextsLength() {
+    protected int customTextsLength() {
         return this.ct.length();
     }
 
-    protected final boolean addCustomText(final int count) {
+    protected boolean addCustomText(final int count) {
         return this.ct.add(count);
     }
 
-    protected final void addOneCustomText() {
+    protected void addOneCustomText() {
         this.ct.addOne();
     }
 
-    protected final void appendCustomText(final int count) {
+    protected void appendCustomText(final int count) {
         this.ct.append(count);
     }
 
-    protected final void appendOneCustomText() {
+    protected void appendOneCustomText() {
         this.ct.appendOne();
     }
 
-    protected final String getCustomText(final int index) {
+    protected String getCustomText(final int index) {
         return this.ct.get(index);
     }
 
-    protected final boolean setCustomText(final int index, final String value) {
+    protected boolean setCustomText(final int index, final String value) {
         return this.ct.set(index, value);
     }
 
     @Override
-    public final boolean isSolid() {
+    public boolean isSolid() {
         return this.sp.isSolid();
     }
 
     @Override
-    public final boolean isDirectionallySolid(final int dirX, final int dirY) {
+    public boolean isDirectionallySolid(final int dirX, final int dirY) {
         return this.sp.isDirectionallySolid(dirX, dirY);
     }
 
     @Override
-    public final boolean isInternallyDirectionallySolid(final int dirX,
+    public boolean isInternallyDirectionallySolid(final int dirX,
             final int dirY) {
         return this.sp.isInternallyDirectionallySolid(dirX, dirY);
     }
 
-    protected final void setSolid(final boolean value) {
+    protected void setSolid(final boolean value) {
         this.sp.setSolid(value);
     }
 
-    protected final void setDirectionallySolid(final int dir,
-            final boolean value) {
+    protected void setDirectionallySolid(final int dir, final boolean value) {
         this.sp.setDirectionallySolid(dir, value);
     }
 
-    protected final void setInternallyDirectionallySolid(final int dir,
+    protected void setInternallyDirectionallySolid(final int dir,
             final boolean value) {
         this.sp.setInternallyDirectionallySolid(dir, value);
     }
 
     @Override
-    public final boolean isSightBlocking() {
+    public boolean isSightBlocking() {
         return this.vp.isSightBlocking();
     }
 
     @Override
-    public final boolean isDirectionallySightBlocking(final int dirX,
+    public boolean isDirectionallySightBlocking(final int dirX,
             final int dirY) {
         return this.vp.isDirectionallySightBlocking(dirX, dirY);
     }
 
     @Override
-    public final boolean isInternallyDirectionallySightBlocking(final int dirX,
+    public boolean isInternallyDirectionallySightBlocking(final int dirX,
             final int dirY) {
         return this.vp.isInternallyDirectionallySightBlocking(dirX, dirY);
     }
 
-    protected final void setSightBlocking(final boolean value) {
+    protected void setSightBlocking(final boolean value) {
         this.vp.setSightBlocking(value);
     }
 
-    protected final void setDirectionallySightBlocking(final int dir,
+    protected void setDirectionallySightBlocking(final int dir,
             final boolean value) {
         this.vp.setDirectionallySightBlocking(dir, value);
     }
 
-    protected final void setInternallyDirectionallySightBlocking(final int dir,
+    protected void setInternallyDirectionallySightBlocking(final int dir,
             final boolean value) {
         this.vp.setInternallyDirectionallySightBlocking(dir, value);
     }
 
     @Override
-    public final boolean isPushable() {
+    public boolean isPushable() {
         return this.mp.isPushable();
     }
 
     @Override
-    public final boolean isDirectionallyPushable(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPushable(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
     @Override
-    public final boolean isPullable() {
+    public boolean isPullable() {
         return this.mp.isPullable();
     }
 
     @Override
-    public final boolean isDirectionallyPullable(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPullable(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullable(dirX, dirY);
     }
 
     @Override
-    public final boolean isPullableInto() {
+    public boolean isPullableInto() {
         return this.mp.isPullableInto();
     }
 
     @Override
-    public final boolean isPushableInto() {
+    public boolean isPushableInto() {
         return this.mp.isPushableInto();
     }
 
     @Override
-    public final boolean isDirectionallyPushableInto(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushableInto(dirX, dirY);
     }
 
     @Override
-    public final boolean isDirectionallyPullableInto(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
     @Override
-    public final boolean isPullableOut() {
+    public boolean isPullableOut() {
         return this.mp.isPullableOut();
     }
 
     @Override
-    public final boolean isPushableOut() {
+    public boolean isPushableOut() {
         return this.mp.isPushableOut();
     }
 
     @Override
-    public final boolean isDirectionallyPushableOut(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
     @Override
-    public final boolean isDirectionallyPullableOut(final int dirX,
-            final int dirY) {
+    public boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
         return this.mp.isDirectionallyPullableOut(dirX, dirY);
     }
 
-    protected final void setPushable(final boolean value) {
+    protected void setPushable(final boolean value) {
         this.mp.setPushable(value);
     }
 
-    protected final void setDirectionallyPushable(final int dir,
+    protected void setDirectionallyPushable(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPushable(dir, value);
     }
 
-    protected final void setPullable(final boolean value) {
+    protected void setPullable(final boolean value) {
         this.mp.setPullable(value);
     }
 
-    protected final void setDirectionallyPullable(final int dir,
+    protected void setDirectionallyPullable(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPullable(dir, value);
     }
 
-    protected final void setPushableInto(final boolean value) {
+    protected void setPushableInto(final boolean value) {
         this.mp.setPushableInto(value);
     }
 
-    protected final void setDirectionallyPushableInto(final int dir,
+    protected void setDirectionallyPushableInto(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPushableInto(dir, value);
     }
 
-    protected final void setPullableInto(final boolean value) {
+    protected void setPullableInto(final boolean value) {
         this.mp.setPullableInto(value);
     }
 
-    protected final void setDirectionallyPullableInto(final int dir,
+    protected void setDirectionallyPullableInto(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPullableInto(dir, value);
     }
 
-    protected final void setPushableOut(final boolean value) {
+    protected void setPushableOut(final boolean value) {
         this.mp.setPushableOut(value);
     }
 
-    protected final void setDirectionallyPushableOut(final int dir,
+    protected void setDirectionallyPushableOut(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPushableOut(dir, value);
     }
 
-    protected final void setPullableOut(final boolean value) {
+    protected void setPullableOut(final boolean value) {
         this.mp.setPullableOut(value);
     }
 
-    protected final void setDirectionallyPullableOut(final int dir,
+    protected void setDirectionallyPullableOut(final int dir,
             final boolean value) {
         this.mp.setDirectionallyPullableOut(dir, value);
     }
 
     @Override
-    public final boolean hasFriction() {
+    public boolean hasFriction() {
         return this.op.hasFriction();
     }
 
-    protected final void setFriction(final boolean value) {
+    protected void setFriction(final boolean value) {
         this.op.setFriction(value);
     }
 
     @Override
-    public final boolean isUsable() {
+    public boolean isUsable() {
         return this.op.isUsable();
     }
 
-    protected final void setUsable(final boolean value) {
+    protected void setUsable(final boolean value) {
         this.op.setUsable(value);
     }
 
     @Override
-    public final int getUses() {
+    public int getUses() {
         return this.oc.getUses();
     }
 
-    protected final void setUses(final int value) {
+    protected void setUses(final int value) {
         this.oc.setUses(value);
     }
 
     @Override
-    public final void use() {
+    public void use() {
         if (this.isUsable()) {
             this.oc.use();
         }
     }
 
     @Override
-    public final boolean isDestroyable() {
+    public boolean isDestroyable() {
         return this.op.isDestroyable();
     }
 
-    protected final void setDestroyable(final boolean value) {
+    protected void setDestroyable(final boolean value) {
         this.op.setDestroyable(value);
     }
 
     @Override
-    public final boolean isChainReacting() {
+    public boolean isChainReacting() {
         return this.op.isChainReacting();
     }
 
     @Override
-    public final boolean isChainReactingHorizontally() {
+    public boolean isChainReactingHorizontally() {
         return this.op.isChainReactingHorizontally();
     }
 
     @Override
-    public final boolean isChainReactingVertically() {
+    public boolean isChainReactingVertically() {
         return this.op.isChainReactingVertically();
     }
 
-    protected final void setChainReactingHorizontally(final boolean value) {
+    protected void setChainReactingHorizontally(final boolean value) {
         this.op.setChainReactingHorizontally(value);
     }
 
-    protected final void setChainReactingVertically(final boolean value) {
+    protected void setChainReactingVertically(final boolean value) {
         this.op.setChainReactingVertically(value);
     }
 
     @Override
-    public final boolean isCarryable() {
+    public boolean isCarryable() {
         return this.op.isCarryable();
     }
 
-    protected final void setCarryable(final boolean value) {
+    protected void setCarryable(final boolean value) {
         this.op.setCarryable(value);
     }
 
     @Override
-    public final int getTimerTicks() {
+    public int getTimerTicks() {
         return this.oc.getTimerTicks();
     }
 
-    protected final void setTimerTicks(final int value) {
+    protected void setTimerTicks(final int value) {
         this.oc.setTimerTicks(value);
     }
 
     @Override
-    public final void tickTimer() {
+    public void tickTimer() {
         this.oc.tickTimer();
     }
 
-    protected final int getTimerReset() {
+    protected int getTimerReset() {
         return this.oc.getTimerReset();
     }
 
-    protected final void setTimerReset(final int value) {
+    protected void setTimerReset(final int value) {
         this.oc.setTimerReset(value);
     }
 
     @Override
-    public final void resetTimer() {
+    public void resetTimer() {
         this.oc.resetTimer();
     }
 
@@ -587,17 +578,17 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public final MazeObjectModel getSavedObject() {
+    public MazeObjectModel getSavedObject() {
         return this.savedObject;
     }
 
     @Override
-    public final boolean hasSavedObject() {
+    public boolean hasSavedObject() {
         return this.savedObject != null;
     }
 
     @Override
-    public final void setSavedObject(final MazeObjectModel newSavedObject) {
+    public void setSavedObject(final MazeObjectModel newSavedObject) {
         this.savedObject = newSavedObject;
     }
 
@@ -655,7 +646,7 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public final void dumpState(final XDataWriter writer) throws IOException {
+    public void dumpState(final XDataWriter writer) throws IOException {
         writer.writeMazeObjectID(this.getUniqueID());
         if (this.savedObject == null) {
             writer.writeMazeObjectID(MazeObjects._NONE);
@@ -670,7 +661,7 @@ final class MazeObject implements MazeObjectModel {
     }
 
     @Override
-    public final MazeObjectModel loadState(final XDataReader reader,
+    public MazeObjectModel loadState(final XDataReader reader,
             final MazeObjects uid) throws IOException {
         if (uid == this.getUniqueID()) {
             final MazeObjects savedIdent = reader.readMazeObjectID();

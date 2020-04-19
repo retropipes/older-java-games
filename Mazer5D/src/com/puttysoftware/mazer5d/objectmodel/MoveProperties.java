@@ -14,7 +14,12 @@ import com.puttysoftware.storage.FlagStorage;
 class MoveProperties {
     // Private enumeration
     private enum MoveDataTypes {
-        PUSH(0), PULL(1), PUSH_INTO(2), PULL_INTO(3), PUSH_OUT(4), PULL_OUT(5);
+        PUSH(0),
+        PULL(1),
+        PUSH_INTO(2),
+        PULL_INTO(3),
+        PUSH_OUT(4),
+        PULL_OUT(5);
 
         private int index;
 
@@ -59,8 +64,8 @@ class MoveProperties {
     public boolean isPushable() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result
-                    && this.moveData.getCell(MoveDataTypes.PUSH.index, dir);
+            result = result && this.moveData.getCell(MoveDataTypes.PUSH.index,
+                    dir);
         }
         return result;
     }
@@ -81,8 +86,8 @@ class MoveProperties {
     public boolean isPullable() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result
-                    && this.moveData.getCell(MoveDataTypes.PULL.index, dir);
+            result = result && this.moveData.getCell(MoveDataTypes.PULL.index,
+                    dir);
         }
         return result;
     }
@@ -103,8 +108,8 @@ class MoveProperties {
     public boolean isPushableInto() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result && this.moveData
-                    .getCell(MoveDataTypes.PUSH_INTO.index, dir);
+            result = result && this.moveData.getCell(
+                    MoveDataTypes.PUSH_INTO.index, dir);
         }
         return result;
     }
@@ -126,8 +131,8 @@ class MoveProperties {
     public boolean isPullableInto() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result && this.moveData
-                    .getCell(MoveDataTypes.PULL_INTO.index, dir);
+            result = result && this.moveData.getCell(
+                    MoveDataTypes.PULL_INTO.index, dir);
         }
         return result;
     }
@@ -149,8 +154,8 @@ class MoveProperties {
     public boolean isPushableOut() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result
-                    && this.moveData.getCell(MoveDataTypes.PUSH_OUT.index, dir);
+            result = result && this.moveData.getCell(
+                    MoveDataTypes.PUSH_OUT.index, dir);
         }
         return result;
     }
@@ -171,8 +176,8 @@ class MoveProperties {
     public boolean isPullableOut() {
         boolean result = true;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result
-                    && this.moveData.getCell(MoveDataTypes.PULL_OUT.index, dir);
+            result = result && this.moveData.getCell(
+                    MoveDataTypes.PULL_OUT.index, dir);
         }
         return result;
     }

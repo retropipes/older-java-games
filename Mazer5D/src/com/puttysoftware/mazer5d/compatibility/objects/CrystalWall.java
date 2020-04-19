@@ -29,8 +29,8 @@ public class CrystalWall extends GenericProgrammableLock {
         return "Crystal Walls require one Crystal to open. The crystal type required may be different from wall to wall.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CRYSTAL_WALL;
-    }}
+    }
+}

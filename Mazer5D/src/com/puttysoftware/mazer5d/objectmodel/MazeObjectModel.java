@@ -109,5 +109,6 @@ public interface MazeObjectModel extends RandomGenerationRule {
 
     void dumpState(XDataWriter writer) throws IOException;
 
-    MazeObjectModel loadState(XDataReader reader, MazeObjects uid) throws IOException;
+    MazeObjectModel loadState(XDataReader reader, MazeObjects uid)
+            throws IOException;
 }

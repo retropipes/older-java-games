@@ -13,8 +13,6 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 
-
-
 public abstract class GenericGem extends MazeObjectModel {
     // Fields
     private static final long SCORE_SMASH = 10L;
@@ -29,8 +27,8 @@ public abstract class GenericGem extends MazeObjectModel {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         Mazer5D.getBagOStuff().getGameManager().decay();
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericGem.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericGem.SCORE_GRAB);
         this.postMoveActionHook();
         Mazer5D.getBagOStuff().getGameManager().redrawMaze();
     }
@@ -52,11 +50,11 @@ public abstract class GenericGem extends MazeObjectModel {
     public boolean arrowHitAction(final int locX, final int locY,
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         SoundPlayer.playSound(SoundIndex.SHATTER, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericGem.SCORE_SMASH);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericGem.SCORE_SMASH);
         return false;
     }
 

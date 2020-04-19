@@ -42,7 +42,7 @@ public final class UpdateCheckResults {
 
     // Methods
     /**
-     * 
+     *
      * @return the has update status
      */
     public boolean hasUpdate() {

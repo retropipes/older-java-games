@@ -34,8 +34,8 @@ public class SuperUnknownPotion extends GenericPotion {
         return "Super Unknown Potions might heal you almost fully or hurt you to the brink of death when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SUPER_UNKNOWN_POTION;
-    }}
+    }
+}

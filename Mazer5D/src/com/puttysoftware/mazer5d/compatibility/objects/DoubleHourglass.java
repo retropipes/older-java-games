@@ -39,8 +39,8 @@ public class DoubleHourglass extends GenericTimeModifier {
         Mazer5D.getBagOStuff().getMazeManager().getMaze()
                 .extendTimerByInitialValueDoubled();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(DoubleHourglass.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                DoubleHourglass.SCORE_GRAB);
     }
 
     @Override
@@ -48,8 +48,8 @@ public class DoubleHourglass extends GenericTimeModifier {
         return "Double Hourglasses extend the time to solve the current level by double the initial value.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DOUBLE_HOURGLASS;
-    }}
+    }
+}

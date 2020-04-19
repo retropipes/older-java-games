@@ -30,8 +30,8 @@ public class GreenWallOff extends GenericToggleWall {
         return "Green Walls Off can be walked through, and will change to Green Walls On when a Green Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.GREEN_WALL_OFF;
-    }}
+    }
+}

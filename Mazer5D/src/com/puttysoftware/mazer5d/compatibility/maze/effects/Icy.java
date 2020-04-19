@@ -17,7 +17,7 @@ public class Icy extends MazeEffect {
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(MazeObjects.ICE_AMULET);
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(
+                MazeObjects.ICE_AMULET);
     }
 }

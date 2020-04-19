@@ -30,8 +30,8 @@ public abstract class GenericInventoryableObject extends MazeObjectModel {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
         SoundPlayer.playSound(SoundIndex.GRAB, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericInventoryableObject.SCORE_GRAB);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericInventoryableObject.SCORE_GRAB);
     }
 
     @Override

@@ -42,8 +42,8 @@ public class NoBoots extends GenericInventoryModifier {
         return "No Boots remove any boots worn when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.NO_BOOTS;
-    }}
+    }
+}

@@ -44,8 +44,8 @@ public class TabletSlot extends GenericInfiniteLock {
         return "Tablet Slots disappear when filled with a Tablet.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TABLET_SLOT;
-    }}
+    }
+}

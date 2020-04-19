@@ -14,8 +14,8 @@ public class QPort extends GenericPort {
         super(new QPlug(), 'Q');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.Q_PORT;
-    }}
+    }
+}

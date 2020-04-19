@@ -25,8 +25,8 @@ public abstract class GenericWand extends GenericUsableObject {
             final int z) {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().morph(mo, x, y, z);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(GenericWand.SCORE_USE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                GenericWand.SCORE_USE);
     }
 
     @Override

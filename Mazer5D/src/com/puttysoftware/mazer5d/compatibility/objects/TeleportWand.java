@@ -47,8 +47,8 @@ public class TeleportWand extends GenericWand {
         return "Teleport Wands will teleport you to the target square when used. You cannot teleport to areas you cannot see.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TELEPORT_WAND;
-    }}
+    }
+}

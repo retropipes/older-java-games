@@ -36,8 +36,8 @@ public class SuperHurtPotion extends GenericPotion {
         return "Super Hurt Potions bring you to the brink of death when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SUPER_HURT_POTION;
-    }}
+    }
+}

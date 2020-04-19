@@ -41,8 +41,8 @@ public class PoisonousAmulet extends GenericAmulet {
                 PoisonousAmulet.EFFECT_DURATION);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.POISONOUS_AMULET;
-    }}
+    }
+}

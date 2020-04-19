@@ -30,8 +30,8 @@ public class RedKey extends GenericSingleKey {
         return "Red Keys will unlock Red Locks, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RED_KEY;
-    }}
+    }
+}

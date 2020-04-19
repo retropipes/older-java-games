@@ -43,8 +43,8 @@ public class ShuffleBomb extends GenericUsableObject {
             final int locZ, final int dirX, final int dirY, final int arrowType,
             final ObjectInventory inv) {
         // Destroy bomb
-        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects.getEmptySpace(), locX, locY,
-                locZ);
+        Mazer5D.getBagOStuff().getGameManager().morph(GameObjects
+                .getEmptySpace(), locX, locY, locZ);
         // Act as if bomb was used
         this.useAction(null, locX, locY, locZ);
         // Stop arrow
@@ -67,8 +67,8 @@ public class ShuffleBomb extends GenericUsableObject {
         this.useAction(null, x, y, z);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SHUFFLE_BOMB;
-    }}
+    }
+}

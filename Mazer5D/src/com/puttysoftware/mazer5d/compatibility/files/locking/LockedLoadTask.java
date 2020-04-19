@@ -35,13 +35,14 @@ public class LockedLoadTask extends Thread {
         this.filename = file;
         this.setName("Locked File Loader");
         this.loadFrame = new JFrame("Loading...");
-        this.loadFrame.setIconImage(LogoImageLoader.load(LogoImageIndex.MICRO_LOGO));
+        this.loadFrame.setIconImage(LogoImageLoader.load(
+                LogoImageIndex.MICRO_LOGO));
         this.loadBar = new JProgressBar();
         this.loadBar.setIndeterminate(true);
         this.loadFrame.getContentPane().add(this.loadBar);
         this.loadFrame.setResizable(false);
-        this.loadFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.loadFrame.setDefaultCloseOperation(
+                WindowConstants.DO_NOTHING_ON_CLOSE);
         this.loadFrame.pack();
     }
 
@@ -56,14 +57,14 @@ public class LockedLoadTask extends Thread {
         sg = "Maze";
         try {
             final File mazeFile = new File(this.filename);
-            final File tempLock = new File(
-                    MazeModel.getMazeTempFolder() + "lock.tmp");
+            final File tempLock = new File(MazeModel.getMazeTempFolder()
+                    + "lock.tmp");
             try {
                 this.gameMaze = new MazeModel();
                 // Unlock the file
                 LockedWrapper.unlock(mazeFile, tempLock);
-                ZipUtilities.unzipDirectory(tempLock,
-                        new File(this.gameMaze.getBasePath()));
+                ZipUtilities.unzipDirectory(tempLock, new File(this.gameMaze
+                        .getBasePath()));
                 tempLock.delete();
                 // Set prefix handler
                 this.gameMaze.setXMLPrefixHandler(new XMLPrefixHandler());
@@ -80,9 +81,9 @@ public class LockedLoadTask extends Thread {
                 final boolean playerExists = this.gameMaze.doesPlayerExist();
                 if (playerExists) {
                     app.getGameManager().getPlayerManager().setPlayerLocation(
-                            this.gameMaze.getStartColumn(),
-                            this.gameMaze.getStartRow(),
-                            this.gameMaze.getStartFloor(), startW);
+                            this.gameMaze.getStartColumn(), this.gameMaze
+                                    .getStartRow(), this.gameMaze
+                                            .getStartFloor(), startW);
                     app.getGameManager().resetViewingWindow();
                 }
                 this.gameMaze.save();
@@ -93,14 +94,14 @@ public class LockedLoadTask extends Thread {
                 CommonDialogs.showDialog("Locked " + sg + " file loaded.");
                 app.getMazeManager().handleDeferredSuccess(true);
             } catch (final FileNotFoundException fnfe) {
-                CommonDialogs.showDialog("Loading the locked "
-                        + sg.toLowerCase()
+                CommonDialogs.showDialog("Loading the locked " + sg
+                        .toLowerCase()
                         + " file failed, probably due to illegal characters in the file name.");
                 app.getMazeManager().handleDeferredSuccess(false);
             } catch (final IOException ie) {
                 ie.printStackTrace();
-                throw new InvalidMazeException(
-                        "Error loading locked " + sg.toLowerCase() + " file.");
+                throw new InvalidMazeException("Error loading locked " + sg
+                        .toLowerCase() + " file.");
             }
         } catch (final InvalidMazeException ime) {
             CommonDialogs.showDialog(ime.getMessage());

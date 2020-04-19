@@ -36,8 +36,8 @@ public class Empty extends GenericPassThroughObject {
         this.type.set(TypeConstants.TYPE_EMPTY_SPACE);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.EMPTY;
-    }}
+    }
+}

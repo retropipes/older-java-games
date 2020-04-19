@@ -23,8 +23,8 @@ public class Poisonous extends MazeEffect {
     @Override
     public void customTerminateLogic() {
         // Remove item that granted effect from inventory
-        Mazer5D.getBagOStuff().getGameManager().getObjectInventory()
-                .removeItem(MazeObjects.POISONOUS_AMULET);
+        Mazer5D.getBagOStuff().getGameManager().getObjectInventory().removeItem(
+                MazeObjects.POISONOUS_AMULET);
         // Undo the effect
         Mazer5D.getBagOStuff().getMazeManager().getMaze().undoPoisonAmulets();
     }

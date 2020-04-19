@@ -29,8 +29,8 @@ public class Hammer extends GenericSingleKey {
         return "Hammers are used to destroy Brick Walls, and can only be used once.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HAMMER;
-    }}
+    }
+}

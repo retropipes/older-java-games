@@ -45,8 +45,8 @@ public class VariableHealTrap extends GenericTrap {
         }
         this.healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING,
                 this.maxHealing);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .heal(this.healingGiven.generate());
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().heal(this.healingGiven
+                .generate());
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
@@ -56,8 +56,8 @@ public class VariableHealTrap extends GenericTrap {
         return "Variable Heal Traps heal you when stepped on, then disappear.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.VARIABLE_HEAL_TRAP;
-    }}
+    }
+}

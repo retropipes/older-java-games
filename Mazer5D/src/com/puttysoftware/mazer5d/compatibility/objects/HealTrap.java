@@ -49,8 +49,8 @@ public class HealTrap extends GenericTrap {
         return "Heal Traps heal you when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HEAL_TRAP;
-    }}
+    }
+}

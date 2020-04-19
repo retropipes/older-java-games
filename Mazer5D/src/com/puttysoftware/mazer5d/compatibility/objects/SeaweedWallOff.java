@@ -30,8 +30,8 @@ public class SeaweedWallOff extends GenericToggleWall {
         return "Seaweed Walls Off can be walked through, and will change to Seaweed Walls On when a Seaweed Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SEAWEED_WALL_OFF;
-    }}
+    }
+}

@@ -14,8 +14,8 @@ public class YPort extends GenericPort {
         super(new YPlug(), 'Y');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.Y_PORT;
-    }}
+    }
+}

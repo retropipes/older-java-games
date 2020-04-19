@@ -17,8 +17,6 @@ import com.puttysoftware.mazer5d.game.ObjectInventory;
 import com.puttysoftware.mazer5d.loaders.SoundPlayer;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
 
-
-
 public abstract class GenericCharacter extends MazeObjectModel {
     // Fields
     private MazeObjectModel savedObject;
@@ -67,11 +65,11 @@ public abstract class GenericCharacter extends MazeObjectModel {
         // Shot self
         Mazer5D.getBagOStuff().showMessage("Ouch, you shot yourself!");
         if (arrowType == ArrowTypeConstants.ARROW_TYPE_PLAIN) {
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .doDamage(GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(
+                    GenericCharacter.SHOT_SELF_NORMAL_DAMAGE);
         } else {
-            Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                    .doDamage(GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
+            Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(
+                    GenericCharacter.SHOT_SELF_SPECIAL_DAMAGE);
         }
         SoundPlayer.playSound(SoundIndex.LAVA, SoundGroup.GAME);
         return false;
@@ -105,9 +103,7 @@ public abstract class GenericCharacter extends MazeObjectModel {
     @Override
     protected MazeObjectModel readMazeObjectHookXML(final XDataReader reader,
             final int formatVersion) throws IOException {
-        
-        this.savedObject = GameObjects
-                .readObject(reader, formatVersion);
+        this.savedObject = GameObjects.readObject(reader, formatVersion);
         return this;
     }
 }

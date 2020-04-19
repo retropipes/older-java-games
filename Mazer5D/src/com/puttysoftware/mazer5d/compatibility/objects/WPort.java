@@ -14,8 +14,8 @@ public class WPort extends GenericPort {
         super(new WPlug(), 'W');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.W_PORT;
-    }}
+    }
+}

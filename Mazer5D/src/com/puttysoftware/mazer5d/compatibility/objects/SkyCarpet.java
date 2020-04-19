@@ -14,8 +14,8 @@ public class SkyCarpet extends GenericCarpet {
         super("Sky");
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.SKY_CARPET;
-    }}
+    }
+}

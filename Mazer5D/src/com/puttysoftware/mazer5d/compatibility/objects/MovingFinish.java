@@ -66,8 +66,8 @@ public class MovingFinish extends Finish {
     public void timerExpiredAction(final int dirX, final int dirY) {
         this.active = false;
         final MazeObjectModel obj = Mazer5D.getBagOStuff().getMazeManager()
-                .getMazeObject(this.getDestinationRow(),
-                        this.getDestinationColumn(), this.getDestinationFloor(),
+                .getMazeObject(this.getDestinationRow(), this
+                        .getDestinationColumn(), this.getDestinationFloor(),
                         Layers.OBJECT);
         if (obj instanceof MovingFinish) {
             final MovingFinish mf = (MovingFinish) obj;
@@ -75,7 +75,8 @@ public class MovingFinish extends Finish {
             mf.activate();
         } else {
             final BagOStuff app = Mazer5D.getBagOStuff();
-            final MazeObjectModel saved = app.getGameManager().getSavedMazeObject();
+            final MazeObjectModel saved = app.getGameManager()
+                    .getSavedMazeObject();
             final int px = app.getGameManager().getPlayerManager()
                     .getPlayerLocationX();
             final int py = app.getGameManager().getPlayerManager()
@@ -96,11 +97,10 @@ public class MovingFinish extends Finish {
 
     @Override
     public void editorProbeHook() {
-        Mazer5D.getBagOStuff()
-                .showMessage(this.getName() + ": Next Moving Finish ("
-                        + (this.getDestinationColumn() + 1) + ","
-                        + (this.getDestinationRow() + 1) + ","
-                        + (this.getDestinationFloor() + 1) + ")");
+        Mazer5D.getBagOStuff().showMessage(this.getName()
+                + ": Next Moving Finish (" + (this.getDestinationColumn() + 1)
+                + "," + (this.getDestinationRow() + 1) + "," + (this
+                        .getDestinationFloor() + 1) + ")");
     }
 
     @Override
@@ -181,8 +181,8 @@ public class MovingFinish extends Finish {
         }
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MOVING_FINISH;
-    }}
+    }
+}

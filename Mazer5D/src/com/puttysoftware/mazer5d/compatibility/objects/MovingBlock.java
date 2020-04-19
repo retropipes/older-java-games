@@ -75,8 +75,8 @@ public class MovingBlock extends GenericMovingObject implements Cloneable {
         return this;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MOVING_BLOCK;
-    }}
+    }
+}

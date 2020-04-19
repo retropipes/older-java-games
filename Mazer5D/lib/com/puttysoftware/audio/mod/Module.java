@@ -376,8 +376,8 @@ public class Module {
             final int numNotes = numRows * this.numChannels;
             final Pattern pattern = this.patterns[patIdx] = new Pattern(
                     this.numChannels, numRows);
-            final int patternDataLength = Module.ushortle(moduleData,
-                    dataOffset + 7);
+            final int patternDataLength = Module.ushortle(moduleData, dataOffset
+                    + 7);
             dataOffset += Module.intle(moduleData, dataOffset);
             final int nextOffset = dataOffset + patternDataLength;
             if (patternDataLength > 0) {
@@ -420,13 +420,13 @@ public class Module {
             final Instrument instrument = this.instruments[insIdx] = new Instrument();
             instrument.name = Module.codePage850(moduleData, dataOffset + 4,
                     22);
-            final int numSamples = instrument.numSamples = Module
-                    .ushortle(moduleData, dataOffset + 27);
+            final int numSamples = instrument.numSamples = Module.ushortle(
+                    moduleData, dataOffset + 27);
             if (numSamples > 0) {
                 instrument.samples = new Sample[numSamples];
                 for (int keyIdx = 0; keyIdx < 96; keyIdx++) {
-                    instrument.keyToSample[keyIdx
-                            + 1] = moduleData[dataOffset + 33 + keyIdx] & 0xFF;
+                    instrument.keyToSample[keyIdx + 1] = moduleData[dataOffset
+                            + 33 + keyIdx] & 0xFF;
                 }
                 final Envelope volEnv = instrument.volumeEnvelope = new Envelope();
                 volEnv.pointsTick = new int[12];
@@ -434,8 +434,8 @@ public class Module {
                 int pointTick = 0;
                 for (int point = 0; point < 12; point++) {
                     final int pointOffset = dataOffset + 129 + point * 4;
-                    pointTick = (deltaEnv ? pointTick : 0)
-                            + Module.ushortle(moduleData, pointOffset);
+                    pointTick = (deltaEnv ? pointTick : 0) + Module.ushortle(
+                            moduleData, pointOffset);
                     volEnv.pointsTick[point] = pointTick;
                     volEnv.pointsAmpl[point] = Module.ushortle(moduleData,
                             pointOffset + 2);
@@ -446,8 +446,8 @@ public class Module {
                 pointTick = 0;
                 for (int point = 0; point < 12; point++) {
                     final int pointOffset = dataOffset + 177 + point * 4;
-                    pointTick = (deltaEnv ? pointTick : 0)
-                            + Module.ushortle(moduleData, pointOffset);
+                    pointTick = (deltaEnv ? pointTick : 0) + Module.ushortle(
+                            moduleData, pointOffset);
                     panEnv.pointsTick[point] = pointTick;
                     panEnv.pointsAmpl[point] = Module.ushortle(moduleData,
                             pointOffset + 2);
@@ -472,12 +472,12 @@ public class Module {
                         + 231]];
                 panEnv.loopEndTick = panEnv.pointsTick[moduleData[dataOffset
                         + 232]];
-                volEnv.enabled = volEnv.numPoints > 0
-                        && (moduleData[dataOffset + 233] & 0x1) > 0;
+                volEnv.enabled = volEnv.numPoints > 0 && (moduleData[dataOffset
+                        + 233] & 0x1) > 0;
                 volEnv.sustain = (moduleData[dataOffset + 233] & 0x2) > 0;
                 volEnv.looped = (moduleData[dataOffset + 233] & 0x4) > 0;
-                panEnv.enabled = panEnv.numPoints > 0
-                        && (moduleData[dataOffset + 234] & 0x1) > 0;
+                panEnv.enabled = panEnv.numPoints > 0 && (moduleData[dataOffset
+                        + 234] & 0x1) > 0;
                 panEnv.sustain = (moduleData[dataOffset + 234] & 0x2) > 0;
                 panEnv.looped = (moduleData[dataOffset + 234] & 0x4) > 0;
                 instrument.vibratoType = moduleData[dataOffset + 235] & 0xFF;
@@ -509,8 +509,8 @@ public class Module {
                         & 0x10) > 0;
                 sample.panning = moduleData[sampleHeaderOffset + 15] & 0xFF;
                 sample.relNote = moduleData[sampleHeaderOffset + 16];
-                sample.name = Module.codePage850(moduleData,
-                        sampleHeaderOffset + 18, 22);
+                sample.name = Module.codePage850(moduleData, sampleHeaderOffset
+                        + 18, 22);
                 sampleHeaderOffset += 40;
                 int sampleDataLength = sampleDataBytes;
                 if (sixteenBit) {

@@ -60,8 +60,8 @@ public class Player extends GenericCharacter {
         return 1;
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.PLAYER;
-    }}
+    }
+}

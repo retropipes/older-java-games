@@ -14,7 +14,8 @@ import com.puttysoftware.storage.FlagStorage;
 class SolidProperties {
     // Private enumeration
     private enum SolidDataTypes {
-        EXTERNAL(0), INTERNAL(1);
+        EXTERNAL(0),
+        INTERNAL(1);
 
         private int index;
 
@@ -59,8 +60,8 @@ class SolidProperties {
     public boolean isSolid() {
         boolean result = false;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result || this.solidData
-                    .getCell(SolidDataTypes.EXTERNAL.index, dir);
+            result = result || this.solidData.getCell(
+                    SolidDataTypes.EXTERNAL.index, dir);
         }
         return result;
     }
@@ -68,8 +69,8 @@ class SolidProperties {
     public boolean isInternallySolid() {
         boolean result = false;
         for (int dir = 0; dir < Directions.COUNT; dir++) {
-            result = result || this.solidData
-                    .getCell(SolidDataTypes.INTERNAL.index, dir);
+            result = result || this.solidData.getCell(
+                    SolidDataTypes.INTERNAL.index, dir);
         }
         return result;
     }

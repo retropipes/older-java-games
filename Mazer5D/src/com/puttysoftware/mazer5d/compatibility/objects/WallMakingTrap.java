@@ -40,8 +40,8 @@ public class WallMakingTrap extends GenericTrap {
         return "Wall-Making Traps create a Wall when you step OFF them.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.WALL_MAKING_TRAP;
-    }}
+    }
+}

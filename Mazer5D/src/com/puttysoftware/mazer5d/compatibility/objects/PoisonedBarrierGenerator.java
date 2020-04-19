@@ -70,8 +70,8 @@ public class PoisonedBarrierGenerator extends GenericGenerator {
         }
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.POISONED_BARRIER_GENERATOR;
-    }}
+    }
+}

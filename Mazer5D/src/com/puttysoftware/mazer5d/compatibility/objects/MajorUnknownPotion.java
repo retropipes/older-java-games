@@ -34,8 +34,8 @@ public class MajorUnknownPotion extends GenericPotion {
         return "Major Unknown Potions might heal you or hurt you significantly when picked up.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MAJOR_UNKNOWN_POTION;
-    }}
+    }
+}

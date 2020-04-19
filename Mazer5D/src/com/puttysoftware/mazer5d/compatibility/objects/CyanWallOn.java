@@ -30,8 +30,8 @@ public class CyanWallOn extends GenericToggleWall {
         return "Cyan Walls On can NOT be walked through, and will change to Cyan Walls Off when a Cyan Button is pressed.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.CYAN_WALL_ON;
-    }}
+    }
+}

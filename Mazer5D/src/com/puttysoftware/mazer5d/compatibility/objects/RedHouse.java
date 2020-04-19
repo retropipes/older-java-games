@@ -43,8 +43,8 @@ public class RedHouse extends FinishTo {
         return "Red Houses send you inside when walked on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.RED_HOUSE;
-    }}
+    }
+}

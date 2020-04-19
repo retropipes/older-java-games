@@ -49,8 +49,8 @@ class SavedTowerState implements Cloneable {
         return this.saveData[x][y][z][e];
     }
 
-    public void setDataCell(final MazeObjectModel newData, final int x, final int y,
-            final int z, final int e) {
+    public void setDataCell(final MazeObjectModel newData, final int x,
+            final int y, final int z, final int e) {
         this.saveData[x][y][z][e] = newData;
     }
 
@@ -83,8 +83,8 @@ class SavedTowerState implements Cloneable {
             for (y = 0; y < sts.r; y++) {
                 for (z = 0; z < sts.f; z++) {
                     for (e = 0; e < Layers.COUNT; e++) {
-                        sts.saveData[x][y][z][e] = GameObjects
-                                .readObject(reader, formatVersion);
+                        sts.saveData[x][y][z][e] = GameObjects.readObject(
+                                reader, formatVersion);
                     }
                 }
             }

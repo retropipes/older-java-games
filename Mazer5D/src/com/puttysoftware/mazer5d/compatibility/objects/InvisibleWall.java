@@ -64,8 +64,8 @@ public class InvisibleWall extends GenericWall {
         return "Invisible Walls look like any other open space, but block any attempt at moving into them.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.INVISIBLE_WALL;
-    }}
+    }
+}

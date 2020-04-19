@@ -29,8 +29,8 @@ public class DarkGem extends GenericLightModifier {
         return "Dark Gems shroud the immediately adjacent area in permanent darkness.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.DARK_GEM;
-    }}
+    }
+}

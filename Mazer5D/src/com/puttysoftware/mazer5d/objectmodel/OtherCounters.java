@@ -12,7 +12,9 @@ import com.puttysoftware.storage.NumberStorage;
 class OtherCounters {
     // Private enumeration
     private enum OtherDataTypes {
-        USES(0), TIMER_TICKS(1), TIMER_RESET(2);
+        USES(0),
+        TIMER_TICKS(1),
+        TIMER_RESET(2);
 
         private int index;
 

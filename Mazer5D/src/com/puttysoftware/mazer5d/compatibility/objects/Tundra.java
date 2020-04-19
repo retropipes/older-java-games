@@ -29,8 +29,8 @@ public class Tundra extends GenericGround {
         return "Tundra is one of the many types of ground.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.TUNDRA;
-    }}
+    }
+}

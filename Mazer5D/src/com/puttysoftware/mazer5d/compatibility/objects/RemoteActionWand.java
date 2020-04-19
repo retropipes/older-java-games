@@ -44,8 +44,8 @@ public class RemoteActionWand extends GenericWand {
         return "Remote Action Wands will act on the target object as if you were there, on top of it.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.REMOTE_ACTION_WAND;
-    }}
+    }
+}

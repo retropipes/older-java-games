@@ -29,8 +29,8 @@ public class EnergySphere extends GenericPass {
         return "Energy Spheres permit walking on Force Fields.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.ENERGY_SPHERE;
-    }}
+    }
+}

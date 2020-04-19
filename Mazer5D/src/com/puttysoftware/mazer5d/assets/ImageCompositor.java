@@ -46,8 +46,8 @@ public class ImageCompositor {
             final BufferedImageIcon... inputs) {
         if (inputs != null) {
             if (inputs.length >= 2) {
-                BufferedImageIcon result = ImageCompositor
-                        .compositeTwo(inputs[0], inputs[1]);
+                BufferedImageIcon result = ImageCompositor.compositeTwo(
+                        inputs[0], inputs[1]);
                 final int beyond2 = inputs.length;
                 for (int i = 2; i < beyond2; i++) {
                     final BufferedImageIcon tempResult = ImageCompositor

@@ -43,8 +43,8 @@ public class Exit extends FinishTo {
         return "Exits send you outside when walked on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.EXIT;
-    }}
+    }
+}

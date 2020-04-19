@@ -34,8 +34,8 @@ public class NoExploreTrap extends GenericTrap {
     public void postMoveAction(final boolean ie, final int dirX, final int dirY,
             final ObjectInventory inv) {
         SoundPlayer.playSound(SoundIndex.CHANGE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .removeVisionMode(VisionModes.EXPLORE);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().removeVisionMode(
+                VisionModes.EXPLORE);
         Mazer5D.getBagOStuff().getGameManager().decay();
     }
 
@@ -44,8 +44,8 @@ public class NoExploreTrap extends GenericTrap {
         return "No Explore Traps turn exploring mode off, then disappear.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.NO_EXPLORE_TRAP;
-    }}
+    }
+}

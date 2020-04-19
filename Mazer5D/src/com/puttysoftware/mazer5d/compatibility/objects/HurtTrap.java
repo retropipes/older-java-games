@@ -40,8 +40,7 @@ public class HurtTrap extends GenericTrap {
         if (this.damage < 1) {
             this.damage = 1;
         }
-        Mazer5D.getBagOStuff().getMazeManager().getMaze()
-                .doDamage(this.damage);
+        Mazer5D.getBagOStuff().getMazeManager().getMaze().doDamage(this.damage);
         SoundPlayer.playSound(SoundIndex.BARRIER, SoundGroup.GAME);
     }
 
@@ -50,8 +49,8 @@ public class HurtTrap extends GenericTrap {
         return "Hurt Traps hurt you when stepped on.";
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.HURT_TRAP;
-    }}
+    }
+}

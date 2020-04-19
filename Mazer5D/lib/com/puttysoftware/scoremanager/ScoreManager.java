@@ -82,7 +82,7 @@ public class ScoreManager {
     }
 
     public void viewTable() {
-        ScoreTableViewer.view(this.table, this.viewerTitle,
-                this.table.getUnits());
+        ScoreTableViewer.view(this.table, this.viewerTitle, this.table
+                .getUnits());
     }
 }

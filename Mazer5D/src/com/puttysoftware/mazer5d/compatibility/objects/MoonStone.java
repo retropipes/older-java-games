@@ -45,12 +45,12 @@ public class MoonStone extends GenericInventoryableObject {
         final BagOStuff app = Mazer5D.getBagOStuff();
         app.getGameManager().decay();
         SoundPlayer.playSound(SoundIndex.SUN_STONE, SoundGroup.GAME);
-        Mazer5D.getBagOStuff().getGameManager()
-                .addToScore(MoonStone.SCORE_GRAB_STONE);
+        Mazer5D.getBagOStuff().getGameManager().addToScore(
+                MoonStone.SCORE_GRAB_STONE);
     }
-
 
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.MOON_STONE;
-    }}
+    }
+}

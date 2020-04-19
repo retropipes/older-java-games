@@ -14,8 +14,8 @@ public class HPort extends GenericPort {
         super(new HPlug(), 'H');
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.H_PORT;
-    }}
+    }
+}

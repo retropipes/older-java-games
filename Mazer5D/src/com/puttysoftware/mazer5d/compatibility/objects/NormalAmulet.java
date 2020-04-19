@@ -43,8 +43,8 @@ public class NormalAmulet extends GenericAmulet {
         gm.deactivateEffect(MazeEffectConstants.EFFECT_POISONOUS);
     }
 
-
     @Override
     public MazeObjects getUniqueID() {
         return MazeObjects.NORMAL_AMULET;
-    }}
+    }
+}

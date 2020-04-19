@@ -7,7 +7,7 @@ import com.puttysoftware.mazer5d.files.SuffixIO;
 import com.puttysoftware.mazer5d.objectmodel.MazeObjectModel;
 
 public interface MazeModel {
- // Methods
+    // Methods
     int getCurrentHP();
 
     int getMaximumHP();
