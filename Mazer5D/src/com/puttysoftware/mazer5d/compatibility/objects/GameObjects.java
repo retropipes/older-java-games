@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
@@ -725,10 +727,20 @@ public class GameObjects {
         GameObjects.allObjectsLookup.put(MazeObjects.Y_PORT, new YPort());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PLUG, new ZPlug());
         GameObjects.allObjectsLookup.put(MazeObjects.Z_PORT, new ZPort());
-        final Collection<MazeObjectModel> values = GameObjects.allObjectsLookup
-                .values();
+        final Collection<MazeObjectModel> values = GameObjects.removeNullValues(
+                GameObjects.allObjectsLookup.values());
         GameObjects.allObjects = values.toArray(new MazeObjectModel[values
                 .size()]);
+    }
+
+    private static Collection<MazeObjectModel> removeNullValues(
+            Collection<MazeObjectModel> values) {
+        return values.stream().filter(GameObjects.itemNotNull()).collect(
+                Collectors.<MazeObjectModel> toList());
+    }
+
+    private static Predicate<? super MazeObjectModel> itemNotNull() {
+        return p -> p != null;
     }
 
     private GameObjects() {
@@ -1370,15 +1382,7 @@ public class GameObjects {
     }
 
     public static MazeObjectModel createObject(final MazeObjects uid) {
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1395,15 +1399,7 @@ public class GameObjects {
     public static MazeObjectModel createContainerObject(final MazeObjects uid,
             final MazeObjects contentsUID) {
         final MazeObjectModel contents = GameObjects.createObject(contentsUID);
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1420,15 +1416,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc) {
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1445,15 +1433,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df) {
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
@@ -1470,15 +1450,7 @@ public class GameObjects {
 
     public static MazeObjectModel createTeleportObject(final MazeObjects uid,
             final int dr, final int dc, final int df, final int dl) {
-        MazeObjectModel instance = null;
-        int x;
-        for (x = 0; x < GameObjects.allObjects.length; x++) {
-            final MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
-            if (uid.equals(objUID)) {
-                instance = GameObjects.allObjects[x];
-                break;
-            }
-        }
+        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
         if (instance == null) {
             return null;
         } else {
