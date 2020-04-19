@@ -3,7 +3,7 @@ Copyright (C) 2008-2013 Eric Ahnell
 
 Any questions should be directed to the author via email at: products@puttysoftware.com
  */
-package com.puttysoftware.mazer5d.compatibility.abc;
+package com.puttysoftware.mazer5d.compatibility.objects;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -12,9 +12,10 @@ import java.util.TreeMap;
 
 import com.puttysoftware.images.BufferedImageIcon;
 import com.puttysoftware.mazer5d.Mazer5D;
+import com.puttysoftware.mazer5d.compatibility.abc.MazeObjectModel;
+import com.puttysoftware.mazer5d.compatibility.abc.TypeConstants;
 import com.puttysoftware.mazer5d.compatibility.files.xml.XMLFormatConstants;
 import com.puttysoftware.mazer5d.compatibility.loaders.ObjectImageManager;
-import com.puttysoftware.mazer5d.compatibility.objects.*;
 import com.puttysoftware.mazer5d.files.io.XDataReader;
 import com.puttysoftware.mazer5d.files.io.XDataWriter;
 import com.puttysoftware.mazer5d.objectmodel.Layers;
@@ -732,6 +733,10 @@ public class GameObjects {
         super();
     }
 
+    public static MazeObjectModel getEmptySpace() {
+        return GameObjects.createObject(MazeObjects.EMPTY);
+    }
+
     public static MazeObjectModel[] getAllObjects() {
         return GameObjects.allObjects;
     }
@@ -1359,7 +1364,15 @@ public class GameObjects {
     }
 
     public static MazeObjectModel createObject(final MazeObjects uid) {
-        MazeObjectModel instance = GameObjects.allObjectsLookup.get(uid);
+        MazeObjectModel instance = null;
+        int x;
+        for (x = 0; x < GameObjects.allObjects.length; x++) {
+            MazeObjects objUID = GameObjects.allObjects[x].getUniqueID();
+            if (uid.equals(objUID)) {
+                instance = GameObjects.allObjects[x];
+                break;
+            }
+        }
         if (instance == null) {
             return null;
         } else {
