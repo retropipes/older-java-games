@@ -25,7 +25,7 @@ import com.puttysoftware.fantastlereboot.loaders.SoundPlayer;
 import com.puttysoftware.fantastlereboot.spells.SpellBook;
 import com.puttysoftware.fantastlereboot.world.GenerateTask;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.page.Page;
+import com.puttysoftware.polytable.PolyTable;
 
 public class PartyMember extends Creature {
     // Fields
@@ -60,7 +60,7 @@ public class PartyMember extends Creature {
         this.healAndRegenerateFully();
         this.setGold(PartyMember.START_GOLD);
         this.setExperience(0L);
-        final Page nextLevelEquation = new Page(3, 1, 0, true);
+        final PolyTable nextLevelEquation = new PolyTable(3, 1, 0, true);
         final double value = PartyMember.BASE_COEFF;
         nextLevelEquation.setCoefficient(1, value);
         nextLevelEquation.setCoefficient(2, value);
@@ -167,7 +167,7 @@ public class PartyMember extends Creature {
         this.setExperience(0L);
         this.getItems().resetInventory();
         Game.deactivateAllEffects();
-        final Page nextLevelEquation = new Page(3, 1, 0, true);
+        final PolyTable nextLevelEquation = new PolyTable(3, 1, 0, true);
         final double value = PartyMember.BASE_COEFF;
         nextLevelEquation.setCoefficient(1, value);
         nextLevelEquation.setCoefficient(2, value);

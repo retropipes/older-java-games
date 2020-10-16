@@ -66,9 +66,6 @@ public abstract class AbstractArenaData implements Cloneable {
 
     public abstract void clearVirtualGrid(final AbstractArena arena);
 
-    @Override
-    public abstract AbstractArenaData clone();
-
     public abstract void fill(final AbstractArena arena,
             final AbstractArenaObject fillWith);
 

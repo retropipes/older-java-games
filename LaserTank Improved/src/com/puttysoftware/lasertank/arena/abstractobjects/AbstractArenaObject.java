@@ -26,9 +26,8 @@ import com.puttysoftware.lasertank.utilities.LaserTypeConstants;
 import com.puttysoftware.lasertank.utilities.MaterialConstants;
 import com.puttysoftware.lasertank.utilities.RangeTypeConstants;
 import com.puttysoftware.lasertank.utilities.TypeConstants;
-import com.puttysoftware.storage.CloneableObject;
 
-public abstract class AbstractArenaObject extends CloneableObject {
+public abstract class AbstractArenaObject {
     static final int DEFAULT_CUSTOM_VALUE = 0;
     protected static final int CUSTOM_FORMAT_MANUAL_OVERRIDE = -1;
     private static final int PLASTIC_MINIMUM_REACTION_FORCE = 0;

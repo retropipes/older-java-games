@@ -30,14 +30,14 @@ import com.puttysoftware.fantastlereboot.gui.MenuManager;
 import com.puttysoftware.fantastlereboot.gui.Prefs;
 import com.puttysoftware.fantastlereboot.gui.PrefsLauncher;
 import com.puttysoftware.fantastlereboot.loaders.UserInterfaceImageLoader;
-import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.integration.Integration;
 
 public class FantastleReboot {
     // Constants
     private static BagOStuff bag;
     static final String PROGRAM_NAME = "Fantastle Reboot";
     private static final GameErrorHandler debug = new GameErrorHandler();
-    private static final NativeIntegration NATIVITY = new NativeIntegration();
+    private static final Integration NATIVITY = new Integration();
     private static final int BATTLE_WORLD_SIZE = 16;
     private static MenuManager menus;
     private static final JMenuBar mainMenuBar = new JMenuBar();

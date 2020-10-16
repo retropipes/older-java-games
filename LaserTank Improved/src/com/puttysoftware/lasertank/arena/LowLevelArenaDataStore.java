@@ -6,7 +6,6 @@
 package com.puttysoftware.lasertank.arena;
 
 import com.puttysoftware.lasertank.arena.abstractobjects.AbstractArenaObject;
-import com.puttysoftware.storage.CloneableObject;
 import com.puttysoftware.storage.ObjectStorage;
 
 public class LowLevelArenaDataStore extends ObjectStorage {
@@ -16,19 +15,6 @@ public class LowLevelArenaDataStore extends ObjectStorage {
     }
 
     // Methods
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        final LowLevelArenaDataStore copy = new LowLevelArenaDataStore(
-                this.getShape());
-        for (int x = 0; x < copy.getRawLength(); x++) {
-            if (this.getRawCell(x) != null) {
-                copy.setRawCell(((CloneableObject) this.getRawCell(x)).clone(),
-                        x);
-            }
-        }
-        return copy;
-    }
-
     public AbstractArenaObject getArenaDataCell(final int... loc) {
         return (AbstractArenaObject) this.getCell(loc);
     }

@@ -7,42 +7,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.github.vorbis-support.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.audio.ogg.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.desktop.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.integration.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.mod.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.randomrange.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.storage.module.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="JAVA_GAMES_EXTLIB/com.puttysoftware.wav.module.jar">
+	<classpathentry combineaccessrules="false" kind="src" path="/lib-puttysoftware-desktop">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

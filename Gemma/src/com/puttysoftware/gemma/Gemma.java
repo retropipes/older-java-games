@@ -10,7 +10,7 @@ import com.puttysoftware.errorlogger.ErrorLogger;
 import com.puttysoftware.gemma.resourcemanagers.LogoManager;
 import com.puttysoftware.gemma.support.Support;
 import com.puttysoftware.gemma.support.creatures.PartyManager;
-import com.puttysoftware.integration.NativeIntegration;
+import com.puttysoftware.integration.Integration;
 
 public class Gemma {
     // Constants
@@ -54,7 +54,7 @@ public class Gemma {
             } else {
                 suffix = "";
             }
-            final NativeIntegration ni = new NativeIntegration();
+            final Integration ni = new Integration();
             // Integrate with host platform
             ni.configureLookAndFeel();
             // Set defaults

@@ -19,7 +19,7 @@ import com.puttysoftware.fantastlereboot.effects.Effect;
 import com.puttysoftware.fantastlereboot.items.ItemInventory;
 import com.puttysoftware.fantastlereboot.spells.SpellBook;
 import com.puttysoftware.images.BufferedImageIcon;
-import com.puttysoftware.page.Page;
+import com.puttysoftware.polytable.PolyTable;
 import com.puttysoftware.randomrange.RandomRange;
 
 public abstract class Creature {
@@ -31,7 +31,7 @@ public abstract class Creature {
     private SpellBook spellsKnown;
     private AbstractMapAIRoutine mapAI;
     private ItemInventory items;
-    private Page toNextLevel;
+    private PolyTable toNextLevel;
     private final int teamID;
     private final int perfectBonusGold;
     private int xLoc, yLoc;
@@ -918,7 +918,7 @@ public abstract class Creature {
         this.setStat(StatConstants.STAT_STRENGTH, value);
     }
 
-    public final void setToNextLevel(final Page nextLevelEquation) {
+    public final void setToNextLevel(final PolyTable nextLevelEquation) {
         this.toNextLevel = nextLevelEquation;
     }
 
