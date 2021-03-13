@@ -7,16 +7,16 @@ package com.puttysoftware.gemma.support.resourcemanagers;
 
 import java.nio.BufferUnderflowException;
 
-import com.puttysoftware.audio.ogg.OggFactory;
+import com.puttysoftware.audio.ogg.OggPlayer;
 import com.puttysoftware.gemma.support.Support;
 
 public class MusicManager {
     private static final String INTERNAL_LOAD_PATH = "/com/puttysoftware/gemma/support/resources/music/";
     private final static Class<?> LOAD_CLASS = MusicManager.class;
-    private static OggFactory CURRENT_MUSIC;
+    private static OggPlayer CURRENT_MUSIC;
 
-    private static OggFactory getMusic(final String filename) {
-        return OggFactory.loadResource(MusicManager.LOAD_CLASS
+    private static OggPlayer getMusic(final String filename) {
+        return OggPlayer.loadLoopedResource(MusicManager.LOAD_CLASS
                 .getResource(MusicManager.INTERNAL_LOAD_PATH + filename));
     }
 
@@ -33,7 +33,7 @@ public class MusicManager {
         if (MusicManager.CURRENT_MUSIC != null) {
             // Stop the music
             try {
-                MusicManager.CURRENT_MUSIC.stopLoop();
+                OggPlayer.stopPlaying();
             } catch (final BufferUnderflowException bue) {
                 // Ignore
             } catch (final NullPointerException np) {

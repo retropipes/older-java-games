@@ -392,7 +392,6 @@ public abstract class AbstractArenaObject extends CloneableObject {
      * @param x
      * @param y
      * @param z
-     * @return
      */
     public void pushCollideAction(final AbstractMovableObject pushed,
             final int x, final int y, final int z) {
