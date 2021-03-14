@@ -30,7 +30,6 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 
-import apple.dts.samplecode.osxadapter.OSXAdapter;
 import net.worldwizard.fantastle5.resourcemanagers.GraphicsManager;
 import net.worldwizard.fantastle5.resourcemanagers.ImageCache;
 import net.worldwizard.fantastle5.resourcemanagers.MonsterImageCache;
@@ -91,34 +90,11 @@ public class Fantastle5 {
             // Done loading
             Fantastle5.application.playLogoSound();
             Fantastle5.application.getGUIManager().showGUI();
-            // More Mac OS X-specific stuff
-            if (System.getProperty("os.name").startsWith("Mac OS X")) {
-                // Register event handlers
-                OSXAdapter.setFileHandler(
-                        Fantastle5.application.getMazeManager(),
-                        Fantastle5.application.getMazeManager().getClass()
-                                .getDeclaredMethod("loadFromOSHandler",
-                                        String.class));
-                OSXAdapter
-                        .setQuitHandler(Fantastle5.application.getMazeManager(),
-                                Fantastle5.application.getMazeManager()
-                                        .getClass()
-                                        .getDeclaredMethod("quitHandler"));
-                OSXAdapter.setPreferencesHandler(
-                        Fantastle5.application.getPrefsManager(),
-                        Fantastle5.application.getPrefsManager().getClass()
-                                .getDeclaredMethod("showPrefs"));
-                OSXAdapter.setAboutHandler(
-                        Fantastle5.application.getAboutDialog(),
-                        Fantastle5.application.getAboutDialog().getClass()
-                                .getDeclaredMethod("showAboutDialog"));
-            } else {
-                // Other platforms - handle file open requests only
-                if (args != null) {
-                    if (args.length > 0) {
-                        Fantastle5.application.getMazeManager()
-                                .loadFromOSHandler(args[0]);
-                    }
+            // Handle file open requests
+            if (args != null) {
+                if (args.length > 0) {
+                    Fantastle5.application.getMazeManager()
+                            .loadFromOSHandler(args[0]);
                 }
             }
         } catch (final Throwable t) {

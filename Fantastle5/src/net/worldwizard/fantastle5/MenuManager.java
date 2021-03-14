@@ -524,9 +524,7 @@ public class MenuManager {
         this.editMenu.add(this.editCopyLevel);
         this.editMenu.add(this.editPasteLevel);
         this.editMenu.add(this.editInsertLevelFromClipboard);
-        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
-            this.editMenu.add(this.editPreferences);
-        }
+        this.editMenu.add(this.editPreferences);
         this.editMenu.add(this.editClearHistory);
         this.editMenu.add(this.editGoTo);
         this.editMenu.addSeparator();
@@ -550,9 +548,7 @@ public class MenuManager {
         this.debugMenu.add(this.debugViewImageCache);
         this.debugMenu.add(this.debugViewMonsterCache);
         this.debugMenu.add(this.debugResetPreferences);
-        if (!System.getProperty("os.name").equalsIgnoreCase("Mac OS X")) {
-            this.helpMenu.add(this.helpAbout);
-        }
+        this.helpMenu.add(this.helpAbout);
         this.helpMenu.add(this.helpGeneralHelp);
         this.helpMenu.add(this.helpObjectHelp);
         this.mainMenuBar.add(this.fileMenu);
