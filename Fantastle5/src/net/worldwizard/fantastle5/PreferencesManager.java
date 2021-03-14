@@ -66,22 +66,16 @@ public class PreferencesManager {
     private JButton prefsExport, prefsImport;
     final JCheckBox[] sounds;
     final JCheckBox[] music;
-    JCheckBox checkUpdatesStartup;
-    JCheckBox checkBetaUpdatesStartup;
     JCheckBox moveOneAtATime;
     JCheckBox mobileMode;
     JComboBox<String> editorFillChoices;
     private String[] editorFillChoiceArray;
-    JComboBox<String> updateCheckInterval;
-    private String[] updateCheckIntervalValues;
     private JLabel waitLabel;
     private JProgressBar waitProgress;
     int editorFill;
     private EventHandler handler;
     private final PreferencesFileManager fileMgr;
     private final ExportImportManager eiMgr;
-    boolean checkUpdatesStartupEnabled;
-    boolean checkBetaUpdatesStartupEnabled;
     boolean moveOneAtATimeEnabled;
     boolean mobileModeEnabled;
     final boolean[] soundsEnabled;
@@ -143,14 +137,6 @@ public class PreferencesManager {
 
     public void setLastFilterUsedIndex(final int value) {
         this.lastFilterUsed = value;
-    }
-
-    public boolean shouldCheckUpdatesAtStartup() {
-        return this.checkUpdatesStartupEnabled;
-    }
-
-    public boolean shouldCheckBetaUpdatesAtStartup() {
-        return this.checkBetaUpdatesStartupEnabled;
     }
 
     public boolean oneMove() {
@@ -286,9 +272,6 @@ public class PreferencesManager {
         for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
             this.setMusicEnabled(x, this.music[x].isSelected());
         }
-        this.checkUpdatesStartupEnabled = this.checkUpdatesStartup.isSelected();
-        this.checkBetaUpdatesStartupEnabled = this.checkBetaUpdatesStartup
-                .isSelected();
         this.moveOneAtATimeEnabled = this.moveOneAtATime.isSelected();
         final boolean oldMobile = this.mobileModeEnabled;
         this.mobileModeEnabled = this.mobileMode.isSelected();
@@ -325,15 +308,10 @@ public class PreferencesManager {
         this.editorFill = 0;
         this.defaultEnableSounds();
         this.defaultEnableMusic();
-        this.checkUpdatesStartup.setSelected(true);
-        this.checkUpdatesStartupEnabled = true;
-        this.checkBetaUpdatesStartup.setSelected(true);
-        this.checkBetaUpdatesStartupEnabled = true;
         this.moveOneAtATime.setSelected(true);
         this.moveOneAtATimeEnabled = true;
         this.mobileMode.setSelected(false);
         this.mobileModeEnabled = false;
-        this.updateCheckInterval.setSelectedIndex(0);
         this.lastFilterUsed = PreferencesManager.FILTER_MAZE_V5;
     }
 
@@ -394,16 +372,8 @@ public class PreferencesManager {
                 "Enable battle music", true);
         this.music[PreferencesManager.MUSIC_EXPLORING] = new JCheckBox(
                 "Enable exploring music", true);
-        this.checkUpdatesStartup = new JCheckBox("Check for Updates at Startup",
-                true);
-        this.checkBetaUpdatesStartup = new JCheckBox(
-                "Check for Beta Updates at Startup", true);
         this.moveOneAtATime = new JCheckBox("One Move at a Time", true);
         this.mobileMode = new JCheckBox("Enable mobile mode", false);
-        this.updateCheckIntervalValues = new String[] { "Daily",
-                "Every 2nd Day", "Weekly", "Every 2nd Week", "Monthly" };
-        this.updateCheckInterval = new JComboBox<>(
-                this.updateCheckIntervalValues);
         this.prefFrame.setContentPane(this.mainPrefPane);
         this.prefFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -426,14 +396,8 @@ public class PreferencesManager {
         }
         this.miscPane
                 .setLayout(new GridLayout(PreferencesManager.GRID_LENGTH, 1));
-        this.miscPane.add(this.checkUpdatesStartup);
-        if (Fantastle5.getApplication().isBetaModeEnabled()) {
-            this.miscPane.add(this.checkBetaUpdatesStartup);
-        }
         this.miscPane.add(this.moveOneAtATime);
         this.miscPane.add(this.mobileMode);
-        this.miscPane.add(new JLabel("Check How Often For Updates"));
-        this.miscPane.add(this.updateCheckInterval);
         this.buttonPane.setLayout(new FlowLayout());
         this.buttonPane.add(this.prefsOK);
         this.buttonPane.add(this.prefsCancel);
@@ -514,20 +478,20 @@ public class PreferencesManager {
                 }
                 pm.editorFillChoices
                         .setSelectedIndex(Integer.parseInt(s.readLine()));
-                pm.checkUpdatesStartup
-                        .setSelected(Boolean.parseBoolean(s.readLine()));
+                // Read and discard "check for updates enabled" value
+                s.readLine();
                 pm.moveOneAtATime
                         .setSelected(Boolean.parseBoolean(s.readLine()));
                 for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                     pm.sounds[x]
                             .setSelected(Boolean.parseBoolean(s.readLine()));
                 }
-                pm.updateCheckInterval
-                        .setSelectedIndex(Integer.parseInt(s.readLine()));
+                // Read and discard "update check interval" value
+                s.readLine();
                 pm.lastDirOpen = s.readLine();
                 pm.lastDirSave = s.readLine();
-                pm.checkBetaUpdatesStartup
-                        .setSelected(Boolean.parseBoolean(s.readLine()));
+                // Read and discard "check for beta updates enabled" value
+                s.readLine();
                 pm.lastFilterUsed = Integer.parseInt(s.readLine());
                 pm.mobileMode.setSelected(Boolean.parseBoolean(s.readLine()));
                 for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -563,17 +527,18 @@ public class PreferencesManager {
                 s.write(Integer.toString(PreferencesManager.PREFS_VERSION_MINOR)
                         + "\n");
                 s.write(Integer.toString(pm.editorFill) + "\n");
-                s.write(Boolean.toString(pm.checkUpdatesStartupEnabled) + "\n");
+                // "check for updates enabled" value always false
+                s.write("false\n");
                 s.write(Boolean.toString(pm.moveOneAtATimeEnabled) + "\n");
                 for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                     s.write(Boolean.toString(pm.soundsEnabled[x]) + "\n");
                 }
-                s.write(Integer.toString(
-                        pm.updateCheckInterval.getSelectedIndex()) + "\n");
+                // "update check interval" value always an invalid index
+                s.write("-1\n");
                 s.write(pm.lastDirOpen + "\n");
                 s.write(pm.lastDirSave + "\n");
-                s.write(Boolean.toString(pm.checkBetaUpdatesStartupEnabled)
-                        + "\n");
+                // "check for beta updates enabled" value always false
+                s.write("false\n");
                 s.write(Integer.toString(pm.lastFilterUsed) + "\n");
                 s.write(Boolean.toString(pm.mobileModeEnabled) + "\n");
                 for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -659,18 +624,18 @@ public class PreferencesManager {
                 s.readLine();
                 pm.editorFillChoices
                         .setSelectedIndex(Integer.parseInt(s.readLine()));
-                pm.checkUpdatesStartup
-                        .setSelected(Boolean.parseBoolean(s.readLine()));
+                // Read and discard "check for updates enabled" value
+                s.readLine();
                 pm.moveOneAtATime
                         .setSelected(Boolean.parseBoolean(s.readLine()));
                 for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                     pm.sounds[x]
                             .setSelected(Boolean.parseBoolean(s.readLine()));
                 }
-                pm.updateCheckInterval
-                        .setSelectedIndex(Integer.parseInt(s.readLine()));
-                pm.checkBetaUpdatesStartup
-                        .setSelected(Boolean.parseBoolean(s.readLine()));
+                // Read and discard "update check interval" value
+                s.readLine();
+                // Read and discard "check for beta updates enabled" value
+                s.readLine();
                 pm.lastFilterUsed = Integer.parseInt(s.readLine());
                 pm.mobileMode.setSelected(Boolean.parseBoolean(s.readLine()));
                 for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -694,15 +659,16 @@ public class PreferencesManager {
                 s.write(Integer.toString(PreferencesManager.PREFS_VERSION_MINOR)
                         + "\n");
                 s.write(Integer.toString(pm.editorFill) + "\n");
-                s.write(Boolean.toString(pm.checkUpdatesStartupEnabled) + "\n");
+                // "check for updates enabled" value always false
+                s.write("false\n");
                 s.write(Boolean.toString(pm.moveOneAtATimeEnabled) + "\n");
                 for (int x = 0; x < PreferencesManager.SOUNDS_LENGTH; x++) {
                     s.write(Boolean.toString(pm.soundsEnabled[x]) + "\n");
                 }
-                s.write(Integer.toString(
-                        pm.updateCheckInterval.getSelectedIndex()) + "\n");
-                s.write(Boolean.toString(pm.checkBetaUpdatesStartupEnabled)
-                        + "\n");
+                // "update check interval" value always an invalid index
+                s.write("-1\n");
+                // "check for beta updates enabled" value always false
+                s.write("false\n");
                 s.write(Integer.toString(pm.lastFilterUsed) + "\n");
                 s.write(Boolean.toString(pm.mobileModeEnabled) + "\n");
                 for (int x = 0; x < PreferencesManager.MUSIC_LENGTH; x++) {
@@ -735,7 +701,7 @@ public class PreferencesManager {
     private class EventHandler
             implements ActionListener, ItemListener, WindowListener {
         public EventHandler() {
-            // TODO Auto-generated constructor stub
+            // Do nothing
         }
 
         // Handle buttons
