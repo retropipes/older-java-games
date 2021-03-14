@@ -24,12 +24,11 @@ import net.worldwizard.io.ResourceStreamReader;
 public class GenderDataManager {
     public static int[] getGenderData(final int g) {
         final String name = GenderConstants.GENDER_NAMES[g].toLowerCase();
-        try {
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                GenderDataManager.class.getResourceAsStream(
+                        "/net/worldwizard/fantastle5/resources/data/gender/"
+                                + name + ".dat"))) {
             // Fetch data
-            final ResourceStreamReader rsr = new ResourceStreamReader(
-                    GenderDataManager.class.getResourceAsStream(
-                            "/net/worldwizard/fantastle5/resources/data/gender/"
-                                    + name + ".dat"));
             final int[] rawData = new int[GenderConstants.GENDERS_ATTRIBUTE_COUNT];
             for (int x = 0; x < rawData.length; x++) {
                 try {
@@ -38,7 +37,6 @@ public class GenderDataManager {
                     rawData[x] = 0;
                 }
             }
-            rsr.close();
             return rawData;
         } catch (final Exception e) {
             return null;

@@ -24,18 +24,16 @@ import net.worldwizard.io.ResourceStreamReader;
 
 public class MonsterDataManager {
     public static String[] getMonsterData() {
-        try {
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                MonsterDataManager.class.getResourceAsStream(
+                        "/net/worldwizard/fantastle5/resources/data/monster/monsternames.dat"))) {
             // Fetch data
-            final ResourceStreamReader rsr = new ResourceStreamReader(
-                    MonsterDataManager.class.getResourceAsStream(
-                            "/net/worldwizard/fantastle5/resources/data/monster/monsternames.dat"));
             final Vector<String> data = new Vector<>(10, 10);
             String raw = "0";
             while (raw != null) {
                 raw = rsr.readString();
                 data.add(raw);
             }
-            rsr.close();
             final Object[] arr = data.toArray();
             final String[] tempres = new String[arr.length];
             int count = 0;

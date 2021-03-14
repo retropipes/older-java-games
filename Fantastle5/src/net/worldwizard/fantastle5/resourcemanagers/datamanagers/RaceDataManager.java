@@ -24,12 +24,11 @@ import net.worldwizard.io.ResourceStreamReader;
 public class RaceDataManager {
     public static int[] getRaceData(final int c) {
         final String name = RaceConstants.RACE_NAMES[c].toLowerCase();
-        try {
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                RaceDataManager.class.getResourceAsStream(
+                        "/net/worldwizard/fantastle5/resources/data/race/"
+                                + name + ".dat"))) {
             // Fetch data
-            final ResourceStreamReader rsr = new ResourceStreamReader(
-                    RaceDataManager.class.getResourceAsStream(
-                            "/net/worldwizard/fantastle5/resources/data/race/"
-                                    + name + ".dat"));
             final int[] rawData = new int[RaceConstants.RACE_ATTRIBUTE_COUNT];
             for (int x = 0; x < rawData.length; x++) {
                 try {
@@ -38,7 +37,6 @@ public class RaceDataManager {
                     rawData[x] = 0;
                 }
             }
-            rsr.close();
             return rawData;
         } catch (final Exception e) {
             return null;
