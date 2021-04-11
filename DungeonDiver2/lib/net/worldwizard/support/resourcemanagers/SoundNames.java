@@ -5,15 +5,12 @@ public class SoundNames {
     static final String[] SOUND_CATEGORY_NAMES = { "attacks", "battle",
             "changemode", "deaths", "effects", "game", "interact", "inventory",
             "magic", "moving", "talking" };
-    static final int[] SOUND_CATEGORY_OFFSETS = { 8, 10, 30, 44, 80, 107, 147,
-            169, 187, 209, 237 };
+    static final int[] SOUND_CATEGORY_OFFSETS = { 8, 10, 15, 16, 52, 79, 119,
+            141, 159, 181, 209 };
     static final String[] SOUND_NAMES = { "attackhit", "attackmiss", "breathe",
             "chaclunk", "club", "missiledodge", "slimed", "zap", "dropitem",
-            "nextround", "angrymob", "attention", "bamboo", "camp",
-            "cashregisterding", "enterdungeon", "entershop", "entertown",
-            "forcefield", "gong", "harp", "immolation", "loadsavegame",
-            "partyslain", "sheathesword", "song", "special", "specialstats",
-            "sword_drawn", "swup", "death", "die1", "die2", "die3", "die4",
+            "nextround", "angrymob", "cashregisterding", "entershop",
+            "partyslain", "song", "death", "die1", "die2", "die3", "die4",
             "die5", "die6", "killpc", "monsterdead", "slayfemale", "slaymale",
             "slayother1", "slayother2", "slaysqueal", "blindness", "blotto",
             "boing", "bolt", "bonk", "bottles", "bubbles", "bwabble", "claps",
