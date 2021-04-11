@@ -6,13 +6,13 @@ public class SoundNames {
             "changemode", "deaths", "effects", "game", "interact", "inventory",
             "magic", "moving", "talking" };
     static final int[] SOUND_CATEGORY_OFFSETS = { 0, 8, 10, 15, 16, 19, 22, 26,
-            29, 31, 36 };
+            30, 33, 38 };
     static final String[] SOUND_NAMES = { "attackhit", "attackmiss", "breathe",
             "chaclunk", "club", "missiledodge", "slimed", "zap", "dropitem",
             "nextround", "angrymob", "cashregisterding", "entershop",
             "partyslain", "song", "death", "bolt", "heal", "shortow", "levelup",
             "logo", "nullevent", "button", "doorslam", "teleport", "warp",
-            "booty", "identify", "jumping", "spellselect", "hitobstacle",
+            "booty", "capture", "explode", "identify", "jumping", "spellselect", "hitobstacle",
             "splashing", "stairs", "walk1", "walk2", "oof" };
 
     // Private constructor

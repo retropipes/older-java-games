@@ -28,6 +28,8 @@ public enum GameSounds {
     TELEPORT,
     WARP,
     BOOTY,
+    CAPTURE,
+    EXPLODE,
     IDENTIFY,
     JUMPING,
     SPELL_SELECT,
