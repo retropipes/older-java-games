@@ -308,7 +308,8 @@ public class MapObjectList {
         }
         for (final MapObject allObject : this.allObjects) {
             try {
-                final MapObject instance = allObject.getClass().getConstructor().newInstance();
+                final MapObject instance = allObject.getClass().getConstructor()
+                        .newInstance();
                 if (formatVersion == FormatConstants.SCENARIO_FORMAT_1) {
                     o = instance.readMapObjectX(reader, UID, formatVersion);
                 }

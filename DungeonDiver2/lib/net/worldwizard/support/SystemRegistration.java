@@ -121,11 +121,11 @@ public class SystemRegistration {
         final String basePath = SystemRegistration.getBasePath();
         // Load systemObject registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
-        ResourceStreamReader rsr = null;
         try (final FileInputStream fis = new FileInputStream(
                 basePath + SystemRegistration.systemObjectType + "Registry"
-                        + Extension.getRegistryExtensionWithPeriod())) {
-            rsr = new ResourceStreamReader(fis);
+                        + Extension.getRegistryExtensionWithPeriod());
+                final ResourceStreamReader rsr = new ResourceStreamReader(
+                        fis)) {
             String input = "";
             while (input != null) {
                 input = rsr.readString();
@@ -136,14 +136,6 @@ public class SystemRegistration {
         } catch (final IOException io) {
             // Abort
             return null;
-        } finally {
-            if (rsr != null) {
-                try {
-                    rsr.close();
-                } catch (final IOException io2) {
-                    // Ignore
-                }
-            }
         }
         return registeredNames;
     }

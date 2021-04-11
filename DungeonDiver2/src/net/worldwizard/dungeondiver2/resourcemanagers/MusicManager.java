@@ -8,7 +8,7 @@ package net.worldwizard.dungeondiver2.resourcemanagers;
 import java.net.URL;
 import java.nio.BufferUnderflowException;
 
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.music.Music;
 
 public class MusicManager {
@@ -49,7 +49,7 @@ public class MusicManager {
             } catch (final NullPointerException np) {
                 // Ignore
             } catch (final Throwable t) {
-                DungeonDiverII.getErrorLogger().logError(t);
+                DungeonDiver2.getErrorLogger().logError(t);
             }
         }
     }

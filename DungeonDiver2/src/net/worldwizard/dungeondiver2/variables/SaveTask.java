@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 
 import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.dungeondiver2.Application;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.variables.Extension;
 import net.worldwizard.xio.ZipUtilities;
@@ -28,7 +28,7 @@ public class SaveTask extends Thread {
 
     @Override
     public void run() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final String sg = "Saved Game";
         // filename check
         final boolean hasExtension = SaveTask.hasExtension(this.filename);
@@ -67,9 +67,9 @@ public class SaveTask extends Thread {
             CommonDialogs.showDialog("Writing the " + sg.toLowerCase()
                     + " file failed, probably due to illegal characters in the file name.");
         } catch (final Exception ex) {
-            DungeonDiverII.getErrorLogger().logError(ex);
+            DungeonDiver2.getErrorLogger().logError(ex);
         }
-        DungeonDiverII.getApplication().showMessage(sg + " file saved.");
+        DungeonDiver2.getApplication().showMessage(sg + " file saved.");
         app.getVariablesManager().handleDeferredSuccess();
     }
 

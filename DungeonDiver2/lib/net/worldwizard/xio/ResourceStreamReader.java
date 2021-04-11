@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class ResourceStreamReader {
+public class ResourceStreamReader implements AutoCloseable {
     // Fields
     private final BufferedReader br;
 
@@ -15,6 +15,7 @@ public class ResourceStreamReader {
     }
 
     // Methods
+    @Override
     public void close() throws IOException {
         this.br.close();
     }

@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.battle.BattleSpeedConstants;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.variables.Extension;
@@ -49,7 +49,7 @@ public class PreferencesManager {
 
     static void setGeneratorRandomness(final int value) {
         PreferencesManager.storeMgr.setInteger("GeneratorRandomness", value);
-        DungeonDiverII.getApplication().getVariablesManager().getMap()
+        DungeonDiver2.getApplication().getVariablesManager().getMap()
                 .setGeneratorRandomness(value, 6);
     }
 

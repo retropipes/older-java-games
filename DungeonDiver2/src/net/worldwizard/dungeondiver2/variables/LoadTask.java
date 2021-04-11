@@ -15,7 +15,7 @@ import javax.swing.WindowConstants;
 
 import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.dungeondiver2.Application;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.resourcemanagers.LogoManager;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.map.InvalidMapException;
@@ -50,7 +50,7 @@ public class LoadTask extends Thread {
     @Override
     public void run() {
         this.loadFrame.setVisible(true);
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         int startW;
         String sg;
         if (this.isSavedGame) {
@@ -125,7 +125,7 @@ public class LoadTask extends Thread {
             CommonDialogs.showDialog(ime.getMessage());
             app.getVariablesManager().handleDeferredSuccess();
         } catch (final Exception ex) {
-            DungeonDiverII.getErrorLogger().logError(ex);
+            DungeonDiver2.getErrorLogger().logError(ex);
         } finally {
             this.loadFrame.setVisible(false);
         }

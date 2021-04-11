@@ -138,7 +138,7 @@ public class MenuManager {
     }
 
     public void checkFlags() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         if (app.getVariablesManager().getDirty()) {
             this.setMenusDirtyOn();
         } else {
@@ -325,7 +325,7 @@ public class MenuManager {
         @Override
         public void actionPerformed(final ActionEvent e) {
             try {
-                final Application app = DungeonDiverII.getApplication();
+                final Application app = DungeonDiver2.getApplication();
                 final BattleGUI ba = app.getBattle();
                 final String cmd = e.getActionCommand();
                 if (cmd.equals("Open...")) {
@@ -411,7 +411,7 @@ public class MenuManager {
                 }
                 MenuManager.this.checkFlags();
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
     }

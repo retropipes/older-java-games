@@ -27,7 +27,7 @@ import javax.swing.border.EmptyBorder;
 
 import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.dungeondiver2.Application;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.game.scripts.GameScriptRunner;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.dungeondiver2.resourcemanagers.MusicConstants;
@@ -120,7 +120,7 @@ public class GameManager {
     }
 
     public Map getTemporaryBattleCopy() {
-        return DungeonDiverII.getApplication().getVariablesManager().getMap()
+        return DungeonDiver2.getApplication().getVariablesManager().getMap()
                 .getTemporaryBattleCopy();
     }
 
@@ -136,7 +136,7 @@ public class GameManager {
         final int px = this.plMgr.getPlayerLocationX();
         final int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
-        final GenericCharacter player = (GenericCharacter) DungeonDiverII
+        final GenericCharacter player = (GenericCharacter) DungeonDiver2
                 .getApplication().getVariablesManager().getMap()
                 .getCell(px, py, pz, MapConstants.LAYER_OBJECT);
         player.setSavedObject(this.savedMapObject);
@@ -146,7 +146,7 @@ public class GameManager {
         final int px = this.plMgr.getPlayerLocationX();
         final int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
-        final GenericCharacter player = (GenericCharacter) DungeonDiverII
+        final GenericCharacter player = (GenericCharacter) DungeonDiver2
                 .getApplication().getVariablesManager().getMap()
                 .getCell(px, py, pz, MapConstants.LAYER_OBJECT);
         this.savedMapObject = player.getSavedObject();
@@ -162,7 +162,7 @@ public class GameManager {
 
     public void findPlayerAndAdjust() {
         // Find the player, adjust player location
-        final Map m = DungeonDiverII.getApplication().getVariablesManager()
+        final Map m = DungeonDiver2.getApplication().getVariablesManager()
                 .getMap();
         final int w = this.plMgr.getPlayerLocationW();
         m.findPlayer();
@@ -177,7 +177,7 @@ public class GameManager {
         int px = this.plMgr.getPlayerLocationX();
         int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         boolean proceed = false;
         MapObject o = new Empty();
@@ -271,7 +271,7 @@ public class GameManager {
                             this.plMgr.getPlayerLocationZ(),
                             MapConstants.LAYER_OBJECT);
                     // Move failed - attempted to go outside the map
-                    DungeonDiverII.getApplication()
+                    DungeonDiver2.getApplication()
                             .showMessage("Can't go that way");
                     o = new Empty();
                     proceed = false;
@@ -306,7 +306,7 @@ public class GameManager {
         int px = this.plMgr.getPlayerLocationX();
         int py = this.plMgr.getPlayerLocationY();
         final int pz = this.plMgr.getPlayerLocationZ();
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         boolean proceed = false;
         MapObject o = new Empty();
@@ -413,7 +413,7 @@ public class GameManager {
 
     private boolean checkSolid(final MapObject inside, final MapObject below,
             final MapObject nextBelow, final MapObject nextAbove) {
-        final Map m = DungeonDiverII.getApplication().getVariablesManager()
+        final Map m = DungeonDiver2.getApplication().getVariablesManager()
                 .getMap();
         final int z = this.plMgr.getPlayerLocationZ();
         final boolean insideSolid = inside.isConditionallySolid(m, z);
@@ -430,7 +430,7 @@ public class GameManager {
     private void fireMoveFailedActions(final int x, final int y,
             final MapObject inside, final MapObject below,
             final MapObject nextBelow, final MapObject nextAbove) {
-        final Map m = DungeonDiverII.getApplication().getVariablesManager()
+        final Map m = DungeonDiver2.getApplication().getVariablesManager()
                 .getMap();
         final int z = this.plMgr.getPlayerLocationZ();
         final boolean insideSolid = inside.isConditionallySolid(m, z);
@@ -456,7 +456,7 @@ public class GameManager {
     }
 
     public void updatePositionAbsolute(final int x, final int y, final int z) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         try {
             m.getCell(x, y, z, MapConstants.LAYER_OBJECT).preMoveCheck(true, x,
@@ -501,7 +501,7 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication()
+            DungeonDiver2.getApplication()
                     .showMessage("Can't go outside the map");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
@@ -509,7 +509,7 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication()
+            DungeonDiver2.getApplication()
                     .showMessage("Can't go outside the map");
         }
         GameManager.fireStepActions();
@@ -517,7 +517,7 @@ public class GameManager {
 
     public void updatePositionAbsoluteNoEvents(final int x, final int y,
             final int z) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         this.plMgr.savePlayerLocation();
         this.vwMgr.saveViewingWindow();
@@ -553,7 +553,7 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication()
+            DungeonDiver2.getApplication()
                     .showMessage("Can't go outside the map");
         } catch (final NullPointerException np) {
             this.plMgr.restorePlayerLocation();
@@ -561,7 +561,7 @@ public class GameManager {
             m.setCell(new Player(), this.plMgr.getPlayerLocationX(),
                     this.plMgr.getPlayerLocationY(),
                     this.plMgr.getPlayerLocationZ(), MapConstants.LAYER_OBJECT);
-            DungeonDiverII.getApplication()
+            DungeonDiver2.getApplication()
                     .showMessage("Can't go outside the map");
         }
     }
@@ -587,7 +587,7 @@ public class GameManager {
     public void redrawMapNoRebuild() {
         // Draw the map, if it is visible
         if (this.outputFrame.isVisible()) {
-            final Application app = DungeonDiverII.getApplication();
+            final Application app = DungeonDiver2.getApplication();
             int x, y, u, v;
             int xFix, yFix;
             boolean visible;
@@ -670,7 +670,7 @@ public class GameManager {
     }
 
     public void resetPlayerLocation(final int level) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         m.switchLevel(level);
         m.findStart();
@@ -679,7 +679,7 @@ public class GameManager {
     }
 
     public void goToLevel(final int level) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         final boolean levelExists = m.doesLevelExist(level);
         if (levelExists) {
@@ -694,7 +694,7 @@ public class GameManager {
     }
 
     public void goToLevelRelative(final int level) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         final boolean levelExists = m.doesLevelExistOffset(level);
         if (!levelExists && m.isLevelOffsetValid(level)) {
@@ -712,7 +712,7 @@ public class GameManager {
     }
 
     public void goToFloor(final int floor) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         final boolean floorExists = m.doesFloorExist(floor);
         if (floorExists) {
@@ -732,7 +732,7 @@ public class GameManager {
     }
 
     public void goToFloorRelative(final int floor) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         final boolean floorExists = m
                 .doesFloorExist(this.plMgr.getPlayerLocationZ() + floor);
@@ -754,7 +754,7 @@ public class GameManager {
 
     public void exitGame() {
         this.stateChanged = true;
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         // Restore the map
         m.restore();
@@ -815,7 +815,7 @@ public class GameManager {
     }
 
     public void identifyObject(final int x, final int y) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final Map m = app.getVariablesManager().getMap();
         final int xOffset = this.vwMgr.getViewingWindowLocationX()
                 - this.vwMgr.getOffsetFactorX();
@@ -835,13 +835,13 @@ public class GameManager {
             target2.determineCurrentAppearance(destX, destY, destZ, m);
             final String gameName1 = target1.getGameName();
             final String gameName2 = target2.getGameName();
-            DungeonDiverII.getApplication()
+            DungeonDiver2.getApplication()
                     .showMessage(gameName2 + " on " + gameName1);
             SoundManager.playSound(GameSoundConstants.SOUND_IDENTIFY);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(destX, destY, destZ, m);
-            DungeonDiverII.getApplication().showMessage(ev.getGameName());
+            DungeonDiver2.getApplication().showMessage(ev.getGameName());
             SoundManager.playSound(GameSoundConstants.SOUND_IDENTIFY);
         }
     }
@@ -855,7 +855,7 @@ public class GameManager {
     }
 
     public void playMap() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.getGUIManager().hideGUI();
         app.setInGame(true);
         if (this.stateChanged) {
@@ -879,7 +879,7 @@ public class GameManager {
     }
 
     public void showOutput() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.getMenuManager().setGameMenus();
         if (PreferencesManager
                 .getMusicEnabled(PreferencesManager.MUSIC_EXPLORING)) {
@@ -908,8 +908,8 @@ public class GameManager {
         this.borderPane.setLayout(new BorderLayout());
         this.messageLabel = new JLabel(" ");
         this.messageLabel.setOpaque(true);
-        this.outputFrame = new JFrame(DungeonDiverII.getProgramName());
-        final Image iconlogo = DungeonDiverII.getApplication().getIconLogo();
+        this.outputFrame = new JFrame(DungeonDiver2.getProgramName());
+        final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
         this.outputFrame.setIconImage(iconlogo);
         this.outputPane = new Container();
         this.outputFrame.setContentPane(this.borderPane);
@@ -1023,7 +1023,7 @@ public class GameManager {
                     }
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 
@@ -1041,7 +1041,7 @@ public class GameManager {
         @Override
         public void windowClosing(final WindowEvent we) {
             try {
-                final Application app = DungeonDiverII.getApplication();
+                final Application app = DungeonDiver2.getApplication();
                 boolean success = false;
                 int status = 0;
                 if (app.getVariablesManager().getDirty()) {
@@ -1058,7 +1058,7 @@ public class GameManager {
                     app.getGameManager().exitGame();
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 
@@ -1103,7 +1103,7 @@ public class GameManager {
                     gm.identifyObject(x, y);
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 

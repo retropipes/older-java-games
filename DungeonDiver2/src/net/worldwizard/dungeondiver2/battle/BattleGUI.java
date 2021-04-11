@@ -21,7 +21,7 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.battle.damageengines.DamageEngine;
 import net.worldwizard.dungeondiver2.game.scripts.GameScriptRunner;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
@@ -171,7 +171,7 @@ public class BattleGUI {
                 CommonDialogs.showTitledDialog("The party gains " + exp
                         + " experience and " + gold + " Gold.", "Victory!");
                 PartyManager.getParty().distributeVictorySpoils(exp, gold);
-                DungeonDiverII.getApplication().getGameManager()
+                DungeonDiver2.getApplication().getGameManager()
                         .addToScore(Math.max(1, (exp + gold) / (100
                                 * (PartyManager.getParty().getActivePCCount()
                                         + PartyManager.getParty()
@@ -206,11 +206,11 @@ public class BattleGUI {
             // Leave Battle
             this.hideBattle();
             // Return to whence we came
-            DungeonDiverII.getApplication().getGameManager().showOutput();
-            DungeonDiverII.getApplication().getGameManager().redrawMap();
-            DungeonDiverII.getApplication().getGameManager().updateStats();
+            DungeonDiver2.getApplication().getGameManager().showOutput();
+            DungeonDiver2.getApplication().getGameManager().redrawMap();
+            DungeonDiver2.getApplication().getGameManager().updateStats();
             // Check for Game Over
-            DungeonDiverII.getApplication().getGameManager().checkGameOver();
+            DungeonDiver2.getApplication().getGameManager().checkGameOver();
         }
     }
 
@@ -906,7 +906,7 @@ public class BattleGUI {
     }
 
     private void showBattle() {
-        DungeonDiverII.getApplication().getMenuManager().setBattleMenus();
+        DungeonDiver2.getApplication().getMenuManager().setBattleMenus();
         if (this.bossMode) {
             if (PreferencesManager
                     .getMusicEnabled(PreferencesManager.MUSIC_BOSS)) {
@@ -921,7 +921,7 @@ public class BattleGUI {
             }
         }
         this.battleFrame.setVisible(true);
-        this.battleFrame.setJMenuBar(DungeonDiverII.getApplication()
+        this.battleFrame.setJMenuBar(DungeonDiver2.getApplication()
                 .getMenuManager().getMainMenuBar());
     }
 
@@ -1347,12 +1347,12 @@ public class BattleGUI {
 
     private void waitForAI() {
         this.eventHandlersOn = false;
-        DungeonDiverII.getApplication().getMenuManager().disableBattleMenus();
+        DungeonDiver2.getApplication().getMenuManager().disableBattleMenus();
     }
 
     void stopWaitingForAI() {
         this.eventHandlersOn = true;
-        DungeonDiverII.getApplication().getMenuManager().enableBattleMenus();
+        DungeonDiver2.getApplication().getMenuManager().enableBattleMenus();
     }
 
     private void setUpGUI() {
@@ -1364,7 +1364,7 @@ public class BattleGUI {
         this.battleFrame = new JFrame("Battle");
         this.battlePane = new Container();
         this.battleFrame.setContentPane(this.borderPane);
-        final Image iconlogo = DungeonDiverII.getApplication().getIconLogo();
+        final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
         this.battleFrame.setIconImage(iconlogo);
         this.battleFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -1468,7 +1468,7 @@ public class BattleGUI {
                     }
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 

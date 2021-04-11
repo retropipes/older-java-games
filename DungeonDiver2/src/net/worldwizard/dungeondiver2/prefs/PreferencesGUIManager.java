@@ -28,7 +28,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import net.worldwizard.dungeondiver2.Application;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.support.Support;
 
 class PreferencesGUIManager {
@@ -68,7 +68,7 @@ class PreferencesGUIManager {
     }
 
     public void showPrefs() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.setInPrefs(true);
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
             this.prefFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
@@ -84,7 +84,7 @@ class PreferencesGUIManager {
     }
 
     public void hidePrefs() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.setInPrefs(false);
         this.prefFrame.setVisible(false);
         PreferencesManager.writePrefs();
@@ -204,7 +204,7 @@ class PreferencesGUIManager {
         this.music[PreferencesManager.MUSIC_ALL].addItemListener(this.handler);
         this.prefsOK.addActionListener(this.handler);
         this.prefsCancel.addActionListener(this.handler);
-        final Image iconlogo = DungeonDiverII.getApplication().getIconLogo();
+        final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
         this.prefFrame.setIconImage(iconlogo);
         this.prefFrame.pack();
     }
@@ -227,7 +227,7 @@ class PreferencesGUIManager {
                     pm.hidePrefs();
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 
@@ -251,7 +251,7 @@ class PreferencesGUIManager {
                     }
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
 

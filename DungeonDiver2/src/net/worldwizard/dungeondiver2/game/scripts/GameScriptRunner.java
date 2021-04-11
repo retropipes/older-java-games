@@ -1,6 +1,6 @@
 package net.worldwizard.dungeondiver2.game.scripts;
 
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.game.GameManager;
 import net.worldwizard.randomnumbers.RandomRange;
 import net.worldwizard.support.battle.Battle;
@@ -20,7 +20,7 @@ public final class GameScriptRunner {
     public static void runScript(final GameScript s) {
         int actionCounter = 0;
         try {
-            final GameManager gm = DungeonDiverII.getApplication()
+            final GameManager gm = DungeonDiver2.getApplication()
                     .getGameManager();
             if (s != null) {
                 final int totAct = s.getActionCount();
@@ -36,7 +36,7 @@ public final class GameScriptRunner {
                     case MESSAGE:
                         // Show the message
                         final String msg = se.getFirstActionArg().getString();
-                        DungeonDiverII.getApplication().showMessage(msg);
+                        DungeonDiver2.getApplication().showMessage(msg);
                         break;
                     case SOUND:
                         // Play the sound
@@ -47,7 +47,7 @@ public final class GameScriptRunner {
                         // Show the shop
                         final int shopType = se.getFirstActionArg()
                                 .getInteger();
-                        final Shop shop = DungeonDiverII.getApplication()
+                        final Shop shop = DungeonDiver2.getApplication()
                                 .getGenericShop(shopType);
                         if (shop != null) {
                             shop.showShop();
@@ -100,10 +100,10 @@ public final class GameScriptRunner {
                         final int modY = se.getActionArg(3).getInteger();
                         final int modZ = se.getActionArg(4).getInteger();
                         final int modL = se.getActionArg(5).getInteger();
-                        final MapObject modObj = DungeonDiverII.getApplication()
+                        final MapObject modObj = DungeonDiver2.getApplication()
                                 .getObjects().getNewInstanceByName(modObjName);
                         if (stickyScript) {
-                            final MapObject wasThere = DungeonDiverII
+                            final MapObject wasThere = DungeonDiver2
                                     .getApplication().getVariablesManager()
                                     .getMap().getCell(modX, modY, modZ, modL);
                             if (wasThere.hasCustomScript()) {
@@ -111,7 +111,7 @@ public final class GameScriptRunner {
                                         wasThere.getCustomScript());
                             }
                         }
-                        DungeonDiverII.getApplication().getVariablesManager()
+                        DungeonDiver2.getApplication().getVariablesManager()
                                 .getMap()
                                 .setCell(modObj, modX, modY, modZ, modL);
                         break;
@@ -130,7 +130,7 @@ public final class GameScriptRunner {
                         break;
                     case BATTLE:
                         // Hide the game
-                        DungeonDiverII.getApplication().getGameManager()
+                        DungeonDiver2.getApplication().getGameManager()
                                 .hideOutput();
                         // Battle
                         final Battle battle = new Battle();
@@ -138,53 +138,52 @@ public final class GameScriptRunner {
                             @Override
                             public void run() {
                                 try {
-                                    DungeonDiverII.getApplication().getBattle()
-                                            .doFixedBattle(DungeonDiverII
+                                    DungeonDiver2.getApplication().getBattle()
+                                            .doFixedBattle(DungeonDiver2
                                                     .getApplication()
                                                     .getGameManager()
                                                     .getTemporaryBattleCopy(),
                                                     battle);
                                 } catch (final Exception e) {
                                     // Something went wrong in the battle
-                                    DungeonDiverII.getErrorLogger().logError(e);
+                                    DungeonDiver2.getErrorLogger().logError(e);
                                 }
                             }
                         }.start();
                         break;
                     case DECAY:
-                        DungeonDiverII.getApplication().getGameManager()
-                                .decay();
+                        DungeonDiver2.getApplication().getGameManager().decay();
                         break;
                     case LEVEL_CHANGE:
                         final int destLevel = se.getActionArg(0).getInteger();
-                        DungeonDiverII.getApplication().getGameManager()
+                        DungeonDiver2.getApplication().getGameManager()
                                 .goToLevel(destLevel);
                         break;
                     case RELATIVE_LEVEL_CHANGE:
                         final int rDestLevel = se.getActionArg(0).getInteger();
-                        DungeonDiverII.getApplication().getGameManager()
+                        DungeonDiver2.getApplication().getGameManager()
                                 .goToLevelRelative(rDestLevel);
                         break;
                     case ADD_TO_SCORE:
                         final int points = se.getActionArg(0).getInteger();
-                        DungeonDiverII.getApplication().getGameManager()
+                        DungeonDiver2.getApplication().getGameManager()
                                 .addToScore(points);
                         break;
                     case SWAP_PAIRS:
                         final String swap1 = se.getActionArg(0).getString();
                         final String swap2 = se.getActionArg(1).getString();
-                        final MapObject swapObj1 = DungeonDiverII
+                        final MapObject swapObj1 = DungeonDiver2
                                 .getApplication().getObjects()
                                 .getNewInstanceByName(swap1);
-                        final MapObject swapObj2 = DungeonDiverII
+                        final MapObject swapObj2 = DungeonDiver2
                                 .getApplication().getObjects()
                                 .getNewInstanceByName(swap2);
-                        DungeonDiverII.getApplication().getVariablesManager()
+                        DungeonDiver2.getApplication().getVariablesManager()
                                 .getMap()
                                 .findAllObjectPairsAndSwap(swapObj1, swapObj2);
                         break;
                     case REDRAW:
-                        DungeonDiverII.getApplication().getGameManager()
+                        DungeonDiver2.getApplication().getGameManager()
                                 .redrawMapNoRebuild();
                         break;
                     default:
@@ -194,20 +193,20 @@ public final class GameScriptRunner {
                 }
             }
         } catch (final Exception e) {
-            final int px = DungeonDiverII.getApplication().getGameManager()
+            final int px = DungeonDiver2.getApplication().getGameManager()
                     .getPlayerManager().getPlayerLocationX() + 1;
-            final int py = DungeonDiverII.getApplication().getGameManager()
+            final int py = DungeonDiver2.getApplication().getGameManager()
                     .getPlayerManager().getPlayerLocationY() + 1;
-            final int pz = DungeonDiverII.getApplication().getGameManager()
+            final int pz = DungeonDiver2.getApplication().getGameManager()
                     .getPlayerManager().getPlayerLocationZ() + 1;
-            final int pw = DungeonDiverII.getApplication().getGameManager()
+            final int pw = DungeonDiver2.getApplication().getGameManager()
                     .getPlayerManager().getPlayerLocationW() + 1;
             final String beginMsg = "Buggy Game Script at row " + px
                     + ", column " + py + ", floor " + pz + ", level " + pw
                     + ", action #" + actionCounter + ": ";
             final String endMsg = e.getMessage();
             final String scriptMsg = beginMsg + endMsg;
-            DungeonDiverII.getNonFatalLogger()
+            DungeonDiver2.getNonFatalLogger()
                     .logNonFatalError(new GameScriptException(scriptMsg, e));
         }
     }

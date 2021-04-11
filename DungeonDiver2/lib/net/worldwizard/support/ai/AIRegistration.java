@@ -254,11 +254,11 @@ public class AIRegistration {
         final String basePath = AIRegistration.getBasePath();
         // Load AI registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
-        ResourceStreamReader rsr = null;
         try (final FileInputStream fis = new FileInputStream(
                 basePath + File.separator + "AIRegistry"
-                        + Extension.getRegistryExtensionWithPeriod())) {
-            rsr = new ResourceStreamReader(fis);
+                        + Extension.getRegistryExtensionWithPeriod());
+                final ResourceStreamReader rsr = new ResourceStreamReader(
+                        fis)) {
             String input = "";
             while (input != null) {
                 input = rsr.readString();
@@ -269,14 +269,6 @@ public class AIRegistration {
         } catch (final IOException io) {
             // Abort
             return null;
-        } finally {
-            if (rsr != null) {
-                try {
-                    rsr.close();
-                } catch (final IOException io2) {
-                    // Ignore
-                }
-            }
         }
         return registeredNames;
     }

@@ -162,12 +162,12 @@ public class SpellBookRegistration {
     private static ArrayList<String> readSpellBookRegistry() {
         // Load spellBook registry file
         final ArrayList<String> registeredNames = new ArrayList<>();
-        ResourceStreamReader rsr = null;
         final String basePath = SpellBookRegistration.getBasePath();
         try (final FileInputStream fis = new FileInputStream(
                 basePath + File.separator + "SpellBookRegistry"
-                        + Extension.getRegistryExtensionWithPeriod())) {
-            rsr = new ResourceStreamReader(fis);
+                        + Extension.getRegistryExtensionWithPeriod());
+                final ResourceStreamReader rsr = new ResourceStreamReader(
+                        fis)) {
             String input = "";
             while (input != null) {
                 input = rsr.readString();
@@ -181,14 +181,6 @@ public class SpellBookRegistration {
         } catch (final NullPointerException npe) {
             // Abort
             return null;
-        } finally {
-            if (rsr != null) {
-                try {
-                    rsr.close();
-                } catch (final IOException io2) {
-                    // Ignore
-                }
-            }
         }
         return registeredNames;
     }

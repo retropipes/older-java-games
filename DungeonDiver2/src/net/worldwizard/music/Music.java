@@ -12,6 +12,7 @@ import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.Line;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
@@ -48,50 +49,56 @@ public class Music {
                     this.decodedStream = AudioSystem.getAudioInputStream(
                             this.decodedFormat, this.stream);
                 }
-            } catch (final Exception e) {
+            } catch (Exception e) {
                 // Do nothing
             }
-            try (SourceDataLine line = Music.getLine(this.decodedFormat)) {
+            DataLine.Info info = new DataLine.Info(SourceDataLine.class,
+                    this.decodedFormat);
+            try (Line res = AudioSystem.getLine(info);
+                    SourceDataLine line = (SourceDataLine) res) {
                 if (line != null) {
+                    line.open(this.decodedFormat);
                     try {
-                        final byte[] data = new byte[4096];
+                        byte[] data = new byte[16];
                         // Start
                         line.start();
-                        int nBytesRead = 0;
-                        while (nBytesRead != -1) {
-                            nBytesRead = this.decodedStream.read(data, 0,
-                                    data.length);
-                            if (nBytesRead != -1) {
-                                line.write(data, 0, nBytesRead);
+                        while (!this.stop) {
+                            if (this.stop) {
+                                return;
+                            }
+                            int nBytesRead = 0;
+                            while (nBytesRead != -1 && !this.stop) {
+                                nBytesRead = this.decodedStream.read(data, 0,
+                                        data.length);
+                                if (this.stop) {
+                                    return;
+                                }
+                                if (nBytesRead != -1) {
+                                    line.write(data, 0, nBytesRead);
+                                }
+                                if (this.stop) {
+                                    return;
+                                }
                             }
                             if (this.stop) {
-                                break;
+                                return;
                             }
+                            // Reset
+                            this.stream.reset();
                         }
                         // Stop
-                        line.drain();
                         line.stop();
-                        line.close();
-                        this.decodedStream.close();
-                        this.stream.close();
-                    } catch (final IOException io) {
+                    } catch (IOException io) {
                         // Do nothing
+                    } finally {
+                        // Stop
+                        line.stop();
                     }
                 }
-            } catch (final LineUnavailableException lue) {
+            } catch (LineUnavailableException lue) {
                 // Do nothing
             }
         }
-    }
-
-    private static SourceDataLine getLine(final AudioFormat audioFormat)
-            throws LineUnavailableException {
-        SourceDataLine res = null;
-        final DataLine.Info info = new DataLine.Info(SourceDataLine.class,
-                audioFormat);
-        res = (SourceDataLine) AudioSystem.getLine(info);
-        res.open(audioFormat);
-        return res;
     }
 
     public void stopLoop() {

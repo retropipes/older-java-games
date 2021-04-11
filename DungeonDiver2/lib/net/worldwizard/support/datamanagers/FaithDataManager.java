@@ -15,12 +15,11 @@ public class FaithDataManager {
 
     public static double[] getFaithData(final int f) {
         final String name = FaithConstants.getFaithNames()[f].toLowerCase();
-        try {
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                FaithDataManager.class.getResourceAsStream(
+                        "/net/worldwizard/support/resources/data/faith/" + name
+                                + ".dat"))) {
             // Fetch data
-            final ResourceStreamReader rsr = new ResourceStreamReader(
-                    FaithDataManager.class.getResourceAsStream(
-                            "/net/worldwizard/support/resources/data/faith/"
-                                    + name + ".dat"));
             final int[] rawData = new int[FaithConstants.getFaithsCount()];
             for (int x = 0; x < rawData.length; x++) {
                 try {
@@ -29,7 +28,6 @@ public class FaithDataManager {
                     rawData[x] = -FaithDataManager.ADD_FACTOR;
                 }
             }
-            rsr.close();
             // Parse raw data
             final double[] finalData = new double[rawData.length];
             for (int x = 0; x < rawData.length; x++) {

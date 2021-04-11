@@ -7,7 +7,7 @@ package net.worldwizard.dungeondiver2.resourcemanagers;
 
 import java.nio.BufferUnderflowException;
 
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.music.Music;
 
 class MusicTask extends Thread {
@@ -29,7 +29,7 @@ class MusicTask extends Thread {
         } catch (final NullPointerException np) {
             // Ignore
         } catch (final Throwable t) {
-            DungeonDiverII.getErrorLogger().logError(t);
+            DungeonDiver2.getErrorLogger().logError(t);
         }
     }
 }

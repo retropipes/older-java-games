@@ -12,18 +12,16 @@ import net.worldwizard.xio.ResourceStreamReader;
 
 public class MonsterDataManager {
     public static String[] getMonsterData() {
-        try {
+        try (final ResourceStreamReader rsr = new ResourceStreamReader(
+                MonsterDataManager.class.getResourceAsStream(
+                        "/net/worldwizard/support/resources/data/monster/monsternames.dat"))) {
             // Fetch data
-            final ResourceStreamReader rsr = new ResourceStreamReader(
-                    MonsterDataManager.class.getResourceAsStream(
-                            "/net/worldwizard/support/resources/data/monster/monsternames.dat"));
             final ArrayList<String> data = new ArrayList<>();
             String raw = "0";
             while (raw != null) {
                 raw = rsr.readString();
                 data.add(raw);
             }
-            rsr.close();
             final Object[] arr = data.toArray();
             final String[] tempres = new String[arr.length];
             int count = 0;

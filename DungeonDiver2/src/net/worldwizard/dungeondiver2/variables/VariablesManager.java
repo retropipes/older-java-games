@@ -6,6 +6,8 @@ Any questions should be directed to the author via email at: products@puttysoftw
 package net.worldwizard.dungeondiver2.variables;
 
 import java.awt.FileDialog;
+import java.awt.desktop.OpenFilesEvent;
+import java.awt.desktop.OpenFilesHandler;
 import java.io.File;
 
 import javax.swing.JFrame;
@@ -13,13 +15,13 @@ import javax.swing.JOptionPane;
 
 import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.dungeondiver2.Application;
-import net.worldwizard.dungeondiver2.DungeonDiverII;
+import net.worldwizard.dungeondiver2.DungeonDiver2;
 import net.worldwizard.dungeondiver2.prefs.PreferencesManager;
 import net.worldwizard.support.map.Map;
 import net.worldwizard.support.variables.Extension;
 import net.worldwizard.xio.FilenameChecker;
 
-public class VariablesManager {
+public class VariablesManager implements OpenFilesHandler {
     // Fields
     private Map gameMap;
     private boolean isDirty;
@@ -44,17 +46,17 @@ public class VariablesManager {
 
     public void handleDeferredSuccess() {
         this.setDirty(false);
-        DungeonDiverII.getApplication().getGameManager().stateChanged();
-        DungeonDiverII.getApplication().getMenuManager().checkFlags();
+        DungeonDiver2.getApplication().getGameManager().stateChanged();
+        DungeonDiver2.getApplication().getMenuManager().checkFlags();
     }
 
     public int showSaveDialog() {
         String type, source;
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         final int mode = app.getMode();
         if (mode == Application.STATUS_GAME) {
             type = "game";
-            source = DungeonDiverII.getProgramName();
+            source = DungeonDiver2.getProgramName();
         } else {
             // Not in the game, so abort
             return JOptionPane.NO_OPTION;
@@ -70,7 +72,7 @@ public class VariablesManager {
     }
 
     public void setDirty(final boolean newDirty) {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         this.isDirty = newDirty;
         final JFrame frame = app.getOutputFrame();
         if (frame != null) {
@@ -101,11 +103,11 @@ public class VariablesManager {
         this.lastUsedGameFile = newFile;
     }
 
-    public void loadFromOSHandler(final String infilename) { // NO_UCD
-        String extension;
-        final File file = new File(infilename);
+    @Override
+    public void openFiles(OpenFilesEvent inE) {
+        final File file = inE.getFiles().get(0);
         final String filename = file.getAbsolutePath();
-        extension = VariablesManager.getExtension(file);
+        String extension = VariablesManager.getExtension(file);
         if (extension.equals(Extension.getVariablesExtension())) {
             this.lastUsedVariablesFile = filename;
             VariablesManager.loadFile(filename, false);
@@ -116,7 +118,7 @@ public class VariablesManager {
     }
 
     public boolean loadSavedGame() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         int status = 0;
         boolean saved = true;
         String filename, extension;
@@ -171,7 +173,7 @@ public class VariablesManager {
     }
 
     public boolean saveGame() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         if (app.getMode() == Application.STATUS_GAME) {
             if (this.lastUsedGameFile != null
                     && !this.lastUsedGameFile.equals("")) {
@@ -196,7 +198,7 @@ public class VariablesManager {
     }
 
     public boolean saveGameAs() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         String filename = "";
         String fileOnly = "\\";
         String extension;
@@ -246,8 +248,7 @@ public class VariablesManager {
 
     private static void saveFile(final String filename) {
         final String sg = "Saved Game";
-        DungeonDiverII.getApplication()
-                .showMessage("Saving " + sg + " file...");
+        DungeonDiver2.getApplication().showMessage("Saving " + sg + " file...");
         final SaveTask xst = new SaveTask(filename);
         xst.start();
     }

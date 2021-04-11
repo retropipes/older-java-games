@@ -8,6 +8,9 @@ package net.worldwizard.dungeondiver2;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.desktop.QuitEvent;
+import java.awt.desktop.QuitHandler;
+import java.awt.desktop.QuitResponse;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -25,7 +28,7 @@ import net.worldwizard.dungeondiver2.variables.VariablesManager;
 import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.xio.DirectoryUtilities;
 
-public class GUIManager {
+public class GUIManager implements QuitHandler {
     // Fields
     private final JFrame guiFrame;
     private final Container guiPane;
@@ -35,7 +38,7 @@ public class GUIManager {
     // Constructors
     public GUIManager() {
         this.cHandler = new CloseHandler();
-        this.guiFrame = new JFrame(DungeonDiverII.getProgramName());
+        this.guiFrame = new JFrame(DungeonDiver2.getProgramName());
         this.guiPane = this.guiFrame.getContentPane();
         this.guiFrame
                 .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -57,7 +60,7 @@ public class GUIManager {
     }
 
     public void showGUI() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.setInGUI(true);
         this.guiFrame.setJMenuBar(app.getMenuManager().getMainMenuBar());
         this.guiFrame.setVisible(true);
@@ -66,7 +69,7 @@ public class GUIManager {
     }
 
     public void hideGUI() {
-        final Application app = DungeonDiverII.getApplication();
+        final Application app = DungeonDiver2.getApplication();
         app.setInGUI(false);
         this.guiFrame.setVisible(false);
     }
@@ -83,8 +86,17 @@ public class GUIManager {
         this.guiFrame.pack();
     }
 
+    @Override
+    public void handleQuitRequestWith(QuitEvent inE, QuitResponse inResponse) {
+        if (this.quitHandler()) {
+            inResponse.performQuit();
+        } else {
+            inResponse.cancelQuit();
+        }
+    }
+
     public boolean quitHandler() {
-        final VariablesManager mm = DungeonDiverII.getApplication()
+        final VariablesManager mm = DungeonDiver2.getApplication()
                 .getVariablesManager();
         boolean saved = true;
         int status = JOptionPane.DEFAULT_OPTION;

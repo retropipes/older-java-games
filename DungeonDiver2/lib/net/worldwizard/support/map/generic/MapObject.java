@@ -58,7 +58,8 @@ public abstract class MapObject implements TypeConstants, RandomGenerationRule {
     @Override
     public MapObject clone() {
         try {
-            final MapObject copy = this.getClass().getConstructor().newInstance();
+            final MapObject copy = this.getClass().getConstructor()
+                    .newInstance();
             copy.solid = this.solid;
             copy.friction = this.friction;
             copy.type = (BitSet) this.type.clone();

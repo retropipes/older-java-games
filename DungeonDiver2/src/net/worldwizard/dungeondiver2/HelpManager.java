@@ -46,7 +46,7 @@ public class HelpManager {
     private void initHelp() {
         if (!this.inited) {
             this.buttonHandler = new ButtonHandler();
-            this.objectList = DungeonDiverII.getApplication().getObjects();
+            this.objectList = DungeonDiver2.getApplication().getObjects();
             this.objectNames = this.objectList.getAllDescriptions();
             this.objectAppearances = this.objectList.getAllAppearances();
             this.hv = new GraphicalHelpViewer(this.objectAppearances,
@@ -54,8 +54,7 @@ public class HelpManager {
             this.export = new JButton("Export");
             this.export.addActionListener(this.buttonHandler);
             this.helpFrame = new JFrame("DungeonDiverII Help");
-            final Image iconlogo = DungeonDiverII.getApplication()
-                    .getIconLogo();
+            final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
             this.helpFrame.setIconImage(iconlogo);
             this.helpFrame
                     .setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

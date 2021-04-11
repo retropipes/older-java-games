@@ -10,6 +10,8 @@ import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.desktop.AboutEvent;
+import java.awt.desktop.AboutHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,7 +23,7 @@ import javax.swing.WindowConstants;
 
 import net.worldwizard.dungeondiver2.resourcemanagers.LogoManager;
 
-public class AboutDialog {
+public class AboutDialog implements AboutHandler {
     // Fields
     private JFrame aboutFrame;
     private Container aboutPane, textPane, buttonPane, logoPane;
@@ -46,7 +48,7 @@ public class AboutDialog {
     private void setUpGUI(final String ver) {
         this.handler = new EventHandler();
         this.aboutFrame = new JFrame("About DungeonDiverII");
-        final Image iconlogo = DungeonDiverII.getApplication().getIconLogo();
+        final Image iconlogo = DungeonDiver2.getApplication().getIconLogo();
         this.aboutFrame.setIconImage(iconlogo);
         this.aboutPane = new Container();
         this.textPane = new Container();
@@ -94,8 +96,13 @@ public class AboutDialog {
                     ad.hideAboutDialog();
                 }
             } catch (final Exception ex) {
-                DungeonDiverII.getErrorLogger().logError(ex);
+                DungeonDiver2.getErrorLogger().logError(ex);
             }
         }
+    }
+
+    @Override
+    public void handleAbout(AboutEvent inE) {
+        this.showAboutDialog();
     }
 }
