@@ -10,6 +10,7 @@ import net.worldwizard.support.Support;
 import net.worldwizard.support.creatures.BattleTarget;
 import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.effects.EffectLoader;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.variables.Extension;
 import net.worldwizard.xio.XDataReader;
 import net.worldwizard.xio.XDataWriter;
@@ -19,7 +20,7 @@ public class Spell extends Identifiable {
     private Effect effect;
     private int cost;
     private BattleTarget target;
-    private int soundEffect;
+    private GameSounds soundEffect;
 
     // Constructors
     public Spell() {
@@ -27,7 +28,7 @@ public class Spell extends Identifiable {
     }
 
     public Spell(final Effect newEffect, final int newCost,
-            final BattleTarget newTarget, final int sfx) {
+            final BattleTarget newTarget, final GameSounds sfx) {
         super(true);
         this.effect = newEffect;
         this.cost = newCost;
@@ -56,7 +57,7 @@ public class Spell extends Identifiable {
         return this.target;
     }
 
-    public int getSound() {
+    public GameSounds getSound() {
         return this.soundEffect;
     }
 
@@ -72,7 +73,7 @@ public class Spell extends Identifiable {
         this.target = bt;
     }
 
-    public void setSound(final int s) {
+    public void setSound(final GameSounds s) {
         this.soundEffect = s;
     }
 
@@ -83,7 +84,7 @@ public class Spell extends Identifiable {
         result = prime * result + this.cost;
         result = prime * result
                 + (this.effect == null ? 0 : this.effect.hashCode());
-        result = prime * result + this.soundEffect;
+        result = prime * result + this.soundEffect.hashCode();
         result = prime * result
                 + (this.target == null ? 0 : this.target.hashCode());
         return result;
@@ -127,8 +128,8 @@ public class Spell extends Identifiable {
                 this.effect.computeLongHash().multiply(BigInteger.valueOf(2)));
         longHash = longHash.add(IDGenerator.computeLongLongHash(this.cost)
                 .multiply(BigInteger.valueOf(3)));
-        longHash = longHash
-                .add(IDGenerator.computeLongLongHash(this.soundEffect)
+        longHash = longHash.add(
+                IDGenerator.computeLongLongHash(this.soundEffect.hashCode())
                         .multiply(BigInteger.valueOf(4)));
         return longHash;
     }
@@ -138,7 +139,7 @@ public class Spell extends Identifiable {
         e.effect = EffectLoader.loadEffect(reader.readString());
         e.cost = reader.readInt();
         e.target = BattleTarget.valueOf(reader.readString());
-        e.soundEffect = reader.readInt();
+        e.soundEffect = GameSounds.valueOf(reader.readString());
         return e;
     }
 
@@ -146,7 +147,7 @@ public class Spell extends Identifiable {
         writer.writeString(this.effect.getID());
         writer.writeInt(this.cost);
         writer.writeString(this.target.toString());
-        writer.writeInt(this.soundEffect);
+        writer.writeString(this.soundEffect.toString());
     }
 
     @Override

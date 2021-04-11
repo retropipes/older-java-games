@@ -43,7 +43,7 @@ public abstract class GenericTeleport extends MapObject {
         final GameScriptEntry act1 = new GameScriptEntry();
         act1.setActionCode(GameActionCode.SOUND);
         act1.addActionArg(
-                new GameScriptEntryArgument(GameSoundConstants.SOUND_TELEPORT));
+                new GameScriptEntryArgument(GameSounds.TELEPORT));
         act1.finalizeActionArgs();
         this.postMove.addAction(act1);
         this.postMove.finalizeActions();

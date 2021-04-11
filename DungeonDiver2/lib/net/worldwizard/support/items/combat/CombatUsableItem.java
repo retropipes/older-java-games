@@ -6,6 +6,7 @@ import net.worldwizard.support.creatures.BattleTarget;
 import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.effects.EffectLoader;
 import net.worldwizard.support.items.Item;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.xio.XDataReader;
 import net.worldwizard.xio.XDataWriter;
 
@@ -13,7 +14,7 @@ public class CombatUsableItem extends Item {
     // Fields
     private final BattleTarget target;
     protected Effect e;
-    protected int sound;
+    protected GameSounds sound;
 
     // Constructors
     public CombatUsableItem(final String itemName, final int itemBuyPrice,
@@ -34,7 +35,7 @@ public class CombatUsableItem extends Item {
         return this.e;
     }
 
-    public int getSound() {
+    public GameSounds getSound() {
         return this.sound;
     }
 
@@ -43,7 +44,7 @@ public class CombatUsableItem extends Item {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result + (this.e == null ? 0 : this.e.hashCode());
-        result = prime * result + this.sound;
+        result = prime * result + this.sound.hashCode();
         result = prime * result
                 + (this.target == null ? 0 : this.target.hashCode());
         return result;
@@ -88,7 +89,7 @@ public class CombatUsableItem extends Item {
         final CombatUsableItem cui = new CombatUsableItem(i.getName(),
                 i.getBuyPrice(), bt);
         cui.e = EffectLoader.loadEffect(dr.readString());
-        cui.sound = dr.readInt();
+        cui.sound = GameSounds.valueOf(dr.readString());
         return cui;
     }
 
@@ -97,6 +98,6 @@ public class CombatUsableItem extends Item {
         super.write(dw);
         dw.writeString(this.target.toString());
         dw.writeString(this.e.getID());
-        dw.writeInt(this.sound);
+        dw.writeString(this.sound.toString());
     }
 }

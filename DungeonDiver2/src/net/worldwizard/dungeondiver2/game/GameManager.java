@@ -37,7 +37,7 @@ import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.map.Map;
 import net.worldwizard.support.map.MapConstants;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.GenericCharacter;
 import net.worldwizard.support.map.generic.InfiniteRecursionException;
 import net.worldwizard.support.map.generic.MapObject;
@@ -778,7 +778,7 @@ public class GameManager {
     }
 
     private void gameOver() {
-        SoundManager.playSound(GameSoundConstants.SOUND_PARTY_SLAIN);
+        SoundManager.playSound(GameSounds.PARTY_SLAIN);
         CommonDialogs.showDialog("You have died - Game Over!");
         if (this.st.checkScore()) {
             this.st.commitScore();
@@ -837,12 +837,12 @@ public class GameManager {
             final String gameName2 = target2.getGameName();
             DungeonDiver2.getApplication()
                     .showMessage(gameName2 + " on " + gameName1);
-            SoundManager.playSound(GameSoundConstants.SOUND_IDENTIFY);
+            SoundManager.playSound(GameSounds.IDENTIFY);
         } catch (final ArrayIndexOutOfBoundsException ae) {
             final EmptyVoid ev = new EmptyVoid();
             ev.determineCurrentAppearance(destX, destY, destZ, m);
             DungeonDiver2.getApplication().showMessage(ev.getGameName());
-            SoundManager.playSound(GameSoundConstants.SOUND_IDENTIFY);
+            SoundManager.playSound(GameSounds.IDENTIFY);
         }
     }
 

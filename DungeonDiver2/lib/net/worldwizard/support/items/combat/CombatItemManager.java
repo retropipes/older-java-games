@@ -7,7 +7,7 @@ import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.items.ItemInventory;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 
 public class CombatItemManager {
@@ -41,7 +41,7 @@ public class CombatItemManager {
                     .generateCombatUsableDisplayStringArray();
             if (names != null && displayNames != null) {
                 // Play using item sound
-                SoundManager.playSound(GameSoundConstants.SOUND_SPELL_SELECT);
+                SoundManager.playSound(GameSounds.SPELL_SELECT);
                 String dialogResult = null;
                 dialogResult = CommonDialogs.showInputDialog(
                         "Select an Item to Use", "Select Item", displayNames,

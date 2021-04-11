@@ -44,7 +44,7 @@ import net.worldwizard.support.effects.Effect;
 import net.worldwizard.support.items.combat.CombatItemManager;
 import net.worldwizard.support.items.combat.CombatUsableItem;
 import net.worldwizard.support.map.Map;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.map.generic.TypeConstants;
 import net.worldwizard.support.map.objects.BattleCharacter;
@@ -153,7 +153,7 @@ public class BattleGUI {
         // Start Battle
         this.vwMgr.setViewingWindowCenterX(this.bd.getActiveCharacter().getY());
         this.vwMgr.setViewingWindowCenterY(this.bd.getActiveCharacter().getX());
-        SoundManager.playSound(GameSoundConstants.SOUND_ANGRY_MOB);
+        SoundManager.playSound(GameSounds.ANGRY_MOB);
         this.showBattle();
         this.updateStats();
         this.redrawBattle();
@@ -167,7 +167,7 @@ public class BattleGUI {
             if (this.result == BattleResults.WON) {
                 final long exp = this.getExperience();
                 final int gold = this.getGold();
-                SoundManager.playSound(GameSoundConstants.SOUND_BOOTY);
+                SoundManager.playSound(GameSounds.BOOTY);
                 CommonDialogs.showTitledDialog("The party gains " + exp
                         + " experience and " + gold + " Gold.", "Victory!");
                 PartyManager.getParty().distributeVictorySpoils(exp, gold);
@@ -336,30 +336,30 @@ public class BattleGUI {
             displayDamageString = "FUMBLE! " + activeName
                     + " drops their weapon, doing " + fumbleDamageString
                     + " damage to themselves!";
-            SoundManager.playSound(GameSoundConstants.SOUND_DROP_ITEM);
+            SoundManager.playSound(GameSounds.DROP_ITEM);
         } else {
             if (this.damage == 0) {
                 if (this.de.weaponMissed()) {
                     displayDamageString = activeName + " tries to hit "
                             + enemyName + ", but MISSES!";
                     SoundManager
-                            .playSound(GameSoundConstants.SOUND_ATTACK_MISS);
+                            .playSound(GameSounds.ATTACK_MISS);
                 } else if (this.de.enemyDodged()) {
                     displayDamageString = activeName + " tries to hit "
                             + enemyName + ", but " + enemyName
                             + " AVOIDS the attack!";
                     SoundManager
-                            .playSound(GameSoundConstants.SOUND_MISSILE_DODGE);
+                            .playSound(GameSounds.MISSILE_DODGE);
                 } else {
                     displayDamageString = activeName + " tries to hit "
                             + enemyName + ", but MISSES!";
                     SoundManager
-                            .playSound(GameSoundConstants.SOUND_ATTACK_MISS);
+                            .playSound(GameSounds.ATTACK_MISS);
                 }
             } else {
                 displayDamageString = activeName + " hits " + enemyName
                         + " for " + damageString + " damage!";
-                SoundManager.playSound(GameSoundConstants.SOUND_ATTACK_HIT);
+                SoundManager.playSound(GameSounds.ATTACK_HIT);
             }
         }
         this.setStatusMessage(displayDamageString);
@@ -475,7 +475,7 @@ public class BattleGUI {
             // Perform new round actions
             this.performNewRoundActions();
             // Nobody to act next, set new round flag
-            SoundManager.playSound(GameSoundConstants.SOUND_NEXT_ROUND);
+            SoundManager.playSound(GameSounds.NEXT_ROUND);
             return true;
         }
     }
@@ -767,7 +767,7 @@ public class BattleGUI {
                     SoundManager.playSound(nextGround.getBattleMoveSoundID());
                 } else {
                     // Deny move - out of actions
-                    SoundManager.playSound(GameSoundConstants.SOUND_NULL_EVENT);
+                    SoundManager.playSound(GameSounds.NULL_EVENT);
                     this.setStatusMessage("Out of moves!");
                     return false;
                 }
@@ -779,7 +779,7 @@ public class BattleGUI {
                         if (bc.getTeamID() == active.getTeamID()) {
                             // Attack Friend?
                             SoundManager
-                                    .playSound(GameSoundConstants.SOUND_SONG);
+                                    .playSound(GameSounds.SONG);
                             final int confirm = CommonDialogs.showConfirmDialog(
                                     "Attack Friend?", "Battle");
                             if (confirm != JOptionPane.YES_OPTION) {
@@ -795,7 +795,7 @@ public class BattleGUI {
                         if (!enemy.isAlive()) {
                             // Play death sound
                             SoundManager
-                                    .playSound(GameSoundConstants.SOUND_DEATH);
+                                    .playSound(GameSounds.DEATH);
                             // Set dead character to inactive
                             bc.deactivate();
                             // Remove character from battle
@@ -806,7 +806,7 @@ public class BattleGUI {
                         if (!active.getTemplate().isAlive()) {
                             // Play death sound
                             SoundManager
-                                    .playSound(GameSoundConstants.SOUND_DEATH);
+                                    .playSound(GameSounds.DEATH);
                             // Set dead character to inactive
                             active.deactivate();
                             // Remove character from battle
@@ -818,7 +818,7 @@ public class BattleGUI {
                     } else {
                         // Deny attack - out of actions
                         SoundManager
-                                .playSound(GameSoundConstants.SOUND_NULL_EVENT);
+                                .playSound(GameSounds.NULL_EVENT);
                         this.setStatusMessage("Out of attacks!");
                         return false;
                     }
@@ -826,14 +826,14 @@ public class BattleGUI {
                     // Move Failed
                     this.setStatusMessage("Can't go that way");
                     SoundManager
-                            .playSound(GameSoundConstants.SOUND_HIT_OBSTACLE);
+                            .playSound(GameSounds.HIT_OBSTACLE);
                     return false;
                 }
             }
         } else {
             if (!active.getTemplate().hasAI()) {
                 // Confirm Flee
-                SoundManager.playSound(GameSoundConstants.SOUND_SONG);
+                SoundManager.playSound(GameSounds.SONG);
                 final int confirm = CommonDialogs
                         .showConfirmDialog("Embrace Cowardice?", "Battle");
                 if (confirm != JOptionPane.YES_OPTION) {
@@ -977,7 +977,7 @@ public class BattleGUI {
             }
         } else {
             // Deny cast - out of spell casts
-            SoundManager.playSound(GameSoundConstants.SOUND_NULL_EVENT);
+            SoundManager.playSound(GameSounds.NULL_EVENT);
             this.setStatusMessage("Out of spell casts!");
             return false;
         }
@@ -1028,7 +1028,7 @@ public class BattleGUI {
             }
         } else {
             // Deny use - out of actions
-            SoundManager.playSound(GameSoundConstants.SOUND_NULL_EVENT);
+            SoundManager.playSound(GameSounds.NULL_EVENT);
             this.setStatusMessage("Out of actions!");
             return false;
         }
@@ -1102,7 +1102,7 @@ public class BattleGUI {
             }
         } else {
             // Deny steal - out of actions
-            SoundManager.playSound(GameSoundConstants.SOUND_NULL_EVENT);
+            SoundManager.playSound(GameSounds.NULL_EVENT);
             this.setStatusMessage("Out of actions!");
             return false;
         }
@@ -1178,7 +1178,7 @@ public class BattleGUI {
             }
         } else {
             // Deny drain - out of actions
-            SoundManager.playSound(GameSoundConstants.SOUND_NULL_EVENT);
+            SoundManager.playSound(GameSounds.NULL_EVENT);
             this.setStatusMessage("Out of actions!");
             return false;
         }
@@ -1298,7 +1298,7 @@ public class BattleGUI {
             if (this.bd.getBattlers()[x] != null) {
                 if (!this.bd.getBattlers()[x].getTemplate().isAlive()) {
                     // Play death sound
-                    SoundManager.playSound(GameSoundConstants.SOUND_DEATH);
+                    SoundManager.playSound(GameSounds.DEATH);
                     // Set dead character to inactive
                     this.bd.getBattlers()[x].deactivate();
                     // Remove character from battle
@@ -1455,7 +1455,7 @@ public class BattleGUI {
                     case KeyEvent.VK_NUMPAD5:
                     case KeyEvent.VK_S:
                         // Confirm before attacking self
-                        SoundManager.playSound(GameSoundConstants.SOUND_SONG);
+                        SoundManager.playSound(GameSounds.SONG);
                         final int res = CommonDialogs.showConfirmDialog(
                                 "Are you sure you want to attack yourself?",
                                 "Battle");

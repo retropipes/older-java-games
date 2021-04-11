@@ -5,6 +5,7 @@ import net.worldwizard.dungeondiver2.game.GameManager;
 import net.worldwizard.randomnumbers.RandomRange;
 import net.worldwizard.support.battle.Battle;
 import net.worldwizard.support.items.Shop;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 import net.worldwizard.support.scripts.game.GameActionCode;
@@ -40,7 +41,7 @@ public final class GameScriptRunner {
                         break;
                     case SOUND:
                         // Play the sound
-                        final int snd = se.getFirstActionArg().getInteger();
+                        final GameSounds snd = se.getFirstActionArg().getSound();
                         SoundManager.playSound(snd);
                         break;
                     case SHOP:

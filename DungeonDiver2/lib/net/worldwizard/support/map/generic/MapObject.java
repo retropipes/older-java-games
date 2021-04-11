@@ -209,8 +209,7 @@ public abstract class MapObject implements TypeConstants, RandomGenerationRule {
         final GameScript scpt = new GameScript();
         final GameScriptEntry act0 = new GameScriptEntry();
         act0.setActionCode(GameActionCode.SOUND);
-        act0.addActionArg(
-                new GameScriptEntryArgument(GameSoundConstants.SOUND_WALK));
+        act0.addActionArg(new GameScriptEntryArgument(GameSounds.WALK));
         act0.finalizeActionArgs();
         scpt.addAction(act0);
         scpt.finalizeActions();
@@ -230,8 +229,7 @@ public abstract class MapObject implements TypeConstants, RandomGenerationRule {
         final GameScript scpt = new GameScript();
         final GameScriptEntry act0 = new GameScriptEntry();
         act0.setActionCode(GameActionCode.SOUND);
-        act0.addActionArg(
-                new GameScriptEntryArgument(GameSoundConstants.SOUND_OOF));
+        act0.addActionArg(new GameScriptEntryArgument(GameSounds.OOF));
         act0.finalizeActionArgs();
         scpt.addAction(act0);
         final GameScriptEntry act1 = new GameScriptEntry();
@@ -275,8 +273,8 @@ public abstract class MapObject implements TypeConstants, RandomGenerationRule {
         return false;
     }
 
-    public int getBattleMoveSoundID() {
-        return GameSoundConstants.SOUND_WALK;
+    public GameSounds getBattleMoveSoundID() {
+        return GameSounds.WALK;
     }
 
     public final String getBattleName() {

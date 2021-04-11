@@ -2,6 +2,7 @@ package net.worldwizard.support.scripts.game;
 
 import java.io.IOException;
 
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.xio.XDataReader;
 import net.worldwizard.xio.XDataWriter;
 
@@ -11,12 +12,14 @@ public class GameScriptEntryArgument {
     private static final byte USES_DECIMAL = 2;
     private static final byte USES_STRING = 3;
     private static final byte USES_BOOLEAN = 4;
+    private static final byte USES_SOUND = 5;
     // Fields
     private final byte useCode;
     private int intArg;
     private double decArg;
     private String strArg;
     private boolean booArg;
+    private GameSounds sndArg;
 
     // Constructors
     public GameScriptEntryArgument(final int data) {
@@ -39,6 +42,11 @@ public class GameScriptEntryArgument {
         this.booArg = data;
     }
 
+    public GameScriptEntryArgument(final GameSounds data) {
+        this.useCode = GameScriptEntryArgument.USES_SOUND;
+        this.sndArg = data;
+    }
+
     // Methods
     public boolean isInteger() {
         return this.useCode == GameScriptEntryArgument.USES_INTEGER;
@@ -56,6 +64,10 @@ public class GameScriptEntryArgument {
         return this.useCode == GameScriptEntryArgument.USES_BOOLEAN;
     }
 
+    public boolean isSound() {
+        return this.useCode == GameScriptEntryArgument.USES_SOUND;
+    }
+
     public Class<?> getArgumentClass() {
         if (this.isInteger()) {
             return int.class;
@@ -65,6 +77,8 @@ public class GameScriptEntryArgument {
             return String.class;
         } else if (this.isBoolean()) {
             return boolean.class;
+        } else if (this.isSound()) {
+            return GameSounds.class;
         } else {
             return null;
         }
@@ -81,6 +95,8 @@ public class GameScriptEntryArgument {
             return Double.toString(this.getDecimal());
         } else if (argt.equals(boolean.class)) {
             return Boolean.toString(this.getBoolean());
+        } else if (argt.equals(GameSounds.class)) {
+            return this.getSound().toString();
         } else {
             // Shouldn't ever get here
             return "";
@@ -103,6 +119,10 @@ public class GameScriptEntryArgument {
         return this.booArg;
     }
 
+    public GameSounds getSound() {
+        return this.sndArg;
+    }
+
     public static GameScriptEntryArgument read(final XDataReader reader)
             throws IOException {
         GameScriptEntryArgument sea = null;
@@ -119,6 +139,9 @@ public class GameScriptEntryArgument {
         } else if (code == GameScriptEntryArgument.USES_BOOLEAN) {
             final boolean data = reader.readBoolean();
             sea = new GameScriptEntryArgument(data);
+        } else if (code == GameScriptEntryArgument.USES_SOUND) {
+            final GameSounds data = GameSounds.valueOf(reader.readString());
+            sea = new GameScriptEntryArgument(data);
         }
         return sea;
     }
@@ -133,6 +156,8 @@ public class GameScriptEntryArgument {
             writer.writeString(this.strArg);
         } else if (this.isBoolean()) {
             writer.writeBoolean(this.booArg);
+        } else if (this.isSound()) {
+            writer.writeString(this.sndArg.toString());
         }
     }
 
@@ -148,6 +173,7 @@ public class GameScriptEntryArgument {
         result = prime * result
                 + (this.strArg == null ? 0 : this.strArg.hashCode());
         result = prime * result + this.useCode;
+        result = prime * result + this.sndArg.hashCode();
         return result;
     }
 
@@ -181,6 +207,9 @@ public class GameScriptEntryArgument {
             return false;
         }
         if (this.useCode != other.useCode) {
+            return false;
+        }
+        if (this.sndArg != other.sndArg) {
             return false;
         }
         return true;

@@ -5,7 +5,7 @@ import net.worldwizard.support.battle.BattleDefinitions;
 import net.worldwizard.support.creatures.BattleTarget;
 import net.worldwizard.support.creatures.Creature;
 import net.worldwizard.support.effects.Effect;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 
 public class SpellCaster {
@@ -45,7 +45,7 @@ public class SpellCaster {
             final String[] displayNames = book.getAllSpellNamesWithCosts();
             if (names != null && displayNames != null) {
                 // Play casting spell sound
-                SoundManager.playSound(GameSoundConstants.SOUND_SPELL_SELECT);
+                SoundManager.playSound(GameSounds.SPELL_SELECT);
                 String dialogResult = null;
                 dialogResult = CommonDialogs.showInputDialog(
                         "Select a Spell to Cast", "Select Spell", displayNames,

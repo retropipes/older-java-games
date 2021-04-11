@@ -9,6 +9,7 @@ import java.net.URL;
 
 import net.worldwizard.randomnumbers.RandomRange;
 import net.worldwizard.sound.Sound;
+import net.worldwizard.support.map.generic.GameSounds;
 
 public class SoundManager {
     private static final String DEFAULT_LOAD_PATH = "/net/worldwizard/support/resources/sounds/";
@@ -35,17 +36,21 @@ public class SoundManager {
         }
     }
 
-    public static void playSound(final int soundID) {
-        try {
-            final String categoryName = SoundNames.SOUND_CATEGORY_NAMES[SoundNames
-                    .getCategoryIndexFromSoundIndex(soundID)];
-            final String soundName = SoundNames.SOUND_NAMES[soundID];
-            final Sound snd = SoundManager.getSound(categoryName, soundName);
-            if (snd != null) {
-                new SoundTask(snd).start();
+    public static void playSound(final GameSounds soundID) {
+        if (soundID != GameSounds._NONE) {
+            try {
+                final String categoryName = SoundNames.SOUND_CATEGORY_NAMES[SoundNames
+                        .getCategoryIndexFromSoundIndex(soundID.ordinal())];
+                final String soundName = SoundNames.SOUND_NAMES[soundID
+                        .ordinal()];
+                final Sound snd = SoundManager.getSound(categoryName,
+                        soundName);
+                if (snd != null) {
+                    new SoundTask(snd).start();
+                }
+            } catch (final ArrayIndexOutOfBoundsException aioob) {
+                // Do nothing
             }
-        } catch (final ArrayIndexOutOfBoundsException aioob) {
-            // Do nothing
         }
     }
 }

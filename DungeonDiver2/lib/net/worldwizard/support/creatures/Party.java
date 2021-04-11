@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import net.worldwizard.commondialogs.CommonDialogs;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.objects.BattleCharacter;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 import net.worldwizard.support.scripts.game.GameActionCode;
@@ -86,7 +86,7 @@ public class Party {
             // Level Up Check
             if (battler.getTemplate().checkLevelUp()) {
                 battler.getTemplate().levelUp();
-                SoundManager.playSound(GameSoundConstants.SOUND_LEVEL_UP);
+                SoundManager.playSound(GameSounds.LEVEL_UP);
                 CommonDialogs.showTitledDialog(
                         battler.getTemplate().getName() + " reached level "
                                 + battler.getTemplate().getLevel() + "!",

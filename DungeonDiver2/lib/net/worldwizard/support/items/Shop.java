@@ -6,7 +6,7 @@ import net.worldwizard.commondialogs.CommonDialogs;
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.creatures.PartyMember;
 import net.worldwizard.support.items.combat.CombatItemList;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 
 public class Shop implements ShopTypes {
@@ -125,7 +125,7 @@ public class Shop implements ShopTypes {
     private boolean shopStage1() {
         // Stage 1
         // Play enter shop sound
-        SoundManager.playSound(GameSoundConstants.SOUND_ENTER_SHOP);
+        SoundManager.playSound(GameSounds.ENTER_SHOP);
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             this.typeChoices = WeaponConstants.WEAPON_CHOICES;
             this.typeDefault = 0;
@@ -373,7 +373,7 @@ public class Shop implements ShopTypes {
         // Stage 6
         final PartyMember playerCharacter = PartyManager.getParty().getLeader();
         // Play transact sound
-        SoundManager.playSound(GameSoundConstants.SOUND_CASH_REGISTER_DING);
+        SoundManager.playSound(GameSounds.CASH_REGISTER_DING);
         if (this.type == ShopTypes.SHOP_TYPE_WEAPONS) {
             playerCharacter.offsetGold(-this.cost);
             if (this.typeResult.equals(this.typeChoices[0])) {

@@ -39,7 +39,7 @@ public abstract class GenericButton extends MapObject {
         final GameScriptEntry act2 = new GameScriptEntry();
         act2.setActionCode(GameActionCode.SOUND);
         act2.addActionArg(
-                new GameScriptEntryArgument(GameSoundConstants.SOUND_BUTTON));
+                new GameScriptEntryArgument(GameSounds.BUTTON));
         act2.finalizeActionArgs();
         this.postMove.addAction(act2);
         this.postMove.finalizeActions();

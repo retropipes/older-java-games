@@ -7,7 +7,7 @@ package net.worldwizard.support.map.objects;
 
 import net.worldwizard.support.creatures.PartyManager;
 import net.worldwizard.support.map.Map;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.GenericTeleport;
 import net.worldwizard.support.map.generic.MapObject;
 import net.worldwizard.support.map.generic.TemplateTransform;
@@ -34,7 +34,7 @@ public class StairsOut extends GenericTeleport {
         final GameScriptEntry entry2 = new GameScriptEntry();
         entry2.setActionCode(GameActionCode.SOUND);
         entry2.addActionArg(
-                new GameScriptEntryArgument(GameSoundConstants.SOUND_STAIRS));
+                new GameScriptEntryArgument(GameSounds.STAIRS));
         entry2.finalizeActionArgs();
         scpt.addAction(entry2);
         scpt.finalizeActions();

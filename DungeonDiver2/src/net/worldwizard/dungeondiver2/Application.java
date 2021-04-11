@@ -19,7 +19,7 @@ import net.worldwizard.images.BufferedImageIcon;
 import net.worldwizard.support.Support;
 import net.worldwizard.support.items.Shop;
 import net.worldwizard.support.items.ShopTypes;
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.MapObjectList;
 import net.worldwizard.support.resourcemanagers.SoundManager;
 
@@ -153,7 +153,7 @@ public class Application {
     }
 
     public void playLogoSound() {
-        SoundManager.playSound(GameSoundConstants.SOUND_LOGO);
+        SoundManager.playSound(GameSounds.LOGO);
     }
 
     public JFrame getOutputFrame() {

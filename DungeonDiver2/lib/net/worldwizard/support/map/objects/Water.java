@@ -5,7 +5,7 @@ Any questions should be directed to the author via email at: products@puttysoftw
  */
 package net.worldwizard.support.map.objects;
 
-import net.worldwizard.support.map.generic.GameSoundConstants;
+import net.worldwizard.support.map.generic.GameSounds;
 import net.worldwizard.support.map.generic.GenericField;
 import net.worldwizard.support.map.generic.TemplateTransform;
 import net.worldwizard.support.scripts.game.GameActionCode;
@@ -27,7 +27,7 @@ public class Water extends GenericField {
         final GameScriptEntry entry0 = new GameScriptEntry();
         entry0.setActionCode(GameActionCode.SOUND);
         entry0.addActionArg(new GameScriptEntryArgument(
-                GameSoundConstants.SOUND_SPLASHING));
+                GameSounds.SPLASHING));
         entry0.finalizeActionArgs();
         scpt.addAction(entry0);
         final GameScriptEntry entry1 = new GameScriptEntry();
