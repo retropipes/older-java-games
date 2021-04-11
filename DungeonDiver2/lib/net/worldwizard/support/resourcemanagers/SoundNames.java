@@ -2,21 +2,13 @@ package net.worldwizard.support.resourcemanagers;
 
 public class SoundNames {
     // Package-Protected Constants
-    static final String[] SOUND_CATEGORY_NAMES = { "ambient", "attacks",
-            "battle", "changemode", "deaths", "effects", "game", "interact",
-            "inventory", "magic", "moving", "talking" };
-    static final int[] SOUND_CATEGORY_OFFSETS = { 0, 13, 55, 69, 89, 103, 139,
-            166, 206, 228, 246, 268, 296 };
-    static final String[] SOUND_NAMES = { "baa", "chicken", "chirp1", "chirp2",
-            "chirp3", "dog", "drip1", "drip2", "meow", "moo", "whinny", "wind",
-            "woof", "acid", "arrowhit", "attackhit", "attackmiss", "bigsplat",
-            "bite", "breathe", "chaclunk", "clash", "claw", "club",
-            "cold_damage", "dingyraygun", "electricenergize", "femalehya",
-            "firearrow", "firehit", "flyingfireball", "hit", "longbowarrowshot",
-            "metalhit", "missiledodge", "missilehit", "monsterhurt",
-            "poinkeroo", "pole", "pummel", "punchkick", "shorthit", "slice",
-            "slimed", "slimehit", "slurpy", "smack", "stafftostaff", "sting",
-            "thrownmiss", "thwang", "uhh1", "uhh2", "whip", "zap", "bleeding",
+    static final String[] SOUND_CATEGORY_NAMES = { "attacks", "battle",
+            "changemode", "deaths", "effects", "game", "interact", "inventory",
+            "magic", "moving", "talking" };
+    static final int[] SOUND_CATEGORY_OFFSETS = { 8, 22, 42, 56, 92, 119, 159,
+            181, 199, 221, 249 };
+    static final String[] SOUND_NAMES = { "attackhit", "attackmiss", "breathe",
+            "chaclunk", "club", "missiledodge", "slimed", "zap", "bleeding",
             "cough", "danger", "dididup", "dropitem", "effort1", "effort2",
             "nextround", "onwho", "outoftargets", "playerup", "targeterror",
             "targetoff", "targeton", "angrymob", "attention", "bamboo", "camp",
