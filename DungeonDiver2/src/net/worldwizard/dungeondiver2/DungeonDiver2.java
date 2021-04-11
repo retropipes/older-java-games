@@ -44,6 +44,10 @@ public class DungeonDiver2 {
             // Integrate with host platform
             final Platform platform = new Platform();
             platform.configureLookAndFeel();
+            // Mac OS-specific stuff
+            if (platform.isMacOS()) {
+                System.setProperty("apple.laf.useScreenMenuBar", "true");
+            }
             // Load system variables
             SystemVariablesLoader.loadSystemVariables();
             // Create local variables
