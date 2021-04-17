@@ -9,10 +9,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 import studio.ignitionigloogames.dungeondiver1.creatures.ClassManager;
 import studio.ignitionigloogames.dungeondiver1.creatures.Player;
+import studio.ignitionigloogames.dungeondiver1.gui.MessageDialog;
 
 public class SavedState {
     private static final int CHECKSUM_RADIX_2 = 16;
@@ -59,8 +60,8 @@ public class SavedState {
         boolean result = false;
         String filename, extension;
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
-            final FileDialog fd = new FileDialog(DungeonDiver.getHoldingBag()
-                    .getGUIManager().getParentFrame(), "Load", FileDialog.LOAD);
+            final FileDialog fd = new FileDialog((JFrame) null, "Load",
+                    FileDialog.LOAD);
             final SavedStateFilterMacOSX ss = new SavedStateFilterMacOSX();
             fd.setFilenameFilter(ss);
             fd.setVisible(true);
@@ -118,8 +119,8 @@ public class SavedState {
                     newExperience, dl, bookID);
             final String checksumData = SavedState.getChecksum(temp);
             if (!checksumFile.equals(checksumData)) {
-                JOptionPane.showMessageDialog(null, "Cheat attempt detected.",
-                        "Load State", JOptionPane.INFORMATION_MESSAGE);
+                MessageDialog.showDialog("Cheat attempt detected.",
+                        "Load State");
             } else {
                 p = ClassManager.getNewPlayerInstance(bookID);
                 p.loadPlayer(pAttack, pDefense, pHP, pMP, newKills, newLevel,
@@ -129,13 +130,12 @@ public class SavedState {
                 result = true;
             }
         } catch (final IOException ie) {
-            JOptionPane.showMessageDialog(null, "State could not be loaded.",
-                    "Load State", JOptionPane.INFORMATION_MESSAGE);
+            MessageDialog.showDialog("State could not be loaded.",
+                    "Load State");
         } catch (final Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(null,
-                    "Unknown error reading state file.", "Load State",
-                    JOptionPane.INFORMATION_MESSAGE);
+            MessageDialog.showDialog("Unknown error reading state file.",
+                    "Load State");
         }
         return result;
     }
@@ -143,8 +143,8 @@ public class SavedState {
     public void save() {
         String filename, extension;
         if (System.getProperty("os.name").startsWith("Mac OS X")) {
-            final FileDialog fd = new FileDialog(DungeonDiver.getHoldingBag()
-                    .getGUIManager().getParentFrame(), "Save", FileDialog.SAVE);
+            final FileDialog fd = new FileDialog((JFrame) null, "Save",
+                    FileDialog.SAVE);
             final SavedStateFilterMacOSX ss = new SavedStateFilterMacOSX();
             fd.setFilenameFilter(ss);
             fd.setVisible(true);
@@ -211,12 +211,10 @@ public class SavedState {
             stream.writeObject(SavedState.getChecksum(p));
             stream.close();
         } catch (final IOException ie) {
-            JOptionPane.showMessageDialog(null, "State could not be saved.",
-                    "Save State", JOptionPane.INFORMATION_MESSAGE);
+            MessageDialog.showDialog("State could not be saved.", "Save State");
         } catch (final Exception ex) {
-            JOptionPane.showMessageDialog(null,
-                    "Unknown error writing state file.", "Save State",
-                    JOptionPane.INFORMATION_MESSAGE);
+            MessageDialog.showDialog("Unknown error writing state file.",
+                    "Save State");
         }
     }
 

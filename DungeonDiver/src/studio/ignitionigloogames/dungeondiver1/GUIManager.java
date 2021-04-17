@@ -1,38 +1,40 @@
 package studio.ignitionigloogames.dungeondiver1;
 
-import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
-import javax.swing.WindowConstants;
+import javax.swing.JPanel;
+
+import studio.ignitionigloogames.dungeondiver1.gui.MainWindow;
 
 public class GUIManager {
     // Fields
-    private final JFrame menuFrame;
+    private final JPanel guiContent;
     private final JLabel logoLabel;
     private final MenuManager mgr;
+    private final Dimension windowSize;
 
     // Constructors
     public GUIManager() {
         // Initialize GUI
         this.mgr = new MenuManager();
-        this.menuFrame = new JFrame("Dungeon Diver");
-        this.menuFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.menuFrame.setJMenuBar(this.mgr.getMenuBar());
+        this.guiContent = new JPanel();
+        this.guiContent.setLayout(new BorderLayout());
         this.logoLabel = new JLabel(GraphicsManager.getLogo());
-        this.menuFrame.getContentPane().add(this.logoLabel);
-        this.menuFrame.setResizable(false);
-        this.menuFrame.pack();
+        this.guiContent.add(this.logoLabel, BorderLayout.NORTH);
+        this.windowSize = new Dimension(800, 800);
     }
 
     // Methods
-    public JFrame getParentFrame() {
-        return this.menuFrame;
-    }
-
     public void showGUI() {
-        this.menuFrame.setVisible(true);
+        MainWindow main = MainWindow.getMainWindow();
+        main.attachAndSave(this.guiContent);
+        main.setFixedSize(this.windowSize, this.mgr.getMenuBar());
+        main.setTitle("Dungeon Diver");
     }
 
     public void hideGUI() {
-        this.menuFrame.setVisible(false);
+        MainWindow.getMainWindow().restoreSaved();
     }
 }

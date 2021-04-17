@@ -1,7 +1,8 @@
 package studio.ignitionigloogames.dungeondiver1.dungeon;
 
-import java.awt.Container;
 import java.awt.Dimension;
+
+import javax.swing.JPanel;
 
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.HoldingBag;
@@ -20,25 +21,27 @@ public class DungeonMap extends Map2D {
     // Constructors
     public DungeonMap(final int rows, final int cols,
             final Dimension viewingWindowDimensions,
-            final MapObject errorObject, final MapObject hiddenObject) {
-        super(rows, cols, viewingWindowDimensions, errorObject, hiddenObject);
+            final MapObject errorObject, final MapObject hiddenObject,
+            final JPanel theView) {
+        super(rows, cols, viewingWindowDimensions, errorObject, hiddenObject,
+                theView);
     }
 
     // Methods
     @Override
-    public Container drawGameWithVisibility(
+    public void drawGameWithVisibility(
             final NDimensionalLocation otherDimensions) {
         final HoldingBag menu = DungeonDiver.getHoldingBag();
         final DungeonGUI app = menu.getDungeonGUI();
         final DungeonObject saved = app.getSavedMapObject();
         saved.moveOntoHook();
         this.processAllPlayerMoveHooks();
-        return super.drawGameWithVisibility(otherDimensions);
+        super.drawGameWithVisibility(otherDimensions);
     }
 
-    public Container drawGameWithVisibilityBypassHook(
+    public void drawGameWithVisibilityBypassHook(
             final NDimensionalLocation otherDimensions) {
-        return super.drawGameWithVisibility(otherDimensions);
+        super.drawGameWithVisibility(otherDimensions);
     }
 
     private void processAllPlayerMoveHooks() {

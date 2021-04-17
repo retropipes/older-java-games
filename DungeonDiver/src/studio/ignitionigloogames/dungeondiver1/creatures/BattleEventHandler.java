@@ -37,7 +37,7 @@ public class BattleEventHandler extends AbstractAction {
                 }
             } else if (cmd.equals("Continue")) {
                 // Battle Done
-                b.battleDone();
+                Battle.battleDone();
                 return;
             } else if (cmd.equals("Cast Spell") || cmd.equals("s")) {
                 // Use Skill

@@ -1,9 +1,8 @@
 package studio.ignitionigloogames.dungeondiver1.creatures;
 
-import javax.swing.JOptionPane;
-
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.creatures.spells.SpellBookManager;
+import studio.ignitionigloogames.dungeondiver1.gui.ListDialog;
 
 public class BossRewards {
     // Methods
@@ -12,10 +11,9 @@ public class BossRewards {
         final String[] rewardOptions = { "Attack", "Defense", "HP", "MP" };
         String dialogResult = null;
         while (dialogResult == null) {
-            dialogResult = (String) JOptionPane.showInputDialog(null,
+            dialogResult = ListDialog.showDialog(
                     "You get to increase a stat permanently.\nWhich Stat?",
-                    "Boss Rewards", JOptionPane.QUESTION_MESSAGE, null,
-                    rewardOptions, rewardOptions[0]);
+                    "Boss Rewards", rewardOptions, rewardOptions[0]);
         }
         if (dialogResult.equals(rewardOptions[0])) {
             // Attack

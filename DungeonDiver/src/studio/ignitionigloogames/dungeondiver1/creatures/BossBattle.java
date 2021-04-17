@@ -15,7 +15,6 @@ public class BossBattle extends Battle {
     @Override
     public void doBattle() {
         Battle.IN_BATTLE = true;
-        DungeonDiver.getHoldingBag().getDungeonGUI().hideDungeon();
         this.enemy = new Boss();
         this.iconLabel.setIcon(this.enemy.getImage());
         this.enemyDidDamage = false;
@@ -30,7 +29,7 @@ public class BossBattle extends Battle {
         this.spell.setEnabled(true);
         this.done.setEnabled(false);
         this.firstUpdateMessageArea();
-        this.battleFrame.setVisible(true);
+        this.setUpBattleGUI();
     }
 
     @Override
@@ -50,13 +49,13 @@ public class BossBattle extends Battle {
         if (this.result == BattleResults.WON) {
             this.appendToMessageArea("You beat the Boss!");
             this.rewards.doRewards();
-            this.battleDone();
+            Battle.battleDone();
             DungeonDiver.getHoldingBag().getDungeonGUI().newDungeonAndScheme();
         } else if (this.result == BattleResults.PERFECT) {
             this.appendToMessageArea(
                     "You beat the Boss, and didn't suffer any damage!");
             this.rewards.doRewards();
-            this.battleDone();
+            Battle.battleDone();
             DungeonDiver.getHoldingBag().getDungeonGUI().newDungeonAndScheme();
         } else if (this.result == BattleResults.LOST) {
             this.appendToMessageArea("The Boss beat you...");
@@ -72,6 +71,5 @@ public class BossBattle extends Battle {
             this.appendToMessageArea("Come back when you're ready...");
             player.healPercentage(Creature.FULL_HEAL_PERCENTAGE);
         }
-        this.battleFrame.pack();
     }
 }

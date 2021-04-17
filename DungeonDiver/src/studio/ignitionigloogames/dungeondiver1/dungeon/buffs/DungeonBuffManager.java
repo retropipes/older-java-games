@@ -1,9 +1,9 @@
 package studio.ignitionigloogames.dungeondiver1.dungeon.buffs;
 
-import java.awt.Container;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 
@@ -11,7 +11,7 @@ public class DungeonBuffManager {
     // Fields
     private final int[] savedRounds;
     private final DungeonBuff[] buffs;
-    private final Container effectsPane;
+    private final JPanel effectsPane;
     private final JLabel[] effects;
     private static final int BUFF_CONFUSED = 0;
     private static final int BUFF_ROTATED = 1;
@@ -24,10 +24,10 @@ public class DungeonBuffManager {
     private static final int FIRST_HANDLED_BUFF = 3;
 
     // Constructors
-    public DungeonBuffManager() {
+    public DungeonBuffManager(final JPanel thePane) {
         this.savedRounds = new int[DungeonBuffManager.MAX_BUFFS];
         this.buffs = new DungeonBuff[DungeonBuffManager.MAX_BUFFS];
-        this.effectsPane = new Container();
+        this.effectsPane = thePane;
         this.effectsPane
                 .setLayout(new GridLayout(DungeonBuffManager.MAX_BUFFS, 1));
         this.effects = new JLabel[DungeonBuffManager.MAX_BUFFS];
@@ -279,7 +279,7 @@ public class DungeonBuffManager {
         }
     }
 
-    public Container updateEffects() {
+    public void updateEffects() {
         String s = "";
         final DungeonBuff[] tempBuffs = new DungeonBuff[this.buffs.length];
         int counter = 0;
@@ -297,7 +297,6 @@ public class DungeonBuffManager {
             this.effectsPane.add(this.effects[x]);
             this.effects[x].setText(s);
         }
-        return this.effectsPane;
     }
 
     public int encodeMovement(final int arg1, final int arg2) {

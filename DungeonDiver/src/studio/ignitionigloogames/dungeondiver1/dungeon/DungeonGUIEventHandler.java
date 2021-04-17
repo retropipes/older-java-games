@@ -63,10 +63,7 @@ public class DungeonGUIEventHandler implements KeyListener, WindowListener {
     @Override
     public void windowClosing(final WindowEvent we) {
         try {
-            final HoldingBag menu = DungeonDiver.getHoldingBag();
-            final DungeonGUI app = menu.getDungeonGUI();
-            app.hideDungeon();
-            menu.showGUI();
+            DungeonDiver.getHoldingBag().showGUI();
         } catch (final Throwable t) {
             DungeonDiver.debug(t);
         }

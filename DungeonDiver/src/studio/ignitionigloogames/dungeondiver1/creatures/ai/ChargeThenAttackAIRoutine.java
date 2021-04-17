@@ -30,8 +30,7 @@ public class ChargeThenAttackAIRoutine extends AIRoutine {
         final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.chargeRounds == 0) {
             final RandomRange chance = new RandomRange(1, 100);
-            if (chance
-                    .generate() <= ChargeThenAttackAIRoutine.CHARGE_CHANCE) {
+            if (chance.generate() <= ChargeThenAttackAIRoutine.CHARGE_CHANCE) {
                 this.chargeRounds = charge.getEffect().getInitialRounds();
                 this.spell = charge;
                 return AIRoutine.ACTION_CAST_SPELL;

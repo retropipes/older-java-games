@@ -1,15 +1,14 @@
 package studio.ignitionigloogames.dungeondiver1.creatures;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
@@ -18,6 +17,7 @@ import studio.ignitionigloogames.dungeondiver1.creatures.ai.AIRoutine;
 import studio.ignitionigloogames.dungeondiver1.creatures.buffs.Buff;
 import studio.ignitionigloogames.dungeondiver1.creatures.spells.Spell;
 import studio.ignitionigloogames.dungeondiver1.creatures.spells.SpellBookManager;
+import studio.ignitionigloogames.dungeondiver1.gui.MainWindow;
 import studio.ignitionigloogames.dungeondiver1.utilities.RandomRange;
 
 public class Battle implements BattleResults, MoveTypes {
@@ -30,8 +30,7 @@ public class Battle implements BattleResults, MoveTypes {
     protected boolean playerDidDamage;
     protected int moveType;
     protected int enemyMoveType;
-    protected JFrame battleFrame;
-    protected Container holderPane, iconPane, messagePane, buttonPane;
+    protected JPanel holderPane, iconPane, messagePane, buttonPane;
     protected JLabel iconLabel;
     protected JTextArea messageArea;
     protected JButton attack, flee, spell, done;
@@ -54,22 +53,19 @@ public class Battle implements BattleResults, MoveTypes {
         this.moveType = MoveTypes.NORMAL;
         this.enemyMoveType = MoveTypes.NORMAL;
         // Initialize GUI
-        this.battleFrame = new JFrame("Battle");
-        this.holderPane = new Container();
-        this.iconPane = new Container();
-        this.messagePane = new Container();
-        this.buttonPane = new Container();
+        this.holderPane = new JPanel();
+        this.iconPane = new JPanel();
+        this.messagePane = new JPanel();
+        this.buttonPane = new JPanel();
         this.iconLabel = new JLabel("");
         this.messageArea = new JTextArea();
         this.messageArea.setOpaque(true);
         this.messageArea.setEditable(false);
-        this.messageArea.setBackground(this.battleFrame.getBackground());
         this.messageArea.setMinimumSize(this.messagePane.getSize());
         this.attack = new JButton("Attack");
         this.flee = new JButton("Flee");
         this.spell = new JButton("Cast Spell");
         this.done = new JButton("Continue");
-        this.battleFrame.getRootPane().setDefaultButton(this.done);
         this.iconPane.setLayout(new FlowLayout());
         this.messagePane.setLayout(new FlowLayout());
         this.buttonPane.setLayout(new GridLayout(1, 4));
@@ -83,9 +79,6 @@ public class Battle implements BattleResults, MoveTypes {
         this.holderPane.add(this.iconPane, BorderLayout.WEST);
         this.holderPane.add(this.messagePane, BorderLayout.CENTER);
         this.holderPane.add(this.buttonPane, BorderLayout.SOUTH);
-        this.battleFrame.setContentPane(this.holderPane);
-        this.battleFrame.setResizable(false);
-        this.battleFrame.pack();
         // Initialize Event Handlers
         this.handler = new BattleEventHandler();
         this.attack.addActionListener(this.handler);
@@ -339,7 +332,6 @@ public class Battle implements BattleResults, MoveTypes {
     // Method
     public void doBattle() {
         Battle.IN_BATTLE = true;
-        DungeonDiver.getHoldingBag().getDungeonGUI().hideDungeon();
         this.enemy = new Monster();
         this.iconLabel.setIcon(this.enemy.getImage());
         this.enemyDidDamage = false;
@@ -354,7 +346,13 @@ public class Battle implements BattleResults, MoveTypes {
         this.spell.setEnabled(true);
         this.done.setEnabled(false);
         this.firstUpdateMessageArea();
-        this.battleFrame.setVisible(true);
+        this.setUpBattleGUI();
+    }
+    
+    protected final void setUpBattleGUI() {
+        MainWindow main = MainWindow.getMainWindow();
+        main.attachAndSave(this.holderPane);
+        main.setTitle("Battle");
     }
 
     public final Creature getEnemy() {
@@ -444,7 +442,6 @@ public class Battle implements BattleResults, MoveTypes {
     protected final void firstUpdateMessageArea() {
         this.clearMessageArea();
         this.displayBattleStats();
-        this.battleFrame.pack();
     }
 
     public final void lastUpdateMessageArea() {
@@ -455,7 +452,6 @@ public class Battle implements BattleResults, MoveTypes {
         if (this.enemyAction == AIRoutine.ACTION_ATTACK) {
             this.displayEnemyRoundResults();
         }
-        this.battleFrame.pack();
     }
 
     public final void lastUpdateMessageAreaFleeFailed() {
@@ -468,7 +464,6 @@ public class Battle implements BattleResults, MoveTypes {
         if (this.enemyAction == AIRoutine.ACTION_ATTACK) {
             this.displayEnemyRoundResults();
         }
-        this.battleFrame.pack();
     }
 
     public final void updateMessageArea() {
@@ -483,7 +478,6 @@ public class Battle implements BattleResults, MoveTypes {
         if (this.enemyAction == AIRoutine.ACTION_ATTACK) {
             this.displayEnemyRoundResults();
         }
-        this.battleFrame.pack();
     }
 
     public final boolean doEnemyAttack() {
@@ -517,7 +511,6 @@ public class Battle implements BattleResults, MoveTypes {
         if (this.enemyAction == AIRoutine.ACTION_ATTACK) {
             this.displayEnemyRoundResults();
         }
-        this.battleFrame.pack();
     }
 
     public final void updateMessageAreaFleeFailed() {
@@ -534,7 +527,6 @@ public class Battle implements BattleResults, MoveTypes {
         if (this.enemyAction == AIRoutine.ACTION_ATTACK) {
             this.displayEnemyRoundResults();
         }
-        this.battleFrame.pack();
     }
 
     public void doResult() {
@@ -591,18 +583,15 @@ public class Battle implements BattleResults, MoveTypes {
             this.appendToMessageAreaNewLine(
                     "You reached level " + player.getLevel() + ".");
         }
-        // Final Cleanup
-        this.battleFrame.pack();
     }
 
     public final void setResult(final int newResult) {
         this.result = newResult;
     }
 
-    public final void battleDone() {
-        this.battleFrame.setVisible(false);
+    public final static void battleDone() {
+        MainWindow.getMainWindow().restoreSaved();
         Battle.IN_BATTLE = false;
-        DungeonDiver.getHoldingBag().getDungeonGUI().showDungeon();
     }
 
     public final static boolean isInBattle() {

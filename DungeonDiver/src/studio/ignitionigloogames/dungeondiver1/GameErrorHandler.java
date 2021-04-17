@@ -1,7 +1,6 @@
 package studio.ignitionigloogames.dungeondiver1;
 
-import javax.swing.JOptionPane;
-
+import studio.ignitionigloogames.dungeondiver1.gui.MessageDialog;
 import studio.ignitionigloogames.dungeondiver1.utilities.ErrorHandler;
 import studio.ignitionigloogames.dungeondiver1.utilities.ErrorLogger;
 
@@ -48,8 +47,8 @@ final class GameErrorHandler implements ErrorHandler {
     }
 
     private void logError(final Throwable t) {
-        JOptionPane.showMessageDialog(null, GameErrorHandler.ERROR_MESSAGE,
-                GameErrorHandler.ERROR_TITLE, JOptionPane.ERROR_MESSAGE);
+        MessageDialog.showDialog(GameErrorHandler.ERROR_MESSAGE,
+                GameErrorHandler.ERROR_TITLE);
         this.logger.logError(t);
     }
 
@@ -58,8 +57,8 @@ final class GameErrorHandler implements ErrorHandler {
     }
 
     private void logWarning(final Throwable t) {
-        JOptionPane.showMessageDialog(null, GameErrorHandler.WARNING_MESSAGE,
-                GameErrorHandler.WARNING_TITLE, JOptionPane.WARNING_MESSAGE);
+        MessageDialog.showDialog(GameErrorHandler.WARNING_MESSAGE,
+                GameErrorHandler.WARNING_TITLE);
         this.logger.logWarning(t);
     }
 
@@ -86,14 +85,12 @@ final class GameErrorHandler implements ErrorHandler {
     }
 
     private void logErrorWithMessage(final Throwable t, final String msg) {
-        JOptionPane.showMessageDialog(null, msg, GameErrorHandler.ERROR_TITLE,
-                JOptionPane.ERROR_MESSAGE);
+        MessageDialog.showDialog(msg, GameErrorHandler.ERROR_TITLE);
         this.logger.logError(t);
     }
 
     private void logWarningWithMessage(final Throwable t, final String msg) {
-        JOptionPane.showMessageDialog(null, msg, GameErrorHandler.WARNING_TITLE,
-                JOptionPane.WARNING_MESSAGE);
+        MessageDialog.showDialog(msg, GameErrorHandler.WARNING_TITLE);
         this.logger.logWarning(t);
     }
 }

@@ -3,7 +3,7 @@ package studio.ignitionigloogames.dungeondiver1.dungeon;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.dungeon.objects.Darkness;
@@ -14,6 +14,12 @@ import studio.ignitionigloogames.dungeondiver1.utilities.NDimensionalLocation;
 import studio.ignitionigloogames.dungeondiver1.utilities.NDimensionalMap;
 
 public class NewDungeonTask implements Runnable {
+    private final JPanel view;
+
+    public NewDungeonTask(final JPanel theView) {
+        this.view = theView;
+    }
+
     @Override
     public void run() {
         try {
@@ -31,14 +37,12 @@ public class NewDungeonTask implements Runnable {
                     .getSpecificObject("Darkness");
             final int size = gui.computeDungeonSize();
             final DungeonMap dungeon = new DungeonMap(size, size, viewingWindow,
-                    dark, dark);
-            final JFrame generatorFrame = gui.getGenerator();
-            gui.hideDungeon();
+                    dark, dark, this.view);
             final Tile tile = (Tile) DungeonObjectList
                     .getSpecificObject("Tile");
             final Player player = (Player) DungeonObjectList
                     .getSpecificObject("Player");
-            generatorFrame.setVisible(true);
+            gui.generateModeOn();
             dungeon.fillMapRandomly(objectList, tile);
             NDimensionalLocation playerLocation;
             boolean found = dungeon.findObject(player);
@@ -74,8 +78,7 @@ public class NewDungeonTask implements Runnable {
             gui.setSavedMapObject(tile);
             dungeon.setDrawDistance(visionState);
             gui.setDungeon(dungeon);
-            generatorFrame.setVisible(false);
-            gui.showDungeonImmediately();
+            gui.generateModeOff();
             gui.redrawDungeonBypassHook();
         } catch (final Throwable t) {
             DungeonDiver.debug(t);

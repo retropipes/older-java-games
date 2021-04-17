@@ -24,8 +24,7 @@ public class PoisonThenAttackAIRoutine extends AIRoutine {
         final int currMP = c.getCurrentMP();
         if (cost <= currMP && this.poisonRounds == 0) {
             final RandomRange chance = new RandomRange(1, 100);
-            if (chance
-                    .generate() <= PoisonThenAttackAIRoutine.POISON_CHANCE) {
+            if (chance.generate() <= PoisonThenAttackAIRoutine.POISON_CHANCE) {
                 this.poisonRounds = poison.getEffect().getInitialRounds();
                 this.spell = poison;
                 return AIRoutine.ACTION_CAST_SPELL;

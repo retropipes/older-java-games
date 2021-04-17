@@ -1,6 +1,5 @@
 package studio.ignitionigloogames.dungeondiver1.utilities;
 
-import java.awt.Container;
 import java.awt.Point;
 import java.io.Serializable;
 
@@ -57,17 +56,17 @@ public interface NDimensionalMap extends Serializable {
     void fillMapDimensionRandomly(final MapObjectList objects,
             final MapObject pass1Fill, final int dimension);
 
-    Container drawGame(NDimensionalLocation otherDimensions);
+    void drawGame(NDimensionalLocation otherDimensions);
 
-    Container drawGameWithVisibility(NDimensionalLocation otherDimensions);
+    void drawGameWithVisibility(NDimensionalLocation otherDimensions);
 
-    Container drawEditor(NDimensionalLocation otherDimensions);
+    void drawEditor(NDimensionalLocation otherDimensions);
 
-    Container drawEditorWithVisibility(NDimensionalLocation otherDimensions);
+    void drawEditorWithVisibility(NDimensionalLocation otherDimensions);
 
-    Container drawOther(int appearanceID, NDimensionalLocation otherDimensions);
+    void drawOther(int appearanceID, NDimensionalLocation otherDimensions);
 
-    Container drawOtherWithVisibility(int appearanceID,
+    void drawOtherWithVisibility(int appearanceID,
             NDimensionalLocation otherDimensions);
 
     Point alterViewingWindow(Point newViewingWindow);

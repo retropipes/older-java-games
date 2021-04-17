@@ -1,7 +1,6 @@
 package studio.ignitionigloogames.dungeondiver1;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,13 +12,13 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import javax.swing.JPanel;
+
+import studio.ignitionigloogames.dungeondiver1.gui.MainWindow;
 
 public class Preferences {
     // Fields
-    private JFrame prefFrame;
-    private Container mainPrefPane, subPrefPane1, subPrefPane2;
+    private JPanel mainPrefPane, subPrefPane1, subPrefPane2;
     private JButton prefsOK, prefsCancel;
     private boolean[] prefValues;
     private boolean[] savedPrefValues;
@@ -73,11 +72,14 @@ public class Preferences {
 
     public void showPrefs() {
         this.savePreferenceValues();
-        this.prefFrame.setVisible(true);
+        MainWindow main = MainWindow.getMainWindow();
+        main.setTitle("Preferences");
+        main.attachAndSave(this.mainPrefPane);
+        main.addWindowListener(this.handler);
     }
 
     public void hidePrefs() {
-        this.prefFrame.setVisible(false);
+        MainWindow.getMainWindow().restoreSaved();
     }
 
     void cancelPrefs() {
@@ -107,13 +109,11 @@ public class Preferences {
 
     private void setUpGUI() {
         this.handler = new EventHandler();
-        this.prefFrame = new JFrame("Preferences");
-        this.mainPrefPane = new Container();
-        this.subPrefPane1 = new Container();
-        this.subPrefPane2 = new Container();
+        this.mainPrefPane = new JPanel();
+        this.subPrefPane1 = new JPanel();
+        this.subPrefPane2 = new JPanel();
         this.prefsOK = new JButton("OK");
         this.prefsOK.setDefaultCapable(true);
-        this.prefFrame.getRootPane().setDefaultButton(this.prefsOK);
         this.prefsCancel = new JButton("Cancel");
         this.prefsCancel.setDefaultCapable(false);
         this.prefs = new JCheckBox[Preferences.MAX_PREFS];
@@ -134,11 +134,7 @@ public class Preferences {
         this.prefs[Preferences.ICE_ENABLED] = new JCheckBox("Enable ice", true);
         this.prefs[Preferences.MONSTERS_ON_MAP_ENABLED] = new JCheckBox(
                 "Show monsters in dungeon", true);
-        this.prefFrame.setContentPane(this.mainPrefPane);
-        this.prefFrame
-                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.mainPrefPane.setLayout(new BorderLayout());
-        this.prefFrame.setResizable(false);
         this.subPrefPane1.setLayout(new GridLayout(Preferences.MAX_PREFS, 1));
         for (int x = 0; x < Preferences.MAX_PREFS; x++) {
             this.subPrefPane1.add(this.prefs[x]);
@@ -152,8 +148,6 @@ public class Preferences {
                 .addItemListener(this.handler);
         this.prefsOK.addActionListener(this.handler);
         this.prefsCancel.addActionListener(this.handler);
-        this.prefFrame.addWindowListener(this.handler);
-        this.prefFrame.pack();
     }
 
     private class EventHandler
