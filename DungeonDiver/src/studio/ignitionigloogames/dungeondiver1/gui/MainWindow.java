@@ -34,10 +34,6 @@ public final class MainWindow {
         this.fixedSizeSet = false;
     }
 
-    static JFrame owner() {
-        return MainWindow.getMainWindow().frame;
-    }
-
     public static MainWindow getMainWindow() {
         if (MainWindow.window == null) {
             MainWindow.window = new MainWindow();
@@ -60,6 +56,7 @@ public final class MainWindow {
         this.clearEventHandlers();
         this.content = customContent;
         this.frame.setContentPane(this.content);
+        this.frame.pack();
     }
 
     public void attachAndSave(final JPanel customContent) {
@@ -67,6 +64,7 @@ public final class MainWindow {
         this.savedContent = this.content;
         this.content = customContent;
         this.frame.setContentPane(this.content);
+        this.frame.pack();
     }
 
     public void restoreSaved() {
@@ -85,7 +83,9 @@ public final class MainWindow {
         if (!this.fixedSizeSet) {
             this.frame.setJMenuBar(menubar);
             this.frame.setSize(d);
-            this.frame.pack();
+            this.frame.setPreferredSize(d);
+            this.frame.setMinimumSize(d);
+            this.frame.setMaximumSize(d);
             this.fixedSizeSet = true;
         }
     }
