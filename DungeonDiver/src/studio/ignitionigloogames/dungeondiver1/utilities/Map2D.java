@@ -1,11 +1,11 @@
 package studio.ignitionigloogames.dungeondiver1.utilities;
 
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Map2D implements NDimensionalMap {
     // Fields
@@ -14,7 +14,7 @@ public class Map2D implements NDimensionalMap {
     private final MapObject[][] savedLevel;
     private final int[] playerData;
     private final NDimensionalLocation findResult;
-    private final JPanel view;
+    private final Container view;
     private final Dimension viewingWindowSize;
     private Point viewingWindowLocation;
     private final MapObject error;
@@ -25,14 +25,14 @@ public class Map2D implements NDimensionalMap {
     // Constructors
     public Map2D(final int rows, final int cols,
             final Dimension viewingWindowDimensions,
-            final MapObject errorObject, final JPanel theView) {
+            final MapObject errorObject) {
         this.mapData = new MapObject[cols][rows];
         this.savedLevel = new MapObject[cols][rows];
         this.playerData = new int[Map2D.MAX_DIMENSIONS];
         this.findResult = new NDimensionalLocation(Map2D.MAX_DIMENSIONS);
         this.viewingWindowSize = viewingWindowDimensions;
         this.viewingWindowLocation = new Point(0, 0);
-        this.view = theView;
+        this.view = new Container();
         this.view.setLayout(new GridLayout(this.viewingWindowSize.width,
                 this.viewingWindowSize.height));
         this.error = errorObject;
@@ -44,15 +44,14 @@ public class Map2D implements NDimensionalMap {
 
     public Map2D(final int rows, final int cols,
             final Dimension viewingWindowDimensions,
-            final MapObject errorObject, final MapObject hiddenObject,
-            final JPanel theView) {
+            final MapObject errorObject, final MapObject hiddenObject) {
         this.mapData = new MapObject[cols][rows];
         this.savedLevel = new MapObject[cols][rows];
         this.playerData = new int[Map2D.MAX_DIMENSIONS];
         this.findResult = new NDimensionalLocation(Map2D.MAX_DIMENSIONS);
         this.viewingWindowSize = viewingWindowDimensions;
         this.viewingWindowLocation = new Point(0, 0);
-        this.view = theView;
+        this.view = new Container();
         this.view.setLayout(new GridLayout(this.viewingWindowSize.width,
                 this.viewingWindowSize.height));
         this.error = errorObject;
@@ -368,7 +367,7 @@ public class Map2D implements NDimensionalMap {
     }
 
     @Override
-    public void drawGame(final NDimensionalLocation otherDimensions) {
+    public Container drawGame(final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
         final int maxViewingWindowRow = this.viewingWindowLocation.y
@@ -388,10 +387,11 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override
-    public void drawGameWithVisibility(
+    public Container drawGameWithVisibility(
             final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
@@ -418,10 +418,11 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override
-    public void drawEditor(final NDimensionalLocation otherDimensions) {
+    public Container drawEditor(final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
         final int maxViewingWindowRow = this.viewingWindowLocation.y
@@ -441,10 +442,11 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override
-    public void drawEditorWithVisibility(
+    public Container drawEditorWithVisibility(
             final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
@@ -471,10 +473,11 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override
-    public void drawOther(final int appearanceID,
+    public Container drawOther(final int appearanceID,
             final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
@@ -496,10 +499,11 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override
-    public void drawOtherWithVisibility(final int appearanceID,
+    public Container drawOtherWithVisibility(final int appearanceID,
             final NDimensionalLocation otherDimensions) {
         this.view.removeAll();
         int x, y;
@@ -527,6 +531,7 @@ public class Map2D implements NDimensionalMap {
                 }
             }
         }
+        return this.view;
     }
 
     @Override

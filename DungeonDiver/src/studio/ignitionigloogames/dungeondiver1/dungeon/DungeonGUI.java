@@ -1,13 +1,15 @@
 package studio.ignitionigloogames.dungeondiver1.dungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Point;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.WindowConstants;
 
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.Preferences;
@@ -19,15 +21,16 @@ import studio.ignitionigloogames.dungeondiver1.dungeon.objects.DungeonObjectList
 import studio.ignitionigloogames.dungeondiver1.dungeon.objects.Monster;
 import studio.ignitionigloogames.dungeondiver1.dungeon.objects.Tile;
 import studio.ignitionigloogames.dungeondiver1.dungeon.objects.Wall;
-import studio.ignitionigloogames.dungeondiver1.gui.MainWindow;
 import studio.ignitionigloogames.dungeondiver1.utilities.MapObject;
 import studio.ignitionigloogames.dungeondiver1.utilities.NDimensionalLocation;
 import studio.ignitionigloogames.dungeondiver1.utilities.NDimensionalMap;
 
 public class DungeonGUI {
     // Fields
-    private final JPanel outputPane, effectsPane, borderPane, statsPane,
-            generatorPane;
+    private final JFrame outputFrame, generatorFrame, statsFrame;
+    private Container outputPane, effectsPane;
+    private final Container borderPane;
+    private final Container statsPane;
     private final JLabel[] stats;
     private final JProgressBar generatorProgress;
     private DungeonMap dungeon;
@@ -50,22 +53,36 @@ public class DungeonGUI {
     // Constructors
     public DungeonGUI() {
         this.handler = new DungeonGUIEventHandler();
-        this.generatorPane = new JPanel();
+        this.outputFrame = new JFrame("Dungeon");
+        this.outputFrame
+                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.outputFrame.setResizable(false);
+        this.outputFrame.addWindowListener(this.handler);
+        this.outputFrame.addKeyListener(this.handler);
+        this.generatorFrame = new JFrame("Generating...");
         this.generatorProgress = new JProgressBar();
         this.generatorProgress.setIndeterminate(true);
-        this.generatorPane.add(this.generatorProgress);
+        this.generatorFrame.getContentPane().add(this.generatorProgress);
+        this.generatorFrame.setResizable(false);
+        this.generatorFrame
+                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         this.objectList = new DungeonObjectList();
         this.savedMapObject = (Tile) DungeonObjectList
                 .getSpecificObject("Tile");
-        this.effectsPane = new JPanel();
-        this.buffMgr = new DungeonBuffManager(this.effectsPane);
-        this.outputPane = new JPanel();
-        this.borderPane = new JPanel();
-        this.statsPane = new JPanel();
+        this.buffMgr = new DungeonBuffManager();
+        this.outputPane = new Container();
+        this.borderPane = new Container();
+        this.effectsPane = new Container();
         this.borderPane.setLayout(new BorderLayout());
         this.borderPane.add(this.outputPane, BorderLayout.CENTER);
         this.borderPane.add(this.effectsPane, BorderLayout.SOUTH);
-        this.borderPane.add(this.statsPane, BorderLayout.EAST);
+        this.outputFrame.setContentPane(this.borderPane);
+        this.statsFrame = new JFrame("Stats");
+        this.statsFrame
+                .setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.statsFrame.setResizable(false);
+        this.statsFrame.setFocusableWindowState(false);
+        this.statsPane = new Container();
         this.statsPane.setLayout(new GridLayout(Stats.MAX_STATS, 1));
         this.stats = new JLabel[Stats.MAX_STATS];
         int x;
@@ -74,6 +91,8 @@ public class DungeonGUI {
             this.stats[x].setOpaque(true);
             this.statsPane.add(this.stats[x]);
         }
+        this.statsFrame.setContentPane(this.statsPane);
+        this.statsFrame.setLocationRelativeTo(this.outputFrame);
         this.viewingWindow = new Dimension(DungeonGUI.VIEWING_WINDOW_SIZE,
                 DungeonGUI.VIEWING_WINDOW_SIZE);
     }
@@ -99,16 +118,8 @@ public class DungeonGUI {
         this.dungeon = newDungeon;
     }
 
-    public void generateModeOn() {
-        MainWindow main = MainWindow.getMainWindow();
-        main.attachAndSave(this.generatorPane);
-    }
-
-    public void generateModeOff() {
-        MainWindow main = MainWindow.getMainWindow();
-        main.restoreSaved();
-        main.addKeyListener(this.handler);
-        main.addWindowListener(this.handler);
+    public JFrame getGenerator() {
+        return this.generatorFrame;
     }
 
     public DungeonObjectList getObjectList() {
@@ -216,26 +227,43 @@ public class DungeonGUI {
 
     private void redrawDungeon() {
         // Draw the dungeon, if it is visible
-        this.borderPane.removeAll();
-        this.dungeon.drawGameWithVisibility(null);
-        this.borderPane.add(this.outputPane, BorderLayout.CENTER);
-        this.borderPane.add(this.effectsPane, BorderLayout.SOUTH);
-        this.updateEffects();
-        this.updateStats();
+        if (this.outputFrame.isVisible()) {
+            this.borderPane.removeAll();
+            this.outputPane = this.dungeon.drawGameWithVisibility(null);
+            this.borderPane.add(this.outputPane, BorderLayout.CENTER);
+            this.borderPane.add(this.effectsPane, BorderLayout.SOUTH);
+            this.outputFrame.pack();
+            this.showDungeon();
+            this.updateEffects();
+            this.updateStats();
+        }
     }
 
     public void redrawDungeonBypassHook() {
         // Draw the dungeon, if it is visible
-        this.borderPane.removeAll();
-        this.dungeon.drawGameWithVisibilityBypassHook(null);
-        this.borderPane.add(this.outputPane, BorderLayout.CENTER);
-        this.borderPane.add(this.effectsPane, BorderLayout.SOUTH);
-        this.updateEffects();
-        this.updateStats();
+        if (this.outputFrame.isVisible()) {
+            this.borderPane.removeAll();
+            this.outputPane = this.dungeon
+                    .drawGameWithVisibilityBypassHook(null);
+            this.borderPane.add(this.outputPane, BorderLayout.CENTER);
+            this.borderPane.add(this.effectsPane, BorderLayout.SOUTH);
+            this.outputFrame.pack();
+            this.showDungeon();
+            this.updateEffects();
+            this.updateStats();
+        }
+    }
+
+    public JFrame getOutputFrame() {
+        if (this.outputFrame != null && this.outputFrame.isVisible()) {
+            return this.outputFrame;
+        } else {
+            return null;
+        }
     }
 
     public void newDungeon() {
-        this.generatorTask = new Thread(new NewDungeonTask(this.outputPane));
+        this.generatorTask = new Thread(new NewDungeonTask());
         this.generatorTask.start();
     }
 
@@ -245,8 +273,7 @@ public class DungeonGUI {
     }
 
     public void newDungeonAndScheme() {
-        this.generatorTask = new Thread(
-                new NewDungeonAndSchemeTask(this.outputPane));
+        this.generatorTask = new Thread(new NewDungeonAndSchemeTask());
         this.generatorTask.start();
     }
 
@@ -260,19 +287,28 @@ public class DungeonGUI {
     }
 
     public void showDungeon() {
-        if (this.generatorTask != null) {
-            if (!this.generatorTask.isAlive()) {
-                this.showDungeonImmediately();
+        if (this.generatorTask != null && this.outputFrame != null
+                && this.statsFrame != null) {
+            if (!this.generatorTask.isAlive() && !Battle.isInBattle()) {
+                this.outputFrame.setVisible(true);
+                this.statsFrame.setVisible(true);
             }
         }
     }
 
     void showDungeonImmediately() {
-        if (!Battle.isInBattle()) {
-            MainWindow main = MainWindow.getMainWindow();
-            main.attachAndSave(this.borderPane);
-            main.addKeyListener(this.handler);
-            main.addWindowListener(this.handler);
+        if (this.outputFrame != null && this.statsFrame != null) {
+            if (!Battle.isInBattle()) {
+                this.outputFrame.setVisible(true);
+                this.statsFrame.setVisible(true);
+            }
+        }
+    }
+
+    public void hideDungeon() {
+        if (this.outputFrame != null && this.statsFrame != null) {
+            this.outputFrame.setVisible(false);
+            this.statsFrame.setVisible(false);
         }
     }
 
@@ -285,7 +321,8 @@ public class DungeonGUI {
     }
 
     private void updateEffects() {
-        this.buffMgr.updateEffects();
+        this.effectsPane = this.buffMgr.updateEffects();
+        this.outputFrame.pack();
     }
 
     private void updateStats() {
@@ -294,6 +331,7 @@ public class DungeonGUI {
         for (x = 0; x < Stats.MAX_STATS; x++) {
             this.stats[x].setText(s[x]);
         }
+        this.statsFrame.pack();
     }
 
     int getDefaultDrawDistance() {

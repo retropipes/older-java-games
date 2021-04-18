@@ -1,10 +1,10 @@
 package studio.ignitionigloogames.dungeondiver1.creatures.spells;
 
+import javax.swing.JOptionPane;
+
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.creatures.Creature;
 import studio.ignitionigloogames.dungeondiver1.creatures.buffs.Buff;
-import studio.ignitionigloogames.dungeondiver1.gui.ListDialog;
-import studio.ignitionigloogames.dungeondiver1.gui.MessageDialog;
 
 public class SpellBookManager {
     // Fields
@@ -22,9 +22,9 @@ public class SpellBookManager {
         if (s != null) {
             result = SpellBookManager.castSpell(s, caster);
             if (!result && !SpellBookManager.NO_SPELLS_FLAG) {
-                MessageDialog.showDialog(
+                JOptionPane.showMessageDialog(null,
                         "You try to cast a spell, but realize you don't have enough MP!",
-                        "Select Spell");
+                        "Select Spell", JOptionPane.WARNING_MESSAGE);
             }
         }
         return result;
@@ -36,8 +36,10 @@ public class SpellBookManager {
             final String[] names = book.getAllSpellNames();
             final String[] displayNames = book.getAllSpellNamesWithCosts();
             String dialogResult = null;
-            dialogResult = ListDialog.showDialog("Select a Spell to Cast",
-                    "Select Spell", displayNames, displayNames[0]);
+            dialogResult = (String) JOptionPane.showInputDialog(null,
+                    "Select a Spell to Cast", "Select Spell",
+                    JOptionPane.QUESTION_MESSAGE, null, displayNames,
+                    displayNames[0]);
             if (dialogResult != null) {
                 int index;
                 for (index = 0; index < displayNames.length; index++) {
@@ -52,9 +54,9 @@ public class SpellBookManager {
             }
         } else {
             SpellBookManager.NO_SPELLS_FLAG = true;
-            MessageDialog.showDialog(
+            JOptionPane.showMessageDialog(null,
                     "You try to cast a spell, but realize you don't know any!",
-                    "Select Spell");
+                    "Select Spell", JOptionPane.WARNING_MESSAGE);
             return null;
         }
     }
@@ -132,8 +134,9 @@ public class SpellBookManager {
     public static int selectClass() {
         final String[] names = { "Fighter", "Mage", "Thief" };
         String dialogResult = null;
-        dialogResult = ListDialog.showDialog("Select a Class", "Select Class",
-                names, names[0]);
+        dialogResult = (String) JOptionPane.showInputDialog(null,
+                "Select a Class", "Select Class", JOptionPane.QUESTION_MESSAGE,
+                null, names, names[0]);
         if (dialogResult != null) {
             int index;
             for (index = 0; index < names.length; index++) {

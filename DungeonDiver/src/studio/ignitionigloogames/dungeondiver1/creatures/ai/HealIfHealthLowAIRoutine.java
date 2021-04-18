@@ -20,7 +20,8 @@ public class HealIfHealthLowAIRoutine extends AIRoutine {
                     * HealIfHealthLowAIRoutine.HEAL_PERCENT);
             if (currHP <= targetHP) {
                 final RandomRange chance = new RandomRange(1, 100);
-                if (chance.generate() <= HealIfHealthLowAIRoutine.HEAL_CHANCE) {
+                if (chance
+                        .generate() <= HealIfHealthLowAIRoutine.HEAL_CHANCE) {
                     this.spell = heal;
                     return AIRoutine.ACTION_CAST_SPELL;
                 } else {

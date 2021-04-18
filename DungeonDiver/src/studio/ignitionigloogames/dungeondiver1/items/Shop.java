@@ -1,12 +1,10 @@
 package studio.ignitionigloogames.dungeondiver1.items;
 
+import javax.swing.JOptionPane;
+
 import studio.ignitionigloogames.dungeondiver1.DungeonDiver;
 import studio.ignitionigloogames.dungeondiver1.creatures.Boss;
 import studio.ignitionigloogames.dungeondiver1.creatures.Player;
-import studio.ignitionigloogames.dungeondiver1.gui.ConfirmDialog;
-import studio.ignitionigloogames.dungeondiver1.gui.IntegerInputDialog;
-import studio.ignitionigloogames.dungeondiver1.gui.ListDialog;
-import studio.ignitionigloogames.dungeondiver1.gui.MessageDialog;
 
 public class Shop implements ShopTypes {
     // Fields
@@ -97,9 +95,10 @@ public class Shop implements ShopTypes {
             // Invalid shop type
             return;
         }
-        final String stage1Result = ListDialog.showDialog(
+        final String stage1Result = (String) JOptionPane.showInputDialog(null,
                 this.getGoldTotals() + "Select",
-                Shop.getShopNameFromType(this.type), stage1Choices,
+                Shop.getShopNameFromType(this.type),
+                JOptionPane.QUESTION_MESSAGE, null, stage1Choices,
                 stage1Choices[stage1Default]);
         if (stage1Result == null) {
             return;
@@ -122,57 +121,64 @@ public class Shop implements ShopTypes {
                     player.getCurrentMP(), player.getMaximumMP(),
                     player.getKills());
         } else if (this.type == ShopTypes.BANK) {
-            int stage2Result = IntegerInputDialog.DEFAULT_VALUE;
-            while (stage2Result == IntegerInputDialog.DEFAULT_VALUE) {
-                stage2Result = IntegerInputDialog.showDialog(
+            String stage2Result = "";
+            while (stage2Result.equals("")) {
+                stage2Result = JOptionPane.showInputDialog(null,
                         this.getGoldTotals() + stage1Result + " How Much?",
-                        Shop.getShopNameFromType(this.type));
-                if (stage2Result == IntegerInputDialog.CANCEL_VALUE) {
+                        Shop.getShopNameFromType(this.type),
+                        JOptionPane.QUESTION_MESSAGE);
+                if (stage2Result == null) {
                     return;
                 }
                 try {
-                    if (stage2Result <= 0) {
+                    cost = Integer.parseInt(stage2Result);
+                    if (cost <= 0) {
                         throw new NumberFormatException();
                     }
-                    cost = stage2Result;
                 } catch (final NumberFormatException nf) {
-                    MessageDialog.showDialog(
+                    JOptionPane.showMessageDialog(null,
                             "Amount must be greater than zero.",
-                            Shop.getShopNameFromType(this.type));
-                    stage2Result = IntegerInputDialog.DEFAULT_VALUE;
+                            Shop.getShopNameFromType(this.type),
+                            JOptionPane.INFORMATION_MESSAGE);
+                    stage2Result = "";
                 }
             }
         }
         if (this.type != ShopTypes.BANK) {
-            final int stage2Confirm = ConfirmDialog.showDialog(
+            final int stage2Confirm = JOptionPane.showConfirmDialog(null,
                     "This will cost " + cost + " Gold. Are you sure?",
-                    Shop.getShopNameFromType(this.type));
-            if (stage2Confirm == ConfirmDialog.NO_OPTION
-                    || stage2Confirm == ConfirmDialog.CLOSED_OPTION) {
+                    Shop.getShopNameFromType(this.type),
+                    JOptionPane.YES_NO_OPTION);
+            if (stage2Confirm == JOptionPane.NO_OPTION
+                    || stage2Confirm == JOptionPane.CLOSED_OPTION) {
                 return;
             }
         }
         if (this.type == ShopTypes.WEAPONS) {
             final int currentWeapon = player.getWeaponPower();
             if (stage1Index + 1 <= currentWeapon) {
-                final int stage2SecondConfirm = ConfirmDialog.showDialog(
+                final int stage2SecondConfirm = JOptionPane.showConfirmDialog(
+                        null,
                         "This purchase will downgrade your weapon.\n"
                                 + "Are you REALLY sure you want to buy this?",
-                        Shop.getShopNameFromType(this.type));
-                if (stage2SecondConfirm == ConfirmDialog.NO_OPTION
-                        || stage2SecondConfirm == ConfirmDialog.CLOSED_OPTION) {
+                        Shop.getShopNameFromType(this.type),
+                        JOptionPane.YES_NO_OPTION);
+                if (stage2SecondConfirm == JOptionPane.NO_OPTION
+                        || stage2SecondConfirm == JOptionPane.CLOSED_OPTION) {
                     return;
                 }
             }
         } else if (this.type == ShopTypes.ARMOR) {
             final int currentArmor = player.getArmorBlock();
             if (stage1Index + 1 <= currentArmor) {
-                final int stage2SecondConfirm = ConfirmDialog.showDialog(
+                final int stage2SecondConfirm = JOptionPane.showConfirmDialog(
+                        null,
                         "This purchase will downgrade your armor.\n"
                                 + "Are you REALLY sure you want to buy this?",
-                        Shop.getShopNameFromType(this.type));
-                if (stage2SecondConfirm == ConfirmDialog.NO_OPTION
-                        || stage2SecondConfirm == ConfirmDialog.CLOSED_OPTION) {
+                        Shop.getShopNameFromType(this.type),
+                        JOptionPane.YES_NO_OPTION);
+                if (stage2SecondConfirm == JOptionPane.NO_OPTION
+                        || stage2SecondConfirm == JOptionPane.CLOSED_OPTION) {
                     return;
                 }
             }
@@ -181,21 +187,24 @@ public class Shop implements ShopTypes {
         if (this.type == ShopTypes.BANK) {
             if (stage1Index == 0) {
                 if (player.getGold() < cost) {
-                    MessageDialog.showDialog("Not Enough Gold!",
-                            Shop.getShopNameFromType(this.type));
+                    JOptionPane.showMessageDialog(null, "Not Enough Gold!",
+                            Shop.getShopNameFromType(this.type),
+                            JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
             } else {
                 if (player.getGoldInBank() < cost) {
-                    MessageDialog.showDialog("Not Enough Gold!",
-                            Shop.getShopNameFromType(this.type));
+                    JOptionPane.showMessageDialog(null, "Not Enough Gold!",
+                            Shop.getShopNameFromType(this.type),
+                            JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
             }
         } else {
             if (player.getGold() < cost) {
-                MessageDialog.showDialog("Not Enough Gold!",
-                        Shop.getShopNameFromType(this.type));
+                JOptionPane.showMessageDialog(null, "Not Enough Gold!",
+                        Shop.getShopNameFromType(this.type),
+                        JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
         }

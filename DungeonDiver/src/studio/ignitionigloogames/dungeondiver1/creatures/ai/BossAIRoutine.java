@@ -60,7 +60,8 @@ public class BossAIRoutine extends AIRoutine {
             final RandomRange chance = new RandomRange(1, 100);
             if (action == 1) {
                 if (this.delevelRounds == 0) {
-                    if (chance.generate() <= BossAIRoutine.DELEVEL_CHANCE) {
+                    if (chance
+                            .generate() <= BossAIRoutine.DELEVEL_CHANCE) {
                         this.delevelRounds = which.getEffect()
                                 .getInitialRounds();
                         this.spell = which;
@@ -75,7 +76,8 @@ public class BossAIRoutine extends AIRoutine {
                 }
             } else if (action == 2) {
                 if (this.chargeRounds == 0) {
-                    if (chance.generate() <= BossAIRoutine.CHARGE_CHANCE) {
+                    if (chance
+                            .generate() <= BossAIRoutine.CHARGE_CHANCE) {
                         this.chargeRounds = which.getEffect()
                                 .getInitialRounds();
                         this.spell = which;
@@ -90,7 +92,8 @@ public class BossAIRoutine extends AIRoutine {
                 }
             } else if (action == 3) {
                 if (cost <= currMP && this.poisonRounds == 0) {
-                    if (chance.generate() <= BossAIRoutine.POISON_CHANCE) {
+                    if (chance
+                            .generate() <= BossAIRoutine.POISON_CHANCE) {
                         this.poisonRounds = which.getEffect()
                                 .getInitialRounds();
                         this.spell = which;
@@ -109,7 +112,8 @@ public class BossAIRoutine extends AIRoutine {
                     final int targetHP = (int) (currHP
                             * BossAIRoutine.HEAL_PERCENT);
                     if (currHP <= targetHP) {
-                        if (chance.generate() <= BossAIRoutine.HEAL_CHANCE) {
+                        if (chance
+                                .generate() <= BossAIRoutine.HEAL_CHANCE) {
                             this.spell = which;
                             return AIRoutine.ACTION_CAST_SPELL;
                         } else {

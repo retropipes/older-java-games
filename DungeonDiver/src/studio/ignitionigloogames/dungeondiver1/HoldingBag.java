@@ -42,6 +42,7 @@ public class HoldingBag implements ShopTypes {
 
     // Methods
     public void showGUI() {
+        this.dungeonGUI.hideDungeon();
         this.gui.showGUI();
     }
 
@@ -60,7 +61,7 @@ public class HoldingBag implements ShopTypes {
     public Battle getBattle() {
         if (this.player.getLevel() == Boss.FIGHT_LEVEL) {
             if (!this.bossFlag) {
-                Battle.battleDone();
+                this.battle.battleDone();
                 this.bossFlag = true;
             }
             return this.bossBattle;

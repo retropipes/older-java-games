@@ -5,7 +5,7 @@ import java.awt.Desktop.Action;
 import java.io.IOException;
 import java.net.URI;
 
-import studio.ignitionigloogames.dungeondiver1.gui.MessageDialog;
+import javax.swing.JOptionPane;
 
 public class BrowserLauncher {
     private static final String errMsg = "Error attempting to launch web browser";
@@ -17,17 +17,20 @@ public class BrowserLauncher {
                 try {
                     d.browse(URI.create(url));
                 } catch (final IOException e) {
-                    MessageDialog.showDialog(BrowserLauncher.errMsg + ":\n"
-                            + e.getLocalizedMessage(), null);
+                    JOptionPane.showMessageDialog(null,
+                            BrowserLauncher.errMsg + ":\n"
+                                    + e.getLocalizedMessage(),
+                            null, JOptionPane.ERROR_MESSAGE);
                 }
             } else {
-                MessageDialog.showDialog(
+                JOptionPane.showMessageDialog(null,
                         BrowserLauncher.errMsg + ": Function not supported",
-                        null);
+                        null, JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            MessageDialog.showDialog(
-                    BrowserLauncher.errMsg + ": Function not supported", null);
+            JOptionPane.showMessageDialog(null,
+                    BrowserLauncher.errMsg + ": Function not supported", null,
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 }
