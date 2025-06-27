@@ -15,25 +15,25 @@ public class GuiPanel extends JPanel {
     private static final long serialVersionUID = 2L;
 
     private class GuiPanelState {
-	public int cursorX;
-	public int cursorY;
-	public Tile[][][] tiles;
+        public int cursorX;
+        public int cursorY;
+        public Tile[][][] tiles;
 
-	public GuiPanelState() {
-	}
+        public GuiPanelState() {
+        }
 
-	public GuiPanelState(final GuiPanelState newState) {
-	    this.cursorX = newState.cursorX;
-	    this.cursorY = newState.cursorY;
-	    this.tiles = new Tile[newState.tiles.length][newState.tiles[0].length][newState.tiles[0][0].length];
-	    for (int x = 0; x < this.tiles.length; x++) {
-		for (int y = 0; y < this.tiles[0].length; y++) {
-		    for (int z = 0; z < this.tiles[0][0].length; z++) {
-			this.tiles[x][y][z] = newState.tiles[x][y][z];
-		    }
-		}
-	    }
-	}
+        public GuiPanelState(final GuiPanelState newState) {
+            this.cursorX = newState.cursorX;
+            this.cursorY = newState.cursorY;
+            this.tiles = new Tile[newState.tiles.length][newState.tiles[0].length][newState.tiles[0][0].length];
+            for (int x = 0; x < this.tiles.length; x++) {
+                for (int y = 0; y < this.tiles[0].length; y++) {
+                    for (int z = 0; z < this.tiles[0][0].length; z++) {
+                        this.tiles[x][y][z] = newState.tiles[x][y][z];
+                    }
+                }
+            }
+        }
     }
 
     private final int widthInTiles;
@@ -50,7 +50,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getTileHeight() {
-	return this.tileHeight;
+        return this.tileHeight;
     }
 
     /**
@@ -59,7 +59,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getTileWidth() {
-	return this.tileWidth;
+        return this.tileWidth;
     }
 
     /**
@@ -68,7 +68,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getHeightInTiles() {
-	return this.heightInTiles;
+        return this.heightInTiles;
     }
 
     /**
@@ -77,7 +77,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getWidthInTiles() {
-	return this.widthInTiles;
+        return this.widthInTiles;
     }
 
     /**
@@ -86,7 +86,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getCursorX() {
-	return this.state.cursorX;
+        return this.state.cursorX;
     }
 
     /**
@@ -96,11 +96,11 @@ public class GuiPanel extends JPanel {
      * @param cursorX the distance from the left new tiles should be written to
      */
     public void setCursorX(final int cursorX) {
-	if (cursorX < 0 || cursorX >= this.widthInTiles) {
-	    throw new IllegalArgumentException(
-		    "cursorX " + cursorX + " must be within range [0," + this.widthInTiles + ").");
-	}
-	this.state.cursorX = cursorX;
+        if (cursorX < 0 || cursorX >= this.widthInTiles) {
+            throw new IllegalArgumentException(
+                    "cursorX " + cursorX + " must be within range [0," + this.widthInTiles + ").");
+        }
+        this.state.cursorX = cursorX;
     }
 
     /**
@@ -109,7 +109,7 @@ public class GuiPanel extends JPanel {
      * @return
      */
     public int getCursorY() {
-	return this.state.cursorY;
+        return this.state.cursorY;
     }
 
     /**
@@ -119,11 +119,11 @@ public class GuiPanel extends JPanel {
      * @param cursorY the distance from the top new tiles should be written to
      */
     public void setCursorY(final int cursorY) {
-	if (cursorY < 0 || cursorY >= this.heightInTiles) {
-	    throw new IllegalArgumentException(
-		    "cursorY " + cursorY + " must be within range [0," + this.heightInTiles + ").");
-	}
-	this.state.cursorY = cursorY;
+        if (cursorY < 0 || cursorY >= this.heightInTiles) {
+            throw new IllegalArgumentException(
+                    "cursorY " + cursorY + " must be within range [0," + this.heightInTiles + ").");
+        }
+        this.state.cursorY = cursorY;
     }
 
     /**
@@ -136,15 +136,15 @@ public class GuiPanel extends JPanel {
      * @param y the distance from the top new tiles should be written to
      */
     public void setCursorPosition(final int x, final int y) {
-	this.setCursorX(x);
-	this.setCursorY(y);
+        this.setCursorX(x);
+        this.setCursorY(y);
     }
 
     /**
      * Class constructor. Default size is 30x18.
      */
     public GuiPanel() {
-	this(Constants.SCREEN_WIDTH_IN_TILES, Constants.SCREEN_HEIGHT_IN_TILES);
+        this(Constants.SCREEN_WIDTH_IN_TILES, Constants.SCREEN_HEIGHT_IN_TILES);
     }
 
     /**
@@ -154,41 +154,41 @@ public class GuiPanel extends JPanel {
      * @param height
      */
     public GuiPanel(final int width, final int height) {
-	super();
-	if (width < 1) {
-	    throw new IllegalArgumentException("width " + width + " must be greater than 0.");
-	}
-	if (height < 1) {
-	    throw new IllegalArgumentException("height " + height + " must be greater than 0.");
-	}
-	this.widthInTiles = width;
-	this.heightInTiles = height;
-	this.setPreferredSize(new Dimension(this.tileWidth * this.widthInTiles, this.tileHeight * this.heightInTiles));
-	this.state = new GuiPanelState();
-	this.state.tiles = new Tile[this.widthInTiles][this.heightInTiles][this.depthInTiles];
-	this.stateStack = new Stack<>();
-	this.clear();
+        super();
+        if (width < 1) {
+            throw new IllegalArgumentException("width " + width + " must be greater than 0.");
+        }
+        if (height < 1) {
+            throw new IllegalArgumentException("height " + height + " must be greater than 0.");
+        }
+        this.widthInTiles = width;
+        this.heightInTiles = height;
+        this.setPreferredSize(new Dimension(this.tileWidth * this.widthInTiles, this.tileHeight * this.heightInTiles));
+        this.state = new GuiPanelState();
+        this.state.tiles = new Tile[this.widthInTiles][this.heightInTiles][this.depthInTiles];
+        this.stateStack = new Stack<>();
+        this.clear();
     }
 
     public GuiPanel(final GuiPanel source) {
-	super();
-	this.widthInTiles = source.widthInTiles;
-	this.heightInTiles = source.heightInTiles;
-	this.setPreferredSize(source.getPreferredSize());
-	this.state = new GuiPanelState(source.state);
-	this.stateStack = new Stack<>();
-	this.clear();
+        super();
+        this.widthInTiles = source.widthInTiles;
+        this.heightInTiles = source.heightInTiles;
+        this.setPreferredSize(source.getPreferredSize());
+        this.state = new GuiPanelState(source.state);
+        this.stateStack = new Stack<>();
+        this.clear();
     }
 
     public void pushState() {
-	this.stateStack.push(new GuiPanelState(this.state));
+        this.stateStack.push(new GuiPanelState(this.state));
     }
 
     public void popState() {
-	if (this.stateStack.isEmpty()) {
-	    throw new IllegalArgumentException("no state to pop. Try calling pushState() first.");
-	}
-	this.state = this.stateStack.pop();
+        if (this.stateStack.isEmpty()) {
+            throw new IllegalArgumentException("no state to pop. Try calling pushState() first.");
+        }
+        this.state = this.stateStack.pop();
     }
 
     /**
@@ -197,16 +197,16 @@ public class GuiPanel extends JPanel {
      */
     @Override
     public void paintComponent(final Graphics g) {
-	for (int x = 0; x < this.widthInTiles; x++) {
-	    for (int y = 0; y < this.heightInTiles; y++) {
-		for (int z = 0; z < this.depthInTiles; z++) {
-		    final BufferedImage img = this.state.tiles[x][y][z];
-		    if (img != null) {
-			g.drawImage(img, x * this.tileWidth, y * this.tileHeight, null);
-		    }
-		}
-	    }
-	}
+        for (int x = 0; x < this.widthInTiles; x++) {
+            for (int y = 0; y < this.heightInTiles; y++) {
+                for (int z = 0; z < this.depthInTiles; z++) {
+                    final BufferedImage img = this.state.tiles[x][y][z];
+                    if (img != null) {
+                        g.drawImage(img, x * this.tileWidth, y * this.tileHeight, null);
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -215,9 +215,9 @@ public class GuiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public GuiPanel clear() {
-	this.clear(Tile.BOUNDS, 0, 0, 0, this.widthInTiles, this.heightInTiles);
-	this.clear(null, 0, 0, 1, this.widthInTiles, this.heightInTiles);
-	return this.clear(null, 0, 0, 2, this.widthInTiles, this.heightInTiles);
+        this.clear(Tile.BOUNDS, 0, 0, 0, this.widthInTiles, this.heightInTiles);
+        this.clear(null, 0, 0, 1, this.widthInTiles, this.heightInTiles);
+        return this.clear(null, 0, 0, 2, this.widthInTiles, this.heightInTiles);
     }
 
     /**
@@ -227,7 +227,7 @@ public class GuiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public GuiPanel clear(final Tile tile, final int z) {
-	return this.clear(tile, 0, 0, this.widthInTiles, this.heightInTiles, z);
+        return this.clear(tile, 0, 0, this.widthInTiles, this.heightInTiles, z);
     }
 
     /**
@@ -241,32 +241,32 @@ public class GuiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public GuiPanel clear(final Tile tile, final int x, final int y, final int z, final int width, final int height) {
-	if (x < 0 || x >= this.widthInTiles) {
-	    throw new IllegalArgumentException("x " + x + " must be within range [0," + this.widthInTiles + ").");
-	}
-	if (y < 0 || y >= this.heightInTiles) {
-	    throw new IllegalArgumentException("y " + y + " must be within range [0," + this.heightInTiles + ").");
-	}
-	if (width < 1) {
-	    throw new IllegalArgumentException("width " + width + " must be greater than 0.");
-	}
-	if (height < 1) {
-	    throw new IllegalArgumentException("height " + height + " must be greater than 0.");
-	}
-	if (x + width > this.widthInTiles) {
-	    throw new IllegalArgumentException(
-		    "x + width " + (x + width) + " must be less than " + (this.widthInTiles + 1) + ".");
-	}
-	if (y + height > this.heightInTiles) {
-	    throw new IllegalArgumentException(
-		    "y + height " + (y + height) + " must be less than " + (this.heightInTiles + 1) + ".");
-	}
-	for (int xo = x; xo < x + width; xo++) {
-	    for (int yo = y; yo < y + height; yo++) {
-		this.write(tile, xo, yo, z);
-	    }
-	}
-	return this;
+        if (x < 0 || x >= this.widthInTiles) {
+            throw new IllegalArgumentException("x " + x + " must be within range [0," + this.widthInTiles + ").");
+        }
+        if (y < 0 || y >= this.heightInTiles) {
+            throw new IllegalArgumentException("y " + y + " must be within range [0," + this.heightInTiles + ").");
+        }
+        if (width < 1) {
+            throw new IllegalArgumentException("width " + width + " must be greater than 0.");
+        }
+        if (height < 1) {
+            throw new IllegalArgumentException("height " + height + " must be greater than 0.");
+        }
+        if (x + width > this.widthInTiles) {
+            throw new IllegalArgumentException(
+                    "x + width " + (x + width) + " must be less than " + (this.widthInTiles + 1) + ".");
+        }
+        if (y + height > this.heightInTiles) {
+            throw new IllegalArgumentException(
+                    "y + height " + (y + height) + " must be less than " + (this.heightInTiles + 1) + ".");
+        }
+        for (int xo = x; xo < x + width; xo++) {
+            for (int yo = y; yo < y + height; yo++) {
+                this.write(tile, xo, yo, z);
+            }
+        }
+        return this;
     }
 
     /**
@@ -276,7 +276,7 @@ public class GuiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public GuiPanel write(final Tile tile, final int z) {
-	return this.write(tile, this.state.cursorX, this.state.cursorY, z);
+        return this.write(tile, this.state.cursorX, this.state.cursorY, z);
     }
 
     /**
@@ -288,15 +288,15 @@ public class GuiPanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public GuiPanel write(final Tile tile, final int x, final int y, final int z) {
-	if (x < 0 || x >= this.widthInTiles) {
-	    throw new IllegalArgumentException("x " + x + " must be within range [0," + this.widthInTiles + ")");
-	}
-	if (y < 0 || y >= this.heightInTiles) {
-	    throw new IllegalArgumentException("y " + y + " must be within range [0," + this.heightInTiles + ")");
-	}
-	this.state.tiles[x][y][z] = tile;
-	this.state.cursorX = x + 1;
-	this.state.cursorY = y;
-	return this;
+        if (x < 0 || x >= this.widthInTiles) {
+            throw new IllegalArgumentException("x " + x + " must be within range [0," + this.widthInTiles + ")");
+        }
+        if (y < 0 || y >= this.heightInTiles) {
+            throw new IllegalArgumentException("y " + y + " must be within range [0," + this.heightInTiles + ")");
+        }
+        this.state.tiles[x][y][z] = tile;
+        this.state.cursorX = x + 1;
+        this.state.cursorY = y;
+        return this;
     }
 }

@@ -17,40 +17,40 @@ public class DamageTrap extends GenericTrap {
 
     // Constructors
     public DamageTrap() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Damage Trap";
+        return "Damage Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Damage Traps";
+        return "Damage Traps";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 10;
+        return (byte) 10;
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	this.maxDamage = PCManager.getPlayer().getMaximumHP() / 10;
-	if (this.maxDamage < DamageTrap.MIN_DAMAGE) {
-	    this.maxDamage = DamageTrap.MIN_DAMAGE;
-	}
-	this.damageDealt = new RandomRange(DamageTrap.MIN_DAMAGE, this.maxDamage);
-	PCManager.getPlayer().doDamage(this.damageDealt.generate());
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    SoundManager.play("barrier");
-	}
-	Import1.getApplication().getGameManager().decay();
+        this.maxDamage = PCManager.getPlayer().getMaximumHP() / 10;
+        if (this.maxDamage < DamageTrap.MIN_DAMAGE) {
+            this.maxDamage = DamageTrap.MIN_DAMAGE;
+        }
+        this.damageDealt = new RandomRange(DamageTrap.MIN_DAMAGE, this.maxDamage);
+        PCManager.getPlayer().doDamage(this.damageDealt.generate());
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            SoundManager.play("barrier");
+        }
+        Import1.getApplication().getGameManager().decay();
     }
 
     @Override
     public String getDescription() {
-	return "Damage Traps hurt you when stepped on, then disappear.";
+        return "Damage Traps hurt you when stepped on, then disappear.";
     }
 }

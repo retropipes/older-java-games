@@ -7,26 +7,26 @@ import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.ObjectImag
 public class SealingWall extends AbstractWall {
     // Constructors
     public SealingWall() {
-	super();
+        super();
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_SEALING_WALL;
+        return ObjectImageConstants.OBJECT_IMAGE_SEALING_WALL;
     }
 
     @Override
     public String getName() {
-	return "Sealing Wall";
+        return "Sealing Wall";
     }
 
     @Override
     public String getPluralName() {
-	return "Sealing Walls";
+        return "Sealing Walls";
     }
 
     @Override
     public String getDescription() {
-	return "Sealing Walls are impassable and indestructible - you'll need to go around them.";
+        return "Sealing Walls are impassable and indestructible - you'll need to go around them.";
     }
 }

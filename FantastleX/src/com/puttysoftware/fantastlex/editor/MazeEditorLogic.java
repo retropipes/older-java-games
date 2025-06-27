@@ -841,86 +841,86 @@ public class MazeEditorLogic {
     public void pairStairs(final int type) {
         final Application app = FantastleX.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsDown(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getEditorLocationZ() + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsUp(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getEditorLocationZ() - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsDown(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(),
+                            this.getLocationManager().getEditorLocationZ() + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsUp(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(),
+                            this.getLocationManager().getEditorLocationZ() - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void pairStairs(final int type, final int z) {
         final Application app = FantastleX.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsDown(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsUp(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsDown(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsUp(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void unpairStairs(final int type, final int z) {
         final Application app = FantastleX.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new Empty(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new Empty(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new Empty(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new Empty(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -1078,57 +1078,57 @@ public class MazeEditorLogic {
         final Application app = FantastleX.getApplication();
         this.TELEPORT_TYPE = type;
         switch (type) {
-        case TELEPORT_TYPE_N_WAY:
-            final String[] dests = new String[this.nWayDestCount];
-            for (int d = 0; d < this.nWayDestCount; d++) {
-                dests[d] = "Destination " + (d + 1);
-            }
-            if (this.nWayDestID == -1) {
-                this.nWayDestID = 0;
-            }
-            final String resp = CommonDialogs.showInputDialog(
-                    "Edit Which Destination?", "Editor", dests,
-                    dests[this.nWayDestID]);
-            if (resp == null) {
-                return null;
-            }
-            this.nWayDestID = -1;
-            for (int z = 0; z < this.nWayDestCount; z++) {
-                if (resp.equals(dests[z])) {
-                    this.nWayDestID = z;
-                    break;
+            case TELEPORT_TYPE_N_WAY:
+                final String[] dests = new String[this.nWayDestCount];
+                for (int d = 0; d < this.nWayDestCount; d++) {
+                    dests[d] = "Destination " + (d + 1);
                 }
-            }
-            if (this.nWayDestID == -1) {
-                return null;
-            }
-            FantastleX.getApplication()
-                    .showMessage("Click to set teleport destination #"
-                            + (this.nWayDestID + 1));
-            break;
-        case TELEPORT_TYPE_GENERIC:
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-        case TELEPORT_TYPE_ONESHOT:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-        case TELEPORT_TYPE_TWOWAY:
-        case TELEPORT_TYPE_MOVING_FINISH:
-        case TELEPORT_TYPE_FIRST_MOVING_FINISH:
-        case TELEPORT_TYPE_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_BLOCK:
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            FantastleX.getApplication()
-                    .showMessage("Click to set teleport destination");
-            break;
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            return this.editRandomTeleportDestination(type);
-        default:
-            break;
+                if (this.nWayDestID == -1) {
+                    this.nWayDestID = 0;
+                }
+                final String resp = CommonDialogs.showInputDialog(
+                        "Edit Which Destination?", "Editor", dests,
+                        dests[this.nWayDestID]);
+                if (resp == null) {
+                    return null;
+                }
+                this.nWayDestID = -1;
+                for (int z = 0; z < this.nWayDestCount; z++) {
+                    if (resp.equals(dests[z])) {
+                        this.nWayDestID = z;
+                        break;
+                    }
+                }
+                if (this.nWayDestID == -1) {
+                    return null;
+                }
+                FantastleX.getApplication()
+                        .showMessage("Click to set teleport destination #"
+                                + (this.nWayDestID + 1));
+                break;
+            case TELEPORT_TYPE_GENERIC:
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+            case TELEPORT_TYPE_ONESHOT:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+            case TELEPORT_TYPE_TWOWAY:
+            case TELEPORT_TYPE_MOVING_FINISH:
+            case TELEPORT_TYPE_FIRST_MOVING_FINISH:
+            case TELEPORT_TYPE_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_BLOCK:
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                FantastleX.getApplication()
+                        .showMessage("Click to set teleport destination");
+                break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                return this.editRandomTeleportDestination(type);
+            default:
+                break;
         }
         this.meg.swapToTeleportHandler();
         this.getLocationManager()
@@ -1143,40 +1143,40 @@ public class MazeEditorLogic {
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
         switch (type) {
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            input1 = CommonDialogs.showTextInputDialog("Random row range:",
-                    "Editor");
-            if (input1 != null) {
-                input2 = CommonDialogs
-                        .showTextInputDialog("Random column range:", "Editor");
-                if (input2 != null) {
-                    try {
-                        destX = Integer.parseInt(input1);
-                        destY = Integer.parseInt(input2);
-                    } catch (final NumberFormatException nf) {
-                        CommonDialogs.showDialog(
-                                "Row and column ranges must be integers.");
-                    }
-                    switch (type) {
-                    case TELEPORT_TYPE_RANDOM:
-                        return new RandomTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE:
-                        return new RandomInvisibleTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_ONESHOT:
-                        return new RandomOneShotTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-                        return new RandomInvisibleOneShotTeleport(destX, destY);
-                    default:
-                        break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                input1 = CommonDialogs.showTextInputDialog("Random row range:",
+                        "Editor");
+                if (input1 != null) {
+                    input2 = CommonDialogs
+                            .showTextInputDialog("Random column range:", "Editor");
+                    if (input2 != null) {
+                        try {
+                            destX = Integer.parseInt(input1);
+                            destY = Integer.parseInt(input2);
+                        } catch (final NumberFormatException nf) {
+                            CommonDialogs.showDialog(
+                                    "Row and column ranges must be integers.");
+                        }
+                        switch (type) {
+                            case TELEPORT_TYPE_RANDOM:
+                                return new RandomTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+                                return new RandomInvisibleTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_ONESHOT:
+                                return new RandomOneShotTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                                return new RandomInvisibleOneShotTeleport(destX, destY);
+                            default:
+                                break;
+                        }
                     }
                 }
-            }
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
         }
         return null;
     }
@@ -1258,127 +1258,127 @@ public class MazeEditorLogic {
             return;
         }
         switch (this.TELEPORT_TYPE) {
-        case TELEPORT_TYPE_N_WAY:
-            if (this.nWayDestID == 0) {
-                this.nWayEdited.setDestinationRow(destX);
-                this.nWayEdited.setDestinationColumn(destY);
-                this.nWayEdited.setDestinationFloor(destZ);
-            } else {
-                this.nWayEdited.setDestinationRowN(this.nWayDestID, destX);
-                this.nWayEdited.setDestinationColumnN(this.nWayDestID, destY);
-                this.nWayEdited.setDestinationFloorN(this.nWayDestID, destZ);
-            }
-            app.getMazeManager().getMaze().setCell(this.nWayEdited,
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_GENERIC:
-            app.getMazeManager().getMaze().setCell(
-                    new Teleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT:
-            app.getMazeManager().getMaze().setCell(
-                    new OneShotTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleOneShotTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_TWOWAY:
-            app.getMazeManager().getMaze().setCell(
-                    new TwoWayTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            this.pairTwoWayTeleport(destX, destY, destZ);
-            break;
-        case TELEPORT_TYPE_MOVING_FINISH:
-            app.getMazeManager().getMaze().setCell(
-                    new MovingFinish(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_FIRST_MOVING_FINISH:
-            final Maze m = app.getMazeManager().getMaze();
-            m.setFirstMovingFinishX(destX);
-            m.setFirstMovingFinishY(destY);
-            m.setFirstMovingFinishZ(destZ);
-            break;
-        case TELEPORT_TYPE_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new ChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new OneShotChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleOneShotChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_BLOCK:
-            app.getMazeManager().getMaze().setCell(
-                    new BlockTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleBlockTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        default:
-            break;
+            case TELEPORT_TYPE_N_WAY:
+                if (this.nWayDestID == 0) {
+                    this.nWayEdited.setDestinationRow(destX);
+                    this.nWayEdited.setDestinationColumn(destY);
+                    this.nWayEdited.setDestinationFloor(destZ);
+                } else {
+                    this.nWayEdited.setDestinationRowN(this.nWayDestID, destX);
+                    this.nWayEdited.setDestinationColumnN(this.nWayDestID, destY);
+                    this.nWayEdited.setDestinationFloorN(this.nWayDestID, destZ);
+                }
+                app.getMazeManager().getMaze().setCell(this.nWayEdited,
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_GENERIC:
+                app.getMazeManager().getMaze().setCell(
+                        new Teleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT:
+                app.getMazeManager().getMaze().setCell(
+                        new OneShotTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleOneShotTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_TWOWAY:
+                app.getMazeManager().getMaze().setCell(
+                        new TwoWayTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                this.pairTwoWayTeleport(destX, destY, destZ);
+                break;
+            case TELEPORT_TYPE_MOVING_FINISH:
+                app.getMazeManager().getMaze().setCell(
+                        new MovingFinish(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_FIRST_MOVING_FINISH:
+                final Maze m = app.getMazeManager().getMaze();
+                m.setFirstMovingFinishX(destX);
+                m.setFirstMovingFinishY(destY);
+                m.setFirstMovingFinishZ(destZ);
+                break;
+            case TELEPORT_TYPE_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new ChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new OneShotChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleOneShotChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_BLOCK:
+                app.getMazeManager().getMaze().setCell(
+                        new BlockTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleBlockTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            default:
+                break;
         }
         this.meg.swapFromTeleportHandler();
         this.checkMenus();

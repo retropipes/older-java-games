@@ -8,31 +8,31 @@ import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.MonsterIma
 import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.MonsterNames;
 
 abstract class AbstractBothRandomMonster extends AbstractMonster {
-    // Constructors
-    AbstractBothRandomMonster() {
-	super();
-	this.element = AbstractBothRandomMonster.getInitialElement();
-	this.image = this.getInitialImage();
-    }
-
-    @Override
-    protected BufferedImageIcon getInitialImage() {
-	if (this.getLevel() == 0) {
-	    return null;
-	} else {
-	    final String[] types = MonsterNames.getAllNames();
-	    final RandomRange r = new RandomRange(0, types.length - 1);
-	    this.setType(types[r.generate()]);
-	    return MonsterImageManager.getImage(this.getType(), this.getElement());
+	// Constructors
+	AbstractBothRandomMonster() {
+		super();
+		this.element = AbstractBothRandomMonster.getInitialElement();
+		this.image = this.getInitialImage();
 	}
-    }
 
-    private static Element getInitialElement() {
-	return new Element(FaithManager.getRandomFaith());
-    }
+	@Override
+	protected BufferedImageIcon getInitialImage() {
+		if (this.getLevel() == 0) {
+			return null;
+		} else {
+			final String[] types = MonsterNames.getAllNames();
+			final RandomRange r = new RandomRange(0, types.length - 1);
+			this.setType(types[r.generate()]);
+			return MonsterImageManager.getImage(this.getType(), this.getElement());
+		}
+	}
 
-    @Override
-    public void loadCreature() {
-	this.image = this.getInitialImage();
-    }
+	private static Element getInitialElement() {
+		return new Element(FaithManager.getRandomFaith());
+	}
+
+	@Override
+	public void loadCreature() {
+		this.image = this.getInitialImage();
+	}
 }

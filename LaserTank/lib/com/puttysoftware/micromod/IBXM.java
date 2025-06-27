@@ -243,71 +243,71 @@ public class IBXM {
             }
             channel.row(this.note);
             switch (this.note.effect) {
-            case 0x81: /* Set Speed. */
-                if (this.note.param > 0) {
-                    this.tick = this.speed = this.note.param;
-                }
-                break;
-            case 0xB:
-            case 0x82: /* Pattern Jump. */
-                if (this.plCount < 0) {
-                    this.breakSeqPos = this.note.param;
-                    this.nextRow = 0;
-                }
-                break;
-            case 0xD:
-            case 0x83: /* Pattern Break. */
-                if (this.plCount < 0) {
-                    this.breakSeqPos = this.seqPos + 1;
-                    this.nextRow = (this.note.param >> 4) * 10
-                            + (this.note.param & 0xF);
-                }
-                break;
-            case 0xF: /* Set Speed/Tempo. */
-                if (this.note.param > 0) {
-                    if (this.note.param < 32) {
+                case 0x81: /* Set Speed. */
+                    if (this.note.param > 0) {
                         this.tick = this.speed = this.note.param;
-                    } else {
+                    }
+                    break;
+                case 0xB:
+                case 0x82: /* Pattern Jump. */
+                    if (this.plCount < 0) {
+                        this.breakSeqPos = this.note.param;
+                        this.nextRow = 0;
+                    }
+                    break;
+                case 0xD:
+                case 0x83: /* Pattern Break. */
+                    if (this.plCount < 0) {
+                        this.breakSeqPos = this.seqPos + 1;
+                        this.nextRow = (this.note.param >> 4) * 10
+                                + (this.note.param & 0xF);
+                    }
+                    break;
+                case 0xF: /* Set Speed/Tempo. */
+                    if (this.note.param > 0) {
+                        if (this.note.param < 32) {
+                            this.tick = this.speed = this.note.param;
+                        } else {
+                            this.setTempo(this.note.param);
+                        }
+                    }
+                    break;
+                case 0x94: /* Set Tempo. */
+                    if (this.note.param > 32) {
                         this.setTempo(this.note.param);
                     }
-                }
-                break;
-            case 0x94: /* Set Tempo. */
-                if (this.note.param > 32) {
-                    this.setTempo(this.note.param);
-                }
-                break;
-            case 0x76:
-            case 0xFB: /* Pattern Loop. */
-                if (this.note.param == 0) {
-                    channel.plRow = this.row;
-                }
-                if (channel.plRow < this.row) { /*
-                                                 * Marker valid. Begin looping.
-                                                 */
-                    if (this.plCount < 0) { /* Not already looping, begin. */
-                        this.plCount = this.note.param;
-                        this.plChannel = chanIdx;
+                    break;
+                case 0x76:
+                case 0xFB: /* Pattern Loop. */
+                    if (this.note.param == 0) {
+                        channel.plRow = this.row;
                     }
-                    if (this.plChannel == chanIdx) { /* Next Loop. */
-                        if (this.plCount == 0) { /* Loop finished. */
-                            /* Invalidate current marker. */
-                            channel.plRow = this.row + 1;
-                        } else { /* Loop and cancel any breaks on this row. */
-                            this.nextRow = channel.plRow;
-                            this.breakSeqPos = -1;
+                    if (channel.plRow < this.row) { /*
+                                                     * Marker valid. Begin looping.
+                                                     */
+                        if (this.plCount < 0) { /* Not already looping, begin. */
+                            this.plCount = this.note.param;
+                            this.plChannel = chanIdx;
                         }
-                        this.plCount--;
+                        if (this.plChannel == chanIdx) { /* Next Loop. */
+                            if (this.plCount == 0) { /* Loop finished. */
+                                /* Invalidate current marker. */
+                                channel.plRow = this.row + 1;
+                            } else { /* Loop and cancel any breaks on this row. */
+                                this.nextRow = channel.plRow;
+                                this.breakSeqPos = -1;
+                            }
+                            this.plCount--;
+                        }
                     }
-                }
-                break;
-            case 0x7E:
-            case 0xFE: /* Pattern Delay. */
-                this.tick = this.speed + this.speed * this.note.param;
-                break;
-            default:
-                // Do nothing
-                break;
+                    break;
+                case 0x7E:
+                case 0xFE: /* Pattern Delay. */
+                    this.tick = this.speed + this.speed * this.note.param;
+                    break;
+                default:
+                    // Do nothing
+                    break;
             }
         }
         return songEnd;

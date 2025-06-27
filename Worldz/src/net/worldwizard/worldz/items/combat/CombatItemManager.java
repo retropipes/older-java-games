@@ -115,32 +115,32 @@ public class CombatItemManager {
         final boolean aiEnabled = Worldz.getApplication().getBattle().isAIOn();
         final boolean useAI = hasAI && aiEnabled;
         switch (target) {
-        case 'P':
-            // One Friend
-            if (useAI) {
-                return new Creature[] {
-                        PartyManager.getParty().pickOnePartyMemberRandomly() };
-            } else {
-                return new Creature[] {
-                        PartyManager.getParty().pickOnePartyMember() };
-            }
-        case 'E':
-            // One Enemy
-            if (useAI) {
-                return new Creature[] { Worldz.getApplication().getBattle()
-                        .pickOneEnemyRandomly() };
-            } else {
-                return new Creature[] {
-                        Worldz.getApplication().getBattle().pickOneEnemy() };
-            }
-        case 'F':
-            // All Friends
-            return Worldz.getApplication().getBattle().getAllFriends();
-        case 'A':
-            // All Enemies
-            return Worldz.getApplication().getBattle().getAllEnemies();
-        default:
-            return null;
+            case 'P':
+                // One Friend
+                if (useAI) {
+                    return new Creature[] {
+                            PartyManager.getParty().pickOnePartyMemberRandomly() };
+                } else {
+                    return new Creature[] {
+                            PartyManager.getParty().pickOnePartyMember() };
+                }
+            case 'E':
+                // One Enemy
+                if (useAI) {
+                    return new Creature[] { Worldz.getApplication().getBattle()
+                            .pickOneEnemyRandomly() };
+                } else {
+                    return new Creature[] {
+                            Worldz.getApplication().getBattle().pickOneEnemy() };
+                }
+            case 'F':
+                // All Friends
+                return Worldz.getApplication().getBattle().getAllFriends();
+            case 'A':
+                // All Enemies
+                return Worldz.getApplication().getBattle().getAllEnemies();
+            default:
+                return null;
         }
     }
 }

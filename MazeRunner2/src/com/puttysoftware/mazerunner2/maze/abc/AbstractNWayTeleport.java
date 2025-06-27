@@ -197,171 +197,171 @@ public abstract class AbstractNWayTeleport extends AbstractTeleport {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.getDestinationRow();
-        case 2:
-            return this.getDestinationColumn();
-        case 3:
-            return this.getDestinationFloor();
-        case 4:
-            return this.getDestinationRowN(1);
-        case 5:
-            return this.getDestinationColumnN(1);
-        case 6:
-            return this.getDestinationFloorN(1);
-        case 7:
-            return this.getDestinationRowN(2);
-        case 8:
-            return this.getDestinationColumnN(2);
-        case 9:
-            return this.getDestinationFloorN(2);
-        case 10:
-            return this.getDestinationRowN(3);
-        case 11:
-            return this.getDestinationColumnN(3);
-        case 12:
-            return this.getDestinationFloorN(3);
-        case 13:
-            return this.getDestinationRowN(4);
-        case 14:
-            return this.getDestinationColumnN(4);
-        case 15:
-            return this.getDestinationFloorN(4);
-        case 16:
-            return this.getDestinationRowN(5);
-        case 17:
-            return this.getDestinationColumnN(5);
-        case 18:
-            return this.getDestinationFloorN(5);
-        case 19:
-            return this.getDestinationRowN(6);
-        case 20:
-            return this.getDestinationColumnN(6);
-        case 21:
-            return this.getDestinationFloorN(6);
-        case 22:
-            return this.getDestinationRowN(7);
-        case 23:
-            return this.getDestinationColumnN(7);
-        case 24:
-            return this.getDestinationFloorN(7);
-        case 25:
-            return this.getDestinationRowN(8);
-        case 26:
-            return this.getDestinationColumnN(8);
-        case 27:
-            return this.getDestinationFloorN(8);
-        case 28:
-            return this.getDestinationRowN(9);
-        case 29:
-            return this.getDestinationColumnN(9);
-        case 30:
-            return this.getDestinationFloorN(9);
-        case 31:
-            return this.getDestinationCount();
-        default:
-            return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.getDestinationRow();
+            case 2:
+                return this.getDestinationColumn();
+            case 3:
+                return this.getDestinationFloor();
+            case 4:
+                return this.getDestinationRowN(1);
+            case 5:
+                return this.getDestinationColumnN(1);
+            case 6:
+                return this.getDestinationFloorN(1);
+            case 7:
+                return this.getDestinationRowN(2);
+            case 8:
+                return this.getDestinationColumnN(2);
+            case 9:
+                return this.getDestinationFloorN(2);
+            case 10:
+                return this.getDestinationRowN(3);
+            case 11:
+                return this.getDestinationColumnN(3);
+            case 12:
+                return this.getDestinationFloorN(3);
+            case 13:
+                return this.getDestinationRowN(4);
+            case 14:
+                return this.getDestinationColumnN(4);
+            case 15:
+                return this.getDestinationFloorN(4);
+            case 16:
+                return this.getDestinationRowN(5);
+            case 17:
+                return this.getDestinationColumnN(5);
+            case 18:
+                return this.getDestinationFloorN(5);
+            case 19:
+                return this.getDestinationRowN(6);
+            case 20:
+                return this.getDestinationColumnN(6);
+            case 21:
+                return this.getDestinationFloorN(6);
+            case 22:
+                return this.getDestinationRowN(7);
+            case 23:
+                return this.getDestinationColumnN(7);
+            case 24:
+                return this.getDestinationFloorN(7);
+            case 25:
+                return this.getDestinationRowN(8);
+            case 26:
+                return this.getDestinationColumnN(8);
+            case 27:
+                return this.getDestinationFloorN(8);
+            case 28:
+                return this.getDestinationRowN(9);
+            case 29:
+                return this.getDestinationColumnN(9);
+            case 30:
+                return this.getDestinationFloorN(9);
+            case 31:
+                return this.getDestinationCount();
+            default:
+                return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.setDestinationRow(value);
-            break;
-        case 2:
-            this.setDestinationColumn(value);
-            break;
-        case 3:
-            this.setDestinationFloor(value);
-            break;
-        case 4:
-            this.setDestinationRowN(1, value);
-            break;
-        case 5:
-            this.setDestinationColumnN(1, value);
-            break;
-        case 6:
-            this.setDestinationFloorN(1, value);
-            break;
-        case 7:
-            this.setDestinationRowN(2, value);
-            break;
-        case 8:
-            this.setDestinationColumnN(2, value);
-            break;
-        case 9:
-            this.setDestinationFloorN(2, value);
-            break;
-        case 10:
-            this.setDestinationRowN(3, value);
-            break;
-        case 11:
-            this.setDestinationColumnN(3, value);
-            break;
-        case 12:
-            this.setDestinationFloorN(3, value);
-            break;
-        case 13:
-            this.setDestinationRowN(4, value);
-            break;
-        case 14:
-            this.setDestinationColumnN(4, value);
-            break;
-        case 15:
-            this.setDestinationFloorN(4, value);
-            break;
-        case 16:
-            this.setDestinationRowN(5, value);
-            break;
-        case 17:
-            this.setDestinationColumnN(5, value);
-            break;
-        case 18:
-            this.setDestinationFloorN(5, value);
-            break;
-        case 19:
-            this.setDestinationRowN(6, value);
-            break;
-        case 20:
-            this.setDestinationColumnN(6, value);
-            break;
-        case 21:
-            this.setDestinationFloorN(6, value);
-            break;
-        case 22:
-            this.setDestinationRowN(7, value);
-            break;
-        case 23:
-            this.setDestinationColumnN(7, value);
-            break;
-        case 24:
-            this.setDestinationFloorN(7, value);
-            break;
-        case 25:
-            this.setDestinationRowN(8, value);
-            break;
-        case 26:
-            this.setDestinationColumnN(8, value);
-            break;
-        case 27:
-            this.setDestinationFloorN(8, value);
-            break;
-        case 28:
-            this.setDestinationRowN(9, value);
-            break;
-        case 29:
-            this.setDestinationColumnN(9, value);
-            break;
-        case 30:
-            this.setDestinationFloorN(9, value);
-            break;
-        case 31:
-            this.setDestinationCount(value);
-            break;
-        default:
-            break;
+            case 1:
+                this.setDestinationRow(value);
+                break;
+            case 2:
+                this.setDestinationColumn(value);
+                break;
+            case 3:
+                this.setDestinationFloor(value);
+                break;
+            case 4:
+                this.setDestinationRowN(1, value);
+                break;
+            case 5:
+                this.setDestinationColumnN(1, value);
+                break;
+            case 6:
+                this.setDestinationFloorN(1, value);
+                break;
+            case 7:
+                this.setDestinationRowN(2, value);
+                break;
+            case 8:
+                this.setDestinationColumnN(2, value);
+                break;
+            case 9:
+                this.setDestinationFloorN(2, value);
+                break;
+            case 10:
+                this.setDestinationRowN(3, value);
+                break;
+            case 11:
+                this.setDestinationColumnN(3, value);
+                break;
+            case 12:
+                this.setDestinationFloorN(3, value);
+                break;
+            case 13:
+                this.setDestinationRowN(4, value);
+                break;
+            case 14:
+                this.setDestinationColumnN(4, value);
+                break;
+            case 15:
+                this.setDestinationFloorN(4, value);
+                break;
+            case 16:
+                this.setDestinationRowN(5, value);
+                break;
+            case 17:
+                this.setDestinationColumnN(5, value);
+                break;
+            case 18:
+                this.setDestinationFloorN(5, value);
+                break;
+            case 19:
+                this.setDestinationRowN(6, value);
+                break;
+            case 20:
+                this.setDestinationColumnN(6, value);
+                break;
+            case 21:
+                this.setDestinationFloorN(6, value);
+                break;
+            case 22:
+                this.setDestinationRowN(7, value);
+                break;
+            case 23:
+                this.setDestinationColumnN(7, value);
+                break;
+            case 24:
+                this.setDestinationFloorN(7, value);
+                break;
+            case 25:
+                this.setDestinationRowN(8, value);
+                break;
+            case 26:
+                this.setDestinationColumnN(8, value);
+                break;
+            case 27:
+                this.setDestinationFloorN(8, value);
+                break;
+            case 28:
+                this.setDestinationRowN(9, value);
+                break;
+            case 29:
+                this.setDestinationColumnN(9, value);
+                break;
+            case 30:
+                this.setDestinationFloorN(9, value);
+                break;
+            case 31:
+                this.setDestinationCount(value);
+                break;
+            default:
+                break;
         }
     }
 

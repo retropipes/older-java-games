@@ -11,26 +11,26 @@ public class MajorDrainPotion extends GenericPotion {
 
     // Constructors
     public MajorDrainPotion() {
-	super(StatConstants.STAT_CURRENT_MP, true, MajorDrainPotion.MAX_DRAIN, MajorDrainPotion.MIN_DRAIN);
+        super(StatConstants.STAT_CURRENT_MP, true, MajorDrainPotion.MAX_DRAIN, MajorDrainPotion.MIN_DRAIN);
     }
 
     @Override
     public String getName() {
-	return "Major Drain Potion";
+        return "Major Drain Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Major Drain Potions";
+        return "Major Drain Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 13;
+        return (byte) 13;
     }
 
     @Override
     public String getDescription() {
-	return "Major Drain Potions drain your magic significantly when picked up.";
+        return "Major Drain Potions drain your magic significantly when picked up.";
     }
 }

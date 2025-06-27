@@ -9,7 +9,7 @@ public class CloneableObject implements Cloneable {
      * initialize the superclass.
      */
     public CloneableObject() {
-	super();
+        super();
     }
 
     /**
@@ -20,6 +20,6 @@ public class CloneableObject implements Cloneable {
      */
     @Override
     public CloneableObject clone() throws CloneNotSupportedException {
-	return (CloneableObject) super.clone();
+        return (CloneableObject) super.clone();
     }
 }

@@ -92,10 +92,10 @@ public interface Maze extends FormatConstants {
     void resize(final int x, final int y, final int z, final int w);
 
     boolean radialScan(final int x, final int y, final int z, final int w, final int l, final int r,
-	    final String targetName);
+            final String targetName);
 
     void radialScanTimerAction(final int x, final int y, final int z, final int w, final int l, final int r,
-	    final String targetName, final int timerMod);
+            final String targetName, final int timerMod);
 
     void radialScanKillMonsters(final int x, final int y, final int z, final int w, final int l, final int r);
 

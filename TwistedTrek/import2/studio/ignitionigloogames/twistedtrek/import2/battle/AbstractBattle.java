@@ -10,7 +10,7 @@ import studio.ignitionigloogames.twistedtrek.import2.maze.objects.BattleCharacte
 public abstract class AbstractBattle {
     // Constructors
     protected AbstractBattle() {
-	// Do nothing
+        // Do nothing
     }
 
     // Generic Methods

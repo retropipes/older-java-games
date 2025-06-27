@@ -22,14 +22,14 @@ public class StringStorage {
      * @param shape simulated dimensions for the stored data
      */
     public StringStorage(final int... shape) {
-	this.dataShape = shape;
-	this.interProd = new int[this.dataShape.length];
-	int product = 1;
-	for (int x = 0; x < this.dataShape.length; x++) {
-	    this.interProd[x] = product;
-	    product *= this.dataShape[x];
-	}
-	this.dataStore = new String[product];
+        this.dataShape = shape;
+        this.interProd = new int[this.dataShape.length];
+        int product = 1;
+        for (int x = 0; x < this.dataShape.length; x++) {
+            this.interProd[x] = product;
+            product *= this.dataShape[x];
+        }
+        this.dataStore = new String[product];
     }
 
     // Copy constructor
@@ -39,14 +39,14 @@ public class StringStorage {
      * @param source the @self to make a copy of
      */
     public StringStorage(final StringStorage source) {
-	this.dataShape = source.dataShape;
-	this.interProd = new int[this.dataShape.length];
-	int product = 1;
-	for (int x = 0; x < this.dataShape.length; x++) {
-	    this.interProd[x] = product;
-	    product *= this.dataShape[x];
-	}
-	this.dataStore = Arrays.copyOf(source.dataStore, product);
+        this.dataShape = source.dataShape;
+        this.interProd = new int[this.dataShape.length];
+        int product = 1;
+        for (int x = 0; x < this.dataShape.length; x++) {
+            this.interProd[x] = product;
+            product *= this.dataShape[x];
+        }
+        this.dataStore = Arrays.copyOf(source.dataStore, product);
     }
 
     // Protected copy constructor
@@ -57,14 +57,14 @@ public class StringStorage {
      * @param shape  simulated dimensions for the stored data
      */
     protected StringStorage(final String[] source, final int... shape) {
-	this.dataShape = shape;
-	this.interProd = new int[this.dataShape.length];
-	int product = 1;
-	for (int x = 0; x < this.dataShape.length; x++) {
-	    this.interProd[x] = product;
-	    product *= this.dataShape[x];
-	}
-	this.dataStore = Arrays.copyOf(source, product);
+        this.dataShape = shape;
+        this.interProd = new int[this.dataShape.length];
+        int product = 1;
+        for (int x = 0; x < this.dataShape.length; x++) {
+            this.interProd[x] = product;
+            product *= this.dataShape[x];
+        }
+        this.dataStore = Arrays.copyOf(source, product);
     }
 
     // Methods
@@ -76,20 +76,20 @@ public class StringStorage {
      */
     @Override
     public boolean equals(final Object obj) {
-	if (this == obj) {
-	    return true;
-	}
-	if (obj == null) {
-	    return false;
-	}
-	if (!(obj instanceof StringStorage)) {
-	    return false;
-	}
-	final StringStorage other = (StringStorage) obj;
-	if (!Arrays.equals(this.dataStore, other.dataStore)) {
-	    return false;
-	}
-	return true;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof StringStorage)) {
+            return false;
+        }
+        final StringStorage other = (StringStorage) obj;
+        if (!Arrays.equals(this.dataStore, other.dataStore)) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -98,9 +98,9 @@ public class StringStorage {
      * @param obj the data to fill with
      */
     public final void fill(final String obj) {
-	for (int x = 0; x < this.dataStore.length; x++) {
-	    this.dataStore[x] = obj;
-	}
+        for (int x = 0; x < this.dataStore.length; x++) {
+            this.dataStore[x] = obj;
+        }
     }
 
     /**
@@ -110,8 +110,8 @@ public class StringStorage {
      * @return the data at that location
      */
     public final String getCell(final int... loc) {
-	final int aloc = this.ravelLocation(loc);
-	return this.dataStore[aloc];
+        final int aloc = this.ravelLocation(loc);
+        return this.dataStore[aloc];
     }
 
     /**
@@ -122,7 +122,7 @@ public class StringStorage {
      * @return the data at that index
      */
     protected final String getRawCell(final int rawLoc) {
-	return this.dataStore[rawLoc];
+        return this.dataStore[rawLoc];
     }
 
     /**
@@ -131,7 +131,7 @@ public class StringStorage {
      * @return the underlying array length
      */
     protected final int getRawLength() {
-	return this.dataStore.length;
+        return this.dataStore.length;
     }
 
     /**
@@ -140,7 +140,7 @@ public class StringStorage {
      * @return the shape, as an array of integers
      */
     public final int[] getShape() {
-	return this.dataShape;
+        return this.dataShape;
     }
 
     /**
@@ -148,9 +148,9 @@ public class StringStorage {
      */
     @Override
     public int hashCode() {
-	final int prime = 31;
-	final int result = 1;
-	return prime * result + Arrays.hashCode(this.dataStore);
+        final int prime = 31;
+        final int result = 1;
+        return prime * result + Arrays.hashCode(this.dataStore);
     }
 
     /**
@@ -160,19 +160,19 @@ public class StringStorage {
      * @return a raw index
      */
     protected final int ravelLocation(final int... loc) {
-	int res = 0;
-	// Sanity check #1
-	if (loc.length != this.interProd.length) {
-	    throw new IllegalArgumentException(Integer.toString(loc.length));
-	}
-	for (int x = 0; x < this.interProd.length; x++) {
-	    // Sanity check #2
-	    if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
-		throw new ArrayIndexOutOfBoundsException(loc[x]);
-	    }
-	    res += loc[x] * this.interProd[x];
-	}
-	return res;
+        int res = 0;
+        // Sanity check #1
+        if (loc.length != this.interProd.length) {
+            throw new IllegalArgumentException(Integer.toString(loc.length));
+        }
+        for (int x = 0; x < this.interProd.length; x++) {
+            // Sanity check #2
+            if (loc[x] < 0 || loc[x] >= this.dataShape[x]) {
+                throw new ArrayIndexOutOfBoundsException(loc[x]);
+            }
+            res += loc[x] * this.interProd[x];
+        }
+        return res;
     }
 
     /**
@@ -182,8 +182,8 @@ public class StringStorage {
      * @param loc the location to modify
      */
     public final void setCell(final String obj, final int... loc) {
-	final int aloc = this.ravelLocation(loc);
-	this.dataStore[aloc] = obj;
+        final int aloc = this.ravelLocation(loc);
+        this.dataStore[aloc] = obj;
     }
 
     /**
@@ -194,6 +194,6 @@ public class StringStorage {
      * @param rawLoc the index to modify
      */
     protected final void setRawCell(final String obj, final int rawLoc) {
-	this.dataStore[rawLoc] = obj;
+        this.dataStore[rawLoc] = obj;
     }
 }

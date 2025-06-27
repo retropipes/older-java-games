@@ -293,108 +293,108 @@ public class MenuManager {
                 final BattleLogic ba = app.getBattle();
                 final String cmd = e.getActionCommand();
                 switch (cmd) {
-                case "Open Saved Game...":
-                    app.getScenarioManager().loadSavedGame();
-                    break;
-                case "Close":
-                    // Close the window
-                    boolean saved = true;
-                    int status;
-                    if (app.getScenarioManager().getDirty()) {
-                        status = ScenarioManager.showSaveDialog();
-                        if (status == JOptionPane.YES_OPTION) {
-                            saved = app.getScenarioManager().saveGame();
-                        } else if (status == JOptionPane.CANCEL_OPTION) {
-                            saved = false;
-                        } else {
-                            app.getScenarioManager().setDirty(false);
-                        }
-                    }
-                    if (saved) {
-                        if (app.getMode() == Application.STATUS_GAME) {
-                            app.getGameManager().exitGame();
-                        }
-                    }
-                    break;
-                case "Save":
-                    app.getScenarioManager().saveGame();
-                    break;
-                case "Save As...":
-                    app.getScenarioManager().saveGameAs();
-                    break;
-                case "Print...":
-                    BoardPrinter.printBoard(app.getOutputFrame());
-                    break;
-                case "Exit":
-                    // Exit program
-                    if (app.getGUIManager().quitHandler()) {
-                        System.exit(0);
-                    }
-                    break;
-                case "Preferences...":
-                    // Show preferences dialog
-                    PreferencesManager.showPrefs();
-                    break;
-                case "Play":
-                    // Play the current scenario
-                    final boolean proceed = app.getGameManager().newGame();
-                    if (proceed) {
-                        app.getGameManager().playMap();
-                    }
-                    break;
-                case "Show Equipment...":
-                    InventoryViewer.showEquipmentDialog();
-                    break;
-                case "Edit Note...":
-                    // Edit Note
-                    NoteManager.editNote();
-                    break;
-                case "View Prestige...":
-                    // View Prestige
-                    PrestigeViewer.viewPrestige();
-                    break;
-                case "View Current Score...":
-                    // View Score
-                    app.getGameManager().showCurrentScore();
-                    break;
-                case "[DEBUG] Enter Battle Now":
-                    // Hide the game
-                    RiskyRescue.getApplication().getGameManager().hideOutput();
-                    // Enter Battle
-                    final Battle battle = new Battle();
-                    new Thread("Debug Battle") {
-                        @Override
-                        public void run() {
-                            try {
-                                RiskyRescue.getApplication().getGameManager();
-                                RiskyRescue.getApplication().getBattle()
-                                        .doFixedBattle(
-                                                Map.getTemporaryBattleCopy(),
-                                                battle);
-                            } catch (final Exception e1) {
-                                // Something went wrong in the battle
-                                RiskyRescue.logError(e1);
+                    case "Open Saved Game...":
+                        app.getScenarioManager().loadSavedGame();
+                        break;
+                    case "Close":
+                        // Close the window
+                        boolean saved = true;
+                        int status;
+                        if (app.getScenarioManager().getDirty()) {
+                            status = ScenarioManager.showSaveDialog();
+                            if (status == JOptionPane.YES_OPTION) {
+                                saved = app.getScenarioManager().saveGame();
+                            } else if (status == JOptionPane.CANCEL_OPTION) {
+                                saved = false;
+                            } else {
+                                app.getScenarioManager().setDirty(false);
                             }
                         }
-                    }.start();
-                    break;
-                case "Cast Spell":
-                    ba.castSpell();
-                    break;
-                case "Steal Stuff":
-                    ba.steal();
-                    break;
-                case "Drain MP":
-                    ba.drain();
-                    break;
-                case "End Turn":
-                    ba.endTurn();
-                    break;
-                case "About RiskyRescue...":
-                    app.getAboutDialog().showAboutDialog();
-                    break;
-                default:
-                    break;
+                        if (saved) {
+                            if (app.getMode() == Application.STATUS_GAME) {
+                                app.getGameManager().exitGame();
+                            }
+                        }
+                        break;
+                    case "Save":
+                        app.getScenarioManager().saveGame();
+                        break;
+                    case "Save As...":
+                        app.getScenarioManager().saveGameAs();
+                        break;
+                    case "Print...":
+                        BoardPrinter.printBoard(app.getOutputFrame());
+                        break;
+                    case "Exit":
+                        // Exit program
+                        if (app.getGUIManager().quitHandler()) {
+                            System.exit(0);
+                        }
+                        break;
+                    case "Preferences...":
+                        // Show preferences dialog
+                        PreferencesManager.showPrefs();
+                        break;
+                    case "Play":
+                        // Play the current scenario
+                        final boolean proceed = app.getGameManager().newGame();
+                        if (proceed) {
+                            app.getGameManager().playMap();
+                        }
+                        break;
+                    case "Show Equipment...":
+                        InventoryViewer.showEquipmentDialog();
+                        break;
+                    case "Edit Note...":
+                        // Edit Note
+                        NoteManager.editNote();
+                        break;
+                    case "View Prestige...":
+                        // View Prestige
+                        PrestigeViewer.viewPrestige();
+                        break;
+                    case "View Current Score...":
+                        // View Score
+                        app.getGameManager().showCurrentScore();
+                        break;
+                    case "[DEBUG] Enter Battle Now":
+                        // Hide the game
+                        RiskyRescue.getApplication().getGameManager().hideOutput();
+                        // Enter Battle
+                        final Battle battle = new Battle();
+                        new Thread("Debug Battle") {
+                            @Override
+                            public void run() {
+                                try {
+                                    RiskyRescue.getApplication().getGameManager();
+                                    RiskyRescue.getApplication().getBattle()
+                                            .doFixedBattle(
+                                                    Map.getTemporaryBattleCopy(),
+                                                    battle);
+                                } catch (final Exception e1) {
+                                    // Something went wrong in the battle
+                                    RiskyRescue.logError(e1);
+                                }
+                            }
+                        }.start();
+                        break;
+                    case "Cast Spell":
+                        ba.castSpell();
+                        break;
+                    case "Steal Stuff":
+                        ba.steal();
+                        break;
+                    case "Drain MP":
+                        ba.drain();
+                        break;
+                    case "End Turn":
+                        ba.endTurn();
+                        break;
+                    case "About RiskyRescue...":
+                        app.getAboutDialog().showAboutDialog();
+                        break;
+                    default:
+                        break;
                 }
                 MenuManager.this.checkFlags();
             } catch (final Exception ex) {

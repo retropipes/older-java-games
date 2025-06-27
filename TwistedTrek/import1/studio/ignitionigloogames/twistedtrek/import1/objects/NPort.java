@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPort;
 public class NPort extends GenericPort {
     // Constructors
     public NPort() {
-	super(new NPlug(), 'N');
+        super(new NPlug(), 'N');
     }
 }

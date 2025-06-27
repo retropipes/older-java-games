@@ -26,14 +26,14 @@ public class Water extends AbstractGround {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            final Ice i = new Ice();
-            i.setPreviousState(this);
-            return i;
-        case MaterialConstants.MATERIAL_FIRE:
-            return new Ground();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                final Ice i = new Ice();
+                i.setPreviousState(this);
+                return i;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new Ground();
+            default:
+                return this;
         }
     }
 

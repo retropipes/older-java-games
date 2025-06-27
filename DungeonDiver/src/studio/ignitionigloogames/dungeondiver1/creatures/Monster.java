@@ -185,127 +185,127 @@ public class Monster extends Creature {
     private static String[] getTypesForLevel(final int level) {
         String[] types = null;
         switch (level) {
-        case 1:
-            types = new String[6];
-            types[0] = "Amoeba";
-            types[1] = "Drop";
-            types[2] = "Jelly";
-            types[3] = "Bunny";
-            types[4] = "Bat";
-            types[5] = "Turtle";
-            break;
-        case 2:
-            types = new String[6];
-            types[0] = "Anglebot";
-            types[1] = "Boxbot";
-            types[2] = "Curvebot";
-            types[3] = "Diamondbot";
-            types[4] = "Ellipsebot";
-            types[5] = "Jetbot";
-            break;
-        case 3:
-            types = new String[6];
-            types[0] = "Flask";
-            types[1] = "Tube";
-            types[2] = "Vial";
-            types[3] = "Beaker";
-            types[4] = "Bowl";
-            types[5] = "Can";
-            break;
-        case 4:
-            types = new String[6];
-            types[0] = "Grabber";
-            types[1] = "Lander";
-            types[2] = "Medic";
-            types[3] = "Alarm";
-            types[4] = "Scout";
-            types[5] = "Warship";
-            break;
-        case 5:
-            types = new String[6];
-            types[0] = "CPU";
-            types[1] = "Motherboard";
-            types[2] = "RAM";
-            types[3] = "GPU";
-            types[4] = "Network";
-            types[5] = "Soundcard";
-            break;
-        case 6:
-            types = new String[6];
-            types[0] = "Banana";
-            types[1] = "Bush";
-            types[2] = "Pear";
-            types[3] = "Mushroom";
-            types[4] = "Tree";
-            types[5] = "Vine";
-            break;
-        case 7:
-            types = new String[6];
-            types[0] = "Fightbot";
-            types[1] = "Sonicbot";
-            types[2] = "Tacklebot";
-            types[3] = "Bomber";
-            types[4] = "Dropper";
-            types[5] = "Fighter";
-            break;
-        case 8:
-            types = new String[6];
-            types[0] = "Barrel";
-            types[1] = "Bottle";
-            types[2] = "Jar";
-            types[3] = "Pipe";
-            types[4] = "Recycler";
-            types[5] = "Trash Can";
-            break;
-        case 9:
-            types = new String[6];
-            types[0] = "Healer";
-            types[1] = "Power Ten";
-            types[2] = "Solar";
-            types[3] = "Twin Claw";
-            types[4] = "Super War";
-            types[5] = "Driller";
-            break;
-        case 10:
-            types = new String[6];
-            types[0] = "Burger";
-            types[1] = "Mega War";
-            types[2] = "Radio";
-            types[3] = "Rover";
-            types[4] = "Spike";
-            types[5] = "Top";
-            break;
-        case 11:
-            types = new String[5];
-            types[0] = "Banana Peel";
-            types[1] = "Discarded Note";
-            types[2] = "Garbage";
-            types[3] = "Paper Wad";
-            types[4] = "Gunk Ball";
-            break;
-        case 12:
-            types = new String[4];
-            types[0] = "Artillery";
-            types[1] = "Bomb";
-            types[2] = "Missile";
-            types[3] = "Tank";
-            break;
-        default:
-            types = new String[13];
-            types[0] = "ROM";
-            types[1] = "Blaster Tree";
-            types[2] = "Canned Can";
-            types[3] = "Cross Vine";
-            types[4] = "Double Banana";
-            types[5] = "Giant Amoeba";
-            types[6] = "Giant Drop";
-            types[7] = "Goat";
-            types[8] = "Piped Tube";
-            types[9] = "Spiked Bush";
-            types[10] = "Super Spike";
-            types[11] = "Triple Tube";
-            types[12] = "Twin RAM";
-            break;
+            case 1:
+                types = new String[6];
+                types[0] = "Amoeba";
+                types[1] = "Drop";
+                types[2] = "Jelly";
+                types[3] = "Bunny";
+                types[4] = "Bat";
+                types[5] = "Turtle";
+                break;
+            case 2:
+                types = new String[6];
+                types[0] = "Anglebot";
+                types[1] = "Boxbot";
+                types[2] = "Curvebot";
+                types[3] = "Diamondbot";
+                types[4] = "Ellipsebot";
+                types[5] = "Jetbot";
+                break;
+            case 3:
+                types = new String[6];
+                types[0] = "Flask";
+                types[1] = "Tube";
+                types[2] = "Vial";
+                types[3] = "Beaker";
+                types[4] = "Bowl";
+                types[5] = "Can";
+                break;
+            case 4:
+                types = new String[6];
+                types[0] = "Grabber";
+                types[1] = "Lander";
+                types[2] = "Medic";
+                types[3] = "Alarm";
+                types[4] = "Scout";
+                types[5] = "Warship";
+                break;
+            case 5:
+                types = new String[6];
+                types[0] = "CPU";
+                types[1] = "Motherboard";
+                types[2] = "RAM";
+                types[3] = "GPU";
+                types[4] = "Network";
+                types[5] = "Soundcard";
+                break;
+            case 6:
+                types = new String[6];
+                types[0] = "Banana";
+                types[1] = "Bush";
+                types[2] = "Pear";
+                types[3] = "Mushroom";
+                types[4] = "Tree";
+                types[5] = "Vine";
+                break;
+            case 7:
+                types = new String[6];
+                types[0] = "Fightbot";
+                types[1] = "Sonicbot";
+                types[2] = "Tacklebot";
+                types[3] = "Bomber";
+                types[4] = "Dropper";
+                types[5] = "Fighter";
+                break;
+            case 8:
+                types = new String[6];
+                types[0] = "Barrel";
+                types[1] = "Bottle";
+                types[2] = "Jar";
+                types[3] = "Pipe";
+                types[4] = "Recycler";
+                types[5] = "Trash Can";
+                break;
+            case 9:
+                types = new String[6];
+                types[0] = "Healer";
+                types[1] = "Power Ten";
+                types[2] = "Solar";
+                types[3] = "Twin Claw";
+                types[4] = "Super War";
+                types[5] = "Driller";
+                break;
+            case 10:
+                types = new String[6];
+                types[0] = "Burger";
+                types[1] = "Mega War";
+                types[2] = "Radio";
+                types[3] = "Rover";
+                types[4] = "Spike";
+                types[5] = "Top";
+                break;
+            case 11:
+                types = new String[5];
+                types[0] = "Banana Peel";
+                types[1] = "Discarded Note";
+                types[2] = "Garbage";
+                types[3] = "Paper Wad";
+                types[4] = "Gunk Ball";
+                break;
+            case 12:
+                types = new String[4];
+                types[0] = "Artillery";
+                types[1] = "Bomb";
+                types[2] = "Missile";
+                types[3] = "Tank";
+                break;
+            default:
+                types = new String[13];
+                types[0] = "ROM";
+                types[1] = "Blaster Tree";
+                types[2] = "Canned Can";
+                types[3] = "Cross Vine";
+                types[4] = "Double Banana";
+                types[5] = "Giant Amoeba";
+                types[6] = "Giant Drop";
+                types[7] = "Goat";
+                types[8] = "Piped Tube";
+                types[9] = "Spiked Bush";
+                types[10] = "Super Spike";
+                types[11] = "Triple Tube";
+                types[12] = "Twin RAM";
+                break;
         }
         return types;
     }

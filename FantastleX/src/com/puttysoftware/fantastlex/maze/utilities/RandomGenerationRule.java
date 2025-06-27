@@ -3,23 +3,23 @@ package com.puttysoftware.fantastlex.maze.utilities;
 import com.puttysoftware.fantastlex.maze.Maze;
 
 public interface RandomGenerationRule {
-    int NO_LIMIT = 0;
+        int NO_LIMIT = 0;
 
-    boolean shouldGenerateObject(Maze maze, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObject(Maze maze, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantity(Maze maze);
+        int getMinimumRequiredQuantity(Maze maze);
 
-    int getMaximumRequiredQuantity(Maze maze);
+        int getMaximumRequiredQuantity(Maze maze);
 
-    boolean isRequired();
+        boolean isRequired();
 
-    boolean shouldGenerateObjectInBattle(Maze maze, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObjectInBattle(Maze maze, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantityInBattle(Maze maze);
+        int getMinimumRequiredQuantityInBattle(Maze maze);
 
-    int getMaximumRequiredQuantityInBattle(Maze maze);
+        int getMaximumRequiredQuantityInBattle(Maze maze);
 
-    boolean isRequiredInBattle();
+        boolean isRequiredInBattle();
 }

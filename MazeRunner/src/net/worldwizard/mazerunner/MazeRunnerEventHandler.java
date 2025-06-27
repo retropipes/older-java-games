@@ -21,50 +21,50 @@ public class MazeRunnerEventHandler
             app.setPullInProgress(true);
         }
         switch (keyCode) {
-        case KeyEvent.VK_LEFT:
-            if (!app.usingAnItem()) {
-                app.updatePosition(-1, 0);
-            }
-            break;
-        case KeyEvent.VK_DOWN:
-            if (!app.usingAnItem()) {
-                app.updatePosition(0, 1);
-            }
-            break;
-        case KeyEvent.VK_RIGHT:
-            if (!app.usingAnItem()) {
-                app.updatePosition(1, 0);
-            }
-            break;
-        case KeyEvent.VK_UP:
-            if (!app.usingAnItem()) {
-                app.updatePosition(0, -1);
-            }
-            break;
-        case KeyEvent.VK_F1:
-            if (!app.usingAnItem()) {
-                app.showInventoryDialog();
-            }
-            break;
-        case KeyEvent.VK_F2:
-            if (!app.usingAnItem()) {
-                app.saveMaze();
-            }
-            break;
-        case KeyEvent.VK_F3:
-            if (!app.usingAnItem()) {
-                app.setUsingAnItem(true);
-                app.showUseDialog();
-            }
-            break;
-        case KeyEvent.VK_ESCAPE:
-            if (app.usingAnItem()) {
-                app.setUsingAnItem(false);
-                Messager.showMessage(" ");
-            }
-            break;
-        default:
-            break;
+            case KeyEvent.VK_LEFT:
+                if (!app.usingAnItem()) {
+                    app.updatePosition(-1, 0);
+                }
+                break;
+            case KeyEvent.VK_DOWN:
+                if (!app.usingAnItem()) {
+                    app.updatePosition(0, 1);
+                }
+                break;
+            case KeyEvent.VK_RIGHT:
+                if (!app.usingAnItem()) {
+                    app.updatePosition(1, 0);
+                }
+                break;
+            case KeyEvent.VK_UP:
+                if (!app.usingAnItem()) {
+                    app.updatePosition(0, -1);
+                }
+                break;
+            case KeyEvent.VK_F1:
+                if (!app.usingAnItem()) {
+                    app.showInventoryDialog();
+                }
+                break;
+            case KeyEvent.VK_F2:
+                if (!app.usingAnItem()) {
+                    app.saveMaze();
+                }
+                break;
+            case KeyEvent.VK_F3:
+                if (!app.usingAnItem()) {
+                    app.setUsingAnItem(true);
+                    app.showUseDialog();
+                }
+                break;
+            case KeyEvent.VK_ESCAPE:
+                if (app.usingAnItem()) {
+                    app.setUsingAnItem(false);
+                    Messager.showMessage(" ");
+                }
+                break;
+            default:
+                break;
         }
         if (app.isPullInProgress()) {
             app.setPullInProgress(false);

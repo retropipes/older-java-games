@@ -8,23 +8,23 @@ package com.puttysoftware.gemma.support.map.generic;
 import com.puttysoftware.gemma.support.map.Map;
 
 public interface RandomGenerationRule {
-    int NO_LIMIT = 0;
+        int NO_LIMIT = 0;
 
-    boolean shouldGenerateObject(Map map, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObject(Map map, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantity(Map map);
+        int getMinimumRequiredQuantity(Map map);
 
-    int getMaximumRequiredQuantity(Map map);
+        int getMaximumRequiredQuantity(Map map);
 
-    boolean isRequired();
+        boolean isRequired();
 
-    boolean shouldGenerateObjectInBattle(Map map, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObjectInBattle(Map map, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantityInBattle(Map map);
+        int getMinimumRequiredQuantityInBattle(Map map);
 
-    int getMaximumRequiredQuantityInBattle(Map map);
+        int getMaximumRequiredQuantityInBattle(Map map);
 
-    boolean isRequiredInBattle();
+        boolean isRequiredInBattle();
 }

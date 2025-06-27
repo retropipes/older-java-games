@@ -15,14 +15,14 @@ public final class RandomAIRoutinePicker {
     public static AIRoutine getNextRoutine() {
         final int which = RandomAIRoutinePicker.raip.generate();
         switch (which) {
-        case 1:
-            return new StumblerAI();
-        case 2:
-            return new ScannerAI();
-        case 3:
-            return new SeekerAI();
-        default:
-            break;
+            case 1:
+                return new StumblerAI();
+            case 2:
+                return new ScannerAI();
+            case 3:
+                return new SeekerAI();
+            default:
+                break;
         }
         // Shouldn't ever get here
         return null;

@@ -36,30 +36,30 @@ public class MultiplierValues {
             }
         }
         switch (index) {
-        case 0:
-            return "pathetic ";
-        case 1:
-            return "one-third normal ";
-        case 2:
-            return "one-half normal ";
-        case 3:
-            return "below normal ";
-        case 4:
-            return "slightly below normal ";
-        case 5:
-            return "";
-        case 6:
-            return "slightly above normal ";
-        case 7:
-            return "above normal ";
-        case 8:
-            return "double ";
-        case 9:
-            return "triple ";
-        case 10:
-            return "brutal ";
-        default:
-            return "an unknown percentage of normal ";
+            case 0:
+                return "pathetic ";
+            case 1:
+                return "one-third normal ";
+            case 2:
+                return "one-half normal ";
+            case 3:
+                return "below normal ";
+            case 4:
+                return "slightly below normal ";
+            case 5:
+                return "";
+            case 6:
+                return "slightly above normal ";
+            case 7:
+                return "above normal ";
+            case 8:
+                return "double ";
+            case 9:
+                return "triple ";
+            case 10:
+                return "brutal ";
+            default:
+                return "an unknown percentage of normal ";
         }
     }
 }

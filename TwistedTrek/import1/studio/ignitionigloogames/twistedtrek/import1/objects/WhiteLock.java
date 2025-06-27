@@ -10,38 +10,38 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericSingleLock;
 public class WhiteLock extends GenericSingleLock {
     // Constructors
     public WhiteLock() {
-	super(new WhiteKey());
+        super(new WhiteKey());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Messager.showMessage("You need a white key");
-	}
-	// Play move failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveFailedSound();
-	}
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Messager.showMessage("You need a white key");
+        }
+        // Play move failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveFailedSound();
+        }
     }
 
     @Override
     public String getName() {
-	return "White Lock";
+        return "White Lock";
     }
 
     @Override
     public String getPluralName() {
-	return "White Locks";
+        return "White Locks";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 9;
+        return (byte) 9;
     }
 
     @Override
     public String getDescription() {
-	return "White Locks require White Keys to open.";
+        return "White Locks require White Keys to open.";
     }
 }

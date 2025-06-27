@@ -11,26 +11,26 @@ public class MinorDrainPotion extends GenericPotion {
 
     // Constructors
     public MinorDrainPotion() {
-	super(StatConstants.STAT_CURRENT_MP, true, MinorDrainPotion.MAX_DRAIN, MinorDrainPotion.MIN_DRAIN);
+        super(StatConstants.STAT_CURRENT_MP, true, MinorDrainPotion.MAX_DRAIN, MinorDrainPotion.MIN_DRAIN);
     }
 
     @Override
     public String getName() {
-	return "Minor Drain Potion";
+        return "Minor Drain Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Minor Drain Potions";
+        return "Minor Drain Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 11;
+        return (byte) 11;
     }
 
     @Override
     public String getDescription() {
-	return "Minor Drain Potions drain your magic slightly when picked up.";
+        return "Minor Drain Potions drain your magic slightly when picked up.";
     }
 }

@@ -52,18 +52,18 @@ public class Shop implements ShopTypes {
 
     private static String getShopNameFromType(final int type) {
         switch (type) {
-        case WEAPONS:
-            return "Weapons";
-        case ARMOR:
-            return "Armor";
-        case HEALER:
-            return "Healer";
-        case BANK:
-            return "Bank";
-        case REGENERATOR:
-            return "Regenerator";
-        default:
-            return null;
+            case WEAPONS:
+                return "Weapons";
+            case ARMOR:
+                return "Armor";
+            case HEALER:
+                return "Healer";
+            case BANK:
+                return "Bank";
+            case REGENERATOR:
+                return "Regenerator";
+            default:
+                return null;
         }
     }
 

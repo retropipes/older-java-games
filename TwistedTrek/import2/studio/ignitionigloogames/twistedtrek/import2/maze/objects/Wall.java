@@ -8,32 +8,32 @@ import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.ObjectImag
 public class Wall extends AbstractWall {
     // Constructors
     public Wall() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Wall";
+        return "Wall";
     }
 
     @Override
     public String getPluralName() {
-	return "Walls";
+        return "Walls";
     }
 
     @Override
     public String getDescription() {
-	return "Walls are impassable - you'll need to go around them.";
+        return "Walls are impassable - you'll need to go around them.";
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_WALL;
+        return ObjectImageConstants.OBJECT_IMAGE_WALL;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_PLAIN_WALL);
-	this.type.set(TypeConstants.TYPE_WALL);
+        this.type.set(TypeConstants.TYPE_PLAIN_WALL);
+        this.type.set(TypeConstants.TYPE_WALL);
     }
 }

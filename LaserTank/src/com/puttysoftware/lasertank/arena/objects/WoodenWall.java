@@ -63,14 +63,14 @@ public class WoodenWall extends AbstractWall {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_FIRE:
-            return new Ground();
-        case MaterialConstants.MATERIAL_ICE:
-            final IcyWall iw = new IcyWall();
-            iw.setPreviousState(this);
-            return iw;
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new Ground();
+            case MaterialConstants.MATERIAL_ICE:
+                final IcyWall iw = new IcyWall();
+                iw.setPreviousState(this);
+                return iw;
+            default:
+                return this;
         }
     }
 }

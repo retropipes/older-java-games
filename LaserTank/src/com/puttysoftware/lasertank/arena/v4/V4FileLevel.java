@@ -74,142 +74,142 @@ class V4FileLevel {
                     AbstractArenaObject ao = null;
                     final byte b = V4FileLevel.objects[z];
                     switch (b) {
-                    case 0:
-                        ao = new Ground();
-                        break;
-                    case 1:
-                        ao = new Tank(1);
-                        break;
-                    case 2:
-                        ao = new Flag();
-                        break;
-                    case 3:
-                        ao = new Water();
-                        break;
-                    case 4:
-                        ao = new Wall();
-                        break;
-                    case 5:
-                        ao = new Box();
-                        break;
-                    case 6:
-                        ao = new Bricks();
-                        break;
-                    case 7:
-                        ao = new AntiTank();
-                        ao.setDirection(Direction.NORTH);
-                        break;
-                    case 8:
-                        ao = new AntiTank();
-                        ao.setDirection(Direction.EAST);
-                        break;
-                    case 9:
-                        ao = new AntiTank();
-                        ao.setDirection(Direction.SOUTH);
-                        break;
-                    case 10:
-                        ao = new AntiTank();
-                        ao.setDirection(Direction.WEST);
-                        break;
-                    case 11:
-                        ao = new Mirror();
-                        ao.setDirection(Direction.NORTHWEST);
-                        break;
-                    case 12:
-                        ao = new Mirror();
-                        ao.setDirection(Direction.NORTHEAST);
-                        break;
-                    case 13:
-                        ao = new Mirror();
-                        ao.setDirection(Direction.SOUTHEAST);
-                        break;
-                    case 14:
-                        ao = new Mirror();
-                        ao.setDirection(Direction.SOUTHWEST);
-                        break;
-                    case 15:
-                        ao = new TankMover();
-                        ao.setDirection(Direction.NORTH);
-                        break;
-                    case 16:
-                        ao = new TankMover();
-                        ao.setDirection(Direction.EAST);
-                        break;
-                    case 17:
-                        ao = new TankMover();
-                        ao.setDirection(Direction.SOUTH);
-                        break;
-                    case 18:
-                        ao = new TankMover();
-                        ao.setDirection(Direction.WEST);
-                        break;
-                    case 19:
-                        ao = new CrystalBlock();
-                        break;
-                    case 20:
-                        ao = new RotaryMirror();
-                        ao.setDirection(Direction.NORTHWEST);
-                        break;
-                    case 21:
-                        ao = new RotaryMirror();
-                        ao.setDirection(Direction.NORTHEAST);
-                        break;
-                    case 22:
-                        ao = new RotaryMirror();
-                        ao.setDirection(Direction.SOUTHEAST);
-                        break;
-                    case 23:
-                        ao = new RotaryMirror();
-                        ao.setDirection(Direction.SOUTHWEST);
-                        break;
-                    case 24:
-                        ao = new Ice();
-                        break;
-                    case 25:
-                        ao = new ThinIce();
-                        break;
-                    case 64:
-                    case 65:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_RED);
-                        break;
-                    case 66:
-                    case 67:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_GREEN);
-                        break;
-                    case 68:
-                    case 69:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_BLUE);
-                        break;
-                    case 70:
-                    case 71:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_CYAN);
-                        break;
-                    case 72:
-                    case 73:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_YELLOW);
-                        break;
-                    case 74:
-                    case 75:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_MAGENTA);
-                        break;
-                    case 76:
-                    case 77:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_WHITE);
-                        break;
-                    case 78:
-                    case 79:
-                        ao = new Tunnel();
-                        ao.setColor(ColorConstants.COLOR_GRAY);
-                        break;
-                    default:
-                        ao = new Empty();
+                        case 0:
+                            ao = new Ground();
+                            break;
+                        case 1:
+                            ao = new Tank(1);
+                            break;
+                        case 2:
+                            ao = new Flag();
+                            break;
+                        case 3:
+                            ao = new Water();
+                            break;
+                        case 4:
+                            ao = new Wall();
+                            break;
+                        case 5:
+                            ao = new Box();
+                            break;
+                        case 6:
+                            ao = new Bricks();
+                            break;
+                        case 7:
+                            ao = new AntiTank();
+                            ao.setDirection(Direction.NORTH);
+                            break;
+                        case 8:
+                            ao = new AntiTank();
+                            ao.setDirection(Direction.EAST);
+                            break;
+                        case 9:
+                            ao = new AntiTank();
+                            ao.setDirection(Direction.SOUTH);
+                            break;
+                        case 10:
+                            ao = new AntiTank();
+                            ao.setDirection(Direction.WEST);
+                            break;
+                        case 11:
+                            ao = new Mirror();
+                            ao.setDirection(Direction.NORTHWEST);
+                            break;
+                        case 12:
+                            ao = new Mirror();
+                            ao.setDirection(Direction.NORTHEAST);
+                            break;
+                        case 13:
+                            ao = new Mirror();
+                            ao.setDirection(Direction.SOUTHEAST);
+                            break;
+                        case 14:
+                            ao = new Mirror();
+                            ao.setDirection(Direction.SOUTHWEST);
+                            break;
+                        case 15:
+                            ao = new TankMover();
+                            ao.setDirection(Direction.NORTH);
+                            break;
+                        case 16:
+                            ao = new TankMover();
+                            ao.setDirection(Direction.EAST);
+                            break;
+                        case 17:
+                            ao = new TankMover();
+                            ao.setDirection(Direction.SOUTH);
+                            break;
+                        case 18:
+                            ao = new TankMover();
+                            ao.setDirection(Direction.WEST);
+                            break;
+                        case 19:
+                            ao = new CrystalBlock();
+                            break;
+                        case 20:
+                            ao = new RotaryMirror();
+                            ao.setDirection(Direction.NORTHWEST);
+                            break;
+                        case 21:
+                            ao = new RotaryMirror();
+                            ao.setDirection(Direction.NORTHEAST);
+                            break;
+                        case 22:
+                            ao = new RotaryMirror();
+                            ao.setDirection(Direction.SOUTHEAST);
+                            break;
+                        case 23:
+                            ao = new RotaryMirror();
+                            ao.setDirection(Direction.SOUTHWEST);
+                            break;
+                        case 24:
+                            ao = new Ice();
+                            break;
+                        case 25:
+                            ao = new ThinIce();
+                            break;
+                        case 64:
+                        case 65:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_RED);
+                            break;
+                        case 66:
+                        case 67:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_GREEN);
+                            break;
+                        case 68:
+                        case 69:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_BLUE);
+                            break;
+                        case 70:
+                        case 71:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_CYAN);
+                            break;
+                        case 72:
+                        case 73:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_YELLOW);
+                            break;
+                        case 74:
+                        case 75:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_MAGENTA);
+                            break;
+                        case 76:
+                        case 77:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_WHITE);
+                            break;
+                        case 78:
+                        case 79:
+                            ao = new Tunnel();
+                            ao.setColor(ColorConstants.COLOR_GRAY);
+                            break;
+                        default:
+                            ao = new Empty();
                     }
                     t.setCell(a, ao, x, y, 0, ao.getLayer());
                 }
@@ -256,24 +256,24 @@ class V4FileLevel {
             }
             final int tempDiff = V4FileLevel.toInt(V4FileLevel.difficulty);
             switch (tempDiff) {
-            case 1:
-                a.setDifficulty(1);
-                break;
-            case 2:
-                a.setDifficulty(2);
-                break;
-            case 4:
-                a.setDifficulty(3);
-                break;
-            case 8:
-                a.setDifficulty(4);
-                break;
-            case 16:
-                a.setDifficulty(5);
-                break;
-            default:
-                a.setDifficulty(3);
-                break;
+                case 1:
+                    a.setDifficulty(1);
+                    break;
+                case 2:
+                    a.setDifficulty(2);
+                    break;
+                case 4:
+                    a.setDifficulty(3);
+                    break;
+                case 8:
+                    a.setDifficulty(4);
+                    break;
+                case 16:
+                    a.setDifficulty(5);
+                    break;
+                default:
+                    a.setDifficulty(3);
+                    break;
             }
             t.fillNulls(a, new Ground(), new Wall(), true);
             t.resize(a, AbstractArena.getMinFloors(), new Empty());

@@ -18,6 +18,6 @@ public class PreferencesException extends Exception {
      * @param msg the detail message.
      */
     public PreferencesException(final String msg) {
-	super(msg);
+        super(msg);
     }
 }

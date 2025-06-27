@@ -34,14 +34,14 @@ public class Ice extends AbstractGround {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_FIRE:
-            if (this.hasPreviousState()) {
-                return this.getPreviousState();
-            } else {
-                return new Ground();
-            }
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_FIRE:
+                if (this.hasPreviousState()) {
+                    return this.getPreviousState();
+                } else {
+                    return new Ground();
+                }
+            default:
+                return this;
         }
     }
 

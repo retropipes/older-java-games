@@ -420,24 +420,24 @@ public abstract class Creature extends Identifiable implements StatConstants {
             return this.stats[stat];
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             switch (stat) {
-            case StatConstants.STAT_ATTACK:
-                return this.getAttack();
-            case StatConstants.STAT_DEFENSE:
-                return this.getDefense();
-            case StatConstants.STAT_MAXIMUM_HP:
-                return this.getMaximumHP();
-            case StatConstants.STAT_MAXIMUM_MP:
-                return this.getMaximumMP();
-            case StatConstants.STAT_FUMBLE_CHANCE:
-                return this.getFumbleChance();
-            case StatConstants.STAT_SPEED:
-                return this.getSpeed();
-            case StatConstants.STAT_HIT:
-                return this.getHit();
-            case StatConstants.STAT_EVADE:
-                return this.getEvade();
-            default:
-                return 0;
+                case StatConstants.STAT_ATTACK:
+                    return this.getAttack();
+                case StatConstants.STAT_DEFENSE:
+                    return this.getDefense();
+                case StatConstants.STAT_MAXIMUM_HP:
+                    return this.getMaximumHP();
+                case StatConstants.STAT_MAXIMUM_MP:
+                    return this.getMaximumMP();
+                case StatConstants.STAT_FUMBLE_CHANCE:
+                    return this.getFumbleChance();
+                case StatConstants.STAT_SPEED:
+                    return this.getSpeed();
+                case StatConstants.STAT_HIT:
+                    return this.getHit();
+                case StatConstants.STAT_EVADE:
+                    return this.getEvade();
+                default:
+                    return 0;
             }
         }
     }

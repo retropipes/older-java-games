@@ -41,7 +41,7 @@ public class PluginRegistration {
         // Get list of files in plugins folder
         final String[] pluginNames = new File(
                 PluginRegistration.getBasePath() + File.separator + "plugins")
-                        .list(new PluginFilter());
+                .list(new PluginFilter());
         if (pluginNames != null && pluginNames.length > 0) {
             // Strip extension from list entries
             for (int z = 0; z < pluginNames.length; z++) {
@@ -68,7 +68,7 @@ public class PluginRegistration {
                     if (new File(PluginRegistration.getBasePath()
                             + File.separator + "plugins" + File.separator + res
                             + FileExtension.getPluginExtensionWithPeriod())
-                                    .exists()) {
+                            .exists()) {
                         // Register it
                         if (pluginList != null && anyFound) {
                             final String[] newpluginList = new String[pluginList.length

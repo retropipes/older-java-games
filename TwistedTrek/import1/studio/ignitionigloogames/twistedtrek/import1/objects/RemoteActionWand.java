@@ -9,37 +9,37 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.MazeObject;
 public class RemoteActionWand extends GenericWand {
     // Constructors
     public RemoteActionWand() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Remote Action Wand";
+        return "Remote Action Wand";
     }
 
     @Override
     public String getPluralName() {
-	return "Remote Action Wands";
+        return "Remote Action Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z, final int w) {
-	this.useAction(null, x, y, z, w);
+        this.useAction(null, x, y, z, w);
     }
 
     @Override
     public void useAction(final MazeObject mo, final int x, final int y, final int z, final int w) {
-	final Application app = Import1.getApplication();
-	app.getGameManager().doRemoteAction(x, y, z, w);
+        final Application app = Import1.getApplication();
+        app.getGameManager().doRemoteAction(x, y, z, w);
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 7;
+        return (byte) 7;
     }
 
     @Override
     public String getDescription() {
-	return "Remote Action Wands will act on the target object as if you were there, on top of it.";
+        return "Remote Action Wands will act on the target object as if you were there, on top of it.";
     }
 }

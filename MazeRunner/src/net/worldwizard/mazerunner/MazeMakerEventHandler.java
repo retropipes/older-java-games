@@ -19,16 +19,16 @@ public class MazeMakerEventHandler
         final int value = src.getValue();
         int relValue = 0;
         switch (dir) {
-        case Adjustable.HORIZONTAL:
-            relValue = value - app.getViewingWindowLocation(true);
-            MazeMaker.updateEditorPosition(0, relValue, 0, 0);
-            break;
-        case Adjustable.VERTICAL:
-            relValue = value - app.getViewingWindowLocation(false);
-            MazeMaker.updateEditorPosition(relValue, 0, 0, 0);
-            break;
-        default:
-            break;
+            case Adjustable.HORIZONTAL:
+                relValue = value - app.getViewingWindowLocation(true);
+                MazeMaker.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - app.getViewingWindowLocation(false);
+                MazeMaker.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
         }
     }
 
@@ -71,23 +71,23 @@ public class MazeMakerEventHandler
         final MazeRunner app = MazeRunner.getApplication();
         final int code = e.getKeyCode();
         switch (code) {
-        case KeyEvent.VK_UP:
-            MazeMaker.updateEditorPosition(0, 0, 1, 0);
-            break;
-        case KeyEvent.VK_DOWN:
-            MazeMaker.updateEditorPosition(0, 0, -1, 0);
-            break;
-        case KeyEvent.VK_LEFT:
-            MazeMaker.updateEditorPosition(0, 0, 0, -1);
-            break;
-        case KeyEvent.VK_RIGHT:
-            MazeMaker.updateEditorPosition(0, 0, 0, 1);
-            break;
-        case KeyEvent.VK_F1:
-            app.saveMaze();
-            break;
-        default:
-            break;
+            case KeyEvent.VK_UP:
+                MazeMaker.updateEditorPosition(0, 0, 1, 0);
+                break;
+            case KeyEvent.VK_DOWN:
+                MazeMaker.updateEditorPosition(0, 0, -1, 0);
+                break;
+            case KeyEvent.VK_LEFT:
+                MazeMaker.updateEditorPosition(0, 0, 0, -1);
+                break;
+            case KeyEvent.VK_RIGHT:
+                MazeMaker.updateEditorPosition(0, 0, 0, 1);
+                break;
+            case KeyEvent.VK_F1:
+                app.saveMaze();
+                break;
+            default:
+                break;
         }
     }
 

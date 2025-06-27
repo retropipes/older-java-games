@@ -7,31 +7,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericDungeonObjec
 public class ItemShop extends GenericDungeonObject {
     // Constructors
     public ItemShop() {
-	super(false);
+        super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-	Import1.getApplication().getItems().showShop();
+        Import1.getApplication().getItems().showShop();
     }
 
     @Override
     public String getName() {
-	return "Item Shop";
+        return "Item Shop";
     }
 
     @Override
     public String getPluralName() {
-	return "Item Shops";
+        return "Item Shops";
     }
 
     @Override
     public String getDescription() {
-	return "Item Shops sell items used in battle.";
+        return "Item Shops sell items used in battle.";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 0;
+        return (byte) 0;
     }
 }

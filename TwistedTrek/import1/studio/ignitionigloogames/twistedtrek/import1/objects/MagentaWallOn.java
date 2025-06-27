@@ -6,27 +6,27 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericToggleWall;
 public class MagentaWallOn extends GenericToggleWall {
     // Constructors
     public MagentaWallOn() {
-	super(true);
+        super(true);
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Magenta Wall On";
+        return "Magenta Wall On";
     }
 
     @Override
     public String getPluralName() {
-	return "Magenta Walls On";
+        return "Magenta Walls On";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 6;
+        return (byte) 6;
     }
 
     @Override
     public String getDescription() {
-	return "Magenta Walls On can NOT be walked through, and will change to Magenta Walls Off when a Magenta Button is pressed.";
+        return "Magenta Walls On can NOT be walked through, and will change to Magenta Walls Off when a Magenta Button is pressed.";
     }
 }

@@ -18,6 +18,6 @@ public class InfiniteRecursionException extends RuntimeException {
      * @param msg the detail message.
      */
     public InfiniteRecursionException(final String msg) {
-	super(msg);
+        super(msg);
     }
 }

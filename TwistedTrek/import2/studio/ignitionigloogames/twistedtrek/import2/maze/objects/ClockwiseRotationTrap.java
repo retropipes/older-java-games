@@ -11,28 +11,28 @@ import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.SoundManag
 public class ClockwiseRotationTrap extends AbstractTrap {
     // Constructors
     public ClockwiseRotationTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_CW_ROTATION_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_CW_ROTATION_TRAP);
     }
 
     @Override
     public String getName() {
-	return "Clockwise Rotation Trap";
+        return "Clockwise Rotation Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Clockwise Rotation Traps";
+        return "Clockwise Rotation Traps";
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	SoundManager.playSound(SoundConstants.SOUND_CHANGE);
-	Import2.getApplication().showMessage("Your controls are rotated!");
-	Import2.getApplication().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE);
+        SoundManager.playSound(SoundConstants.SOUND_CHANGE);
+        Import2.getApplication().showMessage("Your controls are rotated!");
+        Import2.getApplication().getGameManager().activateEffect(MazeEffectConstants.EFFECT_ROTATED_CLOCKWISE);
     }
 
     @Override
     public String getDescription() {
-	return "Clockwise Rotation Traps rotate your controls clockwise for 6 steps when stepped on.";
+        return "Clockwise Rotation Traps rotate your controls clockwise for 6 steps when stepped on.";
     }
 }

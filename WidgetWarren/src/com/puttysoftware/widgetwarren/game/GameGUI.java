@@ -401,112 +401,112 @@ class GameGUI {
                     gm.setPullInProgress(true);
                 }
                 switch (keyCode) {
-                case KeyEvent.VK_LEFT:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        if (e.isShiftDown()) {
-                            gm.updatePositionRelative(-1, -1);
-                        } else if (e.isMetaDown() || e.isControlDown()) {
-                            gm.updatePositionRelative(-1, 1);
-                        } else {
+                    case KeyEvent.VK_LEFT:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            if (e.isShiftDown()) {
+                                gm.updatePositionRelative(-1, -1);
+                            } else if (e.isMetaDown() || e.isControlDown()) {
+                                gm.updatePositionRelative(-1, 1);
+                            } else {
+                                gm.updatePositionRelative(-1, 0);
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            if (e.isShiftDown()) {
+                                gm.updatePositionRelative(1, 1);
+                            } else if (e.isMetaDown() || e.isControlDown()) {
+                                gm.updatePositionRelative(1, -1);
+                            } else {
+                                gm.updatePositionRelative(1, 0);
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_UP:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            if (e.isShiftDown()) {
+                                gm.updatePositionRelative(-1, -1);
+                            } else if (e.isMetaDown() || e.isControlDown()) {
+                                gm.updatePositionRelative(1, -1);
+                            } else {
+                                gm.updatePositionRelative(0, -1);
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            if (e.isShiftDown()) {
+                                gm.updatePositionRelative(1, 1);
+                            } else if (e.isMetaDown() || e.isControlDown()) {
+                                gm.updatePositionRelative(-1, 1);
+                            } else {
+                                gm.updatePositionRelative(0, 1);
+                            }
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD4:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
                             gm.updatePositionRelative(-1, 0);
                         }
-                    }
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        if (e.isShiftDown()) {
-                            gm.updatePositionRelative(1, 1);
-                        } else if (e.isMetaDown() || e.isControlDown()) {
-                            gm.updatePositionRelative(1, -1);
-                        } else {
-                            gm.updatePositionRelative(1, 0);
-                        }
-                    }
-                    break;
-                case KeyEvent.VK_UP:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        if (e.isShiftDown()) {
-                            gm.updatePositionRelative(-1, -1);
-                        } else if (e.isMetaDown() || e.isControlDown()) {
-                            gm.updatePositionRelative(1, -1);
-                        } else {
-                            gm.updatePositionRelative(0, -1);
-                        }
-                    }
-                    break;
-                case KeyEvent.VK_DOWN:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        if (e.isShiftDown()) {
-                            gm.updatePositionRelative(1, 1);
-                        } else if (e.isMetaDown() || e.isControlDown()) {
-                            gm.updatePositionRelative(-1, 1);
-                        } else {
+                        break;
+                    case KeyEvent.VK_NUMPAD2:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
                             gm.updatePositionRelative(0, 1);
                         }
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD4:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD5:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 0);
-                    }
-                    break;
-                case KeyEvent.VK_ENTER:
-                    if (e.isShiftDown() && !gm.usingAnItem()
-                            && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 0);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        WidgetWarren.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.setTeleportingOff();
-                        WidgetWarren.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    case KeyEvent.VK_NUMPAD6:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD8:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD7:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(-1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD9:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD3:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD1:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(-1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD5:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_ENTER:
+                        if (e.isShiftDown() && !gm.usingAnItem()
+                                && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        if (gm.usingAnItem()) {
+                            gm.setUsingAnItem(false);
+                            WidgetWarren.getApplication().showMessage(" ");
+                        } else if (gm.isTeleporting()) {
+                            gm.setTeleportingOff();
+                            WidgetWarren.getApplication().showMessage(" ");
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 if (gm.isPullInProgress()) {
                     gm.setPullInProgress(false);
@@ -525,69 +525,69 @@ class GameGUI {
                     gm.setPullInProgress(true);
                 }
                 switch (keyCode) {
-                case KeyEvent.VK_NUMPAD4:
-                case KeyEvent.VK_LEFT:
-                case KeyEvent.VK_A:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                case KeyEvent.VK_DOWN:
-                case KeyEvent.VK_X:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                case KeyEvent.VK_RIGHT:
-                case KeyEvent.VK_D:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_W:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                case KeyEvent.VK_Q:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                case KeyEvent.VK_E:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                case KeyEvent.VK_C:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                case KeyEvent.VK_Z:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        WidgetWarren.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.setTeleportingOff();
-                        WidgetWarren.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                    case KeyEvent.VK_NUMPAD4:
+                    case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_A:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD2:
+                    case KeyEvent.VK_DOWN:
+                    case KeyEvent.VK_X:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(0, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD6:
+                    case KeyEvent.VK_RIGHT:
+                    case KeyEvent.VK_D:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD8:
+                    case KeyEvent.VK_UP:
+                    case KeyEvent.VK_W:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(0, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD7:
+                    case KeyEvent.VK_Q:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD9:
+                    case KeyEvent.VK_E:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD3:
+                    case KeyEvent.VK_C:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD1:
+                    case KeyEvent.VK_Z:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        if (gm.usingAnItem()) {
+                            gm.setUsingAnItem(false);
+                            WidgetWarren.getApplication().showMessage(" ");
+                        } else if (gm.isTeleporting()) {
+                            gm.setTeleportingOff();
+                            WidgetWarren.getApplication().showMessage(" ");
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 if (gm.isPullInProgress()) {
                     gm.setPullInProgress(false);

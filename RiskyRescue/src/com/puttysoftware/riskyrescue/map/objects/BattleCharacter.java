@@ -188,26 +188,26 @@ public class BattleCharacter extends MapObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 0:
-            return this.getX();
-        case 1:
-            return this.getY();
-        default:
-            return MapObject.DEFAULT_CUSTOM_VALUE;
+            case 0:
+                return this.getX();
+            case 1:
+                return this.getY();
+            default:
+                return MapObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 0:
-            this.setX(value);
-            break;
-        case 1:
-            this.setY(value);
-            break;
-        default:
-            break;
+            case 0:
+                this.setX(value);
+                break;
+            case 1:
+                this.setY(value);
+                break;
+            default:
+                break;
         }
     }
 

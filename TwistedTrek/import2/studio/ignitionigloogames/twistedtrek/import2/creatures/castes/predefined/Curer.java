@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import2.creatures.castes.CasteConst
 
 public class Curer extends Caste {
     public Curer() {
-	super(CasteConstants.CASTE_CURER);
+        super(CasteConstants.CASTE_CURER);
     }
 }

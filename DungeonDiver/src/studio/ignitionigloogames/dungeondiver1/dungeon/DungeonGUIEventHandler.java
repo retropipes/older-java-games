@@ -16,23 +16,23 @@ public class DungeonGUIEventHandler implements KeyListener, WindowListener {
             final HoldingBag menu = DungeonDiver.getHoldingBag();
             final int keyCode = e.getKeyCode();
             switch (keyCode) {
-            case KeyEvent.VK_LEFT:
-                app.updatePosition(-1, 0);
-                break;
-            case KeyEvent.VK_DOWN:
-                app.updatePosition(0, 1);
-                break;
-            case KeyEvent.VK_RIGHT:
-                app.updatePosition(1, 0);
-                break;
-            case KeyEvent.VK_UP:
-                app.updatePosition(0, -1);
-                break;
-            case KeyEvent.VK_ESCAPE:
-                menu.showGUI();
-                break;
-            default:
-                break;
+                case KeyEvent.VK_LEFT:
+                    app.updatePosition(-1, 0);
+                    break;
+                case KeyEvent.VK_DOWN:
+                    app.updatePosition(0, 1);
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    app.updatePosition(1, 0);
+                    break;
+                case KeyEvent.VK_UP:
+                    app.updatePosition(0, -1);
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    menu.showGUI();
+                    break;
+                default:
+                    break;
             }
         } catch (final Throwable t) {
             DungeonDiver.debug(t);

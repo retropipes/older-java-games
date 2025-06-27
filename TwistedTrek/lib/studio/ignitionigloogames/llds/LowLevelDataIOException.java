@@ -17,6 +17,6 @@ public class LowLevelDataIOException extends IOException {
      * @param msg the detail message.
      */
     public LowLevelDataIOException(final String msg) {
-	super(msg);
+        super(msg);
     }
 }

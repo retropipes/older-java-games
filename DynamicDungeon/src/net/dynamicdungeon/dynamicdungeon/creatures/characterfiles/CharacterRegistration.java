@@ -29,7 +29,7 @@ public class CharacterRegistration {
                 .getCharacterNameList();
         final String[] characterNames = new File(
                 CharacterRegistration.getBasePath())
-                        .list(new CharacterFilter());
+                .list(new CharacterFilter());
         if (characterNames != null && characterNames.length > 0) {
             // Strip extension
             final int stripCount = Extension.getCharacterExtensionWithPeriod()
@@ -59,7 +59,7 @@ public class CharacterRegistration {
                     if (new File(CharacterRegistration.getBasePath()
                             + File.separator + res
                             + Extension.getCharacterExtensionWithPeriod())
-                                    .exists()) {
+                            .exists()) {
                         // Register it
                         if (CharacterRegistration.ANY_FOUND
                                 && characterNameList != null) {

@@ -10,38 +10,38 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericSingleLock;
 public class Lock extends GenericSingleLock {
     // Constructors
     public Lock() {
-	super(new Key());
+        super(new Key());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Messager.showMessage("You need a key");
-	}
-	// Play move failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveFailedSound();
-	}
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Messager.showMessage("You need a key");
+        }
+        // Play move failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveFailedSound();
+        }
     }
 
     @Override
     public String getName() {
-	return "Lock";
+        return "Lock";
     }
 
     @Override
     public String getPluralName() {
-	return "Locks";
+        return "Locks";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 1;
+        return (byte) 1;
     }
 
     @Override
     public String getDescription() {
-	return "Locks require Keys to open.";
+        return "Locks require Keys to open.";
     }
 }

@@ -33,10 +33,10 @@ public class HotBox extends AbstractMovableObject {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            return new Box();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                return new Box();
+            default:
+                return this;
         }
     }
 }

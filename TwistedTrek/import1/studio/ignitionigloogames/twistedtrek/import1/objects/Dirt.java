@@ -6,31 +6,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericGround;
 public class Dirt extends GenericGround {
     // Constructors
     public Dirt() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Dirt";
+        return "Dirt";
     }
 
     @Override
     public String getPluralName() {
-	return "Squares of Dirt";
+        return "Squares of Dirt";
     }
 
     @Override
     public String getIdentifier4() {
-	return "Rock";
+        return "Rock";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 6;
+        return (byte) 6;
     }
 
     @Override
     public String getDescription() {
-	return "Dirt is one of the many types of ground.";
+        return "Dirt is one of the many types of ground.";
     }
 }

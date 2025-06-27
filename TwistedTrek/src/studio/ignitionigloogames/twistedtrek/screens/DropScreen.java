@@ -6,22 +6,22 @@ import studio.ignitionigloogames.twistedtrek.Item;
 
 public class DropScreen extends InventoryBasedScreen {
     public DropScreen(final Creature newPlayer) {
-	super(newPlayer);
+        super(newPlayer);
     }
 
     @Override
     protected String getVerb() {
-	return "drop";
+        return "drop";
     }
 
     @Override
     protected boolean isAcceptable(final Item item) {
-	return true;
+        return true;
     }
 
     @Override
     protected Screen use(final Item item) {
-	this.player.drop(item);
-	return null;
+        this.player.drop(item);
+        return null;
     }
 }

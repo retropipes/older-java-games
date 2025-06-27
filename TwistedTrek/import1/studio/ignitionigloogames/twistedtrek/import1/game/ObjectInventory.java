@@ -13,281 +13,281 @@ import studio.ignitionigloogames.xio.XDataReader;
 import studio.ignitionigloogames.xio.XDataWriter;
 
 public class ObjectInventory implements Cloneable {
-    // Properties
-    private final String[] nameList;
-    private final int[] contents;
-    private final int[][] uses;
-    private GenericBoots boots;
-    private final int MAX_QUANTITY = 100;
-    private static final GenericBoots NULL_INSTANCE = new RegularBoots();
+	// Properties
+	private final String[] nameList;
+	private final int[] contents;
+	private final int[][] uses;
+	private GenericBoots boots;
+	private final int MAX_QUANTITY = 100;
+	private static final GenericBoots NULL_INSTANCE = new RegularBoots();
 
-    // Constructors
-    public ObjectInventory() {
-	final MazeObjectList list = Import1.getApplication().getObjects();
-	this.nameList = list.getAllInventoryableNamesMinusBoots();
-	this.contents = new int[this.nameList.length];
-	this.uses = new int[this.nameList.length][this.MAX_QUANTITY];
-	this.boots = ObjectInventory.NULL_INSTANCE;
-    }
-
-    // Accessors
-    public int getItemCount(final MazeObject mo) {
-	if (ObjectInventory.isBoots(mo)) {
-	    return this.getBootsCount();
-	} else {
-	    return this.getNonBootsCount(mo);
+	// Constructors
+	public ObjectInventory() {
+		final MazeObjectList list = Import1.getApplication().getObjects();
+		this.nameList = list.getAllInventoryableNamesMinusBoots();
+		this.contents = new int[this.nameList.length];
+		this.uses = new int[this.nameList.length][this.MAX_QUANTITY];
+		this.boots = ObjectInventory.NULL_INSTANCE;
 	}
-    }
 
-    public int getUses(final MazeObject mo) {
-	if (ObjectInventory.isBoots(mo)) {
-	    return 0;
-	} else {
-	    return this.getNonBootsUses(mo);
+	// Accessors
+	public int getItemCount(final MazeObject mo) {
+		if (ObjectInventory.isBoots(mo)) {
+			return this.getBootsCount();
+		} else {
+			return this.getNonBootsCount(mo);
+		}
 	}
-    }
 
-    private void setUses(final MazeObject mo, final int newUses) {
-	if (!ObjectInventory.isBoots(mo)) {
-	    this.setNonBootsUses(mo, newUses);
+	public int getUses(final MazeObject mo) {
+		if (ObjectInventory.isBoots(mo)) {
+			return 0;
+		} else {
+			return this.getNonBootsUses(mo);
+		}
 	}
-    }
 
-    public void use(final MazeObject mo, final int x, final int y, final int z, final int w) {
-	int tempUses = this.getUses(mo);
-	if (mo.isUsable() && tempUses > 0) {
-	    tempUses--;
-	    this.setUses(mo, tempUses);
-	    mo.useHelper(x, y, z, w);
-	    if (tempUses == 0) {
-		this.removeItem(mo);
-	    }
+	private void setUses(final MazeObject mo, final int newUses) {
+		if (!ObjectInventory.isBoots(mo)) {
+			this.setNonBootsUses(mo, newUses);
+		}
 	}
-    }
 
-    public boolean isItemThere(final MazeObject mo) {
-	if (ObjectInventory.isBoots(mo)) {
-	    return this.areBootsThere(mo);
-	} else {
-	    return this.areNonBootsThere(mo);
+	public void use(final MazeObject mo, final int x, final int y, final int z, final int w) {
+		int tempUses = this.getUses(mo);
+		if (mo.isUsable() && tempUses > 0) {
+			tempUses--;
+			this.setUses(mo, tempUses);
+			mo.useHelper(x, y, z, w);
+			if (tempUses == 0) {
+				this.removeItem(mo);
+			}
+		}
 	}
-    }
 
-    // Transformers
-    public void fireStepActions() {
-	if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
-	    this.boots.stepAction();
+	public boolean isItemThere(final MazeObject mo) {
+		if (ObjectInventory.isBoots(mo)) {
+			return this.areBootsThere(mo);
+		} else {
+			return this.areNonBootsThere(mo);
+		}
 	}
-    }
 
-    public void addItem(final MazeObject mo) {
-	if (ObjectInventory.isBoots(mo)) {
-	    this.addBoots(mo);
-	} else {
-	    this.addNonBoots(mo);
+	// Transformers
+	public void fireStepActions() {
+		if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
+			this.boots.stepAction();
+		}
 	}
-    }
 
-    public void removeItem(final MazeObject mo) {
-	if (ObjectInventory.isBoots(mo)) {
-	    this.removeBoots();
-	} else {
-	    this.removeNonBoots(mo);
+	public void addItem(final MazeObject mo) {
+		if (ObjectInventory.isBoots(mo)) {
+			this.addBoots(mo);
+		} else {
+			this.addNonBoots(mo);
+		}
 	}
-    }
 
-    public void removeAllBoots() {
-	this.removeBoots();
-    }
-
-    public String[] generateInventoryStringArray() {
-	final String[] result = new String[this.contents.length + 1];
-	final StringBuilder[] sb = new StringBuilder[this.contents.length + 1];
-	for (int x = 0; x < this.contents.length; x++) {
-	    sb[x] = new StringBuilder();
-	    sb[x].append("Slot ");
-	    sb[x].append(x + 1);
-	    sb[x].append(": ");
-	    sb[x].append(this.nameList[x]);
-	    sb[x].append(" (Qty: ");
-	    sb[x].append(this.contents[x]);
-	    sb[x].append(", Uses: ");
-	    sb[x].append(this.uses[x][this.contents[x]]);
-	    sb[x].append(")");
-	    result[x] = sb[x].toString();
+	public void removeItem(final MazeObject mo) {
+		if (ObjectInventory.isBoots(mo)) {
+			this.removeBoots();
+		} else {
+			this.removeNonBoots(mo);
+		}
 	}
-	sb[this.contents.length] = new StringBuilder();
-	sb[this.contents.length].append("Slot ");
-	sb[this.contents.length].append(this.contents.length + 1);
-	sb[this.contents.length].append(": ");
-	sb[this.contents.length].append(this.boots.getName());
-	sb[this.contents.length].append(" (Qty 1, Uses 0)");
-	result[this.contents.length] = sb[this.contents.length].toString();
-	return result;
-    }
 
-    public String[] generateUseStringArray() {
-	final MazeObjectList list = Import1.getApplication().getObjects();
-	final String[] names = list.getAllUsableNames();
-	final int len = names.length;
-	final StringBuilder[] sb = new StringBuilder[len];
-	final String[] result = new String[len];
-	for (int x = 0; x < len; x++) {
-	    final int index = this.indexByName(names[x]);
-	    sb[x] = new StringBuilder();
-	    sb[x].append(names[x]);
-	    sb[x].append(" (Qty: ");
-	    sb[x].append(this.contents[index]);
-	    sb[x].append(", Uses: ");
-	    sb[x].append(this.uses[index][this.contents[index]]);
-	    sb[x].append(")");
-	    result[x] = sb[x].toString();
+	public void removeAllBoots() {
+		this.removeBoots();
 	}
-	return result;
-    }
 
-    // Helper methods
-    private int getBootsCount() {
-	if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
-	    return 1;
-	} else {
-	    return 0;
+	public String[] generateInventoryStringArray() {
+		final String[] result = new String[this.contents.length + 1];
+		final StringBuilder[] sb = new StringBuilder[this.contents.length + 1];
+		for (int x = 0; x < this.contents.length; x++) {
+			sb[x] = new StringBuilder();
+			sb[x].append("Slot ");
+			sb[x].append(x + 1);
+			sb[x].append(": ");
+			sb[x].append(this.nameList[x]);
+			sb[x].append(" (Qty: ");
+			sb[x].append(this.contents[x]);
+			sb[x].append(", Uses: ");
+			sb[x].append(this.uses[x][this.contents[x]]);
+			sb[x].append(")");
+			result[x] = sb[x].toString();
+		}
+		sb[this.contents.length] = new StringBuilder();
+		sb[this.contents.length].append("Slot ");
+		sb[this.contents.length].append(this.contents.length + 1);
+		sb[this.contents.length].append(": ");
+		sb[this.contents.length].append(this.boots.getName());
+		sb[this.contents.length].append(" (Qty 1, Uses 0)");
+		result[this.contents.length] = sb[this.contents.length].toString();
+		return result;
 	}
-    }
 
-    private int getNonBootsCount(final MazeObject mo) {
-	final int loc = this.indexOf(mo);
-	return this.contents[loc];
-    }
-
-    private int getNonBootsUses(final MazeObject mo) {
-	final int loc = this.indexOf(mo);
-	return this.uses[loc][this.contents[loc]];
-    }
-
-    private void setNonBootsUses(final MazeObject mo, final int newUses) {
-	final int loc = this.indexOf(mo);
-	this.uses[loc][this.contents[loc]] = newUses;
-    }
-
-    private boolean areNonBootsThere(final MazeObject mo) {
-	final int loc = this.indexOf(mo);
-	if (loc != -1) {
-	    if (this.contents[loc] != 0) {
-		return true;
-	    } else {
-		return false;
-	    }
-	} else {
-	    return false;
+	public String[] generateUseStringArray() {
+		final MazeObjectList list = Import1.getApplication().getObjects();
+		final String[] names = list.getAllUsableNames();
+		final int len = names.length;
+		final StringBuilder[] sb = new StringBuilder[len];
+		final String[] result = new String[len];
+		for (int x = 0; x < len; x++) {
+			final int index = this.indexByName(names[x]);
+			sb[x] = new StringBuilder();
+			sb[x].append(names[x]);
+			sb[x].append(" (Qty: ");
+			sb[x].append(this.contents[index]);
+			sb[x].append(", Uses: ");
+			sb[x].append(this.uses[index][this.contents[index]]);
+			sb[x].append(")");
+			result[x] = sb[x].toString();
+		}
+		return result;
 	}
-    }
 
-    private boolean areBootsThere(final MazeObject mo) {
-	if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
-	    if (this.boots.getName().equals(mo.getName())) {
-		return true;
-	    } else {
-		return false;
-	    }
-	} else {
-	    return false;
+	// Helper methods
+	private int getBootsCount() {
+		if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
-    }
 
-    private void addBoots(final MazeObject mo) {
-	this.boots = (GenericBoots) mo;
-    }
+	private int getNonBootsCount(final MazeObject mo) {
+		final int loc = this.indexOf(mo);
+		return this.contents[loc];
+	}
 
-    private void addNonBoots(final MazeObject mo) {
-	final int loc = this.indexOf(mo);
-	if (this.contents[loc] < this.MAX_QUANTITY) {
-	    this.contents[loc]++;
-	    this.uses[loc][this.contents[loc]] = mo.getUses();
+	private int getNonBootsUses(final MazeObject mo) {
+		final int loc = this.indexOf(mo);
+		return this.uses[loc][this.contents[loc]];
 	}
-    }
 
-    private void removeBoots() {
-	this.boots = new RegularBoots();
-    }
+	private void setNonBootsUses(final MazeObject mo, final int newUses) {
+		final int loc = this.indexOf(mo);
+		this.uses[loc][this.contents[loc]] = newUses;
+	}
 
-    private void removeNonBoots(final MazeObject mo) {
-	final int loc = this.indexOf(mo);
-	if (this.contents[loc] != 0) {
-	    this.contents[loc]--;
+	private boolean areNonBootsThere(final MazeObject mo) {
+		final int loc = this.indexOf(mo);
+		if (loc != -1) {
+			if (this.contents[loc] != 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
-    }
 
-    private static boolean isBoots(final MazeObject mo) {
-	if (mo.isOfType(TypeConstants.TYPE_BOOTS)) {
-	    return true;
-	} else {
-	    return false;
+	private boolean areBootsThere(final MazeObject mo) {
+		if (!this.boots.equals(ObjectInventory.NULL_INSTANCE)) {
+			if (this.boots.getName().equals(mo.getName())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
-    }
 
-    private int indexOf(final MazeObject mo) {
-	int x;
-	for (x = 0; x < this.contents.length; x++) {
-	    if (mo.getName().equals(this.nameList[x])) {
-		return x;
-	    }
+	private void addBoots(final MazeObject mo) {
+		this.boots = (GenericBoots) mo;
 	}
-	return -1;
-    }
 
-    private int indexByName(final String name) {
-	int x;
-	for (x = 0; x < this.contents.length; x++) {
-	    if (name.equals(this.nameList[x])) {
-		return x;
-	    }
+	private void addNonBoots(final MazeObject mo) {
+		final int loc = this.indexOf(mo);
+		if (this.contents[loc] < this.MAX_QUANTITY) {
+			this.contents[loc]++;
+			this.uses[loc][this.contents[loc]] = mo.getUses();
+		}
 	}
-	return -1;
-    }
 
-    @Override
-    public ObjectInventory clone() {
-	final ObjectInventory clone = new ObjectInventory();
-	for (int x = 0; x < this.contents.length; x++) {
-	    clone.contents[x] = this.contents[x];
+	private void removeBoots() {
+		this.boots = new RegularBoots();
 	}
-	for (int x = 0; x < this.contents.length; x++) {
-	    for (int y = 0; y < this.MAX_QUANTITY; y++) {
-		clone.uses[x][y] = this.uses[x][y];
-	    }
-	}
-	clone.boots = this.boots;
-	return clone;
-    }
 
-    public static ObjectInventory readInventory(final XDataReader reader, final int formatVersion) throws IOException {
-	final MazeObjectList objects = Import1.getApplication().getObjects();
-	final ObjectInventory i = new ObjectInventory();
-	i.boots = (GenericBoots) objects.readMazeObject(reader, formatVersion);
-	if (i.boots == null) {
-	    i.boots = ObjectInventory.NULL_INSTANCE;
+	private void removeNonBoots(final MazeObject mo) {
+		final int loc = this.indexOf(mo);
+		if (this.contents[loc] != 0) {
+			this.contents[loc]--;
+		}
 	}
-	for (int x = 0; x < i.contents.length; x++) {
-	    i.contents[x] = reader.readInt();
-	}
-	for (int x = 0; x < i.contents.length; x++) {
-	    for (int y = 0; y < i.MAX_QUANTITY; y++) {
-		i.uses[x][y] = reader.readInt();
-	    }
-	}
-	return i;
-    }
 
-    public void writeInventory(final XDataWriter writer) throws IOException {
-	this.boots.writeMazeObject(writer);
-	for (final int content : this.contents) {
-	    writer.writeInt(content);
+	private static boolean isBoots(final MazeObject mo) {
+		if (mo.isOfType(TypeConstants.TYPE_BOOTS)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	for (int x = 0; x < this.contents.length; x++) {
-	    for (int y = 0; y < this.MAX_QUANTITY; y++) {
-		writer.writeInt(this.uses[x][y]);
-	    }
+
+	private int indexOf(final MazeObject mo) {
+		int x;
+		for (x = 0; x < this.contents.length; x++) {
+			if (mo.getName().equals(this.nameList[x])) {
+				return x;
+			}
+		}
+		return -1;
 	}
-    }
+
+	private int indexByName(final String name) {
+		int x;
+		for (x = 0; x < this.contents.length; x++) {
+			if (name.equals(this.nameList[x])) {
+				return x;
+			}
+		}
+		return -1;
+	}
+
+	@Override
+	public ObjectInventory clone() {
+		final ObjectInventory clone = new ObjectInventory();
+		for (int x = 0; x < this.contents.length; x++) {
+			clone.contents[x] = this.contents[x];
+		}
+		for (int x = 0; x < this.contents.length; x++) {
+			for (int y = 0; y < this.MAX_QUANTITY; y++) {
+				clone.uses[x][y] = this.uses[x][y];
+			}
+		}
+		clone.boots = this.boots;
+		return clone;
+	}
+
+	public static ObjectInventory readInventory(final XDataReader reader, final int formatVersion) throws IOException {
+		final MazeObjectList objects = Import1.getApplication().getObjects();
+		final ObjectInventory i = new ObjectInventory();
+		i.boots = (GenericBoots) objects.readMazeObject(reader, formatVersion);
+		if (i.boots == null) {
+			i.boots = ObjectInventory.NULL_INSTANCE;
+		}
+		for (int x = 0; x < i.contents.length; x++) {
+			i.contents[x] = reader.readInt();
+		}
+		for (int x = 0; x < i.contents.length; x++) {
+			for (int y = 0; y < i.MAX_QUANTITY; y++) {
+				i.uses[x][y] = reader.readInt();
+			}
+		}
+		return i;
+	}
+
+	public void writeInventory(final XDataWriter writer) throws IOException {
+		this.boots.writeMazeObject(writer);
+		for (final int content : this.contents) {
+			writer.writeInt(content);
+		}
+		for (int x = 0; x < this.contents.length; x++) {
+			for (int y = 0; y < this.MAX_QUANTITY; y++) {
+				writer.writeInt(this.uses[x][y]);
+			}
+		}
+	}
 }

@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import2.creatures.castes.CasteConst
 
 public class Buffer extends Caste {
     public Buffer() {
-	super(CasteConstants.CASTE_BUFFER);
+        super(CasteConstants.CASTE_BUFFER);
     }
 }

@@ -201,33 +201,33 @@ public class MapTimeBattleLogic extends AbstractBattle {
                 final int action = active.getTemplate().getMapAI()
                         .getNextAction(this.enemyContext);
                 switch (action) {
-                case AbstractMapAIRoutine.ACTION_MOVE:
-                    final int x = active.getTemplate().getMapAI().getMoveX();
-                    final int y = active.getTemplate().getMapAI().getMoveY();
-                    this.lastAIActionResult = this.updatePositionInternal(x, y,
-                            this.enemy, this.me, this.ede, this.enemyContext,
-                            false);
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_CAST_SPELL:
-                    this.lastAIActionResult = this.castEnemySpell();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_DRAIN:
-                    this.lastAIActionResult = this.enemyDrain();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_STEAL:
-                    this.lastAIActionResult = this.enemySteal();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                default:
-                    this.lastAIActionResult = true;
-                    break;
+                    case AbstractMapAIRoutine.ACTION_MOVE:
+                        final int x = active.getTemplate().getMapAI().getMoveX();
+                        final int y = active.getTemplate().getMapAI().getMoveY();
+                        this.lastAIActionResult = this.updatePositionInternal(x, y,
+                                this.enemy, this.me, this.ede, this.enemyContext,
+                                false);
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_CAST_SPELL:
+                        this.lastAIActionResult = this.castEnemySpell();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_DRAIN:
+                        this.lastAIActionResult = this.enemyDrain();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_STEAL:
+                        this.lastAIActionResult = this.enemySteal();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    default:
+                        this.lastAIActionResult = true;
+                        break;
                 }
             }
         }
@@ -242,18 +242,18 @@ public class MapTimeBattleLogic extends AbstractBattle {
             final BattleCharacter theEnemy, final MapAIContext theContext) {
         final int action = this.auto.getNextAction(theContext);
         switch (action) {
-        case AbstractMapAIRoutine.ACTION_MOVE:
-            final int x = this.auto.getMoveX();
-            final int y = this.auto.getMoveY();
-            final int activeTID = acting.getTeamID();
-            final AbstractDamageEngine activeDE = activeTID == AbstractCreature.TEAM_PARTY
-                    ? this.ede
-                    : this.pde;
-            this.updatePositionInternal(x, y, acting, theEnemy, activeDE,
-                    theContext, false);
-            break;
-        default:
-            break;
+            case AbstractMapAIRoutine.ACTION_MOVE:
+                final int x = this.auto.getMoveX();
+                final int y = this.auto.getMoveY();
+                final int activeTID = acting.getTeamID();
+                final AbstractDamageEngine activeDE = activeTID == AbstractCreature.TEAM_PARTY
+                        ? this.ede
+                        : this.pde;
+                this.updatePositionInternal(x, y, acting, theEnemy, activeDE,
+                        theContext, false);
+                break;
+            default:
+                break;
         }
     }
 
@@ -1328,20 +1328,20 @@ public class MapTimeBattleLogic extends AbstractBattle {
     @Override
     public boolean doPlayerActions(final int action) {
         switch (action) {
-        case AbstractMapAIRoutine.ACTION_CAST_SPELL:
-            this.castSpell();
-            break;
-        case AbstractMapAIRoutine.ACTION_DRAIN:
-            this.drain();
-            break;
-        case AbstractMapAIRoutine.ACTION_STEAL:
-            this.steal();
-            break;
-        case AbstractMapAIRoutine.ACTION_USE_ITEM:
-            this.useItem();
-            break;
-        default:
-            break;
+            case AbstractMapAIRoutine.ACTION_CAST_SPELL:
+                this.castSpell();
+                break;
+            case AbstractMapAIRoutine.ACTION_DRAIN:
+                this.drain();
+                break;
+            case AbstractMapAIRoutine.ACTION_STEAL:
+                this.steal();
+                break;
+            case AbstractMapAIRoutine.ACTION_USE_ITEM:
+                this.useItem();
+                break;
+            default:
+                break;
         }
         this.battleGUI.resetPlayerActionBar();
         return true;

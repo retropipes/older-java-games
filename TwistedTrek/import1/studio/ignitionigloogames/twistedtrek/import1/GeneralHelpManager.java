@@ -12,38 +12,38 @@ import studio.ignitionigloogames.twistedtrek.import1.resourcemanagers.GraphicsMa
 import studio.ignitionigloogames.twistedtrek.import1.resourcemanagers.HelpManager;
 
 public class GeneralHelpManager {
-    // Fields
-    private final JFrame helpFrame;
-    private final HTMLHelpViewer hv;
+	// Fields
+	private final JFrame helpFrame;
+	private final HTMLHelpViewer hv;
 
-    // Constructors
-    public GeneralHelpManager() {
-	final URL helpURL = HelpManager.getHelpURL();
-	this.hv = new HTMLHelpViewer(helpURL);
-	this.helpFrame = new JFrame("Import1 Help");
-	this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-	this.helpFrame.setLayout(new FlowLayout());
-	this.helpFrame.add(this.hv.getHelp());
-	if (Import1.getApplication().getPrefsManager().isMobileModeEnabled()) {
-	    this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
-	} else {
-	    this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+	// Constructors
+	public GeneralHelpManager() {
+		final URL helpURL = HelpManager.getHelpURL();
+		this.hv = new HTMLHelpViewer(helpURL);
+		this.helpFrame = new JFrame("Import1 Help");
+		this.helpFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+		this.helpFrame.setLayout(new FlowLayout());
+		this.helpFrame.add(this.hv.getHelp());
+		if (Import1.getApplication().getPrefsManager().isMobileModeEnabled()) {
+			this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
+		} else {
+			this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+		}
+		this.helpFrame.pack();
+		this.helpFrame.setResizable(false);
 	}
-	this.helpFrame.pack();
-	this.helpFrame.setResizable(false);
-    }
 
-    // Methods
-    public void showHelp() {
-	this.helpFrame.setVisible(true);
-    }
-
-    public void updateHelpSize() {
-	if (Import1.getApplication().getPrefsManager().isMobileModeEnabled()) {
-	    this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
-	} else {
-	    this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+	// Methods
+	public void showHelp() {
+		this.helpFrame.setVisible(true);
 	}
-	this.helpFrame.pack();
-    }
+
+	public void updateHelpSize() {
+		if (Import1.getApplication().getPrefsManager().isMobileModeEnabled()) {
+			this.hv.setHelpSize(GraphicsManager.MAX_MOBILE_WINDOW_SIZE, GraphicsManager.MAX_MOBILE_WINDOW_SIZE);
+		} else {
+			this.hv.setHelpSize(GraphicsManager.MAX_DESKTOP_WINDOW_SIZE, GraphicsManager.MAX_DESKTOP_WINDOW_SIZE);
+		}
+		this.helpFrame.pack();
+	}
 }

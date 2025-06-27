@@ -6,27 +6,27 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericSingleKey;
 public class YellowKey extends GenericSingleKey {
     // Constructors
     public YellowKey() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Yellow Key";
+        return "Yellow Key";
     }
 
     @Override
     public String getPluralName() {
-	return "Yellow Keys";
+        return "Yellow Keys";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 10;
+        return (byte) 10;
     }
 
     @Override
     public String getDescription() {
-	return "Yellow Keys will unlock Yellow Locks, and can only be used once.";
+        return "Yellow Keys will unlock Yellow Locks, and can only be used once.";
     }
 }

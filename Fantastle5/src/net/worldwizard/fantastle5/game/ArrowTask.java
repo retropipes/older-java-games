@@ -112,12 +112,12 @@ public class ArrowTask extends Thread {
 
     private static GenericTransientObject createArrowForType(final int type) {
         switch (type) {
-        case ArrowTypeConstants.ARROW_TYPE_PLAIN:
-            return new Arrow();
-        case ArrowTypeConstants.ARROW_TYPE_ICE:
-            return new IceArrow();
-        default:
-            return null;
+            case ArrowTypeConstants.ARROW_TYPE_PLAIN:
+                return new Arrow();
+            case ArrowTypeConstants.ARROW_TYPE_ICE:
+                return new IceArrow();
+            default:
+                return null;
         }
     }
 }

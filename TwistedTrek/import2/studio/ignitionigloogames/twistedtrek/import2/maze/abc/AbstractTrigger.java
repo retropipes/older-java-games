@@ -7,7 +7,7 @@ import studio.ignitionigloogames.twistedtrek.import2.maze.utilities.TypeConstant
 public abstract class AbstractTrigger extends AbstractMazeObject {
     // Constructors
     protected AbstractTrigger() {
-	super(false, true, false);
+        super(false, true, false);
     }
 
     @Override
@@ -15,21 +15,21 @@ public abstract class AbstractTrigger extends AbstractMazeObject {
 
     @Override
     public int getLayer() {
-	return MazeConstants.LAYER_OBJECT;
+        return MazeConstants.LAYER_OBJECT;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_TRIGGER);
+        this.type.set(TypeConstants.TYPE_TRIGGER);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
+        return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

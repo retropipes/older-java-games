@@ -11,33 +11,33 @@ import com.puttysoftware.gemma.support.prefs.LocalPreferencesManager;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class SoundManager {
-    private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/brainmaze/resources/sounds/";
-    private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
-    private static Class<?> LOAD_CLASS = SoundManager.class;
+	private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/brainmaze/resources/sounds/";
+	private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
+	private static Class<?> LOAD_CLASS = SoundManager.class;
 
-    private static Sound getSound(final String filename) {
-        try {
-            final URL url = SoundManager.LOAD_CLASS.getResource(
-                    SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
-            return new Sound(url);
-        } catch (final NullPointerException np) {
-            return null;
-        }
-    }
+	private static Sound getSound(final String filename) {
+		try {
+			final URL url = SoundManager.LOAD_CLASS.getResource(
+					SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
+			return new Sound(url);
+		} catch (final NullPointerException np) {
+			return null;
+		}
+	}
 
-    public static void playSound(final int soundID) {
-        if (LocalPreferencesManager.getSoundsEnabled()) {
+	public static void playSound(final int soundID) {
+		if (LocalPreferencesManager.getSoundsEnabled()) {
 			try {
 				int offset;
 				RandomRange rr;
 				switch (soundID) {
-				case GameSoundConstants.SOUND_STEP:
-					rr = new RandomRange(0, 1);
-					offset = rr.generate();
-					break;
-				default:
-					offset = 0;
-					break;
+					case GameSoundConstants.SOUND_STEP:
+						rr = new RandomRange(0, 1);
+						offset = rr.generate();
+						break;
+					default:
+						offset = 0;
+						break;
 				}
 				final String soundName = SoundNames.getSoundNames()[soundID + offset];
 				final Sound snd = SoundManager.getSound(soundName);
@@ -48,5 +48,5 @@ public class SoundManager {
 				// Do nothing
 			}
 		}
-    }
+	}
 }

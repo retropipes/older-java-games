@@ -15,16 +15,16 @@ public class MessagePanel extends JPanel {
      * Class constructor.
      */
     public MessagePanel() {
-	super();
-	this.message.setEditable(false);
-	this.message.setFocusable(false);
-	this.message.setBackground(this.getBackground());
-	this.add(this.message);
+        super();
+        this.message.setEditable(false);
+        this.message.setFocusable(false);
+        this.message.setBackground(this.getBackground());
+        this.add(this.message);
     }
 
     public MessagePanel clear() {
-	this.message.setText("");
-	return this;
+        this.message.setText("");
+        return this;
     }
 
     /**
@@ -34,31 +34,31 @@ public class MessagePanel extends JPanel {
      * @return this for convenient chaining of method calls
      */
     public MessagePanel write(final String string) {
-	if (this.isFull()) {
-	    this.message.setText("");
-	}
-	final String currText = this.message.getText();
-	if (currText.isEmpty()) {
-	    this.message.setText(string);
-	} else {
-	    this.message.setText(currText + "\n" + string);
-	}
-	return this;
+        if (this.isFull()) {
+            this.message.setText("");
+        }
+        final String currText = this.message.getText();
+        if (currText.isEmpty()) {
+            this.message.setText(string);
+        } else {
+            this.message.setText(currText + "\n" + string);
+        }
+        return this;
     }
 
     public JLabel getStatsLabel() {
-	return this.stats;
+        return this.stats;
     }
 
     public void clearStats() {
-	this.stats.setText("");
+        this.stats.setText("");
     }
 
     public void setStats(final String newStats) {
-	this.stats.setText(newStats);
+        this.stats.setText(newStats);
     }
 
     private boolean isFull() {
-	return this.message.getText().split("\\n").length >= this.full;
+        return this.message.getText().split("\\n").length >= this.full;
     }
 }

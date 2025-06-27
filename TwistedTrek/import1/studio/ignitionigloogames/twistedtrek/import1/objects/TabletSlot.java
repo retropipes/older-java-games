@@ -10,38 +10,38 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericInfiniteLock
 public class TabletSlot extends GenericInfiniteLock {
     // Constructors
     public TabletSlot() {
-	super(new Tablet());
+        super(new Tablet());
     }
 
     // Scriptability
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
-	    Messager.showMessage("You need a tablet");
-	}
-	// Play move failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveFailedSound();
-	}
+        if (this.isConditionallyDirectionallySolid(ie, dirX, dirY, inv)) {
+            Messager.showMessage("You need a tablet");
+        }
+        // Play move failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveFailedSound();
+        }
     }
 
     @Override
     public String getName() {
-	return "Tablet Slot";
+        return "Tablet Slot";
     }
 
     @Override
     public String getPluralName() {
-	return "Tablet Slots";
+        return "Tablet Slots";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 27;
+        return (byte) 27;
     }
 
     @Override
     public String getDescription() {
-	return "Tablet Slots disappear when filled with a Tablet.";
+        return "Tablet Slots disappear when filled with a Tablet.";
     }
 }

@@ -14,30 +14,30 @@ import com.puttysoftware.lasertank.stringmanagers.StringConstants;
 import com.puttysoftware.lasertank.stringmanagers.StringLoader;
 
 public class CustomDialogs {
-    private CustomDialogs() {
-        // Do nothing
-    }
+        private CustomDialogs() {
+                // Do nothing
+        }
 
-    public static int showDeadDialog() {
-        final Application app = LaserTank.getApplication();
-        return JOptionPane.showOptionDialog(app.getOutputFrame(),
-                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
-                        StringConstants.DIALOG_STRING_DEAD_MESSAGE),
-                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
-                        StringConstants.DIALOG_STRING_DEAD_TITLE),
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.INFORMATION_MESSAGE, LogoManager.getMicroLogo(),
-                new String[] {
-                        StringLoader.loadString(
-                                StringConstants.DIALOG_STRINGS_FILE,
-                                StringConstants.DIALOG_STRING_UNDO_BUTTON),
-                        StringLoader.loadString(
-                                StringConstants.DIALOG_STRINGS_FILE,
-                                StringConstants.DIALOG_STRING_RESTART_BUTTON),
-                        StringLoader.loadString(
-                                StringConstants.DIALOG_STRINGS_FILE,
-                                StringConstants.DIALOG_STRING_END_BUTTON) },
-                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
-                        StringConstants.DIALOG_STRING_UNDO_BUTTON));
-    }
+        public static int showDeadDialog() {
+                final Application app = LaserTank.getApplication();
+                return JOptionPane.showOptionDialog(app.getOutputFrame(),
+                                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
+                                                StringConstants.DIALOG_STRING_DEAD_MESSAGE),
+                                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
+                                                StringConstants.DIALOG_STRING_DEAD_TITLE),
+                                JOptionPane.YES_NO_CANCEL_OPTION,
+                                JOptionPane.INFORMATION_MESSAGE, LogoManager.getMicroLogo(),
+                                new String[] {
+                                                StringLoader.loadString(
+                                                                StringConstants.DIALOG_STRINGS_FILE,
+                                                                StringConstants.DIALOG_STRING_UNDO_BUTTON),
+                                                StringLoader.loadString(
+                                                                StringConstants.DIALOG_STRINGS_FILE,
+                                                                StringConstants.DIALOG_STRING_RESTART_BUTTON),
+                                                StringLoader.loadString(
+                                                                StringConstants.DIALOG_STRINGS_FILE,
+                                                                StringConstants.DIALOG_STRING_END_BUTTON) },
+                                StringLoader.loadString(StringConstants.DIALOG_STRINGS_FILE,
+                                                StringConstants.DIALOG_STRING_UNDO_BUTTON));
+        }
 }

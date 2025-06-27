@@ -25,6 +25,6 @@ public class DirectionConstants {
     static final String DIRECTION_WEST_NAME = "West";
 
     private DirectionConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

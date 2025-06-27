@@ -11,58 +11,58 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericField;
 public class Slime extends GenericField {
     // Constructors
     public Slime() {
-	super(new BioHazardBoots());
+        super(new BioHazardBoots());
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final Application app = Import1.getApplication();
-	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveSuccessSound();
-	}
+        final Application app = Import1.getApplication();
+        if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveSuccessSound();
+        }
     }
 
     @Override
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final Application app = Import1.getApplication();
-	Messager.showMessage("You'll corrode");
-	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveFailedSound();
-	}
+        final Application app = Import1.getApplication();
+        Messager.showMessage("You'll corrode");
+        if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveFailedSound();
+        }
     }
 
     @Override
     public String getName() {
-	return "Slime";
+        return "Slime";
     }
 
     @Override
     public String getPluralName() {
-	return "Squares of Slime";
+        return "Squares of Slime";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 4;
+        return (byte) 4;
     }
 
     @Override
     public String getMoveFailedSoundName() {
-	return "slime";
+        return "slime";
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-	return "walkslim";
+        return "walkslim";
     }
 
     @Override
     public boolean overridesDefaultPostMove() {
-	return true;
+        return true;
     }
 
     @Override
     public String getDescription() {
-	return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
+        return "Slime is too corrosive to walk on without Bio-Hazard Boots.";
     }
 }

@@ -7,31 +7,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericDungeonObjec
 public class Healer extends GenericDungeonObject {
     // Constructors
     public Healer() {
-	super(false);
+        super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-	Import1.getApplication().getHealer().showShop();
+        Import1.getApplication().getHealer().showShop();
     }
 
     @Override
     public String getName() {
-	return "Healer";
+        return "Healer";
     }
 
     @Override
     public String getPluralName() {
-	return "Healers";
+        return "Healers";
     }
 
     @Override
     public String getDescription() {
-	return "Healers restore health, for a fee.";
+        return "Healers restore health, for a fee.";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 3;
+        return (byte) 3;
     }
 }

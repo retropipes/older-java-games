@@ -8,17 +8,17 @@ package studio.ignitionigloogames.llds;
 public class CloneableObject implements Cloneable {
     // Constructor
     public CloneableObject() {
-	super();
+        super();
     }
 
     // Method
     @Override
     public CloneableObject clone() {
-	try {
-	    return (CloneableObject) super.clone();
-	} catch (final CloneNotSupportedException e) {
-	    // Should not ever get here
-	    return null;
-	}
+        try {
+            return (CloneableObject) super.clone();
+        } catch (final CloneNotSupportedException e) {
+            // Should not ever get here
+            return null;
+        }
     }
 }

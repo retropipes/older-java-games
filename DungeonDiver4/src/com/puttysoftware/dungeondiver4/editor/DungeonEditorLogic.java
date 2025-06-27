@@ -844,86 +844,86 @@ public class DungeonEditorLogic {
     public void pairStairs(final int type) {
         final Application app = DungeonDiver4.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new StairsDown(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getEditorLocationZ() + 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new StairsUp(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(),
-                        this.getLocationManager().getEditorLocationZ() - 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new StairsDown(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(),
+                            this.getLocationManager().getEditorLocationZ() + 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new StairsUp(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(),
+                            this.getLocationManager().getEditorLocationZ() - 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void pairStairs(final int type, final int z) {
         final Application app = DungeonDiver4.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new StairsDown(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z + 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new StairsUp(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z - 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new StairsDown(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z + 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new StairsUp(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z - 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void unpairStairs(final int type, final int z) {
         final Application app = DungeonDiver4.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new Empty(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z + 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getDungeonManager().getDungeon().setCell(new Empty(),
-                        this.getLocationManager().getEditorLocationX(),
-                        this.getLocationManager().getEditorLocationY(), z - 1,
-                        DungeonConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new Empty(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z + 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getDungeonManager().getDungeon().setCell(new Empty(),
+                            this.getLocationManager().getEditorLocationX(),
+                            this.getLocationManager().getEditorLocationY(), z - 1,
+                            DungeonConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -1083,55 +1083,55 @@ public class DungeonEditorLogic {
         final Application app = DungeonDiver4.getApplication();
         this.TELEPORT_TYPE = type;
         switch (type) {
-        case TELEPORT_TYPE_N_WAY:
-            final String[] dests = new String[this.nWayDestCount];
-            for (int d = 0; d < this.nWayDestCount; d++) {
-                dests[d] = "Destination " + (d + 1);
-            }
-            if (this.nWayDestID == -1) {
-                this.nWayDestID = 0;
-            }
-            final String resp = CommonDialogs.showInputDialog(
-                    "Edit Which Destination?", "Editor", dests,
-                    dests[this.nWayDestID]);
-            if (resp == null) {
-                return null;
-            }
-            this.nWayDestID = -1;
-            for (int z = 0; z < this.nWayDestCount; z++) {
-                if (resp.equals(dests[z])) {
-                    this.nWayDestID = z;
-                    break;
+            case TELEPORT_TYPE_N_WAY:
+                final String[] dests = new String[this.nWayDestCount];
+                for (int d = 0; d < this.nWayDestCount; d++) {
+                    dests[d] = "Destination " + (d + 1);
                 }
-            }
-            if (this.nWayDestID == -1) {
-                return null;
-            }
-            DungeonDiver4.getApplication()
-                    .showMessage("Click to set teleport destination #"
-                            + (this.nWayDestID + 1));
-            break;
-        case TELEPORT_TYPE_GENERIC:
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-        case TELEPORT_TYPE_ONESHOT:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-        case TELEPORT_TYPE_TWOWAY:
-        case TELEPORT_TYPE_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_BLOCK:
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            DungeonDiver4.getApplication()
-                    .showMessage("Click to set teleport destination");
-            break;
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            return this.editRandomTeleportDestination(type);
-        default:
-            break;
+                if (this.nWayDestID == -1) {
+                    this.nWayDestID = 0;
+                }
+                final String resp = CommonDialogs.showInputDialog(
+                        "Edit Which Destination?", "Editor", dests,
+                        dests[this.nWayDestID]);
+                if (resp == null) {
+                    return null;
+                }
+                this.nWayDestID = -1;
+                for (int z = 0; z < this.nWayDestCount; z++) {
+                    if (resp.equals(dests[z])) {
+                        this.nWayDestID = z;
+                        break;
+                    }
+                }
+                if (this.nWayDestID == -1) {
+                    return null;
+                }
+                DungeonDiver4.getApplication()
+                        .showMessage("Click to set teleport destination #"
+                                + (this.nWayDestID + 1));
+                break;
+            case TELEPORT_TYPE_GENERIC:
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+            case TELEPORT_TYPE_ONESHOT:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+            case TELEPORT_TYPE_TWOWAY:
+            case TELEPORT_TYPE_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_BLOCK:
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                DungeonDiver4.getApplication()
+                        .showMessage("Click to set teleport destination");
+                break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                return this.editRandomTeleportDestination(type);
+            default:
+                break;
         }
         this.meg.swapToTeleportHandler();
         this.getLocationManager()
@@ -1147,40 +1147,40 @@ public class DungeonEditorLogic {
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
         switch (type) {
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            input1 = CommonDialogs.showTextInputDialog("Random row range:",
-                    "Editor");
-            if (input1 != null) {
-                input2 = CommonDialogs
-                        .showTextInputDialog("Random column range:", "Editor");
-                if (input2 != null) {
-                    try {
-                        destX = Integer.parseInt(input1);
-                        destY = Integer.parseInt(input2);
-                    } catch (final NumberFormatException nf) {
-                        CommonDialogs.showDialog(
-                                "Row and column ranges must be integers.");
-                    }
-                    switch (type) {
-                    case TELEPORT_TYPE_RANDOM:
-                        return new RandomTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE:
-                        return new RandomInvisibleTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_ONESHOT:
-                        return new RandomOneShotTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-                        return new RandomInvisibleOneShotTeleport(destX, destY);
-                    default:
-                        break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                input1 = CommonDialogs.showTextInputDialog("Random row range:",
+                        "Editor");
+                if (input1 != null) {
+                    input2 = CommonDialogs
+                            .showTextInputDialog("Random column range:", "Editor");
+                    if (input2 != null) {
+                        try {
+                            destX = Integer.parseInt(input1);
+                            destY = Integer.parseInt(input2);
+                        } catch (final NumberFormatException nf) {
+                            CommonDialogs.showDialog(
+                                    "Row and column ranges must be integers.");
+                        }
+                        switch (type) {
+                            case TELEPORT_TYPE_RANDOM:
+                                return new RandomTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+                                return new RandomInvisibleTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_ONESHOT:
+                                return new RandomOneShotTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                                return new RandomInvisibleOneShotTeleport(destX, destY);
+                            default:
+                                break;
+                        }
                     }
                 }
-            }
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
         }
         return null;
     }
@@ -1247,113 +1247,113 @@ public class DungeonEditorLogic {
             return;
         }
         switch (this.TELEPORT_TYPE) {
-        case TELEPORT_TYPE_N_WAY:
-            if (this.nWayDestID == 0) {
-                this.nWayEdited.setDestinationRow(destX);
-                this.nWayEdited.setDestinationColumn(destY);
-                this.nWayEdited.setDestinationFloor(destZ);
-            } else {
-                this.nWayEdited.setDestinationRowN(this.nWayDestID, destX);
-                this.nWayEdited.setDestinationColumnN(this.nWayDestID, destY);
-                this.nWayEdited.setDestinationFloorN(this.nWayDestID, destZ);
-            }
-            app.getDungeonManager().getDungeon().setCell(this.nWayEdited,
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_GENERIC:
-            app.getDungeonManager().getDungeon().setCell(
-                    new Teleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-            app.getDungeonManager().getDungeon().setCell(
-                    new InvisibleTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT:
-            app.getDungeonManager().getDungeon().setCell(
-                    new OneShotTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-            app.getDungeonManager().getDungeon().setCell(
-                    new InvisibleOneShotTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_TWOWAY:
-            app.getDungeonManager().getDungeon().setCell(
-                    new TwoWayTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            this.pairTwoWayTeleport(destX, destY, destZ);
-            break;
-        case TELEPORT_TYPE_CHAIN:
-            app.getDungeonManager().getDungeon().setCell(
-                    new ChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-            app.getDungeonManager().getDungeon().setCell(
-                    new InvisibleChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-            app.getDungeonManager().getDungeon().setCell(
-                    new OneShotChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-            app.getDungeonManager().getDungeon().setCell(
-                    new InvisibleOneShotChainTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_BLOCK:
-            app.getDungeonManager().getDungeon().setCell(
-                    new BlockTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            app.getDungeonManager().getDungeon().setCell(
-                    new InvisibleBlockTeleport(destX, destY, destZ),
-                    this.getLocationManager().getEditorLocationX(),
-                    this.getLocationManager().getEditorLocationY(),
-                    this.getLocationManager().getCameFromZ(),
-                    DungeonConstants.LAYER_OBJECT);
-            break;
-        default:
-            break;
+            case TELEPORT_TYPE_N_WAY:
+                if (this.nWayDestID == 0) {
+                    this.nWayEdited.setDestinationRow(destX);
+                    this.nWayEdited.setDestinationColumn(destY);
+                    this.nWayEdited.setDestinationFloor(destZ);
+                } else {
+                    this.nWayEdited.setDestinationRowN(this.nWayDestID, destX);
+                    this.nWayEdited.setDestinationColumnN(this.nWayDestID, destY);
+                    this.nWayEdited.setDestinationFloorN(this.nWayDestID, destZ);
+                }
+                app.getDungeonManager().getDungeon().setCell(this.nWayEdited,
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_GENERIC:
+                app.getDungeonManager().getDungeon().setCell(
+                        new Teleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+                app.getDungeonManager().getDungeon().setCell(
+                        new InvisibleTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT:
+                app.getDungeonManager().getDungeon().setCell(
+                        new OneShotTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+                app.getDungeonManager().getDungeon().setCell(
+                        new InvisibleOneShotTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_TWOWAY:
+                app.getDungeonManager().getDungeon().setCell(
+                        new TwoWayTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                this.pairTwoWayTeleport(destX, destY, destZ);
+                break;
+            case TELEPORT_TYPE_CHAIN:
+                app.getDungeonManager().getDungeon().setCell(
+                        new ChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+                app.getDungeonManager().getDungeon().setCell(
+                        new InvisibleChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+                app.getDungeonManager().getDungeon().setCell(
+                        new OneShotChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+                app.getDungeonManager().getDungeon().setCell(
+                        new InvisibleOneShotChainTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_BLOCK:
+                app.getDungeonManager().getDungeon().setCell(
+                        new BlockTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                app.getDungeonManager().getDungeon().setCell(
+                        new InvisibleBlockTeleport(destX, destY, destZ),
+                        this.getLocationManager().getEditorLocationX(),
+                        this.getLocationManager().getEditorLocationY(),
+                        this.getLocationManager().getCameFromZ(),
+                        DungeonConstants.LAYER_OBJECT);
+                break;
+            default:
+                break;
         }
         this.meg.swapFromTeleportHandler();
         this.checkMenus();

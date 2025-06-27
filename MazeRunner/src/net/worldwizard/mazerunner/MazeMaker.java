@@ -272,78 +272,78 @@ public class MazeMaker {
 
     public static void pairStairs(final int type) {
         switch (type) {
-        case STAIRS_UP:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeStairsDown(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        MazeMaker.editorLocationZ + 1,
-                        MazeMaker.editorLocationW);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeStairsUp(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        MazeMaker.editorLocationZ - 1,
-                        MazeMaker.editorLocationW);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeStairsDown(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            MazeMaker.editorLocationZ + 1,
+                            MazeMaker.editorLocationW);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeStairsUp(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            MazeMaker.editorLocationZ - 1,
+                            MazeMaker.editorLocationW);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private static void pairStairs(final int type, final int z, final int w) {
         switch (type) {
-        case STAIRS_UP:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeStairsDown(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        z + 1, w);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeStairsUp(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        z - 1, w);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeStairsDown(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            z + 1, w);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeStairsUp(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            z - 1, w);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private static void unpairStairs(final int type, final int z, final int w) {
         switch (type) {
-        case STAIRS_UP:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeGround(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        z + 1, w);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                MazeMaker.app.getMaze().setCell(new MazeGround(),
-                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                        z - 1, w);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeGround(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            z + 1, w);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    MazeMaker.app.getMaze().setCell(new MazeGround(),
+                            MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                            z - 1, w);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -409,36 +409,36 @@ public class MazeMaker {
         MazeMaker.TELEPORTER_TYPE = type;
         int destX = 0, destY = 0;
         switch (type) {
-        case TELEPORTER_TYPE_GENERIC:
-        case TELEPORTER_TYPE_INVISIBLE_GENERIC:
-        case TELEPORTER_TYPE_ONESHOT:
-        case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
-        case TELEPORTER_TYPE_TWOWAY:
-            Messager.showMessage("Click to set teleporter destination");
-            break;
-        case TELEPORTER_TYPE_RANDOM:
-        case TELEPORTER_TYPE_RANDOM_INVISIBLE:
-        case TELEPORTER_TYPE_RANDOM_ONESHOT:
-        case TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            input1 = JOptionPane.showInputDialog(MazeMaker.outputFrame,
-                    "Random row range:", "Maze Maker",
-                    JOptionPane.OK_CANCEL_OPTION);
-            break;
-        default:
-            break;
-        }
-        if (input1 != null) {
-            switch (type) {
+            case TELEPORTER_TYPE_GENERIC:
+            case TELEPORTER_TYPE_INVISIBLE_GENERIC:
+            case TELEPORTER_TYPE_ONESHOT:
+            case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
+            case TELEPORTER_TYPE_TWOWAY:
+                Messager.showMessage("Click to set teleporter destination");
+                break;
             case TELEPORTER_TYPE_RANDOM:
             case TELEPORTER_TYPE_RANDOM_INVISIBLE:
             case TELEPORTER_TYPE_RANDOM_ONESHOT:
             case TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT:
-                input2 = JOptionPane.showInputDialog(MazeMaker.outputFrame,
-                        "Random column range:", "Maze Maker",
+                input1 = JOptionPane.showInputDialog(MazeMaker.outputFrame,
+                        "Random row range:", "Maze Maker",
                         JOptionPane.OK_CANCEL_OPTION);
                 break;
             default:
                 break;
+        }
+        if (input1 != null) {
+            switch (type) {
+                case TELEPORTER_TYPE_RANDOM:
+                case TELEPORTER_TYPE_RANDOM_INVISIBLE:
+                case TELEPORTER_TYPE_RANDOM_ONESHOT:
+                case TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                    input2 = JOptionPane.showInputDialog(MazeMaker.outputFrame,
+                            "Random column range:", "Maze Maker",
+                            JOptionPane.OK_CANCEL_OPTION);
+                    break;
+                default:
+                    break;
             }
             if (input2 != null) {
                 try {
@@ -449,41 +449,41 @@ public class MazeMaker {
                             "Row and column ranges must be integers.");
                 }
                 switch (type) {
-                case TELEPORTER_TYPE_RANDOM:
-                    return new MazeRandomTeleporter(destX, destY);
-                case TELEPORTER_TYPE_RANDOM_INVISIBLE:
-                    return new MazeRandomInvisibleTeleporter(destX, destY);
-                case TELEPORTER_TYPE_RANDOM_ONESHOT:
-                    return new MazeRandomOneShotTeleporter(destX, destY);
-                case TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT:
-                    return new MazeRandomInvisibleOneShotTeleporter(destX,
-                            destY);
-                default:
-                    break;
+                    case TELEPORTER_TYPE_RANDOM:
+                        return new MazeRandomTeleporter(destX, destY);
+                    case TELEPORTER_TYPE_RANDOM_INVISIBLE:
+                        return new MazeRandomInvisibleTeleporter(destX, destY);
+                    case TELEPORTER_TYPE_RANDOM_ONESHOT:
+                        return new MazeRandomOneShotTeleporter(destX, destY);
+                    case TELEPORTER_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                        return new MazeRandomInvisibleOneShotTeleporter(destX,
+                                destY);
+                    default:
+                        break;
                 }
             }
         } else {
             switch (type) {
-            case TELEPORTER_TYPE_GENERIC:
-            case TELEPORTER_TYPE_INVISIBLE_GENERIC:
-            case TELEPORTER_TYPE_ONESHOT:
-            case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
-            case TELEPORTER_TYPE_TWOWAY:
-                MazeMaker.horzScroll
-                        .removeAdjustmentListener(MazeMaker.mhandler);
-                MazeMaker.vertScroll
-                        .removeAdjustmentListener(MazeMaker.mhandler);
-                MazeMaker.secondaryPane.removeMouseListener(MazeMaker.mhandler);
-                MazeMaker.outputFrame.removeKeyListener(MazeMaker.mhandler);
-                MazeMaker.horzScroll.addAdjustmentListener(MazeMaker.thandler);
-                MazeMaker.vertScroll.addAdjustmentListener(MazeMaker.thandler);
-                MazeMaker.secondaryPane.addMouseListener(MazeMaker.thandler);
-                MazeMaker.outputFrame.addKeyListener(MazeMaker.thandler);
-                MazeMaker.editorCameFromZ = MazeMaker.editorLocationZ;
-                MazeMaker.editorCameFromW = MazeMaker.editorLocationW;
-                break;
-            default:
-                break;
+                case TELEPORTER_TYPE_GENERIC:
+                case TELEPORTER_TYPE_INVISIBLE_GENERIC:
+                case TELEPORTER_TYPE_ONESHOT:
+                case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
+                case TELEPORTER_TYPE_TWOWAY:
+                    MazeMaker.horzScroll
+                            .removeAdjustmentListener(MazeMaker.mhandler);
+                    MazeMaker.vertScroll
+                            .removeAdjustmentListener(MazeMaker.mhandler);
+                    MazeMaker.secondaryPane.removeMouseListener(MazeMaker.mhandler);
+                    MazeMaker.outputFrame.removeKeyListener(MazeMaker.mhandler);
+                    MazeMaker.horzScroll.addAdjustmentListener(MazeMaker.thandler);
+                    MazeMaker.vertScroll.addAdjustmentListener(MazeMaker.thandler);
+                    MazeMaker.secondaryPane.addMouseListener(MazeMaker.thandler);
+                    MazeMaker.outputFrame.addKeyListener(MazeMaker.thandler);
+                    MazeMaker.editorCameFromZ = MazeMaker.editorLocationZ;
+                    MazeMaker.editorCameFromW = MazeMaker.editorLocationW;
+                    break;
+                default:
+                    break;
             }
         }
         return null;
@@ -534,40 +534,40 @@ public class MazeMaker {
             return;
         }
         switch (MazeMaker.TELEPORTER_TYPE) {
-        case TELEPORTER_TYPE_GENERIC:
-            MazeMaker.app.getMaze().setCell(
-                    new MazeTeleporter(destX, destY, destZ, destW),
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
-            break;
-        case TELEPORTER_TYPE_INVISIBLE_GENERIC:
-            MazeMaker.app.getMaze().setCell(
-                    new MazeInvisibleTeleporter(destX, destY, destZ, destW),
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
-            break;
-        case TELEPORTER_TYPE_ONESHOT:
-            MazeMaker.app.getMaze().setCell(
-                    new MazeOneShotTeleporter(destX, destY, destZ, destW),
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
-            break;
-        case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
-            MazeMaker.app.getMaze().setCell(
-                    new MazeInvisibleOneShotTeleporter(destX, destY, destZ,
-                            destW),
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
-            break;
-        case TELEPORTER_TYPE_TWOWAY:
-            MazeMaker.app.getMaze().setCell(
-                    new MazeTwoWayTeleporter(destX, destY, destZ, destW),
-                    MazeMaker.editorLocationX, MazeMaker.editorLocationY,
-                    MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
-            MazeMaker.pairTwoWayTeleporter(destX, destY, destZ, destW);
-            break;
-        default:
-            break;
+            case TELEPORTER_TYPE_GENERIC:
+                MazeMaker.app.getMaze().setCell(
+                        new MazeTeleporter(destX, destY, destZ, destW),
+                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                        MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
+                break;
+            case TELEPORTER_TYPE_INVISIBLE_GENERIC:
+                MazeMaker.app.getMaze().setCell(
+                        new MazeInvisibleTeleporter(destX, destY, destZ, destW),
+                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                        MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
+                break;
+            case TELEPORTER_TYPE_ONESHOT:
+                MazeMaker.app.getMaze().setCell(
+                        new MazeOneShotTeleporter(destX, destY, destZ, destW),
+                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                        MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
+                break;
+            case TELEPORTER_TYPE_INVISIBLE_ONESHOT:
+                MazeMaker.app.getMaze().setCell(
+                        new MazeInvisibleOneShotTeleporter(destX, destY, destZ,
+                                destW),
+                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                        MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
+                break;
+            case TELEPORTER_TYPE_TWOWAY:
+                MazeMaker.app.getMaze().setCell(
+                        new MazeTwoWayTeleporter(destX, destY, destZ, destW),
+                        MazeMaker.editorLocationX, MazeMaker.editorLocationY,
+                        MazeMaker.editorCameFromZ, MazeMaker.editorCameFromW);
+                MazeMaker.pairTwoWayTeleporter(destX, destY, destZ, destW);
+                break;
+            default:
+                break;
         }
         MazeMaker.horzScroll.removeAdjustmentListener(MazeMaker.thandler);
         MazeMaker.vertScroll.removeAdjustmentListener(MazeMaker.thandler);

@@ -11,26 +11,26 @@ public class MajorRegenPotion extends GenericPotion {
 
     // Constructors
     public MajorRegenPotion() {
-	super(StatConstants.STAT_CURRENT_MP, true, MajorRegenPotion.MIN_REGEN, MajorRegenPotion.MAX_REGEN);
+        super(StatConstants.STAT_CURRENT_MP, true, MajorRegenPotion.MIN_REGEN, MajorRegenPotion.MAX_REGEN);
     }
 
     @Override
     public String getName() {
-	return "Major Regen Potion";
+        return "Major Regen Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Major Regen Potions";
+        return "Major Regen Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 12;
+        return (byte) 12;
     }
 
     @Override
     public String getDescription() {
-	return "Major Regen Potions regenerate your magic significantly when picked up.";
+        return "Major Regen Potions regenerate your magic significantly when picked up.";
     }
 }

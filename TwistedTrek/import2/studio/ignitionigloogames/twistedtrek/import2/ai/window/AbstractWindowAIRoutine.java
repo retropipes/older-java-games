@@ -18,10 +18,10 @@ public abstract class AbstractWindowAIRoutine {
     public abstract int getNextAction(AbstractCreature c);
 
     public void newRoundHook() {
-	// Do nothing
+        // Do nothing
     }
 
     public final Spell getSpellToCast() {
-	return this.spell;
+        return this.spell;
     }
 }

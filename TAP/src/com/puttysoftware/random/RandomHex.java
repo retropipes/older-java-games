@@ -61,8 +61,8 @@ public class RandomHex {
      * Next random N hex characters.
      *
      * @param N
-     *            the number of characters (will be N+1, if N is odd; if N < 2,
-     *            2 will be used instead)
+     *          the number of characters (will be N+1, if N is odd; if N < 2,
+     *          2 will be used instead)
      *
      * @return the hex string
      */

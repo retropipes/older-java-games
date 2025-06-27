@@ -16,34 +16,34 @@ public class VariableHealTrap extends AbstractTrap {
 
     // Constructors
     public VariableHealTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_VARIABLE_HEAL_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_VARIABLE_HEAL_TRAP);
     }
 
     @Override
     public String getName() {
-	return "Variable Heal Trap";
+        return "Variable Heal Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Variable Heal Traps";
+        return "Variable Heal Traps";
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	int maxHealing = PartyManager.getParty().getLeader().getMaximumHP() / 5;
-	if (maxHealing < VariableHealTrap.MIN_HEALING) {
-	    maxHealing = VariableHealTrap.MIN_HEALING;
-	}
-	final RandomRange healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING, maxHealing);
-	PartyManager.getParty().getLeader().heal(healingGiven.generate());
-	SoundManager.playSound(SoundConstants.SOUND_HEAL);
-	Import2.getApplication().getGameManager();
-	GameLogicManager.decay();
+        int maxHealing = PartyManager.getParty().getLeader().getMaximumHP() / 5;
+        if (maxHealing < VariableHealTrap.MIN_HEALING) {
+            maxHealing = VariableHealTrap.MIN_HEALING;
+        }
+        final RandomRange healingGiven = new RandomRange(VariableHealTrap.MIN_HEALING, maxHealing);
+        PartyManager.getParty().getLeader().heal(healingGiven.generate());
+        SoundManager.playSound(SoundConstants.SOUND_HEAL);
+        Import2.getApplication().getGameManager();
+        GameLogicManager.decay();
     }
 
     @Override
     public String getDescription() {
-	return "Variable Heal Traps heal you when stepped on, then disappear.";
+        return "Variable Heal Traps heal you when stepped on, then disappear.";
     }
 }

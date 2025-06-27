@@ -301,7 +301,7 @@ public class MapObjectList {
             } catch (final InstantiationException | IllegalAccessException
                     | IllegalArgumentException | InvocationTargetException
                     | NoSuchMethodException | SecurityException e) {
-                return null;           
+                return null;
             }
         }
     }

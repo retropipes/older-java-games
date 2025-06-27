@@ -11,26 +11,26 @@ public class MinorRandomPotion extends GenericPotion {
 
     // Constructors
     public MinorRandomPotion() {
-	super(StatConstants.STAT_CURRENT_MP, true, MinorRandomPotion.MIN_EFFECT, MinorRandomPotion.MAX_EFFECT);
+        super(StatConstants.STAT_CURRENT_MP, true, MinorRandomPotion.MIN_EFFECT, MinorRandomPotion.MAX_EFFECT);
     }
 
     @Override
     public String getName() {
-	return "Minor Random Potion";
+        return "Minor Random Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Minor Random Potions";
+        return "Minor Random Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 16;
+        return (byte) 16;
     }
 
     @Override
     public String getDescription() {
-	return "Minor Random Potions might regenerate your magic or drain your magic slightly when picked up.";
+        return "Minor Random Potions might regenerate your magic or drain your magic slightly when picked up.";
     }
 }

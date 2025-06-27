@@ -18,6 +18,6 @@ public class TypeConstants {
     public static final int TYPES_COUNT = 63;
 
     private TypeConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -34,14 +34,14 @@ public class IcyBox extends AbstractMovableObject {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_FIRE:
-            if (this.hasPreviousState()) {
-                return this.getPreviousState();
-            } else {
-                return new Box();
-            }
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_FIRE:
+                if (this.hasPreviousState()) {
+                    return this.getPreviousState();
+                } else {
+                    return new Box();
+                }
+            default:
+                return this;
         }
     }
 }

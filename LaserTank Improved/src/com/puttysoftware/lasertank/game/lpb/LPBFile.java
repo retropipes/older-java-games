@@ -18,23 +18,23 @@ class LPBFile {
     private static void decodeData(final byte d) {
         final GameManager gm = LaserTank.getApplication().getGameManager();
         switch (d) {
-        case 0x20:
-            gm.loadReplay(true, 0, 0);
-            break;
-        case 0x25:
-            gm.loadReplay(false, -1, 0);
-            break;
-        case 0x26:
-            gm.loadReplay(false, 0, -1);
-            break;
-        case 0x27:
-            gm.loadReplay(false, 1, 0);
-            break;
-        case 0x28:
-            gm.loadReplay(false, 0, 1);
-            break;
-        default:
-            break;
+            case 0x20:
+                gm.loadReplay(true, 0, 0);
+                break;
+            case 0x25:
+                gm.loadReplay(false, -1, 0);
+                break;
+            case 0x26:
+                gm.loadReplay(false, 0, -1);
+                break;
+            case 0x27:
+                gm.loadReplay(false, 1, 0);
+                break;
+            case 0x28:
+                gm.loadReplay(false, 0, 1);
+                break;
+            default:
+                break;
         }
     }
 

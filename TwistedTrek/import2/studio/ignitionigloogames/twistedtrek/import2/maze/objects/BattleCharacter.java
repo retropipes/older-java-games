@@ -7,6 +7,6 @@ import studio.ignitionigloogames.twistedtrek.import2.maze.abc.AbstractBattleChar
 public class BattleCharacter extends AbstractBattleCharacter {
     // Constructors
     public BattleCharacter(final AbstractCreature newTemplate) {
-	super(newTemplate);
+        super(newTemplate);
     }
 }

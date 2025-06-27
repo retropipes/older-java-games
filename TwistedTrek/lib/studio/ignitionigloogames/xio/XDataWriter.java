@@ -12,102 +12,102 @@ public class XDataWriter implements AutoCloseable {
 
     // Constructors
     public XDataWriter(final String filename, final String newDocTag) throws IOException {
-	this.bw = new BufferedWriter(new FileWriter(filename));
-	this.docTag = newDocTag;
-	this.writeXHeader();
-	this.writeOpeningDocTag();
+        this.bw = new BufferedWriter(new FileWriter(filename));
+        this.docTag = newDocTag;
+        this.writeXHeader();
+        this.writeOpeningDocTag();
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-	this.writeClosingDocTag();
-	this.bw.close();
+        this.writeClosingDocTag();
+        this.bw.close();
     }
 
     public void writeDouble(final double d) throws IOException {
-	this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">" + Double.toString(d) + "</" + XDataConstants.DOUBLE_TAG
-		+ ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.DOUBLE_TAG + ">" + Double.toString(d) + "</" + XDataConstants.DOUBLE_TAG
+                + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeInt(final int i) throws IOException {
-	this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i) + "</" + XDataConstants.INT_TAG + ">"
-		+ XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.INT_TAG + ">" + Integer.toString(i) + "</" + XDataConstants.INT_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
     public void writeLong(final long l) throws IOException {
-	this.bw.write("<" + XDataConstants.LONG_TAG + ">" + Long.toString(l) + "</" + XDataConstants.LONG_TAG + ">"
-		+ XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.LONG_TAG + ">" + Long.toString(l) + "</" + XDataConstants.LONG_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
     public void writeByte(final byte b) throws IOException {
-	this.bw.write("<" + XDataConstants.BYTE_TAG + ">" + Byte.toString(b) + "</" + XDataConstants.BYTE_TAG + ">"
-		+ XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.BYTE_TAG + ">" + Byte.toString(b) + "</" + XDataConstants.BYTE_TAG + ">"
+                + XDataWriter.END_OF_LINE);
     }
 
     public void writeBoolean(final boolean b) throws IOException {
-	this.bw.write("<" + XDataConstants.BOOLEAN_TAG + ">" + Boolean.toString(b) + "</" + XDataConstants.BOOLEAN_TAG
-		+ ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.BOOLEAN_TAG + ">" + Boolean.toString(b) + "</" + XDataConstants.BOOLEAN_TAG
+                + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeString(final String s) throws IOException {
-	this.bw.write("<" + XDataConstants.STRING_TAG + ">" + XDataWriter.replaceSpecialCharacters(s) + "</"
-		+ XDataConstants.STRING_TAG + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataConstants.STRING_TAG + ">" + XDataWriter.replaceSpecialCharacters(s) + "</"
+                + XDataConstants.STRING_TAG + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomDouble(final double d, final String tag) throws IOException {
-	this.bw.write("<" + tag + ">" + Double.toString(d) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + tag + ">" + Double.toString(d) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomInt(final int i, final String tag) throws IOException {
-	this.bw.write("<" + tag + ">" + Integer.toString(i) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + tag + ">" + Integer.toString(i) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomLong(final long l, final String tag) throws IOException {
-	this.bw.write("<" + tag + ">" + Long.toString(l) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + tag + ">" + Long.toString(l) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomByte(final byte b, final String tag) throws IOException {
-	this.bw.write("<" + tag + ">" + Byte.toString(b) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + tag + ">" + Byte.toString(b) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomBoolean(final boolean b, final String tag) throws IOException {
-	this.bw.write("<" + tag + ">" + Boolean.toString(b) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + tag + ">" + Boolean.toString(b) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeCustomString(final String s, final String tag) throws IOException {
-	this.bw.write(
-		"<" + tag + ">" + XDataWriter.replaceSpecialCharacters(s) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write(
+                "<" + tag + ">" + XDataWriter.replaceSpecialCharacters(s) + "</" + tag + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeOpeningGroup(final String groupName) throws IOException {
-	this.bw.write("<" + XDataWriter.replaceSpecialCharacters(groupName) + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + XDataWriter.replaceSpecialCharacters(groupName) + ">" + XDataWriter.END_OF_LINE);
     }
 
     public void writeClosingGroup(final String groupName) throws IOException {
-	this.bw.write("</" + XDataWriter.replaceSpecialCharacters(groupName) + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("</" + XDataWriter.replaceSpecialCharacters(groupName) + ">" + XDataWriter.END_OF_LINE);
     }
 
     private void writeXHeader() throws IOException {
-	this.bw.write(XDataConstants.X_HEADER + XDataWriter.END_OF_LINE);
+        this.bw.write(XDataConstants.X_HEADER + XDataWriter.END_OF_LINE);
     }
 
     private void writeOpeningDocTag() throws IOException {
-	this.bw.write("<" + this.docTag + ">" + XDataWriter.END_OF_LINE);
+        this.bw.write("<" + this.docTag + ">" + XDataWriter.END_OF_LINE);
     }
 
     private void writeClosingDocTag() throws IOException {
-	this.bw.write("</" + this.docTag + ">");
+        this.bw.write("</" + this.docTag + ">");
     }
 
     private static String replaceSpecialCharacters(final String s) {
-	String r = s;
-	r = r.replace("&", "&amp;");
-	r = r.replace("<", "&lt;");
-	r = r.replace(">", "&gt;");
-	r = r.replace("\"", "&quot;");
-	r = r.replace("\'", "&apos;");
-	r = r.replace("\r", "");
-	return r.replace("\n", "&#xA;");
+        String r = s;
+        r = r.replace("&", "&amp;");
+        r = r.replace("<", "&lt;");
+        r = r.replace(">", "&gt;");
+        r = r.replace("\"", "&quot;");
+        r = r.replace("\'", "&apos;");
+        r = r.replace("\r", "");
+        return r.replace("\n", "&#xA;");
     }
 }

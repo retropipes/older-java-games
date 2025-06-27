@@ -38,134 +38,134 @@ public final class InternalScriptRunner {
                     InternalScriptRunner.validateScriptEntry(se);
                     final InternalScriptActionCode code = se.getActionCode();
                     switch (code) {
-                    case MESSAGE:
-                        // Show the message
-                        final String msg = se.getFirstActionArg().getString();
-                        DungeonDiver3.getApplication().showMessage(msg);
-                        break;
-                    case SOUND:
-                        // Play the sound
-                        final int snd = se.getFirstActionArg().getInteger();
-                        SoundManager.playSound(snd);
-                        break;
-                    case SHOP:
-                        // Show the shop
-                        final int shopType = se.getFirstActionArg()
-                                .getInteger();
-                        final Shop shop = DungeonDiver3.getApplication()
-                                .getGenericShop(shopType);
-                        if (shop != null) {
-                            shop.showShop();
-                        } else {
-                            throw new IllegalArgumentException(
-                                    "Illegal Shop Type: " + shopType);
-                        }
-                        break;
-                    case MOVE:
-                        // Move
-                        final boolean moveType = se.getActionArg(0)
-                                .getBoolean();
-                        final boolean eventFlag = se.getActionArg(1)
-                                .getBoolean();
-                        int moveX = se.getActionArg(2).getInteger();
-                        int moveY = se.getActionArg(3).getInteger();
-                        int moveZ = se.getActionArg(4).getInteger();
-                        if (moveType == InternalScriptConstants.MOVE_ABSOLUTE) {
-                            // Check
-                            if (moveX < 0) {
-                                // Negative means keep as-is
-                                moveX = m.getPlayerLocationX();
-                            }
-                            if (moveY < 0) {
-                                // Negative means keep as-is
-                                moveY = m.getPlayerLocationY();
-                            }
-                            if (moveZ < 0) {
-                                // Negative means keep as-is
-                                moveZ = m.getPlayerLocationZ();
-                            }
-                        }
-                        if (moveType == InternalScriptConstants.MOVE_RELATIVE) {
-                            if (eventFlag) {
-                                gm.updatePositionRelative(moveX, moveY, moveZ);
+                        case MESSAGE:
+                            // Show the message
+                            final String msg = se.getFirstActionArg().getString();
+                            DungeonDiver3.getApplication().showMessage(msg);
+                            break;
+                        case SOUND:
+                            // Play the sound
+                            final int snd = se.getFirstActionArg().getInteger();
+                            SoundManager.playSound(snd);
+                            break;
+                        case SHOP:
+                            // Show the shop
+                            final int shopType = se.getFirstActionArg()
+                                    .getInteger();
+                            final Shop shop = DungeonDiver3.getApplication()
+                                    .getGenericShop(shopType);
+                            if (shop != null) {
+                                shop.showShop();
                             } else {
-                                gm.updatePositionRelativeNoEvents(moveX, moveY,
-                                        moveZ);
+                                throw new IllegalArgumentException(
+                                        "Illegal Shop Type: " + shopType);
                             }
-                        } else {
-                            if (eventFlag) {
-                                gm.updatePositionAbsolute(moveX, moveY, moveZ);
-                            } else {
-                                gm.updatePositionAbsoluteNoEvents(moveX, moveY,
-                                        moveZ);
-                            }
-                        }
-                        break;
-                    case DECAY:
-                        DungeonDiver3.getApplication().getGameManager().decay();
-                        break;
-                    case SWAP_PAIRS:
-                        final String swap1 = se.getActionArg(0).getString();
-                        final String swap2 = se.getActionArg(1).getString();
-                        final MapObject swapObj1 = DungeonDiver3
-                                .getApplication().getObjects()
-                                .getNewInstanceByName(swap1);
-                        final MapObject swapObj2 = DungeonDiver3
-                                .getApplication().getObjects()
-                                .getNewInstanceByName(swap2);
-                        DungeonDiver3.getApplication().getScenarioManager()
-                                .getMap()
-                                .findAllObjectPairsAndSwap(swapObj1, swapObj2);
-                        break;
-                    case REDRAW:
-                        DungeonDiver3.getApplication().getGameManager()
-                                .redrawMap();
-                        break;
-                    case ADD_TO_SCORE:
-                        final int points = se.getActionArg(0).getInteger();
-                        DungeonDiver3.getApplication().getGameManager()
-                                .addToScore(points);
-                        break;
-                    case RANDOM_CHANCE:
-                        // Random Chance
-                        final int threshold = se.getActionArg(0).getInteger();
-                        final RandomRange random = new RandomRange(0, 9999);
-                        final int chance = random.generate();
-                        if (chance > threshold) {
-                            return;
-                        }
-                        break;
-                    case BATTLE:
-                        // Hide the game
-                        DungeonDiver3.getApplication().getGameManager()
-                                .hideOutput();
-                        // Battle
-                        final Battle battle = new Battle();
-                        new Thread("Battle") {
-                            @Override
-                            public void run() {
-                                try {
-                                    DungeonDiver3.getApplication()
-                                            .getGameManager();
-                                    DungeonDiver3.getApplication().getBattle()
-                                            .doFixedBattle(Map
-                                                    .getTemporaryBattleCopy(),
-                                                    battle);
-                                } catch (final Exception e) {
-                                    // Something went wrong in the battle
-                                    DungeonDiver3.getErrorLogger().logError(e);
+                            break;
+                        case MOVE:
+                            // Move
+                            final boolean moveType = se.getActionArg(0)
+                                    .getBoolean();
+                            final boolean eventFlag = se.getActionArg(1)
+                                    .getBoolean();
+                            int moveX = se.getActionArg(2).getInteger();
+                            int moveY = se.getActionArg(3).getInteger();
+                            int moveZ = se.getActionArg(4).getInteger();
+                            if (moveType == InternalScriptConstants.MOVE_ABSOLUTE) {
+                                // Check
+                                if (moveX < 0) {
+                                    // Negative means keep as-is
+                                    moveX = m.getPlayerLocationX();
+                                }
+                                if (moveY < 0) {
+                                    // Negative means keep as-is
+                                    moveY = m.getPlayerLocationY();
+                                }
+                                if (moveZ < 0) {
+                                    // Negative means keep as-is
+                                    moveZ = m.getPlayerLocationZ();
                                 }
                             }
-                        }.start();
-                        break;
-                    case RELATIVE_LEVEL_CHANGE:
-                        final int rDestLevel = se.getActionArg(0).getInteger();
-                        DungeonDiver3.getApplication().getGameManager()
-                                .goToLevelRelative(rDestLevel);
-                        break;
-                    default:
-                        throw new IllegalArgumentException(
-                                "Illegal Action Code: " + code.toString());
+                            if (moveType == InternalScriptConstants.MOVE_RELATIVE) {
+                                if (eventFlag) {
+                                    gm.updatePositionRelative(moveX, moveY, moveZ);
+                                } else {
+                                    gm.updatePositionRelativeNoEvents(moveX, moveY,
+                                            moveZ);
+                                }
+                            } else {
+                                if (eventFlag) {
+                                    gm.updatePositionAbsolute(moveX, moveY, moveZ);
+                                } else {
+                                    gm.updatePositionAbsoluteNoEvents(moveX, moveY,
+                                            moveZ);
+                                }
+                            }
+                            break;
+                        case DECAY:
+                            DungeonDiver3.getApplication().getGameManager().decay();
+                            break;
+                        case SWAP_PAIRS:
+                            final String swap1 = se.getActionArg(0).getString();
+                            final String swap2 = se.getActionArg(1).getString();
+                            final MapObject swapObj1 = DungeonDiver3
+                                    .getApplication().getObjects()
+                                    .getNewInstanceByName(swap1);
+                            final MapObject swapObj2 = DungeonDiver3
+                                    .getApplication().getObjects()
+                                    .getNewInstanceByName(swap2);
+                            DungeonDiver3.getApplication().getScenarioManager()
+                                    .getMap()
+                                    .findAllObjectPairsAndSwap(swapObj1, swapObj2);
+                            break;
+                        case REDRAW:
+                            DungeonDiver3.getApplication().getGameManager()
+                                    .redrawMap();
+                            break;
+                        case ADD_TO_SCORE:
+                            final int points = se.getActionArg(0).getInteger();
+                            DungeonDiver3.getApplication().getGameManager()
+                                    .addToScore(points);
+                            break;
+                        case RANDOM_CHANCE:
+                            // Random Chance
+                            final int threshold = se.getActionArg(0).getInteger();
+                            final RandomRange random = new RandomRange(0, 9999);
+                            final int chance = random.generate();
+                            if (chance > threshold) {
+                                return;
+                            }
+                            break;
+                        case BATTLE:
+                            // Hide the game
+                            DungeonDiver3.getApplication().getGameManager()
+                                    .hideOutput();
+                            // Battle
+                            final Battle battle = new Battle();
+                            new Thread("Battle") {
+                                @Override
+                                public void run() {
+                                    try {
+                                        DungeonDiver3.getApplication()
+                                                .getGameManager();
+                                        DungeonDiver3.getApplication().getBattle()
+                                                .doFixedBattle(Map
+                                                        .getTemporaryBattleCopy(),
+                                                        battle);
+                                    } catch (final Exception e) {
+                                        // Something went wrong in the battle
+                                        DungeonDiver3.getErrorLogger().logError(e);
+                                    }
+                                }
+                            }.start();
+                            break;
+                        case RELATIVE_LEVEL_CHANGE:
+                            final int rDestLevel = se.getActionArg(0).getInteger();
+                            DungeonDiver3.getApplication().getGameManager()
+                                    .goToLevelRelative(rDestLevel);
+                            break;
+                        default:
+                            throw new IllegalArgumentException(
+                                    "Illegal Action Code: " + code.toString());
                     }
                 }
             }

@@ -322,54 +322,54 @@ class MapBattleGUI {
                 if (bg.eventHandlersOn) {
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
-                    case KeyEvent.VK_NUMPAD4:
-                    case KeyEvent.VK_LEFT:
-                    case KeyEvent.VK_A:
-                        bl.updatePosition(-1, 0);
-                        break;
-                    case KeyEvent.VK_NUMPAD2:
-                    case KeyEvent.VK_DOWN:
-                    case KeyEvent.VK_X:
-                        bl.updatePosition(0, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD6:
-                    case KeyEvent.VK_RIGHT:
-                    case KeyEvent.VK_D:
-                        bl.updatePosition(1, 0);
-                        break;
-                    case KeyEvent.VK_NUMPAD8:
-                    case KeyEvent.VK_UP:
-                    case KeyEvent.VK_W:
-                        bl.updatePosition(0, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD7:
-                    case KeyEvent.VK_Q:
-                        bl.updatePosition(-1, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD9:
-                    case KeyEvent.VK_E:
-                        bl.updatePosition(1, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD3:
-                    case KeyEvent.VK_C:
-                        bl.updatePosition(1, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD1:
-                    case KeyEvent.VK_Z:
-                        bl.updatePosition(-1, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD5:
-                    case KeyEvent.VK_S:
-                        // Confirm before attacking self
-                        final int res = CommonDialogs.showConfirmDialog(
-                                "Are you sure you want to attack yourself?",
-                                "Battle");
-                        if (res == JOptionPane.YES_OPTION) {
-                            bl.updatePosition(0, 0);
-                        }
-                        break;
-                    default:
-                        break;
+                        case KeyEvent.VK_NUMPAD4:
+                        case KeyEvent.VK_LEFT:
+                        case KeyEvent.VK_A:
+                            bl.updatePosition(-1, 0);
+                            break;
+                        case KeyEvent.VK_NUMPAD2:
+                        case KeyEvent.VK_DOWN:
+                        case KeyEvent.VK_X:
+                            bl.updatePosition(0, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD6:
+                        case KeyEvent.VK_RIGHT:
+                        case KeyEvent.VK_D:
+                            bl.updatePosition(1, 0);
+                            break;
+                        case KeyEvent.VK_NUMPAD8:
+                        case KeyEvent.VK_UP:
+                        case KeyEvent.VK_W:
+                            bl.updatePosition(0, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD7:
+                        case KeyEvent.VK_Q:
+                            bl.updatePosition(-1, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD9:
+                        case KeyEvent.VK_E:
+                            bl.updatePosition(1, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD3:
+                        case KeyEvent.VK_C:
+                            bl.updatePosition(1, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD1:
+                        case KeyEvent.VK_Z:
+                            bl.updatePosition(-1, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD5:
+                        case KeyEvent.VK_S:
+                            // Confirm before attacking self
+                            final int res = CommonDialogs.showConfirmDialog(
+                                    "Are you sure you want to attack yourself?",
+                                    "Battle");
+                            if (res == JOptionPane.YES_OPTION) {
+                                bl.updatePosition(0, 0);
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 }
             } catch (final Exception ex) {

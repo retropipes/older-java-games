@@ -160,19 +160,19 @@ public final class Application {
     public Shop getGenericShop(final ShopType shopType) {
         this.getGame().stopMovement();
         switch (shopType) {
-        case ARMOR:
-            return this.armor;
-        case HEALER:
-            return this.healer;
-        case REGENERATOR:
-            return this.regenerator;
-        case SPELLS:
-            return this.spells;
-        case WEAPONS:
-            return this.weapons;
-        default:
-            // Invalid shop type
-            return null;
+            case ARMOR:
+                return this.armor;
+            case HEALER:
+                return this.healer;
+            case REGENERATOR:
+                return this.regenerator;
+            case SPELLS:
+                return this.spells;
+            case WEAPONS:
+                return this.weapons;
+            default:
+                // Invalid shop type
+                return null;
         }
     }
 

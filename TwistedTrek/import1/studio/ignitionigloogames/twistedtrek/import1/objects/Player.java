@@ -8,32 +8,32 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericCharacter;
 public class Player extends GenericCharacter {
     // Constructors
     public Player() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Player";
+        return "Player";
     }
 
     @Override
     public String getPluralName() {
-	return "Players";
+        return "Players";
     }
 
     @Override
     public void editorPlaceHook() {
-	final MazeEditor me = Import1.getApplication().getEditor();
-	me.setPlayerLocation();
+        final MazeEditor me = Import1.getApplication().getEditor();
+        me.setPlayerLocation();
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 1;
+        return (byte) 1;
     }
 
     @Override
     public String getDescription() {
-	return "This is you - the Player.";
+        return "This is you - the Player.";
     }
 }

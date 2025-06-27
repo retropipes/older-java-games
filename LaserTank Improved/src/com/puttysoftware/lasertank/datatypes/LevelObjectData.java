@@ -107,16 +107,16 @@ public class LevelObjectData {
 
     public static boolean isReflective(final int objID, final Direction dir) {
         switch (dir) {
-        case NORTH:
-            return DataLoader.loadReflectNorth(objID);
-        case EAST:
-            return DataLoader.loadReflectEast(objID);
-        case SOUTH:
-            return DataLoader.loadReflectSouth(objID);
-        case WEST:
-            return DataLoader.loadReflectWest(objID);
-        default:
-            return false;
+            case NORTH:
+                return DataLoader.loadReflectNorth(objID);
+            case EAST:
+                return DataLoader.loadReflectEast(objID);
+            case SOUTH:
+                return DataLoader.loadReflectSouth(objID);
+            case WEST:
+                return DataLoader.loadReflectWest(objID);
+            default:
+                return false;
         }
     }
 }

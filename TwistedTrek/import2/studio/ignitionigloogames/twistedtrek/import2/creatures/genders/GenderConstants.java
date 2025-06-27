@@ -6,6 +6,6 @@ class GenderConstants {
     public static final String[] GENDER_NAMES = { "Male", "Female" };
 
     private GenderConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

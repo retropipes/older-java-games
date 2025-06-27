@@ -77,19 +77,19 @@ public class Channel {
         final int lAmpl = this.ampl * (255 - this.pann) >> 8;
         final int rAmpl = this.ampl * this.pann >> 8;
         switch (interpolation) {
-        case NEAREST:
-            this.sample.resampleNearest(this.sampleIdx, this.sampleFra,
-                    this.step, lAmpl, rAmpl, outBuf, offset, length);
-            break;
-        case LINEAR:
-        default:
-            this.sample.resampleLinear(this.sampleIdx, this.sampleFra,
-                    this.step, lAmpl, rAmpl, outBuf, offset, length);
-            break;
-        case SINC:
-            this.sample.resampleSinc(this.sampleIdx, this.sampleFra, this.step,
-                    lAmpl, rAmpl, outBuf, offset, length);
-            break;
+            case NEAREST:
+                this.sample.resampleNearest(this.sampleIdx, this.sampleFra,
+                        this.step, lAmpl, rAmpl, outBuf, offset, length);
+                break;
+            case LINEAR:
+            default:
+                this.sample.resampleLinear(this.sampleIdx, this.sampleFra,
+                        this.step, lAmpl, rAmpl, outBuf, offset, length);
+                break;
+            case SINC:
+                this.sample.resampleSinc(this.sampleIdx, this.sampleFra, this.step,
+                        lAmpl, rAmpl, outBuf, offset, length);
+                break;
         }
     }
 
@@ -112,213 +112,213 @@ public class Channel {
             this.trigger();
         }
         switch (this.noteEffect) {
-        case 0x01:
-        case 0x86: /* Porta Up. */
-            if (this.noteParam > 0) {
-                this.portaUpParam = this.noteParam;
-            }
-            this.portamentoUp(this.portaUpParam);
-            break;
-        case 0x02:
-        case 0x85: /* Porta Down. */
-            if (this.noteParam > 0) {
-                this.portaDownParam = this.noteParam;
-            }
-            this.portamentoDown(this.portaDownParam);
-            break;
-        case 0x03:
-        case 0x87: /* Tone Porta. */
-            if (this.noteParam > 0) {
-                this.tonePortaParam = this.noteParam;
-            }
-            break;
-        case 0x04:
-        case 0x88: /* Vibrato. */
-            if (this.noteParam >> 4 > 0) {
-                this.vibratoSpeed = this.noteParam >> 4;
-            }
-            if ((this.noteParam & 0xF) > 0) {
-                this.vibratoDepth = this.noteParam & 0xF;
-            }
-            this.vibrato(false);
-            break;
-        case 0x05:
-        case 0x8C: /* Tone Porta + Vol Slide. */
-            if (this.noteParam > 0) {
-                this.vslideParam = this.noteParam;
-            }
-            this.volumeSlide();
-            break;
-        case 0x06:
-        case 0x8B: /* Vibrato + Vol Slide. */
-            if (this.noteParam > 0) {
-                this.vslideParam = this.noteParam;
-            }
-            this.vibrato(false);
-            this.volumeSlide();
-            break;
-        case 0x07:
-        case 0x92: /* Tremolo. */
-            if (this.noteParam >> 4 > 0) {
-                this.tremoloSpeed = this.noteParam >> 4;
-            }
-            if ((this.noteParam & 0xF) > 0) {
-                this.tremoloDepth = this.noteParam & 0xF;
-            }
-            this.tremolo();
-            break;
-        case 0x08: /* Set Panning. */
-            this.panning = this.noteParam & 0xFF;
-            break;
-        case 0x09:
-        case 0x8F: /* Set Sample Offset. */
-            if (this.noteParam > 0) {
-                this.offsetParam = this.noteParam;
-            }
-            this.sampleIdx = this.offsetParam << 8;
-            this.sampleFra = 0;
-            break;
-        case 0x0A:
-        case 0x84: /* Vol Slide. */
-            if (this.noteParam > 0) {
-                this.vslideParam = this.noteParam;
-            }
-            this.volumeSlide();
-            break;
-        case 0x0C: /* Set Volume. */
-            this.volume = this.noteParam >= 64 ? 64 : this.noteParam & 0x3F;
-            break;
-        case 0x10:
-        case 0x96: /* Set Global Volume. */
-            this.globalVol.volume = this.noteParam >= 64 ? 64
-                    : this.noteParam & 0x3F;
-            break;
-        case 0x11: /* Global Volume Slide. */
-            if (this.noteParam > 0) {
-                this.globalVslideParam = this.noteParam;
-            }
-            break;
-        case 0x14: /* Key Off. */
-            this.keyOn = false;
-            break;
-        case 0x15: /* Set Envelope Tick. */
-            this.volEnvTick = this.panEnvTick = this.noteParam & 0xFF;
-            break;
-        case 0x19: /* Panning Slide. */
-            if (this.noteParam > 0) {
-                this.panningSlideParam = this.noteParam;
-            }
-            break;
-        case 0x1B:
-        case 0x91: /* Retrig + Vol Slide. */
-            if (this.noteParam >> 4 > 0) {
-                this.retrigVolume = this.noteParam >> 4;
-            }
-            if ((this.noteParam & 0xF) > 0) {
-                this.retrigTicks = this.noteParam & 0xF;
-            }
-            this.retrigVolSlide();
-            break;
-        case 0x1D:
-        case 0x89: /* Tremor. */
-            if (this.noteParam >> 4 > 0) {
-                this.tremorOnTicks = this.noteParam >> 4;
-            }
-            if ((this.noteParam & 0xF) > 0) {
-                this.tremorOffTicks = this.noteParam & 0xF;
-            }
-            this.tremor();
-            break;
-        case 0x21: /* Extra Fine Porta. */
-            if (this.noteParam > 0) {
-                this.extraFinePortaParam = this.noteParam;
-            }
-            switch (this.extraFinePortaParam & 0xF0) {
-            case 0x10:
-                this.portamentoUp(0xE0 | this.extraFinePortaParam & 0xF);
+            case 0x01:
+            case 0x86: /* Porta Up. */
+                if (this.noteParam > 0) {
+                    this.portaUpParam = this.noteParam;
+                }
+                this.portamentoUp(this.portaUpParam);
                 break;
-            case 0x20:
-                this.portamentoDown(0xE0 | this.extraFinePortaParam & 0xF);
+            case 0x02:
+            case 0x85: /* Porta Down. */
+                if (this.noteParam > 0) {
+                    this.portaDownParam = this.noteParam;
+                }
+                this.portamentoDown(this.portaDownParam);
+                break;
+            case 0x03:
+            case 0x87: /* Tone Porta. */
+                if (this.noteParam > 0) {
+                    this.tonePortaParam = this.noteParam;
+                }
+                break;
+            case 0x04:
+            case 0x88: /* Vibrato. */
+                if (this.noteParam >> 4 > 0) {
+                    this.vibratoSpeed = this.noteParam >> 4;
+                }
+                if ((this.noteParam & 0xF) > 0) {
+                    this.vibratoDepth = this.noteParam & 0xF;
+                }
+                this.vibrato(false);
+                break;
+            case 0x05:
+            case 0x8C: /* Tone Porta + Vol Slide. */
+                if (this.noteParam > 0) {
+                    this.vslideParam = this.noteParam;
+                }
+                this.volumeSlide();
+                break;
+            case 0x06:
+            case 0x8B: /* Vibrato + Vol Slide. */
+                if (this.noteParam > 0) {
+                    this.vslideParam = this.noteParam;
+                }
+                this.vibrato(false);
+                this.volumeSlide();
+                break;
+            case 0x07:
+            case 0x92: /* Tremolo. */
+                if (this.noteParam >> 4 > 0) {
+                    this.tremoloSpeed = this.noteParam >> 4;
+                }
+                if ((this.noteParam & 0xF) > 0) {
+                    this.tremoloDepth = this.noteParam & 0xF;
+                }
+                this.tremolo();
+                break;
+            case 0x08: /* Set Panning. */
+                this.panning = this.noteParam & 0xFF;
+                break;
+            case 0x09:
+            case 0x8F: /* Set Sample Offset. */
+                if (this.noteParam > 0) {
+                    this.offsetParam = this.noteParam;
+                }
+                this.sampleIdx = this.offsetParam << 8;
+                this.sampleFra = 0;
+                break;
+            case 0x0A:
+            case 0x84: /* Vol Slide. */
+                if (this.noteParam > 0) {
+                    this.vslideParam = this.noteParam;
+                }
+                this.volumeSlide();
+                break;
+            case 0x0C: /* Set Volume. */
+                this.volume = this.noteParam >= 64 ? 64 : this.noteParam & 0x3F;
+                break;
+            case 0x10:
+            case 0x96: /* Set Global Volume. */
+                this.globalVol.volume = this.noteParam >= 64 ? 64
+                        : this.noteParam & 0x3F;
+                break;
+            case 0x11: /* Global Volume Slide. */
+                if (this.noteParam > 0) {
+                    this.globalVslideParam = this.noteParam;
+                }
+                break;
+            case 0x14: /* Key Off. */
+                this.keyOn = false;
+                break;
+            case 0x15: /* Set Envelope Tick. */
+                this.volEnvTick = this.panEnvTick = this.noteParam & 0xFF;
+                break;
+            case 0x19: /* Panning Slide. */
+                if (this.noteParam > 0) {
+                    this.panningSlideParam = this.noteParam;
+                }
+                break;
+            case 0x1B:
+            case 0x91: /* Retrig + Vol Slide. */
+                if (this.noteParam >> 4 > 0) {
+                    this.retrigVolume = this.noteParam >> 4;
+                }
+                if ((this.noteParam & 0xF) > 0) {
+                    this.retrigTicks = this.noteParam & 0xF;
+                }
+                this.retrigVolSlide();
+                break;
+            case 0x1D:
+            case 0x89: /* Tremor. */
+                if (this.noteParam >> 4 > 0) {
+                    this.tremorOnTicks = this.noteParam >> 4;
+                }
+                if ((this.noteParam & 0xF) > 0) {
+                    this.tremorOffTicks = this.noteParam & 0xF;
+                }
+                this.tremor();
+                break;
+            case 0x21: /* Extra Fine Porta. */
+                if (this.noteParam > 0) {
+                    this.extraFinePortaParam = this.noteParam;
+                }
+                switch (this.extraFinePortaParam & 0xF0) {
+                    case 0x10:
+                        this.portamentoUp(0xE0 | this.extraFinePortaParam & 0xF);
+                        break;
+                    case 0x20:
+                        this.portamentoDown(0xE0 | this.extraFinePortaParam & 0xF);
+                        break;
+                    default:
+                        // Do nothing
+                        break;
+                }
+                break;
+            case 0x71: /* Fine Porta Up. */
+                if (this.noteParam > 0) {
+                    this.finePortaUpParam = this.noteParam;
+                }
+                this.portamentoUp(0xF0 | this.finePortaUpParam & 0xF);
+                break;
+            case 0x72: /* Fine Porta Down. */
+                if (this.noteParam > 0) {
+                    this.finePortaDownParam = this.noteParam;
+                }
+                this.portamentoDown(0xF0 | this.finePortaDownParam & 0xF);
+                break;
+            case 0x74:
+            case 0xF3: /* Set Vibrato Waveform. */
+                if (this.noteParam < 8) {
+                    this.vibratoType = this.noteParam;
+                }
+                break;
+            case 0x77:
+            case 0xF4: /* Set Tremolo Waveform. */
+                if (this.noteParam < 8) {
+                    this.tremoloType = this.noteParam;
+                }
+                break;
+            case 0x7A: /* Fine Vol Slide Up. */
+                if (this.noteParam > 0) {
+                    this.fineVslideUpParam = this.noteParam;
+                }
+                this.volume += this.fineVslideUpParam;
+                if (this.volume > 64) {
+                    this.volume = 64;
+                }
+                break;
+            case 0x7B: /* Fine Vol Slide Down. */
+                if (this.noteParam > 0) {
+                    this.fineVslideDownParam = this.noteParam;
+                }
+                this.volume -= this.fineVslideDownParam;
+                if (this.volume < 0) {
+                    this.volume = 0;
+                }
+                break;
+            case 0x7C:
+            case 0xFC: /* Note Cut. */
+                if (this.noteParam <= 0) {
+                    this.volume = 0;
+                }
+                break;
+            case 0x7D:
+            case 0xFD: /* Note Delay. */
+                if (this.noteParam <= 0) {
+                    this.trigger();
+                }
+                break;
+            case 0x8A: /* Arpeggio. */
+                if (this.noteParam > 0) {
+                    this.arpeggioParam = this.noteParam;
+                }
+                break;
+            case 0x95: /* Fine Vibrato. */
+                if (this.noteParam >> 4 > 0) {
+                    this.vibratoSpeed = this.noteParam >> 4;
+                }
+                if ((this.noteParam & 0xF) > 0) {
+                    this.vibratoDepth = this.noteParam & 0xF;
+                }
+                this.vibrato(true);
+                break;
+            case 0xF8: /* Set Panning. */
+                this.panning = this.noteParam * 17;
                 break;
             default:
                 // Do nothing
                 break;
-            }
-            break;
-        case 0x71: /* Fine Porta Up. */
-            if (this.noteParam > 0) {
-                this.finePortaUpParam = this.noteParam;
-            }
-            this.portamentoUp(0xF0 | this.finePortaUpParam & 0xF);
-            break;
-        case 0x72: /* Fine Porta Down. */
-            if (this.noteParam > 0) {
-                this.finePortaDownParam = this.noteParam;
-            }
-            this.portamentoDown(0xF0 | this.finePortaDownParam & 0xF);
-            break;
-        case 0x74:
-        case 0xF3: /* Set Vibrato Waveform. */
-            if (this.noteParam < 8) {
-                this.vibratoType = this.noteParam;
-            }
-            break;
-        case 0x77:
-        case 0xF4: /* Set Tremolo Waveform. */
-            if (this.noteParam < 8) {
-                this.tremoloType = this.noteParam;
-            }
-            break;
-        case 0x7A: /* Fine Vol Slide Up. */
-            if (this.noteParam > 0) {
-                this.fineVslideUpParam = this.noteParam;
-            }
-            this.volume += this.fineVslideUpParam;
-            if (this.volume > 64) {
-                this.volume = 64;
-            }
-            break;
-        case 0x7B: /* Fine Vol Slide Down. */
-            if (this.noteParam > 0) {
-                this.fineVslideDownParam = this.noteParam;
-            }
-            this.volume -= this.fineVslideDownParam;
-            if (this.volume < 0) {
-                this.volume = 0;
-            }
-            break;
-        case 0x7C:
-        case 0xFC: /* Note Cut. */
-            if (this.noteParam <= 0) {
-                this.volume = 0;
-            }
-            break;
-        case 0x7D:
-        case 0xFD: /* Note Delay. */
-            if (this.noteParam <= 0) {
-                this.trigger();
-            }
-            break;
-        case 0x8A: /* Arpeggio. */
-            if (this.noteParam > 0) {
-                this.arpeggioParam = this.noteParam;
-            }
-            break;
-        case 0x95: /* Fine Vibrato. */
-            if (this.noteParam >> 4 > 0) {
-                this.vibratoSpeed = this.noteParam >> 4;
-            }
-            if ((this.noteParam & 0xF) > 0) {
-                this.vibratoDepth = this.noteParam & 0xF;
-            }
-            this.vibrato(true);
-            break;
-        case 0xF8: /* Set Panning. */
-            this.panning = this.noteParam * 17;
-            break;
-        default:
-            // Do nothing
-            break;
         }
         this.autoVibrato();
         this.calculateFrequency();
@@ -332,147 +332,147 @@ public class Channel {
         this.retrigCount++;
         if (!(this.noteEffect == 0x7D && this.fxCount <= this.noteParam)) {
             switch (this.noteVol & 0xF0) {
-            case 0x60: /* Vol Slide Down. */
-                this.volume -= this.noteVol & 0xF;
-                if (this.volume < 0) {
-                    this.volume = 0;
-                }
+                case 0x60: /* Vol Slide Down. */
+                    this.volume -= this.noteVol & 0xF;
+                    if (this.volume < 0) {
+                        this.volume = 0;
+                    }
+                    break;
+                case 0x70: /* Vol Slide Up. */
+                    this.volume += this.noteVol & 0xF;
+                    if (this.volume > 64) {
+                        this.volume = 64;
+                    }
+                    break;
+                case 0xB0: /* Vibrato. */
+                    this.vibratoPhase += this.vibratoSpeed;
+                    this.vibrato(false);
+                    break;
+                case 0xD0: /* Pan Slide Left. */
+                    this.panning -= this.noteVol & 0xF;
+                    if (this.panning < 0) {
+                        this.panning = 0;
+                    }
+                    break;
+                case 0xE0: /* Pan Slide Right. */
+                    this.panning += this.noteVol & 0xF;
+                    if (this.panning > 255) {
+                        this.panning = 255;
+                    }
+                    break;
+                case 0xF0: /* Tone Porta. */
+                    this.tonePortamento();
+                    break;
+                default:
+                    // Do nothing
+                    break;
+            }
+        }
+        switch (this.noteEffect) {
+            case 0x01:
+            case 0x86: /* Porta Up. */
+                this.portamentoUp(this.portaUpParam);
                 break;
-            case 0x70: /* Vol Slide Up. */
-                this.volume += this.noteVol & 0xF;
-                if (this.volume > 64) {
-                    this.volume = 64;
-                }
+            case 0x02:
+            case 0x85: /* Porta Down. */
+                this.portamentoDown(this.portaDownParam);
                 break;
-            case 0xB0: /* Vibrato. */
+            case 0x03:
+            case 0x87: /* Tone Porta. */
+                this.tonePortamento();
+                break;
+            case 0x04:
+            case 0x88: /* Vibrato. */
                 this.vibratoPhase += this.vibratoSpeed;
                 this.vibrato(false);
                 break;
-            case 0xD0: /* Pan Slide Left. */
-                this.panning -= this.noteVol & 0xF;
+            case 0x05:
+            case 0x8C: /* Tone Porta + Vol Slide. */
+                this.tonePortamento();
+                this.volumeSlide();
+                break;
+            case 0x06:
+            case 0x8B: /* Vibrato + Vol Slide. */
+                this.vibratoPhase += this.vibratoSpeed;
+                this.vibrato(false);
+                this.volumeSlide();
+                break;
+            case 0x07:
+            case 0x92: /* Tremolo. */
+                this.tremoloPhase += this.tremoloSpeed;
+                this.tremolo();
+                break;
+            case 0x0A:
+            case 0x84: /* Vol Slide. */
+                this.volumeSlide();
+                break;
+            case 0x11: /* Global Volume Slide. */
+                this.globalVol.volume += (this.globalVslideParam >> 4)
+                        - (this.globalVslideParam & 0xF);
+                if (this.globalVol.volume < 0) {
+                    this.globalVol.volume = 0;
+                }
+                if (this.globalVol.volume > 64) {
+                    this.globalVol.volume = 64;
+                }
+                break;
+            case 0x19: /* Panning Slide. */
+                this.panning += (this.panningSlideParam >> 4)
+                        - (this.panningSlideParam & 0xF);
                 if (this.panning < 0) {
                     this.panning = 0;
                 }
-                break;
-            case 0xE0: /* Pan Slide Right. */
-                this.panning += this.noteVol & 0xF;
                 if (this.panning > 255) {
                     this.panning = 255;
                 }
                 break;
-            case 0xF0: /* Tone Porta. */
-                this.tonePortamento();
+            case 0x1B:
+            case 0x91: /* Retrig + Vol Slide. */
+                this.retrigVolSlide();
+                break;
+            case 0x1D:
+            case 0x89: /* Tremor. */
+                this.tremor();
+                break;
+            case 0x79: /* Retrig. */
+                if (this.fxCount >= this.noteParam) {
+                    this.fxCount = 0;
+                    this.sampleIdx = this.sampleFra = 0;
+                }
+                break;
+            case 0x7C:
+            case 0xFC: /* Note Cut. */
+                if (this.noteParam == this.fxCount) {
+                    this.volume = 0;
+                }
+                break;
+            case 0x7D:
+            case 0xFD: /* Note Delay. */
+                if (this.noteParam == this.fxCount) {
+                    this.trigger();
+                }
+                break;
+            case 0x8A: /* Arpeggio. */
+                if (this.fxCount > 2) {
+                    this.fxCount = 0;
+                }
+                if (this.fxCount == 0) {
+                    this.arpeggioAdd = 0;
+                }
+                if (this.fxCount == 1) {
+                    this.arpeggioAdd = this.arpeggioParam >> 4;
+                }
+                if (this.fxCount == 2) {
+                    this.arpeggioAdd = this.arpeggioParam & 0xF;
+                }
+                break;
+            case 0x95: /* Fine Vibrato. */
+                this.vibratoPhase += this.vibratoSpeed;
+                this.vibrato(true);
                 break;
             default:
                 // Do nothing
                 break;
-            }
-        }
-        switch (this.noteEffect) {
-        case 0x01:
-        case 0x86: /* Porta Up. */
-            this.portamentoUp(this.portaUpParam);
-            break;
-        case 0x02:
-        case 0x85: /* Porta Down. */
-            this.portamentoDown(this.portaDownParam);
-            break;
-        case 0x03:
-        case 0x87: /* Tone Porta. */
-            this.tonePortamento();
-            break;
-        case 0x04:
-        case 0x88: /* Vibrato. */
-            this.vibratoPhase += this.vibratoSpeed;
-            this.vibrato(false);
-            break;
-        case 0x05:
-        case 0x8C: /* Tone Porta + Vol Slide. */
-            this.tonePortamento();
-            this.volumeSlide();
-            break;
-        case 0x06:
-        case 0x8B: /* Vibrato + Vol Slide. */
-            this.vibratoPhase += this.vibratoSpeed;
-            this.vibrato(false);
-            this.volumeSlide();
-            break;
-        case 0x07:
-        case 0x92: /* Tremolo. */
-            this.tremoloPhase += this.tremoloSpeed;
-            this.tremolo();
-            break;
-        case 0x0A:
-        case 0x84: /* Vol Slide. */
-            this.volumeSlide();
-            break;
-        case 0x11: /* Global Volume Slide. */
-            this.globalVol.volume += (this.globalVslideParam >> 4)
-                    - (this.globalVslideParam & 0xF);
-            if (this.globalVol.volume < 0) {
-                this.globalVol.volume = 0;
-            }
-            if (this.globalVol.volume > 64) {
-                this.globalVol.volume = 64;
-            }
-            break;
-        case 0x19: /* Panning Slide. */
-            this.panning += (this.panningSlideParam >> 4)
-                    - (this.panningSlideParam & 0xF);
-            if (this.panning < 0) {
-                this.panning = 0;
-            }
-            if (this.panning > 255) {
-                this.panning = 255;
-            }
-            break;
-        case 0x1B:
-        case 0x91: /* Retrig + Vol Slide. */
-            this.retrigVolSlide();
-            break;
-        case 0x1D:
-        case 0x89: /* Tremor. */
-            this.tremor();
-            break;
-        case 0x79: /* Retrig. */
-            if (this.fxCount >= this.noteParam) {
-                this.fxCount = 0;
-                this.sampleIdx = this.sampleFra = 0;
-            }
-            break;
-        case 0x7C:
-        case 0xFC: /* Note Cut. */
-            if (this.noteParam == this.fxCount) {
-                this.volume = 0;
-            }
-            break;
-        case 0x7D:
-        case 0xFD: /* Note Delay. */
-            if (this.noteParam == this.fxCount) {
-                this.trigger();
-            }
-            break;
-        case 0x8A: /* Arpeggio. */
-            if (this.fxCount > 2) {
-                this.fxCount = 0;
-            }
-            if (this.fxCount == 0) {
-                this.arpeggioAdd = 0;
-            }
-            if (this.fxCount == 1) {
-                this.arpeggioAdd = this.arpeggioParam >> 4;
-            }
-            if (this.fxCount == 2) {
-                this.arpeggioAdd = this.arpeggioParam & 0xF;
-            }
-            break;
-        case 0x95: /* Fine Vibrato. */
-            this.vibratoPhase += this.vibratoSpeed;
-            this.vibrato(true);
-            break;
-        default:
-            // Do nothing
-            break;
         }
         this.autoVibrato();
         this.calculateFrequency();
@@ -536,21 +536,21 @@ public class Channel {
 
     private void portamentoUp(final int param) {
         switch (param & 0xF0) {
-        case 0xE0: /* Extra-fine porta. */
-            if (this.fxCount == 0) {
-                this.period -= param & 0xF;
-            }
-            break;
-        case 0xF0: /* Fine porta. */
-            if (this.fxCount == 0) {
-                this.period -= (param & 0xF) << 2;
-            }
-            break;
-        default:/* Normal porta. */
-            if (this.fxCount > 0) {
-                this.period -= param << 2;
-            }
-            break;
+            case 0xE0: /* Extra-fine porta. */
+                if (this.fxCount == 0) {
+                    this.period -= param & 0xF;
+                }
+                break;
+            case 0xF0: /* Fine porta. */
+                if (this.fxCount == 0) {
+                    this.period -= (param & 0xF) << 2;
+                }
+                break;
+            default:/* Normal porta. */
+                if (this.fxCount > 0) {
+                    this.period -= param << 2;
+                }
+                break;
         }
         if (this.period < 0) {
             this.period = 0;
@@ -560,21 +560,21 @@ public class Channel {
     private void portamentoDown(final int param) {
         if (this.period > 0) {
             switch (param & 0xF0) {
-            case 0xE0: /* Extra-fine porta. */
-                if (this.fxCount == 0) {
-                    this.period += param & 0xF;
-                }
-                break;
-            case 0xF0: /* Fine porta. */
-                if (this.fxCount == 0) {
-                    this.period += (param & 0xF) << 2;
-                }
-                break;
-            default:/* Normal porta. */
-                if (this.fxCount > 0) {
-                    this.period += param << 2;
-                }
-                break;
+                case 0xE0: /* Extra-fine porta. */
+                    if (this.fxCount == 0) {
+                        this.period += param & 0xF;
+                    }
+                    break;
+                case 0xF0: /* Fine porta. */
+                    if (this.fxCount == 0) {
+                        this.period += (param & 0xF) << 2;
+                    }
+                    break;
+                default:/* Normal porta. */
+                    if (this.fxCount > 0) {
+                        this.period += param << 2;
+                    }
+                    break;
             }
             if (this.period > 65535) {
                 this.period = 65535;
@@ -611,28 +611,28 @@ public class Channel {
     private int waveform(final int phase, final int type) {
         int amplitude = 0;
         switch (type) {
-        default: /* Sine. */
-            amplitude = Channel.sineTable[phase & 0x1F];
-            if ((phase & 0x20) > 0) {
-                amplitude = -amplitude;
-            }
-            break;
-        case 6: /* Saw Up. */
-            amplitude = ((phase + 0x20 & 0x3F) << 3) - 255;
-            break;
-        case 1:
-        case 7: /* Saw Down. */
-            amplitude = 255 - ((phase + 0x20 & 0x3F) << 3);
-            break;
-        case 2:
-        case 5: /* Square. */
-            amplitude = (phase & 0x20) > 0 ? 255 : -255;
-            break;
-        case 3:
-        case 8: /* Random. */
-            amplitude = this.randomSeed - 255;
-            this.randomSeed = this.randomSeed * 65 + 17 & 0x1FF;
-            break;
+            default: /* Sine. */
+                amplitude = Channel.sineTable[phase & 0x1F];
+                if ((phase & 0x20) > 0) {
+                    amplitude = -amplitude;
+                }
+                break;
+            case 6: /* Saw Up. */
+                amplitude = ((phase + 0x20 & 0x3F) << 3) - 255;
+                break;
+            case 1:
+            case 7: /* Saw Down. */
+                amplitude = 255 - ((phase + 0x20 & 0x3F) << 3);
+                break;
+            case 2:
+            case 5: /* Square. */
+                amplitude = (phase & 0x20) > 0 ? 255 : -255;
+                break;
+            case 3:
+            case 8: /* Random. */
+                amplitude = this.randomSeed - 255;
+                this.randomSeed = this.randomSeed * 65 + 17 & 0x1FF;
+                break;
         }
         return amplitude;
     }
@@ -650,53 +650,53 @@ public class Channel {
         if (this.retrigCount >= this.retrigTicks) {
             this.retrigCount = this.sampleIdx = this.sampleFra = 0;
             switch (this.retrigVolume) {
-            case 0x1:
-                this.volume -= 1;
-                break;
-            case 0x2:
-                this.volume -= 2;
-                break;
-            case 0x3:
-                this.volume -= 4;
-                break;
-            case 0x4:
-                this.volume -= 8;
-                break;
-            case 0x5:
-                this.volume -= 16;
-                break;
-            case 0x6:
-                this.volume -= this.volume / 3;
-                break;
-            case 0x7:
-                this.volume >>= 1;
-                break;
-            case 0x8: /* ? */
-                break;
-            case 0x9:
-                this.volume += 1;
-                break;
-            case 0xA:
-                this.volume += 2;
-                break;
-            case 0xB:
-                this.volume += 4;
-                break;
-            case 0xC:
-                this.volume += 8;
-                break;
-            case 0xD:
-                this.volume += 16;
-                break;
-            case 0xE:
-                this.volume += this.volume >> 1;
-                break;
-            case 0xF:
-                this.volume <<= 1;
-                break;
-            default:
-                // Do nothing
-                break;
+                case 0x1:
+                    this.volume -= 1;
+                    break;
+                case 0x2:
+                    this.volume -= 2;
+                    break;
+                case 0x3:
+                    this.volume -= 4;
+                    break;
+                case 0x4:
+                    this.volume -= 8;
+                    break;
+                case 0x5:
+                    this.volume -= 16;
+                    break;
+                case 0x6:
+                    this.volume -= this.volume / 3;
+                    break;
+                case 0x7:
+                    this.volume >>= 1;
+                    break;
+                case 0x8: /* ? */
+                    break;
+                case 0x9:
+                    this.volume += 1;
+                    break;
+                case 0xA:
+                    this.volume += 2;
+                    break;
+                case 0xB:
+                    this.volume += 4;
+                    break;
+                case 0xC:
+                    this.volume += 8;
+                    break;
+                case 0xD:
+                    this.volume += 16;
+                    break;
+                case 0xE:
+                    this.volume += this.volume >> 1;
+                    break;
+                case 0xF:
+                    this.volume <<= 1;
+                    break;
+                default:
+                    // Do nothing
+                    break;
             }
             if (this.volume < 0) {
                 this.volume = 0;
@@ -789,40 +789,40 @@ public class Channel {
             this.volume = this.noteVol < 0x50 ? this.noteVol - 0x10 : 64;
         }
         switch (this.noteVol & 0xF0) {
-        case 0x80: /* Fine Vol Down. */
-            this.volume -= this.noteVol & 0xF;
-            if (this.volume < 0) {
-                this.volume = 0;
-            }
-            break;
-        case 0x90: /* Fine Vol Up. */
-            this.volume += this.noteVol & 0xF;
-            if (this.volume > 64) {
-                this.volume = 64;
-            }
-            break;
-        case 0xA0: /* Set Vibrato Speed. */
-            if ((this.noteVol & 0xF) > 0) {
-                this.vibratoSpeed = this.noteVol & 0xF;
-            }
-            break;
-        case 0xB0: /* Vibrato. */
-            if ((this.noteVol & 0xF) > 0) {
-                this.vibratoDepth = this.noteVol & 0xF;
-            }
-            this.vibrato(false);
-            break;
-        case 0xC0: /* Set Panning. */
-            this.panning = (this.noteVol & 0xF) * 17;
-            break;
-        case 0xF0: /* Tone Porta. */
-            if ((this.noteVol & 0xF) > 0) {
-                this.tonePortaParam = this.noteVol & 0xF;
-            }
-            break;
-        default:
-            // Do nothing
-            break;
+            case 0x80: /* Fine Vol Down. */
+                this.volume -= this.noteVol & 0xF;
+                if (this.volume < 0) {
+                    this.volume = 0;
+                }
+                break;
+            case 0x90: /* Fine Vol Up. */
+                this.volume += this.noteVol & 0xF;
+                if (this.volume > 64) {
+                    this.volume = 64;
+                }
+                break;
+            case 0xA0: /* Set Vibrato Speed. */
+                if ((this.noteVol & 0xF) > 0) {
+                    this.vibratoSpeed = this.noteVol & 0xF;
+                }
+                break;
+            case 0xB0: /* Vibrato. */
+                if ((this.noteVol & 0xF) > 0) {
+                    this.vibratoDepth = this.noteVol & 0xF;
+                }
+                this.vibrato(false);
+                break;
+            case 0xC0: /* Set Panning. */
+                this.panning = (this.noteVol & 0xF) * 17;
+                break;
+            case 0xF0: /* Tone Porta. */
+                if ((this.noteVol & 0xF) > 0) {
+                    this.tonePortaParam = this.noteVol & 0xF;
+                }
+                break;
+            default:
+                // Do nothing
+                break;
         }
         if (this.noteKey > 0) {
             if (this.noteKey > 96) {

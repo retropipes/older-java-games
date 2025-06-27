@@ -18,10 +18,10 @@ public class MapNote {
     public MapNote() {
         this.contents = "Empty Note";
     }
-    
+
     // Copy constructor
     public MapNote(final MapNote other) {
-    	this.contents = other.contents;
+        this.contents = other.contents;
     }
 
     // Methods

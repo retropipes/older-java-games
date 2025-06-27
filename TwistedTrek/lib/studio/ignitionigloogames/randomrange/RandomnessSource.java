@@ -8,26 +8,26 @@ class RandomnessSource {
 
     // Constructor
     private RandomnessSource() {
-	// Do nothing
+        // Do nothing
     }
 
     // Methods
     private static Random getSource() {
-	if (RandomnessSource.SOURCE == null) {
-	    RandomnessSource.SOURCE = new Random();
-	}
-	return RandomnessSource.SOURCE;
+        if (RandomnessSource.SOURCE == null) {
+            RandomnessSource.SOURCE = new Random();
+        }
+        return RandomnessSource.SOURCE;
     }
 
     static int nextInt() {
-	return RandomnessSource.getSource().nextInt();
+        return RandomnessSource.getSource().nextInt();
     }
 
     static long nextLong() {
-	return RandomnessSource.getSource().nextLong();
+        return RandomnessSource.getSource().nextLong();
     }
 
     static double nextDouble() {
-	return RandomnessSource.getSource().nextDouble();
+        return RandomnessSource.getSource().nextDouble();
     }
 }

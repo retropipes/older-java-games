@@ -6,27 +6,27 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericSingleKey;
 public class RedKey extends GenericSingleKey {
     // Constructors
     public RedKey() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Red Key";
+        return "Red Key";
     }
 
     @Override
     public String getPluralName() {
-	return "Red Keys";
+        return "Red Keys";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 8;
+        return (byte) 8;
     }
 
     @Override
     public String getDescription() {
-	return "Red Keys will unlock Red Locks, and can only be used once.";
+        return "Red Keys will unlock Red Locks, and can only be used once.";
     }
 }

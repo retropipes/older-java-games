@@ -16,7 +16,7 @@ public final class ErrorLogger {
      * Instantiates a new error logger.
      *
      * @param programName
-     *            the program name
+     *                    the program name
      */
     // Constructor
     public ErrorLogger(final String programName) {
@@ -27,7 +27,7 @@ public final class ErrorLogger {
      * Log an error and terminate execution.
      *
      * @param e
-     *            the exception to log
+     *          the exception to log
      */
     // Methods
     public void logError(final Throwable e) {
@@ -41,7 +41,7 @@ public final class ErrorLogger {
      * Log a warning.
      *
      * @param e
-     *            the exception to log
+     *          the exception to log
      */
     public void logWarning(final Throwable e) {
         final WarningWriter ww = new WarningWriter(e, this.name,

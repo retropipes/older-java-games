@@ -10,16 +10,16 @@ final class CacheEntry {
 
     // Constructor
     CacheEntry(final BufferedImageIcon newImage, final String newName) {
-	this.image = newImage;
-	this.name = newName;
+        this.image = newImage;
+        this.name = newName;
     }
 
     // Methods
     BufferedImageIcon getImage() {
-	return this.image;
+        return this.image;
     }
 
     String getName() {
-	return this.name;
+        return this.name;
     }
 }

@@ -62,20 +62,20 @@ public class CombatItemChucker {
             final int teamID) {
         final BattleTarget target = cast.getTarget();
         switch (target) {
-        case ONE_ALLY:
-            if (teamID == Creature.TEAM_PARTY) {
-                return PartyManager.getParty().getLeader();
-            } else {
-                return MasterMaze.getApplication().getBattle().getEnemy();
-            }
-        case ONE_ENEMY:
-            if (teamID == Creature.TEAM_PARTY) {
-                return MasterMaze.getApplication().getBattle().getEnemy();
-            } else {
-                return PartyManager.getParty().getLeader();
-            }
-        default:
-            return null;
+            case ONE_ALLY:
+                if (teamID == Creature.TEAM_PARTY) {
+                    return PartyManager.getParty().getLeader();
+                } else {
+                    return MasterMaze.getApplication().getBattle().getEnemy();
+                }
+            case ONE_ENEMY:
+                if (teamID == Creature.TEAM_PARTY) {
+                    return MasterMaze.getApplication().getBattle().getEnemy();
+                } else {
+                    return PartyManager.getParty().getLeader();
+                }
+            default:
+                return null;
         }
     }
 
@@ -171,35 +171,35 @@ public class CombatItemChucker {
         final boolean hasAI = user.hasAI();
         final boolean useAI = hasAI && aiEnabled;
         switch (target) {
-        case SELF:
-            // Self
-            return new Creature[] { battle.getSelfTarget() };
-        case ONE_ALLY:
-            // One Ally
-            if (useAI) {
-                return new Creature[] {
-                        battle.pickOneFriendOfTeamRandomly(teamID) };
-            } else {
-                SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
-            }
-        case ONE_ENEMY:
-            // One Enemy
-            if (useAI) {
-                return new Creature[] {
-                        battle.pickOneEnemyOfTeamRandomly(teamID) };
-            } else {
-                SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
-                return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
-            }
-        case ALL_ALLIES:
-            // All Allies
-            return battle.getAllFriendsOfTeam(teamID);
-        case ALL_ENEMIES:
-            // All Enemies
-            return battle.getAllEnemiesOfTeam(teamID);
-        default:
-            return null;
+            case SELF:
+                // Self
+                return new Creature[] { battle.getSelfTarget() };
+            case ONE_ALLY:
+                // One Ally
+                if (useAI) {
+                    return new Creature[] {
+                            battle.pickOneFriendOfTeamRandomly(teamID) };
+                } else {
+                    SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
+                    return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
+                }
+            case ONE_ENEMY:
+                // One Enemy
+                if (useAI) {
+                    return new Creature[] {
+                            battle.pickOneEnemyOfTeamRandomly(teamID) };
+                } else {
+                    SoundManager.playSound(SoundConstants.SOUND_ON_WHO);
+                    return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
+                }
+            case ALL_ALLIES:
+                // All Allies
+                return battle.getAllFriendsOfTeam(teamID);
+            case ALL_ENEMIES:
+                // All Enemies
+                return battle.getAllEnemiesOfTeam(teamID);
+            default:
+                return null;
         }
     }
 }

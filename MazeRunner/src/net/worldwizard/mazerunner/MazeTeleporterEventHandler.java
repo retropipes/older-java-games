@@ -19,16 +19,16 @@ public class MazeTeleporterEventHandler
         final int value = src.getValue();
         int relValue = 0;
         switch (dir) {
-        case Adjustable.HORIZONTAL:
-            relValue = value - app.getViewingWindowLocation(true);
-            MazeMaker.updateEditorPosition(0, relValue, 0, 0);
-            break;
-        case Adjustable.VERTICAL:
-            relValue = value - app.getViewingWindowLocation(false);
-            MazeMaker.updateEditorPosition(relValue, 0, 0, 0);
-            break;
-        default:
-            break;
+            case Adjustable.HORIZONTAL:
+                relValue = value - app.getViewingWindowLocation(true);
+                MazeMaker.updateEditorPosition(0, relValue, 0, 0);
+                break;
+            case Adjustable.VERTICAL:
+                relValue = value - app.getViewingWindowLocation(false);
+                MazeMaker.updateEditorPosition(relValue, 0, 0, 0);
+                break;
+            default:
+                break;
         }
     }
 
@@ -70,14 +70,14 @@ public class MazeTeleporterEventHandler
     public void keyReleased(final KeyEvent e) {
         final int code = e.getKeyCode();
         switch (code) {
-        case KeyEvent.VK_UP:
-            MazeMaker.updateEditorPosition(0, 0, 1, 0);
-            break;
-        case KeyEvent.VK_DOWN:
-            MazeMaker.updateEditorPosition(0, 0, -1, 0);
-            break;
-        default:
-            break;
+            case KeyEvent.VK_UP:
+                MazeMaker.updateEditorPosition(0, 0, 1, 0);
+                break;
+            case KeyEvent.VK_DOWN:
+                MazeMaker.updateEditorPosition(0, 0, -1, 0);
+                break;
+            default:
+                break;
         }
     }
 

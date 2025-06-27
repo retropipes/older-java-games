@@ -42,140 +42,140 @@ public class Dizzy extends DungeonBuff {
         // Alter state each time this buff is used
         this.power = this.r.generate();
         switch (arg) {
-        case DungeonBuff.MOVE_UP:
-            switch (this.power) {
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-                return DungeonBuff.MOVE_UP;
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-                return DungeonBuff.MOVE_DOWN;
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DungeonBuff.MOVE_LEFT;
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DungeonBuff.MOVE_RIGHT;
+            case DungeonBuff.MOVE_UP:
+                switch (this.power) {
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                        return DungeonBuff.MOVE_UP;
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                        return DungeonBuff.MOVE_DOWN;
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DungeonBuff.MOVE_LEFT;
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DungeonBuff.MOVE_RIGHT;
+                    default:
+                        break;
+                }
+                break;
+            case DungeonBuff.MOVE_DOWN:
+                switch (this.power) {
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DungeonBuff.MOVE_UP;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                        return DungeonBuff.MOVE_DOWN;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                        return DungeonBuff.MOVE_LEFT;
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DungeonBuff.MOVE_RIGHT;
+                    default:
+                        break;
+                }
+                break;
+            case DungeonBuff.MOVE_LEFT:
+                switch (this.power) {
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLUD:
+                        return DungeonBuff.MOVE_UP;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RUDL:
+                        return DungeonBuff.MOVE_DOWN;
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RULD:
+                        return DungeonBuff.MOVE_LEFT;
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LURD:
+                        return DungeonBuff.MOVE_RIGHT;
+                    default:
+                        break;
+                }
+                break;
+            case DungeonBuff.MOVE_RIGHT:
+                switch (this.power) {
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RLDU:
+                        return DungeonBuff.MOVE_UP;
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RULD:
+                        return DungeonBuff.MOVE_DOWN;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RUDL:
+                        return DungeonBuff.MOVE_LEFT;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LUDR:
+                        return DungeonBuff.MOVE_RIGHT;
+                    default:
+                        break;
+                }
+                break;
             default:
                 break;
-            }
-            break;
-        case DungeonBuff.MOVE_DOWN:
-            switch (this.power) {
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DungeonBuff.MOVE_UP;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-                return DungeonBuff.MOVE_DOWN;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-                return DungeonBuff.MOVE_LEFT;
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DungeonBuff.MOVE_RIGHT;
-            default:
-                break;
-            }
-            break;
-        case DungeonBuff.MOVE_LEFT:
-            switch (this.power) {
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLUD:
-                return DungeonBuff.MOVE_UP;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RUDL:
-                return DungeonBuff.MOVE_DOWN;
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RULD:
-                return DungeonBuff.MOVE_LEFT;
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LURD:
-                return DungeonBuff.MOVE_RIGHT;
-            default:
-                break;
-            }
-            break;
-        case DungeonBuff.MOVE_RIGHT:
-            switch (this.power) {
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RLDU:
-                return DungeonBuff.MOVE_UP;
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RULD:
-                return DungeonBuff.MOVE_DOWN;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RUDL:
-                return DungeonBuff.MOVE_LEFT;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LUDR:
-                return DungeonBuff.MOVE_RIGHT;
-            default:
-                break;
-            }
-            break;
-        default:
-            break;
         }
         return 0;
     }

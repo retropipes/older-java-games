@@ -31,6 +31,6 @@ public interface CasteConstants {
     int CASTE_ATTRIBUTE_DRAIN_SUCCESS_MODIFIER = 5;
     int CASTES_ATTRIBUTE_COUNT = 6;
     String[] CASTE_NAMES = { "Assassin", "Basher", "Curer", "Destroyer", "Eclectic", "Fool", "Guru", "Hunter", "Jumper",
-	    "Knight", "Locksmith", "Monk", "Ninja", "Overseer", "Pickpocket", "Rogue", "Spy", "Teacher", "Warlock",
-	    "Yeller" };
+            "Knight", "Locksmith", "Monk", "Ninja", "Overseer", "Pickpocket", "Rogue", "Spy", "Teacher", "Warlock",
+            "Yeller" };
 }

@@ -13,32 +13,32 @@ public class MazeNote extends CloneableObject {
 
     // Constructor
     public MazeNote() {
-	this.contents = "Empty Note";
+        this.contents = "Empty Note";
     }
 
     // Methods
     public String getContents() {
-	return this.contents;
+        return this.contents;
     }
 
     public void setContents(final String newContents) {
-	this.contents = newContents;
+        this.contents = newContents;
     }
 
     @Override
     public MazeNote clone() {
-	final MazeNote copy = (MazeNote) super.clone();
-	copy.contents = this.contents;
-	return copy;
+        final MazeNote copy = (MazeNote) super.clone();
+        copy.contents = this.contents;
+        return copy;
     }
 
     static MazeNote readNote(final XDataReader reader) throws IOException {
-	final MazeNote mn = new MazeNote();
-	mn.contents = reader.readString();
-	return mn;
+        final MazeNote mn = new MazeNote();
+        mn.contents = reader.readString();
+        return mn;
     }
 
     void writeNote(final XDataWriter writer) throws IOException {
-	writer.writeString(this.contents);
+        writer.writeString(this.contents);
     }
 }

@@ -8,23 +8,23 @@ package com.puttysoftware.riskyrescue.map.objects;
 import com.puttysoftware.riskyrescue.map.Map;
 
 public interface RandomGenerationRule {
-    int NO_LIMIT = 0;
+        int NO_LIMIT = 0;
 
-    boolean shouldGenerateObject(Map map, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObject(Map map, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantity(Map map, int level);
+        int getMinimumRequiredQuantity(Map map, int level);
 
-    int getMaximumRequiredQuantity(Map map, int level);
+        int getMaximumRequiredQuantity(Map map, int level);
 
-    boolean isRequired(int level);
+        boolean isRequired(int level);
 
-    boolean shouldGenerateObjectInBattle(Map map, int row, int col, int floor,
-            int level, int layer);
+        boolean shouldGenerateObjectInBattle(Map map, int row, int col, int floor,
+                        int level, int layer);
 
-    int getMinimumRequiredQuantityInBattle(Map map);
+        int getMinimumRequiredQuantityInBattle(Map map);
 
-    int getMaximumRequiredQuantityInBattle(Map map);
+        int getMaximumRequiredQuantityInBattle(Map map);
 
-    boolean isRequiredInBattle();
+        boolean isRequiredInBattle();
 }

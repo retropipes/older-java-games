@@ -9,10 +9,10 @@ public class MonsterNames {
     private static boolean CACHE_CREATED = false;
 
     public static String[] getAllNames() {
-	if (!MonsterNames.CACHE_CREATED) {
-	    MonsterNames.CACHE = MonsterDataManager.getMonsterData();
-	    MonsterNames.CACHE_CREATED = true;
-	}
-	return MonsterNames.CACHE;
+        if (!MonsterNames.CACHE_CREATED) {
+            MonsterNames.CACHE = MonsterDataManager.getMonsterData();
+            MonsterNames.CACHE_CREATED = true;
+        }
+        return MonsterNames.CACHE;
     }
 }

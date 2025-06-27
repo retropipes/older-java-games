@@ -19,6 +19,6 @@ public class StatImageConstants {
     private static final String[] STAT_IMAGE_NAMES = GraphicsDataManager.getStatGraphicsData();
 
     static String getStatImageName(final int ID) {
-	return StatImageConstants.STAT_IMAGE_NAMES[ID];
+        return StatImageConstants.STAT_IMAGE_NAMES[ID];
     }
 }

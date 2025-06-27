@@ -25,13 +25,13 @@ public class SoundManager {
                 int offset;
                 RandomRange rr;
                 switch (soundID) {
-                case SoundConstants.STEP:
-                    rr = new RandomRange(0, 1);
-                    offset = rr.generate();
-                    break;
-                default:
-                    offset = 0;
-                    break;
+                    case SoundConstants.STEP:
+                        rr = new RandomRange(0, 1);
+                        offset = rr.generate();
+                        break;
+                    default:
+                        offset = 0;
+                        break;
                 }
                 final String soundName = SoundNames.getSoundNames()[soundID
                         + offset];

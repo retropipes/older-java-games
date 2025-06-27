@@ -54,14 +54,14 @@ public class StrongerAcid extends AbstractGround {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            final Ice i = new Ice();
-            i.setPreviousState(this);
-            return i;
-        case MaterialConstants.MATERIAL_FIRE:
-            return new StrongAcid();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                final Ice i = new Ice();
+                i.setPreviousState(this);
+                return i;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new StrongAcid();
+            default:
+                return this;
         }
     }
 

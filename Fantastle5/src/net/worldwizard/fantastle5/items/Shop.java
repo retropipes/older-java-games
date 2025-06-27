@@ -83,22 +83,22 @@ public class Shop implements ShopTypes {
 
     private String getShopNameFromType() {
         switch (this.type) {
-        case SHOP_TYPE_WEAPONS:
-            return "Weapons";
-        case SHOP_TYPE_ARMOR:
-            return "Armor";
-        case SHOP_TYPE_HEALER:
-            return "Healer";
-        case SHOP_TYPE_BANK:
-            return "Bank";
-        case SHOP_TYPE_REGENERATOR:
-            return "Regenerator";
-        case SHOP_TYPE_SPELLS:
-            return "Spells";
-        case SHOP_TYPE_ITEMS:
-            return "Items";
-        default:
-            return null;
+            case SHOP_TYPE_WEAPONS:
+                return "Weapons";
+            case SHOP_TYPE_ARMOR:
+                return "Armor";
+            case SHOP_TYPE_HEALER:
+                return "Healer";
+            case SHOP_TYPE_BANK:
+                return "Bank";
+            case SHOP_TYPE_REGENERATOR:
+                return "Regenerator";
+            case SHOP_TYPE_SPELLS:
+                return "Spells";
+            case SHOP_TYPE_ITEMS:
+                return "Items";
+            default:
+                return null;
         }
     }
 

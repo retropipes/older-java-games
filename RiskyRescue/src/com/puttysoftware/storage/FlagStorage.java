@@ -20,7 +20,7 @@ public class FlagStorage {
      * Main constructor.
      *
      * @param shape
-     *            simulated dimensions for the stored data
+     *              simulated dimensions for the stored data
      */
     public FlagStorage(final int... shape) {
         this.dataShape = shape;

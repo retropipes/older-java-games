@@ -121,47 +121,47 @@ public class SpellBookManager {
         final boolean aiEnabled = Worldz.getApplication().getBattle().isAIOn();
         final boolean useAI = hasAI && aiEnabled;
         switch (target) {
-        case 'P':
-            // One Friend
-            if (useAI) {
-                return new Creature[] {
-                        PartyManager.getParty().pickOnePartyMemberRandomly() };
-            } else {
-                return new Creature[] {
-                        PartyManager.getParty().pickOnePartyMember() };
-            }
-        case 'E':
-            // One Enemy
-            if (useAI) {
-                return new Creature[] { Worldz.getApplication().getBattle()
-                        .pickOneEnemyRandomly() };
-            } else {
-                return new Creature[] {
-                        Worldz.getApplication().getBattle().pickOneEnemy() };
-            }
-        case 'F':
-            // All Friends
-            return Worldz.getApplication().getBattle().getAllFriends();
-        case 'A':
-            // All Enemies
-            return Worldz.getApplication().getBattle().getAllEnemies();
-        default:
-            return null;
+            case 'P':
+                // One Friend
+                if (useAI) {
+                    return new Creature[] {
+                            PartyManager.getParty().pickOnePartyMemberRandomly() };
+                } else {
+                    return new Creature[] {
+                            PartyManager.getParty().pickOnePartyMember() };
+                }
+            case 'E':
+                // One Enemy
+                if (useAI) {
+                    return new Creature[] { Worldz.getApplication().getBattle()
+                            .pickOneEnemyRandomly() };
+                } else {
+                    return new Creature[] {
+                            Worldz.getApplication().getBattle().pickOneEnemy() };
+                }
+            case 'F':
+                // All Friends
+                return Worldz.getApplication().getBattle().getAllFriends();
+            case 'A':
+                // All Enemies
+                return Worldz.getApplication().getBattle().getAllEnemies();
+            default:
+                return null;
         }
     }
 
     public static SpellBook getEnemySpellBookByID(final int ID) {
         switch (ID) {
-        case 1:
-            return new LowLevelSpellBook();
-        case 2:
-            return new MidLevelSpellBook();
-        case 3:
-            return new HighLevelSpellBook();
-        case 4:
-            return new ToughLevelSpellBook();
-        default:
-            return null;
+            case 1:
+                return new LowLevelSpellBook();
+            case 2:
+                return new MidLevelSpellBook();
+            case 3:
+                return new HighLevelSpellBook();
+            case 4:
+                return new ToughLevelSpellBook();
+            default:
+                return null;
         }
     }
 }

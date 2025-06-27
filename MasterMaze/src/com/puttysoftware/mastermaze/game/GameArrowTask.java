@@ -104,20 +104,20 @@ public class GameArrowTask extends Thread {
 
     private static GenericTransientObject createArrowForType(final int type) {
         switch (type) {
-        case ArrowTypeConstants.ARROW_TYPE_PLAIN:
-            return new PlainArrow();
-        case ArrowTypeConstants.ARROW_TYPE_ICE:
-            return new IceArrow();
-        case ArrowTypeConstants.ARROW_TYPE_FIRE:
-            return new FireArrow();
-        case ArrowTypeConstants.ARROW_TYPE_POISON:
-            return new PoisonArrow();
-        case ArrowTypeConstants.ARROW_TYPE_SHOCK:
-            return new ShockArrow();
-        case ArrowTypeConstants.ARROW_TYPE_GHOST:
-            return new GhostArrow();
-        default:
-            return null;
+            case ArrowTypeConstants.ARROW_TYPE_PLAIN:
+                return new PlainArrow();
+            case ArrowTypeConstants.ARROW_TYPE_ICE:
+                return new IceArrow();
+            case ArrowTypeConstants.ARROW_TYPE_FIRE:
+                return new FireArrow();
+            case ArrowTypeConstants.ARROW_TYPE_POISON:
+                return new PoisonArrow();
+            case ArrowTypeConstants.ARROW_TYPE_SHOCK:
+                return new ShockArrow();
+            case ArrowTypeConstants.ARROW_TYPE_GHOST:
+                return new GhostArrow();
+            default:
+                return null;
         }
     }
 }

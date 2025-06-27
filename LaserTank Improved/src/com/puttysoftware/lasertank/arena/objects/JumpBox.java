@@ -23,14 +23,14 @@ public class JumpBox extends AbstractJumpObject {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            final IcyBox ib = new IcyBox();
-            ib.setPreviousState(this);
-            return ib;
-        case MaterialConstants.MATERIAL_FIRE:
-            return new HotBox();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                final IcyBox ib = new IcyBox();
+                ib.setPreviousState(this);
+                return ib;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new HotBox();
+            default:
+                return this;
         }
     }
 

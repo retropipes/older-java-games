@@ -18,5 +18,5 @@ public interface EquipmentSlotConstants {
     int SLOT_FEET = 12;
     int MAX_SLOTS = 13;
     String[] SLOT_NAMES = { "Helmet", "Necklace", "Main Hand", "Off-Hand", "Robe", "Cape", "Shirt", "Bracers", "Gloves",
-	    "Ring", "Belt", "Pants", "Boots" };
+            "Ring", "Belt", "Pants", "Boots" };
 }

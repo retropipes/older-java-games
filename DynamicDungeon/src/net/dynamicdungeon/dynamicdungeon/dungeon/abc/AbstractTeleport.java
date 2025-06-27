@@ -109,31 +109,31 @@ public abstract class AbstractTeleport extends AbstractDungeonObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.destRow;
-        case 2:
-            return this.destCol;
-        case 3:
-            return this.destFloor;
-        default:
-            return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.destRow;
+            case 2:
+                return this.destCol;
+            case 3:
+                return this.destFloor;
+            default:
+                return AbstractDungeonObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.destRow = value;
-            break;
-        case 2:
-            this.destCol = value;
-            break;
-        case 3:
-            this.destFloor = value;
-            break;
-        default:
-            break;
+            case 1:
+                this.destRow = value;
+                break;
+            case 2:
+                this.destCol = value;
+                break;
+            case 3:
+                this.destFloor = value;
+                break;
+            default:
+                break;
         }
     }
 

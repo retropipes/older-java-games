@@ -138,26 +138,26 @@ public abstract class GenericRandomTeleport extends MazeObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.randomRangeX;
-        case 2:
-            return this.randomRangeY;
-        default:
-            return MazeObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.randomRangeX;
+            case 2:
+                return this.randomRangeY;
+            default:
+                return MazeObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.randomRangeX = value;
-            break;
-        case 2:
-            this.randomRangeY = value;
-            break;
-        default:
-            break;
+            case 1:
+                this.randomRangeX = value;
+                break;
+            case 2:
+                this.randomRangeY = value;
+                break;
+            default:
+                break;
         }
     }
 

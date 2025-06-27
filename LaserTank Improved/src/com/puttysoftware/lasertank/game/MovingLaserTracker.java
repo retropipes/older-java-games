@@ -86,22 +86,22 @@ final class MovingLaserTracker {
 
     private static AbstractTransientObject createLaserForType(final int type) {
         switch (type) {
-        case LaserTypeConstants.LASER_TYPE_GREEN:
-            return new GreenLaser();
-        case LaserTypeConstants.LASER_TYPE_BLUE:
-            return new BlueLaser();
-        case LaserTypeConstants.LASER_TYPE_RED:
-            return new RedLaser();
-        case LaserTypeConstants.LASER_TYPE_MISSILE:
-            return new Missile();
-        case LaserTypeConstants.LASER_TYPE_STUNNER:
-            return new Stunner();
-        case LaserTypeConstants.LASER_TYPE_DISRUPTOR:
-            return new Disruptor();
-        case LaserTypeConstants.LASER_TYPE_POWER:
-            return new PowerLaser();
-        default:
-            return null;
+            case LaserTypeConstants.LASER_TYPE_GREEN:
+                return new GreenLaser();
+            case LaserTypeConstants.LASER_TYPE_BLUE:
+                return new BlueLaser();
+            case LaserTypeConstants.LASER_TYPE_RED:
+                return new RedLaser();
+            case LaserTypeConstants.LASER_TYPE_MISSILE:
+                return new Missile();
+            case LaserTypeConstants.LASER_TYPE_STUNNER:
+                return new Stunner();
+            case LaserTypeConstants.LASER_TYPE_DISRUPTOR:
+                return new Disruptor();
+            case LaserTypeConstants.LASER_TYPE_POWER:
+                return new PowerLaser();
+            default:
+                return null;
         }
     }
 

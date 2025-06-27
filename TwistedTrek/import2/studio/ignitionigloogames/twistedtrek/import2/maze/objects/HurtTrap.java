@@ -10,31 +10,31 @@ import studio.ignitionigloogames.twistedtrek.import2.resourcemanagers.SoundManag
 public class HurtTrap extends AbstractTrap {
     // Constructors
     public HurtTrap() {
-	super(ObjectImageConstants.OBJECT_IMAGE_HURT_TRAP);
+        super(ObjectImageConstants.OBJECT_IMAGE_HURT_TRAP);
     }
 
     @Override
     public String getName() {
-	return "Hurt Trap";
+        return "Hurt Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Hurt Traps";
+        return "Hurt Traps";
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY) {
-	int damage = PartyManager.getParty().getLeader().getMaximumHP() / 10;
-	if (damage < 1) {
-	    damage = 1;
-	}
-	PartyManager.getParty().getLeader().doDamage(damage);
-	SoundManager.playSound(SoundConstants.SOUND_BARRIER);
+        int damage = PartyManager.getParty().getLeader().getMaximumHP() / 10;
+        if (damage < 1) {
+            damage = 1;
+        }
+        PartyManager.getParty().getLeader().doDamage(damage);
+        SoundManager.playSound(SoundConstants.SOUND_BARRIER);
     }
 
     @Override
     public String getDescription() {
-	return "Hurt Traps hurt you when stepped on.";
+        return "Hurt Traps hurt you when stepped on.";
     }
 }

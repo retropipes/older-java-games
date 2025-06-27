@@ -36,18 +36,18 @@ public class LaserTankPlayback {
     private static Entry decodeRawDataPoint(final byte d)
             throws LPBLoadException {
         switch (d) {
-        case 0x20:
-            return Entry.SHOOT;
-        case 0x25:
-            return Entry.MOVE_LEFT;
-        case 0x26:
-            return Entry.MOVE_DOWN;
-        case 0x27:
-            return Entry.MOVE_RIGHT;
-        case 0x28:
-            return Entry.MOVE_UP;
-        default:
-            throw new LPBLoadException();
+            case 0x20:
+                return Entry.SHOOT;
+            case 0x25:
+                return Entry.MOVE_LEFT;
+            case 0x26:
+                return Entry.MOVE_DOWN;
+            case 0x27:
+                return Entry.MOVE_RIGHT;
+            case 0x28:
+                return Entry.MOVE_UP;
+            default:
+                throw new LPBLoadException();
         }
     }
 

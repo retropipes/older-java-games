@@ -272,24 +272,24 @@ public abstract class Creature implements Serializable, StatConstants {
 
     public int getStat(final int stat) {
         switch (stat) {
-        case StatConstants.STAT_ATTACK:
-            return this.getAttack();
-        case StatConstants.STAT_DEFENSE:
-            return this.getDefense();
-        case StatConstants.STAT_CURRENT_HP:
-            return this.getCurrentHP();
-        case StatConstants.STAT_MAXIMUM_HP:
-            return this.getMaximumHP();
-        case StatConstants.STAT_GOLD:
-            return this.getGold();
-        case StatConstants.STAT_CURRENT_MP:
-            return this.getCurrentMP();
-        case StatConstants.STAT_MAXIMUM_MP:
-            return this.getMaximumMP();
-        case StatConstants.STAT_LEVEL:
-            return this.getLevel();
-        default:
-            return 0;
+            case StatConstants.STAT_ATTACK:
+                return this.getAttack();
+            case StatConstants.STAT_DEFENSE:
+                return this.getDefense();
+            case StatConstants.STAT_CURRENT_HP:
+                return this.getCurrentHP();
+            case StatConstants.STAT_MAXIMUM_HP:
+                return this.getMaximumHP();
+            case StatConstants.STAT_GOLD:
+                return this.getGold();
+            case StatConstants.STAT_CURRENT_MP:
+                return this.getCurrentMP();
+            case StatConstants.STAT_MAXIMUM_MP:
+                return this.getMaximumMP();
+            case StatConstants.STAT_LEVEL:
+                return this.getLevel();
+            default:
+                return 0;
         }
     }
 

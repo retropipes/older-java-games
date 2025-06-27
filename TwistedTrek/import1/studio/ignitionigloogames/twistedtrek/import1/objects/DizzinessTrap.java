@@ -15,41 +15,41 @@ public class DizzinessTrap extends GenericTrap {
 
     // Constructors
     public DizzinessTrap() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Dizziness Trap";
+        return "Dizziness Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Dizziness Traps";
+        return "Dizziness Traps";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 5;
+        return (byte) 5;
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Messager.showMessage("You feel dizzy!");
-	Import1.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_DIZZY,
-		DizzinessTrap.EFFECT_DURATION);
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    MazeObject.playDizzySound();
-	}
+        Messager.showMessage("You feel dizzy!");
+        Import1.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_DIZZY,
+                DizzinessTrap.EFFECT_DURATION);
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            MazeObject.playDizzySound();
+        }
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-	return "dizzy";
+        return "dizzy";
     }
 
     @Override
     public String getDescription() {
-	return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
+        return "Dizziness Traps randomly alter your controls each step for 10 steps when stepped on.";
     }
 }

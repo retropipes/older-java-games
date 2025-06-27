@@ -33,284 +33,284 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
 
     // Old-Style Constructors
     public MazeObject(final boolean isSolid) {
-	this.sp = new SolidProperties();
-	this.sp.setSolid(isSolid);
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = false;
-	this.uses = 0;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+        this.sp = new SolidProperties();
+        this.sp.setSolid(isSolid);
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = false;
+        this.uses = 0;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolid, final boolean isDestroyable) {
-	this.sp = new SolidProperties();
-	this.sp.setSolid(isSolid);
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = false;
-	this.uses = 0;
-	this.destroyable = isDestroyable;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+        this.sp = new SolidProperties();
+        this.sp.setSolid(isSolid);
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = false;
+        this.uses = 0;
+        this.destroyable = isDestroyable;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolidXN, final boolean isSolidXS, final boolean isSolidXE,
-	    final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
-	    final boolean isSolidIW) {
-	this.sp = new SolidProperties();
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTH, isSolidXN);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTH, isSolidXS);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_EAST, isSolidXE);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST, isSolidXW);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH, isSolidIN);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH, isSolidIS);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST, isSolidIE);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST, isSolidIW);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHEAST, true);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHEAST, true);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHWEST, true);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHWEST, true);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHEAST, true);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHEAST, true);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHWEST, true);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHWEST, true);
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = false;
-	this.uses = 0;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
+            final boolean isSolidIW) {
+        this.sp = new SolidProperties();
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTH, isSolidXN);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTH, isSolidXS);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_EAST, isSolidXE);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST, isSolidXW);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH, isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST, isSolidIE);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST, isSolidIW);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHEAST, true);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHEAST, true);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHWEST, true);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHWEST, true);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHEAST, true);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHEAST, true);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHWEST, true);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHWEST, true);
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = false;
+        this.uses = 0;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolidXN, final boolean isSolidXS, final boolean isSolidXE,
-	    final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
-	    final boolean isSolidIW, final boolean isSolidXNW, final boolean isSolidXSE, final boolean isSolidXNE,
-	    final boolean isSolidXSW, final boolean isSolidINW, final boolean isSolidISE, final boolean isSolidINE,
-	    final boolean isSolidISW) {
-	this.sp = new SolidProperties();
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTH, isSolidXN);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTH, isSolidXS);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_EAST, isSolidXE);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST, isSolidXW);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH, isSolidIN);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH, isSolidIS);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST, isSolidIE);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST, isSolidIW);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHEAST, isSolidXNE);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHEAST, isSolidXSE);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHWEST, isSolidXNW);
-	this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHWEST, isSolidXSW);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHEAST, isSolidINE);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHEAST, isSolidISE);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHWEST, isSolidINW);
-	this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHWEST, isSolidISW);
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = false;
-	this.uses = 0;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean isSolidXW, final boolean isSolidIN, final boolean isSolidIS, final boolean isSolidIE,
+            final boolean isSolidIW, final boolean isSolidXNW, final boolean isSolidXSE, final boolean isSolidXNE,
+            final boolean isSolidXSW, final boolean isSolidINW, final boolean isSolidISE, final boolean isSolidINE,
+            final boolean isSolidISW) {
+        this.sp = new SolidProperties();
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTH, isSolidXN);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTH, isSolidXS);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_EAST, isSolidXE);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_WEST, isSolidXW);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTH, isSolidIN);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTH, isSolidIS);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_EAST, isSolidIE);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_WEST, isSolidIW);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHEAST, isSolidXNE);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHEAST, isSolidXSE);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_NORTHWEST, isSolidXNW);
+        this.sp.setDirectionallySolid(true, DirectionConstants.DIRECTION_SOUTHWEST, isSolidXSW);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHEAST, isSolidINE);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHEAST, isSolidISE);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_NORTHWEST, isSolidINW);
+        this.sp.setDirectionallySolid(false, DirectionConstants.DIRECTION_SOUTHWEST, isSolidISW);
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = false;
+        this.uses = 0;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolid, final boolean pushable, final boolean doesAcceptPushInto,
-	    final boolean doesAcceptPushOut, final boolean pullable, final boolean doesAcceptPullInto,
-	    final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses) {
-	this.sp = new SolidProperties();
-	this.sp.setSolid(isSolid);
-	this.mp = new MoveProperties();
-	this.mp.setPushable(pushable);
-	this.mp.setPushableInto(doesAcceptPushInto);
-	this.mp.setPushableOut(doesAcceptPushOut);
-	this.mp.setPullable(pullable);
-	this.mp.setPullableInto(doesAcceptPullInto);
-	this.mp.setPullableOut(doesAcceptPullOut);
-	this.friction = hasFriction;
-	this.usable = isUsable;
-	this.uses = newUses;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean doesAcceptPushOut, final boolean pullable, final boolean doesAcceptPullInto,
+            final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses) {
+        this.sp = new SolidProperties();
+        this.sp.setSolid(isSolid);
+        this.mp = new MoveProperties();
+        this.mp.setPushable(pushable);
+        this.mp.setPushableInto(doesAcceptPushInto);
+        this.mp.setPushableOut(doesAcceptPushOut);
+        this.mp.setPullable(pullable);
+        this.mp.setPullableInto(doesAcceptPullInto);
+        this.mp.setPullableOut(doesAcceptPullOut);
+        this.friction = hasFriction;
+        this.usable = isUsable;
+        this.uses = newUses;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolid, final boolean pushable, final boolean doesAcceptPushInto,
-	    final boolean doesAcceptPushOut, final boolean pullable, final boolean doesAcceptPullInto,
-	    final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses,
-	    final boolean isDestroyable, final boolean doesChainReact) {
-	this.sp = new SolidProperties();
-	this.sp.setSolid(isSolid);
-	this.mp = new MoveProperties();
-	this.mp.setPushable(pushable);
-	this.mp.setPushableInto(doesAcceptPushInto);
-	this.mp.setPushableOut(doesAcceptPushOut);
-	this.mp.setPullable(pullable);
-	this.mp.setPullableInto(doesAcceptPullInto);
-	this.mp.setPullableOut(doesAcceptPullOut);
-	this.friction = hasFriction;
-	this.usable = isUsable;
-	this.uses = newUses;
-	this.destroyable = isDestroyable;
-	this.chainReacts = doesChainReact;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean doesAcceptPushOut, final boolean pullable, final boolean doesAcceptPullInto,
+            final boolean doesAcceptPullOut, final boolean hasFriction, final boolean isUsable, final int newUses,
+            final boolean isDestroyable, final boolean doesChainReact) {
+        this.sp = new SolidProperties();
+        this.sp.setSolid(isSolid);
+        this.mp = new MoveProperties();
+        this.mp.setPushable(pushable);
+        this.mp.setPushableInto(doesAcceptPushInto);
+        this.mp.setPushableOut(doesAcceptPushOut);
+        this.mp.setPullable(pullable);
+        this.mp.setPullableInto(doesAcceptPullInto);
+        this.mp.setPullableOut(doesAcceptPullOut);
+        this.friction = hasFriction;
+        this.usable = isUsable;
+        this.uses = newUses;
+        this.destroyable = isDestroyable;
+        this.chainReacts = doesChainReact;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean isSolid, final boolean isUsable, final int newUses,
-	    final boolean canBeInventoried) {
-	this.sp = new SolidProperties();
-	this.sp.setSolid(isSolid);
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = isUsable;
-	this.uses = newUses;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = canBeInventoried;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean canBeInventoried) {
+        this.sp = new SolidProperties();
+        this.sp.setSolid(isSolid);
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = isUsable;
+        this.uses = newUses;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = canBeInventoried;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     // New-Style Constructors
     public MazeObject() {
-	this.sp = new SolidProperties();
-	this.mp = new MoveProperties();
-	this.friction = true;
-	this.usable = false;
-	this.uses = 0;
-	this.destroyable = true;
-	this.chainReacts = false;
-	this.isInventoryable = false;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+        this.sp = new SolidProperties();
+        this.mp = new MoveProperties();
+        this.friction = true;
+        this.usable = false;
+        this.uses = 0;
+        this.destroyable = true;
+        this.chainReacts = false;
+        this.isInventoryable = false;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     public MazeObject(final boolean hasFriction, final boolean isUsable, final int startingUses, final boolean destroy,
-	    final boolean chain, final boolean inventory) {
-	this.sp = new SolidProperties();
-	this.mp = new MoveProperties();
-	this.friction = hasFriction;
-	this.usable = isUsable;
-	this.uses = startingUses;
-	this.destroyable = destroy;
-	this.chainReacts = chain;
-	this.isInventoryable = inventory;
-	this.type = new BitSet(TypeConstants.TYPES_COUNT);
-	this.timerValue = 0;
-	this.timerActive = false;
-	this.setTypes();
+            final boolean chain, final boolean inventory) {
+        this.sp = new SolidProperties();
+        this.mp = new MoveProperties();
+        this.friction = hasFriction;
+        this.usable = isUsable;
+        this.uses = startingUses;
+        this.destroyable = destroy;
+        this.chainReacts = chain;
+        this.isInventoryable = inventory;
+        this.type = new BitSet(TypeConstants.TYPES_COUNT);
+        this.timerValue = 0;
+        this.timerActive = false;
+        this.setTypes();
     }
 
     // Methods
     @Override
     public boolean equals(final Object obj) {
-	if (obj == null) {
-	    return false;
-	}
-	if (this.getClass() != obj.getClass()) {
-	    return false;
-	}
-	final MazeObject other = (MazeObject) obj;
-	if (this.sp != other.sp && (this.sp == null || !this.sp.equals(other.sp))) {
-	    return false;
-	}
-	if (this.mp != other.mp && (this.mp == null || !this.mp.equals(other.mp))) {
-	    return false;
-	}
-	if (this.friction != other.friction) {
-	    return false;
-	}
-	if (this.usable != other.usable) {
-	    return false;
-	}
-	if (this.uses != other.uses) {
-	    return false;
-	}
-	if (this.destroyable != other.destroyable) {
-	    return false;
-	}
-	if (this.chainReacts != other.chainReacts) {
-	    return false;
-	}
-	if (this.isInventoryable != other.isInventoryable) {
-	    return false;
-	}
-	return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        final MazeObject other = (MazeObject) obj;
+        if (this.sp != other.sp && (this.sp == null || !this.sp.equals(other.sp))) {
+            return false;
+        }
+        if (this.mp != other.mp && (this.mp == null || !this.mp.equals(other.mp))) {
+            return false;
+        }
+        if (this.friction != other.friction) {
+            return false;
+        }
+        if (this.usable != other.usable) {
+            return false;
+        }
+        if (this.uses != other.uses) {
+            return false;
+        }
+        if (this.destroyable != other.destroyable) {
+            return false;
+        }
+        if (this.chainReacts != other.chainReacts) {
+            return false;
+        }
+        if (this.isInventoryable != other.isInventoryable) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public int hashCode() {
-	int hash = 7;
-	hash = 59 * hash + (this.sp != null ? this.sp.hashCode() : 0);
-	hash = 59 * hash + (this.mp != null ? this.mp.hashCode() : 0);
-	hash = 59 * hash + (this.friction ? 1 : 0);
-	hash = 59 * hash + (this.usable ? 1 : 0);
-	hash = 59 * hash + this.uses;
-	hash = 59 * hash + (this.destroyable ? 1 : 0);
-	hash = 59 * hash + (this.chainReacts ? 1 : 0);
-	hash = 59 * hash + (this.isInventoryable ? 1 : 0);
-	return hash;
+        int hash = 7;
+        hash = 59 * hash + (this.sp != null ? this.sp.hashCode() : 0);
+        hash = 59 * hash + (this.mp != null ? this.mp.hashCode() : 0);
+        hash = 59 * hash + (this.friction ? 1 : 0);
+        hash = 59 * hash + (this.usable ? 1 : 0);
+        hash = 59 * hash + this.uses;
+        hash = 59 * hash + (this.destroyable ? 1 : 0);
+        hash = 59 * hash + (this.chainReacts ? 1 : 0);
+        hash = 59 * hash + (this.isInventoryable ? 1 : 0);
+        return hash;
     }
 
     @Override
     public MazeObject clone() {
-	try {
-	    final MazeObject copy = this.getClass().getConstructor().newInstance();
-	    copy.sp = this.sp.clone();
-	    copy.mp = this.mp.clone();
-	    copy.friction = this.friction;
-	    copy.usable = this.usable;
-	    copy.uses = this.uses;
-	    copy.destroyable = this.destroyable;
-	    copy.chainReacts = this.chainReacts;
-	    copy.isInventoryable = this.isInventoryable;
-	    copy.type = (BitSet) this.type.clone();
-	    copy.timerValue = this.timerValue;
-	    copy.initialTimerValue = this.initialTimerValue;
-	    copy.timerActive = this.timerActive;
-	    return copy;
-	} catch (final InstantiationException e) {
-	    return null;
-	} catch (final IllegalAccessException e) {
-	    return null;
-	} catch (final IllegalArgumentException e) {
-	    return null;
-	} catch (final InvocationTargetException e) {
-	    return null;
-	} catch (final NoSuchMethodException e) {
-	    return null;
-	} catch (final SecurityException e) {
-	    return null;
-	}
+        try {
+            final MazeObject copy = this.getClass().getConstructor().newInstance();
+            copy.sp = this.sp.clone();
+            copy.mp = this.mp.clone();
+            copy.friction = this.friction;
+            copy.usable = this.usable;
+            copy.uses = this.uses;
+            copy.destroyable = this.destroyable;
+            copy.chainReacts = this.chainReacts;
+            copy.isInventoryable = this.isInventoryable;
+            copy.type = (BitSet) this.type.clone();
+            copy.timerValue = this.timerValue;
+            copy.initialTimerValue = this.initialTimerValue;
+            copy.timerActive = this.timerActive;
+            return copy;
+        } catch (final InstantiationException e) {
+            return null;
+        } catch (final IllegalAccessException e) {
+            return null;
+        } catch (final IllegalArgumentException e) {
+            return null;
+        } catch (final InvocationTargetException e) {
+            return null;
+        } catch (final NoSuchMethodException e) {
+            return null;
+        } catch (final SecurityException e) {
+            return null;
+        }
     }
 
     /**
@@ -319,7 +319,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallySolid(final ObjectInventory inv) {
-	return this.sp.isSolid();
+        return this.sp.isSolid();
     }
 
     /**
@@ -331,28 +331,28 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallySolid(final boolean ie, final int dirX, final int dirY,
-	    final ObjectInventory inv) {
-	return this.sp.isDirectionallySolid(ie, dirX, dirY);
+            final ObjectInventory inv) {
+        return this.sp.isDirectionallySolid(ie, dirX, dirY);
     }
 
     public boolean isSolid() {
-	return this.sp.isSolid();
+        return this.sp.isSolid();
     }
 
     public boolean isDirectionallySolid(final boolean ie, final int dirX, final int dirY) {
-	return this.sp.isDirectionallySolid(ie, dirX, dirY);
+        return this.sp.isDirectionallySolid(ie, dirX, dirY);
     }
 
     protected void setSolid(final boolean value) {
-	this.sp.setSolid(value);
+        this.sp.setSolid(value);
     }
 
     protected void setDirectionallySolid(final boolean ie, final int dir, final boolean value) {
-	this.sp.setDirectionallySolid(ie, dir, value);
+        this.sp.setDirectionallySolid(ie, dir, value);
     }
 
     public boolean isOfType(final int testType) {
-	return this.type.get(testType);
+        return this.type.get(testType);
     }
 
     protected abstract void setTypes();
@@ -363,7 +363,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPushable(final ObjectInventory inv) {
-	return this.mp.isPushable();
+        return this.mp.isPushable();
     }
 
     /**
@@ -374,7 +374,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPushable(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPushable(dirX, dirY);
+        return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
     /**
@@ -383,7 +383,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPullable(final ObjectInventory inv) {
-	return this.mp.isPullable();
+        return this.mp.isPullable();
     }
 
     /**
@@ -394,7 +394,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPullable(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPullable(dirX, dirY);
+        return this.mp.isDirectionallyPullable(dirX, dirY);
     }
 
     /**
@@ -403,7 +403,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPullableInto(final ObjectInventory inv) {
-	return this.mp.isPullableInto();
+        return this.mp.isPullableInto();
     }
 
     /**
@@ -412,7 +412,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPushableInto(final ObjectInventory inv) {
-	return this.mp.isPushableInto();
+        return this.mp.isPushableInto();
     }
 
     /**
@@ -423,7 +423,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPushableInto(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPushableInto(dirX, dirY);
+        return this.mp.isDirectionallyPushableInto(dirX, dirY);
     }
 
     /**
@@ -434,7 +434,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPullableInto(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPullableInto(dirX, dirY);
+        return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
     /**
@@ -443,7 +443,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPullableOut(final ObjectInventory inv) {
-	return this.mp.isPullableOut();
+        return this.mp.isPullableOut();
     }
 
     /**
@@ -452,7 +452,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyPushableOut(final ObjectInventory inv) {
-	return this.mp.isPushableOut();
+        return this.mp.isPushableOut();
     }
 
     /**
@@ -463,7 +463,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPushableOut(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPushableOut(dirX, dirY);
+        return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
     /**
@@ -474,127 +474,127 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean isConditionallyDirectionallyPullableOut(final int dirX, final int dirY, final ObjectInventory inv) {
-	return this.mp.isDirectionallyPullableOut(dirX, dirY);
+        return this.mp.isDirectionallyPullableOut(dirX, dirY);
     }
 
     public boolean isPushable() {
-	return this.mp.isPushable();
+        return this.mp.isPushable();
     }
 
     public boolean isDirectionallyPushable(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPushable(dirX, dirY);
+        return this.mp.isDirectionallyPushable(dirX, dirY);
     }
 
     public boolean isPullable() {
-	return this.mp.isPullable();
+        return this.mp.isPullable();
     }
 
     public boolean isDirectionallyPullable(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPullable(dirX, dirY);
+        return this.mp.isDirectionallyPullable(dirX, dirY);
     }
 
     public boolean isPullableInto() {
-	return this.mp.isPullableInto();
+        return this.mp.isPullableInto();
     }
 
     public boolean isPushableInto() {
-	return this.mp.isPushableInto();
+        return this.mp.isPushableInto();
     }
 
     public boolean isDirectionallyPushableInto(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPushableInto(dirX, dirY);
+        return this.mp.isDirectionallyPushableInto(dirX, dirY);
     }
 
     public boolean isDirectionallyPullableInto(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPullableInto(dirX, dirY);
+        return this.mp.isDirectionallyPullableInto(dirX, dirY);
     }
 
     public boolean isPullableOut() {
-	return this.mp.isPullableOut();
+        return this.mp.isPullableOut();
     }
 
     public boolean isPushableOut() {
-	return this.mp.isPushableOut();
+        return this.mp.isPushableOut();
     }
 
     public boolean isDirectionallyPushableOut(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPushableOut(dirX, dirY);
+        return this.mp.isDirectionallyPushableOut(dirX, dirY);
     }
 
     public boolean isDirectionallyPullableOut(final int dirX, final int dirY) {
-	return this.mp.isDirectionallyPullableOut(dirX, dirY);
+        return this.mp.isDirectionallyPullableOut(dirX, dirY);
     }
 
     protected void setPushable(final boolean value) {
-	this.mp.setPushable(value);
+        this.mp.setPushable(value);
     }
 
     protected void setDirectionallyPushable(final int dir, final boolean value) {
-	this.mp.setDirectionallyPushable(dir, value);
+        this.mp.setDirectionallyPushable(dir, value);
     }
 
     protected void setPullable(final boolean value) {
-	this.mp.setPullable(value);
+        this.mp.setPullable(value);
     }
 
     protected void setDirectionallyPullable(final int dir, final boolean value) {
-	this.mp.setDirectionallyPullable(dir, value);
+        this.mp.setDirectionallyPullable(dir, value);
     }
 
     protected void setPushableInto(final boolean value) {
-	this.mp.setPushableInto(value);
+        this.mp.setPushableInto(value);
     }
 
     protected void setDirectionallyPushableInto(final int dir, final boolean value) {
-	this.mp.setDirectionallyPushableInto(dir, value);
+        this.mp.setDirectionallyPushableInto(dir, value);
     }
 
     protected void setPullableInto(final boolean value) {
-	this.mp.setPullableInto(value);
+        this.mp.setPullableInto(value);
     }
 
     protected void setDirectionallyPullableInto(final int dir, final boolean value) {
-	this.mp.setDirectionallyPullableInto(dir, value);
+        this.mp.setDirectionallyPullableInto(dir, value);
     }
 
     protected void setPushableOut(final boolean value) {
-	this.mp.setPushableOut(value);
+        this.mp.setPushableOut(value);
     }
 
     protected void setDirectionallyPushableOut(final int dir, final boolean value) {
-	this.mp.setDirectionallyPushableOut(dir, value);
+        this.mp.setDirectionallyPushableOut(dir, value);
     }
 
     protected void setPullableOut(final boolean value) {
-	this.mp.setPullableOut(value);
+        this.mp.setPullableOut(value);
     }
 
     protected void setDirectionallyPullableOut(final int dir, final boolean value) {
-	this.mp.setDirectionallyPullableOut(dir, value);
+        this.mp.setDirectionallyPullableOut(dir, value);
     }
 
     public boolean hasFriction() {
-	return this.friction;
+        return this.friction;
     }
 
     public boolean isUsable() {
-	return this.usable;
+        return this.usable;
     }
 
     public int getUses() {
-	return this.uses;
+        return this.uses;
     }
 
     public boolean isDestroyable() {
-	return this.destroyable;
+        return this.destroyable;
     }
 
     public boolean doesChainReact() {
-	return this.chainReacts;
+        return this.chainReacts;
     }
 
     public boolean isInventoryable() {
-	return this.isInventoryable;
+        return this.isInventoryable;
     }
 
     // Scriptability
@@ -607,7 +607,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean preMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	return true;
+        return true;
     }
 
     /**
@@ -618,10 +618,10 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param inv
      */
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	// Play move success sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveSuccessSound();
-	}
+        // Play move success sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveSuccessSound();
+        }
     }
 
     /**
@@ -632,11 +632,11 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param inv
      */
     public void moveFailedAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	// Play move failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveFailedSound();
-	}
-	Messager.showMessage("Can't go that way");
+        // Play move failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveFailedSound();
+        }
+        Messager.showMessage("Can't go that way");
     }
 
     /**
@@ -646,111 +646,111 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean hasFrictionConditionally(final ObjectInventory inv, final boolean moving) {
-	return this.hasFriction();
+        return this.hasFriction();
     }
 
     public void gameProbeHook() {
-	Messager.showMessage(this.getName());
+        Messager.showMessage(this.getName());
     }
 
     public void editorPlaceHook() {
-	// Do nothing
+        // Do nothing
     }
 
     public void editorProbeHook() {
-	Messager.showMessage(this.getName());
+        Messager.showMessage(this.getName());
     }
 
     public MazeObject editorPropertiesHook() {
-	return null;
+        return null;
     }
 
     public final void playMoveFailedSound() {
-	MazeObject.playGenericSoundAsynchronously(this.getMoveFailedSoundName());
+        MazeObject.playGenericSoundAsynchronously(this.getMoveFailedSoundName());
     }
 
     public final void playMoveSuccessSound() {
-	MazeObject.playGenericSoundAsynchronously(this.getMoveSuccessSoundName());
+        MazeObject.playGenericSoundAsynchronously(this.getMoveSuccessSoundName());
     }
 
     public final static void playPushSuccessSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getPushSuccessSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getPushSuccessSoundName());
     }
 
     public final static void playPushFailedSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getPushFailedSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getPushFailedSoundName());
     }
 
     public final static void playPullFailedSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getPullFailedSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getPullFailedSoundName());
     }
 
     public final static void playPullSuccessSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getPullSuccessSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getPullSuccessSoundName());
     }
 
     public final void playUseSound() {
-	MazeObject.playGenericSoundAsynchronously(this.getUseSoundName());
+        MazeObject.playGenericSoundAsynchronously(this.getUseSoundName());
     }
 
     public final void playChainReactSound() {
-	MazeObject.playGenericSoundSynchronously(this.getChainReactSoundName());
+        MazeObject.playGenericSoundSynchronously(this.getChainReactSoundName());
     }
 
     public final static void playIdentifySound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getIdentifySoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getIdentifySoundName());
     }
 
     public final static void playRotatedSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getRotatedSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getRotatedSoundName());
     }
 
     public final static void playFallSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getFallSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getFallSoundName());
     }
 
     public final static void playButtonSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getButtonSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getButtonSoundName());
     }
 
     public final static void playConfusedSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getConfusedSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getConfusedSoundName());
     }
 
     public final static void playDarknessSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getDarknessSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getDarknessSoundName());
     }
 
     public final static void playDizzySound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getDizzySoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getDizzySoundName());
     }
 
     public final static void playDrunkSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getDrunkSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getDrunkSoundName());
     }
 
     public final static void playFinishSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getFinishSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getFinishSoundName());
     }
 
     public final static void playLightSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getLightSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getLightSoundName());
     }
 
     public final static void playSinkBlockSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getSinkBlockSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getSinkBlockSoundName());
     }
 
     public final static void playWallTrapSound() {
-	MazeObject.playGenericSoundAsynchronously(MazeObject.getWallTrapSoundName());
+        MazeObject.playGenericSoundAsynchronously(MazeObject.getWallTrapSoundName());
     }
 
     private static void playGenericSoundAsynchronously(final String soundName) {
-	SoundManager.play(soundName);
+        SoundManager.play(soundName);
     }
 
     private static void playGenericSoundSynchronously(final String soundName) {
-	SoundManager.play(soundName);
+        SoundManager.play(soundName);
     }
 
     /**
@@ -763,8 +763,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param pushY
      */
     public void pushAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
-	    final int pushY) {
-	// Do nothing
+            final int pushY) {
+        // Do nothing
     }
 
     /**
@@ -777,8 +777,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void pushIntoAction(final ObjectInventory inv, final MazeObject pushed, final int x, final int y,
-	    final int z, final int w) {
-	// Do nothing
+            final int z, final int w) {
+        // Do nothing
     }
 
     /**
@@ -791,8 +791,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void pushOutAction(final ObjectInventory inv, final MazeObject pushed, final int x, final int y, final int z,
-	    final int w) {
-	// Do nothing
+            final int w) {
+        // Do nothing
     }
 
     /**
@@ -804,13 +804,13 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param pushY
      */
     public void pushFailedAction(final ObjectInventory inv, final int x, final int y, final int pushX,
-	    final int pushY) {
-	// Play push failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    MazeObject.playPushFailedSound();
-	}
-	Import1.getApplication().getGameManager().keepNextMessage();
-	Messager.showMessage("Can't push that");
+            final int pushY) {
+        // Play push failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            MazeObject.playPushFailedSound();
+        }
+        Import1.getApplication().getGameManager().keepNextMessage();
+        Messager.showMessage("Can't push that");
     }
 
     /**
@@ -823,8 +823,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param pullY
      */
     public void pullAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pullX,
-	    final int pullY) {
-	// Do nothing
+            final int pullY) {
+        // Do nothing
     }
 
     /**
@@ -837,8 +837,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void pullIntoAction(final ObjectInventory inv, final MazeObject pulled, final int x, final int y,
-	    final int z, final int w) {
-	// Do nothing
+            final int z, final int w) {
+        // Do nothing
     }
 
     /**
@@ -851,8 +851,8 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void pullOutAction(final ObjectInventory inv, final MazeObject pulled, final int x, final int y, final int z,
-	    final int w) {
-	// Do nothing
+            final int w) {
+        // Do nothing
     }
 
     /**
@@ -864,13 +864,13 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param pullY
      */
     public void pullFailedAction(final ObjectInventory inv, final int x, final int y, final int pullX,
-	    final int pullY) {
-	// Play pull failed sound, if it's enabled
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    MazeObject.playPullFailedSound();
-	}
-	Import1.getApplication().getGameManager().keepNextMessage();
-	Messager.showMessage("Can't pull that");
+            final int pullY) {
+        // Play pull failed sound, if it's enabled
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            MazeObject.playPullFailedSound();
+        }
+        Import1.getApplication().getGameManager().keepNextMessage();
+        Messager.showMessage("Can't pull that");
     }
 
     /**
@@ -882,7 +882,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void useAction(final MazeObject mo, final int x, final int y, final int z, final int w) {
-	// Do nothing
+        // Do nothing
     }
 
     /**
@@ -893,40 +893,40 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void useHelper(final int x, final int y, final int z, final int w) {
-	// Do nothing
+        // Do nothing
     }
 
     public final boolean isTimerActive() {
-	return this.timerActive;
+        return this.timerActive;
     }
 
     public final void activateTimer(final int ticks) {
-	this.timerActive = true;
-	this.timerValue = ticks;
-	this.initialTimerValue = ticks;
+        this.timerActive = true;
+        this.timerValue = ticks;
+        this.initialTimerValue = ticks;
     }
 
     public final void extendTimer(final int ticks) {
-	if (this.timerActive) {
-	    this.timerValue += ticks;
-	}
+        if (this.timerActive) {
+            this.timerValue += ticks;
+        }
     }
 
     public final void extendTimerByInitialValue() {
-	if (this.timerActive) {
-	    this.timerValue += this.initialTimerValue;
-	}
+        if (this.timerActive) {
+            this.timerValue += this.initialTimerValue;
+        }
     }
 
     public final void tickTimer(final int dirX, final int dirY) {
-	if (this.timerActive) {
-	    this.timerValue--;
-	    if (this.timerValue == 0) {
-		this.timerActive = false;
-		this.initialTimerValue = 0;
-		this.timerExpiredAction(dirX, dirY);
-	    }
-	}
+        if (this.timerActive) {
+            this.timerValue--;
+            if (this.timerValue == 0) {
+                this.timerActive = false;
+                this.initialTimerValue = 0;
+                this.timerExpiredAction(dirX, dirY);
+            }
+        }
     }
 
     /**
@@ -935,7 +935,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param dirY
      */
     public void timerExpiredAction(final int dirX, final int dirY) {
-	// Do nothing
+        // Do nothing
     }
 
     /**
@@ -951,9 +951,9 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public boolean arrowHitAction(final int locX, final int locY, final int locZ, final int locW, final int dirX,
-	    final int dirY, final int arrowType, final ObjectInventory inv) {
-	// Default do-nothing, return true
-	return true;
+            final int dirY, final int arrowType, final ObjectInventory inv) {
+        // Default do-nothing, return true
+        return true;
     }
 
     /**
@@ -965,7 +965,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public String gameRenderHook(final int x, final int y, final int z, final int w) {
-	return this.getGameName();
+        return this.getGameName();
     }
 
     /**
@@ -977,7 +977,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @return
      */
     public String editorRenderHook(final int x, final int y, final int z, final int w) {
-	return this.getName();
+        return this.getName();
     }
 
     /**
@@ -988,103 +988,103 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void chainReactionAction(final int x, final int y, final int z, final int w) {
-	// Do nothing
+        // Do nothing
     }
 
     public String getMoveFailedSoundName() {
-	return "walkfail";
+        return "walkfail";
     }
 
     public String getMoveSuccessSoundName() {
-	return "walk";
+        return "walk";
     }
 
     public final static String getPushSuccessSoundName() {
-	return "pushpull";
+        return "pushpull";
     }
 
     public final static String getPushFailedSoundName() {
-	return "actfail";
+        return "actfail";
     }
 
     public final static String getPullSuccessSoundName() {
-	return "pushpull";
+        return "pushpull";
     }
 
     public final static String getPullFailedSoundName() {
-	return "actfail";
+        return "actfail";
     }
 
     public String getUseSoundName() {
-	return "";
+        return "";
     }
 
     public String getChainReactSoundName() {
-	return "explode";
+        return "explode";
     }
 
     public final static String getIdentifySoundName() {
-	return "identify";
+        return "identify";
     }
 
     public final static String getRotatedSoundName() {
-	return "change";
+        return "change";
     }
 
     public final static String getFallSoundName() {
-	return "intopit";
+        return "intopit";
     }
 
     public final static String getButtonSoundName() {
-	return "button";
+        return "button";
     }
 
     public final static String getConfusedSoundName() {
-	return "confused";
+        return "confused";
     }
 
     public final static String getDarknessSoundName() {
-	return "darkness";
+        return "darkness";
     }
 
     public final static String getDizzySoundName() {
-	return "dizzy";
+        return "dizzy";
     }
 
     public final static String getDrunkSoundName() {
-	return "drunk";
+        return "drunk";
     }
 
     public final static String getFinishSoundName() {
-	return "finish";
+        return "finish";
     }
 
     public final static String getLightSoundName() {
-	return "light";
+        return "light";
     }
 
     public final static String getSinkBlockSoundName() {
-	return "sinkblck";
+        return "sinkblck";
     }
 
     public final static String getWallTrapSoundName() {
-	return "walltrap";
+        return "walltrap";
     }
 
     public boolean defersSetProperties() {
-	return false;
+        return false;
     }
 
     public boolean hasAdditionalProperties() {
-	return false;
+        return false;
     }
 
     public boolean overridesDefaultPostMove() {
-	return false;
+        return false;
     }
 
     public String getGameName() {
-	return this.getName();
+        return this.getName();
     }
 
     /**
@@ -1095,22 +1095,22 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @param w
      */
     public void determineCurrentAppearance(final int x, final int y, final int z, final int w) {
-	// Do nothing
+        // Do nothing
     }
 
     public void stepAction() {
-	// Do nothing
+        // Do nothing
     }
 
     abstract public String getName();
 
     public String getIdentifier4() {
-	return this.getName();
+        return this.getName();
     }
 
     @Override
     public final int getIdentifier5() {
-	return this.getName().hashCode();
+        return this.getName().hashCode();
     }
 
     abstract public String getPluralName();
@@ -1128,54 +1128,54 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
     abstract public void setCustomProperty(int propID, int value);
 
     public int getCustomFormat() {
-	return 0;
+        return 0;
     }
 
     public final void writeMazeObject(final XDataWriter writer) throws IOException {
-	writer.writeInt(this.getIdentifier5());
-	final int cc = this.getCustomFormat();
-	if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-	    this.writeMazeObjectHook(writer);
-	} else {
-	    for (int x = 0; x < cc; x++) {
-		final int cx = this.getCustomProperty(x + 1);
-		writer.writeInt(cx);
-	    }
-	}
+        writer.writeInt(this.getIdentifier5());
+        final int cc = this.getCustomFormat();
+        if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+            this.writeMazeObjectHook(writer);
+        } else {
+            for (int x = 0; x < cc; x++) {
+                final int cx = this.getCustomProperty(x + 1);
+                writer.writeInt(cx);
+            }
+        }
     }
 
     public final MazeObject readMazeObject(final XDataReader reader, final String ident) throws IOException {
-	if (ident.equals(this.getIdentifier4())) {
-	    final int cc = this.getCustomFormat();
-	    if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-		return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_4);
-	    } else {
-		for (int x = 0; x < cc; x++) {
-		    final int cx = reader.readInt();
-		    this.setCustomProperty(x + 1, cx);
-		}
-	    }
-	    return this;
-	} else {
-	    return null;
-	}
+        if (ident.equals(this.getIdentifier4())) {
+            final int cc = this.getCustomFormat();
+            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+                return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_4);
+            } else {
+                for (int x = 0; x < cc; x++) {
+                    final int cx = reader.readInt();
+                    this.setCustomProperty(x + 1, cx);
+                }
+            }
+            return this;
+        } else {
+            return null;
+        }
     }
 
     public final MazeObject readMazeObject(final XDataReader reader, final int ident) throws IOException {
-	if (ident == this.getIdentifier5()) {
-	    final int cc = this.getCustomFormat();
-	    if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-		return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_5);
-	    } else {
-		for (int x = 0; x < cc; x++) {
-		    final int cx = reader.readInt();
-		    this.setCustomProperty(x + 1, cx);
-		}
-	    }
-	    return this;
-	} else {
-	    return null;
-	}
+        if (ident == this.getIdentifier5()) {
+            final int cc = this.getCustomFormat();
+            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+                return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_5);
+            } else {
+                for (int x = 0; x < cc; x++) {
+                    final int cx = reader.readInt();
+                    this.setCustomProperty(x + 1, cx);
+                }
+            }
+            return this;
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -1184,7 +1184,7 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @throws IOException
      */
     protected void writeMazeObjectHook(final XDataWriter writer) throws IOException {
-	// Do nothing - but let subclasses override
+        // Do nothing - but let subclasses override
     }
 
     /**
@@ -1195,108 +1195,108 @@ public abstract class MazeObject implements DirectionConstants, TypeConstants, A
      * @throws IOException
      */
     protected MazeObject readMazeObjectHook(final XDataReader reader, final int formatVersion) throws IOException {
-	// Dummy implementation, subclasses can override
-	return this;
+        // Dummy implementation, subclasses can override
+        return this;
     }
 
     public final MazeObject readMazeObject(final XDataReader reader, final byte groupID, final byte objectID)
-	    throws IOException {
-	if (groupID == this.getGroupID() && objectID == this.getObjectID()) {
-	    final int cc = this.getCustomFormat();
-	    if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
-		return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_3);
-	    } else {
-		for (int x = 0; x < cc; x++) {
-		    final int cx = reader.readInt();
-		    this.setCustomProperty(x + 1, cx);
-		}
-	    }
-	    return this;
-	} else {
-	    return null;
-	}
+            throws IOException {
+        if (groupID == this.getGroupID() && objectID == this.getObjectID()) {
+            final int cc = this.getCustomFormat();
+            if (cc == MazeObject.CUSTOM_FORMAT_MANUAL_OVERRIDE) {
+                return this.readMazeObjectHook(reader, FormatConstants.MAZE_FORMAT_3);
+            } else {
+                for (int x = 0; x < cc; x++) {
+                    final int cx = reader.readInt();
+                    this.setCustomProperty(x + 1, cx);
+                }
+            }
+            return this;
+        } else {
+            return null;
+        }
     }
 
     public static final int resolveRelativeDirection(final int idirX, final int idirY) {
-	final int dirX = (int) Math.signum(idirX);
-	final int dirY = (int) Math.signum(idirY);
-	if (dirX == 0 && dirY == 0) {
-	    return DirectionConstants.DIRECTION_NONE;
-	} else if (dirX == 0 && dirY == -1) {
-	    return DirectionConstants.DIRECTION_NORTH;
-	} else if (dirX == 0 && dirY == 1) {
-	    return DirectionConstants.DIRECTION_SOUTH;
-	} else if (dirX == -1 && dirY == 0) {
-	    return DirectionConstants.DIRECTION_WEST;
-	} else if (dirX == 1 && dirY == 0) {
-	    return DirectionConstants.DIRECTION_EAST;
-	} else if (dirX == 1 && dirY == 1) {
-	    return DirectionConstants.DIRECTION_SOUTHEAST;
-	} else if (dirX == -1 && dirY == 1) {
-	    return DirectionConstants.DIRECTION_SOUTHWEST;
-	} else if (dirX == -1 && dirY == -1) {
-	    return DirectionConstants.DIRECTION_NORTHWEST;
-	} else if (dirX == 1 && dirY == -1) {
-	    return DirectionConstants.DIRECTION_NORTHEAST;
-	} else {
-	    return DirectionConstants.DIRECTION_INVALID;
-	}
+        final int dirX = (int) Math.signum(idirX);
+        final int dirY = (int) Math.signum(idirY);
+        if (dirX == 0 && dirY == 0) {
+            return DirectionConstants.DIRECTION_NONE;
+        } else if (dirX == 0 && dirY == -1) {
+            return DirectionConstants.DIRECTION_NORTH;
+        } else if (dirX == 0 && dirY == 1) {
+            return DirectionConstants.DIRECTION_SOUTH;
+        } else if (dirX == -1 && dirY == 0) {
+            return DirectionConstants.DIRECTION_WEST;
+        } else if (dirX == 1 && dirY == 0) {
+            return DirectionConstants.DIRECTION_EAST;
+        } else if (dirX == 1 && dirY == 1) {
+            return DirectionConstants.DIRECTION_SOUTHEAST;
+        } else if (dirX == -1 && dirY == 1) {
+            return DirectionConstants.DIRECTION_SOUTHWEST;
+        } else if (dirX == -1 && dirY == -1) {
+            return DirectionConstants.DIRECTION_NORTHWEST;
+        } else if (dirX == 1 && dirY == -1) {
+            return DirectionConstants.DIRECTION_NORTHEAST;
+        } else {
+            return DirectionConstants.DIRECTION_INVALID;
+        }
     }
 
     public static final int[] unresolveRelativeDirection(final int dir) {
-	int[] res = new int[2];
-	if (dir == DirectionConstants.DIRECTION_NONE) {
-	    res[0] = 0;
-	    res[1] = 0;
-	} else if (dir == DirectionConstants.DIRECTION_NORTH) {
-	    res[0] = 0;
-	    res[1] = -1;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTH) {
-	    res[0] = 0;
-	    res[1] = 1;
-	} else if (dir == DirectionConstants.DIRECTION_WEST) {
-	    res[0] = -1;
-	    res[1] = 0;
-	} else if (dir == DirectionConstants.DIRECTION_EAST) {
-	    res[0] = 1;
-	    res[1] = 0;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTHEAST) {
-	    res[0] = 1;
-	    res[1] = 1;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTHWEST) {
-	    res[0] = -1;
-	    res[1] = 1;
-	} else if (dir == DirectionConstants.DIRECTION_NORTHWEST) {
-	    res[0] = -1;
-	    res[1] = -1;
-	} else if (dir == DirectionConstants.DIRECTION_NORTHEAST) {
-	    res[0] = 1;
-	    res[1] = -1;
-	} else {
-	    res = null;
-	}
-	return res;
+        int[] res = new int[2];
+        if (dir == DirectionConstants.DIRECTION_NONE) {
+            res[0] = 0;
+            res[1] = 0;
+        } else if (dir == DirectionConstants.DIRECTION_NORTH) {
+            res[0] = 0;
+            res[1] = -1;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
+            res[0] = 0;
+            res[1] = 1;
+        } else if (dir == DirectionConstants.DIRECTION_WEST) {
+            res[0] = -1;
+            res[1] = 0;
+        } else if (dir == DirectionConstants.DIRECTION_EAST) {
+            res[0] = 1;
+            res[1] = 0;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTHEAST) {
+            res[0] = 1;
+            res[1] = 1;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTHWEST) {
+            res[0] = -1;
+            res[1] = 1;
+        } else if (dir == DirectionConstants.DIRECTION_NORTHWEST) {
+            res[0] = -1;
+            res[1] = -1;
+        } else if (dir == DirectionConstants.DIRECTION_NORTHEAST) {
+            res[0] = 1;
+            res[1] = -1;
+        } else {
+            res = null;
+        }
+        return res;
     }
 
     public static final String resolveDirectionConstantToName(final int dir) {
-	String res = null;
-	if (dir == DirectionConstants.DIRECTION_NORTH) {
-	    res = DirectionConstants.DIRECTION_NORTH_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTH) {
-	    res = DirectionConstants.DIRECTION_SOUTH_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_WEST) {
-	    res = DirectionConstants.DIRECTION_WEST_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_EAST) {
-	    res = DirectionConstants.DIRECTION_EAST_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTHEAST) {
-	    res = DirectionConstants.DIRECTION_SOUTHEAST_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_SOUTHWEST) {
-	    res = DirectionConstants.DIRECTION_SOUTHWEST_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_NORTHWEST) {
-	    res = DirectionConstants.DIRECTION_NORTHWEST_NAME;
-	} else if (dir == DirectionConstants.DIRECTION_NORTHEAST) {
-	    res = DirectionConstants.DIRECTION_NORTHEAST_NAME;
-	}
-	return res;
+        String res = null;
+        if (dir == DirectionConstants.DIRECTION_NORTH) {
+            res = DirectionConstants.DIRECTION_NORTH_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTH) {
+            res = DirectionConstants.DIRECTION_SOUTH_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_WEST) {
+            res = DirectionConstants.DIRECTION_WEST_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_EAST) {
+            res = DirectionConstants.DIRECTION_EAST_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTHEAST) {
+            res = DirectionConstants.DIRECTION_SOUTHEAST_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_SOUTHWEST) {
+            res = DirectionConstants.DIRECTION_SOUTHWEST_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_NORTHWEST) {
+            res = DirectionConstants.DIRECTION_NORTHWEST_NAME;
+        } else if (dir == DirectionConstants.DIRECTION_NORTHEAST) {
+            res = DirectionConstants.DIRECTION_NORTHEAST_NAME;
+        }
+        return res;
     }
 }

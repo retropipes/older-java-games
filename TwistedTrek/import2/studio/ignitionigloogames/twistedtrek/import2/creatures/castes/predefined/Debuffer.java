@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import2.creatures.castes.CasteConst
 
 public class Debuffer extends Caste {
     public Debuffer() {
-	super(CasteConstants.CASTE_DEBUFFER);
+        super(CasteConstants.CASTE_DEBUFFER);
     }
 }

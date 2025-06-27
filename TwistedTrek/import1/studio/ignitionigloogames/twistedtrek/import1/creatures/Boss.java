@@ -22,70 +22,70 @@ public class Boss extends Creature {
 
     // Constructors
     public Boss() {
-	super();
-	this.setLevel(Boss.FIGHT_LEVEL + Boss.BONUS_LEVEL);
-	this.setVitality(Boss.getInitialVitality());
-	this.setCurrentHP(this.getMaximumHP());
-	this.setIntelligence(Boss.getInitialIntelligence());
-	this.setCurrentMP(this.getMaximumMP());
-	this.setStrength(Boss.getInitialStrength());
-	this.setBlock(Boss.getInitialBlock());
-	this.setAgility(Boss.getInitialAgility());
-	this.setLuck(Boss.getInitialLuck());
-	this.setGold(0);
-	this.setExperience(0L);
-	this.setSpellBook(new BossSpellBook());
-	this.setAI(new BossAIRoutine());
+        super();
+        this.setLevel(Boss.FIGHT_LEVEL + Boss.BONUS_LEVEL);
+        this.setVitality(Boss.getInitialVitality());
+        this.setCurrentHP(this.getMaximumHP());
+        this.setIntelligence(Boss.getInitialIntelligence());
+        this.setCurrentMP(this.getMaximumMP());
+        this.setStrength(Boss.getInitialStrength());
+        this.setBlock(Boss.getInitialBlock());
+        this.setAgility(Boss.getInitialAgility());
+        this.setLuck(Boss.getInitialLuck());
+        this.setGold(0);
+        this.setExperience(0L);
+        this.setSpellBook(new BossSpellBook());
+        this.setAI(new BossAIRoutine());
     }
 
     private static int getInitialStrength() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getStrength() * Boss.STRENGTH_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getStrength() * Boss.STRENGTH_MULTIPLIER);
     }
 
     private static int getInitialBlock() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getBlock() * Boss.BLOCK_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getBlock() * Boss.BLOCK_MULTIPLIER);
     }
 
     private static int getInitialVitality() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getVitality() * Boss.VITALITY_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getVitality() * Boss.VITALITY_MULTIPLIER);
     }
 
     private static int getInitialIntelligence() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getIntelligence() * Boss.INTELLIGENCE_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getIntelligence() * Boss.INTELLIGENCE_MULTIPLIER);
     }
 
     private static int getInitialAgility() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getAgility() * Boss.AGILITY_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getAgility() * Boss.AGILITY_MULTIPLIER);
     }
 
     private static int getInitialLuck() {
-	final PlayerCharacter playerCharacter = PCManager.getPlayer();
-	return (int) (playerCharacter.getLuck() * Boss.LUCK_MULTIPLIER);
+        final PlayerCharacter playerCharacter = PCManager.getPlayer();
+        return (int) (playerCharacter.getLuck() * Boss.LUCK_MULTIPLIER);
     }
 
     // Accessors
     @Override
     public String getFightingWhatString() {
-	return "You're fighting The Boss";
+        return "You're fighting The Boss";
     }
 
     @Override
     protected BufferedImageIcon getInitialImage() {
-	return GraphicsManager.getBossImage();
+        return GraphicsManager.getBossImage();
     }
 
     @Override
     public String getName() {
-	return "The Boss";
+        return "The Boss";
     }
 
     @Override
     public Faith getFaith() {
-	return FaithManager.getFaith(FaithConstants.FAITH_BLEND);
+        return FaithManager.getFaith(FaithConstants.FAITH_BLEND);
     }
 }

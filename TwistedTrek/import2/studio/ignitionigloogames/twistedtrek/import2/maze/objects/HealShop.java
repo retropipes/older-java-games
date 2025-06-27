@@ -8,26 +8,26 @@ import studio.ignitionigloogames.twistedtrek.import2.shops.ShopTypes;
 public class HealShop extends AbstractShop {
     // Constructors
     public HealShop() {
-	super(ShopTypes.SHOP_TYPE_HEALER);
+        super(ShopTypes.SHOP_TYPE_HEALER);
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_HEAL_SHOP;
+        return ObjectImageConstants.OBJECT_IMAGE_HEAL_SHOP;
     }
 
     @Override
     public String getName() {
-	return "Heal Shop";
+        return "Heal Shop";
     }
 
     @Override
     public String getPluralName() {
-	return "Heal Shops";
+        return "Heal Shops";
     }
 
     @Override
     public String getDescription() {
-	return "Heal Shops restore health, for a fee.";
+        return "Heal Shops restore health, for a fee.";
     }
 }

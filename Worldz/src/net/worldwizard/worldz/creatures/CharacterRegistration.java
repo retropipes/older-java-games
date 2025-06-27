@@ -66,7 +66,7 @@ public class CharacterRegistration {
                 if (new File(CharacterRegistration.getBasePath()
                         + File.separator + "Characters" + File.separator + res
                         + Extension.getCharacterExtensionWithPeriod())
-                                .exists()) {
+                        .exists()) {
                     // Register it
                     if (CharacterRegistration.ANY_FOUND
                             && characterList != null) {

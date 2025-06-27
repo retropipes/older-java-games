@@ -12,37 +12,37 @@ import studio.ignitionigloogames.twistedtrek.import1.maze.Maze;
 public class PushableBlockTwice extends GenericMovableObject {
     // Constructors
     public PushableBlockTwice() {
-	super(true, false);
+        super(true, false);
     }
 
     @Override
     public String getName() {
-	return "Pushable Block Twice";
+        return "Pushable Block Twice";
     }
 
     @Override
     public String getPluralName() {
-	return "Pushable Blocks Twice";
+        return "Pushable Blocks Twice";
     }
 
     @Override
     public void pushAction(final ObjectInventory inv, final MazeObject mo, final int x, final int y, final int pushX,
-	    final int pushY) {
-	final Application app = Import1.getApplication();
-	app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
-	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    MazeObject.playPushSuccessSound();
-	}
-	app.getGameManager().morphOther(new PushableBlockOnce(), pushX, pushY, Maze.LAYER_OBJECT);
+            final int pushY) {
+        final Application app = Import1.getApplication();
+        app.getGameManager().updatePushedPosition(x, y, pushX, pushY, this);
+        if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            MazeObject.playPushSuccessSound();
+        }
+        app.getGameManager().morphOther(new PushableBlockOnce(), pushX, pushY, Maze.LAYER_OBJECT);
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 5;
+        return (byte) 5;
     }
 
     @Override
     public String getDescription() {
-	return "Pushable Blocks Twice can only be pushed twice, before turning into a wall.";
+        return "Pushable Blocks Twice can only be pushed twice, before turning into a wall.";
     }
 }

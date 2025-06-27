@@ -75,12 +75,12 @@ public class DisruptedWoodenWall extends AbstractDisruptedObject {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_FIRE:
-            return new Ground();
-        case MaterialConstants.MATERIAL_ICE:
-            return new DisruptedIcyWall();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new Ground();
+            case MaterialConstants.MATERIAL_ICE:
+                return new DisruptedIcyWall();
+            default:
+                return this;
         }
     }
 }

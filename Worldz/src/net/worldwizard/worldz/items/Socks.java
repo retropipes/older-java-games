@@ -23,25 +23,25 @@ public final class Socks extends Equipment {
     // Methods
     public void stepAction(final Creature wearer) {
         switch (this.actionType) {
-        case Socks.STEP_ACTION_HEAL:
-            wearer.heal(this.actionAmount);
-            break;
-        case Socks.STEP_ACTION_REGENERATE:
-            wearer.regenerate(this.actionAmount);
-            break;
-        case Socks.STEP_ACTION_XP:
-            wearer.offsetExperience(this.actionAmount);
-            if (wearer.checkLevelUp()) {
-                wearer.levelUp();
-                Messager.showMessage(wearer.getName() + " reached level "
-                        + wearer.getLevel() + ".");
-            }
-            break;
-        case Socks.STEP_ACTION_MONEY:
-            wearer.offsetGold(this.actionAmount);
-            break;
-        default:
-            break;
+            case Socks.STEP_ACTION_HEAL:
+                wearer.heal(this.actionAmount);
+                break;
+            case Socks.STEP_ACTION_REGENERATE:
+                wearer.regenerate(this.actionAmount);
+                break;
+            case Socks.STEP_ACTION_XP:
+                wearer.offsetExperience(this.actionAmount);
+                if (wearer.checkLevelUp()) {
+                    wearer.levelUp();
+                    Messager.showMessage(wearer.getName() + " reached level "
+                            + wearer.getLevel() + ".");
+                }
+                break;
+            case Socks.STEP_ACTION_MONEY:
+                wearer.offsetGold(this.actionAmount);
+                break;
+            default:
+                break;
         }
     }
 

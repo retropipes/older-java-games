@@ -144,7 +144,7 @@ public class ProductData {
 
     /**
      * @param newBlurbURL
-     *            the blurbURL to set
+     *                    the blurbURL to set
      */
     public void setBlurbURL(final URL newBlurbURL) {
         this.blurbURL = newBlurbURL;
@@ -152,7 +152,7 @@ public class ProductData {
 
     /**
      * @param newBugfixVersion
-     *            the bugfixVersion to set
+     *                         the bugfixVersion to set
      */
     public void setBugfixVersion(final int newBugfixVersion) {
         this.bugfixVersion = newBugfixVersion;
@@ -160,7 +160,7 @@ public class ProductData {
 
     /**
      * @param newCodeVersion
-     *            the codeVersion to set
+     *                       the codeVersion to set
      */
     public void setCodeVersion(final int newCodeVersion) {
         this.codeVersion = newCodeVersion;
@@ -168,7 +168,7 @@ public class ProductData {
 
     /**
      * @param newCompanyName
-     *            the companyName to set
+     *                       the companyName to set
      */
     public void setCompanyName(final String newCompanyName) {
         this.companyName = newCompanyName;
@@ -176,7 +176,7 @@ public class ProductData {
 
     /**
      * @param newMajorVersion
-     *            the majorVersion to set
+     *                        the majorVersion to set
      */
     public void setMajorVersion(final int newMajorVersion) {
         this.majorVersion = newMajorVersion;
@@ -184,7 +184,7 @@ public class ProductData {
 
     /**
      * @param newMinorVersion
-     *            the minorVersion to set
+     *                        the minorVersion to set
      */
     public void setMinorVersion(final int newMinorVersion) {
         this.minorVersion = newMinorVersion;
@@ -192,7 +192,7 @@ public class ProductData {
 
     /**
      * @param newNewVersionURL
-     *            the newVersionURL to set
+     *                         the newVersionURL to set
      */
     public void setNewVersionURL(final URL newNewVersionURL) {
         this.newVersionURL = newNewVersionURL;
@@ -200,7 +200,7 @@ public class ProductData {
 
     /**
      * @param newPrereleaseVersion
-     *            the prereleaseVersion to set
+     *                             the prereleaseVersion to set
      */
     public void setPrereleaseVersion(final int newPrereleaseVersion) {
         this.prereleaseVersion = newPrereleaseVersion;
@@ -208,7 +208,7 @@ public class ProductData {
 
     /**
      * @param newProductName
-     *            the productName to set
+     *                       the productName to set
      */
     public void setProductName(final String newProductName) {
         this.productName = newProductName;
@@ -216,7 +216,7 @@ public class ProductData {
 
     /**
      * @param newRDNSCompanyName
-     *            the rDNSCompanyName to set
+     *                           the rDNSCompanyName to set
      */
     public void setrDNSCompanyName(final String newRDNSCompanyName) {
         this.rDNSCompanyName = newRDNSCompanyName;
@@ -224,7 +224,7 @@ public class ProductData {
 
     /**
      * @param newUpdateURL
-     *            the updateURL to set
+     *                     the updateURL to set
      */
     public void setUpdateURL(final URL newUpdateURL) {
         this.updateURL = newUpdateURL;

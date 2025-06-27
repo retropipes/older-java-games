@@ -20,7 +20,7 @@ public class ObjectStorage {
      * Main constructor.
      *
      * @param shape
-     *            simulated dimensions for the stored data
+     *              simulated dimensions for the stored data
      */
     public ObjectStorage(final int... shape) {
         this.dataShape = shape;

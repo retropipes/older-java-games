@@ -106,12 +106,12 @@ public class CombatItemManager {
     private static Creature resolveTarget(final CombatUsableItem used) {
         final char target = used.getTarget();
         switch (target) {
-        case 'P':
-            return PCManager.getPlayer();
-        case 'E':
-            return Fantastle5.getApplication().getBattle().getEnemy();
-        default:
-            return null;
+            case 'P':
+                return PCManager.getPlayer();
+            case 'E':
+                return Fantastle5.getApplication().getBattle().getEnemy();
+            default:
+                return null;
         }
     }
 }

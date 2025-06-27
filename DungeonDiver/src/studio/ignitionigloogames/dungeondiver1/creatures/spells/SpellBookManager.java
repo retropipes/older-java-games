@@ -90,44 +90,44 @@ public class SpellBookManager {
     private static Creature resolveTarget(final Spell cast) {
         final char target = cast.getTarget();
         switch (target) {
-        case 'P':
-            return DungeonDiver.getHoldingBag().getPlayer();
-        case 'E':
-            return DungeonDiver.getHoldingBag().getBattle().getEnemy();
-        default:
-            return null;
+            case 'P':
+                return DungeonDiver.getHoldingBag().getPlayer();
+            case 'E':
+                return DungeonDiver.getHoldingBag().getBattle().getEnemy();
+            default:
+                return null;
         }
     }
 
     public static SpellBook getSpellBookByID(final int ID) {
         switch (ID) {
-        case 0:
-            return null;
-        case 1:
-            return new FighterSpellBook();
-        case 2:
-            return new MageSpellBook();
-        case 3:
-            return new ThiefSpellBook();
-        default:
-            return null;
+            case 0:
+                return null;
+            case 1:
+                return new FighterSpellBook();
+            case 2:
+                return new MageSpellBook();
+            case 3:
+                return new ThiefSpellBook();
+            default:
+                return null;
         }
     }
 
     public static SpellBook getEnemySpellBookByID(final int ID) {
         switch (ID) {
-        case 0:
-            return null;
-        case 1:
-            return new LowLevelSpellBook();
-        case 2:
-            return new MidLevelSpellBook();
-        case 3:
-            return new HighLevelSpellBook();
-        case 4:
-            return new ToughLevelSpellBook();
-        default:
-            return null;
+            case 0:
+                return null;
+            case 1:
+                return new LowLevelSpellBook();
+            case 2:
+                return new MidLevelSpellBook();
+            case 3:
+                return new HighLevelSpellBook();
+            case 4:
+                return new ToughLevelSpellBook();
+            default:
+                return null;
         }
     }
 

@@ -8,19 +8,19 @@ public class Caste {
     private final String desc;
 
     public Caste(final int cid) {
-	this.desc = CasteDescriptionManager.getCasteDescription(cid);
-	this.casteID = cid;
+        this.desc = CasteDescriptionManager.getCasteDescription(cid);
+        this.casteID = cid;
     }
 
     public String getDescription() {
-	return this.desc;
+        return this.desc;
     }
 
     public final int getCasteID() {
-	return this.casteID;
+        return this.casteID;
     }
 
     static String casteIDtoName(final int casteID) {
-	return CasteConstants.CASTE_NAMES[casteID];
+        return CasteConstants.CASTE_NAMES[casteID];
     }
 }

@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPlug;
 public class GPlug extends GenericPlug {
     // Constructors
     public GPlug() {
-	super('G');
+        super('G');
     }
 }

@@ -31,165 +31,165 @@ public final class GameScriptRunner {
                     GameScriptRunner.validateScriptEntry(se);
                     final GameActionCode code = se.getActionCode();
                     switch (code) {
-                    case NONE:
-                        // Do nothing
-                        break;
-                    case MESSAGE:
-                        // Show the message
-                        final String msg = se.getFirstActionArg().getString();
-                        DungeonDiver2.getApplication().showMessage(msg);
-                        break;
-                    case SOUND:
-                        // Play the sound
-                        final GameSounds snd = se.getFirstActionArg().getSound();
-                        SoundManager.playSound(snd);
-                        break;
-                    case SHOP:
-                        // Show the shop
-                        final int shopType = se.getFirstActionArg()
-                                .getInteger();
-                        final Shop shop = DungeonDiver2.getApplication()
-                                .getGenericShop(shopType);
-                        if (shop != null) {
-                            shop.showShop();
-                        } else {
+                        case NONE:
+                            // Do nothing
+                            break;
+                        case MESSAGE:
+                            // Show the message
+                            final String msg = se.getFirstActionArg().getString();
+                            DungeonDiver2.getApplication().showMessage(msg);
+                            break;
+                        case SOUND:
+                            // Play the sound
+                            final GameSounds snd = se.getFirstActionArg().getSound();
+                            SoundManager.playSound(snd);
+                            break;
+                        case SHOP:
+                            // Show the shop
+                            final int shopType = se.getFirstActionArg()
+                                    .getInteger();
+                            final Shop shop = DungeonDiver2.getApplication()
+                                    .getGenericShop(shopType);
+                            if (shop != null) {
+                                shop.showShop();
+                            } else {
+                                throw new IllegalArgumentException(
+                                        "Illegal Shop Type: " + shopType);
+                            }
+                            break;
+                        case MOVE:
+                            // Move
+                            final boolean moveType = se.getActionArg(0)
+                                    .getBoolean();
+                            final boolean eventFlag = se.getActionArg(1)
+                                    .getBoolean();
+                            final int moveX = se.getActionArg(2).getInteger();
+                            final int moveY = se.getActionArg(3).getInteger();
+                            final int moveZ = se.getActionArg(4).getInteger();
+                            if (moveType == GameScriptConstants.MOVE_RELATIVE) {
+                                if (eventFlag) {
+                                    if (moveZ != 0) {
+                                        gm.goToFloor(moveZ);
+                                    }
+                                    gm.updatePositionRelative(moveX, moveY);
+                                } else {
+                                    if (moveZ != 0) {
+                                        gm.goToFloorRelative(moveZ);
+                                    }
+                                    gm.updatePositionRelativeNoEvents(moveX, moveY);
+                                }
+                            } else {
+                                if (eventFlag) {
+                                    gm.updatePositionAbsolute(moveX, moveY, moveZ);
+                                } else {
+                                    gm.updatePositionAbsoluteNoEvents(moveX, moveY,
+                                            moveZ);
+                                }
+                            }
+                            break;
+                        case END_GAME:
+                            // End Game
+                            gm.exitGame();
+                            break;
+                        case MODIFY:
+                            // Modify
+                            final boolean stickyScript = se.getActionArg(0)
+                                    .getBoolean();
+                            final String modObjName = se.getActionArg(1)
+                                    .getString();
+                            final int modX = se.getActionArg(2).getInteger();
+                            final int modY = se.getActionArg(3).getInteger();
+                            final int modZ = se.getActionArg(4).getInteger();
+                            final int modL = se.getActionArg(5).getInteger();
+                            final MapObject modObj = DungeonDiver2.getApplication()
+                                    .getObjects().getNewInstanceByName(modObjName);
+                            if (stickyScript) {
+                                final MapObject wasThere = DungeonDiver2
+                                        .getApplication().getVariablesManager()
+                                        .getMap().getCell(modX, modY, modZ, modL);
+                                if (wasThere.hasCustomScript()) {
+                                    modObj.setCustomScript(
+                                            wasThere.getCustomScript());
+                                }
+                            }
+                            DungeonDiver2.getApplication().getVariablesManager()
+                                    .getMap()
+                                    .setCell(modObj, modX, modY, modZ, modL);
+                            break;
+                        case DELETE_SCRIPT:
+                            // Delete Script
+                            gm.getSavedMapObject().setCustomScript(null);
+                            break;
+                        case RANDOM_CHANCE:
+                            // Random Chance
+                            final int threshold = se.getActionArg(0).getInteger();
+                            final RandomRange random = new RandomRange(0, 9999);
+                            final int chance = random.generate();
+                            if (chance > threshold) {
+                                return;
+                            }
+                            break;
+                        case BATTLE:
+                            // Hide the game
+                            DungeonDiver2.getApplication().getGameManager()
+                                    .hideOutput();
+                            // Battle
+                            final Battle battle = new Battle();
+                            new Thread("Battle") {
+                                @Override
+                                public void run() {
+                                    try {
+                                        DungeonDiver2.getApplication().getBattle()
+                                                .doFixedBattle(DungeonDiver2
+                                                        .getApplication()
+                                                        .getGameManager()
+                                                        .getTemporaryBattleCopy(),
+                                                        battle);
+                                    } catch (final Exception e) {
+                                        // Something went wrong in the battle
+                                        DungeonDiver2.getErrorLogger().logError(e);
+                                    }
+                                }
+                            }.start();
+                            break;
+                        case DECAY:
+                            DungeonDiver2.getApplication().getGameManager().decay();
+                            break;
+                        case LEVEL_CHANGE:
+                            final int destLevel = se.getActionArg(0).getInteger();
+                            DungeonDiver2.getApplication().getGameManager()
+                                    .goToLevel(destLevel);
+                            break;
+                        case RELATIVE_LEVEL_CHANGE:
+                            final int rDestLevel = se.getActionArg(0).getInteger();
+                            DungeonDiver2.getApplication().getGameManager()
+                                    .goToLevelRelative(rDestLevel);
+                            break;
+                        case ADD_TO_SCORE:
+                            final int points = se.getActionArg(0).getInteger();
+                            DungeonDiver2.getApplication().getGameManager()
+                                    .addToScore(points);
+                            break;
+                        case SWAP_PAIRS:
+                            final String swap1 = se.getActionArg(0).getString();
+                            final String swap2 = se.getActionArg(1).getString();
+                            final MapObject swapObj1 = DungeonDiver2
+                                    .getApplication().getObjects()
+                                    .getNewInstanceByName(swap1);
+                            final MapObject swapObj2 = DungeonDiver2
+                                    .getApplication().getObjects()
+                                    .getNewInstanceByName(swap2);
+                            DungeonDiver2.getApplication().getVariablesManager()
+                                    .getMap()
+                                    .findAllObjectPairsAndSwap(swapObj1, swapObj2);
+                            break;
+                        case REDRAW:
+                            DungeonDiver2.getApplication().getGameManager()
+                                    .redrawMapNoRebuild();
+                            break;
+                        default:
                             throw new IllegalArgumentException(
-                                    "Illegal Shop Type: " + shopType);
-                        }
-                        break;
-                    case MOVE:
-                        // Move
-                        final boolean moveType = se.getActionArg(0)
-                                .getBoolean();
-                        final boolean eventFlag = se.getActionArg(1)
-                                .getBoolean();
-                        final int moveX = se.getActionArg(2).getInteger();
-                        final int moveY = se.getActionArg(3).getInteger();
-                        final int moveZ = se.getActionArg(4).getInteger();
-                        if (moveType == GameScriptConstants.MOVE_RELATIVE) {
-                            if (eventFlag) {
-                                if (moveZ != 0) {
-                                    gm.goToFloor(moveZ);
-                                }
-                                gm.updatePositionRelative(moveX, moveY);
-                            } else {
-                                if (moveZ != 0) {
-                                    gm.goToFloorRelative(moveZ);
-                                }
-                                gm.updatePositionRelativeNoEvents(moveX, moveY);
-                            }
-                        } else {
-                            if (eventFlag) {
-                                gm.updatePositionAbsolute(moveX, moveY, moveZ);
-                            } else {
-                                gm.updatePositionAbsoluteNoEvents(moveX, moveY,
-                                        moveZ);
-                            }
-                        }
-                        break;
-                    case END_GAME:
-                        // End Game
-                        gm.exitGame();
-                        break;
-                    case MODIFY:
-                        // Modify
-                        final boolean stickyScript = se.getActionArg(0)
-                                .getBoolean();
-                        final String modObjName = se.getActionArg(1)
-                                .getString();
-                        final int modX = se.getActionArg(2).getInteger();
-                        final int modY = se.getActionArg(3).getInteger();
-                        final int modZ = se.getActionArg(4).getInteger();
-                        final int modL = se.getActionArg(5).getInteger();
-                        final MapObject modObj = DungeonDiver2.getApplication()
-                                .getObjects().getNewInstanceByName(modObjName);
-                        if (stickyScript) {
-                            final MapObject wasThere = DungeonDiver2
-                                    .getApplication().getVariablesManager()
-                                    .getMap().getCell(modX, modY, modZ, modL);
-                            if (wasThere.hasCustomScript()) {
-                                modObj.setCustomScript(
-                                        wasThere.getCustomScript());
-                            }
-                        }
-                        DungeonDiver2.getApplication().getVariablesManager()
-                                .getMap()
-                                .setCell(modObj, modX, modY, modZ, modL);
-                        break;
-                    case DELETE_SCRIPT:
-                        // Delete Script
-                        gm.getSavedMapObject().setCustomScript(null);
-                        break;
-                    case RANDOM_CHANCE:
-                        // Random Chance
-                        final int threshold = se.getActionArg(0).getInteger();
-                        final RandomRange random = new RandomRange(0, 9999);
-                        final int chance = random.generate();
-                        if (chance > threshold) {
-                            return;
-                        }
-                        break;
-                    case BATTLE:
-                        // Hide the game
-                        DungeonDiver2.getApplication().getGameManager()
-                                .hideOutput();
-                        // Battle
-                        final Battle battle = new Battle();
-                        new Thread("Battle") {
-                            @Override
-                            public void run() {
-                                try {
-                                    DungeonDiver2.getApplication().getBattle()
-                                            .doFixedBattle(DungeonDiver2
-                                                    .getApplication()
-                                                    .getGameManager()
-                                                    .getTemporaryBattleCopy(),
-                                                    battle);
-                                } catch (final Exception e) {
-                                    // Something went wrong in the battle
-                                    DungeonDiver2.getErrorLogger().logError(e);
-                                }
-                            }
-                        }.start();
-                        break;
-                    case DECAY:
-                        DungeonDiver2.getApplication().getGameManager().decay();
-                        break;
-                    case LEVEL_CHANGE:
-                        final int destLevel = se.getActionArg(0).getInteger();
-                        DungeonDiver2.getApplication().getGameManager()
-                                .goToLevel(destLevel);
-                        break;
-                    case RELATIVE_LEVEL_CHANGE:
-                        final int rDestLevel = se.getActionArg(0).getInteger();
-                        DungeonDiver2.getApplication().getGameManager()
-                                .goToLevelRelative(rDestLevel);
-                        break;
-                    case ADD_TO_SCORE:
-                        final int points = se.getActionArg(0).getInteger();
-                        DungeonDiver2.getApplication().getGameManager()
-                                .addToScore(points);
-                        break;
-                    case SWAP_PAIRS:
-                        final String swap1 = se.getActionArg(0).getString();
-                        final String swap2 = se.getActionArg(1).getString();
-                        final MapObject swapObj1 = DungeonDiver2
-                                .getApplication().getObjects()
-                                .getNewInstanceByName(swap1);
-                        final MapObject swapObj2 = DungeonDiver2
-                                .getApplication().getObjects()
-                                .getNewInstanceByName(swap2);
-                        DungeonDiver2.getApplication().getVariablesManager()
-                                .getMap()
-                                .findAllObjectPairsAndSwap(swapObj1, swapObj2);
-                        break;
-                    case REDRAW:
-                        DungeonDiver2.getApplication().getGameManager()
-                                .redrawMapNoRebuild();
-                        break;
-                    default:
-                        throw new IllegalArgumentException(
-                                "Illegal Action Code: " + code.toString());
+                                    "Illegal Action Code: " + code.toString());
                     }
                 }
             }

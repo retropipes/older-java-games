@@ -259,37 +259,37 @@ public class BattleGUI {
                     .getNextAction(
                             this.bd.getBattlerAIContexts()[this.activeIndex]);
             switch (action) {
-            case AIRoutine.ACTION_MOVE:
-                final int x = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveX();
-                final int y = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveY();
-                this.lastAIActionResult = this.updatePosition(x, y);
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_CAST_SPELL:
-                this.lastAIActionResult = this.castSpell();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_DRAIN:
-                this.lastAIActionResult = this.drain();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_STEAL:
-                this.lastAIActionResult = this.steal();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_END_TURN:
-                this.lastAIActionResult = true;
-                this.endTurn();
-                this.stopWaitingForAI();
-                break;
-            default:
-                break;
+                case AIRoutine.ACTION_MOVE:
+                    final int x = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveX();
+                    final int y = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveY();
+                    this.lastAIActionResult = this.updatePosition(x, y);
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_CAST_SPELL:
+                    this.lastAIActionResult = this.castSpell();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_DRAIN:
+                    this.lastAIActionResult = this.drain();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_STEAL:
+                    this.lastAIActionResult = this.steal();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_END_TURN:
+                    this.lastAIActionResult = true;
+                    this.endTurn();
+                    this.stopWaitingForAI();
+                    break;
+                default:
+                    break;
             }
             final int currResult = this.getResult();
             if (currResult != BattleResults.IN_PROGRESS) {
@@ -310,13 +310,13 @@ public class BattleGUI {
         final int action = this.auto
                 .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
-        case AIRoutine.ACTION_MOVE:
-            final int x = this.auto.getMoveX();
-            final int y = this.auto.getMoveY();
-            this.updatePositionInternal(x, y, false, acting);
-            break;
-        default:
-            break;
+            case AIRoutine.ACTION_MOVE:
+                final int x = this.auto.getMoveX();
+                final int y = this.auto.getMoveY();
+                this.updatePositionInternal(x, y, false, acting);
+                break;
+            default:
+                break;
         }
         final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {
@@ -1416,55 +1416,55 @@ public class BattleGUI {
                 if (bg.eventHandlersOn && !modKeyDown) {
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
-                    case KeyEvent.VK_NUMPAD4:
-                    case KeyEvent.VK_LEFT:
-                    case KeyEvent.VK_A:
-                        bg.updatePosition(-1, 0);
-                        break;
-                    case KeyEvent.VK_NUMPAD2:
-                    case KeyEvent.VK_DOWN:
-                    case KeyEvent.VK_X:
-                        bg.updatePosition(0, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD6:
-                    case KeyEvent.VK_RIGHT:
-                    case KeyEvent.VK_D:
-                        bg.updatePosition(1, 0);
-                        break;
-                    case KeyEvent.VK_NUMPAD8:
-                    case KeyEvent.VK_UP:
-                    case KeyEvent.VK_W:
-                        bg.updatePosition(0, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD7:
-                    case KeyEvent.VK_Q:
-                        bg.updatePosition(-1, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD9:
-                    case KeyEvent.VK_E:
-                        bg.updatePosition(1, -1);
-                        break;
-                    case KeyEvent.VK_NUMPAD3:
-                    case KeyEvent.VK_C:
-                        bg.updatePosition(1, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD1:
-                    case KeyEvent.VK_Z:
-                        bg.updatePosition(-1, 1);
-                        break;
-                    case KeyEvent.VK_NUMPAD5:
-                    case KeyEvent.VK_S:
-                        // Confirm before attacking self
-                        SoundManager.playSound(GameSounds.SONG);
-                        final int res = CommonDialogs.showConfirmDialog(
-                                "Are you sure you want to attack yourself?",
-                                "Battle");
-                        if (res == JOptionPane.YES_OPTION) {
-                            bg.updatePosition(0, 0);
-                        }
-                        break;
-                    default:
-                        break;
+                        case KeyEvent.VK_NUMPAD4:
+                        case KeyEvent.VK_LEFT:
+                        case KeyEvent.VK_A:
+                            bg.updatePosition(-1, 0);
+                            break;
+                        case KeyEvent.VK_NUMPAD2:
+                        case KeyEvent.VK_DOWN:
+                        case KeyEvent.VK_X:
+                            bg.updatePosition(0, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD6:
+                        case KeyEvent.VK_RIGHT:
+                        case KeyEvent.VK_D:
+                            bg.updatePosition(1, 0);
+                            break;
+                        case KeyEvent.VK_NUMPAD8:
+                        case KeyEvent.VK_UP:
+                        case KeyEvent.VK_W:
+                            bg.updatePosition(0, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD7:
+                        case KeyEvent.VK_Q:
+                            bg.updatePosition(-1, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD9:
+                        case KeyEvent.VK_E:
+                            bg.updatePosition(1, -1);
+                            break;
+                        case KeyEvent.VK_NUMPAD3:
+                        case KeyEvent.VK_C:
+                            bg.updatePosition(1, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD1:
+                        case KeyEvent.VK_Z:
+                            bg.updatePosition(-1, 1);
+                            break;
+                        case KeyEvent.VK_NUMPAD5:
+                        case KeyEvent.VK_S:
+                            // Confirm before attacking self
+                            SoundManager.playSound(GameSounds.SONG);
+                            final int res = CommonDialogs.showConfirmDialog(
+                                    "Are you sure you want to attack yourself?",
+                                    "Battle");
+                            if (res == JOptionPane.YES_OPTION) {
+                                bg.updatePosition(0, 0);
+                            }
+                            break;
+                        default:
+                            break;
                     }
                 }
             } catch (final Exception ex) {

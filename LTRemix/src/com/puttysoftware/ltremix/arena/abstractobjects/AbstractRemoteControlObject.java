@@ -99,26 +99,26 @@ public abstract class AbstractRemoteControlObject extends AbstractArenaObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.remoteX;
-        case 2:
-            return this.remoteY;
-        default:
-            return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.remoteX;
+            case 2:
+                return this.remoteY;
+            default:
+                return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.remoteX = value;
-            break;
-        case 2:
-            this.remoteY = value;
-            break;
-        default:
-            break;
+            case 1:
+                this.remoteX = value;
+                break;
+            case 2:
+                this.remoteY = value;
+                break;
+            default:
+                break;
         }
     }
 }

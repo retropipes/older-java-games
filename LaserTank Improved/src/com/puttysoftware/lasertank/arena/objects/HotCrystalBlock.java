@@ -27,10 +27,10 @@ public class HotCrystalBlock extends AbstractReactionWall {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            return new CrystalBlock();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                return new CrystalBlock();
+            default:
+                return this;
         }
     }
 

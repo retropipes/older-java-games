@@ -17,29 +17,29 @@ public class ResourceStreamReader implements AutoCloseable {
 
     // Constructors
     public ResourceStreamReader(final InputStream is) {
-	this.br = new BufferedReader(new InputStreamReader(is));
+        this.br = new BufferedReader(new InputStreamReader(is));
     }
 
     public ResourceStreamReader(final InputStream is, final String encoding) throws UnsupportedEncodingException {
-	this.br = new BufferedReader(new InputStreamReader(is, encoding));
+        this.br = new BufferedReader(new InputStreamReader(is, encoding));
     }
 
     // Methods
     @Override
     public void close() throws IOException {
-	this.br.close();
+        this.br.close();
     }
 
     public String readString() throws IOException {
-	return this.br.readLine();
+        return this.br.readLine();
     }
 
     public int readInt() throws IOException {
-	final String line = this.br.readLine();
-	if (line == null) {
-	    throw new IOException("Input == null!");
-	} else {
-	    return Integer.parseInt(line);
-	}
+        final String line = this.br.readLine();
+        if (line == null) {
+            throw new IOException("Input == null!");
+        } else {
+            return Integer.parseInt(line);
+        }
     }
 }

@@ -44,26 +44,26 @@ public class Module {
             }
         }
         switch (Module.ushortbe(moduleData, 1082)) {
-        case 0x4b2e: /* M.K. */
-        case 0x4b21: /* M!K! */
-        case 0x5434: /* FLT4 */
-            this.numChannels = 4;
-            this.c2Rate = Sample.C2_PAL;
-            this.gain = 64;
-            break;
-        case 0x484e: /* xCHN */
-            this.numChannels = moduleData[1080] - 48;
-            this.c2Rate = Sample.C2_NTSC;
-            this.gain = 32;
-            break;
-        case 0x4348: /* xxCH */
-            this.numChannels = (moduleData[1080] - 48) * 10;
-            this.numChannels += moduleData[1081] - 48;
-            this.c2Rate = Sample.C2_NTSC;
-            this.gain = 32;
-            break;
-        default:
-            throw new IllegalArgumentException("MOD Format not recognised!");
+            case 0x4b2e: /* M.K. */
+            case 0x4b21: /* M!K! */
+            case 0x5434: /* FLT4 */
+                this.numChannels = 4;
+                this.c2Rate = Sample.C2_PAL;
+                this.gain = 64;
+                break;
+            case 0x484e: /* xCHN */
+                this.numChannels = moduleData[1080] - 48;
+                this.c2Rate = Sample.C2_NTSC;
+                this.gain = 32;
+                break;
+            case 0x4348: /* xxCH */
+                this.numChannels = (moduleData[1080] - 48) * 10;
+                this.numChannels += moduleData[1081] - 48;
+                this.c2Rate = Sample.C2_NTSC;
+                this.gain = 32;
+                break;
+            default:
+                throw new IllegalArgumentException("MOD Format not recognised!");
         }
         this.defaultGVol = 64;
         this.defaultSpeed = 6;

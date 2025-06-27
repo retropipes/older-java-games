@@ -11,7 +11,7 @@ public class CloneableObjectStorage extends ObjectStorage implements Cloneable {
      * @param shape simulated dimensions for the stored data
      */
     public CloneableObjectStorage(final int... shape) {
-	super(shape);
+        super(shape);
     }
 
     // Copy constructor
@@ -22,7 +22,7 @@ public class CloneableObjectStorage extends ObjectStorage implements Cloneable {
      * @param shape  simulated dimensions for the stored data
      */
     protected CloneableObjectStorage(final CloneableObject[] source, final int... shape) {
-	super(source, shape);
+        super(source, shape);
     }
 
     // Protected copy constructor
@@ -32,7 +32,7 @@ public class CloneableObjectStorage extends ObjectStorage implements Cloneable {
      * @param source the underlying array where stored data came from
      */
     public CloneableObjectStorage(final CloneableObjectStorage source) {
-	super(source);
+        super(source);
     }
 
     /**
@@ -43,12 +43,12 @@ public class CloneableObjectStorage extends ObjectStorage implements Cloneable {
      */
     @Override
     protected CloneableObjectStorage clone() throws CloneNotSupportedException {
-	final CloneableObjectStorage copy = new CloneableObjectStorage(this.getShape());
-	final int rawLength = this.getRawLength();
-	for (int i = 0; i < rawLength; i++) {
-	    final CloneableObject entryCopy = ((CloneableObject) this.getRawCell(i)).clone();
-	    copy.setRawCell(entryCopy, i);
-	}
-	return copy;
+        final CloneableObjectStorage copy = new CloneableObjectStorage(this.getShape());
+        final int rawLength = this.getRawLength();
+        for (int i = 0; i < rawLength; i++) {
+            final CloneableObject entryCopy = ((CloneableObject) this.getRawCell(i)).clone();
+            copy.setRawCell(entryCopy, i);
+        }
+        return copy;
     }
 }

@@ -59,7 +59,7 @@ public class MazeRegistration {
         // Get list of files in Mazes folder
         final String[] mazeNames = new File(
                 MazeRegistration.getBasePath() + File.separator + "Mazes")
-                        .list(new MazeFilter());
+                .list(new MazeFilter());
         if (mazeNames != null && mazeNames.length > 0) {
             // Strip extension from list entries
             for (int z = 0; z < mazeNames.length; z++) {
@@ -84,7 +84,7 @@ public class MazeRegistration {
                         if (new File(MazeRegistration.getBasePath()
                                 + File.separator + "Mazes" + File.separator
                                 + res + Extension.getMazeExtensionWithPeriod())
-                                        .exists()) {
+                                .exists()) {
                             // Register it
                             if (mazeList != null && anyFound) {
                                 final String[] newMazeList = new String[mazeList.length
@@ -155,7 +155,7 @@ public class MazeRegistration {
                         if (new File(MazeRegistration.getPerUserBasePath()
                                 + File.separator + res
                                 + Extension.getMazeExtensionWithPeriod())
-                                        .exists()) {
+                                .exists()) {
                             // Register it
                             if (mazeList != null && anyFound) {
                                 final String[] newMazeList = new String[mazeList.length
@@ -241,7 +241,7 @@ public class MazeRegistration {
                     if (new File(MazeRegistration.getPerUserBasePath()
                             + File.separator + res
                             + Extension.getMazeExtensionWithPeriod())
-                                    .exists()) {
+                            .exists()) {
                         // Register it
                         if (mazeList != null && anyFound) {
                             final String[] newMazeList = new String[mazeList.length

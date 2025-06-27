@@ -12,56 +12,56 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.MazeObject;
 public class ControllableTeleport extends GenericTeleport {
     // Constructors
     public ControllableTeleport() {
-	super(0, 0, 0, 0);
+        super(0, 0, 0, 0);
     }
 
     // Scriptability
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	final Application app = Import1.getApplication();
-	if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playMoveSuccessSound();
-	}
-	app.getGameManager().controllableTeleport();
+        final Application app = Import1.getApplication();
+        if (app.getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playMoveSuccessSound();
+        }
+        app.getGameManager().controllableTeleport();
     }
 
     @Override
     public String getName() {
-	return "Controllable Teleport";
+        return "Controllable Teleport";
     }
 
     @Override
     public String getPluralName() {
-	return "Controllable Teleports";
+        return "Controllable Teleports";
     }
 
     @Override
     public void editorProbeHook() {
-	Messager.showMessage(this.getName());
+        Messager.showMessage(this.getName());
     }
 
     @Override
     public MazeObject editorPropertiesHook() {
-	return null;
+        return null;
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 0;
+        return (byte) 0;
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-	return "walk";
+        return "walk";
     }
 
     @Override
     public String getDescription() {
-	return "Controllable Teleports let you choose the place you teleport to.";
+        return "Controllable Teleports let you choose the place you teleport to.";
     }
 
     @Override
     public int getCustomFormat() {
-	return 0;
+        return 0;
     }
 }

@@ -20,12 +20,12 @@ public class LaserTypeConstants {
 
     public static final int getRangeTypeForLaserType(final int lt) {
         switch (lt) {
-        case LASER_TYPE_STUNNER:
-            return RangeTypeConstants.RANGE_TYPE_ICE_BOMB;
-        case LASER_TYPE_MISSILE:
-            return RangeTypeConstants.RANGE_TYPE_HEAT_BOMB;
-        default:
-            return RangeTypeConstants.RANGE_TYPE_BOMB;
+            case LASER_TYPE_STUNNER:
+                return RangeTypeConstants.RANGE_TYPE_ICE_BOMB;
+            case LASER_TYPE_MISSILE:
+                return RangeTypeConstants.RANGE_TYPE_HEAT_BOMB;
+            default:
+                return RangeTypeConstants.RANGE_TYPE_BOMB;
         }
     }
 }

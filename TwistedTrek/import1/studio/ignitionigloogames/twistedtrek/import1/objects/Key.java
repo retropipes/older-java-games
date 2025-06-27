@@ -6,27 +6,27 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericSingleKey;
 public class Key extends GenericSingleKey {
     // Constructors
     public Key() {
-	super();
+        super();
     }
 
     // Scriptability
     @Override
     public String getName() {
-	return "Key";
+        return "Key";
     }
 
     @Override
     public String getPluralName() {
-	return "Keys";
+        return "Keys";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 1;
+        return (byte) 1;
     }
 
     @Override
     public String getDescription() {
-	return "Keys unlock Locks, and can only be used once.";
+        return "Keys unlock Locks, and can only be used once.";
     }
 }

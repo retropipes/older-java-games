@@ -110,20 +110,20 @@ public class SpellCaster {
             final int teamID) {
         final BattleTarget target = cast.getTarget();
         switch (target) {
-        case SELF:
-            if (teamID == AbstractCreature.TEAM_PARTY) {
-                return PartyManager.getParty().getLeader();
-            } else {
-                return Chrystalz.getApplication().getBattle().getEnemy();
-            }
-        case ENEMY:
-            if (teamID == AbstractCreature.TEAM_PARTY) {
-                return Chrystalz.getApplication().getBattle().getEnemy();
-            } else {
-                return PartyManager.getParty().getLeader();
-            }
-        default:
-            return null;
+            case SELF:
+                if (teamID == AbstractCreature.TEAM_PARTY) {
+                    return PartyManager.getParty().getLeader();
+                } else {
+                    return Chrystalz.getApplication().getBattle().getEnemy();
+                }
+            case ENEMY:
+                if (teamID == AbstractCreature.TEAM_PARTY) {
+                    return Chrystalz.getApplication().getBattle().getEnemy();
+                } else {
+                    return PartyManager.getParty().getLeader();
+                }
+            default:
+                return null;
         }
     }
 }

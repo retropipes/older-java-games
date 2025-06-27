@@ -15,41 +15,41 @@ public class DrunkTrap extends GenericTrap {
 
     // Constructors
     public DrunkTrap() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Drunk Trap";
+        return "Drunk Trap";
     }
 
     @Override
     public String getPluralName() {
-	return "Drunk Traps";
+        return "Drunk Traps";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 6;
+        return (byte) 6;
     }
 
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	Messager.showMessage("You stumble around drunkenly!");
-	Import1.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_DRUNK,
-		DrunkTrap.EFFECT_DURATION);
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    MazeObject.playDrunkSound();
-	}
+        Messager.showMessage("You stumble around drunkenly!");
+        Import1.getApplication().getGameManager().activateEffect(EffectConstants.EFFECT_DRUNK,
+                DrunkTrap.EFFECT_DURATION);
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            MazeObject.playDrunkSound();
+        }
     }
 
     @Override
     public String getMoveSuccessSoundName() {
-	return "drunk";
+        return "drunk";
     }
 
     @Override
     public String getDescription() {
-	return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
+        return "Drunk Traps alter your movement in a way that resembles being intoxicated for 10 steps when stepped on.";
     }
 }

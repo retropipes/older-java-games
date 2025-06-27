@@ -8,26 +8,26 @@ import studio.ignitionigloogames.twistedtrek.import2.shops.ShopTypes;
 public class ArmorShop extends AbstractShop {
     // Constructors
     public ArmorShop() {
-	super(ShopTypes.SHOP_TYPE_ARMOR);
+        super(ShopTypes.SHOP_TYPE_ARMOR);
     }
 
     @Override
     public int getBaseID() {
-	return ObjectImageConstants.OBJECT_IMAGE_ARMOR_SHOP;
+        return ObjectImageConstants.OBJECT_IMAGE_ARMOR_SHOP;
     }
 
     @Override
     public String getName() {
-	return "Armor Shop";
+        return "Armor Shop";
     }
 
     @Override
     public String getPluralName() {
-	return "Armor Shops";
+        return "Armor Shops";
     }
 
     @Override
     public String getDescription() {
-	return "Armor Shops sell protective armor.";
+        return "Armor Shops sell protective armor.";
     }
 }

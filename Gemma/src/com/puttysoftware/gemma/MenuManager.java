@@ -399,121 +399,121 @@ public class MenuManager {
                 final BattleLogic ba = app.getBattle();
                 final String cmd = e.getActionCommand();
                 switch (cmd) {
-                case "Open Saved Game...":
-                    app.getScenarioManager().loadSavedGame();
-                    break;
-                case "Close":
-                    // Close the window
-                    boolean saved = true;
-                    int status;
-                    if (app.getScenarioManager().getDirty()) {
-                        status = ScenarioManager.showSaveDialog();
-                        if (status == JOptionPane.YES_OPTION) {
-                            saved = app.getScenarioManager().saveGame();
-                        } else if (status == JOptionPane.CANCEL_OPTION) {
-                            saved = false;
-                        } else {
-                            app.getScenarioManager().setDirty(false);
+                    case "Open Saved Game...":
+                        app.getScenarioManager().loadSavedGame();
+                        break;
+                    case "Close":
+                        // Close the window
+                        boolean saved = true;
+                        int status;
+                        if (app.getScenarioManager().getDirty()) {
+                            status = ScenarioManager.showSaveDialog();
+                            if (status == JOptionPane.YES_OPTION) {
+                                saved = app.getScenarioManager().saveGame();
+                            } else if (status == JOptionPane.CANCEL_OPTION) {
+                                saved = false;
+                            } else {
+                                app.getScenarioManager().setDirty(false);
+                            }
                         }
-                    }
-                    if (saved) {
-                        if (app.getMode() == Application.STATUS_GAME) {
-                            app.getGameManager().exitGame();
-                        } else if (app.getMode() == Application.STATUS_EDITOR) {
-                            app.getCurrentEditor().handleCloseWindow();
+                        if (saved) {
+                            if (app.getMode() == Application.STATUS_GAME) {
+                                app.getGameManager().exitGame();
+                            } else if (app.getMode() == Application.STATUS_EDITOR) {
+                                app.getCurrentEditor().handleCloseWindow();
+                            }
                         }
-                    }
-                    break;
-                case "Save":
-                    app.getScenarioManager().saveGame();
-                    break;
-                case "Save As...":
-                    app.getScenarioManager().saveGameAs();
-                    break;
-                case "Print...":
-                    BoardPrinter.printBoard(app.getOutputFrame());
-                    break;
-                case "Exit":
-                    // Exit program
-                    if (app.getGUIManager().quitHandler()) {
-                        System.exit(0);
-                    }
-                    break;
-                case "Preferences...":
-                    // Show preferences dialog
-                    PreferencesManager.showPrefs();
-                    break;
-                case "Play":
-                    // Play the current scenario
-                    final boolean proceed = app.getGameManager().newGame();
-                    if (proceed) {
-                        app.getGameManager().playMap();
-                    }
-                    break;
-                case "Register Character...":
-                    // Register Character
-                    CharacterRegistration.registerCharacter();
-                    break;
-                case "Unregister Character...":
-                    // Unregister Character
-                    CharacterRegistration.unregisterCharacter();
-                    break;
-                case "Remove Character...":
-                    // Confirm
-                    final int confirm = CommonDialogs.showConfirmDialog(
-                            "WARNING: This will DELETE the character from disk,\n"
-                                    + "and CANNOT be undone! Proceed anyway?",
-                            "Remove Character" + this.suffix);
-                    if (confirm == CommonDialogs.YES_OPTION) {
-                        // Remove Character
-                        CharacterRegistration.removeCharacter();
-                    }
-                    break;
-                case "Show Equipment...":
-                    InventoryViewer.showEquipmentDialog();
-                    break;
-                case "Show Inventory...":
-                    InventoryViewer.showInventoryDialog();
-                    break;
-                case "Edit Note...":
-                    // Edit Note
-                    NoteManager.editNote();
-                    break;
-                case "View Prestige...":
-                    // View Prestige
-                    PrestigeViewer.viewPrestige();
-                    break;
-                case "View Current Score...":
-                    // View Score
-                    app.getGameManager().showCurrentScore();
-                    break;
-                case "View Statistics...":
-                    // View Statistics
-                    StatisticsViewer.viewStatistics();
-                    break;
-                case "Cast Spell":
-                    ba.castSpell();
-                    break;
-                case "Use an Item":
-                    ba.useItem();
-                    break;
-                case "Steal Stuff":
-                    ba.steal();
-                    break;
-                case "Drain MP":
-                    ba.drain();
-                    break;
-                case "End Turn":
-                    ba.endTurn();
-                    break;
-                case "About Gemma...":
-                    app.getAboutDialog().showAboutDialog();
-                    break;
-                case "Gemma Help":
-                    app.getHelpManager().showHelp();
-                    break;
-                default:
-                    break;
+                        break;
+                    case "Save":
+                        app.getScenarioManager().saveGame();
+                        break;
+                    case "Save As...":
+                        app.getScenarioManager().saveGameAs();
+                        break;
+                    case "Print...":
+                        BoardPrinter.printBoard(app.getOutputFrame());
+                        break;
+                    case "Exit":
+                        // Exit program
+                        if (app.getGUIManager().quitHandler()) {
+                            System.exit(0);
+                        }
+                        break;
+                    case "Preferences...":
+                        // Show preferences dialog
+                        PreferencesManager.showPrefs();
+                        break;
+                    case "Play":
+                        // Play the current scenario
+                        final boolean proceed = app.getGameManager().newGame();
+                        if (proceed) {
+                            app.getGameManager().playMap();
+                        }
+                        break;
+                    case "Register Character...":
+                        // Register Character
+                        CharacterRegistration.registerCharacter();
+                        break;
+                    case "Unregister Character...":
+                        // Unregister Character
+                        CharacterRegistration.unregisterCharacter();
+                        break;
+                    case "Remove Character...":
+                        // Confirm
+                        final int confirm = CommonDialogs.showConfirmDialog(
+                                "WARNING: This will DELETE the character from disk,\n"
+                                        + "and CANNOT be undone! Proceed anyway?",
+                                "Remove Character" + this.suffix);
+                        if (confirm == CommonDialogs.YES_OPTION) {
+                            // Remove Character
+                            CharacterRegistration.removeCharacter();
+                        }
+                        break;
+                    case "Show Equipment...":
+                        InventoryViewer.showEquipmentDialog();
+                        break;
+                    case "Show Inventory...":
+                        InventoryViewer.showInventoryDialog();
+                        break;
+                    case "Edit Note...":
+                        // Edit Note
+                        NoteManager.editNote();
+                        break;
+                    case "View Prestige...":
+                        // View Prestige
+                        PrestigeViewer.viewPrestige();
+                        break;
+                    case "View Current Score...":
+                        // View Score
+                        app.getGameManager().showCurrentScore();
+                        break;
+                    case "View Statistics...":
+                        // View Statistics
+                        StatisticsViewer.viewStatistics();
+                        break;
+                    case "Cast Spell":
+                        ba.castSpell();
+                        break;
+                    case "Use an Item":
+                        ba.useItem();
+                        break;
+                    case "Steal Stuff":
+                        ba.steal();
+                        break;
+                    case "Drain MP":
+                        ba.drain();
+                        break;
+                    case "End Turn":
+                        ba.endTurn();
+                        break;
+                    case "About Gemma...":
+                        app.getAboutDialog().showAboutDialog();
+                        break;
+                    case "Gemma Help":
+                        app.getHelpManager().showHelp();
+                        break;
+                    default:
+                        break;
                 }
                 MenuManager.this.checkFlags();
             } catch (final Exception ex) {

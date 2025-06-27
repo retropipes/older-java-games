@@ -1163,86 +1163,86 @@ public class MazeEditor {
     public void pairStairs(final int type) {
         final Application app = LoopChute.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsDown(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(),
-                        this.elMgr.getEditorLocationZ() + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsUp(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(),
-                        this.elMgr.getEditorLocationZ() - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsDown(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(),
+                            this.elMgr.getEditorLocationZ() + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsUp(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(),
+                            this.elMgr.getEditorLocationZ() - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void pairStairs(final int type, final int z) {
         final Application app = LoopChute.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsDown(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new StairsUp(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsDown(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(), z + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new StairsUp(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(), z - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
     private void unpairStairs(final int type, final int z) {
         final Application app = LoopChute.getApplication();
         switch (type) {
-        case STAIRS_UP:
-            try {
-                app.getMazeManager().getMaze().setCell(new Empty(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z + 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        case STAIRS_DOWN:
-            try {
-                app.getMazeManager().getMaze().setCell(new Empty(),
-                        this.elMgr.getEditorLocationX(),
-                        this.elMgr.getEditorLocationY(), z - 1,
-                        MazeConstants.LAYER_OBJECT);
-            } catch (final ArrayIndexOutOfBoundsException e) {
-                // Do nothing
-            }
-            break;
-        default:
-            break;
+            case STAIRS_UP:
+                try {
+                    app.getMazeManager().getMaze().setCell(new Empty(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(), z + 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            case STAIRS_DOWN:
+                try {
+                    app.getMazeManager().getMaze().setCell(new Empty(),
+                            this.elMgr.getEditorLocationX(),
+                            this.elMgr.getEditorLocationY(), z - 1,
+                            MazeConstants.LAYER_OBJECT);
+                } catch (final ArrayIndexOutOfBoundsException e) {
+                    // Do nothing
+                }
+                break;
+            default:
+                break;
         }
     }
 
@@ -1400,27 +1400,27 @@ public class MazeEditor {
         final Application app = LoopChute.getApplication();
         this.TELEPORT_TYPE = type;
         switch (type) {
-        case TELEPORT_TYPE_GENERIC:
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-        case TELEPORT_TYPE_ONESHOT:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-        case TELEPORT_TYPE_TWOWAY:
-        case TELEPORT_TYPE_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-        case TELEPORT_TYPE_BLOCK:
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            LoopChute.getApplication()
-                    .showMessage("Click to set teleport destination");
-            break;
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            return this.editRandomTeleportDestination(type);
-        default:
-            break;
+            case TELEPORT_TYPE_GENERIC:
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+            case TELEPORT_TYPE_ONESHOT:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+            case TELEPORT_TYPE_TWOWAY:
+            case TELEPORT_TYPE_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+            case TELEPORT_TYPE_BLOCK:
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                LoopChute.getApplication()
+                        .showMessage("Click to set teleport destination");
+                break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                return this.editRandomTeleportDestination(type);
+            default:
+                break;
         }
         this.horzScroll.removeAdjustmentListener(this.mhandler);
         this.vertScroll.removeAdjustmentListener(this.mhandler);
@@ -1439,40 +1439,40 @@ public class MazeEditor {
         this.TELEPORT_TYPE = type;
         int destX = 0, destY = 0;
         switch (type) {
-        case TELEPORT_TYPE_RANDOM:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE:
-        case TELEPORT_TYPE_RANDOM_ONESHOT:
-        case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-            input1 = CommonDialogs.showTextInputDialog("Random row range:",
-                    "Editor");
-            if (input1 != null) {
-                input2 = CommonDialogs
-                        .showTextInputDialog("Random column range:", "Editor");
-                if (input2 != null) {
-                    try {
-                        destX = Integer.parseInt(input1);
-                        destY = Integer.parseInt(input2);
-                    } catch (final NumberFormatException nf) {
-                        CommonDialogs.showDialog(
-                                "Row and column ranges must be integers.");
-                    }
-                    switch (type) {
-                    case TELEPORT_TYPE_RANDOM:
-                        return new RandomTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE:
-                        return new RandomInvisibleTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_ONESHOT:
-                        return new RandomOneShotTeleport(destX, destY);
-                    case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
-                        return new RandomInvisibleOneShotTeleport(destX, destY);
-                    default:
-                        break;
+            case TELEPORT_TYPE_RANDOM:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+            case TELEPORT_TYPE_RANDOM_ONESHOT:
+            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                input1 = CommonDialogs.showTextInputDialog("Random row range:",
+                        "Editor");
+                if (input1 != null) {
+                    input2 = CommonDialogs
+                            .showTextInputDialog("Random column range:", "Editor");
+                    if (input2 != null) {
+                        try {
+                            destX = Integer.parseInt(input1);
+                            destY = Integer.parseInt(input2);
+                        } catch (final NumberFormatException nf) {
+                            CommonDialogs.showDialog(
+                                    "Row and column ranges must be integers.");
+                        }
+                        switch (type) {
+                            case TELEPORT_TYPE_RANDOM:
+                                return new RandomTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE:
+                                return new RandomInvisibleTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_ONESHOT:
+                                return new RandomOneShotTeleport(destX, destY);
+                            case TELEPORT_TYPE_RANDOM_INVISIBLE_ONESHOT:
+                                return new RandomInvisibleOneShotTeleport(destX, destY);
+                            default:
+                                break;
+                        }
                     }
                 }
-            }
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
         }
         return null;
     }
@@ -1501,86 +1501,86 @@ public class MazeEditor {
             return;
         }
         switch (this.TELEPORT_TYPE) {
-        case TELEPORT_TYPE_GENERIC:
-            app.getMazeManager().getMaze().setCell(
-                    new Teleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_GENERIC:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT:
-            app.getMazeManager().getMaze().setCell(
-                    new OneShotTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleOneShotTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_TWOWAY:
-            app.getMazeManager().getMaze().setCell(
-                    new TwoWayTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            this.pairTwoWayTeleport(destX, destY, destZ);
-            break;
-        case TELEPORT_TYPE_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new ChainTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleChainTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_ONESHOT_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new OneShotChainTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleOneShotChainTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_BLOCK:
-            app.getMazeManager().getMaze().setCell(
-                    new BlockTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        case TELEPORT_TYPE_INVISIBLE_BLOCK:
-            app.getMazeManager().getMaze().setCell(
-                    new InvisibleBlockTeleport(destX, destY, destZ),
-                    this.elMgr.getEditorLocationX(),
-                    this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
-                    MazeConstants.LAYER_OBJECT);
-            break;
-        default:
-            break;
+            case TELEPORT_TYPE_GENERIC:
+                app.getMazeManager().getMaze().setCell(
+                        new Teleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_GENERIC:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT:
+                app.getMazeManager().getMaze().setCell(
+                        new OneShotTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleOneShotTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_TWOWAY:
+                app.getMazeManager().getMaze().setCell(
+                        new TwoWayTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                this.pairTwoWayTeleport(destX, destY, destZ);
+                break;
+            case TELEPORT_TYPE_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new ChainTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleChainTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_ONESHOT_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new OneShotChainTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_ONESHOT_CHAIN:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleOneShotChainTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_BLOCK:
+                app.getMazeManager().getMaze().setCell(
+                        new BlockTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            case TELEPORT_TYPE_INVISIBLE_BLOCK:
+                app.getMazeManager().getMaze().setCell(
+                        new InvisibleBlockTeleport(destX, destY, destZ),
+                        this.elMgr.getEditorLocationX(),
+                        this.elMgr.getEditorLocationY(), this.elMgr.getCameFromZ(),
+                        MazeConstants.LAYER_OBJECT);
+                break;
+            default:
+                break;
         }
         this.horzScroll.removeAdjustmentListener(this.thandler);
         this.vertScroll.removeAdjustmentListener(this.thandler);
@@ -2443,16 +2443,16 @@ public class MazeEditor {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationY();
+                        me.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationX();
+                        me.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 LoopChute.getErrorLogger().logError(ex);
@@ -2574,16 +2574,16 @@ public class MazeEditor {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationY();
+                        me.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationX();
+                        me.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 LoopChute.getErrorLogger().logError(ex);
@@ -2639,16 +2639,16 @@ public class MazeEditor {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationY();
+                        me.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationX();
+                        me.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 LoopChute.getErrorLogger().logError(ex);
@@ -2704,16 +2704,16 @@ public class MazeEditor {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationY();
-                    me.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - me.evMgr.getViewingWindowLocationX();
-                    me.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationY();
+                        me.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - me.evMgr.getViewingWindowLocationX();
+                        me.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 LoopChute.getErrorLogger().logError(ex);

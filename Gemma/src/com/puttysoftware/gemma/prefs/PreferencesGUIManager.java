@@ -213,14 +213,14 @@ class PreferencesGUIManager {
                 final PreferencesGUIManager pm = PreferencesGUIManager.this;
                 final String cmd = e.getActionCommand();
                 switch (cmd) {
-                case "OK":
-                    pm.setPrefs();
-                    break;
-                case "Cancel":
-                    pm.hidePrefs();
-                    break;
-                default:
-                    break;
+                    case "OK":
+                        pm.setPrefs();
+                        break;
+                    case "Cancel":
+                        pm.hidePrefs();
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);

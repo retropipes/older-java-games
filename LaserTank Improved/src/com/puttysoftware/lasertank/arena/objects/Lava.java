@@ -24,10 +24,10 @@ public class Lava extends AbstractGround {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            return new Ground();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                return new Ground();
+            default:
+                return this;
         }
     }
 

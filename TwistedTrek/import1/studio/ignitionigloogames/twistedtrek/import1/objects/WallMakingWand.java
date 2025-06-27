@@ -7,39 +7,39 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericWand;
 
 public class WallMakingWand extends GenericWand {
     public WallMakingWand() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Wall-Making Wand";
+        return "Wall-Making Wand";
     }
 
     @Override
     public String getPluralName() {
-	return "Wall-Making Wands";
+        return "Wall-Making Wands";
     }
 
     @Override
     public void useHelper(final int x, final int y, final int z, final int w) {
-	this.useAction(new Wall(), x, y, z, w);
-	if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
-	    this.playUseSound();
-	}
+        this.useAction(new Wall(), x, y, z, w);
+        if (Import1.getApplication().getPrefsManager().getSoundEnabled(PreferencesManager.SOUNDS_GAME)) {
+            this.playUseSound();
+        }
     }
 
     @Override
     public String getUseSoundName() {
-	return "create";
+        return "create";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 4;
+        return (byte) 4;
     }
 
     @Override
     public String getDescription() {
-	return "Wall-Making Wands will create an ordinary wall in the target square when used.";
+        return "Wall-Making Wands will create an ordinary wall in the target square when used.";
     }
 }

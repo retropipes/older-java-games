@@ -11,32 +11,32 @@ public class MoneyBoots extends GenericBoots {
 
     // Constructors
     public MoneyBoots() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Money Boots";
+        return "Money Boots";
     }
 
     @Override
     public String getPluralName() {
-	return "Pairs of Money Boots";
+        return "Pairs of Money Boots";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 10;
+        return (byte) 10;
     }
 
     @Override
     public String getDescription() {
-	return "Money Boots give you money as you walk. Note that you can only wear one pair of boots at once.";
+        return "Money Boots give you money as you walk. Note that you can only wear one pair of boots at once.";
     }
 
     @Override
     public void stepAction() {
-	PCManager.getPlayer().offsetGold(MoneyBoots.GOLD_AMOUNT);
-	Import1.getApplication().getGameManager().getScoreTracker().incrementScore();
+        PCManager.getPlayer().offsetGold(MoneyBoots.GOLD_AMOUNT);
+        Import1.getApplication().getGameManager().getScoreTracker().incrementScore();
     }
 }

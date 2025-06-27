@@ -12,6 +12,6 @@ public class UnexpectedTagException extends IOException {
      * @param msg the detail message.
      */
     public UnexpectedTagException(final String msg) {
-	super(msg);
+        super(msg);
     }
 }

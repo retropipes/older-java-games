@@ -2009,75 +2009,75 @@ public class GameManager implements MazeEffectConstants {
                     gm.setPullInProgress(true);
                 }
                 switch (keyCode) {
-                case KeyEvent.VK_NUMPAD4:
-                case KeyEvent.VK_LEFT:
-                case KeyEvent.VK_A:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                case KeyEvent.VK_DOWN:
-                case KeyEvent.VK_X:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                case KeyEvent.VK_RIGHT:
-                case KeyEvent.VK_D:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_W:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                case KeyEvent.VK_Q:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                case KeyEvent.VK_E:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                case KeyEvent.VK_C:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                case KeyEvent.VK_Z:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD5:
-                case KeyEvent.VK_S:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.updatePositionRelative(0, 0);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        Main.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.teleporting = false;
-                        Main.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                    case KeyEvent.VK_NUMPAD4:
+                    case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_A:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(-1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD2:
+                    case KeyEvent.VK_DOWN:
+                    case KeyEvent.VK_X:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD6:
+                    case KeyEvent.VK_RIGHT:
+                    case KeyEvent.VK_D:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD8:
+                    case KeyEvent.VK_UP:
+                    case KeyEvent.VK_W:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD7:
+                    case KeyEvent.VK_Q:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(-1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD9:
+                    case KeyEvent.VK_E:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD3:
+                    case KeyEvent.VK_C:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD1:
+                    case KeyEvent.VK_Z:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(-1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD5:
+                    case KeyEvent.VK_S:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.updatePositionRelative(0, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        if (gm.usingAnItem()) {
+                            gm.setUsingAnItem(false);
+                            Main.getApplication().showMessage(" ");
+                        } else if (gm.isTeleporting()) {
+                            gm.teleporting = false;
+                            Main.getApplication().showMessage(" ");
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 if (gm.isPullInProgress()) {
                     gm.setPullInProgress(false);
@@ -2095,69 +2095,69 @@ public class GameManager implements MazeEffectConstants {
                     gm.setPullInProgress(true);
                 }
                 switch (keyCode) {
-                case KeyEvent.VK_NUMPAD4:
-                case KeyEvent.VK_LEFT:
-                case KeyEvent.VK_A:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD2:
-                case KeyEvent.VK_DOWN:
-                case KeyEvent.VK_X:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD6:
-                case KeyEvent.VK_RIGHT:
-                case KeyEvent.VK_D:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 0);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD8:
-                case KeyEvent.VK_UP:
-                case KeyEvent.VK_W:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(0, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD7:
-                case KeyEvent.VK_Q:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD9:
-                case KeyEvent.VK_E:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, -1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD3:
-                case KeyEvent.VK_C:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_NUMPAD1:
-                case KeyEvent.VK_Z:
-                    if (!gm.usingAnItem() && !gm.isTeleporting()) {
-                        gm.fireArrow(-1, 1);
-                    }
-                    break;
-                case KeyEvent.VK_ESCAPE:
-                    if (gm.usingAnItem()) {
-                        gm.setUsingAnItem(false);
-                        Main.getApplication().showMessage(" ");
-                    } else if (gm.isTeleporting()) {
-                        gm.teleporting = false;
-                        Main.getApplication().showMessage(" ");
-                    }
-                    break;
-                default:
-                    break;
+                    case KeyEvent.VK_NUMPAD4:
+                    case KeyEvent.VK_LEFT:
+                    case KeyEvent.VK_A:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD2:
+                    case KeyEvent.VK_DOWN:
+                    case KeyEvent.VK_X:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(0, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD6:
+                    case KeyEvent.VK_RIGHT:
+                    case KeyEvent.VK_D:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, 0);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD8:
+                    case KeyEvent.VK_UP:
+                    case KeyEvent.VK_W:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(0, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD7:
+                    case KeyEvent.VK_Q:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD9:
+                    case KeyEvent.VK_E:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, -1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD3:
+                    case KeyEvent.VK_C:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_NUMPAD1:
+                    case KeyEvent.VK_Z:
+                        if (!gm.usingAnItem() && !gm.isTeleporting()) {
+                            gm.fireArrow(-1, 1);
+                        }
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        if (gm.usingAnItem()) {
+                            gm.setUsingAnItem(false);
+                            Main.getApplication().showMessage(" ");
+                        } else if (gm.isTeleporting()) {
+                            gm.teleporting = false;
+                            Main.getApplication().showMessage(" ");
+                        }
+                        break;
+                    default:
+                        break;
                 }
                 if (gm.isPullInProgress()) {
                     gm.setPullInProgress(false);

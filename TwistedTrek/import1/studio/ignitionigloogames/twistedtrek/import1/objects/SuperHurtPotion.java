@@ -8,31 +8,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPotion;
 public class SuperHurtPotion extends GenericPotion {
     // Constructors
     public SuperHurtPotion() {
-	super(StatConstants.STAT_CURRENT_HP, false);
+        super(StatConstants.STAT_CURRENT_HP, false);
     }
 
     @Override
     public String getName() {
-	return "Super Hurt Potion";
+        return "Super Hurt Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Super Hurt Potions";
+        return "Super Hurt Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 6;
+        return (byte) 6;
     }
 
     @Override
     public int getEffectValue() {
-	return -(PCManager.getPlayer().getCurrentHP() - 1);
+        return -(PCManager.getPlayer().getCurrentHP() - 1);
     }
 
     @Override
     public String getDescription() {
-	return "Super Hurt Potions bring you to the brink of death when picked up.";
+        return "Super Hurt Potions bring you to the brink of death when picked up.";
     }
 }

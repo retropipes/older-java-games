@@ -7,6 +7,6 @@ public class FormatConstants {
     public static final byte CHARACTER_FORMAT_LATEST = 3;
 
     private FormatConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -10,6 +10,6 @@ public class CasteConstants {
     public static final String[] CASTE_NAMES = { "Annihilator", "Buffer", "Curer", "Debuffer" };
 
     private CasteConstants() {
-	// Do nothing
+        // Do nothing
     }
 }

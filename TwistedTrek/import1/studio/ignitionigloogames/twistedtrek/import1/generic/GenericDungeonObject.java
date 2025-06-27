@@ -7,17 +7,17 @@ import studio.ignitionigloogames.twistedtrek.import1.maze.Maze;
 public abstract class GenericDungeonObject extends MazeObject {
     // Constructors
     public GenericDungeonObject(final boolean solid) {
-	super(solid);
+        super(solid);
     }
 
     // Methods
     @Override
     public void postMoveAction(final boolean ie, final int dirX, final int dirY, final ObjectInventory inv) {
-	this.postMoveActionHook();
+        this.postMoveActionHook();
     }
 
     public void postMoveActionHook() {
-	// Do nothing
+        // Do nothing
     }
 
     @Override
@@ -25,26 +25,26 @@ public abstract class GenericDungeonObject extends MazeObject {
 
     @Override
     public int getLayer() {
-	return Maze.LAYER_OBJECT;
+        return Maze.LAYER_OBJECT;
     }
 
     @Override
     public byte getGroupID() {
-	return (byte) 34;
+        return (byte) 34;
     }
 
     @Override
     protected void setTypes() {
-	this.type.set(TypeConstants.TYPE_DUNGEON);
+        this.type.set(TypeConstants.TYPE_DUNGEON);
     }
 
     @Override
     public int getCustomProperty(final int propID) {
-	return MazeObject.DEFAULT_CUSTOM_VALUE;
+        return MazeObject.DEFAULT_CUSTOM_VALUE;
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
-	// Do nothing
+        // Do nothing
     }
 }

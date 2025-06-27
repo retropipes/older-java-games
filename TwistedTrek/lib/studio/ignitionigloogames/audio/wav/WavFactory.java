@@ -8,7 +8,7 @@ public abstract class WavFactory extends Thread {
 
     // Constructor
     protected WavFactory() {
-	super();
+        super();
     }
 
     // Methods
@@ -16,10 +16,10 @@ public abstract class WavFactory extends Thread {
 
     // Factories
     public static WavFactory loadFile(final String file) {
-	return new WavFile(file);
+        return new WavFile(file);
     }
 
     public static WavFactory loadResource(final URL resource) {
-	return new WavResource(resource);
+        return new WavResource(resource);
     }
 }

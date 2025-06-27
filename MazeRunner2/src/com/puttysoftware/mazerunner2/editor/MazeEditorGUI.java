@@ -773,16 +773,16 @@ class MazeEditorGUI {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationY();
-                    mel.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationX();
-                    mel.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationY();
+                        mel.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationX();
+                        mel.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
@@ -909,16 +909,16 @@ class MazeEditorGUI {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationY();
-                    mel.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationX();
-                    mel.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationY();
+                        mel.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationX();
+                        mel.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
@@ -978,16 +978,16 @@ class MazeEditorGUI {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationY();
-                    mel.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationX();
-                    mel.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationY();
+                        mel.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationX();
+                        mel.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
@@ -1047,16 +1047,16 @@ class MazeEditorGUI {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationY();
-                    mel.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationX();
-                    mel.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationY();
+                        mel.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationX();
+                        mel.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);
@@ -1160,16 +1160,16 @@ class MazeEditorGUI {
                 final int value = src.getValue();
                 int relValue = 0;
                 switch (dir) {
-                case Adjustable.HORIZONTAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationY();
-                    mel.updateEditorPosition(0, relValue, 0, 0);
-                    break;
-                case Adjustable.VERTICAL:
-                    relValue = value - meg.evMgr.getViewingWindowLocationX();
-                    mel.updateEditorPosition(relValue, 0, 0, 0);
-                    break;
-                default:
-                    break;
+                    case Adjustable.HORIZONTAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationY();
+                        mel.updateEditorPosition(0, relValue, 0, 0);
+                        break;
+                    case Adjustable.VERTICAL:
+                        relValue = value - meg.evMgr.getViewingWindowLocationX();
+                        mel.updateEditorPosition(relValue, 0, 0, 0);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 MazeRunnerII.getErrorLogger().logError(ex);

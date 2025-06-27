@@ -178,56 +178,56 @@ public abstract class AbstractConditionalTeleport extends AbstractTeleport {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.getDestinationRow();
-        case 2:
-            return this.getDestinationColumn();
-        case 3:
-            return this.getDestinationFloor();
-        case 4:
-            return this.destRow2;
-        case 5:
-            return this.destCol2;
-        case 6:
-            return this.destFloor2;
-        case 7:
-            return this.triggerVal;
-        case 8:
-            return this.sunMoon;
-        default:
-            return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.getDestinationRow();
+            case 2:
+                return this.getDestinationColumn();
+            case 3:
+                return this.getDestinationFloor();
+            case 4:
+                return this.destRow2;
+            case 5:
+                return this.destCol2;
+            case 6:
+                return this.destFloor2;
+            case 7:
+                return this.triggerVal;
+            case 8:
+                return this.sunMoon;
+            default:
+                return AbstractMazeObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.setDestinationRow(value);
-            break;
-        case 2:
-            this.setDestinationColumn(value);
-            break;
-        case 3:
-            this.setDestinationFloor(value);
-            break;
-        case 4:
-            this.destRow2 = value;
-            break;
-        case 5:
-            this.destCol2 = value;
-            break;
-        case 6:
-            this.destFloor2 = value;
-            break;
-        case 7:
-            this.triggerVal = value;
-            break;
-        case 8:
-            this.sunMoon = value;
-            break;
-        default:
-            break;
+            case 1:
+                this.setDestinationRow(value);
+                break;
+            case 2:
+                this.setDestinationColumn(value);
+                break;
+            case 3:
+                this.setDestinationFloor(value);
+                break;
+            case 4:
+                this.destRow2 = value;
+                break;
+            case 5:
+                this.destCol2 = value;
+                break;
+            case 6:
+                this.destFloor2 = value;
+                break;
+            case 7:
+                this.triggerVal = value;
+                break;
+            case 8:
+                this.sunMoon = value;
+                break;
+            default:
+                break;
         }
     }
 

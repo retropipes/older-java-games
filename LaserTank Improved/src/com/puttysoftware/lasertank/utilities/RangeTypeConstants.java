@@ -12,14 +12,14 @@ public class RangeTypeConstants {
 
     public static final int getMaterialForRangeType(final int rt) {
         switch (rt) {
-        case RANGE_TYPE_BOMB:
-            return MaterialConstants.MATERIAL_METALLIC;
-        case RANGE_TYPE_HEAT_BOMB:
-            return MaterialConstants.MATERIAL_FIRE;
-        case RANGE_TYPE_ICE_BOMB:
-            return MaterialConstants.MATERIAL_ICE;
-        default:
-            return MaterialConstants.MATERIAL_DEFAULT;
+            case RANGE_TYPE_BOMB:
+                return MaterialConstants.MATERIAL_METALLIC;
+            case RANGE_TYPE_HEAT_BOMB:
+                return MaterialConstants.MATERIAL_FIRE;
+            case RANGE_TYPE_ICE_BOMB:
+                return MaterialConstants.MATERIAL_ICE;
+            default:
+                return MaterialConstants.MATERIAL_DEFAULT;
         }
     }
 

@@ -50,10 +50,10 @@ public class HotWall extends AbstractWall {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            return new Wall();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                return new Wall();
+            default:
+                return this;
         }
     }
 

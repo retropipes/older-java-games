@@ -2536,20 +2536,20 @@ public class GameManager implements MenuSection {
                 final GameManager gm = GameManager.this;
                 final int keyCode = e.getKeyCode();
                 switch (keyCode) {
-                case KeyEvent.VK_LEFT:
-                    gm.updatePositionRelative(-1, 0);
-                    break;
-                case KeyEvent.VK_DOWN:
-                    gm.updatePositionRelative(0, 1);
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    gm.updatePositionRelative(1, 0);
-                    break;
-                case KeyEvent.VK_UP:
-                    gm.updatePositionRelative(0, -1);
-                    break;
-                default:
-                    break;
+                    case KeyEvent.VK_LEFT:
+                        gm.updatePositionRelative(-1, 0);
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        gm.updatePositionRelative(0, 1);
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        gm.updatePositionRelative(1, 0);
+                        break;
+                    case KeyEvent.VK_UP:
+                        gm.updatePositionRelative(0, -1);
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 LTRemix.getErrorLogger().logError(ex);
@@ -2565,20 +2565,20 @@ public class GameManager implements MenuSection {
                     TankInventory.fireBoost();
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
-                    case KeyEvent.VK_LEFT:
-                        gm.updatePositionRelative(-2, 0);
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        gm.updatePositionRelative(0, 2);
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        gm.updatePositionRelative(2, 0);
-                        break;
-                    case KeyEvent.VK_UP:
-                        gm.updatePositionRelative(0, -2);
-                        break;
-                    default:
-                        break;
+                        case KeyEvent.VK_LEFT:
+                            gm.updatePositionRelative(-2, 0);
+                            break;
+                        case KeyEvent.VK_DOWN:
+                            gm.updatePositionRelative(0, 2);
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            gm.updatePositionRelative(2, 0);
+                            break;
+                        case KeyEvent.VK_UP:
+                            gm.updatePositionRelative(0, -2);
+                            break;
+                        default:
+                            break;
                     }
                 } else {
                     CommonDialogs.showDialog(StringLoader.loadString(
@@ -2599,20 +2599,20 @@ public class GameManager implements MenuSection {
                     TankInventory.fireMagnet();
                     final int keyCode = e.getKeyCode();
                     switch (keyCode) {
-                    case KeyEvent.VK_LEFT:
-                        gm.updatePositionRelative(-3, 0);
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        gm.updatePositionRelative(0, 3);
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        gm.updatePositionRelative(3, 0);
-                        break;
-                    case KeyEvent.VK_UP:
-                        gm.updatePositionRelative(0, -3);
-                        break;
-                    default:
-                        break;
+                        case KeyEvent.VK_LEFT:
+                            gm.updatePositionRelative(-3, 0);
+                            break;
+                        case KeyEvent.VK_DOWN:
+                            gm.updatePositionRelative(0, 3);
+                            break;
+                        case KeyEvent.VK_RIGHT:
+                            gm.updatePositionRelative(3, 0);
+                            break;
+                        case KeyEvent.VK_UP:
+                            gm.updatePositionRelative(0, -3);
+                            break;
+                        default:
+                            break;
                     }
                 } else {
                     CommonDialogs.showDialog(StringLoader.loadString(
@@ -2683,36 +2683,36 @@ public class GameManager implements MenuSection {
                 final GameManager gm = GameManager.this;
                 boolean fired = false;
                 switch (dir) {
-                case DirectionConstants.WEST:
-                    gm.tank.setDirection(DirectionConstants.WEST);
-                    if (!gm.isReplaying()) {
-                        gm.updateReplay(false, -1, 0);
-                    }
-                    fired = true;
-                    break;
-                case DirectionConstants.SOUTH:
-                    gm.tank.setDirection(DirectionConstants.SOUTH);
-                    if (!gm.isReplaying()) {
-                        gm.updateReplay(false, 0, 1);
-                    }
-                    fired = true;
-                    break;
-                case DirectionConstants.EAST:
-                    gm.tank.setDirection(DirectionConstants.EAST);
-                    if (!gm.isReplaying()) {
-                        gm.updateReplay(false, 1, 0);
-                    }
-                    fired = true;
-                    break;
-                case DirectionConstants.NORTH:
-                    gm.tank.setDirection(DirectionConstants.NORTH);
-                    if (!gm.isReplaying()) {
-                        gm.updateReplay(false, 0, -1);
-                    }
-                    fired = true;
-                    break;
-                default:
-                    break;
+                    case DirectionConstants.WEST:
+                        gm.tank.setDirection(DirectionConstants.WEST);
+                        if (!gm.isReplaying()) {
+                            gm.updateReplay(false, -1, 0);
+                        }
+                        fired = true;
+                        break;
+                    case DirectionConstants.SOUTH:
+                        gm.tank.setDirection(DirectionConstants.SOUTH);
+                        if (!gm.isReplaying()) {
+                            gm.updateReplay(false, 0, 1);
+                        }
+                        fired = true;
+                        break;
+                    case DirectionConstants.EAST:
+                        gm.tank.setDirection(DirectionConstants.EAST);
+                        if (!gm.isReplaying()) {
+                            gm.updateReplay(false, 1, 0);
+                        }
+                        fired = true;
+                        break;
+                    case DirectionConstants.NORTH:
+                        gm.tank.setDirection(DirectionConstants.NORTH);
+                        if (!gm.isReplaying()) {
+                            gm.updateReplay(false, 0, -1);
+                        }
+                        fired = true;
+                        break;
+                    default:
+                        break;
                 }
                 if (fired) {
                     SoundManager.playSound(SoundConstants.SOUND_TURN);
@@ -2800,16 +2800,16 @@ public class GameManager implements MenuSection {
         public int mapKeyToDirection(final KeyEvent e) {
             final int keyCode = e.getKeyCode();
             switch (keyCode) {
-            case KeyEvent.VK_LEFT:
-                return DirectionConstants.WEST;
-            case KeyEvent.VK_DOWN:
-                return DirectionConstants.SOUTH;
-            case KeyEvent.VK_RIGHT:
-                return DirectionConstants.EAST;
-            case KeyEvent.VK_UP:
-                return DirectionConstants.NORTH;
-            default:
-                return DirectionConstants.INVALID;
+                case KeyEvent.VK_LEFT:
+                    return DirectionConstants.WEST;
+                case KeyEvent.VK_DOWN:
+                    return DirectionConstants.SOUTH;
+                case KeyEvent.VK_RIGHT:
+                    return DirectionConstants.EAST;
+                case KeyEvent.VK_UP:
+                    return DirectionConstants.NORTH;
+                default:
+                    return DirectionConstants.INVALID;
             }
         }
 

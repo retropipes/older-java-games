@@ -184,31 +184,31 @@ public abstract class AbstractButton extends AbstractArenaObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.doorX;
-        case 2:
-            return this.doorY;
-        case 3:
-            return this.triggered ? 1 : 0;
-        default:
-            return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.doorX;
+            case 2:
+                return this.doorY;
+            case 3:
+                return this.triggered ? 1 : 0;
+            default:
+                return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.doorX = value;
-            break;
-        case 2:
-            this.doorY = value;
-            break;
-        case 3:
-            this.triggered = value == 1 ? true : false;
-            break;
-        default:
-            break;
+            case 1:
+                this.doorX = value;
+                break;
+            case 2:
+                this.doorY = value;
+                break;
+            case 3:
+                this.triggered = value == 1 ? true : false;
+                break;
+            default:
+                break;
         }
     }
 }

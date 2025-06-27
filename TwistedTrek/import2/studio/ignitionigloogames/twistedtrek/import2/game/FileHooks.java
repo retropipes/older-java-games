@@ -9,14 +9,14 @@ import studio.ignitionigloogames.xio.XDataWriter;
 
 public class FileHooks {
     private FileHooks() {
-	// Do nothing
+        // Do nothing
     }
 
     public static void loadGameHook(final XDataReader mapFile) throws IOException {
-	PartyManager.loadGameHook(mapFile);
+        PartyManager.loadGameHook(mapFile);
     }
 
     public static void saveGameHook(final XDataWriter mapFile) throws IOException {
-	PartyManager.saveGameHook(mapFile);
+        PartyManager.saveGameHook(mapFile);
     }
 }

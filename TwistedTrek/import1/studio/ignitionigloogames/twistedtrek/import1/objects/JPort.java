@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPort;
 public class JPort extends GenericPort {
     // Constructors
     public JPort() {
-	super(new JPlug(), 'J');
+        super(new JPlug(), 'J');
     }
 }

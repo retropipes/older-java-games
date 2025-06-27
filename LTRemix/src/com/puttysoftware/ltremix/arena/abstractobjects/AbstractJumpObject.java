@@ -207,26 +207,26 @@ public abstract class AbstractJumpObject extends AbstractMovableObject {
     @Override
     public int getCustomProperty(final int propID) {
         switch (propID) {
-        case 1:
-            return this.jumpRows;
-        case 2:
-            return this.jumpCols;
-        default:
-            return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
+            case 1:
+                return this.jumpRows;
+            case 2:
+                return this.jumpCols;
+            default:
+                return AbstractArenaObject.DEFAULT_CUSTOM_VALUE;
         }
     }
 
     @Override
     public void setCustomProperty(final int propID, final int value) {
         switch (propID) {
-        case 1:
-            this.jumpRows = value;
-            break;
-        case 2:
-            this.jumpCols = value;
-            break;
-        default:
-            break;
+            case 1:
+                this.jumpRows = value;
+                break;
+            case 2:
+                this.jumpCols = value;
+                break;
+            default:
+                break;
         }
     }
 }

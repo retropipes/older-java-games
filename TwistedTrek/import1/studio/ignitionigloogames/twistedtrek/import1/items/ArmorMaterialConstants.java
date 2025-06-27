@@ -66,16 +66,16 @@ public interface ArmorMaterialConstants {
     int MATERIALS_POWER_OFFSET = 1;
     // Names
     String[] MATERIAL_NAMES = { "Fur", "Leather", "Shell", "Scale", "Aluminum", "Nickel", "Zinc", "Copper", "Iron",
-	    "Silver", "Gold", "Platinum", "Molybdenum", "Scandium", "Vanadium", "Chromium", "Manganese", "Zirconium",
-	    "Niobium", "Rhodium", "Palladium", "Tantalum", "Tungsten", "Osmium", "Iridium", "Gallium", "Indium",
-	    "Brass", "Steel", "Electrum", "Zamak", "Amber", "Copal", "Coral", "Jet", "Pearl", "Abalone", "Aventurine",
-	    "Agate", "Alexandrite", "Amethyst", "Aquamarine", "Carnelian", "Citrine", "Emerald", "Garnet", "Jade",
-	    "Jasper", "Malachite", "Moonstone", "Onyx", "Opal", "Peridot", "Quartz", "Ruby", "Sapphire", "Sodalite",
-	    "Sunstone", "Topaz", "Diamond" };
+            "Silver", "Gold", "Platinum", "Molybdenum", "Scandium", "Vanadium", "Chromium", "Manganese", "Zirconium",
+            "Niobium", "Rhodium", "Palladium", "Tantalum", "Tungsten", "Osmium", "Iridium", "Gallium", "Indium",
+            "Brass", "Steel", "Electrum", "Zamak", "Amber", "Copal", "Coral", "Jet", "Pearl", "Abalone", "Aventurine",
+            "Agate", "Alexandrite", "Amethyst", "Aquamarine", "Carnelian", "Citrine", "Emerald", "Garnet", "Jade",
+            "Jasper", "Malachite", "Moonstone", "Onyx", "Opal", "Peridot", "Quartz", "Ruby", "Sapphire", "Sodalite",
+            "Sunstone", "Topaz", "Diamond" };
     String[] MATERIAL_COMMON_NAMES = { "Fur", "Leather", "Shell", "Scale", "Aluminum", "Nickel", "Zinc", "Copper",
-	    "Iron", "Silver", "Gold", "Platinum", "Molly", "Scanner", "Vandal", "Chrome", "Magnet", "Zircon", "Niobium",
-	    "Rhodium", "Palladium", "Tanta", "Tungsten", "Osmose", "Iris", "Gallium", "Indium", "Brass", "Steel",
-	    "Electrum", "Zamak", "Amber", "Copal", "Coral", "Jet", "Pearl", "Abalone", "Aventurine", "Agate",
-	    "Alexandra", "Amethyst", "Aqua", "Carnel", "Citrine", "Emerald", "Garnet", "Jade", "Jasper", "Malachite",
-	    "Moon", "Onyx", "Opal", "Perish", "Quartz", "Ruby", "Sapphire", "Soda", "Sun", "Topaz", "Diamond" };
+            "Iron", "Silver", "Gold", "Platinum", "Molly", "Scanner", "Vandal", "Chrome", "Magnet", "Zircon", "Niobium",
+            "Rhodium", "Palladium", "Tanta", "Tungsten", "Osmose", "Iris", "Gallium", "Indium", "Brass", "Steel",
+            "Electrum", "Zamak", "Amber", "Copal", "Coral", "Jet", "Pearl", "Abalone", "Aventurine", "Agate",
+            "Alexandra", "Amethyst", "Aqua", "Carnel", "Citrine", "Emerald", "Garnet", "Jade", "Jasper", "Malachite",
+            "Moon", "Onyx", "Opal", "Perish", "Quartz", "Ruby", "Sapphire", "Soda", "Sun", "Topaz", "Diamond" };
 }

@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import2.creatures.castes.CasteConst
 
 public class Annihilator extends Caste {
     public Annihilator() {
-	super(CasteConstants.CASTE_ANNIHILATOR);
+        super(CasteConstants.CASTE_ANNIHILATOR);
     }
 }

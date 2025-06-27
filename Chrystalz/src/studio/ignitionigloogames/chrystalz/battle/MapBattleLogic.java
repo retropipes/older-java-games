@@ -237,34 +237,34 @@ public class MapBattleLogic extends AbstractBattle {
                         .getNextAction(this.bd
                                 .getBattlerAIContexts()[this.activeIndex]);
                 switch (action) {
-                case AbstractMapAIRoutine.ACTION_MOVE:
-                    final int x = active.getTemplate().getMapAI().getMoveX();
-                    final int y = active.getTemplate().getMapAI().getMoveY();
-                    this.lastAIActionResult = this.updatePosition(x, y);
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_CAST_SPELL:
-                    this.lastAIActionResult = this.castSpell();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_DRAIN:
-                    this.lastAIActionResult = this.drain();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                case AbstractMapAIRoutine.ACTION_STEAL:
-                    this.lastAIActionResult = this.steal();
-                    active.getTemplate().getMapAI()
-                            .setLastResult(this.lastAIActionResult);
-                    break;
-                default:
-                    this.lastAIActionResult = true;
-                    this.endTurn();
-                    this.stopWaitingForAI();
-                    this.ait.aiWait();
-                    break;
+                    case AbstractMapAIRoutine.ACTION_MOVE:
+                        final int x = active.getTemplate().getMapAI().getMoveX();
+                        final int y = active.getTemplate().getMapAI().getMoveY();
+                        this.lastAIActionResult = this.updatePosition(x, y);
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_CAST_SPELL:
+                        this.lastAIActionResult = this.castSpell();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_DRAIN:
+                        this.lastAIActionResult = this.drain();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    case AbstractMapAIRoutine.ACTION_STEAL:
+                        this.lastAIActionResult = this.steal();
+                        active.getTemplate().getMapAI()
+                                .setLastResult(this.lastAIActionResult);
+                        break;
+                    default:
+                        this.lastAIActionResult = true;
+                        this.endTurn();
+                        this.stopWaitingForAI();
+                        this.ait.aiWait();
+                        break;
                 }
             }
         }
@@ -280,22 +280,22 @@ public class MapBattleLogic extends AbstractBattle {
         final int action = this.auto
                 .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
-        case AbstractMapAIRoutine.ACTION_MOVE:
-            final int x = this.auto.getMoveX();
-            final int y = this.auto.getMoveY();
-            final int activeTID = this.bd.getActiveCharacter().getTeamID();
-            final BattleCharacter theEnemy = activeTID == AbstractCreature.TEAM_PARTY
-                    ? this.enemy
-                    : this.bd.getBattlers()[this.bd.findFirstBattlerOnTeam(
-                            AbstractCreature.TEAM_PARTY)];
-            final AbstractDamageEngine activeDE = activeTID == AbstractCreature.TEAM_PARTY
-                    ? this.ede
-                    : this.pde;
-            this.updatePositionInternal(x, y, false, acting, theEnemy,
-                    activeDE);
-            break;
-        default:
-            break;
+            case AbstractMapAIRoutine.ACTION_MOVE:
+                final int x = this.auto.getMoveX();
+                final int y = this.auto.getMoveY();
+                final int activeTID = this.bd.getActiveCharacter().getTeamID();
+                final BattleCharacter theEnemy = activeTID == AbstractCreature.TEAM_PARTY
+                        ? this.enemy
+                        : this.bd.getBattlers()[this.bd.findFirstBattlerOnTeam(
+                                AbstractCreature.TEAM_PARTY)];
+                final AbstractDamageEngine activeDE = activeTID == AbstractCreature.TEAM_PARTY
+                        ? this.ede
+                        : this.pde;
+                this.updatePositionInternal(x, y, false, acting, theEnemy,
+                        activeDE);
+                break;
+            default:
+                break;
         }
     }
 
@@ -1335,18 +1335,18 @@ public class MapBattleLogic extends AbstractBattle {
     @Override
     public boolean doPlayerActions(final int action) {
         switch (action) {
-        case AbstractMapAIRoutine.ACTION_CAST_SPELL:
-            this.castSpell();
-            break;
-        case AbstractMapAIRoutine.ACTION_DRAIN:
-            this.drain();
-            break;
-        case AbstractMapAIRoutine.ACTION_STEAL:
-            this.steal();
-            break;
-        default:
-            this.endTurn();
-            break;
+            case AbstractMapAIRoutine.ACTION_CAST_SPELL:
+                this.castSpell();
+                break;
+            case AbstractMapAIRoutine.ACTION_DRAIN:
+                this.drain();
+                break;
+            case AbstractMapAIRoutine.ACTION_STEAL:
+                this.steal();
+                break;
+            default:
+                this.endTurn();
+                break;
         }
         return true;
     }

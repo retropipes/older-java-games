@@ -36,6 +36,6 @@ public interface PersonalityConstants {
     int PERSONALITY_ATTRIBUTE_RANDOM_LUCK = 5;
     int PERSONALITY_ATTRIBUTE_COUNT = 6;
     String[] PERSONALITY_NAMES = { "Agile", "Bully", "Carefree", "Cautious", "Daring", "Flippant", "Glutton", "Honest",
-	    "Impulsive", "Jealous", "Kindly", "Logical", "Lucky", "Ordinary", "Proud", "Quiet", "Rebel", "Romantic",
-	    "Silly", "Smart", "Tough", "Unique", "Valiant", "Weepy", "Zealous" };
+            "Impulsive", "Jealous", "Kindly", "Logical", "Lucky", "Ordinary", "Proud", "Quiet", "Rebel", "Romantic",
+            "Silly", "Smart", "Tough", "Unique", "Valiant", "Weepy", "Zealous" };
 }

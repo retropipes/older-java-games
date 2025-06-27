@@ -169,7 +169,7 @@ public class BattleLogic {
                             "Victory!");
                     final Creature enemy = this.bd.getBattlers()[this.bd
                             .findBattler(this.bd.getNameOfPartyEnemy())]
-                                    .getTemplate();
+                            .getTemplate();
                     PartyManager.getParty().distributeVictorySpoils(this.vsd,
                             enemy.getLevel());
                     Gemma.getApplication().getGameManager()
@@ -270,31 +270,31 @@ public class BattleLogic {
             final int action = active.getTemplate().getAI()
                     .getNextAction(aicontext);
             switch (action) {
-            case AIRoutine.ACTION_MOVE:
-                final int x = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveX();
-                final int y = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveY();
-                this.lastAIActionResult = this.updatePosition(x, y);
-                ai.setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_CAST_SPELL:
-                this.lastAIActionResult = this.castSpell();
-                ai.setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_DRAIN:
-                this.lastAIActionResult = this.drain();
-                ai.setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_STEAL:
-                this.lastAIActionResult = this.steal();
-                ai.setLastResult(this.lastAIActionResult);
-                break;
-            default:
-                this.lastAIActionResult = true;
-                this.endTurn();
-                this.stopWaitingForAI();
-                break;
+                case AIRoutine.ACTION_MOVE:
+                    final int x = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveX();
+                    final int y = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveY();
+                    this.lastAIActionResult = this.updatePosition(x, y);
+                    ai.setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_CAST_SPELL:
+                    this.lastAIActionResult = this.castSpell();
+                    ai.setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_DRAIN:
+                    this.lastAIActionResult = this.drain();
+                    ai.setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_STEAL:
+                    this.lastAIActionResult = this.steal();
+                    ai.setLastResult(this.lastAIActionResult);
+                    break;
+                default:
+                    this.lastAIActionResult = true;
+                    this.endTurn();
+                    this.stopWaitingForAI();
+                    break;
             }
             final int currResult = this.getResult();
             if (currResult != BattleResults.IN_PROGRESS) {
@@ -312,13 +312,13 @@ public class BattleLogic {
         final int action = this.auto
                 .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
-        case AIRoutine.ACTION_MOVE:
-            final int x = this.auto.getMoveX();
-            final int y = this.auto.getMoveY();
-            this.updatePositionInternal(x, y, false, acting);
-            break;
-        default:
-            break;
+            case AIRoutine.ACTION_MOVE:
+                final int x = this.auto.getMoveX();
+                final int y = this.auto.getMoveY();
+                this.updatePositionInternal(x, y, false, acting);
+                break;
+            default:
+                break;
         }
         final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {

@@ -5,10 +5,10 @@ public class Gender {
     private final int genderID;
 
     Gender(final int gid) {
-	this.genderID = gid;
+        this.genderID = gid;
     }
 
     public int getGenderID() {
-	return this.genderID;
+        return this.genderID;
     }
 }

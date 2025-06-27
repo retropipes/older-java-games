@@ -6,26 +6,26 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPass;
 public class EnergySphere extends GenericPass {
     // Constructors
     public EnergySphere() {
-	super();
+        super();
     }
 
     @Override
     public String getName() {
-	return "Energy Sphere";
+        return "Energy Sphere";
     }
 
     @Override
     public String getPluralName() {
-	return "Energy Spheres";
+        return "Energy Spheres";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 2;
+        return (byte) 2;
     }
 
     @Override
     public String getDescription() {
-	return "Energy Spheres permit walking on Force Fields.";
+        return "Energy Spheres permit walking on Force Fields.";
     }
 }

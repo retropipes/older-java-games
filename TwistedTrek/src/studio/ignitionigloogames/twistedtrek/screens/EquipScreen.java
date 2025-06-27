@@ -6,22 +6,22 @@ import studio.ignitionigloogames.twistedtrek.Item;
 
 public class EquipScreen extends InventoryBasedScreen {
     public EquipScreen(final Creature newPlayer) {
-	super(newPlayer);
+        super(newPlayer);
     }
 
     @Override
     protected String getVerb() {
-	return "wear or wield";
+        return "wear or wield";
     }
 
     @Override
     protected boolean isAcceptable(final Item item) {
-	return item.attackValue() > 0 || item.defenseValue() > 0;
+        return item.attackValue() > 0 || item.defenseValue() > 0;
     }
 
     @Override
     protected Screen use(final Item item) {
-	this.player.equip(item);
-	return null;
+        this.player.equip(item);
+        return null;
     }
 }

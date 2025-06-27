@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericTransientObj
 public class IceArrow extends GenericTransientObject {
     // Constructors
     public IceArrow() {
-	super("Ice Arrow");
+        super("Ice Arrow");
     }
 }

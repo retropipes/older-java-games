@@ -12,28 +12,28 @@ import com.puttysoftware.widgetwarren.resourcemanagers.SoundConstants;
 import com.puttysoftware.widgetwarren.resourcemanagers.SoundManager;
 
 public abstract class GenericInvisibleChainTeleportDown
-        extends GenericChainTeleportDown {
-    // Constructors
-    protected GenericInvisibleChainTeleportDown() {
-        super();
-    }
+                extends GenericChainTeleportDown {
+        // Constructors
+        protected GenericInvisibleChainTeleportDown() {
+                super();
+        }
 
-    // Methods
-    @Override
-    public void moveFailedAction(final boolean ie, final int dirX,
-            final int dirY, final ObjectInventory inv) {
-        WidgetWarren.getApplication()
-                .showMessage("Some unseen force prevents movement that way...");
-    }
+        // Methods
+        @Override
+        public void moveFailedAction(final boolean ie, final int dirX,
+                        final int dirY, final ObjectInventory inv) {
+                WidgetWarren.getApplication()
+                                .showMessage("Some unseen force prevents movement that way...");
+        }
 
-    @Override
-    public void postMoveAction(final boolean ie, final int dirX, final int dirY,
-            final ObjectInventory inv) {
-        final Application app = WidgetWarren.getApplication();
-        app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
-                this.getDestinationColumn(), this.getDestinationFloor());
-        SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
-                SoundConstants.SOUND_FALL_INTO_PIT);
-        WidgetWarren.getApplication().showMessage("Invisible Pit!");
-    }
+        @Override
+        public void postMoveAction(final boolean ie, final int dirX, final int dirY,
+                        final ObjectInventory inv) {
+                final Application app = WidgetWarren.getApplication();
+                app.getGameManager().updatePositionAbsolute(this.getDestinationRow(),
+                                this.getDestinationColumn(), this.getDestinationFloor());
+                SoundManager.playSound(SoundConstants.SOUND_CATEGORY_SOLVING_MAZE,
+                                SoundConstants.SOUND_FALL_INTO_PIT);
+                WidgetWarren.getApplication().showMessage("Invisible Pit!");
+        }
 }

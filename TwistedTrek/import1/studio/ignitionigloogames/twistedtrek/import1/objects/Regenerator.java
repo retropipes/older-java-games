@@ -7,31 +7,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericDungeonObjec
 public class Regenerator extends GenericDungeonObject {
     // Constructors
     public Regenerator() {
-	super(false);
+        super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-	Import1.getApplication().getRegenerator().showShop();
+        Import1.getApplication().getRegenerator().showShop();
     }
 
     @Override
     public String getName() {
-	return "Regenerator";
+        return "Regenerator";
     }
 
     @Override
     public String getPluralName() {
-	return "Regenerators";
+        return "Regenerators";
     }
 
     @Override
     public String getDescription() {
-	return "Regenerators restore magic, for a fee.";
+        return "Regenerators restore magic, for a fee.";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 4;
+        return (byte) 4;
     }
 }

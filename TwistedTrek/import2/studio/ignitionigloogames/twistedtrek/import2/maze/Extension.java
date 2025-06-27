@@ -12,34 +12,34 @@ public class Extension {
 
     // Methods
     public static String getPreferencesExtension() {
-	return Extension.PREFERENCES_EXTENSION;
+        return Extension.PREFERENCES_EXTENSION;
     }
 
     public static String getGameExtension() {
-	return Extension.GAME_EXTENSION;
+        return Extension.GAME_EXTENSION;
     }
 
     public static String getGameExtensionWithPeriod() {
-	return "." + Extension.GAME_EXTENSION;
+        return "." + Extension.GAME_EXTENSION;
     }
 
     public static String getCharacterExtension() {
-	return Extension.CHARACTER_EXTENSION;
+        return Extension.CHARACTER_EXTENSION;
     }
 
     public static String getCharacterExtensionWithPeriod() {
-	return "." + Extension.CHARACTER_EXTENSION;
+        return "." + Extension.CHARACTER_EXTENSION;
     }
 
     public static String getRegistryExtensionWithPeriod() {
-	return "." + Extension.REGISTRY_EXTENSION;
+        return "." + Extension.REGISTRY_EXTENSION;
     }
 
     public static String getInternalDataExtensionWithPeriod() {
-	return "." + Extension.INTERNAL_DATA_EXTENSION;
+        return "." + Extension.INTERNAL_DATA_EXTENSION;
     }
 
     public static String getMusicExtensionWithPeriod() {
-	return "." + Extension.MUSIC_EXTENSION;
+        return "." + Extension.MUSIC_EXTENSION;
     }
 }

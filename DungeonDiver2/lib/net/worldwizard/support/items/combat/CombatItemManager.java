@@ -113,33 +113,33 @@ public class CombatItemManager {
         final boolean hasAI = user.hasAI();
         final boolean useAI = hasAI && aiEnabled;
         switch (target) {
-        case SELF:
-            // Self
-            return new Creature[] { battle.getSelfTarget() };
-        case ONE_ALLY:
-            // One Ally
-            if (useAI) {
-                return new Creature[] {
-                        battle.pickOneFriendOfTeamRandomly(teamID) };
-            } else {
-                return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
-            }
-        case ONE_ENEMY:
-            // One Enemy
-            if (useAI) {
-                return new Creature[] {
-                        battle.pickOneEnemyOfTeamRandomly(teamID) };
-            } else {
-                return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
-            }
-        case ALL_ALLIES:
-            // All Allies
-            return battle.getAllFriendsOfTeam(teamID);
-        case ALL_ENEMIES:
-            // All Enemies
-            return battle.getAllEnemiesOfTeam(teamID);
-        default:
-            return null;
+            case SELF:
+                // Self
+                return new Creature[] { battle.getSelfTarget() };
+            case ONE_ALLY:
+                // One Ally
+                if (useAI) {
+                    return new Creature[] {
+                            battle.pickOneFriendOfTeamRandomly(teamID) };
+                } else {
+                    return new Creature[] { battle.pickOneFriendOfTeam(teamID) };
+                }
+            case ONE_ENEMY:
+                // One Enemy
+                if (useAI) {
+                    return new Creature[] {
+                            battle.pickOneEnemyOfTeamRandomly(teamID) };
+                } else {
+                    return new Creature[] { battle.pickOneEnemyOfTeam(teamID) };
+                }
+            case ALL_ALLIES:
+                // All Allies
+                return battle.getAllFriendsOfTeam(teamID);
+            case ALL_ENEMIES:
+                // All Enemies
+                return battle.getAllEnemiesOfTeam(teamID);
+            default:
+                return null;
         }
     }
 }

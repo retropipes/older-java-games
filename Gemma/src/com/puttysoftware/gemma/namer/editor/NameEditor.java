@@ -180,27 +180,27 @@ public class NameEditor extends GenericObjectEditor {
                 final String cmd = e.getActionCommand();
                 final NameEditor me = NameEditor.this;
                 switch (cmd) {
-                case "Edit Names":
-                    if (me.didObjectChange()) {
-                        me.loadObject();
-                    }
-                    if (me.doesObjectExist()) {
-                        me.edit();
-                    } else {
-                        me.create();
-                        Gemma.getApplication().getScenarioManager()
-                                .getNamesFileManager().loadNames();
-                        me.reSetUpGUI();
-                        me.edit();
-                    }
-                    break;
-                case "Reset Names":
-                    NamesDataManager.resetNames();
-                    NamesManager.invalidateNamesCache();
-                    CommonDialogs.showDialog("Names Reset.");
-                    break;
-                default:
-                    break;
+                    case "Edit Names":
+                        if (me.didObjectChange()) {
+                            me.loadObject();
+                        }
+                        if (me.doesObjectExist()) {
+                            me.edit();
+                        } else {
+                            me.create();
+                            Gemma.getApplication().getScenarioManager()
+                                    .getNamesFileManager().loadNames();
+                            me.reSetUpGUI();
+                            me.edit();
+                        }
+                        break;
+                    case "Reset Names":
+                        NamesDataManager.resetNames();
+                        NamesManager.invalidateNamesCache();
+                        CommonDialogs.showDialog("Names Reset.");
+                        break;
+                    default:
+                        break;
                 }
             } catch (final Exception ex) {
                 Gemma.getErrorLogger().logError(ex);

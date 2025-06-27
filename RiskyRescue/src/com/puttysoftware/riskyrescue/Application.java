@@ -158,17 +158,17 @@ public class Application {
 
     public Shop getGenericShop(final int shopType) {
         switch (shopType) {
-        case ShopTypes.SHOP_TYPE_ARMOR:
-            return this.armor;
-        case ShopTypes.SHOP_TYPE_HEALER:
-            return this.healer;
-        case ShopTypes.SHOP_TYPE_REGENERATOR:
-            return this.regenerator;
-        case ShopTypes.SHOP_TYPE_WEAPONS:
-            return this.weapons;
-        default:
-            // Invalid shop type
-            return null;
+            case ShopTypes.SHOP_TYPE_ARMOR:
+                return this.armor;
+            case ShopTypes.SHOP_TYPE_HEALER:
+                return this.healer;
+            case ShopTypes.SHOP_TYPE_REGENERATOR:
+                return this.regenerator;
+            case ShopTypes.SHOP_TYPE_WEAPONS:
+                return this.weapons;
+            default:
+                // Invalid shop type
+                return null;
         }
     }
 

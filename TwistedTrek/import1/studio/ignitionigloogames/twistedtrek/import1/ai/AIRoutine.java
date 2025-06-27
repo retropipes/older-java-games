@@ -18,6 +18,6 @@ public abstract class AIRoutine {
     public abstract int getNextAction(Creature c);
 
     public final Spell getSpellToCast() {
-	return this.spell;
+        return this.spell;
     }
 }

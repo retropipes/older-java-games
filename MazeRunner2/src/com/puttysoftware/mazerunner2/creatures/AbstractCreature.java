@@ -534,28 +534,28 @@ public abstract class AbstractCreature {
 
     public final static Color getPrestigeColor(final int which) {
         switch (which) {
-        case PrestigeConstants.PRESTIGE_DAMAGE_GIVEN:
-            return Color.BLUE;
-        case PrestigeConstants.PRESTIGE_DAMAGE_TAKEN:
-            return Color.RED;
-        case PrestigeConstants.PRESTIGE_HITS_GIVEN:
-            return Color.BLUE;
-        case PrestigeConstants.PRESTIGE_HITS_TAKEN:
-            return Color.RED;
-        case PrestigeConstants.PRESTIGE_ATTACKS_DODGED:
-            return Color.BLUE;
-        case PrestigeConstants.PRESTIGE_MISSED_ATTACKS:
-            return Color.RED;
-        case PrestigeConstants.PRESTIGE_MONSTERS_KILLED:
-            return Color.BLUE;
-        case PrestigeConstants.PRESTIGE_SPELLS_CAST:
-            return Color.RED;
-        case PrestigeConstants.PRESTIGE_TIMES_KILLED:
-            return Color.RED;
-        case PrestigeConstants.PRESTIGE_TIMES_RAN_AWAY:
-            return Color.RED;
-        default:
-            return Color.BLACK;
+            case PrestigeConstants.PRESTIGE_DAMAGE_GIVEN:
+                return Color.BLUE;
+            case PrestigeConstants.PRESTIGE_DAMAGE_TAKEN:
+                return Color.RED;
+            case PrestigeConstants.PRESTIGE_HITS_GIVEN:
+                return Color.BLUE;
+            case PrestigeConstants.PRESTIGE_HITS_TAKEN:
+                return Color.RED;
+            case PrestigeConstants.PRESTIGE_ATTACKS_DODGED:
+                return Color.BLUE;
+            case PrestigeConstants.PRESTIGE_MISSED_ATTACKS:
+                return Color.RED;
+            case PrestigeConstants.PRESTIGE_MONSTERS_KILLED:
+                return Color.BLUE;
+            case PrestigeConstants.PRESTIGE_SPELLS_CAST:
+                return Color.RED;
+            case PrestigeConstants.PRESTIGE_TIMES_KILLED:
+                return Color.RED;
+            case PrestigeConstants.PRESTIGE_TIMES_RAN_AWAY:
+                return Color.RED;
+            default:
+                return Color.BLACK;
         }
     }
 
@@ -613,26 +613,26 @@ public abstract class AbstractCreature {
             return this.stats[stat].getValue();
         } catch (final ArrayIndexOutOfBoundsException aioob) {
             switch (stat) {
-            case StatConstants.STAT_ATTACK:
-                return this.getAttack();
-            case StatConstants.STAT_DEFENSE:
-                return this.getDefense();
-            case StatConstants.STAT_MAXIMUM_HP:
-                return this.getMaximumHP();
-            case StatConstants.STAT_MAXIMUM_MP:
-                return this.getMaximumMP();
-            case StatConstants.STAT_SPEED:
-                return this.getSpeed();
-            case StatConstants.STAT_HIT:
-                return this.getHit();
-            case StatConstants.STAT_EVADE:
-                return this.getEvade();
-            case StatConstants.STAT_CAPACITY:
-                return this.getCapacity();
-            case StatConstants.STAT_MAX_LEVEL:
-                return AbstractCreature.getMaximumLevel();
-            default:
-                return 0;
+                case StatConstants.STAT_ATTACK:
+                    return this.getAttack();
+                case StatConstants.STAT_DEFENSE:
+                    return this.getDefense();
+                case StatConstants.STAT_MAXIMUM_HP:
+                    return this.getMaximumHP();
+                case StatConstants.STAT_MAXIMUM_MP:
+                    return this.getMaximumMP();
+                case StatConstants.STAT_SPEED:
+                    return this.getSpeed();
+                case StatConstants.STAT_HIT:
+                    return this.getHit();
+                case StatConstants.STAT_EVADE:
+                    return this.getEvade();
+                case StatConstants.STAT_CAPACITY:
+                    return this.getCapacity();
+                case StatConstants.STAT_MAX_LEVEL:
+                    return AbstractCreature.getMaximumLevel();
+                default:
+                    return 0;
             }
         }
     }

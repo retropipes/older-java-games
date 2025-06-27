@@ -32,24 +32,24 @@ public abstract class GenericTransientObject extends MazeObject {
     @Override
     public final int getBaseID() {
         switch (this.dir) {
-        case DirectionConstants.DIRECTION_NORTH:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTH;
-        case DirectionConstants.DIRECTION_NORTHEAST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTHEAST;
-        case DirectionConstants.DIRECTION_EAST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_EAST;
-        case DirectionConstants.DIRECTION_SOUTHEAST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTHEAST;
-        case DirectionConstants.DIRECTION_SOUTH:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTH;
-        case DirectionConstants.DIRECTION_SOUTHWEST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTHWEST;
-        case DirectionConstants.DIRECTION_WEST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_WEST;
-        case DirectionConstants.DIRECTION_NORTHWEST:
-            return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTHWEST;
-        default:
-            return ObjectImageConstants.OBJECT_IMAGE_EMPTY;
+            case DirectionConstants.DIRECTION_NORTH:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTH;
+            case DirectionConstants.DIRECTION_NORTHEAST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTHEAST;
+            case DirectionConstants.DIRECTION_EAST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_EAST;
+            case DirectionConstants.DIRECTION_SOUTHEAST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTHEAST;
+            case DirectionConstants.DIRECTION_SOUTH:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTH;
+            case DirectionConstants.DIRECTION_SOUTHWEST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_SOUTHWEST;
+            case DirectionConstants.DIRECTION_WEST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_WEST;
+            case DirectionConstants.DIRECTION_NORTHWEST:
+                return ObjectImageConstants.OBJECT_IMAGE_ARROW_NORTHWEST;
+            default:
+                return ObjectImageConstants.OBJECT_IMAGE_EMPTY;
         }
     }
 

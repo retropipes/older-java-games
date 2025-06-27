@@ -48,153 +48,153 @@ public class LaserTankLevel {
                 indexID = 0; // No index
                 frameID = 0; // Not animated
                 switch (oo) {
-                case 0:
-                    objID = 58; // Ground
-                    break;
-                case 1:
-                    objID = 210; // Tank
-                    dirID = 2; // North
-                    break;
-                case 2:
-                    objID = 53; // Flag
-                    frameID = 1; // Animated
-                    break;
-                case 3:
-                    objID = 231; // Water
-                    frameID = 1; // Animated
-                    break;
-                case 4:
-                    objID = 230; // Wall
-                    break;
-                case 5:
-                    objID = 8; // Box
-                    break;
-                case 6:
-                    objID = 10; // Bricks
-                    break;
-                case 7:
-                    objID = 4; // Anti-Tank
-                    dirID = 2; // North
-                    frameID = 1; // Animated
-                    break;
-                case 8:
-                    objID = 4; // Anti-Tank
-                    dirID = 4; // East
-                    frameID = 1; // Animated
-                    break;
-                case 9:
-                    objID = 4; // Anti-Tank
-                    dirID = 6; // South
-                    frameID = 1; // Animated
-                    break;
-                case 10:
-                    objID = 4; // Anti-Tank
-                    dirID = 8; // West
-                    frameID = 1; // Animated
-                    break;
-                case 11:
-                    objID = 144; // Mirror
-                    dirID = 1; // Northwest
-                    break;
-                case 12:
-                    objID = 144; // Mirror
-                    dirID = 3; // Northeast
-                    break;
-                case 13:
-                    objID = 144; // Mirror
-                    dirID = 5; // Southeast
-                    break;
-                case 14:
-                    objID = 144; // Mirror
-                    dirID = 7; // Southwest
-                    break;
-                case 15:
-                    objID = 211; // Tank Mover
-                    dirID = 2; // North
-                    frameID = 1; // Animated
-                    break;
-                case 16:
-                    objID = 211; // Tank Mover
-                    dirID = 4; // East
-                    frameID = 1; // Animated
-                    break;
-                case 17:
-                    objID = 211; // Tank Mover
-                    dirID = 6; // South
-                    frameID = 1; // Animated
-                    break;
-                case 18:
-                    objID = 211; // Tank Mover
-                    dirID = 8; // West
-                    frameID = 1; // Animated
-                    break;
-                case 19:
-                    objID = 15; // Crystal Block
-                    break;
-                case 20:
-                    objID = 172; // Rotary Mirror
-                    dirID = 1; // Northwest
-                    break;
-                case 21:
-                    objID = 172; // Rotary Mirror
-                    dirID = 3; // Northeast
-                    break;
-                case 22:
-                    objID = 172; // Rotary Mirror
-                    dirID = 5; // Southeast
-                    break;
-                case 23:
-                    objID = 172; // Rotary Mirror
-                    dirID = 7; // Southwest
-                    break;
-                case 24:
-                    objID = 68; // Ice
-                    break;
-                case 25:
-                    objID = 222; // Thin Ice
-                    break;
-                case 64:
-                case 65:
-                    objID = 228; // Tunnel
-                    indexID = 1; // Red
-                    break;
-                case 66:
-                case 67:
-                    objID = 228; // Tunnel
-                    indexID = 2; // Green
-                    break;
-                case 68:
-                case 69:
-                    objID = 228; // Tunnel
-                    indexID = 3; // Blue
-                    break;
-                case 70:
-                case 71:
-                    objID = 228; // Tunnel
-                    indexID = 4; // Cyan
-                    break;
-                case 72:
-                case 73:
-                    objID = 228; // Tunnel
-                    indexID = 5; // Yellow
-                    break;
-                case 74:
-                case 75:
-                    objID = 228; // Tunnel
-                    indexID = 6; // Magenta
-                    break;
-                case 76:
-                case 77:
-                    objID = 228; // Tunnel
-                    indexID = 7; // White
-                    break;
-                case 78:
-                case 79:
-                    objID = 228; // Tunnel
-                    indexID = 8; // Gray
-                    break;
-                default:
-                    objID = 105; // Placeholder
+                    case 0:
+                        objID = 58; // Ground
+                        break;
+                    case 1:
+                        objID = 210; // Tank
+                        dirID = 2; // North
+                        break;
+                    case 2:
+                        objID = 53; // Flag
+                        frameID = 1; // Animated
+                        break;
+                    case 3:
+                        objID = 231; // Water
+                        frameID = 1; // Animated
+                        break;
+                    case 4:
+                        objID = 230; // Wall
+                        break;
+                    case 5:
+                        objID = 8; // Box
+                        break;
+                    case 6:
+                        objID = 10; // Bricks
+                        break;
+                    case 7:
+                        objID = 4; // Anti-Tank
+                        dirID = 2; // North
+                        frameID = 1; // Animated
+                        break;
+                    case 8:
+                        objID = 4; // Anti-Tank
+                        dirID = 4; // East
+                        frameID = 1; // Animated
+                        break;
+                    case 9:
+                        objID = 4; // Anti-Tank
+                        dirID = 6; // South
+                        frameID = 1; // Animated
+                        break;
+                    case 10:
+                        objID = 4; // Anti-Tank
+                        dirID = 8; // West
+                        frameID = 1; // Animated
+                        break;
+                    case 11:
+                        objID = 144; // Mirror
+                        dirID = 1; // Northwest
+                        break;
+                    case 12:
+                        objID = 144; // Mirror
+                        dirID = 3; // Northeast
+                        break;
+                    case 13:
+                        objID = 144; // Mirror
+                        dirID = 5; // Southeast
+                        break;
+                    case 14:
+                        objID = 144; // Mirror
+                        dirID = 7; // Southwest
+                        break;
+                    case 15:
+                        objID = 211; // Tank Mover
+                        dirID = 2; // North
+                        frameID = 1; // Animated
+                        break;
+                    case 16:
+                        objID = 211; // Tank Mover
+                        dirID = 4; // East
+                        frameID = 1; // Animated
+                        break;
+                    case 17:
+                        objID = 211; // Tank Mover
+                        dirID = 6; // South
+                        frameID = 1; // Animated
+                        break;
+                    case 18:
+                        objID = 211; // Tank Mover
+                        dirID = 8; // West
+                        frameID = 1; // Animated
+                        break;
+                    case 19:
+                        objID = 15; // Crystal Block
+                        break;
+                    case 20:
+                        objID = 172; // Rotary Mirror
+                        dirID = 1; // Northwest
+                        break;
+                    case 21:
+                        objID = 172; // Rotary Mirror
+                        dirID = 3; // Northeast
+                        break;
+                    case 22:
+                        objID = 172; // Rotary Mirror
+                        dirID = 5; // Southeast
+                        break;
+                    case 23:
+                        objID = 172; // Rotary Mirror
+                        dirID = 7; // Southwest
+                        break;
+                    case 24:
+                        objID = 68; // Ice
+                        break;
+                    case 25:
+                        objID = 222; // Thin Ice
+                        break;
+                    case 64:
+                    case 65:
+                        objID = 228; // Tunnel
+                        indexID = 1; // Red
+                        break;
+                    case 66:
+                    case 67:
+                        objID = 228; // Tunnel
+                        indexID = 2; // Green
+                        break;
+                    case 68:
+                    case 69:
+                        objID = 228; // Tunnel
+                        indexID = 3; // Blue
+                        break;
+                    case 70:
+                    case 71:
+                        objID = 228; // Tunnel
+                        indexID = 4; // Cyan
+                        break;
+                    case 72:
+                    case 73:
+                        objID = 228; // Tunnel
+                        indexID = 5; // Yellow
+                        break;
+                    case 74:
+                    case 75:
+                        objID = 228; // Tunnel
+                        indexID = 6; // Magenta
+                        break;
+                    case 76:
+                    case 77:
+                        objID = 228; // Tunnel
+                        indexID = 7; // White
+                        break;
+                    case 78:
+                    case 79:
+                        objID = 228; // Tunnel
+                        indexID = 8; // Gray
+                        break;
+                    default:
+                        objID = 105; // Placeholder
                 }
                 // Populate Object ID
                 storage.setCell(objID, x, y, floorIndex,

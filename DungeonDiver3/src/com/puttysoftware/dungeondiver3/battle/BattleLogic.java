@@ -247,35 +247,35 @@ public class BattleLogic {
                     .getNextAction(
                             this.bd.getBattlerAIContexts()[this.activeIndex]);
             switch (action) {
-            case AIRoutine.ACTION_MOVE:
-                final int x = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveX();
-                final int y = this.bd.getActiveCharacter().getTemplate().getAI()
-                        .getMoveY();
-                this.lastAIActionResult = this.updatePosition(x, y);
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_CAST_SPELL:
-                this.lastAIActionResult = this.castSpell();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_DRAIN:
-                this.lastAIActionResult = this.drain();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            case AIRoutine.ACTION_STEAL:
-                this.lastAIActionResult = this.steal();
-                this.bd.getActiveCharacter().getTemplate().getAI()
-                        .setLastResult(this.lastAIActionResult);
-                break;
-            default:
-                this.lastAIActionResult = true;
-                this.stopWaitingForAI();
-                this.endTurn();
-                break;
+                case AIRoutine.ACTION_MOVE:
+                    final int x = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveX();
+                    final int y = this.bd.getActiveCharacter().getTemplate().getAI()
+                            .getMoveY();
+                    this.lastAIActionResult = this.updatePosition(x, y);
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_CAST_SPELL:
+                    this.lastAIActionResult = this.castSpell();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_DRAIN:
+                    this.lastAIActionResult = this.drain();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                case AIRoutine.ACTION_STEAL:
+                    this.lastAIActionResult = this.steal();
+                    this.bd.getActiveCharacter().getTemplate().getAI()
+                            .setLastResult(this.lastAIActionResult);
+                    break;
+                default:
+                    this.lastAIActionResult = true;
+                    this.stopWaitingForAI();
+                    this.endTurn();
+                    break;
             }
             final int currResult = this.getResult();
             if (currResult != BattleResults.IN_PROGRESS) {
@@ -296,13 +296,13 @@ public class BattleLogic {
         final int action = this.auto
                 .getNextAction(this.bd.getBattlerAIContexts()[index]);
         switch (action) {
-        case AIRoutine.ACTION_MOVE:
-            final int x = this.auto.getMoveX();
-            final int y = this.auto.getMoveY();
-            this.updatePositionInternal(x, y, false, acting);
-            break;
-        default:
-            break;
+            case AIRoutine.ACTION_MOVE:
+                final int x = this.auto.getMoveX();
+                final int y = this.auto.getMoveY();
+                this.updatePositionInternal(x, y, false, acting);
+                break;
+            default:
+                break;
         }
         final int currResult = this.getResult();
         if (currResult != BattleResults.IN_PROGRESS) {

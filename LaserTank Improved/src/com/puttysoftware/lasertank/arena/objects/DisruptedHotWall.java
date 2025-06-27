@@ -40,10 +40,10 @@ public class DisruptedHotWall extends AbstractDisruptedObject {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            return new DisruptedWall(this.disruptionLeft);
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                return new DisruptedWall(this.disruptionLeft);
+            default:
+                return this;
         }
     }
 

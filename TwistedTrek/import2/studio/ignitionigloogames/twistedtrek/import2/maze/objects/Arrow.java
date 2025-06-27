@@ -6,6 +6,6 @@ import studio.ignitionigloogames.twistedtrek.import2.maze.abc.AbstractTransientO
 public class Arrow extends AbstractTransientObject {
     // Constructors
     public Arrow() {
-	super("Arrow");
+        super("Arrow");
     }
 }

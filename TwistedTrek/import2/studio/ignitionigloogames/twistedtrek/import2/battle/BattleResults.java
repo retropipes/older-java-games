@@ -12,6 +12,6 @@ public class BattleResults {
     public static final int ANNIHILATED = 7;
 
     private BattleResults() {
-	// Do nothing
+        // Do nothing
     }
 }

@@ -33,97 +33,97 @@ public final class InternalScriptRunner {
                     InternalScriptRunner.validateScriptEntry(se);
                     final InternalScriptActionCode code = se.getActionCode();
                     switch (code) {
-                    case MESSAGE:
-                        // Show the message
-                        final String msg = se.getFirstActionArg().getString();
-                        RiskyRescue.getApplication().showMessage(msg);
-                        break;
-                    case SOUND:
-                        // Play the sound
-                        final int snd = se.getFirstActionArg().getInteger();
-                        SoundManager.playSound(snd);
-                        break;
-                    case SHOP:
-                        // Show the shop
-                        final int shopType = se.getFirstActionArg()
-                                .getInteger();
-                        final Shop shop = RiskyRescue.getApplication()
-                                .getGenericShop(shopType);
-                        if (shop != null) {
-                            shop.showShop();
-                        } else {
-                            throw new IllegalArgumentException(
-                                    "Illegal Shop Type: " + shopType);
-                        }
-                        break;
-                    case DECAY:
-                        RiskyRescue.getApplication().getGameManager().decay();
-                        break;
-                    case SWAP_PAIRS:
-                        final String swap1 = se.getActionArg(0).getString();
-                        final String swap2 = se.getActionArg(1).getString();
-                        final MapObject swapObj1 = RiskyRescue.getApplication()
-                                .getObjects().getInstanceByName(swap1);
-                        final MapObject swapObj2 = RiskyRescue.getApplication()
-                                .getObjects().getInstanceByName(swap2);
-                        RiskyRescue.getApplication().getScenarioManager()
-                                .getMap()
-                                .findAllObjectPairsAndSwap(swapObj1, swapObj2);
-                        break;
-                    case REDRAW:
-                        RiskyRescue.getApplication().getGameManager()
-                                .redrawMap();
-                        break;
-                    case ADD_TO_SCORE:
-                        final int points = se.getActionArg(0).getInteger();
-                        RiskyRescue.getApplication().getGameManager()
-                                .addToScore(points);
-                        break;
-                    case RANDOM_CHANCE:
-                        // Random Chance
-                        final int threshold = se.getActionArg(0).getInteger();
-                        final RandomRange random = new RandomRange(0, 9999);
-                        final int chance = random.generate();
-                        if (chance > threshold) {
-                            return;
-                        }
-                        break;
-                    case BATTLE:
-                        // Hide the game
-                        RiskyRescue.getApplication().getGameManager()
-                                .hideOutput();
-                        // Battle
-                        final Battle battle = new Battle();
-                        new Thread("Battle") {
-                            @Override
-                            public void run() {
-                                try {
-                                    RiskyRescue.getApplication()
-                                            .getGameManager();
-                                    RiskyRescue.getApplication().getBattle()
-                                            .doFixedBattle(Map
-                                                    .getTemporaryBattleCopy(),
-                                                    battle);
-                                } catch (final Exception e) {
-                                    // Something went wrong in the battle
-                                    RiskyRescue.logError(e);
-                                }
+                        case MESSAGE:
+                            // Show the message
+                            final String msg = se.getFirstActionArg().getString();
+                            RiskyRescue.getApplication().showMessage(msg);
+                            break;
+                        case SOUND:
+                            // Play the sound
+                            final int snd = se.getFirstActionArg().getInteger();
+                            SoundManager.playSound(snd);
+                            break;
+                        case SHOP:
+                            // Show the shop
+                            final int shopType = se.getFirstActionArg()
+                                    .getInteger();
+                            final Shop shop = RiskyRescue.getApplication()
+                                    .getGenericShop(shopType);
+                            if (shop != null) {
+                                shop.showShop();
+                            } else {
+                                throw new IllegalArgumentException(
+                                        "Illegal Shop Type: " + shopType);
                             }
-                        }.start();
-                        break;
-                    case RELATIVE_LEVEL_CHANGE:
-                        final int rDestLevel = se.getActionArg(0).getInteger();
-                        RiskyRescue.getApplication().getGameManager()
-                                .goToLevelRelative(rDestLevel);
-                        break;
-                    case UPDATE_GSA:
-                        final int gsaMod = se.getActionArg(0).getInteger();
-                        RiskyRescue.getApplication().getScenarioManager()
-                                .getMap().rebuildGSA(gsaMod);
-                        break;
-                    default:
-                        throw new IllegalArgumentException(
-                                "Illegal Action Code: " + code.toString());
+                            break;
+                        case DECAY:
+                            RiskyRescue.getApplication().getGameManager().decay();
+                            break;
+                        case SWAP_PAIRS:
+                            final String swap1 = se.getActionArg(0).getString();
+                            final String swap2 = se.getActionArg(1).getString();
+                            final MapObject swapObj1 = RiskyRescue.getApplication()
+                                    .getObjects().getInstanceByName(swap1);
+                            final MapObject swapObj2 = RiskyRescue.getApplication()
+                                    .getObjects().getInstanceByName(swap2);
+                            RiskyRescue.getApplication().getScenarioManager()
+                                    .getMap()
+                                    .findAllObjectPairsAndSwap(swapObj1, swapObj2);
+                            break;
+                        case REDRAW:
+                            RiskyRescue.getApplication().getGameManager()
+                                    .redrawMap();
+                            break;
+                        case ADD_TO_SCORE:
+                            final int points = se.getActionArg(0).getInteger();
+                            RiskyRescue.getApplication().getGameManager()
+                                    .addToScore(points);
+                            break;
+                        case RANDOM_CHANCE:
+                            // Random Chance
+                            final int threshold = se.getActionArg(0).getInteger();
+                            final RandomRange random = new RandomRange(0, 9999);
+                            final int chance = random.generate();
+                            if (chance > threshold) {
+                                return;
+                            }
+                            break;
+                        case BATTLE:
+                            // Hide the game
+                            RiskyRescue.getApplication().getGameManager()
+                                    .hideOutput();
+                            // Battle
+                            final Battle battle = new Battle();
+                            new Thread("Battle") {
+                                @Override
+                                public void run() {
+                                    try {
+                                        RiskyRescue.getApplication()
+                                                .getGameManager();
+                                        RiskyRescue.getApplication().getBattle()
+                                                .doFixedBattle(Map
+                                                        .getTemporaryBattleCopy(),
+                                                        battle);
+                                    } catch (final Exception e) {
+                                        // Something went wrong in the battle
+                                        RiskyRescue.logError(e);
+                                    }
+                                }
+                            }.start();
+                            break;
+                        case RELATIVE_LEVEL_CHANGE:
+                            final int rDestLevel = se.getActionArg(0).getInteger();
+                            RiskyRescue.getApplication().getGameManager()
+                                    .goToLevelRelative(rDestLevel);
+                            break;
+                        case UPDATE_GSA:
+                            final int gsaMod = se.getActionArg(0).getInteger();
+                            RiskyRescue.getApplication().getScenarioManager()
+                                    .getMap().rebuildGSA(gsaMod);
+                            break;
+                        default:
+                            throw new IllegalArgumentException(
+                                    "Illegal Action Code: " + code.toString());
                     }
                 }
             }

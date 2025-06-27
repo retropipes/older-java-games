@@ -7,31 +7,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericDungeonObjec
 public class Bank extends GenericDungeonObject {
     // Constructors
     public Bank() {
-	super(false);
+        super(false);
     }
 
     @Override
     public void postMoveActionHook() {
-	Import1.getApplication().getBank().showShop();
+        Import1.getApplication().getBank().showShop();
     }
 
     @Override
     public String getName() {
-	return "Bank";
+        return "Bank";
     }
 
     @Override
     public String getPluralName() {
-	return "Banks";
+        return "Banks";
     }
 
     @Override
     public String getDescription() {
-	return "Banks store money for safe keeping.";
+        return "Banks store money for safe keeping.";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 2;
+        return (byte) 2;
     }
 }

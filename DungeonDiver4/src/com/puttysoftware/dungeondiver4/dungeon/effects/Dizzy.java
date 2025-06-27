@@ -74,272 +74,272 @@ public class Dizzy extends DungeonEffect {
     public int modifyMove1(final int arg) {
         this.state = this.r.generate();
         switch (arg) {
-        case DirectionConstants.DIRECTION_NORTH:
-            switch (this.state) {
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-                return DirectionConstants.DIRECTION_NORTH;
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-                return DirectionConstants.DIRECTION_SOUTH;
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_WEST;
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_EAST;
+            case DirectionConstants.DIRECTION_NORTH:
+                switch (this.state) {
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                        return DirectionConstants.DIRECTION_NORTH;
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                        return DirectionConstants.DIRECTION_SOUTH;
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DirectionConstants.DIRECTION_WEST;
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_EAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_SOUTH:
+                switch (this.state) {
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_NORTH;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                        return DirectionConstants.DIRECTION_SOUTH;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                        return DirectionConstants.DIRECTION_WEST;
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DirectionConstants.DIRECTION_EAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_WEST:
+                switch (this.state) {
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLUD:
+                        return DirectionConstants.DIRECTION_NORTH;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RUDL:
+                        return DirectionConstants.DIRECTION_SOUTH;
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_WEST;
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LURD:
+                        return DirectionConstants.DIRECTION_EAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_EAST:
+                switch (this.state) {
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RLDU:
+                        return DirectionConstants.DIRECTION_NORTH;
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_SOUTH;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RUDL:
+                        return DirectionConstants.DIRECTION_WEST;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LUDR:
+                        return DirectionConstants.DIRECTION_EAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_NORTHWEST:
+                switch (this.state) {
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                        return DirectionConstants.DIRECTION_NORTHWEST;
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                        return DirectionConstants.DIRECTION_SOUTHEAST;
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DirectionConstants.DIRECTION_SOUTHWEST;
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_NORTHEAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_NORTHEAST:
+                switch (this.state) {
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_RUDL:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_NORTHWEST;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RDUL:
+                        return DirectionConstants.DIRECTION_SOUTHEAST;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RLUD:
+                        return DirectionConstants.DIRECTION_SOUTHWEST;
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_LRUD:
+                        return DirectionConstants.DIRECTION_NORTHEAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_SOUTHWEST:
+                switch (this.state) {
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RLUD:
+                        return DirectionConstants.DIRECTION_NORTHWEST;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_LUDR:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RLDU:
+                    case DIZZY_STATE_RUDL:
+                        return DirectionConstants.DIRECTION_SOUTHEAST;
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_SOUTHWEST;
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LURD:
+                        return DirectionConstants.DIRECTION_NORTHEAST;
+                    default:
+                        break;
+                }
+                break;
+            case DirectionConstants.DIRECTION_SOUTHEAST:
+                switch (this.state) {
+                    case DIZZY_STATE_DLRU:
+                    case DIZZY_STATE_DRLU:
+                    case DIZZY_STATE_LDRU:
+                    case DIZZY_STATE_LRDU:
+                    case DIZZY_STATE_RDLU:
+                    case DIZZY_STATE_RLDU:
+                        return DirectionConstants.DIRECTION_NORTHWEST;
+                    case DIZZY_STATE_ULRD:
+                    case DIZZY_STATE_URLD:
+                    case DIZZY_STATE_LURD:
+                    case DIZZY_STATE_LRUD:
+                    case DIZZY_STATE_RLUD:
+                    case DIZZY_STATE_RULD:
+                        return DirectionConstants.DIRECTION_SOUTHEAST;
+                    case DIZZY_STATE_UDRL:
+                    case DIZZY_STATE_URDL:
+                    case DIZZY_STATE_DURL:
+                    case DIZZY_STATE_DRUL:
+                    case DIZZY_STATE_RDUL:
+                    case DIZZY_STATE_RUDL:
+                        return DirectionConstants.DIRECTION_SOUTHWEST;
+                    case DIZZY_STATE_ULDR:
+                    case DIZZY_STATE_DULR:
+                    case DIZZY_STATE_DLUR:
+                    case DIZZY_STATE_LDUR:
+                    case DIZZY_STATE_LUDR:
+                        return DirectionConstants.DIRECTION_NORTHEAST;
+                    default:
+                        break;
+                }
+                break;
             default:
                 break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_SOUTH:
-            switch (this.state) {
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTH;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-                return DirectionConstants.DIRECTION_SOUTH;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_WEST;
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_EAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_WEST:
-            switch (this.state) {
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_NORTH;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTH;
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_WEST;
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LURD:
-                return DirectionConstants.DIRECTION_EAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_EAST:
-            switch (this.state) {
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RLDU:
-                return DirectionConstants.DIRECTION_NORTH;
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTH;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_WEST;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LUDR:
-                return DirectionConstants.DIRECTION_EAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_NORTHWEST:
-            switch (this.state) {
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_NORTHEAST:
-            switch (this.state) {
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_RUDL:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RDUL:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_LRUD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_SOUTHWEST:
-            switch (this.state) {
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RLUD:
-                return DirectionConstants.DIRECTION_NORTHWEST;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_LUDR:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RLDU:
-            case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LURD:
-                return DirectionConstants.DIRECTION_NORTHEAST;
-            default:
-                break;
-            }
-            break;
-        case DirectionConstants.DIRECTION_SOUTHEAST:
-            switch (this.state) {
-            case DIZZY_STATE_DLRU:
-            case DIZZY_STATE_DRLU:
-            case DIZZY_STATE_LDRU:
-            case DIZZY_STATE_LRDU:
-            case DIZZY_STATE_RDLU:
-            case DIZZY_STATE_RLDU:
-                return DirectionConstants.DIRECTION_NORTHWEST;
-            case DIZZY_STATE_ULRD:
-            case DIZZY_STATE_URLD:
-            case DIZZY_STATE_LURD:
-            case DIZZY_STATE_LRUD:
-            case DIZZY_STATE_RLUD:
-            case DIZZY_STATE_RULD:
-                return DirectionConstants.DIRECTION_SOUTHEAST;
-            case DIZZY_STATE_UDRL:
-            case DIZZY_STATE_URDL:
-            case DIZZY_STATE_DURL:
-            case DIZZY_STATE_DRUL:
-            case DIZZY_STATE_RDUL:
-            case DIZZY_STATE_RUDL:
-                return DirectionConstants.DIRECTION_SOUTHWEST;
-            case DIZZY_STATE_ULDR:
-            case DIZZY_STATE_DULR:
-            case DIZZY_STATE_DLUR:
-            case DIZZY_STATE_LDUR:
-            case DIZZY_STATE_LUDR:
-                return DirectionConstants.DIRECTION_NORTHEAST;
-            default:
-                break;
-            }
-            break;
-        default:
-            break;
         }
         return 0;
     }

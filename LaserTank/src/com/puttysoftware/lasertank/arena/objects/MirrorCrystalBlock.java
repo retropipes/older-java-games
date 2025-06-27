@@ -103,14 +103,14 @@ public class MirrorCrystalBlock extends AbstractReactionWall {
     @Override
     public AbstractArenaObject changesToOnExposure(final int materialID) {
         switch (materialID) {
-        case MaterialConstants.MATERIAL_ICE:
-            final IcyCrystalBlock icb = new IcyCrystalBlock();
-            icb.setPreviousState(this);
-            return icb;
-        case MaterialConstants.MATERIAL_FIRE:
-            return new HotCrystalBlock();
-        default:
-            return this;
+            case MaterialConstants.MATERIAL_ICE:
+                final IcyCrystalBlock icb = new IcyCrystalBlock();
+                icb.setPreviousState(this);
+                return icb;
+            case MaterialConstants.MATERIAL_FIRE:
+                return new HotCrystalBlock();
+            default:
+                return this;
         }
     }
 }

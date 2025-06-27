@@ -226,45 +226,45 @@ public class MazeRunner {
 
     public boolean getMessageEnabled(final int msg) {
         switch (msg) {
-        case MESSAGE_CANNOT_GO_OUTSIDE_MAZE:
-            return this.messageCannotGoOutsideMazeEnabled;
-        case MESSAGE_FAKE_EXIT:
-            return this.messageFakeExitEnabled;
-        case MESSAGE_INVISIBLE_WALL:
-            return this.messageInvisibleWallEnabled;
-        case MESSAGE_CANNOT_GO_THAT_WAY:
-            return this.messageCannotGoThatWayEnabled;
-        case MESSAGE_SPECIFIC_MAZE_ERRORS:
-            return this.messageSpecificMazeErrorsEnabled;
-        case MESSAGE_INVISIBLE_TELEPORTER:
-            return this.messageInvisibleTeleporterEnabled;
-        default:
-            return false;
+            case MESSAGE_CANNOT_GO_OUTSIDE_MAZE:
+                return this.messageCannotGoOutsideMazeEnabled;
+            case MESSAGE_FAKE_EXIT:
+                return this.messageFakeExitEnabled;
+            case MESSAGE_INVISIBLE_WALL:
+                return this.messageInvisibleWallEnabled;
+            case MESSAGE_CANNOT_GO_THAT_WAY:
+                return this.messageCannotGoThatWayEnabled;
+            case MESSAGE_SPECIFIC_MAZE_ERRORS:
+                return this.messageSpecificMazeErrorsEnabled;
+            case MESSAGE_INVISIBLE_TELEPORTER:
+                return this.messageInvisibleTeleporterEnabled;
+            default:
+                return false;
         }
     }
 
     private void setMessageEnabled(final int msg, final boolean status) {
         switch (msg) {
-        case MESSAGE_CANNOT_GO_OUTSIDE_MAZE:
-            this.messageCannotGoOutsideMazeEnabled = status;
-            break;
-        case MESSAGE_FAKE_EXIT:
-            this.messageFakeExitEnabled = status;
-            break;
-        case MESSAGE_INVISIBLE_WALL:
-            this.messageInvisibleWallEnabled = status;
-            break;
-        case MESSAGE_CANNOT_GO_THAT_WAY:
-            this.messageCannotGoThatWayEnabled = status;
-            break;
-        case MESSAGE_SPECIFIC_MAZE_ERRORS:
-            this.messageSpecificMazeErrorsEnabled = status;
-            break;
-        case MESSAGE_INVISIBLE_TELEPORTER:
-            this.messageInvisibleTeleporterEnabled = status;
-            break;
-        default:
-            break;
+            case MESSAGE_CANNOT_GO_OUTSIDE_MAZE:
+                this.messageCannotGoOutsideMazeEnabled = status;
+                break;
+            case MESSAGE_FAKE_EXIT:
+                this.messageFakeExitEnabled = status;
+                break;
+            case MESSAGE_INVISIBLE_WALL:
+                this.messageInvisibleWallEnabled = status;
+                break;
+            case MESSAGE_CANNOT_GO_THAT_WAY:
+                this.messageCannotGoThatWayEnabled = status;
+                break;
+            case MESSAGE_SPECIFIC_MAZE_ERRORS:
+                this.messageSpecificMazeErrorsEnabled = status;
+                break;
+            case MESSAGE_INVISIBLE_TELEPORTER:
+                this.messageInvisibleTeleporterEnabled = status;
+                break;
+            default:
+                break;
         }
     }
 

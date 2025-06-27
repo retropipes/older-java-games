@@ -6,22 +6,22 @@ import studio.ignitionigloogames.twistedtrek.Item;
 
 public class EatScreen extends InventoryBasedScreen {
     public EatScreen(final Creature newPlayer) {
-	super(newPlayer);
+        super(newPlayer);
     }
 
     @Override
     protected String getVerb() {
-	return "eat";
+        return "eat";
     }
 
     @Override
     protected boolean isAcceptable(final Item item) {
-	return item.foodValue() != 0;
+        return item.foodValue() != 0;
     }
 
     @Override
     protected Screen use(final Item item) {
-	this.player.eat(item);
-	return null;
+        this.player.eat(item);
+        return null;
     }
 }

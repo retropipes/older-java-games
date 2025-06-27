@@ -74,7 +74,7 @@ public class AIRegistration {
                 // Verify that AI file exists
                 if (new File(AIRegistration.getBasePath() + File.separator + res
                         + Extension.getAIScriptExtensionWithPeriod())
-                                .exists()) {
+                        .exists()) {
                     // Register it
                     if (AIRegistration.ANY_FOUND && aiList != null) {
                         final String[] newAIList = new String[aiList.length
@@ -126,7 +126,7 @@ public class AIRegistration {
                     // Verify that AI file exists
                     if (new File(AIRegistration.getBasePath() + File.separator
                             + res + Extension.getAIScriptExtensionWithPeriod())
-                                    .exists()) {
+                            .exists()) {
                         // Register it
                         if (AIRegistration.ANY_FOUND && aiList != null) {
                             final String[] newAIList = new String[aiList.length

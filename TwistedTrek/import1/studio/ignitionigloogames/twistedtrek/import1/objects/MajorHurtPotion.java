@@ -11,26 +11,26 @@ public class MajorHurtPotion extends GenericPotion {
 
     // Constructors
     public MajorHurtPotion() {
-	super(StatConstants.STAT_CURRENT_HP, true, MajorHurtPotion.MAX_HURT, MajorHurtPotion.MIN_HURT);
+        super(StatConstants.STAT_CURRENT_HP, true, MajorHurtPotion.MAX_HURT, MajorHurtPotion.MIN_HURT);
     }
 
     @Override
     public String getName() {
-	return "Major Hurt Potion";
+        return "Major Hurt Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Major Hurt Potions";
+        return "Major Hurt Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 4;
+        return (byte) 4;
     }
 
     @Override
     public String getDescription() {
-	return "Major Hurt Potions hurt you significantly when picked up.";
+        return "Major Hurt Potions hurt you significantly when picked up.";
     }
 }

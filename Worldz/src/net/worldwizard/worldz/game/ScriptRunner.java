@@ -27,116 +27,116 @@ public final class ScriptRunner {
                     ScriptRunner.validateScriptEntry(se);
                     final ActionCode code = se.getActionCode();
                     switch (code) {
-                    case NONE:
-                        // Do nothing
-                        break;
-                    case MESSAGE:
-                        // Show the message
-                        final String msg = se.getFirstActionArg().getString();
-                        Messager.showMessage(msg);
-                        break;
-                    case SOUND:
-                        // Play the sound
-                        final String snd = se.getFirstActionArg().getString();
-                        SoundManager.playSound(snd);
-                        break;
-                    case SHOP:
-                        // Show the shop
-                        final int shopType = se.getFirstActionArg()
-                                .getInteger();
-                        final Shop shop = Worldz.getApplication()
-                                .getGenericShop(shopType);
-                        if (shop != null) {
-                            shop.showShop();
-                        } else {
-                            throw new IllegalArgumentException(
-                                    "Illegal Shop Type: " + shopType);
-                        }
-                        break;
-                    case MOVE:
-                        // Move
-                        final boolean moveType = se.getActionArg(0)
-                                .getBoolean();
-                        final boolean eventFlag = se.getActionArg(1)
-                                .getBoolean();
-                        final int moveX = se.getActionArg(2).getInteger();
-                        final int moveY = se.getActionArg(3).getInteger();
-                        final int moveZ = se.getActionArg(4).getInteger();
-                        final int moveW = se.getActionArg(5).getInteger();
-                        if (moveType == ScriptConstants.MOVE_RELATIVE) {
-                            if (eventFlag) {
-                                gm.updatePositionRelative(moveX, moveY);
+                        case NONE:
+                            // Do nothing
+                            break;
+                        case MESSAGE:
+                            // Show the message
+                            final String msg = se.getFirstActionArg().getString();
+                            Messager.showMessage(msg);
+                            break;
+                        case SOUND:
+                            // Play the sound
+                            final String snd = se.getFirstActionArg().getString();
+                            SoundManager.playSound(snd);
+                            break;
+                        case SHOP:
+                            // Show the shop
+                            final int shopType = se.getFirstActionArg()
+                                    .getInteger();
+                            final Shop shop = Worldz.getApplication()
+                                    .getGenericShop(shopType);
+                            if (shop != null) {
+                                shop.showShop();
                             } else {
-                                gm.updatePositionRelativeNoEvents(moveX, moveY);
+                                throw new IllegalArgumentException(
+                                        "Illegal Shop Type: " + shopType);
                             }
-                        } else {
-                            if (eventFlag) {
-                                gm.updatePositionAbsolute(moveX, moveY, moveZ);
+                            break;
+                        case MOVE:
+                            // Move
+                            final boolean moveType = se.getActionArg(0)
+                                    .getBoolean();
+                            final boolean eventFlag = se.getActionArg(1)
+                                    .getBoolean();
+                            final int moveX = se.getActionArg(2).getInteger();
+                            final int moveY = se.getActionArg(3).getInteger();
+                            final int moveZ = se.getActionArg(4).getInteger();
+                            final int moveW = se.getActionArg(5).getInteger();
+                            if (moveType == ScriptConstants.MOVE_RELATIVE) {
+                                if (eventFlag) {
+                                    gm.updatePositionRelative(moveX, moveY);
+                                } else {
+                                    gm.updatePositionRelativeNoEvents(moveX, moveY);
+                                }
                             } else {
-                                gm.updatePositionAbsoluteNoEvents(moveX, moveY,
-                                        moveZ, moveW);
-                            }
-                        }
-                        break;
-                    case END_GAME:
-                        // End Game
-                        gm.solvedWorld();
-                        break;
-                    case MODIFY:
-                        // Modify
-                        final boolean stickyScript = se.getActionArg(0)
-                                .getBoolean();
-                        final String modObjName = se.getActionArg(1)
-                                .getString();
-                        final int modX = se.getActionArg(2).getInteger();
-                        final int modY = se.getActionArg(3).getInteger();
-                        final int modZ = se.getActionArg(4).getInteger();
-                        final int modL = se.getActionArg(5).getInteger();
-                        final WorldObject modObj = Worldz.getApplication()
-                                .getObjects().getNewInstanceByName(modObjName);
-                        if (stickyScript) {
-                            final WorldObject wasThere = Worldz.getApplication()
-                                    .getWorldManager().getWorld()
-                                    .getCell(modX, modY, modZ, modL);
-                            if (wasThere.hasCustomScript()) {
-                                modObj.setCustomScript(
-                                        wasThere.getCustomScript());
-                            }
-                        }
-                        Worldz.getApplication().getWorldManager().getWorld()
-                                .setCell(modObj, modX, modY, modZ, modL);
-                        break;
-                    case DELETE_SCRIPT:
-                        // Delete Script
-                        gm.getSavedWorldObject().setCustomScript(null);
-                        break;
-                    case RANDOM_CHANCE:
-                        // Random Chance
-                        final int threshold = se.getActionArg(0).getInteger();
-                        final RandomRange random = new RandomRange(0, 9999);
-                        final int chance = random.generate();
-                        if (chance > threshold) {
-                            return;
-                        }
-                        break;
-                    case BATTLE:
-                        // Battle
-                        new Thread("Battle") {
-                            @Override
-                            public void run() {
-                                try {
-                                    Worldz.getApplication().getBattle()
-                                            .doBattle();
-                                } catch (final Exception e) {
-                                    // Something went wrong in the battle
-                                    Worldz.getDebug().debug(e);
+                                if (eventFlag) {
+                                    gm.updatePositionAbsolute(moveX, moveY, moveZ);
+                                } else {
+                                    gm.updatePositionAbsoluteNoEvents(moveX, moveY,
+                                            moveZ, moveW);
                                 }
                             }
-                        }.start();
-                        break;
-                    default:
-                        throw new IllegalArgumentException(
-                                "Illegal Action Code: " + code.toString());
+                            break;
+                        case END_GAME:
+                            // End Game
+                            gm.solvedWorld();
+                            break;
+                        case MODIFY:
+                            // Modify
+                            final boolean stickyScript = se.getActionArg(0)
+                                    .getBoolean();
+                            final String modObjName = se.getActionArg(1)
+                                    .getString();
+                            final int modX = se.getActionArg(2).getInteger();
+                            final int modY = se.getActionArg(3).getInteger();
+                            final int modZ = se.getActionArg(4).getInteger();
+                            final int modL = se.getActionArg(5).getInteger();
+                            final WorldObject modObj = Worldz.getApplication()
+                                    .getObjects().getNewInstanceByName(modObjName);
+                            if (stickyScript) {
+                                final WorldObject wasThere = Worldz.getApplication()
+                                        .getWorldManager().getWorld()
+                                        .getCell(modX, modY, modZ, modL);
+                                if (wasThere.hasCustomScript()) {
+                                    modObj.setCustomScript(
+                                            wasThere.getCustomScript());
+                                }
+                            }
+                            Worldz.getApplication().getWorldManager().getWorld()
+                                    .setCell(modObj, modX, modY, modZ, modL);
+                            break;
+                        case DELETE_SCRIPT:
+                            // Delete Script
+                            gm.getSavedWorldObject().setCustomScript(null);
+                            break;
+                        case RANDOM_CHANCE:
+                            // Random Chance
+                            final int threshold = se.getActionArg(0).getInteger();
+                            final RandomRange random = new RandomRange(0, 9999);
+                            final int chance = random.generate();
+                            if (chance > threshold) {
+                                return;
+                            }
+                            break;
+                        case BATTLE:
+                            // Battle
+                            new Thread("Battle") {
+                                @Override
+                                public void run() {
+                                    try {
+                                        Worldz.getApplication().getBattle()
+                                                .doBattle();
+                                    } catch (final Exception e) {
+                                        // Something went wrong in the battle
+                                        Worldz.getDebug().debug(e);
+                                    }
+                                }
+                            }.start();
+                            break;
+                        default:
+                            throw new IllegalArgumentException(
+                                    "Illegal Action Code: " + code.toString());
                     }
                 }
             }

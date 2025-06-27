@@ -6,26 +6,26 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericMovableObjec
 public class PushablePullableBlock extends GenericMovableObject {
     // Constructors
     public PushablePullableBlock() {
-	super(true, true);
+        super(true, true);
     }
 
     @Override
     public String getName() {
-	return "Pushable/Pullable Block";
+        return "Pushable/Pullable Block";
     }
 
     @Override
     public String getPluralName() {
-	return "Pushable/Pullable Blocks";
+        return "Pushable/Pullable Blocks";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 3;
+        return (byte) 3;
     }
 
     @Override
     public String getDescription() {
-	return "Pushable/Pullable Blocks can be both pushed and pulled.";
+        return "Pushable/Pullable Blocks can be both pushed and pulled.";
     }
 }

@@ -5,26 +5,26 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericButton;
 
 public class MagentaButton extends GenericButton {
     public MagentaButton() {
-	super(new MagentaWallOff(), new MagentaWallOn());
+        super(new MagentaWallOff(), new MagentaWallOn());
     }
 
     @Override
     public String getName() {
-	return "Magenta Button";
+        return "Magenta Button";
     }
 
     @Override
     public String getPluralName() {
-	return "Magenta Buttons";
+        return "Magenta Buttons";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 3;
+        return (byte) 3;
     }
 
     @Override
     public String getDescription() {
-	return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
+        return "Magenta Buttons will cause all Magenta Walls Off to become On, and all Magenta Walls On to become Off.";
     }
 }

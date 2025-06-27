@@ -32,50 +32,50 @@ final class JavaSandbox extends Sandbox {
     @Override
     protected String getDirectory(final SystemDir dir) {
         switch (dir) {
-        case APPLICATION:
-        case SYSTEM_APPLICATION:
-            return JavaSandbox.getLibraryFallbackDirectory();
-        case APPLICATION_SUPPORT:
-        case SYSTEM_APPLICATION_SUPPORT:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.APP_SUPPORT_FALLBACK_DIR;
-        case AUTOSAVED_INFORMATION:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.AUTOSAVE_FALLBACK_DIR;
-        case CACHES:
-        case SYSTEM_CACHES:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.CACHES_FALLBACK_DIR;
-        case DOCUMENTS:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.DOCUMENTS_FALLBACK_DIR;
-        case DESKTOP:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.DESKTOP_FALLBACK_DIR;
-        case DOWNLOADS:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.DOWNLOADS_FALLBACK_DIR;
-        case LIBRARY:
-        case SYSTEM_LIBRARY:
-            return JavaSandbox.getLibraryFallbackDirectory();
-        case MOVIES:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.MOVIES_FALLBACK_DIR;
-        case MUSIC:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.MUSIC_FALLBACK_DIR;
-        case PICTURES:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator + JavaSandbox.PICTURES_FALLBACK_DIR;
-        case SHARED_PUBLIC:
-            return JavaSandbox.getLibraryFallbackDirectory()
-                    + File.pathSeparator
-                    + JavaSandbox.SHARED_PUBLIC_FALLBACK_DIR;
-        case SYSTEM_USER:
-        case USER_HOME:
-            return System.getProperty("user.home"); //$NON-NLS-1$
-        default:
-            return JavaSandbox.getLibraryFallbackDirectory();
+            case APPLICATION:
+            case SYSTEM_APPLICATION:
+                return JavaSandbox.getLibraryFallbackDirectory();
+            case APPLICATION_SUPPORT:
+            case SYSTEM_APPLICATION_SUPPORT:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.APP_SUPPORT_FALLBACK_DIR;
+            case AUTOSAVED_INFORMATION:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.AUTOSAVE_FALLBACK_DIR;
+            case CACHES:
+            case SYSTEM_CACHES:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.CACHES_FALLBACK_DIR;
+            case DOCUMENTS:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.DOCUMENTS_FALLBACK_DIR;
+            case DESKTOP:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.DESKTOP_FALLBACK_DIR;
+            case DOWNLOADS:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.DOWNLOADS_FALLBACK_DIR;
+            case LIBRARY:
+            case SYSTEM_LIBRARY:
+                return JavaSandbox.getLibraryFallbackDirectory();
+            case MOVIES:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.MOVIES_FALLBACK_DIR;
+            case MUSIC:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.MUSIC_FALLBACK_DIR;
+            case PICTURES:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator + JavaSandbox.PICTURES_FALLBACK_DIR;
+            case SHARED_PUBLIC:
+                return JavaSandbox.getLibraryFallbackDirectory()
+                        + File.pathSeparator
+                        + JavaSandbox.SHARED_PUBLIC_FALLBACK_DIR;
+            case SYSTEM_USER:
+            case USER_HOME:
+                return System.getProperty("user.home"); //$NON-NLS-1$
+            default:
+                return JavaSandbox.getLibraryFallbackDirectory();
         }
     }
 

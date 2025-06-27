@@ -8,31 +8,31 @@ import studio.ignitionigloogames.twistedtrek.import1.generic.GenericPotion;
 public class SuperHealPotion extends GenericPotion {
     // Constructors
     public SuperHealPotion() {
-	super(StatConstants.STAT_CURRENT_HP, false);
+        super(StatConstants.STAT_CURRENT_HP, false);
     }
 
     @Override
     public String getName() {
-	return "Super Heal Potion";
+        return "Super Heal Potion";
     }
 
     @Override
     public String getPluralName() {
-	return "Super Heal Potions";
+        return "Super Heal Potions";
     }
 
     @Override
     public byte getObjectID() {
-	return (byte) 5;
+        return (byte) 5;
     }
 
     @Override
     public int getEffectValue() {
-	return PCManager.getPlayer().getMaximumHP();
+        return PCManager.getPlayer().getMaximumHP();
     }
 
     @Override
     public String getDescription() {
-	return "Super Heal Potions heal you completely when picked up.";
+        return "Super Heal Potions heal you completely when picked up.";
     }
 }
