@@ -10,7 +10,7 @@ import com.puttysoftware.errorlogger.ErrorLogger;
 import com.puttysoftware.gemma.resourcemanagers.LogoManager;
 import com.puttysoftware.gemma.support.Support;
 import com.puttysoftware.gemma.support.creatures.PartyManager;
-import com.puttysoftware.integration.Integration;
+import com.puttysoftware.platform.Platform;
 
 public class Gemma {
     // Constants
@@ -54,9 +54,8 @@ public class Gemma {
             } else {
                 suffix = "";
             }
-            final Integration ni = new Integration();
             // Integrate with host platform
-            ni.configureLookAndFeel();
+            Platform.hookLAF(Gemma.PROGRAM_NAME);
             // Set defaults
             CommonDialogs.setDefaultTitle(Gemma.PROGRAM_NAME + suffix);
             CommonDialogs.setIcon(LogoManager.getMicroLogo());

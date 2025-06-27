@@ -5,19 +5,26 @@
  */
 package com.puttysoftware.gemma.support.resourcemanagers;
 
+import java.net.URL;
 import java.nio.BufferUnderflowException;
-
-import com.puttysoftware.audio.ogg.OggPlayer;
+import com.puttysoftware.media.Music;
 import com.puttysoftware.gemma.support.Support;
 
 public class MusicManager {
-    private static final String INTERNAL_LOAD_PATH = "/com/puttysoftware/gemma/support/resources/music/";
-    private final static Class<?> LOAD_CLASS = MusicManager.class;
-    private static OggPlayer CURRENT_MUSIC;
+    private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/brainmaze/resources/music/";
+    private static String LOAD_PATH = MusicManager.DEFAULT_LOAD_PATH;
+    private static Class<?> LOAD_CLASS = MusicManager.class;
+    private static Music CURRENT_MUSIC;
+    private static MusicTask task;
 
-    private static OggPlayer getMusic(final String filename) {
-        return OggPlayer.loadLoopedResource(MusicManager.LOAD_CLASS
-                .getResource(MusicManager.INTERNAL_LOAD_PATH + filename));
+    private static Music getMusic(final String filename) {
+        try {
+            final URL url = MusicManager.LOAD_CLASS.getResource(
+                    MusicManager.LOAD_PATH + filename.toLowerCase() + ".ogg");
+            return new Music(url);
+        } catch (final NullPointerException np) {
+            return null;
+        }
     }
 
     public static void playMusic(final int musicID, final int offset) {
@@ -25,7 +32,8 @@ public class MusicManager {
                 .getMusic(MusicConstants.getMusicNameForID(musicID, offset));
         if (MusicManager.CURRENT_MUSIC != null) {
             // Play the music
-            MusicManager.CURRENT_MUSIC.start();
+            MusicManager.task = new MusicTask(MusicManager.CURRENT_MUSIC);
+            MusicManager.task.start();
         }
     }
 
@@ -33,7 +41,7 @@ public class MusicManager {
         if (MusicManager.CURRENT_MUSIC != null) {
             // Stop the music
             try {
-                OggPlayer.stopPlaying();
+                MusicManager.CURRENT_MUSIC.stopLoop();
             } catch (final BufferUnderflowException bue) {
                 // Ignore
             } catch (final NullPointerException np) {
@@ -45,8 +53,8 @@ public class MusicManager {
     }
 
     public static boolean isMusicPlaying() {
-        if (MusicManager.CURRENT_MUSIC != null) {
-            if (MusicManager.CURRENT_MUSIC.isPlaying()) {
+        if (MusicManager.task != null) {
+            if (MusicManager.task.isAlive()) {
                 return true;
             }
         }

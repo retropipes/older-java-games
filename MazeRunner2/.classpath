@@ -7,7 +7,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/lib-puttysoftware-desktop">
+	<classpathentry combineaccessrules="false" exported="true" kind="lib" path="../extlib/com.puttysoftware.desktop.module.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

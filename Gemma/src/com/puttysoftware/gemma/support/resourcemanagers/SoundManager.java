@@ -5,25 +5,28 @@
  */
 package com.puttysoftware.gemma.support.resourcemanagers;
 
-import com.puttysoftware.audio.wav.WAVPlayer;
+import java.net.URL;
+import com.puttysoftware.media.Sound;
 import com.puttysoftware.gemma.support.prefs.LocalPreferencesManager;
 import com.puttysoftware.randomrange.RandomRange;
 
 public class SoundManager {
-	private static final String INTERNAL_LOAD_PATH = "/com/puttysoftware/gemma/support/resources/sounds/";
-	private final static Class<?> LOAD_CLASS = SoundManager.class;
+    private static final String DEFAULT_LOAD_PATH = "/com/puttysoftware/brainmaze/resources/sounds/";
+    private static String LOAD_PATH = SoundManager.DEFAULT_LOAD_PATH;
+    private static Class<?> LOAD_CLASS = SoundManager.class;
 
-	private static WAVPlayer getSound(final String filename) {
-		try {
-			return WAVPlayer.loadResource(SoundManager.LOAD_CLASS
-					.getResource(SoundManager.INTERNAL_LOAD_PATH + filename.toLowerCase() + ".wav"));
-		} catch (final NullPointerException np) {
-			return null;
-		}
-	}
+    private static Sound getSound(final String filename) {
+        try {
+            final URL url = SoundManager.LOAD_CLASS.getResource(
+                    SoundManager.LOAD_PATH + filename.toLowerCase() + ".wav");
+            return new Sound(url);
+        } catch (final NullPointerException np) {
+            return null;
+        }
+    }
 
-	public static void playSound(final int soundID) {
-		if (LocalPreferencesManager.getSoundsEnabled()) {
+    public static void playSound(final int soundID) {
+        if (LocalPreferencesManager.getSoundsEnabled()) {
 			try {
 				int offset;
 				RandomRange rr;
@@ -37,7 +40,7 @@ public class SoundManager {
 					break;
 				}
 				final String soundName = SoundNames.getSoundNames()[soundID + offset];
-				final WAVPlayer snd = SoundManager.getSound(soundName);
+				final Sound snd = SoundManager.getSound(soundName);
 				if (snd != null) {
 					snd.play();
 				}
@@ -45,5 +48,5 @@ public class SoundManager {
 				// Do nothing
 			}
 		}
-	}
+    }
 }
